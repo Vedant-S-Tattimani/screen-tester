@@ -1,0 +1,76 @@
+export type GuideCategory = "device" | "concept" | "workflow";
+
+export interface MonitorGuide {
+  id: string; // The URL slug (e.g. 'how-to-check-monitor-ghosting')
+  category: GuideCategory;
+  primaryIntent: string;
+  relatedTestIds: string[];
+}
+
+export const monitorGuides: MonitorGuide[] = [
+  // DEVICE GUIDES
+  {
+    id: "monitor-screen-test",
+    category: "device",
+    primaryIntent: "how to test a monitor",
+    relatedTestIds: ["dead-pixel-test", "backlight-bleed-test", "ghosting-test"]
+  },
+  {
+    id: "laptop-screen-test",
+    category: "device",
+    primaryIntent: "how to test laptop screen",
+    relatedTestIds: ["dead-pixel-test", "color-test", "brightness-test"]
+  },
+  {
+    id: "oled-screen-test",
+    category: "device",
+    primaryIntent: "how to test oled screen",
+    relatedTestIds: ["burn-in-test", "uniformity-test", "black-level-test"]
+  },
+  {
+    id: "lcd-screen-test",
+    category: "device",
+    primaryIntent: "how to test lcd screen",
+    relatedTestIds: ["backlight-bleed-test", "viewing-angle-test", "dead-pixel-test"]
+  },
+  {
+    id: "tv-screen-test",
+    category: "device",
+    primaryIntent: "how to test tv screen",
+    relatedTestIds: ["burn-in-test", "color-banding-test", "motion-blur-test"]
+  },
+  {
+    id: "mobile-screen-test",
+    category: "device",
+    primaryIntent: "how to test phone screen",
+    relatedTestIds: ["touch-screen-test", "dead-pixel-test", "burn-in-test"]
+  },
+
+  // CONCEPTS (To be created)
+  {
+    id: "dead-pixel-vs-stuck-pixel",
+    category: "concept",
+    primaryIntent: "dead pixel vs stuck pixel",
+    relatedTestIds: ["dead-pixel-test", "stuck-pixel-test"]
+  },
+  {
+    id: "how-to-check-monitor-ghosting",
+    category: "concept",
+    primaryIntent: "what is monitor ghosting",
+    relatedTestIds: ["ghosting-test", "motion-blur-test"]
+  },
+  {
+    id: "how-to-check-backlight-bleed",
+    category: "concept",
+    primaryIntent: "how to fix backlight bleed",
+    relatedTestIds: ["backlight-bleed-test", "uniformity-test"]
+  }
+];
+
+export function getGuideById(id: string): MonitorGuide | undefined {
+  return monitorGuides.find(g => g.id === id);
+}
+
+export function getGuidesByCategory(category: GuideCategory): MonitorGuide[] {
+  return monitorGuides.filter(g => g.category === category);
+}
