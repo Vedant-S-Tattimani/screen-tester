@@ -5,9 +5,10 @@ import { TestRow } from "@/components/layout/TestRow";
 import { getGuidesByCategory } from "@/data/guides";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  await params;
+  const { locale } = await params;
+  const tGuides = await getTranslations({ locale, namespace: "Guides" });
   return {
-    title: "Display Testing Guides & Concepts",
+    title: tGuides("pageTitle") || "Display Testing Guides & Concepts",
     alternates: {
       canonical: "/guides"
     }
@@ -26,10 +27,10 @@ export default async function GuidesPage({ params }: { params: Promise<{ locale:
     <div className="flex-1 pb-32">
       <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tighter text-foreground mb-6">
-          Display Guides
+          {tGuides("pageTitle")}
         </h1>
         <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mb-16">
-          Learn how to test specific devices and understand common display defects like ghosting and backlight bleed.
+          {tGuides("pageSubtitle")}
         </p>
         
         <div className="space-y-24">
@@ -37,7 +38,7 @@ export default async function GuidesPage({ params }: { params: Promise<{ locale:
           <div>
             <div className="flex items-center gap-6 mb-8">
               <h2 className="text-sm font-mono font-semibold uppercase tracking-[0.2em] text-foreground whitespace-nowrap">
-                DEVICE GUIDES
+                {tGuides("deviceGuidesHeading")}
               </h2>
               <div className="h-px w-full bg-border/60"></div>
             </div>
@@ -67,7 +68,7 @@ export default async function GuidesPage({ params }: { params: Promise<{ locale:
           <div>
             <div className="flex items-center gap-6 mb-8">
               <h2 className="text-sm font-mono font-semibold uppercase tracking-[0.2em] text-foreground whitespace-nowrap">
-                CONCEPTS & EXPLANATIONS
+                {tGuides("conceptGuidesHeading")}
               </h2>
               <div className="h-px w-full bg-border/60"></div>
             </div>
@@ -77,7 +78,7 @@ export default async function GuidesPage({ params }: { params: Promise<{ locale:
                   key={guide.id}
                   href={`/guides/${guide.id}`}
                   title={guide.primaryIntent.replace(/\b\w/g, l => l.toUpperCase())}
-                  description={`Learn about ${guide.primaryIntent} and how to test for it.`}
+                  description={tGuides("learnAbout", { topic: guide.primaryIntent })}
                 />
               ))}
             </div>

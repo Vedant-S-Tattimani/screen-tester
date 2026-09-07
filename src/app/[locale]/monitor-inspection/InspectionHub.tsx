@@ -2,9 +2,12 @@
 
 import { ArrowRight, Monitor, RefreshCw, Gamepad2, Tv, Laptop } from "lucide-react";
 import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 import { inspectionWorkflows } from "@/data/workflows";
 
 export function InspectionHub() {
+  const tHome = useTranslations("Home");
+  const tHub = useTranslations("Inspection.hub");
 
   const iconMap: Record<string, React.ReactNode> = {
     new: <Monitor className="w-5 h-5 text-blue-600 stroke-[1.8]" />,
@@ -34,6 +37,30 @@ export function InspectionHub() {
     tv: <Tv className="w-5 h-5 text-rose-600 stroke-[1.8]" />
   };
 
+  const getWorkflowTitle = (id: string, fallback: string) => {
+    switch (id) {
+      case "new": return tHome("wfNewTitle") || fallback;
+      case "used": return tHome("wfUsedTitle") || fallback;
+      case "gaming": return tHome("wfGamingTitle") || fallback;
+      case "oled": return tHome("wfOledTitle") || fallback;
+      case "laptop": return tHome("wfLaptopTitle") || fallback;
+      case "tv": return tHome("wfTvTitle") || fallback;
+      default: return fallback;
+    }
+  };
+
+  const getWorkflowDesc = (id: string, fallback: string) => {
+    switch (id) {
+      case "new": return tHome("wfNewDesc") || fallback;
+      case "used": return tHome("wfUsedDesc") || fallback;
+      case "gaming": return tHome("wfGamingDesc") || fallback;
+      case "oled": return tHome("wfOledDesc") || fallback;
+      case "laptop": return tHome("wfLaptopDesc") || fallback;
+      case "tv": return tHome("wfTvDesc") || fallback;
+      default: return fallback;
+    }
+  };
+
   return (
     <div className="space-y-12">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -53,15 +80,15 @@ export function InspectionHub() {
                 </span>
               </div>
               <h2 className="text-lg font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
-                {workflow.title}
+                {getWorkflowTitle(workflow.id, workflow.title)}
               </h2>
               <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                {workflow.shortDescription}
+                {getWorkflowDesc(workflow.id, workflow.shortDescription)}
               </p>
             </div>
 
             <div className="flex items-center gap-1 text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors mt-4 self-end">
-              <span>Launch checklist</span>
+              <span>{tHub("startWorkflow") || "Launch checklist"}</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
             </div>
           </Link>

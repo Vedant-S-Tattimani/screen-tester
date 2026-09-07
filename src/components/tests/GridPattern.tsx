@@ -88,10 +88,10 @@ export function GridPattern({ type, testId }: GridPatternProps) {
       <div className="absolute inset-0 flex flex-col items-center justify-center bg-black p-3 sm:p-5 select-none overflow-hidden">
         
         {/* Top Target Calibration Hint */}
-        <div className="mb-2 px-3 py-1 rounded-full bg-neutral-900/80 border border-neutral-800 text-[11px] sm:text-xs text-neutral-400 text-center max-w-xl truncate">
+        <div className="mb-2 px-4 py-1 rounded-full bg-neutral-900/90 border border-neutral-800 text-[11px] sm:text-xs text-neutral-300 text-center max-w-2xl">
           {type === "brightness" 
-            ? "Calibration Goal: Adjust monitor Brightness until step 2% (RGB 5) is barely distinguishable from 0%."
-            : "Calibration Goal: Adjust monitor Contrast until step 98% (RGB 250) is distinguishable from 100% without clipping."}
+            ? "Calibration Goal: Adjust monitor Brightness until step 2% is barely distinguishable from 0%."
+            : "Calibration Goal: Adjust monitor Contrast until step 98% (RGB 250) is clearly distinguishable from 100% white without clipping."}
         </div>
 
         {/* VIEW 1: UNIFORM 25-STEP MATRIX (0% - 100%) */}

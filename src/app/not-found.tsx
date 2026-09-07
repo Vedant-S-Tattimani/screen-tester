@@ -1,18 +1,13 @@
 import Link from 'next/link';
 import { Monitor, ArrowLeft } from 'lucide-react';
+import { ExtensionCleanup } from '@/components/ExtensionCleanup';
 import './globals.css';
 
 export default function GlobalNotFound() {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){if(typeof window==='undefined')return;try{var c=console.error;Object.defineProperty(console,'error',{configurable:true,enumerable:true,get:function(){return function(){var a=Array.prototype.slice.call(arguments);var s='';for(var i=0;i<a.length;i++){try{s+=' '+(typeof a[i]==='object'&&a[i]!==null?JSON.stringify(a[i]):String(a[i]))}catch(e){s+=' '+String(a[i])}}if(s.indexOf('bis_skin_checked')!==-1||s.indexOf('bis_register')!==-1||s.indexOf('__processed_')!==-1){return}return c.apply(console,a)}},set:function(f){c=f}})}catch(e){}try{var o=new MutationObserver(function(m){for(var i=0;i<m.length;i++){if(m[i].type==='attributes'&&(m[i].attributeName==='bis_skin_checked'||m[i].attributeName==='bis_register')){m[i].target.removeAttribute(m[i].attributeName)}}});if(document.documentElement){o.observe(document.documentElement,{attributes:true,subtree:true,attributeFilter:['bis_skin_checked','bis_register']})}}catch(e){}})();`
-          }}
-        />
-      </head>
       <body className="min-h-full flex flex-col bg-background text-foreground font-sans antialiased" suppressHydrationWarning>
+        <ExtensionCleanup />
         <div className="flex-1 flex flex-col items-center justify-center min-h-[70vh] px-4 text-center" suppressHydrationWarning>
           <div className="mb-8 p-6 bg-muted/30 rounded-full" suppressHydrationWarning>
             <Monitor className="w-12 h-12 text-muted-foreground" />

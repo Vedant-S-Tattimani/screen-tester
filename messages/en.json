@@ -125,12 +125,57 @@
     "ko": "한국어 (Korean)"
   },
   "Home": {
-    "label": "BROWSER-BASED MONITOR TESTING",
-    "headline_pt1": "Test your display.",
+    "eyebrow": "A CLEARER PICTURE",
+    "headline_pt1": "Test your monitor.",
     "headline_pt2": "Find the flaws.",
-    "description": "A comprehensive suite of tools to test your monitor for dead pixels, backlight bleed, color accuracy, and motion blur. Free, precise, and works directly in your browser.",
+    "description": "A comprehensive suite of tools to test your monitor for dead pixels, backlight bleed, color accuracy, motion blur, and more. Free, precise, and works directly in your browser.",
     "startTesting": "Start Testing",
-    "browseTests": "Browse all tests"
+    "browseTests": "Browse All Tests",
+    "trustFree": "Free to use",
+    "trustNoInstall": "No installation",
+    "trustBrowser": "Works in your browser",
+    "heroScript": "Better displays start with better tools.",
+    "quickTestsTitle": "QUICK TESTS",
+    "quickTestsDesc": "Run the most common tests instantly.",
+    "viewAllTests": "View all tests",
+    "quickDeadPixels": "Dead Pixels",
+    "quickColorTest": "Color Test",
+    "quickBrightness": "Brightness",
+    "quickContrast": "Contrast",
+    "quickGhosting": "Ghosting",
+    "quickRefreshRate": "Refresh Rate",
+    "workflowsTitle": "WHAT ARE YOU CHECKING?",
+    "workflowsDesc": "Choose a guide or workflow based on your situation.",
+    "viewAllWorkflows": "View all inspection workflows",
+    "wfUsedTitle": "Used monitor",
+    "wfUsedDesc": "Look for defects and hidden issues.",
+    "wfGamingTitle": "Gaming display",
+    "wfGamingDesc": "Check refresh rate, tearing and motion.",
+    "wfOledTitle": "OLED display",
+    "wfOledDesc": "Inspect for burn-in and uniformity.",
+    "wfLaptopTitle": "Laptop display",
+    "wfLaptopDesc": "Test your built-in screen or external monitor.",
+    "wfTvTitle": "TV or large display",
+    "wfTvDesc": "Check size, resolution and image quality.",
+    "moreToolsTitle": "MORE TOOLS",
+    "moreToolsDesc": "Additional utilities to get more from your display.",
+    "viewAllTools": "View all tools",
+    "toolInspectionTitle": "Monitor Inspection",
+    "toolInspectionDesc": "Step-by-step checklist and report.",
+    "toolCompareTitle": "Compare Displays",
+    "toolCompareDesc": "Compare specs and visual performance.",
+    "toolPpiTitle": "PPI & Viewing Distance",
+    "toolPpiDesc": "Calculate PPI and optimal distance.",
+    "toolPatternTitle": "Custom Test Pattern",
+    "toolPatternDesc": "Create your own patterns.",
+    "toolInfoTitle": "Display Information",
+    "toolInfoDesc": "See what your browser knows about your screen.",
+    "benefit1Title": "Test visually, with confidence",
+    "benefit1Desc": "Detect issues before they become a problem.",
+    "benefit2Title": "Tools for every display",
+    "benefit2Desc": "LCD, OLED, gaming, laptop, TV and more.",
+    "benefit3Title": "Clear, unbiased guidance",
+    "benefit3Desc": "Understand what you see and what it means."
   },
   "TestLibrary": {
     "launchTest": "Launch Test",
@@ -227,7 +272,9 @@
         "title": "Contrast Calibration",
         "description": "Evaluate contrast ratio, color separation, and gradient steps across 25 dynamic levels."
       }
-    }
+    },
+    "searchPlaceholder": "Search tests...",
+    "subtitle": "Explore our complete library of monitor testing utilities. All tests run locally in your browser."
   },
   "TestWrapper": {
     "howToTest": "How to test",
@@ -248,15 +295,15 @@
       ]
     },
     "brightness-test": {
-      "metaTitle": "Brightness & Contrast Test",
-      "metaDescription": "Test monitor brightness, black levels, and white levels. Adjust your display until every square is visually distinct.",
-      "title": "Brightness & Contrast Test",
-      "description_p1": "This test helps you configure your monitor's brightness and contrast settings by displaying stepped grayscale values from 0% (pure black) to 100% (pure white).",
+      "metaTitle": "Monitor Brightness & Black Level Test",
+      "metaDescription": "Calibrate display brightness, shadow detail, and black clipping with PLUGE reference bars, 1% shadow ramp, and peak luminance ABL windows.",
+      "title": "Brightness & Black Level Test",
+      "description_p1": "This test calibrates your monitor's brightness (black level offset) and evaluates luminance capability. Setting brightness properly ensures deep, inky blacks without crushing shadow details into pure black or washing out dark scenes.",
       "instructions": [
-        "<strong>WHAT TO CHECK:</strong> Ensure you can distinguish the darkest squares (4%, 8%) from pure black (0%). If they blend together, increase your monitor's brightness.",
-        "<strong>HOW TO USE:</strong> <strong>White Levels (Contrast):</strong> Ensure you can distinguish the lightest squares (96%, 92%) from pure white (100%). If they blend together, decrease your monitor's contrast.",
-        "<strong>WHAT YOU MAY NOTICE:</strong> Do not adjust software/GPU settings; use your physical monitor's OSD controls.",
-        "<strong>ABOUT THIS TEST:</strong> This is a visual reference tool. It cannot measure peak brightness (nits) or physical contrast ratio."
+        "<strong>WHAT TO CHECK (PLUGE BARS):</strong> On the default PLUGE pattern, inspect the vertical bars against the black background. Bar 0% is true reference black. Adjust your monitor's physical Brightness setting until <strong>Bar +2% (RGB 5) is just barely discernible</strong> from black.",
+        "<strong>BLACK CRUSH WARNING:</strong> If you cannot distinguish Bar +1% or Bar +2% from the background, your brightness is set too low (shadow details are crushed into pure black). If the black background looks glowing or gray, your brightness is set too high (washed-out black level).",
+        "<strong>1% SHADOW RAMP:</strong> Switch to the <strong>1% Shadow Ramp</strong> mode to check fine near-black steps (0% to 10%) and identify your display's exact black clipping threshold.",
+        "<strong>PEAK LUMINANCE & ABL:</strong> Switch to <strong>Peak & ABL Windows</strong> to test sustained full-screen white (100%) versus a 10% peak window. Notice whether your OLED, mini-LED, or laptop display dims due to Automatic Brightness Limiting (ABL)."
       ]
     },
     "color-test": {
@@ -615,7 +662,12 @@
       "metaDescription": "Test your mobile screen.",
       "title": "Mobile Screen Test",
       "description": "Tests for mobile touch screens and OLED panels."
-    }
+    },
+    "pageTitle": "Display Guides",
+    "pageSubtitle": "Learn how to test specific devices and understand common display defects like ghosting and backlight bleed.",
+    "deviceGuidesHeading": "DEVICE GUIDES",
+    "conceptGuidesHeading": "CONCEPTS & EXPLANATIONS",
+    "learnAbout": "Learn about {topic} and how to test for it."
   },
   "Inspection": {
     "hub": {

@@ -4,9 +4,10 @@ import "../globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, getTranslations } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
+import { ExtensionCleanup } from "@/components/ExtensionCleanup";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -17,6 +18,10 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
 });
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 export async function generateMetadata({
   params
@@ -48,19 +53,14 @@ export default async function RootLayout({
     notFound();
   }
 
-  const messages = await getMessages();
+  setRequestLocale(locale);
+  const messages = await getMessages({ locale });
 
   return (
     <html lang={locale} className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`} suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){if(typeof window==='undefined')return;try{var c=console.error;Object.defineProperty(console,'error',{configurable:true,enumerable:true,get:function(){return function(){var a=Array.prototype.slice.call(arguments);var s='';for(var i=0;i<a.length;i++){try{s+=' '+(typeof a[i]==='object'&&a[i]!==null?JSON.stringify(a[i]):String(a[i]))}catch(e){s+=' '+String(a[i])}}if(s.indexOf('bis_skin_checked')!==-1||s.indexOf('bis_register')!==-1||s.indexOf('__processed_')!==-1){return}return c.apply(console,a)}},set:function(f){c=f}})}catch(e){}try{var o=new MutationObserver(function(m){for(var i=0;i<m.length;i++){if(m[i].type==='attributes'&&(m[i].attributeName==='bis_skin_checked'||m[i].attributeName==='bis_register')){m[i].target.removeAttribute(m[i].attributeName)}}});if(document.documentElement){o.observe(document.documentElement,{attributes:true,subtree:true,attributeFilter:['bis_skin_checked','bis_register']})}}catch(e){}})();`
-          }}
-        />
-      </head>
       <body className="min-h-full flex flex-col bg-background text-foreground" suppressHydrationWarning>
-        <NextIntlClientProvider messages={messages}>
+        <ExtensionCleanup />
+        <NextIntlClientProvider locale={locale} messages={messages}>
           <Header />
           <main className="flex-1 flex flex-col">
             {children}

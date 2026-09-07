@@ -6,33 +6,35 @@
   "Header": {
     "title": "Monitor Tester",
     "nav": {
-      "tests": "Tests",
-      "inspection": "Inspection",
-      "guides": "Guides",
-      "menu": "Menu"
+      "tests": "テスト",
+      "inspection": "点検",
+      "guides": "ガイド",
+      "menu": "メニュー"
     },
     "tests": {
-      "pixels": "Pixels",
-      "color": "Color",
-      "luminance": "Luminance",
-      "display": "Display",
-      "motion": "Motion",
-      "advanced": "Advanced"
+      "pixels": "ピクセル",
+      "color": "カラー",
+      "luminance": "輝度",
+      "display": "ディスプレイ",
+      "motion": "モーション",
+      "advanced": "高度なテスト"
     },
     "inspection": {
-      "monitor": "Monitor Inspection",
-      "gaming": "Gaming",
+      "monitor": "モニター点検",
+      "gaming": "ゲーミング",
       "oled": "OLED",
-      "new": "New Monitor",
-      "used": "Used Monitor"
+      "new": "新品モニター",
+      "used": "中古モニター",
+      "laptop": "ノートPC画面",
+      "tv": "テレビ画面"
     },
     "guides": {
-      "monitor": "Monitor Guide",
-      "laptop": "Laptop Guide",
-      "tv": "TV Guide",
-      "oled": "OLED Guide",
-      "mobile": "Mobile Guide",
-      "lcd": "LCD Guide"
+      "monitor": "モニターガイド",
+      "laptop": "ノートPCガイド",
+      "tv": "テレビガイド",
+      "oled": "OLEDガイド",
+      "mobile": "モバイルガイド",
+      "lcd": "LCDガイド"
     }
   },
   "Footer": {
@@ -97,12 +99,57 @@
     "label": "言語を選択"
   },
   "Home": {
-    "label": "Monitor Tester",
-    "headline_pt1": "モニターをテストしよう。",
-    "headline_pt2": "本当の姿を見てみよう。",
-    "description": "お使いのブラウザで直接、ドット抜け、バックライトの漏れ、画面の均一性、色の正確さをチェックする美しくデザインされたオンラインユーティリティ。",
+    "eyebrow": "より鮮明な映像へ",
+    "headline_pt1": "ディスプレイをテスト。",
+    "headline_pt2": "欠陥を発見。",
+    "description": "ドット抜け、バックライト漏れ、色精度、残像などをブラウザ上で直接診断できる総合テストツール。無料・高精度・インストール不要でご利用いただけます。",
     "startTesting": "テストを開始",
-    "browseTests": "すべてのテストを見る"
+    "browseTests": "すべてのテストを見る",
+    "trustFree": "完全無料",
+    "trustNoInstall": "インストール不要",
+    "trustBrowser": "ブラウザでそのまま動作",
+    "heroScript": "優れたディスプレイは、優れたツールから。",
+    "quickTestsTitle": "クイック診断",
+    "quickTestsDesc": "最も代表的なテストを今すぐ実行。",
+    "viewAllTests": "すべてのテストを見る",
+    "quickDeadPixels": "ドット抜け",
+    "quickColorTest": "カラーテスト",
+    "quickBrightness": "輝度",
+    "quickContrast": "コントラスト",
+    "quickGhosting": "残像（ゴースト）",
+    "quickRefreshRate": "リフレッシュレート",
+    "workflowsTitle": "何をチェックしますか？",
+    "workflowsDesc": "お使いの状況に合わせてガイドや点検手順を選択。",
+    "viewAllWorkflows": "すべてのワークフローを見る",
+    "wfUsedTitle": "中古モニター",
+    "wfUsedDesc": "隠れた不具合や経年劣化を診断。",
+    "wfGamingTitle": "ゲーミングディスプレイ",
+    "wfGamingDesc": "リフレッシュレート・テアリング・応答性。",
+    "wfOledTitle": "OLEDディスプレイ",
+    "wfOledDesc": "焼き付きと画面の均一性を点検。",
+    "wfLaptopTitle": "ノートPC画面",
+    "wfLaptopDesc": "内蔵スクリーンや外付けモニターをテスト。",
+    "wfTvTitle": "テレビまたは大型画面",
+    "wfTvDesc": "画面サイズ、解像度、画質を検証。",
+    "moreToolsTitle": "その他のツール",
+    "moreToolsDesc": "ディスプレイを最大限に活用するための追加ユーティリティ。",
+    "viewAllTools": "すべてのツールを見る",
+    "toolInspectionTitle": "モニター点検ガイド",
+    "toolInspectionDesc": "ステップバイステップのチェックリストとレポート。",
+    "toolCompareTitle": "ディスプレイ比較",
+    "toolCompareDesc": "スペックと画面サイズを視覚的に比較。",
+    "toolPpiTitle": "PPIと最適視聴距離",
+    "toolPpiDesc": "画素密度とRetina視認限界距離を計算。",
+    "toolPatternTitle": "カスタムテストパターン",
+    "toolPatternDesc": "グリッドやチェッカー等のパターンを独自生成。",
+    "toolInfoTitle": "ディスプレイ情報",
+    "toolInfoDesc": "ブラウザが検出した画面情報を一覧表示。",
+    "benefit1Title": "確信を持って目視テスト",
+    "benefit1Desc": "問題が深刻化する前に異常を早期検出。",
+    "benefit2Title": "あらゆる画面に対応",
+    "benefit2Desc": "LCD、OLED、ゲーミング、ノートPC、テレビなど。",
+    "benefit3Title": "分かりやすく中立な解説",
+    "benefit3Desc": "目に見える現象とその意味を正しく理解。"
   },
   "TestLibrary": {
     "categories": {
@@ -199,7 +246,9 @@
         "title": "コントラスト調整",
         "description": "25段階のダイナミックレベルでコントラスト比と階調分離を評価します。"
       }
-    }
+    },
+    "searchPlaceholder": "テストを検索...",
+    "subtitle": "豊富なモニター診断ツール一覧。すべてのテストはお使いのブラウザ上でローカルに実行されます。"
   },
   "TestWrapper": {
     "howToTest": "テスト方法",
@@ -222,15 +271,15 @@
       ]
     },
     "brightness-test": {
-      "metaTitle": "Brightness & Contrast Test",
-      "metaDescription": "Test monitor brightness, black levels, and white levels. Adjust your display until every square is visually distinct.",
-      "title": "Brightness & Contrast Test",
-      "description_p1": "This test helps you configure your monitor's brightness and contrast settings by displaying stepped grayscale values from 0% (pure black) to 100% (pure white).",
+      "metaTitle": "モニター輝度＆黒レベルテスト",
+      "metaDescription": "PLUGEリファレンスバー、1%シャドウランプ、ピーク輝度ABLウィンドウでモニターの輝度と暗部ディテールを調整します。",
+      "title": "輝度＆黒レベルテスト",
+      "description_p1": "このテストでは、モニターの明るさ（黒レベルオフセット）を調整し、黒潰れを防ぎながら深みのある黒を表現できるよう調整します。",
       "instructions": [
-        "<strong>Black Levels (Brightness):</strong> Ensure you can distinguish the darkest squares (4%, 8%) from pure black (0%). If they blend together, increase your monitor's brightness.",
-        "<strong>White Levels (Contrast):</strong> Ensure you can distinguish the lightest squares (96%, 92%) from pure white (100%). If they blend together, decrease your monitor's contrast.",
-        "Do not adjust software/GPU settings; use your physical monitor's OSD controls.",
-        "<strong>ABOUT THIS TEST:</strong> This is a visual reference tool. It cannot measure peak brightness (nits) or physical contrast ratio."
+        "<strong>PLUGEリファレンスバー:</strong> バー0%は真の黒です。黒い背景から<strong>バー+2%（RGB 5）がわずかに識別できる</strong>程度までモニターの明るさを調整してください。",
+        "<strong>黒潰れ（Black Crush）警告:</strong> バー+1%や+2%が見えない場合は明るさが低すぎます（暗部が潰れています）。背景が灰色に浮いている場合は明るすぎます。",
+        "<strong>1%シャドウランプ:</strong> 1%ステップモード（0%〜10%）で、お使いのディスプレイの正確なクリッピング境界を確認できます。",
+        "<strong>ピーク輝度＆ABL:</strong> 全画面白（100%）と10%ウィンドウを切り替えて、OLEDやノートPCの自動輝度制限（ABL）による減光を確認できます。"
       ]
     },
     "color-test": {
@@ -596,7 +645,12 @@
       "metaDescription": "Test your mobile screen.",
       "title": "Mobile Screen Test",
       "description": "Tests for mobile touch screens and OLED panels."
-    }
+    },
+    "pageTitle": "ディスプレイガイド",
+    "pageSubtitle": "各デバイスに応じた診断手法や、残像・バックライト漏れなどの表示トラブルについて詳しく解説します。",
+    "deviceGuidesHeading": "デバイス別ガイド",
+    "conceptGuidesHeading": "基礎知識と技術解説",
+    "learnAbout": "{topic}の概要と効果的なテスト方法を学びます。"
   },
   "Inspection": {
     "hub": {

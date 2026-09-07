@@ -13,26 +13,28 @@
     },
     "tests": {
       "pixels": "Pixels",
-      "color": "Color",
+      "color": "Couleur",
       "luminance": "Luminance",
-      "display": "Display",
-      "motion": "Motion",
-      "advanced": "Advanced"
+      "display": "Écran",
+      "motion": "Mouvement",
+      "advanced": "Avancé"
     },
     "inspection": {
-      "monitor": "Monitor Inspection",
+      "monitor": "Inspection écran",
       "gaming": "Gaming",
       "oled": "OLED",
-      "new": "New Monitor",
-      "used": "Used Monitor"
+      "new": "Nouvel écran",
+      "used": "Écran d'occasion",
+      "laptop": "Écran PC portable",
+      "tv": "Écran TV"
     },
     "guides": {
-      "monitor": "Monitor Guide",
-      "laptop": "Laptop Guide",
-      "tv": "TV Guide",
-      "oled": "OLED Guide",
-      "mobile": "Mobile Guide",
-      "lcd": "LCD Guide"
+      "monitor": "Guide écran",
+      "laptop": "Guide PC portable",
+      "tv": "Guide TV",
+      "oled": "Guide OLED",
+      "mobile": "Guide mobile",
+      "lcd": "Guide LCD"
     }
   },
   "Footer": {
@@ -97,12 +99,57 @@
     "label": "Choisir la langue"
   },
   "Home": {
-    "label": "Monitor Tester",
-    "headline_pt1": "Testez votre moniteur.",
-    "headline_pt2": "Voyez ce qui s'y trouve vraiment.",
-    "description": "Un utilitaire en ligne magnifiquement conçu pour vérifier les pixels morts, les fuites de rétroéclairage, l'uniformité de l'écran et la précision des couleurs directement dans votre navigateur.",
-    "startTesting": "Commencer le test",
-    "browseTests": "Parcourir tous les tests"
+    "eyebrow": "UNE IMAGE PLUS NETTE",
+    "headline_pt1": "Testez votre écran.",
+    "headline_pt2": "Trouvez les défauts.",
+    "description": "Une suite complète d'outils pour tester votre écran : pixels morts, fuites de lumière, précision des couleurs, flou de mouvement et plus. Gratuit, précis et directement dans votre navigateur.",
+    "startTesting": "Lancer les Tests",
+    "browseTests": "Parcourir Tous les Tests",
+    "trustFree": "Utilisation gratuite",
+    "trustNoInstall": "Aucune installation",
+    "trustBrowser": "Fonctionne dans votre navigateur",
+    "heroScript": "De meilleurs écrans commencent par de meilleurs outils.",
+    "quickTestsTitle": "TESTS RAPIDES",
+    "quickTestsDesc": "Lancez instantanément les tests les plus fréquents.",
+    "viewAllTests": "Voir tous les tests",
+    "quickDeadPixels": "Pixels Morts",
+    "quickColorTest": "Test de Couleur",
+    "quickBrightness": "Luminosité",
+    "quickContrast": "Contraste",
+    "quickGhosting": "Ghosting",
+    "quickRefreshRate": "Taux de Rafraîchissement",
+    "workflowsTitle": "QUE SOUHAITEZ-VOUS VÉRIFIER ?",
+    "workflowsDesc": "Choisissez un guide ou parcours adapté à votre situation.",
+    "viewAllWorkflows": "Voir tous les parcours d'inspection",
+    "wfUsedTitle": "Écran d'occasion",
+    "wfUsedDesc": "Recherchez les défauts cachés et l'usure.",
+    "wfGamingTitle": "Écran gaming",
+    "wfGamingDesc": "Contrôlez fréquence, déchirement et réactivité.",
+    "wfOledTitle": "Écran OLED",
+    "wfOledDesc": "Inspectez le marquage et l'homogénéité.",
+    "wfLaptopTitle": "Écran de PC portable",
+    "wfLaptopDesc": "Testez la dalle intégrée ou un écran externe.",
+    "wfTvTitle": "TV ou grand écran",
+    "wfTvDesc": "Vérifiez taille, définition et qualité d'image.",
+    "moreToolsTitle": "AUTRES OUTILS",
+    "moreToolsDesc": "Des utilitaires supplémentaires pour tirer le meilleur de votre écran.",
+    "viewAllTools": "Voir tous les outils",
+    "toolInspectionTitle": "Inspection d'Écran",
+    "toolInspectionDesc": "Check-list méthodique et rapport complet.",
+    "toolCompareTitle": "Comparer les Écrans",
+    "toolCompareDesc": "Comparez caractéristiques et surface visuelle.",
+    "toolPpiTitle": "PPI & Distance de Vision",
+    "toolPpiDesc": "Calculez la densité de pixels et la distance optimale.",
+    "toolPatternTitle": "Mire de Test Personnalisée",
+    "toolPatternDesc": "Générez vos propres grilles et mires de test.",
+    "toolInfoTitle": "Informations d'Affichage",
+    "toolInfoDesc": "Découvrez les données détectées par votre navigateur.",
+    "benefit1Title": "Testez visuellement, en toute confiance",
+    "benefit1Desc": "Détectez les anomalies avant qu'elles ne s'aggravent.",
+    "benefit2Title": "Des outils pour chaque écran",
+    "benefit2Desc": "LCD, OLED, gaming, portable, TV et plus.",
+    "benefit3Title": "Conseils clairs et impartiaux",
+    "benefit3Desc": "Comprenez ce que vous voyez et sa signification réelle."
   },
   "TestLibrary": {
     "categories": {
@@ -199,7 +246,9 @@
         "title": "Étalonnage du Contraste",
         "description": "Évaluez le rapport de contraste, la séparation des tons et les dégradés sur 25 niveaux dynamiques."
       }
-    }
+    },
+    "searchPlaceholder": "Rechercher des tests...",
+    "subtitle": "Découvrez notre collection complète d'outils pour écrans. Tous les tests s'exécutent localement dans votre navigateur."
   },
   "TestWrapper": {
     "howToTest": "Comment tester",
@@ -222,15 +271,15 @@
       ]
     },
     "brightness-test": {
-      "metaTitle": "Brightness & Contrast Test",
-      "metaDescription": "Test monitor brightness, black levels, and white levels. Adjust your display until every square is visually distinct.",
-      "title": "Brightness & Contrast Test",
-      "description_p1": "This test helps you configure your monitor's brightness and contrast settings by displaying stepped grayscale values from 0% (pure black) to 100% (pure white).",
+      "metaTitle": "Test de Luminosité et Niveau de Noir de l'Écran",
+      "metaDescription": "Calibrez la luminosité de l'écran, les détails dans les ombres et l'écrêtage des noirs avec barres de référence PLUGE, rampe à 1% et fenêtres ABL de luminance de crête.",
+      "title": "Test de Luminosité et Niveau de Noir",
+      "description_p1": "Ce test calibre la luminosité (niveau de noir) de votre écran et évalue sa luminance. Un réglage précis garantit des noirs profonds sans boucher les ombres.",
       "instructions": [
-        "<strong>Black Levels (Brightness):</strong> Ensure you can distinguish the darkest squares (4%, 8%) from pure black (0%). If they blend together, increase your monitor's brightness.",
-        "<strong>White Levels (Contrast):</strong> Ensure you can distinguish the lightest squares (96%, 92%) from pure white (100%). If they blend together, decrease your monitor's contrast.",
-        "Do not adjust software/GPU settings; use your physical monitor's OSD controls.",
-        "<strong>ABOUT THIS TEST:</strong> This is a visual reference tool. It cannot measure peak brightness (nits) or physical contrast ratio."
+        "<strong>BARRES DE RÉFÉRENCE PLUGE :</strong> La barre 0% est le noir pur de référence. Réglez la luminosité de l'écran jusqu'à ce que la <strong>barre +2% (RGB 5) soit à peine perceptible</strong> sur le fond noir.",
+        "<strong>AVERTISSEMENT NOIRS BOUCHÉS :</strong> Si les barres +1% et +2% sont invisibles, la luminosité est trop basse. Si le fond paraît gris ou lumineux, la luminosité est trop haute.",
+        "<strong>RAMPE D'OMBRE 1% :</strong> Utilisez le mode rampe à 1% pour tester les paliers précis (0% à 10%) et identifier le seuil d'écrêtage.",
+        "<strong>LUMINANCE DE CRÊTE & ABL :</strong> Passez aux fenêtres ABL pour vérifier si votre dalle OLED ou PC portable atténue le blanc plein écran par rapport aux fenêtres restreintes."
       ]
     },
     "color-test": {
@@ -596,7 +645,12 @@
       "metaDescription": "Test your mobile screen.",
       "title": "Mobile Screen Test",
       "description": "Tests for mobile touch screens and OLED panels."
-    }
+    },
+    "pageTitle": "Guides d'affichage",
+    "pageSubtitle": "Apprenez à tester des appareils spécifiques et comprenez les défauts courants comme la rémanence et les fuites de lumière.",
+    "deviceGuidesHeading": "GUIDES PAR APPAREIL",
+    "conceptGuidesHeading": "CONCEPTS ET EXPLICATIONS",
+    "learnAbout": "En savoir plus sur {topic} et comment le tester."
   },
   "Inspection": {
     "hub": {

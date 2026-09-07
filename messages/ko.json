@@ -6,33 +6,35 @@
   "Header": {
     "title": "Monitor Tester",
     "nav": {
-      "tests": "Tests",
-      "inspection": "Inspection",
-      "guides": "Guides",
-      "menu": "Menu"
+      "tests": "테스트",
+      "inspection": "점검",
+      "guides": "가이드",
+      "menu": "메뉴"
     },
     "tests": {
-      "pixels": "Pixels",
-      "color": "Color",
-      "luminance": "Luminance",
-      "display": "Display",
-      "motion": "Motion",
-      "advanced": "Advanced"
+      "pixels": "픽셀",
+      "color": "색상",
+      "luminance": "휘도",
+      "display": "디스플레이",
+      "motion": "모션",
+      "advanced": "고급 테스트"
     },
     "inspection": {
-      "monitor": "Monitor Inspection",
-      "gaming": "Gaming",
+      "monitor": "모니터 점검",
+      "gaming": "게이밍",
       "oled": "OLED",
-      "new": "New Monitor",
-      "used": "Used Monitor"
+      "new": "새 모니터",
+      "used": "중고 모니터",
+      "laptop": "노트북 화면",
+      "tv": "TV 화면"
     },
     "guides": {
-      "monitor": "Monitor Guide",
-      "laptop": "Laptop Guide",
-      "tv": "TV Guide",
-      "oled": "OLED Guide",
-      "mobile": "Mobile Guide",
-      "lcd": "LCD Guide"
+      "monitor": "모니터 가이드",
+      "laptop": "노트북 가이드",
+      "tv": "TV 가이드",
+      "oled": "OLED 가이드",
+      "mobile": "모바일 가이드",
+      "lcd": "LCD 가이드"
     }
   },
   "Footer": {
@@ -97,12 +99,57 @@
     "label": "언어 선택"
   },
   "Home": {
-    "label": "Monitor Tester",
-    "headline_pt1": "모니터를 테스트하세요.",
-    "headline_pt2": "진짜 모습을 확인하세요.",
-    "description": "브라우저에서 직접 불량 화소, 백라이트 빛샘, 화면 균일성, 색상 정확도를 확인하는 아름답게 디자인된 온라인 유틸리티.",
+    "eyebrow": "더 선명한 시야",
+    "headline_pt1": "디스플레이를 점검하세요.",
+    "headline_pt2": "숨겨진 결함을 찾으세요.",
+    "description": "불량 화소, 빛샘 현상, 색상 정확도, 모션 블러 등을 브라우저에서 바로 검사할 수 있는 정밀 진단 툴입니다. 무료, 고정밀, 설치 불필요.",
     "startTesting": "테스트 시작",
-    "browseTests": "모든 테스트 보기"
+    "browseTests": "모든 테스트 둘러보기",
+    "trustFree": "완전 무료",
+    "trustNoInstall": "설치 불필요",
+    "trustBrowser": "브라우저에서 바로 실행",
+    "heroScript": "더 나은 디스플레이는 더 나은 도구에서 시작됩니다.",
+    "quickTestsTitle": "빠른 점검",
+    "quickTestsDesc": "가장 많이 사용하는 테스트를 즉시 실행합니다.",
+    "viewAllTests": "전체 테스트 보기",
+    "quickDeadPixels": "불량 화소",
+    "quickColorTest": "색상 테스트",
+    "quickBrightness": "밝기",
+    "quickContrast": "대비",
+    "quickGhosting": "잔상 (고스팅)",
+    "quickRefreshRate": "주사율",
+    "workflowsTitle": "무엇을 점검하시겠습니까?",
+    "workflowsDesc": "사용 환경에 맞는 가이드 또는 점검 단계를 선택하세요.",
+    "viewAllWorkflows": "전체 점검 워크플로우 보기",
+    "wfUsedTitle": "중고 모니터",
+    "wfUsedDesc": "숨겨진 결함과 노후화 현상을 정밀 진단.",
+    "wfGamingTitle": "게이밍 디스플레이",
+    "wfGamingDesc": "주사율, 티어링, 응답 속도를 점검.",
+    "wfOledTitle": "OLED 디스플레이",
+    "wfOledDesc": "번인 현상과 화면 균일도를 점검.",
+    "wfLaptopTitle": "노트북 화면",
+    "wfLaptopDesc": "내장 화면 또는 외부 모니터를 테스트.",
+    "wfTvTitle": "TV 또는 대형 디스플레이",
+    "wfTvDesc": "화면 크기, 해상도, 화질을 검증.",
+    "moreToolsTitle": "추가 도구",
+    "moreToolsDesc": "디스플레이를 최대한 활용할 수 있는 추가 유틸리티.",
+    "viewAllTools": "모든 도구 보기",
+    "toolInspectionTitle": "모니터 점검 가이드",
+    "toolInspectionDesc": "단계별 체크리스트 및 결과 리포트.",
+    "toolCompareTitle": "디스플레이 비교",
+    "toolCompareDesc": "화면 스펙과 물리적 크기를 시각적으로 비교.",
+    "toolPpiTitle": "PPI 및 최적 시청 거리",
+    "toolPpiDesc": "화소 밀도와 레티나 한계 거리를 계산.",
+    "toolPatternTitle": "사용자 정의 테스트 패턴",
+    "toolPatternDesc": "격자, 체크보드 등 맞춤 패턴 생성.",
+    "toolInfoTitle": "디스플레이 정보",
+    "toolInfoDesc": "브라우저가 감지한 화면 정보를 한눈에 확인.",
+    "benefit1Title": "확신을 주는 시각적 테스트",
+    "benefit1Desc": "문제가 커지기 전에 결함을 미리 감지.",
+    "benefit2Title": "모든 디스플레이 지원",
+    "benefit2Desc": "LCD, OLED, 게이밍, 노트북, TV 등 모든 화면.",
+    "benefit3Title": "명확하고 객관적인 가이드",
+    "benefit3Desc": "눈에 보이는 현상과 기술적 의미를 쉽게 이해."
   },
   "TestLibrary": {
     "categories": {
@@ -199,7 +246,9 @@
         "title": "명암비 보정",
         "description": "25단계 동적 레벨을 통해 명암비와 계조 분리 성능을 평가합니다."
       }
-    }
+    },
+    "searchPlaceholder": "테스트 검색...",
+    "subtitle": "디스플레이 진단 툴 전체 라이브러리를 둘러보세요. 모든 테스트는 브라우저에서 로컬로 안전하게 실행됩니다."
   },
   "TestWrapper": {
     "howToTest": "테스트 방법",
@@ -222,15 +271,15 @@
       ]
     },
     "brightness-test": {
-      "metaTitle": "Brightness & Contrast Test",
-      "metaDescription": "Test monitor brightness, black levels, and white levels. Adjust your display until every square is visually distinct.",
-      "title": "Brightness & Contrast Test",
-      "description_p1": "This test helps you configure your monitor's brightness and contrast settings by displaying stepped grayscale values from 0% (pure black) to 100% (pure white).",
+      "metaTitle": "모니터 밝기 및 블랙 레벨 테스트",
+      "metaDescription": "PLUGE 기준 바, 1% 섀도 램프, 피크 휘도 ABL 윈도우를 통해 모니터 밝기와 암부 디테일을 정밀 캘리브레이션합니다.",
+      "title": "밝기 및 블랙 레벨 테스트",
+      "description_p1": "이 테스트는 모니터의 밝기(블랙 레벨 오프셋)를 보정하여 암부 디테일이 뭉개지지 않고 깊은 블랙을 표현하도록 돕습니다.",
       "instructions": [
-        "<strong>Black Levels (Brightness):</strong> Ensure you can distinguish the darkest squares (4%, 8%) from pure black (0%). If they blend together, increase your monitor's brightness.",
-        "<strong>White Levels (Contrast):</strong> Ensure you can distinguish the lightest squares (96%, 92%) from pure white (100%). If they blend together, decrease your monitor's contrast.",
-        "Do not adjust software/GPU settings; use your physical monitor's OSD controls.",
-        "<strong>ABOUT THIS TEST:</strong> This is a visual reference tool. It cannot measure peak brightness (nits) or physical contrast ratio."
+        "<strong>PLUGE 기준 바:</strong> 바 0%는 순수 블랙입니다. 검은 배경에서 <strong>바 +2% (RGB 5)가 간신히 구분될 때까지</strong> 모니터 밝기를 조정하십시오.",
+        "<strong>블랙 크러시 경고:</strong> 바 +1% 및 +2%가 보이지 않는다면 밝기가 너무 낮아 암부 디테일이 묻힌 상태입니다. 배경이 회색으로 들뜨면 밝기가 너무 높습니다.",
+        "<strong>1% 섀도 램프:</strong> 0%~10% 구간의 1% 단위 미세 단계를 통해 디스플레이의 정확한 블랙 클리핑 지점을 확인하세요.",
+        "<strong>피크 휘도 및 ABL:</strong> 100% 전체 화면 흰색과 10% 윈도우를 비교하여 OLED나 노트북 디스플레이의 자동 밝기 제한(ABL) 동작을 확인하세요."
       ]
     },
     "color-test": {
@@ -596,7 +645,12 @@
       "metaDescription": "Test your mobile screen.",
       "title": "Mobile Screen Test",
       "description": "Tests for mobile touch screens and OLED panels."
-    }
+    },
+    "pageTitle": "디스플레이 가이드",
+    "pageSubtitle": "특정 기기 점검 방법과 잔상, 빛샘 등 주요 디스플레이 결함 원인을 알아보세요.",
+    "deviceGuidesHeading": "기기별 가이드",
+    "conceptGuidesHeading": "핵심 개념 및 해설",
+    "learnAbout": "{topic}의 원리와 점검 방법을 알아봅니다."
   },
   "Inspection": {
     "hub": {

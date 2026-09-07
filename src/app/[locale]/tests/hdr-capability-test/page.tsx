@@ -27,7 +27,7 @@ export default async function HdrCapabilityTestPage({ params }: { params: Promis
         </ol>
       }
     >
-      <HdrPattern />
+      <HdrPattern testId="hdr-capability-test" />
     </TestWrapper>
   );
 }

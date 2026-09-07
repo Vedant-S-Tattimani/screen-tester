@@ -1,34 +1,67 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
-import { SunMedium, CheckCircle, XCircle, Layers, Sliders, Info, ShieldCheck } from "lucide-react";
+import { SunMedium, CheckCircle, XCircle, Layers, Sliders, Info, ShieldCheck, Eye } from "lucide-react";
 
 interface HdrPatternProps {
   testId?: string;
 }
 
 type HdrViewMode = "overview" | "banding" | "specular";
+type SensitivityLevel = "standard" | "subtle" | "ultrafine";
 
-export function HdrPattern({ testId }: HdrPatternProps) {
+interface HighlightCardData {
+  label: string;
+  bgRgb: number;
+  reticleDeltas: {
+    standard: number;   // ~2-3% delta
+    subtle: number;     // ~1-1.5% delta
+    ultrafine: number;  // ~0.5-0.8% delta
+  };
+}
+
+const HIGHLIGHT_CARDS: HighlightCardData[] = [
+  {
+    label: "92% White",
+    bgRgb: 235,
+    reticleDeltas: { standard: 8, subtle: 5, ultrafine: 2 }, // Target: 243, 240, 237
+  },
+  {
+    label: "96% White",
+    bgRgb: 245,
+    reticleDeltas: { standard: 6, subtle: 4, ultrafine: 2 }, // Target: 251, 249, 247
+  },
+  {
+    label: "98% White",
+    bgRgb: 250,
+    reticleDeltas: { standard: 4, subtle: 3, ultrafine: 2 }, // Target: 254, 253, 252
+  },
+  {
+    label: "100% Peak",
+    bgRgb: 255,
+    reticleDeltas: { standard: -5, subtle: -3, ultrafine: -2 }, // Target: 250, 252, 253 on pure white
+  },
+];
+
+export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) {
   const { registerNavigation } = useTestContext();
   const [hdrSupported, setHdrSupported] = useState<boolean | null>(null);
   const [p3Supported, setP3Supported] = useState<boolean | null>(null);
   const [rec2020Supported, setRec2020Supported] = useState<boolean | null>(null);
   const [colorDepth, setColorDepth] = useState<number | null>(null);
-  const [activeTab, setActiveTab] = useState<HdrViewMode>("overview");
+  const [activeTab, setActiveTab] = useState<HdrViewMode>("specular"); // Highlight clipping is primary inspection view
+  const [sensitivity, setSensitivity] = useState<SensitivityLevel>("standard");
+  const [isBlinking, setIsBlinking] = useState(false);
 
-  useEffect(() => {
-    registerNavigation({});
-  }, [registerNavigation]);
-
+  // Probe hardware capabilities
   useEffect(() => {
     if (typeof window !== "undefined") {
       setTimeout(() => {
-        setHdrSupported(window.matchMedia('(dynamic-range: high)').matches);
-        setP3Supported(window.matchMedia('(color-gamut: p3)').matches);
-        setRec2020Supported(window.matchMedia('(color-gamut: rec2020)').matches);
+        setHdrSupported(window.matchMedia("(dynamic-range: high)").matches);
+        setP3Supported(window.matchMedia("(color-gamut: p3)").matches);
+        setRec2020Supported(window.matchMedia("(color-gamut: rec2020)").matches);
         if (window.screen) {
           setColorDepth(window.screen.colorDepth);
         }
@@ -36,13 +69,50 @@ export function HdrPattern({ testId }: HdrPatternProps) {
     }
   }, []);
 
+  // Keyboard navigation
+  const cycleTabNext = useCallback(() => {
+    setActiveTab((curr) => {
+      if (curr === "overview") return "banding";
+      if (curr === "banding") return "specular";
+      return "overview";
+    });
+  }, []);
+
+  const cycleTabPrev = useCallback(() => {
+    setActiveTab((curr) => {
+      if (curr === "specular") return "banding";
+      if (curr === "banding") return "overview";
+      return "specular";
+    });
+  }, []);
+
+  const resetAll = useCallback(() => {
+    setActiveTab("overview");
+    setSensitivity("standard");
+    setIsBlinking(false);
+  }, []);
+
+  useEffect(() => {
+    registerNavigation({
+      next: cycleTabNext,
+      prev: cycleTabPrev,
+      reset: resetAll,
+    });
+  }, [registerNavigation, cycleTabNext, cycleTabPrev, resetAll]);
+
+  // Blink helper: momentarily toggles reticle opacity so users can confirm position
+  const triggerBlink = useCallback(() => {
+    setIsBlinking(true);
+    setTimeout(() => setIsBlinking(false), 400);
+  }, []);
+
   return (
     <>
-      <div className="absolute inset-0 bg-[#09090b] flex flex-col items-center justify-center p-4 sm:p-8 text-white select-none overflow-y-auto">
-        <div className="max-w-4xl w-full flex flex-col items-center gap-6 my-auto">
+      <div className="absolute inset-0 bg-[#09090b] flex flex-col items-center justify-center p-3 sm:p-6 text-white select-none overflow-y-auto">
+        <div className="max-w-4xl w-full flex flex-col items-center gap-4 sm:gap-6 my-auto">
           
           {/* Header & Status Card */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 w-full bg-white/5 border border-white/10 rounded-2xl p-5 sm:px-6 backdrop-blur-md">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 w-full bg-white/5 border border-white/10 rounded-2xl p-4 sm:px-6 backdrop-blur-md">
             <div className="flex items-center gap-3">
               <div className={`w-10 h-10 rounded-xl flex items-center justify-center border ${
                 hdrSupported 
@@ -76,7 +146,7 @@ export function HdrPattern({ testId }: HdrPatternProps) {
             </div>
           </div>
 
-          {/* Mode Switcher */}
+          {/* Tab Navigation Pill */}
           <div role="tablist" aria-label="HDR View Modes" className="flex items-center gap-1 bg-white/5 p-1 rounded-xl border border-white/10 text-xs">
             <button
               role="tab"
@@ -113,7 +183,9 @@ export function HdrPattern({ testId }: HdrPatternProps) {
             </button>
           </div>
 
-          {/* TAB 1: Overview & Pipeline Metrics */}
+          {/* ========================================================= */}
+          {/* TAB 1: OVERVIEW & PIPELINE METRICS                        */}
+          {/* ========================================================= */}
           {activeTab === "overview" && (
             <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col justify-between">
@@ -167,9 +239,11 @@ export function HdrPattern({ testId }: HdrPatternProps) {
             </div>
           )}
 
-          {/* TAB 2: 10-Bit Banding Ramp */}
+          {/* ========================================================= */}
+          {/* TAB 2: 10-BIT BANDING RAMP                                */}
+          {/* ========================================================= */}
           {activeTab === "banding" && (
-            <div className="w-full bg-white/5 border border-white/10 rounded-2xl p-6 space-y-6">
+            <div className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-6 space-y-6">
               <div>
                 <h3 className="text-sm font-semibold text-white font-mono uppercase tracking-wider">
                   8-Bit Quantized Stepping vs Continuous Ramp
@@ -182,13 +256,13 @@ export function HdrPattern({ testId }: HdrPatternProps) {
               {/* 8-bit stepped ramp */}
               <div>
                 <div className="text-[11px] font-mono text-white/50 mb-1.5">8-Bit Stepped Gradient (256 discrete levels):</div>
-                <div className="h-14 w-full rounded-xl overflow-hidden flex border border-white/10">
+                <div className="h-14 w-full rounded-xl overflow-hidden flex border border-white/10 shadow-inner">
                   {Array.from({ length: 32 }).map((_, i) => {
                     const lum = Math.round((i / 31) * 255);
                     return (
                       <div 
                         key={i} 
-                        className="flex-1 h-full" 
+                        className="flex-1 h-full border-r border-white/5 last:border-r-0" 
                         style={{ backgroundColor: `rgb(${lum}, ${lum}, ${lum})` }} 
                       />
                     );
@@ -200,44 +274,110 @@ export function HdrPattern({ testId }: HdrPatternProps) {
               <div>
                 <div className="text-[11px] font-mono text-white/50 mb-1.5">Smooth High-Bitrate Ramp:</div>
                 <div 
-                  className="h-14 w-full rounded-xl border border-white/10" 
+                  className="h-14 w-full rounded-xl border border-white/10 shadow-inner" 
                   style={{ background: "linear-gradient(to right, #000000 0%, #ffffff 100%)" }}
                 />
               </div>
             </div>
           )}
 
-          {/* TAB 3: Specular Highlight Tone-Mapping */}
+          {/* ========================================================= */}
+          {/* TAB 3: SPECULAR HIGHLIGHT ROLL-OFF & CLIPPING            */}
+          {/* ========================================================= */}
           {activeTab === "specular" && (
-            <div className="w-full bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col items-center gap-5 text-center">
+            <div className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 sm:p-6 flex flex-col items-center gap-5 text-center">
               <div>
                 <h3 className="text-sm font-semibold text-white font-mono uppercase tracking-wider">
                   Specular Highlight Roll-Off
                 </h3>
-                <p className="text-xs text-white/60 mt-1 max-w-lg mx-auto">
-                  Compare how your display handles near-peak white luminance. If subtle inner reticles disappear into pure white, your display is hard-clipping highlights instead of tone-mapping.
+                <p className="text-xs text-white/70 mt-1 max-w-xl mx-auto leading-relaxed">
+                  Compare how your display renders near-peak white luminance. Look closely at the <strong className="text-white">center reticle target</strong> inside each square. If a reticle disappears into solid white, your display is <strong className="text-amber-300">hard-clipping highlights</strong> instead of smoothly tone-mapping near-peak luminance.
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full max-w-2xl">
-                {[
-                  { label: "92% White", bg: "rgb(235, 235, 235)", text: "text-black" },
-                  { label: "96% White", bg: "rgb(245, 245, 245)", text: "text-black" },
-                  { label: "98% White", bg: "rgb(250, 250, 250)", text: "text-black" },
-                  { label: "100% Peak", bg: "rgb(255, 255, 255)", text: "text-black" },
-                ].map((item, idx) => (
-                  <div 
-                    key={idx}
-                    className="aspect-square rounded-2xl border border-white/20 p-3 flex flex-col justify-between shadow-lg"
-                    style={{ backgroundColor: item.bg }}
-                  >
-                    <div className="w-4 h-4 rounded-full border border-black/30" />
-                    <div className="text-center">
-                      <div className={`text-xs font-mono font-bold ${item.text}`}>{item.label}</div>
-                      <div className="text-[10px] font-mono text-black/50">Luminance</div>
+              {/* 4 Calibrated Specular Highlight Cards */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 w-full max-w-3xl">
+                {HIGHLIGHT_CARDS.map((item, idx) => {
+                  const delta = item.reticleDeltas[sensitivity];
+                  const reticleRgb = Math.min(255, Math.max(0, item.bgRgb + delta));
+                  const reticleColor = `rgb(${reticleRgb}, ${reticleRgb}, ${reticleRgb})`;
+                  const cardBg = `rgb(${item.bgRgb}, ${item.bgRgb}, ${item.bgRgb})`;
+
+                  return (
+                    <div 
+                      key={idx}
+                      className="rounded-2xl border border-white/20 p-3 flex flex-col items-center justify-between shadow-xl min-h-[170px] sm:min-h-[210px] transition-all relative overflow-hidden"
+                      style={{ backgroundColor: cardBg }}
+                    >
+                      {/* Top Card Header */}
+                      <div className="w-full flex items-center justify-between text-[9px] sm:text-[10px] font-mono font-bold text-black/60 select-none">
+                        <span>RGB {item.bgRgb}</span>
+                        <span className="text-[9px] uppercase tracking-wider text-black/40">
+                          {idx === 3 ? "Peak" : `Box ${idx + 1}`}
+                        </span>
+                      </div>
+
+                      {/* Prominent Centered Specular Reticle Target */}
+                      <div className="my-auto py-2 flex items-center justify-center">
+                        <div 
+                          className={`relative w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center transition-opacity duration-150 select-none ${
+                            isBlinking ? "opacity-0" : "opacity-100"
+                          }`}
+                        >
+                          {/* Outer Concentric Ring */}
+                          <div 
+                            className="absolute inset-0 rounded-full border-[2.5px]"
+                            style={{ borderColor: reticleColor }}
+                          />
+                          {/* Inner Concentric Ring */}
+                          <div 
+                            className="absolute w-9 h-9 sm:w-11 sm:h-11 rounded-full border-[2px]"
+                            style={{ borderColor: reticleColor }}
+                          />
+                          {/* Crosshair Horizontal */}
+                          <div 
+                            className="absolute w-full h-[2px]"
+                            style={{ backgroundColor: reticleColor }}
+                          />
+                          {/* Crosshair Vertical */}
+                          <div 
+                            className="absolute h-full w-[2px]"
+                            style={{ backgroundColor: reticleColor }}
+                          />
+                          {/* Center Target Core */}
+                          <div 
+                            className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full z-10 shadow-xs"
+                            style={{ backgroundColor: reticleColor }}
+                          />
+                        </div>
+                      </div>
+
+                      {/* Bottom Card Footer */}
+                      <div className="text-center w-full select-none pt-1">
+                        <div className="text-xs font-mono font-bold text-black">{item.label}</div>
+                        <div className="text-[9px] sm:text-[10px] font-mono text-black/60 mt-0.5">
+                          Reticle: RGB {reticleRgb} ({delta > 0 ? `+${delta}` : delta})
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
+              </div>
+
+              {/* Diagnostic Interpretation Guide */}
+              <div className="w-full max-w-2xl grid grid-cols-1 sm:grid-cols-3 gap-2 text-[10px] sm:text-[11px] text-center mt-1">
+                <div className="px-2.5 py-1.5 rounded-lg bg-emerald-950/30 border border-emerald-900/40 text-emerald-300">
+                  <strong className="block text-emerald-200">All 4 Reticles Visible</strong>
+                  Excellent tone-mapping; highlight textures are preserved up to peak white.
+                </div>
+                <div className="px-2.5 py-1.5 rounded-lg bg-amber-950/30 border border-amber-900/40 text-amber-300">
+                  <strong className="block text-amber-200">Reticle 4 Blown Out</strong>
+                  Typical SDR/standard clipping; top 2% peak white clips to pure white.
+                </div>
+                <div className="px-2.5 py-1.5 rounded-lg bg-red-950/30 border border-red-900/40 text-red-300">
+                  <strong className="block text-red-200">Reticles 3 & 4 Invisible</strong>
+                  Severe highlight clipping; monitor contrast is set too high or HDR tone-mapping is off.
+                </div>
               </div>
             </div>
           )}
@@ -245,7 +385,95 @@ export function HdrPattern({ testId }: HdrPatternProps) {
         </div>
       </div>
 
-      <TestControlBar testId={testId} title="HDR Capability" />
+      {/* ========================================================= */}
+      {/* TEST CONTROL BAR (DOCKED OUTSIDE & BELOW VIEWPORT)       */}
+      {/* ========================================================= */}
+      <TestControlBar testId={testId} title="HDR & Tone-Mapping Calibration">
+        <div className="flex flex-wrap items-center gap-2">
+          {/* Mode Tabs Switcher */}
+          <div className="flex items-center bg-gray-100 p-0.5 rounded-lg border border-gray-200 text-xs">
+            <button
+              onClick={() => setActiveTab("overview")}
+              className={`px-2.5 py-1 rounded-md transition-all font-medium ${
+                activeTab === "overview" 
+                  ? "bg-white text-gray-950 shadow-xs font-semibold" 
+                  : "text-gray-600 hover:text-gray-900"
+              }`}
+            >
+              Pipeline Metrics
+            </button>
+            <button
+              onClick={() => setActiveTab("banding")}
+              className={`px-2.5 py-1 rounded-md transition-all font-medium ${
+                activeTab === "banding" 
+                  ? "bg-white text-gray-950 shadow-xs font-semibold" 
+                  : "text-gray-600 hover:text-gray-900"
+              }`}
+            >
+              10-Bit Ramp
+            </button>
+            <button
+              onClick={() => setActiveTab("specular")}
+              className={`px-2.5 py-1 rounded-md transition-all font-medium ${
+                activeTab === "specular" 
+                  ? "bg-white text-gray-950 shadow-xs font-semibold" 
+                  : "text-gray-600 hover:text-gray-900"
+              }`}
+            >
+              Highlight Clipping
+            </button>
+          </div>
+
+          {/* Controls specific to Highlight Clipping */}
+          {activeTab === "specular" && (
+            <div className="flex items-center gap-1.5 border-l border-gray-200 pl-2 text-xs">
+              <span className="text-gray-500 font-mono text-[11px] hidden sm:inline">Delta:</span>
+              <button
+                onClick={() => setSensitivity("standard")}
+                className={`px-2 py-0.5 rounded text-[11px] font-medium transition-colors ${
+                  sensitivity === "standard"
+                    ? "bg-gray-900 text-white font-semibold"
+                    : "bg-gray-100 hover:bg-gray-200 text-gray-700"
+                }`}
+                title="Standard ~2% delta"
+              >
+                Standard (2%)
+              </button>
+              <button
+                onClick={() => setSensitivity("subtle")}
+                className={`px-2 py-0.5 rounded text-[11px] font-medium transition-colors ${
+                  sensitivity === "subtle"
+                    ? "bg-gray-900 text-white font-semibold"
+                    : "bg-gray-100 hover:bg-gray-200 text-gray-700"
+                }`}
+                title="Subtle ~1% delta"
+              >
+                Subtle (1%)
+              </button>
+              <button
+                onClick={() => setSensitivity("ultrafine")}
+                className={`px-2 py-0.5 rounded text-[11px] font-medium transition-colors ${
+                  sensitivity === "ultrafine"
+                    ? "bg-gray-900 text-white font-semibold"
+                    : "bg-gray-100 hover:bg-gray-200 text-gray-700"
+                }`}
+                title="Ultra-Fine ~0.5% delta"
+              >
+                Ultra-Fine (0.5%)
+              </button>
+
+              <button
+                onClick={triggerBlink}
+                className="ml-1 flex items-center gap-1 px-2.5 py-1 rounded-md border border-gray-300 bg-white hover:bg-gray-50 text-gray-800 text-[11px] font-medium transition-colors shadow-2xs"
+                title="Momentarily blink reticles so you can spot their exact location"
+              >
+                <Eye className="w-3.5 h-3.5 text-blue-600" />
+                <span>Flash Reticles</span>
+              </button>
+            </div>
+          )}
+        </div>
+      </TestControlBar>
     </>
   );
 }

@@ -41,9 +41,10 @@ const STATIC_RESOURCES: SearchResultItem[] = [
 
 interface SearchInputProps {
   onSelect?: () => void;
+  placeholder?: string;
 }
 
-export function SearchInput({ onSelect }: SearchInputProps = {}) {
+export function SearchInput({ onSelect, placeholder = "Search tests or guides..." }: SearchInputProps = {}) {
   const router = useRouter();
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -182,8 +183,8 @@ export function SearchInput({ onSelect }: SearchInputProps = {}) {
             if (query.trim()) setIsOpen(true);
           }}
           onKeyDown={handleKeyDown}
-          placeholder="Search tests, workflows, guides, FAQ..."
-          aria-label="Search tests, workflows, guides, FAQ"
+          placeholder={placeholder}
+          aria-label={placeholder}
           className="w-full bg-transparent text-gray-900 placeholder:text-gray-400 text-xs focus:outline-none"
         />
         {query && (

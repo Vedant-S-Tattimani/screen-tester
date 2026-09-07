@@ -7,32 +7,34 @@
     "title": "Monitor Tester",
     "nav": {
       "tests": "Tests",
-      "inspection": "Inspection",
-      "guides": "Guides",
-      "menu": "Menu"
+      "inspection": "Inspektion",
+      "guides": "Anleitungen",
+      "menu": "Menü"
     },
     "tests": {
-      "pixels": "Pixels",
-      "color": "Color",
-      "luminance": "Luminance",
+      "pixels": "Pixel",
+      "color": "Farbe",
+      "luminance": "Helligkeit",
       "display": "Display",
-      "motion": "Motion",
-      "advanced": "Advanced"
+      "motion": "Bewegung",
+      "advanced": "Erweitert"
     },
     "inspection": {
-      "monitor": "Monitor Inspection",
+      "monitor": "Monitor-Inspektion",
       "gaming": "Gaming",
       "oled": "OLED",
-      "new": "New Monitor",
-      "used": "Used Monitor"
+      "new": "Neuer Monitor",
+      "used": "Gebrauchter Monitor",
+      "laptop": "Laptop-Display",
+      "tv": "TV-Display"
     },
     "guides": {
-      "monitor": "Monitor Guide",
-      "laptop": "Laptop Guide",
-      "tv": "TV Guide",
-      "oled": "OLED Guide",
-      "mobile": "Mobile Guide",
-      "lcd": "LCD Guide"
+      "monitor": "Monitor-Leitfaden",
+      "laptop": "Laptop-Leitfaden",
+      "tv": "TV-Leitfaden",
+      "oled": "OLED-Leitfaden",
+      "mobile": "Mobil-Leitfaden",
+      "lcd": "LCD-Leitfaden"
     }
   },
   "Footer": {
@@ -97,12 +99,57 @@
     "label": "Sprache wählen"
   },
   "Home": {
-    "label": "Monitor Tester",
+    "eyebrow": "EIN KLARES BILD",
     "headline_pt1": "Testen Sie Ihren Monitor.",
-    "headline_pt2": "Sehen Sie, was wirklich da ist.",
-    "description": "Ein wunderschön gestaltetes Online-Dienstprogramm zur Überprüfung auf tote Pixel, Backlight Bleeding, Bildschirmgleichmäßigkeit und Farbgenauigkeit direkt im Browser.",
-    "startTesting": "Test starten",
-    "browseTests": "Alle Tests durchsuchen"
+    "headline_pt2": "Finden Sie die Fehler.",
+    "description": "Eine umfassende Suite von Werkzeugen zum Testen Ihres Monitors auf Pixelfehler, Backlight-Bleed, Farbgenauigkeit, Bewegungsunschärfe und mehr. Kostenlos, präzise und direkt im Browser.",
+    "startTesting": "Test Starten",
+    "browseTests": "Alle Tests Anzeigen",
+    "trustFree": "Kostenlos nutzbar",
+    "trustNoInstall": "Keine Installation",
+    "trustBrowser": "Läuft direkt im Browser",
+    "heroScript": "Bessere Displays beginnen mit besseren Werkzeugen.",
+    "quickTestsTitle": "SCHNELLTESTS",
+    "quickTestsDesc": "Führen Sie die häufigsten Tests sofort durch.",
+    "viewAllTests": "Alle Tests anzeigen",
+    "quickDeadPixels": "Pixelfehler",
+    "quickColorTest": "Farbtest",
+    "quickBrightness": "Helligkeit",
+    "quickContrast": "Kontrast",
+    "quickGhosting": "Ghosting",
+    "quickRefreshRate": "Bildwiederholfrequenz",
+    "workflowsTitle": "WAS MÖCHTEN SIE PRÜFEN?",
+    "workflowsDesc": "Wählen Sie eine Anleitung oder Prüfung passend zu Ihrer Situation.",
+    "viewAllWorkflows": "Alle Inspektionsabläufe anzeigen",
+    "wfUsedTitle": "Gebrauchter Monitor",
+    "wfUsedDesc": "Mängel und versteckte Fehler aufspüren.",
+    "wfGamingTitle": "Gaming-Display",
+    "wfGamingDesc": "Bildwiederholrate, Tearing und Bewegung prüfen.",
+    "wfOledTitle": "OLED-Display",
+    "wfOledDesc": "Auf Einbrennen und Homogenität untersuchen.",
+    "wfLaptopTitle": "Laptop-Display",
+    "wfLaptopDesc": "Integriertes Display oder externen Monitor testen.",
+    "wfTvTitle": "TV oder Großbildschirm",
+    "wfTvDesc": "Größe, Auflösung und Bildqualität prüfen.",
+    "moreToolsTitle": "WEITERE WERKZEUGE",
+    "moreToolsDesc": "Zusätzliche Dienstprogramme für Ihr Display.",
+    "viewAllTools": "Alle Werkzeuge anzeigen",
+    "toolInspectionTitle": "Monitor-Inspektion",
+    "toolInspectionDesc": "Schritt-für-Schritt-Checkliste und Bericht.",
+    "toolCompareTitle": "Displays Vergleichen",
+    "toolCompareDesc": "Spezifikationen und Abmessungen vergleichen.",
+    "toolPpiTitle": "PPI & Betrachtungsabstand",
+    "toolPpiDesc": "Punktdichte und optimalen Abstand berechnen.",
+    "toolPatternTitle": "Benutzerdefiniertes Testmuster",
+    "toolPatternDesc": "Eigene Gitter und Testmuster erstellen.",
+    "toolInfoTitle": "Display-Informationen",
+    "toolInfoDesc": "Erfahren Sie, was der Browser über Ihr Display weiß.",
+    "benefit1Title": "Visuell testen mit Vertrauen",
+    "benefit1Desc": "Erkennen Sie Bildfehler, bevor sie zum Problem werden.",
+    "benefit2Title": "Werkzeuge für jedes Display",
+    "benefit2Desc": "LCD, OLED, Gaming, Laptop, TV und mehr.",
+    "benefit3Title": "Klare, unabhängige Beratung",
+    "benefit3Desc": "Verstehen Sie, was Sie sehen und was es bedeutet."
   },
   "TestLibrary": {
     "categories": {
@@ -199,7 +246,9 @@
         "title": "Kontrastkalibrierung",
         "description": "Bewerten Sie das Kontrastverhältnis, die Farbtrennung und die Abstufungen über 25 dynamische Stufen."
       }
-    }
+    },
+    "searchPlaceholder": "Tests durchsuchen...",
+    "subtitle": "Erkunden Sie unsere vollständige Bibliothek von Monitor-Testtools. Alle Tests laufen lokal in Ihrem Browser."
   },
   "TestWrapper": {
     "howToTest": "Wie man testet",
@@ -222,15 +271,15 @@
       ]
     },
     "brightness-test": {
-      "metaTitle": "Brightness & Contrast Test",
-      "metaDescription": "Test monitor brightness, black levels, and white levels. Adjust your display until every square is visually distinct.",
-      "title": "Brightness & Contrast Test",
-      "description_p1": "This test helps you configure your monitor's brightness and contrast settings by displaying stepped grayscale values from 0% (pure black) to 100% (pure white).",
+      "metaTitle": "Monitor Helligkeit & Schwarzwert Test",
+      "metaDescription": "Kalibrieren Sie Monitor-Helligkeit, Schattendetails und Schwarz-Clipping mit PLUGE-Referenzbalken, 1% Schattenrampe und Spitzenluminanz-ABL-Fenstern.",
+      "title": "Helligkeit & Schwarzwert Test",
+      "description_p1": "Dieser Test kalibriert die Helligkeit (Schwarzwert-Offset) Ihres Monitors und bewertet die Luminanz. Eine korrekte Helligkeit garantiert tiefes Schwarz ohne Verlust von Schattendetails.",
       "instructions": [
-        "<strong>Black Levels (Brightness):</strong> Ensure you can distinguish the darkest squares (4%, 8%) from pure black (0%). If they blend together, increase your monitor's brightness.",
-        "<strong>White Levels (Contrast):</strong> Ensure you can distinguish the lightest squares (96%, 92%) from pure white (100%). If they blend together, decrease your monitor's contrast.",
-        "Do not adjust software/GPU settings; use your physical monitor's OSD controls.",
-        "<strong>ABOUT THIS TEST:</strong> This is a visual reference tool. It cannot measure peak brightness (nits) or physical contrast ratio."
+        "<strong>PLUGE-REFERENZBALKEN:</strong> Balken 0% ist echtes Referenzschwarz. Stellen Sie die Helligkeit Ihres Monitors ein, bis <strong>Balken +2% (RGB 5) kaum unterscheidbar</strong> vom schwarzen Hintergrund sichtbar ist.",
+        "<strong>BLACK CRUSH WARNUNG:</strong> Wenn Balken +1% und +2% unsichtbar sind, ist die Helligkeit zu niedrig (Details saufen im Schwarz ab). Wenn der Hintergrund grau leuchtet, ist die Helligkeit zu hoch.",
+        "<strong>1% SCHATTENRAMPE:</strong> Nutzen Sie den 1%-Schattenmodus zur präzisen Prüfung der dunkelsten Graustufen (0% bis 10%).",
+        "<strong>ABL & SPITZENLUMINANZ:</strong> Wechseln Sie zum Fenster-Modus, um die Helligkeit von 100% Vollbild mit dem 10%-Spitzenfenster zu vergleichen."
       ]
     },
     "color-test": {
@@ -596,7 +645,12 @@
       "metaDescription": "Test your mobile screen.",
       "title": "Mobile Screen Test",
       "description": "Tests for mobile touch screens and OLED panels."
-    }
+    },
+    "pageTitle": "Display-Leitfäden",
+    "pageSubtitle": "Lernen Sie, bestimmte Geräte zu testen und typische Bildschirmfehler wie Ghosting und Backlight-Bleed zu verstehen.",
+    "deviceGuidesHeading": "GERÄTE-LEITFÄDEN",
+    "conceptGuidesHeading": "KONZEPTE & ERKLÄRUNGEN",
+    "learnAbout": "Erfahren Sie mehr über {topic} und wie Sie es testen."
   },
   "Inspection": {
     "hub": {

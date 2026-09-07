@@ -72,10 +72,10 @@ export default async function TestsPage({ params }: { params: Promise<{ locale: 
           {tHome("browseTests")}
         </h1>
         <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mb-16">
-          Explore our complete library of monitor testing utilities. All tests run locally in your browser.
+          {tLib("subtitle")}
         </p>
         
-        <TestLibrary categories={categories} searchPlaceholder="Search tests..." />
+        <TestLibrary categories={categories} searchPlaceholder={tLib("searchPlaceholder")} />
       </section>
     </div>
   );

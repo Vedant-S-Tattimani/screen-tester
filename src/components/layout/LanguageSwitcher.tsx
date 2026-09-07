@@ -9,6 +9,12 @@ interface LanguageSwitcherProps {
   dropUp?: boolean;
 }
 
+function setLanguagePreference(nextLocale: string) {
+  if (typeof document !== "undefined") {
+    document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000; SameSite=Lax`;
+  }
+}
+
 export function LanguageSwitcher({ dropUp = false }: LanguageSwitcherProps = {}) {
   const t = useTranslations("LanguageSwitcher");
   const locale = useLocale();
@@ -30,6 +36,7 @@ export function LanguageSwitcher({ dropUp = false }: LanguageSwitcherProps = {})
   }, []);
 
   const handleSelect = (nextLocale: string) => {
+    setLanguagePreference(nextLocale);
     router.replace(pathname, { locale: nextLocale });
     setIsOpen(false);
   };
@@ -55,7 +62,7 @@ export function LanguageSwitcher({ dropUp = false }: LanguageSwitcherProps = {})
                   role="option"
                   aria-selected={locale === l}
                   onClick={() => handleSelect(l)}
-                  className={`w-full text-left px-3.5 py-1.5 text-xs transition-colors flex items-center justify-between ${
+                  className={`w-full text-left px-3.5 py-1.5 text-xs transition-colors flex items-center justify-between cursor-pointer ${
                     locale === l 
                       ? "bg-blue-50 text-blue-900 font-semibold" 
                       : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"

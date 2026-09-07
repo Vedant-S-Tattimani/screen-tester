@@ -1,118 +1,139 @@
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { 
-  AppWindow, 
-  ShieldCheck, 
-  Laptop, 
-  Globe, 
-  Sun, 
-  Activity, 
+  CheckCircle2, 
   ArrowRight, 
   Monitor, 
-  RefreshCw, 
+  Sun, 
+  Activity, 
+  RotateCcw, 
   Gamepad2, 
+  Laptop, 
   Tv, 
-  BookOpen, 
-  GraduationCap, 
-  Cog, 
-  HelpCircle 
+  ClipboardCheck, 
+  Sliders, 
+  Ruler, 
+  Grid, 
+  Settings, 
+  Eye, 
+  BookOpen 
 } from "lucide-react";
 
-export default function Home() {
+export default async function Home({
+  params
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  const t = await getTranslations({ locale, namespace: "Home" });
+
   return (
-    <div className="flex-1 bg-white text-[#0f172a]">
+    <div className="flex-1 bg-white text-gray-950">
       {/* ================================================== */}
       {/* 1. HERO SECTION                                    */}
       {/* ================================================== */}
-      <section className="pt-8 sm:pt-11 pb-10 sm:pb-12 px-6 sm:px-10 lg:px-16 xl:px-20 max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+      <section className="pt-8 sm:pt-12 lg:pt-14 pb-12 sm:pb-16 max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 xl:gap-12 items-center">
           
           {/* Left Hero Column */}
-          <div className="lg:col-span-7 flex flex-col justify-center">
+          <div className="lg:col-span-7 xl:col-span-6 flex flex-col justify-center">
             {/* Small Eyebrow */}
-            <div className="text-[11px] sm:text-xs font-mono font-medium uppercase tracking-[0.24em] text-gray-400 mb-4 select-none">
-              TEST. INSPECT. UNDERSTAND.
+            <div className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-[0.2em] text-gray-400 mb-3 sm:mb-4 select-none">
+              {t("eyebrow")}
             </div>
 
-            {/* Large Bold Headline (exactly 2 lines on desktop) */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[60px] xl:text-[66px] font-bold tracking-[-0.035em] text-gray-950 leading-[1.07] mb-5">
-              Check your display.<br />
-              Find the flaws.
+            {/* Main Headline */}
+            <h1 className="text-4xl sm:text-5xl lg:text-[54px] xl:text-[60px] font-extrabold tracking-[-0.035em] text-gray-950 leading-[1.08] mb-5">
+              {t("headline_pt1")}<br />
+              {t("headline_pt2")}
             </h1>
 
-            {/* Practical Utility Description */}
-            <p className="text-[15px] sm:text-[16px] text-gray-500 leading-relaxed max-w-xl mb-9 font-normal">
-              A comprehensive suite of tools to test your monitor for dead pixels, backlight bleed, color accuracy, motion blur, and more. Free, precise, and works directly in your browser.
+            {/* Supporting Copy */}
+            <p className="text-[15px] sm:text-[16px] text-gray-600 leading-relaxed max-w-xl mb-8 font-normal">
+              {t("description")}
             </p>
 
-            {/* Trust / Product Attributes - 4 concise horizontal items */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 pt-1 select-none">
-              {/* 1. Works in your browser */}
-              <div className="flex items-start gap-2.5">
-                <AppWindow className="w-4 h-4 text-gray-800 shrink-0 mt-0.5 stroke-[1.8]" />
-                <div>
-                  <div className="text-[12px] font-semibold text-gray-900 leading-tight">Works in your browser</div>
-                  <div className="text-[11px] text-gray-400 mt-0.5 leading-snug">No software required</div>
-                </div>
-              </div>
+            {/* CTAs */}
+            <div className="flex flex-wrap items-center gap-3.5 mb-8">
+              <Link 
+                href="/tests/dead-pixel-test"
+                className="inline-flex items-center justify-center gap-2.5 bg-gray-950 text-white hover:bg-black font-medium text-sm sm:text-[15px] px-6 sm:px-7 py-3.5 rounded-full transition-all shadow-xs hover:shadow-sm focus-visible:ring-2 focus-visible:ring-gray-900"
+              >
+                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+                <span>{t("startTesting")}</span>
+              </Link>
+              <Link 
+                href="/tests"
+                className="inline-flex items-center justify-center gap-2 bg-white border border-gray-300 hover:border-gray-400 hover:bg-gray-50/80 text-gray-800 font-medium text-sm sm:text-[15px] px-6 sm:px-7 py-3.5 rounded-full transition-all focus-visible:ring-2 focus-visible:ring-gray-900"
+              >
+                <span>{t("browseTests")}</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
 
-              {/* 2. Private and secure */}
-              <div className="flex items-start gap-2.5">
-                <ShieldCheck className="w-4 h-4 text-gray-800 shrink-0 mt-0.5 stroke-[1.8]" />
-                <div>
-                  <div className="text-[12px] font-semibold text-gray-900 leading-tight">Private and secure</div>
-                  <div className="text-[11px] text-gray-400 mt-0.5 leading-snug">All tests run locally</div>
-                </div>
+            {/* Trust / Product Attributes */}
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2.5 text-xs sm:text-[13px] text-gray-600 select-none">
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 text-gray-900 stroke-[2]" />
+                <span>{t("trustFree")}</span>
               </div>
-
-              {/* 3. Works on any device */}
-              <div className="flex items-start gap-2.5">
-                <Laptop className="w-4 h-4 text-gray-800 shrink-0 mt-0.5 stroke-[1.8]" />
-                <div>
-                  <div className="text-[12px] font-semibold text-gray-900 leading-tight">Works on any device</div>
-                  <div className="text-[11px] text-gray-400 mt-0.5 leading-snug">Desktop, laptop, tablet, mobile</div>
-                </div>
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 text-gray-900 stroke-[2]" />
+                <span>{t("trustNoInstall")}</span>
               </div>
-
-              {/* 4. Multi-language */}
-              <div className="flex items-start gap-2.5">
-                <Globe className="w-4 h-4 text-gray-800 shrink-0 mt-0.5 stroke-[1.8]" />
-                <div>
-                  <div className="text-[12px] font-semibold text-gray-900 leading-tight">Multi-language</div>
-                  <div className="text-[11px] text-gray-400 mt-0.5 leading-snug">Available in multiple languages</div>
-                </div>
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 text-gray-900 stroke-[2]" />
+                <span>{t("trustBrowser")}</span>
               </div>
             </div>
           </div>
 
-          {/* Right Hero Column — Realistic Desktop Monitor */}
-          <div className="lg:col-span-5 flex flex-col items-center lg:items-end justify-center relative">
-            <div className="w-full max-w-[580px] relative">
+          {/* Right Hero Column — Large Realistic Desktop Monitor Visual */}
+          <div className="lg:col-span-5 xl:col-span-6 flex flex-col items-center lg:items-end justify-center relative select-none">
+            <div className="w-full max-w-[620px] relative">
               <Image
                 src="/hero-monitor.jpg"
-                alt="Realistic desktop monitor testing display performance"
+                alt="Widescreen desktop monitor displaying precision test pattern"
                 width={1200}
                 height={896}
                 priority
                 className="w-full h-auto object-contain select-none pointer-events-none"
               />
-              
-              {/* Screen Tag inside monitor display */}
-              <div className="absolute right-[14%] bottom-[33%] text-right pointer-events-none select-none">
-                <p className="text-[10px] sm:text-[11px] text-white/95 font-normal leading-snug drop-shadow-xs">
-                  Better displays<br />for a clearer world.
-                </p>
+
+              {/* Vertical Split Line on Monitor Screen */}
+              <div 
+                className="absolute top-[3%] bottom-[13%] left-[50%] w-[1.5px] bg-white/70 pointer-events-none shadow-xs" 
+                aria-hidden="true" 
+              />
+
+              {/* Top-Left Screen Label */}
+              <div className="absolute top-[8%] left-[7%] pointer-events-none">
+                <span className="text-white/95 text-[10px] sm:text-xs font-normal drop-shadow-sm tracking-wide">
+                  See the difference.
+                </span>
               </div>
 
-              {/* Subtle handwritten-style editorial annotation */}
-              <div className="hidden xl:flex absolute -right-12 top-[26%] flex-col items-center select-none pointer-events-none">
-                <span className="font-serif italic text-[13px] text-gray-400 tracking-wide leading-snug text-center">
-                  See every<br />detail<br />clearly.
+              {/* Bottom-Right Screen Technical Specs Stack */}
+              <div className="absolute bottom-[16%] right-[8%] text-right pointer-events-none">
+                <div className="font-mono text-[8px] sm:text-[9.5px] tracking-[0.16em] text-white/90 leading-tight drop-shadow-sm uppercase">
+                  <div>PIXELS</div>
+                  <div>COLORS</div>
+                  <div>CONTRAST</div>
+                  <div>MOTION</div>
+                  <div>AND MORE</div>
+                </div>
+              </div>
+
+              {/* Handwritten-Style Editorial Script Beneath Monitor */}
+              <div className="mt-2 text-right pr-2">
+                <span className="font-serif italic text-xs sm:text-[13px] text-gray-400 select-none">
+                  {t("heroScript")}
                 </span>
-                <span className="w-6 h-[1px] bg-gray-300 my-1.5" />
-                <svg width="18" height="24" viewBox="0 0 18 24" fill="none" className="text-gray-300 stroke-current">
-                  <path d="M9 1 C9 8, 8 16, 9 22 M5 18 L9 22 L13 18" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
               </div>
             </div>
           </div>
@@ -121,379 +142,417 @@ export default function Home() {
       </section>
 
       {/* ================================================== */}
-      {/* 2. QUICK CHECKS SECTION                           */}
+      {/* 2. QUICK TESTS SECTION                            */}
       {/* ================================================== */}
-      <section className="pt-2 pb-8 px-6 sm:px-10 lg:px-16 xl:px-20 max-w-[1400px] mx-auto">
+      <section className="pt-2 pb-10 sm:pb-12 max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section Header */}
-        <div className="flex items-end justify-between mb-4">
+        <div className="flex items-end justify-between mb-4 sm:mb-5">
           <div>
-            <h2 className="text-[20px] sm:text-[22px] font-bold tracking-tight text-gray-950">
-              Quick checks
+            <h2 className="text-sm sm:text-base font-bold tracking-tight text-gray-950 uppercase">
+              {t("quickTestsTitle")}
             </h2>
-            <p className="text-[13px] text-gray-500 mt-0.5">
-              Run the most common tests instantly.
+            <p className="text-xs sm:text-[13px] text-gray-500 mt-0.5">
+              {t("quickTestsDesc")}
             </p>
           </div>
           <Link 
             href="/tests"
-            className="text-[13px] font-medium text-gray-600 hover:text-gray-950 flex items-center gap-1 group transition-colors focus-visible:ring-2 focus-visible:ring-blue-500 rounded p-1"
+            className="text-xs sm:text-[13px] font-medium text-gray-600 hover:text-gray-950 flex items-center gap-1 group transition-colors focus-visible:ring-2 focus-visible:ring-gray-900 rounded p-1"
           >
-            <span>View all tests</span>
+            <span>{t("viewAllTests")}</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
           </Link>
         </div>
 
-        {/* 5 Compact Horizontal Quick Check Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-3.5">
-          {/* 1. Dead Pixel Test */}
+        {/* 6 Compact Horizontal Shortcut Cards */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          {/* 1. Dead Pixels */}
           <Link 
             href="/tests/dead-pixel-test"
-            className="bg-white border border-gray-200/80 hover:border-gray-300 rounded-xl px-4 py-3 flex items-center justify-between group transition-all focus-visible:ring-2 focus-visible:ring-blue-500"
+            className="bg-white border border-gray-200/90 hover:border-gray-300 rounded-xl px-4 py-3 flex items-center gap-3 group transition-all hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900"
           >
-            <div className="flex items-center gap-3 min-w-0">
-              {/* 3x3 pixel grid icon */}
-              <div className="w-5 h-5 flex items-center justify-center shrink-0">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor" className="text-gray-800">
-                  <circle cx="3" cy="3" r="1.3" />
-                  <circle cx="9" cy="3" r="1.3" />
-                  <circle cx="15" cy="3" r="1.3" />
-                  <circle cx="3" cy="9" r="1.3" />
-                  <circle cx="9" cy="9" r="1.3" />
-                  <circle cx="15" cy="9" r="1.3" />
-                  <circle cx="3" cy="15" r="1.3" />
-                  <circle cx="9" cy="15" r="1.3" />
-                  <circle cx="15" cy="15" r="1.3" />
-                </svg>
-              </div>
-              <div className="min-w-0">
-                <h3 className="text-[13px] font-semibold text-gray-900 group-hover:text-gray-950 truncate">
-                  Dead Pixel Test
-                </h3>
-                <p className="text-[11px] text-gray-500 leading-tight truncate">
-                  Find dark or bright pixels
-                </p>
-              </div>
+            <div className="w-5 h-5 flex items-center justify-center shrink-0 text-gray-800 group-hover:text-gray-950 transition-colors">
+              <Monitor className="w-4 h-4 stroke-[1.8]" />
             </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-900 group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
+            <span className="text-xs sm:text-[13px] font-medium text-gray-900 group-hover:text-gray-950 truncate">
+              {t("quickDeadPixels")}
+            </span>
           </Link>
 
           {/* 2. Color Test */}
           <Link 
             href="/tests/color-test"
-            className="bg-white border border-gray-200/80 hover:border-gray-300 rounded-xl px-4 py-3 flex items-center justify-between group transition-all focus-visible:ring-2 focus-visible:ring-blue-500"
+            className="bg-white border border-gray-200/90 hover:border-gray-300 rounded-xl px-4 py-3 flex items-center gap-3 group transition-all hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900"
           >
-            <div className="flex items-center gap-3 min-w-0">
-              {/* Segmented Color Wheel Donut */}
-              <div 
-                className="w-5 h-5 rounded-full p-[3px] shrink-0" 
-                style={{ background: 'conic-gradient(#ef4444 0deg, #f97316 45deg, #eab308 90deg, #22c55e 135deg, #06b6d4 180deg, #3b82f6 225deg, #8b5cf6 270deg, #ec4899 315deg, #ef4444 360deg)' }}
-              >
-                <div className="w-full h-full rounded-full bg-white" />
-              </div>
-              <div className="min-w-0">
-                <h3 className="text-[13px] font-semibold text-gray-900 group-hover:text-gray-950 truncate">
-                  Color Test
-                </h3>
-                <p className="text-[11px] text-gray-500 leading-tight truncate">
-                  Inspect colors and saturation
-                </p>
-              </div>
+            <div 
+              className="w-4 h-4 rounded-full p-[2.5px] shrink-0" 
+              style={{ background: 'conic-gradient(#ef4444 0deg, #f97316 45deg, #eab308 90deg, #22c55e 135deg, #06b6d4 180deg, #3b82f6 225deg, #8b5cf6 270deg, #ec4899 315deg, #ef4444 360deg)' }}
+            >
+              <div className="w-full h-full rounded-full bg-white" />
             </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-900 group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
+            <span className="text-xs sm:text-[13px] font-medium text-gray-900 group-hover:text-gray-950 truncate">
+              {t("quickColorTest")}
+            </span>
           </Link>
 
-          {/* 3. Brightness Test */}
+          {/* 3. Brightness */}
           <Link 
             href="/tests/brightness-test"
-            className="bg-white border border-gray-200/80 hover:border-gray-300 rounded-xl px-4 py-3 flex items-center justify-between group transition-all focus-visible:ring-2 focus-visible:ring-blue-500"
+            className="bg-white border border-gray-200/90 hover:border-gray-300 rounded-xl px-4 py-3 flex items-center gap-3 group transition-all hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900"
           >
-            <div className="flex items-center gap-3 min-w-0">
-              <div className="w-5 h-5 flex items-center justify-center shrink-0">
-                <Sun className="w-4 h-4 text-gray-800 stroke-[1.8]" />
-              </div>
-              <div className="min-w-0">
-                <h3 className="text-[13px] font-semibold text-gray-900 group-hover:text-gray-950 truncate">
-                  Brightness Test
-                </h3>
-                <p className="text-[11px] text-gray-500 leading-tight truncate">
-                  Inspect visibility
-                </p>
-              </div>
+            <div className="w-5 h-5 flex items-center justify-center shrink-0 text-amber-500">
+              <Sun className="w-4 h-4 stroke-[2]" />
             </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-900 group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
+            <span className="text-xs sm:text-[13px] font-medium text-gray-900 group-hover:text-gray-950 truncate">
+              {t("quickBrightness")}
+            </span>
           </Link>
 
-          {/* 4. Ghosting Test */}
+          {/* 4. Contrast */}
+          <Link 
+            href="/tests/contrast-test"
+            className="bg-white border border-gray-200/90 hover:border-gray-300 rounded-xl px-4 py-3 flex items-center gap-3 group transition-all hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900"
+          >
+            <div className="w-4 h-4 rounded-full border border-gray-900 overflow-hidden shrink-0 flex">
+              <div className="w-1/2 h-full bg-gray-900" />
+              <div className="w-1/2 h-full bg-white" />
+            </div>
+            <span className="text-xs sm:text-[13px] font-medium text-gray-900 group-hover:text-gray-950 truncate">
+              {t("quickContrast")}
+            </span>
+          </Link>
+
+          {/* 5. Ghosting */}
           <Link 
             href="/tests/ghosting-test"
-            className="bg-white border border-gray-200/80 hover:border-gray-300 rounded-xl px-4 py-3 flex items-center justify-between group transition-all focus-visible:ring-2 focus-visible:ring-blue-500"
+            className="bg-white border border-gray-200/90 hover:border-gray-300 rounded-xl px-4 py-3 flex items-center gap-3 group transition-all hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900"
           >
-            <div className="flex items-center gap-3 min-w-0">
-              <div className="w-5 h-5 flex items-center justify-center shrink-0">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="text-gray-800">
-                  <rect width="13" height="10" x="9" y="4" rx="1.5" />
-                  <path d="M13 14v3" />
-                  <path d="M10 17h6" />
-                  <path d="M2 6h4" />
-                  <path d="M2 10h5" />
-                  <path d="M2 14h3" />
-                </svg>
-              </div>
-              <div className="min-w-0">
-                <h3 className="text-[13px] font-semibold text-gray-900 group-hover:text-gray-950 truncate">
-                  Ghosting Test
-                </h3>
-                <p className="text-[11px] text-gray-500 leading-tight truncate">
-                  Check motion clarity
-                </p>
-              </div>
+            <div className="w-5 h-5 flex items-center justify-center shrink-0 text-gray-800">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="17" cy="4" r="2"/>
+                <path d="m15 8-5 3-4-2"/>
+                <path d="m13 13 3 5 4-1"/>
+                <path d="M10 11v6l-4 3"/>
+              </svg>
             </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-900 group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
+            <span className="text-xs sm:text-[13px] font-medium text-gray-900 group-hover:text-gray-950 truncate">
+              {t("quickGhosting")}
+            </span>
           </Link>
 
-          {/* 5. Refresh Rate Test */}
+          {/* 6. Refresh Rate */}
           <Link 
             href="/tests/refresh-rate-test"
-            className="bg-white border border-gray-200/80 hover:border-gray-300 rounded-xl px-4 py-3 flex items-center justify-between group transition-all focus-visible:ring-2 focus-visible:ring-blue-500"
+            className="bg-white border border-gray-200/90 hover:border-gray-300 rounded-xl px-4 py-3 flex items-center gap-3 group transition-all hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900"
           >
-            <div className="flex items-center gap-3 min-w-0">
-              <div className="w-5 h-5 flex items-center justify-center shrink-0">
-                <Activity className="w-4 h-4 text-blue-700 stroke-[2]" />
-              </div>
-              <div className="min-w-0">
-                <h3 className="text-[13px] font-semibold text-gray-900 group-hover:text-gray-950 truncate">
-                  Refresh Rate Test
-                </h3>
-                <p className="text-[11px] text-gray-500 leading-tight truncate">
-                  Measure frame timing
-                </p>
-              </div>
+            <div className="w-5 h-5 flex items-center justify-center shrink-0 text-blue-600">
+              <Activity className="w-4 h-4 stroke-[2]" />
             </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-900 group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
+            <span className="text-xs sm:text-[13px] font-medium text-gray-900 group-hover:text-gray-950 truncate">
+              {t("quickRefreshRate")}
+            </span>
           </Link>
         </div>
       </section>
 
       {/* ================================================== */}
-      {/* 3. INSPECTION WORKFLOWS SECTION                    */}
+      {/* 3. WHAT ARE YOU CHECKING? (INSPECTION WORKFLOWS)   */}
       {/* ================================================== */}
-      <section className="pt-2 pb-8 px-6 sm:px-10 lg:px-16 xl:px-20 max-w-[1400px] mx-auto">
+      <section className="pt-2 pb-10 sm:pb-12 max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section Header */}
-        <div className="flex items-end justify-between mb-4">
+        <div className="flex items-end justify-between mb-4 sm:mb-5">
           <div>
-            <h2 className="text-[20px] sm:text-[22px] font-bold tracking-tight text-gray-950">
-              Choose an inspection workflow
+            <h2 className="text-sm sm:text-base font-bold tracking-tight text-gray-950 uppercase">
+              {t("workflowsTitle")}
             </h2>
-            <p className="text-[13px] text-gray-500 mt-0.5">
-              Guided checks for your specific situation.
+            <p className="text-xs sm:text-[13px] text-gray-500 mt-0.5">
+              {t("workflowsDesc")}
             </p>
           </div>
           <Link 
             href="/monitor-inspection"
-            className="text-[13px] font-medium text-gray-600 hover:text-gray-950 flex items-center gap-1 group transition-colors focus-visible:ring-2 focus-visible:ring-blue-500 rounded p-1"
+            className="text-xs sm:text-[13px] font-medium text-gray-600 hover:text-gray-950 flex items-center gap-1 group transition-colors focus-visible:ring-2 focus-visible:ring-gray-900 rounded p-1"
           >
-            <span>View all workflows</span>
+            <span>{t("viewAllWorkflows")}</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
           </Link>
         </div>
 
-        {/* 6 Subtle Pastel Tinted Workflow Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-3.5">
-          {/* 1. New Monitor (very pale blue) */}
-          <Link 
-            href="/monitor-inspection/new"
-            className="bg-[#f0f6fc] border border-[#e1ecf8] hover:border-[#cbdef4] rounded-xl p-4 transition-all flex flex-col justify-between group cursor-pointer min-h-[142px] focus-visible:ring-2 focus-visible:ring-blue-500"
-          >
-            <div>
-              <div className="w-7 h-7 flex items-center text-blue-600 mb-3">
-                <Monitor className="w-5 h-5 stroke-[1.8]" />
-              </div>
-              <h3 className="font-semibold text-[13px] text-gray-900 mb-1">New monitor</h3>
-              <p className="text-[11px] text-gray-500 leading-snug">Essential checks before first use</p>
-            </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-0.5 transition-all self-end mt-3" />
-          </Link>
-
-          {/* 2. Used Monitor (very pale green) */}
+        {/* Exactly 5 Workflow Cards (NO "New Monitor") */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5">
+          {/* 1. Used monitor */}
           <Link 
             href="/monitor-inspection/used"
-            className="bg-[#f0f9f3] border border-[#def2e4] hover:border-[#caebd2] rounded-xl p-4 transition-all flex flex-col justify-between group cursor-pointer min-h-[142px] focus-visible:ring-2 focus-visible:ring-blue-500"
+            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 transition-all flex flex-col justify-between group min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
           >
             <div>
-              <div className="w-7 h-7 flex items-center text-emerald-600 mb-3">
-                <RefreshCw className="w-5 h-5 stroke-[1.8]" />
+              <div className="w-6 h-6 flex items-center text-gray-800 mb-2.5">
+                <RotateCcw className="w-4 h-4 stroke-[1.8]" />
               </div>
-              <h3 className="font-semibold text-[13px] text-gray-900 mb-1">Used monitor</h3>
-              <p className="text-[11px] text-gray-500 leading-snug">Look for common issues and hidden defects</p>
+              <h3 className="font-semibold text-[13px] text-gray-950 mb-0.5">
+                {t("wfUsedTitle")}
+              </h3>
+              <p className="text-[11px] text-gray-500 leading-snug">
+                {t("wfUsedDesc")}
+              </p>
             </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-emerald-600 group-hover:translate-x-0.5 transition-all self-end mt-3" />
+            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-2" />
           </Link>
 
-          {/* 3. Gaming Display (very pale warm tone) */}
+          {/* 2. Gaming display */}
           <Link 
             href="/monitor-inspection/gaming"
-            className="bg-[#fdf6f0] border border-[#f8e7d9] hover:border-[#f1d4be] rounded-xl p-4 transition-all flex flex-col justify-between group cursor-pointer min-h-[142px] focus-visible:ring-2 focus-visible:ring-blue-500"
+            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 transition-all flex flex-col justify-between group min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
           >
             <div>
-              <div className="w-7 h-7 flex items-center text-amber-700 mb-3">
-                <Gamepad2 className="w-5 h-5 stroke-[1.8]" />
+              <div className="w-6 h-6 flex items-center text-gray-800 mb-2.5">
+                <Gamepad2 className="w-4 h-4 stroke-[1.8]" />
               </div>
-              <h3 className="font-semibold text-[13px] text-gray-900 mb-1">Gaming display</h3>
-              <p className="text-[11px] text-gray-500 leading-snug">Check refresh rate, tearing, and motion clarity</p>
+              <h3 className="font-semibold text-[13px] text-gray-950 mb-0.5">
+                {t("wfGamingTitle")}
+              </h3>
+              <p className="text-[11px] text-gray-500 leading-snug">
+                {t("wfGamingDesc")}
+              </p>
             </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-amber-700 group-hover:translate-x-0.5 transition-all self-end mt-3" />
+            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-2" />
           </Link>
 
-          {/* 4. OLED Display (very pale violet) */}
+          {/* 3. OLED display */}
           <Link 
             href="/monitor-inspection/oled"
-            className="bg-[#f7f4fc] border border-[#ece4f8] hover:border-[#ddd1f4] rounded-xl p-4 transition-all flex flex-col justify-between group cursor-pointer min-h-[142px] focus-visible:ring-2 focus-visible:ring-blue-500"
+            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 transition-all flex flex-col justify-between group min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
           >
             <div>
-              <div className="w-7 h-7 flex items-center text-purple-600 mb-3">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                  <circle cx="3" cy="3" r="1.3" />
-                  <circle cx="7.6" cy="3" r="1.3" />
-                  <circle cx="12.3" cy="3" r="1.3" />
-                  <circle cx="17" cy="3" r="1.3" />
-                  <circle cx="3" cy="7.6" r="1.3" />
-                  <circle cx="7.6" cy="7.6" r="1.3" />
-                  <circle cx="12.3" cy="7.6" r="1.3" />
-                  <circle cx="17" cy="7.6" r="1.3" />
-                  <circle cx="3" cy="12.3" r="1.3" />
-                  <circle cx="7.6" cy="12.3" r="1.3" />
-                  <circle cx="12.3" cy="12.3" r="1.3" />
-                  <circle cx="17" cy="12.3" r="1.3" />
-                  <circle cx="3" cy="17" r="1.3" />
-                  <circle cx="7.6" cy="17" r="1.3" />
-                  <circle cx="12.3" cy="17" r="1.3" />
-                  <circle cx="17" cy="17" r="1.3" />
-                </svg>
+              <div className="w-6 h-6 flex items-center text-gray-800 mb-2.5">
+                <Monitor className="w-4 h-4 stroke-[1.8]" />
               </div>
-              <h3 className="font-semibold text-[13px] text-gray-900 mb-1">OLED display</h3>
-              <p className="text-[11px] text-gray-500 leading-snug">Test for burn-in, uniformity, and HDR performance</p>
+              <h3 className="font-semibold text-[13px] text-gray-950 mb-0.5">
+                {t("wfOledTitle")}
+              </h3>
+              <p className="text-[11px] text-gray-500 leading-snug">
+                {t("wfOledDesc")}
+              </p>
             </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-purple-600 group-hover:translate-x-0.5 transition-all self-end mt-3" />
+            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-2" />
           </Link>
 
-          {/* 5. Laptop Display (very pale cyan) */}
+          {/* 4. Laptop display */}
           <Link 
             href="/monitor-inspection/laptop"
-            className="bg-[#f1f9fa] border border-[#daf2f5] hover:border-[#c3e8ec] rounded-xl p-4 transition-all flex flex-col justify-between group cursor-pointer min-h-[142px] focus-visible:ring-2 focus-visible:ring-blue-500"
+            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 transition-all flex flex-col justify-between group min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
           >
             <div>
-              <div className="w-7 h-7 flex items-center text-cyan-700 mb-3">
-                <Laptop className="w-5 h-5 stroke-[1.8]" />
+              <div className="w-6 h-6 flex items-center text-gray-800 mb-2.5">
+                <Laptop className="w-4 h-4 stroke-[1.8]" />
               </div>
-              <h3 className="font-semibold text-[13px] text-gray-900 mb-1">Laptop display</h3>
-              <p className="text-[11px] text-gray-500 leading-snug">Quick checks for built-in laptop screens</p>
+              <h3 className="font-semibold text-[13px] text-gray-950 mb-0.5">
+                {t("wfLaptopTitle")}
+              </h3>
+              <p className="text-[11px] text-gray-500 leading-snug">
+                {t("wfLaptopDesc")}
+              </p>
             </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-cyan-700 group-hover:translate-x-0.5 transition-all self-end mt-3" />
+            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-2" />
           </Link>
 
-          {/* 6. TV (very pale rose) */}
+          {/* 5. TV or large display */}
           <Link 
             href="/monitor-inspection/tv"
-            className="bg-[#fdf2f4] border border-[#fbe0e5] hover:border-[#f6c7d0] rounded-xl p-4 transition-all flex flex-col justify-between group cursor-pointer min-h-[142px] focus-visible:ring-2 focus-visible:ring-blue-500"
+            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 transition-all flex flex-col justify-between group min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
           >
             <div>
-              <div className="w-7 h-7 flex items-center text-rose-600 mb-3">
-                <Tv className="w-5 h-5 stroke-[1.8]" />
+              <div className="w-6 h-6 flex items-center text-gray-800 mb-2.5">
+                <Tv className="w-4 h-4 stroke-[1.8]" />
               </div>
-              <h3 className="font-semibold text-[13px] text-gray-900 mb-1">TV</h3>
-              <p className="text-[11px] text-gray-500 leading-snug">Inspect your TV&apos;s display quality and performance</p>
+              <h3 className="font-semibold text-[13px] text-gray-950 mb-0.5">
+                {t("wfTvTitle")}
+              </h3>
+              <p className="text-[11px] text-gray-500 leading-snug">
+                {t("wfTvDesc")}
+              </p>
             </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-rose-600 group-hover:translate-x-0.5 transition-all self-end mt-3" />
+            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-2" />
           </Link>
         </div>
       </section>
 
       {/* ================================================== */}
-      {/* 4. LOWER RESOURCE INDEX BAR                        */}
+      {/* 4. MORE TOOLS SECTION                             */}
       {/* ================================================== */}
-      <section className="pt-2 pb-14 px-6 sm:px-10 lg:px-16 xl:px-20 max-w-[1400px] mx-auto">
-        <div className="border border-gray-200/85 rounded-2xl bg-white overflow-hidden shadow-none">
-          <div className="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-gray-200/80">
-            
-            {/* 1. Display guides */}
-            <Link
-              href="/guides"
-              className="p-5 sm:p-6 flex items-center justify-between hover:bg-gray-50/70 transition-colors group focus-visible:ring-2 focus-visible:ring-blue-500"
-            >
-              <div className="flex items-start gap-3.5 min-w-0">
-                <BookOpen className="w-5 h-5 text-gray-800 shrink-0 mt-0.5 stroke-[1.8]" />
-                <div>
-                  <h3 className="text-[13px] sm:text-[14px] font-semibold text-gray-900 group-hover:text-gray-950 transition-colors">
-                    Display guides
-                  </h3>
-                  <p className="text-[11px] sm:text-[12px] text-gray-500 mt-0.5 leading-snug">
-                    Learn how to spot defects and interpret what you see
-                  </p>
-                </div>
-              </div>
-              <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-gray-900 group-hover:translate-x-0.5 transition-all shrink-0 ml-3" />
-            </Link>
+      <section className="pt-2 pb-14 sm:pb-16 max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
+        {/* Section Header */}
+        <div className="flex items-end justify-between mb-4 sm:mb-5">
+          <div>
+            <h2 className="text-sm sm:text-base font-bold tracking-tight text-gray-950 uppercase">
+              {t("moreToolsTitle")}
+            </h2>
+            <p className="text-xs sm:text-[13px] text-gray-500 mt-0.5">
+              {t("moreToolsDesc")}
+            </p>
+          </div>
+          <Link 
+            href="/tests"
+            className="text-xs sm:text-[13px] font-medium text-gray-600 hover:text-gray-950 flex items-center gap-1 group transition-colors focus-visible:ring-2 focus-visible:ring-gray-900 rounded p-1"
+          >
+            <span>{t("viewAllTools")}</span>
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+          </Link>
+        </div>
 
-            {/* 2. Knowledge base */}
-            <Link
-              href="/knowledge-base"
-              className="p-5 sm:p-6 flex items-center justify-between hover:bg-gray-50/70 transition-colors group focus-visible:ring-2 focus-visible:ring-blue-500"
-            >
-              <div className="flex items-start gap-3.5 min-w-0">
-                <GraduationCap className="w-5 h-5 text-gray-800 shrink-0 mt-0.5 stroke-[1.8]" />
-                <div>
-                  <h3 className="text-[13px] sm:text-[14px] font-semibold text-gray-900 group-hover:text-gray-950 transition-colors">
-                    Knowledge base
-                  </h3>
-                  <p className="text-[11px] sm:text-[12px] text-gray-500 mt-0.5 leading-snug">
-                    Clear explanations and troubleshooting help
-                  </p>
-                </div>
+        {/* 5 Compact Utility Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5">
+          {/* 1. Monitor Inspection */}
+          <Link 
+            href="/monitor-inspection"
+            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 transition-all flex flex-col justify-between group min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
+          >
+            <div>
+              <div className="w-6 h-6 flex items-center text-gray-800 mb-2.5">
+                <ClipboardCheck className="w-4 h-4 stroke-[1.8]" />
               </div>
-              <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-gray-900 group-hover:translate-x-0.5 transition-all shrink-0 ml-3" />
-            </Link>
+              <h3 className="font-semibold text-[13px] text-gray-950 mb-0.5">
+                {t("toolInspectionTitle")}
+              </h3>
+              <p className="text-[11px] text-gray-500 leading-snug">
+                {t("toolInspectionDesc")}
+              </p>
+            </div>
+            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-2" />
+          </Link>
 
-            {/* 3. Display information */}
-            <Link
-              href="/tests/resolution-checker"
-              className="p-5 sm:p-6 flex items-center justify-between hover:bg-gray-50/70 transition-colors group focus-visible:ring-2 focus-visible:ring-blue-500"
-            >
-              <div className="flex items-start gap-3.5 min-w-0">
-                <Cog className="w-5 h-5 text-gray-800 shrink-0 mt-0.5 stroke-[1.8]" />
-                <div>
-                  <h3 className="text-[13px] sm:text-[14px] font-semibold text-gray-900 group-hover:text-gray-950 transition-colors">
-                    Display information
-                  </h3>
-                  <p className="text-[11px] sm:text-[12px] text-gray-500 mt-0.5 leading-snug">
-                    View resolution, DPR, color depth and more about your display
-                  </p>
-                </div>
+          {/* 2. Compare Displays */}
+          <Link 
+            href="/tests/compare-displays"
+            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 transition-all flex flex-col justify-between group min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
+          >
+            <div>
+              <div className="w-6 h-6 flex items-center text-gray-800 mb-2.5">
+                <Sliders className="w-4 h-4 stroke-[1.8]" />
               </div>
-              <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-gray-900 group-hover:translate-x-0.5 transition-all shrink-0 ml-3" />
-            </Link>
+              <h3 className="font-semibold text-[13px] text-gray-950 mb-0.5">
+                {t("toolCompareTitle")}
+              </h3>
+              <p className="text-[11px] text-gray-500 leading-snug">
+                {t("toolCompareDesc")}
+              </p>
+            </div>
+            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-2" />
+          </Link>
 
-            {/* 4. Frequently asked questions */}
-            <Link
-              href="/faq"
-              className="p-5 sm:p-6 flex items-center justify-between hover:bg-gray-50/70 transition-colors group focus-visible:ring-2 focus-visible:ring-blue-500"
-            >
-              <div className="flex items-start gap-3.5 min-w-0">
-                <HelpCircle className="w-5 h-5 text-gray-800 shrink-0 mt-0.5 stroke-[1.8]" />
-                <div>
-                  <h3 className="text-[13px] sm:text-[14px] font-semibold text-gray-900 group-hover:text-gray-950 transition-colors">
-                    Frequently asked questions
-                  </h3>
-                  <p className="text-[11px] sm:text-[12px] text-gray-500 mt-0.5 leading-snug">
-                    Get answers to common questions
-                  </p>
-                </div>
+          {/* 3. PPI & Viewing Distance */}
+          <Link 
+            href="/tests/resolution-checker"
+            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 transition-all flex flex-col justify-between group min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
+          >
+            <div>
+              <div className="w-6 h-6 flex items-center text-gray-800 mb-2.5">
+                <Ruler className="w-4 h-4 stroke-[1.8]" />
               </div>
-              <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-gray-900 group-hover:translate-x-0.5 transition-all shrink-0 ml-3" />
-            </Link>
+              <h3 className="font-semibold text-[13px] text-gray-950 mb-0.5">
+                {t("toolPpiTitle")}
+              </h3>
+              <p className="text-[11px] text-gray-500 leading-snug">
+                {t("toolPpiDesc")}
+              </p>
+            </div>
+            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-2" />
+          </Link>
 
+          {/* 4. Custom Test Pattern */}
+          <Link 
+            href="/tests/custom-pattern"
+            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 transition-all flex flex-col justify-between group min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
+          >
+            <div>
+              <div className="w-6 h-6 flex items-center text-gray-800 mb-2.5">
+                <Grid className="w-4 h-4 stroke-[1.8]" />
+              </div>
+              <h3 className="font-semibold text-[13px] text-gray-950 mb-0.5">
+                {t("toolPatternTitle")}
+              </h3>
+              <p className="text-[11px] text-gray-500 leading-snug">
+                {t("toolPatternDesc")}
+              </p>
+            </div>
+            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-2" />
+          </Link>
+
+          {/* 5. Display Information */}
+          <Link 
+            href="/tests/resolution-checker"
+            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 transition-all flex flex-col justify-between group min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
+          >
+            <div>
+              <div className="w-6 h-6 flex items-center text-gray-800 mb-2.5">
+                <Settings className="w-4 h-4 stroke-[1.8]" />
+              </div>
+              <h3 className="font-semibold text-[13px] text-gray-950 mb-0.5">
+                {t("toolInfoTitle")}
+              </h3>
+              <p className="text-[11px] text-gray-500 leading-snug">
+                {t("toolInfoDesc")}
+              </p>
+            </div>
+            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-2" />
+          </Link>
+        </div>
+      </section>
+
+      {/* ================================================== */}
+      {/* 5. BENEFITS / TRUST STRIP                          */}
+      {/* ================================================== */}
+      <section className="border-t border-gray-200/80 bg-gray-50/40 py-8 sm:py-10">
+        <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200/80">
+            {/* 1. Test visually */}
+            <div className="flex items-start gap-3.5 py-4 md:py-0 md:px-6 first:pl-0">
+              <div className="w-8 h-8 rounded-lg bg-white border border-gray-200/80 flex items-center justify-center shrink-0 text-gray-900 shadow-2xs">
+                <Eye className="w-4 h-4 stroke-[1.8]" />
+              </div>
+              <div>
+                <h3 className="text-xs sm:text-[13px] font-semibold text-gray-950">
+                  {t("benefit1Title")}
+                </h3>
+                <p className="text-[11px] sm:text-xs text-gray-500 mt-0.5 leading-snug">
+                  {t("benefit1Desc")}
+                </p>
+              </div>
+            </div>
+
+            {/* 2. Tools for every display */}
+            <div className="flex items-start gap-3.5 py-4 md:py-0 md:px-6">
+              <div className="w-8 h-8 rounded-lg bg-white border border-gray-200/80 flex items-center justify-center shrink-0 text-gray-900 shadow-2xs">
+                <Monitor className="w-4 h-4 stroke-[1.8]" />
+              </div>
+              <div>
+                <h3 className="text-xs sm:text-[13px] font-semibold text-gray-950">
+                  {t("benefit2Title")}
+                </h3>
+                <p className="text-[11px] sm:text-xs text-gray-500 mt-0.5 leading-snug">
+                  {t("benefit2Desc")}
+                </p>
+              </div>
+            </div>
+
+            {/* 3. Clear guidance */}
+            <div className="flex items-start gap-3.5 py-4 md:py-0 md:px-6 last:pr-0">
+              <div className="w-8 h-8 rounded-lg bg-white border border-gray-200/80 flex items-center justify-center shrink-0 text-gray-900 shadow-2xs">
+                <BookOpen className="w-4 h-4 stroke-[1.8]" />
+              </div>
+              <div>
+                <h3 className="text-xs sm:text-[13px] font-semibold text-gray-950">
+                  {t("benefit3Title")}
+                </h3>
+                <p className="text-[11px] sm:text-xs text-gray-500 mt-0.5 leading-snug">
+                  {t("benefit3Desc")}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
     </div>
   );
 }

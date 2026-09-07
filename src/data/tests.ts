@@ -186,6 +186,18 @@ export const monitorTests: MonitorTest[] = [
     category: "capabilities",
     primaryIntent: "monitor sharpness test",
     relatedTestIds: ["resolution-checker"]
+  },
+  {
+    id: "compare-displays",
+    category: "capabilities",
+    primaryIntent: "compare display sizes and resolutions",
+    relatedTestIds: ["resolution-checker", "custom-pattern"]
+  },
+  {
+    id: "custom-pattern",
+    category: "capabilities",
+    primaryIntent: "custom test pattern generator",
+    relatedTestIds: ["sharpness-test", "uniformity-test", "compare-displays"]
   }
 ];
 
