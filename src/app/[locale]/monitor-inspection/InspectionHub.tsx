@@ -1,158 +1,77 @@
 "use client";
 
-import { useWorkflowLauncher } from "@/components/test-runner/TestContext";
-import { useTranslations } from "next-intl";
-import { ArrowRight, Play, LayoutList } from "lucide-react";
+import { ArrowRight, Monitor, RefreshCw, Gamepad2, Tv, Laptop } from "lucide-react";
 import { Link } from "@/i18n/routing";
+import { inspectionWorkflows } from "@/data/workflows";
 
 export function InspectionHub() {
-  const tHub = useTranslations("Inspection.hub");
-  const { startWorkflow } = useWorkflowLauncher();
 
-  const NEW_MONITOR_QUICK = [
-    "/tests/resolution-checker",
-    "/tests/dead-pixel-test",
-    "/tests/solid-color-test",
-    "/tests/grayscale-test",
-    "/tests/black-level-test",
-    "/tests/white-level-test",
-    "/tests/uniformity-test",
-    "/tests/ghosting-test",
-    "/tests/refresh-rate-test"
-  ];
-
-  const NEW_MONITOR_FULL = [
-    "/tests/resolution-checker",
-    "/tests/sharpness-test",
-    "/tests/dead-pixel-test",
-    "/tests/color-test",
-    "/tests/grayscale-test",
-    "/tests/brightness-test",
-    "/tests/contrast-test",
-    "/tests/black-level-test",
-    "/tests/white-level-test",
-    "/tests/uniformity-test",
-    "/tests/backlight-bleed-test",
-    "/tests/ghosting-test",
-    "/tests/refresh-rate-test",
-    "/tests/screen-tearing-test",
-    "/tests/hdr-capability-test"
-  ];
-
-  const USED_MONITOR_QUICK = [
-    "/tests/resolution-checker",
-    "/tests/dead-pixel-test",
-    "/tests/burn-in-test",
-    "/tests/brightness-test",
-    "/tests/uniformity-test",
-    "/tests/ghosting-test",
-    "/tests/refresh-rate-test"
-  ];
-
-  const USED_MONITOR_FULL = [
-    "/tests/resolution-checker",
-    "/tests/dead-pixel-test",
-    "/tests/stuck-pixel-test",
-    "/tests/burn-in-test",
-    "/tests/brightness-test",
-    "/tests/black-level-test",
-    "/tests/uniformity-test",
-    "/tests/backlight-bleed-test",
-    "/tests/ghosting-test",
-    "/tests/refresh-rate-test",
-    "/tests/color-banding-test"
-  ];
+  const iconMap: Record<string, React.ReactNode> = {
+    new: <Monitor className="w-5 h-5 text-blue-600 stroke-[1.8]" />,
+    used: <RefreshCw className="w-5 h-5 text-emerald-600 stroke-[1.8]" />,
+    gaming: <Gamepad2 className="w-5 h-5 text-amber-700 stroke-[1.8]" />,
+    oled: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" className="text-purple-600">
+        <circle cx="3" cy="3" r="1.3" />
+        <circle cx="7.6" cy="3" r="1.3" />
+        <circle cx="12.3" cy="3" r="1.3" />
+        <circle cx="17" cy="3" r="1.3" />
+        <circle cx="3" cy="7.6" r="1.3" />
+        <circle cx="7.6" cy="7.6" r="1.3" />
+        <circle cx="12.3" cy="7.6" r="1.3" />
+        <circle cx="17" cy="7.6" r="1.3" />
+        <circle cx="3" cy="12.3" r="1.3" />
+        <circle cx="7.6" cy="12.3" r="1.3" />
+        <circle cx="12.3" cy="12.3" r="1.3" />
+        <circle cx="17" cy="12.3" r="1.3" />
+        <circle cx="3" cy="17" r="1.3" />
+        <circle cx="7.6" cy="17" r="1.3" />
+        <circle cx="12.3" cy="17" r="1.3" />
+        <circle cx="17" cy="17" r="1.3" />
+      </svg>
+    ),
+    laptop: <Laptop className="w-5 h-5 text-cyan-700 stroke-[1.8]" />,
+    tv: <Tv className="w-5 h-5 text-rose-600 stroke-[1.8]" />
+  };
 
   return (
-    <div className="space-y-16">
-      
-      {/* New Monitor */}
-      <section>
-        <div className="mb-6">
-          <h2 className="text-2xl font-bold text-foreground mb-2">{tHub("newMonitor")}</h2>
-          <p className="text-muted-foreground">{tHub("newMonitorDesc")}</p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <button 
-            onClick={() => startWorkflow(NEW_MONITOR_QUICK)}
-            className="flex items-center p-6 border border-border/50 rounded-xl hover:bg-muted/20 hover:border-foreground/20 transition-colors text-left group cursor-pointer"
+    <div className="space-y-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {inspectionWorkflows.map((workflow) => (
+          <Link
+            key={workflow.id}
+            href={workflow.route}
+            className="flex flex-col justify-between p-6 border border-border/60 hover:border-foreground/30 rounded-2xl bg-card transition-all group hover:shadow-xs min-h-[160px]"
           >
-            <Play className="w-6 h-6 text-foreground mr-4 opacity-70 group-hover:opacity-100" />
-            <div className="flex-1">
-              <h3 className="font-semibold text-foreground">{tHub("fiveMinuteCheck")}</h3>
-              <p className="text-sm text-muted-foreground mt-1">9 core tests</p>
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-muted/40">
+                  {iconMap[workflow.id]}
+                </div>
+                <span className="text-xs font-mono text-muted-foreground">
+                  {workflow.sequence.length} tests
+                </span>
+              </div>
+              <h2 className="text-lg font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
+                {workflow.title}
+              </h2>
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                {workflow.shortDescription}
+              </p>
             </div>
-            <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-transform group-hover:translate-x-1" />
-          </button>
-          
-          <button 
-            onClick={() => startWorkflow(NEW_MONITOR_FULL)}
-            className="flex items-center p-6 border border-border/50 rounded-xl hover:bg-muted/20 hover:border-foreground/20 transition-colors text-left group cursor-pointer"
-          >
-            <LayoutList className="w-6 h-6 text-foreground mr-4 opacity-70 group-hover:opacity-100" />
-            <div className="flex-1">
-              <h3 className="font-semibold text-foreground">{tHub("fullInspection")}</h3>
-              <p className="text-sm text-muted-foreground mt-1">15 detailed tests</p>
-            </div>
-            <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-transform group-hover:translate-x-1" />
-          </button>
-        </div>
-      </section>
 
-      {/* Used Monitor */}
-      <section>
-        <div className="mb-6">
-          <h2 className="text-2xl font-bold text-foreground mb-2">{tHub("usedMonitor")}</h2>
-          <p className="text-muted-foreground">{tHub("usedMonitorDesc")}</p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <button 
-            onClick={() => startWorkflow(USED_MONITOR_QUICK)}
-            className="flex items-center p-6 border border-border/50 rounded-xl hover:bg-muted/20 hover:border-foreground/20 transition-colors text-left group cursor-pointer"
-          >
-            <Play className="w-6 h-6 text-foreground mr-4 opacity-70 group-hover:opacity-100" />
-            <div className="flex-1">
-              <h3 className="font-semibold text-foreground">{tHub("fiveMinuteCheck")}</h3>
-              <p className="text-sm text-muted-foreground mt-1">7 core tests</p>
+            <div className="flex items-center gap-1 text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors mt-4 self-end">
+              <span>Launch checklist</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
             </div>
-            <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-transform group-hover:translate-x-1" />
-          </button>
-          
-          <button 
-            onClick={() => startWorkflow(USED_MONITOR_FULL)}
-            className="flex items-center p-6 border border-border/50 rounded-xl hover:bg-muted/20 hover:border-foreground/20 transition-colors text-left group cursor-pointer"
-          >
-            <LayoutList className="w-6 h-6 text-foreground mr-4 opacity-70 group-hover:opacity-100" />
-            <div className="flex-1">
-              <h3 className="font-semibold text-foreground">{tHub("fullInspection")}</h3>
-              <p className="text-sm text-muted-foreground mt-1">11 detailed tests</p>
-            </div>
-            <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-transform group-hover:translate-x-1" />
-          </button>
-        </div>
-      </section>
-
-      {/* Specialized Workflows */}
-      <section>
-        <div className="w-full h-px bg-border/50 mb-12"></div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <Link 
-            href="/monitor-inspection/gaming"
-            className="flex items-center justify-between p-6 bg-muted/30 rounded-xl hover:bg-muted/50 transition-colors group"
-          >
-            <span className="font-medium text-foreground">{tHub("gamingMonitor")}</span>
-            <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-transform group-hover:translate-x-1" />
           </Link>
-          <Link 
-            href="/monitor-inspection/oled"
-            className="flex items-center justify-between p-6 bg-muted/30 rounded-xl hover:bg-muted/50 transition-colors group"
-          >
-            <span className="font-medium text-foreground">{tHub("oledMonitor")}</span>
-            <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-transform group-hover:translate-x-1" />
-          </Link>
-        </div>
-      </section>
+        ))}
+      </div>
 
+      <div className="p-5 bg-muted/20 border border-border/40 rounded-xl text-xs sm:text-sm text-muted-foreground leading-relaxed">
+        <strong className="text-foreground block mb-1">About Inspection Workflows:</strong>
+        Each workflow runs a structured sequence of precision display tests directly in your browser. You can mark tests as PASS, CHECK, or ISSUE, skip any test that is not applicable, and generate a final observation report at the end of the checklist.
+      </div>
     </div>
   );
 }

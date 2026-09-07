@@ -124,13 +124,21 @@ export function HdrPattern({ testId }: HdrPatternProps) {
                     Queries whether the operating system display compositor is outputting high-luminance extended range values.
                   </p>
                 </div>
-                <div className="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
-                  <span className="text-xs text-white/50">Status:</span>
-                  <span className={`text-xs font-mono font-semibold px-2.5 py-1 rounded-md ${
-                    hdrSupported ? "bg-emerald-500/20 text-emerald-400" : "bg-white/10 text-white/70"
-                  }`}>
-                    {hdrSupported ? "dynamic-range: high" : "dynamic-range: standard"}
-                  </span>
+                <div className="mt-4 pt-4 border-t border-white/10 flex flex-col gap-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-white/50">Status:</span>
+                    <span className={`text-xs font-mono font-semibold px-2.5 py-1 rounded-md ${
+                      hdrSupported ? "bg-emerald-500/20 text-emerald-400" : "bg-white/10 text-white/70"
+                    }`}>
+                      {hdrSupported ? "dynamic-range: high" : "dynamic-range: standard"}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-white/50">Gamut:</span>
+                    <span className="font-mono text-white/80">
+                      {rec2020Supported ? "Rec.2020 (HDR Wide)" : p3Supported ? "DCI-P3 (Wide Gamut)" : "sRGB (Standard)"}
+                    </span>
+                  </div>
                 </div>
               </div>
 

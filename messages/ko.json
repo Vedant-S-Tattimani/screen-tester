@@ -37,18 +37,53 @@
   },
   "Footer": {
     "title": "Monitor Tester",
-    "description": "브라우저에서 실행되는 불량 화소 및 빛샘 테스트 도구.",
-    "tests": "테스트",
-    "testPixels": "픽셀",
-    "testBrightness": "밝기",
-    "testColor": "색상",
-    "testMotion": "모션",
-    "information": "정보",
-    "monitorInspection": "모니터 점검",
-    "about": "소개",
-    "privacy": "개인정보처리방침",
-    "terms": "이용약관",
-    "rights": "Monitor Tester. All rights reserved."
+    "description": "불량 화소, 빛샘 현상, 색상, 잔상 등을 브라우저에서 바로 검사할 수 있는 무료 오픈소스 디스플레이 진단 도구입니다.",
+    "attributes": {
+      "browserTitle": "브라우저에서 바로 실행",
+      "browserDesc": "소프트웨어 설치 필요 없음",
+      "privacyTitle": "안전한 개인정보 보호",
+      "privacyDesc": "모든 테스트는 로컬에서 실행",
+      "deviceTitle": "모든 기기 지원",
+      "deviceDesc": "데스크톱, 노트북, 태블릿, 모바일",
+      "i18nTitle": "다국어 지원",
+      "i18nDesc": "다양한 언어 제공"
+    },
+    "columns": {
+      "tests": "테스트",
+      "inspection": "점검 가이드",
+      "guides": "가이드",
+      "about": "소개"
+    },
+    "links": {
+      "allTests": "모든 테스트",
+      "deadPixel": "불량 화소 테스트",
+      "color": "색상 테스트",
+      "brightness": "밝기 테스트",
+      "ghosting": "잔상(고스팅) 테스트",
+      "refreshRate": "주사율 테스트",
+      "resolution": "해상도 테스트",
+      "hdr": "HDR 테스트",
+      "uniformity": "균일도 테스트",
+      "moreTests": "더 많은 테스트",
+      "newMonitor": "신품 모니터 점검",
+      "usedMonitor": "중고 모니터 점검",
+      "gamingDisplay": "게이밍 모니터",
+      "oledDisplay": "OLED 디스플레이",
+      "laptopDisplay": "노트북 화면",
+      "tvDisplay": "TV 디스플레이",
+      "allWorkflows": "전체 점검 워크플로",
+      "displayGuides": "디스플레이 가이드",
+      "knowledgeBase": "지식 베이스",
+      "displayInfo": "디스플레이 정보",
+      "faq": "자주 묻는 질문",
+      "about": "Monitor Tester 소개",
+      "privacy": "개인정보 처리방침",
+      "terms": "이용약관",
+      "contact": "문의하기",
+      "contribute": "기여하기",
+      "reportIssue": "문제 신고"
+    },
+    "copyright": "Monitor Tester. All rights reserved."
   },
   "LanguageSwitcher": {
     "en": "English",
@@ -697,5 +732,31 @@
     "missionDesc": "We believe display testing should be accessible, fast, and completely free. Whether you are checking a brand new gaming monitor for dead pixels, inspecting a used TV for burn-in, or calibrating your laptop screen, these tools are designed to provide straightforward, honest results based on visual checks and standard browser APIs.",
     "disclaimer": "Hardware Limitations",
     "disclaimerDesc": "Please note that while web browsers are powerful, they cannot directly measure hardware properties like true input latency, precise color gamuts (Delta E), or physical panel health. Our tools are designed for visual inspection and estimation."
+  },
+  "Terms": {
+    "metaTitle": "Terms of Use | Monitor Tester",
+    "metaDescription": "Terms of use and disclaimer for the Monitor Tester browser-based display testing utility.",
+    "title": "Terms of Use",
+    "intro": "By accessing and using Monitor Tester, you agree to these Terms of Use. If you do not agree, please discontinue using the utility.",
+    "useLicense": "Usage & Permitted Use",
+    "useLicenseDesc": "Monitor Tester is provided free of charge for personal and commercial inspection of monitors, laptop screens, and connected displays. All test patterns and algorithms are executed directly within your client browser without server-side data processing.",
+    "disclaimer": "Diagnostic Disclaimer",
+    "disclaimerDesc": "Monitor Tester provides visual inspection tools based on web browser capabilities. It is designed to assist user observation and cannot replace hardware-calibrated optical sensors (such as colorimeters or spectrophotometers). Results are indicative and should be confirmed with manufacturer tools before filing warranty claims.",
+    "limitations": "Limitation of Liability",
+    "limitationsDesc": "In no event shall Monitor Tester or its contributors be liable for any damages arising out of the use or inability to use this web utility, including any perceived display defects or hardware warranty determinations.",
+    "localExecution": "Client-Side Processing",
+    "localExecutionDesc": "All diagnostic calculations, frame timing measurements, and observation logs run entirely on your local machine. No display diagnostics or usage metrics are transmitted or stored remotely."
+  },
+  "Contact": {
+    "metaTitle": "Contact & Support | Monitor Tester",
+    "metaDescription": "Direct contact channels, issue tracker, and contribution guide for Monitor Tester.",
+    "title": "Contact & Support",
+    "intro": "Have feedback, found a bug, or want to contribute to Monitor Tester? Here are the official ways to get in touch with the project.",
+    "reportBug": "Report a Bug or Issue",
+    "reportBugDesc": "Found an issue with a test pattern or browser compatibility? Open an issue on GitHub with your browser version, OS, and display specs.",
+    "contribute": "Contribute Code or Tests",
+    "contributeDesc": "Monitor Tester is an open-source project. Pull requests for new test patterns, localization improvements, and bug fixes are welcome.",
+    "directEmail": "Direct Inquiries",
+    "directEmailDesc": "For general inquiries, partnerships, or direct questions about the project, reach out via email:"
   }
 }

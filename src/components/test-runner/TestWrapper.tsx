@@ -264,17 +264,17 @@ export function TestWrapper({ title, description, instructions, children, testId
           <div 
             id="test-viewport"
             className={cn(
-              "relative w-full bg-black overflow-hidden flex items-center justify-center transition-all",
+              "relative w-full bg-black overflow-hidden select-none transition-all",
               isFullscreen 
                 ? "flex-1 h-full w-full rounded-none border-none" 
-                : "aspect-video rounded-xl border border-border/50 shadow-sm min-h-[420px] sm:min-h-[500px]"
+                : "aspect-video rounded-xl border border-gray-200/90 shadow-sm min-h-[420px] sm:min-h-[500px]"
             )}
           >
             {children}
           </div>
 
           {/* Controls Target Container for portal */}
-          <div id="test-controls-container" className={isFullscreen ? "contents" : "w-full mt-3"} />
+          <div id="test-controls-container" className={isFullscreen ? "contents" : "w-full mt-4 sm:mt-5"} />
         </div>
 
         {/* Educational Content - Only visible when inline */}

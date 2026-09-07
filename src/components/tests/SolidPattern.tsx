@@ -68,28 +68,36 @@ export function SolidPattern({ colors, autoCycleInterval, testId }: SolidPattern
       <TestControlBar testId={testId} title={autoCycleInterval ? "Stuck Pixel Fixer" : "Dead Pixel Test"}>
         <div className="flex items-center gap-2">
           <button 
+            type="button"
             onClick={prevColor}
-            className="p-1.5 hover:bg-muted rounded-full transition-colors border border-transparent hover:border-border text-foreground"
+            className="p-1.5 hover:bg-gray-100 dark:hover:bg-white/10 rounded-lg transition-colors text-gray-700 dark:text-gray-200 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500"
             aria-label="Previous color"
+            title="Previous color (Left Arrow)"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
 
           {autoCycleInterval && (
             <button 
+              type="button"
               onClick={() => setIsPaused(!isPaused)}
-              className="p-1.5 hover:bg-muted rounded-full transition-colors mx-1 border border-transparent hover:border-border text-foreground"
+              className="p-1.5 hover:bg-gray-100 dark:hover:bg-white/10 rounded-lg transition-colors mx-1 text-gray-700 dark:text-gray-200 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500"
+              aria-label={!isPaused ? "Pause auto-cycle" : "Play auto-cycle"}
             >
               {!isPaused ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
             </button>
           )}
 
-          <div className="flex gap-1.5 items-center px-3">
+          <div className="flex gap-1.5 sm:gap-2 items-center px-1 sm:px-2">
             {colors.map((c, i) => (
-              <div 
+              <button
+                type="button"
                 key={`${c}-${i}`}
-                className={`w-3 h-3 rounded-full transition-all border border-border/50 ${
-                  i === currentIndex ? "scale-125 ring-2 ring-foreground/20" : "opacity-30"
+                onClick={() => setCurrentIndex(i)}
+                aria-label={`Switch to test color ${c}`}
+                title={`Switch to color ${c}`}
+                className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full transition-all border border-gray-300 dark:border-white/30 cursor-pointer focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500 ${
+                  i === currentIndex ? "scale-125 ring-2 ring-gray-900/40 dark:ring-white/60 opacity-100 shadow-xs" : "opacity-40 hover:opacity-80"
                 }`}
                 style={{ backgroundColor: c }}
               />
@@ -97,9 +105,11 @@ export function SolidPattern({ colors, autoCycleInterval, testId }: SolidPattern
           </div>
 
           <button 
+            type="button"
             onClick={nextColor}
-            className="p-1.5 hover:bg-muted rounded-full transition-colors border border-transparent hover:border-border text-foreground"
+            className="p-1.5 hover:bg-gray-100 dark:hover:bg-white/10 rounded-lg transition-colors text-gray-700 dark:text-gray-200 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500"
             aria-label="Next color"
+            title="Next color (Right Arrow)"
           >
             <ChevronRight className="w-4 h-4" />
           </button>

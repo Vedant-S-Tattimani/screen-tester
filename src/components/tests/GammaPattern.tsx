@@ -20,7 +20,7 @@ export function GammaPattern({ testId }: GammaPatternProps) {
   const { isRunning, registerNavigation } = useTestContext();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [selectedGamma, setSelectedGamma] = useState<number>(2.2);
-  const [channel, setChannel] = useState<"all" | "red" | "green" | "blue">("all");
+  const [channel] = useState<"all" | "red" | "green" | "blue">("all");
 
   useEffect(() => {
     registerNavigation({

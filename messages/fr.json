@@ -37,18 +37,53 @@
   },
   "Footer": {
     "title": "Monitor Tester",
-    "description": "Un outil simple pour tester votre moniteur pour les pixels morts, les fuites de rétroéclairage et l'uniformité. S'exécute entièrement dans votre navigateur.",
-    "tests": "Tests",
-    "testPixels": "Pixels",
-    "testBrightness": "Luminosité",
-    "testColor": "Couleur",
-    "testMotion": "Mouvement",
-    "information": "Information",
-    "monitorInspection": "Inspection du moniteur",
-    "about": "À propos",
-    "privacy": "Politique de confidentialité",
-    "terms": "Conditions d'utilisation",
-    "rights": "Monitor Tester. Tous droits réservés."
+    "description": "Une suite d'outils gratuite, ouverte et respectueuse de votre vie privée pour tester votre écran : pixels morts, fuites de lumière, couleurs, netteté en mouvement et plus encore. Fonctionne directement dans votre navigateur.",
+    "attributes": {
+      "browserTitle": "Fonctionne dans le navigateur",
+      "browserDesc": "Aucun logiciel requis",
+      "privacyTitle": "Privé et sécurisé",
+      "privacyDesc": "Tous les tests tournent localement",
+      "deviceTitle": "Compatible tout appareil",
+      "deviceDesc": "Ordinateur, portable, tablette, mobile",
+      "i18nTitle": "Multilingue",
+      "i18nDesc": "Disponible en plusieurs langues"
+    },
+    "columns": {
+      "tests": "Tests",
+      "inspection": "Inspection",
+      "guides": "Guides",
+      "about": "À propos"
+    },
+    "links": {
+      "allTests": "Tous les tests",
+      "deadPixel": "Test de pixels morts",
+      "color": "Test des couleurs",
+      "brightness": "Test de luminosité",
+      "ghosting": "Test de rémanence",
+      "refreshRate": "Taux de rafraîchissement",
+      "resolution": "Test de résolution",
+      "hdr": "Test HDR",
+      "uniformity": "Test d'uniformité",
+      "moreTests": "Plus de tests",
+      "newMonitor": "Nouvel écran",
+      "usedMonitor": "Écran d'occasion",
+      "gamingDisplay": "Écran gaming",
+      "oledDisplay": "Écran OLED",
+      "laptopDisplay": "Écran d'ordinateur portable",
+      "tvDisplay": "Écran TV",
+      "allWorkflows": "Tous les flux",
+      "displayGuides": "Guides d'écrans",
+      "knowledgeBase": "Base de connaissances",
+      "displayInfo": "Informations d'affichage",
+      "faq": "Foire aux questions",
+      "about": "À propos de Monitor Tester",
+      "privacy": "Politique de confidentialité",
+      "terms": "Conditions d'utilisation",
+      "contact": "Contact",
+      "contribute": "Contribuer",
+      "reportIssue": "Signaler un problème"
+    },
+    "copyright": "Monitor Tester. Tous droits réservés."
   },
   "LanguageSwitcher": {
     "en": "English",
@@ -697,5 +732,31 @@
     "missionDesc": "We believe display testing should be accessible, fast, and completely free. Whether you are checking a brand new gaming monitor for dead pixels, inspecting a used TV for burn-in, or calibrating your laptop screen, these tools are designed to provide straightforward, honest results based on visual checks and standard browser APIs.",
     "disclaimer": "Hardware Limitations",
     "disclaimerDesc": "Please note that while web browsers are powerful, they cannot directly measure hardware properties like true input latency, precise color gamuts (Delta E), or physical panel health. Our tools are designed for visual inspection and estimation."
+  },
+  "Terms": {
+    "metaTitle": "Terms of Use | Monitor Tester",
+    "metaDescription": "Terms of use and disclaimer for the Monitor Tester browser-based display testing utility.",
+    "title": "Terms of Use",
+    "intro": "By accessing and using Monitor Tester, you agree to these Terms of Use. If you do not agree, please discontinue using the utility.",
+    "useLicense": "Usage & Permitted Use",
+    "useLicenseDesc": "Monitor Tester is provided free of charge for personal and commercial inspection of monitors, laptop screens, and connected displays. All test patterns and algorithms are executed directly within your client browser without server-side data processing.",
+    "disclaimer": "Diagnostic Disclaimer",
+    "disclaimerDesc": "Monitor Tester provides visual inspection tools based on web browser capabilities. It is designed to assist user observation and cannot replace hardware-calibrated optical sensors (such as colorimeters or spectrophotometers). Results are indicative and should be confirmed with manufacturer tools before filing warranty claims.",
+    "limitations": "Limitation of Liability",
+    "limitationsDesc": "In no event shall Monitor Tester or its contributors be liable for any damages arising out of the use or inability to use this web utility, including any perceived display defects or hardware warranty determinations.",
+    "localExecution": "Client-Side Processing",
+    "localExecutionDesc": "All diagnostic calculations, frame timing measurements, and observation logs run entirely on your local machine. No display diagnostics or usage metrics are transmitted or stored remotely."
+  },
+  "Contact": {
+    "metaTitle": "Contact & Support | Monitor Tester",
+    "metaDescription": "Direct contact channels, issue tracker, and contribution guide for Monitor Tester.",
+    "title": "Contact & Support",
+    "intro": "Have feedback, found a bug, or want to contribute to Monitor Tester? Here are the official ways to get in touch with the project.",
+    "reportBug": "Report a Bug or Issue",
+    "reportBugDesc": "Found an issue with a test pattern or browser compatibility? Open an issue on GitHub with your browser version, OS, and display specs.",
+    "contribute": "Contribute Code or Tests",
+    "contributeDesc": "Monitor Tester is an open-source project. Pull requests for new test patterns, localization improvements, and bug fixes are welcome.",
+    "directEmail": "Direct Inquiries",
+    "directEmailDesc": "For general inquiries, partnerships, or direct questions about the project, reach out via email:"
   }
 }

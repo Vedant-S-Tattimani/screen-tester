@@ -2,7 +2,8 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
-import { AlertCircle, Info } from "lucide-react";
+import { AlertCircle, Info, ArrowRight, CheckCircle2 } from "lucide-react";
+import { useRouter } from "@/i18n/routing";
 
 // --- Helpers for formatting and calculations ---
 
@@ -53,7 +54,41 @@ const InfoRow = ({ label, value, unit = "" }: { label: string, value: React.Reac
 
 export function ResolutionCheckerClient() {
   const t = useTranslations("Tests.resolution-checker");
+  const router = useRouter();
   
+  // -- Workflow State --
+  const [workflowSequence, setWorkflowSequence] = useState<string[]>([]);
+  const [workflowIndex, setWorkflowIndex] = useState(-1);
+
+  useEffect(() => {
+    queueMicrotask(() => {
+      try {
+        if (typeof window !== "undefined") {
+          const raw = sessionStorage.getItem("monitor-tester-workflow");
+          if (raw) {
+            const seq = JSON.parse(raw);
+            if (Array.isArray(seq) && seq.length > 0) {
+              setWorkflowSequence(seq);
+              const idx = seq.findIndex((s: string) => s.includes("resolution-checker"));
+              setWorkflowIndex(idx !== -1 ? idx : 0);
+            }
+          }
+        }
+      } catch {}
+    });
+  }, []);
+
+  const handleNextStep = () => {
+    if (workflowIndex !== -1 && workflowSequence.length > 0) {
+      const nextIdx = workflowIndex + 1;
+      if (nextIdx < workflowSequence.length) {
+        router.push(workflowSequence[nextIdx]);
+      } else {
+        router.push("/monitor-inspection/summary");
+      }
+    }
+  };
+
   // -- State for Live Info --
   const [liveInfo, setLiveInfo] = useState({
     w: 0, h: 0, 
@@ -149,6 +184,36 @@ export function ResolutionCheckerClient() {
 
   return (
     <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 w-full flex-1 flex flex-col items-start pb-24">
+      {/* WORKFLOW BANNER IF ACTIVE */}
+      {workflowIndex !== -1 && workflowSequence.length > 0 && (
+        <div className="w-full mb-8 p-4 sm:p-5 bg-blue-50/80 border border-blue-200/80 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-blue-950">
+          <div>
+            <div className="text-[10px] font-mono uppercase tracking-widest text-blue-600 font-semibold mb-1">
+              INSPECTION WORKFLOW • STEP {workflowIndex + 1} OF {workflowSequence.length}
+            </div>
+            <div className="text-sm font-semibold text-blue-950">
+              Display Resolution & Capabilities Review
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={handleNextStep}
+              className="text-xs text-blue-700 hover:text-blue-950 font-medium px-2 py-1 transition-colors cursor-pointer"
+            >
+              Skip this test →
+            </button>
+            <button
+              onClick={handleNextStep}
+              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all shadow-sm cursor-pointer"
+            >
+              <CheckCircle2 className="w-3.5 h-3.5" />
+              <span>Reviewed, Continue</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* HEADER */}
       <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4 text-foreground">{t("title")}</h1>
       <p className="text-lg text-muted-foreground leading-relaxed mb-10 max-w-2xl">

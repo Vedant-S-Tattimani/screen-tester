@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useEffect, useState, useSyncExternalStore } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { useTestContext } from "./TestContext";
 import { CheckCircle2, XCircle, HelpCircle, Maximize, Minimize, Settings2 } from "lucide-react";
@@ -12,8 +12,6 @@ interface TestControlBarProps {
   testId?: string;
   title: string;
 }
-
-const emptySubscribe = () => () => {};
 
 export function TestControlBar({ children, testId, title }: TestControlBarProps) {
   const { 
@@ -30,9 +28,19 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
   } = useTestContext();
   
   const activeTestId = testId || contextTestId;
-  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
+  const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
   const [mouseActive, setMouseActive] = useState(true);
   const t = useTranslations("TestWrapper");
+
+  // Mount into the dedicated controls container below the test viewport
+  useEffect(() => {
+    const target = document.getElementById("test-controls-container");
+    if (target) {
+      queueMicrotask(() => {
+        setPortalTarget(target);
+      });
+    }
+  }, []);
 
   // Handle mouse idle for hiding control bar in fullscreen
   useEffect(() => {
@@ -58,16 +66,16 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
       className={cn(
         "transition-all duration-300 select-none",
         isFullscreen 
-          ? "fixed bottom-8 left-0 right-0 px-4 mx-auto w-fit z-50" 
+          ? "fixed bottom-8 left-1/2 -translate-x-1/2 px-4 w-fit max-w-[95vw] z-50" 
           : "w-full",
         isFullscreen && !mouseActive ? "opacity-0 pointer-events-none translate-y-4" : "opacity-100 translate-y-0 pointer-events-auto"
       )}
     >
       <div className={cn(
-        "flex flex-col md:flex-row items-center justify-between gap-3 w-full",
+        "flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 w-full",
         isFullscreen 
-          ? "bg-background/90 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-2xl border border-border/50" 
-          : "bg-card/70 backdrop-blur-xs border border-border/60 rounded-xl px-4 py-3 shadow-xs"
+          ? "bg-black/85 backdrop-blur-md px-5 py-2.5 rounded-2xl shadow-2xl border border-white/15 text-white" 
+          : "bg-white border border-gray-200/90 rounded-xl px-4 py-2.5 sm:py-3 shadow-xs text-gray-900"
       )}>
         
         {/* Custom Test Controls */}
@@ -186,12 +194,19 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
     </div>
   );
 
-  if (!mounted) return null;
-
-  const target = document.getElementById("test-controls-container");
-  if (target) {
-    return createPortal(barContent, target);
+  // In fullscreen mode, portal to container or render fixed overlay
+  if (isFullscreen) {
+    if (portalTarget) {
+      return createPortal(barContent, portalTarget);
+    }
+    return barContent;
   }
 
-  return barContent;
+  // In inline mode, strictly portal to the controls container below the test viewport
+  if (portalTarget) {
+    return createPortal(barContent, portalTarget);
+  }
+
+  // Prevent rendering inside the test viewport to avoid hanging in the middle
+  return null;
 }

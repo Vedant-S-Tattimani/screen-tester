@@ -2,7 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
 import { TestLibrary } from "@/components/layout/TestLibrary";
-import { getTestsByCategory, type TestCategory } from "@/data/tests";
+import { getTestsByCategory, type TestCategory, TEST_KEY_MAP } from "@/data/tests";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -23,36 +23,6 @@ export default async function TestsPage({ params }: { params: Promise<{ locale: 
   const tTests = await getTranslations({ locale, namespace: "Tests" });
   const tHome = await getTranslations({ locale, namespace: "Home" });
 
-  const KEY_MAP: Record<string, { ns: "lib" | "tests", key: string }> = {
-    "dead-pixel-test": { ns: "lib", key: "tests.deadPixel" },
-    "stuck-pixel-test": { ns: "lib", key: "tests.stuckPixel" },
-    "burn-in-test": { ns: "tests", key: "burnIn" },
-    "color-test": { ns: "lib", key: "tests.colorTest" },
-    "grayscale-test": { ns: "lib", key: "tests.grayscaleTest" },
-    "saturation-test": { ns: "lib", key: "tests.saturationTest" },
-    "color-banding-test": { ns: "lib", key: "tests.gradientTest" },
-    "color-gamut-test": { ns: "tests", key: "colorGamut" },
-    "color-accuracy-test": { ns: "tests", key: "colorAccuracy" },
-    "brightness-test": { ns: "lib", key: "tests.brightnessTest" },
-    "black-level-test": { ns: "lib", key: "tests.blackLevelTest" },
-    "white-level-test": { ns: "lib", key: "tests.whiteLevelTest" },
-    "gamma-test": { ns: "lib", key: "tests.gammaTest" },
-    "solid-color-test": { ns: "tests", key: "solidColor" },
-    "viewing-angle-test": { ns: "tests", key: "viewingAngle" },
-    "uniformity-test": { ns: "lib", key: "tests.uniformityTest" },
-    "backlight-bleed-test": { ns: "lib", key: "tests.backlightBleed" },
-    "blooming-test": { ns: "tests", key: "blooming" },
-    "ghosting-test": { ns: "lib", key: "tests.ghostingTest" },
-    "motion-blur-test": { ns: "lib", key: "tests.ghostingTest" }, 
-    "refresh-rate-test": { ns: "lib", key: "tests.refreshRate" },
-    "screen-tearing-test": { ns: "tests", key: "screenTearing" },
-    "screen-flicker-test": { ns: "tests", key: "flicker" },
-    "resolution-checker": { ns: "lib", key: "tests.displayInfo" },
-    "hdr-capability-test": { ns: "lib", key: "tests.hdrCapabilityTest" },
-    "touch-screen-test": { ns: "tests", key: "touchScreen" },
-    "sharpness-test": { ns: "tests", key: "sharpness" }
-  };
-
   const mapTestsToI18n = (categoryId: string, translationCategory: string) => {
     const tests = getTestsByCategory(categoryId as TestCategory);
     return {
@@ -62,7 +32,7 @@ export default async function TestsPage({ params }: { params: Promise<{ locale: 
         let title = test.primaryIntent;
         let description = "";
 
-        const mapping = KEY_MAP[test.id];
+        const mapping = TEST_KEY_MAP[test.id];
         if (mapping) {
           try {
             if (mapping.ns === "lib") {
