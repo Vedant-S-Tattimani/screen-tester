@@ -9,7 +9,8 @@
       "tests": "Tests",
       "inspection": "Inspection",
       "guides": "Guides",
-      "menu": "Menu"
+      "menu": "Menu",
+      "tools": "Outils"
     },
     "tests": {
       "pixels": "Pixels",
@@ -157,14 +158,15 @@
     "benefit2Title": "Des outils pour chaque écran",
     "benefit2Desc": "LCD, OLED, gaming, portable, TV et plus.",
     "benefit3Title": "Conseils clairs et impartiaux",
-    "benefit3Desc": "Comprenez ce que vous voyez et sa signification réelle."
+    "benefit3Desc": "Comprenez ce que vous voyez et sa signification réelle.",
+    "diagnoseProblem": "Diagnostiquer un problème"
   },
   "TestLibrary": {
     "categories": {
       "pixels": "Pixels",
       "colorSaturation": "Couleur & Saturation",
       "luminanceContrast": "Luminance & Contraste",
-      "displayBacklight": "Affichage & Rétroéclairage",
+      "displayBacklight": "RÉTROÉCLAIRAGE ET UNIFORMITÉ DE L'ÉCRAN",
       "motionPerformance": "Performance de Mouvement",
       "displayCapabilities": "Capacités d'Affichage"
     },
@@ -551,9 +553,9 @@
       "instructions": "Look for smooth transitions."
     },
     "resolution-checker": {
-      "title": "Resolution Checker",
+      "title": "Calculateur de résolution et PPI",
       "description": "Check your browser-reported resolution, viewport size, DPR, color depth, aspect ratio, and frame timing.",
-      "infoTitle": "LIVE DISPLAY INFORMATION",
+      "infoTitle": "RÉSOLUTION ET GÉOMÉTRIE DE L'ÉCRAN",
       "labels": {
         "logicalRes": "Logical Resolution",
         "viewport": "Viewport",
@@ -835,5 +837,11 @@
     "contributeDesc": "Monitor Tester is an open-source project. Pull requests for new test patterns, localization improvements, and bug fixes are welcome.",
     "directEmail": "Direct Inquiries",
     "directEmailDesc": "For general inquiries, partnerships, or direct questions about the project, reach out via email:"
+  },
+  "Tools": {
+    "metaTitle": "Outils et calculateurs d'affichage | Monitor Tester",
+    "metaDescription": "Calculateurs d'affichage spécialisés, sondes matérielles et utilitaires de mires de test.",
+    "title": "Outils et calculateurs d'affichage",
+    "subtitle": "Utilitaires spécialisés pour inspecter les capacités matérielles, calculer la densité de pixels, comparer les écrans et générer des mires."
   }
 }

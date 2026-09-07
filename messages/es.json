@@ -9,7 +9,8 @@
       "tests": "Pruebas",
       "inspection": "Inspección",
       "guides": "Guías",
-      "menu": "Menú"
+      "menu": "Menú",
+      "tools": "Herramientas"
     },
     "tests": {
       "pixels": "Píxeles",
@@ -157,14 +158,15 @@
     "benefit2Title": "Herramientas para cada pantalla",
     "benefit2Desc": "LCD, OLED, gaming, portátil, TV y más.",
     "benefit3Title": "Orientación clara e imparcial",
-    "benefit3Desc": "Comprende lo que ves y su significado técnico."
+    "benefit3Desc": "Comprende lo que ves y su significado técnico.",
+    "diagnoseProblem": "Diagnosticar un problema"
   },
   "TestLibrary": {
     "categories": {
       "pixels": "Píxeles",
       "colorSaturation": "Color y Saturación",
       "luminanceContrast": "Luminancia y Contraste",
-      "displayBacklight": "Pantalla y Retroiluminación",
+      "displayBacklight": "RETROILUMINACIÓN Y UNIFORMIDAD DE PANTALLA",
       "motionPerformance": "Rendimiento de Movimiento",
       "displayCapabilities": "Capacidades de Pantalla"
     },
@@ -551,9 +553,9 @@
       "instructions": "Look for smooth transitions."
     },
     "resolution-checker": {
-      "title": "Resolution Checker",
+      "title": "Calculadora de resolución y PPI",
       "description": "Check your browser-reported resolution, viewport size, DPR, color depth, aspect ratio, and frame timing.",
-      "infoTitle": "LIVE DISPLAY INFORMATION",
+      "infoTitle": "RESOLUCIÓN Y GEOMETRÍA DE PANTALLA",
       "labels": {
         "logicalRes": "Logical Resolution",
         "viewport": "Viewport",
@@ -835,5 +837,11 @@
     "contributeDesc": "Monitor Tester is an open-source project. Pull requests for new test patterns, localization improvements, and bug fixes are welcome.",
     "directEmail": "Direct Inquiries",
     "directEmailDesc": "For general inquiries, partnerships, or direct questions about the project, reach out via email:"
+  },
+  "Tools": {
+    "metaTitle": "Herramientas y calculadoras de pantalla | Monitor Tester",
+    "metaDescription": "Calculadoras especializadas, sondas de hardware y utilidades de patrones de prueba.",
+    "title": "Herramientas y calculadoras de pantalla",
+    "subtitle": "Utilidades especializadas para inspeccionar capacidades de hardware, calcular densidad de píxeles, comparar dimensiones y generar patrones."
   }
 }

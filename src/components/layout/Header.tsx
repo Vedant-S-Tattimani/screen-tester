@@ -12,10 +12,11 @@ export function Header() {
   const t = useTranslations("Header");
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<"tests" | "inspection" | "guides" | null>(null);
+  const [openDropdown, setOpenDropdown] = useState<"tests" | "inspection" | "tools" | "guides" | null>(null);
 
   const testsRef = useRef<HTMLDivElement>(null);
   const inspectionRef = useRef<HTMLDivElement>(null);
+  const toolsRef = useRef<HTMLDivElement>(null);
   const guidesRef = useRef<HTMLDivElement>(null);
 
   const isActive = (path: string) => pathname.startsWith(path);
@@ -27,6 +28,7 @@ export function Header() {
         openDropdown &&
         !testsRef.current?.contains(e.target as Node) &&
         !inspectionRef.current?.contains(e.target as Node) &&
+        !toolsRef.current?.contains(e.target as Node) &&
         !guidesRef.current?.contains(e.target as Node)
       ) {
         setOpenDropdown(null);
@@ -82,7 +84,7 @@ export function Header() {
             <button
               onClick={() => setOpenDropdown(openDropdown === "tests" ? null : "tests")}
               className={`flex items-center gap-1 text-[13px] font-medium transition-colors py-2 rounded focus-visible:ring-2 focus-visible:ring-gray-900 cursor-pointer ${
-                isActive("/tests") ? "text-gray-950 font-semibold" : "text-gray-600 hover:text-gray-950"
+                isActive("/tests") && !isActive("/tests/display-info") && !isActive("/tests/resolution-checker") && !isActive("/tests/compare-displays") && !isActive("/tests/custom-pattern") ? "text-gray-950 font-semibold" : "text-gray-600 hover:text-gray-950"
               }`}
               aria-expanded={openDropdown === "tests"}
             >
@@ -180,9 +182,17 @@ export function Header() {
             {openDropdown === "inspection" && (
               <div className="absolute top-full left-1/2 -translate-x-1/2 w-64 bg-white border border-gray-200/90 rounded-2xl shadow-xl p-2 z-50 animate-in fade-in-50 zoom-in-95 duration-100">
                 <div className="text-[10px] font-mono uppercase tracking-wider text-gray-400 px-3 py-1.5 border-b border-gray-100 mb-1">
-                  Inspection Workflows
+                  Troubleshoot &amp; Inspect
                 </div>
                 <div className="space-y-0.5">
+                  <Link 
+                    href="/monitor-inspection/diagnostic"
+                    onClick={() => setOpenDropdown(null)}
+                    className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-purple-700 bg-purple-50/60 hover:bg-purple-100/70 transition-colors"
+                  >
+                    <span>Diagnose a Problem</span>
+                    <span className="text-[9px] font-mono font-bold tracking-wider bg-purple-100 text-purple-800 px-1.5 py-0.5 rounded">WIZARD</span>
+                  </Link>
                   <Link 
                     href="/monitor-inspection/general"
                     onClick={() => setOpenDropdown(null)}
@@ -246,7 +256,78 @@ export function Header() {
             )}
           </div>
 
-          {/* 3. Guides Dropdown */}
+          {/* 3. Tools Dropdown */}
+          <div 
+            ref={toolsRef}
+            className="relative h-full flex items-center"
+            onMouseEnter={() => setOpenDropdown("tools")}
+            onMouseLeave={() => setOpenDropdown(null)}
+          >
+            <button
+              onClick={() => setOpenDropdown(openDropdown === "tools" ? null : "tools")}
+              className={`flex items-center gap-1 text-[13px] font-medium transition-colors py-2 rounded focus-visible:ring-2 focus-visible:ring-gray-900 cursor-pointer ${
+                isActive("/tools") || isActive("/tests/display-info") || isActive("/tests/resolution-checker") || isActive("/tests/compare-displays") || isActive("/tests/custom-pattern") ? "text-gray-950 font-semibold" : "text-gray-600 hover:text-gray-950"
+              }`}
+              aria-expanded={openDropdown === "tools"}
+            >
+              <span>{t("nav.tools")}</span>
+              <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-150 ${openDropdown === "tools" ? "rotate-180 text-gray-900" : "text-gray-400"}`} />
+            </button>
+
+            {openDropdown === "tools" && (
+              <div className="absolute top-full left-1/2 -translate-x-1/2 w-64 bg-white border border-gray-200/90 rounded-2xl shadow-xl p-2 z-50 animate-in fade-in-50 zoom-in-95 duration-100">
+                <div className="text-[10px] font-mono uppercase tracking-wider text-gray-400 px-3 py-1.5 border-b border-gray-100 mb-1">
+                  Utilities &amp; Tools
+                </div>
+                <div className="space-y-0.5">
+                  <Link 
+                    href="/tests/display-info"
+                    onClick={() => setOpenDropdown(null)}
+                    className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
+                  >
+                    <span>Display Information</span>
+                    <span className="text-[10px] text-gray-400 font-mono">GPU / INFO</span>
+                  </Link>
+                  <Link 
+                    href="/tests/resolution-checker"
+                    onClick={() => setOpenDropdown(null)}
+                    className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
+                  >
+                    <span>Resolution &amp; PPI</span>
+                    <span className="text-[10px] text-gray-400 font-mono">GEOMETRY</span>
+                  </Link>
+                  <Link 
+                    href="/tests/compare-displays"
+                    onClick={() => setOpenDropdown(null)}
+                    className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
+                  >
+                    <span>Compare Displays</span>
+                    <span className="text-[10px] text-gray-400 font-mono">COMPARE</span>
+                  </Link>
+                  <Link 
+                    href="/tests/custom-pattern"
+                    onClick={() => setOpenDropdown(null)}
+                    className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
+                  >
+                    <span>Custom Pattern</span>
+                    <span className="text-[10px] text-gray-400 font-mono">PATTERN</span>
+                  </Link>
+                </div>
+                <div className="mt-1 pt-1 border-t border-gray-100">
+                  <Link
+                    href="/tools"
+                    onClick={() => setOpenDropdown(null)}
+                    className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-gray-950 hover:bg-gray-50 transition-colors"
+                  >
+                    <span>View All Tools</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* 4. Guides Dropdown */}
           <div 
             ref={guidesRef}
             className="relative h-full flex items-center"
@@ -372,12 +453,30 @@ export function Header() {
               {t("nav.inspection")}
             </Link>
             <div className="grid grid-cols-2 gap-2 text-xs text-gray-600 pl-2">
+              <Link href="/monitor-inspection/diagnostic" onClick={() => setMobileOpen(false)} className="hover:text-purple-700 py-1 font-semibold text-purple-700">Diagnose Problem</Link>
               <Link href="/monitor-inspection/general" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">General Checkup</Link>
               <Link href="/monitor-inspection/used" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Used Monitor</Link>
               <Link href="/monitor-inspection/gaming" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Gaming Display</Link>
               <Link href="/monitor-inspection/oled" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">OLED Display</Link>
               <Link href="/monitor-inspection/laptop" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Laptop Display</Link>
               <Link href="/monitor-inspection/summary" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1 font-medium text-blue-600">Reports →</Link>
+            </div>
+          </div>
+
+          <div className="border-b border-gray-100 pb-3">
+            <Link 
+              href="/tools" 
+              className="block text-sm font-semibold text-gray-950 mb-2"
+              onClick={() => setMobileOpen(false)}
+            >
+              {t("nav.tools")}
+            </Link>
+            <div className="grid grid-cols-2 gap-2 text-xs text-gray-600 pl-2">
+              <Link href="/tests/display-info" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Display Information</Link>
+              <Link href="/tests/resolution-checker" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Resolution &amp; PPI</Link>
+              <Link href="/tests/compare-displays" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Compare Displays</Link>
+              <Link href="/tests/custom-pattern" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Custom Pattern</Link>
+              <Link href="/tools" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1 font-medium text-gray-950 col-span-2">All Tools →</Link>
             </div>
           </div>
 

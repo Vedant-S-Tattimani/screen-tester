@@ -9,7 +9,8 @@
       "tests": "Tests",
       "inspection": "Inspektion",
       "guides": "Anleitungen",
-      "menu": "Menü"
+      "menu": "Menü",
+      "tools": "Werkzeuge"
     },
     "tests": {
       "pixels": "Pixel",
@@ -157,14 +158,15 @@
     "benefit2Title": "Werkzeuge für jedes Display",
     "benefit2Desc": "LCD, OLED, Gaming, Laptop, TV und mehr.",
     "benefit3Title": "Klare, unabhängige Beratung",
-    "benefit3Desc": "Verstehen Sie, was Sie sehen und was es bedeutet."
+    "benefit3Desc": "Verstehen Sie, was Sie sehen und was es bedeutet.",
+    "diagnoseProblem": "Problem diagnostizieren"
   },
   "TestLibrary": {
     "categories": {
       "pixels": "Pixel",
       "colorSaturation": "Farbe & Sättigung",
       "luminanceContrast": "Leuchtdichte & Kontrast",
-      "displayBacklight": "Anzeige & Hintergrundbeleuchtung",
+      "displayBacklight": "HINTERGRUNDBELEUCHTUNG & BILDSCHIRM-GLEICHMÄSSIGKEIT",
       "motionPerformance": "Bewegungsleistung",
       "displayCapabilities": "Anzeigefunktionen"
     },
@@ -551,9 +553,9 @@
       "instructions": "Look for smooth transitions."
     },
     "resolution-checker": {
-      "title": "Resolution Checker",
+      "title": "Auflösungs- & PPI-Rechner",
       "description": "Check your browser-reported resolution, viewport size, DPR, color depth, aspect ratio, and frame timing.",
-      "infoTitle": "LIVE DISPLAY INFORMATION",
+      "infoTitle": "AUFLÖSUNG & DISPLAY-GEOMETRIE",
       "labels": {
         "logicalRes": "Logical Resolution",
         "viewport": "Viewport",
@@ -835,5 +837,11 @@
     "contributeDesc": "Monitor Tester is an open-source project. Pull requests for new test patterns, localization improvements, and bug fixes are welcome.",
     "directEmail": "Direct Inquiries",
     "directEmailDesc": "For general inquiries, partnerships, or direct questions about the project, reach out via email:"
+  },
+  "Tools": {
+    "metaTitle": "Display-Werkzeuge & Rechner | Monitor Tester",
+    "metaDescription": "Spezialisierte Display-Rechner, Hardware-Prüfungen und Testmuster-Tools.",
+    "title": "Display-Werkzeuge & Rechner",
+    "subtitle": "Spezialisierte Werkzeuge zur Prüfung von Browser-Hardwarefunktionen, Pixeldichte, Display-Vergleichen und Testmustern."
   }
 }

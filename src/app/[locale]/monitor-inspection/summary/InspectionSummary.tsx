@@ -607,15 +607,34 @@ export function InspectionSummary() {
           <h3 className="text-base font-bold text-gray-900 mb-4">Inspection Checklist & Observed Results</h3>
           
           {checklistItems.length === 0 ? (
-            <div className="text-center py-8 bg-slate-50 rounded-xl border border-dashed border-gray-200">
-              <p className="text-xs text-gray-500">No test observations recorded in this session yet.</p>
-              <Link
-                href="/monitor-inspection"
-                className="inline-flex items-center gap-1.5 mt-3 text-xs font-medium text-blue-600 hover:text-blue-800"
-              >
-                <span>Choose an inspection workflow</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
+            <div className="text-center py-10 px-4 bg-slate-50 rounded-2xl border border-dashed border-gray-200/90">
+              <p className="text-xs text-gray-500 font-medium mb-1">No test observations recorded in this session yet.</p>
+              <p className="text-xs text-gray-400 mb-5">Run a structured inspection to generate diagnostic findings, observations, and recommendations.</p>
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <Link
+                  href="/monitor-inspection/general"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-950 text-white text-xs font-semibold hover:bg-black transition-colors shadow-xs"
+                >
+                  <span>Start General Checkup</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <Link
+                  href="/monitor-inspection/used"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-gray-300 text-gray-800 text-xs font-semibold hover:bg-gray-50 transition-colors shadow-2xs"
+                >
+                  <span>Start Used Monitor Checkup</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+              <div className="mt-4">
+                <Link
+                  href="/monitor-inspection"
+                  className="inline-flex items-center gap-1 text-[11px] font-medium text-blue-600 hover:text-blue-800"
+                >
+                  <span>Browse all 5 inspection workflows</span>
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
+              </div>
             </div>
           ) : (
             <div className="border border-gray-200 rounded-xl divide-y divide-gray-100 overflow-hidden print:border print:border-slate-300">

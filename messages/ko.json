@@ -9,7 +9,8 @@
       "tests": "테스트",
       "inspection": "점검",
       "guides": "가이드",
-      "menu": "메뉴"
+      "menu": "메뉴",
+      "tools": "도구"
     },
     "tests": {
       "pixels": "픽셀",
@@ -157,14 +158,15 @@
     "benefit2Title": "모든 디스플레이 지원",
     "benefit2Desc": "LCD, OLED, 게이밍, 노트북, TV 등 모든 화면.",
     "benefit3Title": "명확하고 객관적인 가이드",
-    "benefit3Desc": "눈에 보이는 현상과 기술적 의미를 쉽게 이해."
+    "benefit3Desc": "눈에 보이는 현상과 기술적 의미를 쉽게 이해.",
+    "diagnoseProblem": "문제 진단하기"
   },
   "TestLibrary": {
     "categories": {
       "pixels": "픽셀",
       "colorSaturation": "색상 & 채도",
       "luminanceContrast": "휘도 & 대비",
-      "displayBacklight": "디스플레이 & 백라이트",
+      "displayBacklight": "백라이트 및 화면 균일도",
       "motionPerformance": "모션 성능",
       "displayCapabilities": "디스플레이 정보"
     },
@@ -551,9 +553,9 @@
       "instructions": "Look for smooth transitions."
     },
     "resolution-checker": {
-      "title": "Resolution Checker",
+      "title": "해상도 및 PPI 계산기",
       "description": "Check your browser-reported resolution, viewport size, DPR, color depth, aspect ratio, and frame timing.",
-      "infoTitle": "LIVE DISPLAY INFORMATION",
+      "infoTitle": "해상도 및 디스플레이 지오메트리",
       "labels": {
         "logicalRes": "Logical Resolution",
         "viewport": "Viewport",
@@ -835,5 +837,11 @@
     "contributeDesc": "Monitor Tester is an open-source project. Pull requests for new test patterns, localization improvements, and bug fixes are welcome.",
     "directEmail": "Direct Inquiries",
     "directEmailDesc": "For general inquiries, partnerships, or direct questions about the project, reach out via email:"
+  },
+  "Tools": {
+    "metaTitle": "디스플레이 도구 및 계산기 | Monitor Tester",
+    "metaDescription": "특수 디스플레이 계산기, 하드웨어 프로브 및 테스트 패턴 유틸리티.",
+    "title": "디스플레이 도구 및 계산기",
+    "subtitle": "브라우저 하드웨어 기능 검사, 픽셀 밀도 계산, 디스플레이 크기 비교 및 테스트 패턴 생성을 위한 전용 유틸리티."
   }
 }

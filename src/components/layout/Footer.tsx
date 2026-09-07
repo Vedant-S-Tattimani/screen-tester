@@ -87,6 +87,11 @@ export function Footer() {
             </h3>
             <ul className="space-y-2 text-xs text-gray-600">
               <li>
+                <Link href="/monitor-inspection/general" className="hover:text-gray-950 transition-colors block py-0.5 font-medium text-gray-900">
+                  General Checkup
+                </Link>
+              </li>
+              <li>
                 <Link href="/monitor-inspection/used" className="hover:text-gray-950 transition-colors block py-0.5">
                   Used Monitor
                 </Link>
@@ -132,6 +137,16 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/tests/display-info" className="hover:text-gray-950 transition-colors block py-0.5 font-medium text-gray-900">
+                  Display Information
+                </Link>
+              </li>
+              <li>
+                <Link href="/tests/resolution-checker" className="hover:text-gray-950 transition-colors block py-0.5">
+                  Resolution &amp; PPI
+                </Link>
+              </li>
+              <li>
                 <Link href="/tests/compare-displays" className="hover:text-gray-950 transition-colors block py-0.5">
                   Compare Displays
                 </Link>
@@ -144,11 +159,6 @@ export function Footer() {
               <li>
                 <Link href="/knowledge-base" className="hover:text-gray-950 transition-colors block py-0.5">
                   Knowledge Base
-                </Link>
-              </li>
-              <li>
-                <Link href="/tests/resolution-checker" className="hover:text-gray-950 transition-colors block py-0.5">
-                  Resolution Checker
                 </Link>
               </li>
               <li>

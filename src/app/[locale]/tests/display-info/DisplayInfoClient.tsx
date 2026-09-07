@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef, useCallback, useMemo } from "react";
+import { useEffect, useState, useRef, useCallback, useMemo, useSyncExternalStore } from "react";
 import { Link, useRouter } from "@/i18n/routing";
 import { 
   ArrowLeft, ArrowRight, Monitor, Maximize2, Minimize2, Cpu, 
@@ -27,8 +27,11 @@ interface ScreenDetailInfo {
   orientation?: string;
 }
 
+const emptySubscribe = () => () => {};
+
 export function DisplayInfoClient() {
   const router = useRouter();
+  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
   const [workflowSequence, setWorkflowSequence] = useState<string[]>([]);
   const [workflowIndex, setWorkflowIndex] = useState(-1);
   const [obsChoice, setObsChoice] = useState<ObservationResult>("LOOKS_NORMAL");
@@ -610,16 +613,20 @@ export function DisplayInfoClient() {
                 {capabilities.map((c) => (
                   <tr key={c.name} className="hover:bg-gray-50/50 transition-colors">
                     <td className="py-3 px-4 font-medium text-gray-900">{c.name}</td>
-                    <td className="py-3 px-4">
-                      {c.supported ? (
+                    <td className="py-3 px-4" suppressHydrationWarning>
+                      {mounted && c.supported ? (
                         <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
                           <CheckCircle2 className="w-3.5 h-3.5" />
                           <span>Supported</span>
                         </span>
-                      ) : (
+                      ) : mounted ? (
                         <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600 border border-gray-200">
                           <XCircle className="w-3.5 h-3.5" />
                           <span>Not Supported</span>
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-50 text-gray-400 border border-gray-100">
+                          <span>Checking...</span>
                         </span>
                       )}
                     </td>
@@ -658,7 +665,7 @@ export function DisplayInfoClient() {
 
                 <div className="w-full aspect-video rounded-xl overflow-hidden bg-black/90 relative flex items-center justify-center border border-white/10">
                   <canvas ref={canvasRef} width={640} height={360} className="w-full h-full block" />
-                  {!webglInfo?.supported && (
+                  {mounted && !webglInfo?.supported && (
                     <div className="absolute inset-0 flex items-center justify-center text-xs text-gray-400 bg-black/80">
                       WebGL context unavailable in this environment
                     </div>
@@ -689,34 +696,34 @@ export function DisplayInfoClient() {
                   <span>Graphics Pipeline Query Parameters</span>
                 </h3>
 
-                <div className="space-y-3 text-xs">
+                <div className="space-y-3 text-xs" suppressHydrationWarning>
                   <div className="flex justify-between py-2 border-b border-gray-200/60">
                     <span className="text-gray-500">WebGL Version</span>
-                    <span className="font-mono font-medium text-gray-900">{webglInfo?.version || "Probing..."}</span>
+                    <span className="font-mono font-medium text-gray-900" suppressHydrationWarning>{mounted ? (webglInfo?.version || "Probing...") : "Probing..."}</span>
                   </div>
                   <div className="flex justify-between py-2 border-b border-gray-200/60">
                     <span className="text-gray-500">Reported GPU Vendor</span>
-                    <span className="font-mono font-medium text-gray-900 text-right max-w-xs truncate">{webglInfo?.vendor || "Unavailable"}</span>
+                    <span className="font-mono font-medium text-gray-900 text-right max-w-xs truncate" suppressHydrationWarning>{mounted ? (webglInfo?.vendor || "Unavailable") : "Probing..."}</span>
                   </div>
                   <div className="flex justify-between py-2 border-b border-gray-200/60">
                     <span className="text-gray-500">Reported GPU Renderer</span>
-                    <span className="font-mono font-medium text-gray-900 text-right max-w-xs truncate">{webglInfo?.renderer || "Unavailable"}</span>
+                    <span className="font-mono font-medium text-gray-900 text-right max-w-xs truncate" suppressHydrationWarning>{mounted ? (webglInfo?.renderer || "Unavailable") : "Probing..."}</span>
                   </div>
                   <div className="flex justify-between py-2 border-b border-gray-200/60">
                     <span className="text-gray-500">Max 2D Texture Size</span>
-                    <span className="font-mono font-medium text-gray-900 tabular-nums">
-                      {webglInfo?.maxTextureSize ? `${webglInfo.maxTextureSize} × ${webglInfo.maxTextureSize} px` : "Unavailable"}
+                    <span className="font-mono font-medium text-gray-900 tabular-nums" suppressHydrationWarning>
+                      {mounted && webglInfo?.maxTextureSize ? `${webglInfo.maxTextureSize} × ${webglInfo.maxTextureSize} px` : "Unavailable"}
                     </span>
                   </div>
                   <div className="flex justify-between py-2 border-b border-gray-200/60">
                     <span className="text-gray-500">Max Renderbuffer Size</span>
-                    <span className="font-mono font-medium text-gray-900 tabular-nums">
-                      {webglInfo?.maxRenderBufferSize ? `${webglInfo.maxRenderBufferSize} px` : "Unavailable"}
+                    <span className="font-mono font-medium text-gray-900 tabular-nums" suppressHydrationWarning>
+                      {mounted && webglInfo?.maxRenderBufferSize ? `${webglInfo.maxRenderBufferSize} px` : "Unavailable"}
                     </span>
                   </div>
                   <div className="flex justify-between py-2 border-b border-gray-200/60">
                     <span className="text-gray-500">Hardware Antialiasing (MSAA)</span>
-                    <span className="font-mono font-medium text-gray-900">{webglInfo?.antialias ? "Enabled (Direct)" : "Disabled / Default"}</span>
+                    <span className="font-mono font-medium text-gray-900" suppressHydrationWarning>{mounted ? (webglInfo?.antialias ? "Enabled (Direct)" : "Disabled / Default") : "Probing..."}</span>
                   </div>
                 </div>
               </div>
@@ -828,7 +835,7 @@ export function DisplayInfoClient() {
                 href="/tests/resolution-checker"
                 className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors flex items-center gap-1"
               >
-                <span>Resolution Checker</span>
+                <span>Resolution &amp; PPI Calculator</span>
                 <span className="text-gray-400">→</span>
               </Link>
               <span className="text-gray-300">•</span>

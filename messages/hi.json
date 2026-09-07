@@ -9,7 +9,8 @@
       "tests": "परीक्षण",
       "inspection": "निरीक्षण",
       "guides": "गाइड",
-      "menu": "मेनू"
+      "menu": "मेनू",
+      "tools": "उपकरण"
     },
     "tests": {
       "pixels": "पिक्सल",
@@ -157,14 +158,15 @@
     "benefit2Title": "हर डिस्प्ले के लिए टूल्स",
     "benefit2Desc": "LCD, OLED, गेमिंग, लैपटॉप, टीवी और बहुत कुछ।",
     "benefit3Title": "स्पष्ट, निष्पक्ष मार्गदर्शन",
-    "benefit3Desc": "समझें कि आप क्या देख रहे हैं और इसका क्या अर्थ है।"
+    "benefit3Desc": "समझें कि आप क्या देख रहे हैं और इसका क्या अर्थ है।",
+    "diagnoseProblem": "समस्या का निदान करें"
   },
   "TestLibrary": {
     "categories": {
       "pixels": "पिक्सेल",
       "colorSaturation": "रंग और संतृप्ति",
       "luminanceContrast": "चमक और कंट्रास्ट",
-      "displayBacklight": "डिस्प्ले और बैकलाइट",
+      "displayBacklight": "बैकलाइट और स्क्रीन एकरूपता",
       "motionPerformance": "मोशन प्रदर्शन",
       "displayCapabilities": "डिस्प्ले क्षमताएं"
     },
@@ -551,9 +553,9 @@
       "instructions": "Look for smooth transitions."
     },
     "resolution-checker": {
-      "title": "Resolution Checker",
+      "title": "रिज़ॉल्यूशन और पीपीआई कैलकुलेटर",
       "description": "Check your browser-reported resolution, viewport size, DPR, color depth, aspect ratio, and frame timing.",
-      "infoTitle": "LIVE DISPLAY INFORMATION",
+      "infoTitle": "रिज़ॉल्यूशन और डिस्प्ले ज्यामिति",
       "labels": {
         "logicalRes": "Logical Resolution",
         "viewport": "Viewport",
@@ -835,5 +837,11 @@
     "contributeDesc": "Monitor Tester is an open-source project. Pull requests for new test patterns, localization improvements, and bug fixes are welcome.",
     "directEmail": "Direct Inquiries",
     "directEmailDesc": "For general inquiries, partnerships, or direct questions about the project, reach out via email:"
+  },
+  "Tools": {
+    "metaTitle": "डिस्प्ले उपकरण और कैलकुलेटर | Monitor Tester",
+    "metaDescription": "विशेष डिस्प्ले कैलकुलेटर, हार्डवेयर जांच और परीक्षण पैटर्न उपकरण।",
+    "title": "डिस्प्ले उपकरण और कैलकुलेटर",
+    "subtitle": "ब्राउज़र हार्डवेयर क्षमताओं की जांच, पिक्सेल घनत्व की गणना, डिस्प्ले आयामों की तुलना और पैटर्न उत्पन्न करने के लिए विशेष उपकरण।"
   }
 }

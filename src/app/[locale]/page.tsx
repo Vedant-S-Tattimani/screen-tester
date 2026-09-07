@@ -18,7 +18,8 @@ import {
   Eye, 
   BookOpen,
   ShieldCheck,
-  Globe
+  Globe,
+  AlertCircle
 } from "lucide-react";
 
 export default async function Home({
@@ -65,6 +66,13 @@ export default async function Home({
               >
                 <span>{t("startTesting")}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+              <Link 
+                href="/monitor-inspection/diagnostic"
+                className="inline-flex items-center justify-center gap-2 bg-gray-50/80 hover:bg-gray-100 text-gray-800 border border-gray-300 hover:border-gray-400 font-medium text-xs sm:text-[13.5px] px-5 py-2.5 rounded-lg transition-all focus-visible:ring-2 focus-visible:ring-gray-900"
+              >
+                <AlertCircle className="w-3.5 h-3.5 text-amber-600" />
+                <span>{t("diagnoseProblem")}</span>
               </Link>
               <Link 
                 href="/tests"
@@ -424,7 +432,7 @@ export default async function Home({
             </p>
           </div>
           <Link 
-            href="/tests"
+            href="/tools"
             className="text-xs sm:text-[13px] font-medium text-gray-600 hover:text-gray-950 flex items-center gap-1 group transition-colors focus-visible:ring-2 focus-visible:ring-gray-900 rounded p-1"
           >
             <span>{t("viewAllTools")}</span>

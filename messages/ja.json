@@ -9,7 +9,8 @@
       "tests": "テスト",
       "inspection": "点検",
       "guides": "ガイド",
-      "menu": "メニュー"
+      "menu": "メニュー",
+      "tools": "ツール"
     },
     "tests": {
       "pixels": "ピクセル",
@@ -157,14 +158,15 @@
     "benefit2Title": "あらゆる画面に対応",
     "benefit2Desc": "LCD、OLED、ゲーミング、ノートPC、テレビなど。",
     "benefit3Title": "分かりやすく中立な解説",
-    "benefit3Desc": "目に見える現象とその意味を正しく理解。"
+    "benefit3Desc": "目に見える現象とその意味を正しく理解。",
+    "diagnoseProblem": "問題を診断する"
   },
   "TestLibrary": {
     "categories": {
       "pixels": "ピクセル",
       "colorSaturation": "色と彩度",
       "luminanceContrast": "輝度とコントラスト",
-      "displayBacklight": "ディスプレイとバックライト",
+      "displayBacklight": "バックライトと画面の均一性",
       "motionPerformance": "モーション性能",
       "displayCapabilities": "ディスプレイの機能"
     },
@@ -551,9 +553,9 @@
       "instructions": "Look for smooth transitions."
     },
     "resolution-checker": {
-      "title": "Resolution Checker",
+      "title": "解像度とPPI計算機",
       "description": "Check your browser-reported resolution, viewport size, DPR, color depth, aspect ratio, and frame timing.",
-      "infoTitle": "LIVE DISPLAY INFORMATION",
+      "infoTitle": "解像度とディスプレイジオメトリ",
       "labels": {
         "logicalRes": "Logical Resolution",
         "viewport": "Viewport",
@@ -835,5 +837,11 @@
     "contributeDesc": "Monitor Tester is an open-source project. Pull requests for new test patterns, localization improvements, and bug fixes are welcome.",
     "directEmail": "Direct Inquiries",
     "directEmailDesc": "For general inquiries, partnerships, or direct questions about the project, reach out via email:"
+  },
+  "Tools": {
+    "metaTitle": "ディスプレイツール＆計算機 | Monitor Tester",
+    "metaDescription": "特殊なディスプレイ計算機、ハードウェアプローブ、テストパターンユーティリティ。",
+    "title": "ディスプレイツール＆計算機",
+    "subtitle": "ブラウザのハードウェア機能の検査、ピクセル密度の計算、ディスプレイ寸法の比較、テストパターン生成のための専用ユーティリティ。"
   }
 }

@@ -9,7 +9,8 @@
       "tests": "Tests",
       "inspection": "Inspection",
       "guides": "Guides",
-      "menu": "Menu"
+      "menu": "Menu",
+      "tools": "Tools"
     },
     "tests": {
       "pixels": "Pixels",
@@ -183,7 +184,8 @@
     "benefit2Title": "Tools for every display",
     "benefit2Desc": "LCD, OLED, gaming, laptop, TV and more.",
     "benefit3Title": "Clear, unbiased guidance",
-    "benefit3Desc": "Understand what you see and what it means."
+    "benefit3Desc": "Understand what you see and what it means.",
+    "diagnoseProblem": "Diagnose a Problem"
   },
   "TestLibrary": {
     "launchTest": "Launch Test",
@@ -191,7 +193,7 @@
       "pixels": "PIXELS",
       "colorSaturation": "COLOR & SATURATION",
       "luminanceContrast": "LUMINANCE & CONTRAST",
-      "displayBacklight": "DISPLAY & BACKLIGHT",
+      "displayBacklight": "BACKLIGHT & SCREEN UNIFORMITY",
       "motionPerformance": "MOTION PERFORMANCE",
       "displayCapabilities": "DISPLAY CAPABILITIES"
     },
@@ -568,9 +570,9 @@
       "instructions": "Look for smooth transitions."
     },
     "resolution-checker": {
-      "title": "Resolution Checker",
+      "title": "Resolution & PPI Calculator",
       "description": "Check your browser-reported resolution, viewport size, DPR, color depth, aspect ratio, and frame timing.",
-      "infoTitle": "LIVE DISPLAY INFORMATION",
+      "infoTitle": "RESOLUTION & DISPLAY GEOMETRY",
       "labels": {
         "logicalRes": "Logical Resolution",
         "viewport": "Viewport",
@@ -826,5 +828,11 @@
     "missionDesc": "We believe display testing should be accessible, fast, and completely free. Whether you are checking a brand new gaming monitor for dead pixels, inspecting a used TV for burn-in, or calibrating your laptop screen, these tools are designed to provide straightforward, honest results based on visual checks and standard browser APIs.",
     "disclaimer": "Hardware Limitations",
     "disclaimerDesc": "Please note that while web browsers are powerful, they cannot directly measure hardware properties like true input latency, precise color gamuts (Delta E), or physical panel health. Our tools are designed for visual inspection and estimation."
+  },
+  "Tools": {
+    "metaTitle": "Display Tools & Calculators | Monitor Tester",
+    "metaDescription": "Specialized display calculators, hardware probes, and test pattern utilities.",
+    "title": "Display Tools & Calculators",
+    "subtitle": "Specialized utilities to inspect browser hardware capabilities, calculate pixel density, compare display dimensions, and generate test patterns."
   }
 }
