@@ -67,8 +67,15 @@
       "resolutionPpi": "Resolution & PPI",
       "compareDisplays": "Compare Displays",
       "customPattern": "Custom Pattern",
-      "viewAllTools": "View All Tools"
-    }
+      "viewAllTools": "View All Tools",
+      "practicalGuides": "Practical Guides",
+      "deadVsStuck": "Dead vs Stuck Pixels",
+      "ghostingMotion": "Ghosting & Motion",
+      "backlightBleed": "Backlight Bleed",
+      "viewingAngles": "Viewing Angles",
+      "allGuides": "All Display Guides"
+    },
+    "searchPlaceholder": "Search tests or guides..."
   },
   "Footer": {
     "title": "Monitor Tester",
@@ -87,7 +94,8 @@
       "tests": "Tests",
       "inspection": "Inspection",
       "guides": "Guides",
-      "about": "About"
+      "about": "About",
+      "guidesAndTools": "Guides & Tools"
     },
     "links": {
       "allTests": "All Tests",
@@ -751,7 +759,17 @@
       "fullInspection": "Full Inspection",
       "gamingMonitor": "Gaming Monitor Workflow",
       "oledMonitor": "OLED Workflow",
-      "startWorkflow": "Start Workflow"
+      "startWorkflow": "Start Workflow",
+      "diagnosticEyebrow": "DIAGNOSTIC WIZARD",
+      "diagnosticTitle": "Something looks wrong with your screen?",
+      "diagnosticDesc": "Select what you are seeing (dead pixels, strange colors, dark shadows, blurry text, or tearing) and we will recommend the exact tests to run.",
+      "diagnoseProblem": "Diagnose Problem",
+      "testsCount": "{count} tests",
+      "aboutWorkflowsTitle": "About Inspection Workflows:",
+      "aboutWorkflowsDesc": "Run structured sequences, mark tests as normal or needing attention, drop pixel defect pins with exact coordinates, and save factual inspection reports. Zero synthetic scores.",
+      "savedReports": "Saved Reports & History",
+      "wfGeneralTitle": "General Display Checkup",
+      "wfGeneralDesc": "Essential all-around visual checkup for dead pixels, color, and motion."
     },
     "gaming": {
       "metaTitle": "Gaming Monitor Inspection",
@@ -876,6 +894,40 @@
     "metaTitle": "Display Tools & Calculators | Monitor Tester",
     "metaDescription": "Specialized display calculators, hardware probes, and test pattern utilities.",
     "title": "Display Tools & Calculators",
-    "subtitle": "Specialized utilities to inspect browser hardware capabilities, calculate pixel density, compare display dimensions, and generate test patterns."
+    "subtitle": "Specialized utilities to inspect browser hardware capabilities, calculate pixel density, compare display dimensions, and generate test patterns.",
+    "eyebrow": "DISPLAY UTILITIES & CALCULATORS",
+    "openTool": "Open Tool",
+    "items": {
+      "displayInfo": {
+        "badge": "HARDWARE PROBE",
+        "title": "Display Information & GPU Diagnostics",
+        "description": "Query browser-detected screen parameters, unmasked GPU hardware, WebGL 2.0 / WebGPU support, HDR, and live frame rates."
+      },
+      "compareDisplays": {
+        "badge": "CALCULATOR",
+        "title": "Display Comparison Calculator",
+        "description": "Interactive side-by-side display size overlay, pixel density (PPI) comparison, aspect ratio GCD math, and optimal viewing distance."
+      },
+      "customPattern": {
+        "badge": "CALIBRATION",
+        "title": "Custom Test Pattern Generator",
+        "description": "Generate 12 specialized calibration patterns including SMPTE color bars, crosshatch, dot grid, zone plate, and gradient ramps."
+      },
+      "resolutionChecker": {
+        "badge": "CALCULATOR",
+        "title": "Resolution & PPI Calculator",
+        "description": "Detailed screen resolution analysis, display scaling ratio (DPR), pixel density, visual size comparisons, and viewing distance guidance."
+      },
+      "diagnostic": {
+        "badge": "WIZARD",
+        "title": "Display Diagnostic Wizard",
+        "description": "Select what visual defect you are observing (dead pixels, strange colors, dark shadows, blurry text) to generate a targeted test sequence."
+      },
+      "summary": {
+        "badge": "REPORTING",
+        "title": "Inspection Reports & Defect Log",
+        "description": "Review recorded observations, inspect dropped pixel defect coordinates, review hardware profiles, and export or print inspection documentation."
+      }
+    }
   }
 }

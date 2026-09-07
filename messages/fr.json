@@ -67,8 +67,15 @@
       "resolutionPpi": "Résolution & PPI",
       "compareDisplays": "Comparer les écrans",
       "customPattern": "Mire personnalisée",
-      "viewAllTools": "Voir tous les outils"
-    }
+      "viewAllTools": "Voir tous les outils",
+      "practicalGuides": "Guides pratiques",
+      "deadVsStuck": "Pixels morts vs bloqués",
+      "ghostingMotion": "Ghosting et réactivité",
+      "backlightBleed": "Fuite de lumière",
+      "viewingAngles": "Angles de vision",
+      "allGuides": "Tous les guides"
+    },
+    "searchPlaceholder": "Rechercher des tests ou des guides..."
   },
   "Footer": {
     "title": "Monitor Tester",
@@ -87,7 +94,8 @@
       "tests": "Tests",
       "inspection": "Inspection",
       "guides": "Guides",
-      "about": "À propos"
+      "about": "À propos",
+      "guidesAndTools": "Guides et outils"
     },
     "links": {
       "allTests": "Tous les tests",
@@ -734,7 +742,17 @@
       "fullInspection": "Full Inspection",
       "gamingMonitor": "Gaming Monitor Workflow",
       "oledMonitor": "OLED Workflow",
-      "startWorkflow": "Start Workflow"
+      "startWorkflow": "Start Workflow",
+      "diagnosticEyebrow": "ASSISTANT DE DIAGNOSTIC",
+      "diagnosticTitle": "Un problème d'affichage sur votre écran ?",
+      "diagnosticDesc": "Sélectionnez ce que vous observez (pixels morts, couleurs anormales, ombres sombres, texte flou ou déchirement) pour obtenir les tests adaptés.",
+      "diagnoseProblem": "Diagnostiquer un problème",
+      "testsCount": "{count} tests",
+      "aboutWorkflowsTitle": "À propos des flux d'inspection :",
+      "aboutWorkflowsDesc": "Suivez des séquences structurées, signalez les anomalies, marquez les coordonnées des défauts de pixels et enregistrez des rapports factuels sans notes artificielles.",
+      "savedReports": "Rapports enregistrés et historique",
+      "wfGeneralTitle": "Vérification générale de l'écran",
+      "wfGeneralDesc": "Examen visuel complet essentiel : pixels morts, couleurs et netteté en mouvement."
     },
     "gaming": {
       "metaTitle": "Gaming Monitor Inspection",
@@ -885,6 +903,40 @@
     "metaTitle": "Outils et calculateurs d'affichage | Monitor Tester",
     "metaDescription": "Calculateurs d'affichage spécialisés, sondes matérielles et utilitaires de mires de test.",
     "title": "Outils et calculateurs d'affichage",
-    "subtitle": "Utilitaires spécialisés pour inspecter les capacités matérielles, calculer la densité de pixels, comparer les écrans et générer des mires."
+    "subtitle": "Utilitaires spécialisés pour inspecter les capacités matérielles, calculer la densité de pixels, comparer les écrans et générer des mires.",
+    "eyebrow": "OUTILS ET CALCULATEURS D'ÉCRAN",
+    "openTool": "Ouvrir l'outil",
+    "items": {
+      "displayInfo": {
+        "badge": "SONDE MATÉRIELLE",
+        "title": "Informations sur l'écran et diagnostic GPU",
+        "description": "Consultez les paramètres d'écran détectés, la puce GPU, le support WebGL 2.0 / WebGPU, le HDR et la fréquence d'affichage en direct."
+      },
+      "compareDisplays": {
+        "badge": "CALCULATEUR",
+        "title": "Calculateur de comparaison d'écrans",
+        "description": "Comparaison visuelle interactive côte à côte, densité de pixels (PPI), calcul du ratio d'aspect et distance de recul recommandée."
+      },
+      "customPattern": {
+        "badge": "CALIBRAGE",
+        "title": "Générateur de mires de test personnalisées",
+        "description": "Générez 12 mires de calibrage avancées : barres de couleur SMPTE, grilles, cercles de Siemens et rampes de dégradés."
+      },
+      "resolutionChecker": {
+        "badge": "CALCULATEUR",
+        "title": "Calculateur de résolution et PPI",
+        "description": "Analyse précise de la définition d'écran, ratio d'échelle (DPR), densité de pixels et conseils de distance visuelle."
+      },
+      "diagnostic": {
+        "badge": "ASSISTANT",
+        "title": "Assistant de diagnostic d'écran",
+        "description": "Indiquez l'anomalie constatée (pixels morts, teintes bizarres, ombres bouchées, flou) pour obtenir une séquence de test sur mesure."
+      },
+      "summary": {
+        "badge": "RAPPORTS",
+        "title": "Rapports d'inspection et journal des défauts",
+        "description": "Consultez vos observations, analysez les coordonnées des sous-pixels défectueux, vos profils d'écran et exportez vos fiches d'inspection."
+      }
+    }
   }
 }

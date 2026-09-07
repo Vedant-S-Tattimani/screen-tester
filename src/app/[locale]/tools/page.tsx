@@ -26,58 +26,46 @@ export async function generateMetadata({
   );
 }
 
-const TOOLS_LIST = [
+const TOOLS_CONFIG = [
   {
     id: "display-info",
+    key: "displayInfo",
     href: "/tests/display-info",
-    title: "Display Information & GPU Diagnostics",
-    description: "Query browser-detected screen parameters, unmasked GPU hardware, WebGL 2.0 / WebGPU support, HDR, and live frame rates.",
-    badge: "HARDWARE PROBE",
     icon: Monitor,
     iconColor: "text-blue-600"
   },
   {
     id: "compare-displays",
+    key: "compareDisplays",
     href: "/tests/compare-displays",
-    title: "Display Comparison Calculator",
-    description: "Interactive side-by-side display size overlay, pixel density (PPI) comparison, aspect ratio GCD math, and optimal viewing distance.",
-    badge: "CALCULATOR",
     icon: Sliders,
     iconColor: "text-purple-600"
   },
   {
     id: "custom-pattern",
+    key: "customPattern",
     href: "/tests/custom-pattern",
-    title: "Custom Test Pattern Generator",
-    description: "Generate 12 specialized calibration patterns including SMPTE color bars, crosshatch, dot grid, zone plate, and gradient ramps.",
-    badge: "CALIBRATION",
     icon: Grid,
     iconColor: "text-emerald-600"
   },
   {
     id: "resolution-checker",
+    key: "resolutionChecker",
     href: "/tests/resolution-checker",
-    title: "Resolution & PPI Calculator",
-    description: "Inspect logical viewport resolution, scaling factor (DPR), aspect ratio, and calculate physical pixel density from diagonal size.",
-    badge: "DISPLAY GEOMETRY",
     icon: Ruler,
     iconColor: "text-indigo-600"
   },
   {
     id: "diagnostic-wizard",
+    key: "diagnostic",
     href: "/monitor-inspection/diagnostic",
-    title: "Diagnostic Symptom Wizard",
-    description: "Select what visual defect you are observing (dead pixels, strange colors, ghosting, tearing) to get a targeted diagnostic queue.",
-    badge: "TROUBLESHOOT",
     icon: AlertCircle,
     iconColor: "text-amber-600"
   },
   {
     id: "inspection-summary",
+    key: "summary",
     href: "/monitor-inspection/summary",
-    title: "Saved Reports & Inspection History",
-    description: "Review recorded test observations, pixel defect coordinates, hardware profiles, JSON import/export, and printable certificates.",
-    badge: "REPORTING",
     icon: ClipboardCheck,
     iconColor: "text-rose-600"
   }
@@ -100,7 +88,7 @@ export default async function ToolsPage({
         {/* Header */}
         <div className="mb-10 sm:mb-12">
           <div className="text-xs font-mono uppercase tracking-[0.2em] text-gray-400 font-semibold mb-2">
-            DISPLAY UTILITIES &amp; CALCULATORS
+            {t("eyebrow")}
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-gray-950 mb-3">
             {t("title")}
@@ -112,8 +100,11 @@ export default async function ToolsPage({
 
         {/* Tools Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {TOOLS_LIST.map((tool) => {
+          {TOOLS_CONFIG.map((tool) => {
             const Icon = tool.icon;
+            const title = t(`items.${tool.key}.title`);
+            const description = t(`items.${tool.key}.description`);
+            const badge = t(`items.${tool.key}.badge`);
             return (
               <Link
                 key={tool.id}
@@ -126,19 +117,19 @@ export default async function ToolsPage({
                       <Icon className={`w-5 h-5 ${tool.iconColor} stroke-[1.8]`} />
                     </div>
                     <span className="text-[10px] font-mono font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-gray-200/60 text-gray-600">
-                      {tool.badge}
+                      {badge}
                     </span>
                   </div>
                   <h2 className="text-base font-bold text-gray-950 mb-1.5 group-hover:text-blue-600 transition-colors">
-                    {tool.title}
+                    {title}
                   </h2>
                   <p className="text-xs text-gray-600 leading-relaxed">
-                    {tool.description}
+                    {description}
                   </p>
                 </div>
 
                 <div className="flex items-center gap-1.5 text-xs font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mt-6 pt-3 border-t border-gray-200/60 self-start w-full justify-between">
-                  <span>Open Tool</span>
+                  <span>{t("openTool")}</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </Link>

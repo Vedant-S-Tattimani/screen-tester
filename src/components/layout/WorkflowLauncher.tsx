@@ -36,18 +36,22 @@ export function WorkflowLauncher({ sequence, steps, buttonLabel, workflowTitle, 
       </div>
 
       <div className="space-y-0">
-        {steps.map((step, index) => (
-          <WorkflowStep 
-            key={index}
-            stepNumber={String(index + 1).padStart(2, '0')}
-            title={step.title}
-            description={step.description}
-            onClick={() => {
-              // Launch sequence starting from this step
-              startWorkflow(sequence.slice(index), workflowTitle, workflowId);
-            }}
-          />
-        ))}
+        {steps.map((step, index) => {
+          const isQueueStep = index < sequence.length;
+          return (
+            <WorkflowStep
+              key={index}
+              stepNumber={String(index + 1).padStart(2, '0')}
+              title={step.title}
+              description={step.description}
+              href={!isQueueStep ? "/monitor-inspection/summary" : undefined}
+              onClick={isQueueStep ? () => {
+                // Launch sequence starting from this step
+                startWorkflow(sequence.slice(index), workflowTitle, workflowId);
+              } : undefined}
+            />
+          );
+        })}
       </div>
     </div>
   );

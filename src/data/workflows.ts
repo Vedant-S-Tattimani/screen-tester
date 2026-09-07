@@ -51,7 +51,7 @@ export const inspectionWorkflows: InspectionWorkflow[] = [
     id: "used",
     route: "/monitor-inspection/used",
     title: "Used Monitor Inspection",
-    shortDescription: "Focused 12-step inspection optimized before purchasing a used display.",
+    shortDescription: "Focused 10-test inspection with notes and report generation, optimized before purchasing a used display.",
     longDescription: "A rigorous, pre-purchase inspection workflow designed specifically for evaluating second-hand, refurbished, or used monitors. Systematically covers hardware display parameters, pixel defects, backlight decay, color fidelity, motion clarity, and saves findings directly into an inspection report.",
     inspectionTip: "Set monitor brightness to 100% when inspecting a pre-owned display to expose dormant burn-in, uneven fluorescent/LED decay, and bezel pressure damage.",
     browserLimitations: "Power-on hours and internal thermal sensor telemetry require accessing the physical monitor's factory Service Menu via hardware chassis buttons.",

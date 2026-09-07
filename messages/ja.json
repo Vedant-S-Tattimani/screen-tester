@@ -67,8 +67,15 @@
       "resolutionPpi": "解像度とPPI",
       "compareDisplays": "ディスプレイ比較",
       "customPattern": "カスタムパターン",
-      "viewAllTools": "すべてのツールを見る"
-    }
+      "viewAllTools": "すべてのツールを見る",
+      "practicalGuides": "実践ガイド",
+      "deadVsStuck": "ドット抜けの種類と見分け方",
+      "ghostingMotion": "ゴーストと応答速度",
+      "backlightBleed": "バックライト漏れ",
+      "viewingAngles": "視野角の違い",
+      "allGuides": "すべてのガイドを見る"
+    },
+    "searchPlaceholder": "テストやガイドを検索..."
   },
   "Footer": {
     "title": "Monitor Tester",
@@ -87,7 +94,8 @@
       "tests": "テスト",
       "inspection": "検査フロー",
       "guides": "ガイド",
-      "about": "このサイトについて"
+      "about": "このサイトについて",
+      "guidesAndTools": "ガイド＆ツール"
     },
     "links": {
       "allTests": "すべてのテスト",
@@ -734,7 +742,17 @@
       "fullInspection": "Full Inspection",
       "gamingMonitor": "Gaming Monitor Workflow",
       "oledMonitor": "OLED Workflow",
-      "startWorkflow": "Start Workflow"
+      "startWorkflow": "Start Workflow",
+      "diagnosticEyebrow": "診断ウィザード",
+      "diagnosticTitle": "画面の表示に違和感がありますか？",
+      "diagnosticDesc": "見えている現象（ドット抜け、色の異常、暗い影、ぼやけた文字、テアリングなど）を選択すると、最適なテストをお勧めします。",
+      "diagnoseProblem": "問題を診断する",
+      "testsCount": "{count}件のテスト",
+      "aboutWorkflowsTitle": "点検ワークフローについて:",
+      "aboutWorkflowsDesc": "体系的な手順でテストを進め、異常箇所を記録し、ドット抜けの正確な座標をマークして客観的な点検レポートを保存できます。作為的なスコアは一切ありません。",
+      "savedReports": "保存済みレポートと履歴",
+      "wfGeneralTitle": "総合ディスプレイ点検",
+      "wfGeneralDesc": "ドット抜け、発色、動画応答性をバランスよく確認する基本チェック。"
     },
     "gaming": {
       "metaTitle": "Gaming Monitor Inspection",
@@ -885,6 +903,40 @@
     "metaTitle": "ディスプレイツール＆計算機 | Monitor Tester",
     "metaDescription": "特殊なディスプレイ計算機、ハードウェアプローブ、テストパターンユーティリティ。",
     "title": "ディスプレイツール＆計算機",
-    "subtitle": "ブラウザのハードウェア機能の検査、ピクセル密度の計算、ディスプレイ寸法の比較、テストパターン生成のための専用ユーティリティ。"
+    "subtitle": "ブラウザのハードウェア機能の検査、ピクセル密度の計算、ディスプレイ寸法の比較、テストパターン生成のための専用ユーティリティ。",
+    "eyebrow": "ディスプレイユーティリティ＆計算ツール",
+    "openTool": "ツールを開く",
+    "items": {
+      "displayInfo": {
+        "badge": "ハードウェア検出",
+        "title": "画面情報とGPU診断",
+        "description": "ブラウザが検出した画面パラメータ、GPUハードウェア、WebGL 2.0 / WebGPU対応、HDR、ライブFPSを取得します。"
+      },
+      "compareDisplays": {
+        "badge": "計算ツール",
+        "title": "画面サイズ比較ツール",
+        "description": "ディスプレイサイズの実寸比較、画素密度（PPI）の対比、アスペクト比計算、最適な視聴距離をシミュレーションします。"
+      },
+      "customPattern": {
+        "badge": "キャリブレーション",
+        "title": "カスタムテストパターン生成",
+        "description": "SMPTEカラーバー、格子縞、ドットグリッド、グラデーションなど12種類の高精度調整用パターンを生成します。"
+      },
+      "resolutionChecker": {
+        "badge": "計算ツール",
+        "title": "解像度＆PPI計算機",
+        "description": "ネイティブ解像度、OS表示倍率（DPR）、画素密度（PPI）、視認サイズ比率と最適視聴距離を詳細表示します。"
+      },
+      "diagnostic": {
+        "badge": "ウィザード",
+        "title": "画面診断ウィザード",
+        "description": "ドット抜け、色の異常、影つぶれ、文字のぼやけなどの気になる症状を選択して、最適なテスト順序を作成します。"
+      },
+      "summary": {
+        "badge": "レポート",
+        "title": "点検レポートと不具合記録",
+        "description": "記録した目視結果の確認、ドット抜けの位置座標一覧、ハードウェア構成の確認、印刷およびJSON保存が行えます。"
+      }
+    }
   }
 }

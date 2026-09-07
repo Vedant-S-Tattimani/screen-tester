@@ -67,8 +67,15 @@
       "resolutionPpi": "Auflösung & PPI",
       "compareDisplays": "Displays vergleichen",
       "customPattern": "Benutzerdefiniertes Muster",
-      "viewAllTools": "Alle Tools anzeigen"
-    }
+      "viewAllTools": "Alle Tools anzeigen",
+      "practicalGuides": "Praxisanleitungen",
+      "deadVsStuck": "Pixelfehler vs. Subpixel",
+      "ghostingMotion": "Ghosting & Bewegung",
+      "backlightBleed": "Backlight Bleeding",
+      "viewingAngles": "Blickwinkel",
+      "allGuides": "Alle Anleitungen"
+    },
+    "searchPlaceholder": "Tests oder Anleitungen suchen..."
   },
   "Footer": {
     "title": "Monitor Tester",
@@ -87,7 +94,8 @@
       "tests": "Tests",
       "inspection": "Inspektion",
       "guides": "Leitfäden",
-      "about": "Über uns"
+      "about": "Über uns",
+      "guidesAndTools": "Anleitungen & Tools"
     },
     "links": {
       "allTests": "Alle Tests",
@@ -734,7 +742,17 @@
       "fullInspection": "Full Inspection",
       "gamingMonitor": "Gaming Monitor Workflow",
       "oledMonitor": "OLED Workflow",
-      "startWorkflow": "Start Workflow"
+      "startWorkflow": "Start Workflow",
+      "diagnosticEyebrow": "DIAGNOSE-ASSISTENT",
+      "diagnosticTitle": "Sieht etwas auf Ihrem Bildschirm fehlerhaft aus?",
+      "diagnosticDesc": "Wählen Sie Ihre Beobachtung (Pixelfehler, verfälschte Farben, dunkle Schatten, unscharfer Text oder Tearing) für gezielte Testempfehlungen.",
+      "diagnoseProblem": "Problem diagnostizieren",
+      "testsCount": "{count} Tests",
+      "aboutWorkflowsTitle": "Über Inspektions-Workflows:",
+      "aboutWorkflowsDesc": "Führen Sie strukturierte Abläufe durch, markieren Sie Auffälligkeiten, setzen Sie Pixelfehler-Markierungen mit genauen Koordinaten und speichern Sie sachliche Berichte ohne künstliche Scores.",
+      "savedReports": "Gespeicherte Berichte & Verlauf",
+      "wfGeneralTitle": "Allgemeine Display-Prüfung",
+      "wfGeneralDesc": "Grundlegende Rundum-Prüfung auf Pixelfehler, Farbtreue und Bewegungsschärfe."
     },
     "gaming": {
       "metaTitle": "Gaming Monitor Inspection",
@@ -885,6 +903,40 @@
     "metaTitle": "Display-Werkzeuge & Rechner | Monitor Tester",
     "metaDescription": "Spezialisierte Display-Rechner, Hardware-Prüfungen und Testmuster-Tools.",
     "title": "Display-Werkzeuge & Rechner",
-    "subtitle": "Spezialisierte Werkzeuge zur Prüfung von Browser-Hardwarefunktionen, Pixeldichte, Display-Vergleichen und Testmustern."
+    "subtitle": "Spezialisierte Werkzeuge zur Prüfung von Browser-Hardwarefunktionen, Pixeldichte, Display-Vergleichen und Testmustern.",
+    "eyebrow": "DISPLAY-WERKZEUGE & RECHNER",
+    "openTool": "Werkzeug öffnen",
+    "items": {
+      "displayInfo": {
+        "badge": "HARDWARE-ANALYSE",
+        "title": "Display-Informationen & GPU-Diagnose",
+        "description": "Vom Browser erkannte Bildschirmparameter, unmaskierte GPU-Hardware, WebGL 2.0 / WebGPU-Unterstützung, HDR und Echtzeit-Bildraten abfragen."
+      },
+      "compareDisplays": {
+        "badge": "RECHNER",
+        "title": "Display-Vergleichsrechner",
+        "description": "Interaktiver Größenvergleich nebeneinander, Pixeldichte (PPI), Seitenverhältnis-Mathematik und optimaler Betrachtungsabstand."
+      },
+      "customPattern": {
+        "badge": "KALIBRIERUNG",
+        "title": "Benutzerdefinierter Testbildgenerator",
+        "description": "Erzeugen Sie 12 spezialisierte Kalibriermuster wie SMPTE-Farbbalken, Gittermuster, Zonenplatten und Graustufenverläufe."
+      },
+      "resolutionChecker": {
+        "badge": "RECHNER",
+        "title": "Auflösung & PPI-Rechner",
+        "description": "Detaillierte Analyse der Bildschirmauflösung, Skalierungsfaktor (DPR), Pixeldichte, visuelle Größenvergleiche und Abstandsempfehlungen."
+      },
+      "diagnostic": {
+        "badge": "ASSISTENT",
+        "title": "Display-Fehlerdiagnose-Assistent",
+        "description": "Wählen Sie beobachtete Bildfehler (Pixelfehler, Farbabweichungen, dunkle Schatten, Textunschärfe) für eine gezielte Testreihe aus."
+      },
+      "summary": {
+        "badge": "BERICHT",
+        "title": "Inspektionsberichte & Fehlerprotokoll",
+        "description": "Beobachtungen überprüfen, markierte Pixelfehler-Koordinaten einsehen, Hardwareprofile verwalten und Berichte exportieren oder drucken."
+      }
+    }
   }
 }

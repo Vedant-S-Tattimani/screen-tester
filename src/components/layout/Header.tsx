@@ -356,7 +356,7 @@ export function Header() {
             {openDropdown === "guides" && (
               <div className="absolute top-full left-1/2 -translate-x-1/2 w-64 bg-white border border-gray-200/90 rounded-2xl shadow-xl p-2 z-50 animate-in fade-in-50 zoom-in-95 duration-100">
                 <div className="text-[10px] font-mono uppercase tracking-wider text-gray-400 px-3 py-1.5 border-b border-gray-100 mb-1">
-                  Practical Guides
+                  {t("dropdown.practicalGuides")}
                 </div>
                 <div className="space-y-0.5">
                   <Link 
@@ -364,28 +364,28 @@ export function Header() {
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
-                    <span>Dead vs Stuck Pixels</span>
+                    <span>{t("dropdown.deadVsStuck")}</span>
                   </Link>
                   <Link 
                     href="/guides/how-to-check-monitor-ghosting"
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
-                    <span>Ghosting &amp; Motion</span>
+                    <span>{t("dropdown.ghostingMotion")}</span>
                   </Link>
                   <Link 
                     href="/guides/how-to-check-backlight-bleed"
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
-                    <span>Backlight Bleed</span>
+                    <span>{t("dropdown.backlightBleed")}</span>
                   </Link>
                   <Link 
                     href="/guides/monitor-viewing-angles-explained"
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
-                    <span>Viewing Angles</span>
+                    <span>{t("dropdown.viewingAngles")}</span>
                   </Link>
                 </div>
                 <div className="mt-1 pt-1 border-t border-gray-100">
@@ -394,7 +394,7 @@ export function Header() {
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-gray-950 hover:bg-gray-50 transition-colors"
                   >
-                    <span>All Display Guides</span>
+                    <span>{t("dropdown.allGuides")}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -409,7 +409,7 @@ export function Header() {
           
           {/* Desktop Search Bar matching reference pill */}
           <div className="hidden lg:block lg:w-64">
-            <SearchInput id="header-search-input" name="q" placeholder="Search tests or guides..." />
+            <SearchInput id="header-search-input" name="q" placeholder={t("searchPlaceholder")} />
           </div>
 
           {/* Language Selector */}
@@ -431,7 +431,7 @@ export function Header() {
       {mobileOpen && (
         <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-xl flex flex-col py-4 px-6 space-y-4 z-50 animate-in fade-in duration-150">
           <div className="mb-1">
-            <SearchInput id="header-search-input-mobile" name="q" onSelect={() => setMobileOpen(false)} placeholder="Search tests or guides..." />
+            <SearchInput id="header-search-input-mobile" name="q" onSelect={() => setMobileOpen(false)} placeholder={t("searchPlaceholder")} />
           </div>
 
           <div className="border-b border-gray-100 pb-3">
@@ -498,10 +498,10 @@ export function Header() {
               {t("nav.guides")}
             </Link>
             <div className="grid grid-cols-2 gap-2 text-xs text-gray-600 pl-2">
-              <Link href="/guides/dead-pixel-vs-stuck-pixel" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Dead vs Stuck</Link>
-              <Link href="/guides/how-to-check-monitor-ghosting" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Ghosting</Link>
-              <Link href="/guides/how-to-check-backlight-bleed" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Backlight Bleed</Link>
-              <Link href="/guides" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1 font-medium text-gray-950">All Guides →</Link>
+              <Link href="/guides/dead-pixel-vs-stuck-pixel" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.deadVsStuck")}</Link>
+              <Link href="/guides/how-to-check-monitor-ghosting" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.ghostingMotion")}</Link>
+              <Link href="/guides/how-to-check-backlight-bleed" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.backlightBleed")}</Link>
+              <Link href="/guides" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1 font-medium text-gray-950">{t("dropdown.allGuides")} →</Link>
             </div>
           </div>
         </div>

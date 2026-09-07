@@ -67,8 +67,15 @@
       "resolutionPpi": "해상도 및 PPI",
       "compareDisplays": "디스플레이 비교",
       "customPattern": "사용자 정의 패턴",
-      "viewAllTools": "모든 도구 보기"
-    }
+      "viewAllTools": "모든 도구 보기",
+      "practicalGuides": "실전 가이드",
+      "deadVsStuck": "암점 vs 휘점 불량 화소",
+      "ghostingMotion": "고스팅 및 잔상 현상",
+      "backlightBleed": "빛샘 현상 점검",
+      "viewingAngles": "패널 시야각 안내",
+      "allGuides": "모든 가이드 보기"
+    },
+    "searchPlaceholder": "테스트 또는 가이드 검색..."
   },
   "Footer": {
     "title": "Monitor Tester",
@@ -87,7 +94,8 @@
       "tests": "테스트",
       "inspection": "점검 가이드",
       "guides": "가이드",
-      "about": "소개"
+      "about": "소개",
+      "guidesAndTools": "가이드 및 도구"
     },
     "links": {
       "allTests": "모든 테스트",
@@ -734,7 +742,17 @@
       "fullInspection": "Full Inspection",
       "gamingMonitor": "Gaming Monitor Workflow",
       "oledMonitor": "OLED Workflow",
-      "startWorkflow": "Start Workflow"
+      "startWorkflow": "Start Workflow",
+      "diagnosticEyebrow": "진단 마법사",
+      "diagnosticTitle": "화면에 문제가 있어 보이나요?",
+      "diagnosticDesc": "화면에 나타나는 이상 증상(불량 화소, 색상 왜곡, 텍스트 번짐, 테어링 등)을 선택하면 알맞은 테스트를 추천해 드립니다.",
+      "diagnoseProblem": "문제 진단하기",
+      "testsCount": "{count}개 테스트",
+      "aboutWorkflowsTitle": "점검 워크플로 안내:",
+      "aboutWorkflowsDesc": "체계적인 순서로 테스트하고, 이상 유무를 기록하며, 불량 화소 좌표를 정확히 표시하여 신뢰할 수 있는 보고서를 저장할 수 있습니다.",
+      "savedReports": "저장된 보고서 및 기록",
+      "wfGeneralTitle": "일반 디스플레이 점검",
+      "wfGeneralDesc": "불량 화소, 색상 및 잔상을 두루 확인하는 필수 기본 점검입니다."
     },
     "gaming": {
       "metaTitle": "Gaming Monitor Inspection",
@@ -885,6 +903,40 @@
     "metaTitle": "디스플레이 도구 및 계산기 | Monitor Tester",
     "metaDescription": "특수 디스플레이 계산기, 하드웨어 프로브 및 테스트 패턴 유틸리티.",
     "title": "디스플레이 도구 및 계산기",
-    "subtitle": "브라우저 하드웨어 기능 검사, 픽셀 밀도 계산, 디스플레이 크기 비교 및 테스트 패턴 생성을 위한 전용 유틸리티."
+    "subtitle": "브라우저 하드웨어 기능 검사, 픽셀 밀도 계산, 디스플레이 크기 비교 및 테스트 패턴 생성을 위한 전용 유틸리티.",
+    "eyebrow": "디스플레이 유틸리티 및 계산기",
+    "openTool": "도구 열기",
+    "items": {
+      "displayInfo": {
+        "badge": "하드웨어 감지",
+        "title": "디스플레이 정보 및 GPU 진단",
+        "description": "브라우저에서 감지된 화면 사양, GPU 하드웨어, WebGL 2.0 / WebGPU 지원 여부, HDR 및 실시간 프레임률을 확인합니다."
+      },
+      "compareDisplays": {
+        "badge": "계산기",
+        "title": "디스플레이 비교 계산기",
+        "description": "화면 크기 대조 시뮬레이션, 인치당 픽셀 수(PPI), 화면비 계산 및 최적 시청 거리 분석을 제공합니다."
+      },
+      "customPattern": {
+        "badge": "캘리브레이션",
+        "title": "사용자 정의 테스트 패턴 생성기",
+        "description": "SMPTE 컬러바, 격자망, 도트 그리드, 그라데이션 램프 등 12가지 정밀 캘리브레이션 패턴을 생성합니다."
+      },
+      "resolutionChecker": {
+        "badge": "계산기",
+        "title": "해상도 및 PPI 계산기",
+        "description": "화면 해상도, 디스플레이 배율(DPR), 픽셀 밀도, 시각적 크기 비교 및 적정 시청 거리 안내를 확인합니다."
+      },
+      "diagnostic": {
+        "badge": "마법사",
+        "title": "디스플레이 진단 마법사",
+        "description": "불량 화소, 색상 왜곡, 어두운 음영 뭉개짐, 텍스트 번짐 등 관찰된 현상을 선택하여 맞춤 테스트 순서를 생성합니다."
+      },
+      "summary": {
+        "badge": "보고서",
+        "title": "점검 보고서 및 결함 기록",
+        "description": "기록된 점검 결과, 불량 화소 좌표 목록 및 디스플레이 프로필을 확인하고 보고서를 인쇄하거나 JSON으로 내보냅니다."
+      }
+    }
   }
 }

@@ -7,6 +7,7 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function Footer() {
   const t = useTranslations("Footer");
+  const tHeader = useTranslations("Header");
   const currentYear = new Date().getFullYear();
 
   return (
@@ -31,7 +32,7 @@ export function Footer() {
             </Link>
 
             <p className="text-xs text-gray-500 leading-relaxed mt-3.5 max-w-sm">
-              A simple browser-based toolkit for checking pixels, color, brightness, uniformity, motion, and more. Free, local, and precise.
+              {t("description")}
             </p>
           </div>
 
@@ -43,37 +44,37 @@ export function Footer() {
             <ul className="space-y-2 text-xs text-gray-600">
               <li>
                 <Link href="/tests/dead-pixel-test" className="hover:text-gray-950 transition-colors block py-0.5">
-                  Dead Pixels
+                  {tHeader("dropdown.deadPixels")}
                 </Link>
               </li>
               <li>
                 <Link href="/tests/color-test" className="hover:text-gray-950 transition-colors block py-0.5">
-                  Color Test
+                  {tHeader("dropdown.colorTest")}
                 </Link>
               </li>
               <li>
                 <Link href="/tests/brightness-test" className="hover:text-gray-950 transition-colors block py-0.5">
-                  Brightness
+                  {tHeader("dropdown.brightness")}
                 </Link>
               </li>
               <li>
                 <Link href="/tests/contrast-test" className="hover:text-gray-950 transition-colors block py-0.5">
-                  Contrast
+                  {tHeader("dropdown.contrast")}
                 </Link>
               </li>
               <li>
                 <Link href="/tests/ghosting-test" className="hover:text-gray-950 transition-colors block py-0.5">
-                  Ghosting
+                  {tHeader("dropdown.ghosting")}
                 </Link>
               </li>
               <li>
                 <Link href="/tests/refresh-rate-test" className="hover:text-gray-950 transition-colors block py-0.5">
-                  Refresh Rate
+                  {tHeader("dropdown.refreshRate")}
                 </Link>
               </li>
               <li>
                 <Link href="/tests" className="font-medium text-gray-950 hover:underline flex items-center gap-1 pt-1">
-                  <span>View All 28 Tests</span>
+                  <span>{tHeader("dropdown.viewAllTests")}</span>
                   <ArrowRight className="w-3 h-3" />
                 </Link>
               </li>
@@ -88,37 +89,37 @@ export function Footer() {
             <ul className="space-y-2 text-xs text-gray-600">
               <li>
                 <Link href="/monitor-inspection/general" className="hover:text-gray-950 transition-colors block py-0.5 font-medium text-gray-900">
-                  General Checkup
+                  {tHeader("dropdown.generalCheckup")}
                 </Link>
               </li>
               <li>
                 <Link href="/monitor-inspection/used" className="hover:text-gray-950 transition-colors block py-0.5">
-                  Used Monitor
+                  {tHeader("dropdown.usedMonitor")}
                 </Link>
               </li>
               <li>
                 <Link href="/monitor-inspection/gaming" className="hover:text-gray-950 transition-colors block py-0.5">
-                  Gaming Display
+                  {tHeader("dropdown.gamingDisplay")}
                 </Link>
               </li>
               <li>
                 <Link href="/monitor-inspection/oled" className="hover:text-gray-950 transition-colors block py-0.5">
-                  OLED Display
+                  {tHeader("dropdown.oledDisplay")}
                 </Link>
               </li>
               <li>
                 <Link href="/monitor-inspection/laptop" className="hover:text-gray-950 transition-colors block py-0.5">
-                  Laptop Display
+                  {tHeader("dropdown.laptopDisplay")}
                 </Link>
               </li>
               <li>
                 <Link href="/monitor-inspection/tv" className="hover:text-gray-950 transition-colors block py-0.5">
-                  TV Display
+                  {tHeader("inspection.tv")}
                 </Link>
               </li>
               <li>
                 <Link href="/monitor-inspection" className="font-medium text-gray-950 hover:underline flex items-center gap-1 pt-1">
-                  <span>Inspection Hub</span>
+                  <span>{tHeader("dropdown.inspectionHub")}</span>
                   <ArrowRight className="w-3 h-3" />
                 </Link>
               </li>
@@ -128,42 +129,42 @@ export function Footer() {
           {/* Column 4: Guides & Tools (2 cols) */}
           <div className="lg:col-span-2">
             <h3 className="text-xs font-bold uppercase font-mono tracking-wider text-gray-900 mb-3.5">
-              Guides &amp; Tools
+              {t("columns.guidesAndTools")}
             </h3>
             <ul className="space-y-2 text-xs text-gray-600">
               <li>
                 <Link href="/guides" className="hover:text-gray-950 transition-colors block py-0.5">
-                  Display Guides
+                  {t("links.displayGuides")}
                 </Link>
               </li>
               <li>
                 <Link href="/tests/display-info" className="hover:text-gray-950 transition-colors block py-0.5 font-medium text-gray-900">
-                  Display Information
+                  {tHeader("dropdown.displayInfo")}
                 </Link>
               </li>
               <li>
                 <Link href="/tests/resolution-checker" className="hover:text-gray-950 transition-colors block py-0.5">
-                  Resolution &amp; PPI
+                  {tHeader("dropdown.resolutionPpi")}
                 </Link>
               </li>
               <li>
                 <Link href="/tests/compare-displays" className="hover:text-gray-950 transition-colors block py-0.5">
-                  Compare Displays
+                  {tHeader("dropdown.compareDisplays")}
                 </Link>
               </li>
               <li>
                 <Link href="/tests/custom-pattern" className="hover:text-gray-950 transition-colors block py-0.5">
-                  Custom Pattern
+                  {tHeader("dropdown.customPattern")}
                 </Link>
               </li>
               <li>
                 <Link href="/knowledge-base" className="hover:text-gray-950 transition-colors block py-0.5">
-                  Knowledge Base
+                  {t("links.knowledgeBase")}
                 </Link>
               </li>
               <li>
                 <Link href="/faq" className="hover:text-gray-950 transition-colors block py-0.5">
-                  FAQ
+                  {t("links.faq")}
                 </Link>
               </li>
             </ul>

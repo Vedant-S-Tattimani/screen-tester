@@ -67,8 +67,15 @@
       "resolutionPpi": "Resolución y PPI",
       "compareDisplays": "Comparar pantallas",
       "customPattern": "Patrón personalizado",
-      "viewAllTools": "Ver todas las herramientas"
-    }
+      "viewAllTools": "Ver todas las herramientas",
+      "practicalGuides": "Guías prácticas",
+      "deadVsStuck": "Píxeles muertos vs atascados",
+      "ghostingMotion": "Ghosting y movimiento",
+      "backlightBleed": "Fuga de luz",
+      "viewingAngles": "Ángulos de visión",
+      "allGuides": "Todas las guías"
+    },
+    "searchPlaceholder": "Buscar pruebas o guías..."
   },
   "Footer": {
     "title": "Monitor Tester",
@@ -87,7 +94,8 @@
       "tests": "Pruebas",
       "inspection": "Inspección",
       "guides": "Guías",
-      "about": "Acerca de"
+      "about": "Acerca de",
+      "guidesAndTools": "Guías y herramientas"
     },
     "links": {
       "allTests": "Todas las pruebas",
@@ -734,7 +742,17 @@
       "fullInspection": "Full Inspection",
       "gamingMonitor": "Gaming Monitor Workflow",
       "oledMonitor": "OLED Workflow",
-      "startWorkflow": "Start Workflow"
+      "startWorkflow": "Start Workflow",
+      "diagnosticEyebrow": "ASISTENTE DE DIAGNÓSTICO",
+      "diagnosticTitle": "¿Algo se ve mal en tu pantalla?",
+      "diagnosticDesc": "Selecciona lo que estás viendo (píxeles muertos, colores extraños, sombras oscuras, texto borroso o tearing) y te recomendaremos las pruebas exactas.",
+      "diagnoseProblem": "Diagnosticar problema",
+      "testsCount": "{count} pruebas",
+      "aboutWorkflowsTitle": "Acerca de los flujos de trabajo:",
+      "aboutWorkflowsDesc": "Ejecuta secuencias estructuradas, marca pruebas como normales o con problemas, ubica defectos de píxeles con coordenadas exactas y guarda informes objetivos sin puntuaciones sintéticas.",
+      "savedReports": "Informes guardados e historial",
+      "wfGeneralTitle": "Revisión general de pantalla",
+      "wfGeneralDesc": "Comprobación visual esencial de píxeles muertos, color y movimiento."
     },
     "gaming": {
       "metaTitle": "Gaming Monitor Inspection",
@@ -885,6 +903,40 @@
     "metaTitle": "Herramientas y calculadoras de pantalla | Monitor Tester",
     "metaDescription": "Calculadoras especializadas, sondas de hardware y utilidades de patrones de prueba.",
     "title": "Herramientas y calculadoras de pantalla",
-    "subtitle": "Utilidades especializadas para inspeccionar capacidades de hardware, calcular densidad de píxeles, comparar dimensiones y generar patrones."
+    "subtitle": "Utilidades especializadas para inspeccionar capacidades de hardware, calcular densidad de píxeles, comparar dimensiones y generar patrones.",
+    "eyebrow": "UTILIDADES Y CALCULADORAS DE PANTALLA",
+    "openTool": "Abrir herramienta",
+    "items": {
+      "displayInfo": {
+        "badge": "SONDA DE HARDWARE",
+        "title": "Información de pantalla y diagnóstico de GPU",
+        "description": "Consulta parámetros detectados por el navegador, GPU real, soporte WebGL 2.0 / WebGPU, HDR y tasa de cuadros en vivo."
+      },
+      "compareDisplays": {
+        "badge": "CALCULADORA",
+        "title": "Calculadora de comparación de pantallas",
+        "description": "Superposición interactiva de tamaños de pantalla, comparación de densidad de píxeles (PPI), proporción y distancia de visión óptima."
+      },
+      "customPattern": {
+        "badge": "CALIBRACIÓN",
+        "title": "Generador de patrones de prueba personalizados",
+        "description": "Genera 12 patrones de calibración especializados, incluidas barras SMPTE, cuadrículas, placas de zona y degradados."
+      },
+      "resolutionChecker": {
+        "badge": "CALCULADORA",
+        "title": "Calculadora de resolución y PPI",
+        "description": "Análisis detallado de resolución de pantalla, factor de escala (DPR), densidad de píxeles y guía de distancia de visión."
+      },
+      "diagnostic": {
+        "badge": "ASISTENTE",
+        "title": "Asistente de diagnóstico de pantalla",
+        "description": "Selecciona el defecto visual que observas (píxeles muertos, colores extraños, sombras oscuras, texto borroso) para generar pruebas específicas."
+      },
+      "summary": {
+        "badge": "INFORMES",
+        "title": "Informes de inspección y registro de defectos",
+        "description": "Revisa observaciones registradas, inspecciona coordenadas de defectos de píxeles, perfiles de hardware y exporta o imprime informes."
+      }
+    }
   }
 }

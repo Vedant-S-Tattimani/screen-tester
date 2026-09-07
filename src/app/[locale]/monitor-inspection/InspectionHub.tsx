@@ -40,7 +40,7 @@ export function InspectionHub() {
 
   const getWorkflowTitle = (id: string, fallback: string) => {
     switch (id) {
-      case "general": return "General Display Checkup";
+      case "general": return tHub("wfGeneralTitle") || "General Display Checkup";
       case "new": return tHome("wfNewTitle") || fallback;
       case "used": return tHome("wfUsedTitle") || fallback;
       case "gaming": return tHome("wfGamingTitle") || fallback;
@@ -53,7 +53,7 @@ export function InspectionHub() {
 
   const getWorkflowDesc = (id: string, fallback: string) => {
     switch (id) {
-      case "general": return "Essential all-around visual checkup for dead pixels, color, and motion.";
+      case "general": return tHub("wfGeneralDesc") || "Essential all-around visual checkup for dead pixels, color, and motion.";
       case "new": return tHome("wfNewDesc") || fallback;
       case "used": return tHome("wfUsedDesc") || fallback;
       case "gaming": return tHome("wfGamingDesc") || fallback;
@@ -73,20 +73,20 @@ export function InspectionHub() {
       <div className="p-6 rounded-2xl bg-gradient-to-r from-gray-900 to-gray-800 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-xs">
         <div>
           <div className="text-[10.5px] font-mono font-bold uppercase tracking-[0.2em] text-gray-300 mb-1.5">
-            DIAGNOSTIC WIZARD
+            {tHub("diagnosticEyebrow")}
           </div>
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white mb-1">
-            Something looks wrong with your screen?
+            {tHub("diagnosticTitle")}
           </h2>
           <p className="text-xs sm:text-sm text-gray-300 max-w-xl leading-relaxed">
-            Select what you are seeing (dead pixels, strange colors, dark shadows, blurry text, or tearing) and we will recommend the exact tests to run.
+            {tHub("diagnosticDesc")}
           </p>
         </div>
         <Link
           href="/monitor-inspection/diagnostic"
           className="inline-flex items-center gap-2 bg-white text-gray-950 hover:bg-gray-100 font-semibold text-xs sm:text-sm px-5 py-3 rounded-xl transition-all shrink-0 shadow-xs cursor-pointer"
         >
-          <span>Diagnose Problem</span>
+          <span>{tHub("diagnoseProblem")}</span>
           <ArrowRight className="w-4 h-4" />
         </Link>
       </div>
@@ -104,7 +104,7 @@ export function InspectionHub() {
                   {iconMap[workflow.id]}
                 </div>
                 <span className="text-xs font-mono text-muted-foreground">
-                  {workflow.sequence.length} tests
+                  {tHub("testsCount", { count: workflow.sequence.length })}
                 </span>
               </div>
               <h2 className="text-lg font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
@@ -125,14 +125,14 @@ export function InspectionHub() {
 
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-5 bg-slate-50 border border-slate-200/80 rounded-2xl text-xs sm:text-sm text-slate-600">
         <div>
-          <strong className="text-slate-900 block mb-0.5">About Inspection Workflows:</strong>
-          <span>Run structured sequences, mark tests as normal or needing attention, drop pixel defect pins with exact coordinates, and save factual inspection reports. Zero synthetic scores.</span>
+          <strong className="text-slate-900 block mb-0.5">{tHub("aboutWorkflowsTitle")}</strong>
+          <span>{tHub("aboutWorkflowsDesc")}</span>
         </div>
         <Link
           href="/monitor-inspection/summary"
           className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-800 hover:bg-slate-100 font-medium text-xs shrink-0 shadow-2xs transition-colors"
         >
-          <span>Saved Reports & History</span>
+          <span>{tHub("savedReports")}</span>
           <ArrowRight className="w-3.5 h-3.5" />
         </Link>
       </div>

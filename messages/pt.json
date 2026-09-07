@@ -67,8 +67,15 @@
       "resolutionPpi": "Resolução e PPI",
       "compareDisplays": "Comparar monitores",
       "customPattern": "Padrão personalizado",
-      "viewAllTools": "Ver todas as ferramentas"
-    }
+      "viewAllTools": "Ver todas as ferramentas",
+      "practicalGuides": "Guias práticos",
+      "deadVsStuck": "Pixels mortos vs presos",
+      "ghostingMotion": "Ghosting e movimento",
+      "backlightBleed": "Vazamento de luz",
+      "viewingAngles": "Ângulos de visão",
+      "allGuides": "Todos os guias"
+    },
+    "searchPlaceholder": "Pesquisar testes ou guias..."
   },
   "Footer": {
     "title": "Monitor Tester",
@@ -87,7 +94,8 @@
       "tests": "Testes",
       "inspection": "Inspeção",
       "guides": "Guias",
-      "about": "Sobre"
+      "about": "Sobre",
+      "guidesAndTools": "Guias e ferramentas"
     },
     "links": {
       "allTests": "Todos os testes",
@@ -734,7 +742,17 @@
       "fullInspection": "Full Inspection",
       "gamingMonitor": "Gaming Monitor Workflow",
       "oledMonitor": "OLED Workflow",
-      "startWorkflow": "Start Workflow"
+      "startWorkflow": "Start Workflow",
+      "diagnosticEyebrow": "ASSISTENTE DE DIAGNÓSTICO",
+      "diagnosticTitle": "Algo parece errado com sua tela?",
+      "diagnosticDesc": "Selecione o que está vendo (pixels mortos, cores estranhas, sombras escuras, texto borrado ou tearing) e recomendaremos os testes exatos.",
+      "diagnoseProblem": "Diagnosticar problema",
+      "testsCount": "{count} testes",
+      "aboutWorkflowsTitle": "Sobre os fluxos de inspeção:",
+      "aboutWorkflowsDesc": "Execute sequências estruturadas, marque anomalias, registre coordenadas exatas de defeitos e salve relatórios factuais sem pontuações artificiais.",
+      "savedReports": "Relatórios salvos e histórico",
+      "wfGeneralTitle": "Verificação geral da tela",
+      "wfGeneralDesc": "Verificação visual essencial para pixels mortos, cores e movimento."
     },
     "gaming": {
       "metaTitle": "Gaming Monitor Inspection",
@@ -885,6 +903,40 @@
     "metaTitle": "Ferramentas e calculadoras de tela | Monitor Tester",
     "metaDescription": "Calculadoras de exibição especializadas, testes de hardware e utilitários de padrões de teste.",
     "title": "Ferramentas e calculadoras de tela",
-    "subtitle": "Utilitários especializados para inspecionar recursos de hardware, calcular densidade de pixels, comparar dimensões e gerar padrões de teste."
+    "subtitle": "Utilitários especializados para inspecionar recursos de hardware, calcular densidade de pixels, comparar dimensões e gerar padrões de teste.",
+    "eyebrow": "UTILITÁRIOS E CALCULADORAS DE TELA",
+    "openTool": "Abrir ferramenta",
+    "items": {
+      "displayInfo": {
+        "badge": "SONDA DE HARDWARE",
+        "title": "Informações da tela e diagnóstico de GPU",
+        "description": "Consulte parâmetros detectados pelo navegador, GPU real, suporte a WebGL 2.0 / WebGPU, HDR e taxa de quadros ao vivo."
+      },
+      "compareDisplays": {
+        "badge": "CALCULADORA",
+        "title": "Calculadora de comparação de telas",
+        "description": "Comparação interativa lado a lado de tamanhos de tela, densidade de pixels (PPI), proporção e distância ideal de visão."
+      },
+      "customPattern": {
+        "badge": "CALIBRAÇÃO",
+        "title": "Gerador de padrões de teste personalizados",
+        "description": "Gere 12 padrões de calibração especializados, incluindo barras SMPTE, reticulados, grades de pontos e gradientes."
+      },
+      "resolutionChecker": {
+        "badge": "CALCULADORA",
+        "title": "Calculadora de resolução e PPI",
+        "description": "Análise detalhada da resolução de tela, fator de escala (DPR), densidade de pixels e orientação de distância de visão."
+      },
+      "diagnostic": {
+        "badge": "ASSISTENTE",
+        "title": "Assistente de diagnóstico de tela",
+        "description": "Selecione o defeito visual que você está observando (pixels mortos, cores estranhas, sombras escuras) para gerar testes específicos."
+      },
+      "summary": {
+        "badge": "RELATÓRIOS",
+        "title": "Relatórios de inspeção e registro de defeitos",
+        "description": "Examine observações registradas, inspecione coordenadas de defeitos de pixel, perfis de hardware e exporte ou imprima relatórios."
+      }
+    }
   }
 }
