@@ -74,13 +74,6 @@ export default async function Home({
                 <AlertCircle className="w-3.5 h-3.5 text-amber-600" />
                 <span>{t("diagnoseProblem")}</span>
               </Link>
-              <Link 
-                href="/tests"
-                className="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50/90 text-gray-800 border border-gray-300 hover:border-gray-400 font-medium text-xs sm:text-[13.5px] px-5 py-2.5 rounded-lg transition-all focus-visible:ring-2 focus-visible:ring-gray-900"
-              >
-                <span>{t("browseTests")}</span>
-                <ArrowRight className="w-3.5 h-3.5 text-gray-500" />
-              </Link>
             </div>
 
             {/* Four Capability Points */}
@@ -147,7 +140,7 @@ export default async function Home({
             </div>
           </div>
 
-          {/* Right Hero Column — Realistic Dell Monitor Visual + Subtle Microcopy */}
+          {/* Right Hero Column — Realistic Dell Monitor Visual */}
           <div className="lg:col-span-5 xl:col-span-5 flex flex-col items-center lg:items-end justify-center relative select-none">
             <div className="w-full max-w-[560px] relative flex items-center">
               <div className="w-full relative">
@@ -160,21 +153,6 @@ export default async function Home({
                   className="w-full h-auto object-contain select-none pointer-events-none"
                 />
               </div>
-
-              {/* Right-Side Editorial Microcopy (matching reference) */}
-              <div className="hidden 2xl:flex flex-col items-center justify-center text-center absolute -right-10 top-[28%] text-gray-400 font-serif italic text-xs sm:text-[13px] leading-tight select-none pointer-events-none">
-                <span>{t("heroDetail1")}</span>
-                <span>{t("heroDetail2")}</span>
-                <span>{t("heroDetail3")}</span>
-                <span className="mt-1.5 text-xs not-italic text-gray-400">↓</span>
-              </div>
-            </div>
-
-            {/* Bottom-Right Tagline with subtle underline accent */}
-            <div className="mt-1.5 sm:mt-2 text-right self-end pr-2 sm:pr-4">
-              <span className="font-serif italic text-[11.5px] sm:text-[12.5px] text-gray-400 select-none inline-block border-b border-gray-300/50 pb-0.5">
-                {t("heroTagline")}
-              </span>
             </div>
           </div>
 
@@ -205,16 +183,16 @@ export default async function Home({
         </div>
 
         {/* 6 Compact Horizontal Shortcut Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-2.5 sm:gap-3">
           {/* 1. Dead Pixels */}
           <Link 
             href="/tests/dead-pixel-test"
-            className="bg-white border border-gray-200/90 hover:border-gray-300 rounded-xl px-4 py-3 flex items-center gap-3 group transition-all hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900"
+            className="bg-white border border-gray-200/90 hover:border-gray-300 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3 group transition-all hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900 min-h-[50px] sm:min-h-[54px]"
           >
             <div className="w-5 h-5 flex items-center justify-center shrink-0 text-gray-800 group-hover:text-gray-950 transition-colors">
               <Monitor className="w-4 h-4 stroke-[1.8]" />
             </div>
-            <span className="text-xs sm:text-[13px] font-medium text-gray-900 group-hover:text-gray-950 truncate">
+            <span className="text-xs sm:text-[13px] font-medium text-gray-900 group-hover:text-gray-950 leading-tight">
               {t("quickDeadPixels")}
             </span>
           </Link>
@@ -222,7 +200,7 @@ export default async function Home({
           {/* 2. Color Test */}
           <Link 
             href="/tests/color-test"
-            className="bg-white border border-gray-200/90 hover:border-gray-300 rounded-xl px-4 py-3 flex items-center gap-3 group transition-all hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900"
+            className="bg-white border border-gray-200/90 hover:border-gray-300 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3 group transition-all hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900 min-h-[50px] sm:min-h-[54px]"
           >
             <div 
               className="w-4 h-4 rounded-full p-[2.5px] shrink-0" 
@@ -230,7 +208,7 @@ export default async function Home({
             >
               <div className="w-full h-full rounded-full bg-white" />
             </div>
-            <span className="text-xs sm:text-[13px] font-medium text-gray-900 group-hover:text-gray-950 truncate">
+            <span className="text-xs sm:text-[13px] font-medium text-gray-900 group-hover:text-gray-950 leading-tight">
               {t("quickColorTest")}
             </span>
           </Link>
@@ -238,12 +216,12 @@ export default async function Home({
           {/* 3. Brightness */}
           <Link 
             href="/tests/brightness-test"
-            className="bg-white border border-gray-200/90 hover:border-gray-300 rounded-xl px-4 py-3 flex items-center gap-3 group transition-all hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900"
+            className="bg-white border border-gray-200/90 hover:border-gray-300 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3 group transition-all hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900 min-h-[50px] sm:min-h-[54px]"
           >
             <div className="w-5 h-5 flex items-center justify-center shrink-0 text-amber-500">
               <Sun className="w-4 h-4 stroke-[2]" />
             </div>
-            <span className="text-xs sm:text-[13px] font-medium text-gray-900 group-hover:text-gray-950 truncate">
+            <span className="text-xs sm:text-[13px] font-medium text-gray-900 group-hover:text-gray-950 leading-tight">
               {t("quickBrightness")}
             </span>
           </Link>
@@ -251,13 +229,13 @@ export default async function Home({
           {/* 4. Contrast */}
           <Link 
             href="/tests/contrast-test"
-            className="bg-white border border-gray-200/90 hover:border-gray-300 rounded-xl px-4 py-3 flex items-center gap-3 group transition-all hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900"
+            className="bg-white border border-gray-200/90 hover:border-gray-300 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3 group transition-all hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900 min-h-[50px] sm:min-h-[54px]"
           >
             <div className="w-4 h-4 rounded-full border border-gray-900 overflow-hidden shrink-0 flex">
               <div className="w-1/2 h-full bg-gray-900" />
               <div className="w-1/2 h-full bg-white" />
             </div>
-            <span className="text-xs sm:text-[13px] font-medium text-gray-900 group-hover:text-gray-950 truncate">
+            <span className="text-xs sm:text-[13px] font-medium text-gray-900 group-hover:text-gray-950 leading-tight">
               {t("quickContrast")}
             </span>
           </Link>
@@ -265,7 +243,7 @@ export default async function Home({
           {/* 5. Ghosting */}
           <Link 
             href="/tests/ghosting-test"
-            className="bg-white border border-gray-200/90 hover:border-gray-300 rounded-xl px-4 py-3 flex items-center gap-3 group transition-all hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900"
+            className="bg-white border border-gray-200/90 hover:border-gray-300 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3 group transition-all hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900 min-h-[50px] sm:min-h-[54px]"
           >
             <div className="w-5 h-5 flex items-center justify-center shrink-0 text-gray-800">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -275,7 +253,7 @@ export default async function Home({
                 <path d="M10 11v6l-4 3"/>
               </svg>
             </div>
-            <span className="text-xs sm:text-[13px] font-medium text-gray-900 group-hover:text-gray-950 truncate">
+            <span className="text-xs sm:text-[13px] font-medium text-gray-900 group-hover:text-gray-950 leading-tight">
               {t("quickGhosting")}
             </span>
           </Link>
@@ -283,12 +261,12 @@ export default async function Home({
           {/* 6. Refresh Rate */}
           <Link 
             href="/tests/refresh-rate-test"
-            className="bg-white border border-gray-200/90 hover:border-gray-300 rounded-xl px-4 py-3 flex items-center gap-3 group transition-all hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900"
+            className="bg-white border border-gray-200/90 hover:border-gray-300 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3 group transition-all hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900 min-h-[50px] sm:min-h-[54px]"
           >
             <div className="w-5 h-5 flex items-center justify-center shrink-0 text-blue-600">
               <Activity className="w-4 h-4 stroke-[2]" />
             </div>
-            <span className="text-xs sm:text-[13px] font-medium text-gray-900 group-hover:text-gray-950 truncate">
+            <span className="text-xs sm:text-[13px] font-medium text-gray-900 group-hover:text-gray-950 leading-tight">
               {t("quickRefreshRate")}
             </span>
           </Link>
@@ -459,28 +437,9 @@ export default async function Home({
           </Link>
         </div>
 
-        {/* 5 Compact Utility Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5">
-          {/* 1. Monitor Inspection */}
-          <Link 
-            href="/monitor-inspection"
-            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 transition-all flex flex-col justify-between group min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
-          >
-            <div>
-              <div className="w-6 h-6 flex items-center text-gray-800 mb-2.5">
-                <ClipboardCheck className="w-4 h-4 stroke-[1.8]" />
-              </div>
-              <h3 className="font-semibold text-[13px] text-gray-950 mb-0.5">
-                {t("toolInspectionTitle")}
-              </h3>
-              <p className="text-[11px] text-gray-500 leading-snug">
-                {t("toolInspectionDesc")}
-              </p>
-            </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-2" />
-          </Link>
-
-          {/* 2. Compare Displays */}
+        {/* 4 Compact Utility Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+          {/* 1. Compare Displays */}
           <Link 
             href="/tests/compare-displays"
             className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 transition-all flex flex-col justify-between group min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
