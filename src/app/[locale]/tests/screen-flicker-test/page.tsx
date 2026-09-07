@@ -33,7 +33,7 @@ export default async function FlickerTestPage({
       instructions={t("flicker.instructions")}
       testId="screen-flicker-test"
     >
-      <FlickerPattern />
+      <FlickerPattern testId="screen-flicker-test" />
     </TestWrapper>
   );
 }

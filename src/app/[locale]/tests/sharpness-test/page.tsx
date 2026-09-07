@@ -30,7 +30,7 @@ export default async function SharpnessTestPage({
       instructions={t("sharpness.instructions")}
       testId="sharpness-test"
     >
-      <SharpnessPattern />
+      <SharpnessPattern testId="sharpness-test" />
     </TestWrapper>
   );
 }

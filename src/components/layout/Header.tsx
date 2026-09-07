@@ -184,12 +184,20 @@ export function Header() {
                 </div>
                 <div className="space-y-0.5">
                   <Link 
+                    href="/monitor-inspection/general"
+                    onClick={() => setOpenDropdown(null)}
+                    className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
+                  >
+                    <span>General Checkup</span>
+                    <span className="text-[10px] text-gray-400">All-round</span>
+                  </Link>
+                  <Link 
                     href="/monitor-inspection/used"
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
                     <span>Used Monitor</span>
-                    <span className="text-[10px] text-gray-400">Aging &amp; wear</span>
+                    <span className="text-[10px] text-gray-400">Pre-purchase</span>
                   </Link>
                   <Link 
                     href="/monitor-inspection/gaming"
@@ -197,7 +205,7 @@ export function Header() {
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
                     <span>Gaming Display</span>
-                    <span className="text-[10px] text-gray-400">Hz &amp; tearing</span>
+                    <span className="text-[10px] text-gray-400">Hz &amp; motion</span>
                   </Link>
                   <Link 
                     href="/monitor-inspection/oled"
@@ -213,22 +221,22 @@ export function Header() {
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
                     <span>Laptop Display</span>
-                    <span className="text-[10px] text-gray-400">DPI &amp; angle</span>
-                  </Link>
-                  <Link 
-                    href="/monitor-inspection/tv"
-                    onClick={() => setOpenDropdown(null)}
-                    className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
-                  >
-                    <span>TV or Large Display</span>
-                    <span className="text-[10px] text-gray-400">Local dimming</span>
+                    <span className="text-[10px] text-gray-400">DPI &amp; scale</span>
                   </Link>
                 </div>
-                <div className="mt-1 pt-1 border-t border-gray-100">
+                <div className="mt-1 pt-1 border-t border-gray-100 flex flex-col gap-0.5">
+                  <Link
+                    href="/monitor-inspection/summary"
+                    onClick={() => setOpenDropdown(null)}
+                    className="flex items-center justify-between px-3 py-1.5 rounded-lg text-xs font-medium text-blue-600 hover:bg-blue-50 transition-colors"
+                  >
+                    <span>Saved Reports &amp; Notes</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
                   <Link
                     href="/monitor-inspection"
                     onClick={() => setOpenDropdown(null)}
-                    className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-gray-950 hover:bg-gray-50 transition-colors"
+                    className="flex items-center justify-between px-3 py-1.5 rounded-lg text-xs font-semibold text-gray-950 hover:bg-gray-50 transition-colors"
                   >
                     <span>Inspection Hub</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -312,7 +320,7 @@ export function Header() {
           
           {/* Desktop Search Bar matching reference pill */}
           <div className="hidden sm:block w-48 md:w-56 lg:w-64">
-            <SearchInput placeholder="Search tests or guides..." />
+            <SearchInput id="header-search-input" name="q" placeholder="Search tests or guides..." />
           </div>
 
           {/* Language Selector */}
@@ -334,7 +342,7 @@ export function Header() {
       {mobileOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-xl flex flex-col py-4 px-6 space-y-4 z-50 animate-in fade-in duration-150">
           <div className="mb-1">
-            <SearchInput onSelect={() => setMobileOpen(false)} placeholder="Search tests or guides..." />
+            <SearchInput id="header-search-input-mobile" name="q" onSelect={() => setMobileOpen(false)} placeholder="Search tests or guides..." />
           </div>
 
           <div className="border-b border-gray-100 pb-3">
@@ -364,12 +372,12 @@ export function Header() {
               {t("nav.inspection")}
             </Link>
             <div className="grid grid-cols-2 gap-2 text-xs text-gray-600 pl-2">
+              <Link href="/monitor-inspection/general" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">General Checkup</Link>
               <Link href="/monitor-inspection/used" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Used Monitor</Link>
               <Link href="/monitor-inspection/gaming" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Gaming Display</Link>
               <Link href="/monitor-inspection/oled" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">OLED Display</Link>
               <Link href="/monitor-inspection/laptop" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Laptop Display</Link>
-              <Link href="/monitor-inspection/tv" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">TV Display</Link>
-              <Link href="/monitor-inspection" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1 font-medium text-gray-950">Hub →</Link>
+              <Link href="/monitor-inspection/summary" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1 font-medium text-blue-600">Reports →</Link>
             </div>
           </div>
 

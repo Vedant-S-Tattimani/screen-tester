@@ -7,11 +7,6 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: '/:locale/tests/display-info',
-        destination: '/:locale/tests/resolution-checker',
-        permanent: true,
-      },
-      {
         source: '/:locale/resolution-checker',
         destination: '/:locale/tests/resolution-checker',
         permanent: true,
@@ -33,12 +28,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/:locale/display-info',
-        destination: '/:locale/tests/resolution-checker',
+        destination: '/:locale/tests/display-info',
         permanent: true,
       },
       {
         source: '/display-info',
-        destination: '/en/tests/resolution-checker',
+        destination: '/en/tests/display-info',
         permanent: true,
       },
       // Short test route aliases

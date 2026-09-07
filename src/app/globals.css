@@ -76,3 +76,76 @@
     outline-offset: 2px;
   }
 }
+
+/* ==========================================================================
+   Print Stylesheet for Clean PDF & Paper Reports
+   ========================================================================== */
+@media print {
+  /* Hide non-printable navigation, header, footer, search, and action triggers */
+  header,
+  footer,
+  nav,
+  aside,
+  .print\:hidden,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Print paper margin and typography */
+  @page {
+    margin: 1.2cm;
+    size: auto;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 11pt !important;
+    line-height: 1.35 !important;
+    width: 100% !important;
+    overflow: visible !important;
+  }
+
+  /* Page break rules: prevent awkward section & row slicing */
+  .break-inside-avoid,
+  table,
+  tr,
+  .rounded-2xl,
+  .rounded-xl,
+  [data-print-block] {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Table readability */
+  thead {
+    display: table-header-group !important;
+  }
+
+  table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+  }
+
+  th, td {
+    border-color: #cbd5e1 !important;
+  }
+
+  /* Ink economy & clarity */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Expand print containers to full paper width */
+  .max-w-7xl,
+  .max-w-6xl,
+  .max-w-5xl,
+  .max-w-4xl,
+  .max-w-\[1360px\] {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+

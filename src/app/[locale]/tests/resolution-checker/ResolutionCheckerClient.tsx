@@ -2,8 +2,9 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
-import { AlertCircle, Info, ArrowRight, CheckCircle2 } from "lucide-react";
-import { useRouter } from "@/i18n/routing";
+import { AlertCircle, Info, ArrowRight, CheckCircle2, Maximize2, Minimize2 } from "lucide-react";
+import { useRouter, Link } from "@/i18n/routing";
+import { recordTestObservation, ObservationResult } from "@/lib/inspectionStorage";
 
 // --- Helpers for formatting and calculations ---
 
@@ -59,6 +60,7 @@ export function ResolutionCheckerClient() {
   // -- Workflow State --
   const [workflowSequence, setWorkflowSequence] = useState<string[]>([]);
   const [workflowIndex, setWorkflowIndex] = useState(-1);
+  const [obsChoice, setObsChoice] = useState<ObservationResult>("LOOKS_NORMAL");
 
   useEffect(() => {
     queueMicrotask(() => {
@@ -78,7 +80,10 @@ export function ResolutionCheckerClient() {
     });
   }, []);
 
-  const handleNextStep = () => {
+  const handleNextStep = (forcedResult?: ObservationResult) => {
+    const resultToRecord = forcedResult !== undefined ? forcedResult : obsChoice;
+    recordTestObservation("resolution-checker", resultToRecord);
+
     if (workflowIndex !== -1 && workflowSequence.length > 0) {
       const nextIdx = workflowIndex + 1;
       if (nextIdx < workflowSequence.length) {
@@ -103,6 +108,8 @@ export function ResolutionCheckerClient() {
     p3: false,
     refreshRate: 0,
   });
+
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const updateInfo = useCallback(() => {
     if (typeof window === "undefined") return;
@@ -150,12 +157,24 @@ export function ResolutionCheckerClient() {
 
     animId = requestAnimationFrame(measureLoop);
     
+    const onFsChange = () => setIsFullscreen(!!document.fullscreenElement);
+    document.addEventListener("fullscreenchange", onFsChange);
+    
     return () => {
       window.removeEventListener("resize", updateInfo);
       window.removeEventListener("orientationchange", updateInfo);
+      document.removeEventListener("fullscreenchange", onFsChange);
       cancelAnimationFrame(animId);
     };
   }, [updateInfo]);
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen().catch(() => {});
+    }
+  };
 
   // -- State for PPI / My Display --
   const [userInches, setUserInches] = useState<string>("");
@@ -186,39 +205,75 @@ export function ResolutionCheckerClient() {
     <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 w-full flex-1 flex flex-col items-start pb-24">
       {/* WORKFLOW BANNER IF ACTIVE */}
       {workflowIndex !== -1 && workflowSequence.length > 0 && (
-        <div className="w-full mb-8 p-4 sm:p-5 bg-blue-50/80 border border-blue-200/80 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-blue-950">
+        <div className="w-full mb-8 p-4 sm:p-5 bg-blue-50/90 border border-blue-200 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-blue-950 shadow-2xs">
           <div>
-            <div className="text-[10px] font-mono uppercase tracking-widest text-blue-600 font-semibold mb-1">
+            <div className="text-[10px] font-mono uppercase tracking-widest text-blue-700 font-semibold mb-1">
               INSPECTION WORKFLOW • STEP {workflowIndex + 1} OF {workflowSequence.length}
             </div>
             <div className="text-sm font-semibold text-blue-950">
-              Display Resolution & Capabilities Review
+              Display Resolution &amp; Scaling Review
             </div>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+            {/* Observation status selector */}
+            <div className="inline-flex rounded-xl bg-white/90 p-1 border border-blue-200">
+              <button
+                onClick={() => setObsChoice("LOOKS_NORMAL")}
+                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                  obsChoice === "LOOKS_NORMAL"
+                    ? "bg-emerald-600 text-white font-semibold shadow-2xs"
+                    : "text-gray-600 hover:text-gray-900"
+                }`}
+              >
+                Normal (Observed)
+              </button>
+              <button
+                onClick={() => setObsChoice("NEEDS_ATTENTION")}
+                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                  obsChoice === "NEEDS_ATTENTION"
+                    ? "bg-amber-600 text-white font-semibold shadow-2xs"
+                    : "text-gray-600 hover:text-gray-900"
+                }`}
+              >
+                Needs Attention
+              </button>
+            </div>
+
             <button
-              onClick={handleNextStep}
-              className="text-xs text-blue-700 hover:text-blue-950 font-medium px-2 py-1 transition-colors cursor-pointer"
+              onClick={() => handleNextStep("UNSURE")}
+              className="text-xs text-blue-700 hover:text-blue-950 font-medium px-2 py-1.5 transition-colors cursor-pointer"
             >
-              Skip this test →
+              Skip →
             </button>
             <button
-              onClick={handleNextStep}
-              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all shadow-sm cursor-pointer"
+              onClick={() => handleNextStep()}
+              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all shadow-xs cursor-pointer"
             >
               <CheckCircle2 className="w-3.5 h-3.5" />
-              <span>Reviewed, Continue</span>
+              <span>Save &amp; Continue</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>
       )}
 
+
       {/* HEADER */}
-      <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4 text-foreground">{t("title")}</h1>
-      <p className="text-lg text-muted-foreground leading-relaxed mb-10 max-w-2xl">
-        {t("description")}
-      </p>
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-4 w-full">
+        <div>
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">{t("title")}</h1>
+          <p className="text-lg text-muted-foreground leading-relaxed mt-2 max-w-2xl">
+            {t("description")}
+          </p>
+        </div>
+        <button
+          onClick={toggleFullscreen}
+          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gray-950 text-white dark:bg-white dark:text-gray-950 text-xs sm:text-sm font-medium hover:opacity-90 transition-opacity self-start sm:self-auto cursor-pointer"
+        >
+          {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
+          <span>{isFullscreen ? "Exit Fullscreen" : "Test Fullscreen (F)"}</span>
+        </button>
+      </div>
 
       {/* 1. LIVE DISPLAY INFO */}
       <div className="w-full mb-16">
@@ -395,6 +450,25 @@ export function ResolutionCheckerClient() {
         </div>
       </div>
       
+      {/* RELATED TOOLS */}
+      <div className="w-full pt-8 border-t border-border/50 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <span className="text-xs font-mono uppercase text-muted-foreground block mb-1">RELATED UTILITIES</span>
+          <div className="flex flex-wrap items-center gap-3 text-sm">
+            <Link href="/tests/display-info" className="font-medium text-foreground hover:text-blue-600 transition-colors">
+              Display Information & WebGL Diagnostics →
+            </Link>
+            <span className="text-border">•</span>
+            <Link href="/tests/compare-displays" className="font-medium text-foreground hover:text-blue-600 transition-colors">
+              Display Calculators (PPI, Distance, Aspect Ratio) →
+            </Link>
+            <span className="text-border">•</span>
+            <Link href="/tests/custom-pattern" className="font-medium text-foreground hover:text-blue-600 transition-colors">
+              Custom Pattern Generator →
+            </Link>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

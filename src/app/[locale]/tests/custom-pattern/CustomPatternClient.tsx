@@ -1,17 +1,52 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { Link } from "@/i18n/routing";
-import { ArrowLeft, Maximize2, Minimize2, Grid, CheckSquare, Palette, CircleDot, Crosshair } from "lucide-react";
+import { 
+  ArrowLeft, Maximize2, Minimize2, Grid, CheckSquare, Palette, 
+  CircleDot, Crosshair, AlignJustify, Columns, Type, 
+  Sun, Sparkles, Layers, ArrowUpDown
+} from "lucide-react";
 
-type PatternType = "grid" | "checkerboard" | "solid" | "dots" | "crosshair";
+export type CustomPatternPreset = 
+  | "black"
+  | "white"
+  | "rgb"
+  | "grayscale"
+  | "gradient"
+  | "checkerboard"
+  | "grid"
+  | "horizontal_lines"
+  | "vertical_lines"
+  | "sharpness"
+  | "text"
+  | "moire";
+
+const PRESET_DEFINITIONS: { id: CustomPatternPreset; label: string; icon: typeof Grid; category: string }[] = [
+  { id: "black", label: "Black (0%)", icon: Sun, category: "Solids" },
+  { id: "white", label: "White (100%)", icon: Sun, category: "Solids" },
+  { id: "rgb", label: "RGB Primaries", icon: Palette, category: "Color" },
+  { id: "grayscale", label: "Grayscale Ramps", icon: Layers, category: "Color" },
+  { id: "gradient", label: "Smooth Gradient", icon: Sparkles, category: "Color" },
+  { id: "checkerboard", label: "Checkerboard", icon: CheckSquare, category: "Geometry" },
+  { id: "grid", label: "2D Grid", icon: Grid, category: "Geometry" },
+  { id: "horizontal_lines", label: "Horizontal Lines", icon: AlignJustify, category: "Lines" },
+  { id: "vertical_lines", label: "Vertical Lines", icon: Columns, category: "Lines" },
+  { id: "sharpness", label: "1px Sharpness", icon: Crosshair, category: "Precision" },
+  { id: "text", label: "Text Rendering", icon: Type, category: "Precision" },
+  { id: "moire", label: "Moiré & Siemens", icon: CircleDot, category: "Precision" },
+];
 
 export function CustomPatternClient() {
-  const [pattern, setPattern] = useState<PatternType>("grid");
+  const [activePreset, setActivePreset] = useState<CustomPatternPreset>("grid");
   const [gridSize, setGridSize] = useState<number>(40);
   const [lineWidth, setLineWidth] = useState<number>(1);
-  const [color1, setColor1] = useState<string>("#ffffff");
-  const [color2, setColor2] = useState<string>("#000000");
+  const [color1, setColor1] = useState<string>("#FFFFFF"); // FG
+  const [color2, setColor2] = useState<string>("#000000"); // BG
+  const [customText, setCustomText] = useState<string>("THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG 0123456789");
+  const [fontSize, setFontSize] = useState<number>(16);
+  const [fontWeight, setFontWeight] = useState<string>("normal");
+  const [gradientType, setGradientType] = useState<"horizontal" | "vertical" | "radial">("horizontal");
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -26,96 +61,245 @@ export function CustomPatternClient() {
     return () => document.removeEventListener("fullscreenchange", onFullscreenChange);
   }, []);
 
-  const toggleFullscreen = () => {
+  const toggleFullscreen = useCallback(() => {
     if (!containerRef.current) return;
     if (!document.fullscreenElement) {
-      containerRef.current.requestFullscreen().catch(err => console.error(err));
+      containerRef.current.requestFullscreen().catch((err) => console.error(err));
     } else {
-      document.exitFullscreen().catch(err => console.error(err));
+      document.exitFullscreen().catch((err) => console.error(err));
     }
+  }, []);
+
+  // Keyboard shortcut (F for fullscreen, Esc handled by browser)
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+      if (e.key === "f" || e.key === "F") {
+        e.preventDefault();
+        toggleFullscreen();
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [toggleFullscreen]);
+
+  const invertColors = () => {
+    const temp = color1;
+    setColor1(color2);
+    setColor2(temp);
   };
 
-  // Draw pattern on canvas
-  useEffect(() => {
+  // Canvas Drawing Routine
+  const drawPattern = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d", { alpha: false });
     if (!ctx) return;
 
-    // Handle high DPI
     const rect = canvas.getBoundingClientRect();
     const dpr = window.devicePixelRatio || 1;
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-    ctx.scale(dpr, dpr);
+    const w = Math.max(1, Math.floor(rect.width * dpr));
+    const h = Math.max(1, Math.floor(rect.height * dpr));
 
-    const w = rect.width;
-    const h = rect.height;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width = w;
+      canvas.height = h;
+    }
 
-    // Clear
+    // Background fill
     ctx.fillStyle = color2;
     ctx.fillRect(0, 0, w, h);
 
-    if (pattern === "solid") {
-      ctx.fillStyle = color1;
-      ctx.fillRect(0, 0, w, h);
-    } else if (pattern === "grid") {
-      ctx.strokeStyle = color1;
-      ctx.lineWidth = lineWidth;
-      ctx.beginPath();
-      for (let x = 0; x <= w; x += gridSize) {
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, h);
+    const scaledGrid = Math.max(1, Math.round(gridSize * dpr));
+    const scaledLine = Math.max(1, Math.round(lineWidth * dpr));
+
+    switch (activePreset) {
+      case "black": {
+        ctx.fillStyle = "#000000";
+        ctx.fillRect(0, 0, w, h);
+        break;
       }
-      for (let y = 0; y <= h; y += gridSize) {
-        ctx.moveTo(0, y);
-        ctx.lineTo(w, y);
+      case "white": {
+        ctx.fillStyle = "#FFFFFF";
+        ctx.fillRect(0, 0, w, h);
+        break;
       }
-      ctx.stroke();
-    } else if (pattern === "checkerboard") {
-      ctx.fillStyle = color1;
-      for (let y = 0; y < h; y += gridSize) {
-        for (let x = 0; x < w; x += gridSize) {
-          const row = Math.floor(y / gridSize);
-          const col = Math.floor(x / gridSize);
-          if ((row + col) % 2 === 0) {
-            ctx.fillRect(x, y, gridSize, gridSize);
+      case "rgb": {
+        const barW = w / 3;
+        ctx.fillStyle = "#FF0000";
+        ctx.fillRect(0, 0, Math.ceil(barW), h);
+        ctx.fillStyle = "#00FF00";
+        ctx.fillRect(Math.floor(barW), 0, Math.ceil(barW), h);
+        ctx.fillStyle = "#0000FF";
+        ctx.fillRect(Math.floor(barW * 2), 0, Math.ceil(barW), h);
+        break;
+      }
+      case "grayscale": {
+        const steps = 16;
+        const stepW = w / steps;
+        for (let i = 0; i < steps; i++) {
+          const val = Math.round((i / (steps - 1)) * 255);
+          ctx.fillStyle = `rgb(${val}, ${val}, ${val})`;
+          ctx.fillRect(Math.floor(i * stepW), 0, Math.ceil(stepW), Math.floor(h * 0.5));
+        }
+        // Vertical step ramp on lower half
+        const vSteps = 8;
+        const vStepH = (h * 0.5) / vSteps;
+        for (let i = 0; i < vSteps; i++) {
+          const val = Math.round((i / (vSteps - 1)) * 255);
+          ctx.fillStyle = `rgb(${val}, ${val}, ${val})`;
+          ctx.fillRect(0, Math.floor(h * 0.5 + i * vStepH), w, Math.ceil(vStepH));
+        }
+        break;
+      }
+      case "gradient": {
+        let grad: CanvasGradient;
+        if (gradientType === "horizontal") {
+          grad = ctx.createLinearGradient(0, 0, w, 0);
+        } else if (gradientType === "vertical") {
+          grad = ctx.createLinearGradient(0, 0, 0, h);
+        } else {
+          grad = ctx.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, Math.max(w, h) / 2);
+        }
+        grad.addColorStop(0, color2);
+        grad.addColorStop(1, color1);
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, w, h);
+        break;
+      }
+      case "checkerboard": {
+        ctx.fillStyle = color1;
+        for (let y = 0; y < h; y += scaledGrid) {
+          for (let x = 0; x < w; x += scaledGrid) {
+            const row = Math.floor(y / scaledGrid);
+            const col = Math.floor(x / scaledGrid);
+            if ((row + col) % 2 === 0) {
+              ctx.fillRect(x, y, scaledGrid, scaledGrid);
+            }
           }
         }
+        break;
       }
-    } else if (pattern === "dots") {
-      ctx.fillStyle = color1;
-      const radius = Math.max(1, lineWidth);
-      for (let y = gridSize / 2; y < h; y += gridSize) {
-        for (let x = gridSize / 2; x < w; x += gridSize) {
-          ctx.beginPath();
-          ctx.arc(x, y, radius, 0, Math.PI * 2);
-          ctx.fill();
+      case "grid": {
+        ctx.fillStyle = color1;
+        for (let x = 0; x <= w; x += scaledGrid) {
+          ctx.fillRect(x, 0, scaledLine, h);
         }
+        for (let y = 0; y <= h; y += scaledGrid) {
+          ctx.fillRect(0, y, w, scaledLine);
+        }
+        break;
       }
-    } else if (pattern === "crosshair") {
-      ctx.strokeStyle = color1;
-      ctx.lineWidth = lineWidth;
-      ctx.beginPath();
-      // Center lines
-      ctx.moveTo(w / 2, 0);
-      ctx.lineTo(w / 2, h);
-      ctx.moveTo(0, h / 2);
-      ctx.lineTo(w, h / 2);
-      // Diagonals
-      ctx.moveTo(0, 0);
-      ctx.lineTo(w, h);
-      ctx.moveTo(w, 0);
-      ctx.lineTo(0, h);
-      // Concentric circles at center
-      const maxR = Math.min(w, h) / 2;
-      for (let r = 50; r < maxR; r += 50) {
-        ctx.moveTo(w / 2 + r, h / 2);
-        ctx.arc(w / 2, h / 2, r, 0, Math.PI * 2);
+      case "horizontal_lines": {
+        ctx.fillStyle = color1;
+        for (let y = 0; y <= h; y += scaledGrid) {
+          ctx.fillRect(0, y, w, scaledLine);
+        }
+        break;
       }
-      ctx.stroke();
+      case "vertical_lines": {
+        ctx.fillStyle = color1;
+        for (let x = 0; x <= w; x += scaledGrid) {
+          ctx.fillRect(x, 0, scaledLine, h);
+        }
+        break;
+      }
+      case "sharpness": {
+        // High frequency 1px calibration blocks
+        ctx.fillStyle = color1;
+        // Center crosshair
+        ctx.fillRect(Math.floor(w / 2), 0, Math.max(1, Math.floor(1 * dpr)), h);
+        ctx.fillRect(0, Math.floor(h / 2), w, Math.max(1, Math.floor(1 * dpr)));
+
+        // 1px alternating vertical stripes in top-left quadrant
+        const quadW = Math.floor(w * 0.4);
+        const quadH = Math.floor(h * 0.4);
+        for (let x = 20 * dpr; x < quadW; x += 2 * dpr) {
+          ctx.fillRect(Math.floor(x), Math.floor(20 * dpr), Math.max(1, Math.floor(1 * dpr)), quadH);
+        }
+
+        // 1px alternating horizontal stripes in top-right quadrant
+        for (let y = 20 * dpr; y < quadH; y += 2 * dpr) {
+          ctx.fillRect(Math.floor(w - quadW), Math.floor(y), quadW - 20 * dpr, Math.max(1, Math.floor(1 * dpr)));
+        }
+
+        // 1px checkerboard in bottom-left quadrant
+        for (let y = h - quadH; y < h - 20 * dpr; y += 2 * dpr) {
+          for (let x = 20 * dpr; x < quadW; x += 2 * dpr) {
+            ctx.fillRect(Math.floor(x), Math.floor(y), Math.max(1, Math.floor(1 * dpr)), Math.max(1, Math.floor(1 * dpr)));
+          }
+        }
+
+        // Concentric target in bottom-right quadrant
+        const cx = w - quadW / 2;
+        const cy = h - quadH / 2;
+        ctx.strokeStyle = color1;
+        ctx.lineWidth = Math.max(1, Math.floor(1 * dpr));
+        for (let r = 10 * dpr; r < Math.min(quadW, quadH) / 2; r += 6 * dpr) {
+          ctx.beginPath();
+          ctx.arc(cx, cy, r, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+        break;
+      }
+      case "text": {
+        ctx.fillStyle = color1;
+        ctx.font = `${fontWeight} ${Math.round(fontSize * dpr)}px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace`;
+        ctx.textBaseline = "middle";
+
+        const textLines = [
+          customText,
+          "The quick brown fox jumps over the lazy dog (8px)",
+          "Crisp subpixel antialiasing evaluation string: 1234567890!@#$%^&*()",
+          "function evaluateSubpixels(dpr) { return dpr >= 2.0 ? 'Retina' : 'Standard'; }",
+          "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z",
+          "a b c d e f g h i j k l m n o p q r s t u v w x y z",
+        ];
+
+        let startY = 50 * dpr;
+        const lineHeight = Math.round(fontSize * dpr * 1.6) + 12 * dpr;
+        for (const line of textLines) {
+          if (startY > h - 30 * dpr) break;
+          ctx.fillText(line, 40 * dpr, startY);
+          startY += lineHeight;
+        }
+        break;
+      }
+      case "moire": {
+        const cx = w / 2;
+        const cy = h / 2;
+        const maxR = Math.hypot(cx, cy);
+        const step = Math.max(2, Math.round(gridSize * 0.15 * dpr));
+
+        ctx.strokeStyle = color1;
+        ctx.lineWidth = scaledLine;
+
+        // Concentric rings
+        for (let r = step; r < maxR; r += step) {
+          ctx.beginPath();
+          ctx.arc(cx, cy, r, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+
+        // Radial Siemens Star spokes
+        const numSpokes = Math.max(12, Math.round(64 / (gridSize / 20)));
+        for (let i = 0; i < numSpokes; i++) {
+          const theta = (i * 2 * Math.PI) / numSpokes;
+          ctx.beginPath();
+          ctx.moveTo(cx, cy);
+          ctx.lineTo(cx + Math.cos(theta) * maxR, cy + Math.sin(theta) * maxR);
+          ctx.stroke();
+        }
+        break;
+      }
     }
-  }, [pattern, gridSize, lineWidth, color1, color2, isFullscreen]);
+  }, [activePreset, gridSize, lineWidth, color1, color2, customText, fontSize, fontWeight, gradientType]);
+
+  useEffect(() => {
+    drawPattern();
+    window.addEventListener("resize", drawPattern);
+    return () => window.removeEventListener("resize", drawPattern);
+  }, [drawPattern]);
 
   return (
     <div className="bg-white min-h-screen py-10 sm:py-14 text-gray-900">
@@ -127,151 +311,210 @@ export function CustomPatternClient() {
             <span>ALL TESTS</span>
           </Link>
           <span>/</span>
-          <span className="text-gray-900 font-semibold">CUSTOM TEST PATTERN</span>
+          <span className="text-gray-900 font-semibold">CUSTOM TEST PATTERN GENERATOR</span>
         </div>
 
         {/* Title */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
           <div>
             <div className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-gray-400 mb-2">
-              PRECISION TEST GENERATOR
+              PRECISION DISPLAY GENERATOR
             </div>
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-950">
-              Custom Test Pattern
+              Custom Test Pattern Generator
             </h1>
-            <p className="text-gray-500 text-sm sm:text-base mt-1 leading-relaxed">
-              Create and calibrate custom grids, checkerboards, solid fields, or alignment crosshairs with full-screen support.
+            <p className="text-gray-500 text-sm sm:text-base mt-1.5 leading-relaxed max-w-2xl">
+              Synthesize 12 specialized calibration patterns with deep controls for grid density, line thickness, color channels, typography, and moiré interference.
             </p>
           </div>
+
           <button
             onClick={toggleFullscreen}
-            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gray-950 text-white text-sm font-medium hover:bg-black transition-colors focus-visible:ring-2 focus-visible:ring-gray-950"
+            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gray-950 text-white text-xs sm:text-sm font-medium hover:bg-black transition-colors"
           >
             {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
-            <span>{isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}</span>
+            <span>{isFullscreen ? "Exit Fullscreen (F)" : "Enter Fullscreen (F)"}</span>
           </button>
         </div>
 
-        {/* Controls Bar */}
-        <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/70 mb-6 flex flex-wrap items-center justify-between gap-4">
-          {/* Pattern Types */}
-          <div className="flex items-center gap-1.5 p-1 bg-white border border-gray-200 rounded-xl">
-            <button
-              onClick={() => setPattern("grid")}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-                pattern === "grid" ? "bg-gray-950 text-white" : "text-gray-600 hover:text-gray-950"
-              }`}
-            >
-              <Grid className="w-3.5 h-3.5" />
-              <span>Grid</span>
-            </button>
-            <button
-              onClick={() => setPattern("checkerboard")}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-                pattern === "checkerboard" ? "bg-gray-950 text-white" : "text-gray-600 hover:text-gray-950"
-              }`}
-            >
-              <CheckSquare className="w-3.5 h-3.5" />
-              <span>Checker</span>
-            </button>
-            <button
-              onClick={() => setPattern("solid")}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-                pattern === "solid" ? "bg-gray-950 text-white" : "text-gray-600 hover:text-gray-950"
-              }`}
-            >
-              <Palette className="w-3.5 h-3.5" />
-              <span>Solid</span>
-            </button>
-            <button
-              onClick={() => setPattern("dots")}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-                pattern === "dots" ? "bg-gray-950 text-white" : "text-gray-600 hover:text-gray-950"
-              }`}
-            >
-              <CircleDot className="w-3.5 h-3.5" />
-              <span>Dots</span>
-            </button>
-            <button
-              onClick={() => setPattern("crosshair")}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-                pattern === "crosshair" ? "bg-gray-950 text-white" : "text-gray-600 hover:text-gray-950"
-              }`}
-            >
-              <Crosshair className="w-3.5 h-3.5" />
-              <span>Reticle</span>
-            </button>
+        {/* ========================================================= */}
+        {/* PATTERN PRESET SELECTOR (12 PRESETS)                      */}
+        {/* ========================================================= */}
+        <div className="border border-gray-200 rounded-2xl p-4 bg-gray-50/80 mb-6">
+          <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-gray-400 mb-3">
+            SELECT CALIBRATION PRESET
           </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
+            {PRESET_DEFINITIONS.map((p) => {
+              const Icon = p.icon;
+              const isActive = activePreset === p.id;
+              return (
+                <button
+                  key={p.id}
+                  onClick={() => setActivePreset(p.id)}
+                  className={`flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium transition-all ${
+                    isActive
+                      ? "bg-gray-950 text-white shadow-xs"
+                      : "bg-white text-gray-700 hover:text-gray-950 border border-gray-200/80 hover:border-gray-300"
+                  }`}
+                >
+                  <Icon className="w-3.5 h-3.5 shrink-0" />
+                  <span className="truncate">{p.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
 
-          {/* Size & Line width sliders (for grid/checkerboard/dots) */}
-          {pattern !== "solid" && (
-            <div className="flex items-center gap-6 text-xs text-gray-700">
+        {/* ========================================================= */}
+        {/* CUSTOM PARAMETERS TOOLBAR                                 */}
+        {/* ========================================================= */}
+        <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/60 mb-6 flex flex-wrap items-center justify-between gap-5">
+          {/* Spacing / Grid Size */}
+          {["grid", "checkerboard", "horizontal_lines", "vertical_lines", "moire"].includes(activePreset) && (
+            <div className="flex items-center gap-3 text-xs">
+              <span className="font-mono text-gray-500 uppercase">Spacing:</span>
+              <input
+                type="range"
+                min="2"
+                max="160"
+                step="2"
+                value={gridSize}
+                onChange={(e) => setGridSize(Number(e.target.value))}
+                className="w-24 accent-gray-950"
+              />
+              <span className="font-mono tabular-nums text-gray-900 w-12 font-medium">{gridSize}px</span>
+            </div>
+          )}
+
+          {/* Line Weight / Thickness */}
+          {["grid", "horizontal_lines", "vertical_lines", "sharpness", "moire"].includes(activePreset) && (
+            <div className="flex items-center gap-3 text-xs">
+              <span className="font-mono text-gray-500 uppercase">Line Weight:</span>
+              <input
+                type="range"
+                min="1"
+                max="12"
+                step="1"
+                value={lineWidth}
+                onChange={(e) => setLineWidth(Number(e.target.value))}
+                className="w-20 accent-gray-950"
+              />
+              <span className="font-mono tabular-nums text-gray-900 w-8 font-medium">{lineWidth}px</span>
+            </div>
+          )}
+
+          {/* Gradient Orientation */}
+          {activePreset === "gradient" && (
+            <div className="flex items-center gap-2 text-xs">
+              <span className="font-mono text-gray-500 uppercase">Type:</span>
+              {(["horizontal", "vertical", "radial"] as const).map((t) => (
+                <button
+                  key={t}
+                  onClick={() => setGradientType(t)}
+                  className={`px-2.5 py-1 rounded-md capitalize font-medium ${
+                    gradientType === t ? "bg-gray-950 text-white" : "bg-white border border-gray-200 text-gray-700"
+                  }`}
+                >
+                  {t}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* Text Controls */}
+          {activePreset === "text" && (
+            <div className="flex flex-wrap items-center gap-4 text-xs w-full lg:w-auto">
+              <div className="flex items-center gap-2 flex-1 min-w-[200px]">
+                <span className="font-mono text-gray-500 uppercase">Text:</span>
+                <input
+                  type="text"
+                  value={customText}
+                  onChange={(e) => setCustomText(e.target.value)}
+                  className="flex-1 bg-white border border-gray-200 rounded-lg px-3 py-1.5 text-xs text-gray-900 font-mono"
+                  placeholder="Type custom test string..."
+                />
+              </div>
               <div className="flex items-center gap-2">
-                <span className="text-gray-500 font-mono">Spacing:</span>
+                <span className="font-mono text-gray-500 uppercase">Size:</span>
                 <input
                   type="range"
                   min="10"
-                  max="120"
-                  step="5"
-                  value={gridSize}
-                  onChange={(e) => setGridSize(Number(e.target.value))}
-                  className="w-24 accent-gray-950"
-                />
-                <span className="font-mono w-8">{gridSize}px</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-gray-500 font-mono">Weight:</span>
-                <input
-                  type="range"
-                  min="1"
-                  max="6"
-                  value={lineWidth}
-                  onChange={(e) => setLineWidth(Number(e.target.value))}
+                  max="36"
+                  step="2"
+                  value={fontSize}
+                  onChange={(e) => setFontSize(Number(e.target.value))}
                   className="w-20 accent-gray-950"
                 />
-                <span className="font-mono w-6">{lineWidth}px</span>
+                <span className="font-mono tabular-nums text-gray-900">{fontSize}px</span>
+              </div>
+              <div className="flex items-center gap-1">
+                {(["normal", "bold"] as const).map((w) => (
+                  <button
+                    key={w}
+                    onClick={() => setFontWeight(w)}
+                    className={`px-2.5 py-1 rounded-md capitalize text-xs ${
+                      fontWeight === w ? "bg-gray-950 text-white font-semibold" : "bg-white border border-gray-200 text-gray-700"
+                    }`}
+                  >
+                    {w}
+                  </button>
+                ))}
               </div>
             </div>
           )}
 
-          {/* Color pickers */}
-          <div className="flex items-center gap-4 text-xs">
-            <div className="flex items-center gap-1.5">
-              <span className="text-gray-500 font-mono">FG:</span>
-              <input
-                type="color"
-                value={color1}
-                onChange={(e) => setColor1(e.target.value)}
-                className="w-6 h-6 rounded cursor-pointer border border-gray-300"
-              />
-            </div>
-            {pattern !== "solid" && (
-              <div className="flex items-center gap-1.5">
-                <span className="text-gray-500 font-mono">BG:</span>
+          {/* Color Palettes (FG and BG) */}
+          {!["black", "white", "rgb", "grayscale"].includes(activePreset) && (
+            <div className="flex items-center gap-4 text-xs">
+              <div className="flex items-center gap-2">
+                <span className="text-gray-500 font-mono uppercase">FG:</span>
+                <input
+                  type="color"
+                  value={color1}
+                  onChange={(e) => setColor1(e.target.value)}
+                  className="w-6 h-6 rounded-md cursor-pointer border border-gray-300"
+                  title="Foreground Color"
+                />
+              </div>
+
+              <div className="flex items-center gap-2">
+                <span className="text-gray-500 font-mono uppercase">BG:</span>
                 <input
                   type="color"
                   value={color2}
                   onChange={(e) => setColor2(e.target.value)}
-                  className="w-6 h-6 rounded cursor-pointer border border-gray-300"
+                  className="w-6 h-6 rounded-md cursor-pointer border border-gray-300"
+                  title="Background Color"
                 />
               </div>
-            )}
-          </div>
+
+              <button
+                onClick={invertColors}
+                className="p-1.5 rounded-lg border border-gray-200 bg-white hover:bg-gray-100 text-gray-700 transition-colors"
+                title="Invert Foreground and Background Colors"
+              >
+                <ArrowUpDown className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          )}
         </div>
 
-        {/* Canvas Display Viewport */}
+        {/* ========================================================= */}
+        {/* INTERACTIVE CANVAS VIEWPORT                               */}
+        {/* ========================================================= */}
         <div
           ref={containerRef}
           className={`border border-gray-200 rounded-2xl overflow-hidden bg-black relative flex items-center justify-center ${
-            isFullscreen ? "fixed inset-0 z-50 border-0 rounded-none w-screen h-screen" : "h-[500px] sm:h-[600px] w-full"
+            isFullscreen ? "fixed inset-0 z-50 border-0 rounded-none w-screen h-screen" : "h-[500px] sm:h-[650px] w-full shadow-inner"
           }`}
         >
           <canvas ref={canvasRef} className="w-full h-full block" />
 
           {/* Fullscreen Floating Controls */}
           {isFullscreen && (
-            <div className="absolute top-4 right-4 bg-black/70 backdrop-blur-md text-white px-4 py-2 rounded-xl text-xs flex items-center gap-3">
-              <span>Press ESC to exit</span>
+            <div className="absolute top-4 right-4 bg-black/80 backdrop-blur-md text-white px-4 py-2 rounded-xl text-xs flex items-center gap-3 border border-white/10 shadow-xl">
+              <span className="font-mono">Press ESC or F to exit</span>
               <button
                 onClick={toggleFullscreen}
                 className="p-1 hover:bg-white/20 rounded transition-colors"
@@ -280,6 +523,28 @@ export function CustomPatternClient() {
               </button>
             </div>
           )}
+        </div>
+
+        {/* Pattern Explanation & Usage Notes */}
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/50">
+            <h3 className="text-xs font-mono uppercase font-bold text-gray-400 mb-2">Display Geometry</h3>
+            <p className="text-xs text-gray-600 leading-relaxed">
+              Use <strong>2D Grid</strong> and <strong>Checkerboard</strong> to verify straight lines, aspect ratio proportion, and barrel/pincushion optical distortion across curved displays.
+            </p>
+          </div>
+          <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/50">
+            <h3 className="text-xs font-mono uppercase font-bold text-gray-400 mb-2">Pixel Sharpness</h3>
+            <p className="text-xs text-gray-600 leading-relaxed">
+              The <strong>1px Sharpness</strong> preset renders alternating 1-pixel hairline lines at 1:1 hardware mapping to detect blurry scaling interpolation or mismatched native resolutions.
+            </p>
+          </div>
+          <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/50">
+            <h3 className="text-xs font-mono uppercase font-bold text-gray-400 mb-2">Moiré & Interference</h3>
+            <p className="text-xs text-gray-600 leading-relaxed">
+              <strong>Moiré concentric rings</strong> expose spatial frequency beating against display pixel pitch and non-integer OS scaling (e.g. 125% or 150% scaling).
+            </p>
+          </div>
         </div>
       </div>
     </div>

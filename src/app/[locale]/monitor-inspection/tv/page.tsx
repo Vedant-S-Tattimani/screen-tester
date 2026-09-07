@@ -53,7 +53,13 @@ export default async function TvDisplayInspectionPage({ params }: { params: Prom
         )}
       </div>
 
-      <WorkflowLauncher sequence={workflow.sequence} steps={workflow.steps} buttonLabel="Start TV Inspection" />
+      <WorkflowLauncher 
+        sequence={workflow.sequence} 
+        steps={workflow.steps} 
+        buttonLabel="Start TV Inspection"
+        workflowTitle={workflow.title}
+        workflowId={workflow.id}
+      />
     </div>
   );
 }

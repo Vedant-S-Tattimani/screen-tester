@@ -39,7 +39,7 @@ export default async function RefreshRateTest({
         </ul>
       }
     >
-      <RefreshRatePattern  />
+      <RefreshRatePattern testId="refresh-rate-test" />
     </TestWrapper>
   );
 }

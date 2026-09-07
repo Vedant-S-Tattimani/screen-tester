@@ -46,8 +46,8 @@ export function LevelPattern({ type, testId }: LevelPatternProps) {
             : "bg-neutral-100 border border-neutral-200 text-neutral-600"
         }`}>
           {type === "black"
-            ? "Black Level Target: Adjust brightness until squares 1â€“3 are barely discernible from the black surround."
-            : "White Level Target: Adjust contrast until squares 253â€“254 are discernible from pure white without clipping."}
+            ? "Black Level Target: Adjust monitor brightness until squares 1–3 are barely discernible from the black surround."
+            : "White Level Target: Adjust monitor contrast until squares 252–254 are discernible from pure white without clipping."}
         </div>
 
         <div className="grid grid-cols-5 grid-rows-5 gap-1.5 sm:gap-2.5 w-full max-w-3xl h-full max-h-[82%] min-h-0">

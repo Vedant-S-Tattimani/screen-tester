@@ -253,6 +253,10 @@
       "contrastTest": {
         "title": "Calibración de Contraste",
         "description": "Evalúa la relación de contraste, separación tonal y degradados en 25 niveles dinámicos."
+      },
+      "brightPixel": {
+        "title": "Prueba de píxeles brillantes",
+        "description": "Examina pantallas oscuras para localizar subpíxeles calientes o brillantes atascados en encendido."
       }
     },
     "searchPlaceholder": "Buscar pruebas...",
@@ -477,6 +481,17 @@
       "inst1": "Inspeccione los bloques para asegurarse de que los pasos de contraste adyacentes sean distinguibles.",
       "inst2": "Ajuste el contraste de su monitor para que los bloques de 92% y 96% no se confundan con el blanco 100%.",
       "inst3": "Alterne los porcentajes numéricos o cambie entre modos de brillo y contraste usando los controles inferiores."
+    },
+    "bright-pixel-test": {
+      "metaTitle": "Prueba de píxeles brillantes y píxeles calientes",
+      "metaDescription": "Compruebe si su pantalla tiene píxeles brillantes o calientes permanentemente iluminados sobre fondos oscuros.",
+      "title": "Prueba de píxeles brillantes",
+      "description_p1": "Un píxel brillante (también conocido como píxel caliente) ocurre cuando un subpíxel de cristal líquido o un emisor OLED permanece permanentemente encendido, emitiendo luz sobre fondos oscuros y negros.",
+      "instructions": [
+        "<strong>QUÉ REVISAR:</strong> Realice la prueba en una habitación con poca luz para maximizar el contraste visual frente al fondo oscuro.",
+        "<strong>CÓMO USAR:</strong> Presione Espacio o Flecha Derecha para alternar entre negro puro, gris oscuro y máscaras de aislamiento RGB.",
+        "<strong>QUÉ PUEDE NOTAR:</strong> Un punto iluminado en una pantalla negra es un subpíxel brillante o atascado. Haga clic en Marcar defecto en la barra de control para registrar sus coordenadas exactas."
+      ]
     }
   },
   "Tests": {

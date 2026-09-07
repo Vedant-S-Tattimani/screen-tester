@@ -19,7 +19,13 @@ export const monitorTests: MonitorTest[] = [
     id: "stuck-pixel-test",
     category: "pixels",
     primaryIntent: "stuck pixel test",
-    relatedTestIds: ["dead-pixel-test", "solid-color-test", "burn-in-test"]
+    relatedTestIds: ["dead-pixel-test", "bright-pixel-test", "solid-color-test", "burn-in-test"]
+  },
+  {
+    id: "bright-pixel-test",
+    category: "pixels",
+    primaryIntent: "bright pixel test",
+    relatedTestIds: ["dead-pixel-test", "stuck-pixel-test", "solid-color-test"]
   },
   {
     id: "burn-in-test",
@@ -194,6 +200,12 @@ export const monitorTests: MonitorTest[] = [
     relatedTestIds: ["resolution-checker", "custom-pattern"]
   },
   {
+    id: "display-info",
+    category: "capabilities",
+    primaryIntent: "display information and browser graphics capabilities",
+    relatedTestIds: ["resolution-checker", "compare-displays", "custom-pattern"]
+  },
+  {
     id: "custom-pattern",
     category: "capabilities",
     primaryIntent: "custom test pattern generator",
@@ -218,6 +230,7 @@ export function getRelatedTests(testId: string): MonitorTest[] {
 export const TEST_KEY_MAP: Record<string, { ns: "lib" | "tests", key: string }> = {
   "dead-pixel-test": { ns: "lib", key: "tests.deadPixel" },
   "stuck-pixel-test": { ns: "lib", key: "tests.stuckPixel" },
+  "bright-pixel-test": { ns: "lib", key: "tests.brightPixel" },
   "burn-in-test": { ns: "tests", key: "burnIn" },
   "color-test": { ns: "lib", key: "tests.colorTest" },
   "grayscale-test": { ns: "lib", key: "tests.grayscaleTest" },
@@ -241,6 +254,7 @@ export const TEST_KEY_MAP: Record<string, { ns: "lib" | "tests", key: string }> 
   "screen-tearing-test": { ns: "tests", key: "screenTearing" },
   "screen-flicker-test": { ns: "tests", key: "flicker" },
   "resolution-checker": { ns: "lib", key: "tests.displayInfo" },
+  "display-info": { ns: "lib", key: "tests.displayInfo" },
   "hdr-capability-test": { ns: "lib", key: "tests.hdrCapabilityTest" },
   "touch-screen-test": { ns: "tests", key: "touchScreen" },
   "sharpness-test": { ns: "tests", key: "sharpness" }

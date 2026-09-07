@@ -7,7 +7,21 @@ import { TestContext, Observation } from "./TestContext";
 import { normalizeWorkflowPath } from "@/lib/workflow";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { RelatedTests } from "@/components/layout/RelatedTests";
-import { safeSessionGet, safeSessionSet, safeStorageGet, safeStorageSet } from "@/lib/browserCapabilities";
+import { safeSessionGet, safeSessionSet, safeStorageGet } from "@/lib/browserCapabilities";
+import { 
+  getActiveInspectionSession, 
+  getTestObservation, 
+  recordTestObservation, 
+  addPixelDefectMarker, 
+  removePixelDefectMarker, 
+  updatePixelDefectMarker, 
+  PixelDefectMarker, 
+  PixelDefectType, 
+  ObservationResult, 
+  startNewInspectionSession 
+} from "@/lib/inspectionStorage";
+import { PixelDefectOverlay } from "./PixelDefectOverlay";
+import { QueueDrawer } from "./QueueDrawer";
 import { cn } from "@/lib/utils";
 
 interface TestWrapperProps {
@@ -32,31 +46,60 @@ export function TestWrapper({ title, description, instructions, children, testId
   
   // Observation State
   const [observation, setObservationState] = useState<Observation>(null);
+  const [observationNotes, setObservationNotesState] = useState<string>("");
   
-  // Workflow State
+  // Pixel Defect Tool State
+  const [isPixelToolActive, setIsPixelToolActive] = useState<boolean>(false);
+  const [pixelDefects, setPixelDefects] = useState<PixelDefectMarker[]>([]);
+  const [activeMarker, setActiveMarker] = useState<PixelDefectMarker | null>(null);
+
+  // Workflow & Queue State
   const [workflowSequence, setWorkflowSequence] = useState<string[]>([]);
   const [workflowIndex, setWorkflowIndex] = useState(-1);
+  const [completedTestIds, setCompletedTestIds] = useState<string[]>([]);
+  const [isQueueDrawerOpen, setIsQueueDrawerOpen] = useState(false);
   
   const containerRef = useRef<HTMLDivElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
   
-  // Load workflow & observation from storage on mount
+  // Load workflow, active session & observation from storage on mount and route change
   useEffect(() => {
     queueMicrotask(() => {
-      const rawStored = safeSessionGet<string[] | null>(STORAGE_KEY_WORKFLOW, null);
-      if (rawStored && Array.isArray(rawStored) && rawStored.length > 0) {
-        const storedSequence = rawStored
+      const activeSession = getActiveInspectionSession();
+      if (activeSession && Array.isArray(activeSession.queue) && activeSession.queue.length > 0) {
+        const storedSequence = activeSession.queue
           .filter((item): item is string => typeof item === "string" && item.trim().length > 0)
           .map((item) => (typeof normalizeWorkflowPath === "function" ? normalizeWorkflowPath(item) : item));
         setWorkflowSequence(storedSequence);
+        setCompletedTestIds(activeSession.completedTestIds || []);
+        
         const normPath = typeof normalizeWorkflowPath === "function" ? normalizeWorkflowPath(pathname) : pathname;
         const idx = storedSequence.indexOf(normPath);
         setWorkflowIndex(idx !== -1 ? idx : storedSequence.indexOf(pathname));
+      } else {
+        const rawStored = safeSessionGet<string[] | null>(STORAGE_KEY_WORKFLOW, null);
+        if (rawStored && Array.isArray(rawStored) && rawStored.length > 0) {
+          const storedSequence = rawStored
+            .filter((item): item is string => typeof item === "string" && item.trim().length > 0)
+            .map((item) => (typeof normalizeWorkflowPath === "function" ? normalizeWorkflowPath(item) : item));
+          setWorkflowSequence(storedSequence);
+          const normPath = typeof normalizeWorkflowPath === "function" ? normalizeWorkflowPath(pathname) : pathname;
+          const idx = storedSequence.indexOf(normPath);
+          setWorkflowIndex(idx !== -1 ? idx : storedSequence.indexOf(pathname));
+        }
       }
       
       if (testId) {
-        const parsedObs = safeStorageGet<Record<string, Observation>>(STORAGE_KEY_OBSERVATIONS, {});
-        if (parsedObs[testId]) {
-          setObservationState(parsedObs[testId]);
+        const currentObs = getTestObservation(testId);
+        if (currentObs) {
+          setObservationState(currentObs.result);
+          setObservationNotesState(currentObs.notes || "");
+          setPixelDefects(currentObs.pixelDefects || []);
+        } else {
+          const parsedObs = safeStorageGet<Record<string, Observation>>(STORAGE_KEY_OBSERVATIONS, {});
+          if (parsedObs[testId]) {
+            setObservationState(parsedObs[testId]);
+          }
         }
       }
     });
@@ -65,24 +108,58 @@ export function TestWrapper({ title, description, instructions, children, testId
   const setObservation = useCallback((obs: Observation) => {
     setObservationState(obs);
     if (!testId) return;
-    const parsedObs = safeStorageGet<Record<string, Observation>>(STORAGE_KEY_OBSERVATIONS, {});
-    parsedObs[testId] = obs;
-    safeStorageSet(STORAGE_KEY_OBSERVATIONS, parsedObs);
+    const normalizedRes = obs === "CHECK" ? "UNSURE" : (obs as ObservationResult);
+    recordTestObservation(testId, normalizedRes, observationNotes);
+    if (normalizedRes && !completedTestIds.includes(testId)) {
+      setCompletedTestIds(prev => [...prev, testId]);
+    }
+  }, [testId, observationNotes, completedTestIds]);
+
+  const setObservationNotes = useCallback((notes: string) => {
+    setObservationNotesState(notes);
+    if (!testId) return;
+    const normalizedRes = observation === "CHECK" ? "UNSURE" : (observation as ObservationResult);
+    recordTestObservation(testId, normalizedRes, notes);
+  }, [testId, observation]);
+
+  // Pixel Defect Marker helpers
+  const addMarker = useCallback((x: number, y: number, viewportWidth: number, viewportHeight: number, type: PixelDefectType = "dead") => {
+    if (!testId) return;
+    const marker = addPixelDefectMarker(testId, x, y, viewportWidth, viewportHeight, type);
+    setPixelDefects(prev => [...prev, marker]);
+    setActiveMarker(marker);
+    setObservationState("ISSUE");
+  }, [testId]);
+
+  const removeMarker = useCallback((id: string) => {
+    if (!testId) return;
+    removePixelDefectMarker(testId, id);
+    setPixelDefects(prev => prev.filter(m => m.id !== id));
+    if (activeMarker?.id === id) setActiveMarker(null);
+  }, [testId, activeMarker]);
+
+  const updateMarker = useCallback((id: string, updates: Partial<PixelDefectMarker>) => {
+    if (!testId) return;
+    updatePixelDefectMarker(testId, id, updates);
+    setPixelDefects(prev => prev.map(m => m.id === id ? { ...m, ...updates } : m));
   }, [testId]);
 
   // Workflow actions
-  const startWorkflow = useCallback((sequence: string[]) => {
+  const startWorkflow = useCallback((sequence: string[], title?: string, workflowId?: string) => {
     const normalized = (sequence || [])
       .filter((item): item is string => typeof item === "string" && item.trim().length > 0)
       .map((item) => (typeof normalizeWorkflowPath === "function" ? normalizeWorkflowPath(item) : item));
     safeSessionSet(STORAGE_KEY_WORKFLOW, normalized);
+    startNewInspectionSession(title || "Display Checkup", normalized, workflowId);
     if (normalized.length > 0) {
       router.push(normalized[0]);
     }
   }, [router]);
 
   const exitWorkflow = useCallback(() => {
-    try { sessionStorage.removeItem(STORAGE_KEY_WORKFLOW); } catch {}
+    try { 
+      sessionStorage.removeItem(STORAGE_KEY_WORKFLOW); 
+    } catch {}
     setWorkflowSequence([]);
     setWorkflowIndex(-1);
     if (document.fullscreenElement) {
@@ -100,10 +177,7 @@ export function TestWrapper({ title, description, instructions, children, testId
       const target = typeof normalizeWorkflowPath === "function" ? normalizeWorkflowPath(nextPath) : nextPath;
       router.push(target);
     } else if (workflowIndex === workflowSequence.length - 1) {
-      // Done with workflow
-      try { sessionStorage.removeItem(STORAGE_KEY_WORKFLOW); } catch {}
-      setWorkflowSequence([]);
-      setWorkflowIndex(-1);
+      // Done with workflow -> go to summary
       if (document.fullscreenElement) {
         document.exitFullscreen().catch(() => {});
       }
@@ -118,6 +192,23 @@ export function TestWrapper({ title, description, instructions, children, testId
       router.push(target);
     }
   }, [hasPrevInWorkflow, workflowIndex, workflowSequence, router]);
+
+  const skipTestInWorkflow = useCallback(() => {
+    if (hasNextInWorkflow) {
+      const nextPath = workflowSequence[workflowIndex + 1];
+      const target = typeof normalizeWorkflowPath === "function" ? normalizeWorkflowPath(nextPath) : nextPath;
+      router.push(target);
+    } else {
+      router.push("/monitor-inspection/summary");
+    }
+  }, [hasNextInWorkflow, workflowIndex, workflowSequence, router]);
+
+  const restartWorkflow = useCallback(() => {
+    if (workflowSequence.length > 0) {
+      const target = typeof normalizeWorkflowPath === "function" ? normalizeWorkflowPath(workflowSequence[0]) : workflowSequence[0];
+      router.push(target);
+    }
+  }, [workflowSequence, router]);
 
   // Navigation handlers registered by children
   const navHandlers = useRef<{ next?: () => void; prev?: () => void; reset?: () => void }>({});
@@ -208,6 +299,16 @@ export function TestWrapper({ title, description, instructions, children, testId
       testId,
       observation,
       setObservation,
+      observationNotes,
+      setObservationNotes,
+      pixelDefects,
+      isPixelToolActive,
+      setIsPixelToolActive,
+      activeMarker,
+      setActiveMarker,
+      addMarker,
+      removeMarker,
+      updateMarker,
       workflowSequence,
       workflowIndex,
       startWorkflow,
@@ -215,7 +316,9 @@ export function TestWrapper({ title, description, instructions, children, testId
       hasNextInWorkflow,
       hasPrevInWorkflow,
       goNextInWorkflow,
-      goPrevInWorkflow
+      goPrevInWorkflow,
+      skipTestInWorkflow,
+      restartWorkflow
     }}>
       <div className={cn(
         "flex flex-col w-full transition-all duration-300",
@@ -241,9 +344,25 @@ export function TestWrapper({ title, description, instructions, children, testId
               </div>
               
               {workflowIndex !== -1 && (
-                <div className="bg-muted/50 rounded-lg p-3 border border-border/50 text-right min-w-[200px]">
-                  <div className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold mb-1">Testing Sequence</div>
-                  <div className="text-sm font-medium">Test {workflowIndex + 1} of {workflowSequence.length}</div>
+                <div className="bg-muted/40 rounded-xl p-3 border border-border/60 text-right min-w-[210px]">
+                  <div className="flex items-center justify-between gap-3 mb-1">
+                    <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold font-mono">Queue Sequence</span>
+                    <button 
+                      onClick={() => setIsQueueDrawerOpen(true)}
+                      className="text-[11px] text-blue-600 hover:text-blue-700 font-medium underline"
+                    >
+                      Manage Queue
+                    </button>
+                  </div>
+                  <div className="text-sm font-semibold text-foreground">
+                    Test {workflowIndex + 1} of {workflowSequence.length}
+                  </div>
+                  <div className="w-full bg-border/60 h-1.5 rounded-full overflow-hidden mt-2">
+                    <div 
+                      className="bg-blue-600 h-full rounded-full transition-all duration-300"
+                      style={{ width: `${Math.round(((workflowIndex + 1) / Math.max(1, workflowSequence.length)) * 100)}%` }}
+                    />
+                  </div>
                 </div>
               )}
             </div>
@@ -263,6 +382,7 @@ export function TestWrapper({ title, description, instructions, children, testId
           {/* Test Viewport */}
           <div 
             id="test-viewport"
+            ref={viewportRef}
             className={cn(
               "relative w-full bg-black overflow-hidden select-none transition-all",
               isFullscreen 
@@ -271,6 +391,15 @@ export function TestWrapper({ title, description, instructions, children, testId
             )}
           >
             {children}
+            {testId && (
+              <PixelDefectOverlay
+                testId={testId}
+                isActive={isPixelToolActive}
+                onToggleActive={() => setIsPixelToolActive(prev => !prev)}
+                viewportRef={viewportRef}
+                isFullscreen={isFullscreen}
+              />
+            )}
           </div>
 
           {/* Controls Target Container for portal */}
@@ -294,6 +423,15 @@ export function TestWrapper({ title, description, instructions, children, testId
             <RelatedTests testId={testId} />
           </div>
         )}
+
+        {/* Queue Drawer */}
+        <QueueDrawer
+          isOpen={isQueueDrawerOpen}
+          onClose={() => setIsQueueDrawerOpen(false)}
+          workflowSequence={workflowSequence}
+          workflowIndex={workflowIndex}
+          completedTestIds={completedTestIds}
+        />
       </div>
     </TestContext.Provider>
   );

@@ -41,7 +41,7 @@ export default async function UniformityTest({
         </ul>
       }
     >
-      <SolidPattern colors={GRAYS} />
+      <SolidPattern colors={GRAYS} testId="uniformity-test" />
     </TestWrapper>
   );
 }

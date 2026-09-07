@@ -3,9 +3,14 @@
 import { createContext, useContext } from "react";
 import { useRouter } from "@/i18n/routing";
 import { normalizeWorkflowPath } from "@/lib/workflow";
+import { 
+  startNewInspectionSession, 
+  PixelDefectMarker, 
+  PixelDefectType 
+} from "@/lib/inspectionStorage";
 
 export { normalizeWorkflowPath } from "@/lib/workflow";
-export type Observation = "PASS" | "CHECK" | "ISSUE" | null;
+export type Observation = "PASS" | "CHECK" | "ISSUE" | "UNSURE" | "LOOKS_NORMAL" | "NEEDS_ATTENTION" | null;
 
 export interface TestContextType {
   // Navigation & State
@@ -23,16 +28,30 @@ export interface TestContextType {
   testId?: string;
   observation: Observation;
   setObservation: (obs: Observation) => void;
+  observationNotes: string;
+  setObservationNotes: (notes: string) => void;
   
-  // Workflow / Sequences
+  // Pixel Defect Marking System (USER-MARKED / OBSERVED)
+  pixelDefects: PixelDefectMarker[];
+  isPixelToolActive: boolean;
+  setIsPixelToolActive: (active: boolean | ((p: boolean) => boolean)) => void;
+  activeMarker: PixelDefectMarker | null;
+  setActiveMarker: (marker: PixelDefectMarker | null) => void;
+  addMarker: (x: number, y: number, viewportWidth: number, viewportHeight: number, type?: PixelDefectType) => void;
+  removeMarker: (id: string) => void;
+  updateMarker: (id: string, updates: Partial<PixelDefectMarker>) => void;
+
+  // Workflow / Queue Sequence
   workflowSequence: string[];
   workflowIndex: number;
-  startWorkflow: (sequence: string[]) => void;
+  startWorkflow: (sequence: string[], title?: string, workflowId?: string) => void;
   exitWorkflow: () => void;
   hasNextInWorkflow: boolean;
   hasPrevInWorkflow: boolean;
   goNextInWorkflow: () => void;
   goPrevInWorkflow: () => void;
+  skipTestInWorkflow: () => void;
+  restartWorkflow: () => void;
 }
 
 export const TestContext = createContext<TestContextType>({
@@ -48,6 +67,16 @@ export const TestContext = createContext<TestContextType>({
   testId: undefined,
   observation: null,
   setObservation: () => {},
+  observationNotes: "",
+  setObservationNotes: () => {},
+  pixelDefects: [],
+  isPixelToolActive: false,
+  setIsPixelToolActive: () => {},
+  activeMarker: null,
+  setActiveMarker: () => {},
+  addMarker: () => {},
+  removeMarker: () => {},
+  updateMarker: () => {},
   workflowSequence: [],
   workflowIndex: -1,
   startWorkflow: () => {},
@@ -56,6 +85,8 @@ export const TestContext = createContext<TestContextType>({
   hasPrevInWorkflow: false,
   goNextInWorkflow: () => {},
   goPrevInWorkflow: () => {},
+  skipTestInWorkflow: () => {},
+  restartWorkflow: () => {},
 });
 
 export function useTestContext() {
@@ -65,13 +96,14 @@ export function useTestContext() {
 export function useWorkflowLauncher() {
   const router = useRouter();
 
-  const startWorkflow = (sequence: string[]) => {
+  const startWorkflow = (sequence: string[], title?: string, workflowId?: string) => {
     const normalized = (sequence || []).map((item) => (
       typeof normalizeWorkflowPath === "function" ? normalizeWorkflowPath(item) : item
     ));
     try {
       if (typeof window !== "undefined") {
         sessionStorage.setItem("monitor-tester-workflow", JSON.stringify(normalized));
+        startNewInspectionSession(title || "Display Checkup", normalized, workflowId);
       }
     } catch {}
     if (normalized.length > 0) {

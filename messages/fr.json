@@ -253,6 +253,10 @@
       "contrastTest": {
         "title": "Étalonnage du Contraste",
         "description": "Évaluez le rapport de contraste, la séparation des tons et les dégradés sur 25 niveaux dynamiques."
+      },
+      "brightPixel": {
+        "title": "Test des pixels lumineux",
+        "description": "Examinez les écrans sombres pour localiser les sous-pixels lumineux ou chauds bloqués en position allumée."
       }
     },
     "searchPlaceholder": "Rechercher des tests...",
@@ -477,6 +481,17 @@
       "inst1": "Inspectez les blocs pour vous assurer que les niveaux adjacents sont visuellement distincts.",
       "inst2": "Ajustez le contraste pour éviter que les blocs 92 % et 96 % ne se fondent dans le blanc 100 %.",
       "inst3": "Affichez ou masquez les pourcentages numériques ou basculez entre les modes de luminosité et de contraste."
+    },
+    "bright-pixel-test": {
+      "metaTitle": "Test des pixels lumineux et pixels chauds",
+      "metaDescription": "Testez votre écran pour détecter les pixels lumineux ou chauds constamment éclairés sur fond sombre.",
+      "title": "Test des pixels lumineux",
+      "description_p1": "Un pixel lumineux (également appelé pixel chaud) se produit lorsqu un sous-pixel à cristaux liquides ou un émetteur OLED est bloqué à l état passant, émettant de la lumière sur des fonds sombres et noirs.",
+      "instructions": [
+        "<strong>CE QU IL FAUT VÉRIFIER :</strong> Testez dans une pièce sombre pour un contraste visuel maximal sur fond sombre.",
+        "<strong>COMMENT UTILISER :</strong> Appuyez sur Espace ou Flèche droite pour basculer entre le noir pur, le gris foncé et les masques d isolation RVB.",
+        "<strong>CE QUE VOUS POUVEZ REMARQUER :</strong> Un point éclairé sur un écran noir est un sous-pixel lumineux ou bloqué. Cliquez sur Marquer défaut pour enregistrer ses coordonnées exactes."
+      ]
     }
   },
   "Tests": {

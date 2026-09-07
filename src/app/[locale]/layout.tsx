@@ -31,12 +31,41 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Metadata' });
 
+  const languages: Record<string, string> = {};
+  routing.locales.forEach((loc) => {
+    languages[loc] = `/${loc}`;
+  });
+
   return {
+    metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://screen-tester-mu.vercel.app'),
     title: {
       template: `%s | ${t('title')}`,
       default: t('title'),
     },
     description: t('description'),
+    alternates: {
+      canonical: `/${locale}`,
+      languages,
+    },
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      url: `/${locale}`,
+      siteName: 'Monitor Tester',
+      locale: locale,
+      type: 'website',
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
   };
 }
 

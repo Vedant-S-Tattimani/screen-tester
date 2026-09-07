@@ -3,13 +3,13 @@
 import { useEffect, useState, useCallback } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
-import { SunMedium, CheckCircle, XCircle, Layers, Sliders, Info, ShieldCheck, Eye } from "lucide-react";
+import { SunMedium, CheckCircle, XCircle, Layers, Sliders, Info, ShieldCheck, Eye, Moon } from "lucide-react";
 
 interface HdrPatternProps {
   testId?: string;
 }
 
-type HdrViewMode = "overview" | "banding" | "specular";
+type HdrViewMode = "overview" | "banding" | "specular" | "shadow";
 type SensitivityLevel = "standard" | "subtle" | "ultrafine";
 
 interface HighlightCardData {
@@ -74,15 +74,17 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
     setActiveTab((curr) => {
       if (curr === "overview") return "banding";
       if (curr === "banding") return "specular";
+      if (curr === "specular") return "shadow";
       return "overview";
     });
   }, []);
 
   const cycleTabPrev = useCallback(() => {
     setActiveTab((curr) => {
+      if (curr === "shadow") return "specular";
       if (curr === "specular") return "banding";
       if (curr === "banding") return "overview";
-      return "specular";
+      return "shadow";
     });
   }, []);
 
@@ -181,6 +183,17 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
               <Sliders className="w-3.5 h-3.5" />
               <span>Highlight Clipping</span>
             </button>
+            <button
+              role="tab"
+              aria-selected={activeTab === "shadow"}
+              onClick={() => setActiveTab("shadow")}
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-medium transition-colors focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-hidden ${
+                activeTab === "shadow" ? "bg-white text-black shadow-xs font-semibold" : "text-white/70 hover:text-white"
+              }`}
+            >
+              <Moon className="w-3.5 h-3.5" />
+              <span>Shadow Detail</span>
+            </button>
           </div>
 
           {/* ========================================================= */}
@@ -227,6 +240,14 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
                   <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded-md bg-white/10 text-white/90">
                     {colorDepth ? `${colorDepth}-bit (${colorDepth >= 30 ? "10-bit HDR" : "8-bit SDR"})` : "Probing..."}
                   </span>
+                </div>
+              </div>
+
+              {/* Physical Panel Reality Check vs Browser Capability */}
+              <div className="sm:col-span-2 bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 flex items-start gap-3 text-xs text-amber-200/90 leading-relaxed">
+                <ShieldCheck className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                <div>
+                  <strong>Hardware Reality Check (Browser Signal ≠ True Panel Contrast):</strong> A browser reporting <code className="font-mono bg-black/40 px-1 rounded">dynamic-range: high</code> confirms that your OS/GPU pipeline is transmitting HDR metadata. However, actual HDR picture quality depends completely on physical panel hardware: true per-pixel OLED black levels, or high-zone Full Array Local Dimming (FALD / Mini-LED 1000+ nits). Standard edge-lit &quot;DisplayHDR 400&quot; LCD monitors accept the HDR signal, but global backlight illumination washes out dark scenes and cannot produce true HDR specular pop.
                 </div>
               </div>
 
@@ -382,6 +403,60 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
             </div>
           )}
 
+          {/* ========================================================= */}
+          {/* TAB 4: SHADOW DETAIL & NEAR-BLACK CLIPPING (HDR)          */}
+          {/* ========================================================= */}
+          {activeTab === "shadow" && (
+            <div className="w-full bg-black border border-white/10 rounded-2xl p-4 sm:p-6 flex flex-col items-center gap-5 text-center">
+              <div>
+                <div className="text-xs uppercase tracking-widest text-white/50 font-mono font-semibold">
+                  PQ EOTF Shadow Tracking & Black Floor
+                </div>
+                <h3 className="text-base sm:text-lg font-bold text-white mt-0.5">
+                  HDR Near-Black Shadow Detail
+                </h3>
+                <p className="text-xs text-white/60 max-w-lg mt-1">
+                  Evaluates whether HDR low-luminance steps remain distinguishable from true black (0 nits) without crushing or blooming.
+                </p>
+              </div>
+
+              {/* Near-Black Reference Steps Grid */}
+              <div className="w-full max-w-2xl grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {[
+                  { label: "0.8% Black", val: 2, desc: "Step 2/255" },
+                  { label: "1.5% Shadow", val: 4, desc: "Step 4/255" },
+                  { label: "3.1% Shadow", val: 8, desc: "Step 8/255" },
+                  { label: "6.3% Shadow", val: 16, desc: "Step 16/255" },
+                ].map((step, idx) => (
+                  <div 
+                    key={idx}
+                    className="p-4 rounded-xl border border-white/10 flex flex-col items-center justify-center gap-2 relative shadow-inner"
+                    style={{ backgroundColor: `rgb(${step.val}, ${step.val}, ${step.val})` }}
+                  >
+                    <div 
+                      className="w-10 h-10 rounded-lg border border-white/20 flex items-center justify-center text-[10px] font-mono text-white/70"
+                      style={{ backgroundColor: `rgb(${step.val + 6}, ${step.val + 6}, ${step.val + 6})` }}
+                    >
+                      +{step.val}
+                    </div>
+                    <span className="text-[11px] font-mono font-semibold text-white/80">{step.label}</span>
+                    <span className="text-[9px] font-mono text-white/40">{step.desc}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="w-full max-w-2xl p-3 rounded-xl bg-white/5 border border-white/10 text-left text-xs text-white/70 space-y-1">
+                <strong>What to inspect in HDR mode:</strong>
+                <p>
+                  1. In a dark room, square #1 (0.8%) should be just barely discernible from the surrounding black. If it is pitch black, your display is <strong>crushing shadows</strong>.
+                </p>
+                <p>
+                  2. On Mini-LED monitors, observe whether local dimming zones create glowing light halos (blooming) around these low-luminance squares. On OLED, each pixel remains completely isolated with zero halo.
+                </p>
+              </div>
+            </div>
+          )}
+
         </div>
       </div>
 
@@ -421,6 +496,16 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
               }`}
             >
               Highlight Clipping
+            </button>
+            <button
+              onClick={() => setActiveTab("shadow")}
+              className={`px-2.5 py-1 rounded-md transition-all font-medium ${
+                activeTab === "shadow" 
+                  ? "bg-white text-gray-950 shadow-xs font-semibold" 
+                  : "text-gray-600 hover:text-gray-900"
+              }`}
+            >
+              Shadow Detail
             </button>
           </div>
 

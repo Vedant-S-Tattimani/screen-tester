@@ -3,7 +3,7 @@ import { routing } from '@/i18n/routing';
 import { monitorTests } from '@/data/tests';
 import { monitorGuides } from '@/data/guides';
 
-const baseUrl = 'https://monitortester.com';
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://screen-tester-mu.vercel.app';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const sitemapEntries: MetadataRoute.Sitemap = [];

@@ -30,7 +30,7 @@ export default async function ScreenTearingTestPage({
       instructions={t("screenTearing.instructions")}
       testId="screen-tearing-test"
     >
-      <ScreenTearingPattern />
+      <ScreenTearingPattern testId="screen-tearing-test" />
     </TestWrapper>
   );
 }

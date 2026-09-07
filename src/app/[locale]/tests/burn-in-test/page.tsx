@@ -30,7 +30,7 @@ export default async function BurnInTestPage({
       instructions={t("burnIn.instructions")}
       testId="burn-in-test"
     >
-      <BurnInPattern />
+      <BurnInPattern testId="burn-in-test" />
     </TestWrapper>
   );
 }

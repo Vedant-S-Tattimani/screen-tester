@@ -27,7 +27,7 @@ export default async function MotionBlurTestPage({ params }: { params: Promise<{
         </ol>
       }
     >
-      <MotionPattern />
+      <MotionPattern testId="motion-blur-test" />
     </TestWrapper>
   );
 }

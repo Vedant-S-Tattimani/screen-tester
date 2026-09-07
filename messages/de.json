@@ -253,6 +253,10 @@
       "contrastTest": {
         "title": "Kontrastkalibrierung",
         "description": "Bewerten Sie das Kontrastverhältnis, die Farbtrennung und die Abstufungen über 25 dynamische Stufen."
+      },
+      "brightPixel": {
+        "title": "Heller-Pixel-Test",
+        "description": "Dunkle Bildschirme untersuchen, um dauerhaft leuchtende helle Subpixel zu finden."
       }
     },
     "searchPlaceholder": "Tests durchsuchen...",
@@ -477,6 +481,17 @@
       "inst1": "Überprüfen Sie die Blöcke, um sicherzustellen, dass benachbarte Kontraststufen unterscheidbar sind.",
       "inst2": "Passen Sie die Kontrasteinstellung an, damit 92 % und 96 % sich von 100 % Weiß abheben.",
       "inst3": "Schalten Sie numerische Prozentwerte ein/aus oder wechseln Sie über die Steuerung zwischen Helligkeit und Kontrast."
+    },
+    "bright-pixel-test": {
+      "metaTitle": "Heller-Pixel- und Hot-Pixel-Test",
+      "metaDescription": "Testen Sie Ihren Bildschirm auf dauerhaft leuchtende helle Pixel vor dunklem Hintergrund.",
+      "title": "Heller-Pixel-Test",
+      "description_p1": "Ein heller Pixel (auch Hot Pixel genannt) tritt auf, wenn ein Flüssigkristall-Subpixel oder ein OLED-Emitter dauerhaft eingeschaltet bleibt und vor dunklen und schwarzen Hintergründen leuchtet.",
+      "instructions": [
+        "<strong>WAS ZU PRÜFEN IST:</strong> In einem abgedunkelten Raum testen, um den maximalen visuellen Kontrast vor dunklem Hintergrund zu erzielen.",
+        "<strong>BEDIENUNG:</strong> Drücken Sie Space oder Pfeiltaste, um zwischen reinem Schwarz, Dunkelgrau und RGB-Isolationsmasken zu wechseln.",
+        "<strong>WAS SIE BEMERKEN KÖNNEN:</strong> Ein leuchtender Punkt auf einem schwarzen Bildschirm ist ein heller oder festsitzender Subpixel. Klicken Sie in der Steuerleiste auf Defekt markieren, um die genauen Koordinaten zu erfassen."
+      ]
     }
   },
   "Tests": {

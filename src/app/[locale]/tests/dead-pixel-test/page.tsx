@@ -41,7 +41,7 @@ export default async function DeadPixelTest({
         </ul>
       }
     >
-      <SolidPattern colors={COLORS} />
+      <SolidPattern colors={COLORS} testId="dead-pixel-test" />
     </TestWrapper>
   );
 }

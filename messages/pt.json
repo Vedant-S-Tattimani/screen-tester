@@ -253,6 +253,10 @@
       "contrastTest": {
         "title": "Calibração de Contraste",
         "description": "Avalie a taxa de contraste, separação de tons e gradação em 25 níveis dinâmicos."
+      },
+      "brightPixel": {
+        "title": "Teste de Pixels Brilhantes",
+        "description": "Examine telas escuras para localizar subpixels quentes ou brilhantes permanentemente acesos."
       }
     },
     "searchPlaceholder": "Buscar testes...",
@@ -477,6 +481,17 @@
       "inst1": "Inspecione os blocos para garantir que os passos adjacentes sejam visualmente distinguíveis.",
       "inst2": "Ajuste o contraste para que os blocos de 92% e 96% não se fundam com o branco 100%.",
       "inst3": "Ative/desative os valores de porcentagem ou alterne entre os modos nos controles abaixo."
+    },
+    "bright-pixel-test": {
+      "metaTitle": "Teste de Pixels Brilhantes e Pixels Quentes",
+      "metaDescription": "Teste sua tela para identificar pixels brilhantes ou quentes permanentemente iluminados em fundos escuros.",
+      "title": "Teste de Pixels Brilhantes",
+      "description_p1": "Um pixel brilhante (também chamado de pixel quente) ocorre quando um subpixel de cristal líquido ou emissor OLED fica permanentemente ligado, emitindo luz contra fundos escuros e pretos.",
+      "instructions": [
+        "<strong>O QUE VERIFICAR:</strong> Teste em uma sala mal iluminada para obter contraste visual máximo contra o fundo escuro.",
+        "<strong>COMO USAR:</strong> Pressione Espaço ou Seta Direita para alternar entre preto puro, cinza escuro e máscaras de isolamento RGB.",
+        "<strong>O QUE VOCÊ PODE NOTAR:</strong> Um ponto iluminado em uma tela preta é um subpixel brilhante ou preso. Clique em Marcar Defeito na barra de controle para registrar suas coordenadas exatas."
+      ]
     }
   },
   "Tests": {

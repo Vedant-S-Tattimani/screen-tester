@@ -17,6 +17,149 @@ export interface InspectionWorkflow {
 
 export const inspectionWorkflows: InspectionWorkflow[] = [
   {
+    id: "general",
+    route: "/monitor-inspection/general",
+    title: "General Display Checkup",
+    shortDescription: "Essential all-around visual checkup for any screen.",
+    longDescription: "A balanced, essential diagnostic sequence designed to inspect any desktop monitor, laptop screen, or external display for dead pixels, color accuracy, brightness, contrast, screen uniformity, and refresh rate.",
+    inspectionTip: "Set your display to its native resolution and recommended scaling setting before beginning the checkup.",
+    browserLimitations: "Browser tests evaluate client-rendered patterns and cannot inspect internal power supply stability or physical video input ports.",
+    sequence: [
+      "/tests/resolution-checker",
+      "/tests/dead-pixel-test",
+      "/tests/color-test",
+      "/tests/brightness-test",
+      "/tests/contrast-test",
+      "/tests/uniformity-test",
+      "/tests/backlight-bleed-test",
+      "/tests/ghosting-test",
+      "/tests/refresh-rate-test"
+    ],
+    steps: [
+      { title: "Resolution & Display Info", description: "Verify native resolution, DPR scaling, and display parameters." },
+      { title: "Dead Pixel Locator", description: "Cycle through pure solid fields to locate dead or stuck subpixels." },
+      { title: "Color Reproduction", description: "Check RGB primaries and secondary color fields." },
+      { title: "Brightness & Shadow Detail", description: "Ensure near-black details do not crush into dark blocks." },
+      { title: "Contrast Steps", description: "Verify luminance step separation between highlight and shadow swatches." },
+      { title: "Screen Uniformity", description: "Inspect neutral gray fields for clouding, vignetting, or dirty screen effect." },
+      { title: "Backlight Bleed & Glow", description: "Dark room inspection to locate edge pinching and backlight leakage." },
+      { title: "Ghosting & Motion Trails", description: "Observe moving contrast blocks to test pixel response time." },
+      { title: "Refresh Rate & Frame Timing", description: "Benchmark browser animation timing against panel refresh rate." }
+    ]
+  },
+  {
+    id: "used",
+    route: "/monitor-inspection/used",
+    title: "Used Monitor Inspection",
+    shortDescription: "Focused 12-step inspection optimized before purchasing a used display.",
+    longDescription: "A rigorous, pre-purchase inspection workflow designed specifically for evaluating second-hand, refurbished, or used monitors. Systematically covers hardware display parameters, pixel defects, backlight decay, color fidelity, motion clarity, and saves findings directly into an inspection report.",
+    inspectionTip: "Set monitor brightness to 100% when inspecting a pre-owned display to expose dormant burn-in, uneven fluorescent/LED decay, and bezel pressure damage.",
+    browserLimitations: "Power-on hours and internal thermal sensor telemetry require accessing the physical monitor's factory Service Menu via hardware chassis buttons.",
+    sequence: [
+      "/tests/display-info",
+      "/tests/resolution-checker",
+      "/tests/dead-pixel-test",
+      "/tests/stuck-pixel-test",
+      "/tests/color-test",
+      "/tests/brightness-test",
+      "/tests/uniformity-test",
+      "/tests/backlight-bleed-test",
+      "/tests/ghosting-test",
+      "/tests/refresh-rate-test"
+    ],
+    steps: [
+      { title: "1. Display Information", description: "Query browser-reported display parameters, color depth, and graphics capabilities." },
+      { title: "2. Resolution & Geometry", description: "Verify native resolution, scaling ratio (DPR), and full desktop viewport." },
+      { title: "3. Dead Pixels", description: "Scan white and primary color fields for permanently dark, inactive subpixels." },
+      { title: "4. Stuck Pixels", description: "Inspect dark and neutral fields for permanently energized, glowing subpixels." },
+      { title: "5. Color Reproduction", description: "Check RGB primaries and CMY secondaries for color shift, tinting, or channel degradation." },
+      { title: "6. Brightness & Shadow Separation", description: "Confirm the backlight delivers sufficient luminance without crushing shadow steps." },
+      { title: "7. Screen Uniformity", description: "Check 25%, 50%, and 75% gray fields for backlight aging, vignetting, or yellowing." },
+      { title: "8. Backlight Bleed & Frame Pinch", description: "Inspect in a dark environment for bezel pressure damage and edge light leaks." },
+      { title: "9. Ghosting & Response Degradation", description: "Evaluate pixel response trails and overdrive performance under motion." },
+      { title: "10. Refresh Rate Stability", description: "Confirm the panel runs at its rated refresh rate without micro-stutter or dropped frames." },
+      { title: "11. Inspection Notes", description: "Record physical cosmetic condition, port functionality, and visual findings in the report." },
+      { title: "12. Final Monitor Test Report", description: "Generate a complete, printable, and exportable report documenting all observed results." }
+    ]
+  },
+  {
+    id: "gaming",
+    route: "/monitor-inspection/gaming",
+    title: "Gaming Display Inspection",
+    shortDescription: "Verify refresh rate, ghosting, overdrive, tearing, black smearing, flicker, HDR, and motion.",
+    longDescription: "A specialized testing workflow engineered for high-refresh-rate gaming monitors (120Hz, 144Hz, 240Hz, 360Hz+). Evaluates refresh rate sync, ghosting, pixel overdrive overshoot (inverse ghosting), screen tearing, VA black smearing, panel flicker/strobing, HDR peak response, and motion persistence without duplicating underlying tests.",
+    inspectionTip: "Test your monitor at its advertised maximum refresh rate with Overdrive set to 'Normal' before testing 'Extreme/Faster' to identify inverse ghosting (pixel overshoot halos).",
+    browserLimitations: "Variable Refresh Rate (G-Sync / FreeSync) dynamic variable frame pacing requires native DirectX/Vulkan game execution to test dynamic fluctuating refresh rate floors.",
+    sequence: [
+      "/tests/refresh-rate-test",
+      "/tests/ghosting-test",
+      "/tests/screen-tearing-test",
+      "/tests/screen-flicker-test",
+      "/tests/hdr-capability-test",
+      "/tests/motion-blur-test"
+    ],
+    steps: [
+      { title: "Refresh Rate Verification", description: "Benchmark browser requestAnimationFrame timing against native gaming panel refresh rate." },
+      { title: "Ghosting, Overdrive & Black Smearing", description: "Evaluate pixel response transitions, overshoot halos (inverse ghosting), and VA dark-level smearing." },
+      { title: "Screen Tearing & V-Sync", description: "Stress-test scanline tearing across high-velocity horizontal and vertical motion." },
+      { title: "Flicker & Strobing Observation", description: "Inspect for PWM backlight pulsation, Vcom voltage bias flicker, and motion blur strobing artifacts." },
+      { title: "HDR Dynamic Range & Gaming Reticles", description: "Verify OS HDR signal handshake, wide color gamut, and specular highlight clipping." },
+      { title: "Motion Clarity & Persistence", description: "Assess backlight strobing (ULMB, ELMB, DyAc) and moving object clarity." }
+    ]
+  },
+  {
+    id: "oled",
+    route: "/monitor-inspection/oled",
+    title: "OLED Display Inspection",
+    shortDescription: "Inspect near-black fields, uniformity, banding, image retention, burn-in, HDR, and motion clarity.",
+    longDescription: "A specialized diagnostic workflow tailored for self-emissive OLED, QD-OLED, and WOLED panels. Evaluates near-black chrominance steps, vertical banding, panel uniformity, temporary image retention vs. permanent burn-in, HDR dynamic range, and sample-and-hold motion clarity.",
+    inspectionTip: "Observe dark gray patterns (1%, 2%, 5% gray) in a pitch-black room to inspect OLED near-black vertical banding and panel uniformity without ambient reflections.",
+    browserLimitations: "OLED Automatic Brightness Limiter (ABL) dims large 100% white browser windows; laboratory burn-in quantification requires optical luminance meters. Temporary electronic charge accumulation (image retention) should be distinguished from permanent subpixel emitter degradation (burn-in).",
+    sequence: [
+      "/tests/burn-in-test",
+      "/tests/uniformity-test",
+      "/tests/color-banding-test",
+      "/tests/black-level-test",
+      "/tests/hdr-capability-test",
+      "/tests/motion-blur-test"
+    ],
+    steps: [
+      { title: "Near-Black & Burn-In Observation", description: "Inspect 1%, 2%, and 5% near-black fields plus subpixel primary aging screens for static UI ghosting." },
+      { title: "Luminance & Dark Uniformity", description: "Check panel-wide uniformity across 5%, 15%, and 50% neutral gray fields for clouding or dark spots." },
+      { title: "Color Banding & Gradient Steps", description: "Ensure smooth 8-bit/10-bit color transitions without quantization banding or posterization." },
+      { title: "True Infinite Black Level", description: "Confirm complete subpixel shutoff in pure black scenes with zero backlight glow." },
+      { title: "HDR & Specular Highlights", description: "Verify wide color gamut presentation and peak highlight roll-off without ABL clipping." },
+      { title: "Motion Clarity & Persistence", description: "Observe near-instantaneous OLED subpixel response transitions alongside sample-and-hold eye tracking motion blur." }
+    ]
+  },
+  {
+    id: "laptop",
+    route: "/monitor-inspection/laptop",
+    title: "Laptop Display Inspection",
+    shortDescription: "Check resolution, brightness, uniformity, color, text rendering, refresh rate, and HDR.",
+    longDescription: "A focused inspection workflow for built-in laptop displays (MacBook Retina, Windows Ultrabooks, gaming laptops). Validates high-DPI scaling, maximum brightness reserve, panel uniformity, color fidelity, ClearType subpixel text rendering, refresh rate, and HDR capability where applicable.",
+    inspectionTip: "Connect your laptop to AC mains power and disable automatic brightness sensors to prevent battery power-saving profiles from dimming the backlight during testing.",
+    browserLimitations: "Laptop color gamut coverage percentages (e.g., 100% sRGB or DCI-P3) are physical panel characteristics requiring hardware colorimeter calibration.",
+    sequence: [
+      "/tests/resolution-checker",
+      "/tests/brightness-test",
+      "/tests/uniformity-test",
+      "/tests/solid-color-test",
+      "/tests/sharpness-test",
+      "/tests/refresh-rate-test",
+      "/tests/hdr-capability-test"
+    ],
+    steps: [
+      { title: "Resolution & High-DPI Scaling", description: "Verify logical viewport scaling, device pixel ratio (DPR), and native panel resolution." },
+      { title: "Brightness & Dynamic Range", description: "Verify maximum backlight output and shadow step visibility for indoor/outdoor usability." },
+      { title: "Screen Uniformity & Bezel Pinch", description: "Inspect for bezel pinch marks, edge light leakage, or uneven corner luminance." },
+      { title: "Color Vibrancy & Uniformity", description: "Verify primary and secondary color fields for uniform rendition across the display." },
+      { title: "Text Rendering & Subpixel Clarity", description: "Inspect subpixel font rendering (RGB ClearType) across multiple font scales (8px–24px)." },
+      { title: "Refresh Rate Verification", description: "Confirm high refresh rates (90Hz, 120Hz ProMotion, 144Hz+) are properly engaged." },
+      { title: "HDR & Wide Gamut (Where Applicable)", description: "Verify HDR capability and wide color gamut support on compatible HDR laptop panels." }
+    ]
+  },
+  {
     id: "new",
     route: "/monitor-inspection/new",
     title: "New Monitor Inspection",
@@ -57,132 +200,6 @@ export const inspectionWorkflows: InspectionWorkflow[] = [
       { title: "Ghosting & Pixel Response", description: "Observe moving high-contrast shapes to detect panel trailing or smearing." },
       { title: "Refresh Rate & Frame Timing", description: "Confirm browser requestAnimationFrame timing matches the panel's refresh rate." },
       { title: "HDR & Wide Color Gamut", description: "Check OS HDR reporting and P3 color space support where applicable." }
-    ]
-  },
-  {
-    id: "used",
-    route: "/monitor-inspection/used",
-    title: "Used Monitor Inspection",
-    shortDescription: "Look for common issues, age wear, and hidden defects.",
-    longDescription: "A specialized diagnostic sequence for second-hand, refurbished, or pre-owned displays. Focuses on aging artifacts such as permanent burn-in, backlight decay, stuck pixels, and panel wear.",
-    inspectionTip: "Turn monitor brightness to maximum when testing used panels to expose dormant burn-in, uneven fluorescent/LED aging, and capacitor flickering.",
-    browserLimitations: "Power-on hours and internal thermal sensor data require accessing the monitor's factory Service Menu via hardware buttons.",
-    sequence: [
-      "/tests/resolution-checker",
-      "/tests/dead-pixel-test",
-      "/tests/stuck-pixel-test",
-      "/tests/burn-in-test",
-      "/tests/brightness-test",
-      "/tests/black-level-test",
-      "/tests/uniformity-test",
-      "/tests/backlight-bleed-test",
-      "/tests/ghosting-test",
-      "/tests/refresh-rate-test",
-      "/tests/color-banding-test"
-    ],
-    steps: [
-      { title: "Resolution & Display Specs", description: "Verify native resolution and reported display capabilities." },
-      { title: "Dead Pixels", description: "Scan for permanently dark or dead pixels across white and color fields." },
-      { title: "Stuck Pixels", description: "Look for permanently bright subpixels that fail to turn off." },
-      { title: "Burn-in & Image Retention", description: "Inspect uniform gray and color screens for ghosted static UI elements or taskbars." },
-      { title: "Brightness Reserve", description: "Check if the backlight still delivers adequate luminance and dynamic range." },
-      { title: "Black Levels & Contrast", description: "Verify deep black level performance and dark shadow separation." },
-      { title: "Luminance Uniformity", description: "Detect uneven backlight aging or yellowing across panel corners." },
-      { title: "Backlight Bleed", description: "Inspect edges for frame pinching, pressure damage, or light leakage." },
-      { title: "Ghosting & Motion Blur", description: "Evaluate pixel response time degradation or overdrive decay." },
-      { title: "Refresh Rate Stability", description: "Check for frame drops or timing inconsistencies." },
-      { title: "Color Banding & Gradients", description: "Check for posterization or banding across smooth tone transitions." }
-    ]
-  },
-  {
-    id: "gaming",
-    route: "/monitor-inspection/gaming",
-    title: "Gaming Display Inspection",
-    shortDescription: "Check refresh rate, tearing, overdrive and motion clarity.",
-    longDescription: "A high-performance testing workflow tailored for high-refresh-rate gaming monitors (120Hz, 144Hz, 240Hz, 360Hz+). Optimizes overdrive settings, verifies motion clarity, and tests frame synchronization.",
-    inspectionTip: "Test your monitor at its advertised maximum refresh rate with Overdrive/Response Time set to Normal before testing Extreme/Faster to avoid inverse ghosting (pixel overshoot).",
-    browserLimitations: "Variable Refresh Rate (G-Sync/FreeSync) dynamic sync ranges require native GPU 3D acceleration to fully stress-test frame rate fluctuations.",
-    sequence: [
-      "/tests/resolution-checker",
-      "/tests/sharpness-test",
-      "/tests/refresh-rate-test",
-      "/tests/screen-tearing-test",
-      "/tests/ghosting-test",
-      "/tests/motion-blur-test",
-      "/tests/black-level-test",
-      "/tests/contrast-test",
-      "/tests/hdr-capability-test"
-    ],
-    steps: [
-      { title: "Resolution & Refresh Rate Config", description: "Verify Windows/macOS display adapter is correctly set to full gaming refresh rate." },
-      { title: "Sharpness & Text Rendering", description: "Ensure sharpness settings are not causing ringing or edge haloing." },
-      { title: "High Refresh Rate Verification", description: "Benchmark browser frame timing against native panel refresh rate." },
-      { title: "Screen Tearing & V-Sync", description: "Test visual tear line behavior during horizontal and vertical scrolling." },
-      { title: "Ghosting & Overdrive Tuning", description: "Evaluate trailing artifacts at multiple velocity speeds to tune monitor overdrive." },
-      { title: "Motion Blur & Persistence", description: "Assess backlight strobing (ULMB, ELMB, DyAc) or motion blur reduction." },
-      { title: "Black Level (Black Equalizer)", description: "Calibrate shadow visibility so competitive opponents aren't hidden in dark scenes." },
-      { title: "Contrast Balance", description: "Ensure competitive visibility without washing out highlight detail." },
-      { title: "HDR & Dynamic Range", description: "Verify HDR signal handshake and peak highlight brightness." }
-    ]
-  },
-  {
-    id: "oled",
-    route: "/monitor-inspection/oled",
-    title: "OLED Display Inspection",
-    shortDescription: "Test for burn-in, uniformity, true black levels and HDR performance.",
-    longDescription: "A specialized testing suite engineered for self-emissive OLED, QD-OLED, and WOLED panels. Isolates permanent burn-in, temporary image retention, near-black chrominance overshoot, and true per-pixel black levels.",
-    inspectionTip: "Observe dark gray patterns (5% and 10% gray) in a pitch-black room to inspect OLED near-black vertical banding and panel uniformity.",
-    browserLimitations: "OLED Automatic Brightness Limiter (ABL) will dynamically dim large full-white windows in browsers. Use smaller test patches to evaluate peak highlights.",
-    sequence: [
-      "/tests/black-level-test",
-      "/tests/burn-in-test",
-      "/tests/solid-color-test",
-      "/tests/dead-pixel-test",
-      "/tests/uniformity-test",
-      "/tests/hdr-capability-test",
-      "/tests/brightness-test",
-      "/tests/grayscale-test"
-    ],
-    steps: [
-      { title: "True Infinite Black Level", description: "Verify complete pixel shutoff in pure black scenes with zero light emission." },
-      { title: "Burn-in & Image Retention", description: "Carefully inspect 5%, 15%, and 50% gray fields for static logo or HUD ghosting." },
-      { title: "Subpixel Tint & Uniformity", description: "Check full-field magenta, red, and yellow for subpixel unevenness." },
-      { title: "Dead / Inactive Subpixels", description: "Inspect high-density OLED subpixel matrices for failed individual emitters." },
-      { title: "Near-Black Uniformity (5% Gray)", description: "Evaluate OLED vertical banding lines in low-light environments." },
-      { title: "HDR Dynamic Range", description: "Test peak specular highlight response and wide color gamut presentation." },
-      { title: "ABL & Brightness Curve", description: "Inspect luminance behavior across small vs. full-screen white windows." },
-      { title: "Grayscale Tone Mapping", description: "Ensure smooth gradation without chrominance quantization or crush." }
-    ]
-  },
-  {
-    id: "laptop",
-    route: "/monitor-inspection/laptop",
-    title: "Laptop Display Inspection",
-    shortDescription: "Quick checks for built-in laptop screens, scaling, and battery brightness.",
-    longDescription: "A targeted inspection workflow for integrated laptop displays (MacBook Retina, Windows Ultrabooks, gaming laptops). Checks High-DPI display scaling, outdoor brightness, viewing angles, and optional touchscreen digitizers.",
-    inspectionTip: "Connect your laptop to AC power when testing to prevent battery power-saving profiles from dimming the backlight or lowering refresh rates.",
-    browserLimitations: "Laptop panel manufacturer specs (e.g. sRGB vs DCI-P3 percentage) are physical panel characteristics that require hardware colorimeter profiling.",
-    sequence: [
-      "/tests/resolution-checker",
-      "/tests/dead-pixel-test",
-      "/tests/solid-color-test",
-      "/tests/brightness-test",
-      "/tests/grayscale-test",
-      "/tests/viewing-angle-test",
-      "/tests/uniformity-test",
-      "/tests/touch-screen-test",
-      "/tests/refresh-rate-test"
-    ],
-    steps: [
-      { title: "Resolution & Scaling (DPR)", description: "Verify logical viewport scaling vs. physical native panel resolution." },
-      { title: "Dead Pixels on Compact Panel", description: "Check high-density laptop screens for microscopic dead or stuck subpixels." },
-      { title: "Color Vibrancy & Saturation", description: "Check RGB saturation and color balance across standard display primaries." },
-      { title: "Brightness & Contrast", description: "Verify maximum backlight output for indoor and outdoor usability." },
-      { title: "Grayscale Steps", description: "Ensure shadow and highlight details are clearly distinguishable." },
-      { title: "Viewing Angle Stability", description: "Check IPS vs TN contrast shifting as the laptop lid angle is tilted." },
-      { title: "Edge Uniformity", description: "Inspect for bezel pinch marks or light leakage along thin laptop bezels." },
-      { title: "Touchscreen Digitizer Check", description: "If equipped with a touchscreen, verify multi-touch responsiveness and tracking." },
-      { title: "Refresh Rate (60Hz / 120Hz+)", description: "Confirm laptop high-refresh rate (e.g., ProMotion or 144Hz) is engaged." }
     ]
   },
   {

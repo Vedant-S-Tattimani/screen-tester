@@ -220,6 +220,10 @@
         "title": "Stuck Pixel Fixer",
         "description": "Attempt to revive stuck subpixels by rapidly cycling high-contrast colors in the affected area."
       },
+      "brightPixel": {
+        "title": "Bright Pixel Test",
+        "description": "Examine dark screens to locate hot or bright subpixels permanently stuck open."
+      },
       "colorTest": {
         "title": "Color Calibration",
         "description": "Assess color rendering and saturation using primary and secondary color patterns."
@@ -335,6 +339,17 @@
         "<strong>WHAT TO CHECK:</strong> Ensure your screen is clean before starting. Dust can look like dead pixels.",
         "<strong>HOW TO USE:</strong> Click or use <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> / <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd> to cycle through the test colors.",
         "<strong>WHAT YOU MAY NOTICE:</strong> Carefully scan the entire screen for tiny dots that don't match the background color. A black dot on a white background is typically a <strong>dead pixel</strong>. A bright dot on a black background is typically a <strong>stuck pixel</strong>."
+      ]
+    },
+    "bright-pixel-test": {
+      "metaTitle": "Bright Pixel & Hot Pixel Test",
+      "metaDescription": "Test your display for permanently illuminated bright or hot pixels against dark backgrounds.",
+      "title": "Bright Pixel Test",
+      "description_p1": "A bright pixel (also called a hot pixel) occurs when a liquid crystal subpixel or OLED emitter is permanently stuck in the on state, emitting light against dark and black backgrounds.",
+      "instructions": [
+        "<strong>WHAT TO CHECK:</strong> Test in a dimly lit room for maximum visual contrast against the dark background.",
+        "<strong>HOW TO USE:</strong> Press <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> or <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd> to cycle between pure black, dark gray, and single-channel RGB isolation masks.",
+        "<strong>WHAT YOU MAY NOTICE:</strong> An illuminated dot on a black screen is a <strong>bright or stuck subpixel</strong>. Click 'Mark Defect' in the control bar to record its exact coordinates."
       ]
     },
     "ghosting-test": {

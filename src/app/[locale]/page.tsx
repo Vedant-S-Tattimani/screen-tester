@@ -154,7 +154,7 @@ export default async function Home({
               </div>
 
               {/* Right-Side Editorial Microcopy (matching reference) */}
-              <div className="hidden xl:flex flex-col items-center justify-center text-center absolute -right-16 top-[28%] text-gray-400 font-serif italic text-xs sm:text-[13px] leading-tight select-none pointer-events-none">
+              <div className="hidden 2xl:flex flex-col items-center justify-center text-center absolute -right-10 top-[28%] text-gray-400 font-serif italic text-xs sm:text-[13px] leading-tight select-none pointer-events-none">
                 <span>{t("heroDetail1")}</span>
                 <span>{t("heroDetail2")}</span>
                 <span>{t("heroDetail3")}</span>
@@ -512,7 +512,7 @@ export default async function Home({
 
           {/* 5. Display Information */}
           <Link 
-            href="/tests/resolution-checker"
+            href="/tests/display-info"
             className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 transition-all flex flex-col justify-between group min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
           >
             <div>

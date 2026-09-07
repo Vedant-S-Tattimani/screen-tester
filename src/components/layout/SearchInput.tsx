@@ -42,9 +42,16 @@ const STATIC_RESOURCES: SearchResultItem[] = [
 interface SearchInputProps {
   onSelect?: () => void;
   placeholder?: string;
+  id?: string;
+  name?: string;
 }
 
-export function SearchInput({ onSelect, placeholder = "Search tests or guides..." }: SearchInputProps = {}) {
+export function SearchInput({ 
+  onSelect, 
+  placeholder = "Search tests or guides...",
+  id = "header-search-input",
+  name = "q"
+}: SearchInputProps = {}) {
   const router = useRouter();
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -172,6 +179,8 @@ export function SearchInput({ onSelect, placeholder = "Search tests or guides...
       <div className="flex items-center bg-[#f1f2f4] hover:bg-[#eaebed] focus-within:bg-white focus-within:ring-2 focus-within:ring-blue-500/20 focus-within:border-gray-300 border border-transparent rounded-full px-3 py-1.5 transition-all w-full">
         <Search className="w-3.5 h-3.5 text-gray-400 mr-2 shrink-0" />
         <input
+          id={id}
+          name={name}
           type="text"
           value={query}
           onChange={(e) => {

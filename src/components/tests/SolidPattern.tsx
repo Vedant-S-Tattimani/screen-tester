@@ -65,7 +65,10 @@ export function SolidPattern({ colors, autoCycleInterval, testId }: SolidPattern
         onClick={autoCycleInterval ? () => setIsPaused(!isPaused) : nextColor}
       />
       
-      <TestControlBar testId={testId} title={autoCycleInterval ? "Stuck Pixel Fixer" : "Dead Pixel Test"}>
+      <TestControlBar 
+        testId={testId} 
+        title={testId === "bright-pixel-test" ? "Bright Pixel Test" : autoCycleInterval ? "Stuck Pixel Fixer" : "Dead Pixel Test"}
+      >
         <div className="flex items-center gap-2">
           <button 
             type="button"

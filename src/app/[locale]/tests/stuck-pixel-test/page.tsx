@@ -41,7 +41,7 @@ export default async function StuckPixelTest({
         </ul>
       }
     >
-      <SolidPattern colors={STROBE_COLORS} autoCycleInterval={100} />
+      <SolidPattern colors={STROBE_COLORS} autoCycleInterval={100} testId="stuck-pixel-test" />
     </TestWrapper>
   );
 }

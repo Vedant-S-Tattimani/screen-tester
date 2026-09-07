@@ -30,7 +30,7 @@ export default async function SolidColorTestPage({
       instructions={t("solidColor.instructions")}
       testId="solid-color-test"
     >
-      <SolidColorPattern />
+      <SolidColorPattern testId="solid-color-test" />
     </TestWrapper>
   );
 }

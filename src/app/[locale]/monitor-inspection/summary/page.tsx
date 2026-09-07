@@ -22,8 +22,8 @@ export default async function SummaryPage({ params }: { params: Promise<{ locale
   const t = await getTranslations({ locale, namespace: "Inspection.summary" });
   
   return (
-    <div className="max-w-3xl mx-auto py-24 px-4 sm:px-6 w-full flex-1">
-      <div className="mb-12 text-center">
+    <div className="max-w-5xl mx-auto py-16 sm:py-20 px-4 sm:px-6 w-full flex-1">
+      <div className="mb-10 text-center">
         <h1 className="text-4xl font-bold tracking-tight text-foreground mb-4">
           {t("title")}
         </h1>

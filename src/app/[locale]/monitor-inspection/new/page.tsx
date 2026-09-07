@@ -53,7 +53,13 @@ export default async function NewMonitorInspectionPage({ params }: { params: Pro
         )}
       </div>
 
-      <WorkflowLauncher sequence={workflow.sequence} steps={workflow.steps} buttonLabel="Start New Monitor Inspection" />
+      <WorkflowLauncher 
+        sequence={workflow.sequence} 
+        steps={workflow.steps} 
+        buttonLabel="Start New Monitor Inspection"
+        workflowTitle={workflow.title}
+        workflowId={workflow.id}
+      />
     </div>
   );
 }

@@ -220,7 +220,7 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
                 1% Shadow Detail Stepping (0% - 10% Near-Black Range)
               </div>
               <div className="text-[10px] sm:text-[11px] text-neutral-400 mt-0.5">
-                Identifies your display&apos;s exact black clipping threshold. Quality monitors should distinguish step 2% or 3%.
+                Identifies your display&apos;s visual black clipping threshold. Quality monitors should distinguish step 2% or 3%.
               </div>
             </div>
 

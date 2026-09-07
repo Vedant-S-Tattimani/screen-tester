@@ -41,7 +41,7 @@ export default async function BacklightBleedTest({
         </ul>
       }
     >
-      <SolidPattern colors={BLACK} />
+      <SolidPattern colors={BLACK} testId="backlight-bleed-test" />
     </TestWrapper>
   );
 }

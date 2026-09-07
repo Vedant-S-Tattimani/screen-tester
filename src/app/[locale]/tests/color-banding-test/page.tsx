@@ -30,7 +30,7 @@ export default async function ColorBandingTestPage({
       instructions={t("colorBanding.instructions")}
       testId="color-banding-test"
     >
-      <ColorBandingPattern />
+      <ColorBandingPattern testId="color-banding-test" />
     </TestWrapper>
   );
 }
