@@ -2,7 +2,6 @@ import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { 
-  CheckCircle2, 
   ArrowRight, 
   Monitor, 
   Sun, 
@@ -17,7 +16,9 @@ import {
   Grid, 
   Settings, 
   Eye, 
-  BookOpen 
+  BookOpen,
+  ShieldCheck,
+  Globe
 } from "lucide-react";
 
 export default async function Home({
@@ -35,106 +36,137 @@ export default async function Home({
       {/* ================================================== */}
       {/* 1. HERO SECTION                                    */}
       {/* ================================================== */}
-      <section className="pt-8 sm:pt-12 lg:pt-14 pb-12 sm:pb-16 max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 xl:gap-12 items-center">
+      <section className="pt-6 sm:pt-8 lg:pt-10 pb-10 sm:pb-12 max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 xl:gap-6 items-center">
           
           {/* Left Hero Column */}
-          <div className="lg:col-span-7 xl:col-span-6 flex flex-col justify-center">
+          <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-center">
             {/* Small Eyebrow */}
-            <div className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-[0.2em] text-gray-400 mb-3 sm:mb-4 select-none">
+            <div className="text-[11px] sm:text-xs font-mono font-medium uppercase tracking-[0.22em] text-gray-400 mb-3 sm:mb-3.5 select-none">
               {t("eyebrow")}
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[54px] xl:text-[60px] font-extrabold tracking-[-0.035em] text-gray-950 leading-[1.08] mb-5">
+            <h1 className="text-4xl sm:text-5xl lg:text-[50px] xl:text-[56px] font-extrabold tracking-[-0.035em] text-gray-950 leading-[1.06] mb-4 sm:mb-5">
               {t("headline_pt1")}<br />
               {t("headline_pt2")}
             </h1>
 
             {/* Supporting Copy */}
-            <p className="text-[15px] sm:text-[16px] text-gray-600 leading-relaxed max-w-xl mb-8 font-normal">
+            <p className="text-[14.5px] sm:text-[15.5px] text-gray-600 leading-relaxed max-w-xl mb-6 font-normal">
               {t("description")}
             </p>
 
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-3.5 mb-8">
+            {/* Compact CTAs */}
+            <div className="flex flex-wrap items-center gap-3 mb-8 sm:mb-9">
               <Link 
                 href="/tests/dead-pixel-test"
-                className="inline-flex items-center justify-center gap-2.5 bg-gray-950 text-white hover:bg-black font-medium text-sm sm:text-[15px] px-6 sm:px-7 py-3.5 rounded-full transition-all shadow-xs hover:shadow-sm focus-visible:ring-2 focus-visible:ring-gray-900"
+                className="inline-flex items-center justify-center gap-2 bg-gray-950 hover:bg-black text-white font-medium text-xs sm:text-[13.5px] px-5 py-2.5 rounded-lg transition-all shadow-2xs hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900"
               >
-                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
                 <span>{t("startTesting")}</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </Link>
               <Link 
                 href="/tests"
-                className="inline-flex items-center justify-center gap-2 bg-white border border-gray-300 hover:border-gray-400 hover:bg-gray-50/80 text-gray-800 font-medium text-sm sm:text-[15px] px-6 sm:px-7 py-3.5 rounded-full transition-all focus-visible:ring-2 focus-visible:ring-gray-900"
+                className="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50/90 text-gray-800 border border-gray-300 hover:border-gray-400 font-medium text-xs sm:text-[13.5px] px-5 py-2.5 rounded-lg transition-all focus-visible:ring-2 focus-visible:ring-gray-900"
               >
                 <span>{t("browseTests")}</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3.5 h-3.5 text-gray-500" />
               </Link>
             </div>
 
-            {/* Trust / Product Attributes */}
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2.5 text-xs sm:text-[13px] text-gray-600 select-none">
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-gray-900 stroke-[2]" />
-                <span>{t("trustFree")}</span>
+            {/* Four Capability Points */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-3 xl:gap-5 select-none">
+              {/* 1. Works in your browser */}
+              <div className="flex items-start gap-2.5">
+                <div className="w-5 h-5 flex items-center justify-center shrink-0 text-gray-900 mt-0.5">
+                  <Monitor className="w-4 h-4 stroke-[1.8]" />
+                </div>
+                <div>
+                  <div className="text-xs sm:text-[12.5px] font-semibold text-gray-950 leading-tight">
+                    {t("cap1Title")}
+                  </div>
+                  <div className="text-[10px] sm:text-[11px] text-gray-500 mt-0.5 leading-tight">
+                    {t("cap1Desc")}
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-gray-900 stroke-[2]" />
-                <span>{t("trustNoInstall")}</span>
+
+              {/* 2. Private and secure */}
+              <div className="flex items-start gap-2.5">
+                <div className="w-5 h-5 flex items-center justify-center shrink-0 text-gray-900 mt-0.5">
+                  <ShieldCheck className="w-4 h-4 stroke-[1.8]" />
+                </div>
+                <div>
+                  <div className="text-xs sm:text-[12.5px] font-semibold text-gray-950 leading-tight">
+                    {t("cap2Title")}
+                  </div>
+                  <div className="text-[10px] sm:text-[11px] text-gray-500 mt-0.5 leading-tight">
+                    {t("cap2Desc")}
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-gray-900 stroke-[2]" />
-                <span>{t("trustBrowser")}</span>
+
+              {/* 3. Works on any device */}
+              <div className="flex items-start gap-2.5">
+                <div className="w-5 h-5 flex items-center justify-center shrink-0 text-gray-900 mt-0.5">
+                  <Laptop className="w-4 h-4 stroke-[1.8]" />
+                </div>
+                <div>
+                  <div className="text-xs sm:text-[12.5px] font-semibold text-gray-950 leading-tight">
+                    {t("cap3Title")}
+                  </div>
+                  <div className="text-[10px] sm:text-[11px] text-gray-500 mt-0.5 leading-tight">
+                    {t("cap3Desc")}
+                  </div>
+                </div>
+              </div>
+
+              {/* 4. Multi-language */}
+              <div className="flex items-start gap-2.5">
+                <div className="w-5 h-5 flex items-center justify-center shrink-0 text-gray-900 mt-0.5">
+                  <Globe className="w-4 h-4 stroke-[1.8]" />
+                </div>
+                <div>
+                  <div className="text-xs sm:text-[12.5px] font-semibold text-gray-950 leading-tight">
+                    {t("cap4Title")}
+                  </div>
+                  <div className="text-[10px] sm:text-[11px] text-gray-500 mt-0.5 leading-tight">
+                    {t("cap4Desc")}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Right Hero Column — Large Realistic Desktop Monitor Visual */}
-          <div className="lg:col-span-5 xl:col-span-6 flex flex-col items-center lg:items-end justify-center relative select-none">
-            <div className="w-full max-w-[620px] relative">
-              <Image
-                src="/hero-monitor.jpg"
-                alt="Widescreen desktop monitor displaying precision test pattern"
-                width={1200}
-                height={896}
-                priority
-                className="w-full h-auto object-contain select-none pointer-events-none"
-              />
-
-              {/* Vertical Split Line on Monitor Screen */}
-              <div 
-                className="absolute top-[3%] bottom-[13%] left-[50%] w-[1.5px] bg-white/70 pointer-events-none shadow-xs" 
-                aria-hidden="true" 
-              />
-
-              {/* Top-Left Screen Label */}
-              <div className="absolute top-[8%] left-[7%] pointer-events-none">
-                <span className="text-white/95 text-[10px] sm:text-xs font-normal drop-shadow-sm tracking-wide">
-                  See the difference.
-                </span>
+          {/* Right Hero Column — Realistic Dell Monitor Visual + Subtle Microcopy */}
+          <div className="lg:col-span-5 xl:col-span-5 flex flex-col items-center lg:items-end justify-center relative select-none">
+            <div className="w-full max-w-[560px] relative flex items-center">
+              <div className="w-full relative">
+                <Image
+                  src="/hero-monitor.jpg"
+                  alt="Dell desktop monitor displaying high resolution alpine landscape"
+                  width={1200}
+                  height={896}
+                  priority
+                  className="w-full h-auto object-contain select-none pointer-events-none"
+                />
               </div>
 
-              {/* Bottom-Right Screen Technical Specs Stack */}
-              <div className="absolute bottom-[16%] right-[8%] text-right pointer-events-none">
-                <div className="font-mono text-[8px] sm:text-[9.5px] tracking-[0.16em] text-white/90 leading-tight drop-shadow-sm uppercase">
-                  <div>PIXELS</div>
-                  <div>COLORS</div>
-                  <div>CONTRAST</div>
-                  <div>MOTION</div>
-                  <div>AND MORE</div>
-                </div>
+              {/* Right-Side Editorial Microcopy (matching reference) */}
+              <div className="hidden xl:flex flex-col items-center justify-center text-center absolute -right-16 top-[28%] text-gray-400 font-serif italic text-xs sm:text-[13px] leading-tight select-none pointer-events-none">
+                <span>{t("heroDetail1")}</span>
+                <span>{t("heroDetail2")}</span>
+                <span>{t("heroDetail3")}</span>
+                <span className="mt-1.5 text-xs not-italic text-gray-400">↓</span>
               </div>
+            </div>
 
-              {/* Handwritten-Style Editorial Script Beneath Monitor */}
-              <div className="mt-2 text-right pr-2">
-                <span className="font-serif italic text-xs sm:text-[13px] text-gray-400 select-none">
-                  {t("heroScript")}
-                </span>
-              </div>
+            {/* Bottom-Right Tagline with subtle underline accent */}
+            <div className="mt-1.5 sm:mt-2 text-right self-end pr-2 sm:pr-4">
+              <span className="font-serif italic text-[11.5px] sm:text-[12.5px] text-gray-400 select-none inline-block border-b border-gray-300/50 pb-0.5">
+                {t("heroTagline")}
+              </span>
             </div>
           </div>
 
