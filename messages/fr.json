@@ -37,6 +37,37 @@
       "oled": "Guide OLED",
       "mobile": "Guide mobile",
       "lcd": "Guide LCD"
+    },
+    "dropdown": {
+      "popularTests": "Tests Populaires",
+      "deadPixels": "Pixels Morts",
+      "colorTest": "Test de Couleur",
+      "brightness": "Luminosité",
+      "contrast": "Contraste",
+      "ghosting": "Ghosting",
+      "refreshRate": "Fréquence de Rafraîchissement",
+      "viewAllTests": "Voir les 28 tests",
+      "troubleshootInspect": "Dépannage & Inspection",
+      "diagnoseProblem": "Diagnostiquer un problème",
+      "wizardBadge": "ASSISTANT",
+      "generalCheckup": "Contrôle général",
+      "subAllRound": "Complet",
+      "usedMonitor": "Écran d'occasion",
+      "subPrePurchase": "Avant achat",
+      "gamingDisplay": "Écran gaming",
+      "subHzMotion": "Hz & mouvement",
+      "oledDisplay": "Écran OLED",
+      "subBurnIn": "Marquage & noir",
+      "laptopDisplay": "Écran de PC portable",
+      "subDpiScale": "DPI & échelle",
+      "savedReports": "Rapports enregistrés",
+      "inspectionHub": "Centre d'inspection",
+      "utilitiesTools": "Utilitaires & Outils",
+      "displayInfo": "Informations d'affichage",
+      "resolutionPpi": "Résolution & PPI",
+      "compareDisplays": "Comparer les écrans",
+      "customPattern": "Mire personnalisée",
+      "viewAllTools": "Voir tous les outils"
     }
   },
   "Footer": {
@@ -162,7 +193,16 @@
     "benefit3Desc": "Comprenez ce que vous voyez et sa signification réelle.",
     "diagnoseProblem": "Diagnostiquer un problème",
     "wfGeneralTitle": "Contrôle général",
-    "wfGeneralDesc": "Test complet pour les pixels, la couleur et le mouvement."
+    "wfGeneralDesc": "Test complet pour les pixels, la couleur et le mouvement.",
+    "howItWorksEyebrow": "MÉTHODOLOGIE",
+    "howItWorksTitle": "Comment fonctionne le test",
+    "howItWorksSubtitle": "Suivez trois étapes pratiques de préparation pour garantir une inspection visuelle fiable de votre écran.",
+    "step1Title": "Préparez votre écran",
+    "step1Desc": "Nettoyez la poussière et les traces sur l'écran. Réglez votre système sur la résolution native et une mise à l'échelle de 100 %.",
+    "step2Title": "Passez en plein écran",
+    "step2Desc": "Activez le mode plein écran (touche F11) afin que les barres de navigation et du système ne masquent pas les pixels des bords.",
+    "step3Title": "Inspectez sous un éclairage contrôlé",
+    "step3Desc": "Tamisez l'éclairage ambiant pour les fuites de lumière et le contraste. Observez la dalle de face et sous différents angles."
   },
   "TestLibrary": {
     "categories": {

@@ -37,6 +37,37 @@
       "oled": "OLED गाइड",
       "mobile": "मोबाइल गाइड",
       "lcd": "LCD गाइड"
+    },
+    "dropdown": {
+      "popularTests": "लोकप्रिय परीक्षण",
+      "deadPixels": "डेड पिक्सल",
+      "colorTest": "रंग परीक्षण",
+      "brightness": "ब्राइटनेस",
+      "contrast": "कंट्रास्ट",
+      "ghosting": "घोस्टिंग",
+      "refreshRate": "रिफ्रेश रेट",
+      "viewAllTests": "सभी 28 परीक्षण देखें",
+      "troubleshootInspect": "समस्या निवारण और निरीक्षण",
+      "diagnoseProblem": "समस्या का निदान करें",
+      "wizardBadge": "विज़ार्ड",
+      "generalCheckup": "सामान्य जांच",
+      "subAllRound": "सर्वांगीण",
+      "usedMonitor": "पुराना मॉनिटर",
+      "subPrePurchase": "खरीद से पहले",
+      "gamingDisplay": "गेमिंग डिस्प्ले",
+      "subHzMotion": "Hz और गति",
+      "oledDisplay": "OLED डिस्प्ले",
+      "subBurnIn": "बर्न-इन और ब्लैक",
+      "laptopDisplay": "लैपटॉप डिस्प्ले",
+      "subDpiScale": "DPI और स्केल",
+      "savedReports": "सहेजी गई रिपोर्टें",
+      "inspectionHub": "निरीक्षण हब",
+      "utilitiesTools": "उपयोगिताएँ और उपकरण",
+      "displayInfo": "डिस्प्ले जानकारी",
+      "resolutionPpi": "रिज़ॉल्यूशन और PPI",
+      "compareDisplays": "डिस्प्ले तुलना",
+      "customPattern": "कस्टम पैटर्न",
+      "viewAllTools": "सभी उपकरण देखें"
     }
   },
   "Footer": {
@@ -162,7 +193,16 @@
     "benefit3Desc": "समझें कि आप क्या देख रहे हैं और इसका क्या अर्थ है।",
     "diagnoseProblem": "समस्या का निदान करें",
     "wfGeneralTitle": "सामान्य जांच",
-    "wfGeneralDesc": "पिक्सेल, रंग और गति के लिए सर्वांगीण परीक्षण।"
+    "wfGeneralDesc": "पिक्सेल, रंग और गति के लिए सर्वांगीण परीक्षण।",
+    "howItWorksEyebrow": "कार्यप्रणाली",
+    "howItWorksTitle": "परीक्षण कैसे काम करता है",
+    "howItWorksSubtitle": "अपने डिस्प्ले का सटीक दृश्य निरीक्षण सुनिश्चित करने के लिए इन तीन तैयारी चरणों का पालन करें।",
+    "step1Title": "अपना डिस्प्ले तैयार करें",
+    "step1Desc": "स्क्रीन की सतह से धूल और उंगलियों के निशान साफ करें। सिस्टम को मूल रिज़ॉल्यूशन और 100% स्केलिंग पर सेट करें।",
+    "step2Title": "फ़ुलस्क्रीन चालू करें",
+    "step2Desc": "फ़ुलस्क्रीन मोड चालू करें (F11 दबाएं) ताकि ब्राउज़र टूलबार और टास्कबार किनारों के पिक्सल को न छिपाएं।",
+    "step3Title": "नियंत्रित रोशनी में जांच करें",
+    "step3Desc": "बैकलाइट ब्लीड और कंट्रास्ट जांचने के लिए कमरे की रोशनी कम करें। पैनल को सीधे सामने और विभिन्न कोणों से देखें।"
   },
   "TestLibrary": {
     "categories": {

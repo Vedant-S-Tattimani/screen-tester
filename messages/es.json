@@ -37,6 +37,37 @@
       "oled": "Guía OLED",
       "mobile": "Guía móvil",
       "lcd": "Guía LCD"
+    },
+    "dropdown": {
+      "popularTests": "Pruebas Populares",
+      "deadPixels": "Píxeles Muertos",
+      "colorTest": "Prueba de Color",
+      "brightness": "Brillo",
+      "contrast": "Contraste",
+      "ghosting": "Ghosting",
+      "refreshRate": "Frecuencia de Actualización",
+      "viewAllTests": "Ver las 28 pruebas",
+      "troubleshootInspect": "Diagnosticar e Inspeccionar",
+      "diagnoseProblem": "Diagnosticar un problema",
+      "wizardBadge": "ASISTENTE",
+      "generalCheckup": "Revisión general",
+      "subAllRound": "Completo",
+      "usedMonitor": "Monitor usado",
+      "subPrePurchase": "Precompra",
+      "gamingDisplay": "Pantalla gaming",
+      "subHzMotion": "Hz y movimiento",
+      "oledDisplay": "Pantalla OLED",
+      "subBurnIn": "Quemado y negros",
+      "laptopDisplay": "Pantalla de portátil",
+      "subDpiScale": "DPI y escala",
+      "savedReports": "Informes guardados",
+      "inspectionHub": "Centro de inspección",
+      "utilitiesTools": "Utilidades y Herramientas",
+      "displayInfo": "Información de pantalla",
+      "resolutionPpi": "Resolución y PPI",
+      "compareDisplays": "Comparar pantallas",
+      "customPattern": "Patrón personalizado",
+      "viewAllTools": "Ver todas las herramientas"
     }
   },
   "Footer": {
@@ -162,7 +193,16 @@
     "benefit3Desc": "Comprende lo que ves y su significado técnico.",
     "diagnoseProblem": "Diagnosticar un problema",
     "wfGeneralTitle": "Revisión general",
-    "wfGeneralDesc": "Prueba integral de píxeles, color y movimiento."
+    "wfGeneralDesc": "Prueba integral de píxeles, color y movimiento.",
+    "howItWorksEyebrow": "METODOLOGÍA",
+    "howItWorksTitle": "Cómo funciona la prueba",
+    "howItWorksSubtitle": "Sigue tres pasos prácticos de preparación para garantizar una inspección visual fiable de tu pantalla.",
+    "step1Title": "Prepara tu pantalla",
+    "step1Desc": "Limpia el polvo y las manchas de la superficie. Configura la resolución nativa y el escalado al 100% en tu sistema.",
+    "step2Title": "Activa la pantalla completa",
+    "step2Desc": "Usa el modo de pantalla completa (pulsa F11) para que pestañas y barras del sistema no tapen los píxeles del borde.",
+    "step3Title": "Inspecciona con luz controlada",
+    "step3Desc": "Atenúa la luz ambiental para fugas de luz y contraste. Observa el panel de frente y desde diferentes ángulos."
   },
   "TestLibrary": {
     "categories": {

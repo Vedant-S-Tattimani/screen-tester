@@ -37,6 +37,37 @@
       "oled": "OLEDガイド",
       "mobile": "モバイルガイド",
       "lcd": "LCDガイド"
+    },
+    "dropdown": {
+      "popularTests": "人気のテスト",
+      "deadPixels": "ドット抜け",
+      "colorTest": "カラーテスト",
+      "brightness": "輝度",
+      "contrast": "コントラスト",
+      "ghosting": "ゴースト",
+      "refreshRate": "リフレッシュレート",
+      "viewAllTests": "全28種類のテストを見る",
+      "troubleshootInspect": "トラブル診断と点検",
+      "diagnoseProblem": "問題を診断する",
+      "wizardBadge": "ウィザード",
+      "generalCheckup": "総合点検",
+      "subAllRound": "総合チェック",
+      "usedMonitor": "中古モニター",
+      "subPrePurchase": "購入前確認",
+      "gamingDisplay": "ゲーミング画面",
+      "subHzMotion": "Hzと応答性",
+      "oledDisplay": "OLEDディスプレイ",
+      "subBurnIn": "焼き付きと黒",
+      "laptopDisplay": "ノートPC画面",
+      "subDpiScale": "DPIと拡大率",
+      "savedReports": "保存済みレポート",
+      "inspectionHub": "点検ハブ",
+      "utilitiesTools": "ユーティリティとツール",
+      "displayInfo": "ディスプレイ情報",
+      "resolutionPpi": "解像度とPPI",
+      "compareDisplays": "ディスプレイ比較",
+      "customPattern": "カスタムパターン",
+      "viewAllTools": "すべてのツールを見る"
     }
   },
   "Footer": {
@@ -162,7 +193,16 @@
     "benefit3Desc": "目に見える現象とその意味を正しく理解。",
     "diagnoseProblem": "問題を診断する",
     "wfGeneralTitle": "総合点検",
-    "wfGeneralDesc": "画素、色、動画性能の総合チェック。"
+    "wfGeneralDesc": "画素、色、動画性能の総合チェック。",
+    "howItWorksEyebrow": "検査手順",
+    "howItWorksTitle": "テストの手順",
+    "howItWorksSubtitle": "ディスプレイを正しく視覚検査するために、事前に3つの準備手順を実施してください。",
+    "step1Title": "ディスプレイの準備",
+    "step1Desc": "画面表面のホコリや指紋を拭き取ります。OSの解像度を推奨（ネイティブ）に設定し、拡大縮小率を100%に指定してください。",
+    "step2Title": "全画面表示にする",
+    "step2Desc": "全画面表示（F11キー）を有効にして、ブラウザのタブやOSのタスクバーが端のピクセルを隠さないようにします。",
+    "step3Title": "適切な照明下で確認する",
+    "step3Desc": "バックライト漏れやコントラストを確認する際は室内の照明を落とし、正面だけでなく斜めの角度からも観察してください。"
   },
   "TestLibrary": {
     "categories": {

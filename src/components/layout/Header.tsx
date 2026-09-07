@@ -95,7 +95,7 @@ export function Header() {
             {openDropdown === "tests" && (
               <div className="absolute top-full left-1/2 -translate-x-1/2 w-64 bg-white border border-gray-200/90 rounded-2xl shadow-xl p-2 z-50 animate-in fade-in-50 zoom-in-95 duration-100">
                 <div className="text-[10px] font-mono uppercase tracking-wider text-gray-400 px-3 py-1.5 border-b border-gray-100 mb-1">
-                  Popular Tests
+                  {t("dropdown.popularTests")}
                 </div>
                 <div className="space-y-0.5">
                   <Link 
@@ -103,7 +103,7 @@ export function Header() {
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
-                    <span>Dead Pixels</span>
+                    <span>{t("dropdown.deadPixels")}</span>
                     <span className="text-[10px] text-gray-400 font-mono">PIXELS</span>
                   </Link>
                   <Link 
@@ -111,7 +111,7 @@ export function Header() {
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
-                    <span>Color Test</span>
+                    <span>{t("dropdown.colorTest")}</span>
                     <span className="text-[10px] text-gray-400 font-mono">COLOR</span>
                   </Link>
                   <Link 
@@ -119,7 +119,7 @@ export function Header() {
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
-                    <span>Brightness</span>
+                    <span>{t("dropdown.brightness")}</span>
                     <span className="text-[10px] text-gray-400 font-mono">LUM</span>
                   </Link>
                   <Link 
@@ -127,7 +127,7 @@ export function Header() {
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
-                    <span>Contrast</span>
+                    <span>{t("dropdown.contrast")}</span>
                     <span className="text-[10px] text-gray-400 font-mono">LUM</span>
                   </Link>
                   <Link 
@@ -135,7 +135,7 @@ export function Header() {
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
-                    <span>Ghosting</span>
+                    <span>{t("dropdown.ghosting")}</span>
                     <span className="text-[10px] text-gray-400 font-mono">MOTION</span>
                   </Link>
                   <Link 
@@ -143,7 +143,7 @@ export function Header() {
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
-                    <span>Refresh Rate</span>
+                    <span>{t("dropdown.refreshRate")}</span>
                     <span className="text-[10px] text-gray-400 font-mono">HZ</span>
                   </Link>
                 </div>
@@ -153,7 +153,7 @@ export function Header() {
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-gray-950 hover:bg-gray-50 transition-colors"
                   >
-                    <span>View All 28 Tests</span>
+                    <span>{t("dropdown.viewAllTests")}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -182,7 +182,7 @@ export function Header() {
             {openDropdown === "inspection" && (
               <div className="absolute top-full left-1/2 -translate-x-1/2 w-64 bg-white border border-gray-200/90 rounded-2xl shadow-xl p-2 z-50 animate-in fade-in-50 zoom-in-95 duration-100">
                 <div className="text-[10px] font-mono uppercase tracking-wider text-gray-400 px-3 py-1.5 border-b border-gray-100 mb-1">
-                  Troubleshoot &amp; Inspect
+                  {t("dropdown.troubleshootInspect")}
                 </div>
                 <div className="space-y-0.5">
                   <Link 
@@ -190,48 +190,48 @@ export function Header() {
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-purple-700 bg-purple-50/60 hover:bg-purple-100/70 transition-colors"
                   >
-                    <span>Diagnose a Problem</span>
-                    <span className="text-[9px] font-mono font-bold tracking-wider bg-purple-100 text-purple-800 px-1.5 py-0.5 rounded">WIZARD</span>
+                    <span>{t("dropdown.diagnoseProblem")}</span>
+                    <span className="text-[9px] font-mono font-bold tracking-wider bg-purple-100 text-purple-800 px-1.5 py-0.5 rounded">{t("dropdown.wizardBadge")}</span>
                   </Link>
                   <Link 
                     href="/monitor-inspection/general"
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
-                    <span>General Checkup</span>
-                    <span className="text-[10px] text-gray-400">All-round</span>
+                    <span>{t("dropdown.generalCheckup")}</span>
+                    <span className="text-[10px] text-gray-400">{t("dropdown.subAllRound")}</span>
                   </Link>
                   <Link 
                     href="/monitor-inspection/used"
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
-                    <span>Used Monitor</span>
-                    <span className="text-[10px] text-gray-400">Pre-purchase</span>
+                    <span>{t("dropdown.usedMonitor")}</span>
+                    <span className="text-[10px] text-gray-400">{t("dropdown.subPrePurchase")}</span>
                   </Link>
                   <Link 
                     href="/monitor-inspection/gaming"
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
-                    <span>Gaming Display</span>
-                    <span className="text-[10px] text-gray-400">Hz &amp; motion</span>
+                    <span>{t("dropdown.gamingDisplay")}</span>
+                    <span className="text-[10px] text-gray-400">{t("dropdown.subHzMotion")}</span>
                   </Link>
                   <Link 
                     href="/monitor-inspection/oled"
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
-                    <span>OLED Display</span>
-                    <span className="text-[10px] text-gray-400">Burn-in &amp; black</span>
+                    <span>{t("dropdown.oledDisplay")}</span>
+                    <span className="text-[10px] text-gray-400">{t("dropdown.subBurnIn")}</span>
                   </Link>
                   <Link 
                     href="/monitor-inspection/laptop"
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
-                    <span>Laptop Display</span>
-                    <span className="text-[10px] text-gray-400">DPI &amp; scale</span>
+                    <span>{t("dropdown.laptopDisplay")}</span>
+                    <span className="text-[10px] text-gray-400">{t("dropdown.subDpiScale")}</span>
                   </Link>
                   <Link 
                     href="/monitor-inspection/tv"
@@ -248,7 +248,7 @@ export function Header() {
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-1.5 rounded-lg text-xs font-medium text-blue-600 hover:bg-blue-50 transition-colors"
                   >
-                    <span>Saved Reports &amp; Notes</span>
+                    <span>{t("dropdown.savedReports")}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                   <Link
@@ -256,7 +256,7 @@ export function Header() {
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-1.5 rounded-lg text-xs font-semibold text-gray-950 hover:bg-gray-50 transition-colors"
                   >
-                    <span>Inspection Hub</span>
+                    <span>{t("dropdown.inspectionHub")}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -285,7 +285,7 @@ export function Header() {
             {openDropdown === "tools" && (
               <div className="absolute top-full left-1/2 -translate-x-1/2 w-64 bg-white border border-gray-200/90 rounded-2xl shadow-xl p-2 z-50 animate-in fade-in-50 zoom-in-95 duration-100">
                 <div className="text-[10px] font-mono uppercase tracking-wider text-gray-400 px-3 py-1.5 border-b border-gray-100 mb-1">
-                  Utilities &amp; Tools
+                  {t("dropdown.utilitiesTools")}
                 </div>
                 <div className="space-y-0.5">
                   <Link 
@@ -293,7 +293,7 @@ export function Header() {
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
-                    <span>Display Information</span>
+                    <span>{t("dropdown.displayInfo")}</span>
                     <span className="text-[10px] text-gray-400 font-mono">GPU / INFO</span>
                   </Link>
                   <Link 
@@ -301,7 +301,7 @@ export function Header() {
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
-                    <span>Resolution &amp; PPI</span>
+                    <span>{t("dropdown.resolutionPpi")}</span>
                     <span className="text-[10px] text-gray-400 font-mono">GEOMETRY</span>
                   </Link>
                   <Link 
@@ -309,7 +309,7 @@ export function Header() {
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
-                    <span>Compare Displays</span>
+                    <span>{t("dropdown.compareDisplays")}</span>
                     <span className="text-[10px] text-gray-400 font-mono">COMPARE</span>
                   </Link>
                   <Link 
@@ -317,7 +317,7 @@ export function Header() {
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
-                    <span>Custom Pattern</span>
+                    <span>{t("dropdown.customPattern")}</span>
                     <span className="text-[10px] text-gray-400 font-mono">PATTERN</span>
                   </Link>
                 </div>
@@ -327,7 +327,7 @@ export function Header() {
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-gray-950 hover:bg-gray-50 transition-colors"
                   >
-                    <span>View All Tools</span>
+                    <span>{t("dropdown.viewAllTools")}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -443,12 +443,12 @@ export function Header() {
               {t("nav.tests")}
             </Link>
             <div className="grid grid-cols-2 gap-2 text-xs text-gray-600 pl-2">
-              <Link href="/tests/dead-pixel-test" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Dead Pixels</Link>
-              <Link href="/tests/color-test" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Color Test</Link>
-              <Link href="/tests/brightness-test" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Brightness</Link>
-              <Link href="/tests/ghosting-test" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Ghosting</Link>
-              <Link href="/tests/refresh-rate-test" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Refresh Rate</Link>
-              <Link href="/tests" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1 font-medium text-gray-950">All Tests →</Link>
+              <Link href="/tests/dead-pixel-test" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.deadPixels")}</Link>
+              <Link href="/tests/color-test" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.colorTest")}</Link>
+              <Link href="/tests/brightness-test" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.brightness")}</Link>
+              <Link href="/tests/ghosting-test" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.ghosting")}</Link>
+              <Link href="/tests/refresh-rate-test" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.refreshRate")}</Link>
+              <Link href="/tests" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1 font-medium text-gray-950">{t("dropdown.viewAllTests")} →</Link>
             </div>
           </div>
 
@@ -461,14 +461,14 @@ export function Header() {
               {t("nav.inspection")}
             </Link>
             <div className="grid grid-cols-2 gap-2 text-xs text-gray-600 pl-2">
-              <Link href="/monitor-inspection/diagnostic" onClick={() => setMobileOpen(false)} className="hover:text-purple-700 py-1 font-semibold text-purple-700">Diagnose Problem</Link>
-              <Link href="/monitor-inspection/general" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">General Checkup</Link>
-              <Link href="/monitor-inspection/used" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Used Monitor</Link>
-              <Link href="/monitor-inspection/gaming" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Gaming Display</Link>
-              <Link href="/monitor-inspection/oled" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">OLED Display</Link>
-              <Link href="/monitor-inspection/laptop" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Laptop Display</Link>
+              <Link href="/monitor-inspection/diagnostic" onClick={() => setMobileOpen(false)} className="hover:text-purple-700 py-1 font-semibold text-purple-700">{t("dropdown.diagnoseProblem")}</Link>
+              <Link href="/monitor-inspection/general" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.generalCheckup")}</Link>
+              <Link href="/monitor-inspection/used" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.usedMonitor")}</Link>
+              <Link href="/monitor-inspection/gaming" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.gamingDisplay")}</Link>
+              <Link href="/monitor-inspection/oled" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.oledDisplay")}</Link>
+              <Link href="/monitor-inspection/laptop" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.laptopDisplay")}</Link>
               <Link href="/monitor-inspection/tv" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("inspection.tv")}</Link>
-              <Link href="/monitor-inspection/summary" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1 font-medium text-blue-600">Reports →</Link>
+              <Link href="/monitor-inspection/summary" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1 font-medium text-blue-600">{t("dropdown.savedReports")} →</Link>
             </div>
           </div>
 
@@ -481,11 +481,11 @@ export function Header() {
               {t("nav.tools")}
             </Link>
             <div className="grid grid-cols-2 gap-2 text-xs text-gray-600 pl-2">
-              <Link href="/tests/display-info" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Display Information</Link>
-              <Link href="/tests/resolution-checker" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Resolution &amp; PPI</Link>
-              <Link href="/tests/compare-displays" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Compare Displays</Link>
-              <Link href="/tests/custom-pattern" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Custom Pattern</Link>
-              <Link href="/tools" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1 font-medium text-gray-950 col-span-2">All Tools →</Link>
+              <Link href="/tests/display-info" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.displayInfo")}</Link>
+              <Link href="/tests/resolution-checker" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.resolutionPpi")}</Link>
+              <Link href="/tests/compare-displays" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.compareDisplays")}</Link>
+              <Link href="/tests/custom-pattern" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.customPattern")}</Link>
+              <Link href="/tools" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1 font-medium text-gray-950 col-span-2">{t("dropdown.viewAllTools")} →</Link>
             </div>
           </div>
 

@@ -16,10 +16,10 @@ import {
   Grid, 
   Settings, 
   Eye, 
-  BookOpen,
   ShieldCheck,
   Globe,
-  AlertCircle
+  AlertCircle,
+  Maximize2
 } from "lucide-react";
 
 export default async function Home({
@@ -62,14 +62,14 @@ export default async function Home({
             <div className="flex flex-wrap items-center gap-3 mb-8 sm:mb-9">
               <Link 
                 href="/tests/dead-pixel-test"
-                className="inline-flex items-center justify-center gap-2 bg-gray-950 hover:bg-black text-white font-medium text-xs sm:text-[13.5px] px-5 py-2.5 rounded-lg transition-all shadow-2xs hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gray-950 hover:bg-black text-white font-medium text-xs sm:text-[13.5px] px-5 py-2.5 rounded-lg transition-all shadow-2xs hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900"
               >
                 <span>{t("startTesting")}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
               <Link 
                 href="/monitor-inspection/diagnostic"
-                className="inline-flex items-center justify-center gap-2 bg-gray-50/80 hover:bg-gray-100 text-gray-800 border border-gray-300 hover:border-gray-400 font-medium text-xs sm:text-[13.5px] px-5 py-2.5 rounded-lg transition-all focus-visible:ring-2 focus-visible:ring-gray-900"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gray-50/80 hover:bg-gray-100 text-gray-800 border border-gray-300 hover:border-gray-400 font-medium text-xs sm:text-[13.5px] px-5 py-2.5 rounded-lg transition-all focus-visible:ring-2 focus-visible:ring-gray-900"
               >
                 <AlertCircle className="w-3.5 h-3.5 text-amber-600" />
                 <span>{t("diagnoseProblem")}</span>
@@ -146,7 +146,7 @@ export default async function Home({
               <div className="w-full relative">
                 <Image
                   src="/hero-monitor.jpg"
-                  alt="Dell desktop monitor displaying high resolution alpine landscape"
+                  alt="Desktop monitor displaying calibration grid and grayscale diagnostic test pattern"
                   width={1200}
                   height={896}
                   priority
@@ -518,52 +518,75 @@ export default async function Home({
       </section>
 
       {/* ================================================== */}
-      {/* 5. BENEFITS / TRUST STRIP                          */}
+      {/* 5. HOW TESTING WORKS (PRACTICAL ONBOARDING)       */}
       {/* ================================================== */}
-      <section className="border-t border-gray-200/80 bg-gray-50/40 py-8 sm:py-10">
+      <section className="border-t border-gray-200/80 bg-gray-50/40 py-10 sm:py-12">
         <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200/80">
-            {/* 1. Test visually */}
-            <div className="flex items-start gap-3.5 py-4 md:py-0 md:px-6 first:pl-0">
-              <div className="w-8 h-8 rounded-lg bg-white border border-gray-200/80 flex items-center justify-center shrink-0 text-gray-900 shadow-2xs">
-                <Eye className="w-4 h-4 stroke-[1.8]" />
-              </div>
+          {/* Section Header */}
+          <div className="mb-6 sm:mb-8">
+            <div className="text-[11px] sm:text-xs font-mono font-medium uppercase tracking-[0.22em] text-gray-400 mb-1.5 select-none">
+              {t("howItWorksEyebrow")}
+            </div>
+            <h2 className="text-base sm:text-lg font-bold tracking-tight text-gray-950 uppercase">
+              {t("howItWorksTitle")}
+            </h2>
+            <p className="text-xs sm:text-[13px] text-gray-500 mt-1 max-w-2xl">
+              {t("howItWorksSubtitle")}
+            </p>
+          </div>
+
+          {/* 3 Step Sequence Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-5">
+            {/* Step 01: Prepare Your Display */}
+            <div className="bg-white border border-gray-200/90 rounded-xl p-4 sm:p-5 flex flex-col justify-between">
               <div>
-                <h3 className="text-xs sm:text-[13px] font-semibold text-gray-950">
-                  {t("benefit1Title")}
+                <div className="flex items-center justify-between mb-3">
+                  <span className="font-mono text-xs font-bold text-gray-400 tracking-wider select-none">01</span>
+                  <div className="w-7 h-7 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700">
+                    <Sliders className="w-3.5 h-3.5 stroke-[2]" />
+                  </div>
+                </div>
+                <h3 className="font-semibold text-xs sm:text-[13.5px] text-gray-950 mb-1 leading-snug">
+                  {t("step1Title")}
                 </h3>
-                <p className="text-[11px] sm:text-xs text-gray-500 mt-0.5 leading-snug">
-                  {t("benefit1Desc")}
+                <p className="text-[11px] sm:text-xs text-gray-500 leading-relaxed">
+                  {t("step1Desc")}
                 </p>
               </div>
             </div>
 
-            {/* 2. Tools for every display */}
-            <div className="flex items-start gap-3.5 py-4 md:py-0 md:px-6">
-              <div className="w-8 h-8 rounded-lg bg-white border border-gray-200/80 flex items-center justify-center shrink-0 text-gray-900 shadow-2xs">
-                <Monitor className="w-4 h-4 stroke-[1.8]" />
-              </div>
+            {/* Step 02: Go Fullscreen */}
+            <div className="bg-white border border-gray-200/90 rounded-xl p-4 sm:p-5 flex flex-col justify-between">
               <div>
-                <h3 className="text-xs sm:text-[13px] font-semibold text-gray-950">
-                  {t("benefit2Title")}
+                <div className="flex items-center justify-between mb-3">
+                  <span className="font-mono text-xs font-bold text-gray-400 tracking-wider select-none">02</span>
+                  <div className="w-7 h-7 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700">
+                    <Maximize2 className="w-3.5 h-3.5 stroke-[2]" />
+                  </div>
+                </div>
+                <h3 className="font-semibold text-xs sm:text-[13.5px] text-gray-950 mb-1 leading-snug">
+                  {t("step2Title")}
                 </h3>
-                <p className="text-[11px] sm:text-xs text-gray-500 mt-0.5 leading-snug">
-                  {t("benefit2Desc")}
+                <p className="text-[11px] sm:text-xs text-gray-500 leading-relaxed">
+                  {t("step2Desc")}
                 </p>
               </div>
             </div>
 
-            {/* 3. Clear guidance */}
-            <div className="flex items-start gap-3.5 py-4 md:py-0 md:px-6 last:pr-0">
-              <div className="w-8 h-8 rounded-lg bg-white border border-gray-200/80 flex items-center justify-center shrink-0 text-gray-900 shadow-2xs">
-                <BookOpen className="w-4 h-4 stroke-[1.8]" />
-              </div>
+            {/* Step 03: Inspect Under Controlled Light */}
+            <div className="bg-white border border-gray-200/90 rounded-xl p-4 sm:p-5 flex flex-col justify-between">
               <div>
-                <h3 className="text-xs sm:text-[13px] font-semibold text-gray-950">
-                  {t("benefit3Title")}
+                <div className="flex items-center justify-between mb-3">
+                  <span className="font-mono text-xs font-bold text-gray-400 tracking-wider select-none">03</span>
+                  <div className="w-7 h-7 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700">
+                    <Eye className="w-3.5 h-3.5 stroke-[2]" />
+                  </div>
+                </div>
+                <h3 className="font-semibold text-xs sm:text-[13.5px] text-gray-950 mb-1 leading-snug">
+                  {t("step3Title")}
                 </h3>
-                <p className="text-[11px] sm:text-xs text-gray-500 mt-0.5 leading-snug">
-                  {t("benefit3Desc")}
+                <p className="text-[11px] sm:text-xs text-gray-500 leading-relaxed">
+                  {t("step3Desc")}
                 </p>
               </div>
             </div>

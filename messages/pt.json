@@ -37,6 +37,37 @@
       "oled": "Guia OLED",
       "mobile": "Guia celular",
       "lcd": "Guia LCD"
+    },
+    "dropdown": {
+      "popularTests": "Testes Populares",
+      "deadPixels": "Pixels Mortos",
+      "colorTest": "Teste de Cores",
+      "brightness": "Brilho",
+      "contrast": "Contraste",
+      "ghosting": "Ghosting",
+      "refreshRate": "Taxa de Atualização",
+      "viewAllTests": "Ver todos os 28 testes",
+      "troubleshootInspect": "Diagnóstico e Inspeção",
+      "diagnoseProblem": "Diagnosticar um problema",
+      "wizardBadge": "ASSISTENTE",
+      "generalCheckup": "Verificação geral",
+      "subAllRound": "Completo",
+      "usedMonitor": "Monitor usado",
+      "subPrePurchase": "Pré-compra",
+      "gamingDisplay": "Monitor gamer",
+      "subHzMotion": "Hz e movimento",
+      "oledDisplay": "Monitor OLED",
+      "subBurnIn": "Burn-in e preto",
+      "laptopDisplay": "Tela de notebook",
+      "subDpiScale": "DPI e escala",
+      "savedReports": "Relatórios salvos",
+      "inspectionHub": "Central de inspeção",
+      "utilitiesTools": "Utilitários e Ferramentas",
+      "displayInfo": "Informações da tela",
+      "resolutionPpi": "Resolução e PPI",
+      "compareDisplays": "Comparar monitores",
+      "customPattern": "Padrão personalizado",
+      "viewAllTools": "Ver todas as ferramentas"
     }
   },
   "Footer": {
@@ -162,7 +193,16 @@
     "benefit3Desc": "Entenda o que você vê e o que isso realmente significa.",
     "diagnoseProblem": "Diagnosticar um problema",
     "wfGeneralTitle": "Verificação geral",
-    "wfGeneralDesc": "Teste completo para pixels, cor e movimento."
+    "wfGeneralDesc": "Teste completo para pixels, cor e movimento.",
+    "howItWorksEyebrow": "METODOLOGIA",
+    "howItWorksTitle": "Como funciona o teste",
+    "howItWorksSubtitle": "Siga três etapas práticas de preparação para garantir uma inspeção visual confiável da sua tela.",
+    "step1Title": "Prepare sua tela",
+    "step1Desc": "Limpe poeira e marcas da superfície da tela. Configure a resolução nativa e a escala de exibição em 100% no seu sistema.",
+    "step2Title": "Ative a tela cheia",
+    "step2Desc": "Ative o modo tela cheia (pressione F11) para que barras de navegação e do sistema não cubram os pixels das bordas.",
+    "step3Title": "Inspecione com iluminação controlada",
+    "step3Desc": "Diminua a iluminação ambiente para vazamento de luz e contraste. Observe o painel de frente e de ângulos laterais."
   },
   "TestLibrary": {
     "categories": {

@@ -37,6 +37,37 @@
       "oled": "OLED 가이드",
       "mobile": "모바일 가이드",
       "lcd": "LCD 가이드"
+    },
+    "dropdown": {
+      "popularTests": "주요 테스트",
+      "deadPixels": "불량 화소",
+      "colorTest": "색상 테스트",
+      "brightness": "밝기",
+      "contrast": "명암비",
+      "ghosting": "고스팅",
+      "refreshRate": "주사율",
+      "viewAllTests": "전체 28개 테스트 보기",
+      "troubleshootInspect": "문제 진단 및 점검",
+      "diagnoseProblem": "문제 진단하기",
+      "wizardBadge": "마법사",
+      "generalCheckup": "종합 점검",
+      "subAllRound": "전체 진단",
+      "usedMonitor": "중고 모니터",
+      "subPrePurchase": "구매 전 확인",
+      "gamingDisplay": "게이밍 디스플레이",
+      "subHzMotion": "Hz 및 잔상",
+      "oledDisplay": "OLED 디스플레이",
+      "subBurnIn": "번인 및 블랙",
+      "laptopDisplay": "노트북 화면",
+      "subDpiScale": "DPI 및 배율",
+      "savedReports": "저장된 보고서",
+      "inspectionHub": "점검 허브",
+      "utilitiesTools": "유틸리티 및 도구",
+      "displayInfo": "디스플레이 정보",
+      "resolutionPpi": "해상도 및 PPI",
+      "compareDisplays": "디스플레이 비교",
+      "customPattern": "사용자 정의 패턴",
+      "viewAllTools": "모든 도구 보기"
     }
   },
   "Footer": {
@@ -162,7 +193,16 @@
     "benefit3Desc": "눈에 보이는 현상과 기술적 의미를 쉽게 이해.",
     "diagnoseProblem": "문제 진단하기",
     "wfGeneralTitle": "종합 점검",
-    "wfGeneralDesc": "픽셀, 색상, 모션에 대한 올라운드 테스트."
+    "wfGeneralDesc": "픽셀, 색상, 모션에 대한 올라운드 테스트.",
+    "howItWorksEyebrow": "검사 방법",
+    "howItWorksTitle": "테스트 진행 방법",
+    "howItWorksSubtitle": "디스플레이를 정확하게 시각 점검하기 위해 사전에 3가지 준비 단계를 진행하세요.",
+    "step1Title": "화면 준비",
+    "step1Desc": "화면 표면의 먼지와 지문을 닦아내세요. OS 해상도를 권장(기본)으로 설정하고 배율을 100%로 지정하세요.",
+    "step2Title": "전체 화면으로 전환",
+    "step2Desc": "전체 화면(F11 키)을 켜서 브라우저 툴바나 OS 작업 표시줄이 모서리 픽셀을 가리지 않도록 하세요.",
+    "step3Title": "조명을 조절하여 점검",
+    "step3Desc": "빛샘 및 명암비 점검 시 실내 조명을 어둡게 조절하고, 화면을 정면뿐만 아니라 측면 각도에서도 살펴보세요."
   },
   "TestLibrary": {
     "categories": {
