@@ -27,7 +27,8 @@
       "new": "New Monitor",
       "used": "Used Monitor",
       "laptop": "Laptop Display",
-      "tv": "TV Display"
+      "tv": "TV Display",
+      "tvSubtitle": "Large screen"
     },
     "guides": {
       "monitor": "Monitor Guide",
@@ -185,7 +186,9 @@
     "benefit2Desc": "LCD, OLED, gaming, laptop, TV and more.",
     "benefit3Title": "Clear, unbiased guidance",
     "benefit3Desc": "Understand what you see and what it means.",
-    "diagnoseProblem": "Diagnose a Problem"
+    "diagnoseProblem": "Diagnose a Problem",
+    "wfGeneralTitle": "General checkup",
+    "wfGeneralDesc": "All-round test for pixels, color, and motion."
   },
   "TestLibrary": {
     "launchTest": "Launch Test",

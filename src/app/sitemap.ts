@@ -11,12 +11,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const coreRoutes = [
     { path: '', priority: 1.0, changeFrequency: 'monthly' as const },
     { path: '/tests', priority: 1.0, changeFrequency: 'monthly' as const },
+    { path: '/tools', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/monitor-inspection', priority: 1.0, changeFrequency: 'monthly' as const },
+    { path: '/monitor-inspection/diagnostic', priority: 0.9, changeFrequency: 'monthly' as const },
+    { path: '/monitor-inspection/general', priority: 0.9, changeFrequency: 'monthly' as const },
+    { path: '/monitor-inspection/used', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/monitor-inspection/gaming', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/monitor-inspection/oled', priority: 0.9, changeFrequency: 'monthly' as const },
+    { path: '/monitor-inspection/laptop', priority: 0.9, changeFrequency: 'monthly' as const },
+    { path: '/monitor-inspection/tv', priority: 0.9, changeFrequency: 'monthly' as const },
+    { path: '/monitor-inspection/summary', priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/guides', priority: 0.9, changeFrequency: 'monthly' as const },
-    { path: '/privacy', priority: 0.3, changeFrequency: 'yearly' as const },
+    { path: '/knowledge-base', priority: 0.7, changeFrequency: 'monthly' as const },
+    { path: '/faq', priority: 0.6, changeFrequency: 'monthly' as const },
     { path: '/about', priority: 0.5, changeFrequency: 'yearly' as const },
+    { path: '/contact', priority: 0.5, changeFrequency: 'yearly' as const },
+    { path: '/privacy', priority: 0.3, changeFrequency: 'yearly' as const },
+    { path: '/terms', priority: 0.3, changeFrequency: 'yearly' as const },
   ];
 
   const testRoutes = monitorTests.map(test => ({

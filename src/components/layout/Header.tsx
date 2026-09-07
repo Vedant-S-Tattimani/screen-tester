@@ -233,6 +233,14 @@ export function Header() {
                     <span>Laptop Display</span>
                     <span className="text-[10px] text-gray-400">DPI &amp; scale</span>
                   </Link>
+                  <Link 
+                    href="/monitor-inspection/tv"
+                    onClick={() => setOpenDropdown(null)}
+                    className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
+                  >
+                    <span>{t("inspection.tv")}</span>
+                    <span className="text-[10px] text-gray-400">{t("inspection.tvSubtitle")}</span>
+                  </Link>
                 </div>
                 <div className="mt-1 pt-1 border-t border-gray-100 flex flex-col gap-0.5">
                   <Link
@@ -459,6 +467,7 @@ export function Header() {
               <Link href="/monitor-inspection/gaming" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Gaming Display</Link>
               <Link href="/monitor-inspection/oled" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">OLED Display</Link>
               <Link href="/monitor-inspection/laptop" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">Laptop Display</Link>
+              <Link href="/monitor-inspection/tv" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("inspection.tv")}</Link>
               <Link href="/monitor-inspection/summary" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1 font-medium text-blue-600">Reports →</Link>
             </div>
           </div>

@@ -27,7 +27,8 @@
       "new": "Neuer Monitor",
       "used": "Gebrauchter Monitor",
       "laptop": "Laptop-Display",
-      "tv": "TV-Display"
+      "tv": "TV-Display",
+      "tvSubtitle": "Großbildschirm"
     },
     "guides": {
       "monitor": "Monitor-Leitfaden",
@@ -159,7 +160,9 @@
     "benefit2Desc": "LCD, OLED, Gaming, Laptop, TV und mehr.",
     "benefit3Title": "Klare, unabhängige Beratung",
     "benefit3Desc": "Verstehen Sie, was Sie sehen und was es bedeutet.",
-    "diagnoseProblem": "Problem diagnostizieren"
+    "diagnoseProblem": "Problem diagnostizieren",
+    "wfGeneralTitle": "Allgemeine Prüfung",
+    "wfGeneralDesc": "Rundum-Test für Pixel, Farbe und Bewegung."
   },
   "TestLibrary": {
     "categories": {

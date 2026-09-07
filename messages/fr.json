@@ -27,7 +27,8 @@
       "new": "Nouvel écran",
       "used": "Écran d'occasion",
       "laptop": "Écran PC portable",
-      "tv": "Écran TV"
+      "tv": "Écran TV",
+      "tvSubtitle": "Grand écran"
     },
     "guides": {
       "monitor": "Guide écran",
@@ -159,7 +160,9 @@
     "benefit2Desc": "LCD, OLED, gaming, portable, TV et plus.",
     "benefit3Title": "Conseils clairs et impartiaux",
     "benefit3Desc": "Comprenez ce que vous voyez et sa signification réelle.",
-    "diagnoseProblem": "Diagnostiquer un problème"
+    "diagnoseProblem": "Diagnostiquer un problème",
+    "wfGeneralTitle": "Contrôle général",
+    "wfGeneralDesc": "Test complet pour les pixels, la couleur et le mouvement."
   },
   "TestLibrary": {
     "categories": {

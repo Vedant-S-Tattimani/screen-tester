@@ -318,9 +318,28 @@ export default async function Home({
           </Link>
         </div>
 
-        {/* Exactly 5 Workflow Cards (NO "New Monitor") */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5">
-          {/* 1. Used monitor */}
+        {/* 6 Workflow Cards (General Checkup + 5 Specialized Workflows) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3.5">
+          {/* 1. General checkup */}
+          <Link 
+            href="/monitor-inspection/general"
+            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 transition-all flex flex-col justify-between group min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
+          >
+            <div>
+              <div className="w-6 h-6 flex items-center text-gray-800 mb-2.5">
+                <ClipboardCheck className="w-4 h-4 stroke-[1.8]" />
+              </div>
+              <h3 className="font-semibold text-[13px] text-gray-950 mb-0.5">
+                {t("wfGeneralTitle")}
+              </h3>
+              <p className="text-[11px] text-gray-500 leading-snug">
+                {t("wfGeneralDesc")}
+              </p>
+            </div>
+            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-2" />
+          </Link>
+
+          {/* 2. Used monitor */}
           <Link 
             href="/monitor-inspection/used"
             className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 transition-all flex flex-col justify-between group min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"

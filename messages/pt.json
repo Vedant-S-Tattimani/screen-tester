@@ -27,7 +27,8 @@
       "new": "Monitor novo",
       "used": "Monitor usado",
       "laptop": "Tela de notebook",
-      "tv": "Tela de TV"
+      "tv": "Tela de TV",
+      "tvSubtitle": "Tela grande"
     },
     "guides": {
       "monitor": "Guia de monitor",
@@ -159,7 +160,9 @@
     "benefit2Desc": "LCD, OLED, gamer, notebook, TV e muito mais.",
     "benefit3Title": "Orientação clara e imparcial",
     "benefit3Desc": "Entenda o que você vê e o que isso realmente significa.",
-    "diagnoseProblem": "Diagnosticar um problema"
+    "diagnoseProblem": "Diagnosticar um problema",
+    "wfGeneralTitle": "Verificação geral",
+    "wfGeneralDesc": "Teste completo para pixels, cor e movimento."
   },
   "TestLibrary": {
     "categories": {

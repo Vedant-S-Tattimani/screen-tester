@@ -27,7 +27,8 @@
       "new": "새 모니터",
       "used": "중고 모니터",
       "laptop": "노트북 화면",
-      "tv": "TV 화면"
+      "tv": "TV 화면",
+      "tvSubtitle": "대형 화면"
     },
     "guides": {
       "monitor": "모니터 가이드",
@@ -159,7 +160,9 @@
     "benefit2Desc": "LCD, OLED, 게이밍, 노트북, TV 등 모든 화면.",
     "benefit3Title": "명확하고 객관적인 가이드",
     "benefit3Desc": "눈에 보이는 현상과 기술적 의미를 쉽게 이해.",
-    "diagnoseProblem": "문제 진단하기"
+    "diagnoseProblem": "문제 진단하기",
+    "wfGeneralTitle": "종합 점검",
+    "wfGeneralDesc": "픽셀, 색상, 모션에 대한 올라운드 테스트."
   },
   "TestLibrary": {
     "categories": {

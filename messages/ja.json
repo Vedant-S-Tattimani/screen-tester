@@ -27,7 +27,8 @@
       "new": "新品モニター",
       "used": "中古モニター",
       "laptop": "ノートPC画面",
-      "tv": "テレビ画面"
+      "tv": "テレビ画面",
+      "tvSubtitle": "大画面"
     },
     "guides": {
       "monitor": "モニターガイド",
@@ -159,7 +160,9 @@
     "benefit2Desc": "LCD、OLED、ゲーミング、ノートPC、テレビなど。",
     "benefit3Title": "分かりやすく中立な解説",
     "benefit3Desc": "目に見える現象とその意味を正しく理解。",
-    "diagnoseProblem": "問題を診断する"
+    "diagnoseProblem": "問題を診断する",
+    "wfGeneralTitle": "総合点検",
+    "wfGeneralDesc": "画素、色、動画性能の総合チェック。"
   },
   "TestLibrary": {
     "categories": {
