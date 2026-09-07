@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef, useCallback, useMemo, useSyncExternalStore } from "react";
 import { Link, useRouter } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 import { 
   ArrowLeft, ArrowRight, Monitor, Maximize2, Minimize2, Cpu, 
   Palette, ShieldAlert, CheckCircle2, XCircle, 
@@ -31,6 +32,8 @@ const emptySubscribe = () => () => {};
 
 export function DisplayInfoClient() {
   const router = useRouter();
+  const t = useTranslations("DisplayInfo");
+  const tTools = useTranslations("Tools");
   const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
   const [workflowSequence, setWorkflowSequence] = useState<string[]>([]);
   const [workflowIndex, setWorkflowIndex] = useState(-1);
@@ -85,19 +88,19 @@ export function DisplayInfoClient() {
 
   const capabilities = useMemo(() => {
     return [
-      { name: "Fullscreen API", supported: supportsFullscreen(), desc: "Full display immersion without browser chrome" },
-      { name: "HTML5 Canvas 2D", supported: supportsCanvas2D(), desc: "Hardware-accelerated 2D rasterization context" },
-      { name: "WebGL 1.0", supported: supportsWebGL(), desc: "OpenGL ES 2.0 graphics pipeline in browser" },
-      { name: "WebGL 2.0", supported: supportsWebGL2(), desc: "OpenGL ES 3.0 advanced shaders & floating textures" },
-      { name: "WebGPU API", supported: supportsWebGPU(), desc: "Next-gen low-overhead GPU compute & rendering API" },
-      { name: "Screen Orientation API", supported: supportsScreenOrientation(), desc: "Orientation lock & change event tracking" },
-      { name: "Window Management (Multi-Screen)", supported: supportsScreenDetails(), desc: "Cross-screen topology & multi-display placement" },
-      { name: "High Dynamic Range (HDR)", supported: supportsHDR(), desc: "dynamic-range: high media query matches OS pipeline" },
-      { name: "Wide Color Gamut (P3)", supported: supportsP3(), desc: "Display P3 color space supported by display chain" },
-      { name: "Rec. 2020 Wide Gamut", supported: supportsRec2020(), desc: "Ultra-wide Rec. 2020 gamut signaling" },
-      { name: "Touch Input Points", supported: supportsTouch(), desc: "Capacitive touch / stylus digitizer input detected" },
+      { name: "Fullscreen API", supported: supportsFullscreen(), desc: t("capabilities.desc.fullscreen") },
+      { name: "HTML5 Canvas 2D", supported: supportsCanvas2D(), desc: t("capabilities.desc.canvas2d") },
+      { name: "WebGL 1.0", supported: supportsWebGL(), desc: t("capabilities.desc.webgl1") },
+      { name: "WebGL 2.0", supported: supportsWebGL2(), desc: t("capabilities.desc.webgl2") },
+      { name: "WebGPU API", supported: supportsWebGPU(), desc: t("capabilities.desc.webgpu") },
+      { name: "Screen Orientation API", supported: supportsScreenOrientation(), desc: t("capabilities.desc.orientation") },
+      { name: "Window Management (Multi-Screen)", supported: supportsScreenDetails(), desc: t("capabilities.desc.multiScreen") },
+      { name: "High Dynamic Range (HDR)", supported: supportsHDR(), desc: t("capabilities.desc.hdr") },
+      { name: "Wide Color Gamut (P3)", supported: supportsP3(), desc: t("capabilities.desc.p3") },
+      { name: "Rec. 2020 Wide Gamut", supported: supportsRec2020(), desc: t("capabilities.desc.rec2020") },
+      { name: "Touch Input Points", supported: supportsTouch(), desc: t("capabilities.desc.touch") },
     ];
-  }, []);
+  }, [t]);
 
   const webglInfo = useMemo(() => {
     return getWebGLDiagnostics();
@@ -187,7 +190,7 @@ export function DisplayInfoClient() {
       }
     } catch (err) {
       console.error("Fullscreen toggle failed:", err);
-      setFullscreenError("Fullscreen request was blocked by browser permissions or sandbox policy.");
+      setFullscreenError(t("header.fullscreenError"));
     }
   };
 
@@ -217,11 +220,11 @@ export function DisplayInfoClient() {
           setIsExtended(screenDetails.screens.length > 1);
         }
       } else {
-        setMultiMonitorError("Window Management API (getScreenDetails) is not supported in this browser engine.");
+        setMultiMonitorError(t("multiScreen.apiNotSupported"));
       }
     } catch (err) {
       console.warn("Screen details permission denied or failed", err);
-      setMultiMonitorError("Permission to query multi-display layout was denied. The browser cannot inspect other displays without explicit permission.");
+      setMultiMonitorError(t("multiScreen.permissionDenied"));
     } finally {
       setDetectingScreens(false);
     }
@@ -394,11 +397,11 @@ export function DisplayInfoClient() {
           <div className="w-full mb-8 p-4 sm:p-5 bg-blue-50/90 border border-blue-200 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-blue-950 shadow-2xs">
             <div>
               <div className="text-[10px] font-mono uppercase tracking-widest text-blue-700 font-semibold mb-1">
-                INSPECTION WORKFLOW • STEP {workflowIndex + 1} OF {workflowSequence.length}
+                {t("workflow.step", { current: workflowIndex + 1, total: workflowSequence.length })}
               </div>
               <div className="text-sm font-semibold text-blue-950 flex items-center gap-2">
-                <span>Display Information &amp; Browser Query</span>
-                <span className="text-xs font-normal text-blue-700">· Verify browser reported parameters match expectations</span>
+                <span>{t("workflow.title")}</span>
+                <span className="text-xs font-normal text-blue-700">{t("workflow.desc")}</span>
               </div>
             </div>
             
@@ -413,7 +416,7 @@ export function DisplayInfoClient() {
                       : "text-gray-600 hover:text-gray-900"
                   }`}
                 >
-                  Normal (Observed)
+                  {t("workflow.obsNormal")}
                 </button>
                 <button
                   onClick={() => setObsChoice("NEEDS_ATTENTION")}
@@ -423,7 +426,7 @@ export function DisplayInfoClient() {
                       : "text-gray-600 hover:text-gray-900"
                   }`}
                 >
-                  Needs Attention
+                  {t("workflow.obsNeedsAttention")}
                 </button>
               </div>
 
@@ -431,7 +434,7 @@ export function DisplayInfoClient() {
                 onClick={() => handleNextStep("UNSURE")}
                 className="text-xs text-blue-700 hover:text-blue-950 font-medium px-2 py-1.5 transition-colors cursor-pointer"
               >
-                Skip →
+                {t("workflow.skip")}
               </button>
 
               <button
@@ -439,7 +442,7 @@ export function DisplayInfoClient() {
                 className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all shadow-xs cursor-pointer"
               >
                 <CheckCircle2 className="w-3.5 h-3.5" />
-                <span>Save &amp; Continue</span>
+                <span>{t("workflow.saveAndContinue")}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
@@ -450,33 +453,33 @@ export function DisplayInfoClient() {
         <div className="flex items-center gap-2 text-xs font-mono uppercase text-gray-400 mb-6">
           <Link href="/tests" className="hover:text-gray-900 flex items-center gap-1 transition-colors">
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>ALL TESTS</span>
+            <span>{t("breadcrumb.allTests")}</span>
           </Link>
           <span>/</span>
-          <span className="text-gray-900 font-semibold">DISPLAY INFORMATION & CAPABILITIES</span>
+          <span className="text-gray-900 font-semibold">{t("breadcrumb.current")}</span>
         </div>
 
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
           <div>
             <div className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-gray-400 mb-2">
-              BROWSER REPORTED DIAGNOSTIC QUERY
+              {t("header.eyebrow")}
             </div>
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-950">
-              Display Information & Capabilities
+              {t("header.title")}
             </h1>
             <p className="text-gray-500 text-sm sm:text-base mt-1.5 max-w-2xl leading-relaxed">
-              Legitimate display parameters, graphics APIs, and browser window metrics queried directly from your browser environment.
+              {t("header.subtitle")}
             </p>
           </div>
 
           <div className="flex items-center gap-3">
             <button
               onClick={toggleFullscreen}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gray-950 text-white text-xs sm:text-sm font-medium hover:bg-black transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gray-950 text-white text-xs sm:text-sm font-medium hover:bg-black transition-colors cursor-pointer"
             >
               {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
-              <span>{isFullscreen ? "Exit Fullscreen" : "Test Fullscreen (F)"}</span>
+              <span>{isFullscreen ? t("header.exitFullscreen") : t("header.enterFullscreen")}</span>
             </button>
           </div>
         </div>
@@ -486,9 +489,9 @@ export function DisplayInfoClient() {
           <ShieldAlert className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
           <div>
             <strong className="font-semibold block mb-1">
-              Browser-Reported Information — Not Hardware Telemetry
+              {t("disclaimer.title")}
             </strong>
-            Web browsers operate within a secure operating system sandbox. All values shown below reflect what the browser and OS compositor expose to web APIs. This test does not pretend to access direct hardware sensor telemetry (such as physical monitor EEPROM, factory EDID ROM, internal panel voltage, or subpixel stripe arrangements).
+            {t("disclaimer.body")}
           </div>
         </div>
 
@@ -505,47 +508,47 @@ export function DisplayInfoClient() {
         <div className="mb-12">
           <div className="flex items-center justify-between border-b border-gray-200 pb-3 mb-6">
             <h2 className="text-sm font-mono font-bold tracking-[0.15em] text-gray-400 uppercase">
-              1. Screen & Viewport Geometry
+              {t("geometry.title")}
             </h2>
-            <span className="text-xs font-mono text-gray-400">Live Browser Context</span>
+            <span className="text-xs font-mono text-gray-400">{t("geometry.subtitle")}</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {/* Card 1: Logical Resolution */}
             <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/70">
-              <span className="text-xs text-gray-400 font-mono uppercase block mb-1">Logical Resolution</span>
+              <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("geometry.logicalRes")}</span>
               <span className="text-2xl font-bold font-mono text-gray-950 block tabular-nums">
-                {screenInfo.w > 0 ? `${screenInfo.w} × ${screenInfo.h}` : "Probing..."}
+                {screenInfo.w > 0 ? `${screenInfo.w} × ${screenInfo.h}` : t("geometry.probing")}
               </span>
-              <span className="text-xs text-gray-500 mt-1 block">CSS Layout Pixels</span>
+              <span className="text-xs text-gray-500 mt-1 block">{t("geometry.cssPixels")}</span>
             </div>
 
             {/* Card 2: Estimated Physical Pixels */}
             <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/70">
-              <span className="text-xs text-gray-400 font-mono uppercase block mb-1">Estimated Physical Res</span>
+              <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("geometry.estimatedPhysicalRes")}</span>
               <span className="text-2xl font-bold font-mono text-gray-950 block tabular-nums">
-                {screenInfo.w > 0 ? `${physicalW} × ${physicalH}` : "Probing..."}
+                {screenInfo.w > 0 ? `${physicalW} × ${physicalH}` : t("geometry.probing")}
               </span>
-              <span className="text-xs text-gray-500 mt-1 block">≈ {totalMegapixels} Megapixels (W×H×DPR)</span>
+              <span className="text-xs text-gray-500 mt-1 block">{t("geometry.megapixelsFormula", { megapixels: totalMegapixels })}</span>
             </div>
 
             {/* Card 3: Viewport Dimensions */}
             <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/70">
-              <span className="text-xs text-gray-400 font-mono uppercase block mb-1">Current Viewport</span>
+              <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("geometry.currentViewport")}</span>
               <span className="text-2xl font-bold font-mono text-gray-950 block tabular-nums">
-                {screenInfo.innerW > 0 ? `${screenInfo.innerW} × ${screenInfo.innerH}` : "Probing..."}
+                {screenInfo.innerW > 0 ? `${screenInfo.innerW} × ${screenInfo.innerH}` : t("geometry.probing")}
               </span>
-              <span className="text-xs text-gray-500 mt-1 block">window.innerWidth × innerHeight</span>
+              <span className="text-xs text-gray-500 mt-1 block">{t("geometry.viewportFormula")}</span>
             </div>
 
             {/* Card 4: Device Pixel Ratio */}
             <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/70">
-              <span className="text-xs text-gray-400 font-mono uppercase block mb-1">Device Pixel Ratio (DPR)</span>
+              <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("geometry.dprLabel")}</span>
               <span className="text-2xl font-bold font-mono text-blue-600 block tabular-nums">
                 {screenInfo.dpr.toFixed(2)}x
               </span>
               <span className="text-xs text-gray-500 mt-1 block">
-                {screenInfo.dpr >= 2 ? "High-DPI / Retina Scaling" : screenInfo.dpr === 1 ? "Standard 100% 1:1 Scaling" : "Custom Fractional OS Scaling"}
+                {screenInfo.dpr >= 2 ? t("geometry.dprRetina") : screenInfo.dpr === 1 ? t("geometry.dprStandard") : t("geometry.dprCustom")}
               </span>
             </div>
           </div>
@@ -553,38 +556,38 @@ export function DisplayInfoClient() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
             {/* Available Screen Area */}
             <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/50">
-              <span className="text-xs text-gray-400 font-mono uppercase block mb-1">Available Screen Area</span>
+              <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("geometry.availScreenArea")}</span>
               <span className="text-xl font-semibold font-mono text-gray-900 block tabular-nums">
                 {screenInfo.availW} × {screenInfo.availH}
               </span>
-              <span className="text-xs text-gray-500 mt-1 block">Excluding OS Taskbars / Menubars</span>
+              <span className="text-xs text-gray-500 mt-1 block">{t("geometry.availScreenDesc")}</span>
             </div>
 
             {/* Color & Pixel Depth */}
             <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/50">
-              <span className="text-xs text-gray-400 font-mono uppercase block mb-1">Color & Pixel Depth</span>
+              <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("geometry.colorDepth")}</span>
               <span className="text-xl font-semibold font-mono text-gray-900 block tabular-nums">
                 {screenInfo.colorDepth}-bit / {screenInfo.pixelDepth}-bit
               </span>
-              <span className="text-xs text-gray-500 mt-1 block">24-bit True Color (8-bit per channel)</span>
+              <span className="text-xs text-gray-500 mt-1 block">{t("geometry.colorDepthDesc")}</span>
             </div>
 
             {/* Screen Orientation */}
             <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/50">
-              <span className="text-xs text-gray-400 font-mono uppercase block mb-1">Screen Orientation</span>
+              <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("geometry.screenOrientation")}</span>
               <span className="text-xl font-semibold font-mono text-gray-900 block capitalize">
                 {screenInfo.orientationType.replace("-", " ")}
               </span>
-              <span className="text-xs text-gray-500 mt-1 block">{screenInfo.orientationAngle}° Angle</span>
+              <span className="text-xs text-gray-500 mt-1 block">{t("geometry.orientationAngle", { angle: screenInfo.orientationAngle })}</span>
             </div>
 
             {/* Observed Refresh Rate */}
             <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/50">
-              <span className="text-xs text-gray-400 font-mono uppercase block mb-1">Observed Frame Timing</span>
+              <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("geometry.frameTiming")}</span>
               <span className="text-xl font-semibold font-mono text-emerald-600 block tabular-nums">
-                {screenInfo.refreshRate > 0 ? `~${screenInfo.refreshRate} Hz` : "Measuring..."}
+                {screenInfo.refreshRate > 0 ? `~${screenInfo.refreshRate} Hz` : t("geometry.measuring")}
               </span>
-              <span className="text-xs text-gray-500 mt-1 block">requestAnimationFrame hardware sync</span>
+              <span className="text-xs text-gray-500 mt-1 block">{t("geometry.frameTimingDesc")}</span>
             </div>
           </div>
         </div>
@@ -595,18 +598,18 @@ export function DisplayInfoClient() {
         <div className="mb-12">
           <div className="flex items-center justify-between border-b border-gray-200 pb-3 mb-6">
             <h2 className="text-sm font-mono font-bold tracking-[0.15em] text-gray-400 uppercase">
-              2. Browser Capability & API Matrix
+              {t("capabilities.title")}
             </h2>
-            <span className="text-xs font-mono text-gray-400">Standardized API Feature Probing</span>
+            <span className="text-xs font-mono text-gray-400">{t("capabilities.subtitle")}</span>
           </div>
 
           <div className="border border-gray-200 rounded-2xl overflow-hidden bg-white">
             <table className="w-full text-left text-sm border-collapse">
               <thead>
                 <tr className="border-b border-gray-200 bg-gray-50/80">
-                  <th className="py-3 px-4 font-mono text-xs font-semibold text-gray-500 uppercase tracking-wider">Feature / Standard</th>
-                  <th className="py-3 px-4 font-mono text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
-                  <th className="py-3 px-4 font-mono text-xs font-semibold text-gray-500 uppercase tracking-wider hidden sm:table-cell">Description</th>
+                  <th className="py-3 px-4 font-mono text-xs font-semibold text-gray-500 uppercase tracking-wider">{t("capabilities.colFeature")}</th>
+                  <th className="py-3 px-4 font-mono text-xs font-semibold text-gray-500 uppercase tracking-wider">{t("capabilities.colStatus")}</th>
+                  <th className="py-3 px-4 font-mono text-xs font-semibold text-gray-500 uppercase tracking-wider hidden sm:table-cell">{t("capabilities.colDesc")}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
@@ -617,16 +620,16 @@ export function DisplayInfoClient() {
                       {mounted && c.supported ? (
                         <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
                           <CheckCircle2 className="w-3.5 h-3.5" />
-                          <span>Supported</span>
+                          <span>{t("capabilities.supported")}</span>
                         </span>
                       ) : mounted ? (
                         <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600 border border-gray-200">
                           <XCircle className="w-3.5 h-3.5" />
-                          <span>Not Supported</span>
+                          <span>{t("capabilities.notSupported")}</span>
                         </span>
                       ) : (
                         <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-50 text-gray-400 border border-gray-100">
-                          <span>Checking...</span>
+                          <span>{t("capabilities.checking")}</span>
                         </span>
                       )}
                     </td>
@@ -644,9 +647,9 @@ export function DisplayInfoClient() {
         <div className="mb-12">
           <div className="flex items-center justify-between border-b border-gray-200 pb-3 mb-6">
             <h2 className="text-sm font-mono font-bold tracking-[0.15em] text-gray-400 uppercase">
-              3. WebGL Diagnostics & Controlled Render Test
+              {t("webgl.title")}
             </h2>
-            <span className="text-xs font-mono text-gray-400">GPU Pipeline Verification</span>
+            <span className="text-xs font-mono text-gray-400">{t("webgl.subtitle")}</span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -656,7 +659,7 @@ export function DisplayInfoClient() {
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2 text-xs font-mono text-gray-400">
                     <Cpu className="w-4 h-4 text-blue-400" />
-                    <span>CONTROLLED 3D POLYHEDRON RENDER</span>
+                    <span>{t("webgl.cardTitle")}</span>
                   </div>
                   <div className="flex items-center gap-2 font-mono text-xs text-emerald-400 bg-black/60 px-2.5 py-1 rounded-md border border-white/10">
                     <span>{webglFps > 0 ? `${webglFps} FPS` : "-- FPS"}</span>
@@ -667,7 +670,7 @@ export function DisplayInfoClient() {
                   <canvas ref={canvasRef} width={640} height={360} className="w-full h-full block" />
                   {mounted && !webglInfo?.supported && (
                     <div className="absolute inset-0 flex items-center justify-center text-xs text-gray-400 bg-black/80">
-                      WebGL context unavailable in this environment
+                      {t("webgl.unavailable")}
                     </div>
                   )}
                 </div>
@@ -676,14 +679,14 @@ export function DisplayInfoClient() {
               <div className="mt-4 flex items-center justify-between">
                 <button
                   onClick={() => setIsRendering(!isRendering)}
-                  className="px-3.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-medium text-white flex items-center gap-1.5 transition-colors"
+                  className="px-3.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-medium text-white flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
                   {isRendering ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-                  <span>{isRendering ? "Pause Render" : "Resume Render"}</span>
+                  <span>{isRendering ? t("webgl.pauseRender") : t("webgl.resumeRender")}</span>
                 </button>
 
                 <span className="text-[11px] text-gray-500 font-mono">
-                  Controlled 3D transform • Zero overhead
+                  {t("webgl.zeroOverhead")}
                 </span>
               </div>
             </div>
@@ -693,43 +696,43 @@ export function DisplayInfoClient() {
               <div>
                 <h3 className="text-sm font-semibold text-gray-950 mb-4 flex items-center gap-2">
                   <Palette className="w-4 h-4 text-gray-600" />
-                  <span>Graphics Pipeline Query Parameters</span>
+                  <span>{t("webgl.pipelineParams")}</span>
                 </h3>
 
                 <div className="space-y-3 text-xs" suppressHydrationWarning>
                   <div className="flex justify-between py-2 border-b border-gray-200/60">
-                    <span className="text-gray-500">WebGL Version</span>
-                    <span className="font-mono font-medium text-gray-900" suppressHydrationWarning>{mounted ? (webglInfo?.version || "Probing...") : "Probing..."}</span>
+                    <span className="text-gray-500">{t("webgl.version")}</span>
+                    <span className="font-mono font-medium text-gray-900" suppressHydrationWarning>{mounted ? (webglInfo?.version || t("webgl.probing")) : t("webgl.probing")}</span>
                   </div>
                   <div className="flex justify-between py-2 border-b border-gray-200/60">
-                    <span className="text-gray-500">Reported GPU Vendor</span>
-                    <span className="font-mono font-medium text-gray-900 text-right max-w-xs truncate" suppressHydrationWarning>{mounted ? (webglInfo?.vendor || "Unavailable") : "Probing..."}</span>
+                    <span className="text-gray-500">{t("webgl.vendor")}</span>
+                    <span className="font-mono font-medium text-gray-900 text-right max-w-xs truncate" suppressHydrationWarning>{mounted ? (webglInfo?.vendor || t("webgl.unavailableVal")) : t("webgl.probing")}</span>
                   </div>
                   <div className="flex justify-between py-2 border-b border-gray-200/60">
-                    <span className="text-gray-500">Reported GPU Renderer</span>
-                    <span className="font-mono font-medium text-gray-900 text-right max-w-xs truncate" suppressHydrationWarning>{mounted ? (webglInfo?.renderer || "Unavailable") : "Probing..."}</span>
+                    <span className="text-gray-500">{t("webgl.renderer")}</span>
+                    <span className="font-mono font-medium text-gray-900 text-right max-w-xs truncate" suppressHydrationWarning>{mounted ? (webglInfo?.renderer || t("webgl.unavailableVal")) : t("webgl.probing")}</span>
                   </div>
                   <div className="flex justify-between py-2 border-b border-gray-200/60">
-                    <span className="text-gray-500">Max 2D Texture Size</span>
+                    <span className="text-gray-500">{t("webgl.maxTexture")}</span>
                     <span className="font-mono font-medium text-gray-900 tabular-nums" suppressHydrationWarning>
-                      {mounted && webglInfo?.maxTextureSize ? `${webglInfo.maxTextureSize} × ${webglInfo.maxTextureSize} px` : "Unavailable"}
+                      {mounted && webglInfo?.maxTextureSize ? `${webglInfo.maxTextureSize} × ${webglInfo.maxTextureSize} px` : t("webgl.unavailableVal")}
                     </span>
                   </div>
                   <div className="flex justify-between py-2 border-b border-gray-200/60">
-                    <span className="text-gray-500">Max Renderbuffer Size</span>
+                    <span className="text-gray-500">{t("webgl.maxRenderbuffer")}</span>
                     <span className="font-mono font-medium text-gray-900 tabular-nums" suppressHydrationWarning>
-                      {mounted && webglInfo?.maxRenderBufferSize ? `${webglInfo.maxRenderBufferSize} px` : "Unavailable"}
+                      {mounted && webglInfo?.maxRenderBufferSize ? `${webglInfo.maxRenderBufferSize} px` : t("webgl.unavailableVal")}
                     </span>
                   </div>
                   <div className="flex justify-between py-2 border-b border-gray-200/60">
-                    <span className="text-gray-500">Hardware Antialiasing (MSAA)</span>
-                    <span className="font-mono font-medium text-gray-900" suppressHydrationWarning>{mounted ? (webglInfo?.antialias ? "Enabled (Direct)" : "Disabled / Default") : "Probing..."}</span>
+                    <span className="text-gray-500">{t("webgl.msaa")}</span>
+                    <span className="font-mono font-medium text-gray-900" suppressHydrationWarning>{mounted ? (webglInfo?.antialias ? t("webgl.msaaEnabled") : t("webgl.msaaDisabled")) : t("webgl.probing")}</span>
                   </div>
                 </div>
               </div>
 
               <div className="mt-5 p-3 rounded-xl bg-gray-100 text-[11px] text-gray-600 leading-relaxed border border-gray-200">
-                <strong>Measurement Boundary:</strong> WebGL diagnostics report the driver abstraction layer (e.g. ANGLE Direct3D/Metal/Vulkan wrapper) presented by the browser. It does not reflect physical silicon temperatures, fan speeds, or memory clock frequencies.
+                <strong>{t("webgl.boundaryTitle")}</strong> {t("webgl.boundaryBody")}
               </div>
             </div>
           </div>
@@ -741,35 +744,35 @@ export function DisplayInfoClient() {
         <div className="mb-12">
           <div className="flex items-center justify-between border-b border-gray-200 pb-3 mb-6">
             <h2 className="text-sm font-mono font-bold tracking-[0.15em] text-gray-400 uppercase">
-              4. Multi-Monitor Display Detection
+              {t("multiScreen.title")}
             </h2>
-            <span className="text-xs font-mono text-gray-400">Window Management API</span>
+            <span className="text-xs font-mono text-gray-400">{t("multiScreen.subtitle")}</span>
           </div>
 
           <div className="border border-gray-200 rounded-2xl p-6 bg-gray-50/70">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
               <div>
                 <h3 className="text-base font-semibold text-gray-950">
-                  Cross-Display Topology & Screen Placement
+                  {t("multiScreen.heading")}
                 </h3>
                 <p className="text-gray-500 text-xs sm:text-sm mt-1">
-                  Query the browser for multi-monitor setups using the W3C Window Management API.
+                  {t("multiScreen.desc")}
                 </p>
               </div>
 
               <button
                 onClick={handleDetectScreens}
                 disabled={detectingScreens}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-medium transition-colors disabled:opacity-50"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-medium transition-colors disabled:opacity-50 cursor-pointer"
               >
                 <RefreshCw className={`w-4 h-4 ${detectingScreens ? "animate-spin" : ""}`} />
-                <span>{detectingScreens ? "Requesting Permission..." : "Query Display Topology"}</span>
+                <span>{detectingScreens ? t("multiScreen.requesting") : t("multiScreen.queryBtn")}</span>
               </button>
             </div>
 
             {/* Extended Status indicator */}
             <div className="flex items-center gap-3 mb-4 text-xs font-mono">
-              <span className="text-gray-500">Screen Is Extended:</span>
+              <span className="text-gray-500">{t("multiScreen.isExtendedLabel")}</span>
               <span className={`px-2.5 py-0.5 rounded-md font-semibold ${
                 isExtended === true 
                   ? "bg-blue-100 text-blue-800" 
@@ -777,13 +780,13 @@ export function DisplayInfoClient() {
                     ? "bg-gray-200 text-gray-700" 
                     : "bg-gray-100 text-gray-500"
               }`}>
-                {isExtended === true ? "Multi-Monitor (Extended Desktop)" : isExtended === false ? "Single Display Active" : "Unspecified / Single Screen"}
+                {isExtended === true ? t("multiScreen.extendedYes") : isExtended === false ? t("multiScreen.extendedNo") : t("multiScreen.extendedUnspecified")}
               </span>
             </div>
 
             {multiMonitorError && (
               <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-900 dark:text-amber-200 text-xs leading-relaxed mb-4">
-                <strong>Multi-Screen Privacy Limitation:</strong> {multiMonitorError}
+                <strong>{t("multiScreen.limitationTitle")}</strong> {multiMonitorError}
               </div>
             )}
 
@@ -799,28 +802,28 @@ export function DisplayInfoClient() {
                       <div className="flex items-center gap-1.5">
                         {screen.isPrimary && (
                           <span className="px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-blue-50 text-blue-700 border border-blue-200">
-                            PRIMARY
+                            {t("multiScreen.primaryBadge")}
                           </span>
                         )}
                         {screen.isCurrent && (
                           <span className="px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                            THIS WINDOW
+                            {t("multiScreen.thisWindowBadge")}
                           </span>
                         )}
                       </div>
                     </div>
                     <div className="text-xs space-y-1 font-mono text-gray-600">
-                      <div>Dimensions: {screen.width} × {screen.height} px</div>
-                      <div>Available: {screen.availWidth} × {screen.availHeight} px</div>
-                      <div>Device Pixel Ratio: {screen.devicePixelRatio}x</div>
-                      <div>Orientation: {screen.orientation || "Standard"}</div>
+                      <div>{t("multiScreen.dimensions", { width: screen.width, height: screen.height })}</div>
+                      <div>{t("multiScreen.available", { width: screen.availWidth, height: screen.availHeight })}</div>
+                      <div>{t("multiScreen.dpr", { dpr: screen.devicePixelRatio })}</div>
+                      <div>{t("multiScreen.orientation", { orientation: screen.orientation || t("multiScreen.orientationStandard") })}</div>
                     </div>
                   </div>
                 ))}
               </div>
             ) : (
               <div className="text-xs text-gray-500 bg-white border border-gray-200 rounded-xl p-4">
-                Click <strong>&quot;Query Display Topology&quot;</strong> above. If your browser supports the Window Management API and you grant permission, individual physical display resolutions and secondary screen properties will be enumerated here. If unsupported or denied, the browser operates strictly within its standard single-screen sandbox.
+                {t("multiScreen.emptyState")}
               </div>
             )}
           </div>
@@ -829,13 +832,13 @@ export function DisplayInfoClient() {
         {/* Quick Links to Calculators */}
         <div className="border-t border-gray-200 pt-8 flex flex-wrap items-center justify-between gap-4">
           <div>
-            <span className="text-xs font-mono uppercase text-gray-400 block mb-1">RELATED UTILITIES</span>
+            <span className="text-xs font-mono uppercase text-gray-400 block mb-1">{t("related.title")}</span>
             <div className="flex flex-wrap items-center gap-3">
               <Link
                 href="/tests/resolution-checker"
                 className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors flex items-center gap-1"
               >
-                <span>Resolution &amp; PPI Calculator</span>
+                <span>{tTools("items.resolutionChecker.title")}</span>
                 <span className="text-gray-400">→</span>
               </Link>
               <span className="text-gray-300">•</span>
@@ -843,7 +846,7 @@ export function DisplayInfoClient() {
                 href="/tests/compare-displays"
                 className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors flex items-center gap-1"
               >
-                <span>Display Calculators (PPI, Distance, Aspect Ratio)</span>
+                <span>{t("related.compareDisplays")}</span>
                 <span className="text-gray-400">→</span>
               </Link>
               <span className="text-gray-300">•</span>
@@ -851,7 +854,7 @@ export function DisplayInfoClient() {
                 href="/tests/custom-pattern"
                 className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors flex items-center gap-1"
               >
-                <span>Custom Pattern Generator</span>
+                <span>{tTools("items.customPattern.title")}</span>
                 <span className="text-gray-400">→</span>
               </Link>
             </div>

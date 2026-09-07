@@ -938,5 +938,204 @@
         "description": "Beobachtungen überprüfen, markierte Pixelfehler-Koordinaten einsehen, Hardwareprofile verwalten und Berichte exportieren oder drucken."
       }
     }
+  },
+  "Diagnostic": {
+    "eyebrow": "SYMPTOMBASIERTE ANLEITUNG",
+    "title": "Sieht etwas auf Ihrem Bildschirm fehlerhaft aus?",
+    "subtitle": "Wählen Sie die visuellen Bildfehler oder Probleme aus, die auftreten. Wir empfehlen Ihnen die passenden Tests zur Überprüfung.",
+    "breadcrumbHub": "INSPEKTIONS-HUB",
+    "step1Title": "SCHRITT 1 — WAS BEOBACHTEN SIE? (ALLE ZUTREFFENDEN AUSWÄHLEN)",
+    "step2Title": "SCHRITT 2 — EMPFOHLENE DIAGNOSETESTS ({count})",
+    "step2Subtitle": "Diese Tests wurden anhand Ihrer Beobachtungen ausgewählt. Deaktivieren Sie Tests, die Sie nicht durchführen möchten.",
+    "startQueue": "Diagnose-Warteschlange starten ({count} Tests)",
+    "preview": "Vorschau",
+    "toggleTest": "{test} umschalten",
+    "noteTitle": "Diagnose-Hinweis:",
+    "noteBody": "Diese Browsertests bieten standardisierte visuelle Referenzmuster zur Beurteilung von Pixelleistung, Leuchtdichte, Farbe und Bewegung. Sie diagnostizieren keine internen Hardwaredefekte. Falls ein Fehler über mehrere Browser und Geräte hinweg fortbesteht, prüfen Sie die Garantiebedingungen Ihres Monitorherstellers.",
+    "symptoms": {
+      "deadPixel": {
+        "label": "Pixelfehler oder Subpixelfehler",
+        "desc": "Winziger dunkler Punkt, der nicht aufleuchtet, oder ein dauerhaft leuchtender farbiger Subpixel.",
+        "rationale": "Schaltet reine Vollton-Grundfarben durch, um inaktive schwarze Pixel von festsitzenden roten, grünen oder blauen Subpixeln zu isolieren."
+      },
+      "strangeColors": {
+        "label": "Merkwürdige oder verwaschene Farben",
+        "desc": "Farbtöne wirken unnatürlich, matt, übersättigt oder Hauttöne haben einen Farbstich.",
+        "rationale": "Überprüft sRGB-Primärfarben, stufenlose 8-Bit-/10-Bit-Farbverläufe und Gamma-Verlaufskurven."
+      },
+      "tooDark": {
+        "label": "Zu dunkel / absaufende Tiefen",
+        "desc": "Dunkle Spielszenen oder Nachtfotos verlieren alle Details und versinken komplett in Schwarz.",
+        "rationale": "Prüft schrittweise Helligkeitsstufen nahe 0 % Schwarz zur Kalibrierung von Schwarzwert und Schattendurchzeichnung."
+      },
+      "tooBright": {
+        "label": "Zu hell / überstrahlte Lichter",
+        "desc": "Wolken, Himmel oder helle UI-Elemente brennen aus und verlieren Textur in reinem Weiß.",
+        "rationale": "Prüft schrittweise Helligkeitsabstufungen von 95 % bis 100 % Weiß, um Clipping im Dynamikbereich zu verhindern."
+      },
+      "brightCorners": {
+        "label": "Helle Ecken / Randleuchten",
+        "desc": "Ecken oder Rahmen leuchten bei dunklen Inhalten oder Kinobalken hell auf.",
+        "rationale": "Nutzt Schwarzbilder im abgedunkelten Raum, um Rahmendruck-Lichthöfe (Bleed) von normalem blickwinkelabhängigem IPS-Glow zu unterscheiden."
+      },
+      "unevenBrightness": {
+        "label": "Ungleichmäßige Helligkeit / Flecken",
+        "desc": "Bestimmte Bildschirmbereiche wirken dunkler, fleckig, wolkig oder vignettiert.",
+        "rationale": "Beurteilt neutrale 5%-, 15%- und 50%-Grauflächen auf dem gesamten Panel zur Erkennung des Dirty-Screen-Effekts (DSE)."
+      },
+      "blurryText": {
+        "label": "Unscharfer oder ausgefranster Text",
+        "desc": "Schriftarten wirken unscharf, nicht gestochen scharf oder weisen Farbsäume an Buchstabenkanten auf.",
+        "rationale": "Prüft, ob Skalierung und Auflösung des Betriebssystems mit dem nativen Subpixel-Layout übereinstimmen, und analysiert die Glättungsschärfe."
+      },
+      "motionTrails": {
+        "label": "Nachzieheffekte / Ghosting",
+        "desc": "Bewegte Objekte hinterlassen sichtbare Unschärfen, Schlieren oder Schatten auf dem Bildschirm.",
+        "rationale": "Zeigt kontrastreiche Konturblöcke mit variabler Geschwindigkeit, um Flüssigkristall-Schaltzeiten und Overdrive-Abstimmung zu prüfen."
+      },
+      "flickering": {
+        "label": "Bildschirmflackern / Augenmüdigkeit",
+        "desc": "Subtiles schnelles Pulsieren, Leuchtdichteschwanken oder Ermüdung bei längerer Nutzung.",
+        "rationale": "Testet alternierende Hochgeschwindigkeitsmuster zur Prüfung von PWM-Hintergrundbeleuchtung und Frame-Timing-Stabilität."
+      },
+      "screenTearing": {
+        "label": "Screen Tearing / Bildzerreißen",
+        "desc": "Horizontale Bildbrüche bei schnellen Kameraschwenks oder Videowiedergabe.",
+        "rationale": "Nutzt schnell oszillierende Linien zur Überprüfung der V-Sync-Synchronisation und Bildratenstabilität im Browser."
+      },
+      "imageRetention": {
+        "label": "Bildeinbrennen / Geisterbilder",
+        "desc": "Ein schwaches Nachbild statischer Fenster, Taskleisten oder Logos bleibt sichtbar.",
+        "rationale": "Zeigt homogene Graustufen- und Grundfarbfelder mit Prüfgittern zur Erkennung temporärer Bildabdrücke oder dauerhaften Einbrennens."
+      },
+      "somethingElse": {
+        "label": "Allgemein / Nicht sicher",
+        "desc": "Ich möchte eine umfassende Basisprüfung aller kritischen Displaybereiche durchführen.",
+        "rationale": "Führt den vollständigen grundlegenden Display-Prüfablauf durch."
+      }
+    }
+  },
+  "DisplayInfo": {
+    "workflow": {
+      "step": "INSPEKTIONSABLAUF • SCHRITT {current} VON {total}",
+      "title": "Display-Informationen & Browserabfrage",
+      "desc": "· Prüfen Sie, ob die vom Browser gemeldeten Parameter den Erwartungen entsprechen",
+      "obsNormal": "Normal (Geprüft)",
+      "obsNeedsAttention": "Auffällig",
+      "skip": "Überspringen →",
+      "saveAndContinue": "Speichern & Weiter"
+    },
+    "breadcrumb": {
+      "allTests": "ALLE TESTS",
+      "current": "DISPLAY-INFORMATIONEN & FUNKTIONEN"
+    },
+    "header": {
+      "eyebrow": "VOM BROWSER GEMELDETE DIAGNOSEABFRAGE",
+      "title": "Display-Informationen & Funktionen",
+      "subtitle": "Zuverlässige Bildschirmparameter, Grafik-APIs und Browserfenster-Messwerte, direkt aus Ihrer Browserumgebung abgefragt.",
+      "enterFullscreen": "Vollbild testen (F)",
+      "exitFullscreen": "Vollbild beenden",
+      "fullscreenError": "Vollbildanforderung wurde durch Browser-Berechtigungen oder Sandbox-Richtlinien blockiert."
+    },
+    "disclaimer": {
+      "title": "Vom Browser gemeldete Informationen — Keine Hardware-Telemetrie",
+      "body": "Webbrowser laufen in einer sicheren Betriebssystem-Sandbox. Alle unten aufgeführten Werte spiegeln wider, was Browser und OS-Compositor für Web-APIs bereitstellen. Dieser Test greift nicht auf direkte Sensorschnittstellen zu (wie physische Monitor-EEPROMs, EDID-ROM, interne Spannungen oder Subpixelstreifen)."
+    },
+    "geometry": {
+      "title": "1. Bildschirm- & Viewport-Geometrie",
+      "subtitle": "Live-Browserkontext",
+      "logicalRes": "Logische Auflösung",
+      "cssPixels": "CSS-Layout-Pixel",
+      "estimatedPhysicalRes": "Geschätzte physikalische Auflösung",
+      "megapixelsFormula": "≈ {megapixels} Megapixel (B×H×DPR)",
+      "currentViewport": "Aktueller Viewport",
+      "viewportFormula": "window.innerWidth × innerHeight",
+      "dprLabel": "Device Pixel Ratio (DPR)",
+      "dprRetina": "HiDPI- / Retina-Skalierung",
+      "dprStandard": "Standard 100% 1:1 Skalierung",
+      "dprCustom": "Benutzerdefinierte OS-Skalierung",
+      "availScreenArea": "Verfügbare Bildschirmfläche",
+      "availScreenDesc": "Ohne Taskleisten / Menüleisten des Betriebssystems",
+      "colorDepth": "Farb- & Pixeltiefe",
+      "colorDepthDesc": "24-Bit True Color (8-Bit pro Kanal)",
+      "screenOrientation": "Bildschirmausrichtung",
+      "orientationAngle": "{angle}° Winkel",
+      "frameTiming": "Gemessene Bildfrequenz",
+      "frameTimingDesc": "requestAnimationFrame-Hardwaresynchronisation",
+      "probing": "Ermitteln...",
+      "measuring": "Messen..."
+    },
+    "capabilities": {
+      "title": "2. Browser-Funktionen & API-Matrix",
+      "subtitle": "Standardisierte API-Merkmalsprüfung",
+      "colFeature": "Funktion / Standard",
+      "colStatus": "Status",
+      "colDesc": "Beschreibung",
+      "supported": "Unterstützt",
+      "notSupported": "Nicht unterstützt",
+      "checking": "Prüfen...",
+      "desc": {
+        "fullscreen": "Vollständiges Eintauchen ohne Browser-Bedienelemente",
+        "canvas2d": "Hardwarebeschleunigter 2D-Rasterisierungskontext",
+        "webgl1": "OpenGL ES 2.0 Grafikpipeline im Browser",
+        "webgl2": "Erweiterte OpenGL ES 3.0 Shader & Floating-Texturen",
+        "webgpu": "Moderne GPU-Compute- und Rendering-API der nächsten Generation",
+        "orientation": "Ausrichtungssperre & Ereignisverfolgung",
+        "multiScreen": "Monitorübergreifende Topologie & Platzierung",
+        "hdr": "dynamic-range: high Media-Query entspricht Betriebssystem-Pipeline",
+        "p3": "Display P3 Farbraum durch Anzeigekette unterstützt",
+        "rec2020": "Rec. 2020 Ultra-Breitband-Farbraum signalisiert",
+        "touch": "Kapazitive Touch- oder Stifteingabe erkannt"
+      }
+    },
+    "webgl": {
+      "title": "3. WebGL-Diagnose & kontrollierter Render-Test",
+      "subtitle": "GPU-Pipeline-Verifizierung",
+      "cardTitle": "KONTROLLIERTES 3D-POLYEDER-RENDERING",
+      "unavailable": "WebGL-Kontext in dieser Umgebung nicht verfügbar",
+      "pauseRender": "Rendering pausieren",
+      "resumeRender": "Rendering fortsetzen",
+      "zeroOverhead": "Kontrollierte 3D-Transformation • Kein Overhead",
+      "pipelineParams": "Grafikpipeline-Abfrageparameter",
+      "version": "WebGL-Version",
+      "vendor": "Gemeldeter GPU-Hersteller",
+      "renderer": "Gemeldeter GPU-Renderer",
+      "maxTexture": "Maximale 2D-Texturgröße",
+      "maxRenderbuffer": "Maximale Renderbuffer-Größe",
+      "msaa": "Hardware-Kantenglättung (MSAA)",
+      "msaaEnabled": "Aktiviert (Direkt)",
+      "msaaDisabled": "Deaktiviert / Standard",
+      "boundaryTitle": "Messgrenzen:",
+      "boundaryBody": "Die WebGL-Diagnose spiegelt die vom Browser bereitgestellte Treiber-Abstraktionsschicht wider (z. B. ANGLE Direct3D/Metal/Vulkan-Wrapper). Sie zeigt keine physischen Chiptemperaturen, Lüfterdrehzahlen oder Taktraten an.",
+      "probing": "Ermitteln...",
+      "unavailableVal": "Nicht verfügbar"
+    },
+    "multiScreen": {
+      "title": "4. Multi-Monitor-Erkennung",
+      "subtitle": "Window Management API",
+      "heading": "Monitorübergreifende Topologie & Bildschirmanordnung",
+      "desc": "Fragt den Browser über die W3C Window Management API nach Multi-Monitor-Konfigurationen ab.",
+      "queryBtn": "Bildschirm-Topologie abfragen",
+      "requesting": "Berechtigung wird angefordert...",
+      "isExtendedLabel": "Erweiterter Bildschirm:",
+      "extendedYes": "Multi-Monitor (Erweiterter Desktop)",
+      "extendedNo": "Einzelner Bildschirm aktiv",
+      "extendedUnspecified": "Nicht spezifiziert / Einzelbildschirm",
+      "limitationTitle": "Datenschutzgrenze bei Multi-Monitor-Abfragen:",
+      "apiNotSupported": "Die Window Management API (getScreenDetails) wird von dieser Browser-Engine nicht unterstützt.",
+      "permissionDenied": "Die Berechtigung zur Abfrage des Multi-Monitor-Layouts wurde verweigert. Der Browser kann ohne ausdrückliche Freigabe keine weiteren Bildschirme einsehen.",
+      "primaryBadge": "HAUPTBILDSCHIRM",
+      "thisWindowBadge": "DIESES FENSTER",
+      "dimensions": "Abmessungen: {width} × {height} px",
+      "available": "Verfügbar: {width} × {height} px",
+      "dpr": "Device Pixel Ratio: {dpr}x",
+      "orientation": "Ausrichtung: {orientation}",
+      "orientationStandard": "Standard",
+      "emptyState": "Klicken Sie oben auf „Bildschirm-Topologie abfragen“. Wenn Ihr Browser die Window Management API unterstützt und Sie die Berechtigung erteilen, werden die physischen Bildschirmauflösungen und Eigenschaften der Zweitmonitore hier aufgeführt. Ohne Berechtigung verbleibt der Browser in der Einzelbildschirm-Sandbox."
+    },
+    "related": {
+      "title": "VERWANDTE WERKZEUGE",
+      "compareDisplays": "Bildschirm-Vergleichsrechner (PPI, Abstand, Seitenverhältnis)"
+    }
   }
 }

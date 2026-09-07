@@ -929,5 +929,204 @@
         "description": "Review recorded observations, inspect dropped pixel defect coordinates, review hardware profiles, and export or print inspection documentation."
       }
     }
+  },
+  "Diagnostic": {
+    "eyebrow": "SYMPTOM-BASED GUIDANCE",
+    "title": "Something looks wrong with your display?",
+    "subtitle": "Select the visual artifacts or issues you are experiencing. We will recommend the exact tests to inspect and verify the behavior.",
+    "breadcrumbHub": "INSPECTION HUB",
+    "step1Title": "STEP 1 — WHAT DO YOU OBSERVE? (SELECT ALL THAT APPLY)",
+    "step2Title": "STEP 2 — RECOMMENDED DIAGNOSTIC TESTS ({count})",
+    "step2Subtitle": "We selected these tests based on your observation. Uncheck any tests you do not wish to run.",
+    "startQueue": "Start Diagnostic Queue ({count} tests)",
+    "preview": "Preview",
+    "toggleTest": "Toggle {test}",
+    "noteTitle": "Diagnostic Note:",
+    "noteBody": "These browser tests present standard visual reference patterns to inspect pixel performance, luminance, color, and motion. They do not automatically diagnose internal component faults. If an anomaly persists across multiple browsers and devices, consult your monitor manufacturer’s warranty policy.",
+    "symptoms": {
+      "deadPixel": {
+        "label": "Dead or stuck pixel",
+        "desc": "Tiny dark dot that won't light up, or a bright colored subpixel permanently stuck on.",
+        "rationale": "Cycles pure primary solid color fields to visually isolate inactive black pixels from stuck red/green/blue subpixels."
+      },
+      "strangeColors": {
+        "label": "Strange or washed out colors",
+        "desc": "Tints look unnatural, dull, oversaturated, or skin tones appear tinted.",
+        "rationale": "Evaluates standard sRGB primaries, smooth 8-bit/10-bit color ramps, and gamma tracking curves."
+      },
+      "tooDark": {
+        "label": "Too dark / crushed shadows",
+        "desc": "Dark game scenes or night photos lose all detail and crush completely to black.",
+        "rationale": "Tests step-by-step luminance thresholds near 0% black so you can calibrate black level and shadow visibility."
+      },
+      "tooBright": {
+        "label": "Too bright / blown-out highlights",
+        "desc": "Clouds, skies, or bright UI elements wash out and lose fine texture into pure white.",
+        "rationale": "Checks step-by-step luminance clipping from 95% to 100% white to prevent dynamic range highlight blow-out."
+      },
+      "brightCorners": {
+        "label": "Bright corners / edge glow",
+        "desc": "Corners or bezels glow brightly when displaying dark or letterboxed content.",
+        "rationale": "Uses dark-room black fields to distinguish physical bezel pressure bleed from normal viewing-angle IPS glow."
+      },
+      "unevenBrightness": {
+        "label": "Uneven brightness / dark patches",
+        "desc": "Certain areas of the screen appear darker, dirty, cloudy, or vignetted.",
+        "rationale": "Evaluates 5%, 15%, and 50% neutral gray fields across the entire panel to locate dirty screen effect (DSE)."
+      },
+      "blurryText": {
+        "label": "Blurry or fringed text",
+        "desc": "Fonts appear fuzzy, not razor-sharp, or have faint color halos along letters.",
+        "rationale": "Verifies if the OS scaling and resolution match native panel pixel layout, and inspects anti-aliasing sharpness."
+      },
+      "motionTrails": {
+        "label": "Motion trails / ghosting",
+        "desc": "Objects leave a visible blur, smudge, or trailing shadow when moving across the screen.",
+        "rationale": "Runs variable velocity contrast blocks to visually inspect liquid crystal transition lag and overdrive tuning."
+      },
+      "flickering": {
+        "label": "Screen flickering / eye strain",
+        "desc": "Subtle rapid pulsing, luminance shimmering, or strain during extended viewing.",
+        "rationale": "Tests high-speed alternating frame patterns to evaluate PWM backlight sensitivity and frame timing stability."
+      },
+      "screenTearing": {
+        "label": "Screen tearing / split lines",
+        "desc": "Horizontal split breaks appear across the screen during fast camera pans or video.",
+        "rationale": "Tests high-velocity oscillating lines to evaluate browser V-Sync lock and frame synchronization behavior."
+      },
+      "imageRetention": {
+        "label": "Image retention / faint ghosting",
+        "desc": "A faint after-image of static windows, taskbars, or logos lingers on the screen.",
+        "rationale": "Displays multiple uniform gray and primary fields with inspection grids to reveal temporary retention or burn-in."
+      },
+      "somethingElse": {
+        "label": "General / Not sure",
+        "desc": "I want a comprehensive baseline checkup across all critical display aspects.",
+        "rationale": "Runs the complete fundamental display diagnostic sequence."
+      }
+    }
+  },
+  "DisplayInfo": {
+    "workflow": {
+      "step": "INSPECTION WORKFLOW • STEP {current} OF {total}",
+      "title": "Display Information & Browser Query",
+      "desc": "· Verify browser reported parameters match expectations",
+      "obsNormal": "Normal (Observed)",
+      "obsNeedsAttention": "Needs Attention",
+      "skip": "Skip →",
+      "saveAndContinue": "Save & Continue"
+    },
+    "breadcrumb": {
+      "allTests": "ALL TESTS",
+      "current": "DISPLAY INFORMATION & CAPABILITIES"
+    },
+    "header": {
+      "eyebrow": "BROWSER REPORTED DIAGNOSTIC QUERY",
+      "title": "Display Information & Capabilities",
+      "subtitle": "Legitimate display parameters, graphics APIs, and browser window metrics queried directly from your browser environment.",
+      "enterFullscreen": "Test Fullscreen (F)",
+      "exitFullscreen": "Exit Fullscreen",
+      "fullscreenError": "Fullscreen request was blocked by browser permissions or sandbox policy."
+    },
+    "disclaimer": {
+      "title": "Browser-Reported Information — Not Hardware Telemetry",
+      "body": "Web browsers operate within a secure operating system sandbox. All values shown below reflect what the browser and OS compositor expose to web APIs. This test does not pretend to access direct hardware sensor telemetry (such as physical monitor EEPROM, factory EDID ROM, internal panel voltage, or subpixel stripe arrangements)."
+    },
+    "geometry": {
+      "title": "1. Screen & Viewport Geometry",
+      "subtitle": "Live Browser Context",
+      "logicalRes": "Logical Resolution",
+      "cssPixels": "CSS Layout Pixels",
+      "estimatedPhysicalRes": "Estimated Physical Res",
+      "megapixelsFormula": "≈ {megapixels} Megapixels (W×H×DPR)",
+      "currentViewport": "Current Viewport",
+      "viewportFormula": "window.innerWidth × innerHeight",
+      "dprLabel": "Device Pixel Ratio (DPR)",
+      "dprRetina": "High-DPI / Retina Scaling",
+      "dprStandard": "Standard 100% 1:1 Scaling",
+      "dprCustom": "Custom Fractional OS Scaling",
+      "availScreenArea": "Available Screen Area",
+      "availScreenDesc": "Excluding OS Taskbars / Menubars",
+      "colorDepth": "Color & Pixel Depth",
+      "colorDepthDesc": "24-bit True Color (8-bit per channel)",
+      "screenOrientation": "Screen Orientation",
+      "orientationAngle": "{angle}° Angle",
+      "frameTiming": "Observed Frame Timing",
+      "frameTimingDesc": "requestAnimationFrame hardware sync",
+      "probing": "Probing...",
+      "measuring": "Measuring..."
+    },
+    "capabilities": {
+      "title": "2. Browser Capability & API Matrix",
+      "subtitle": "Standardized API Feature Probing",
+      "colFeature": "Feature / Standard",
+      "colStatus": "Status",
+      "colDesc": "Description",
+      "supported": "Supported",
+      "notSupported": "Not Supported",
+      "checking": "Checking...",
+      "desc": {
+        "fullscreen": "Full display immersion without browser chrome",
+        "canvas2d": "Hardware-accelerated 2D rasterization context",
+        "webgl1": "OpenGL ES 2.0 graphics pipeline in browser",
+        "webgl2": "OpenGL ES 3.0 advanced shaders & floating textures",
+        "webgpu": "Next-gen low-overhead GPU compute & rendering API",
+        "orientation": "Orientation lock & change event tracking",
+        "multiScreen": "Cross-screen topology & multi-display placement",
+        "hdr": "dynamic-range: high media query matches OS pipeline",
+        "p3": "Display P3 color space supported by display chain",
+        "rec2020": "Ultra-wide Rec. 2020 gamut signaling",
+        "touch": "Capacitive touch / stylus digitizer input detected"
+      }
+    },
+    "webgl": {
+      "title": "3. WebGL Diagnostics & Controlled Render Test",
+      "subtitle": "GPU Pipeline Verification",
+      "cardTitle": "CONTROLLED 3D POLYHEDRON RENDER",
+      "unavailable": "WebGL context unavailable in this environment",
+      "pauseRender": "Pause Render",
+      "resumeRender": "Resume Render",
+      "zeroOverhead": "Controlled 3D transform • Zero overhead",
+      "pipelineParams": "Graphics Pipeline Query Parameters",
+      "version": "WebGL Version",
+      "vendor": "Reported GPU Vendor",
+      "renderer": "Reported GPU Renderer",
+      "maxTexture": "Max 2D Texture Size",
+      "maxRenderbuffer": "Max Renderbuffer Size",
+      "msaa": "Hardware Antialiasing (MSAA)",
+      "msaaEnabled": "Enabled (Direct)",
+      "msaaDisabled": "Disabled / Default",
+      "boundaryTitle": "Measurement Boundary:",
+      "boundaryBody": "WebGL diagnostics report the driver abstraction layer (e.g. ANGLE Direct3D/Metal/Vulkan wrapper) presented by the browser. It does not reflect physical silicon temperatures, fan speeds, or memory clock frequencies.",
+      "probing": "Probing...",
+      "unavailableVal": "Unavailable"
+    },
+    "multiScreen": {
+      "title": "4. Multi-Monitor Display Detection",
+      "subtitle": "Window Management API",
+      "heading": "Cross-Display Topology & Screen Placement",
+      "desc": "Query the browser for multi-monitor setups using the W3C Window Management API.",
+      "queryBtn": "Query Display Topology",
+      "requesting": "Requesting Permission...",
+      "isExtendedLabel": "Screen Is Extended:",
+      "extendedYes": "Multi-Monitor (Extended Desktop)",
+      "extendedNo": "Single Display Active",
+      "extendedUnspecified": "Unspecified / Single Screen",
+      "limitationTitle": "Multi-Screen Privacy Limitation:",
+      "apiNotSupported": "Window Management API (getScreenDetails) is not supported in this browser engine.",
+      "permissionDenied": "Permission to query multi-display layout was denied. The browser cannot inspect other displays without explicit permission.",
+      "primaryBadge": "PRIMARY",
+      "thisWindowBadge": "THIS WINDOW",
+      "dimensions": "Dimensions: {width} × {height} px",
+      "available": "Available: {width} × {height} px",
+      "dpr": "Device Pixel Ratio: {dpr}x",
+      "orientation": "Orientation: {orientation}",
+      "orientationStandard": "Standard",
+      "emptyState": "Click \"Query Display Topology\" above. If your browser supports the Window Management API and you grant permission, individual physical display resolutions and secondary screen properties will be enumerated here. If unsupported or denied, the browser operates strictly within its standard single-screen sandbox."
+    },
+    "related": {
+      "title": "RELATED UTILITIES",
+      "compareDisplays": "Display Comparison Calculator (PPI, Distance, Aspect Ratio)"
+    }
   }
 }

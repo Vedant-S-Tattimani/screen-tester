@@ -938,5 +938,204 @@
         "description": "Examine observações registradas, inspecione coordenadas de defeitos de pixel, perfis de hardware e exporte ou imprima relatórios."
       }
     }
+  },
+  "Diagnostic": {
+    "eyebrow": "ORIENTAÇÃO BASEADA EM SINTOMAS",
+    "title": "Algo parece errado com sua tela?",
+    "subtitle": "Selecione os defeitos visuais ou problemas que está observando. Recomendaremos os testes exatos para inspecionar e verificar o comportamento.",
+    "breadcrumbHub": "CENTRO DE INSPEÇÃO",
+    "step1Title": "ETAPA 1 — O QUE VOCÊ OBSERVA? (SELECIONE TODOS OS APLICÁVEIS)",
+    "step2Title": "ETAPA 2 — TESTES DE DIAGNÓSTICO RECOMENDADOS ({count})",
+    "step2Subtitle": "Selecionamos estes testes com base na sua observação. Desmarque os que não deseja executar.",
+    "startQueue": "Iniciar fila de diagnóstico ({count} testes)",
+    "preview": "Visualizar",
+    "toggleTest": "Alternar {test}",
+    "noteTitle": "Nota de diagnóstico:",
+    "noteBody": "Estes testes de navegador apresentam padrões de referência visual padronizados para avaliar pixels, luminância, cor e movimento. Eles não diagnosticam falhas internas de hardware. Se uma anomalia persistir em vários navegadores e dispositivos, consulte a garantia do fabricante.",
+    "symptoms": {
+      "deadPixel": {
+        "label": "Pixel morto ou preso",
+        "desc": "Ponto escuro minúsculo que não acende ou subpixel de cor brilhante permanentemente aceso.",
+        "rationale": "Alterna telas de cores primárias sólidas para isolar visualmente pixels pretos inativos de subpixels vermelhos, verdes ou azuis presos."
+      },
+      "strangeColors": {
+        "label": "Cores estranhas ou desbotadas",
+        "desc": "Os tons parecem artificiais, opacos, supersaturados ou a pele apresenta tonalidade distorcida.",
+        "rationale": "Avalia os primários sRGB padrão, gradientes suaves de 8 e 10 bits e curvas de rastreamento gama."
+      },
+      "tooDark": {
+        "label": "Muito escuro / sombras esmagadas",
+        "desc": "Cenas escuras de jogos ou fotos noturnas perdem detalhes e se transformam em preto absoluto.",
+        "rationale": "Testa limites de luminância passo a passo próximos a 0% preto para calibrar o nível de preto e a visibilidade de sombras."
+      },
+      "tooBright": {
+        "label": "Muito brilhante / altas luzes estouradas",
+        "desc": "Nuvens, céus ou elementos claros estouram e perdem textura no branco puro.",
+        "rationale": "Verifica o corte de luminância passo a passo de 95% a 100% branco para evitar perda de alcance dinâmico."
+      },
+      "brightCorners": {
+        "label": "Cantos brilhantes / vazamento nas bordas",
+        "desc": "Os cantos ou bordas brilham excessivamente ao exibir conteúdo escuro ou barras pretas.",
+        "rationale": "Utiliza fundos pretos em ambiente escuro para distinguir vazamento de pressão na moldura do brilho IPS natural por ângulo de visão."
+      },
+      "unevenBrightness": {
+        "label": "Brilho irregular / manchas escuras",
+        "desc": "Certos locais da tela parecem mais escuros, sujos, nublados ou com vinhetas.",
+        "rationale": "Avalia padrões de cinza neutro a 5%, 15% e 50% em todo o painel para identificar o efeito de tela suja (DSE)."
+      },
+      "blurryText": {
+        "label": "Texto borrado ou com franjas",
+        "desc": "As fontes parecem difusas, sem nitidez ou apresentam halos coloridos nas letras.",
+        "rationale": "Verifica se o dimensionamento do SO e a resolução correspondem ao painel físico e avalia a nitidez do anti-serrilhado."
+      },
+      "motionTrails": {
+        "label": "Rastros de movimento / ghosting",
+        "desc": "Objetos deixam borrões, sombras ou rastros visíveis ao se moverem pela tela.",
+        "rationale": "Executa blocos de contraste em velocidade variável para inspecionar o atraso do cristal líquido e a calibração de overdrive."
+      },
+      "flickering": {
+        "label": "Tela piscando / fadiga ocular",
+        "desc": "Pulsação rápida sutil, oscilação de luminância ou cansaço visual após uso prolongado.",
+        "rationale": "Testa padrões de quadros alternados em alta velocidade para avaliar a sensibilidade ao PWM e a estabilidade de quadros."
+      },
+      "screenTearing": {
+        "label": "Screen tearing / quebra de imagem",
+        "desc": "Linhas horizontais de corte na tela durante movimentos rápidos de câmera ou vídeo.",
+        "rationale": "Testa linhas oscilantes em alta velocidade para avaliar o sincronismo vertical V-Sync do navegador."
+      },
+      "imageRetention": {
+        "label": "Retenção de imagem / burn-in",
+        "desc": "Uma sombra tênue de janelas estáticas, barras de tarefas ou logotipos permanece na tela.",
+        "rationale": "Exibe padrões uniformes de cinza e cores primárias com grade de inspeção para detectar retenção temporária ou burn-in permanente."
+      },
+      "somethingElse": {
+        "label": "Geral / Não tenho certeza",
+        "desc": "Desejo uma verificação de referência completa em todos os aspectos essenciais do monitor.",
+        "rationale": "Executa a sequência fundamental completa de diagnóstico da tela."
+      }
+    }
+  },
+  "DisplayInfo": {
+    "workflow": {
+      "step": "FLUXO DE INSPEÇÃO • ETAPA {current} DE {total}",
+      "title": "Informações da tela e consulta do navegador",
+      "desc": "· Verifique se os parâmetros informados pelo navegador correspondem às expectativas",
+      "obsNormal": "Normal (Observado)",
+      "obsNeedsAttention": "Requer atenção",
+      "skip": "Pular →",
+      "saveAndContinue": "Salvar e continuar"
+    },
+    "breadcrumb": {
+      "allTests": "TODOS OS TESTES",
+      "current": "INFORMAÇÕES DA TELA E RECURSOS"
+    },
+    "header": {
+      "eyebrow": "CONSULTA DIAGNÓSTICA DO NAVEGADOR",
+      "title": "Informações da tela e recursos",
+      "subtitle": "Parâmetros legítimos de tela, APIs gráficas e métricas de janela consultadas diretamente no ambiente do seu navegador.",
+      "enterFullscreen": "Testar tela cheia (F)",
+      "exitFullscreen": "Sair da tela cheia",
+      "fullscreenError": "A solicitação de tela cheia foi bloqueada pelas permissões do navegador ou política de isolamento."
+    },
+    "disclaimer": {
+      "title": "Informações relatadas pelo navegador — Não é telemetria de hardware",
+      "body": "Os navegadores web operam em um ambiente seguro e isolado (sandbox). Todos os valores abaixo refletem o que o navegador e o compositor do SO expõem às APIs web. Este teste não acessa sensores de hardware (como EEPROM do monitor, ROM EDID de fábrica, tensões internas ou arranjo de subpixels)."
+    },
+    "geometry": {
+      "title": "1. Geometria de tela e viewport",
+      "subtitle": "Contexto do navegador em tempo real",
+      "logicalRes": "Resolução lógica",
+      "cssPixels": "Pixels de layout CSS",
+      "estimatedPhysicalRes": "Resolução física estimada",
+      "megapixelsFormula": "≈ {megapixels} Megapixels (L×A×DPR)",
+      "currentViewport": "Viewport atual",
+      "viewportFormula": "window.innerWidth × innerHeight",
+      "dprLabel": "Proporção de pixels do dispositivo (DPR)",
+      "dprRetina": "Escalonamento High-DPI / Retina",
+      "dprStandard": "Escalonamento padrão 100% 1:1",
+      "dprCustom": "Escalonamento fracionário personalizado do SO",
+      "availScreenArea": "Área de tela disponível",
+      "availScreenDesc": "Excluindo barras de tarefas e menus do sistema",
+      "colorDepth": "Profundidade de cor e pixel",
+      "colorDepthDesc": "True Color de 24 bits (8 bits por canal)",
+      "screenOrientation": "Orientação da tela",
+      "orientationAngle": "Ângulo de {angle}°",
+      "frameTiming": "Taxa de quadros observada",
+      "frameTimingDesc": "Sincronização de hardware requestAnimationFrame",
+      "probing": "Detectando...",
+      "measuring": "Medindo..."
+    },
+    "capabilities": {
+      "title": "2. Matriz de recursos e APIs do navegador",
+      "subtitle": "Verificação padronizada de recursos de API",
+      "colFeature": "Recurso / Padrão",
+      "colStatus": "Status",
+      "colDesc": "Descrição",
+      "supported": "Suportado",
+      "notSupported": "Não suportado",
+      "checking": "Verificando...",
+      "desc": {
+        "fullscreen": "Imersão total na tela sem elementos do navegador",
+        "canvas2d": "Contexto de renderização 2D acelerado por hardware",
+        "webgl1": "Pipeline gráfico OpenGL ES 2.0 no navegador",
+        "webgl2": "Shaders avançados e texturas flutuantes OpenGL ES 3.0",
+        "webgpu": "API de última geração para computação e renderização gráfica",
+        "orientation": "Bloqueio de orientação e detecção de rotação",
+        "multiScreen": "Topologia de múltiplas telas e posicionamento",
+        "hdr": "A consulta dynamic-range: high corresponde ao pipeline do SO",
+        "p3": "Espaço de cores Display P3 suportado pela cadeia de exibição",
+        "rec2020": "Sinalização de gama ultra-ampla Rec. 2020",
+        "touch": "Entrada por toque capacitivo ou caneta digitalizadora detectada"
+      }
+    },
+    "webgl": {
+      "title": "3. Diagnóstico WebGL e teste de renderização controlada",
+      "subtitle": "Verificação do pipeline da GPU",
+      "cardTitle": "RENDERIZAÇÃO CONTROLADA DE POLIEDRO 3D",
+      "unavailable": "Contexto WebGL indisponível neste ambiente",
+      "pauseRender": "Pausar renderização",
+      "resumeRender": "Retomar renderização",
+      "zeroOverhead": "Transformação 3D controlada • Sem sobrecarga",
+      "pipelineParams": "Parâmetros de consulta do pipeline gráfico",
+      "version": "Versão do WebGL",
+      "vendor": "Fabricante da GPU relatado",
+      "renderer": "Renderizador da GPU relatado",
+      "maxTexture": "Tamanho máx. de textura 2D",
+      "maxRenderbuffer": "Tamanho máx. de renderbuffer",
+      "msaa": "Anti-serrilhado por hardware (MSAA)",
+      "msaaEnabled": "Ativado (Direto)",
+      "msaaDisabled": "Desativado / Padrão",
+      "boundaryTitle": "Limites da medição:",
+      "boundaryBody": "O diagnóstico WebGL reflete a camada de abstração do driver (ex. ANGLE Direct3D/Metal/Vulkan). Não indica temperaturas físicas do silício, rotação de ventoinhas nem frequências de clock de memória.",
+      "probing": "Detectando...",
+      "unavailableVal": "Indisponível"
+    },
+    "multiScreen": {
+      "title": "4. Detecção de múltiplos monitores",
+      "subtitle": "Window Management API",
+      "heading": "Topologia de telas e posicionamento",
+      "desc": "Consulta o navegador sobre configurações de múltiplos monitores através da W3C Window Management API.",
+      "queryBtn": "Consultar topologia de telas",
+      "requesting": "Solicitando permissão...",
+      "isExtendedLabel": "Área estendida:",
+      "extendedYes": "Múltiplos monitores (Área de trabalho estendida)",
+      "extendedNo": "Tela única ativa",
+      "extendedUnspecified": "Não especificado / Tela única",
+      "limitationTitle": "Limite de privacidade em múltiplas telas:",
+      "apiNotSupported": "A Window Management API (getScreenDetails) não é suportada por este navegador.",
+      "permissionDenied": "A permissão para consultar a disposição de telas foi negada. O navegador não pode inspecionar outras telas sem autorização expressa.",
+      "primaryBadge": "PRINCIPAL",
+      "thisWindowBadge": "ESTA JANELA",
+      "dimensions": "Dimensões: {width} × {height} px",
+      "available": "Disponível: {width} × {height} px",
+      "dpr": "Proporção de pixels: {dpr}x",
+      "orientation": "Orientação: {orientation}",
+      "orientationStandard": "Padrão",
+      "emptyState": "Clique em \"Consultar topologia de telas\" acima. Se o navegador for compatível e você conceder permissão, as resoluções e propriedades das telas secundárias aparecerão aqui. Se não for suportado ou for negado, o navegador funcionará estritamente no modo de tela única."
+    },
+    "related": {
+      "title": "UTILITÁRIOS RELACIONADOS",
+      "compareDisplays": "Calculadora de comparação de telas (PPI, distância, proporção)"
+    }
   }
 }

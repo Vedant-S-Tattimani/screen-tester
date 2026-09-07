@@ -938,5 +938,204 @@
         "description": "Revisa observaciones registradas, inspecciona coordenadas de defectos de píxeles, perfiles de hardware y exporta o imprime informes."
       }
     }
+  },
+  "Diagnostic": {
+    "eyebrow": "GUÍA BASADA EN SÍNTOMAS",
+    "title": "¿Algo se ve mal en tu pantalla?",
+    "subtitle": "Selecciona los defectos visuales o problemas que observas. Te recomendaremos las pruebas exactas para verificar el comportamiento.",
+    "breadcrumbHub": "CENTRO DE INSPECCIÓN",
+    "step1Title": "PASO 1 — ¿QUÉ OBSERVAS? (SELECCIONA TODOS LOS QUE APLIQUEN)",
+    "step2Title": "PASO 2 — PRUEBAS DE DIAGNÓSTICO RECOMENDADAS ({count})",
+    "step2Subtitle": "Seleccionamos estas pruebas según tu observación. Desmarca las que no desees ejecutar.",
+    "startQueue": "Iniciar cola de diagnóstico ({count} pruebas)",
+    "preview": "Vista previa",
+    "toggleTest": "Alternar {test}",
+    "noteTitle": "Nota de diagnóstico:",
+    "noteBody": "Estas pruebas de navegador presentan patrones de referencia visual estándar para evaluar el rendimiento de píxeles, luminancia, color y movimiento. No diagnostican fallos internos de hardware. Si una anomalía persiste en varios navegadores y dispositivos, consulta la garantía del fabricante.",
+    "symptoms": {
+      "deadPixel": {
+        "label": "Píxel muerto o atascado",
+        "desc": "Punto oscuro diminuto que no se ilumina o subpíxel de color brillante encendido permanentemente.",
+        "rationale": "Alterna campos de color sólido primario para aislar visualmente píxeles negros inactivos de subpíxeles rojos, verdes o azules atascados."
+      },
+      "strangeColors": {
+        "label": "Colores extraños o descoloridos",
+        "desc": "Los tonos parecen poco naturales, apagados, sobresaturados o los tonos de piel tienen tintes.",
+        "rationale": "Evalúa los primarios sRGB estándar, gradientes suaves de 8 y 10 bits y curvas de seguimiento gamma."
+      },
+      "tooDark": {
+        "label": "Demasiado oscuro / sombras aplastadas",
+        "desc": "Las escenas oscuras de juegos o fotos nocturnas pierden detalle y se aplastan por completo a negro.",
+        "rationale": "Prueba umbrales de luminancia paso a paso cerca del 0% negro para calibrar el nivel de negro y el detalle en sombras."
+      },
+      "tooBright": {
+        "label": "Demasiado brillante / luces quemadas",
+        "desc": "Las nubes, cielos o elementos brillantes se queman y pierden textura en blanco puro.",
+        "rationale": "Verifica el recorte de luminancia del 95% al 100% blanco para evitar la pérdida de rango dinámico."
+      },
+      "brightCorners": {
+        "label": "Esquinas brillantes / resplandor en bordes",
+        "desc": "Las esquinas o biseles brillan intensamente con contenido oscuro o barras negras.",
+        "rationale": "Utiliza fondos negros en habitación oscura para distinguir la fuga de luz por presión del bisel del brillo IPS por ángulo de visión."
+      },
+      "unevenBrightness": {
+        "label": "Brillo desigual / manchas oscuras",
+        "desc": "Ciertas áreas de la pantalla se ven más oscuras, sucias, nubladas o viñeteadas.",
+        "rationale": "Evalúa campos de gris neutro al 5%, 15% y 50% en todo el panel para detectar el efecto de pantalla sucia (DSE)."
+      },
+      "blurryText": {
+        "label": "Texto borroso o con halos",
+        "desc": "Las fuentes se ven difusas, poco nítidas o muestran halos de color en las letras.",
+        "rationale": "Verifica si el escalado y resolución del sistema operativo coinciden con el panel nativo y analiza la nitidez del renderizado."
+      },
+      "motionTrails": {
+        "label": "Estelas de movimiento / ghosting",
+        "desc": "Los objetos dejan una estela borrosa o sombra al desplazarse por la pantalla.",
+        "rationale": "Ejecuta bloques de contraste a velocidad variable para inspeccionar el retardo del cristal líquido y el ajuste de overdrive."
+      },
+      "flickering": {
+        "label": "Parpadeo de pantalla / fatiga visual",
+        "desc": "Pulsaciones rápidas sutiles, variaciones de luminancia o cansancio tras uso prolongado.",
+        "rationale": "Prueba patrones de fotogramas alternos a alta velocidad para evaluar la sensibilidad al PWM y la estabilidad del refresco."
+      },
+      "screenTearing": {
+        "label": "Screen tearing / desgarro de imagen",
+        "desc": "Líneas de división horizontal durante movimientos rápidos de cámara o vídeo.",
+        "rationale": "Prueba líneas oscilantes de alta velocidad para evaluar el bloqueo V-Sync y la sincronización de fotogramas del navegador."
+      },
+      "imageRetention": {
+        "label": "Retención de imagen / marcas residuales",
+        "desc": "Permanece en pantalla una imagen tenue de ventanas estáticas, barras de tareas o logotipos.",
+        "rationale": "Muestra campos homogéneos de gris y primarios con cuadrículas para revelar retención temporal o quemado permanente."
+      },
+      "somethingElse": {
+        "label": "General / No estoy seguro",
+        "desc": "Deseo una verificación de referencia exhaustiva en todos los aspectos críticos.",
+        "rationale": "Ejecuta la secuencia diagnóstica fundamental completa de la pantalla."
+      }
+    }
+  },
+  "DisplayInfo": {
+    "workflow": {
+      "step": "FLUJO DE INSPECCIÓN • PASO {current} DE {total}",
+      "title": "Información de pantalla y consulta del navegador",
+      "desc": "· Verifica que los parámetros informados por el navegador coincidan con lo esperado",
+      "obsNormal": "Normal (Observado)",
+      "obsNeedsAttention": "Requiere atención",
+      "skip": "Omitir →",
+      "saveAndContinue": "Guardar y continuar"
+    },
+    "breadcrumb": {
+      "allTests": "TODAS LAS PRUEBAS",
+      "current": "INFORMACIÓN DE PANTALLA Y CAPACIDADES"
+    },
+    "header": {
+      "eyebrow": "CONSULTA DIAGNÓSTICA DEL NAVEGADOR",
+      "title": "Información de pantalla y capacidades",
+      "subtitle": "Parámetros legítimos de pantalla, APIs gráficas y métricas de ventana consultadas directamente desde el navegador.",
+      "enterFullscreen": "Probar pantalla completa (F)",
+      "exitFullscreen": "Salir de pantalla completa",
+      "fullscreenError": "La solicitud de pantalla completa fue bloqueada por permisos del navegador o políticas de aislamiento."
+    },
+    "disclaimer": {
+      "title": "Información informada por el navegador — No es telemetría de hardware",
+      "body": "Los navegadores web operan en un entorno seguro aislado (sandbox). Todos los valores reflejan lo que el navegador y el compositor del SO exponen a las APIs web. Esta prueba no accede a telemetría de sensores físicos (como EEPROM del monitor, ROM EDID de fábrica, voltajes internos o disposición de subpíxeles)."
+    },
+    "geometry": {
+      "title": "1. Geometría de pantalla y ventana gráfica",
+      "subtitle": "Contexto del navegador en vivo",
+      "logicalRes": "Resolución lógica",
+      "cssPixels": "Píxeles de diseño CSS",
+      "estimatedPhysicalRes": "Resolución física estimada",
+      "megapixelsFormula": "≈ {megapixels} Megapíxeles (An×Al×DPR)",
+      "currentViewport": "Ventana gráfica actual",
+      "viewportFormula": "window.innerWidth × innerHeight",
+      "dprLabel": "Relación de píxeles del dispositivo (DPR)",
+      "dprRetina": "Escalado High-DPI / Retina",
+      "dprStandard": "Escalado estándar 100% 1:1",
+      "dprCustom": "Escalado fraccional personalizado del SO",
+      "availScreenArea": "Área de pantalla disponible",
+      "availScreenDesc": "Excluyendo barras de tareas y menús del sistema",
+      "colorDepth": "Profundidad de color y píxel",
+      "colorDepthDesc": "True Color de 24 bits (8 bits por canal)",
+      "screenOrientation": "Orientación de pantalla",
+      "orientationAngle": "{angle}° de ángulo",
+      "frameTiming": "Sincronización de fotogramas observada",
+      "frameTimingDesc": "Sincronización por hardware requestAnimationFrame",
+      "probing": "Consultando...",
+      "measuring": "Midiendo..."
+    },
+    "capabilities": {
+      "title": "2. Matriz de capacidades y APIs del navegador",
+      "subtitle": "Comprobación estandarizada de características de API",
+      "colFeature": "Característica / Estándar",
+      "colStatus": "Estado",
+      "colDesc": "Descripción",
+      "supported": "Compatible",
+      "notSupported": "No compatible",
+      "checking": "Comprobando...",
+      "desc": {
+        "fullscreen": "Inmersión total en pantalla sin bordes del navegador",
+        "canvas2d": "Contexto de rasterización 2D acelerado por hardware",
+        "webgl1": "Pipeline gráfico OpenGL ES 2.0 en el navegador",
+        "webgl2": "Shaders avanzados OpenGL ES 3.0 y texturas flotantes",
+        "webgpu": "API de última generación para cómputo y renderizado GPU",
+        "orientation": "Bloqueo de orientación y seguimiento de eventos",
+        "multiScreen": "Topología multipantalla y ubicación de ventanas",
+        "hdr": "Media query dynamic-range: high coincide con el SO",
+        "p3": "Espacio de color Display P3 admitido en la cadena de visualización",
+        "rec2020": "Señalización de gama cromática ultraancha Rec. 2020",
+        "touch": "Entrada táctil capacitiva o lápiz óptico detectada"
+      }
+    },
+    "webgl": {
+      "title": "3. Diagnóstico WebGL y prueba de renderizado controlado",
+      "subtitle": "Verificación del pipeline de GPU",
+      "cardTitle": "RENDERIZADO CONTROLADO DE POLIEDRO 3D",
+      "unavailable": "Contexto WebGL no disponible en este entorno",
+      "pauseRender": "Pausar render",
+      "resumeRender": "Reanudar render",
+      "zeroOverhead": "Transformación 3D controlada • Mínima sobrecarga",
+      "pipelineParams": "Parámetros de consulta del pipeline gráfico",
+      "version": "Versión de WebGL",
+      "vendor": "Fabricante de GPU informado",
+      "renderer": "Renderizador de GPU informado",
+      "maxTexture": "Tamaño máx. de textura 2D",
+      "maxRenderbuffer": "Tamaño máx. de renderbuffer",
+      "msaa": "Antialiasing por hardware (MSAA)",
+      "msaaEnabled": "Habilitado (Directo)",
+      "msaaDisabled": "Deshabilitado / Predeterminado",
+      "boundaryTitle": "Límites de medición:",
+      "boundaryBody": "El diagnóstico WebGL refleja la capa de abstracción del controlador (p. ej. ANGLE Direct3D/Metal/Vulkan). No refleja temperaturas físicas del silicio, velocidad de ventiladores ni frecuencias de reloj de memoria.",
+      "probing": "Consultando...",
+      "unavailableVal": "No disponible"
+    },
+    "multiScreen": {
+      "title": "4. Detección de pantallas múltiples",
+      "subtitle": "Window Management API",
+      "heading": "Topología multipantalla y ubicación",
+      "desc": "Consulta al navegador sobre configuraciones multimonitor mediante la API Window Management de W3C.",
+      "queryBtn": "Consultar topología de pantallas",
+      "requesting": "Solicitando permiso...",
+      "isExtendedLabel": "Pantalla extendida:",
+      "extendedYes": "Multimonitor (Escritorio extendido)",
+      "extendedNo": "Pantalla única activa",
+      "extendedUnspecified": "No especificado / Pantalla única",
+      "limitationTitle": "Límite de privacidad multipantalla:",
+      "apiNotSupported": "La API Window Management (getScreenDetails) no es compatible con este navegador.",
+      "permissionDenied": "Se denegó el permiso para consultar la disposición de pantallas. El navegador no puede inspeccionar otras pantallas sin autorización explícita.",
+      "primaryBadge": "PRINCIPAL",
+      "thisWindowBadge": "ESTA VENTANA",
+      "dimensions": "Dimensiones: {width} × {height} px",
+      "available": "Disponible: {width} × {height} px",
+      "dpr": "Relación de píxeles (DPR): {dpr}x",
+      "orientation": "Orientación: {orientation}",
+      "orientationStandard": "Estándar",
+      "emptyState": "Haz clic arriba en «Consultar topología de pantallas». Si tu navegador admite la API Window Management y concedes permiso, aquí se enumerarán las resoluciones y propiedades de las pantallas secundarias. Si no es compatible o se deniega, el navegador opera estrictamente en modo de pantalla única."
+    },
+    "related": {
+      "title": "UTILIDADES RELACIONADAS",
+      "compareDisplays": "Calculadora de comparación de pantallas (PPI, distancia, relación de aspecto)"
+    }
   }
 }

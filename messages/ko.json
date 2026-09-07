@@ -938,5 +938,204 @@
         "description": "기록된 점검 결과, 불량 화소 좌표 목록 및 디스플레이 프로필을 확인하고 보고서를 인쇄하거나 JSON으로 내보냅니다."
       }
     }
+  },
+  "Diagnostic": {
+    "eyebrow": "증상 기반 진단 가이드",
+    "title": "화면에 문제가 있어 보이나요?",
+    "subtitle": "화면에서 관찰되는 이상 현상이나 결함을 선택하세요. 상태를 면밀히 점검할 수 있는 맞춤형 테스트를 안내해 드립니다.",
+    "breadcrumbHub": "점검 허브",
+    "step1Title": "1단계 — 어떤 현상이 관찰되나요? (해당 항목 모두 선택)",
+    "step2Title": "2단계 — 권장 진단 테스트 ({count}개)",
+    "step2Subtitle": "선택하신 관찰 결과를 기반으로 테스트를 구성했습니다. 실행을 원치 않는 테스트는 선택을 해제하세요.",
+    "startQueue": "진단 테스트 큐 시작 ({count}개 테스트)",
+    "preview": "미리보기",
+    "toggleTest": "{test} 전환",
+    "noteTitle": "진단 참고 사항:",
+    "noteBody": "본 브라우저 테스트는 화소 성능, 밝기, 색상, 잔상 등의 상태를 확인하기 위한 표준 시각 참조 패턴을 제공합니다. 내부 부품의 고장을 자동으로 확정하는 것은 아니며, 여러 브라우저 및 기기에서도 결함이 지속된다면 모니터 제조사의 보증 규정을 확인하시기 바랍니다.",
+    "symptoms": {
+      "deadPixel": {
+        "label": "불량 화소 (암점 / 휘점)",
+        "desc": "빛이 들어오지 않는 미세한 검은 점이나 항상 켜져 있는 원색 서브픽셀.",
+        "rationale": "순수 원색 단색 화면을 순차적으로 표시하여 비활성 암점과 고착된 RGB 서브픽셀을 명확히 구분합니다."
+      },
+      "strangeColors": {
+        "label": "왜곡되거나 물 빠진 색상",
+        "desc": "색조가 부자연스럽거나 흐릿하고 과포화되거나 피부 톤에 색 번짐이 느껴집니다.",
+        "rationale": "표준 sRGB 원색, 매끄러운 8비트/10비트 컬러 그라데이션 및 감마 추적 곡선을 검증합니다."
+      },
+      "tooDark": {
+        "label": "지나치게 어두움 / 암부 뭉개짐",
+        "desc": "어두운 게임 장면이나 야경 사진의 세부 표현이 뭉개져 완전한 검은색으로 묻힙니다.",
+        "rationale": "0% 블랙에 근접한 단계별 휘도 임계값을 점검하여 블랙 레벨과 암부 표현력을 정밀 보정합니다."
+      },
+      "tooBright": {
+        "label": "지나치게 밝음 / 하이라이트 날림",
+        "desc": "구름, 하늘 또는 밝은 UI 요소의 고유 질감이 순백색으로 하얗게 날아갑니다.",
+        "rationale": "95%부터 100% 화이트까지의 단계별 클리핑을 점검하여 명암비 손실을 방지합니다."
+      },
+      "brightCorners": {
+        "label": "모서리 빛샘 / 베젤 테두리 발광",
+        "desc": "어두운 화면이나 레터박스 영상을 볼 때 모서리나 베젤 주변이 하얗게 빛납니다.",
+        "rationale": "암실에서 블랙 화면을 띄워 베젤 조립 압력에 의한 백라이트 빛샘과 시야각에 따른 자연스러운 IPS 글로우를 판별합니다."
+      },
+      "unevenBrightness": {
+        "label": "불균일한 밝기 / 얼룩 현상",
+        "desc": "화면의 특정 부위가 더 어둡거나 지저분하고 뿌옇거나 주변부 비네팅이 보입니다.",
+        "rationale": "패널 전면에 5%, 15%, 50% 뉴트럴 그레이 화면을 띄워 더티 스크린 현상(DSE)을 면밀히 감지합니다."
+      },
+      "blurryText": {
+        "label": "흐릿하거나 색 번짐이 있는 글꼴",
+        "desc": "글꼴이 선명하지 않고 뿌옇게 보이거나 글자 테두리에 옅은 색 띠가 관찰됩니다.",
+        "rationale": "운영체제의 배율과 해상도가 물리 패널의 화소 배열과 일치하는지 확인하고 안티앨리어싱 가독성을 검증합니다."
+      },
+      "motionTrails": {
+        "label": "모션 잔상 / 고스팅 현상",
+        "desc": "화면의 물체가 움직일 때 뒤편으로 번짐, 흐림 또는 그림자 궤적이 발생합니다.",
+        "rationale": "가변 속도로 이동하는 고대비 블록 패턴을 실행하여 액정 반응 지연과 오버드라이브 설정값을 평가합니다."
+      },
+      "flickering": {
+        "label": "화면 깜빡임 / 눈의 피로",
+        "desc": "미세하고 빠른 떨림, 밝기 일렁임 또는 장시간 작업 시 심한 눈 피로감이 느껴집니다.",
+        "rationale": "초고속 교차 프레임 패턴을 통해 PWM 백라이트 깜빡임 민감도와 프레임 타이밍 안정성을 평가합니다."
+      },
+      "screenTearing": {
+        "label": "화면 찢어짐 (티어링 현상)",
+        "desc": "빠른 화면 회전이나 동영상 재생 중에 화면이 가로로 갈라져 어긋납니다.",
+        "rationale": "고속 진동 라인 패턴을 실행하여 브라우저의 V-Sync 수직 동기화 및 프레임 일치성을 검증합니다."
+      },
+      "imageRetention": {
+        "label": "화면 잔상 / 번인 증상",
+        "desc": "닫은 창, 작업 표시줄, 고정 로고의 흐릿한 윤곽 잔상이 화면에 계속 남습니다.",
+        "rationale": "점검용 그리드가 포함된 균일한 회색 및 원색 필드를 띄워 일시적 잔상인지 영구적 번인인지 진단합니다."
+      },
+      "somethingElse": {
+        "label": "일반 점검 / 잘 모르겠음",
+        "desc": "디스플레이의 모든 핵심 기본 성능을 종합적으로 진단하고 싶습니다.",
+        "rationale": "화면 점검에 필수적인 기본 진단 전체 시퀀스를 순차적으로 진행합니다."
+      }
+    }
+  },
+  "DisplayInfo": {
+    "workflow": {
+      "step": "점검 워크플로우 • {current}단계 / 총 {total}단계",
+      "title": "디스플레이 정보 및 브라우저 사양 쿼리",
+      "desc": "· 브라우저에서 보고한 디스플레이 파라미터가 정상인지 확인합니다",
+      "obsNormal": "정상 (확인됨)",
+      "obsNeedsAttention": "주의 필요",
+      "skip": "건너뛰기 →",
+      "saveAndContinue": "저장 후 계속"
+    },
+    "breadcrumb": {
+      "allTests": "전체 테스트",
+      "current": "디스플레이 정보 및 기능 사양"
+    },
+    "header": {
+      "eyebrow": "브라우저 보고 기반 진단 쿼리",
+      "title": "디스플레이 정보 및 기능 사양",
+      "subtitle": "브라우저 환경에서 직접 질의한 디스플레이 파라미터, 그래픽 API 지원 현황 및 창 크기 메트릭입니다.",
+      "enterFullscreen": "전체 화면 테스트 (F)",
+      "exitFullscreen": "전체 화면 종료",
+      "fullscreenError": "브라우저 권한 설정 또는 샌드박스 정책으로 인해 전체 화면 전환이 차단되었습니다."
+    },
+    "disclaimer": {
+      "title": "브라우저 보고 정보 안내 — 하드웨어 실측치가 아닙니다",
+      "body": "웹 브라우저는 보안된 운영체제 샌드박스 내부에서 격리되어 실행됩니다. 아래 표시된 수치는 브라우저와 OS 컴포지터가 웹 API에 노출하는 정보입니다. 본 테스트는 모니터 EEPROM, 공장 EDID 롬, 내부 패널 전압 등 하드웨어 센서에 직접 접근하지 않습니다."
+    },
+    "geometry": {
+      "title": "1. 화면 및 뷰포트 지오메트리",
+      "subtitle": "실시간 브라우저 환경",
+      "logicalRes": "논리적 해상도",
+      "cssPixels": "CSS 레이아웃 픽셀",
+      "estimatedPhysicalRes": "추정 물리 해상도",
+      "megapixelsFormula": "≈ {megapixels} 메가픽셀 (가로×세로×DPR)",
+      "currentViewport": "현재 브라우저 뷰포트",
+      "viewportFormula": "window.innerWidth × innerHeight",
+      "dprLabel": "기기 픽셀 비율 (DPR)",
+      "dprRetina": "고해상도 Retina 스케일링",
+      "dprStandard": "표준 100% 1:1 스케일링",
+      "dprCustom": "사용자 지정 OS 배율",
+      "availScreenArea": "사용 가능한 화면 영역",
+      "availScreenDesc": "OS 작업 표시줄 및 메뉴 표시줄 제외",
+      "colorDepth": "색상 및 픽셀 심도",
+      "colorDepthDesc": "24비트 트루컬러 (채널당 8비트)",
+      "screenOrientation": "화면 방향",
+      "orientationAngle": "{angle}° 각도",
+      "frameTiming": "측정된 프레임 타이밍",
+      "frameTimingDesc": "requestAnimationFrame 하드웨어 동기화",
+      "probing": "감지 중...",
+      "measuring": "측정 중..."
+    },
+    "capabilities": {
+      "title": "2. 브라우저 지원 기능 및 API 매트릭스",
+      "subtitle": "표준 웹 API 기능 지원 여부 검사",
+      "colFeature": "기능 / 표준",
+      "colStatus": "상태",
+      "colDesc": "설명",
+      "supported": "지원됨",
+      "notSupported": "미지원",
+      "checking": "확인 중...",
+      "desc": {
+        "fullscreen": "브라우저 테두리 없이 화면 전체를 채우는 몰입 모드",
+        "canvas2d": "하드웨어 가속 2D 래스터라이제이션 컨텍스트",
+        "webgl1": "브라우저 내 OpenGL ES 2.0 그래픽 파이프라인",
+        "webgl2": "고급 셰이더 및 부동소수점 텍스처를 지원하는 OpenGL ES 3.0",
+        "webgpu": "저지연 고성능 차세대 GPU 연산 및 렌더링 API",
+        "orientation": "화면 방향 고정 및 회전 이벤트 감지",
+        "multiScreen": "다중 모니터 토폴로지 및 창 배치 감지",
+        "hdr": "OS HDR 출력 파이프라인과 일치하는 dynamic-range: high 미디어 쿼리",
+        "p3": "디스플레이 체인에서 지원하는 Display P3 광색역",
+        "rec2020": "초광색역 Rec. 2020 색공간 신호 감지",
+        "touch": "정전식 터치 및 스타일러스 펜 입력 감지"
+      }
+    },
+    "webgl": {
+      "title": "3. WebGL 진단 및 제어형 3D 렌더링 테스트",
+      "subtitle": "GPU 파이프라인 무결성 검증",
+      "cardTitle": "제어형 3D 다면체 렌더링",
+      "unavailable": "이 환경에서는 WebGL 컨텍스트를 사용할 수 없습니다",
+      "pauseRender": "렌더링 일시정지",
+      "resumeRender": "렌더링 재개",
+      "zeroOverhead": "제어된 3D 변환 • 무부하 경량 설계",
+      "pipelineParams": "그래픽 파이프라인 쿼리 매개변수",
+      "version": "WebGL 버전",
+      "vendor": "보고된 GPU 제조사",
+      "renderer": "보고된 GPU 렌더러",
+      "maxTexture": "최대 2D 텍스처 크기",
+      "maxRenderbuffer": "최대 렌더버퍼 크기",
+      "msaa": "하드웨어 안티앨리어싱 (MSAA)",
+      "msaaEnabled": "활성화 (직접 적용)",
+      "msaaDisabled": "비활성화 / 기본값",
+      "boundaryTitle": "측정 한계 안내:",
+      "boundaryBody": "WebGL 진단 결과는 브라우저가 제공하는 드라이버 추상화 계층(예: ANGLE Direct3D/Metal/Vulkan 래퍼)을 보고합니다. 칩셋의 실제 온도, 팬 회전 속도 또는 메모리 클럭 주파수를 실측하는 것은 아닙니다.",
+      "probing": "감지 중...",
+      "unavailableVal": "사용 불가"
+    },
+    "multiScreen": {
+      "title": "4. 다중 모니터 디스플레이 감지",
+      "subtitle": "Window Management API",
+      "heading": "다중 디스플레이 토폴로지 및 배치",
+      "desc": "W3C Window Management API를 활용하여 연결된 다중 모니터 구성을 조회합니다.",
+      "queryBtn": "디스플레이 토폴로지 조회",
+      "requesting": "권한 요청 중...",
+      "isExtendedLabel": "확장 데스크톱 상태:",
+      "extendedYes": "다중 모니터 (확장 데스크톱)",
+      "extendedNo": "단일 디스플레이 활성",
+      "extendedUnspecified": "미지정 / 단일 화면",
+      "limitationTitle": "다중 화면 개인정보 보호 제한:",
+      "apiNotSupported": "이 브라우저 엔진은 Window Management API(getScreenDetails)를 지원하지 않습니다.",
+      "permissionDenied": "다중 화면 배치 조회 권한이 거부되었습니다. 사용자의 명시적 허용 없이는 다른 화면의 정보를 읽을 수 없습니다.",
+      "primaryBadge": "주 모니터",
+      "thisWindowBadge": "현재 창",
+      "dimensions": "화면 해상도: {width} × {height} px",
+      "available": "사용 가능: {width} × {height} px",
+      "dpr": "기기 픽셀 비율: {dpr}x",
+      "orientation": "화면 방향: {orientation}",
+      "orientationStandard": "표준",
+      "emptyState": "상단의 \"디스플레이 토폴로지 조회\" 버튼을 클릭하세요. 브라우저가 지원하고 권한을 승인하면 각 물리 모니터 해상도와 보조 화면 속성이 표시됩니다. 미지원 또는 거부 시 표준 단일 화면 모드로 작동합니다."
+    },
+    "related": {
+      "title": "관련 유틸리티",
+      "compareDisplays": "디스플레이 비교 계산기 (PPI, 시청 거리, 화면비)"
+    }
   }
 }

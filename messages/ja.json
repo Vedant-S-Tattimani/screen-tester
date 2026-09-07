@@ -938,5 +938,204 @@
         "description": "記録した目視結果の確認、ドット抜けの位置座標一覧、ハードウェア構成の確認、印刷およびJSON保存が行えます。"
       }
     }
+  },
+  "Diagnostic": {
+    "eyebrow": "症状別診断ガイド",
+    "title": "画面の表示に違和感がありますか？",
+    "subtitle": "発生している表示の乱れや問題を選択してください。状態を検証するための最適なテストをご案内します。",
+    "breadcrumbHub": "点検ハブ",
+    "step1Title": "ステップ1 — どのような症状が見られますか？（複数選択可）",
+    "step2Title": "ステップ2 — 推奨される診断テスト（{count}件）",
+    "step2Subtitle": "選択された症状に基づいてテストを選定しました。実行不要なテストはチェックを外してください。",
+    "startQueue": "診断キューを開始（{count}件のテスト）",
+    "preview": "プレビュー",
+    "toggleTest": "{test}を切り替え",
+    "noteTitle": "診断に関する注意事項：",
+    "noteBody": "これらのブラウザテストは、画素の応答、輝度、色彩、動態視認性を確認するための標準的な視覚リファレンスパターンを表示します。内部ハードウェアの故障を自動判定するものではありません。複数のブラウザや機器で同様の異常が続く場合は、製品メーカーの保証規定をご確認ください。",
+    "symptoms": {
+      "deadPixel": {
+        "label": "ドット抜け・輝点",
+        "desc": "点灯しない微小な黒点、または常に特定の色で点灯し続けるサブピクセル。",
+        "rationale": "純粋な原色単色画面を順次表示し、消灯したままの黒点や常時点灯したRGBサブピクセルを視覚的に特定します。"
+      },
+      "strangeColors": {
+        "label": "色合いの異常・色褪せ",
+        "desc": "色が不自然、くすんで見える、過度に鮮やか、または肌色に不自然な色被りがある。",
+        "rationale": "標準sRGB原色、滑らかな8bit/10bitグラデーション、およびガンマ追従曲線を評価します。"
+      },
+      "tooDark": {
+        "label": "暗すぎる・黒つぶれ",
+        "desc": "ゲームの暗い場面や夜景の写真でディテールが失われ、完全な黒に沈んでしまう。",
+        "rationale": "0%の黒付近の微細な輝度ステップを検証し、黒レベルと暗部階調の判別精度を調整します。"
+      },
+      "tooBright": {
+        "label": "明るすぎる・白飛び",
+        "desc": "雲や空、明るいUI要素のきめ細かなテクスチャが純白に溶けて消えてしまう。",
+        "rationale": "95%から100%の白までの輝度クリッピングを段階的に確認し、ハイライトの白飛びを防ぎます。"
+      },
+      "brightCorners": {
+        "label": "四隅の光漏れ・エッジの輝き",
+        "desc": "暗い映像やレターボックス表示時に、画面の四隅や外枠付近が白く光って見える。",
+        "rationale": "暗室での黒画面表示により、パネルの固定圧迫によるバックライト漏れと視野角由来のIPSグロー現象を判別します。"
+      },
+      "unevenBrightness": {
+        "label": "輝度ムラ・画面のまだら",
+        "desc": "画面の一部が薄暗く見えたり、曇りや周辺光量落ち（減光）が感じられる。",
+        "rationale": "画面全体に5%、15%、50%のニュートラルグレーを表示し、ダーティスクリーン現象（DSE）を検出します。"
+      },
+      "blurryText": {
+        "label": "文字の滲み・ぼやけ",
+        "desc": "フォントがぼやけてシャープに見えない、あるいは文字の輪郭に微細な色付きの縁取りが見える。",
+        "rationale": "OSの拡大縮小率と解像度が液晶パネル本来の画素配列と一致しているか確認し、アンチエイリアスの鮮明度を評価します。"
+      },
+      "motionTrails": {
+        "label": "残像・ゴースト現象",
+        "desc": "画面上の動く物体の後方にブレや滲み、黒い影のような引き尾が発生する。",
+        "rationale": "異なる速度で移動する高コントラストブロックを用いて、液晶の応答遅延やオーバードライブの過不足を確認します。"
+      },
+      "flickering": {
+        "label": "画面のチラつき・目の疲れ",
+        "desc": "かすかな高速明滅、輝度の揺らぎ、または長時間の作業で強い眼精疲労を感じる。",
+        "rationale": "高周波の交互フレームパターンを表示し、PWM調光によるフリッカー感度とフレームタイミングの安定性を検証します。"
+      },
+      "screenTearing": {
+        "label": "画面のズレ（テアリング）",
+        "desc": "素早いカメラ操作や動画再生時に、画面が水平方向に引き裂かれたようにずれる。",
+        "rationale": "高速で往復するラインパターンを用いて、ブラウザの垂直同期（V-Sync）と描画フレームの同期状態を検証します。"
+      },
+      "imageRetention": {
+        "label": "焼き付き・輪郭の残留",
+        "desc": "閉じたはずのウィンドウ、タスクバー、固定ロゴの薄い輪郭が画面に残り続ける。",
+        "rationale": "複数の均一なグレーおよび原色フィールドと点検用グリッドを表示し、一時的な残像か永続的な焼き付きかを判定します。"
+      },
+      "somethingElse": {
+        "label": "全般の点検・よくわからない",
+        "desc": "ディスプレイの重要な表示性能を網羅的に基本チェックしたい。",
+        "rationale": "主要な基本点検項目を網羅した標準診断シーケンスを実行します。"
+      }
+    }
+  },
+  "DisplayInfo": {
+    "workflow": {
+      "step": "点検ワークフロー • ステップ {current} / {total}",
+      "title": "画面情報とブラウザ機能クエリ",
+      "desc": "· ブラウザから取得された画面仕様が期待値と一致しているか確認します",
+      "obsNormal": "正常（確認済み）",
+      "obsNeedsAttention": "要確認",
+      "skip": "スキップ →",
+      "saveAndContinue": "保存して次へ"
+    },
+    "breadcrumb": {
+      "allTests": "すべてのテスト",
+      "current": "画面情報と機能仕様"
+    },
+    "header": {
+      "eyebrow": "ブラウザ報告型診断クエリ",
+      "title": "画面情報と機能仕様",
+      "subtitle": "お使いのブラウザ環境から直接取得した、画面パラメータ、グラフィックAPI、表示領域の測定値です。",
+      "enterFullscreen": "全画面テスト (F)",
+      "exitFullscreen": "全画面終了",
+      "fullscreenError": "全画面表示のリクエストがブラウザの権限設定またはサンドボックスポリシーにより拒否されました。"
+    },
+    "disclaimer": {
+      "title": "ブラウザ報告値について — ハードウェア実機計測ではありません",
+      "body": "Webブラウザは安全なOS保護環境（サンドボックス）内で動作します。以下に表示される数値は、ブラウザおよびOSコンポジタがWeb APIに開示している情報です。このテストは、ディスプレイ内蔵の物理センサー（EEPROM、工場出荷時EDID、内部駆動電圧、サブピクセル配列など）を直接読み取るものではありません。"
+    },
+    "geometry": {
+      "title": "1. 画面および表示領域のジオメトリ",
+      "subtitle": "実行中のブラウザ環境",
+      "logicalRes": "論理解像度",
+      "cssPixels": "CSSレイアウトピクセル",
+      "estimatedPhysicalRes": "推定物理解像度",
+      "megapixelsFormula": "≈ {megapixels} メガピクセル (幅×高さ×DPR)",
+      "currentViewport": "現在の表示領域（ビューポート）",
+      "viewportFormula": "window.innerWidth × innerHeight",
+      "dprLabel": "デバイスピクセル比（DPR）",
+      "dprRetina": "高精細・Retinaスケーリング",
+      "dprStandard": "標準 100% 1:1 等倍表示",
+      "dprCustom": "OSカスタム拡大表示",
+      "availScreenArea": "有効画面領域",
+      "availScreenDesc": "タスクバー・メニューバーを除く領域",
+      "colorDepth": "カラーおよび画素深度",
+      "colorDepthDesc": "24bit True Color（各チャンネル8bit）",
+      "screenOrientation": "画面の向き",
+      "orientationAngle": "角度 {angle}°",
+      "frameTiming": "計測フレームタイミング",
+      "frameTimingDesc": "requestAnimationFrame ハードウェア同期",
+      "probing": "検出中...",
+      "measuring": "計測中..."
+    },
+    "capabilities": {
+      "title": "2. ブラウザ機能およびAPIサポート状況",
+      "subtitle": "標準Web API機能のサポート判定",
+      "colFeature": "機能 / 標準仕様",
+      "colStatus": "状態",
+      "colDesc": "説明",
+      "supported": "対応",
+      "notSupported": "非対応",
+      "checking": "確認中...",
+      "desc": {
+        "fullscreen": "ブラウザの枠線なしで画面全体を表示する全画面表示",
+        "canvas2d": "ハードウェアアクセラレーションによる2D描画コンテキスト",
+        "webgl1": "ブラウザ上で動作するOpenGL ES 2.0グラフィックスパイプライン",
+        "webgl2": "高度なシェーダーと浮動小数点テクスチャに対応したOpenGL ES 3.0",
+        "webgpu": "低オーバーヘッドの次世代GPU演算・描画API",
+        "orientation": "画面の向きの固定および回転イベント検知",
+        "multiScreen": "複数ディスプレイの位置関係やトポロジーの検出",
+        "hdr": "OS側のHDR出力に対応したdynamic-range: highメディアクエリ",
+        "p3": "Display P3広色域プロファイルのサポート",
+        "rec2020": "超広色域Rec. 2020の色空間シグナリング",
+        "touch": "静電容量方式タッチまたはスタイラスペン入力の検出"
+      }
+    },
+    "webgl": {
+      "title": "3. WebGL診断と制御付き3D描画テスト",
+      "subtitle": "GPUパイプラインの動作検証",
+      "cardTitle": "制御付き3D多面体描画",
+      "unavailable": "この環境ではWebGLコンテキストが利用できません",
+      "pauseRender": "描画を一時停止",
+      "resumeRender": "描画を再開",
+      "zeroOverhead": "制御された3D変換 • 低負荷設計",
+      "pipelineParams": "グラフィックスパイプライン取得パラメータ",
+      "version": "WebGLバージョン",
+      "vendor": "報告されたGPUベンダー",
+      "renderer": "報告されたGPUレンダラー",
+      "maxTexture": "最大2Dテクスチャサイズ",
+      "maxRenderbuffer": "最大レンダーバッファサイズ",
+      "msaa": "ハードウェアアンチエイリアス（MSAA）",
+      "msaaEnabled": "有効（直接適用）",
+      "msaaDisabled": "無効 / デフォルト",
+      "boundaryTitle": "測定範囲の制限：",
+      "boundaryBody": "WebGL診断で得られる情報は、ブラウザが仲介するドライバ抽象化レイヤー（例：ANGLE Direct3D/Metal/Vulkanラッパー）の報告値です。GPUチップの実温度、ファン回転数、メモリクロック周波数を直接測定するものではありません。",
+      "probing": "検出中...",
+      "unavailableVal": "利用不可"
+    },
+    "multiScreen": {
+      "title": "4. マルチモニター構成の検出",
+      "subtitle": "Window Management API",
+      "heading": "複数ディスプレイの配置とトポロジー",
+      "desc": "W3C Window Management APIを利用して、接続されている複数モニターの情報を取得します。",
+      "queryBtn": "画面トポロジーを照会",
+      "requesting": "権限を要求中...",
+      "isExtendedLabel": "拡張デスクトップ状態：",
+      "extendedYes": "マルチモニター（拡張デスクトップ）",
+      "extendedNo": "単一ディスプレイで動作中",
+      "extendedUnspecified": "未指定 / 単一画面",
+      "limitationTitle": "マルチモニター情報のプライバシー制限：",
+      "apiNotSupported": "お使いのブラウザはWindow Management API（getScreenDetails）に対応していません。",
+      "permissionDenied": "複数ディスプレイの配置情報の取得権限が拒絶されました。明示的な許可がない場合、ブラウザは他の画面の情報を閲覧できません。",
+      "primaryBadge": "プライマリ",
+      "thisWindowBadge": "現在のウィンドウ",
+      "dimensions": "画面解像度: {width} × {height} px",
+      "available": "有効領域: {width} × {height} px",
+      "dpr": "デバイスピクセル比: {dpr}x",
+      "orientation": "向き: {orientation}",
+      "orientationStandard": "標準",
+      "emptyState": "上部の「画面トポロジーを照会」をクリックしてください。お使いのブラウザが対応しており権限を許可した場合、各物理画面の解像度やサブモニターの仕様がここに表示されます。非対応または拒否された場合は、通常の単一画面モードで動作します。"
+    },
+    "related": {
+      "title": "関連ユーティリティ",
+      "compareDisplays": "ディスプレイ比較計算ツール（PPI・視距離・アスペクト比）"
+    }
   }
 }
