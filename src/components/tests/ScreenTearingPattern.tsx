@@ -68,7 +68,7 @@ export function ScreenTearingPattern({ testId }: ScreenTearingPatternProps) {
     const ctx = canvas.getContext("2d", { alpha: false });
     if (!ctx) return;
 
-    const dpr = getDevicePixelRatio();
+    let dpr = getDevicePixelRatio();
     let animationId: number;
     let x = 0;
     let direction = 1;
@@ -78,10 +78,15 @@ export function ScreenTearingPattern({ testId }: ScreenTearingPatternProps) {
     let lastFpsUpdate = performance.now();
 
     const resize = () => {
+      dpr = getDevicePixelRatio();
       const rect = canvas.parentElement?.getBoundingClientRect() || canvas.getBoundingClientRect();
       canvas.width = Math.max(1, Math.floor(rect.width * dpr));
       canvas.height = Math.max(1, Math.floor(rect.height * dpr));
     };
+
+    window.addEventListener("resize", resize);
+    resize();
+    setTimeout(resize, 0);
 
     const draw = (now: number) => {
       animationId = requestAnimationFrame(draw);
@@ -146,8 +151,6 @@ export function ScreenTearingPattern({ testId }: ScreenTearingPatternProps) {
       }
     };
 
-    window.addEventListener("resize", resize);
-    resize();
     animationId = requestAnimationFrame(draw);
 
     return () => {

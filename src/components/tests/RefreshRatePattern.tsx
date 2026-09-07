@@ -40,6 +40,7 @@ export function RefreshRatePattern({ testId }: RefreshRatePatternProps) {
 
     let animationId: number;
     const frameTimes: number[] = [];
+    let lastUiUpdate = 0;
     let y = 0;
     let direction = 1;
 
@@ -53,12 +54,16 @@ export function RefreshRatePattern({ testId }: RefreshRatePatternProps) {
           frameTimes.shift();
         }
 
-        if (frameTimes.length > 2 && (time - frameTimes[0]) >= 900) {
-          const fps = frameTimes.length;
-          setEstimatedFps(fps);
-          if (fps > 0) {
-            setFrameTimeMs(Number((1000 / fps).toFixed(2)));
+        // Throttle React state updates to approximately once every 500ms
+        if (time - lastUiUpdate >= 500) {
+          if (frameTimes.length > 2 && (time - frameTimes[0]) >= 900) {
+            const fps = frameTimes.length;
+            setEstimatedFps(fps);
+            if (fps > 0) {
+              setFrameTimeMs(Number((1000 / fps).toFixed(2)));
+            }
           }
+          lastUiUpdate = time;
         }
 
         // Draw moving vertical scanline bar to enforce V-sync compositing

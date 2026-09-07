@@ -65,15 +65,21 @@ export function MotionPattern({ testId = "ghosting-test" }: MotionPatternProps) 
     const ctx = canvas.getContext("2d", { alpha: false });
     if (!ctx) return;
 
+    let cachedW = 0;
+    let cachedH = 0;
+
     const resize = () => {
       const dpr = getDevicePixelRatio();
       const rect = canvas.parentElement?.getBoundingClientRect() || canvas.getBoundingClientRect();
-      canvas.width = Math.max(1, Math.floor(rect.width * dpr));
-      canvas.height = Math.max(1, Math.floor(rect.height * dpr));
+      cachedW = rect.width || (canvas.width / dpr);
+      cachedH = rect.height || (canvas.height / dpr);
+      canvas.width = Math.max(1, Math.floor(cachedW * dpr));
+      canvas.height = Math.max(1, Math.floor(cachedH * dpr));
       ctx.scale(dpr, dpr);
     };
 
     window.addEventListener("resize", resize);
+    resize();
     setTimeout(resize, 0);
 
     let animationId: number;
@@ -89,9 +95,8 @@ export function MotionPattern({ testId = "ghosting-test" }: MotionPatternProps) 
       const currentSpeed = speedRef.current;
       const currentContrast = contrastRef.current;
 
-      const rect = canvas.getBoundingClientRect();
-      const w = rect.width || (canvas.width / getDevicePixelRatio());
-      const h = rect.height || (canvas.height / getDevicePixelRatio());
+      const w = cachedW || (canvas.width / getDevicePixelRatio());
+      const h = cachedH || (canvas.height / getDevicePixelRatio());
 
       if (!isPaused) {
         x += currentSpeed * dt;

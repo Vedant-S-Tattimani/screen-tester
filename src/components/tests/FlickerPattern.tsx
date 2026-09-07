@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
-import { Play, Pause, Info, Zap } from "lucide-react";
+import { Play, Pause, Info, Zap, AlertTriangle } from "lucide-react";
 
 export type FlickerMode = "uniform" | "inversion" | "strobe_wave";
 
@@ -25,14 +25,17 @@ export function FlickerPattern({ testId = "screen-flicker-test" }: FlickerPatter
   const [activeMode, setActiveMode] = useState<FlickerMode>("uniform");
   const [speed, setSpeed] = useState(2);
   const [showEduInfo, setShowEduInfo] = useState(false);
+  const [isStrobeConfirmed, setIsStrobeConfirmed] = useState(false);
 
   const speedRef = useRef(speed);
   const pausedRef = useRef(isPaused);
   const modeRef = useRef(activeMode);
+  const strobeConfirmedRef = useRef(isStrobeConfirmed);
 
   useEffect(() => { speedRef.current = speed; }, [speed]);
   useEffect(() => { pausedRef.current = isPaused; }, [isPaused]);
   useEffect(() => { modeRef.current = activeMode; }, [activeMode]);
+  useEffect(() => { strobeConfirmedRef.current = isStrobeConfirmed; }, [isStrobeConfirmed]);
 
   // Keyboard navigation
   const cycleSpeed = useCallback(() => {
@@ -48,6 +51,7 @@ export function FlickerPattern({ testId = "screen-flicker-test" }: FlickerPatter
       if (curr === "inversion") return "strobe_wave";
       return "uniform";
     });
+    setIsStrobeConfirmed(false);
   }, []);
 
   useEffect(() => {
@@ -57,6 +61,7 @@ export function FlickerPattern({ testId = "screen-flicker-test" }: FlickerPatter
       reset: () => {
         setSpeed(2);
         setActiveMode("uniform");
+        setIsStrobeConfirmed(false);
       },
     });
   }, [registerNavigation, cycleSpeed, cycleMode]);
@@ -91,12 +96,18 @@ export function FlickerPattern({ testId = "screen-flicker-test" }: FlickerPatter
       const h = canvas.height;
 
       if (currentMode === "uniform") {
-        frameCount++;
-        if (frameCount >= speedRef.current) {
-          frameCount = 0;
-          toggleState = !toggleState;
-          ctx.fillStyle = toggleState ? "#FFFFFF" : "#000000";
+        if (!strobeConfirmedRef.current) {
+          // Safe idle state: render neutral non-flashing dark background
+          ctx.fillStyle = "#121216";
           ctx.fillRect(0, 0, w, h);
+        } else {
+          frameCount++;
+          if (frameCount >= speedRef.current) {
+            frameCount = 0;
+            toggleState = !toggleState;
+            ctx.fillStyle = toggleState ? "#FFFFFF" : "#000000";
+            ctx.fillRect(0, 0, w, h);
+          }
         }
       } else if (currentMode === "inversion") {
         // Dot / Column Inversion Test Pattern (Vcom flicker detection)
@@ -135,6 +146,60 @@ export function FlickerPattern({ testId = "screen-flicker-test" }: FlickerPatter
     <>
       <div className="absolute inset-0 bg-black overflow-hidden select-none">
         <canvas ref={canvasRef} className="block w-full h-full" />
+
+        {/* Photosensitivity Safety Warning Confirmation Card for uniform strobe mode */}
+        {activeMode === "uniform" && !isStrobeConfirmed && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-4 sm:p-6 text-center z-20 pointer-events-auto bg-black/75 backdrop-blur-xs">
+            <div className="max-w-md w-full bg-neutral-950/95 border border-amber-500/40 p-6 rounded-2xl shadow-2xl space-y-4 text-white">
+              <div className="flex items-center justify-center gap-2 text-amber-400 font-mono text-xs uppercase tracking-wider font-semibold">
+                <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0" />
+                <span>Photosensitivity &amp; Flashing Notice</span>
+              </div>
+              <h3 className="text-base font-bold text-white">Rapid Screen Flashing Test</h3>
+              <p className="text-xs sm:text-[13px] text-white/80 leading-relaxed">
+                This test uses rapid flashing. It may cause discomfort or trigger photosensitive reactions in some people. Start only if you are comfortable proceeding.
+              </p>
+              <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => setIsStrobeConfirmed(true)}
+                  className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-neutral-950 font-semibold text-xs sm:text-sm transition-all shadow-lg cursor-pointer"
+                >
+                  Start Strobe Pattern
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveMode("strobe_wave");
+                    setIsStrobeConfirmed(false);
+                  }}
+                  className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white/90 font-medium text-xs transition-colors cursor-pointer"
+                >
+                  Use Safe Hand Test Instead
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Active Strobe Indicator Pill */}
+        {activeMode === "uniform" && isStrobeConfirmed && (
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 bg-black/85 backdrop-blur-md px-4 py-1.5 rounded-full border border-amber-500/30 flex items-center gap-2.5 text-xs font-mono text-white/90 pointer-events-auto shadow-xl">
+            <span className="flex h-2 w-2 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+            </span>
+            <span>Strobe Active</span>
+            <span className="text-white/30">|</span>
+            <button
+              type="button"
+              onClick={() => setIsStrobeConfirmed(false)}
+              className="text-amber-400 hover:text-amber-300 underline text-[11px] cursor-pointer"
+            >
+              Stop Strobe
+            </button>
+          </div>
+        )}
 
         {/* Optical Finger/Pen Wave Instruction Overlay for strobe_wave mode */}
         {activeMode === "strobe_wave" && (
@@ -198,24 +263,33 @@ export function FlickerPattern({ testId = "screen-flicker-test" }: FlickerPatter
           {/* Mode Selector */}
           <div className="flex items-center bg-muted/60 p-0.5 rounded-lg border border-border/60 text-xs">
             <button
-              onClick={() => setActiveMode("uniform")}
-              className={`px-2.5 py-1 rounded-md font-medium transition-all ${
+              onClick={() => {
+                setActiveMode("uniform");
+                setIsStrobeConfirmed(false);
+              }}
+              className={`px-2.5 py-1 rounded-md font-medium transition-all cursor-pointer ${
                 activeMode === "uniform" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"
               }`}
             >
               Uniform Alternation
             </button>
             <button
-              onClick={() => setActiveMode("inversion")}
-              className={`px-2.5 py-1 rounded-md font-medium transition-all ${
+              onClick={() => {
+                setActiveMode("inversion");
+                setIsStrobeConfirmed(false);
+              }}
+              className={`px-2.5 py-1 rounded-md font-medium transition-all cursor-pointer ${
                 activeMode === "inversion" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"
               }`}
             >
               Dot Inversion (Vcom)
             </button>
             <button
-              onClick={() => setActiveMode("strobe_wave")}
-              className={`px-2.5 py-1 rounded-md font-medium transition-all ${
+              onClick={() => {
+                setActiveMode("strobe_wave");
+                setIsStrobeConfirmed(false);
+              }}
+              className={`px-2.5 py-1 rounded-md font-medium transition-all cursor-pointer ${
                 activeMode === "strobe_wave" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"
               }`}
             >

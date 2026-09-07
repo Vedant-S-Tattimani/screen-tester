@@ -69,6 +69,21 @@ const nextConfig: NextConfig = {
       },
       // Inspection aliases
       {
+        source: '/:locale/diagnostic',
+        destination: '/:locale/monitor-inspection/diagnostic',
+        permanent: true,
+      },
+      {
+        source: '/diagnostic',
+        destination: '/en/monitor-inspection/diagnostic',
+        permanent: true,
+      },
+      {
+        source: '/:locale/inspection/diagnostic',
+        destination: '/:locale/monitor-inspection/diagnostic',
+        permanent: true,
+      },
+      {
         source: '/:locale/inspection/new-monitor',
         destination: '/:locale/monitor-inspection/new',
         permanent: true,
