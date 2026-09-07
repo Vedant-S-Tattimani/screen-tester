@@ -72,7 +72,7 @@ export function Header() {
         </Link>
 
         {/* Center Navigation Dropdowns */}
-        <nav className="hidden md:flex items-center gap-7 lg:gap-8 h-full" aria-label="Main Navigation">
+        <nav className="hidden lg:flex items-center gap-7 lg:gap-8 h-full" aria-label="Main Navigation">
           
           {/* 1. Tests Dropdown */}
           <div 
@@ -408,7 +408,7 @@ export function Header() {
         <div className="flex items-center gap-3 sm:gap-4">
           
           {/* Desktop Search Bar matching reference pill */}
-          <div className="hidden sm:block w-48 md:w-56 lg:w-64">
+          <div className="hidden lg:block lg:w-64">
             <SearchInput id="header-search-input" name="q" placeholder="Search tests or guides..." />
           </div>
 
@@ -417,7 +417,7 @@ export function Header() {
 
           {/* Mobile Menu Toggle Button */}
           <button
-            className="md:hidden p-1.5 text-gray-600 hover:text-gray-950 transition-colors focus-visible:ring-2 focus-visible:ring-gray-900 rounded cursor-pointer"
+            className="lg:hidden p-1.5 text-gray-600 hover:text-gray-950 transition-colors focus-visible:ring-2 focus-visible:ring-gray-900 rounded cursor-pointer"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-expanded={mobileOpen}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
@@ -429,7 +429,7 @@ export function Header() {
 
       {/* Mobile Navigation Drawer */}
       {mobileOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-xl flex flex-col py-4 px-6 space-y-4 z-50 animate-in fade-in duration-150">
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-xl flex flex-col py-4 px-6 space-y-4 z-50 animate-in fade-in duration-150">
           <div className="mb-1">
             <SearchInput id="header-search-input-mobile" name="q" onSelect={() => setMobileOpen(false)} placeholder="Search tests or guides..." />
           </div>

@@ -297,119 +297,119 @@ export default async function Home({
         </div>
 
         {/* 6 Workflow Cards (General Checkup + 5 Specialized Workflows) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3.5">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3.5">
           {/* 1. General checkup */}
           <Link 
             href="/monitor-inspection/general"
-            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 transition-all flex flex-col justify-between group min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
+            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-3 sm:p-4 transition-all flex flex-col justify-between group min-h-[110px] sm:min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
           >
             <div>
-              <div className="w-6 h-6 flex items-center text-gray-800 mb-2.5">
+              <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center text-gray-800 mb-2 sm:mb-2.5">
                 <ClipboardCheck className="w-4 h-4 stroke-[1.8]" />
               </div>
-              <h3 className="font-semibold text-[13px] text-gray-950 mb-0.5">
+              <h3 className="font-semibold text-xs sm:text-[13px] text-gray-950 mb-0.5 leading-snug">
                 {t("wfGeneralTitle")}
               </h3>
-              <p className="text-[11px] text-gray-500 leading-snug">
+              <p className="text-[10.5px] sm:text-[11px] text-gray-500 leading-snug line-clamp-2">
                 {t("wfGeneralDesc")}
               </p>
             </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-2" />
+            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-1.5 sm:mt-2 shrink-0" />
           </Link>
 
           {/* 2. Used monitor */}
           <Link 
             href="/monitor-inspection/used"
-            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 transition-all flex flex-col justify-between group min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
+            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-3 sm:p-4 transition-all flex flex-col justify-between group min-h-[110px] sm:min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
           >
             <div>
-              <div className="w-6 h-6 flex items-center text-gray-800 mb-2.5">
+              <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center text-gray-800 mb-2 sm:mb-2.5">
                 <RotateCcw className="w-4 h-4 stroke-[1.8]" />
               </div>
-              <h3 className="font-semibold text-[13px] text-gray-950 mb-0.5">
+              <h3 className="font-semibold text-xs sm:text-[13px] text-gray-950 mb-0.5 leading-snug">
                 {t("wfUsedTitle")}
               </h3>
-              <p className="text-[11px] text-gray-500 leading-snug">
+              <p className="text-[10.5px] sm:text-[11px] text-gray-500 leading-snug line-clamp-2">
                 {t("wfUsedDesc")}
               </p>
             </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-2" />
+            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-1.5 sm:mt-2 shrink-0" />
           </Link>
 
           {/* 2. Gaming display */}
           <Link 
             href="/monitor-inspection/gaming"
-            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 transition-all flex flex-col justify-between group min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
+            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-3 sm:p-4 transition-all flex flex-col justify-between group min-h-[110px] sm:min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
           >
             <div>
-              <div className="w-6 h-6 flex items-center text-gray-800 mb-2.5">
+              <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center text-gray-800 mb-2 sm:mb-2.5">
                 <Gamepad2 className="w-4 h-4 stroke-[1.8]" />
               </div>
-              <h3 className="font-semibold text-[13px] text-gray-950 mb-0.5">
+              <h3 className="font-semibold text-xs sm:text-[13px] text-gray-950 mb-0.5 leading-snug">
                 {t("wfGamingTitle")}
               </h3>
-              <p className="text-[11px] text-gray-500 leading-snug">
+              <p className="text-[10.5px] sm:text-[11px] text-gray-500 leading-snug line-clamp-2">
                 {t("wfGamingDesc")}
               </p>
             </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-2" />
+            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-1.5 sm:mt-2 shrink-0" />
           </Link>
 
           {/* 3. OLED display */}
           <Link 
             href="/monitor-inspection/oled"
-            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 transition-all flex flex-col justify-between group min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
+            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-3 sm:p-4 transition-all flex flex-col justify-between group min-h-[110px] sm:min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
           >
             <div>
-              <div className="w-6 h-6 flex items-center text-gray-800 mb-2.5">
+              <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center text-gray-800 mb-2 sm:mb-2.5">
                 <Monitor className="w-4 h-4 stroke-[1.8]" />
               </div>
-              <h3 className="font-semibold text-[13px] text-gray-950 mb-0.5">
+              <h3 className="font-semibold text-xs sm:text-[13px] text-gray-950 mb-0.5 leading-snug">
                 {t("wfOledTitle")}
               </h3>
-              <p className="text-[11px] text-gray-500 leading-snug">
+              <p className="text-[10.5px] sm:text-[11px] text-gray-500 leading-snug line-clamp-2">
                 {t("wfOledDesc")}
               </p>
             </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-2" />
+            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-1.5 sm:mt-2 shrink-0" />
           </Link>
 
           {/* 4. Laptop display */}
           <Link 
             href="/monitor-inspection/laptop"
-            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 transition-all flex flex-col justify-between group min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
+            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-3 sm:p-4 transition-all flex flex-col justify-between group min-h-[110px] sm:min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
           >
             <div>
-              <div className="w-6 h-6 flex items-center text-gray-800 mb-2.5">
+              <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center text-gray-800 mb-2 sm:mb-2.5">
                 <Laptop className="w-4 h-4 stroke-[1.8]" />
               </div>
-              <h3 className="font-semibold text-[13px] text-gray-950 mb-0.5">
+              <h3 className="font-semibold text-xs sm:text-[13px] text-gray-950 mb-0.5 leading-snug">
                 {t("wfLaptopTitle")}
               </h3>
-              <p className="text-[11px] text-gray-500 leading-snug">
+              <p className="text-[10.5px] sm:text-[11px] text-gray-500 leading-snug line-clamp-2">
                 {t("wfLaptopDesc")}
               </p>
             </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-2" />
+            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-1.5 sm:mt-2 shrink-0" />
           </Link>
 
           {/* 5. TV or large display */}
           <Link 
             href="/monitor-inspection/tv"
-            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 transition-all flex flex-col justify-between group min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
+            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-3 sm:p-4 transition-all flex flex-col justify-between group min-h-[110px] sm:min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
           >
             <div>
-              <div className="w-6 h-6 flex items-center text-gray-800 mb-2.5">
+              <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center text-gray-800 mb-2 sm:mb-2.5">
                 <Tv className="w-4 h-4 stroke-[1.8]" />
               </div>
-              <h3 className="font-semibold text-[13px] text-gray-950 mb-0.5">
+              <h3 className="font-semibold text-xs sm:text-[13px] text-gray-950 mb-0.5 leading-snug">
                 {t("wfTvTitle")}
               </h3>
-              <p className="text-[11px] text-gray-500 leading-snug">
+              <p className="text-[10.5px] sm:text-[11px] text-gray-500 leading-snug line-clamp-2">
                 {t("wfTvDesc")}
               </p>
             </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-2" />
+            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-1.5 sm:mt-2 shrink-0" />
           </Link>
         </div>
       </section>
@@ -438,81 +438,81 @@ export default async function Home({
         </div>
 
         {/* 4 Compact Utility Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
           {/* 1. Compare Displays */}
           <Link 
             href="/tests/compare-displays"
-            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 transition-all flex flex-col justify-between group min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
+            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-3 sm:p-4 transition-all flex flex-col justify-between group min-h-[110px] sm:min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
           >
             <div>
-              <div className="w-6 h-6 flex items-center text-gray-800 mb-2.5">
+              <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center text-gray-800 mb-2 sm:mb-2.5">
                 <Sliders className="w-4 h-4 stroke-[1.8]" />
               </div>
-              <h3 className="font-semibold text-[13px] text-gray-950 mb-0.5">
+              <h3 className="font-semibold text-xs sm:text-[13px] text-gray-950 mb-0.5 leading-snug">
                 {t("toolCompareTitle")}
               </h3>
-              <p className="text-[11px] text-gray-500 leading-snug">
+              <p className="text-[10.5px] sm:text-[11px] text-gray-500 leading-snug line-clamp-2">
                 {t("toolCompareDesc")}
               </p>
             </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-2" />
+            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-1.5 sm:mt-2 shrink-0" />
           </Link>
 
           {/* 3. PPI & Viewing Distance */}
           <Link 
             href="/tests/resolution-checker"
-            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 transition-all flex flex-col justify-between group min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
+            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-3 sm:p-4 transition-all flex flex-col justify-between group min-h-[110px] sm:min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
           >
             <div>
-              <div className="w-6 h-6 flex items-center text-gray-800 mb-2.5">
+              <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center text-gray-800 mb-2 sm:mb-2.5">
                 <Ruler className="w-4 h-4 stroke-[1.8]" />
               </div>
-              <h3 className="font-semibold text-[13px] text-gray-950 mb-0.5">
+              <h3 className="font-semibold text-xs sm:text-[13px] text-gray-950 mb-0.5 leading-snug">
                 {t("toolPpiTitle")}
               </h3>
-              <p className="text-[11px] text-gray-500 leading-snug">
+              <p className="text-[10.5px] sm:text-[11px] text-gray-500 leading-snug line-clamp-2">
                 {t("toolPpiDesc")}
               </p>
             </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-2" />
+            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-1.5 sm:mt-2 shrink-0" />
           </Link>
 
           {/* 4. Custom Test Pattern */}
           <Link 
             href="/tests/custom-pattern"
-            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 transition-all flex flex-col justify-between group min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
+            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-3 sm:p-4 transition-all flex flex-col justify-between group min-h-[110px] sm:min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
           >
             <div>
-              <div className="w-6 h-6 flex items-center text-gray-800 mb-2.5">
+              <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center text-gray-800 mb-2 sm:mb-2.5">
                 <Grid className="w-4 h-4 stroke-[1.8]" />
               </div>
-              <h3 className="font-semibold text-[13px] text-gray-950 mb-0.5">
+              <h3 className="font-semibold text-xs sm:text-[13px] text-gray-950 mb-0.5 leading-snug">
                 {t("toolPatternTitle")}
               </h3>
-              <p className="text-[11px] text-gray-500 leading-snug">
+              <p className="text-[10.5px] sm:text-[11px] text-gray-500 leading-snug line-clamp-2">
                 {t("toolPatternDesc")}
               </p>
             </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-2" />
+            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-1.5 sm:mt-2 shrink-0" />
           </Link>
 
           {/* 5. Display Information */}
           <Link 
             href="/tests/display-info"
-            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 transition-all flex flex-col justify-between group min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
+            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-3 sm:p-4 transition-all flex flex-col justify-between group min-h-[110px] sm:min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
           >
             <div>
-              <div className="w-6 h-6 flex items-center text-gray-800 mb-2.5">
+              <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center text-gray-800 mb-2 sm:mb-2.5">
                 <Settings className="w-4 h-4 stroke-[1.8]" />
               </div>
-              <h3 className="font-semibold text-[13px] text-gray-950 mb-0.5">
+              <h3 className="font-semibold text-xs sm:text-[13px] text-gray-950 mb-0.5 leading-snug">
                 {t("toolInfoTitle")}
               </h3>
-              <p className="text-[11px] text-gray-500 leading-snug">
+              <p className="text-[10.5px] sm:text-[11px] text-gray-500 leading-snug line-clamp-2">
                 {t("toolInfoDesc")}
               </p>
             </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-2" />
+            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-1.5 sm:mt-2 shrink-0" />
           </Link>
         </div>
       </section>
