@@ -47,6 +47,9 @@ export interface MonitorProfile {
   resolution: string; // e.g. "2560x1440"
   refreshRate: string; // e.g. "144Hz"
   panelType: string; // "IPS" | "VA" | "OLED" | "TN" | "Mini-LED" | "Other" | ""
+  ratedBrightness?: string; // e.g. "400 cd/m²"
+  ratedContrast?: string; // e.g. "1000:1"
+  serialNumber?: string; // optional reference
   purchaseDate: string; // YYYY-MM-DD
   notes: string;
 }
@@ -112,6 +115,9 @@ export const DEFAULT_MONITOR_PROFILE: MonitorProfile = {
   resolution: "",
   refreshRate: "",
   panelType: "",
+  ratedBrightness: "",
+  ratedContrast: "",
+  serialNumber: "",
   purchaseDate: "",
   notes: ""
 };

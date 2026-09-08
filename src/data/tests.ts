@@ -33,6 +33,12 @@ export const monitorTests: MonitorTest[] = [
     primaryIntent: "screen burn in test",
     relatedTestIds: ["dead-pixel-test", "uniformity-test", "solid-color-test"]
   },
+  {
+    id: "stuck-pixel-fixer",
+    category: "pixels",
+    primaryIntent: "stuck pixel fixer screen tool",
+    relatedTestIds: ["stuck-pixel-test", "dead-pixel-test", "bright-pixel-test", "burn-in-test"]
+  },
   
   // COLOR
   {
@@ -258,6 +264,7 @@ export const TEST_KEY_MAP: Record<string, { ns: "lib" | "tests", key: string }> 
   "hdr-capability-test": { ns: "lib", key: "tests.hdrCapabilityTest" },
   "touch-screen-test": { ns: "tests", key: "touchScreen" },
   "sharpness-test": { ns: "tests", key: "sharpness" },
-  "custom-pattern": { ns: "tests", key: "customPattern" }
+  "custom-pattern": { ns: "tests", key: "customPattern" },
+  "stuck-pixel-fixer": { ns: "tests", key: "stuckPixelFixer" }
 };
 

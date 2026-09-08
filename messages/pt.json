@@ -772,6 +772,14 @@
         "q3": "Por que meu tempo de quadro observado é diferente da taxa de atualização do meu monitor?",
         "a3": "O tempo de quadros do navegador é afetado pela carga do sistema, economia de energia, abas em segundo plano e comportamento do navegador."
       }
+    },
+    "stuckPixelFixer": {
+      "title": "Fixador de Pixels Presos",
+      "description": "Ferramenta de estimulação visual direcionada com ciclo rápido de cores para auxiliar subpixels temporariamente presos."
+    },
+    "customPattern": {
+      "title": "Padrão de teste personalizado",
+      "description": "Gere padrões de teste personalizáveis com grades ajustáveis, gradientes, geometria e barras de cores."
     }
   },
   "Guides": {
@@ -1500,7 +1508,10 @@
       "resRefresh": "Resolução e Frequência",
       "notesPrefix": "Notas de Hardware: {notes}",
       "brandModel": "Marca e Modelo",
-      "panelOther": "Outro"
+      "panelOther": "Outro",
+      "ratedBrightness": "Brilho nominal (cd/m²):",
+      "ratedContrast": "Taxa de contraste nominal:",
+      "serialNumber": "Nº de série / Ref:"
     },
     "checklist": {
       "title": "Lista de Verificação e Resultados Observados",
@@ -1568,7 +1579,9 @@
     "empty": {
       "title": "Nenhum Relatório de Inspeção",
       "description": "Você ainda não executou um fluxo de inspeção. Selecione um fluxo no Hub de Inspeção para testar sistematicamente sua tela e gerar um relatório completo.",
-      "cta": "Ir para o Hub de Inspeção"
+      "cta": "Ir para o Hub de Inspeção",
+      "runTests": "Executar testes individuais",
+      "viewDisplayInfo": "Ver informações da tela"
     },
     "confirmClear": "Tem certeza de que deseja limpar as observações ativas desta sessão?",
     "confirmStartNew": "Iniciar uma nova inspeção? Isso redefinirá a sessão ativa atual mantendo seu histórico arquivado.",
@@ -1581,7 +1594,82 @@
     },
     "tooltipSaveHistory": "Arquivar relatório localmente para referência futura",
     "tooltipExportJson": "Exportar relatório como JSON estruturado",
-    "tooltipImportJson": "Carregar um relatório JSON exportado anteriormente"
+    "tooltipImportJson": "Carregar um relatório JSON exportado anteriormente",
+    "badges": {
+      "browserDetected": "DETECTADO PELO NAVEGADOR",
+      "userProvided": "FORNECIDO PELO USUÁRIO",
+      "userObserved": "OBSERVAÇÕES VISUAIS",
+      "notAvailable": "NÃO DISPONÍVEL"
+    },
+    "statusBuckets": {
+      "normalObservations": "OBSERVAÇÕES NORMAIS",
+      "attentionNeeded": "ATENÇÃO NECESSÁRIA",
+      "unsureObservations": "INCERTO / VERIFICAÇÃO NECESSÁRIA",
+      "notTested": "NÃO TESTADO"
+    },
+    "overview": {
+      "inspectionDuration": "Duração",
+      "testsCount": "Total de testes",
+      "completedCount": "Concluídos",
+      "observationsCount": "Observações",
+      "notesCount": "Testes com notas",
+      "defectsCount": "Defeitos marcados",
+      "activeSession": "Sessão ativa",
+      "archivedReport": "Registro de inspeção arquivado",
+      "noScoreNote": "O Screen Tester exibe telemetria objetiva do navegador e observações visuais sem pontuações artificiais."
+    },
+    "reportBrand": "SCREEN TESTER",
+    "reportTitle": "RELATÓRIO DE INSPEÇÃO DE TELA",
+    "sections": {
+      "overview": "1. Visão geral da inspeção",
+      "displayInfo": "2. Informações da tela",
+      "userProfile": "3. Informações fornecidas pelo usuário",
+      "testResults": "4. Resultados dos testes",
+      "browserDetected": "5. Resultados detectados pelo navegador",
+      "visualObservations": "6. Observações visuais",
+      "pixelDefects": "7. Defeitos de pixels",
+      "notes": "8. Notas"
+    },
+    "browserDetectedLabels": {
+      "sectionDesc": "Parâmetros detectados objetivamente por meio de APIs do navegador e compositor do SO. Separados de avaliações visuais humanas.",
+      "refreshTiming": "Taxa de atualização observada no navegador",
+      "pointerType": "Tipo de ponteiro principal",
+      "touchPoints": "Pontos de toque observados",
+      "colorGamut": "Capacidade de gama de cores",
+      "hdr": "Alcance dinâmico (HDR)",
+      "screenOrientation": "Orientação da tela",
+      "webglRenderer": "Renderizador GPU WebGL",
+      "webglVendor": "Fornecedor WebGL",
+      "pixelDepth": "Profundidade de pixels"
+    },
+    "userProvidedNote": "Especificações inseridas manualmente. Não são medidas ou verificadas pelo Screen Tester.",
+    "browserDetectedNote": "Valores detectados por meio de APIs do navegador e compositor do SO. Não representam medições de sensores físicos de hardware.",
+    "pixelDefectsNote": "Observação de pixel marcada pelo usuário. Não constitui prova de falha física de subpixel.",
+    "observationLabels": {
+      "looksNormal": "Parece normal",
+      "noticeableShift": "Mudança perceptível",
+      "detailCrushed": "Detalhes esmagados",
+      "highlightsClipped": "Altas luzes estouradas",
+      "bandingVisible": "Faixas visíveis",
+      "needsAttention": "Requer atenção",
+      "unsure": "Incerto",
+      "completed": "Concluído",
+      "skipped": "Ignorado",
+      "notAvailable": "Não disponível",
+      "userObservedIssue": "Problema observado pelo usuário",
+      "notTested": "Não testado"
+    },
+    "viewContext": {
+      "active": "Sessão de inspeção ativa",
+      "archived": "Instantâneo de inspeção arquivado",
+      "viewingArchiveNotice": "Você está visualizando um instantâneo de inspeção arquivado ({id}). Alterações aqui não afetam sua sessão ativa.",
+      "returnToActive": "Retornar à sessão ativa",
+      "viewInHistory": "Ver a partir do histórico"
+    },
+    "print": {
+      "printReport": "Imprimir relatório",
+      "disclaimer": "Este relatório de inspeção contém telemetria do navegador do cliente e observações visuais humanas registradas com o Screen Tester. Zero pontuações sintéticas."
+    }
   },
   "CustomPattern": {
     "breadcrumbAll": "TODOS OS TESTES",
@@ -2075,5 +2163,56 @@
     "home": "Início",
     "tests": "Testes",
     "ariaLabel": "Navegação estrutural"
+  },
+  "StuckPixelFixerTest": {
+    "metaTitle": "Fixador de Pixels Presos – Exercitador de Cores Rápidas",
+    "metaDescription": "Ferramenta de estimulação visual direcionada para exercitar pixels presos usando ciclo RGB rápido, ruído e alternância de cores.",
+    "title": "Fixador e Exercitador de Pixels Presos",
+    "badge": "Estimulação visual experimental",
+    "warningTitle": "Aviso de sensibilidade visual",
+    "warningText": "Aviso: Esta ferramenta utiliza padrões visuais rápidos e piscadas. Pare imediatamente se sentir tontura, fadiga ocular ou dor de cabeça.",
+    "disclaimer": "Esta ferramenta exibe padrões de cores em rápida mudança em uma área localizada. Pode ajudar a soltar subpixels de cristal líquido temporariamente presos, mas não repara pixels fisicamente danificados.",
+    "instructions": "Posicione a caixa de estimulação sobre o pixel preso arrastando ou usando as setas do teclado. Escolha um padrão e temporizador e clique em Iniciar.",
+    "modes": {
+      "rgbCycle": "Ciclo RGB",
+      "colorNoise": "Ruído de cor",
+      "rapidAlternation": "Cores alternadas"
+    },
+    "sizes": {
+      "small": "Pequeno (40px)",
+      "medium": "Médio (100px)",
+      "large": "Grande (200px)",
+      "fullscreen": "Tela cheia"
+    },
+    "timer": {
+      "label": "Temporizador",
+      "preset10m": "10 min",
+      "preset30m": "30 min",
+      "preset60m": "60 min",
+      "continuous": "Contínuo",
+      "elapsed": "Decorrido",
+      "remaining": "Restante",
+      "completed": "Sessão concluída"
+    },
+    "controls": {
+      "start": "Iniciar estimulação",
+      "pause": "Pausa",
+      "resume": "Retomar",
+      "stop": "Parar",
+      "reset": "Redefinir",
+      "targetPosition": "Posição alvo",
+      "dragPrompt": "Arraste a caixa alvo sobre o pixel preso",
+      "arrowPrompt": "Use as setas para ajustes finos de 1px",
+      "activeStimulation": "Estimulação ativa"
+    },
+    "feedback": {
+      "prompt": "O pixel preso voltou ao normal?",
+      "recovered": "Sim, recuperado",
+      "stillStuck": "Não, continua preso",
+      "unsure": "Incerto / Mais tempo necessário",
+      "notesPlaceholder": "Adicione notas sobre o comportamento do pixel...",
+      "saveObservation": "Salvar observação",
+      "observationSaved": "Observação registrada na sessão."
+    }
   }
 }

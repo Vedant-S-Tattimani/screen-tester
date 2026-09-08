@@ -772,6 +772,14 @@
         "q3": "관측된 프레임 타이밍이 모니터의 재생률과 다른 이유는 무엇입니까?",
         "a3": "브라우저 프레임 타이밍은 시스템 부하, 절전, 백그라운드 탭 및 브라우저 동작에 영향을 받습니다."
       }
+    },
+    "stuckPixelFixer": {
+      "title": "스턱 픽셀 복구기",
+      "description": "일시적으로 멈춘 서브픽셀을 자극하고 복구를 돕는 고속 컬러 사이클링 시각 자극 도구입니다."
+    },
+    "customPattern": {
+      "title": "사용자 정의 테스트 패턴",
+      "description": "격자, 그라데이션, 기하학적 형태 및 컬러 바를 조절할 수 있는 사용자 맞춤형 테스트 패턴을 생성합니다。"
     }
   },
   "Guides": {
@@ -1500,7 +1508,10 @@
       "resRefresh": "해상도 및 주사율",
       "notesPrefix": "하드웨어 메모: {notes}",
       "brandModel": "제조사 및 모델",
-      "panelOther": "기타"
+      "panelOther": "기타",
+      "ratedBrightness": "정격 밝기 (cd/m²):",
+      "ratedContrast": "정격 명암비:",
+      "serialNumber": "일련번호 / 참조 ID:"
     },
     "checklist": {
       "title": "점검 체크리스트 및 관찰 결과",
@@ -1568,7 +1579,9 @@
     "empty": {
       "title": "점검 보고서가 없습니다",
       "description": "아직 점검 워크플로우를 진행하지 않았습니다. 점검 허브에서 적합한 워크플로우를 선택하여 모니터를 점검하고 종합 보고서를 생성하세요.",
-      "cta": "점검 허브로 이동"
+      "cta": "점검 허브로 이동",
+      "runTests": "개별 테스트 실행",
+      "viewDisplayInfo": "디스플레이 정보 보기"
     },
     "confirmClear": "현재 세션의 점검 관찰 기록을 초기화하시겠습니까?",
     "confirmStartNew": "새 점검을 시작하시겠습니까? 현재 활성 세션은 재설정되며, 기존 저장된 이력은 안전하게 보존됩니다.",
@@ -1581,7 +1594,82 @@
     },
     "tooltipSaveHistory": "향후 참조를 위해 보고서를 로컬에 보관",
     "tooltipExportJson": "보고서를 구조화된 JSON으로 내보내기",
-    "tooltipImportJson": "이전에 내보낸 JSON 보고서 불러오기"
+    "tooltipImportJson": "이전에 내보낸 JSON 보고서 불러오기",
+    "badges": {
+      "browserDetected": "브라우저 감지 정보",
+      "userProvided": "사용자 입력 규격",
+      "userObserved": "사용자 육안 관찰",
+      "notAvailable": "사용 불가"
+    },
+    "statusBuckets": {
+      "normalObservations": "정상 관찰 결과",
+      "attentionNeeded": "주의 필요",
+      "unsureObservations": "불확실 / 확인 필요",
+      "notTested": "미실시 테스트"
+    },
+    "overview": {
+      "inspectionDuration": "소요 시간",
+      "testsCount": "총 테스트",
+      "completedCount": "완료됨",
+      "observationsCount": "기록된 관찰",
+      "notesCount": "메모가 있는 테스트",
+      "defectsCount": "표시된 결함",
+      "activeSession": "활성 세션",
+      "archivedReport": "보관된 검사 보고서",
+      "noScoreNote": "Screen Tester는 인위적인 점수를 부여하지 않으며 객관적인 브라우저 원격 측정과 육안 관찰 결과만 표시합니다."
+    },
+    "reportBrand": "SCREEN TESTER",
+    "reportTitle": "디스플레이 검사 보고서",
+    "sections": {
+      "overview": "1. 검사 개요",
+      "displayInfo": "2. 디스플레이 정보",
+      "userProfile": "3. 사용자 제공 디스플레이 정보",
+      "testResults": "4. 테스트 결과",
+      "browserDetected": "5. 브라우저 감지 결과",
+      "visualObservations": "6. 육안 관찰",
+      "pixelDefects": "7. 픽셀 결함",
+      "notes": "8. 메모"
+    },
+    "browserDetectedLabels": {
+      "sectionDesc": "브라우저 API 및 OS 컴포지터에서 객관적으로 감지된 매개변수입니다. 사람의 육안 판단과 명확히 구분됩니다.",
+      "refreshTiming": "브라우저 감지 주사율",
+      "pointerType": "기본 포인터 유형",
+      "touchPoints": "감지된 터치 포인트",
+      "colorGamut": "색역 지원 능력",
+      "hdr": "다이내믹 레인지 (HDR)",
+      "screenOrientation": "화면 방향",
+      "webglRenderer": "WebGL GPU 렌더러",
+      "webglVendor": "WebGL 공급업체",
+      "pixelDepth": "픽셀 심도"
+    },
+    "userProvidedNote": "수동으로 입력된 사양입니다. Screen Tester에서 직접 측정하거나 검증한 것이 아닙니다.",
+    "browserDetectedNote": "브라우저 API 및 OS 컴포지터를 통해 감지된 값입니다. 물리적 하드웨어 센서 측정값을 나타내지 않습니다.",
+    "pixelDefectsNote": "사용자가 표시한 픽셀 관찰 기록입니다. 영구적인 물리적 서브픽셀 고장을 확정적으로 증명하지는 않습니다.",
+    "observationLabels": {
+      "looksNormal": "정상으로 보임",
+      "noticeableShift": "눈에 띄는 왜곡",
+      "detailCrushed": "암부 뭉개짐",
+      "highlightsClipped": "명부 날아감",
+      "bandingVisible": "밴딩 현상 보임",
+      "needsAttention": "주의 필요",
+      "unsure": "불확실함",
+      "completed": "완료됨",
+      "skipped": "건너뜀",
+      "notAvailable": "사용 불가",
+      "userObservedIssue": "사용자가 문제 관찰함",
+      "notTested": "테스트 안 됨"
+    },
+    "viewContext": {
+      "active": "활성 검사 세션",
+      "archived": "보관된 검사 스냅샷",
+      "viewingArchiveNotice": "보관된 검사 스냅샷({id})을 보고 있습니다. 여기서의 변경 사항은 활성 세션에 영향을 미치지 않습니다.",
+      "returnToActive": "활성 세션으로 돌아가기",
+      "viewInHistory": "기록에서 보기"
+    },
+    "print": {
+      "printReport": "보고서 인쇄",
+      "disclaimer": "이 검사 보고서에는 Screen Tester를 사용하여 기록된 클라이언트 측 브라우저 텔레메트리 및 사람의 육안 관찰 내용이 포함되어 있습니다. 인위적인 점수는 일절 생성하지 않습니다."
+    }
   },
   "CustomPattern": {
     "breadcrumbAll": "전체 테스트",
@@ -2075,5 +2163,56 @@
     "home": "홈",
     "tests": "테스트",
     "ariaLabel": "브레드크럼"
+  },
+  "StuckPixelFixerTest": {
+    "metaTitle": "스턱 픽셀 복구기 – 고속 컬러 사이클링 픽셀 운동 도구",
+    "metaDescription": "고속 RGB 사이클링과 노이즈로 멈춘 픽셀을 자극하여 복구를 돕는 시각 도구.",
+    "title": "스턱 픽셀 복구 및 운동 도구",
+    "badge": "실험적 시각 자극 도구",
+    "warningTitle": "시각적 민감성 및 깜빡임 경고",
+    "warningText": "경고: 본 도구는 빠르게 변화하는 시각 패턴과 깜빡임을 사용합니다. 어지러움, 눈의 피로, 두통이 느껴지면 즉시 중단하십시오.",
+    "disclaimer": "본 도구는 특정 영역에서 빠르게 변화하는 색상 패턴을 표시합니다. 일시적으로 멈춘 액정 서브픽셀의 운동을 도울 수 있으나, 물리적으로 손상된 픽셀은 복구할 수 없습니다.",
+    "instructions": "자극 상자를 드래그하거나 방향키로 멈춘 픽셀 위에 정확히 배치하세요. 모드와 타이머를 선택한 후 자극 시작을 클릭하세요.",
+    "modes": {
+      "rgbCycle": "RGB 사이클",
+      "colorNoise": "컬러 노이즈",
+      "rapidAlternation": "색상 교대 점멸"
+    },
+    "sizes": {
+      "small": "작게 (40px)",
+      "medium": "중간 (100px)",
+      "large": "크게 (200px)",
+      "fullscreen": "전체화면 상자"
+    },
+    "timer": {
+      "label": "타이머",
+      "preset10m": "10분",
+      "preset30m": "30분",
+      "preset60m": "60분",
+      "continuous": "연속 실행",
+      "elapsed": "경과 시간",
+      "remaining": "남은 시간",
+      "completed": "세션 완료"
+    },
+    "controls": {
+      "start": "자극 시작",
+      "pause": "일시 중지",
+      "resume": "다시 시작",
+      "stop": "중지",
+      "reset": "초기화",
+      "targetPosition": "목표 위치",
+      "dragPrompt": "상자를 멈춘 픽셀 위로 드래그하세요",
+      "arrowPrompt": "방향키로 1px 정밀 조정 가능",
+      "activeStimulation": "자극 진행 중"
+    },
+    "feedback": {
+      "prompt": "멈춘 픽셀이 정상으로 돌아왔습니까?",
+      "recovered": "예, 복구되었습니다",
+      "stillStuck": "아니요, 여전히 멈춰있음",
+      "unsure": "불확실 / 시간 더 필요",
+      "notesPlaceholder": "픽셀 반응에 대한 메모를 입력하세요...",
+      "saveObservation": "관찰 결과 저장",
+      "observationSaved": "검사 세션에 기록되었습니다."
+    }
   }
 }

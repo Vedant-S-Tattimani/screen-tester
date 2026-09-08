@@ -801,6 +801,14 @@
         "q3": "Why is my observed frame timing different from my monitor's refresh rate?",
         "a3": "Browser frame timing is affected by system load, power saving, background tabs, and browser behavior. It is an approximation, not a direct hardware query."
       }
+    },
+    "stuckPixelFixer": {
+      "title": "Stuck Pixel Fixer",
+      "description": "Targeted visual stimulation tool using high-speed color cycling to assist with temporarily stuck sub-pixels."
+    },
+    "customPattern": {
+      "title": "Custom Test Pattern",
+      "description": "Generate customizable test patterns with adjustable grids, gradients, geometry, and color bars."
     }
   },
   "Guides": {
@@ -1472,7 +1480,10 @@
       "resRefresh": "Resolution & Refresh",
       "notesPrefix": "Hardware Notes: {notes}",
       "brandModel": "Brand & Model",
-      "panelOther": "Other"
+      "panelOther": "Other",
+      "ratedBrightness": "Rated Brightness (cd/m²):",
+      "ratedContrast": "Rated Contrast Ratio:",
+      "serialNumber": "Serial / Inventory Ref:"
     },
     "checklist": {
       "title": "Inspection Checklist & Observed Results",
@@ -1540,7 +1551,9 @@
     "empty": {
       "title": "No Inspection Report Yet",
       "description": "You haven't run an inspection workflow yet. Select an inspection workflow from the Inspection Hub to systematically test your display and generate a comprehensive diagnostic report.",
-      "cta": "Go to Inspection Hub"
+      "cta": "Go to Inspection Hub",
+      "runTests": "Run Individual Tests",
+      "viewDisplayInfo": "View Display Information"
     },
     "confirmClear": "Are you sure you want to clear current active inspection observations?",
     "confirmStartNew": "Start a new inspection? This will reset the current active inspection session while keeping your archived history intact.",
@@ -1553,7 +1566,82 @@
     },
     "tooltipSaveHistory": "Archive report locally for future reference",
     "tooltipExportJson": "Export report as structured JSON",
-    "tooltipImportJson": "Load a previously exported JSON report"
+    "tooltipImportJson": "Load a previously exported JSON report",
+    "badges": {
+      "browserDetected": "BROWSER-DETECTED",
+      "userProvided": "USER-PROVIDED",
+      "userObserved": "USER OBSERVATIONS",
+      "notAvailable": "NOT AVAILABLE"
+    },
+    "statusBuckets": {
+      "normalObservations": "NORMAL OBSERVATIONS",
+      "attentionNeeded": "ATTENTION NEEDED",
+      "unsureObservations": "UNSURE / NEEDS VERIFICATION",
+      "notTested": "NOT TESTED"
+    },
+    "overview": {
+      "inspectionDuration": "Duration",
+      "testsCount": "Total Tests",
+      "completedCount": "Completed",
+      "observationsCount": "Observations",
+      "notesCount": "Notes Recorded",
+      "defectsCount": "Marked Defects",
+      "activeSession": "Active Session",
+      "archivedReport": "Archived Inspection Record",
+      "noScoreNote": "Screen Tester displays objective browser telemetry and human visual observations without synthetic scores."
+    },
+    "reportBrand": "SCREEN TESTER",
+    "reportTitle": "DISPLAY INSPECTION REPORT",
+    "sections": {
+      "overview": "1. Inspection Overview",
+      "displayInfo": "2. Display Information",
+      "userProfile": "3. User-Provided Display Information",
+      "testResults": "4. Test Results",
+      "browserDetected": "5. Browser-Detected Results",
+      "visualObservations": "6. Visual Observations",
+      "pixelDefects": "7. Pixel Defects",
+      "notes": "8. Notes"
+    },
+    "browserDetectedLabels": {
+      "sectionDesc": "Objectively detected browser API and OS compositor parameters. Separated from human visual judgments.",
+      "refreshTiming": "Browser Refresh Timing",
+      "pointerType": "Primary Pointer Type",
+      "touchPoints": "Observed Touch Points",
+      "colorGamut": "Color Gamut Capability",
+      "hdr": "Dynamic Range (HDR)",
+      "screenOrientation": "Screen Orientation",
+      "webglRenderer": "WebGL GPU Renderer",
+      "webglVendor": "WebGL Vendor",
+      "pixelDepth": "Pixel Depth"
+    },
+    "userProvidedNote": "Manually entered specifications. These are not measured or verified by Screen Tester.",
+    "browserDetectedNote": "Values detected via browser APIs and OS compositor. They do not represent physical hardware sensor measurements.",
+    "pixelDefectsNote": "User-marked pixel observation. Does not constitute proof of physical subpixel failure.",
+    "observationLabels": {
+      "looksNormal": "Looks normal",
+      "noticeableShift": "Noticeable shift",
+      "detailCrushed": "Detail crushed",
+      "highlightsClipped": "Highlights clipped",
+      "bandingVisible": "Banding visible",
+      "needsAttention": "Needs attention",
+      "unsure": "Unsure",
+      "completed": "Completed",
+      "skipped": "Skipped",
+      "notAvailable": "Not available",
+      "userObservedIssue": "User observed issue",
+      "notTested": "Not tested"
+    },
+    "viewContext": {
+      "active": "Active Inspection Session",
+      "archived": "Archived Inspection Snapshot",
+      "viewingArchiveNotice": "You are viewing an archived inspection snapshot ({id}). Changes here do not affect your active session.",
+      "returnToActive": "Return to Active Session",
+      "viewInHistory": "View from History"
+    },
+    "print": {
+      "printReport": "Print Report",
+      "disclaimer": "This inspection report contains client-side browser telemetry and human visual observations recorded using Screen Tester. Zero synthetic or simulated scores."
+    }
   },
   "CustomPattern": {
     "breadcrumbAll": "ALL TESTS",
@@ -2047,5 +2135,56 @@
     "home": "Home",
     "tests": "Tests",
     "ariaLabel": "Breadcrumb"
+  },
+  "StuckPixelFixerTest": {
+    "metaTitle": "Stuck Pixel Fixer – Rapid Color Cycling Pixel Exerciser",
+    "metaDescription": "Targeted visual stimulation tool for exercising stuck pixels using rapid RGB cycling, noise, and high-frequency color alternation.",
+    "title": "Stuck Pixel Fixer & Exerciser",
+    "badge": "Experimental Visual Stimulation",
+    "warningTitle": "Visual Sensitivity & Seizure Warning",
+    "warningText": "Warning: This tool uses rapidly changing visual patterns, color cycling, and flashing. Stop immediately if you experience discomfort, dizziness, eye strain, or headache. Do not use if you have photosensitive epilepsy.",
+    "disclaimer": "This tool displays rapidly changing color patterns in a localized area. It may help exercise temporarily stuck liquid crystal sub-pixels, but cannot repair physically damaged or permanently dead pixels. Screen Tester does not guarantee recovery.",
+    "instructions": "Position the stimulation box directly over the suspected stuck pixel by dragging or using arrow keys. Select a stimulation pattern and timer preset, then click Start Stimulation. Stop immediately if you experience any discomfort.",
+    "modes": {
+      "rgbCycle": "RGB Cycle",
+      "colorNoise": "Color Noise",
+      "rapidAlternation": "Alternating Colors"
+    },
+    "sizes": {
+      "small": "Small (40px)",
+      "medium": "Medium (100px)",
+      "large": "Large (200px)",
+      "fullscreen": "Fullscreen Box"
+    },
+    "timer": {
+      "label": "Timer",
+      "preset10m": "10 min",
+      "preset30m": "30 min",
+      "preset60m": "60 min",
+      "continuous": "Continuous",
+      "elapsed": "Elapsed",
+      "remaining": "Remaining",
+      "completed": "Session Completed"
+    },
+    "controls": {
+      "start": "Start Stimulation",
+      "pause": "Pause",
+      "resume": "Resume",
+      "stop": "Stop",
+      "reset": "Reset",
+      "targetPosition": "Target Position",
+      "dragPrompt": "Drag target box over the stuck pixel",
+      "arrowPrompt": "Use Arrow Keys for fine 1px adjustments",
+      "activeStimulation": "Stimulation Active"
+    },
+    "feedback": {
+      "prompt": "Did the stuck pixel return to normal?",
+      "recovered": "Yes, Recovered",
+      "stillStuck": "No, Still Stuck",
+      "unsure": "Unsure / Need More Time",
+      "notesPlaceholder": "Add any notes on pixel behavior (sub-pixel color, location, screen response)...",
+      "saveObservation": "Save Observation",
+      "observationSaved": "Observation recorded to inspection session."
+    }
   }
 }

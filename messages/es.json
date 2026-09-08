@@ -772,6 +772,14 @@
         "q3": "¿Por qué mi tiempo de cuadros observado es diferente de la tasa de actualización de mi monitor?",
         "a3": "El tiempo de cuadros del navegador se ve afectado por la carga del sistema, el ahorro de energía, las pestañas en segundo plano y el comportamiento del navegador."
       }
+    },
+    "stuckPixelFixer": {
+      "title": "Reparador de Píxeles Atascados",
+      "description": "Herramienta de estimulación visual dirigida con ciclos rápidos de color para ayudar con subpíxeles temporalmente atascados."
+    },
+    "customPattern": {
+      "title": "Patrón de prueba personalizado",
+      "description": "Genere patrones de prueba personalizables con cuadrículas ajustables, degradados, geometría y barras de color."
     }
   },
   "Guides": {
@@ -1500,7 +1508,10 @@
       "resRefresh": "Resolución y Frecuencia",
       "notesPrefix": "Notas de Hardware: {notes}",
       "brandModel": "Marca y Modelo",
-      "panelOther": "Otro"
+      "panelOther": "Otro",
+      "ratedBrightness": "Brillo nominal (cd/m²):",
+      "ratedContrast": "Relación de contraste nominal:",
+      "serialNumber": "Nº de serie / Referencia:"
     },
     "checklist": {
       "title": "Lista de Verificación de Inspección y Resultados",
@@ -1568,7 +1579,9 @@
     "empty": {
       "title": "Aún no hay informe de inspección",
       "description": "Aún no ha ejecutado un flujo de inspección. Seleccione un flujo en el Centro de Inspección para probar sistemáticamente su pantalla y generar un informe detallado.",
-      "cta": "Ir al Centro de Inspección"
+      "cta": "Ir al Centro de Inspección",
+      "runTests": "Realizar pruebas individuales",
+      "viewDisplayInfo": "Ver información de pantalla"
     },
     "confirmClear": "¿Está seguro de que desea borrar las observaciones activas de esta sesión?",
     "confirmStartNew": "¿Desea iniciar una nueva inspección? Se restablecerá la sesión activa actual conservando el historial guardado.",
@@ -1581,7 +1594,82 @@
     },
     "tooltipSaveHistory": "Archivar informe localmente para referencia futura",
     "tooltipExportJson": "Exportar informe como JSON estructurado",
-    "tooltipImportJson": "Cargar un informe JSON exportado previamente"
+    "tooltipImportJson": "Cargar un informe JSON exportado previamente",
+    "badges": {
+      "browserDetected": "DETECTADO POR NAVEGADOR",
+      "userProvided": "PROPORCIONADO POR USUARIO",
+      "userObserved": "OBSERVACIONES VISUALES",
+      "notAvailable": "NO DISPONIBLE"
+    },
+    "statusBuckets": {
+      "normalObservations": "OBSERVACIONES NORMALES",
+      "attentionNeeded": "ATENCIÓN NECESARIA",
+      "unsureObservations": "INSEGURO / REQUIERE VERIFICACIÓN",
+      "notTested": "NO PROBADO"
+    },
+    "overview": {
+      "inspectionDuration": "Duración",
+      "testsCount": "Pruebas totales",
+      "completedCount": "Completadas",
+      "observationsCount": "Observaciones",
+      "notesCount": "Pruebas con notas",
+      "defectsCount": "Defectos marcados",
+      "activeSession": "Sesión activa",
+      "archivedReport": "Registro de inspección archivado",
+      "noScoreNote": "Screen Tester muestra telemetría objetiva del navegador y observaciones visuales humanas sin puntuaciones sintéticas."
+    },
+    "reportBrand": "SCREEN TESTER",
+    "reportTitle": "INFORME DE INSPECCIÓN DE PANTALLA",
+    "sections": {
+      "overview": "1. Resumen de la inspección",
+      "displayInfo": "2. Información de pantalla",
+      "userProfile": "3. Información de pantalla proporcionada por el usuario",
+      "testResults": "4. Resultados de las pruebas",
+      "browserDetected": "5. Resultados detectados por el navegador",
+      "visualObservations": "6. Observaciones visuales",
+      "pixelDefects": "7. Defectos de píxeles",
+      "notes": "8. Notas"
+    },
+    "browserDetectedLabels": {
+      "sectionDesc": "Parámetros detectados objetivamente mediante API del navegador y compositor del SO. Separados de las valoraciones visuales humanas.",
+      "refreshTiming": "Frecuencia observada en el navegador",
+      "pointerType": "Tipo de puntero principal",
+      "touchPoints": "Puntos táctiles observados",
+      "colorGamut": "Capacidad de gama de colores",
+      "hdr": "Rango dinámico (HDR)",
+      "screenOrientation": "Orientación de pantalla",
+      "webglRenderer": "Renderizador GPU WebGL",
+      "webglVendor": "Proveedor WebGL",
+      "pixelDepth": "Profundidad de píxeles"
+    },
+    "userProvidedNote": "Especificaciones introducidas manualmente. No son medidas ni verificadas por Screen Tester.",
+    "browserDetectedNote": "Valores detectados mediante API del navegador y el compositor del SO. No representan mediciones físicas por sensores de hardware.",
+    "pixelDefectsNote": "Observación de píxel marcada por el usuario. No constituye prueba de fallo físico de subpíxel.",
+    "observationLabels": {
+      "looksNormal": "Se ve normal",
+      "noticeableShift": "Cambio perceptible",
+      "detailCrushed": "Detalle aplastado",
+      "highlightsClipped": "Luces altas recortadas",
+      "bandingVisible": "Bandas visibles",
+      "needsAttention": "Requiere atención",
+      "unsure": "Inseguro",
+      "completed": "Completado",
+      "skipped": "Omitido",
+      "notAvailable": "No disponible",
+      "userObservedIssue": "Problema observado por el usuario",
+      "notTested": "No probado"
+    },
+    "viewContext": {
+      "active": "Sesión de inspección activa",
+      "archived": "Instantánea de inspección archivada",
+      "viewingArchiveNotice": "Está viendo una instantánea de inspección archivada ({id}). Los cambios aquí no afectan a su sesión activa.",
+      "returnToActive": "Volver a la sesión activa",
+      "viewInHistory": "Ver desde el historial"
+    },
+    "print": {
+      "printReport": "Imprimir informe",
+      "disclaimer": "Este informe de inspección contiene telemetría del navegador y observaciones visuales humanas registradas con Screen Tester. Cero puntuaciones sintéticas."
+    }
   },
   "CustomPattern": {
     "breadcrumbAll": "TODAS LAS PRUEBAS",
@@ -2075,5 +2163,56 @@
     "home": "Inicio",
     "tests": "Pruebas",
     "ariaLabel": "Miga de pan"
+  },
+  "StuckPixelFixerTest": {
+    "metaTitle": "Reparador de Píxeles Atascados – Estimulador de Color Rápido",
+    "metaDescription": "Herramienta de estimulación visual dirigida para ejercitar píxeles atascados mediante ciclos RGB rápidos, ruido y alternancia de color.",
+    "title": "Reparador y Ejercitador de Píxeles Atascados",
+    "badge": "Estimulación visual experimental",
+    "warningTitle": "Aviso de sensibilidad visual",
+    "warningText": "Advertencia: Esta herramienta utiliza patrones visuales rápidos y destellos. Deténgase inmediatamente si experimenta mareos, fatiga visual o dolor de cabeza.",
+    "disclaimer": "Esta herramienta muestra patrones de color que cambian rápidamente en un área localizada. Puede ayudar a liberar subpíxeles de cristal líquido atascados, pero no repara píxeles dañados físicamente.",
+    "instructions": "Coloque la caja de estimulación sobre el píxel atascado arrastrando o con las flechas. Seleccione un patrón y temporizador, luego haga clic en Iniciar.",
+    "modes": {
+      "rgbCycle": "Ciclo RGB",
+      "colorNoise": "Ruido de color",
+      "rapidAlternation": "Colores alternos"
+    },
+    "sizes": {
+      "small": "Pequeño (40px)",
+      "medium": "Mediano (100px)",
+      "large": "Grande (200px)",
+      "fullscreen": "Pantalla completa"
+    },
+    "timer": {
+      "label": "Temporizador",
+      "preset10m": "10 min",
+      "preset30m": "30 min",
+      "preset60m": "60 min",
+      "continuous": "Continuo",
+      "elapsed": "Transcurrido",
+      "remaining": "Restante",
+      "completed": "Sesión completada"
+    },
+    "controls": {
+      "start": "Iniciar estimulación",
+      "pause": "Pausa",
+      "resume": "Reanudar",
+      "stop": "Detener",
+      "reset": "Restablecer",
+      "targetPosition": "Posición objetivo",
+      "dragPrompt": "Arrastre la caja objetivo sobre el píxel atascado",
+      "arrowPrompt": "Use las flechas para ajustes de 1px",
+      "activeStimulation": "Estimulación activa"
+    },
+    "feedback": {
+      "prompt": "¿El píxel atascado volvió a la normalidad?",
+      "recovered": "Sí, recuperado",
+      "stillStuck": "No, sigue atascado",
+      "unsure": "Inseguro / Se necesita más tiempo",
+      "notesPlaceholder": "Añada notas sobre el comportamiento del píxel...",
+      "saveObservation": "Guardar observación",
+      "observationSaved": "Observación guardada en la sesión."
+    }
   }
 }

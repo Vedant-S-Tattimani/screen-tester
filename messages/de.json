@@ -772,6 +772,14 @@
         "q3": "Warum weicht mein beobachtetes Frame-Timing von der Bildwiederholrate meines Monitors ab?",
         "a3": "Browser-Frame-Timing wird durch Systemlast, Energiesparmodus, Hintergrund-Tabs und Browser-Verhalten beeinflusst."
       }
+    },
+    "stuckPixelFixer": {
+      "title": "Stuck-Pixel-Reparierer",
+      "description": "Gezieltes visuelles Stimulationswerkzeug mit schnellem Farbwechsel zur Behebung temporär festsitzender Subpixel."
+    },
+    "customPattern": {
+      "title": "Benutzerdefiniertes Testmuster",
+      "description": "Generieren Sie anpassbare Testmuster mit einstellbaren Gittern, Farbverläufen, Geometrien und Farbbalken."
     }
   },
   "Guides": {
@@ -1500,7 +1508,10 @@
       "resRefresh": "Auflösung & Frequenz",
       "notesPrefix": "Hardware-Notizen: {notes}",
       "brandModel": "Marke & Modell",
-      "panelOther": "Sonstige"
+      "panelOther": "Sonstige",
+      "ratedBrightness": "Nennhelligkeit (cd/m²):",
+      "ratedContrast": "Nennkontrastverhältnis:",
+      "serialNumber": "Seriennummer / Referenz:"
     },
     "checklist": {
       "title": "Inspektions-Checkliste & beobachtete Ergebnisse",
@@ -1568,7 +1579,9 @@
     "empty": {
       "title": "Noch kein Inspektionsbericht vorhanden",
       "description": "Sie haben noch keinen Inspektions-Workflow durchgeführt. Wählen Sie im Inspektionszentrum einen Workflow aus, um Ihr Display systematisch zu prüfen und einen Bericht zu erstellen.",
-      "cta": "Zum Inspektionszentrum"
+      "cta": "Zum Inspektionszentrum",
+      "runTests": "Einzeltests durchführen",
+      "viewDisplayInfo": "Display-Informationen ansehen"
     },
     "confirmClear": "Möchten Sie die aktuellen Beobachtungen dieser Sitzung wirklich löschen?",
     "confirmStartNew": "Möchten Sie eine neue Inspektion starten? Die aktuelle Sitzung wird zurückgesetzt, Ihr Archiv bleibt erhalten.",
@@ -1581,7 +1594,82 @@
     },
     "tooltipSaveHistory": "Bericht lokal für spätere Referenz archivieren",
     "tooltipExportJson": "Bericht als strukturiertes JSON exportieren",
-    "tooltipImportJson": "Zuvor exportierten JSON-Bericht laden"
+    "tooltipImportJson": "Zuvor exportierten JSON-Bericht laden",
+    "badges": {
+      "browserDetected": "VOM BROWSER ERKANNT",
+      "userProvided": "BENUTZERANGABE",
+      "userObserved": "VISUELLE BEOBACHTUNGEN",
+      "notAvailable": "NICHT VERFÜGBAR"
+    },
+    "statusBuckets": {
+      "normalObservations": "NORMALE BEOBACHTUNGEN",
+      "attentionNeeded": "AUFMERKSAMKEIT ERFORDERLICH",
+      "unsureObservations": "UNSICHER / ÜBERPRÜFUNG NÖTIG",
+      "notTested": "NICHT GETESTET"
+    },
+    "overview": {
+      "inspectionDuration": "Dauer",
+      "testsCount": "Gesamttests",
+      "completedCount": "Abgeschlossen",
+      "observationsCount": "Beobachtungen",
+      "notesCount": "Tests mit Notizen",
+      "defectsCount": "Markierte Defekte",
+      "activeSession": "Aktive Sitzung",
+      "archivedReport": "Archivierter Inspektionsbericht",
+      "noScoreNote": "Screen Tester zeigt objektive Browser-Telemetrie und menschliche visuelle Beobachtungen ohne künstliche Scores."
+    },
+    "reportBrand": "SCREEN TESTER",
+    "reportTitle": "DISPLAY-INSPEKTIONSBERICHT",
+    "sections": {
+      "overview": "1. Inspektionsübersicht",
+      "displayInfo": "2. Display-Informationen",
+      "userProfile": "3. Benutzerdefinierte Display-Informationen",
+      "testResults": "4. Testergebnisse",
+      "browserDetected": "5. Vom Browser erkannte Ergebnisse",
+      "visualObservations": "6. Visuelle Beobachtungen",
+      "pixelDefects": "7. Pixelfehler",
+      "notes": "8. Notizen"
+    },
+    "browserDetectedLabels": {
+      "sectionDesc": "Objektiv über Browser-APIs und OS-Compositor ermittelte Parameter. Getrennt von visuellen Beurteilungen.",
+      "refreshTiming": "Browser-Aktualisierungsrate",
+      "pointerType": "Primärer Zeigertyp",
+      "touchPoints": "Erkannte Berührungspunkte",
+      "colorGamut": "Farbraumfähigkeit",
+      "hdr": "Dynamikumfang (HDR)",
+      "screenOrientation": "Bildschirmausrichtung",
+      "webglRenderer": "WebGL-Grafikprozessor",
+      "webglVendor": "WebGL-Anbieter",
+      "pixelDepth": "Pixeltiefe"
+    },
+    "userProvidedNote": "Manuell eingegebene Spezifikationen. Diese werden von Screen Tester nicht gemessen oder verifiziert.",
+    "browserDetectedNote": "Über Browser-APIs und OS-Compositor erkannte Werte. Sie stellen keine physischen Hardwaresensormessungen dar.",
+    "pixelDefectsNote": "Vom Benutzer markierte Pixelbeobachtung. Stellt keinen Beweis für einen dauerhaften physischen Subpixeldefekt dar.",
+    "observationLabels": {
+      "looksNormal": "Sieht normal aus",
+      "noticeableShift": "Spürbare Verschiebung",
+      "detailCrushed": "Details verloren",
+      "highlightsClipped": "Spitzlichter abgeschnitten",
+      "bandingVisible": "Streifenbildung sichtbar",
+      "needsAttention": "Erfordert Aufmerksamkeit",
+      "unsure": "Unsicher",
+      "completed": "Abgeschlossen",
+      "skipped": "Übersprungen",
+      "notAvailable": "Nicht verfügbar",
+      "userObservedIssue": "Vom Benutzer festgestelltes Problem",
+      "notTested": "Nicht getestet"
+    },
+    "viewContext": {
+      "active": "Aktive Inspektionssitzung",
+      "archived": "Archivierter Inspektionsdatensatz",
+      "viewingArchiveNotice": "Sie betrachten einen archivierten Inspektionsschnappschuss ({id}). Änderungen wirken sich nicht auf Ihre aktive Sitzung aus.",
+      "returnToActive": "Zurück zur aktiven Sitzung",
+      "viewInHistory": "Aus Verlauf anzeigen"
+    },
+    "print": {
+      "printReport": "Bericht drucken",
+      "disclaimer": "Dieser Inspektionsbericht enthält clientseitige Browser-Telemetriedaten und visuelle Beobachtungen, die mit Screen Tester aufgezeichnet wurden. Keine synthetischen Scores."
+    }
   },
   "CustomPattern": {
     "breadcrumbAll": "ALLE TESTS",
@@ -2075,5 +2163,56 @@
     "home": "Startseite",
     "tests": "Tests",
     "ariaLabel": "Brotkrumennavigation"
+  },
+  "StuckPixelFixerTest": {
+    "metaTitle": "Stuck-Pixel-Reparierer – Schneller Farbzyklus-Pixel-Exerciser",
+    "metaDescription": "Gezieltes visuelles Stimulationswerkzeug zur Reaktivierung festsitzender Pixel durch schnelles RGB-Cycling, Rauschen und Hochfrequenz-Farbwechsel.",
+    "title": "Stuck-Pixel-Reparierer & Reaktivierer",
+    "badge": "Experimentelle visuelle Stimulation",
+    "warningTitle": "Warnung vor visueller Empfindlichkeit",
+    "warningText": "Warnung: Dieses Werkzeug verwendet schnell wechselnde visuelle Muster und Blinken. Stoppen Sie sofort bei Unwohlsein, Schwindel, Augenbelastung oder Kopfschmerzen.",
+    "disclaimer": "Dieses Tool zeigt schnell wechselnde Farbmuster in einem gezielten Bereich an. Es kann helfen, festsitzende Flüssigkristall-Subpixel zu lockern, repariert jedoch keine physisch beschädigten Pixel. Keine Erfolgsgarantie.",
+    "instructions": "Positionieren Sie den Stimulationsbereich direkt über dem festsitzenden Pixel. Wählen Sie ein Muster und einen Timer, dann klicken Sie auf Start. Bei Beschwerden sofort stoppen.",
+    "modes": {
+      "rgbCycle": "RGB-Zyklus",
+      "colorNoise": "Farbrauschen",
+      "rapidAlternation": "Alternierende Farben"
+    },
+    "sizes": {
+      "small": "Klein (40px)",
+      "medium": "Mittel (100px)",
+      "large": "Groß (200px)",
+      "fullscreen": "Vollbild-Box"
+    },
+    "timer": {
+      "label": "Timer",
+      "preset10m": "10 Min.",
+      "preset30m": "30 Min.",
+      "preset60m": "60 Min.",
+      "continuous": "Fortlaufend",
+      "elapsed": "Vergangen",
+      "remaining": "Verbleibend",
+      "completed": "Sitzung beendet"
+    },
+    "controls": {
+      "start": "Stimulation starten",
+      "pause": "Pause",
+      "resume": "Fortsetzen",
+      "stop": "Stoppen",
+      "reset": "Zurücksetzen",
+      "targetPosition": "Zielposition",
+      "dragPrompt": "Zielbox über das festsitzende Pixel ziehen",
+      "arrowPrompt": "Pfeiltasten für 1px-Feinjustierung nutzen",
+      "activeStimulation": "Stimulation aktiv"
+    },
+    "feedback": {
+      "prompt": "Hat sich das Pixel wieder normalisiert?",
+      "recovered": "Ja, wiederhergestellt",
+      "stillStuck": "Nein, weiterhin festsitzend",
+      "unsure": "Unsicher / Mehr Zeit erforderlich",
+      "notesPlaceholder": "Notizen zum Pixelverhalten hinzufügen (Farbe, Position, Reaktion)...",
+      "saveObservation": "Beobachtung speichern",
+      "observationSaved": "Beobachtung in der Inspektionssitzung erfasst."
+    }
   }
 }

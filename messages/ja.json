@@ -772,6 +772,14 @@
         "q3": "なぜ観測されたフレームタイミングがモニターのリフレッシュレートと異なるのですか？",
         "a3": "ブラウザフレームタイミングは、システム負荷、省電力、バックグラウンドタブ、ブラウザの動作によって影響を受けます。"
       }
+    },
+    "stuckPixelFixer": {
+      "title": "スタックピクセル修復ツール",
+      "description": "一時的に固着したサブピクセルを刺激・復元するための高速カラーサイクリングツール。"
+    },
+    "customPattern": {
+      "title": "カスタムテストパターン",
+      "description": "グリッド、グラデーション、ジオメトリ、カラーバーを調整可能なカスタムテストパターンを生成します。"
     }
   },
   "Guides": {
@@ -1500,7 +1508,10 @@
       "resRefresh": "解像度・レート",
       "notesPrefix": "ハードウェアメモ: {notes}",
       "brandModel": "メーカー & 型番",
-      "panelOther": "その他"
+      "panelOther": "その他",
+      "ratedBrightness": "公称輝度 (cd/m²):",
+      "ratedContrast": "公称コントラスト比:",
+      "serialNumber": "シリアル番号 / 参照ID:"
     },
     "checklist": {
       "title": "検査チェックリスト & 観察結果",
@@ -1568,7 +1579,9 @@
     "empty": {
       "title": "検査レポートがありません",
       "description": "検査ワークフローがまだ実行されていません。検査ハブからワークフローを選択してディスプレイの点検を行い、総合レポートを作成してください。",
-      "cta": "検査ハブへ移動"
+      "cta": "検査ハブへ移動",
+      "runTests": "個別テストを実行",
+      "viewDisplayInfo": "ディスプレイ情報を確認"
     },
     "confirmClear": "現在のセッションの検査観察記録を消去してもよろしいですか？",
     "confirmStartNew": "新しい検査を開始しますか？現在のセッションはリセットされますが、保管済みの履歴は保持されます。",
@@ -1581,7 +1594,82 @@
     },
     "tooltipSaveHistory": "レポートをローカル履歴にアーカイブして保存",
     "tooltipExportJson": "レポートを構造化JSONとしてエクスポート",
-    "tooltipImportJson": "以前にエクスポートしたJSONレポートを読み込む"
+    "tooltipImportJson": "以前にエクスポートしたJSONレポートを読み込む",
+    "badges": {
+      "browserDetected": "ブラウザ検出情報",
+      "userProvided": "ユーザー入力仕様",
+      "userObserved": "目視観察結果",
+      "notAvailable": "利用不可"
+    },
+    "statusBuckets": {
+      "normalObservations": "正常な観察結果",
+      "attentionNeeded": "注意が必要",
+      "unsureObservations": "判定不能 / 要確認",
+      "notTested": "未テスト"
+    },
+    "overview": {
+      "inspectionDuration": "所要時間",
+      "testsCount": "総テスト数",
+      "completedCount": "完了数",
+      "observationsCount": "記録された観察数",
+      "notesCount": "メモ付きテスト数",
+      "defectsCount": "マークされた欠陥数",
+      "activeSession": "アクティブセッション",
+      "archivedReport": "アーカイブ検査記録",
+      "noScoreNote": "Screen Testerは人為的なスコアを付与せず、客観的なブラウザテレメトリと目視観察結果のみを表示します。"
+    },
+    "reportBrand": "SCREEN TESTER",
+    "reportTitle": "ディスプレイ検査レポート",
+    "sections": {
+      "overview": "1. 検査の概要",
+      "displayInfo": "2. ディスプレイ情報",
+      "userProfile": "3. ユーザー入力のディスプレイ情報",
+      "testResults": "4. テスト結果",
+      "browserDetected": "5. ブラウザ検出結果",
+      "visualObservations": "6. 目視観察",
+      "pixelDefects": "7. ピクセル欠陥",
+      "notes": "8. メモ"
+    },
+    "browserDetectedLabels": {
+      "sectionDesc": "ブラウザAPIおよびOSコンポジタから客観的に検出されたパラメータ。人間の目視判断とは明確に分離されています。",
+      "refreshTiming": "ブラウザ検出リフレッシュレート",
+      "pointerType": "プライマリポインタ種別",
+      "touchPoints": "検出タッチポイント数",
+      "colorGamut": "色域対応能力",
+      "hdr": "ダイナミックレンジ (HDR)",
+      "screenOrientation": "画面の向き",
+      "webglRenderer": "WebGL GPU レンダラー",
+      "webglVendor": "WebGL ベンダー",
+      "pixelDepth": "ピクセル深度"
+    },
+    "userProvidedNote": "手動で入力された仕様です。Screen Testerによって直接測定・検証されたものではありません。",
+    "browserDetectedNote": "ブラウザAPIおよびOSコンポジタ経由で検出された値です。物理ハードウェアセンサーの直接測定値を表すものではありません。",
+    "pixelDefectsNote": "ユーザーがマークしたピクセル観察記録です。物理的なサブピクセルの故障を確定的に証明するものではありません。",
+    "observationLabels": {
+      "looksNormal": "正常に見える",
+      "noticeableShift": "目立つ色ズレあり",
+      "detailCrushed": "黒つぶれあり",
+      "highlightsClipped": "白飛びあり",
+      "bandingVisible": "バンディングが見える",
+      "needsAttention": "注意が必要",
+      "unsure": "判断保留",
+      "completed": "完了",
+      "skipped": "スキップ",
+      "notAvailable": "利用不可",
+      "userObservedIssue": "ユーザーが問題を観察",
+      "notTested": "未テスト"
+    },
+    "viewContext": {
+      "active": "アクティブな検査セッション",
+      "archived": "アーカイブされた検査記録",
+      "viewingArchiveNotice": "アーカイブされた検査スナップショット ({id}) を閲覧しています。ここでの変更はアクティブなセッションには影響しません。",
+      "returnToActive": "アクティブなセッションに戻る",
+      "viewInHistory": "履歴から閲覧"
+    },
+    "print": {
+      "printReport": "レポートを印刷",
+      "disclaimer": "この検査レポートには、Screen Testerを使用して記録されたクライアント側ブラウザテレメトリと目視観察が含まれています。合成スコアは一切含まれません。"
+    }
   },
   "CustomPattern": {
     "breadcrumbAll": "すべてのテスト",
@@ -2075,5 +2163,56 @@
     "home": "ホーム",
     "tests": "テスト",
     "ariaLabel": "パンくずリスト"
+  },
+  "StuckPixelFixerTest": {
+    "metaTitle": "スタックピクセル修復ツール – 高速カラー点滅エクササイザー",
+    "metaDescription": "高速RGBサイクルとカラーノイズにより固着した液晶サブピクセルを刺激する専門ツール。",
+    "title": "スタックピクセル修復＆刺激ツール",
+    "badge": "実験的視覚刺激ツール",
+    "warningTitle": "光過敏性および視覚刺激に関する警告",
+    "warningText": "警告: 本ツールは高速な画面点滅およびカラーパターンの切り替えを含みます。めまい、目の疲れ、頭痛などを感じた場合は直ちに停止してください。",
+    "disclaimer": "本ツールは指定された領域で急速に色を切り替えます。一時的に固着した液晶サブピクセルの復元を助ける場合がありますが、物理的に破損したピクセルは修復できません。復元を保証するものではありません。",
+    "instructions": "刺激ボックスをドラッグまたは矢印キーで固着したピクセルの上に配置します。モードとタイマーを選択し、「刺激を開始」をクリックしてください。",
+    "modes": {
+      "rgbCycle": "RGBサイクル",
+      "colorNoise": "カラーノイズ",
+      "rapidAlternation": "補色交互点滅"
+    },
+    "sizes": {
+      "small": "小 (40px)",
+      "medium": "中 (100px)",
+      "large": "大 (200px)",
+      "fullscreen": "全画面"
+    },
+    "timer": {
+      "label": "タイマー",
+      "preset10m": "10分",
+      "preset30m": "30分",
+      "preset60m": "60分",
+      "continuous": "連続実行",
+      "elapsed": "経過時間",
+      "remaining": "残り時間",
+      "completed": "セッション完了"
+    },
+    "controls": {
+      "start": "刺激を開始",
+      "pause": "一時停止",
+      "resume": "再開",
+      "stop": "停止",
+      "reset": "リセット",
+      "targetPosition": "ターゲット位置",
+      "dragPrompt": "ボックスを固着ピクセルの上にドラッグ",
+      "arrowPrompt": "矢印キーで1px単位の微調整が可能",
+      "activeStimulation": "刺激動作中"
+    },
+    "feedback": {
+      "prompt": "固着したピクセルは正常に戻りましたか？",
+      "recovered": "はい、復元しました",
+      "stillStuck": "いいえ、固着したままです",
+      "unsure": "判定不能 / さらに時間が必要",
+      "notesPlaceholder": "ピクセルの挙動に関するメモを入力...",
+      "saveObservation": "観察結果を保存",
+      "observationSaved": "検査セッションに記録されました。"
+    }
   }
 }
