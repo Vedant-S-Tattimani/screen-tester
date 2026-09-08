@@ -7,7 +7,7 @@ import { TestContext, Observation } from "./TestContext";
 import { normalizeWorkflowPath } from "@/lib/workflow";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { RelatedTests } from "@/components/layout/RelatedTests";
-import { safeSessionGet, safeSessionSet, safeStorageGet } from "@/lib/browserCapabilities";
+import { safeSessionGet, safeSessionSet, safeSessionRemove, safeStorageGet } from "@/lib/browserCapabilities";
 import { 
   getActiveInspectionSession, 
   getTestObservation, 
@@ -30,18 +30,25 @@ interface TestWrapperProps {
   instructions?: ReactNode;
   children: ReactNode;
   testId?: string;
+  extraControls?: ReactNode;
 }
 
 const STORAGE_KEY_OBSERVATIONS = "monitor-tester-observations";
 const STORAGE_KEY_WORKFLOW = "monitor-tester-workflow";
+const STORAGE_KEY_FULLSCREEN = "screen-tester-fullscreen";
 
-export function TestWrapper({ title, description, instructions, children, testId }: TestWrapperProps) {
+export function TestWrapper({ title, description, instructions, children, testId, extraControls }: TestWrapperProps) {
   const t = useTranslations("TestWrapper");
   const router = useRouter();
   const pathname = usePathname();
   
   const isRunning = true; // Always running inline
-  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(() => {
+    if (typeof document !== "undefined") {
+      return document.fullscreenElement !== null || safeSessionGet<boolean>(STORAGE_KEY_FULLSCREEN, false);
+    }
+    return false;
+  });
   const [isPaused, setIsPaused] = useState(false);
   
   // Observation State
@@ -160,8 +167,10 @@ export function TestWrapper({ title, description, instructions, children, testId
     try { 
       sessionStorage.removeItem(STORAGE_KEY_WORKFLOW); 
     } catch {}
+    safeSessionRemove(STORAGE_KEY_FULLSCREEN);
     setWorkflowSequence([]);
     setWorkflowIndex(-1);
+    setIsFullscreen(false);
     if (document.fullscreenElement) {
       document.exitFullscreen().catch(() => {});
     }
@@ -173,35 +182,61 @@ export function TestWrapper({ title, description, instructions, children, testId
 
   const goNextInWorkflow = useCallback(() => {
     if (hasNextInWorkflow) {
+      const isCurrentlyFs = isFullscreen || (typeof document !== "undefined" && document.fullscreenElement !== null);
+      if (isCurrentlyFs) {
+        safeSessionSet(STORAGE_KEY_FULLSCREEN, true);
+        if (!document.fullscreenElement && document.documentElement?.requestFullscreen) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        }
+      }
       const nextPath = workflowSequence[workflowIndex + 1];
       const target = typeof normalizeWorkflowPath === "function" ? normalizeWorkflowPath(nextPath) : nextPath;
       router.push(target);
     } else if (workflowIndex === workflowSequence.length - 1) {
-      // Done with workflow -> go to summary
+      // Done with workflow -> exit fullscreen and go to summary
+      safeSessionRemove(STORAGE_KEY_FULLSCREEN);
       if (document.fullscreenElement) {
         document.exitFullscreen().catch(() => {});
       }
       router.push("/monitor-inspection/summary");
     }
-  }, [hasNextInWorkflow, workflowIndex, workflowSequence, router]);
+  }, [hasNextInWorkflow, workflowIndex, workflowSequence, router, isFullscreen]);
 
   const goPrevInWorkflow = useCallback(() => {
     if (hasPrevInWorkflow) {
+      const isCurrentlyFs = isFullscreen || (typeof document !== "undefined" && document.fullscreenElement !== null);
+      if (isCurrentlyFs) {
+        safeSessionSet(STORAGE_KEY_FULLSCREEN, true);
+        if (!document.fullscreenElement && document.documentElement?.requestFullscreen) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        }
+      }
       const prevPath = workflowSequence[workflowIndex - 1];
       const target = typeof normalizeWorkflowPath === "function" ? normalizeWorkflowPath(prevPath) : prevPath;
       router.push(target);
     }
-  }, [hasPrevInWorkflow, workflowIndex, workflowSequence, router]);
+  }, [hasPrevInWorkflow, workflowIndex, workflowSequence, router, isFullscreen]);
 
   const skipTestInWorkflow = useCallback(() => {
     if (hasNextInWorkflow) {
+      const isCurrentlyFs = isFullscreen || (typeof document !== "undefined" && document.fullscreenElement !== null);
+      if (isCurrentlyFs) {
+        safeSessionSet(STORAGE_KEY_FULLSCREEN, true);
+        if (!document.fullscreenElement && document.documentElement?.requestFullscreen) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        }
+      }
       const nextPath = workflowSequence[workflowIndex + 1];
       const target = typeof normalizeWorkflowPath === "function" ? normalizeWorkflowPath(nextPath) : nextPath;
       router.push(target);
     } else {
+      safeSessionRemove(STORAGE_KEY_FULLSCREEN);
+      if (document.fullscreenElement) {
+        document.exitFullscreen().catch(() => {});
+      }
       router.push("/monitor-inspection/summary");
     }
-  }, [hasNextInWorkflow, workflowIndex, workflowSequence, router]);
+  }, [hasNextInWorkflow, workflowIndex, workflowSequence, router, isFullscreen]);
 
   const restartWorkflow = useCallback(() => {
     if (workflowSequence.length > 0) {
@@ -236,16 +271,50 @@ export function TestWrapper({ title, description, instructions, children, testId
   const resetTest = useCallback(() => navHandlers.current.reset?.(), []);
 
   const toggleFullscreen = useCallback(() => {
-    if (!document.fullscreenElement && containerRef.current) {
-      containerRef.current.requestFullscreen().catch(() => {});
+    if (!document.fullscreenElement) {
+      const root = document.documentElement;
+      const req = root.requestFullscreen ? root.requestFullscreen() : containerRef.current?.requestFullscreen();
+      req?.then(() => {
+        setIsFullscreen(true);
+        safeSessionSet(STORAGE_KEY_FULLSCREEN, true);
+      }).catch(() => {
+        containerRef.current?.requestFullscreen?.().then(() => {
+          setIsFullscreen(true);
+          safeSessionSet(STORAGE_KEY_FULLSCREEN, true);
+        }).catch(() => {});
+      });
     } else if (document.fullscreenElement) {
-      document.exitFullscreen().catch(() => {});
+      safeSessionRemove(STORAGE_KEY_FULLSCREEN);
+      setIsFullscreen(false);
+      if (document.exitFullscreen) {
+        document.exitFullscreen().catch(() => {});
+      }
     }
   }, []);
 
   useEffect(() => {
+    // Check fullscreen state on mount / route change
+    const isDocFs = typeof document !== "undefined" && document.fullscreenElement !== null;
+    const shouldBeFs = safeSessionGet<boolean>(STORAGE_KEY_FULLSCREEN, false);
+
+    if (isDocFs) {
+      setIsFullscreen(true);
+      safeSessionSet(STORAGE_KEY_FULLSCREEN, true);
+    } else if (shouldBeFs && workflowIndex !== -1) {
+      setIsFullscreen(true);
+      if (document.documentElement?.requestFullscreen) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      }
+    }
+
     const handleFullscreenChange = () => {
-      setIsFullscreen(document.fullscreenElement !== null);
+      const active = document.fullscreenElement !== null;
+      setIsFullscreen(active);
+      if (active) {
+        safeSessionSet(STORAGE_KEY_FULLSCREEN, true);
+      } else {
+        safeSessionRemove(STORAGE_KEY_FULLSCREEN);
+      }
     };
     
     const handleVisibilityChange = () => {
@@ -260,7 +329,7 @@ export function TestWrapper({ title, description, instructions, children, testId
       document.removeEventListener("fullscreenchange", handleFullscreenChange);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-  }, [isRunning]);
+  }, [isRunning, workflowIndex]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -404,6 +473,13 @@ export function TestWrapper({ title, description, instructions, children, testId
 
           {/* Controls Target Container for portal */}
           <div id="test-controls-container" className={isFullscreen ? "contents" : "w-full mt-4 sm:mt-5"} />
+
+          {/* Optional Extended Tool / Generator Controls (only when inline) */}
+          {!isFullscreen && extraControls && (
+            <div className="w-full mt-6">
+              {extraControls}
+            </div>
+          )}
         </div>
 
         {/* Educational Content - Only visible when inline */}

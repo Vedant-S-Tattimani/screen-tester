@@ -375,13 +375,13 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
       <TestControlBar testId={testId} title="Brightness & Luminance Calibration">
         <div className="flex flex-wrap items-center gap-2">
           {/* Main Mode Switcher */}
-          <div className="flex items-center bg-gray-100 p-0.5 rounded-lg border border-gray-200 text-xs">
+          <div className="flex items-center bg-muted/60 p-0.5 rounded-lg border border-border/50 text-xs">
             <button
               onClick={() => setMode("pluge")}
               className={`px-2.5 py-1 rounded-md transition-all font-medium ${
                 mode === "pluge" 
-                  ? "bg-white text-gray-950 shadow-xs font-semibold" 
-                  : "text-gray-600 hover:text-gray-900"
+                  ? "bg-white text-gray-950 shadow-xs font-bold" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               PLUGE Reference
@@ -390,8 +390,8 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
               onClick={() => setMode("shadow-ramp")}
               className={`px-2.5 py-1 rounded-md transition-all font-medium ${
                 mode === "shadow-ramp" 
-                  ? "bg-white text-gray-950 shadow-xs font-semibold" 
-                  : "text-gray-600 hover:text-gray-900"
+                  ? "bg-white text-gray-950 shadow-xs font-bold" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               1% Shadow Ramp
@@ -400,8 +400,8 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
               onClick={() => setMode("abl-window")}
               className={`px-2.5 py-1 rounded-md transition-all font-medium ${
                 mode === "abl-window" 
-                  ? "bg-white text-gray-950 shadow-xs font-semibold" 
-                  : "text-gray-600 hover:text-gray-900"
+                  ? "bg-white text-gray-950 shadow-xs font-bold" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               Peak & ABL Windows
@@ -410,8 +410,8 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
               onClick={() => setMode("ire-scale")}
               className={`px-2.5 py-1 rounded-md transition-all font-medium ${
                 mode === "ire-scale" 
-                  ? "bg-white text-gray-950 shadow-xs font-semibold" 
-                  : "text-gray-600 hover:text-gray-900"
+                  ? "bg-white text-gray-950 shadow-xs font-bold" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               Full IRE Scale
@@ -420,17 +420,17 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
 
           {/* Mode Specific Controls */}
           {mode === "pluge" && (
-            <div className="flex items-center gap-1.5 border-l border-gray-200 pl-2">
+            <div className="flex items-center gap-1.5 border-l border-border/50 pl-2">
               <button
                 onClick={() => setSurroundBg((prev) => (prev === "black" ? "dark" : "black"))}
-                className="px-2.5 py-1 rounded-md text-xs font-medium border border-gray-200 bg-white hover:bg-gray-50 text-gray-700 transition-colors"
+                className="px-2.5 py-1 rounded-md text-xs font-medium border border-border/50 bg-muted/40 hover:bg-muted text-gray-800 dark:text-slate-200 dark:hover:text-white transition-colors"
                 title="Toggle surrounding background between pure black and dark gray"
               >
                 Surround: {surroundBg === "black" ? "Black" : "Dark Gray"}
               </button>
               <button
                 onClick={() => setShowLabels((p) => !p)}
-                className="px-2.5 py-1 rounded-md text-xs font-medium border border-gray-200 bg-white hover:bg-gray-50 text-gray-700 transition-colors"
+                className="px-2.5 py-1 rounded-md text-xs font-medium border border-border/50 bg-muted/40 hover:bg-muted text-gray-800 dark:text-slate-200 dark:hover:text-white transition-colors"
               >
                 {showLabels ? "Labels: On" : "Labels: Off"}
               </button>
@@ -438,10 +438,10 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
           )}
 
           {mode === "shadow-ramp" && (
-            <div className="flex items-center gap-1.5 border-l border-gray-200 pl-2">
+            <div className="flex items-center gap-1.5 border-l border-border/50 pl-2">
               <button
                 onClick={() => setShowRgb((p) => !p)}
-                className="px-2.5 py-1 rounded-md text-xs font-medium border border-gray-200 bg-white hover:bg-gray-50 text-gray-700 transition-colors"
+                className="px-2.5 py-1 rounded-md text-xs font-medium border border-border/50 bg-muted/40 hover:bg-muted text-gray-800 dark:text-slate-200 dark:hover:text-white transition-colors"
               >
                 {showRgb ? "RGB: On" : "RGB: Off"}
               </button>
@@ -449,16 +449,16 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
           )}
 
           {mode === "abl-window" && (
-            <div className="flex items-center gap-1 border-l border-gray-200 pl-2 text-xs">
-              <span className="text-gray-500 font-mono text-[11px] mr-1 hidden sm:inline">Size:</span>
+            <div className="flex items-center gap-1 border-l border-border/50 pl-2 text-xs">
+              <span className="text-muted-foreground dark:text-slate-300 font-mono text-[11px] mr-1 hidden sm:inline">Size:</span>
               {ABL_WINDOWS.map((w, idx) => (
                 <button
                   key={w.id}
                   onClick={() => setSelectedAblIndex(idx)}
                   className={`px-2 py-0.5 rounded text-[11px] font-medium transition-colors ${
                     selectedAblIndex === idx
-                      ? "bg-gray-900 text-white font-semibold"
-                      : "bg-gray-100 hover:bg-gray-200 text-gray-700"
+                      ? "bg-white text-gray-950 font-bold shadow-xs"
+                      : "bg-muted/40 hover:bg-muted text-gray-700 dark:text-slate-200 dark:hover:text-white"
                   }`}
                 >
                   {w.id}%

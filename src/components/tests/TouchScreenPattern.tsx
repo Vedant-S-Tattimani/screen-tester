@@ -126,18 +126,18 @@ export function TouchScreenPattern({ testId }: TouchScreenPatternProps) {
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-3 font-mono text-xs">
             <div>
-              <span className="text-muted-foreground mr-1">Active:</span>
-              <span className="text-foreground font-semibold px-2 py-0.5 bg-muted rounded">{touches.length}</span>
+              <span className="text-muted-foreground dark:text-slate-300 mr-1">Active:</span>
+              <span className="text-gray-900 dark:text-white font-bold px-2 py-0.5 bg-muted dark:bg-white/15 rounded">{touches.length}</span>
             </div>
             <div>
-              <span className="text-muted-foreground mr-1">Peak:</span>
-              <span className="text-foreground font-semibold px-2 py-0.5 bg-muted rounded">{maxTouches}</span>
+              <span className="text-muted-foreground dark:text-slate-300 mr-1">Peak:</span>
+              <span className="text-gray-900 dark:text-white font-bold px-2 py-0.5 bg-muted dark:bg-white/15 rounded">{maxTouches}</span>
             </div>
           </div>
 
           <button
             onClick={resetCount}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium bg-muted/50 text-muted-foreground hover:text-foreground border border-border/50 transition-colors"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium bg-muted/60 hover:bg-muted dark:hover:bg-white/10 text-gray-700 dark:text-slate-200 dark:hover:text-white border border-border/50 transition-colors"
             title="Reset peak count"
           >
             <RotateCcw className="w-3.5 h-3.5" />

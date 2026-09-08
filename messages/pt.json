@@ -210,7 +210,20 @@
     "step2Title": "Ative a tela cheia",
     "step2Desc": "Ative o modo tela cheia (pressione F11) para que barras de navegação e do sistema não cubram os pixels das bordas.",
     "step3Title": "Inspecione com iluminação controlada",
-    "step3Desc": "Diminua a iluminação ambiente para vazamento de luz e contraste. Observe o painel de frente e de ângulos laterais."
+    "step3Desc": "Diminua a iluminação ambiente para vazamento de luz e contraste. Observe o painel de frente e de ângulos laterais.",
+    "allTestsTitle": "TODOS OS TESTES DE TELA",
+    "allTestsSubtitle": "Explore todos os testes disponíveis para verificar seu display.",
+    "allTestsSearchPlaceholder": "Pesquisar entre os 28 testes de tela...",
+    "allTestsFilterAll": "Todos os testes",
+    "allTestsCount": "28 testes",
+    "allTestsCategories": {
+      "colorPixels": "TESTES DE CORES E PIXELS",
+      "gradientContrast": "TESTES DE GRADIENTE E CONTRASTE",
+      "uniformityPanel": "TESTES DE UNIFORMIDADE E ILUMINAÇÃO",
+      "motionPerformance": "MOVIMENTO E TAXA DE ATUALIZAÇÃO",
+      "sharpnessCapabilities": "NITIDEZ E CAPACIDADES"
+    },
+    "allTestsNoResults": "Nenhum teste encontrado para"
   },
   "TestLibrary": {
     "categories": {

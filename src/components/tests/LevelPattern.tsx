@@ -82,7 +82,9 @@ export function LevelPattern({ type, testId }: LevelPatternProps) {
           <button
             onClick={() => setShowOutlines((p) => !p)}
             className={`px-2.5 py-1 rounded-md text-xs font-medium border transition-colors ${
-              showOutlines ? "bg-muted text-foreground border-border" : "text-muted-foreground border-transparent hover:bg-muted/50"
+              showOutlines 
+                ? "bg-white text-gray-950 font-bold shadow-xs border-transparent" 
+                : "border-border/50 text-gray-700 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-muted dark:hover:bg-white/10"
             }`}
           >
             {showOutlines ? "Outlines: On" : "Outlines: Off"}
@@ -90,7 +92,9 @@ export function LevelPattern({ type, testId }: LevelPatternProps) {
           <button
             onClick={() => setShowLabels((p) => !p)}
             className={`px-2.5 py-1 rounded-md text-xs font-medium border transition-colors ${
-              showLabels ? "bg-muted text-foreground border-border" : "text-muted-foreground border-transparent hover:bg-muted/50"
+              showLabels 
+                ? "bg-white text-gray-950 font-bold shadow-xs border-transparent" 
+                : "border-border/50 text-gray-700 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-muted dark:hover:bg-white/10"
             }`}
           >
             {showLabels ? "Labels: On" : "Labels: Off"}

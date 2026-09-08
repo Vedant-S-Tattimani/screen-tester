@@ -185,7 +185,7 @@ export function ScreenTearingPattern({ testId }: ScreenTearingPatternProps) {
         <div className="flex items-center gap-3">
           <button
             onClick={() => setIsPaused(!isPaused)}
-            className="p-1.5 hover:bg-muted rounded-full transition-colors border border-border/50 text-foreground focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-hidden"
+            className="p-1.5 hover:bg-muted dark:hover:bg-white/10 rounded-full transition-colors border border-border/50 text-gray-900 dark:text-white focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-hidden"
             title={isPaused ? "Resume Sweep (Space)" : "Pause Sweep (Space)"}
             aria-label={isPaused ? "Resume Sweep animation" : "Pause Sweep animation"}
           >
@@ -195,7 +195,7 @@ export function ScreenTearingPattern({ testId }: ScreenTearingPatternProps) {
           <div 
             role="radiogroup" 
             aria-label="Sweep Speed Presets" 
-            className="flex items-center gap-1 bg-muted/50 p-1 rounded-lg border border-border/50"
+            className="flex items-center gap-1 bg-muted/60 p-1 rounded-lg border border-border/50"
           >
             {SPEED_PRESETS.map((s, idx) => (
               <button
@@ -206,8 +206,8 @@ export function ScreenTearingPattern({ testId }: ScreenTearingPatternProps) {
                 aria-label={`${s.label} preset`}
                 className={`px-2.5 py-1 rounded text-xs font-medium transition-colors focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-hidden ${
                   speed === s.value 
-                    ? "bg-foreground text-background shadow-xs font-semibold" 
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "bg-white text-gray-950 shadow-xs font-bold" 
+                    : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
                 }`}
               >
                 <span className="font-mono tabular-nums">{idx + 1}.</span> {s.label}
@@ -215,7 +215,7 @@ export function ScreenTearingPattern({ testId }: ScreenTearingPatternProps) {
             ))}
           </div>
 
-          <span className="text-xs text-muted-foreground hidden sm:inline font-mono">
+          <span className="text-xs text-muted-foreground dark:text-slate-300 hidden sm:inline font-mono">
             V-Sync Scanline Stress
           </span>
         </div>

@@ -210,7 +210,20 @@
     "step2Title": "Passez en plein écran",
     "step2Desc": "Activez le mode plein écran (touche F11) afin que les barres de navigation et du système ne masquent pas les pixels des bords.",
     "step3Title": "Inspectez sous un éclairage contrôlé",
-    "step3Desc": "Tamisez l'éclairage ambiant pour les fuites de lumière et le contraste. Observez la dalle de face et sous différents angles."
+    "step3Desc": "Tamisez l'éclairage ambiant pour les fuites de lumière et le contraste. Observez la dalle de face et sous différents angles.",
+    "allTestsTitle": "TOUS LES TESTS D'ÉCRAN",
+    "allTestsSubtitle": "Explorez tous les tests disponibles pour vérifier votre écran.",
+    "allTestsSearchPlaceholder": "Rechercher parmi les 28 tests d'écran...",
+    "allTestsFilterAll": "Tous les tests",
+    "allTestsCount": "28 tests",
+    "allTestsCategories": {
+      "colorPixels": "TESTS DE COULEURS ET PIXELS",
+      "gradientContrast": "TESTS DE DÉGRADÉ ET CONTRASTE",
+      "uniformityPanel": "TESTS D'HOMOGÉNÉITÉ ET RÉTROÉCLAIRAGE",
+      "motionPerformance": "MOUVEMENT ET TAUX DE RAFRAÎCHISSEMENT",
+      "sharpnessCapabilities": "NETTETÉ ET CAPACITÉS"
+    },
+    "allTestsNoResults": "Aucun test trouvé pour"
   },
   "TestLibrary": {
     "categories": {

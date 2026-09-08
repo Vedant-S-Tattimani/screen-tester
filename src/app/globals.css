@@ -42,24 +42,34 @@
   }
   
   .dark {
-    /* For dark mode support if enabled later */
-    --background: #171717;
+    --background: #09090b;
     --foreground: #ffffff;
     --primary: #ffffff;
-    --primary-foreground: #171717;
-    --secondary: #404040;
-    --secondary-foreground: #ffffff;
-    --accent: #A16207;
+    --primary-foreground: #09090b;
+    --secondary: #27272a;
+    --secondary-foreground: #fafafa;
+    --accent: #27272a;
     --accent-foreground: #ffffff;
-    --card: #171717;
+    --card: #09090b;
     --card-foreground: #ffffff;
-    --muted: #262626;
-    --muted-foreground: #A3A3A3;
-    --border: #404040;
-    --destructive: #DC2626;
+    --muted: rgba(255, 255, 255, 0.12);
+    --muted-foreground: #cbd5e1; /* High-contrast light slate text */
+    --border: rgba(255, 255, 255, 0.2);
+    --destructive: #EF4444;
     --destructive-foreground: #ffffff;
-    --ring: #ffffff;
+    --ring: #3b82f6;
   }
+}
+
+/* Ensure inactive control bar labels, tabs, and buttons are high contrast and crystal clear */
+.dark .text-muted-foreground,
+.dark [class*="text-muted-foreground"] {
+  color: #cbd5e1;
+}
+
+.dark button:hover .text-muted-foreground,
+.dark .hover\:text-foreground:hover {
+  color: #ffffff !important;
 }
 
 @layer base {

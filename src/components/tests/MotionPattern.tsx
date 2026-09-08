@@ -242,7 +242,9 @@ export function MotionPattern({ testId = "ghosting-test" }: MotionPatternProps) 
             <button
               onClick={() => setActiveMode("ghosting")}
               className={`px-2.5 py-1 rounded-md font-medium transition-all ${
-                activeMode === "ghosting" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"
+                activeMode === "ghosting" 
+                  ? "bg-white text-gray-950 font-bold shadow-xs" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               Ghosting
@@ -250,7 +252,9 @@ export function MotionPattern({ testId = "ghosting-test" }: MotionPatternProps) 
             <button
               onClick={() => setActiveMode("overdrive")}
               className={`px-2.5 py-1 rounded-md font-medium transition-all ${
-                activeMode === "overdrive" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"
+                activeMode === "overdrive" 
+                  ? "bg-white text-gray-950 font-bold shadow-xs" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               Overdrive (Overshoot)
@@ -258,7 +262,9 @@ export function MotionPattern({ testId = "ghosting-test" }: MotionPatternProps) 
             <button
               onClick={() => setActiveMode("blacksmear")}
               className={`px-2.5 py-1 rounded-md font-medium transition-all ${
-                activeMode === "blacksmear" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"
+                activeMode === "blacksmear" 
+                  ? "bg-white text-gray-950 font-bold shadow-xs" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               Black Smearing
@@ -267,13 +273,15 @@ export function MotionPattern({ testId = "ghosting-test" }: MotionPatternProps) 
 
           {/* Speed Presets */}
           <div className="flex items-center gap-1 bg-muted/40 rounded-lg p-0.5 border border-border/40 text-xs">
-            <span className="text-[10px] text-muted-foreground uppercase font-mono px-1">Speed:</span>
+            <span className="text-[10px] text-muted-foreground dark:text-slate-300 uppercase font-mono px-1">Speed:</span>
             {SPEED_PRESETS.map((s) => (
               <button
                 key={s}
                 onClick={() => setSpeed(s)}
                 className={`px-2 py-0.5 rounded text-[11px] font-mono transition-colors ${
-                  speed === s ? "bg-foreground text-background font-semibold shadow-2xs" : "text-muted-foreground hover:text-foreground"
+                  speed === s 
+                    ? "bg-white text-gray-950 font-bold shadow-xs" 
+                    : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
                 }`}
               >
                 {s}
@@ -289,7 +297,9 @@ export function MotionPattern({ testId = "ghosting-test" }: MotionPatternProps) 
                   key={c}
                   onClick={() => setContrast(c)}
                   className={`px-2 py-0.5 rounded text-[11px] capitalize transition-colors ${
-                    contrast === c ? "bg-foreground text-background font-semibold shadow-2xs" : "text-muted-foreground hover:text-foreground"
+                    contrast === c 
+                      ? "bg-white text-gray-950 font-bold shadow-xs" 
+                      : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
                   }`}
                 >
                   {c}
@@ -302,7 +312,7 @@ export function MotionPattern({ testId = "ghosting-test" }: MotionPatternProps) 
           <button
             onClick={() => setShowEduInfo(!showEduInfo)}
             className={`flex items-center gap-1 text-xs px-2.5 py-1 rounded-lg border transition-colors ${
-              showEduInfo ? "bg-amber-500/20 text-amber-500 border-amber-500/40" : "hover:bg-muted text-muted-foreground border-border/50"
+              showEduInfo ? "bg-amber-500/20 text-amber-500 border-amber-500/40" : "hover:bg-muted dark:hover:bg-white/10 text-gray-700 dark:text-slate-200 dark:hover:text-white border-border/50"
             }`}
             title="Read about ghosting, overdrive overshoot, and black smearing"
           >

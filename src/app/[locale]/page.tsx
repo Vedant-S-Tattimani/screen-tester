@@ -3,10 +3,6 @@ import { Link } from "@/i18n/routing";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { 
   ArrowRight, 
-  Monitor, 
-  Sun, 
-  Activity, 
-  Palette,
   Sliders, 
   Ruler, 
   Grid, 
@@ -14,6 +10,9 @@ import {
   Eye, 
   Maximize2
 } from "lucide-react";
+
+import { AllScreenTests, type ScreenTestCategory, type ScreenTestItem } from "@/components/home/AllScreenTests";
+import { StartTestingCTA } from "@/components/home/StartTestingCTA";
 
 export default async function Home({
   params
@@ -24,6 +23,137 @@ export default async function Home({
   setRequestLocale(locale);
 
   const t = await getTranslations({ locale, namespace: "Home" });
+  const tLib = await getTranslations({ locale, namespace: "TestLibrary" });
+  const tTests = await getTranslations({ locale, namespace: "Tests" });
+  const tPages = await getTranslations({ locale, namespace: "TestPages" });
+
+  const libMap: Record<string, string> = {
+    "dead-pixel-test": "deadPixel",
+    "stuck-pixel-test": "stuckPixel",
+    "bright-pixel-test": "brightPixel",
+    "color-test": "colorTest",
+    "color-banding-test": "gradientTest",
+    "brightness-test": "brightnessTest",
+    "uniformity-test": "uniformityTest",
+    "backlight-bleed-test": "backlightBleed",
+    "ghosting-test": "ghostingTest",
+    "refresh-rate-test": "refreshRate",
+    "grayscale-test": "grayscaleTest",
+    "saturation-test": "saturationTest",
+    "black-level-test": "blackLevelTest",
+    "white-level-test": "whiteLevelTest",
+    "gamma-test": "gammaTest",
+    "contrast-test": "contrastTest",
+    "hdr-capability-test": "hdrCapabilityTest"
+  };
+
+  const testsMap: Record<string, string> = {
+    "burn-in-test": "burnIn",
+    "color-gamut-test": "colorGamut",
+    "color-accuracy-test": "colorAccuracy",
+    "solid-color-test": "solidColor",
+    "viewing-angle-test": "viewingAngle",
+    "blooming-test": "blooming",
+    "screen-tearing-test": "screenTearing",
+    "screen-flicker-test": "flicker",
+    "touch-screen-test": "touchScreen",
+    "sharpness-test": "sharpness"
+  };
+
+  const getTestItem = (id: string, category: string): ScreenTestItem => {
+    let title = "";
+    let description = "";
+
+    if (libMap[id]) {
+      try {
+        title = tLib(`tests.${libMap[id]}.title`);
+        description = tLib(`tests.${libMap[id]}.description`);
+      } catch {}
+    }
+
+    if ((!title || !description) && testsMap[id]) {
+      try {
+        if (!title) title = tTests(`${testsMap[id]}.title`);
+        if (!description) description = tTests(`${testsMap[id]}.description`);
+      } catch {}
+    }
+
+    if (!title || !description) {
+      try {
+        if (!title) title = tPages(`${id}.title`);
+        if (!description) description = tPages(`${id}.metaDescription`);
+      } catch {}
+    }
+
+    return {
+      id,
+      href: `/tests/${id}`,
+      title: title || id,
+      description: description || "",
+      category
+    };
+  };
+
+  const categories: ScreenTestCategory[] = [
+    {
+      id: "colorPixels",
+      title: t("allTestsCategories.colorPixels"),
+      tests: [
+        getTestItem("dead-pixel-test", "colorPixels"),
+        getTestItem("stuck-pixel-test", "colorPixels"),
+        getTestItem("bright-pixel-test", "colorPixels"),
+        getTestItem("burn-in-test", "colorPixels"),
+        getTestItem("color-test", "colorPixels"),
+        getTestItem("color-gamut-test", "colorPixels"),
+        getTestItem("color-accuracy-test", "colorPixels"),
+        getTestItem("saturation-test", "colorPixels")
+      ]
+    },
+    {
+      id: "gradientContrast",
+      title: t("allTestsCategories.gradientContrast"),
+      tests: [
+        getTestItem("contrast-test", "gradientContrast"),
+        getTestItem("brightness-test", "gradientContrast"),
+        getTestItem("black-level-test", "gradientContrast"),
+        getTestItem("white-level-test", "gradientContrast"),
+        getTestItem("gamma-test", "gradientContrast"),
+        getTestItem("color-banding-test", "gradientContrast"),
+        getTestItem("grayscale-test", "gradientContrast")
+      ]
+    },
+    {
+      id: "uniformityPanel",
+      title: t("allTestsCategories.uniformityPanel"),
+      tests: [
+        getTestItem("uniformity-test", "uniformityPanel"),
+        getTestItem("backlight-bleed-test", "uniformityPanel"),
+        getTestItem("blooming-test", "uniformityPanel"),
+        getTestItem("solid-color-test", "uniformityPanel"),
+        getTestItem("viewing-angle-test", "uniformityPanel")
+      ]
+    },
+    {
+      id: "motionPerformance",
+      title: t("allTestsCategories.motionPerformance"),
+      tests: [
+        getTestItem("ghosting-test", "motionPerformance"),
+        getTestItem("motion-blur-test", "motionPerformance"),
+        getTestItem("refresh-rate-test", "motionPerformance"),
+        getTestItem("screen-tearing-test", "motionPerformance"),
+        getTestItem("screen-flicker-test", "motionPerformance")
+      ]
+    },
+    {
+      id: "sharpnessCapabilities",
+      title: t("allTestsCategories.sharpnessCapabilities"),
+      tests: [
+        getTestItem("sharpness-test", "sharpnessCapabilities"),
+        getTestItem("hdr-capability-test", "sharpnessCapabilities"),
+        getTestItem("touch-screen-test", "sharpnessCapabilities")
+      ]
+    }
+  ];
 
   return (
     <div className="flex-1 bg-white text-gray-950">
@@ -53,13 +183,7 @@ export default async function Home({
 
             {/* CTA Button */}
             <div className="flex items-center">
-              <Link 
-                href="/tests/dead-pixel-test"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-black hover:bg-neutral-900 text-white font-medium text-xs sm:text-[13.5px] px-6 py-3 rounded-xl transition-all shadow-sm hover:shadow-md focus-visible:ring-2 focus-visible:ring-gray-900"
-              >
-                <span>{t("startTesting")}</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
+              <StartTestingCTA label={t("startTesting")} />
             </div>
           </div>
 
@@ -82,117 +206,17 @@ export default async function Home({
 
         </div>
       </section>
-
       {/* ================================================== */}
-      {/* 2. QUICK TESTS SECTION                            */}
+      {/* 2. ALL SCREEN TESTS SECTION                        */}
       {/* ================================================== */}
-      <section className="pt-2 pb-10 sm:pb-12 max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
-        {/* Section Header */}
-        <div className="flex items-end justify-between mb-4 sm:mb-5">
-          <div>
-            <h2 className="text-sm sm:text-base font-bold tracking-tight text-gray-950 uppercase">
-              {t("quickTestsTitle")}
-            </h2>
-            <p className="text-xs sm:text-[13px] text-gray-500 mt-0.5">
-              {t("quickTestsDesc")}
-            </p>
-          </div>
-          <Link 
-            href="/tests"
-            className="text-xs sm:text-[13px] font-medium text-gray-600 hover:text-gray-950 flex items-center gap-1 group transition-colors focus-visible:ring-2 focus-visible:ring-gray-900 rounded p-1"
-          >
-            <span>{t("viewAllTests")}</span>
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-          </Link>
-        </div>
-
-        {/* 6 Compact Horizontal Shortcut Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-2.5 sm:gap-3">
-          {/* 1. Dead Pixels */}
-          <Link 
-            href="/tests/dead-pixel-test"
-            className="bg-black hover:bg-neutral-900 text-white border border-neutral-900 hover:border-neutral-800 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3 group transition-all hover:shadow-md focus-visible:ring-2 focus-visible:ring-neutral-400 min-h-[50px] sm:min-h-[54px]"
-          >
-            <div className="w-5 h-5 flex items-center justify-center shrink-0 text-white">
-              <Monitor className="w-4 h-4 stroke-[1.8]" />
-            </div>
-            <span className="text-xs sm:text-[13px] font-medium text-white group-hover:text-neutral-200 leading-tight">
-              {t("quickDeadPixels")}
-            </span>
-          </Link>
-
-          {/* 2. Color Test */}
-          <Link 
-            href="/tests/color-test"
-            className="bg-black hover:bg-neutral-900 text-white border border-neutral-900 hover:border-neutral-800 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3 group transition-all hover:shadow-md focus-visible:ring-2 focus-visible:ring-neutral-400 min-h-[50px] sm:min-h-[54px]"
-          >
-            <div className="w-5 h-5 flex items-center justify-center shrink-0 text-white">
-              <Palette className="w-4 h-4 stroke-[1.8]" />
-            </div>
-            <span className="text-xs sm:text-[13px] font-medium text-white group-hover:text-neutral-200 leading-tight">
-              {t("quickColorTest")}
-            </span>
-          </Link>
-
-          {/* 3. Brightness */}
-          <Link 
-            href="/tests/brightness-test"
-            className="bg-black hover:bg-neutral-900 text-white border border-neutral-900 hover:border-neutral-800 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3 group transition-all hover:shadow-md focus-visible:ring-2 focus-visible:ring-neutral-400 min-h-[50px] sm:min-h-[54px]"
-          >
-            <div className="w-5 h-5 flex items-center justify-center shrink-0 text-white">
-              <Sun className="w-4 h-4 stroke-[2]" />
-            </div>
-            <span className="text-xs sm:text-[13px] font-medium text-white group-hover:text-neutral-200 leading-tight">
-              {t("quickBrightness")}
-            </span>
-          </Link>
-
-          {/* 4. Contrast */}
-          <Link 
-            href="/tests/contrast-test"
-            className="bg-black hover:bg-neutral-900 text-white border border-neutral-900 hover:border-neutral-800 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3 group transition-all hover:shadow-md focus-visible:ring-2 focus-visible:ring-neutral-400 min-h-[50px] sm:min-h-[54px]"
-          >
-            <div className="w-4 h-4 rounded-full border border-white/90 overflow-hidden shrink-0 flex">
-              <div className="w-1/2 h-full bg-white" />
-              <div className="w-1/2 h-full bg-black" />
-            </div>
-            <span className="text-xs sm:text-[13px] font-medium text-white group-hover:text-neutral-200 leading-tight">
-              {t("quickContrast")}
-            </span>
-          </Link>
-
-          {/* 5. Ghosting */}
-          <Link 
-            href="/tests/ghosting-test"
-            className="bg-black hover:bg-neutral-900 text-white border border-neutral-900 hover:border-neutral-800 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3 group transition-all hover:shadow-md focus-visible:ring-2 focus-visible:ring-neutral-400 min-h-[50px] sm:min-h-[54px]"
-          >
-            <div className="w-5 h-5 flex items-center justify-center shrink-0 text-white">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="17" cy="4" r="2"/>
-                <path d="m15 8-5 3-4-2"/>
-                <path d="m13 13 3 5 4-1"/>
-                <path d="M10 11v6l-4 3"/>
-              </svg>
-            </div>
-            <span className="text-xs sm:text-[13px] font-medium text-white group-hover:text-neutral-200 leading-tight">
-              {t("quickGhosting")}
-            </span>
-          </Link>
-
-          {/* 6. Refresh Rate */}
-          <Link 
-            href="/tests/refresh-rate-test"
-            className="bg-black hover:bg-neutral-900 text-white border border-neutral-900 hover:border-neutral-800 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3 group transition-all hover:shadow-md focus-visible:ring-2 focus-visible:ring-neutral-400 min-h-[50px] sm:min-h-[54px]"
-          >
-            <div className="w-5 h-5 flex items-center justify-center shrink-0 text-white">
-              <Activity className="w-4 h-4 stroke-[2]" />
-            </div>
-            <span className="text-xs sm:text-[13px] font-medium text-white group-hover:text-neutral-200 leading-tight">
-              {t("quickRefreshRate")}
-            </span>
-          </Link>
-        </div>
-      </section>
+      <AllScreenTests
+        categories={categories}
+        sectionTitle={t("allTestsTitle")}
+        sectionSubtitle={t("allTestsSubtitle")}
+        searchPlaceholder={t("allTestsSearchPlaceholder")}
+        filterAllText={t("allTestsFilterAll")}
+        noResultsText={t("allTestsNoResults")}
+      />
 
       {/* ================================================== */}
       {/* 4. MORE TOOLS SECTION                             */}

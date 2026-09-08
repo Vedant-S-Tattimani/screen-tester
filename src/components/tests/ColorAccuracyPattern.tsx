@@ -74,12 +74,14 @@ export function ColorAccuracyPattern({ testId }: ColorAccuracyPatternProps) {
           <button
             onClick={() => setShowLabels(v => !v)}
             className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
-              showLabels ? "bg-foreground text-background border-foreground" : "bg-muted/50 text-muted-foreground hover:text-foreground border-border/50"
+              showLabels 
+                ? "bg-white text-gray-950 font-bold shadow-xs border-transparent" 
+                : "bg-muted/60 text-gray-700 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white dark:hover:bg-white/10 border-border/50"
             }`}
           >
             {showLabels ? "Hide Hex / Names" : "Show Hex / Names"}
           </button>
-          <span className="text-xs text-muted-foreground hidden sm:inline">
+          <span className="text-xs text-muted-foreground dark:text-slate-300 hidden sm:inline">
             24 Standard Reference Patches
           </span>
         </div>

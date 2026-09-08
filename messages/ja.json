@@ -210,7 +210,20 @@
     "step2Title": "全画面表示にする",
     "step2Desc": "全画面表示（F11キー）を有効にして、ブラウザのタブやOSのタスクバーが端のピクセルを隠さないようにします。",
     "step3Title": "適切な照明下で確認する",
-    "step3Desc": "バックライト漏れやコントラストを確認する際は室内の照明を落とし、正面だけでなく斜めの角度からも観察してください。"
+    "step3Desc": "バックライト漏れやコントラストを確認する際は室内の照明を落とし、正面だけでなく斜めの角度からも観察してください。",
+    "allTestsTitle": "すべての画面テスト",
+    "allTestsSubtitle": "ディスプレイの診断に利用可能なすべてのテストを一覧。",
+    "allTestsSearchPlaceholder": "28種類の画面テストを検索...",
+    "allTestsFilterAll": "すべてのテスト",
+    "allTestsCount": "28テスト",
+    "allTestsCategories": {
+      "colorPixels": "カラー・画素（ピクセル）テスト",
+      "gradientContrast": "グラデーション・コントラストテスト",
+      "uniformityPanel": "画面均一性・バックライト診断",
+      "motionPerformance": "残像（モーション）・リフレッシュレート",
+      "sharpnessCapabilities": "鮮鋭度（シャープネス）・機能テスト"
+    },
+    "allTestsNoResults": "一致するテストが見つかりません:"
   },
   "TestLibrary": {
     "categories": {
