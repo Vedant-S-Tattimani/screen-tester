@@ -415,7 +415,10 @@
       "moveDown": "Move down",
       "remove": "Remove from queue",
       "restart": "Restart",
-      "completeReport": "Complete & View Report"
+      "completeReport": "Complete & View Report",
+      "sequenceLabel": "Queue Sequence",
+      "manageQueue": "Manage Queue",
+      "stepProgress": "Test {x} of {y}"
     },
     "pixelDefect": {
       "bannerInstruction": "Click anywhere to mark pixel defect",
@@ -841,15 +844,119 @@
     },
     "ghostingConcept": {
       "metaTitle": "How to Check Monitor Ghosting – Pixel Response Time & Overdrive Guide",
-      "metaDescription": "Learn what monitor ghosting and inverse ghosting (coronas) are, how to inspect pixel response times, and how to tune overdrive."
+      "metaDescription": "Learn what monitor ghosting and inverse ghosting (coronas) are, how to inspect pixel response times, and how to tune overdrive.",
+      "breadcrumbsGuides": "Guides",
+      "breadcrumbsTitle": "Ghosting & Motion",
+      "eyebrow": "DISPLAY GUIDE & MOTION CLARITY",
+      "title": "How to Check Monitor Ghosting & Motion Clarity",
+      "intro": "Monitor ghosting occurs when liquid crystals take too long to transition from one color or brightness level to another. Understanding the visual symptoms helps you fine-tune your monitor's overdrive settings for optimal clarity.",
+      "standardGhosting": {
+        "title": "Standard Ghosting (Trailing)",
+        "desc": "A fuzzy, dark or smudged trail following behind moving objects against contrasting backgrounds.",
+        "causeLabel": "Primary Cause",
+        "cause": "Slow Gray-to-Gray (GtG) pixel response times. Typical on standard VA panels in dark transitions.",
+        "solutionLabel": "Solution",
+        "solution": "Increase the monitor's OSD Overdrive / Trace Free / AMA setting by one step."
+      },
+      "inverseGhosting": {
+        "title": "Inverse Ghosting (Coronas / Overshoot)",
+        "desc": "A bright, inverted-colored or glowing halo trailing behind moving objects.",
+        "causeLabel": "Primary Cause",
+        "cause": "Excessive panel overdrive voltage pushing liquid crystals past target color states (overshoot).",
+        "solutionLabel": "Solution",
+        "solution": "Lower the monitor's Overdrive setting. Never use 'Extreme' or 'Fastest' mode unless running at maximum refresh rate."
+      },
+      "howToTestTitle": "How to Test Motion Clarity in Your Browser",
+      "howToTestP1": "Open our Ghosting and Motion Blur tests at full screen. Focus your gaze on a moving shape as it passes across the display. If the shape leaves a dark smear behind, overdrive is set too low. If you observe a bright, unnatural glow, overdrive is set too aggressively.",
+      "howToTestP2": "Important Limitation: While browser tests provide accurate visual cues for adjusting monitor overdrive, true response times (GtG in milliseconds) require specialized high-speed photodiode oscilloscopes.",
+      "testsTitle": "Related Diagnostic Tests",
+      "ghostingTestTitle": "Ghosting Test",
+      "ghostingTestDesc": "High contrast moving blocks across various speed profiles",
+      "refreshRateTestTitle": "Refresh Rate Test",
+      "refreshRateTestDesc": "Measure browser frame timing and animation fluidity"
     },
     "backlightBleedConcept": {
       "metaTitle": "How to Check Backlight Bleed vs IPS Glow – Dark Room Testing Guide",
-      "metaDescription": "Learn how to differentiate true backlight bleed from normal IPS glow, proper dark room testing methods, and when to request an RMA."
+      "metaDescription": "Learn how to differentiate true backlight bleed from normal IPS glow, proper dark room testing methods, and when to request an RMA.",
+      "breadcrumbsGuides": "Guides",
+      "breadcrumbsTitle": "Backlight Bleed",
+      "eyebrow": "DISPLAY GUIDE & LUMINANCE",
+      "title": "Backlight Bleed vs IPS Glow: Testing & Diagnosis",
+      "intro": "When viewing dark scenes on an LCD monitor, light imperfections are often noticed in corners or along the bezel edges. Differentiating structural backlight bleed from normal IPS optical glow is critical before deciding to RMA a display.",
+      "backlightBleed": {
+        "badge": "Hardware Assembly Defect",
+        "title": "Backlight Bleed",
+        "desc": "Unintended light leaking from behind the LCD matrix through uneven bezel pressure, loose frame tolerances, or pinched panel corners.",
+        "behaviorLabel": "Behavior",
+        "behavior": "Remains fixed in the exact same spot and brightness regardless of your viewing angle or viewing distance.",
+        "appearanceLabel": "Appearance",
+        "appearance": "Jagged white or yellow light puddles spilling inwards from the edges or corners.",
+        "actionLabel": "Action",
+        "action": "Severe bleed affecting daily usage justifies a retailer exchange."
+      },
+      "ipsGlow": {
+        "badge": "Normal Optical Characteristic",
+        "title": "IPS Glow",
+        "desc": "An inherent optical phenomenon of In-Plane Switching liquid crystal panels where light reflects at wide viewing angles.",
+        "behaviorLabel": "Behavior",
+        "behavior": "Changes intensity, shifts position, or disappears entirely as you tilt your head or step further back from the screen.",
+        "appearanceLabel": "Appearance",
+        "appearance": "A soft silver, amber, or violet sheen primarily visible in the 4 corners on dark backgrounds.",
+        "actionLabel": "Action",
+        "action": "Present on almost all IPS panels; mitigated by lowering brightness and maintaining arm's-length viewing distance."
+      },
+      "isolationMethodTitle": "The Isolation Test Method",
+      "isolationSteps": [
+        "Dim the room lights completely so reflections do not mask dark details.",
+        "Open our full screen Backlight Bleed test.",
+        "Set your monitor brightness to your normal working level (around 120-150 nits, usually 30-50% on monitor OSD).",
+        "Look at the corners from an arm's length. Now step back 2 meters and bob your head side to side.",
+        "If the light shifts with your head position, it is IPS glow. If the light stays anchored to the bezel edge, it is backlight bleed."
+      ],
+      "testsTitle": "Run Diagnostic Tests",
+      "backlightBleedTestTitle": "Backlight Bleed Test",
+      "backlightBleedTestDesc": "Fullscreen 0% pure black pattern with brightness calibration",
+      "uniformityTestTitle": "Screen Uniformity Test",
+      "uniformityTestDesc": "Inspect gray and luminance steps across screen quadrants"
     },
     "pixelDefectsConcept": {
       "metaTitle": "Dead Pixel vs Stuck Pixel – How to Diagnose & Fix Screen Defects",
-      "metaDescription": "Understand the differences between dead pixels and stuck subpixels, how to test for them, and manufacturer warranty policies."
+      "metaDescription": "Understand the differences between dead pixels and stuck subpixels, how to test for them, and manufacturer warranty policies.",
+      "breadcrumbsGuides": "Guides",
+      "breadcrumbsTitle": "Dead vs Stuck Pixels",
+      "eyebrow": "DISPLAY GUIDE & ANALYSIS",
+      "title": "Dead Pixel vs Stuck Pixel: How to Tell the Difference",
+      "intro": "Pixel flaws are among the most common defects found in LCD and OLED panels. Knowing whether an aberrant pixel is permanently dead or merely stuck determines whether it can be recovered or warrants a manufacturer warranty return.",
+      "deadPixel": {
+        "badge": "Permanent Defect",
+        "title": "Dead Pixel",
+        "desc": "A pixel whose transistor has completely failed, leaving all three RGB subpixels permanently switched off (or unpowered).",
+        "appearanceLabel": "Appearance",
+        "appearance": "Always appears pitch black against white and colored backgrounds.",
+        "causeLabel": "Cause",
+        "cause": "Broken electrode, failed thin-film transistor (TFT), or severed micro-trace.",
+        "recoveryLabel": "Recovery",
+        "recovery": "Hardware-level failure; cannot be fixed via software cycling."
+      },
+      "stuckPixel": {
+        "badge": "Potentially Recoverable",
+        "title": "Stuck Pixel",
+        "desc": "A pixel where one or two subpixels (Red, Green, or Blue) remain constantly energised and cannot turn off.",
+        "appearanceLabel": "Appearance",
+        "appearance": "A bright red, green, blue, cyan, or magenta dot, most noticeable against dark or black backgrounds.",
+        "causeLabel": "Cause",
+        "cause": "Liquid crystal molecules temporarily locked in open state or charge imbalance.",
+        "recoveryLabel": "Recovery",
+        "recovery": "Rapid high-frequency color flashing (stuck pixel cycle) can sometimes unstick the crystal orientation."
+      },
+      "isoTitle": "ISO 9241-307 Panel Defect Standards",
+      "isoP1": "Most consumer monitors are classified as Class 2 panels. Under ISO standards, manufacturers allow up to 2 permanently bright pixels, 2 permanently dark pixels, or up to 5 defective subpixels per million pixels before considering the panel defective for warranty replacement.",
+      "isoP2": "If you have discovered a pixel defect within the retailer's initial return or exchange window (typically 14 to 30 days), return it directly to the retailer rather than filing a manufacturer warranty claim, which may be rejected under Class 2 allowances.",
+      "testsTitle": "Run Diagnostic Tests",
+      "deadPixelTestTitle": "Dead Pixel Test",
+      "deadPixelTestDesc": "Cycle through full screen solid white and primary colors",
+      "stuckPixelTestTitle": "Stuck Pixel Fixer & Test",
+      "stuckPixelTestDesc": "High-frequency RGB subpixel cycling tool"
     },
     "deviceGuidesHeading": "DEVICE GUIDES",
     "conceptGuidesHeading": "CONCEPTS & EXPLANATIONS",

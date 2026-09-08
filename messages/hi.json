@@ -4,7 +4,7 @@
     "description": "मुफ़्त ऑनलाइन स्क्रीन टेस्टर और मॉनिटर टेस्ट टूल। अपने डिस्प्ले पर डेड पिक्सल टेस्ट, स्क्रीन कलर टेस्ट, विजुअल कैलिब्रेशन, रिफ्रेश रेट और घोस्टिंग की जांच करें।"
   },
   "Header": {
-    "title": "Monitor Tester",
+    "title": "मॉनिटर टेस्टर",
     "nav": {
       "tests": "परीक्षण",
       "inspection": "निरीक्षण",
@@ -17,7 +17,7 @@
       "color": "रंग",
       "luminance": "चमक",
       "display": "डिस्प्ले",
-      "motion": "मोशन",
+      "motion": "गति",
       "advanced": "उन्नत"
     },
     "inspection": {
@@ -41,61 +41,61 @@
     "dropdown": {
       "popularTests": "लोकप्रिय परीक्षण",
       "deadPixels": "डेड पिक्सल टेस्ट",
-      "colorTest": "स्क्रीन कलर टेस्ट",
-      "brightness": "ब्राइटनेस",
+      "colorTest": "रंग परीक्षण",
+      "brightness": "चमक",
       "contrast": "कंट्रास्ट",
-      "ghosting": "मॉनिटर घोस्टिंग टेस्ट",
+      "ghosting": "घोस्टिंग टेस्ट",
       "refreshRate": "रिफ्रेश रेट टेस्ट",
       "viewAllTests": "सभी 28 परीक्षण देखें",
       "troubleshootInspect": "समस्या निवारण और निरीक्षण",
       "diagnoseProblem": "समस्या का निदान करें",
       "wizardBadge": "विज़ार्ड",
       "generalCheckup": "सामान्य जांच",
-      "subAllRound": "सर्वांगीण",
+      "subAllRound": "सर्व-गोल",
       "usedMonitor": "पुराना मॉनिटर",
-      "subPrePurchase": "खरीद से पहले",
+      "subPrePurchase": "पूर्व-खरीद",
       "gamingDisplay": "गेमिंग डिस्प्ले",
       "subHzMotion": "Hz और गति",
       "oledDisplay": "OLED डिस्प्ले",
-      "subBurnIn": "बर्न-इन और ब्लैक",
+      "subBurnIn": "बर्न-इन और काला",
       "laptopDisplay": "लैपटॉप डिस्प्ले",
       "subDpiScale": "DPI और स्केल",
-      "savedReports": "सहेजी गई रिपोर्टें",
+      "savedReports": "सहेजी गई रिपोर्ट और नोट्स",
       "inspectionHub": "निरीक्षण हब",
-      "utilitiesTools": "उपयोगिताएँ और उपकरण",
+      "utilitiesTools": "उपयोगिताएं और उपकरण",
       "displayInfo": "डिस्प्ले जानकारी",
       "resolutionPpi": "रिज़ॉल्यूशन और PPI",
-      "compareDisplays": "डिस्प्ले तुलना",
+      "compareDisplays": "डिस्प्ले की तुलना करें",
       "customPattern": "कस्टम पैटर्न",
-      "viewAllTools": "सभी उपकरण देखें",
+      "viewAllTools": "सभी टूल देखें",
       "practicalGuides": "व्यावहारिक गाइड",
       "deadVsStuck": "डेड बनाम स्टक पिक्सल",
-      "ghostingMotion": "घोस्टिंग और मोशन",
+      "ghostingMotion": "घोस्टिंग और गति",
       "backlightBleed": "बैकलाइट ब्लीड",
-      "viewingAngles": "व्यूइंग एंगल",
+      "viewingAngles": "देखने के कोण",
       "allGuides": "सभी डिस्प्ले गाइड"
     },
     "searchPlaceholder": "परीक्षण या गाइड खोजें..."
   },
   "Footer": {
-    "title": "Monitor Tester",
-    "description": "डेड पिक्सेल, बैकलाइट ब्लीड, रंग, मोशन और अन्य समस्याओं के लिए अपने डिस्प्ले का परीक्षण करने के लिए एक निःशुल्क, ओपन और गोपनीयता-केंद्रित टूल। सीधे आपके ब्राउज़र में काम करता है।",
+    "title": "मॉनिटर टेस्टर",
+    "description": "एक मुफ्त, खुला और गोपनीयता-केंद्रित टूल सूट जो आपके डिस्प्ले को डेड पिक्सल, बैकलाइट ब्लीड, रंग, गति और अधिक के लिए परीक्षण करता है। सीधे आपके ब्राउज़र में काम करता है।",
     "attributes": {
       "browserTitle": "ब्राउज़र में काम करता है",
-      "browserDesc": "किसी सॉफ़्टवेयर की आवश्यकता नहीं",
+      "browserDesc": "कोई सॉफ्टवेयर आवश्यक नहीं",
       "privacyTitle": "निजी और सुरक्षित",
       "privacyDesc": "सभी परीक्षण स्थानीय रूप से चलते हैं",
-      "deviceTitle": "किसी भी डिवाइस पर उपलब्ध",
+      "deviceTitle": "किसी भी डिवाइस पर काम करता है",
       "deviceDesc": "डेस्कटॉप, लैपटॉप, टैबलेट, मोबाइल",
-      "i18nTitle": "बहुभाषी",
-      "i18nDesc": "विभिन्न भाषाओं में उपलब्ध"
+      "i18nTitle": "बहु-भाषा",
+      "i18nDesc": "अनेक भाषाओं में उपलब्ध"
     },
     "columns": {
       "tests": "परीक्षण",
       "inspection": "निरीक्षण",
       "guides": "गाइड",
-      "about": "के बारे में",
-      "guidesAndTools": "गाइड और टूल्स"
+      "about": "हमारे बारे में",
+      "guidesAndTools": "गाइड और उपकरण"
     },
     "links": {
       "allTests": "सभी परीक्षण",
@@ -122,14 +122,14 @@
       "about": "मॉनिटर टेस्टर के बारे में",
       "privacy": "गोपनीयता नीति",
       "terms": "उपयोग की शर्तें",
-      "contact": "संपर्क करें",
+      "contact": "संपर्क",
       "contribute": "योगदान दें",
       "reportIssue": "समस्या की रिपोर्ट करें"
     },
-    "copyright": "Monitor Tester. सर्वाधिकार सुरक्षित।"
+    "copyright": "मॉनिटर टेस्टर। सर्वाधिकार सुरक्षित।"
   },
   "LanguageSwitcher": {
-    "en": "English",
+    "en": "अंग्रेज़ी",
     "hi": "हिन्दी",
     "es": "Español",
     "fr": "Français",
@@ -137,7 +137,7 @@
     "pt": "Português",
     "ja": "日本語",
     "ko": "한국어",
-    "label": "भाषा चुनें"
+    "label": "भाषा"
   },
   "Home": {
     "eyebrow": "परीक्षण. निरीक्षण. समझें।",
@@ -215,7 +215,7 @@
     "allTestsSubtitle": "अपने डिस्प्ले की जांच के लिए उपलब्ध सभी टेस्ट देखें।",
     "allTestsSearchPlaceholder": "28 डिस्प्ले टेस्ट में खोजें...",
     "allTestsFilterAll": "सभी टेस्ट",
-    "allTestsCount": "28 टेस्ट",
+    "allTestsCount": "28 परीक्षण",
     "allTestsCategories": {
       "colorPixels": "कलर और पिक्सल टेस्ट",
       "gradientContrast": "ग्रेडिएंट और कंट्रास्ट टेस्ट",
@@ -245,10 +245,10 @@
       "calibration": "कैलिब्रेशन",
       "backlight": "बैकलाइट",
       "darkRoom": "अंधेरा कमरा",
-      "canvas": "CANVAS",
+      "canvas": "कैनवास",
       "latency": "लेटेंसी",
       "estimate": "अनुमान",
-      "vsync": "VSYNC",
+      "vsync": "V-SYNC",
       "api": "API"
     },
     "tests": {
@@ -293,28 +293,28 @@
         "description": "तार्किक रिज़ॉल्यूशन, रंग गहराई, अभिविन्यास और HDR समर्थन क्षमताओं की रिपोर्ट करने के लिए उजागर ब्राउज़र API पढ़ता है।"
       },
       "grayscaleTest": {
-        "title": "Grayscale Test",
-        "description": "Test monitor ability to render neutral grays without color tinting."
+        "title": "ग्रेस्केल टेस्ट",
+        "description": "रंग टिंटिंग के बिना तटस्थ ग्रे रेंडर करने की मॉनिटर की क्षमता का परीक्षण करें।"
       },
       "saturationTest": {
-        "title": "Saturation Test",
-        "description": "Assess color vibrancy and detect banding in high-saturation gradients."
+        "title": "सैचुरेशन टेस्ट",
+        "description": "उच्च-संतृप्ति ग्रेडिएंट में रंग जीवंतता का आकलन करें और बैंडिंग का पता लगाएं।"
       },
       "blackLevelTest": {
-        "title": "Black Level Test",
-        "description": "Tune your monitor's black levels to ensure dark details aren't crushed."
+        "title": "ब्लैक लेवल टेस्ट",
+        "description": "डार्क डिटेल को क्रश न हो, यह सुनिश्चित करने के लिए अपने मॉनिटर के ब्लैक लेवल को ट्यून करें।"
       },
       "whiteLevelTest": {
-        "title": "White Level Test",
-        "description": "Tune your monitor's contrast to ensure bright details aren't clipped."
+        "title": "व्हाइट लेवल टेस्ट",
+        "description": "चमकीले विवरण क्लिप न हों, यह सुनिश्चित करने के लिए अपने मॉनिटर के कंट्रास्ट को ट्यून करें।"
       },
       "gammaTest": {
-        "title": "Gamma Calibration",
-        "description": "Visually estimate your monitor's gamma tracking (target 2.2 for sRGB)."
+        "title": "गामा कैलिब्रेशन",
+        "description": "अपने मॉनिटर के गामा ट्रैकिंग का दृश्य रूप से अनुमान लगाएं (sRGB के लिए लक्ष्य 2.2)।"
       },
       "hdrCapabilityTest": {
-        "title": "HDR Capability",
-        "description": "Verify your browser and OS correctly detect HDR and Wide Color Gamut."
+        "title": "HDR क्षमता",
+        "description": "सत्यापित करें कि आपका ब्राउज़र और OS सही ढंग से HDR और वाइड कलर गैमट का पता लगाते हैं।"
       },
       "contrastTest": {
         "title": "कंट्रास्ट कैलिब्रेशन",
@@ -377,7 +377,10 @@
       "moveDown": "नीचे ले जाएं",
       "remove": "कतार से हटाएं",
       "restart": "पुनः आरंभ करें",
-      "completeReport": "पूर्ण करें और रिपोर्ट देखें"
+      "completeReport": "पूर्ण करें और रिपोर्ट देखें",
+      "sequenceLabel": "कतार अनुक्रम",
+      "manageQueue": "कतार प्रबंधित करें",
+      "stepProgress": "परीक्षण {x} / {y}"
     },
     "pixelDefect": {
       "bannerInstruction": "पिक्सेल दोष चिह्नित करने के लिए कहीं भी क्लिक करें",
@@ -484,8 +487,8 @@
     "backlight-bleed-test": {
       "metaTitle": "बैकलाइट ब्लीड टेस्ट – स्क्रीन के कोनों से लाइट लीकेज और IPS ग्लो चेक",
       "metaDescription": "अंधेरे कमरे में अपने एलसीडी और एलईडी मॉनिटर के किनारों से निकलने वाली बैकलाइट ब्लीड (लाइट लीकेज) की पहचान करें।",
-      "title": "Backlight Bleed Test",
-      "description_p1": "This test renders a pure black screen. It is designed to expose backlight bleed, clouding, or IPS glow that typically affects LCD/LED panels.",
+      "title": "बैकलाइट ब्लीड टेस्ट",
+      "description_p1": "यह परीक्षण एक शुद्ध काली स्क्रीन रेंडर करता है। यह LCD बैकलाइट ब्लीड, क्लाउडिंग या IPS ग्लो को उजागर करने के लिए डिज़ाइन किया गया है।",
       "instructions": [
         "<strong>Crucial:</strong> This test must be performed in a completely dark room.",
         "Set your monitor to its standard or calibrated brightness level (do not force 100% brightness unless that is how you normally use it).",
@@ -508,8 +511,8 @@
     "stuck-pixel-test": {
       "metaTitle": "स्टक पिक्सल फिक्सर और टेस्ट – अटके हुए पिक्सल को ठीक करने का प्रयास",
       "metaDescription": "अटके हुए सबपिक्सल की पहचान करें और हाई-स्पीड RGB कलर साइकिलिंग द्वारा उन्हें एक्टिवेट करने का प्रयास करें।",
-      "title": "Stuck Pixel Fixer & Test",
-      "description_p1": "Unlike a dead pixel (which is permanently black), a <strong>stuck pixel</strong> is a single subpixel (red, green, or blue) that is permanently turned on. Sometimes, rapidly cycling colors can un-stick the liquid crystal.",
+      "title": "स्टक पिक्सल फिक्सर और टेस्ट",
+      "description_p1": "एक डेड पिक्सल (जो स्थायी रूप से काला है) के विपरीत, एक <strong>स्टक पिक्सल</strong> एक एकल सबपिक्सल है जो हमेशा चालू रहता है।",
       "instructions": [
         "<strong>Warning:</strong> This test flashes bright colors rapidly. Do not use if you are sensitive to flashing lights.",
         "The test will automatically cycle between Red, Green, and Blue at a high frequency.",
@@ -520,8 +523,8 @@
     "uniformity-test": {
       "metaTitle": "स्क्रीन यूनिफॉर्मिटी टेस्ट – ब्राइटनेस एकरूपता और डर्टी स्क्रीन इफेक्ट (DSE)",
       "metaDescription": "पूरे डिस्प्ले पर एक समान रोशनी और डर्टी स्क्रीन इफेक्ट (DSE) की जांच 5%, 20% और 50% ग्रे पैटर्न से करें।",
-      "title": "Screen Uniformity & DSE Test",
-      "description_p1": "This test displays stepped grayscale backgrounds to help identify backlight bleeding, edge darkening (vignetting), and Dirty Screen Effect (DSE).",
+      "title": "स्क्रीन यूनिफॉर्मिटी और DSE टेस्ट",
+      "description_p1": "यह परीक्षण बैकलाइट ब्लीडिंग, किनारे के कालेपन और DSE की पहचान करने में मदद के लिए चरणबद्ध ग्रेस्केल बैकग्राउंड प्रदर्शित करता है।",
       "instructions": [
         "Check the corners and edges on the 5% and 10% dark grays for clouding or light bleed.",
         "On the 20% and 50% grays, look for splotches, bands, or \"dirty\" smudges across the center of the screen (DSE).",
@@ -532,99 +535,99 @@
     "black-level-test": {
       "metaTitle": "ब्लैक लेवल टेस्ट – शैडो डिटेल्स और डीप ब्लैक कैलिब्रेशन",
       "metaDescription": "गहरे दृश्यों में डिटेल्स को स्पष्ट देखने और ब्लैक क्रश से बचने के लिए ब्लैक लेवल को कैलिब्रेट करें।",
-      "title": "Black Level Test",
-      "description_p1": "This test helps you configure your monitor's black level (brightness) setting. It displays extremely dark shades near pure black.",
-      "inst1": "Turn off room lights or reduce glare on the screen.",
-      "inst2": "Adjust your monitor's 'Brightness' setting until you can barely distinguish block 1 from the pure black background.",
-      "inst3": "If blocks 1-5 look identical to the background, your blacks are being crushed."
+      "title": "ब्लैक लेवल टेस्ट",
+      "description_p1": "यह परीक्षण आपके मॉनिटर के ब्लैक लेवल (चमक) सेटिंग को कॉन्फ़िगर करने में मदद करता है। यह अत्यंत गहरे ग्रे ब्लॉक प्रदर्शित करता है।",
+      "inst1": "कमरे की लाइट बंद करें या स्क्रीन पर चमक कम करें।",
+      "inst2": "अपने मॉनिटर की 'चमक' सेटिंग को तब तक एडजस्ट करें जब तक आप शुद्ध काले बैकग्राउंड से ब्लॉक 1 को मुश्किल से अलग कर सकें।",
+      "inst3": "यदि ब्लॉक 1-5 बैकग्राउंड के समान दिखते हैं, तो आपके काले रंग क्रश हो रहे हैं।"
     },
     "white-level-test": {
       "metaTitle": "व्हाइट लेवल टेस्ट – ब्राइट हाइलाइट्स और व्हाइट क्लिपिंग चेक",
       "metaDescription": "95% से 100% तक की ब्राइटनेस स्टेप्स की जांच करें ताकि ब्राइट हाइलाइट्स ओवर-एक्सपोज न हों।",
-      "title": "White Level Test",
-      "description_p1": "This test helps you configure your monitor's white level (contrast) setting. It displays extremely bright shades near pure white.",
-      "inst1": "Adjust your monitor's 'Contrast' setting until you can distinguish block 254 from the pure white background.",
-      "inst2": "If blocks 250-254 look identical to the background, your whites are clipping.",
-      "inst3": "Do not set contrast so high that bright details are lost."
+      "title": "व्हाइट लेवल टेस्ट",
+      "description_p1": "यह परीक्षण आपके मॉनिटर के व्हाइट लेवल (कंट्रास्ट) सेटिंग को कॉन्फ़िगर करने में मदद करता है। यह अत्यंत चमकीले ग्रे ब्लॉक प्रदर्शित करता है।",
+      "inst1": "अपने मॉनिटर की 'कंट्रास्ट' सेटिंग को तब तक एडजस्ट करें जब तक आप शुद्ध सफेद बैकग्राउंड से ब्लॉक 254 को अलग कर सकें।",
+      "inst2": "यदि ब्लॉक 250-254 बैकग्राउंड के समान दिखते हैं, तो आपके सफेद रंग क्लिप हो रहे हैं।",
+      "inst3": "कंट्रास्ट को इतना अधिक न बढ़ाएं कि उज्ज्वल विवरण खो जाएं।"
     },
     "grayscale-test": {
       "metaTitle": "ग्रेस्केल टेस्ट – 256-स्टेप ग्रे ग्रेडिएंट और कलर टोन चेक",
       "metaDescription": "बिना किसी अनचाहे रंग प्रभाव (गुलाबी या नीले रंग का टिंट) के न्यूट्रल ग्रे टोन की जांच करें।",
-      "title": "Grayscale Test",
-      "description_p1": "This test displays neutral grayscale backgrounds. It helps you check if your monitor suffers from unwanted color tints in its gray rendering.",
-      "inst1": "Cycle through the gray levels using Space or right arrow.",
-      "inst2": "Look for pink, blue, or green tints in what should be neutral gray.",
-      "inst3": "Use your monitor's RGB balance controls to correct any color cast."
+      "title": "ग्रेस्केल टेस्ट",
+      "description_p1": "यह परीक्षण तटस्थ ग्रेस्केल बैकग्राउंड प्रदर्शित करता है। यह जांचने में मदद करता है कि आपके मॉनिटर में रंग टिंटिंग है या नहीं।",
+      "inst1": "Space या राइट एरो का उपयोग करके ग्रे लेवल के माध्यम से साइकिल करें।",
+      "inst2": "तटस्थ ग्रे में गुलाबी, नीले या हरे रंग के रंग देखें।",
+      "inst3": "किसी भी रंग कास्ट को ठीक करने के लिए अपने मॉनिटर के RGB बैलेंस नियंत्रण का उपयोग करें।"
     },
     "saturation-test": {
       "metaTitle": "कलर सैचुरेशन टेस्ट – प्राइमरी और सेकेंडरी रंगों की गहराई की जांच",
       "metaDescription": "स्क्रीन पर रंगों की सैचुरेशन और वाइब्रेंसी का मूल्यांकन करें ताकि रंग प्राकृतिक और संतुलित दिखें।",
-      "title": "Saturation Test",
-      "description_p1": "This test displays a continuous color spectrum and stepped saturation blocks for primary colors.",
-      "inst1": "Check the smooth spectrum for obvious banding or harsh transitions.",
-      "inst2": "Look at the individual saturation steps to ensure distinct differences between blocks.",
-      "inst3": "Adjust your monitor's saturation/vibrancy settings if colors look washed out or overly neon."
+      "title": "सैचुरेशन टेस्ट",
+      "description_p1": "यह परीक्षण एक निरंतर रंग स्पेक्ट्रम और प्राथमिक रंगों के लिए चरणबद्ध सैचुरेशन ब्लॉक प्रदर्शित करता है।",
+      "inst1": "स्पष्ट बैंडिंग या कठोर संक्रमण के लिए चिकने स्पेक्ट्रम की जांच करें।",
+      "inst2": "ब्लॉकों के बीच अलग अंतर सुनिश्चित करने के लिए अलग-अलग सैचुरेशन चरणों को देखें।",
+      "inst3": "यदि रंग धुले हुए या अत्यधिक नियॉन दिखते हैं तो अपने मॉनिटर की सैचुरेशन/वाइब्रेंसी सेटिंग एडजस्ट करें।"
     },
     "gamma-test": {
       "metaTitle": "गामा कैलिब्रेशन टेस्ट – गामा 2.2 और 2.4 विजुअल चेक",
       "metaDescription": "मानक गामा 2.2 और 2.4 कर्व्स के सापेक्ष अपने मॉनिटर की गामा एक्यूरेसी की जांच करें।",
-      "title": "Gamma Calibration",
-      "description_p1": "This tool helps you estimate your monitor's physical gamma curve. A gamma of 2.2 is the standard for sRGB and Windows PCs.",
-      "inst1": "Enter fullscreen and move away from the monitor, or squint your eyes until the top lines blur into a solid gray.",
-      "inst2": "Compare the blurred top half to the three solid blocks below.",
-      "inst3": "The block that perfectly matches the brightness of the blurred top half indicates your monitor's approximate gamma.",
-      "inst4": "<strong>ABOUT THIS TEST:</strong> This tool relies on visual perception and standard browser color rendering. It is not a replacement for a hardware colorimeter."
+      "title": "गामा कैलिब्रेशन",
+      "description_p1": "यह टूल आपके मॉनिटर की भौतिक गामा वक्र का अनुमान लगाने में मदद करता है। 2.2 का गामा sRGB के लिए मानक है।",
+      "inst1": "फुलस्क्रीन में जाएं और मॉनिटर से दूर हटें, या ऊपरी लाइनें धुंधली होने तक आंखें सिकोड़ें।",
+      "inst2": "धुंधरे ऊपरी आधे हिस्से की तुलना नीचे के तीन सॉलिड ब्लॉकों से करें।",
+      "inst3": "जो ब्लॉक धुंधले ऊपरी आधे हिस्से की चमक से पूरी तरह मेल खाता है वह आपके मॉनिटर का अनुमानित गामा दर्शाता है।",
+      "inst4": "<strong>इस परीक्षण के बारे में:</strong> यह टूल दृश्य धारणा और मानक ब्राउज़र रंग रेंडरिंग पर निर्भर करता है।"
     },
     "motion-blur-test": {
       "metaTitle": "मोशन ब्लर टेस्ट – गेमिंग डिस्प्ले की मोशन क्लैरिटी और MPRT",
       "metaDescription": "फास्ट-मूविंग सीन्स में स्क्रीन की मोशन क्लैरिटी और रिस्पांस टाइम का विश्लेषण करें।",
-      "title": "Motion Blur Test",
-      "description_p1": "Assess how well your monitor handles fast motion without blurring or smearing details.",
-      "inst1": "Track the moving blocks with your eyes.",
-      "inst2": "Look at the small inner square. If the edges blur completely, your monitor has a slow pixel response time.",
-      "inst3": "Adjust speed and contrast to test under different panel overdrive scenarios."
+      "title": "मोशन ब्लर टेस्ट",
+      "description_p1": "आकलन करें कि बिना धुंधले या स्मीयरिंग विवरण के आपका मॉनिटर तेज गति को कितनी अच्छी तरह संभालता है।",
+      "inst1": "चलती हुई ब्लॉकों को आंखों से ट्रैक करें।",
+      "inst2": "छोटे आंतरिक वर्ग को देखें। यदि किनारे पूरी तरह धुंधले हो जाते हैं, तो आपके मॉनिटर में धीमी पिक्सल प्रतिक्रिया है।",
+      "inst3": "विभिन्न पैनल ओवरड्राइव परिदृश्यों के तहत परीक्षण करने के लिए गति और कंट्रास्ट एडजस्ट करें।"
     },
     "hdr-capability-test": {
       "metaTitle": "HDR टेस्ट – हाई डायनेमिक रेंज और पीक ब्राइटनेस डिटेक्शन",
       "metaDescription": "अपने ब्राउज़र में HDR सपोर्ट, पीक निट्स ब्राइटनेस और वाइड कलर गैमट का पता लगाएं।",
-      "title": "HDR Capability Test",
-      "description_p1": "This tool queries your browser's APIs to determine if High Dynamic Range (HDR) and Wide Color Gamut (P3) are currently enabled and supported by your display chain.",
-      "inst1": "Review the browser-reported capabilities.",
-      "inst2": "If it says 'Not Supported' but your monitor is HDR-capable, ensure HDR is turned on in Windows/macOS display settings.",
-      "inst3": "Ensure you are using a modern browser with hardware acceleration enabled."
+      "title": "HDR क्षमता टेस्ट",
+      "description_p1": "यह टूल आपके ब्राउज़र के API से पता लगाता है कि HDR और वाइड कलर गैमट समर्थित हैं या नहीं।",
+      "inst1": "ब्राउज़र द्वारा रिपोर्ट की गई क्षमताओं की समीक्षा करें।",
+      "inst2": "यदि 'समर्थित नहीं' दिखता है लेकिन आपका मॉनिटर HDR-सक्षम है, तो Windows/macOS में HDR चालू करना सुनिश्चित करें।",
+      "inst3": "सुनिश्चित करें कि आप हार्डवेयर त्वरण के साथ आधुनिक ब्राउज़र का उपयोग कर रहे हैं।"
     },
     "display-info": {
       "metaTitle": "डिस्प्ले इंफॉर्मेशन और GPU डायग्नोस्टिक – स्क्रीन रेजोल्यूशन और DPR",
       "metaDescription": "स्क्रीन का नेटिव रेजोल्यूशन, पिक्सल रेशियो (DPR), कलर डेप्थ और ग्राफिक्स कार्ड की जानकारी देखें।",
-      "title": "Display Information",
-      "description_p1": "This data is read directly from your browser's Web APIs. It represents what the browser can detect about your display setup. Note that operating system scaling settings (e.g., Windows UI scaling at 125% or macOS Retina scaling) will affect the \"Logical Resolution\" reported here.",
-      "gamutWide": "Display P3 (Wide)",
-      "gamutStandard": "sRGB (Standard)",
-      "resLogical": "Logical Resolution",
-      "resWorkspace": "Available Workspace",
-      "colorDepth": "Color Depth",
-      "pixelDepth": "Pixel Depth",
-      "pixelRatio": "Device Pixel Ratio",
-      "hdr": "High Dynamic Range (HDR)",
-      "hdrActive": "Supported (Active)",
-      "hdrStandard": "Standard Dynamic Range (SDR)",
-      "colorGamut": "Color Gamut Support",
-      "viewport": "Browser Viewport",
-      "hardwareLabel": "Hardware Capabilities",
-      "touchSupport": "Touch Support",
-      "touchPoints": "points",
-      "noTouch": "No touch support detected",
-      "orientation": "Orientation",
-      "unknown": "Unknown",
-      "fullscreenEnabled": "Fullscreen Capability",
-      "supported": "Supported",
-      "notSupported": "Not Supported"
+      "title": "डिस्प्ले जानकारी",
+      "description_p1": "यह डेटा सीधे आपके ब्राउज़र के Web API से पढ़ा जाता है। यह दर्शाता है कि ब्राउज़र क्या पता लगा और रिपोर्ट कर सकता है।",
+      "gamutWide": "Display P3 (वाइड)",
+      "gamutStandard": "sRGB (मानक)",
+      "resLogical": "तार्किक रिज़ॉल्यूशन",
+      "resWorkspace": "उपलब्ध कार्यक्षेत्र",
+      "colorDepth": "रंग गहराई",
+      "pixelDepth": "पिक्सल गहराई",
+      "pixelRatio": "डिवाइस पिक्सल अनुपात",
+      "hdr": "हाई डायनेमिक रेंज (HDR)",
+      "hdrActive": "समर्थित (सक्रिय)",
+      "hdrStandard": "स्टैंडर्ड डायनेमिक रेंज (SDR)",
+      "colorGamut": "रंग गैमट समर्थन",
+      "viewport": "ब्राउज़र व्यूपोर्ट",
+      "hardwareLabel": "हार्डवेयर क्षमताएं",
+      "touchSupport": "टच समर्थन",
+      "touchPoints": "बिंदु",
+      "noTouch": "कोई टच समर्थन नहीं मिला",
+      "orientation": "ओरिएंटेशन",
+      "unknown": "अज्ञात",
+      "fullscreenEnabled": "फुलस्क्रीन क्षमता",
+      "supported": "समर्थित",
+      "notSupported": "समर्थित नहीं"
     },
     "gradient-test": {
       "metaTitle": "कलर बैंडिंग टेस्ट – स्मूथ ग्रेडिएंट्स और 8/10 बिट कलर डेप्थ",
       "metaDescription": "कलर बैंडिंग (स्ट्राइप्स) की पहचान करें और 8-बिट व 10-बिट डिस्प्ले की स्मूथनेस जांचें।",
-      "title": "Gradient Banding Test",
-      "description_p1": "Displays a perfectly smooth 24-bit (16.7 million colors) gradient. On lower quality panels or with restricted bit-depth settings, you will see <strong>banding</strong> (distinct vertical or horizontal lines instead of a smooth transition).",
+      "title": "ग्रेडिएंट बैंडिंग टेस्ट",
+      "description_p1": "एक पूरी तरह से चिकनी 24-बिट (1.67 करोड़ रंग) ग्रेडिएंट प्रदर्शित करता है। कम गुणवत्ता वाले पैनल पर बैंडिंग दिखाई दे सकती है।",
       "instructions": [
         "Look closely at the transition from black to the target color.",
         "A true 10-bit or high-quality 8-bit+FRC panel will display a buttery smooth transition.",
@@ -637,137 +640,137 @@
     "viewingAngle": {
       "title": "व्यूइंग एंगल टेस्ट – साइड से देखने पर कलर और कंट्रास्ट की स्थिरता",
       "description": "IPS, VA, OLED और TN पैनल्स को अलग-अलग कोणों से देखकर रंगों की स्थिरता की जांच करें।",
-      "instructions": "View the screen from extreme angles."
+      "instructions": "चरम कोणों से स्क्रीन देखें।"
     },
     "screenTearing": {
       "title": "स्क्रीन टियरिंग टेस्ट – V-Sync, G-Sync और FreeSync की जांच",
       "description": "मूवमेंट के दौरान हॉरिजॉन्टल टियरिंग लाइनों की जांच करें ताकि स्मूथ फ्रेम डिलीवरी सुनिश्चित हो सके।",
-      "instructions": "Watch the moving bar for horizontal tearing."
+      "instructions": "गति के दौरान क्षैतिज टियरिंग देखें।"
     },
     "burnIn": {
       "title": "OLED बर्न-इन टेस्ट – स्क्रीन पर स्थायी निशान और इमेज रिटेंशन चेक",
       "description": "OLED और LCD स्क्रीन पर टास्कबार या स्टैटिक लोगोज़ के स्थायी निशानों की जांच करें।",
-      "instructions": "Look for faint outlines of static elements."
+      "instructions": "स्थिर तत्वों की धुंधली रूपरेखा देखें।"
     },
     "blooming": {
       "title": "मिनी-एलईडी ब्लूमिंग टेस्ट – लोकल डिमिंग हेलो और लाइट लीकेज",
       "description": "डार्क बैकग्राउंड पर चमकती वस्तुओं के चारों ओर लाइट हेलो (ब्लूमिंग) की जांच करें।",
-      "instructions": "Look for halos around the bright square."
+      "instructions": "चमकीले वर्ग के आसपास हेलो देखें।"
     },
     "touchScreen": {
       "title": "टच स्क्रीन टेस्ट – मल्टी-टच और डेड टच ज़ोन डायग्नोस्टिक",
       "description": "अपने फोन, टैबलेट या टचस्क्रीन लैपटॉप के टच रिस्पांस और मल्टी-फिंगर इनपुट की ऑनलाइन जांच करें।",
-      "instructions": "Draw all over the screen to check for dead zones."
+      "instructions": "डेड ज़ोन की जांच के लिए स्क्रीन पर हर जगह ड्रा करें।"
     },
     "solidColor": {
       "title": "सॉलिड कलर प्योरिटी टेस्ट – फुल स्क्रीन सॉलिड कलर्स और पैनल सफाई",
       "description": "स्क्रीन पर सॉलिड रंग भरकर किसी भी प्रकार के दाग, धब्बे या पिक्सल खराबी की जांच करें।",
-      "instructions": "Look for unevenness."
+      "instructions": "असमानता देखें।"
     },
     "colorAccuracy": {
       "title": "कलर एक्यूरेसी टेस्ट – sRGB कलर बैलेंस और स्किन टोन्स चेक",
       "description": "मानक sRGB पैलेट्स के साथ स्क्रीन पर रंगों के संतुलन और स्किन टोन्स की स्वाभाविकता जांचें।",
-      "instructions": "Verify skin tones and natural colors."
+      "instructions": "स्किन टोन और प्राकृतिक रंगों की जांच करें।"
     },
     "flicker": {
       "title": "स्क्रीन फ्लिकर टेस्ट – PWM बैकलाइट पल्स और आंखों का तनाव चेक",
       "description": "स्क्रीन पर अदृश्य फ्लिकर (PWM) की जांच करें जो आंखों की थकान और सिरदर्द का कारण बन सकता है।",
-      "instructions": "Use a camera at high shutter speed."
+      "instructions": "उच्च शटर गति पर कैमरे का उपयोग करें।"
     },
     "sharpness": {
       "title": "डिस्प्ले शार्पनेस टेस्ट – टेक्स्ट क्लैरिटी और 1-पिक्सल लाइन पैटर्न",
       "description": "टेक्स्ट के किनारों पर अवांछित सफेद बॉर्डर के बिना सही शार्पनेस सेटिंग की पुष्टि करें।",
-      "instructions": "Check for color fringing."
+      "instructions": "रंग फ्रिंजिंग की जांच करें।"
     },
     "colorBanding": {
       "title": "कलर बैंडिंग टेस्ट – स्मूथ शेड्स और कलर ट्रांजिशन की जांच",
       "description": "ग्रेडिएंट्स में अनचाही धारियों की जांच करें ताकि स्मूथ कलर ट्रांजिशन सुनिश्चित हो।",
-      "instructions": "Look for smooth transitions."
+      "instructions": "चिकने संक्रमण देखें।"
     },
     "colorGamut": {
       "title": "कलर गैमट टेस्ट – sRGB, DCI-P3 और Adobe RGB कवरेज",
       "description": "अपने मॉनिटर के वाइड कलर गैमट सपोर्ट और समृद्ध रंगों की गहराई का परीक्षण करें।",
-      "instructions": "Check if the colors in the center match or blend with the outer ring."
+      "instructions": "जांचें कि केंद्र के रंग बाहरी रिंग से मेल खाते हैं या मिलते हैं।"
     },
     "resolution-checker": {
       "title": "स्क्रीन रेजोल्यूशन चेकर – नेटिव पिक्सल, CSS रेजोल्यूशन और DPR",
       "description": "अपने मॉनिटर का भौतिक नेटिव रेजोल्यूशन, आस्पेक्ट रेशियो और डिवाइस पिक्सल रेशियो जानें।",
       "infoTitle": "रिज़ॉल्यूशन और डिस्प्ले ज्यामिति",
       "labels": {
-        "logicalRes": "Logical Resolution",
-        "viewport": "Viewport",
-        "dpr": "Device Pixel Ratio",
-        "aspectRatio": "Aspect Ratio",
-        "colorDepth": "Color Depth",
-        "pixelDepth": "Pixel Depth",
-        "orientation": "Orientation",
-        "availArea": "Available Screen Area",
-        "refreshRate": "Observed Frame Timing",
-        "touchSupport": "Touch Support",
-        "hdr": "HDR Capability",
-        "colorSpace": "Color Gamut",
-        "totalPixels": "Total Pixels",
-        "classification": "Classification"
+        "logicalRes": "तार्किक रिज़ॉल्यूशन",
+        "viewport": "व्यूपोर्ट",
+        "dpr": "डिवाइस पिक्सल अनुपात",
+        "aspectRatio": "आस्पेक्ट रेशियो",
+        "colorDepth": "रंग गहराई",
+        "pixelDepth": "पिक्सल गहराई",
+        "orientation": "ओरिएंटेशन",
+        "availArea": "उपलब्ध स्क्रीन क्षेत्र",
+        "refreshRate": "देखा गया फ्रेम टाइमिंग",
+        "touchSupport": "टच समर्थन",
+        "hdr": "HDR क्षमता",
+        "colorSpace": "रंग गैमट",
+        "totalPixels": "कुल पिक्सल",
+        "classification": "वर्गीकरण"
       },
       "values": {
-        "notExposed": "Not exposed by browser",
-        "landscape": "Landscape",
-        "portrait": "Portrait",
+        "notExposed": "ब्राउज़र द्वारा उजागर नहीं",
+        "landscape": "लैंडस्केप",
+        "portrait": "पोर्ट्रेट",
         "yes": "Yes",
         "no": "No",
-        "unknown": "Unknown",
-        "custom": "Custom / Other"
+        "unknown": "अज्ञात",
+        "custom": "कस्टम / अन्य"
       },
-      "disclaimer": "Browser-reported information describes what your browser can see. It does not replace the monitor's manufacturer specifications or hardware measurement.",
+      "disclaimer": "ब्राउज़र द्वारा रिपोर्ट की गई जानकारी वह दर्शाती है जो आपका ब्राउज़र देख सकता है। यह मॉनिटर के भौतिक स्पेक्स की जगह नहीं लेती।",
       "myDisplay": {
-        "title": "MY DISPLAY",
-        "sizeLabel": "Screen size (inches)",
-        "sizePlaceholder": "e.g., 27",
-        "resLabel": "Native resolution",
-        "resPlaceholder": "e.g., 2560x1440",
-        "ppiLabel": "Estimated pixel density",
-        "statusLabel": "Status",
-        "statusMatches": "Matches browser",
-        "statusDiffers": "Browser-reported dimensions differ from your entered specification",
-        "prompt": "Enter your screen's physical size to estimate pixel density."
+        "title": "मेरा डिस्प्ले",
+        "sizeLabel": "स्क्रीन का आकार (इंच)",
+        "sizePlaceholder": "जैसे 27",
+        "resLabel": "नेटिव रिज़ॉल्यूशन",
+        "resPlaceholder": "जैसे 2560x1440",
+        "ppiLabel": "अनुमानित पिक्सल घनत्व",
+        "statusLabel": "स्थिति",
+        "statusMatches": "ब्राउज़र से मेल खाता है",
+        "statusDiffers": "ब्राउज़र-रिपोर्टेड आयाम आपकी दर्ज विशिष्टता से भिन्न हैं",
+        "prompt": "पिक्सल घनत्व का अनुमान लगाने के लिए अपनी स्क्रीन का भौतिक आकार दर्ज करें।"
       },
       "explain": {
-        "title": "WHAT DOES THIS MEAN?",
-        "logicalResTitle": "What is logical resolution?",
-        "logicalResDesc": "Also called CSS resolution, this is the grid your browser uses to render content. OS scaling and browser zoom can make this lower than your physical panel resolution.",
-        "physicalResTitle": "What is native resolution?",
-        "physicalResDesc": "The physical pixel grid built into your display panel. Running at non-native resolutions involves scaling and can make text appear softer.",
-        "dprTitle": "What is Device Pixel Ratio (DPR)?",
-        "dprDesc": "DPR is how many physical device pixels are used to draw a single CSS pixel. A DPR of 2 means a 10x10 CSS box uses 20x20 physical pixels.",
-        "ppiTitle": "What is pixel density?",
-        "ppiDesc": "Pixel density (PPI) describes how many pixels are packed into each inch of the display. Higher PPI means sharper text and images, assuming the viewing distance is the same.",
-        "refreshTitle": "Resolution vs Refresh Rate",
-        "refreshDesc": "Higher resolution increases rendering workload. Higher refresh rate increases frame delivery requirements. The available combination depends on your GPU, connection bandwidth, and display."
+        "title": "इसका मतलब क्या है?",
+        "logicalResTitle": "तार्किक रिज़ॉल्यूशन क्या है?",
+        "logicalResDesc": "CSS रिज़ॉल्यूशन भी कहा जाता है, यह वह ग्रिड है जिसका उपयोग आपका ब्राउज़र सामग्री को रेंडर करने के लिए करता है। OS स्केलिंग और ब्राउज़र ज़ूम इसे प्रभावित करते हैं।",
+        "physicalResTitle": "नेटिव रिज़ॉल्यूशन क्या है?",
+        "physicalResDesc": "आपके डिस्प्ले पैनल में बना भौतिक पिक्सल ग्रिड। गैर-नेटिव रिज़ॉल्यूशन पर चलाने में स्केलिंग शामिल होती है।",
+        "dprTitle": "डिवाइस पिक्सल अनुपात (DPR) क्या है?",
+        "dprDesc": "DPR बताता है कि एक CSS पिक्सल को कितने भौतिक डिवाइस पिक्सल से बनाया जाता है। DPR 2 का मतलब है 10x10 CSS पिक्सल = 20x20 भौतिक पिक्सल।",
+        "ppiTitle": "पिक्सल घनत्व क्या है?",
+        "ppiDesc": "पिक्सल घनत्व (PPI) बताता है कि डिस्प्ले के प्रत्येक इंच में कितने पिक्सल पैक किए गए हैं। उच्च PPI = तीखा पाठ।",
+        "refreshTitle": "रिज़ॉल्यूशन बनाम रिफ्रेश रेट",
+        "refreshDesc": "उच्च रिज़ॉल्यूशन रेंडरिंग वर्कलोड बढ़ाता है। उच्च रिफ्रेश रेट फ्रेम डिलीवरी आवश्यकताएं बढ़ाता है।"
       },
       "standards": {
-        "title": "RESOLUTION STANDARDS",
-        "colStandard": "Standard",
-        "colRes": "Resolution",
-        "colPixels": "Approx. Pixels",
-        "colUse": "Common Use"
+        "title": "रिज़ॉल्यूशन मानक",
+        "colStandard": "मानक",
+        "colRes": "रिज़ॉल्यूशन",
+        "colPixels": "लगभग. पिक्सल",
+        "colUse": "सामान्य उपयोग"
       },
       "troubleshoot": {
-        "title": "TROUBLESHOOTING",
-        "q1": "My resolution is lower than expected.",
-        "a1": "Check OS display scaling (e.g., 150%). This reduces the logical resolution reported to the browser. Also check browser zoom settings.",
-        "q2": "My 4K display looks blurry.",
-        "a2": "Check that the OS output is set to 4K. If you are mirroring a lower-resolution laptop screen, the external monitor will look blurry.",
-        "q3": "My high-refresh option is missing.",
-        "a3": "Check your cable. Some high resolution + high refresh combinations require DisplayPort 1.4 or HDMI 2.1. Older cables may limit you to 60Hz."
+        "title": "समस्या निवारण",
+        "q1": "मेरा रिज़ॉल्यूशन अपेक्षा से कम है।",
+        "a1": "OS डिस्प्ले स्केलिंग चेक करें (जैसे 150%)। यह ब्राउज़र को रिपोर्ट की गई तार्किक रिज़ॉल्यूशन कम करता है।",
+        "q2": "मेरा 4K डिस्प्ले धुंधला दिखता है।",
+        "a2": "OS आउटपुट 4K पर सेट है या नहीं जांचें। यदि आप कम रिज़ॉल्यूशन लैपटॉप स्क्रीन मिरर कर रहे हैं, तो बाहरी डिस्प्ले नीचे हो सकता है।",
+        "q3": "मेरा हाई-रिफ्रेश विकल्प गायब है।",
+        "a3": "अपना केबल जांचें। कुछ उच्च रिज़ॉल्यूशन + उच्च रिफ्रेश संयोजनों के लिए DisplayPort 1.4 या HDMI 2.1 की आवश्यकता होती है।"
       },
       "faq": {
         "title": "FAQ",
-        "q1": "Can a browser detect my monitor's true physical resolution?",
-        "a1": "Not reliably. Browsers see the logical resolution and scaling factor provided by the OS. If scaling is applied, the physical resolution cannot be guaranteed.",
-        "q2": "Why is my DPR 1.25 or 1.5?",
-        "a2": "This is common on Windows laptops (e.g., 125% or 150% scaling) to make text readable on high-DPI screens without making everything tiny.",
-        "q3": "Why is my observed frame timing different from my monitor's refresh rate?",
-        "a3": "Browser frame timing is affected by system load, power saving, background tabs, and browser behavior. It is an approximation, not a direct hardware query."
+        "q1": "क्या ब्राउज़र मेरे मॉनिटर का वास्तविक भौतिक रिज़ॉल्यूशन पहचान सकता है?",
+        "a1": "हमेशा नहीं। ब्राउज़र OS द्वारा प्रदान की गई तार्किक रिज़ॉल्यूशन और स्केलिंग फ़ैक्टर देखते हैं।",
+        "q2": "मेरा DPR 1.25 या 1.5 क्यों है?",
+        "a2": "यह Windows लैपटॉप (जैसे 125% या 150% स्केलिंग) पर सामान्य है जो उच्च-DPI स्क्रीन पर टेक्स्ट को पठनीय बनाने के लिए है।",
+        "q3": "मेरा देखा गया फ्रेम टाइमिंग मेरे मॉनिटर की रिफ्रेश रेट से अलग क्यों है?",
+        "a3": "ब्राउज़र फ्रेम टाइमिंग सिस्टम लोड, पावर सेविंग, बैकग्राउंड टैब और ब्राउज़र व्यवहार से प्रभावित होती है।"
       }
     }
   },
@@ -777,50 +780,154 @@
     "monitor": {
       "metaTitle": "कंप्यूटर मॉनिटर टेस्ट कैसे करें – पूरा डिस्प्ले इंस्पेक्शन गाइड",
       "metaDescription": "नया या पुराना मॉनिटर टेस्ट करने के आसान स्टेप्स: डेड पिक्सल, बैकलाइट ब्लीड और घोस्टिंग की पहचान करें।",
-      "title": "Monitor Screen Test",
-      "description": "Comprehensive testing for desktop monitors."
+      "title": "मॉनिटर स्क्रीन टेस्ट",
+      "description": "डेस्कटॉप मॉनिटर के लिए व्यापक परीक्षण।"
     },
     "oled": {
       "metaTitle": "OLED स्क्रीन टेस्ट कैसे करें – बर्न-इन, यूनिफॉर्मिटी और डीप ब्लैक गाइड",
       "metaDescription": "जानें कि OLED स्क्रीन और टीवी पर बर्न-इन, कलर टिंट और इमेज रिटेंशन की जांच कैसे की जाती है।",
-      "title": "OLED Screen Test",
-      "description": "Specialized tests for OLED image retention and black levels."
+      "title": "OLED स्क्रीन टेस्ट",
+      "description": "OLED इमेज रिटेंशन और ब्लैक लेवल के लिए विशेष परीक्षण।"
     },
     "laptop": {
       "metaTitle": "लैपटॉप स्क्रीन टेस्ट कैसे करें – डेड पिक्सल और बैकलाइट ब्लीड चेक",
       "metaDescription": "लैपटॉप डिस्प्ले के लिए विस्तृत चेकलिस्ट: खराब पिक्सल, हिंज प्रेशर और टेक्स्ट शार्पनेस जांचें।",
-      "title": "Laptop Screen Test",
-      "description": "Tests for typical laptop LCD panels."
+      "title": "लैपटॉप स्क्रीन टेस्ट",
+      "description": "सामान्य लैपटॉप LCD पैनल के लिए परीक्षण।"
     },
     "lcd": {
       "metaTitle": "LCD स्क्रीन टेस्ट कैसे करें – IPS, VA और TN पैनल्स की पहचान",
       "metaDescription": "IPS ग्लो और बैकलाइट ब्लीड के अंतर को समझें और अपने LCD पैनल की क्षमताओं को परखें।",
-      "title": "LCD Screen Test",
-      "description": "Tests for LCD backlight bleed and uniformity."
+      "title": "LCD स्क्रीन टेस्ट",
+      "description": "LCD बैकलाइट ब्लीड और यूनिफॉर्मिटी के लिए परीक्षण।"
     },
     "tv": {
       "metaTitle": "स्मार्ट टीवी स्क्रीन टेस्ट कैसे करें – 4K टीवी डिस्प्ले इंस्पेक्शन गाइड",
       "metaDescription": "ब्राउज़र के माध्यम से अपने 4K टीवी की पिक्चर क्वालिटी, मोशन स्मूथनेस और लोकल डिमिंग की जांच करें।",
-      "title": "TV Screen Test",
-      "description": "Tests for TV motion processing and blooming."
+      "title": "TV स्क्रीन टेस्ट",
+      "description": "TV मोशन प्रोसेसिंग और ब्लूमिंग के लिए परीक्षण।"
     },
     "mobile": {
       "metaTitle": "मोबाइल स्क्रीन टेस्ट कैसे करें – स्मार्टफोन और टैबलेट डिस्प्ले चेक",
       "metaDescription": "अपने फोन के टच रिस्पांस, OLED बर्न-इन और कलर एक्यूरेसी की मुफ्त ऑनलाइन जांच करें।",
-      "title": "Mobile Screen Test",
-      "description": "Tests for mobile touch screens and OLED panels."
+      "title": "मोबाइल स्क्रीन टेस्ट",
+      "description": "मोबाइल टच स्क्रीन और OLED पैनल के लिए परीक्षण।"
     },
     "ghostingConcept": {
-      "metaTitle": "मॉनिटर घोस्टिंग कैसे चेक करें – रिस्पांस टाइम और ओवरड्राइव गाइड",
-      "metaDescription": "मॉनिटर घोस्टिंग और रिवर्स घोस्टिंग क्या है? जानें पिक्सल रिस्पांस टाइम कैसे जांचें और ओवरड्राइव कैसे सेट करें।"
+      "metaTitle": "मॉनिटर घोस्टिंग कैसे जांचें – पिक्सल प्रतिक्रिया समय और ओवरड्राइव गाइड",
+      "metaDescription": "जानें कि मॉनिटर घोस्टिंग और इनवर्स घोस्टिंग (कोरोना) क्या हैं, पिक्सल रिस्पॉन्स टाइम की जांच कैसे करें और ओवरड्राइव को कैसे ट्यून करें।",
+      "breadcrumbsGuides": "गाइड",
+      "breadcrumbsTitle": "घोस्टिंग और मोशन",
+      "eyebrow": "डिस्प्ले गाइड और मोशन क्लैरिटी",
+      "title": "मॉनिटर घोस्टिंग और मोशन क्लैरिटी की जांच कैसे करें",
+      "intro": "मॉनिटर घोस्टिंग तब होती है जब लिक्विड क्रिस्टल को एक रंग या चमक स्तर से दूसरे में बदलने में बहुत अधिक समय लगता है। इन लक्षणों को समझकर आप स्पष्टता के लिए अपने मॉनिटर की ओवरड्राइव सेटिंग्स को सही कर सकते हैं।",
+      "standardGhosting": {
+        "title": "मानक घोस्टिंग (ट्रेलिंग)",
+        "desc": "विपरीत पृष्ठभूमि पर चलती वस्तुओं के पीछे धुंधला, गहरा या धब्बेदार निशान दिखाई देना।",
+        "causeLabel": "मुख्य कारण",
+        "cause": "धीमा ग्रे-टू-ग्रे (GtG) पिक्सल प्रतिक्रिया समय। गहरे रंग के बदलावों में मानक VA पैनलों पर आम।",
+        "solutionLabel": "समाधान",
+        "solution": "मॉनिटर के OSD में ओवरड्राइव / ट्रेस फ्री / AMA सेटिंग को एक स्तर बढ़ाएं।"
+      },
+      "inverseGhosting": {
+        "title": "इनवर्स घोस्टिंग (कोरोना / ओवरशूट)",
+        "desc": "चलती वस्तुओं के पीछे एक चमकीला, उल्टे रंग का या चमकता हुआ प्रभामंडल (हेलो) दिखाई देना।",
+        "causeLabel": "मुख्य कारण",
+        "cause": "अत्यधिक ओवरड्राइव वोल्टेज जो लिक्विड क्रिस्टल को लक्षित रंग से आगे धकेल देता है (ओवरशूट)।",
+        "solutionLabel": "समाधान",
+        "solution": "मॉनिटर की ओवरड्राइव सेटिंग कम करें। जब तक अधिकतम रिफ्रेश रेट पर न चल रहे हों, 'Extreme' या 'Fastest' मोड का उपयोग न करें।"
+      },
+      "howToTestTitle": "ब्राउज़र में मोशन क्लैरिटी का परीक्षण कैसे करें",
+      "howToTestP1": "हमारे घोस्टिंग और मोशन ब्लर टेस्ट को फुल स्क्रीन पर खोलें। डिस्प्ले से गुजरते हुए किसी मूविंग ब्लॉक पर ध्यान केंद्रित करें। यदि वस्तु पीछे गहरा धब्बा छोड़ती है, तो ओवरड्राइव बहुत कम है। यदि चमकीली आभा दिखाई देती है, तो ओवरड्राइव बहुत अधिक है।",
+      "howToTestP2": "महत्वपूर्ण सीमा: ब्राउज़र परीक्षण विज़ुअल मार्गदर्शन प्रदान करते हैं, लेकिन वास्तविक रिस्पॉन्स टाइम (मिलीसेकंड में GtG) मापने के लिए विशेष हाई-स्पीड फोटोडायोड ऑसिलोस्कोप की आवश्यकता होती है।",
+      "testsTitle": "संबंधित डायग्नोस्टिक परीक्षण",
+      "ghostingTestTitle": "घोस्टिंग टेस्ट",
+      "ghostingTestDesc": "विभिन्न गति प्रोफाइलों पर उच्च कंट्रास्ट गतिशील ब्लॉक",
+      "refreshRateTestTitle": "रिफ्रेश रेट टेस्ट",
+      "refreshRateTestDesc": "ब्राउज़र फ्रेम टाइमिंग और एनिमेशन तरलता को मापें"
     },
     "backlightBleedConcept": {
-      "metaTitle": "बैकलाइट ब्लीड vs IPS ग्लो – अंधेरे कमरे में सही जांच की गाइड",
-      "metaDescription": "खराब बैकलाइट ब्लीड और सामान्य IPS ग्लो के बीच के अंतर को पहचानें और रिप्लेसमेंट का सही निर्णय लें।"
+      "metaTitle": "बैकलाइट ब्लीड बनाम IPS ग्लो की जांच – डार्क रूम टेस्टिंग गाइड",
+      "metaDescription": "सच्चे बैकलाइट ब्लीड और सामान्य IPS ग्लो के बीच अंतर, उचित डार्क रूम परीक्षण विधियों और RMA के नियमों को समझें।",
+      "breadcrumbsGuides": "गाइड",
+      "breadcrumbsTitle": "बैकलाइट ब्लीड",
+      "eyebrow": "डिस्प्ले गाइड और ल्यूमिनेन्स",
+      "title": "बैकलाइट ब्लीड बनाम IPS ग्लो: परीक्षण और निदान",
+      "intro": "एलसीडी मॉनिटर पर गहरे दृश्यों को देखते समय अक्सर कोनों या बेज़ल किनारों पर प्रकाश की खामियां दिखाई देती हैं। RMA का निर्णय लेने से पहले हार्डवेयर बैकलाइट ब्लीड और सामान्य IPS ग्लो में अंतर समझना जरूरी है।",
+      "backlightBleed": {
+        "badge": "हार्डवेयर असेंबली दोष",
+        "title": "बैकलाइट ब्लीड (Backlight Bleed)",
+        "desc": "असमान बेज़ल दबाव, ढीले फ्रेम या मुड़े हुए पैनल कोनों के माध्यम से एलसीडी मैट्रिक्स के पीछे से अनपेक्षित प्रकाश का रिसाव।",
+        "behaviorLabel": "व्यवहार",
+        "behavior": "आपके देखने के कोण या दूरी की परवाह किए बिना बिल्कुल उसी स्थान और चमक पर स्थिर रहता है।",
+        "appearanceLabel": "दिखावट",
+        "appearance": "किनारों या कोनों से अंदर की ओर फैलती हुई नुकीली सफेद या पीली रोशनी।",
+        "actionLabel": "कार्रवाई",
+        "action": "दैनिक उपयोग को प्रभावित करने वाला गंभीर ब्लीड रिटेलर एक्सचेंज के योग्य है।"
+      },
+      "ipsGlow": {
+        "badge": "सामान्य ऑप्टिकल विशेषता",
+        "title": "IPS ग्लो",
+        "desc": "इन-प्लेन स्विचिंग (IPS) पैनलों की एक अंतर्निहित ऑप्टिकल घटना जहां चौड़े कोणों पर प्रकाश परावर्तित होता है।",
+        "behaviorLabel": "व्यवहार",
+        "behavior": "जैसे ही आप अपना सिर झुकाते हैं या स्क्रीन से पीछे हटते हैं, तीव्रता बदल जाती है, स्थिति बदल जाती है, या पूरी तरह गायब हो जाती है।",
+        "appearanceLabel": "दिखावट",
+        "appearance": "काली पृष्ठभूमि पर मुख्य रूप से 4 कोनों में दिखाई देने वाली एक हल्की चांदी, एम्बर, या बैंगनी चमक।",
+        "actionLabel": "कार्रवाई",
+        "action": "लगभग सभी IPS पैनलों पर मौजूद; चमक कम करके और उचित दूरी बनाए रखकर इसे कम किया जा सकता है।"
+      },
+      "isolationMethodTitle": "आइसोलेशन परीक्षण विधि",
+      "isolationSteps": [
+        "कमरे की बत्तियाँ पूरी तरह बंद कर दें ताकि प्रतिबिंब गहरे विवरणों को न छिपाएं।",
+        "हमारा फुल स्क्रीन बैकलाइट ब्लीड टेस्ट खोलें।",
+        "अपने मॉनिटर की चमक को सामान्य स्तर पर सेट करें (लगभग 120-150 nits, OSD पर 30-50%)।",
+        "एक हाथ की दूरी से कोनों को देखें। अब 2 मीटर पीछे हटें और सिर को अगल-बगल हिलाएं।",
+        "यदि प्रकाश आपके सिर की स्थिति के साथ बदलता है, तो यह IPS ग्लो है। यदि किनारों पर स्थिर रहता है, तो यह बैकलाइट ब्लीड है।"
+      ],
+      "testsTitle": "डायग्नोस्टिक परीक्षण चलाएं",
+      "backlightBleedTestTitle": "बैकलाइट ब्लीड टेस्ट",
+      "backlightBleedTestDesc": "चमक अंशांकन के साथ फुलस्क्रीन 0% शुद्ध काला पैटर्न",
+      "uniformityTestTitle": "स्क्रीन एकरूपता टेस्ट",
+      "uniformityTestDesc": "स्क्रीन क्वाड्रंट्स में ग्रे और चमक स्तरों की जांच करें"
     },
     "pixelDefectsConcept": {
-      "metaTitle": "डेड पिक्सल vs स्टक पिक्सल – पहचान, सुधार के तरीके और वारंटी नीतियां",
-      "metaDescription": "डेड पिक्सल और अटके हुए सबपिक्सल के बीच का अंतर समझें, उन्हें सुधारने के उपाय और वारंटी नियम जानें।"
+      "metaTitle": "डेड पिक्सल बनाम अटका हुआ पिक्सल – स्क्रीन दोषों की पहचान और समाधान",
+      "metaDescription": "डेड पिक्सल और अटके हुए सबपिक्सल के बीच अंतर, उनके परीक्षण के तरीके और निर्माता वारंटी नीतियों को समझें।",
+      "breadcrumbsGuides": "गाइड",
+      "breadcrumbsTitle": "डेड बनाम अटका पिक्सल",
+      "eyebrow": "डिस्प्ले गाइड और विश्लेषण",
+      "title": "डेड पिक्सल बनाम अटका हुआ पिक्सल: अंतर कैसे पहचानें",
+      "intro": "एलसीडी और ओलेड पैनलों में पिक्सल की खराबी सबसे आम दोषों में से एक है। यह जानना कि कोई असामान्य पिक्सल पूरी तरह से खराब (डेड) है या केवल अटका हुआ (स्टक) है, यह तय करता है कि उसे ठीक किया जा सकता है या वारंटी के तहत बदला जाना चाहिए।",
+      "deadPixel": {
+        "badge": "स्थायी दोष (Permanent Defect)",
+        "title": "डेड पिक्सल (Dead Pixel)",
+        "desc": "एक पिक्सल जिसका ट्रांजिस्टर पूरी तरह विफल हो चुका है, जिससे तीनों RGB सबपिक्सल स्थायी रूप से बंद (बिना पावर) रहते हैं।",
+        "appearanceLabel": "दिखावट",
+        "appearance": "सफेद और रंगीन पृष्ठभूमि पर हमेशा बिल्कुल काला दिखाई देता है।",
+        "causeLabel": "कारण",
+        "cause": "टूटा हुआ इलेक्ट्रोड, खराब थिन-फिल्म ट्रांजिस्टर (TFT) या कटी हुई माइक्रो-ट्रेस।",
+        "recoveryLabel": "समाधान",
+        "recovery": "हार्डवेयर स्तर की विफलता; इसे सॉफ्टवेयर चक्रों द्वारा ठीक नहीं किया जा सकता।"
+      },
+      "stuckPixel": {
+        "badge": "संभावित रूप से ठीक करने योग्य",
+        "title": "अटका हुआ पिक्सल (Stuck Pixel)",
+        "desc": "एक पिक्सल जहां एक या दो सबपिक्सल (लाल, हरा या नीला) लगातार चालू रहते हैं और बंद नहीं हो पाते।",
+        "appearanceLabel": "दिखावट",
+        "appearance": "काली या गहरी पृष्ठभूमि पर एक चमकीला लाल, हरा, नीला, सियान या मैजेंटा बिंदु दिखाई देता है।",
+        "causeLabel": "कारण",
+        "cause": "तरल क्रिस्टल अणु अस्थायी रूप से खुली अवस्था में बंद हो जाते हैं या चार्ज असंतुलन हो जाता है।",
+        "recoveryLabel": "समाधान",
+        "recovery": "तेज उच्च-आवृत्ति रंग ब्लिंकिंग (स्टक पिक्सल साइकिल) से कभी-कभी क्रिस्टल का संरेखण ठीक हो सकता है।"
+      },
+      "isoTitle": "ISO 9241-307 पैनल दोष मानक",
+      "isoP1": "अधिकांश उपभोक्ता मॉनिटरों को क्लास 2 पैनल के रूप में वर्गीकृत किया गया है। ISO मानकों के तहत, निर्माता वारंटी प्रतिस्थापन से पहले प्रति मिलियन पिक्सल पर अधिकतम 2 चमकीले पिक्सल, 2 काले पिक्सल या 5 खराब सबपिक्सल तक की अनुमति देते हैं।",
+      "isoP2": "यदि आपको रिटेलर की शुरुआती वापसी या विनिमय विंडो (आमतौर पर 14 से 30 दिन) के भीतर कोई पिक्सल दोष मिलता है, तो निर्माता वारंटी का दावा करने के बजाय इसे सीधे रिटेलर को वापस करें।",
+      "testsTitle": "डायग्नोस्टिक परीक्षण चलाएं",
+      "deadPixelTestTitle": "डेड पिक्सल टेस्ट",
+      "deadPixelTestDesc": "फुल स्क्रीन सॉलिड व्हाइट और प्राथमिक रंगों के माध्यम से जांचें",
+      "stuckPixelTestTitle": "स्टक पिक्सल फिक्सर और टेस्ट",
+      "stuckPixelTestDesc": "उच्च-आवृत्ति RGB सबपिक्सल साइकलिंग टूल"
     },
     "deviceGuidesHeading": "डिवाइस गाइड",
     "conceptGuidesHeading": "अवधारणाएं और स्पष्टीकरण",
@@ -840,7 +947,7 @@
       "vaTitle": "VA (वर्टिकल अलाइनमेंट)",
       "vaTag": "उच्च कंट्रास्ट, दृश्यमान गामा शिफ्ट",
       "vaDesc": "बिना करंट के क्रिस्टल सीधे खड़े रहते हैं, जिससे गहरा काला रंग (3,000:1+ कंट्रास्ट) मिलता है। कोण से देखने पर शैडो डिटेल हल्की या धुंधली दिखने लगती है (गामा शिफ्ट)।",
-      "tnTitle": "TN (ट्विस्टेड नेमैटिक)",
+      "tnTitle": "TN (ट्विस्टेड नेमेटिक)",
       "tnTag": "सीमित व्यूइंग एंगल",
       "tnDesc": "तेज़ रिस्पांस टाइम लेकिन सीमित कोण। नीचे से देखने पर रंग उलट जाते हैं और ऊपर से देखने पर कंट्रास्ट धुल जाता है।",
       "oledTitle": "OLED (ऑर्गेनिक लाइट एमिटिंग डायोड)",
@@ -870,7 +977,7 @@
       "ctaTitle": "क्या आप अपने डिस्प्ले की जांच के लिए तैयार हैं?",
       "ctaButton": "व्यूइंग एंगल टेस्ट शुरू करें",
       "ctaSubtitle": "सेंटर-टू-एज संदर्भ पैटर्न के साथ नियंत्रित दृश्य जांच",
-      "breadcrumbsGuides": "गाइड्स",
+      "breadcrumbsGuides": "गाइड",
       "breadcrumbsViewingAngles": "व्यूइंग एंगल समझें",
       "noticeTitle": "तकनीकी पारदर्शिता सूचना:",
       "browserCanDoTitle": "ब्राउज़र की क्षमताएं",
@@ -883,22 +990,22 @@
       "diagnosticMetaDesc": "स्क्रीन पर दिखने वाले दोषों को चुनें और अपनी समस्या के अनुसार सटीक टेस्ट और सुझाव प्राप्त करें।",
       "metaTitle": "Monitor Inspection Workflow",
       "metaDescription": "Check a new or used monitor systematically instead of opening random tests.",
-      "title": "Monitor Inspection",
-      "description": "Check a new or used monitor systematically instead of opening random tests.",
-      "newMonitor": "I just bought this monitor",
-      "newMonitorDesc": "Focuses on dead pixels, uniformity, backlight bleed, and factory defects.",
-      "usedMonitor": "I'm checking a used monitor",
-      "usedMonitorDesc": "Focuses on burn-in, brightness degradation, port health, and dead pixels.",
-      "fiveMinuteCheck": "5-Minute Quick Check",
-      "fullInspection": "Full Inspection",
-      "gamingMonitor": "Gaming Monitor Workflow",
-      "oledMonitor": "OLED Workflow",
-      "startWorkflow": "Start Workflow",
+      "title": "मॉनिटर निरीक्षण",
+      "description": "यादृच्छिक परीक्षण खोलने के बजाय नए या पुराने मॉनिटर की व्यवस्थित जांच करें।",
+      "newMonitor": "मैंने अभी यह मॉनिटर खरीदा है",
+      "newMonitorDesc": "डेड पिक्सल, यूनिफॉर्मिटी, बैकलाइट ब्लीड और फ़ैक्टरी दोषों पर ध्यान केंद्रित करता है।",
+      "usedMonitor": "मैं पुराने मॉनिटर की जांच कर रहा हूं",
+      "usedMonitorDesc": "बर्न-इन, चमक क्षरण, पोर्ट स्वास्थ्य और डेड पिक्सल पर ध्यान केंद्रित करता है।",
+      "fiveMinuteCheck": "5 मिनट की त्वरित जांच",
+      "fullInspection": "पूर्ण निरीक्षण",
+      "gamingMonitor": "गेमिंग मॉनिटर वर्कफ्लो",
+      "oledMonitor": "OLED वर्कफ्लो",
+      "startWorkflow": "वर्कफ्लो शुरू करें",
       "diagnosticEyebrow": "डायग्नोस्टिक विज़ार्ड",
       "diagnosticTitle": "क्या आपकी स्क्रीन पर कुछ गड़बड़ दिख रही है?",
       "diagnosticDesc": "चुनें कि आपको क्या दिख रहा है (डेड पिक्सल, अजीब रंग, धुंधला टेक्स्ट आदि) और हम सही टेस्ट सुझाएंगे।",
       "diagnoseProblem": "समस्या का निदान करें",
-      "testsCount": "{count} टेस्ट",
+      "testsCount": "{count} परीक्षण",
       "aboutWorkflowsTitle": "निरीक्षण कार्यप्रवाह के बारे में:",
       "aboutWorkflowsDesc": "व्यवस्थित क्रम चलाएं, दोषों को चिह्नित करें और बिना किसी कृत्रिम स्कोर के तथ्यात्मक रिपोर्ट सहेजें।",
       "savedReports": "सहेजी गई रिपोर्ट और इतिहास",
@@ -908,97 +1015,97 @@
     "gaming": {
       "metaTitle": "Gaming Monitor Inspection",
       "metaDescription": "Systematic workflow to check gaming monitor refresh rate, ghosting, and VRR.",
-      "title": "Gaming Monitor Inspection",
-      "description": "This workflow focuses on refresh rate, ghosting, screen tearing, and motion clarity.",
-      "vrrWarning": "Note: Browser APIs cannot directly verify hardware VRR (G-Sync/FreeSync) behavior. You must test this in a fullscreen game."
+      "title": "गेमिंग मॉनिटर निरीक्षण",
+      "description": "यह वर्कफ्लो रिफ्रेश रेट, घोस्टिंग, स्क्रीन टियरिंग और मोशन क्लैरिटी पर केंद्रित है।",
+      "vrrWarning": "नोट: ब्राउज़र API हार्डवेयर VRR (G-Sync/FreeSync) व्यवहार को सीधे सत्यापित नहीं कर सकते।"
     },
     "oled": {
       "metaTitle": "OLED Monitor Inspection",
       "metaDescription": "Systematic workflow to check OLED monitors for burn-in, dead pixels, and uniformity.",
-      "title": "OLED Monitor Inspection",
-      "description": "This workflow focuses on burn-in, near-black performance, and uniformity.",
-      "oledWarning": "Note: Browser-based tests cannot diagnose every form of OLED panel degradation."
+      "title": "OLED मॉनिटर निरीक्षण",
+      "description": "यह वर्कफ्लो बर्न-इन, निकट-काली प्रदर्शन और यूनिफॉर्मिटी पर केंद्रित है।",
+      "oledWarning": "नोट: ब्राउज़र-आधारित परीक्षण OLED पैनल क्षरण के हर रूप का निदान नहीं कर सकते।"
     },
     "summary": {
       "metaTitle": "Inspection Summary",
-      "title": "Monitor Inspection",
-      "description": "This checklist records your observations. It does not replace professional display measurement equipment.",
-      "passed": "Passed",
-      "needsAttention": "Needs attention",
-      "skipped": "Skipped",
-      "restart": "Restart inspection",
-      "review": "Review tests",
-      "clear": "Clear inspection data",
-      "print": "Print summary"
+      "title": "मॉनिटर निरीक्षण",
+      "description": "यह चेकलिस्ट आपकी टिप्पणियां रिकॉर्ड करती है। यह पेशेवर डिस्प्ले निदान की जगह नहीं लेती।",
+      "passed": "पास",
+      "needsAttention": "ध्यान चाहिए",
+      "skipped": "छोड़ा गया",
+      "restart": "निरीक्षण पुनः शुरू करें",
+      "review": "परीक्षण की समीक्षा करें",
+      "clear": "निरीक्षण डेटा साफ़ करें",
+      "print": "सारांश प्रिंट करें"
     },
     "steps": {
       "displayInfo": {
-        "title": "Display Information",
-        "what": "Check if resolution, color depth, and HDR support match the manufacturer specs."
+        "title": "डिस्प्ले जानकारी",
+        "what": "जांचें कि रिज़ॉल्यूशन, रंग गहराई और HDR समर्थन निर्माता विशिष्टताओं से मेल खाता है।"
       },
       "sharpness": {
-        "title": "Resolution & Sharpness",
-        "what": "Look for color fringing around text or blurry subpixel rendering."
+        "title": "रिज़ॉल्यूशन और शार्पनेस",
+        "what": "टेक्स्ट के आसपास रंग फ्रिंजिंग या धुंधली सबपिक्सल रेंडरिंग देखें।"
       },
       "deadPixel": {
-        "title": "Dead / Stuck Pixels",
-        "what": "Look for pixels that remain permanently black, white, or a single color."
+        "title": "डेड / स्टक पिक्सल",
+        "what": "स्थायी रूप से काले, सफेद या एकल रंग वाले पिक्सल देखें।"
       },
       "color": {
-        "title": "Color Calibration",
-        "what": "Ensure primary colors look vibrant and accurate without bleeding."
+        "title": "रंग कैलिब्रेशन",
+        "what": "सुनिश्चित करें कि प्राथमिक रंग जीवंत और सटीक हैं बिना ब्लीडिंग के।"
       },
       "grayscale": {
-        "title": "Grayscale Test",
-        "what": "Look for pink, blue, or green tints in what should be neutral gray."
+        "title": "ग्रेस्केल टेस्ट",
+        "what": "तटस्थ ग्रे में गुलाबी, नीले या हरे रंग के रंग देखें।"
       },
       "brightness": {
-        "title": "Brightness",
-        "what": "Ensure you can distinguish dark squares from pure black."
+        "title": "चमक",
+        "what": "सुनिश्चित करें कि आप शुद्ध काले से गहरे वर्गों को अलग कर सकते हैं।"
       },
       "contrast": {
-        "title": "Contrast",
-        "what": "Ensure you can distinguish bright squares from pure white."
+        "title": "कंट्रास्ट",
+        "what": "सुनिश्चित करें कि आप शुद्ध सफेद से밝은 वर्गों को अलग कर सकते हैं।"
       },
       "blackLevel": {
-        "title": "Black Level",
-        "what": "Ensure the darkest shades are not crushed into pure black."
+        "title": "ब्लैक लेवल",
+        "what": "सुनिश्चित करें कि सबसे गहरे शेड शुद्ध काले में संकुचित नहीं हैं।"
       },
       "whiteLevel": {
-        "title": "White Level",
-        "what": "Ensure the brightest shades are not clipping into pure white."
+        "title": "व्हाइट लेवल",
+        "what": "सुनिश्चित करें कि सबसे चमकीले शेड शुद्ध सफेद में क्लिप नहीं हो रहे।"
       },
       "uniformity": {
-        "title": "Uniformity",
-        "what": "Look for splotches, bands, or dirty screen effect (DSE) across grays."
+        "title": "यूनिफॉर्मिटी",
+        "what": "ग्रे में धब्बे, बैंड या डर्टी स्क्रीन इफेक्ट (DSE) देखें।"
       },
       "backlightBleed": {
-        "title": "Backlight Bleed",
-        "what": "Look for distinct patches of light leaking from the bezel in a dark room."
+        "title": "बैकलाइट ब्लीड",
+        "what": "अंधेरे कमरे में बेज़ल से प्रकाश के अलग-अलग टुकड़े देखें।"
       },
       "ghosting": {
-        "title": "Ghosting & Motion Blur",
-        "what": "Look for trailing shadows (ghosting) or bright halos (overshoot) behind moving objects."
+        "title": "घोस्टिंग और मोशन ब्लर",
+        "what": "चलती वस्तुओं के पीछे छाया (घोस्टिंग) या चमकीले हेलो (ओवरशूट) देखें।"
       },
       "refreshRate": {
-        "title": "Refresh Rate",
-        "what": "Verify the browser rendering matches your expected monitor refresh rate."
+        "title": "रिफ्रेश रेट",
+        "what": "सत्यापित करें कि ब्राउज़र रेंडरिंग आपकी अपेक्षित मॉनिटर रिफ्रेश रेट से मेल खाती है।"
       },
       "screenTearing": {
-        "title": "Screen Tearing",
-        "what": "Watch for horizontal tearing during motion (V-Sync/VRR check)."
+        "title": "स्क्रीन टियरिंग",
+        "what": "गति के दौरान क्षैतिज टियरिंग देखें (V-Sync/VRR जांच)।"
       },
       "hdr": {
-        "title": "HDR Capability",
-        "what": "Verify the OS correctly detects HDR and Wide Color Gamut."
+        "title": "HDR क्षमता",
+        "what": "सत्यापित करें कि OS सही ढंग से HDR और वाइड कलर गैमट का पता लगाता है।"
       },
       "solidColor": {
-        "title": "Solid Color Purity",
-        "what": "Check for uniform color across the entire screen."
+        "title": "सॉलिड कलर प्यूरिटी",
+        "what": "पूरे स्क्रीन पर समान रंग की जांच करें।"
       },
       "burnIn": {
-        "title": "Burn-In",
-        "what": "Look for faint outlines of static elements like taskbars or logos."
+        "title": "बर्न-इन",
+        "what": "टास्कबार या लोगो जैसे स्थिर तत्वों की धुंधली रूपरेखा देखें।"
       },
       "resolutionChecker": {
         "title": "रिज़ॉल्यूशन और डिस्प्ले जानकारी",
@@ -1009,83 +1116,102 @@
   "Privacy": {
     "metaTitle": "Privacy Policy — Monitor Tester",
     "metaDescription": "Monitor Tester privacy policy: All tests execute locally in your browser. Zero telemetry, zero analytics tracking, and zero remote storage.",
-    "eyebrow": "PRIVACY & DATA POLICY",
-    "title": "Privacy Policy",
-    "description": "Monitor Tester is designed with a strict privacy-first architecture. All display diagnostic tests and calculations execute entirely inside your local browser.",
-    "lastUpdated": "Last updated: September 2026",
-    "noCollectionTitle": "Zero Remote Data Collection",
-    "noCollectionText": "When you visit Monitor Tester and run display tests, we do NOT collect, transmit, or store any personal data, hardware serial numbers, diagnostic observations, or screen metrics on external servers. There are no backend tracking databases, user accounts, or login requirements.",
-    "localStorageTitle": "Local Browser Storage",
-    "localStorageText": "To provide convenient features such as checklist tracking and defect marker coordinates, Monitor Tester utilizes your browser's private local storage APIs:",
-    "localStorageItem1": "Active Session & Observations (localStorage): Stores your self-reported test ratings (Pass, Check, Issue), custom notes, and pixel defect pin coordinates (X/Y pixels) so your report remains accessible if you refresh the page.",
-    "localStorageItem2": "Workflow Queue (sessionStorage): Temporarily keeps track of your current step in guided inspection workflows (e.g., General Checkup or Used Monitor Inspection). This is automatically cleared when you close your browser tab.",
-    "localStorageClear": "You can clear all stored data at any time by clicking 'Reset' in the test runner, clearing your browser's site data, or using your browser's private / incognito browsing mode.",
-    "cookiesTitle": "No Advertising or Tracking Cookies",
-    "cookiesText": "Monitor Tester does not use third-party advertising cookies, behavioral trackers, or marketing pixels. The site does not sell, rent, or monetize your browsing activity.",
-    "permissionsTitle": "Browser Permissions",
-    "permissionsText": "Monitor Tester requests only the standard Fullscreen API permission when you choose to enter full-screen testing mode. Fullscreen requires an explicit user gesture (such as clicking the Fullscreen button or pressing 'F') as enforced by your browser. We never request camera, microphone, notification, or geographic location permissions."
+    "eyebrow": "गोपनीयता और डेटा नीति",
+    "title": "गोपनीयता नीति",
+    "description": "मॉनिटर टेस्टर एक सख्त प्राइवेसी-फर्स्ट आर्किटेक्चर के साथ डिज़ाइन किया गया है। सभी डिस्प्ले डायग्नोस्टिक परीक्षण और गणनाएं पूरी तरह से आपके स्थानीय ब्राउज़र के अंदर चलती हैं।",
+    "lastUpdated": "अंतिम अपडेट: सितंबर 2026",
+    "noCollectionTitle": "शून्य रिमोट डेटा संग्रह",
+    "noCollectionText": "जब आप मॉनिटर टेस्टर पर जाते हैं और डिस्प्ले परीक्षण चलाते हैं, तो हम किसी भी व्यक्तिगत डेटा, हार्डवेयर सीरियल नंबर, नैदानिक टिप्पणियां या स्क्रीन मेट्रिक्स को बाहरी सर्वर पर एकत्र, प्रेषित या संग्रहित नहीं करते। कोई बैकएंड ट्रैकिंग डेटाबेस, उपयोगकर्ता खाते या लॉगिन आवश्यकताएं नहीं हैं।",
+    "localStorageTitle": "स्थानीय ब्राउज़र स्टोरेज",
+    "localStorageText": "चेकलिस्ट ट्रैकिंग और दोष मार्कर समन्वय जैसी सुविधाजनक सुविधाएं प्रदान करने के लिए, मॉनिटर टेस्टर आपके ब्राउज़र के निजी स्थानीय स्टोरेज API का उपयोग करता है:",
+    "localStorageItem1": "सक्रिय सत्र और टिप्पणियां (localStorage): आपकी स्व-रिपोर्ट किए गए परीक्षण रेटिंग (पास, चेक, इश्यू), कस्टम नोट्स और पिक्सल दोष पिन समन्वय (X/Y पिक्सल) संग्रहित करता है।",
+    "localStorageItem2": "वर्कफ्लो कतार (sessionStorage): आपके वर्तमान निर्देशित निरीक्षण वर्कफ्लो में चरण को अस्थायी रूप से ट्रैक करता है। यह ब्राउज़र टैब बंद करने पर स्वचालित रूप से साफ़ हो जाता है।",
+    "localStorageClear": "आप किसी भी समय 'रीसेट' पर क्लिक करके, अपने ब्राउज़र का साइट डेटा साफ़ करके, या अपने ब्राउज़र के प्राइवेट/इनकॉग्निटो मोड का उपयोग करके सभी संग्रहित डेटा साफ़ कर सकते हैं।",
+    "cookiesTitle": "कोई विज्ञापन या ट्रैकिंग कुकीज़ नहीं",
+    "cookiesText": "मॉनिटर टेस्टर तृतीय-पक्ष विज्ञापन कुकीज़, व्यवहार ट्रैकर या मार्केटिंग पिक्सल का उपयोग नहीं करता। साइट आपकी ब्राउज़िंग गतिविधि को बेचती, किराए पर देती या मुद्रीकृत नहीं करती।",
+    "permissionsTitle": "ब्राउज़र अनुमतियां",
+    "permissionsText": "मॉनिटर टेस्टर केवल मानक फुलस्क्रीन API अनुमति मांगता है जब आप फुल-स्क्रीन परीक्षण मोड में प्रवेश करना चुनते हैं। हम कभी भी कैमरा, माइक्रोफोन, सूचना या भौगोलिक स्थान अनुमतियां नहीं मांगते।"
   },
   "About": {
     "metaTitle": "About Monitor Tester — Display Diagnostic & Evaluation Utility",
     "metaDescription": "Learn about Monitor Tester, a free browser-based suite designed to test, inspect, and diagnose computer monitors, laptops, TVs, and mobile displays.",
-    "eyebrow": "ABOUT THE PROJECT",
-    "title": "About Monitor Tester",
-    "description": "A free, privacy-first browser utility built to evaluate, inspect, and troubleshoot computer monitors, laptops, mobile devices, and TVs without software installation.",
-    "missionTitle": "Why Monitor Tester Exists",
-    "missionText": "Buying a new or used monitor often involves uncertainty: dead pixels, backlight bleed, washed-out contrast, and ghosting are difficult to identify during brief in-store checks or unboxings. Monitor Tester was created to provide a complete, accessible suite of diagnostic patterns that anyone can run immediately in any modern web browser.",
-    "howItWorksTitle": "100% In-Browser Execution",
-    "howItWorksText": "Every test runs locally on your device using standard HTML5 Canvas, WebGL, CSS hardware acceleration, and the Screen and Window APIs. No downloads, native installers, or administrative permissions are needed. Your display data stays entirely on your computer.",
-    "testTypesTitle": "What You Can Test",
-    "pixelsCategory": "Pixel Integrity & Panel Defects",
-    "pixelsDesc": "Detect dead pixels, stuck subpixels, bright subpixels, and panel image retention (burn-in) across pure color fields.",
-    "colorCategory": "Color Reproduction & Grayscale",
-    "colorDesc": "Evaluate continuous gradients, color banding steps, color gamut boundaries, and multi-step grayscale ramps.",
-    "luminanceCategory": "Luminance, Contrast & Bleed",
-    "luminanceDesc": "Tune near-black and near-white clipping, check dark-room backlight bleeding, and assess full-screen brightness uniformity.",
-    "motionCategory": "Motion, Response & Gaming",
-    "motionDesc": "Check ghosting trails, evaluate pixel overdrive settings, measure V-Sync refresh rate (Hz), and inspect for screen tearing.",
-    "toolsCategory": "Hardware Diagnostics & Calculators",
-    "toolsDesc": "Inspect detected screen metrics (DPR, color depth), calculate PPI and optimal viewing distances, compare displays, and test multi-touch.",
-    "openSourceTitle": "Open & Community-Driven",
-    "openSourceText": "Monitor Tester is an open-source project. You can inspect the source code, report rendering bugs, suggest new test patterns, or contribute directly on GitHub."
+    "eyebrow": "प्रोजेक्ट के बारे में",
+    "title": "मॉनिटर टेस्टर के बारे में",
+    "description": "एक मुफ्त, प्राइवेसी-फर्स्ट ब्राउज़र उपयोगिता जो सॉफ्टवेयर इंस्टॉलेशन के बिना कंप्यूटर मॉनिटर, लैपटॉप, मोबाइल डिवाइस और TV का मूल्यांकन, निरीक्षण और समस्या निवारण करने के लिए बनाई गई है।",
+    "missionTitle": "मॉनिटर टेस्टर क्यों अस्तित्व में है",
+    "missionText": "नया या पुराना मॉनिटर खरीदना अक्सर अनिश्चितता से जुड़ा होता है: डेड पिक्सल, बैकलाइट ब्लीड, धुले हुए कंट्रास्ट और घोस्टिंग को संक्षिप्त इन-स्टोर जांच या अनबॉक्सिंग के दौरान पहचानना मुश्किल होता है। मॉनिटर टेस्टर पूर्ण, सुलभ नैदानिक पैटर्न का एक सेट प्रदान करने के लिए बनाया गया था जिसे कोई भी किसी भी आधुनिक वेब ब्राउज़र में तुरंत चला सकता है।",
+    "howItWorksTitle": "100% इन-ब्राउज़र निष्पादन",
+    "howItWorksText": "हर परीक्षण मानक HTML5 Canvas, WebGL, CSS हार्डवेयर त्वरण और Screen और Window API का उपयोग करके आपके डिवाइस पर स्थानीय रूप से चलता है। कोई डाउनलोड, नेटिव इंस्टॉलर या प्रशासनिक अनुमतियों की आवश्यकता नहीं है।",
+    "testTypesTitle": "आप क्या परीक्षण कर सकते हैं",
+    "pixelsCategory": "पिक्सल अखंडता और पैनल दोष",
+    "pixelsDesc": "शुद्ध रंग क्षेत्रों में डेड पिक्सल, स्टक सबपिक्सल, चमकीले सबपिक्सल और पैनल इमेज रिटेंशन (बर्न-इन) का पता लगाएं।",
+    "colorCategory": "रंग पुनरुत्पादन और ग्रेस्केल",
+    "colorDesc": "निरंतर ग्रेडिएंट, रंग बैंडिंग चरण, रंग गैमट सीमाएं और मल्टी-स्टेप ग्रेस्केल रैंप का मूल्यांकन करें।",
+    "luminanceCategory": "चमक, कंट्रास्ट और ब्लीड",
+    "luminanceDesc": "निकट-काले और निकट-सफेद क्लिपिंग को ट्यून करें, अंधेरे कमरे में बैकलाइट ब्लीडिंग की जांच करें।",
+    "motionCategory": "गति, प्रतिक्रिया और गेमिंग",
+    "motionDesc": "घोस्टिंग ट्रेल की जांच करें, पिक्सल ओवरड्राइव सेटिंग्स का मूल्यांकन करें, V-Sync रिफ्रेश रेट (Hz) मापें।",
+    "toolsCategory": "हार्डवेयर डायग्नोस्टिक्स और कैलकुलेटर",
+    "toolsDesc": "पता लगाए गए स्क्रीन मेट्रिक्स (DPR, रंग गहराई) का निरीक्षण करें, PPI और इष्टतम देखने की दूरी की गणना करें।",
+    "openSourceTitle": "खुला और समुदाय-संचालित",
+    "openSourceText": "मॉनिटर टेस्टर एक ओपन-सोर्स प्रोजेक्ट है। आप GitHub पर स्रोत कोड का निरीक्षण कर सकते हैं, रेंडरिंग बग रिपोर्ट कर सकते हैं, नए परीक्षण पैटर्न का सुझाव दे सकते हैं या सीधे योगदान दे सकते हैं।"
   },
   "Terms": {
     "metaTitle": "Terms of Use — Monitor Tester",
     "metaDescription": "Terms of use and disclaimer for the Monitor Tester display testing utility.",
-    "eyebrow": "TERMS & DISCLAIMER",
-    "title": "Terms of Use",
-    "description": "Please review the following terms and guidelines for using the Monitor Tester web utility and its diagnostic tools.",
-    "lastUpdated": "Last updated: September 2026",
-    "acceptanceTitle": "Acceptance of Terms",
-    "acceptanceText": "By accessing and using Monitor Tester, you acknowledge and agree to these terms. If you do not agree with any part of these terms, please discontinue use of the website.",
-    "natureOfServiceTitle": "Informational & Visual Testing Scope",
-    "natureOfServiceText": "Monitor Tester is an open web utility designed to assist users in visually evaluating display panels using browser-renderable test patterns, motion simulations, and client-side calculations. These tests are intended for visual screening and self-diagnosis.",
-    "noCalibrationTitle": "Not a Replacement for Hardware Colorimeters",
-    "noCalibrationText": "Browser-based software cannot replace physical spectrophotometers, hardware colorimeters (such as Calibrite or Datacolor Spyder), or optical oscilloscopes. Monitor Tester does not generate ICC color profiles, read physical photometric nits, or certify absolute color accuracy (Delta-E).",
-    "disclaimerTitle": "Disclaimer of Warranties",
-    "disclaimerText": "Monitor Tester is provided on an 'AS IS' and 'AS AVAILABLE' basis without warranties of any kind, whether express or implied. While we strive for precision, test results may vary based on operating system display scaling, GPU driver configurations, browser hardware acceleration, and ambient lighting conditions.",
-    "manufacturerTitle": "Manufacturer Warranty Policies",
-    "manufacturerText": "Display manufacturers enforce their own specific warranty terms regarding pixel defects (such as ISO 9241-307 Class 1 or Class 2 standards, which often define minimum thresholds of stuck or dead subpixels before an RMA is authorized). Identifying a defect on Monitor Tester does not automatically guarantee warranty replacement by your device manufacturer.",
-    "openSourceTitle": "Open Source License",
-    "openSourceText": "The underlying source code of Monitor Tester is licensed under the open-source MIT License. You are free to inspect, review, and fork the source code in accordance with the license."
+    "eyebrow": "उपयोग की शर्तें और अस्वीकरण",
+    "title": "उपयोग की शर्तें",
+    "description": "मॉनिटर टेस्टर एक मुफ्त नैदानिक उपकरण है जिसे डिस्प्ले की गुणवत्ता का मूल्यांकन करने में मदद के लिए डिज़ाइन किया गया है।",
+    "lastUpdated": "अंतिम अपडेट: सितंबर 2026",
+    "acceptanceTitle": "शर्तों की स्वीकृति",
+    "acceptanceText": "मॉनिटर टेस्टर तक पहुंच कर और उसका उपयोग करके, आप इन शर्तों को स्वीकार करते हैं। यदि आप सहमत नहीं हैं, तो कृपया सेवा का उपयोग बंद करें।",
+    "natureOfServiceTitle": "सूचनात्मक और दृश्य परीक्षण का दायरा",
+    "natureOfServiceText": "मॉनिटर टेस्टर एक खुला वेब उपयोगिता है जो उपयोगकर्ताओं को मानक HTML5 API का उपयोग करके अपने ब्राउज़र में डिस्प्ले पैनल का दृश्य मूल्यांकन करने में सहायता करने के लिए डिज़ाइन किया गया है।",
+    "noCalibrationTitle": "हार्डवेयर कलरीमीटर का प्रतिस्थापन नहीं",
+    "noCalibrationText": "ब्राउज़र-आधारित सॉफ्टवेयर भौतिक स्पेक्ट्रोफोटोमीटर, हार्डवेयर कलरीमीटर (जैसे Calibrite या X-Rite डिवाइस) या ICC प्रोफाइल सॉफ्टवेयर की जगह नहीं ले सकता।",
+    "disclaimerTitle": "वारंटी का अस्वीकरण",
+    "disclaimerText": "मॉनिटर टेस्टर किसी भी प्रकार की वारंटी के बिना 'यथावत' और 'उपलब्ध होने पर' आधार पर प्रदान किया जाता है।",
+    "manufacturerTitle": "निर्माता वारंटी नीतियां",
+    "manufacturerText": "डिस्प्ले निर्माता पिक्सल दोषों (ISO 13406-2 जैसे मानकों के अनुसार) के बारे में अपनी विशिष्ट वारंटी शर्तें लागू करते हैं। हमारे परीक्षण परिणाम इन नीतियों को प्रभावित नहीं करते।",
+    "openSourceTitle": "ओपन सोर्स",
+    "openSourceText": "मॉनिटर टेस्टर ओपन सोर्स है। आप GitHub पर स्रोत कोड की समीक्षा कर सकते हैं, बग रिपोर्ट कर सकते हैं, या सुधार का सुझाव दे सकते हैं।",
+    "diagnosticTitle": "नैदानिक उद्देश्य केवल",
+    "diagnosticText": "इस वेबसाइट पर उपलब्ध परीक्षण और उपकरण पूरी तरह से नैदानिक और शैक्षिक उद्देश्यों के लिए हैं। परिणाम आपके डिवाइस, ब्राउज़र, ऑपरेटिंग सिस्टम और कॉन्फ़िगरेशन के आधार पर भिन्न हो सकते हैं।",
+    "accuracyTitle": "सटीकता की सीमाएं",
+    "accuracyText": "ब्राउज़र-आधारित परीक्षण पेशेवर कैलिब्रेटेड हार्डवेयर उपकरणों की जगह नहीं ले सकते। मापी गई मान जैसे रिफ्रेश रेट, रंग गहराई, और HDR समर्थन ब्राउज़र API द्वारा रिपोर्ट किए जाते हैं और पेशेवर कैलिब्रेशन उपकरण से भिन्न हो सकते हैं।",
+    "liabilityTitle": "दायित्व का अस्वीकरण",
+    "liabilityText": "मॉनिटर टेस्टर के परिणामों के आधार पर लिए गए निर्णयों के लिए हम जिम्मेदार नहीं हैं, जिसमें वारंटी दावे, खरीद या वापसी निर्णय शामिल हैं।",
+    "warrantyTitle": "वारंटी परामर्श",
+    "warrantyText": "हमारे परीक्षण परिणाम केवल संदर्भ के लिए हैं। वारंटी दावों के लिए, कृपया अपने निर्माता के दिशानिर्देश देखें और अपने डिस्प्ले का पेशेवर मूल्यांकन करें।",
+    "changeTitle": "परिवर्तन",
+    "changeText": "हम इन शर्तों को बिना किसी पूर्व सूचना के किसी भी समय बदलने का अधिकार सुरक्षित रखते हैं।",
+    "contactTitle": "संपर्क",
+    "contactText": "यदि आपके कोई प्रश्न हैं, तो कृपया GitHub के माध्यम से हमसे संपर्क करें।"
   },
   "Contact": {
     "metaTitle": "Contact & Support — Monitor Tester",
     "metaDescription": "Get in touch with the Monitor Tester open-source project. Report bugs, suggest test patterns, or ask questions.",
-    "eyebrow": "CONTACT & SUPPORT",
-    "title": "Contact & Feedback",
-    "description": "Have feedback, found a display discrepancy, or want to suggest a new test pattern? Here are the best ways to reach the project.",
-    "githubTitle": "GitHub Issue Tracker",
-    "githubDesc": "Report bugs, browser rendering issues, or request new display test patterns on our public GitHub repository.",
-    "githubAction": "Open an Issue on GitHub →",
-    "contributeTitle": "Contribute Code & Guides",
-    "contributeDesc": "Monitor Tester is open source. Pull requests for test improvements, performance optimizations, and translation corrections are warmly welcomed.",
-    "contributeAction": "View GitHub Repository →",
-    "emailTitle": "Direct Project Inquiries",
-    "emailDesc": "For general inquiries, collaborations, or private feedback regarding the project, feel free to reach out directly via email.",
-    "faqTitle": "Check Common Questions",
-    "faqDesc": "Looking for quick guidance on how browser tests work or what dead pixels are? Check our comprehensive FAQ.",
-    "faqAction": "Read the FAQ →"
+    "eyebrow": "संपर्क करें",
+    "title": "संपर्क करें",
+    "description": "हमसे GitHub या ईमेल के माध्यम से संपर्क करें।",
+    "githubTitle": "GitHub के माध्यम से",
+    "githubDesc": "हमारे सार्वजनिक GitHub रिपॉजिटरी पर बग, ब्राउज़र रेंडरिंग समस्याएं रिपोर्ट करें या नए परीक्षण पैटर्न का अनुरोध करें।",
+    "githubAction": "GitHub पर Issue खोलें →",
+    "contributeTitle": "कोड और गाइड में योगदान करें",
+    "contributeDesc": "मॉनिटर टेस्टर ओपन सोर्स है। परीक्षण सुधारों, प्रदर्शन अनुकूलन और अनुवाद के लिए Pull Requests का स्वागत है।",
+    "contributeAction": "GitHub रिपॉजिटरी देखें →",
+    "emailTitle": "ईमेल द्वारा",
+    "emailDesc": "सामान्य पूछताछ, सहयोग, या प्रोजेक्ट के बारे में निजी फीडबैक के लिए हमसे संपर्क करें।",
+    "faqTitle": "सामान्य प्रश्न देखें",
+    "faqDesc": "ब्राउज़र परीक्षण कैसे काम करते हैं या डेड पिक्सल क्या हैं इस पर त्वरित मार्गदर्शन चाहिए? हमारे व्यापक FAQ देखें।",
+    "faqAction": "FAQ पढ़ें →",
+    "githubText": "बग रिपोर्ट करें, सुविधाओं का सुझाव दें, या हमारे GitHub रिपॉजिटरी पर योगदान दें।",
+    "githubButton": "GitHub पर देखें",
+    "emailText": "प्रत्यक्ष प्रश्नों, सहयोग अनुरोधों, या व्यावसायिक पूछताछ के लिए हमें ईमेल करें।",
+    "bugTitle": "बग रिपोर्ट",
+    "bugText": "यदि आपको कोई तकनीकी समस्या मिली है, तो कृपया विस्तृत जानकारी के साथ GitHub पर एक issue खोलें।",
+    "featureTitle": "सुविधा अनुरोध",
+    "featureText": "नए परीक्षण या सुधार के लिए सुझाव? हम प्रतिक्रिया का स्वागत करते हैं।"
   },
   "Tools": {
     "metaTitle": "डिस्प्ले उपकरण और कैलकुलेटर | Monitor Tester",
@@ -1238,7 +1364,7 @@
       "megapixelsFormula": "≈ {megapixels} मेगापिक्सेल (चौड़ाई×ऊंचाई×DPR)",
       "currentViewport": "वर्तमान व्यूपोर्ट",
       "viewportFormula": "window.innerWidth × innerHeight",
-      "dprLabel": "डिवाइस पिक्सेल अनुपात (DPR)",
+      "dprLabel": "डिवाइस पिक्सल अनुपात (DPR)",
       "dprRetina": "उच्च-DPI / रेटिना स्केलिंग",
       "dprStandard": "मानक 100% 1:1 स्केलिंग",
       "dprCustom": "कस्टम OS भिन्नात्मक स्केलिंग",
@@ -1300,7 +1426,7 @@
     },
     "multiScreen": {
       "title": "4. मल्टी-मॉनिटर डिस्प्ले डिटेक्शन",
-      "subtitle": "Window Management API",
+      "subtitle": "विंडो मैनेजमेंट API",
       "heading": "क्रॉस-डिस्प्ले टोपोलॉजी और स्क्रीन व्यवस्था",
       "desc": "W3C Window Management API का उपयोग करके मल्टी-मॉनिटर सेटअप के लिए ब्राउज़र से पूछताछ करें।",
       "queryBtn": "डिस्प्ले टोपोलॉजी की जाँच करें",
@@ -1316,7 +1442,7 @@
       "thisWindowBadge": "यह विंडो",
       "dimensions": "आयाम: {width} × {height} पिक्सेल",
       "available": "उपलब्ध: {width} × {height} पिक्सेल",
-      "dpr": "डिवाइस पिक्सेल अनुपात: {dpr}x",
+      "dpr": "डिवाइस पिक्सल अनुपात: {dpr}x",
       "orientation": "ओरिएंटेशन: {orientation}",
       "orientationStandard": "मानक",
       "emptyState": "ऊपर \"डिस्प्ले टोपोलॉजी की जाँच करें\" पर क्लिक करें। यदि आपका ब्राउज़र Window Management API का समर्थन करता है और आप अनुमति देते हैं, तो अलग-अलग भौतिक स्क्रीन रिज़ॉल्यूशन यहाँ सूचीबद्ध होंगे। असमर्थित होने पर ब्राउज़र एकल-स्क्रीन मोड में कार्य करता है।"
@@ -1512,7 +1638,7 @@
         "desc": "सबपिक्सेल स्मूथिंग का मूल्यांकन करने के लिए बहु-वजन पैंग्राम टेक्स्ट।"
       },
       "moire": {
-        "label": "मोइरे और सीमेंस स्टार",
+        "label": "मोइरे और सीमेंस",
         "desc": "उच्च-आवृत्ति हस्तक्षेप रिंग और स्टारबर्स्ट पैटर्न।"
       }
     },
@@ -1523,8 +1649,8 @@
       "bgColor": "पृष्ठभूमि रंग",
       "invert": "उलटा करें (Invert)",
       "gradientType": "ग्रेडिएंट दिशा",
-      "gradHorizontal": "क्षैतिज (Horizontal)",
-      "gradVertical": "ऊर्ध्वाधर (Vertical)",
+      "gradHorizontal": "क्षैतिज",
+      "gradVertical": "ऊर्ध्वाधर",
       "gradRadial": "रेडियल (केंद्रीकृत)",
       "customText": "नमूना टेक्स्ट",
       "fontSize": "फ़ॉन्ट आकार ({val}px)",
@@ -1648,11 +1774,11 @@
       "gcd": "महत्तम समापवर्तक (GCD)"
     },
     "presets": {
-      "fhd24": "24\" Full HD (1080p)",
-      "qhd27": "27\" Quad HD (1440p)",
-      "uhd27": "27\" 4K Ultra HD",
+      "fhd24": "24\" फुल HD (1080p)",
+      "qhd27": "27\" क्वाड HD (1440p)",
+      "uhd27": "27\" 4K अल्ट्रा HD",
       "oled27": "27\" OLED 240Hz गेमिंग",
-      "uhd32": "32\" 4K Ultra HD",
+      "uhd32": "32\" 4K अल्ट्रा HD",
       "uwqhd34": "34\" अल्ट्रावाइड (UWQHD)",
       "suw49": "49\" सुपर अल्ट्रावाइड",
       "mac14": "14\" लैपटॉप (Retina)",

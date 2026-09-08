@@ -420,16 +420,20 @@ export function TestWrapper({ title, description, instructions, children, testId
               {workflowIndex !== -1 && (
                 <div className="bg-muted/40 rounded-xl p-3 border border-border/60 text-right min-w-[210px]">
                   <div className="flex items-center justify-between gap-3 mb-1">
-                    <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold font-mono">{t("queue.sequenceLabel")}</span>
+                    <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold font-mono">
+                      {t.has("queue.sequenceLabel") ? t("queue.sequenceLabel") : "Queue Sequence"}
+                    </span>
                     <button 
                       onClick={() => setIsQueueDrawerOpen(true)}
                       className="text-[11px] text-blue-600 hover:text-blue-700 font-medium underline"
                     >
-                      {t("queue.manageQueue")}
+                      {t.has("queue.manageQueue") ? t("queue.manageQueue") : "Manage Queue"}
                     </button>
                   </div>
                   <div className="text-sm font-semibold text-foreground">
-                    {t("queue.stepProgress", { x: workflowIndex + 1, y: workflowSequence.length })}
+                    {t.has("queue.stepProgress") 
+                      ? t("queue.stepProgress", { x: workflowIndex + 1, y: workflowSequence.length }) 
+                      : `Test ${workflowIndex + 1} of ${workflowSequence.length}`}
                   </div>
                   <div className="w-full bg-border/60 h-1.5 rounded-full overflow-hidden mt-2">
                     <div 

@@ -4,35 +4,35 @@
     "description": "無料のオンライン画面テスト・モニターテストツール。ドット抜けテスト、モニター色テスト、視覚的キャリブレーション、リフレッシュレート、残像テストを手軽に実施できます。"
   },
   "Header": {
-    "title": "Monitor Tester",
+    "title": "モニターテスター",
     "nav": {
       "tests": "テスト",
-      "inspection": "点検",
+      "inspection": "検査",
       "guides": "ガイド",
       "menu": "メニュー",
       "tools": "ツール"
     },
     "tests": {
       "pixels": "ピクセル",
-      "color": "カラー",
+      "color": "色",
       "luminance": "輝度",
       "display": "ディスプレイ",
-      "motion": "モーション",
-      "advanced": "高度なテスト"
+      "motion": "動き",
+      "advanced": "詳細"
     },
     "inspection": {
-      "monitor": "モニター点検",
+      "monitor": "モニター検査",
       "gaming": "ゲーミング",
       "oled": "OLED",
-      "new": "新品モニター",
+      "new": "新しいモニター",
       "used": "中古モニター",
-      "laptop": "ノートPC画面",
-      "tv": "テレビ画面",
+      "laptop": "ラップトップディスプレイ",
+      "tv": "テレビディスプレイ",
       "tvSubtitle": "大画面"
     },
     "guides": {
       "monitor": "モニターガイド",
-      "laptop": "ノートPCガイド",
+      "laptop": "ラップトップガイド",
       "tv": "テレビガイド",
       "oled": "OLEDガイド",
       "mobile": "モバイルガイド",
@@ -40,62 +40,62 @@
     },
     "dropdown": {
       "popularTests": "人気のテスト",
-      "deadPixels": "ドット抜けテスト",
-      "colorTest": "モニター色テスト",
+      "deadPixels": "デッドピクセルテスト",
+      "colorTest": "カラーテスト",
       "brightness": "輝度",
       "contrast": "コントラスト",
-      "ghosting": "残像テスト (ゴースト)",
-      "refreshRate": "リフレッシュレート (Hz)",
-      "viewAllTests": "全28種類のテストを見る",
-      "troubleshootInspect": "トラブル診断と点検",
+      "ghosting": "ゴーストテスト",
+      "refreshRate": "リフレッシュレートテスト",
+      "viewAllTests": "28すべてのテストを見る",
+      "troubleshootInspect": "トラブルシューティングと検査",
       "diagnoseProblem": "問題を診断する",
       "wizardBadge": "ウィザード",
-      "generalCheckup": "総合点検",
-      "subAllRound": "総合チェック",
+      "generalCheckup": "一般チェック",
+      "subAllRound": "オールラウンド",
       "usedMonitor": "中古モニター",
-      "subPrePurchase": "購入前確認",
-      "gamingDisplay": "ゲーミング画面",
-      "subHzMotion": "Hzと応答性",
+      "subPrePurchase": "購入前",
+      "gamingDisplay": "ゲーミングディスプレイ",
+      "subHzMotion": "Hzとモーション",
       "oledDisplay": "OLEDディスプレイ",
       "subBurnIn": "焼き付きと黒",
-      "laptopDisplay": "ノートPC画面",
-      "subDpiScale": "DPIと拡大率",
-      "savedReports": "保存済みレポート",
-      "inspectionHub": "点検ハブ",
+      "laptopDisplay": "ラップトップディスプレイ",
+      "subDpiScale": "DPIとスケール",
+      "savedReports": "保存済みレポートとメモ",
+      "inspectionHub": "検査ハブ",
       "utilitiesTools": "ユーティリティとツール",
       "displayInfo": "ディスプレイ情報",
       "resolutionPpi": "解像度とPPI",
-      "compareDisplays": "ディスプレイ比較",
+      "compareDisplays": "ディスプレイを比較",
       "customPattern": "カスタムパターン",
       "viewAllTools": "すべてのツールを見る",
       "practicalGuides": "実践ガイド",
-      "deadVsStuck": "ドット抜けの種類と見分け方",
-      "ghostingMotion": "ゴーストと応答速度",
-      "backlightBleed": "バックライト漏れ",
-      "viewingAngles": "視野角の違い",
-      "allGuides": "すべてのガイドを見る"
+      "deadVsStuck": "デッドピクセルvs固着ピクセル",
+      "ghostingMotion": "ゴーストとモーション",
+      "backlightBleed": "バックライトブリード",
+      "viewingAngles": "視野角",
+      "allGuides": "すべてのディスプレイガイド"
     },
     "searchPlaceholder": "テストやガイドを検索..."
   },
   "Footer": {
-    "title": "Monitor Tester",
-    "description": "ドット抜け、バックライト漏れ、色精度、残像などをブラウザ上で直接診断できる、無料・オープン・プライバシー重視のディスプレイテストツールです。",
+    "title": "モニターテスター",
+    "description": "デッドピクセル、バックライトブリード、色、動きなどをディスプレイでテストするための無料でオープンなプライバシー重視のツールスイート。ブラウザで直接動作します。",
     "attributes": {
       "browserTitle": "ブラウザで動作",
-      "browserDesc": "ソフトウェアのインストール不要",
-      "privacyTitle": "プライバシーとセキュリティ",
+      "browserDesc": "ソフトウェア不要",
+      "privacyTitle": "プライベートで安全",
       "privacyDesc": "すべてのテストはローカルで実行",
-      "deviceTitle": "あらゆるデバイスに対応",
-      "deviceDesc": "デスクトップ、ノートPC、タブレット、スマホ",
+      "deviceTitle": "あらゆるデバイスで動作",
+      "deviceDesc": "デスクトップ、ラップトップ、タブレット、モバイル",
       "i18nTitle": "多言語対応",
       "i18nDesc": "複数の言語で利用可能"
     },
     "columns": {
       "tests": "テスト",
-      "inspection": "検査フロー",
+      "inspection": "検査",
       "guides": "ガイド",
-      "about": "このサイトについて",
-      "guidesAndTools": "ガイド＆ツール"
+      "about": "について",
+      "guidesAndTools": "ガイドとツール"
     },
     "links": {
       "allTests": "すべてのテスト",
@@ -126,10 +126,10 @@
       "contribute": "貢献する",
       "reportIssue": "問題を報告"
     },
-    "copyright": "Monitor Tester. All rights reserved."
+    "copyright": "モニターテスター。全著作権所有。"
   },
   "LanguageSwitcher": {
-    "en": "English",
+    "en": "英語",
     "hi": "हिन्दी",
     "es": "Español",
     "fr": "Français",
@@ -137,7 +137,7 @@
     "pt": "Português",
     "ja": "日本語",
     "ko": "한국어",
-    "label": "言語を選択"
+    "label": "言語"
   },
   "Home": {
     "eyebrow": "診断・点検・理解する。",
@@ -165,7 +165,7 @@
     "quickColorTest": "モニター色テスト",
     "quickBrightness": "輝度",
     "quickContrast": "コントラスト",
-    "quickGhosting": "残像テスト",
+    "quickGhosting": "ゴーストテスト",
     "quickRefreshRate": "リフレッシュレート",
     "workflowsTitle": "何をチェックしますか？",
     "workflowsDesc": "お使いの状況に合わせてガイドや点検手順を選択。",
@@ -236,7 +236,7 @@
     },
     "launchTest": "テストを開始",
     "tags": {
-      "visual": "視覚",
+      "visual": "ビジュアル",
       "fullscreen": "フルスクリーン",
       "strobe": "ストロボ",
       "color": "カラー",
@@ -245,10 +245,10 @@
       "calibration": "キャリブレーション",
       "backlight": "バックライト",
       "darkRoom": "暗室",
-      "canvas": "CANVAS",
+      "canvas": "キャンバス",
       "latency": "レイテンシ",
       "estimate": "推定",
-      "vsync": "VSYNC",
+      "vsync": "Vシンク",
       "api": "API"
     },
     "tests": {
@@ -277,7 +277,7 @@
         "description": "パネル全体のエッジ照明の不一致、ダーティスクリーンエフェクト（DSE）、および色合いの偏りをチェックします。"
       },
       "backlightBleed": {
-        "title": "バックライト漏れ",
+        "title": "バックライトブリード",
         "description": "暗い環境でIPSまたはLEDパネルの端から光が漏れているのを特定するための純黒のレンダリング。"
       },
       "ghostingTest": {
@@ -293,28 +293,28 @@
         "description": "公開されているブラウザAPIを読み取り、論理解像度、色深度、向き、HDRサポート機能などを報告します。"
       },
       "grayscaleTest": {
-        "title": "Grayscale Test",
-        "description": "Test monitor ability to render neutral grays without color tinting."
+        "title": "グレースケールテスト",
+        "description": "色調なしで中性グレーをレンダリングするモニターの能力をテストします。"
       },
       "saturationTest": {
-        "title": "Saturation Test",
-        "description": "Assess color vibrancy and detect banding in high-saturation gradients."
+        "title": "彩度テスト",
+        "description": "色の鮮やかさを評価し、高彩度グラデーションのバンディングを検出します。"
       },
       "blackLevelTest": {
-        "title": "Black Level Test",
-        "description": "Tune your monitor's black levels to ensure dark details aren't crushed."
+        "title": "ブラックレベルテスト",
+        "description": "暗い詳細がつぶれないように、モニターのブラックレベルを調整します。"
       },
       "whiteLevelTest": {
-        "title": "White Level Test",
-        "description": "Tune your monitor's contrast to ensure bright details aren't clipped."
+        "title": "ホワイトレベルテスト",
+        "description": "明るい詳細がクリッピングされないように、モニターのコントラストを調整します。"
       },
       "gammaTest": {
-        "title": "Gamma Calibration",
-        "description": "Visually estimate your monitor's gamma tracking (target 2.2 for sRGB)."
+        "title": "ガンマキャリブレーション",
+        "description": "モニターのガンマトラッキングを視覚的に推定します（sRGBのターゲット2.2）。"
       },
       "hdrCapabilityTest": {
-        "title": "HDR Capability",
-        "description": "Verify your browser and OS correctly detect HDR and Wide Color Gamut."
+        "title": "HDR能力",
+        "description": "ブラウザとOSがHDRとワイドカラーガモットを正しく検出するか確認します。"
       },
       "contrastTest": {
         "title": "コントラスト調整",
@@ -377,7 +377,10 @@
       "moveDown": "下へ移動",
       "remove": "キューから削除",
       "restart": "最初から再開",
-      "completeReport": "完了してレポートを見る"
+      "completeReport": "完了してレポートを見る",
+      "sequenceLabel": "キューシーケンス",
+      "manageQueue": "キューを管理",
+      "stepProgress": "テスト {x} / {y}"
     },
     "pixelDefect": {
       "bannerInstruction": "画面上をクリックしてピクセル欠陥をマークしてください",
@@ -484,8 +487,8 @@
     "backlight-bleed-test": {
       "metaTitle": "バックライト漏れテスト – 液晶モニターの光漏れ・IPSグロー確認",
       "metaDescription": "暗所環境で純黒画面を表示し、液晶パネルの縁からのバックライト漏れ（光漏れ）やIPS特有のグロー現象をチェック。",
-      "title": "Backlight Bleed Test",
-      "description_p1": "This test renders a pure black screen. It is designed to expose backlight bleed, clouding, or IPS glow that typically affects LCD/LED panels.",
+      "title": "バックライトブリードテスト",
+      "description_p1": "このテストは純粋に黒い画面をレンダリングします。LCDバックライトブリード、クラウディング、またはIPSグローを露出するように設計されています。",
       "instructions": [
         "<strong>Crucial:</strong> This test must be performed in a completely dark room.",
         "Set your monitor to its standard or calibrated brightness level (do not force 100% brightness unless that is how you normally use it).",
@@ -508,8 +511,8 @@
     "stuck-pixel-test": {
       "metaTitle": "スタックピクセル修復テスト – 高速RGB切り替えによるドット刺激",
       "metaDescription": "特定の色で固まったスタックピクセルを検出し、高周波のRGB原色点滅により画素の正常復帰を試みます。",
-      "title": "Stuck Pixel Fixer & Test",
-      "description_p1": "Unlike a dead pixel (which is permanently black), a <strong>stuck pixel</strong> is a single subpixel (red, green, or blue) that is permanently turned on. Sometimes, rapidly cycling colors can un-stick the liquid crystal.",
+      "title": "固着ピクセル修正 & テスト",
+      "description_p1": "デッドピクセル（恒久的に黒）とは異なり、<strong>固着ピクセル</strong>は常にオンになっている単一のサブピクセルです。",
       "instructions": [
         "<strong>Warning:</strong> This test flashes bright colors rapidly. Do not use if you are sensitive to flashing lights.",
         "The test will automatically cycle between Red, Green, and Blue at a high frequency.",
@@ -520,8 +523,8 @@
     "uniformity-test": {
       "metaTitle": "画面均一性テスト – 輝度ムラ・色ムラ・DSE診断",
       "metaDescription": "5%、10%、20%、50%、100%のグレー画面を表示し、液晶パネル全体の輝度ムラや汚れのようなムラ（DSE）を検査します。",
-      "title": "Screen Uniformity & DSE Test",
-      "description_p1": "This test displays stepped grayscale backgrounds to help identify backlight bleeding, edge darkening (vignetting), and Dirty Screen Effect (DSE).",
+      "title": "スクリーンの均一性 & DSEテスト",
+      "description_p1": "このテストは、バックライトブリード、エッジの暗化、DSEを識別するのに役立てるために、段階的なグレースケール背景を表示します。",
       "instructions": [
         "Check the corners and edges on the 5% and 10% dark grays for clouding or light bleed.",
         "On the 20% and 50% grays, look for splotches, bands, or \"dirty\" smudges across the center of the screen (DSE).",
@@ -532,99 +535,99 @@
     "black-level-test": {
       "metaTitle": "黒レベル調整テスト – 暗部階調と黒つぶれの診断",
       "metaDescription": "0%〜5%の漆黒に近い微細な輝度ステップを判別し、暗い映画やゲームの映像が黒につぶれないよう調整します。",
-      "title": "Black Level Test",
-      "description_p1": "This test helps you configure your monitor's black level (brightness) setting. It displays extremely dark shades near pure black.",
-      "inst1": "Turn off room lights or reduce glare on the screen.",
-      "inst2": "Adjust your monitor's 'Brightness' setting until you can barely distinguish block 1 from the pure black background.",
-      "inst3": "If blocks 1-5 look identical to the background, your blacks are being crushed."
+      "title": "ブラックレベルテスト",
+      "description_p1": "このテストは、モニターのブラックレベル（輝度）設定を構成するのに役立ちます。非常に暗いグレーのブロックを表示します。",
+      "inst1": "部屋の電気を消すか、画面のグレアを減らしてください。",
+      "inst2": "モニターの「輝度」設定を調整して、純粋な黒の背景からブロック1をかろうじて区別できるようにします。",
+      "inst3": "ブロック1-5が背景と同一に見える場合、ブラックがクラッシュしています。"
     },
     "white-level-test": {
       "metaTitle": "白レベル調整テスト – 明部階調と白飛び防止の校正",
       "metaDescription": "95%〜100%の純白に近い階調差を識別し、明るいハイライト領域のディテールが消えないよう校正します。",
-      "title": "White Level Test",
-      "description_p1": "This test helps you configure your monitor's white level (contrast) setting. It displays extremely bright shades near pure white.",
-      "inst1": "Adjust your monitor's 'Contrast' setting until you can distinguish block 254 from the pure white background.",
-      "inst2": "If blocks 250-254 look identical to the background, your whites are clipping.",
-      "inst3": "Do not set contrast so high that bright details are lost."
+      "title": "ホワイトレベルテスト",
+      "description_p1": "このテストは、モニターのホワイトレベル（コントラスト）設定を構成するのに役立ちます。非常に明るいグレーのブロックを表示します。",
+      "inst1": "純粋な白の背景からブロック254を区別できるまで、モニターの「コントラスト」設定を調整します。",
+      "inst2": "ブロック250-254が背景と同一に見える場合、白がクリッピングされています。",
+      "inst3": "明るい詳細が失われるほどコントラストを高く設定しないでください。"
     },
     "grayscale-test": {
       "metaTitle": "グレースケールテスト – 256階調グラデーションと色温度検査",
       "metaDescription": "滑らかな256段階の階調パターンで、グレーの純度や特定のカラー被り（ピンクや青への偏り）がないか検査します。",
-      "title": "Grayscale Test",
-      "description_p1": "This test displays neutral grayscale backgrounds. It helps you check if your monitor suffers from unwanted color tints in its gray rendering.",
-      "inst1": "Cycle through the gray levels using Space or right arrow.",
-      "inst2": "Look for pink, blue, or green tints in what should be neutral gray.",
-      "inst3": "Use your monitor's RGB balance controls to correct any color cast."
+      "title": "グレースケールテスト",
+      "description_p1": "このテストは中性のグレースケール背景を表示します。モニターに色調がないか確認するのに役立ちます。",
+      "inst1": "スペースまたは右矢印を使用してグレーレベルを循環します。",
+      "inst2": "中性グレーにあるべきものにピンク、青、緑の色調を探します。",
+      "inst3": "モニターのRGBバランスコントロールを使用して色かぶりを修正します。"
     },
     "saturation-test": {
       "metaTitle": "彩度テスト – RGB・CMYカラーの色の深みと飽和度確認",
       "metaDescription": "原色・中間色の彩度レベルを段階的にテストし、色が飽和して潰れたり薄すぎたりしないか評価します。",
-      "title": "Saturation Test",
-      "description_p1": "This test displays a continuous color spectrum and stepped saturation blocks for primary colors.",
-      "inst1": "Check the smooth spectrum for obvious banding or harsh transitions.",
-      "inst2": "Look at the individual saturation steps to ensure distinct differences between blocks.",
-      "inst3": "Adjust your monitor's saturation/vibrancy settings if colors look washed out or overly neon."
+      "title": "彩度テスト",
+      "description_p1": "このテストは連続したカラースペクトルと原色の段階的な彩度ブロックを表示します。",
+      "inst1": "明らかなバンディングや急激な遷移がないか、滑らかなスペクトルを確認します。",
+      "inst2": "ブロック間に明確な差があることを確認するために、個々の彩度ステップを確認します。",
+      "inst3": "色が薄く見えるかネオンすぎる場合は、モニターの彩度/ビブランス設定を調整します。"
     },
     "gamma-test": {
       "metaTitle": "ガンマ値テスト – ガンマ2.2および2.4の視覚的キャリブレーション",
       "metaDescription": "標準的なガンマ2.2および2.4のリファレンス値に対して、お使いのディスプレイのガンマカーブの追従性を確認します。",
-      "title": "Gamma Calibration",
-      "description_p1": "This tool helps you estimate your monitor's physical gamma curve. A gamma of 2.2 is the standard for sRGB and Windows PCs.",
-      "inst1": "Enter fullscreen and move away from the monitor, or squint your eyes until the top lines blur into a solid gray.",
-      "inst2": "Compare the blurred top half to the three solid blocks below.",
-      "inst3": "The block that perfectly matches the brightness of the blurred top half indicates your monitor's approximate gamma.",
-      "inst4": "<strong>ABOUT THIS TEST:</strong> This tool relies on visual perception and standard browser color rendering. It is not a replacement for a hardware colorimeter."
+      "title": "ガンマキャリブレーション",
+      "description_p1": "このツールは、モニターの物理的なガンマ曲線を推定するのに役立ちます。sRGBのガンマ2.2が標準です。",
+      "inst1": "フルスクリーンに入り、モニターから離れるか、上部の線がぼやけるまで目を細めてください。",
+      "inst2": "ぼやけた上半分を下の3つのソリッドブロックと比較します。",
+      "inst3": "ぼやけた上半分の明るさと完全に一致するブロックが、モニターのおおよそのガンマを示します。",
+      "inst4": "<strong>このテストについて:</strong> このツールは視覚的な知覚と標準的なブラウザカラーレンダリングに依存しています。"
     },
     "motion-blur-test": {
       "metaTitle": "モーションブラーテスト – 動体解像度とブレの評価",
       "metaDescription": "高速で動くグラフィックを用いて、ゲーミングモニターやTVの動画応答性とブレ（MPRT）を視覚的に評価します。",
-      "title": "Motion Blur Test",
-      "description_p1": "Assess how well your monitor handles fast motion without blurring or smearing details.",
-      "inst1": "Track the moving blocks with your eyes.",
-      "inst2": "Look at the small inner square. If the edges blur completely, your monitor has a slow pixel response time.",
-      "inst3": "Adjust speed and contrast to test under different panel overdrive scenarios."
+      "title": "モーションブラーテスト",
+      "description_p1": "詳細をぼかしたり広げたりせずに、モニターが高速の動きをどれだけ上手く処理するかを評価します。",
+      "inst1": "目で動くブロックを追跡します。",
+      "inst2": "小さな内側の正方形を見てください。端が完全にぼやける場合、モニターのピクセル応答が遅いです。",
+      "inst3": "さまざまなパネルオーバードライブシナリオでテストするために速度とコントラストを調整します。"
     },
     "hdr-capability-test": {
       "metaTitle": "HDR機能テスト – ハイダイナミックレンジとピーク輝度診断",
       "metaDescription": "ブラウザでのHDR対応状況、最大ピーク輝度（nit）、広色域（Display P3）の表示能力をチェックします。",
-      "title": "HDR Capability Test",
-      "description_p1": "This tool queries your browser's APIs to determine if High Dynamic Range (HDR) and Wide Color Gamut (P3) are currently enabled and supported by your display chain.",
-      "inst1": "Review the browser-reported capabilities.",
-      "inst2": "If it says 'Not Supported' but your monitor is HDR-capable, ensure HDR is turned on in Windows/macOS display settings.",
-      "inst3": "Ensure you are using a modern browser with hardware acceleration enabled."
+      "title": "HDR能力テスト",
+      "description_p1": "このツールはブラウザのAPIを照会して、ハイダイナミックレンジ（HDR）とワイドカラーガモットがサポートされているかどうかを確認します。",
+      "inst1": "ブラウザが報告する機能を確認します。",
+      "inst2": "「サポートされていません」と表示されるがモニターがHDR対応の場合、Windows/macOSでHDRが有効になっていることを確認してください。",
+      "inst3": "ハードウェアアクセラレーションが有効な最新のブラウザを使用していることを確認してください。"
     },
     "display-info": {
       "metaTitle": "ディスプレイ情報 & GPU診断 – 解像度・DPR・グラフィック情報",
       "metaDescription": "ブラウザが認識している画面解像度、デバイスピクセル比（DPR）、色深度、GPUレンダラー情報を即座に表示します。",
-      "title": "Display Information",
-      "description_p1": "This data is read directly from your browser's Web APIs. It represents what the browser can detect about your display setup. Note that operating system scaling settings (e.g., Windows UI scaling at 125% or macOS Retina scaling) will affect the \"Logical Resolution\" reported here.",
-      "gamutWide": "Display P3 (Wide)",
-      "gamutStandard": "sRGB (Standard)",
-      "resLogical": "Logical Resolution",
-      "resWorkspace": "Available Workspace",
-      "colorDepth": "Color Depth",
-      "pixelDepth": "Pixel Depth",
-      "pixelRatio": "Device Pixel Ratio",
-      "hdr": "High Dynamic Range (HDR)",
-      "hdrActive": "Supported (Active)",
-      "hdrStandard": "Standard Dynamic Range (SDR)",
-      "colorGamut": "Color Gamut Support",
-      "viewport": "Browser Viewport",
-      "hardwareLabel": "Hardware Capabilities",
-      "touchSupport": "Touch Support",
-      "touchPoints": "points",
-      "noTouch": "No touch support detected",
-      "orientation": "Orientation",
-      "unknown": "Unknown",
-      "fullscreenEnabled": "Fullscreen Capability",
-      "supported": "Supported",
-      "notSupported": "Not Supported"
+      "title": "ディスプレイ情報",
+      "description_p1": "このデータはブラウザのWeb APIから直接読み取られます。ブラウザが検出し報告できることを表しています。",
+      "gamutWide": "Display P3 (ワイド)",
+      "gamutStandard": "sRGB (標準)",
+      "resLogical": "論理解像度",
+      "resWorkspace": "利用可能なワークスペース",
+      "colorDepth": "色深度",
+      "pixelDepth": "ピクセル深度",
+      "pixelRatio": "デバイスピクセル比",
+      "hdr": "ハイダイナミックレンジ (HDR)",
+      "hdrActive": "サポート済み (アクティブ)",
+      "hdrStandard": "標準ダイナミックレンジ (SDR)",
+      "colorGamut": "カラーガモットのサポート",
+      "viewport": "ブラウザビューポート",
+      "hardwareLabel": "ハードウェア機能",
+      "touchSupport": "タッチサポート",
+      "touchPoints": "ポイント",
+      "noTouch": "タッチサポートが検出されません",
+      "orientation": "向き",
+      "unknown": "不明",
+      "fullscreenEnabled": "フルスクリーン機能",
+      "supported": "サポート済み",
+      "notSupported": "サポートされていません"
     },
     "gradient-test": {
       "metaTitle": "カラーバンディングテスト – 8bit・10bit階調トーンジャンプ確認",
       "metaDescription": "滑らかなグラデーションに縞模様（トーンジャンプ）が現れないか確認し、パネルの階調表現力を診断します。",
-      "title": "Gradient Banding Test",
-      "description_p1": "Displays a perfectly smooth 24-bit (16.7 million colors) gradient. On lower quality panels or with restricted bit-depth settings, you will see <strong>banding</strong> (distinct vertical or horizontal lines instead of a smooth transition).",
+      "title": "グラデーションバンディングテスト",
+      "description_p1": "完全に滑らかな24ビット（1670万色）グラデーションを表示します。品質の低いパネルではバンディングが現れる場合があります。",
       "instructions": [
         "Look closely at the transition from black to the target color.",
         "A true 10-bit or high-quality 8-bit+FRC panel will display a buttery smooth transition.",
@@ -637,137 +640,137 @@
     "viewingAngle": {
       "title": "視野角テスト – 角度による色変化・コントラスト低下の確認",
       "description": "IPS、VA、OLED、TNパネルを斜めから見た際の色転びやコントラスト低下の度合いを評価します。",
-      "instructions": "View the screen from extreme angles."
+      "instructions": "極端な角度から画面を見ます。"
     },
     "screenTearing": {
       "title": "テアリングテスト – V-Sync・G-Sync・FreeSync動作確認",
       "description": "動画表示時の横方向の画面ズレ（テアリング）を検出し、垂直同期や可変リフレッシュレートの動作を検証。",
-      "instructions": "Watch the moving bar for horizontal tearing."
+      "instructions": "移動するバーを水平ティアリングがないか観察します。"
     },
     "burnIn": {
       "title": "OLED焼き付きテスト – 画面の残像・焼き付き痕の診断",
       "description": "タスクバーや固定ロゴの痕跡など、有機ELや液晶に発生する焼き付き（画面の恒久的な残像）をチェック。",
-      "instructions": "Look for faint outlines of static elements."
+      "instructions": "静的要素のかすかな輪郭を探します。"
     },
     "blooming": {
       "title": "Mini-LEDブルーミングテスト – ローカルディミングの光漏れ評価",
       "description": "黒背景上の明るい物体の周囲に光が漏れ出すハロー現象（ブルーミング）の程度を診断します。",
-      "instructions": "Look for halos around the bright square."
+      "instructions": "明るい正方形の周りのハロを探します。"
     },
     "touchScreen": {
       "title": "タッチパネルテスト – マルチタッチ・タッチ切れ診断",
       "description": "スマホ、タブレット、タッチ対応ノートPCのタッチ反応、複数指同時認識、無反応エリアをテスト。",
-      "instructions": "Draw all over the screen to check for dead zones."
+      "instructions": "デッドゾーンを確認するために画面全体に描きます。"
     },
     "solidColor": {
       "title": "純色テスト – 全画面単色表示によるパネルの清浄度検査",
       "description": "画面全体を単色（赤・緑・青・黒・白）で満たし、パネルの異物混入や色ムラを隈なく点検します。",
-      "instructions": "Look for unevenness."
+      "instructions": "不均一性を探します。"
     },
     "colorAccuracy": {
       "title": "色精度テスト – sRGB基準とスキントーンの自然さ評価",
       "description": "標準sRGBカラーチャートや人物の肌色チャートを用いて、ディスプレイの色の自然さを確認します。",
-      "instructions": "Verify skin tones and natural colors."
+      "instructions": "肌のトーンと自然な色を確認します。"
     },
     "flicker": {
       "title": "画面チラつきテスト – PWM調光フリッカーと目の疲れ確認",
       "description": "眼精疲労や頭痛の原因となるバックライトの高速フリッカー（PWM調光のチラつき）を検出します。",
-      "instructions": "Use a camera at high shutter speed."
+      "instructions": "高シャッタースピードのカメラを使用します。"
     },
     "sharpness": {
       "title": "解像感・シャープネステスト – 文字エッジと微細パターンの視認性",
       "description": "文字の輪郭の不自然な白フチを防ぎ、適正なシャープネス設定を見極めるためのパターン。",
-      "instructions": "Check for color fringing."
+      "instructions": "色フリンジを確認します。"
     },
     "colorBanding": {
       "title": "階調テスト – 滑らかなトーン再現と縞模様の有無",
       "description": "グラデーションの滑らかさを点検し、粗い境界線が発生していないか検査します。",
-      "instructions": "Look for smooth transitions."
+      "instructions": "滑らかなトランジションを探します。"
     },
     "colorGamut": {
       "title": "色域テスト – sRGB、DCI-P3、Adobe RGBカバー率確認",
       "description": "広色域ディスプレイの豊かな色彩表現力と、過飽和による色の潰れがないかを確認します。",
-      "instructions": "Check if the colors in the center match or blend with the outer ring."
+      "instructions": "中央の色が外側のリングと一致するかブレンドするか確認します。"
     },
     "resolution-checker": {
       "title": "解像度チェッカー – 物理ネイティブ解像度とCSS解像度・DPR",
       "description": "画面の物理的な解像度、OSスケーリング後のCSS解像度、アスペクト比を瞬時に確認できます。",
       "infoTitle": "解像度とディスプレイジオメトリ",
       "labels": {
-        "logicalRes": "Logical Resolution",
-        "viewport": "Viewport",
-        "dpr": "Device Pixel Ratio",
-        "aspectRatio": "Aspect Ratio",
-        "colorDepth": "Color Depth",
-        "pixelDepth": "Pixel Depth",
-        "orientation": "Orientation",
-        "availArea": "Available Screen Area",
-        "refreshRate": "Observed Frame Timing",
-        "touchSupport": "Touch Support",
-        "hdr": "HDR Capability",
-        "colorSpace": "Color Gamut",
-        "totalPixels": "Total Pixels",
-        "classification": "Classification"
+        "logicalRes": "論理解像度",
+        "viewport": "ビューポート",
+        "dpr": "デバイスピクセル比",
+        "aspectRatio": "アスペクト比",
+        "colorDepth": "色深度",
+        "pixelDepth": "ピクセル深度",
+        "orientation": "向き",
+        "availArea": "利用可能な画面領域",
+        "refreshRate": "観測フレームタイミング",
+        "touchSupport": "タッチサポート",
+        "hdr": "HDR能力",
+        "colorSpace": "カラーガモット",
+        "totalPixels": "総ピクセル数",
+        "classification": "分類"
       },
       "values": {
-        "notExposed": "Not exposed by browser",
-        "landscape": "Landscape",
-        "portrait": "Portrait",
+        "notExposed": "ブラウザによって公開されていない",
+        "landscape": "横向き",
+        "portrait": "縦向き",
         "yes": "Yes",
         "no": "No",
-        "unknown": "Unknown",
-        "custom": "Custom / Other"
+        "unknown": "不明",
+        "custom": "カスタム / その他"
       },
-      "disclaimer": "Browser-reported information describes what your browser can see. It does not replace the monitor's manufacturer specifications or hardware measurement.",
+      "disclaimer": "ブラウザが報告する情報は、ブラウザが見えるものを説明します。モニターの物理的なスペックの代わりにはなりません。",
       "myDisplay": {
-        "title": "MY DISPLAY",
-        "sizeLabel": "Screen size (inches)",
-        "sizePlaceholder": "e.g., 27",
-        "resLabel": "Native resolution",
-        "resPlaceholder": "e.g., 2560x1440",
-        "ppiLabel": "Estimated pixel density",
-        "statusLabel": "Status",
-        "statusMatches": "Matches browser",
-        "statusDiffers": "Browser-reported dimensions differ from your entered specification",
-        "prompt": "Enter your screen's physical size to estimate pixel density."
+        "title": "私のディスプレイ",
+        "sizeLabel": "画面サイズ (インチ)",
+        "sizePlaceholder": "例: 27",
+        "resLabel": "ネイティブ解像度",
+        "resPlaceholder": "例: 2560x1440",
+        "ppiLabel": "推定ピクセル密度",
+        "statusLabel": "ステータス",
+        "statusMatches": "ブラウザと一致",
+        "statusDiffers": "ブラウザが報告する寸法が入力した仕様と異なります",
+        "prompt": "ピクセル密度を推定するには、画面の物理サイズを入力してください。"
       },
       "explain": {
-        "title": "WHAT DOES THIS MEAN?",
-        "logicalResTitle": "What is logical resolution?",
-        "logicalResDesc": "Also called CSS resolution, this is the grid your browser uses to render content. OS scaling and browser zoom can make this lower than your physical panel resolution.",
-        "physicalResTitle": "What is native resolution?",
-        "physicalResDesc": "The physical pixel grid built into your display panel. Running at non-native resolutions involves scaling and can make text appear softer.",
-        "dprTitle": "What is Device Pixel Ratio (DPR)?",
-        "dprDesc": "DPR is how many physical device pixels are used to draw a single CSS pixel. A DPR of 2 means a 10x10 CSS box uses 20x20 physical pixels.",
-        "ppiTitle": "What is pixel density?",
-        "ppiDesc": "Pixel density (PPI) describes how many pixels are packed into each inch of the display. Higher PPI means sharper text and images, assuming the viewing distance is the same.",
-        "refreshTitle": "Resolution vs Refresh Rate",
-        "refreshDesc": "Higher resolution increases rendering workload. Higher refresh rate increases frame delivery requirements. The available combination depends on your GPU, connection bandwidth, and display."
+        "title": "これはどういう意味ですか？",
+        "logicalResTitle": "論理解像度とは何ですか？",
+        "logicalResDesc": "CSS解像度とも呼ばれ、ブラウザがコンテンツをレンダリングするために使用するグリッドです。OSのスケーリングとブラウザのズームが影響します。",
+        "physicalResTitle": "ネイティブ解像度とは何ですか？",
+        "physicalResDesc": "ディスプレイパネルに組み込まれた物理ピクセルグリッドです。ネイティブでない解像度で実行するとスケーリングが必要です。",
+        "dprTitle": "デバイスピクセル比 (DPR) とは何ですか？",
+        "dprDesc": "DPRは1つのCSSピクセルを描くために使用される物理デバイスピクセルの数です。DPR2は10x10 CSSピクセル = 20x20物理ピクセルを意味します。",
+        "ppiTitle": "ピクセル密度とは何ですか？",
+        "ppiDesc": "ピクセル密度（PPI）は、ディスプレイの各インチにパックされているピクセルの数を示します。高いPPI = 鋭いテキスト。",
+        "refreshTitle": "解像度とリフレッシュレート",
+        "refreshDesc": "解像度が高いとレンダリングの負荷が増えます。リフレッシュレートが高いとフレーム配信の要件が増えます。"
       },
       "standards": {
-        "title": "RESOLUTION STANDARDS",
-        "colStandard": "Standard",
-        "colRes": "Resolution",
-        "colPixels": "Approx. Pixels",
-        "colUse": "Common Use"
+        "title": "解像度標準",
+        "colStandard": "標準",
+        "colRes": "解像度",
+        "colPixels": "概算ピクセル数",
+        "colUse": "一般的な使用"
       },
       "troubleshoot": {
-        "title": "TROUBLESHOOTING",
-        "q1": "My resolution is lower than expected.",
-        "a1": "Check OS display scaling (e.g., 150%). This reduces the logical resolution reported to the browser. Also check browser zoom settings.",
-        "q2": "My 4K display looks blurry.",
-        "a2": "Check that the OS output is set to 4K. If you are mirroring a lower-resolution laptop screen, the external monitor will look blurry.",
-        "q3": "My high-refresh option is missing.",
-        "a3": "Check your cable. Some high resolution + high refresh combinations require DisplayPort 1.4 or HDMI 2.1. Older cables may limit you to 60Hz."
+        "title": "トラブルシューティング",
+        "q1": "私の解像度が予想より低いです。",
+        "a1": "OS表示スケーリングを確認します（例: 150%）。これはブラウザに報告される論理解像度を下げます。",
+        "q2": "私の4Kディスプレイがぼやけて見えます。",
+        "a2": "OSの出力が4Kに設定されているか確認します。解像度の低いラップトップ画面をミラーリングしている場合、外部ディスプレイが引き下げられる可能性があります。",
+        "q3": "高リフレッシュレートオプションがありません。",
+        "a3": "ケーブルを確認してください。一部の高解像度 + 高リフレッシュレートの組み合わせにはDisplayPort 1.4またはHDMI 2.1が必要です。"
       },
       "faq": {
         "title": "FAQ",
-        "q1": "Can a browser detect my monitor's true physical resolution?",
-        "a1": "Not reliably. Browsers see the logical resolution and scaling factor provided by the OS. If scaling is applied, the physical resolution cannot be guaranteed.",
-        "q2": "Why is my DPR 1.25 or 1.5?",
-        "a2": "This is common on Windows laptops (e.g., 125% or 150% scaling) to make text readable on high-DPI screens without making everything tiny.",
-        "q3": "Why is my observed frame timing different from my monitor's refresh rate?",
-        "a3": "Browser frame timing is affected by system load, power saving, background tabs, and browser behavior. It is an approximation, not a direct hardware query."
+        "q1": "ブラウザはモニターの真の物理解像度を検出できますか？",
+        "a1": "確実ではありません。ブラウザはOSが提供する論理解像度とスケーリングファクターを見ます。",
+        "q2": "なぜ私のDPRは1.25または1.5ですか？",
+        "a2": "これはWindowsノートPC（例えば125%や150%のスケーリング）でよく見られ、高DPI画面でテキストを読みやすくするためです。",
+        "q3": "なぜ観測されたフレームタイミングがモニターのリフレッシュレートと異なるのですか？",
+        "a3": "ブラウザフレームタイミングは、システム負荷、省電力、バックグラウンドタブ、ブラウザの動作によって影響を受けます。"
       }
     }
   },
@@ -777,50 +780,154 @@
     "monitor": {
       "metaTitle": "PCモニターのテスト方法 – 画面の購入後チェック完全ガイド",
       "metaDescription": "新品や中古のモニターを購入した際に行うべきドット抜け、光漏れ、残像チェックの手順を解説。",
-      "title": "Monitor Screen Test",
-      "description": "Comprehensive testing for desktop monitors."
+      "title": "モニタースクリーンテスト",
+      "description": "デスクトップモニターの包括的なテスト。"
     },
     "oled": {
       "metaTitle": "OLED（有機EL）のテスト方法 – 焼き付き・ムラ・純黒確認ガイド",
       "metaDescription": "有機ELモニターやテレビの焼き付き（残像）、低輝度時のムラ、パネル劣化の確認方法を解説。",
-      "title": "OLED Screen Test",
-      "description": "Specialized tests for OLED image retention and black levels."
+      "title": "OLEDスクリーンテスト",
+      "description": "OLEDの残像と黒レベルの特殊テスト。"
     },
     "laptop": {
       "metaTitle": "ノートパソコンの画面テスト – ドット抜け・光漏れ・解像感チェック",
       "metaDescription": "ノートPCディスプレイの購入時チェックリスト：画素欠け、ヒンジ圧迫による光漏れ、スケーリング確認。",
-      "title": "Laptop Screen Test",
-      "description": "Tests for typical laptop LCD panels."
+      "title": "ラップトップスクリーンテスト",
+      "description": "一般的なラップトップLCDパネルのテスト。"
     },
     "lcd": {
       "metaTitle": "液晶ディスプレイのテスト方法 – IPS・VA・TNパネルの比較と特徴",
       "metaDescription": "IPSグローとバックライト光漏れの違いを理解し、お使いの液晶パネルの特性に応じた最適な診断を実施。",
-      "title": "LCD Screen Test",
-      "description": "Tests for LCD backlight bleed and uniformity."
+      "title": "LCDスクリーンテスト",
+      "description": "LCDバックライトブリードと均一性のテスト。"
     },
     "tv": {
       "metaTitle": "テレビ画面のテスト方法 – 4Kテレビ・スマートTVの画質チェック",
       "metaDescription": "ブラウザを通じてテレビ画面の画質、倍速駆動の残像感、ローカルディミング、階調表現をチェック。",
-      "title": "TV Screen Test",
-      "description": "Tests for TV motion processing and blooming."
+      "title": "テレビスクリーンテスト",
+      "description": "TVのモーション処理とブルーミングのテスト。"
     },
     "mobile": {
       "metaTitle": "スマホ画面のテスト方法 – タッチ反応・有機EL焼き付き診断",
       "metaDescription": "スマートフォンのタッチパネルの感度、マルチタッチ、有機ELの画面焼け、発色をブラウザでテスト。",
-      "title": "Mobile Screen Test",
-      "description": "Tests for mobile touch screens and OLED panels."
+      "title": "モバイルスクリーンテスト",
+      "description": "モバイルタッチスクリーンとOLEDパネルのテスト。"
     },
     "ghostingConcept": {
-      "metaTitle": "モニターの残像（ゴースト）の見分け方 – 応答速度とオーバードライブ",
-      "metaDescription": "残像（ゴースト）と逆残像（オーバーシュート）の違いとは？応答速度の視覚的判断と設定方法を解説。"
+      "metaTitle": "モニターのゴースト確認方法 – 応答速度とオーバードライブ設定",
+      "metaDescription": "ゴーストと逆ゴースト（オーバーシュート/コロナ）の違い、応答速度の確認法、最適なオーバードライブ調整を解説します。",
+      "breadcrumbsGuides": "ガイド",
+      "breadcrumbsTitle": "ゴースト＆応答速度",
+      "eyebrow": "ディスプレイガイド＆モーション明瞭度",
+      "title": "モニターのゴースト現象と動画のキレを確認する方法",
+      "intro": "モニターのゴーストは、液晶分子が色や輝度を切り替えるのに時間がかかることで発生します。視覚的な症状を見極めることで、モニターのオーバードライブ設定を最適に調整できます。",
+      "standardGhosting": {
+        "title": "通常のゴースト（暗い引きずり残像）",
+        "desc": "動く物体の後方に、暗くぼやけた尾を引くような残像が現れる現象です。",
+        "causeLabel": "主な原因",
+        "cause": "中間階調（GtG）応答速度の遅さ。特にVAパネルの暗い階調変化で顕著です。",
+        "solutionLabel": "解決策",
+        "solution": "モニターのOSD設定で「オーバードライブ / Trace Free / AMA」を1段階上げてください。"
+      },
+      "inverseGhosting": {
+        "title": "逆ゴースト（コロナ / オーバーシュート）",
+        "desc": "動く物体の輪郭後方に、白く発光したり色が反転した輪郭が残る現象です。",
+        "causeLabel": "主な原因",
+        "cause": "オーバードライブ電圧が過剰で、目標の色を飛び越えてしまう現象（オーバーシュート）。",
+        "solutionLabel": "解決策",
+        "solution": "オーバードライブ設定を1段階下げてください。最高リフレッシュレート時以外は「Extreme」や「Fastest」を避けてください。"
+      },
+      "howToTestTitle": "ブラウザで動画明瞭度をチェックする方法",
+      "howToTestP1": "全画面でゴースト・モーションブラーテストを開き、画面を横切る図形を目で追ってください。後方に黒い尾を引く場合はオーバードライブが弱すぎ、白い発光輪郭が出る場合は強すぎます。",
+      "howToTestP2": "測定に関する注記: ブラウザテストは設定調整の優れた視覚的基準になりますが、正確なミリ秒単位のGtG計測には専用のフォトダイオードオシロスコープが必要です。",
+      "testsTitle": "関連診断テスト",
+      "ghostingTestTitle": "ゴーストテスト",
+      "ghostingTestDesc": "異なる速度で移動する高コントラストブロックを追跡",
+      "refreshRateTestTitle": "リフレッシュレートテスト",
+      "refreshRateTestDesc": "ブラウザのフレーム間隔と描画の滑らかさを測定"
     },
     "backlightBleedConcept": {
-      "metaTitle": "バックライト漏れ vs IPSグロー – 暗所での正しい見分け方",
-      "metaDescription": "不良となるパネル枠からの光漏れ（バックライトブリード）と、IPS特有の斜めからの光沢（グロー）の判別法。"
+      "metaTitle": "バックライト漏れ vs IPSグロー – 暗室での正しい見分け方",
+      "metaDescription": "本物のバックライト漏れとIPSパネル特有のIPSグローの違い、暗室診断法、初期不良交換の判断基準を解説します。",
+      "breadcrumbsGuides": "ガイド",
+      "breadcrumbsTitle": "バックライトブリード",
+      "eyebrow": "ディスプレイガイド＆輝度",
+      "title": "バックライト漏れ vs IPSグロー：見分け方と診断法",
+      "intro": "液晶モニターで暗い映画やゲームを映すと、画面の四隅や縁に光が漏れているように見えることがあります。初期不良交換（RMA）を申し出る前に、構造的な漏光とIPS特有の光沢を見分けることが重要です。",
+      "backlightBleed": {
+        "badge": "ハードウェア組み立て不良",
+        "title": "バックライト漏れ（Backlight Bleed）",
+        "desc": "ベゼルの不均一な圧力やフレームの歪み、パネル四隅の挟み込みによって液晶の隙間から光が漏れる現象です。",
+        "behaviorLabel": "挙動の特徴",
+        "behavior": "見る角度や視点の距離を変えても、全く同じ位置と明るさで固定されています。",
+        "appearanceLabel": "見え方",
+        "appearance": "ベゼル端や四隅から内側に向かって差し込むギザギザした白や黄色の光だまり。",
+        "actionLabel": "アクション",
+        "action": "通常使用時にも気になる重度の漏れは、販売店での初期不良交換対象になります。"
+      },
+      "ipsGlow": {
+        "badge": "正常な光学特性",
+        "title": "IPSグロー",
+        "desc": "IPS（In-Plane Switching）液晶パネルの構造上、斜めから見たときに光が散乱して反射する光学現象です。",
+        "behaviorLabel": "挙動の特徴",
+        "behavior": "首を傾けたり画面から離れると、光の強さが変わる、位置が動く、または完全に消えます。",
+        "appearanceLabel": "見え方",
+        "appearance": "暗い画面の四隅に現れる、銀色・金色・紫がかった淡く柔らかな光沢。",
+        "actionLabel": "アクション",
+        "action": "ほぼすべてのIPSモニターに存在します。輝度を下げ、腕1本分の視距離を確保することで低減できます。"
+      },
+      "isolationMethodTitle": "確実な見極め手順（暗室テスト）",
+      "isolationSteps": [
+        "部屋の照明を完全に消し、外光の映り込みをなくします。",
+        "全画面バックライト漏れテストを開きます。",
+        "モニター輝度を普段の作業レベル（120〜150cd/m²、OSDで30〜50%程度）に設定します。",
+        "腕1本分の距離から四隅を見ます。次に2メートル後ろに下がり、頭を左右に動かします。",
+        "頭の位置に合わせて光が動くなら「IPSグロー」、枠の縁に固定されているなら「バックライト漏れ」です。"
+      ],
+      "testsTitle": "診断テストを実行",
+      "backlightBleedTestTitle": "バックライト漏れテスト",
+      "backlightBleedTestDesc": "輝度キャリブレーション付き全画面0%純黒パターン",
+      "uniformityTestTitle": "画面均一性テスト",
+      "uniformityTestDesc": "各分割エリアにおけるグレー階調と明るさのムラを確認"
     },
     "pixelDefectsConcept": {
-      "metaTitle": "ドット抜け vs 輝点 – 画素欠けの見分け方とメーカー保証基準",
-      "metaDescription": "消灯したドット抜けと点灯したままの輝点の違い、見つけ方、復旧の試み、メーカーの交換保証基準を解説。"
+      "metaTitle": "ドット抜け vs 輝点（スタックピクセル）– 診断と対策ガイド",
+      "metaDescription": "ドット抜け（黒点）と輝点（スタックピクセル）の違い、見分け方、メーカーの保証基準を分かりやすく解説します。",
+      "breadcrumbsGuides": "ガイド",
+      "breadcrumbsTitle": "ドット抜け vs 輝点",
+      "eyebrow": "ディスプレイガイド＆解析",
+      "title": "ドット抜け vs 輝点（スタックピクセル）：見分け方と違い",
+      "intro": "液晶やOLEDパネルで最も身近な欠陥がピクセル不良です。異常なドットが完全に機能停止した「ドット抜け（黒点）」なのか、一時的な「輝点（スタックピクセル）」なのかを見極めることで、修復の可能性や初期不良交換の判断ができます。",
+      "deadPixel": {
+        "badge": "恒久的なハードウェア欠陥",
+        "title": "ドット抜け（黒点 / Dead Pixel）",
+        "desc": "トランジスタが完全に故障し、RGB3色のサブピクセルが常に消灯（無通電）状態のピクセルです。",
+        "appearanceLabel": "見え方",
+        "appearance": "白やカラー背景上で、常に真っ黒な点として見えます。",
+        "causeLabel": "原因",
+        "cause": "電極の断線、薄膜トランジスタ（TFT）の破損、微細配線のショートなど。",
+        "recoveryLabel": "修復性",
+        "recovery": "物理的な回路故障のため、ソフトウェアによる点滅サイクルでは直りません。"
+      },
+      "stuckPixel": {
+        "badge": "修復の可能性あり",
+        "title": "輝点（スタックピクセル / Stuck Pixel）",
+        "desc": "特定のサブピクセル（赤・緑・青）が通電状態のまま固定され、オフにできなくなったピクセルです。",
+        "appearanceLabel": "見え方",
+        "appearance": "黒や暗い背景上で、赤・緑・青・シアン・マゼンタなどに常時点灯して見えます。",
+        "causeLabel": "原因",
+        "cause": "液晶分子が一時的にオープン状態で固着している、または電荷の偏り。",
+        "recoveryLabel": "修復性",
+        "recovery": "高速なRGBカラー切り替えサイクルにより、分子の配向が復帰する場合があります。"
+      },
+      "isoTitle": "ISO 9241-307 パネル欠陥基準",
+      "isoP1": "一般的な市販モニターの多くは「クラス2」に分類されます。ISO規格では、100万画素あたり常時点灯ドット2個、常時消灯ドット2個、または不良サブピクセル5個までは許容範囲とされ、無償修理の対象外となることがあります。",
+      "isoP2": "購入直後にドット不良を発見した場合は、メーカー保証申請ではなく、販売店の初期不良返品・交換期間（通常14〜30日間）を利用することをお勧めします。",
+      "testsTitle": "診断テストを実行",
+      "deadPixelTestTitle": "ドット抜けテスト",
+      "deadPixelTestDesc": "全画面の白や原色背景を順に切り替えて目視チェック",
+      "stuckPixelTestTitle": "輝点修復＆テスト",
+      "stuckPixelTestDesc": "高速RGBフラッシュによるサブピクセル刺激ツール"
     },
     "deviceGuidesHeading": "デバイス別ガイド",
     "conceptGuidesHeading": "基礎知識と技術解説",
@@ -834,13 +941,13 @@
       "keyTakeaway": "Screen Testerはブラウザを通じて物理的な視野角度（例：178°）を測定することはできません。当ツールのテストは、斜めから見た際の色変化やガンマ変動を目視で確認するためのテストパターンを提供します。",
       "panelsTitle": "パネル駆動方式ごとの視野角特性",
       "panelsSubtitle": "液晶分子の配列や自発光構造により、斜めから見た時の見え方は大きく異なります：",
-      "ipsTitle": "IPS方式（In-Plane Switching）",
+      "ipsTitle": "IPS (インプレーンスイッチング)",
       "ipsTag": "極めて広い視野角",
       "ipsDesc": "液晶分子が基板と平行に水平回転します。斜めから見ても色の変化が極めて少ないのが特徴です。ただし、暗い部屋で斜めから見ると黒が白っぽく浮く「IPSグロー」が発生しますが、これは光漏れ不良ではなく光学特性です。",
-      "vaTitle": "VA方式（Vertical Alignment）",
+      "vaTitle": "VA (バーティカルアライメント)",
       "vaTag": "高いコントラストと特有のガンマシフト",
       "vaDesc": "電圧オフ時に液晶が垂直に並ぶため、光をしっかり遮断して深い黒（3,000:1以上）を表現できます。斜めから見ると暗部の階調が白っぽく浮き上がるガンマシフトが特徴です。",
-      "tnTitle": "TN方式（Twisted Nematic）",
+      "tnTitle": "TN (ツイストネマティック)",
       "tnTag": "狭い視野角",
       "tnDesc": "応答速度には優れますが視野角が狭く、下から見上げると色が反転し、上から見下ろすとコントラストが極端に低下します。",
       "oledTitle": "OLED（有機EL）",
@@ -883,22 +990,22 @@
       "diagnosticMetaDesc": "画面に現れている症状を選ぶだけで、確認すべき推奨テストと原因・対処法をご案内します。",
       "metaTitle": "Monitor Inspection Workflow",
       "metaDescription": "Check a new or used monitor systematically instead of opening random tests.",
-      "title": "Monitor Inspection",
-      "description": "Check a new or used monitor systematically instead of opening random tests.",
-      "newMonitor": "I just bought this monitor",
-      "newMonitorDesc": "Focuses on dead pixels, uniformity, backlight bleed, and factory defects.",
-      "usedMonitor": "I'm checking a used monitor",
-      "usedMonitorDesc": "Focuses on burn-in, brightness degradation, port health, and dead pixels.",
-      "fiveMinuteCheck": "5-Minute Quick Check",
-      "fullInspection": "Full Inspection",
-      "gamingMonitor": "Gaming Monitor Workflow",
-      "oledMonitor": "OLED Workflow",
-      "startWorkflow": "Start Workflow",
+      "title": "モニター検査",
+      "description": "ランダムなテストを開く代わりに、新品または中古のモニターを体系的にチェックします。",
+      "newMonitor": "このモニターを購入したばかりです",
+      "newMonitorDesc": "デッドピクセル、均一性、バックライトブリード、および工場の欠陥に焦点を当てます。",
+      "usedMonitor": "中古モニターをチェックしています",
+      "usedMonitorDesc": "焼き付き、輝度の低下、ポートの状態、デッドピクセルに焦点を当てます。",
+      "fiveMinuteCheck": "5分間のクイックチェック",
+      "fullInspection": "完全検査",
+      "gamingMonitor": "ゲーミングモニターワークフロー",
+      "oledMonitor": "OLEDワークフロー",
+      "startWorkflow": "ワークフローを開始",
       "diagnosticEyebrow": "診断ウィザード",
       "diagnosticTitle": "画面の表示に違和感がありますか？",
       "diagnosticDesc": "見えている現象（ドット抜け、色の異常、暗い影、ぼやけた文字、テアリングなど）を選択すると、最適なテストをお勧めします。",
       "diagnoseProblem": "問題を診断する",
-      "testsCount": "{count}件のテスト",
+      "testsCount": "{count} テスト",
       "aboutWorkflowsTitle": "点検ワークフローについて:",
       "aboutWorkflowsDesc": "体系的な手順でテストを進め、異常箇所を記録し、ドット抜けの正確な座標をマークして客観的な点検レポートを保存できます。作為的なスコアは一切ありません。",
       "savedReports": "保存済みレポートと履歴",
@@ -908,97 +1015,97 @@
     "gaming": {
       "metaTitle": "Gaming Monitor Inspection",
       "metaDescription": "Systematic workflow to check gaming monitor refresh rate, ghosting, and VRR.",
-      "title": "Gaming Monitor Inspection",
-      "description": "This workflow focuses on refresh rate, ghosting, screen tearing, and motion clarity.",
-      "vrrWarning": "Note: Browser APIs cannot directly verify hardware VRR (G-Sync/FreeSync) behavior. You must test this in a fullscreen game."
+      "title": "ゲーミングモニター検査",
+      "description": "このワークフローは、リフレッシュレート、ゴースト、画面ティアリング、モーションクラリティに焦点を当てています。",
+      "vrrWarning": "注意: ブラウザAPIはハードウェアVRR（G-Sync/FreeSync）の動作を直接検証できません。"
     },
     "oled": {
       "metaTitle": "OLED Monitor Inspection",
       "metaDescription": "Systematic workflow to check OLED monitors for burn-in, dead pixels, and uniformity.",
-      "title": "OLED Monitor Inspection",
-      "description": "This workflow focuses on burn-in, near-black performance, and uniformity.",
-      "oledWarning": "Note: Browser-based tests cannot diagnose every form of OLED panel degradation."
+      "title": "OLEDモニター検査",
+      "description": "このワークフローは、焼き付き、ほぼ黒のパフォーマンス、均一性に焦点を当てています。",
+      "oledWarning": "注意: ブラウザベースのテストは、OLEDパネルの劣化のあらゆる形態を診断できません。"
     },
     "summary": {
       "metaTitle": "Inspection Summary",
-      "title": "Monitor Inspection",
-      "description": "This checklist records your observations. It does not replace professional display measurement equipment.",
-      "passed": "Passed",
-      "needsAttention": "Needs attention",
-      "skipped": "Skipped",
-      "restart": "Restart inspection",
-      "review": "Review tests",
-      "clear": "Clear inspection data",
-      "print": "Print summary"
+      "title": "モニター検査",
+      "description": "このチェックリストはあなたの観察を記録します。専門的なディスプレイ診断の代わりにはなりません。",
+      "passed": "合格",
+      "needsAttention": "要注意",
+      "skipped": "スキップ",
+      "restart": "検査を再開",
+      "review": "テストを確認",
+      "clear": "検査データをクリア",
+      "print": "概要を印刷"
     },
     "steps": {
       "displayInfo": {
-        "title": "Display Information",
-        "what": "Check if resolution, color depth, and HDR support match the manufacturer specs."
+        "title": "ディスプレイ情報",
+        "what": "解像度、色深度、HDRサポートがメーカー仕様と一致するか確認します。"
       },
       "sharpness": {
-        "title": "Resolution & Sharpness",
-        "what": "Look for color fringing around text or blurry subpixel rendering."
+        "title": "解像度とシャープネス",
+        "what": "テキスト周りの色フリンジや不鮮明なサブピクセルレンダリングを探します。"
       },
       "deadPixel": {
-        "title": "Dead / Stuck Pixels",
-        "what": "Look for pixels that remain permanently black, white, or a single color."
+        "title": "デッド/固着ピクセル",
+        "what": "恒久的に黒、白、または単色のままのピクセルを探します。"
       },
       "color": {
-        "title": "Color Calibration",
-        "what": "Ensure primary colors look vibrant and accurate without bleeding."
+        "title": "カラーキャリブレーション",
+        "what": "プライマリカラーがにじみなく鮮やかで正確に見えることを確認します。"
       },
       "grayscale": {
-        "title": "Grayscale Test",
-        "what": "Look for pink, blue, or green tints in what should be neutral gray."
+        "title": "グレースケールテスト",
+        "what": "中性グレーにあるべきものにピンク、青、緑の色調を探します。"
       },
       "brightness": {
-        "title": "Brightness",
-        "what": "Ensure you can distinguish dark squares from pure black."
+        "title": "輝度",
+        "what": "純粋な黒から暗い正方形を区別できることを確認します。"
       },
       "contrast": {
-        "title": "Contrast",
-        "what": "Ensure you can distinguish bright squares from pure white."
+        "title": "コントラスト",
+        "what": "純粋な白から明るい正方形を区別できることを確認します。"
       },
       "blackLevel": {
-        "title": "Black Level",
-        "what": "Ensure the darkest shades are not crushed into pure black."
+        "title": "ブラックレベル",
+        "what": "最も暗いシェードが純粋な黒につぶれていないことを確認します。"
       },
       "whiteLevel": {
-        "title": "White Level",
-        "what": "Ensure the brightest shades are not clipping into pure white."
+        "title": "ホワイトレベル",
+        "what": "最も明るいシェードが純粋な白にクリッピングしていないことを確認します。"
       },
       "uniformity": {
-        "title": "Uniformity",
-        "what": "Look for splotches, bands, or dirty screen effect (DSE) across grays."
+        "title": "均一性",
+        "what": "グレーのスプロッチ、バンド、またはダーティスクリーン効果（DSE）を探します。"
       },
       "backlightBleed": {
-        "title": "Backlight Bleed",
-        "what": "Look for distinct patches of light leaking from the bezel in a dark room."
+        "title": "バックライトブリード",
+        "what": "暗い部屋でベゼルから漏れる光の明確なパッチを探します。"
       },
       "ghosting": {
-        "title": "Ghosting & Motion Blur",
-        "what": "Look for trailing shadows (ghosting) or bright halos (overshoot) behind moving objects."
+        "title": "ゴーストとモーションブラー",
+        "what": "動くオブジェクトの後ろに残像（ゴースト）または明るいハロ（オーバーシュート）を探します。"
       },
       "refreshRate": {
-        "title": "Refresh Rate",
-        "what": "Verify the browser rendering matches your expected monitor refresh rate."
+        "title": "リフレッシュレート",
+        "what": "ブラウザのレンダリングが期待するモニターのリフレッシュレートと一致するか確認します。"
       },
       "screenTearing": {
-        "title": "Screen Tearing",
-        "what": "Watch for horizontal tearing during motion (V-Sync/VRR check)."
+        "title": "画面ティアリング",
+        "what": "動き中の水平ティアリングを確認します（V-Sync/VRRチェック）。"
       },
       "hdr": {
-        "title": "HDR Capability",
-        "what": "Verify the OS correctly detects HDR and Wide Color Gamut."
+        "title": "HDR能力",
+        "what": "OSがHDRとワイドカラーガモットを正しく検出するか確認します。"
       },
       "solidColor": {
-        "title": "Solid Color Purity",
-        "what": "Check for uniform color across the entire screen."
+        "title": "単色純度",
+        "what": "画面全体にわたって均一な色を確認します。"
       },
       "burnIn": {
-        "title": "Burn-In",
-        "what": "Look for faint outlines of static elements like taskbars or logos."
+        "title": "焼き付き",
+        "what": "タスクバーやロゴなどの静的要素のかすかな輪郭を探します。"
       },
       "resolutionChecker": {
         "title": "解像度とディスプレイ情報",
@@ -1009,83 +1116,102 @@
   "Privacy": {
     "metaTitle": "Privacy Policy — Monitor Tester",
     "metaDescription": "Monitor Tester privacy policy: All tests execute locally in your browser. Zero telemetry, zero analytics tracking, and zero remote storage.",
-    "eyebrow": "PRIVACY & DATA POLICY",
-    "title": "Privacy Policy",
-    "description": "Monitor Tester is designed with a strict privacy-first architecture. All display diagnostic tests and calculations execute entirely inside your local browser.",
-    "lastUpdated": "Last updated: September 2026",
-    "noCollectionTitle": "Zero Remote Data Collection",
-    "noCollectionText": "When you visit Monitor Tester and run display tests, we do NOT collect, transmit, or store any personal data, hardware serial numbers, diagnostic observations, or screen metrics on external servers. There are no backend tracking databases, user accounts, or login requirements.",
-    "localStorageTitle": "Local Browser Storage",
-    "localStorageText": "To provide convenient features such as checklist tracking and defect marker coordinates, Monitor Tester utilizes your browser's private local storage APIs:",
-    "localStorageItem1": "Active Session & Observations (localStorage): Stores your self-reported test ratings (Pass, Check, Issue), custom notes, and pixel defect pin coordinates (X/Y pixels) so your report remains accessible if you refresh the page.",
-    "localStorageItem2": "Workflow Queue (sessionStorage): Temporarily keeps track of your current step in guided inspection workflows (e.g., General Checkup or Used Monitor Inspection). This is automatically cleared when you close your browser tab.",
-    "localStorageClear": "You can clear all stored data at any time by clicking 'Reset' in the test runner, clearing your browser's site data, or using your browser's private / incognito browsing mode.",
-    "cookiesTitle": "No Advertising or Tracking Cookies",
-    "cookiesText": "Monitor Tester does not use third-party advertising cookies, behavioral trackers, or marketing pixels. The site does not sell, rent, or monetize your browsing activity.",
-    "permissionsTitle": "Browser Permissions",
-    "permissionsText": "Monitor Tester requests only the standard Fullscreen API permission when you choose to enter full-screen testing mode. Fullscreen requires an explicit user gesture (such as clicking the Fullscreen button or pressing 'F') as enforced by your browser. We never request camera, microphone, notification, or geographic location permissions."
+    "eyebrow": "プライバシーとデータポリシー",
+    "title": "プライバシーポリシー",
+    "description": "モニターテスターは厳格なプライバシー優先アーキテクチャで設計されています。すべてのディスプレイ診断テストと計算は、ローカルブラウザ内で完全に実行されます。",
+    "lastUpdated": "最終更新日: 2026年9月",
+    "noCollectionTitle": "リモートデータ収集ゼロ",
+    "noCollectionText": "モニターテスターにアクセスしてディスプレイテストを実行すると、個人データ、ハードウェアシリアル番号、診断観察、またはスクリーンメトリクスを外部サーバーに収集、送信、保存することはありません。バックエンドの追跡データベース、ユーザーアカウント、またはログイン要件はありません。",
+    "localStorageTitle": "ローカルブラウザストレージ",
+    "localStorageText": "チェックリスト追跡や欠陥マーカー座標などの便利な機能を提供するために、モニターテスターはブラウザのプライベートローカルストレージAPIを使用します:",
+    "localStorageItem1": "アクティブセッションと観察（localStorage）: 自己報告のテスト評価（合格、確認、問題）、カスタムメモ、ピクセル欠陥ピン座標を保存します。",
+    "localStorageItem2": "ワークフローキュー（sessionStorage）: ガイド付き検査ワークフローの現在のステップを一時的に追跡します。ブラウザタブを閉じると自動的にクリアされます。",
+    "localStorageClear": "テストランナーで「リセット」をクリックするか、ブラウザのサイトデータを消去するか、ブラウザのプライベート/シークレットモードを使用することで、いつでも保存されたデータをすべてクリアできます。",
+    "cookiesTitle": "広告またはトラッキングCookieなし",
+    "cookiesText": "モニターテスターはサードパーティの広告Cookie、行動トラッカー、またはマーケティングピクセルを使用しません。サイトはあなたのブラウジング活動を売ったり、賃貸したり、収益化したりしません。",
+    "permissionsTitle": "ブラウザの権限",
+    "permissionsText": "モニターテスターは、フルスクリーンテストモードに入ることを選択したときにのみ、標準のFullscreen API権限を要求します。カメラ、マイク、通知、または地理的位置の権限を要求することはありません。"
   },
   "About": {
     "metaTitle": "About Monitor Tester — Display Diagnostic & Evaluation Utility",
     "metaDescription": "Learn about Monitor Tester, a free browser-based suite designed to test, inspect, and diagnose computer monitors, laptops, TVs, and mobile displays.",
-    "eyebrow": "ABOUT THE PROJECT",
-    "title": "About Monitor Tester",
-    "description": "A free, privacy-first browser utility built to evaluate, inspect, and troubleshoot computer monitors, laptops, mobile devices, and TVs without software installation.",
-    "missionTitle": "Why Monitor Tester Exists",
-    "missionText": "Buying a new or used monitor often involves uncertainty: dead pixels, backlight bleed, washed-out contrast, and ghosting are difficult to identify during brief in-store checks or unboxings. Monitor Tester was created to provide a complete, accessible suite of diagnostic patterns that anyone can run immediately in any modern web browser.",
-    "howItWorksTitle": "100% In-Browser Execution",
-    "howItWorksText": "Every test runs locally on your device using standard HTML5 Canvas, WebGL, CSS hardware acceleration, and the Screen and Window APIs. No downloads, native installers, or administrative permissions are needed. Your display data stays entirely on your computer.",
-    "testTypesTitle": "What You Can Test",
-    "pixelsCategory": "Pixel Integrity & Panel Defects",
-    "pixelsDesc": "Detect dead pixels, stuck subpixels, bright subpixels, and panel image retention (burn-in) across pure color fields.",
-    "colorCategory": "Color Reproduction & Grayscale",
-    "colorDesc": "Evaluate continuous gradients, color banding steps, color gamut boundaries, and multi-step grayscale ramps.",
-    "luminanceCategory": "Luminance, Contrast & Bleed",
-    "luminanceDesc": "Tune near-black and near-white clipping, check dark-room backlight bleeding, and assess full-screen brightness uniformity.",
-    "motionCategory": "Motion, Response & Gaming",
-    "motionDesc": "Check ghosting trails, evaluate pixel overdrive settings, measure V-Sync refresh rate (Hz), and inspect for screen tearing.",
-    "toolsCategory": "Hardware Diagnostics & Calculators",
-    "toolsDesc": "Inspect detected screen metrics (DPR, color depth), calculate PPI and optimal viewing distances, compare displays, and test multi-touch.",
-    "openSourceTitle": "Open & Community-Driven",
-    "openSourceText": "Monitor Tester is an open-source project. You can inspect the source code, report rendering bugs, suggest new test patterns, or contribute directly on GitHub."
+    "eyebrow": "プロジェクトについて",
+    "title": "モニターテスターについて",
+    "description": "ソフトウェアのインストールなしにコンピューターモニター、ラップトップ、モバイルデバイス、およびテレビを評価、検査、およびトラブルシューティングするために構築された、無料でプライバシー優先のブラウザユーティリティ。",
+    "missionTitle": "モニターテスターが存在する理由",
+    "missionText": "新品または中古のモニターを購入することは、しばしば不確実性を伴います：デッドピクセル、バックライトブリード、薄いコントラスト、ゴーストは、短い店内チェックや開梱時に識別するのが難しいです。モニターテスターは、誰もがすぐに任意の最新のウェブブラウザで実行できる、完全でアクセスしやすい診断パターンのスイートを提供するために作成されました。",
+    "howItWorksTitle": "100%ブラウザ内実行",
+    "howItWorksText": "すべてのテストは、標準のHTML5 Canvas、WebGL、CSSハードウェアアクセラレーション、およびScreenとWindow APIを使用してデバイス上でローカルに実行されます。ダウンロード、ネイティブインストーラー、または管理権限は必要ありません。",
+    "testTypesTitle": "テストできること",
+    "pixelsCategory": "ピクセル完整性とパネル欠陥",
+    "pixelsDesc": "純粋なカラーフィールドでデッドピクセル、固着サブピクセル、明るいサブピクセル、およびパネル残像（焼き付き）を検出します。",
+    "colorCategory": "色再現とグレースケール",
+    "colorDesc": "連続グラデーション、カラーバンディングステップ、カラーガモット境界、マルチステップグレースケールランプを評価します。",
+    "luminanceCategory": "輝度、コントラスト、ブリード",
+    "luminanceDesc": "ほぼ黒とほぼ白のクリッピングを調整し、暗室でバックライトブリードを確認します。",
+    "motionCategory": "動き、応答、ゲーミング",
+    "motionDesc": "ゴーストトレイルを確認し、ピクセルオーバードライブ設定を評価し、V-Syncリフレッシュレート（Hz）を測定します。",
+    "toolsCategory": "ハードウェア診断とカルキュレーター",
+    "toolsDesc": "検出された画面メトリクス（DPR、色深度）を確認し、PPIと最適な視聴距離を計算します。",
+    "openSourceTitle": "オープンでコミュニティ主導",
+    "openSourceText": "モニターテスターはオープンソースプロジェクトです。GitHubでソースコードを確認したり、レンダリングバグを報告したり、新しいテストパターンを提案したり、直接貢献したりできます。"
   },
   "Terms": {
     "metaTitle": "Terms of Use — Monitor Tester",
     "metaDescription": "Terms of use and disclaimer for the Monitor Tester display testing utility.",
-    "eyebrow": "TERMS & DISCLAIMER",
-    "title": "Terms of Use",
-    "description": "Please review the following terms and guidelines for using the Monitor Tester web utility and its diagnostic tools.",
-    "lastUpdated": "Last updated: September 2026",
-    "acceptanceTitle": "Acceptance of Terms",
-    "acceptanceText": "By accessing and using Monitor Tester, you acknowledge and agree to these terms. If you do not agree with any part of these terms, please discontinue use of the website.",
-    "natureOfServiceTitle": "Informational & Visual Testing Scope",
-    "natureOfServiceText": "Monitor Tester is an open web utility designed to assist users in visually evaluating display panels using browser-renderable test patterns, motion simulations, and client-side calculations. These tests are intended for visual screening and self-diagnosis.",
-    "noCalibrationTitle": "Not a Replacement for Hardware Colorimeters",
-    "noCalibrationText": "Browser-based software cannot replace physical spectrophotometers, hardware colorimeters (such as Calibrite or Datacolor Spyder), or optical oscilloscopes. Monitor Tester does not generate ICC color profiles, read physical photometric nits, or certify absolute color accuracy (Delta-E).",
-    "disclaimerTitle": "Disclaimer of Warranties",
-    "disclaimerText": "Monitor Tester is provided on an 'AS IS' and 'AS AVAILABLE' basis without warranties of any kind, whether express or implied. While we strive for precision, test results may vary based on operating system display scaling, GPU driver configurations, browser hardware acceleration, and ambient lighting conditions.",
-    "manufacturerTitle": "Manufacturer Warranty Policies",
-    "manufacturerText": "Display manufacturers enforce their own specific warranty terms regarding pixel defects (such as ISO 9241-307 Class 1 or Class 2 standards, which often define minimum thresholds of stuck or dead subpixels before an RMA is authorized). Identifying a defect on Monitor Tester does not automatically guarantee warranty replacement by your device manufacturer.",
-    "openSourceTitle": "Open Source License",
-    "openSourceText": "The underlying source code of Monitor Tester is licensed under the open-source MIT License. You are free to inspect, review, and fork the source code in accordance with the license."
+    "eyebrow": "利用規約と免責事項",
+    "title": "利用規約",
+    "description": "モニターテスターは、ディスプレイの品質評価を支援するために設計された無料の診断ツールです。",
+    "lastUpdated": "最終更新日: 2026年9月",
+    "acceptanceTitle": "利用規約への同意",
+    "acceptanceText": "モニターテスターにアクセスして使用することで、これらの規約を認め、同意するものとします。同意しない場合は、サービスの使用を停止してください。",
+    "natureOfServiceTitle": "情報的・視覚的テストの範囲",
+    "natureOfServiceText": "モニターテスターは、標準のHTML5 APIを使用してブラウザでディスプレイパネルを視覚的に評価するのに役立つオープンなWebユーティリティです。",
+    "noCalibrationTitle": "ハードウェアカラリメーターの代替ではない",
+    "noCalibrationText": "ブラウザベースのソフトウェアは、物理的な分光光度計、ハードウェアカラリメーター（CaliberiteやX-Riteデバイスなど）、またはICCプロファイルソフトウェアの代わりにはなりません。",
+    "disclaimerTitle": "保証の否認",
+    "disclaimerText": "モニターテスターは、いかなる種類の保証もなく「現状のまま」および「利用可能な状態で」提供されます。",
+    "manufacturerTitle": "製造業者の保証ポリシー",
+    "manufacturerText": "ディスプレイメーカーは、ピクセル欠陥（ISO 13406-2などの基準）に関して独自の特定の保証条件を適用します。当社のテスト結果はこれらのポリシーに影響しません。",
+    "openSourceTitle": "オープンソース",
+    "openSourceText": "モニターテスターはオープンソースです。GitHubでソースコードを確認したり、バグを報告したり、改善を提案したりできます。",
+    "diagnosticTitle": "診断目的のみ",
+    "diagnosticText": "このウェブサイトで利用可能なテストとツールは、診断および教育目的のみです。結果は、デバイス、ブラウザ、オペレーティングシステム、および設定によって異なる場合があります。",
+    "accuracyTitle": "精度の制限",
+    "accuracyText": "ブラウザベースのテストは、専門的にキャリブレーションされたハードウェアツールの代替にはなりません。リフレッシュレート、色深度、HDRサポートなどの測定値はブラウザAPIによって報告され、専門的なキャリブレーションツールとは異なる場合があります。",
+    "liabilityTitle": "責任の否認",
+    "liabilityText": "保証請求、購入または返品の決定を含む、モニターテスターの結果に基づいて下された決定について、当社は責任を負いません。",
+    "warrantyTitle": "保証アドバイス",
+    "warrantyText": "当社のテスト結果はあくまで参考用です。保証請求については、製造者のガイドラインを参照し、ディスプレイの専門的な評価を受けてください。",
+    "changeTitle": "変更",
+    "changeText": "当社は、事前通知なしにいつでもこれらの規約を変更する権利を留保します。",
+    "contactTitle": "お問い合わせ",
+    "contactText": "ご質問がある場合は、GitHubを通じてお問い合わせください。"
   },
   "Contact": {
     "metaTitle": "Contact & Support — Monitor Tester",
     "metaDescription": "Get in touch with the Monitor Tester open-source project. Report bugs, suggest test patterns, or ask questions.",
-    "eyebrow": "CONTACT & SUPPORT",
-    "title": "Contact & Feedback",
-    "description": "Have feedback, found a display discrepancy, or want to suggest a new test pattern? Here are the best ways to reach the project.",
-    "githubTitle": "GitHub Issue Tracker",
-    "githubDesc": "Report bugs, browser rendering issues, or request new display test patterns on our public GitHub repository.",
-    "githubAction": "Open an Issue on GitHub →",
-    "contributeTitle": "Contribute Code & Guides",
-    "contributeDesc": "Monitor Tester is open source. Pull requests for test improvements, performance optimizations, and translation corrections are warmly welcomed.",
-    "contributeAction": "View GitHub Repository →",
-    "emailTitle": "Direct Project Inquiries",
-    "emailDesc": "For general inquiries, collaborations, or private feedback regarding the project, feel free to reach out directly via email.",
-    "faqTitle": "Check Common Questions",
-    "faqDesc": "Looking for quick guidance on how browser tests work or what dead pixels are? Check our comprehensive FAQ.",
-    "faqAction": "Read the FAQ →"
+    "eyebrow": "お問い合わせ",
+    "title": "お問い合わせ",
+    "description": "GitHubまたはメールでお問い合わせください。",
+    "githubTitle": "GitHubを通じて",
+    "githubDesc": "当社の公開GitHubリポジトリでバグ、ブラウザのレンダリング問題を報告したり、新しいディスプレイテストパターンをリクエストしたりしてください。",
+    "githubAction": "GitHubでissueを開く →",
+    "contributeTitle": "コードとガイドに貢献する",
+    "contributeDesc": "モニターテスターはオープンソースです。テストの改善、パフォーマンスの最適化、翻訳のためのプルリクエストを歓迎します。",
+    "contributeAction": "GitHubリポジトリを見る →",
+    "emailTitle": "メールで",
+    "emailDesc": "一般的なお問い合わせ、コラボレーション、またはプロジェクトに関するプライベートなフィードバックについては、お気軽にご連絡ください。",
+    "faqTitle": "よくある質問を確認する",
+    "faqDesc": "ブラウザテストの仕組みやデッドピクセルとは何かについて素早いガイダンスをお探しですか？包括的なFAQをご覧ください。",
+    "faqAction": "FAQを読む →",
+    "githubText": "バグを報告したり、機能を提案したり、GitHubリポジトリに貢献したりしてください。",
+    "githubButton": "GitHubで見る",
+    "emailText": "直接のお問い合わせ、コラボレーションのリクエスト、またはビジネスに関するお問い合わせはメールでご連絡ください。",
+    "bugTitle": "バグレポート",
+    "bugText": "技術的な問題を見つけた場合は、詳細とともにGitHubでissueを開いてください。",
+    "featureTitle": "機能リクエスト",
+    "featureText": "新しいテストや改善の提案はありますか？フィードバックを歓迎します。"
   },
   "Tools": {
     "metaTitle": "ディスプレイツール＆計算機 | Monitor Tester",
@@ -1238,7 +1364,7 @@
       "megapixelsFormula": "≈ {megapixels} メガピクセル (幅×高さ×DPR)",
       "currentViewport": "現在の表示領域（ビューポート）",
       "viewportFormula": "window.innerWidth × innerHeight",
-      "dprLabel": "デバイスピクセル比（DPR）",
+      "dprLabel": "デバイスピクセル比 (DPR)",
       "dprRetina": "高精細・Retinaスケーリング",
       "dprStandard": "標準 100% 1:1 等倍表示",
       "dprCustom": "OSカスタム拡大表示",
@@ -1257,7 +1383,7 @@
       "title": "2. ブラウザ機能およびAPIサポート状況",
       "subtitle": "標準Web API機能のサポート判定",
       "colFeature": "機能 / 標準仕様",
-      "colStatus": "状態",
+      "colStatus": "ステータス",
       "colDesc": "説明",
       "supported": "対応",
       "notSupported": "非対応",
@@ -1300,7 +1426,7 @@
     },
     "multiScreen": {
       "title": "4. マルチモニター構成の検出",
-      "subtitle": "Window Management API",
+      "subtitle": "ウィンドウ管理API",
       "heading": "複数ディスプレイの配置とトポロジー",
       "desc": "W3C Window Management APIを利用して、接続されている複数モニターの情報を取得します。",
       "queryBtn": "画面トポロジーを照会",
@@ -1395,7 +1521,7 @@
       "colPosition": "画面比率",
       "colPattern": "テストパターン",
       "colNote": "メモ",
-      "colAction": "操作",
+      "colAction": "アクション",
       "deleteTitle": "欠陥マーカーを削除",
       "types": {
         "dead": "ドット抜け",
@@ -1426,13 +1552,13 @@
       "viewDetails": "詳細を見る",
       "deleteTitle": "履歴を削除",
       "modalTitle": "保管された検査記録",
-      "modalTests": "テスト数:",
+      "modalTests": "テスト:",
       "modalObserved": "確認済み:",
       "modalNeedsAttn": "要確認:",
       "modalFlaws": "欠陥ピクセル:",
       "modalScreen": "解像度: {val}",
       "modalDpr": "DPR: {val}x",
-      "modalViewport": "表示領域: {val}",
+      "modalViewport": "ビューポート: {val}",
       "modalDepth": "色深度: {val}ビット",
       "modalNotes": "メモ:",
       "modalObservations": "個別テスト結果:",
@@ -1512,7 +1638,7 @@
         "desc": "サブピクセルレンダリング評価用パングラムテキスト。"
       },
       "moire": {
-        "label": "モアレ＆ジーメンス",
+        "label": "モアレとジーメンス",
         "desc": "高周波干渉リングと放射状星形パターン。"
       }
     },
@@ -1635,7 +1761,7 @@
       "calcRes": "算出された解像度",
       "aspectName": "画面比率",
       "totalPixels": "総ピクセル数",
-      "standardClass": "規格分類"
+      "standardClass": "分類"
     },
     "aspect": {
       "title": "アスペクト比約分ツール",
@@ -1648,15 +1774,15 @@
       "gcd": "最大公約数 (GCD)"
     },
     "presets": {
-      "fhd24": "24インチ Full HD (1080p)",
-      "qhd27": "27インチ Quad HD (1440p)",
-      "uhd27": "27インチ 4K Ultra HD",
-      "oled27": "27インチ OLED 240Hz Gaming",
-      "uhd32": "32インチ 4K Ultra HD",
-      "uwqhd34": "34インチ ウルトラワイド (UWQHD)",
-      "suw49": "49インチ スーパーウルトラワイド",
-      "mac14": "14インチ ノートPC (Retina)",
-      "mac16": "16インチ ノートPC (Retina)",
+      "fhd24": "24\" フルHD (1080p)",
+      "qhd27": "27\" クアッドHD (1440p)",
+      "uhd27": "27\" 4K ウルトラHD",
+      "oled27": "27\" OLED 240Hz ゲーミング",
+      "uhd32": "32\" 4K ウルトラHD",
+      "uwqhd34": "34\" ウルトラワイド (UWQHD)",
+      "suw49": "49\" スーパーウルトラワイド",
+      "mac14": "14\" ラップトップ (Retina)",
+      "mac16": "16\" ラップトップ (Retina)",
       "tv55": "55インチ 4K リビングTV",
       "tv65": "65インチ 4K リビングTV"
     },
@@ -1687,7 +1813,7 @@
     "aspectPreview": "アスペクト比プレビュー",
     "quickSizes": "定番サイズ",
     "commonRatios": "標準比率",
-    "parameter": "測定項目",
+    "parameter": "パラメーター",
     "deviation": "誤差: {val}",
     "benchmarks": "幾何数学ベンチマーク",
     "hardwareComparison": "画面仕様・幾何比較"

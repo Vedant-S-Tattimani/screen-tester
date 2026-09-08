@@ -4,10 +4,10 @@
     "description": "무료 온라인 화면 테스트 및 모니터 검사 사이트. 불량 화소 테스트, 모니터 색상 테스트, 주사율 테스트, 모니터 잔상 테스트로 디스플레이 결함을 간편하게 진단하세요."
   },
   "Header": {
-    "title": "Monitor Tester",
+    "title": "모니터 테스터",
     "nav": {
       "tests": "테스트",
-      "inspection": "점검",
+      "inspection": "검사",
       "guides": "가이드",
       "menu": "메뉴",
       "tools": "도구"
@@ -17,17 +17,17 @@
       "color": "색상",
       "luminance": "휘도",
       "display": "디스플레이",
-      "motion": "모션",
-      "advanced": "고급 테스트"
+      "motion": "동작",
+      "advanced": "고급"
     },
     "inspection": {
-      "monitor": "모니터 점검",
+      "monitor": "모니터 검사",
       "gaming": "게이밍",
       "oled": "OLED",
       "new": "새 모니터",
       "used": "중고 모니터",
-      "laptop": "노트북 화면",
-      "tv": "TV 화면",
+      "laptop": "노트북 디스플레이",
+      "tv": "TV 디스플레이",
       "tvSubtitle": "대형 화면"
     },
     "guides": {
@@ -39,60 +39,60 @@
       "lcd": "LCD 가이드"
     },
     "dropdown": {
-      "popularTests": "주요 테스트",
-      "deadPixels": "불량 화소 테스트",
-      "colorTest": "모니터 색상 테스트",
+      "popularTests": "인기 테스트",
+      "deadPixels": "불량 픽셀 테스트",
+      "colorTest": "색상 테스트",
       "brightness": "밝기",
-      "contrast": "명암비",
-      "ghosting": "모니터 잔상 테스트",
-      "refreshRate": "주사율 테스트 (Hz)",
-      "viewAllTests": "전체 28개 테스트 보기",
-      "troubleshootInspect": "문제 진단 및 점검",
-      "diagnoseProblem": "문제 진단하기",
+      "contrast": "대비",
+      "ghosting": "고스팅 테스트",
+      "refreshRate": "주사율 테스트",
+      "viewAllTests": "28개 테스트 모두 보기",
+      "troubleshootInspect": "문제 해결 및 검사",
+      "diagnoseProblem": "문제 진단",
       "wizardBadge": "마법사",
-      "generalCheckup": "종합 점검",
-      "subAllRound": "전체 진단",
+      "generalCheckup": "일반 점검",
+      "subAllRound": "전체 검사",
       "usedMonitor": "중고 모니터",
-      "subPrePurchase": "구매 전 확인",
+      "subPrePurchase": "구매 전",
       "gamingDisplay": "게이밍 디스플레이",
-      "subHzMotion": "Hz 및 잔상",
+      "subHzMotion": "Hz 및 동작",
       "oledDisplay": "OLED 디스플레이",
       "subBurnIn": "번인 및 블랙",
-      "laptopDisplay": "노트북 화면",
+      "laptopDisplay": "노트북 디스플레이",
       "subDpiScale": "DPI 및 배율",
-      "savedReports": "저장된 보고서",
-      "inspectionHub": "점검 허브",
+      "savedReports": "저장된 보고서 및 메모",
+      "inspectionHub": "검사 허브",
       "utilitiesTools": "유틸리티 및 도구",
       "displayInfo": "디스플레이 정보",
       "resolutionPpi": "해상도 및 PPI",
       "compareDisplays": "디스플레이 비교",
       "customPattern": "사용자 정의 패턴",
       "viewAllTools": "모든 도구 보기",
-      "practicalGuides": "실전 가이드",
-      "deadVsStuck": "암점 vs 휘점 불량 화소",
-      "ghostingMotion": "고스팅 및 잔상 현상",
-      "backlightBleed": "빛샘 현상 점검",
-      "viewingAngles": "패널 시야각 안내",
-      "allGuides": "모든 가이드 보기"
+      "practicalGuides": "실용 가이드",
+      "deadVsStuck": "불량 픽셀 vs 고착 픽셀",
+      "ghostingMotion": "고스팅 및 동작",
+      "backlightBleed": "백라이트 번짐",
+      "viewingAngles": "시야각",
+      "allGuides": "모든 디스플레이 가이드"
     },
     "searchPlaceholder": "테스트 또는 가이드 검색..."
   },
   "Footer": {
-    "title": "Monitor Tester",
-    "description": "불량 화소, 빛샘 현상, 색상, 잔상 등을 브라우저에서 바로 검사할 수 있는 무료 오픈소스 디스플레이 진단 도구입니다.",
+    "title": "모니터 테스터",
+    "description": "불량 픽셀, 백라이트 번짐, 색상, 동작 등을 테스트하기 위한 무료, 개방형, 개인정보 보호 중심 도구 모음. 브라우저에서 직접 작동합니다.",
     "attributes": {
-      "browserTitle": "브라우저에서 바로 실행",
-      "browserDesc": "소프트웨어 설치 필요 없음",
-      "privacyTitle": "안전한 개인정보 보호",
+      "browserTitle": "브라우저에서 작동",
+      "browserDesc": "소프트웨어 불필요",
+      "privacyTitle": "개인 정보 보호 및 보안",
       "privacyDesc": "모든 테스트는 로컬에서 실행",
-      "deviceTitle": "모든 기기 지원",
-      "deviceDesc": "데스크톱, 노트북, 태블릿, 모바일",
-      "i18nTitle": "다국어 지원",
-      "i18nDesc": "다양한 언어 제공"
+      "deviceTitle": "모든 기기에서 작동",
+      "deviceDesc": "데스크탑, 노트북, 태블릿, 모바일",
+      "i18nTitle": "다국어",
+      "i18nDesc": "여러 언어로 이용 가능"
     },
     "columns": {
       "tests": "테스트",
-      "inspection": "점검 가이드",
+      "inspection": "검사",
       "guides": "가이드",
       "about": "소개",
       "guidesAndTools": "가이드 및 도구"
@@ -122,14 +122,14 @@
       "about": "Monitor Tester 소개",
       "privacy": "개인정보 처리방침",
       "terms": "이용약관",
-      "contact": "문의하기",
+      "contact": "문의",
       "contribute": "기여하기",
       "reportIssue": "문제 신고"
     },
-    "copyright": "Monitor Tester. All rights reserved."
+    "copyright": "모니터 테스터. 모든 권리 보유."
   },
   "LanguageSwitcher": {
-    "en": "English",
+    "en": "영어",
     "hi": "हिन्दी",
     "es": "Español",
     "fr": "Français",
@@ -137,7 +137,7 @@
     "pt": "Português",
     "ja": "日本語",
     "ko": "한국어",
-    "label": "언어 선택"
+    "label": "언어"
   },
   "Home": {
     "eyebrow": "테스트. 점검. 분석.",
@@ -165,7 +165,7 @@
     "quickColorTest": "모니터 색상 테스트",
     "quickBrightness": "밝기",
     "quickContrast": "대비",
-    "quickGhosting": "모니터 잔상 테스트",
+    "quickGhosting": "고스팅 테스트",
     "quickRefreshRate": "주사율 테스트",
     "workflowsTitle": "무엇을 점검하시겠습니까?",
     "workflowsDesc": "사용 환경에 맞는 가이드 또는 점검 단계를 선택하세요.",
@@ -245,10 +245,10 @@
       "calibration": "보정",
       "backlight": "백라이트",
       "darkRoom": "암실",
-      "canvas": "CANVAS",
+      "canvas": "캔버스",
       "latency": "지연",
       "estimate": "추정",
-      "vsync": "VSYNC",
+      "vsync": "브이싱크",
       "api": "API"
     },
     "tests": {
@@ -265,7 +265,7 @@
         "description": "기본 색상과 보조 색상의 재현율 및 시각적 채도의 균일성을 평가합니다."
       },
       "gradientTest": {
-        "title": "그라데이션 밴딩",
+        "title": "그라디언트 밴딩",
         "description": "부드러운 색상 전환을 표시하여 비트 심도 제한이나 압축 밴딩을 노출시킵니다."
       },
       "brightnessTest": {
@@ -277,7 +277,7 @@
         "description": "가장자리 조명 불일치, DSE(Dirty Screen Effect) 및 패널 전체의 색조 변화를 확인합니다."
       },
       "backlightBleed": {
-        "title": "백라이트 빛샘",
+        "title": "백라이트 번짐",
         "description": "어두운 환경에서 IPS 또는 LED 패널의 가장자리에서 새어나오는 빛을 확인하기 위한 순수 블랙 렌더링입니다."
       },
       "ghostingTest": {
@@ -293,28 +293,28 @@
         "description": "노출된 브라우저 API를 읽어 논리적 해상도, 색상 심도, 방향 및 HDR 지원 기능을 보고합니다."
       },
       "grayscaleTest": {
-        "title": "Grayscale Test",
-        "description": "Test monitor ability to render neutral grays without color tinting."
+        "title": "그레이스케일 테스트",
+        "description": "색상 착색 없이 중성 회색을 렌더링하는 모니터의 능력을 테스트합니다."
       },
       "saturationTest": {
-        "title": "Saturation Test",
-        "description": "Assess color vibrancy and detect banding in high-saturation gradients."
+        "title": "채도 테스트",
+        "description": "색상 선명도를 평가하고 고채도 그라디언트에서 밴딩을 감지합니다."
       },
       "blackLevelTest": {
-        "title": "Black Level Test",
-        "description": "Tune your monitor's black levels to ensure dark details aren't crushed."
+        "title": "블랙 레벨 테스트",
+        "description": "어두운 디테일이 뭉개지지 않도록 모니터의 블랙 레벨을 조정합니다."
       },
       "whiteLevelTest": {
-        "title": "White Level Test",
-        "description": "Tune your monitor's contrast to ensure bright details aren't clipped."
+        "title": "화이트 레벨 테스트",
+        "description": "밝은 디테일이 클리핑되지 않도록 모니터의 대비를 조정합니다."
       },
       "gammaTest": {
-        "title": "Gamma Calibration",
-        "description": "Visually estimate your monitor's gamma tracking (target 2.2 for sRGB)."
+        "title": "감마 보정",
+        "description": "모니터의 감마 추적을 시각적으로 추정합니다(sRGB 목표 2.2)."
       },
       "hdrCapabilityTest": {
-        "title": "HDR Capability",
-        "description": "Verify your browser and OS correctly detect HDR and Wide Color Gamut."
+        "title": "HDR 기능",
+        "description": "브라우저와 OS가 HDR 및 와이드 컬러 게멋을 올바르게 감지하는지 확인합니다."
       },
       "contrastTest": {
         "title": "명암비 보정",
@@ -377,7 +377,10 @@
       "moveDown": "아래로 이동",
       "remove": "대기열에서 제거",
       "restart": "처음부터 다시 시작",
-      "completeReport": "완료하고 리포트 보기"
+      "completeReport": "완료하고 리포트 보기",
+      "sequenceLabel": "대기열 순서",
+      "manageQueue": "대기열 관리",
+      "stepProgress": "테스트 {x} / {y}"
     },
     "pixelDefect": {
       "bannerInstruction": "화면 아무 곳이나 클릭하여 불량 화소를 표시하세요",
@@ -389,7 +392,7 @@
       "dialogTitle": "픽셀 결함 마커",
       "closeAria": "대화상자 닫기",
       "locationLabel": "위치 (CSS X, Y):",
-      "relativePos": "상대 위치:",
+      "relativePos": "상대적 위치:",
       "canvasSize": "캔버스 해상도:",
       "defectTypeLabel": "결함 유형:",
       "types": {
@@ -484,8 +487,8 @@
     "backlight-bleed-test": {
       "metaTitle": "빛샘 테스트 – 모니터 백라이트 빛샘 및 IPS 글로우 확인",
       "metaDescription": "어두운 환경에서 전체 블랙 화면을 띄워 모니터 베젤 모서리의 백라이트 빛샘 현상과 IPS 글로우를 육안으로 점검합니다.",
-      "title": "Backlight Bleed Test",
-      "description_p1": "This test renders a pure black screen. It is designed to expose backlight bleed, clouding, or IPS glow that typically affects LCD/LED panels.",
+      "title": "백라이트 번짐 테스트",
+      "description_p1": "이 테스트는 순수한 검정 화면을 렌더링합니다. LCD 백라이트 번짐, 클라우딩 또는 IPS 글로우를 드러내도록 설계되었습니다.",
       "instructions": [
         "<strong>Crucial:</strong> This test must be performed in a completely dark room.",
         "Set your monitor to its standard or calibrated brightness level (do not force 100% brightness unless that is how you normally use it).",
@@ -508,8 +511,8 @@
     "stuck-pixel-test": {
       "metaTitle": "낀 화소(스턱픽셀) 복구 테스트 – 초고속 RGB 깜빡임 자극",
       "metaDescription": "특정 색상으로 멈춰 있는 서브픽셀을 찾고, 초고속 RGB 삼원색 점멸 자극을 통해 픽셀 활성화를 시도합니다.",
-      "title": "Stuck Pixel Fixer & Test",
-      "description_p1": "Unlike a dead pixel (which is permanently black), a <strong>stuck pixel</strong> is a single subpixel (red, green, or blue) that is permanently turned on. Sometimes, rapidly cycling colors can un-stick the liquid crystal.",
+      "title": "고착 픽셀 수리 및 테스트",
+      "description_p1": "불량 픽셀(영구적으로 검정)과 달리, <strong>고착 픽셀</strong>은 항상 켜져 있는 단일 서브픽셀입니다.",
       "instructions": [
         "<strong>Warning:</strong> This test flashes bright colors rapidly. Do not use if you are sensitive to flashing lights.",
         "The test will automatically cycle between Red, Green, and Blue at a high frequency.",
@@ -520,8 +523,8 @@
     "uniformity-test": {
       "metaTitle": "화면 균일도 테스트 – 멍 현상(DSE) 및 밝기 편차 점검",
       "metaDescription": "5%, 10%, 20%, 50%, 100% 그레이 패턴으로 모니터 전 영역의 밝기 균일성과 얼룩덜룩한 멍(DSE) 현상을 검사합니다.",
-      "title": "Screen Uniformity & DSE Test",
-      "description_p1": "This test displays stepped grayscale backgrounds to help identify backlight bleeding, edge darkening (vignetting), and Dirty Screen Effect (DSE).",
+      "title": "화면 균일성 및 DSE 테스트",
+      "description_p1": "이 테스트는 백라이트 번짐, 가장자리 어두워짐 및 DSE를 식별하는 데 도움이 되는 단계별 그레이스케일 배경을 표시합니다.",
       "instructions": [
         "Check the corners and edges on the 5% and 10% dark grays for clouding or light bleed.",
         "On the 20% and 50% grays, look for splotches, bands, or \"dirty\" smudges across the center of the screen (DSE).",
@@ -532,99 +535,99 @@
     "black-level-test": {
       "metaTitle": "블랙 레벨 테스트 – 섀도우 디테일 및 블랙 크러시 방지",
       "metaDescription": "0%~5% 사이의 미세한 블랙 단계 구분을 점검하여 어두운 영화나 게임 장면에서 세부 묘사가 묻히지 않도록 조절합니다.",
-      "title": "Black Level Test",
-      "description_p1": "This test helps you configure your monitor's black level (brightness) setting. It displays extremely dark shades near pure black.",
-      "inst1": "Turn off room lights or reduce glare on the screen.",
-      "inst2": "Adjust your monitor's 'Brightness' setting until you can barely distinguish block 1 from the pure black background.",
-      "inst3": "If blocks 1-5 look identical to the background, your blacks are being crushed."
+      "title": "블랙 레벨 테스트",
+      "description_p1": "이 테스트는 모니터의 블랙 레벨(밝기) 설정을 구성하는 데 도움이 됩니다. 매우 어두운 회색 블록을 표시합니다.",
+      "inst1": "방 조명을 끄거나 화면의 눈부심을 줄이세요.",
+      "inst2": "순수한 검정 배경에서 블록 1을 간신히 구별할 수 있을 때까지 모니터의 '밝기' 설정을 조정하세요.",
+      "inst3": "블록 1-5가 배경과 동일하게 보이면 블랙이 눌리고 있습니다."
     },
     "white-level-test": {
       "metaTitle": "화이트 레벨 테스트 – 하이라이트 디테일 및 화이트 뭉개짐 방지",
       "metaDescription": "95%~100% 순백에 가까운 단계 구분을 확인하여 밝은 영역의 질감이 하얗게 날아가지 않도록 보정합니다.",
-      "title": "White Level Test",
-      "description_p1": "This test helps you configure your monitor's white level (contrast) setting. It displays extremely bright shades near pure white.",
-      "inst1": "Adjust your monitor's 'Contrast' setting until you can distinguish block 254 from the pure white background.",
-      "inst2": "If blocks 250-254 look identical to the background, your whites are clipping.",
-      "inst3": "Do not set contrast so high that bright details are lost."
+      "title": "화이트 레벨 테스트",
+      "description_p1": "이 테스트는 모니터의 화이트 레벨(대비) 설정을 구성하는 데 도움이 됩니다. 매우 밝은 회색 블록을 표시합니다.",
+      "inst1": "순수한 흰색 배경에서 블록 254를 구별할 수 있을 때까지 모니터의 '대비' 설정을 조정하세요.",
+      "inst2": "블록 250-254가 배경과 동일하게 보이면 화이트가 클리핑되고 있습니다.",
+      "inst3": "밝은 디테일이 손실될 만큼 대비를 높이지 마세요."
     },
     "grayscale-test": {
       "metaTitle": "그레이스케일 테스트 – 256단계 명암 및 색온도 밸런스 점검",
       "metaDescription": "256단계의 매끄러운 그레이 그라데이션으로 모니터의 중립적인 회색 표현력과 특정 색상 쏠림(녹색/분홍 틴트)을 확인합니다.",
-      "title": "Grayscale Test",
-      "description_p1": "This test displays neutral grayscale backgrounds. It helps you check if your monitor suffers from unwanted color tints in its gray rendering.",
-      "inst1": "Cycle through the gray levels using Space or right arrow.",
-      "inst2": "Look for pink, blue, or green tints in what should be neutral gray.",
-      "inst3": "Use your monitor's RGB balance controls to correct any color cast."
+      "title": "그레이스케일 테스트",
+      "description_p1": "이 테스트는 중성 그레이스케일 배경을 표시합니다. 모니터에 색상 착색이 있는지 확인하는 데 도움이 됩니다.",
+      "inst1": "스페이스바 또는 오른쪽 화살표를 사용하여 회색 레벨을 순환합니다.",
+      "inst2": "중성 회색이어야 할 곳에서 분홍, 파랑, 녹색 색조를 확인합니다.",
+      "inst3": "모니터의 RGB 밸런스 컨트롤을 사용하여 색상 오류를 수정하세요."
     },
     "saturation-test": {
       "metaTitle": "채도 테스트 – RGB 원색 및 보조색 채도 포화도 점검",
       "metaDescription": "원색과 중간색의 채도 단계를 점검하여 색상이 물 빠지거나 지나치게 과포화되어 뭉개지지 않는지 평가합니다.",
-      "title": "Saturation Test",
-      "description_p1": "This test displays a continuous color spectrum and stepped saturation blocks for primary colors.",
-      "inst1": "Check the smooth spectrum for obvious banding or harsh transitions.",
-      "inst2": "Look at the individual saturation steps to ensure distinct differences between blocks.",
-      "inst3": "Adjust your monitor's saturation/vibrancy settings if colors look washed out or overly neon."
+      "title": "채도 테스트",
+      "description_p1": "이 테스트는 연속 색상 스펙트럼과 기본 색상에 대한 단계별 채도 블록을 표시합니다.",
+      "inst1": "매끄러운 스펙트럼에서 명백한 밴딩이나 급격한 전환을 확인합니다.",
+      "inst2": "블록 간에 뚜렷한 차이가 있는지 확인하기 위해 개별 채도 단계를 살펴보세요.",
+      "inst3": "색상이 흐리거나 너무 형광색으로 보이면 모니터의 채도/선명도 설정을 조정하세요."
     },
     "gamma-test": {
       "metaTitle": "감마 테스트 – 감마 2.2 및 2.4 커브 시각적 캘리브레이션",
       "metaDescription": "표준 감마 2.2 및 2.4 기준 값 대비 모니터의 감마 커브 일치도를 시각적으로 간편하게 확인합니다.",
-      "title": "Gamma Calibration",
-      "description_p1": "This tool helps you estimate your monitor's physical gamma curve. A gamma of 2.2 is the standard for sRGB and Windows PCs.",
-      "inst1": "Enter fullscreen and move away from the monitor, or squint your eyes until the top lines blur into a solid gray.",
-      "inst2": "Compare the blurred top half to the three solid blocks below.",
-      "inst3": "The block that perfectly matches the brightness of the blurred top half indicates your monitor's approximate gamma.",
-      "inst4": "<strong>ABOUT THIS TEST:</strong> This tool relies on visual perception and standard browser color rendering. It is not a replacement for a hardware colorimeter."
+      "title": "감마 보정",
+      "description_p1": "이 도구는 모니터의 물리적 감마 곡선을 추정하는 데 도움이 됩니다. 감마 2.2는 sRGB의 표준입니다.",
+      "inst1": "전체 화면으로 들어가서 모니터에서 물러나거나, 위쪽 선이 흐려질 때까지 눈을 가늘게 뜨세요.",
+      "inst2": "흐릿한 상단 절반을 아래의 세 개의 단색 블록과 비교하세요.",
+      "inst3": "흐릿한 상단 절반의 밝기와 완벽하게 일치하는 블록이 모니터의 대략적인 감마를 나타냅니다.",
+      "inst4": "<strong>이 테스트에 대해:</strong> 이 도구는 시각적 인식과 표준 브라우저 색상 렌더링에 의존합니다."
     },
     "motion-blur-test": {
       "metaTitle": "모션 블러 테스트 – 동적 해상도 및 화면 끌림 현상 점검",
       "metaDescription": "빠른 움직임 속에서 모니터의 잔상 지속 시간과 모션 블러를 시각적으로 분석하여 게이밍 성능을 평가합니다.",
-      "title": "Motion Blur Test",
-      "description_p1": "Assess how well your monitor handles fast motion without blurring or smearing details.",
-      "inst1": "Track the moving blocks with your eyes.",
-      "inst2": "Look at the small inner square. If the edges blur completely, your monitor has a slow pixel response time.",
-      "inst3": "Adjust speed and contrast to test under different panel overdrive scenarios."
+      "title": "모션 블러 테스트",
+      "description_p1": "세부 사항을 흐리게 하거나 번지게 하지 않고 모니터가 빠른 동작을 얼마나 잘 처리하는지 평가합니다.",
+      "inst1": "눈으로 움직이는 블록을 추적하세요.",
+      "inst2": "작은 내부 사각형을 보세요. 가장자리가 완전히 흐려지면 모니터의 픽셀 응답이 느린 것입니다.",
+      "inst3": "다양한 패널 오버드라이브 시나리오에서 테스트하려면 속도와 대비를 조정하세요."
     },
     "hdr-capability-test": {
       "metaTitle": "HDR 지원 테스트 – 고명암비 지원 및 최대 피크 밝기 점검",
       "metaDescription": "웹 브라우저의 HDR 활성화 여부, 최대 니트(nit) 밝기 성능, 광색역(Display P3) 재생 능력을 확인합니다.",
-      "title": "HDR Capability Test",
-      "description_p1": "This tool queries your browser's APIs to determine if High Dynamic Range (HDR) and Wide Color Gamut (P3) are currently enabled and supported by your display chain.",
-      "inst1": "Review the browser-reported capabilities.",
-      "inst2": "If it says 'Not Supported' but your monitor is HDR-capable, ensure HDR is turned on in Windows/macOS display settings.",
-      "inst3": "Ensure you are using a modern browser with hardware acceleration enabled."
+      "title": "HDR 기능 테스트",
+      "description_p1": "이 도구는 브라우저의 API를 쿼리하여 하이 다이나믹 레인지(HDR)와 와이드 컬러 게멋이 지원되는지 확인합니다.",
+      "inst1": "브라우저가 보고하는 기능을 검토하세요.",
+      "inst2": "'지원되지 않음'이라고 표시되지만 모니터가 HDR 지원인 경우, Windows/macOS에서 HDR이 켜져 있는지 확인하세요.",
+      "inst3": "하드웨어 가속이 활성화된 최신 브라우저를 사용하고 있는지 확인하세요."
     },
     "display-info": {
       "metaTitle": "디스플레이 정보 및 GPU 진단 – 해상도, DPR 및 그래픽카드 스펙",
       "metaDescription": "브라우저가 감지한 모니터 실제 해상도, 윈도우 스케일링 배율(DPR), 색 심도, 그래픽카드 모델명을 확인하세요.",
-      "title": "Display Information",
-      "description_p1": "This data is read directly from your browser's Web APIs. It represents what the browser can detect about your display setup. Note that operating system scaling settings (e.g., Windows UI scaling at 125% or macOS Retina scaling) will affect the \"Logical Resolution\" reported here.",
-      "gamutWide": "Display P3 (Wide)",
-      "gamutStandard": "sRGB (Standard)",
-      "resLogical": "Logical Resolution",
-      "resWorkspace": "Available Workspace",
-      "colorDepth": "Color Depth",
-      "pixelDepth": "Pixel Depth",
-      "pixelRatio": "Device Pixel Ratio",
-      "hdr": "High Dynamic Range (HDR)",
-      "hdrActive": "Supported (Active)",
-      "hdrStandard": "Standard Dynamic Range (SDR)",
-      "colorGamut": "Color Gamut Support",
-      "viewport": "Browser Viewport",
-      "hardwareLabel": "Hardware Capabilities",
-      "touchSupport": "Touch Support",
-      "touchPoints": "points",
-      "noTouch": "No touch support detected",
-      "orientation": "Orientation",
-      "unknown": "Unknown",
-      "fullscreenEnabled": "Fullscreen Capability",
-      "supported": "Supported",
-      "notSupported": "Not Supported"
+      "title": "디스플레이 정보",
+      "description_p1": "이 데이터는 브라우저의 Web API에서 직접 읽습니다. 브라우저가 감지하고 보고할 수 있는 것을 나타냅니다.",
+      "gamutWide": "디스플레이 P3 (와이드)",
+      "gamutStandard": "sRGB (표준)",
+      "resLogical": "논리 해상도",
+      "resWorkspace": "사용 가능한 작업 공간",
+      "colorDepth": "색 깊이",
+      "pixelDepth": "픽셀 깊이",
+      "pixelRatio": "기기 픽셀 비율",
+      "hdr": "하이 다이나믹 레인지 (HDR)",
+      "hdrActive": "지원됨 (활성)",
+      "hdrStandard": "표준 다이나믹 레인지 (SDR)",
+      "colorGamut": "색 영역 지원",
+      "viewport": "브라우저 뷰포트",
+      "hardwareLabel": "하드웨어 기능",
+      "touchSupport": "터치 지원",
+      "touchPoints": "포인트",
+      "noTouch": "터치 지원이 감지되지 않음",
+      "orientation": "방향",
+      "unknown": "알 수 없음",
+      "fullscreenEnabled": "전체 화면 기능",
+      "supported": "지원됨",
+      "notSupported": "지원되지 않음"
     },
     "gradient-test": {
       "metaTitle": "컬러 밴딩 테스트 – 8비트/10비트 그라데이션 계단 현상 점검",
       "metaDescription": "부드러운 그라데이션에서 줄무늬(밴딩) 계단 현상이 발생하는지 확인하여 패널의 색상 계조 표현력을 테스트합니다.",
-      "title": "Gradient Banding Test",
-      "description_p1": "Displays a perfectly smooth 24-bit (16.7 million colors) gradient. On lower quality panels or with restricted bit-depth settings, you will see <strong>banding</strong> (distinct vertical or horizontal lines instead of a smooth transition).",
+      "title": "그라디언트 밴딩 테스트",
+      "description_p1": "완벽하게 매끄러운 24비트(1,670만 색상) 그라디언트를 표시합니다. 품질이 낮은 패널에서는 밴딩이 나타날 수 있습니다.",
       "instructions": [
         "Look closely at the transition from black to the target color.",
         "A true 10-bit or high-quality 8-bit+FRC panel will display a buttery smooth transition.",
@@ -637,137 +640,137 @@
     "viewingAngle": {
       "title": "시야각 테스트 – 각도에 따른 색상 왜곡 및 명암 저하 확인",
       "description": "IPS, VA, OLED, TN 패널을 측면에서 바라보았을 때의 색감 유지력과 명암 왜곡 정도를 점검합니다.",
-      "instructions": "View the screen from extreme angles."
+      "instructions": "극단적인 각도에서 화면을 봅니다."
     },
     "screenTearing": {
       "title": "화면 찢어짐(티어링) 테스트 – V-Sync, G-Sync, FreeSync 점검",
       "description": "화면 이동 시 가로로 잘리는 현상(티어링)을 검출하여 수직동기화 및 가변주사율(VRR) 적용 상태를 검증합니다.",
-      "instructions": "Watch the moving bar for horizontal tearing."
+      "instructions": "움직이는 막대에서 수평 티어링을 확인합니다."
     },
     "burnIn": {
       "title": "OLED 번인 테스트 – 화면 잔상 및 영구적인 자국 확인",
       "description": "작업표시줄이나 고정 로고 등 OLED 및 LCD 패널에 남은 영구적인 잔상(번인) 흔적을 단색 화면으로 찾아냅니다.",
-      "instructions": "Look for faint outlines of static elements."
+      "instructions": "정적 요소의 희미한 윤곽을 확인합니다."
     },
     "blooming": {
       "title": "미니 LED 블루밍 테스트 – 로컬 디밍 빛 번짐 현상 검사",
       "description": "블랙 배경 속 밝은 물체 주변으로 빛이 새어 나오는 헤일로(블루밍) 현상과 로컬 디밍 품질을 평가합니다.",
-      "instructions": "Look for halos around the bright square."
+      "instructions": "밝은 사각형 주위의 헤일로를 확인합니다."
     },
     "touchScreen": {
       "title": "터치스크린 테스트 – 멀티터치 인식 및 터치 먹통 영역 점검",
       "description": "스마트폰, 태블릿, 터치 노트북의 터치 인식 정확도, 동시 입력 포인트, 터치 불량 구역을 온라인으로 테스트합니다.",
-      "instructions": "Draw all over the screen to check for dead zones."
+      "instructions": "데드 존을 확인하기 위해 화면 전체에 그려보세요."
     },
     "solidColor": {
       "title": "단색 순도 테스트 – 전체 화면 단색 표시로 패널 결함 검사",
       "description": "전체 화면을 순수 단색(빨강, 초록, 파랑, 검정, 흰색)으로 채워 먼지, 이물질, 패널 오염을 꼼꼼히 점검합니다.",
-      "instructions": "Look for unevenness."
+      "instructions": "불균일성을 확인합니다."
     },
     "colorAccuracy": {
       "title": "색상 정확도 테스트 – sRGB 기준 색감 및 피부톤 자연스러움 점검",
       "description": "표준 sRGB 색상 차트와 인물 피부톤 샘플을 통해 모니터의 왜곡 없는 자연스러운 색상 표현을 확인합니다.",
-      "instructions": "Verify skin tones and natural colors."
+      "instructions": "피부 톤과 자연스러운 색상을 확인합니다."
     },
     "flicker": {
       "title": "화면 깜빡임(플리커) 테스트 – PWM 플리커 및 눈 피로도 점검",
       "description": "눈의 피로와 두통을 유발할 수 있는 백라이트의 고속 미세 깜빡임(PWM 플리커 현상) 유무를 검사합니다.",
-      "instructions": "Use a camera at high shutter speed."
+      "instructions": "높은 셔터 속도의 카메라를 사용하세요."
     },
     "sharpness": {
       "title": "선명도 테스트 – 글자 가독성 및 1픽셀 라인 패턴 확인",
       "description": "글자 외곽선에 부자연스러운 흰 테두리가 생기지 않는 적절한 선명도 설정 값을 찾을 수 있습니다.",
-      "instructions": "Check for color fringing."
+      "instructions": "색상 프린지를 확인합니다."
     },
     "colorBanding": {
       "title": "색상 밴딩 테스트 – 매끄러운 그라데이션 계조 점검",
       "description": "부드러운 색상 전환 구간에 거친 경계선이나 줄무늬가 나타나지 않는지 검사합니다.",
-      "instructions": "Look for smooth transitions."
+      "instructions": "부드러운 전환을 확인합니다."
     },
     "colorGamut": {
       "title": "색역 테스트 – sRGB, DCI-P3, Adobe RGB 영역 커버리지",
       "description": "광색역 모니터의 풍부한 색상 표현력과 채도 뭉개짐 없는 정확한 발색을 확인하세요.",
-      "instructions": "Check if the colors in the center match or blend with the outer ring."
+      "instructions": "중앙의 색상이 외부 링과 일치하거나 혼합되는지 확인합니다."
     },
     "resolution-checker": {
       "title": "해상도 확인기 – 모니터 네이티브 해상도, CSS 해상도 및 DPR",
       "description": "모니터의 실제 하드웨어 해상도, 윈도우 배율 적용 해상도, 화면 비율을 손쉽게 확인하세요.",
       "infoTitle": "해상도 및 디스플레이 지오메트리",
       "labels": {
-        "logicalRes": "Logical Resolution",
-        "viewport": "Viewport",
-        "dpr": "Device Pixel Ratio",
-        "aspectRatio": "Aspect Ratio",
-        "colorDepth": "Color Depth",
-        "pixelDepth": "Pixel Depth",
-        "orientation": "Orientation",
-        "availArea": "Available Screen Area",
-        "refreshRate": "Observed Frame Timing",
-        "touchSupport": "Touch Support",
-        "hdr": "HDR Capability",
-        "colorSpace": "Color Gamut",
-        "totalPixels": "Total Pixels",
-        "classification": "Classification"
+        "logicalRes": "논리 해상도",
+        "viewport": "뷰포트",
+        "dpr": "기기 픽셀 비율",
+        "aspectRatio": "화면 비율",
+        "colorDepth": "색 깊이",
+        "pixelDepth": "픽셀 깊이",
+        "orientation": "방향",
+        "availArea": "사용 가능한 화면 영역",
+        "refreshRate": "관측된 프레임 타이밍",
+        "touchSupport": "터치 지원",
+        "hdr": "HDR 기능",
+        "colorSpace": "색 영역",
+        "totalPixels": "총 픽셀",
+        "classification": "분류"
       },
       "values": {
-        "notExposed": "Not exposed by browser",
-        "landscape": "Landscape",
-        "portrait": "Portrait",
+        "notExposed": "브라우저에 의해 노출되지 않음",
+        "landscape": "가로",
+        "portrait": "세로",
         "yes": "Yes",
         "no": "No",
-        "unknown": "Unknown",
-        "custom": "Custom / Other"
+        "unknown": "알 수 없음",
+        "custom": "사용자 정의 / 기타"
       },
-      "disclaimer": "Browser-reported information describes what your browser can see. It does not replace the monitor's manufacturer specifications or hardware measurement.",
+      "disclaimer": "브라우저가 보고하는 정보는 브라우저가 볼 수 있는 것을 설명합니다. 모니터의 물리적 사양을 대체하지 않습니다.",
       "myDisplay": {
-        "title": "MY DISPLAY",
-        "sizeLabel": "Screen size (inches)",
-        "sizePlaceholder": "e.g., 27",
-        "resLabel": "Native resolution",
-        "resPlaceholder": "e.g., 2560x1440",
-        "ppiLabel": "Estimated pixel density",
-        "statusLabel": "Status",
-        "statusMatches": "Matches browser",
-        "statusDiffers": "Browser-reported dimensions differ from your entered specification",
-        "prompt": "Enter your screen's physical size to estimate pixel density."
+        "title": "내 디스플레이",
+        "sizeLabel": "화면 크기 (인치)",
+        "sizePlaceholder": "예: 27",
+        "resLabel": "기본 해상도",
+        "resPlaceholder": "예: 2560x1440",
+        "ppiLabel": "예상 픽셀 밀도",
+        "statusLabel": "상태",
+        "statusMatches": "브라우저와 일치",
+        "statusDiffers": "브라우저가 보고하는 크기가 입력한 사양과 다릅니다",
+        "prompt": "픽셀 밀도를 추정하려면 화면의 물리적 크기를 입력하세요."
       },
       "explain": {
-        "title": "WHAT DOES THIS MEAN?",
-        "logicalResTitle": "What is logical resolution?",
-        "logicalResDesc": "Also called CSS resolution, this is the grid your browser uses to render content. OS scaling and browser zoom can make this lower than your physical panel resolution.",
-        "physicalResTitle": "What is native resolution?",
-        "physicalResDesc": "The physical pixel grid built into your display panel. Running at non-native resolutions involves scaling and can make text appear softer.",
-        "dprTitle": "What is Device Pixel Ratio (DPR)?",
-        "dprDesc": "DPR is how many physical device pixels are used to draw a single CSS pixel. A DPR of 2 means a 10x10 CSS box uses 20x20 physical pixels.",
-        "ppiTitle": "What is pixel density?",
-        "ppiDesc": "Pixel density (PPI) describes how many pixels are packed into each inch of the display. Higher PPI means sharper text and images, assuming the viewing distance is the same.",
-        "refreshTitle": "Resolution vs Refresh Rate",
-        "refreshDesc": "Higher resolution increases rendering workload. Higher refresh rate increases frame delivery requirements. The available combination depends on your GPU, connection bandwidth, and display."
+        "title": "이것은 무엇을 의미합니까?",
+        "logicalResTitle": "논리 해상도란 무엇입니까?",
+        "logicalResDesc": "CSS 해상도라고도 하며, 브라우저가 콘텐츠를 렌더링하는 데 사용하는 그리드입니다. OS 배율과 브라우저 확대/축소가 영향을 미칩니다.",
+        "physicalResTitle": "기본 해상도란 무엇입니까?",
+        "physicalResDesc": "디스플레이 패널에 내장된 물리적 픽셀 그리드입니다. 비원시 해상도로 실행하면 스케일링이 포함됩니다.",
+        "dprTitle": "기기 픽셀 비율(DPR)이란 무엇입니까?",
+        "dprDesc": "DPR은 단일 CSS 픽셀을 그리는 데 사용되는 물리적 장치 픽셀의 수입니다. DPR 2는 10x10 CSS 픽셀 = 20x20 물리적 픽셀을 의미합니다.",
+        "ppiTitle": "픽셀 밀도란 무엇입니까?",
+        "ppiDesc": "픽셀 밀도(PPI)는 디스플레이의 각 인치에 압축된 픽셀 수를 설명합니다. 높은 PPI = 더 선명한 텍스트.",
+        "refreshTitle": "해상도 대 재생률",
+        "refreshDesc": "해상도가 높을수록 렌더링 작업 부하가 증가합니다. 재생률이 높을수록 프레임 전달 요구 사항이 증가합니다."
       },
       "standards": {
-        "title": "RESOLUTION STANDARDS",
-        "colStandard": "Standard",
-        "colRes": "Resolution",
-        "colPixels": "Approx. Pixels",
-        "colUse": "Common Use"
+        "title": "해상도 표준",
+        "colStandard": "표준",
+        "colRes": "해상도",
+        "colPixels": "대략적인 픽셀",
+        "colUse": "일반적인 용도"
       },
       "troubleshoot": {
-        "title": "TROUBLESHOOTING",
-        "q1": "My resolution is lower than expected.",
-        "a1": "Check OS display scaling (e.g., 150%). This reduces the logical resolution reported to the browser. Also check browser zoom settings.",
-        "q2": "My 4K display looks blurry.",
-        "a2": "Check that the OS output is set to 4K. If you are mirroring a lower-resolution laptop screen, the external monitor will look blurry.",
-        "q3": "My high-refresh option is missing.",
-        "a3": "Check your cable. Some high resolution + high refresh combinations require DisplayPort 1.4 or HDMI 2.1. Older cables may limit you to 60Hz."
+        "title": "문제 해결",
+        "q1": "내 해상도가 예상보다 낮습니다.",
+        "a1": "OS 디스플레이 배율을 확인하세요(예: 150%). 이는 브라우저에 보고되는 논리 해상도를 줄입니다.",
+        "q2": "내 4K 디스플레이가 흐릿하게 보입니다.",
+        "a2": "OS 출력이 4K로 설정되어 있는지 확인하세요. 해상도가 낮은 노트북 화면을 미러링하고 있다면 외부 디스플레이가 낮아질 수 있습니다.",
+        "q3": "고재생률 옵션이 없습니다.",
+        "a3": "케이블을 확인하세요. 일부 고해상도 + 고재생률 조합은 DisplayPort 1.4 또는 HDMI 2.1이 필요합니다."
       },
       "faq": {
         "title": "FAQ",
-        "q1": "Can a browser detect my monitor's true physical resolution?",
-        "a1": "Not reliably. Browsers see the logical resolution and scaling factor provided by the OS. If scaling is applied, the physical resolution cannot be guaranteed.",
-        "q2": "Why is my DPR 1.25 or 1.5?",
-        "a2": "This is common on Windows laptops (e.g., 125% or 150% scaling) to make text readable on high-DPI screens without making everything tiny.",
-        "q3": "Why is my observed frame timing different from my monitor's refresh rate?",
-        "a3": "Browser frame timing is affected by system load, power saving, background tabs, and browser behavior. It is an approximation, not a direct hardware query."
+        "q1": "브라우저가 모니터의 실제 물리적 해상도를 감지할 수 있습니까?",
+        "a1": "확실하지 않습니다. 브라우저는 OS가 제공하는 논리 해상도와 배율 인수를 봅니다.",
+        "q2": "내 DPR이 1.25 또는 1.5인 이유는 무엇입니까?",
+        "a2": "이는 Windows 노트북(예: 125% 또는 150% 배율)에서 일반적으로 고DPI 화면에서 텍스트를 읽기 쉽게 만들기 위한 것입니다.",
+        "q3": "관측된 프레임 타이밍이 모니터의 재생률과 다른 이유는 무엇입니까?",
+        "a3": "브라우저 프레임 타이밍은 시스템 부하, 절전, 백그라운드 탭 및 브라우저 동작에 영향을 받습니다."
       }
     }
   },
@@ -777,50 +780,154 @@
     "monitor": {
       "metaTitle": "PC 모니터 테스트 방법 – 구입 후 화면 점검 완벽 가이드",
       "metaDescription": "새 모니터나 중고 모니터를 구매했을 때 필수적인 불량화소, 빛샘, 고스팅 점검 절차를 안내합니다.",
-      "title": "Monitor Screen Test",
-      "description": "Comprehensive testing for desktop monitors."
+      "title": "모니터 화면 테스트",
+      "description": "데스크탑 모니터를 위한 포괄적인 테스트."
     },
     "oled": {
       "metaTitle": "OLED 모니터 점검법 – 번인, 균일도 및 퍼펙트 블랙 테스트",
       "metaDescription": "OLED 화면 및 TV의 번인(영구 잔상), 저조도 얼룩, 패널 노화 상태를 점검하는 전문 가이드.",
-      "title": "OLED Screen Test",
-      "description": "Specialized tests for OLED image retention and black levels."
+      "title": "OLED 화면 테스트",
+      "description": "OLED 이미지 잔상 및 블랙 레벨을 위한 특수 테스트."
     },
     "laptop": {
       "metaTitle": "노트북 액정 테스트 방법 – 불량화소, 빛샘, 해상도 점검",
       "metaDescription": "노트북 패널 구매 및 인수 시 체크리스트: 결함 화소, 힌지 압박 빛샘, 폰트 가독성 확인.",
-      "title": "Laptop Screen Test",
-      "description": "Tests for typical laptop LCD panels."
+      "title": "노트북 화면 테스트",
+      "description": "일반적인 노트북 LCD 패널 테스트."
     },
     "lcd": {
       "metaTitle": "LCD 화면 테스트 – IPS, VA, TN 패널 비교 및 특성 가이드",
       "metaDescription": "IPS 고유의 글로우 현상과 불량 빛샘의 차이점을 파악하고 LCD 패널 성능을 정확히 평가하세요.",
-      "title": "LCD Screen Test",
-      "description": "Tests for LCD backlight bleed and uniformity."
+      "title": "LCD 화면 테스트",
+      "description": "LCD 백라이트 번짐 및 균일성 테스트."
     },
     "tv": {
       "metaTitle": "TV 화면 테스트 방법 – 4K TV 및 스마트 TV 화질 점검",
       "metaDescription": "웹 브라우저로 4K TV 화면을 테스트하세요: 모션 부드러움, 그라데이션 표현, 로컬 디밍 품질 점검.",
-      "title": "TV Screen Test",
-      "description": "Tests for TV motion processing and blooming."
+      "title": "TV 화면 테스트",
+      "description": "TV 모션 처리 및 블루밍 테스트."
     },
     "mobile": {
       "metaTitle": "스마트폰 액정 테스트 – 터치 반응 및 OLED 번인 진단",
       "metaDescription": "휴대폰 및 태블릿 터치스크린의 반응 속도, 멀티터치 오류, OLED 잔상을 온라인에서 점검하세요.",
-      "title": "Mobile Screen Test",
-      "description": "Tests for mobile touch screens and OLED panels."
+      "title": "모바일 화면 테스트",
+      "description": "모바일 터치 스크린 및 OLED 패널 테스트."
     },
     "ghostingConcept": {
-      "metaTitle": "모니터 잔상(고스팅) 확인법 – 응답속도와 오버드라이브 설정",
-      "metaDescription": "잔상(고스팅)과 역잔상(오버슈트)의 원인은 무엇일까요? 패널 반응속도 측정과 오버드라이브 최적화 가이드."
+      "metaTitle": "모니터 잔상(고스팅) 점검법 – 응답 속도 및 오버드라이브 설정",
+      "metaDescription": "고스팅과 역잔상(역고스팅/코로나) 현상, 응답 속도 확인법 및 오버드라이브 최적화 팁을 알아봅니다.",
+      "breadcrumbsGuides": "가이드",
+      "breadcrumbsTitle": "잔상 & 모션",
+      "eyebrow": "디스플레이 가이드 & 모션 선명도",
+      "title": "모니터 잔상(Ghosting)과 모션 선명도 확인 방법",
+      "intro": "모니터 잔상은 액정이 한 색상이나 밝기에서 다른 상태로 전환하는 데 시간이 너무 오래 걸릴 때 발생합니다. 증상을 정확히 이해하면 오버드라이브 설정을 최적화하여 깔끔한 화면을 얻을 수 있습니다.",
+      "standardGhosting": {
+        "title": "일반 잔상 (어두운 끌림 현상)",
+        "desc": "대비되는 배경에서 움직이는 물체 뒤로 어둡거나 번진 자국이 따라다니는 현상입니다.",
+        "causeLabel": "주요 원인",
+        "cause": "느린 Gray-to-Gray (GtG) 응답 속도. VA 패널의 어두운 전환에서 흔히 나타납니다.",
+        "solutionLabel": "해결책",
+        "solution": "모니터 OSD 메뉴에서 Overdrive / Trace Free / AMA 설정을 한 단계 높이세요."
+      },
+      "inverseGhosting": {
+        "title": "역잔상 (역고스팅 / 오버슈트)",
+        "desc": "움직이는 물체 뒤로 하얗거나 반전된 색상의 밝은 테두리가 생기는 현상입니다.",
+        "causeLabel": "주요 원인",
+        "cause": "과도한 오버드라이브 전압으로 인해 액정이 목표 색상을 지나쳐 버리는 오버슈트 현상.",
+        "solutionLabel": "해결책",
+        "solution": "오버드라이브 설정을 낮추세요. 최고 주사율로 구동하지 않는 한 'Extreme'이나 '가장 빠름' 모드는 피하세요."
+      },
+      "howToTestTitle": "브라우저에서 모션 선명도를 테스트하는 법",
+      "howToTestP1": "전체 화면으로 고스팅 및 모션 블러 테스트를 실행하세요. 화면을 가로지르는 물체에 시선을 고정하세요. 뒤에 어두운 끌림이 남으면 오버드라이브가 너무 낮고, 밝은 빛무리가 생기면 너무 높습니다.",
+      "howToTestP2": "중요한 한계: 브라우저 테스트는 최적 설정을 위한 훌륭한 시각적 지표를 제공하지만, 밀리초(ms) 단위의 실제 GtG 측정은 전용 오실로스코프 장비가 필요합니다.",
+      "testsTitle": "관련 진단 테스트",
+      "ghostingTestTitle": "고스팅(잔상) 테스트",
+      "ghostingTestDesc": "다양한 속도로 움직이는 고대비 블록 추적",
+      "refreshRateTestTitle": "주사율(Refresh Rate) 테스트",
+      "refreshRateTestDesc": "브라우저 프레임 타이밍 및 애니메이션 부드러움 측정"
     },
     "backlightBleedConcept": {
-      "metaTitle": "빛샘 vs IPS 글로우 – 어두운 방에서 정확히 구별하는 방법",
-      "metaDescription": "패널 테두리의 불량 백라이트 빛샘과 IPS 패널 특유의 시야각 글로우 현상을 정확히 구별하는 법."
+      "metaTitle": "빛샘(Backlight Bleed) vs IPS 글로우 – 암실 구별 가이드",
+      "metaDescription": "하드웨어 조립 결함인 빛샘과 정상적인 광학 특성인 IPS 글로우의 차이점, 암실 진단법을 설명합니다.",
+      "breadcrumbsGuides": "가이드",
+      "breadcrumbsTitle": "백라이트 번짐",
+      "eyebrow": "디스플레이 가이드 & 휘도",
+      "title": "빛샘(Backlight Bleed) vs IPS 글로우: 판별 및 진단 가이드",
+      "intro": "LCD 모니터에서 어두운 화면을 볼 때 모서리나 베젤 가장자리에서 빛이 새어 나오는 경우가 많습니다. AS 교환을 신청하기 전에 구조적 빛샘인지 정상적인 IPS 글로우인지 구별해야 합니다.",
+      "backlightBleed": {
+        "badge": "하드웨어 조립 불량",
+        "title": "빛샘 (Backlight Bleed)",
+        "desc": "베젤 압력 불균형, 프레임 유격 또는 패널 모서리 눌림으로 인해 LCD 패널 뒤에서 빛이 새는 현상입니다.",
+        "behaviorLabel": "동작 특성",
+        "behavior": "바라보는 각도나 거리에 상관없이 정확히 동일한 위치와 밝기로 고정되어 있습니다.",
+        "appearanceLabel": "외관",
+        "appearance": "가장자리나 모서리에서 안쪽으로 번져 나오는 뾰족하고 불규칙한 노란색/흰색 빛줄기.",
+        "actionLabel": "조치",
+        "action": "일반 사용 중에도 방해될 정도의 심한 빛샘은 초기 불량 교환 사유에 해당합니다."
+      },
+      "ipsGlow": {
+        "badge": "정상적인 광학적 특성",
+        "title": "IPS 글로우",
+        "desc": "In-Plane Switching(IPS) 액정 패널의 특성상 넓은 시야각에서 빛이 반사되어 나타나는 자연스러운 광학 현상입니다.",
+        "behaviorLabel": "동작 특성",
+        "behavior": "고개를 기울이거나 모니터에서 뒤로 물러나면 빛의 강도가 변하거나 위치가 이동하며 사라집니다.",
+        "appearanceLabel": "외관",
+        "appearance": "어두운 화면의 네 모서리 부근에 은은하게 퍼지는 은색, 황색, 보라색 광채.",
+        "actionLabel": "조치",
+        "action": "거의 모든 IPS 패널에 존재합니다. 모니터 밝기를 낮추고 팔 한 뼘 정도의 시청 거리를 유지하면 줄어듭니다."
+      },
+      "isolationMethodTitle": "암실 격리 테스트 방법",
+      "isolationSteps": [
+        "반사광이 어두운 디테일을 가리지 않도록 방 안의 조명을 완전히 끕니다.",
+        "전체 화면 빛샘 테스트를 실행합니다.",
+        "모니터 밝기를 평소 작업 수준(120~150nit, OSD 30~50% 내외)으로 맞춥니다.",
+        "한 팔 거리에서 모서리를 본 후, 2미터 뒤로 물러서서 고개를 좌우로 움직여 봅니다.",
+        "머리 위치에 따라 빛이 변하면 IPS 글로우이고, 베젤 테두리에 그대로 고정되어 있으면 빛샘입니다."
+      ],
+      "testsTitle": "진단 테스트 실행",
+      "backlightBleedTestTitle": "빛샘 테스트",
+      "backlightBleedTestDesc": "밝기 캘리브레이션이 포함된 전체 화면 0% 순수 블랙 패턴",
+      "uniformityTestTitle": "화면 균일도 테스트",
+      "uniformityTestDesc": "화면 사분면 전반의 회색조 및 휘도 균일도 점검"
     },
     "pixelDefectsConcept": {
-      "metaTitle": "불량화소 암점 vs 휘점 – 결함 종류와 제조사 무결점 보증 기준",
-      "metaDescription": "꺼진 암점과 항상 켜진 휘점의 차이점, 자가 복구 시도 방법, 패널 제조사의 교환 보증 기준 안내."
+      "metaTitle": "데드 픽셀 vs 스턱 픽셀 – 모니터 불량 화소 구별 및 해결법",
+      "metaDescription": "완전히 꺼진 데드 픽셀과 켜져 있는 스턱 픽셀의 차이점, 점검 방법 및 제조사 보증 기준을 확인하세요.",
+      "breadcrumbsGuides": "가이드",
+      "breadcrumbsTitle": "데드 vs 스턱 픽셀",
+      "eyebrow": "디스플레이 가이드 & 분석",
+      "title": "데드 픽셀 vs 스턱 픽셀: 차이점과 정확한 구별법",
+      "intro": "픽셀 결함은 LCD 및 OLED 패널에서 가장 흔한 불량입니다. 이상이 있는 픽셀이 완전히 죽은 픽셀인지, 아니면 멈춰 있는 픽셀인지 구분해야 복구 시도를 하거나 보증 교환을 받을 수 있습니다.",
+      "deadPixel": {
+        "badge": "영구적 결함",
+        "title": "데드 픽셀 (Dead Pixel / 암점)",
+        "desc": "트랜지스터가 완전히 고장나 3개의 RGB 서브픽셀이 영구적으로 꺼진(전력 차단) 픽셀입니다.",
+        "appearanceLabel": "외관",
+        "appearance": "흰색 및 유채색 배경에서 항상 새까만 점으로 나타납니다.",
+        "causeLabel": "원인",
+        "cause": "전극 파손, 박막 트랜지스터(TFT) 고장 또는 미세 배선 단선.",
+        "recoveryLabel": "복구 여부",
+        "recovery": "하드웨어 물리적 손상으로 소프트웨어 재생으로는 고칠 수 없습니다."
+      },
+      "stuckPixel": {
+        "badge": "복구 가능성 있음",
+        "title": "스턱 픽셀 (Stuck Pixel / 휘점)",
+        "desc": "하나 이상의 서브픽셀(빨강, 초록, 파랑)이 계속 켜져 있어 꺼지지 않는 픽셀입니다.",
+        "appearanceLabel": "외관",
+        "appearance": "어둡거나 검은 배경에서 빨강, 초록, 파랑, 시안, 마젠타의 밝은 점으로 보입니다.",
+        "causeLabel": "원인",
+        "cause": "액정 분자가 열린 상태로 일시적으로 고착되었거나 전하 불균형 발생.",
+        "recoveryLabel": "복구 여부",
+        "recovery": "고주파 색상 깜빡임(스턱 픽셀 사이클러)을 통해 액정 방향을 되돌릴 수 있습니다."
+      },
+      "isoTitle": "ISO 9241-307 패널 불량 화소 기준",
+      "isoP1": "시중의 대다수 일반 모니터는 클래스 2 패널에 해당합니다. ISO 규격상 100만 픽셀당 밝은 점 2개, 어두운 점 2개, 또는 서브픽셀 불량 5개까지는 불량 화소 교환 사유로 인정되지 않을 수 있습니다.",
+      "isoP2": "모니터 수령 후 초기 반품 기간(보통 14~30일) 내에 불량을 발견했다면 제조사 AS보다 구매처 초기 불량 교환이나 반품을 진행하는 것이 안전합니다.",
+      "testsTitle": "진단 테스트 실행",
+      "deadPixelTestTitle": "불량 화소 테스트",
+      "deadPixelTestDesc": "전체 화면 흰색 및 원색 배경을 전환하며 정밀 확인",
+      "stuckPixelTestTitle": "스턱 픽셀 복구 & 테스트",
+      "stuckPixelTestDesc": "고주파 RGB 서브픽셀 사이클링 복구 도구"
     },
     "deviceGuidesHeading": "기기별 가이드",
     "conceptGuidesHeading": "핵심 개념 및 해설",
@@ -834,13 +941,13 @@
       "keyTakeaway": "Screen Tester는 브라우저를 통해 모니터의 물리적 시야각 수치(예: 178°)를 측정할 수 없습니다. 대신 정밀한 시각 검사용 패턴을 제공하여 각도에 따른 색 왜곡과 감마 변화를 직접 눈으로 확인할 수 있도록 돕습니다.",
       "panelsTitle": "패널 기술별 시야각 특성",
       "panelsSubtitle": "액정 배열 방식과 자발광 구조에 따라 각도별 화면 특성이 크게 달라집니다:",
-      "ipsTitle": "IPS 방식 (In-Plane Switching)",
+      "ipsTitle": "IPS (인플레인 스위칭)",
       "ipsTag": "넓은 시야각",
       "ipsDesc": "액정 분자가 유리 기판과 평행하게 수평 회전합니다. 넓은 각도에서도 색상 변화가 매우 적습니다. 다만 어두운 방에서 대각선으로 볼 때 모서리가 하얗게 뜨는 'IPS 글로우' 현상이 나타나며, 이는 패널 결함이 아닌 광학적 특성입니다.",
-      "vaTitle": "VA 방식 (Vertical Alignment)",
+      "vaTitle": "VA (수직 정렬)",
       "vaTag": "높은 명암비, 눈에 띄는 감마 시프트",
       "vaDesc": "전원이 꺼진 상태에서 액정이 수직으로 정렬되어 빛을 효과적으로 차단, 깊은 블랙(3,000:1 이상)을 구현합니다. 다만 각도를 조금만 틀어도 어두운 암부 디테일이 하얗게 뜨는 감마 시프트가 발생합니다.",
-      "tnTitle": "TN 방식 (Twisted Nematic)",
+      "tnTitle": "TN (트위스티드 네마틱)",
       "tnTag": "좁은 시야각",
       "tnDesc": "응답속도가 빠르지만 시야각이 좁아 아래에서 올려다보면 색이 반전되고, 위에서 내려다보면 명암이 심하게 바랩니다.",
       "oledTitle": "OLED (유기발광다이오드)",
@@ -883,17 +990,17 @@
       "diagnosticMetaDesc": "화면에 나타나는 이상 증상을 선택하시면 원인을 확인하고 검증할 수 있는 최적의 테스트를 추천해 드립니다.",
       "metaTitle": "Monitor Inspection Workflow",
       "metaDescription": "Check a new or used monitor systematically instead of opening random tests.",
-      "title": "Monitor Inspection",
-      "description": "Check a new or used monitor systematically instead of opening random tests.",
-      "newMonitor": "I just bought this monitor",
-      "newMonitorDesc": "Focuses on dead pixels, uniformity, backlight bleed, and factory defects.",
-      "usedMonitor": "I'm checking a used monitor",
-      "usedMonitorDesc": "Focuses on burn-in, brightness degradation, port health, and dead pixels.",
-      "fiveMinuteCheck": "5-Minute Quick Check",
-      "fullInspection": "Full Inspection",
-      "gamingMonitor": "Gaming Monitor Workflow",
-      "oledMonitor": "OLED Workflow",
-      "startWorkflow": "Start Workflow",
+      "title": "모니터 검사",
+      "description": "무작위 테스트를 열기보다 새것 또는 중고 모니터를 체계적으로 점검합니다.",
+      "newMonitor": "이 모니터를 방금 구입했습니다",
+      "newMonitorDesc": "불량 픽셀, 균일성, 백라이트 번짐 및 공장 결함에 집중합니다.",
+      "usedMonitor": "중고 모니터를 확인하고 있습니다",
+      "usedMonitorDesc": "번인, 밝기 저하, 포트 상태 및 불량 픽셀에 집중합니다.",
+      "fiveMinuteCheck": "5분 빠른 점검",
+      "fullInspection": "전체 검사",
+      "gamingMonitor": "게이밍 모니터 워크플로우",
+      "oledMonitor": "OLED 워크플로우",
+      "startWorkflow": "워크플로우 시작",
       "diagnosticEyebrow": "진단 마법사",
       "diagnosticTitle": "화면에 문제가 있어 보이나요?",
       "diagnosticDesc": "화면에 나타나는 이상 증상(불량 화소, 색상 왜곡, 텍스트 번짐, 테어링 등)을 선택하면 알맞은 테스트를 추천해 드립니다.",
@@ -908,97 +1015,97 @@
     "gaming": {
       "metaTitle": "Gaming Monitor Inspection",
       "metaDescription": "Systematic workflow to check gaming monitor refresh rate, ghosting, and VRR.",
-      "title": "Gaming Monitor Inspection",
-      "description": "This workflow focuses on refresh rate, ghosting, screen tearing, and motion clarity.",
-      "vrrWarning": "Note: Browser APIs cannot directly verify hardware VRR (G-Sync/FreeSync) behavior. You must test this in a fullscreen game."
+      "title": "게이밍 모니터 검사",
+      "description": "이 워크플로우는 재생률, 고스팅, 화면 티어링 및 모션 선명도에 집중합니다.",
+      "vrrWarning": "참고: 브라우저 API는 하드웨어 VRR(G-Sync/FreeSync) 동작을 직접 확인할 수 없습니다."
     },
     "oled": {
       "metaTitle": "OLED Monitor Inspection",
       "metaDescription": "Systematic workflow to check OLED monitors for burn-in, dead pixels, and uniformity.",
-      "title": "OLED Monitor Inspection",
-      "description": "This workflow focuses on burn-in, near-black performance, and uniformity.",
-      "oledWarning": "Note: Browser-based tests cannot diagnose every form of OLED panel degradation."
+      "title": "OLED 모니터 검사",
+      "description": "이 워크플로우는 번인, 거의 검정 성능 및 균일성에 집중합니다.",
+      "oledWarning": "참고: 브라우저 기반 테스트는 OLED 패널 열화의 모든 형태를 진단할 수 없습니다."
     },
     "summary": {
       "metaTitle": "Inspection Summary",
-      "title": "Monitor Inspection",
-      "description": "This checklist records your observations. It does not replace professional display measurement equipment.",
-      "passed": "Passed",
-      "needsAttention": "Needs attention",
-      "skipped": "Skipped",
-      "restart": "Restart inspection",
-      "review": "Review tests",
-      "clear": "Clear inspection data",
-      "print": "Print summary"
+      "title": "모니터 검사",
+      "description": "이 체크리스트는 귀하의 관찰 사항을 기록합니다. 전문적인 디스플레이 진단을 대체하지 않습니다.",
+      "passed": "통과",
+      "needsAttention": "주의 필요",
+      "skipped": "건너뜀",
+      "restart": "검사 재시작",
+      "review": "테스트 검토",
+      "clear": "검사 데이터 지우기",
+      "print": "요약 인쇄"
     },
     "steps": {
       "displayInfo": {
-        "title": "Display Information",
-        "what": "Check if resolution, color depth, and HDR support match the manufacturer specs."
+        "title": "디스플레이 정보",
+        "what": "해상도, 색 깊이 및 HDR 지원이 제조업체 사양과 일치하는지 확인합니다."
       },
       "sharpness": {
-        "title": "Resolution & Sharpness",
-        "what": "Look for color fringing around text or blurry subpixel rendering."
+        "title": "해상도 및 선명도",
+        "what": "텍스트 주위의 색상 프린지 또는 흐릿한 서브픽셀 렌더링을 확인합니다."
       },
       "deadPixel": {
-        "title": "Dead / Stuck Pixels",
-        "what": "Look for pixels that remain permanently black, white, or a single color."
+        "title": "불량/고착 픽셀",
+        "what": "영구적으로 검정, 흰색 또는 단일 색상으로 남아 있는 픽셀을 찾습니다."
       },
       "color": {
-        "title": "Color Calibration",
-        "what": "Ensure primary colors look vibrant and accurate without bleeding."
+        "title": "색상 캘리브레이션",
+        "what": "기본 색상이 번짐 없이 생동감 있고 정확하게 보이는지 확인합니다."
       },
       "grayscale": {
-        "title": "Grayscale Test",
-        "what": "Look for pink, blue, or green tints in what should be neutral gray."
+        "title": "그레이스케일 테스트",
+        "what": "중성 회색이어야 할 곳에서 분홍, 파랑, 녹색 색조를 확인합니다."
       },
       "brightness": {
-        "title": "Brightness",
-        "what": "Ensure you can distinguish dark squares from pure black."
+        "title": "밝기",
+        "what": "순수한 검정에서 어두운 사각형을 구별할 수 있는지 확인합니다."
       },
       "contrast": {
-        "title": "Contrast",
-        "what": "Ensure you can distinguish bright squares from pure white."
+        "title": "대비",
+        "what": "순수한 흰색에서 밝은 사각형을 구별할 수 있는지 확인합니다."
       },
       "blackLevel": {
-        "title": "Black Level",
-        "what": "Ensure the darkest shades are not crushed into pure black."
+        "title": "블랙 레벨",
+        "what": "가장 어두운 음영이 순수한 검정으로 눌리지 않았는지 확인합니다."
       },
       "whiteLevel": {
-        "title": "White Level",
-        "what": "Ensure the brightest shades are not clipping into pure white."
+        "title": "화이트 레벨",
+        "what": "가장 밝은 음영이 순수한 흰색으로 클리핑되지 않는지 확인합니다."
       },
       "uniformity": {
-        "title": "Uniformity",
-        "what": "Look for splotches, bands, or dirty screen effect (DSE) across grays."
+        "title": "균일성",
+        "what": "회색에서 얼룩, 줄무늬 또는 더러운 화면 효과(DSE)를 확인합니다."
       },
       "backlightBleed": {
-        "title": "Backlight Bleed",
-        "what": "Look for distinct patches of light leaking from the bezel in a dark room."
+        "title": "백라이트 번짐",
+        "what": "어두운 방에서 베젤에서 새는 뚜렷한 빛의 패치를 찾습니다."
       },
       "ghosting": {
-        "title": "Ghosting & Motion Blur",
-        "what": "Look for trailing shadows (ghosting) or bright halos (overshoot) behind moving objects."
+        "title": "고스팅 및 모션 블러",
+        "what": "움직이는 물체 뒤에 잔상(고스팅) 또는 밝은 헤일로(오버슛)를 확인합니다."
       },
       "refreshRate": {
-        "title": "Refresh Rate",
-        "what": "Verify the browser rendering matches your expected monitor refresh rate."
+        "title": "주사율",
+        "what": "브라우저 렌더링이 예상 모니터 주사율과 일치하는지 확인합니다."
       },
       "screenTearing": {
-        "title": "Screen Tearing",
-        "what": "Watch for horizontal tearing during motion (V-Sync/VRR check)."
+        "title": "화면 티어링",
+        "what": "동작 중 수평 티어링을 확인합니다(V-Sync/VRR 점검)."
       },
       "hdr": {
-        "title": "HDR Capability",
-        "what": "Verify the OS correctly detects HDR and Wide Color Gamut."
+        "title": "HDR 기능",
+        "what": "OS가 HDR 및 와이드 컬러 게멋을 올바르게 감지하는지 확인합니다."
       },
       "solidColor": {
-        "title": "Solid Color Purity",
-        "what": "Check for uniform color across the entire screen."
+        "title": "단색 순도",
+        "what": "전체 화면에서 균일한 색상을 확인합니다."
       },
       "burnIn": {
-        "title": "Burn-In",
-        "what": "Look for faint outlines of static elements like taskbars or logos."
+        "title": "번인",
+        "what": "작업 표시줄이나 로고와 같은 정적 요소의 희미한 윤곽을 확인합니다."
       },
       "resolutionChecker": {
         "title": "해상도 및 디스플레이 정보",
@@ -1009,83 +1116,102 @@
   "Privacy": {
     "metaTitle": "Privacy Policy — Monitor Tester",
     "metaDescription": "Monitor Tester privacy policy: All tests execute locally in your browser. Zero telemetry, zero analytics tracking, and zero remote storage.",
-    "eyebrow": "PRIVACY & DATA POLICY",
-    "title": "Privacy Policy",
-    "description": "Monitor Tester is designed with a strict privacy-first architecture. All display diagnostic tests and calculations execute entirely inside your local browser.",
-    "lastUpdated": "Last updated: September 2026",
-    "noCollectionTitle": "Zero Remote Data Collection",
-    "noCollectionText": "When you visit Monitor Tester and run display tests, we do NOT collect, transmit, or store any personal data, hardware serial numbers, diagnostic observations, or screen metrics on external servers. There are no backend tracking databases, user accounts, or login requirements.",
-    "localStorageTitle": "Local Browser Storage",
-    "localStorageText": "To provide convenient features such as checklist tracking and defect marker coordinates, Monitor Tester utilizes your browser's private local storage APIs:",
-    "localStorageItem1": "Active Session & Observations (localStorage): Stores your self-reported test ratings (Pass, Check, Issue), custom notes, and pixel defect pin coordinates (X/Y pixels) so your report remains accessible if you refresh the page.",
-    "localStorageItem2": "Workflow Queue (sessionStorage): Temporarily keeps track of your current step in guided inspection workflows (e.g., General Checkup or Used Monitor Inspection). This is automatically cleared when you close your browser tab.",
-    "localStorageClear": "You can clear all stored data at any time by clicking 'Reset' in the test runner, clearing your browser's site data, or using your browser's private / incognito browsing mode.",
-    "cookiesTitle": "No Advertising or Tracking Cookies",
-    "cookiesText": "Monitor Tester does not use third-party advertising cookies, behavioral trackers, or marketing pixels. The site does not sell, rent, or monetize your browsing activity.",
-    "permissionsTitle": "Browser Permissions",
-    "permissionsText": "Monitor Tester requests only the standard Fullscreen API permission when you choose to enter full-screen testing mode. Fullscreen requires an explicit user gesture (such as clicking the Fullscreen button or pressing 'F') as enforced by your browser. We never request camera, microphone, notification, or geographic location permissions."
+    "eyebrow": "개인정보 및 데이터 정책",
+    "title": "개인정보 처리방침",
+    "description": "모니터 테스터는 엄격한 개인정보 우선 아키텍처로 설계되었습니다. 모든 디스플레이 진단 테스트와 계산은 로컬 브라우저 내에서 완전히 실행됩니다.",
+    "lastUpdated": "마지막 업데이트: 2026년 9월",
+    "noCollectionTitle": "원격 데이터 수집 없음",
+    "noCollectionText": "모니터 테스터를 방문하여 디스플레이 테스트를 실행할 때, 외부 서버에 개인 데이터, 하드웨어 일련번호, 진단 관찰 또는 화면 메트릭을 수집, 전송 또는 저장하지 않습니다. 백엔드 추적 데이터베이스, 사용자 계정 또는 로그인 요구 사항이 없습니다.",
+    "localStorageTitle": "로컬 브라우저 저장소",
+    "localStorageText": "체크리스트 추적 및 결함 마커 좌표와 같은 편리한 기능을 제공하기 위해 모니터 테스터는 브라우저의 개인 로컬 저장소 API를 사용합니다:",
+    "localStorageItem1": "활성 세션 및 관찰(localStorage): 자체 보고된 테스트 등급(통과, 확인, 문제), 사용자 정의 메모 및 픽셀 결함 핀 좌표를 저장합니다.",
+    "localStorageItem2": "워크플로우 대기열(sessionStorage): 안내된 검사 워크플로우의 현재 단계를 임시로 추적합니다. 브라우저 탭을 닫으면 자동으로 지워집니다.",
+    "localStorageClear": "테스트 러너에서 '초기화'를 클릭하거나 브라우저의 사이트 데이터를 지우거나 브라우저의 개인/시크릿 모드를 사용하여 언제든지 저장된 모든 데이터를 지울 수 있습니다.",
+    "cookiesTitle": "광고 또는 추적 쿠키 없음",
+    "cookiesText": "모니터 테스터는 타사 광고 쿠키, 행동 추적기 또는 마케팅 픽셀을 사용하지 않습니다. 사이트는 귀하의 브라우징 활동을 판매, 임대 또는 수익화하지 않습니다.",
+    "permissionsTitle": "브라우저 권한",
+    "permissionsText": "모니터 테스터는 전체 화면 테스트 모드로 진입하도록 선택할 때만 표준 Fullscreen API 권한을 요청합니다. 카메라, 마이크, 알림 또는 지리적 위치 권한을 요청하지 않습니다."
   },
   "About": {
     "metaTitle": "About Monitor Tester — Display Diagnostic & Evaluation Utility",
     "metaDescription": "Learn about Monitor Tester, a free browser-based suite designed to test, inspect, and diagnose computer monitors, laptops, TVs, and mobile displays.",
-    "eyebrow": "ABOUT THE PROJECT",
-    "title": "About Monitor Tester",
-    "description": "A free, privacy-first browser utility built to evaluate, inspect, and troubleshoot computer monitors, laptops, mobile devices, and TVs without software installation.",
-    "missionTitle": "Why Monitor Tester Exists",
-    "missionText": "Buying a new or used monitor often involves uncertainty: dead pixels, backlight bleed, washed-out contrast, and ghosting are difficult to identify during brief in-store checks or unboxings. Monitor Tester was created to provide a complete, accessible suite of diagnostic patterns that anyone can run immediately in any modern web browser.",
-    "howItWorksTitle": "100% In-Browser Execution",
-    "howItWorksText": "Every test runs locally on your device using standard HTML5 Canvas, WebGL, CSS hardware acceleration, and the Screen and Window APIs. No downloads, native installers, or administrative permissions are needed. Your display data stays entirely on your computer.",
-    "testTypesTitle": "What You Can Test",
-    "pixelsCategory": "Pixel Integrity & Panel Defects",
-    "pixelsDesc": "Detect dead pixels, stuck subpixels, bright subpixels, and panel image retention (burn-in) across pure color fields.",
-    "colorCategory": "Color Reproduction & Grayscale",
-    "colorDesc": "Evaluate continuous gradients, color banding steps, color gamut boundaries, and multi-step grayscale ramps.",
-    "luminanceCategory": "Luminance, Contrast & Bleed",
-    "luminanceDesc": "Tune near-black and near-white clipping, check dark-room backlight bleeding, and assess full-screen brightness uniformity.",
-    "motionCategory": "Motion, Response & Gaming",
-    "motionDesc": "Check ghosting trails, evaluate pixel overdrive settings, measure V-Sync refresh rate (Hz), and inspect for screen tearing.",
-    "toolsCategory": "Hardware Diagnostics & Calculators",
-    "toolsDesc": "Inspect detected screen metrics (DPR, color depth), calculate PPI and optimal viewing distances, compare displays, and test multi-touch.",
-    "openSourceTitle": "Open & Community-Driven",
-    "openSourceText": "Monitor Tester is an open-source project. You can inspect the source code, report rendering bugs, suggest new test patterns, or contribute directly on GitHub."
+    "eyebrow": "프로젝트 소개",
+    "title": "모니터 테스터 소개",
+    "description": "소프트웨어 설치 없이 컴퓨터 모니터, 노트북, 모바일 기기 및 TV를 평가, 검사 및 문제 해결하기 위해 구축된 무료 개인정보 우선 브라우저 유틸리티.",
+    "missionTitle": "모니터 테스터가 존재하는 이유",
+    "missionText": "새것 또는 중고 모니터를 구입하는 것은 종종 불확실성을 수반합니다: 불량 픽셀, 백라이트 번짐, 희미한 대비 및 고스팅은 짧은 매장 내 점검이나 개봉 시 식별하기 어렵습니다. 모니터 테스터는 누구나 최신 웹 브라우저에서 즉시 실행할 수 있는 완전하고 접근하기 쉬운 진단 패턴 모음을 제공하기 위해 만들어졌습니다.",
+    "howItWorksTitle": "100% 브라우저 내 실행",
+    "howItWorksText": "모든 테스트는 표준 HTML5 Canvas, WebGL, CSS 하드웨어 가속 및 Screen과 Window API를 사용하여 기기에서 로컬로 실행됩니다. 다운로드, 기본 설치 프로그램 또는 관리 권한이 필요하지 않습니다.",
+    "testTypesTitle": "테스트할 수 있는 것",
+    "pixelsCategory": "픽셀 무결성 및 패널 결함",
+    "pixelsDesc": "순수 색상 필드에서 불량 픽셀, 고착 서브픽셀, 밝은 서브픽셀 및 패널 이미지 잔상(번인)을 감지합니다.",
+    "colorCategory": "색상 재현 및 그레이스케일",
+    "colorDesc": "연속 그라디언트, 색상 밴딩 단계, 색 영역 경계 및 다단계 그레이스케일 램프를 평가합니다.",
+    "luminanceCategory": "휘도, 대비 및 번짐",
+    "luminanceDesc": "거의 검정과 거의 흰색 클리핑을 조정하고, 어두운 방에서 백라이트 번짐을 확인합니다.",
+    "motionCategory": "동작, 응답 및 게이밍",
+    "motionDesc": "고스팅 흔적을 확인하고, 픽셀 오버드라이브 설정을 평가하며, V-Sync 새로 고침률(Hz)을 측정합니다.",
+    "toolsCategory": "하드웨어 진단 및 계산기",
+    "toolsDesc": "감지된 화면 메트릭(DPR, 색 깊이)을 검사하고, PPI 및 최적 시청 거리를 계산합니다.",
+    "openSourceTitle": "개방적이고 커뮤니티 중심",
+    "openSourceText": "모니터 테스터는 오픈 소스 프로젝트입니다. GitHub에서 소스 코드를 검사하거나 렌더링 버그를 보고하거나 새로운 테스트 패턴을 제안하거나 직접 기여할 수 있습니다."
   },
   "Terms": {
     "metaTitle": "Terms of Use — Monitor Tester",
     "metaDescription": "Terms of use and disclaimer for the Monitor Tester display testing utility.",
-    "eyebrow": "TERMS & DISCLAIMER",
-    "title": "Terms of Use",
-    "description": "Please review the following terms and guidelines for using the Monitor Tester web utility and its diagnostic tools.",
-    "lastUpdated": "Last updated: September 2026",
-    "acceptanceTitle": "Acceptance of Terms",
-    "acceptanceText": "By accessing and using Monitor Tester, you acknowledge and agree to these terms. If you do not agree with any part of these terms, please discontinue use of the website.",
-    "natureOfServiceTitle": "Informational & Visual Testing Scope",
-    "natureOfServiceText": "Monitor Tester is an open web utility designed to assist users in visually evaluating display panels using browser-renderable test patterns, motion simulations, and client-side calculations. These tests are intended for visual screening and self-diagnosis.",
-    "noCalibrationTitle": "Not a Replacement for Hardware Colorimeters",
-    "noCalibrationText": "Browser-based software cannot replace physical spectrophotometers, hardware colorimeters (such as Calibrite or Datacolor Spyder), or optical oscilloscopes. Monitor Tester does not generate ICC color profiles, read physical photometric nits, or certify absolute color accuracy (Delta-E).",
-    "disclaimerTitle": "Disclaimer of Warranties",
-    "disclaimerText": "Monitor Tester is provided on an 'AS IS' and 'AS AVAILABLE' basis without warranties of any kind, whether express or implied. While we strive for precision, test results may vary based on operating system display scaling, GPU driver configurations, browser hardware acceleration, and ambient lighting conditions.",
-    "manufacturerTitle": "Manufacturer Warranty Policies",
-    "manufacturerText": "Display manufacturers enforce their own specific warranty terms regarding pixel defects (such as ISO 9241-307 Class 1 or Class 2 standards, which often define minimum thresholds of stuck or dead subpixels before an RMA is authorized). Identifying a defect on Monitor Tester does not automatically guarantee warranty replacement by your device manufacturer.",
-    "openSourceTitle": "Open Source License",
-    "openSourceText": "The underlying source code of Monitor Tester is licensed under the open-source MIT License. You are free to inspect, review, and fork the source code in accordance with the license."
+    "eyebrow": "이용약관 및 면책조항",
+    "title": "이용 약관",
+    "description": "모니터 테스터는 디스플레이 품질 평가를 돕기 위해 설계된 무료 진단 도구입니다.",
+    "lastUpdated": "마지막 업데이트: 2026년 9월",
+    "acceptanceTitle": "약관 수락",
+    "acceptanceText": "모니터 테스터에 액세스하고 사용함으로써 귀하는 이 약관을 인정하고 동의합니다. 동의하지 않으면 서비스 사용을 중단하십시오.",
+    "natureOfServiceTitle": "정보 및 시각적 테스트 범위",
+    "natureOfServiceText": "모니터 테스터는 표준 HTML5 API를 사용하여 브라우저에서 디스플레이 패널을 시각적으로 평가하는 데 도움을 주기 위해 설계된 개방형 웹 유틸리티입니다.",
+    "noCalibrationTitle": "하드웨어 색도계의 대체가 아님",
+    "noCalibrationText": "브라우저 기반 소프트웨어는 물리적 분광광도계, 하드웨어 색도계(Calibrite 또는 X-Rite 장치 등) 또는 ICC 프로파일 소프트웨어를 대체할 수 없습니다.",
+    "disclaimerTitle": "보증 면책",
+    "disclaimerText": "모니터 테스터는 어떤 종류의 보증 없이 '있는 그대로' 및 '이용 가능한 상태로' 제공됩니다.",
+    "manufacturerTitle": "제조업체 보증 정책",
+    "manufacturerText": "디스플레이 제조업체는 픽셀 결함(ISO 13406-2 표준 등)에 관한 자체적인 특정 보증 조건을 시행합니다. 당사의 테스트 결과는 이러한 정책에 영향을 미치지 않습니다.",
+    "openSourceTitle": "오픈 소스",
+    "openSourceText": "모니터 테스터는 오픈 소스입니다. GitHub에서 소스 코드를 검토하거나 버그를 보고하거나 개선 사항을 제안할 수 있습니다.",
+    "diagnosticTitle": "진단 목적으로만 사용",
+    "diagnosticText": "이 웹사이트에서 제공되는 테스트와 도구는 진단 및 교육 목적으로만 사용됩니다. 결과는 기기, 브라우저, 운영 체제 및 구성에 따라 다를 수 있습니다.",
+    "accuracyTitle": "정확도 제한",
+    "accuracyText": "브라우저 기반 테스트는 전문적으로 교정된 하드웨어 도구를 대체할 수 없습니다. 재생률, 색 깊이, HDR 지원과 같은 측정값은 브라우저 API에 의해 보고되며 전문 교정 도구와 다를 수 있습니다.",
+    "liabilityTitle": "책임 제한",
+    "liabilityText": "보증 청구, 구매 또는 반품 결정을 포함하여 모니터 테스터의 결과를 기반으로 내린 결정에 대해 당사는 책임을 지지 않습니다.",
+    "warrantyTitle": "보증 조언",
+    "warrantyText": "당사의 테스트 결과는 참고용에 불과합니다. 보증 청구에 대해서는 제조업체의 지침을 참조하고 디스플레이의 전문적인 평가를 받으십시오.",
+    "changeTitle": "변경 사항",
+    "changeText": "당사는 사전 통지 없이 언제든지 이 약관을 변경할 권리를 보유합니다.",
+    "contactTitle": "문의",
+    "contactText": "질문이 있으시면 GitHub를 통해 문의하십시오."
   },
   "Contact": {
     "metaTitle": "Contact & Support — Monitor Tester",
     "metaDescription": "Get in touch with the Monitor Tester open-source project. Report bugs, suggest test patterns, or ask questions.",
-    "eyebrow": "CONTACT & SUPPORT",
-    "title": "Contact & Feedback",
-    "description": "Have feedback, found a display discrepancy, or want to suggest a new test pattern? Here are the best ways to reach the project.",
-    "githubTitle": "GitHub Issue Tracker",
-    "githubDesc": "Report bugs, browser rendering issues, or request new display test patterns on our public GitHub repository.",
-    "githubAction": "Open an Issue on GitHub →",
-    "contributeTitle": "Contribute Code & Guides",
-    "contributeDesc": "Monitor Tester is open source. Pull requests for test improvements, performance optimizations, and translation corrections are warmly welcomed.",
-    "contributeAction": "View GitHub Repository →",
-    "emailTitle": "Direct Project Inquiries",
-    "emailDesc": "For general inquiries, collaborations, or private feedback regarding the project, feel free to reach out directly via email.",
-    "faqTitle": "Check Common Questions",
-    "faqDesc": "Looking for quick guidance on how browser tests work or what dead pixels are? Check our comprehensive FAQ.",
-    "faqAction": "Read the FAQ →"
+    "eyebrow": "문의",
+    "title": "문의하기",
+    "description": "GitHub 또는 이메일을 통해 문의하세요.",
+    "githubTitle": "GitHub를 통해",
+    "githubDesc": "공개 GitHub 저장소에서 버그, 브라우저 렌더링 문제를 보고하거나 새로운 디스플레이 테스트 패턴을 요청하세요.",
+    "githubAction": "GitHub에서 이슈 열기 →",
+    "contributeTitle": "코드 및 가이드 기여",
+    "contributeDesc": "모니터 테스터는 오픈 소스입니다. 테스트 개선, 성능 최적화 및 번역을 위한 풀 리퀘스트를 환영합니다.",
+    "contributeAction": "GitHub 저장소 보기 →",
+    "emailTitle": "이메일로",
+    "emailDesc": "일반 문의, 협업 또는 프로젝트에 관한 비공개 피드백을 위해 언제든지 연락하세요.",
+    "faqTitle": "자주 묻는 질문 확인",
+    "faqDesc": "브라우저 테스트 작동 방식이나 불량 픽셀이 무엇인지에 대한 빠른 안내가 필요하세요? 포괄적인 FAQ를 확인하세요.",
+    "faqAction": "FAQ 읽기 →",
+    "githubText": "GitHub 리포지토리에서 버그를 보고하거나 기능을 제안하거나 기여하세요.",
+    "githubButton": "GitHub에서 보기",
+    "emailText": "직접 문의, 협업 요청 또는 비즈니스 문의를 위해 이메일을 보내주세요.",
+    "bugTitle": "버그 보고",
+    "bugText": "기술적인 문제를 발견한 경우 GitHub에서 세부 정보와 함께 이슈를 열어주세요.",
+    "featureTitle": "기능 요청",
+    "featureText": "새로운 테스트나 개선 사항에 대한 제안이 있으신가요? 피드백을 환영합니다."
   },
   "Tools": {
     "metaTitle": "디스플레이 도구 및 계산기 | Monitor Tester",
@@ -1300,7 +1426,7 @@
     },
     "multiScreen": {
       "title": "4. 다중 모니터 디스플레이 감지",
-      "subtitle": "Window Management API",
+      "subtitle": "창 관리 API",
       "heading": "다중 디스플레이 토폴로지 및 배치",
       "desc": "W3C Window Management API를 활용하여 연결된 다중 모니터 구성을 조회합니다.",
       "queryBtn": "디스플레이 토폴로지 조회",
@@ -1390,12 +1516,12 @@
       "badge": "사용자 마킹 / 관찰됨",
       "title": "마킹된 불량 화소 및 위치 ({count})",
       "colIndex": "#",
-      "colClass": "유형",
+      "colClass": "분류",
       "colCoords": "좌표 (CSS X, Y)",
       "colPosition": "화면 위치 비율",
       "colPattern": "테스트 패턴",
       "colNote": "메모",
-      "colAction": "관리",
+      "colAction": "조치",
       "deleteTitle": "불량 화소 마커 삭제",
       "types": {
         "dead": "암점(Dead)",
@@ -1512,7 +1638,7 @@
         "desc": "서브픽셀 안티앨리어싱 평가용 다중 굵기 팬그램 텍스트."
       },
       "moire": {
-        "label": "모아레 & 지멘스 스타",
+        "label": "무아레 및 지멘스",
         "desc": "고주파 간섭 링 및 방사형 스타버스트 패턴."
       }
     },
@@ -1635,7 +1761,7 @@
       "calcRes": "도출된 해상도",
       "aspectName": "화면 비율",
       "totalPixels": "총 픽셀 수",
-      "standardClass": "규격 분류"
+      "standardClass": "분류"
     },
     "aspect": {
       "title": "화면 비율 단순화 도구",
@@ -1648,15 +1774,15 @@
       "gcd": "최대공약수 (GCD)"
     },
     "presets": {
-      "fhd24": "24인치 Full HD (1080p)",
-      "qhd27": "27인치 Quad HD (1440p)",
-      "uhd27": "27인치 4K Ultra HD",
-      "oled27": "27인치 OLED 240Hz 게이밍",
-      "uhd32": "32인치 4K Ultra HD",
-      "uwqhd34": "34인치 울트라와이드 (UWQHD)",
-      "suw49": "49인치 슈퍼 울트라와이드",
-      "mac14": "14인치 노트북 (Retina)",
-      "mac16": "16인치 노트북 (Retina)",
+      "fhd24": "24\" 풀 HD (1080p)",
+      "qhd27": "27\" 쿼드 HD (1440p)",
+      "uhd27": "27\" 4K 울트라 HD",
+      "oled27": "27\" OLED 240Hz 게이밍",
+      "uhd32": "32\" 4K 울트라 HD",
+      "uwqhd34": "34\" 울트라와이드 (UWQHD)",
+      "suw49": "49\" 슈퍼 울트라와이드",
+      "mac14": "14\" 노트북 (Retina)",
+      "mac16": "16\" 노트북 (Retina)",
       "tv55": "55인치 4K 거실 TV",
       "tv65": "65인치 4K 거실 TV"
     },
@@ -1687,7 +1813,7 @@
     "aspectPreview": "비율 기하학 미리보기",
     "quickSizes": "빠른 크기",
     "commonRatios": "주요 화면 비율",
-    "parameter": "측정 항목",
+    "parameter": "매개변수",
     "deviation": "편차: {val}",
     "benchmarks": "수학적 벤치마크",
     "hardwareComparison": "화면 사양 및 기하 구조 비교"
@@ -1880,7 +2006,7 @@
     "modes": {
       "grid": "터치 그리드",
       "draw": "터치 패스 / 드로잉",
-      "multi": "멀티터치",
+      "multi": "멀티 터치",
       "edge": "외곽 & 모서리",
       "hold": "터치 유지",
       "release": "터치 해제"

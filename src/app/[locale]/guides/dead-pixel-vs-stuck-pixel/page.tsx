@@ -2,10 +2,14 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
 import { Link } from "@/i18n/routing";
 import { ArrowRight } from "lucide-react";
-
+import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { generateSeoMetadata } from "@/lib/seo";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Guides.pixelDefectsConcept" });
   return generateSeoMetadata(
@@ -16,70 +20,82 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   );
 }
 
-export default async function DeadPixelVsStuckPixelPage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function DeadPixelVsStuckPixelPage({
+  params
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "Guides.pixelDefectsConcept" });
+
+  const breadcrumbs = [
+    { label: t("breadcrumbsGuides"), href: "/guides" },
+    { label: t("breadcrumbsTitle"), href: "/guides/dead-pixel-vs-stuck-pixel" },
+  ];
 
   return (
-    <div className="max-w-4xl mx-auto py-16 sm:py-24 px-4 sm:px-6 w-full flex-1">
-      <div className="mb-8">
+    <div className="max-w-4xl mx-auto py-12 sm:py-16 px-4 sm:px-6 lg:px-8 w-full flex-1">
+      <Breadcrumbs items={breadcrumbs} />
+
+      <div className="mb-8 mt-2">
         <div className="text-xs font-mono font-semibold uppercase tracking-[0.2em] text-blue-600 mb-3">
-          DISPLAY GUIDE & ANALYSIS
+          {t("eyebrow")}
         </div>
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-4">
-          Dead Pixel vs Stuck Pixel: How to Tell the Difference
+          {t("title")}
         </h1>
         <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-          Pixel flaws are among the most common defects found in LCD and OLED panels. Knowing whether an aberrant pixel is permanently dead or merely stuck determines whether it can be recovered or warrants a manufacturer warranty return.
+          {t("intro")}
         </p>
       </div>
 
       {/* Comparison Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-10">
         <div className="border border-border/80 rounded-2xl p-6 bg-card">
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-800 mb-3">
-            Permanent Defect
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-semibold bg-red-100 dark:bg-red-950/40 text-red-800 dark:text-red-300 mb-3">
+            {t("deadPixel.badge")}
           </div>
-          <h2 className="text-xl font-bold text-foreground mb-2">Dead Pixel</h2>
+          <h2 className="text-xl font-bold text-foreground mb-2">{t("deadPixel.title")}</h2>
           <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-            A pixel whose transistor has completely failed, leaving all three RGB subpixels permanently switched off (or unpowered).
+            {t("deadPixel.desc")}
           </p>
           <ul className="space-y-2 text-xs sm:text-sm text-foreground">
             <li className="flex items-start gap-2">
               <span className="text-red-500 font-bold">•</span>
-              <strong>Appearance:</strong> Always appears pitch black against white and colored backgrounds.
+              <span><strong>{t("deadPixel.appearanceLabel")}:</strong> {t("deadPixel.appearance")}</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-red-500 font-bold">•</span>
-              <strong>Cause:</strong> Broken electrode, failed thin-film transistor (TFT), or severed micro-trace.
+              <span><strong>{t("deadPixel.causeLabel")}:</strong> {t("deadPixel.cause")}</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-red-500 font-bold">•</span>
-              <strong>Recovery:</strong> Hardware-level failure; cannot be fixed via software cycling.
+              <span><strong>{t("deadPixel.recoveryLabel")}:</strong> {t("deadPixel.recovery")}</span>
             </li>
           </ul>
         </div>
 
         <div className="border border-border/80 rounded-2xl p-6 bg-card">
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 mb-3">
-            Potentially Recoverable
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 mb-3">
+            {t("stuckPixel.badge")}
           </div>
-          <h2 className="text-xl font-bold text-foreground mb-2">Stuck Pixel</h2>
+          <h2 className="text-xl font-bold text-foreground mb-2">{t("stuckPixel.title")}</h2>
           <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-            A pixel where one or two subpixels (Red, Green, or Blue) remain constantly energised and cannot turn off.
+            {t("stuckPixel.desc")}
           </p>
           <ul className="space-y-2 text-xs sm:text-sm text-foreground">
             <li className="flex items-start gap-2">
               <span className="text-emerald-600 font-bold">•</span>
-              <strong>Appearance:</strong> A bright red, green, blue, cyan, or magenta dot, most noticeable against dark or black backgrounds.
+              <span><strong>{t("stuckPixel.appearanceLabel")}:</strong> {t("stuckPixel.appearance")}</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-emerald-600 font-bold">•</span>
-              <strong>Cause:</strong> Liquid crystal molecules temporarily locked in open state or charge imbalance.
+              <span><strong>{t("stuckPixel.causeLabel")}:</strong> {t("stuckPixel.cause")}</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-emerald-600 font-bold">•</span>
-              <strong>Recovery:</strong> Rapid high-frequency color flashing (stuck pixel cycle) can sometimes unstick the crystal orientation.
+              <span><strong>{t("stuckPixel.recoveryLabel")}:</strong> {t("stuckPixel.recovery")}</span>
             </li>
           </ul>
         </div>
@@ -87,26 +103,30 @@ export default async function DeadPixelVsStuckPixelPage({ params }: { params: Pr
 
       {/* ISO Standard Info */}
       <div className="border border-border/80 rounded-2xl p-6 sm:p-8 bg-muted/20 my-10 space-y-4">
-        <h3 className="text-lg font-bold text-foreground">ISO 9241-307 Panel Defect Standards</h3>
+        <h3 className="text-lg font-bold text-foreground">{t("isoTitle")}</h3>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          Most consumer monitors are classified as <strong>Class 2 panels</strong>. Under ISO standards, manufacturers allow up to 2 permanently bright pixels, 2 permanently dark pixels, or up to 5 defective subpixels per million pixels before considering the panel defective for warranty replacement.
+          {t("isoP1")}
         </p>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          If you have discovered a pixel defect within the retailer&apos;s initial return or exchange window (typically 14 to 30 days), return it directly to the retailer rather than filing a manufacturer warranty claim, which may be rejected under Class 2 allowances.
+          {t("isoP2")}
         </p>
       </div>
 
       {/* Recommended Diagnostic Tests */}
       <div className="mt-12 pt-8 border-t border-border/60">
-        <h3 className="text-base font-semibold text-foreground mb-4">Run Diagnostic Tests</h3>
+        <h3 className="text-base font-semibold text-foreground mb-4">{t("testsTitle")}</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Link
             href="/tests/dead-pixel-test"
             className="p-4 border border-border/70 rounded-xl hover:border-foreground/30 transition-all flex items-center justify-between group"
           >
             <div>
-              <h4 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">Dead Pixel Test</h4>
-              <p className="text-xs text-muted-foreground mt-0.5">Cycle through full screen solid white and primary colors</p>
+              <h4 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+                {t("deadPixelTestTitle")}
+              </h4>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                {t("deadPixelTestDesc")}
+              </p>
             </div>
             <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 transition-all" />
           </Link>
@@ -116,8 +136,12 @@ export default async function DeadPixelVsStuckPixelPage({ params }: { params: Pr
             className="p-4 border border-border/70 rounded-xl hover:border-foreground/30 transition-all flex items-center justify-between group"
           >
             <div>
-              <h4 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">Stuck Pixel Fixer & Test</h4>
-              <p className="text-xs text-muted-foreground mt-0.5">High-frequency RGB subpixel cycling tool</p>
+              <h4 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+                {t("stuckPixelTestTitle")}
+              </h4>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                {t("stuckPixelTestDesc")}
+              </p>
             </div>
             <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 transition-all" />
           </Link>
