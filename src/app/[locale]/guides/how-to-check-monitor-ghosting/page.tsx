@@ -1,17 +1,19 @@
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
 import { Link } from "@/i18n/routing";
 import { ArrowRight } from "lucide-react";
 
+import { generateSeoMetadata } from "@/lib/seo";
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  await params;
-  return {
-    title: "How to Check Monitor Ghosting & Pixel Response Time",
-    description: "Learn what monitor ghosting and inverse ghosting (coronas) are, how to inspect pixel response times, and how to configure overdrive.",
-    alternates: {
-      canonical: "/guides/how-to-check-monitor-ghosting"
-    }
-  };
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Guides.ghostingConcept" });
+  return generateSeoMetadata(
+    "/guides/how-to-check-monitor-ghosting",
+    t("metaTitle"),
+    t("metaDescription"),
+    locale
+  );
 }
 
 export default async function MonitorGhostingGuidePage({ params }: { params: Promise<{ locale: string }> }) {

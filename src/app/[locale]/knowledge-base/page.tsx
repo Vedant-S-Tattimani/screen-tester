@@ -1,17 +1,19 @@
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
 import { Link } from "@/i18n/routing";
 import { BookOpen, ShieldCheck, Eye, ArrowRight, Layers } from "lucide-react";
 
+import { generateSeoMetadata } from "@/lib/seo";
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  await params;
-  return {
-    title: "Display Knowledge Base & Technical Guide",
-    description: "In-depth technical explanations of display panel technologies (IPS, OLED, VA, TN), common screen defects, calibration principles, and troubleshooting.",
-    alternates: {
-      canonical: "/knowledge-base"
-    }
-  };
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "KnowledgeBase" });
+  return generateSeoMetadata(
+    "/knowledge-base",
+    t("metaTitle"),
+    t("metaDescription"),
+    locale
+  );
 }
 
 export default async function KnowledgeBasePage({ params }: { params: Promise<{ locale: string }> }) {

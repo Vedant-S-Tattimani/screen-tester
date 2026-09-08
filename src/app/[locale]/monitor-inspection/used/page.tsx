@@ -2,18 +2,12 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
 import { WorkflowLauncher } from "@/components/layout/WorkflowLauncher";
 import { getWorkflowById } from "@/data/workflows";
+import { generateSeoMetadata } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Inspection.hub" });
-  
-  return {
-    title: t("usedMonitor"),
-    description: t("usedMonitorDesc"),
-    alternates: {
-      canonical: "/monitor-inspection/used"
-    }
-  };
+  return generateSeoMetadata("/monitor-inspection/used", t("usedMonitor"), t("usedMonitorDesc"), locale);
 }
 
 export default async function UsedMonitorInspectionPage({ params }: { params: Promise<{ locale: string }> }) {

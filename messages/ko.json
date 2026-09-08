@@ -1,7 +1,7 @@
 {
   "Metadata": {
-    "title": "Monitor Tester | 불량 화소, 빛샘, 고스팅 온라인 테스트",
-    "description": "브라우저에서 직접 불량 화소, 백라이트 빛샘, 화면 균일성 등을 테스트하는 온라인 유틸리티."
+    "title": "화면 테스트 & 모니터 테스트 – 디스플레이 화면 검사 툴",
+    "description": "무료 온라인 화면 테스트 및 모니터 검사 사이트. 불량 화소 테스트, 모니터 색상 테스트, 주사율 테스트, 모니터 잔상 테스트로 디스플레이 결함을 간편하게 진단하세요."
   },
   "Header": {
     "title": "Monitor Tester",
@@ -40,12 +40,12 @@
     },
     "dropdown": {
       "popularTests": "주요 테스트",
-      "deadPixels": "불량 화소",
-      "colorTest": "색상 테스트",
+      "deadPixels": "불량 화소 테스트",
+      "colorTest": "모니터 색상 테스트",
       "brightness": "밝기",
       "contrast": "명암비",
-      "ghosting": "고스팅",
-      "refreshRate": "주사율",
+      "ghosting": "모니터 잔상 테스트",
+      "refreshRate": "주사율 테스트 (Hz)",
       "viewAllTests": "전체 28개 테스트 보기",
       "troubleshootInspect": "문제 진단 및 점검",
       "diagnoseProblem": "문제 진단하기",
@@ -100,9 +100,9 @@
     "links": {
       "allTests": "모든 테스트",
       "deadPixel": "불량 화소 테스트",
-      "color": "색상 테스트",
+      "color": "모니터 색상 테스트",
       "brightness": "밝기 테스트",
-      "ghosting": "잔상(고스팅) 테스트",
+      "ghosting": "모니터 잔상 테스트",
       "refreshRate": "주사율 테스트",
       "resolution": "해상도 테스트",
       "hdr": "HDR 테스트",
@@ -161,12 +161,12 @@
     "quickTestsTitle": "빠른 점검",
     "quickTestsDesc": "가장 많이 사용하는 테스트를 즉시 실행합니다.",
     "viewAllTests": "전체 테스트 보기",
-    "quickDeadPixels": "불량 화소",
-    "quickColorTest": "색상 테스트",
+    "quickDeadPixels": "불량 화소 테스트",
+    "quickColorTest": "모니터 색상 테스트",
     "quickBrightness": "밝기",
     "quickContrast": "대비",
-    "quickGhosting": "잔상 (고스팅)",
-    "quickRefreshRate": "주사율",
+    "quickGhosting": "모니터 잔상 테스트",
+    "quickRefreshRate": "주사율 테스트",
     "workflowsTitle": "무엇을 점검하시겠습니까?",
     "workflowsDesc": "사용 환경에 맞는 가이드 또는 점검 단계를 선택하세요.",
     "viewAllWorkflows": "전체 점검 워크플로우 보기",
@@ -394,9 +394,82 @@
     }
   },
   "TestPages": {
+    "dead-pixel-test": {
+      "metaTitle": "불량 화소 테스트 – 불량 픽셀 및 암점/휘점 전체화면 검사",
+      "metaDescription": "무료 온라인 불량 화소 테스트 (불량 픽셀 테스트). 전체화면 순색 RGB, 블랙, 화이트 배경으로 모니터의 암점과 광점(휘점) 등 패널 결함을 신속하게 찾아냅니다.",
+      "title": "불량 화소 테스트 (불량 픽셀 검사)",
+      "description_p1": "이 불량 화소 테스트는 모니터나 노트북 화면의 결함 화소(꺼진 암점 또는 켜진 채 고정된 휘점)를 빠르게 찾아낼 수 있는 화면 검사 도구입니다. 전체 화면 단색을 차례로 전환하며 패널 결함을 꼼꼼히 점검할 수 있습니다.",
+      "instructions": [
+        "Ensure your screen is clean before starting. Dust can look like dead pixels.",
+        "Click or use <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> / <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd> to cycle through the test colors.",
+        "Carefully scan the entire screen for tiny dots that don't match the background color.",
+        "A black dot on a white background is typically a <strong>dead pixel</strong>.",
+        "A bright dot on a black background is typically a <strong>stuck pixel</strong>."
+      ]
+    },
+    "color-test": {
+      "metaTitle": "모니터 색상 테스트 – RGB 색감 및 화면 균일도 시각 점검",
+      "metaDescription": "모니터 색상 테스트 및 시각적 색감 점검 툴. 전체화면 RGB 원색 패턴을 통해 디스플레이의 색 재현력, 틴트 현상, 화면 균일도를 직접 확인하세요.",
+      "title": "모니터 색상 테스트 및 시각적 캘리브레이션",
+      "description_p1": "이 모니터 색상 테스트는 화면의 기본 색상 표현과 전체적인 색감 균일도를 시각적으로 점검하는 도구입니다. 원색 및 보색 패턴을 전환하여 패널의 색 왜곡, 밴딩 현상, 특정 부위의 누런 끼나 붉은 끼를 쉽게 확인할 수 있습니다.",
+      "instructions": [
+        "Cycle through the colors using <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> or <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd>.",
+        "Look for uneven saturation across the screen.",
+        "Check the grayscale patterns for any unwanted color tints (e.g., the gray looking slightly pink or blue).",
+        "Ensure that primary colors look vibrant and accurate without bleeding.",
+        "<strong>ABOUT THIS TEST:</strong> Provides reference patterns for visual inspection. It does not measure physical panel color accuracy (Delta E)."
+      ]
+    },
+    "brightness-test": {
+      "metaTitle": "모니터 밝기 및 블랙 레벨 테스트 – 암부 표현력 및 PLUGE 보정",
+      "metaDescription": "블랙 크러시 없이 암부 디테일을 살릴 수 있도록 모니터 밝기와 블랙 레벨을 조절하는 테스트입니다. PLUGE 패턴 지원.",
+      "title": "밝기 및 블랙 레벨 테스트",
+      "description_p1": "이 테스트는 모니터의 밝기(블랙 레벨 오프셋)를 보정하여 암부 디테일이 뭉개지지 않고 깊은 블랙을 표현하도록 돕습니다.",
+      "instructions": [
+        "<strong>PLUGE 기준 바:</strong> 바 0%는 순수 블랙입니다. 검은 배경에서 <strong>바 +2% (RGB 5)가 간신히 구분될 때까지</strong> 모니터 밝기를 조정하십시오.",
+        "<strong>블랙 크러시 경고:</strong> 바 +1% 및 +2%가 보이지 않는다면 밝기가 너무 낮아 암부 디테일이 묻힌 상태입니다. 배경이 회색으로 들뜨면 밝기가 너무 높습니다.",
+        "<strong>1% 섀도 램프:</strong> 0%~10% 구간의 1% 단위 미세 단계를 통해 디스플레이의 정확한 블랙 클리핑 지점을 확인하세요.",
+        "<strong>피크 휘도 및 ABL:</strong> 100% 전체 화면 흰색과 10% 윈도우를 비교하여 OLED나 노트북 디스플레이의 자동 밝기 제한(ABL) 동작을 확인하세요."
+      ]
+    },
+    "contrast-test": {
+      "metaTitle": "모니터 명암비 테스트 – 화이트 클리핑 및 명암 구분 점검",
+      "metaDescription": "모니터의 명암비와 명부 표현력을 점검하세요. 밝은 영역의 화이트 클리핑을 방지하고 섬세한 밝기 단계를 구분합니다.",
+      "title": "명암비 보정 테스트",
+      "description_p1": "이 테스트는 0% 순수 블랙부터 100% 순수 화이트까지 25단계 그라데이션 그리드를 표시하여 모니터의 명암비 및 감마 설정을 돕습니다.",
+      "inst1": "인접한 블록 간의 명암 차이가 명확하게 구분되는지 확인하세요.",
+      "inst2": "92% 및 96% 블록이 100% 화이트와 뭉개지지 않도록 모니터 명암비를 조정하세요.",
+      "inst3": "하단 제어 표시줄을 사용하여 숫자 백분율을 켜거나 끄고 모드를 전환할 수 있습니다."
+    },
+    "ghosting-test": {
+      "metaTitle": "모니터 잔상 테스트 – 고스팅 및 응답속도 오버드라이브 검사",
+      "metaDescription": "모니터 잔상 테스트 (고스팅 테스트). 움직이는 테스트 패턴을 통해 모니터의 패널 응답속도, 모션 잔상, 오버드라이브 역잔상(오버슈트)을 정밀하게 확인하세요.",
+      "title": "모니터 잔상 테스트 (고스팅 검사)",
+      "description_p1": "이 모니터 잔상 테스트는 디스플레이 패널의 픽셀 응답속도와 모션 선명도를 진단하는 도구입니다. 다양한 속도로 움직이는 그래픽을 관찰하여 화면에 끌리는 잔상(고스팅)이나 과도한 오버드라이브 설정으로 인한 역잔상을 확인할 수 있습니다.",
+      "instructions": [
+        "Focus your eyes on the moving blocks. Do not stare statically at the center of the screen.",
+        "Look for trailing shadows (ghosting) behind the moving blocks.",
+        "If you see a bright/inverted colored trail, this is <strong>inverse ghosting (overshoot)</strong>, usually caused by setting your monitor's overdrive setting too high.",
+        "Adjust the speed and contrast controls to test different pixel transition scenarios.",
+        "<strong>ABOUT THIS TEST:</strong> This is a visual aid for detecting ghosting. A web browser cannot precisely measure pixel response time (GtG or MPRT) in milliseconds."
+      ]
+    },
+    "refresh-rate-test": {
+      "metaTitle": "주사율 테스트 – 모니터 실시간 Hz 및 프레임 속도 측정",
+      "metaDescription": "무료 온라인 주사율 테스트. 웹 브라우저에서 모니터의 실제 주사율(60Hz, 120Hz, 144Hz, 240Hz, 360Hz)과 프레임 동기화 상태를 실시간으로 정확하게 측정합니다.",
+      "title": "주사율 테스트 (모니터 Hz 측정)",
+      "description_p1": "이 주사율 테스트는 모니터의 실제 작동 주사율(Hz)과 프레임 전송 안정성을 브라우저에서 실시간으로 측정합니다. 사용 중인 게이밍 모니터가 설정된 144Hz나 240Hz 주사율로 정상 출력되고 있는지 손쉽게 검증할 수 있습니다.",
+      "instructions": [
+        "<strong>Note:</strong> Browsers usually cap rendering at your primary monitor's refresh rate (e.g., 60Hz, 120Hz, 144Hz).",
+        "Make sure you do not have background video playback running, as some browsers down-clock animations to match video framerates.",
+        "For multi-monitor setups, drag the browser window to the screen you want to test.",
+        "If the reading is significantly lower than expected, check your OS display settings or GPU control panel to ensure your refresh rate isn't artificially capped.",
+        "<strong>ABOUT THIS TEST:</strong> This test estimates refresh rate based on browser rendering timing (requestAnimationFrame). It is a software estimate, not a direct hardware measurement."
+      ]
+    },
     "backlight-bleed-test": {
-      "metaTitle": "Backlight Bleed & IPS Glow Test",
-      "metaDescription": "Identify light leakage on the edges of your monitor.",
+      "metaTitle": "빛샘 테스트 – 모니터 백라이트 빛샘 및 IPS 글로우 확인",
+      "metaDescription": "어두운 환경에서 전체 블랙 화면을 띄워 모니터 베젤 모서리의 백라이트 빛샘 현상과 IPS 글로우를 육안으로 점검합니다.",
       "title": "Backlight Bleed Test",
       "description_p1": "This test renders a pure black screen. It is designed to expose backlight bleed, clouding, or IPS glow that typically affects LCD/LED panels.",
       "instructions": [
@@ -407,85 +480,20 @@
         "<strong>IPS Glow</strong> shifts and changes intensity as you move your viewing angle."
       ]
     },
-    "brightness-test": {
-      "metaTitle": "모니터 밝기 및 블랙 레벨 테스트",
-      "metaDescription": "PLUGE 기준 바, 1% 섀도 램프, 피크 휘도 ABL 윈도우를 통해 모니터 밝기와 암부 디테일을 정밀 캘리브레이션합니다.",
-      "title": "밝기 및 블랙 레벨 테스트",
-      "description_p1": "이 테스트는 모니터의 밝기(블랙 레벨 오프셋)를 보정하여 암부 디테일이 뭉개지지 않고 깊은 블랙을 표현하도록 돕습니다.",
+    "bright-pixel-test": {
+      "metaTitle": "휘점 테스트 – 블랙 배경에서 상시 켜져 있는 핫픽셀 검사",
+      "metaDescription": "블랙 및 어두운 그레이 배경에서 항상 빛나고 있는 휘점(Bright Pixel)과 고착된 서브픽셀을 신속하게 찾아냅니다.",
+      "title": "휘점(브라이트 픽셀) 테스트",
+      "description_p1": "휘점(핫 픽셀)은 액정 서브픽셀이나 OLED 발광 소자가 켜진 상태로 고정되어 어두운 배경에서도 계속 빛을 내는 현상입니다.",
       "instructions": [
-        "<strong>PLUGE 기준 바:</strong> 바 0%는 순수 블랙입니다. 검은 배경에서 <strong>바 +2% (RGB 5)가 간신히 구분될 때까지</strong> 모니터 밝기를 조정하십시오.",
-        "<strong>블랙 크러시 경고:</strong> 바 +1% 및 +2%가 보이지 않는다면 밝기가 너무 낮아 암부 디테일이 묻힌 상태입니다. 배경이 회색으로 들뜨면 밝기가 너무 높습니다.",
-        "<strong>1% 섀도 램프:</strong> 0%~10% 구간의 1% 단위 미세 단계를 통해 디스플레이의 정확한 블랙 클리핑 지점을 확인하세요.",
-        "<strong>피크 휘도 및 ABL:</strong> 100% 전체 화면 흰색과 10% 윈도우를 비교하여 OLED나 노트북 디스플레이의 자동 밝기 제한(ABL) 동작을 확인하세요."
-      ]
-    },
-    "color-test": {
-      "metaTitle": "Color Test & Grayscale",
-      "metaDescription": "Test monitor color accuracy, saturation, and contrast with RGB and grayscale patterns.",
-      "title": "Color Test & Grayscale",
-      "description_p1": "This test displays primary (Red, Green, Blue) and secondary (Yellow, Cyan, Magenta) colors, along with grayscale patterns to help you assess your monitor's color rendering, saturation, and balance.",
-      "instructions": [
-        "Cycle through the colors using <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> or <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd>.",
-        "Look for uneven saturation across the screen.",
-        "Check the grayscale patterns for any unwanted color tints (e.g., the gray looking slightly pink or blue).",
-        "Ensure that primary colors look vibrant and accurate without bleeding.",
-        "<strong>ABOUT THIS TEST:</strong> Provides reference patterns for visual inspection. It does not measure physical panel color accuracy (Delta E)."
-      ]
-    },
-    "dead-pixel-test": {
-      "metaTitle": "Dead Pixel Test",
-      "metaDescription": "Test your monitor for dead pixels. A simple, full-screen tool to help you identify stuck or dead pixels on your screen.",
-      "title": "Dead Pixel Test",
-      "description_p1": "A dead pixel is a defective pixel that remains permanently unlit (black) or stuck on a single color. This test provides a series of full-screen solid colors to help you visually identify any defective pixels.",
-      "instructions": [
-        "Ensure your screen is clean before starting. Dust can look like dead pixels.",
-        "Click or use <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> / <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd> to cycle through the test colors.",
-        "Carefully scan the entire screen for tiny dots that don't match the background color.",
-        "A black dot on a white background is typically a <strong>dead pixel</strong>.",
-        "A bright dot on a black background is typically a <strong>stuck pixel</strong>."
-      ]
-    },
-    "ghosting-test": {
-      "metaTitle": "Ghosting & Motion Blur Test",
-      "metaDescription": "Test monitor response time, ghosting, and motion blur with a high-speed moving pattern.",
-      "title": "Ghosting & Motion Blur Test",
-      "description_p1": "Monitor ghosting occurs when pixels take too long to switch between colors, leaving a faint trail behind moving objects. This test uses moving blocks to help you visually assess your display's pixel response time.",
-      "instructions": [
-        "Focus your eyes on the moving blocks. Do not stare statically at the center of the screen.",
-        "Look for trailing shadows (ghosting) behind the moving blocks.",
-        "If you see a bright/inverted colored trail, this is <strong>inverse ghosting (overshoot)</strong>, usually caused by setting your monitor's overdrive setting too high.",
-        "Adjust the speed and contrast controls to test different pixel transition scenarios.",
-        "<strong>ABOUT THIS TEST:</strong> This is a visual aid for detecting ghosting. A web browser cannot precisely measure pixel response time (GtG or MPRT) in milliseconds."
-      ]
-    },
-    "gradient-test": {
-      "metaTitle": "Gradient Banding Test",
-      "metaDescription": "Test monitor color depth and gradient compression limits.",
-      "title": "Gradient Banding Test",
-      "description_p1": "Displays a perfectly smooth 24-bit (16.7 million colors) gradient. On lower quality panels or with restricted bit-depth settings, you will see <strong>banding</strong> (distinct vertical or horizontal lines instead of a smooth transition).",
-      "instructions": [
-        "Look closely at the transition from black to the target color.",
-        "A true 10-bit or high-quality 8-bit+FRC panel will display a buttery smooth transition.",
-        "If you see obvious vertical stripes (stair-stepping), your display is struggling with color depth.",
-        "Use <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> or arrow keys to cycle gradients."
-      ]
-    },
-    "refresh-rate-test": {
-      "metaTitle": "Refresh Rate / V-Sync Estimator",
-      "metaDescription": "Estimate your monitor's actual operating refresh rate based on browser rendering performance.",
-      "title": "Refresh Rate Estimator",
-      "description_p1": "This tool estimates your monitor's current active refresh rate by tracking the speed at which your browser can render frames via requestAnimationFrame. It provides a visual reading of your V-Sync capabilities.",
-      "instructions": [
-        "<strong>Note:</strong> Browsers usually cap rendering at your primary monitor's refresh rate (e.g., 60Hz, 120Hz, 144Hz).",
-        "Make sure you do not have background video playback running, as some browsers down-clock animations to match video framerates.",
-        "For multi-monitor setups, drag the browser window to the screen you want to test.",
-        "If the reading is significantly lower than expected, check your OS display settings or GPU control panel to ensure your refresh rate isn't artificially capped.",
-        "<strong>ABOUT THIS TEST:</strong> This test estimates refresh rate based on browser rendering timing (requestAnimationFrame). It is a software estimate, not a direct hardware measurement."
+        "<strong>확인할 점:</strong> 어두운 배경과의 시각적 대비를 최대화하기 위해 어두운 방에서 테스트하세요.",
+        "<strong>사용 방법:</strong> 스페이스 또는 오른쪽 화살표 키를 눌러 순수 블랙, 다크 그레이, RGB 마스크를 순환합니다.",
+        "<strong>관찰 결과:</strong> 검은 화면에서 빛나는 점은 휘점 또는 스턱 서브픽셀입니다. 컨트롤 바의 결함 표시를 클릭하여 정확한 좌표를 기록하세요."
       ]
     },
     "stuck-pixel-test": {
-      "metaTitle": "Stuck Pixel Fixer & Test",
-      "metaDescription": "Identify and attempt to fix stuck subpixels using rapid color cycling.",
+      "metaTitle": "낀 화소(스턱픽셀) 복구 테스트 – 초고속 RGB 깜빡임 자극",
+      "metaDescription": "특정 색상으로 멈춰 있는 서브픽셀을 찾고, 초고속 RGB 삼원색 점멸 자극을 통해 픽셀 활성화를 시도합니다.",
       "title": "Stuck Pixel Fixer & Test",
       "description_p1": "Unlike a dead pixel (which is permanently black), a <strong>stuck pixel</strong> is a single subpixel (red, green, or blue) that is permanently turned on. Sometimes, rapidly cycling colors can un-stick the liquid crystal.",
       "instructions": [
@@ -496,8 +504,8 @@
       ]
     },
     "uniformity-test": {
-      "metaTitle": "Screen Uniformity & DSE Test",
-      "metaDescription": "Test monitor backlight uniformity and Dirty Screen Effect (DSE) using grayscale patterns.",
+      "metaTitle": "화면 균일도 테스트 – 멍 현상(DSE) 및 밝기 편차 점검",
+      "metaDescription": "5%, 10%, 20%, 50%, 100% 그레이 패턴으로 모니터 전 영역의 밝기 균일성과 얼룩덜룩한 멍(DSE) 현상을 검사합니다.",
       "title": "Screen Uniformity & DSE Test",
       "description_p1": "This test displays stepped grayscale backgrounds to help identify backlight bleeding, edge darkening (vignetting), and Dirty Screen Effect (DSE).",
       "instructions": [
@@ -507,9 +515,73 @@
         "<strong>ABOUT THIS TEST:</strong> This test provides reference backgrounds for visual inspection. It does not measure physical panel luminance variance."
       ]
     },
+    "black-level-test": {
+      "metaTitle": "블랙 레벨 테스트 – 섀도우 디테일 및 블랙 크러시 방지",
+      "metaDescription": "0%~5% 사이의 미세한 블랙 단계 구분을 점검하여 어두운 영화나 게임 장면에서 세부 묘사가 묻히지 않도록 조절합니다.",
+      "title": "Black Level Test",
+      "description_p1": "This test helps you configure your monitor's black level (brightness) setting. It displays extremely dark shades near pure black.",
+      "inst1": "Turn off room lights or reduce glare on the screen.",
+      "inst2": "Adjust your monitor's 'Brightness' setting until you can barely distinguish block 1 from the pure black background.",
+      "inst3": "If blocks 1-5 look identical to the background, your blacks are being crushed."
+    },
+    "white-level-test": {
+      "metaTitle": "화이트 레벨 테스트 – 하이라이트 디테일 및 화이트 뭉개짐 방지",
+      "metaDescription": "95%~100% 순백에 가까운 단계 구분을 확인하여 밝은 영역의 질감이 하얗게 날아가지 않도록 보정합니다.",
+      "title": "White Level Test",
+      "description_p1": "This test helps you configure your monitor's white level (contrast) setting. It displays extremely bright shades near pure white.",
+      "inst1": "Adjust your monitor's 'Contrast' setting until you can distinguish block 254 from the pure white background.",
+      "inst2": "If blocks 250-254 look identical to the background, your whites are clipping.",
+      "inst3": "Do not set contrast so high that bright details are lost."
+    },
+    "grayscale-test": {
+      "metaTitle": "그레이스케일 테스트 – 256단계 명암 및 색온도 밸런스 점검",
+      "metaDescription": "256단계의 매끄러운 그레이 그라데이션으로 모니터의 중립적인 회색 표현력과 특정 색상 쏠림(녹색/분홍 틴트)을 확인합니다.",
+      "title": "Grayscale Test",
+      "description_p1": "This test displays neutral grayscale backgrounds. It helps you check if your monitor suffers from unwanted color tints in its gray rendering.",
+      "inst1": "Cycle through the gray levels using Space or right arrow.",
+      "inst2": "Look for pink, blue, or green tints in what should be neutral gray.",
+      "inst3": "Use your monitor's RGB balance controls to correct any color cast."
+    },
+    "saturation-test": {
+      "metaTitle": "채도 테스트 – RGB 원색 및 보조색 채도 포화도 점검",
+      "metaDescription": "원색과 중간색의 채도 단계를 점검하여 색상이 물 빠지거나 지나치게 과포화되어 뭉개지지 않는지 평가합니다.",
+      "title": "Saturation Test",
+      "description_p1": "This test displays a continuous color spectrum and stepped saturation blocks for primary colors.",
+      "inst1": "Check the smooth spectrum for obvious banding or harsh transitions.",
+      "inst2": "Look at the individual saturation steps to ensure distinct differences between blocks.",
+      "inst3": "Adjust your monitor's saturation/vibrancy settings if colors look washed out or overly neon."
+    },
+    "gamma-test": {
+      "metaTitle": "감마 테스트 – 감마 2.2 및 2.4 커브 시각적 캘리브레이션",
+      "metaDescription": "표준 감마 2.2 및 2.4 기준 값 대비 모니터의 감마 커브 일치도를 시각적으로 간편하게 확인합니다.",
+      "title": "Gamma Calibration",
+      "description_p1": "This tool helps you estimate your monitor's physical gamma curve. A gamma of 2.2 is the standard for sRGB and Windows PCs.",
+      "inst1": "Enter fullscreen and move away from the monitor, or squint your eyes until the top lines blur into a solid gray.",
+      "inst2": "Compare the blurred top half to the three solid blocks below.",
+      "inst3": "The block that perfectly matches the brightness of the blurred top half indicates your monitor's approximate gamma.",
+      "inst4": "<strong>ABOUT THIS TEST:</strong> This tool relies on visual perception and standard browser color rendering. It is not a replacement for a hardware colorimeter."
+    },
+    "motion-blur-test": {
+      "metaTitle": "모션 블러 테스트 – 동적 해상도 및 화면 끌림 현상 점검",
+      "metaDescription": "빠른 움직임 속에서 모니터의 잔상 지속 시간과 모션 블러를 시각적으로 분석하여 게이밍 성능을 평가합니다.",
+      "title": "Motion Blur Test",
+      "description_p1": "Assess how well your monitor handles fast motion without blurring or smearing details.",
+      "inst1": "Track the moving blocks with your eyes.",
+      "inst2": "Look at the small inner square. If the edges blur completely, your monitor has a slow pixel response time.",
+      "inst3": "Adjust speed and contrast to test under different panel overdrive scenarios."
+    },
+    "hdr-capability-test": {
+      "metaTitle": "HDR 지원 테스트 – 고명암비 지원 및 최대 피크 밝기 점검",
+      "metaDescription": "웹 브라우저의 HDR 활성화 여부, 최대 니트(nit) 밝기 성능, 광색역(Display P3) 재생 능력을 확인합니다.",
+      "title": "HDR Capability Test",
+      "description_p1": "This tool queries your browser's APIs to determine if High Dynamic Range (HDR) and Wide Color Gamut (P3) are currently enabled and supported by your display chain.",
+      "inst1": "Review the browser-reported capabilities.",
+      "inst2": "If it says 'Not Supported' but your monitor is HDR-capable, ensure HDR is turned on in Windows/macOS display settings.",
+      "inst3": "Ensure you are using a modern browser with hardware acceleration enabled."
+    },
     "display-info": {
-      "metaTitle": "Display Information",
-      "metaDescription": "View detected resolution, color depth, pixel ratio, and HDR capabilities of your display.",
+      "metaTitle": "디스플레이 정보 및 GPU 진단 – 해상도, DPR 및 그래픽카드 스펙",
+      "metaDescription": "브라우저가 감지한 모니터 실제 해상도, 윈도우 스케일링 배율(DPR), 색 심도, 그래픽카드 모델명을 확인하세요.",
       "title": "Display Information",
       "description_p1": "This data is read directly from your browser's Web APIs. It represents what the browser can detect about your display setup. Note that operating system scaling settings (e.g., Windows UI scaling at 125% or macOS Retina scaling) will affect the \"Logical Resolution\" reported here.",
       "gamutWide": "Display P3 (Wide)",
@@ -534,150 +606,78 @@
       "supported": "Supported",
       "notSupported": "Not Supported"
     },
-    "grayscale-test": {
-      "metaTitle": "Grayscale Test",
-      "metaDescription": "Test monitor ability to render neutral grays without color tinting.",
-      "title": "Grayscale Test",
-      "description_p1": "This test displays neutral grayscale backgrounds. It helps you check if your monitor suffers from unwanted color tints in its gray rendering.",
-      "inst1": "Cycle through the gray levels using Space or right arrow.",
-      "inst2": "Look for pink, blue, or green tints in what should be neutral gray.",
-      "inst3": "Use your monitor's RGB balance controls to correct any color cast."
-    },
-    "saturation-test": {
-      "metaTitle": "Color Saturation Test",
-      "metaDescription": "Assess color vibrancy and detect banding in high-saturation gradients.",
-      "title": "Saturation Test",
-      "description_p1": "This test displays a continuous color spectrum and stepped saturation blocks for primary colors.",
-      "inst1": "Check the smooth spectrum for obvious banding or harsh transitions.",
-      "inst2": "Look at the individual saturation steps to ensure distinct differences between blocks.",
-      "inst3": "Adjust your monitor's saturation/vibrancy settings if colors look washed out or overly neon."
-    },
-    "black-level-test": {
-      "metaTitle": "Black Level Test",
-      "metaDescription": "Tune your monitor's black levels to ensure dark details aren't crushed.",
-      "title": "Black Level Test",
-      "description_p1": "This test helps you configure your monitor's black level (brightness) setting. It displays extremely dark shades near pure black.",
-      "inst1": "Turn off room lights or reduce glare on the screen.",
-      "inst2": "Adjust your monitor's 'Brightness' setting until you can barely distinguish block 1 from the pure black background.",
-      "inst3": "If blocks 1-5 look identical to the background, your blacks are being crushed."
-    },
-    "white-level-test": {
-      "metaTitle": "White Level Test",
-      "metaDescription": "Tune your monitor's contrast to ensure bright details aren't clipped.",
-      "title": "White Level Test",
-      "description_p1": "This test helps you configure your monitor's white level (contrast) setting. It displays extremely bright shades near pure white.",
-      "inst1": "Adjust your monitor's 'Contrast' setting until you can distinguish block 254 from the pure white background.",
-      "inst2": "If blocks 250-254 look identical to the background, your whites are clipping.",
-      "inst3": "Do not set contrast so high that bright details are lost."
-    },
-    "gamma-test": {
-      "metaTitle": "Gamma Test",
-      "metaDescription": "Visually estimate your monitor's gamma tracking.",
-      "title": "Gamma Calibration",
-      "description_p1": "This tool helps you estimate your monitor's physical gamma curve. A gamma of 2.2 is the standard for sRGB and Windows PCs.",
-      "inst1": "Enter fullscreen and move away from the monitor, or squint your eyes until the top lines blur into a solid gray.",
-      "inst2": "Compare the blurred top half to the three solid blocks below.",
-      "inst3": "The block that perfectly matches the brightness of the blurred top half indicates your monitor's approximate gamma.",
-      "inst4": "<strong>ABOUT THIS TEST:</strong> This tool relies on visual perception and standard browser color rendering. It is not a replacement for a hardware colorimeter."
-    },
-    "motion-blur-test": {
-      "metaTitle": "Motion Blur Test",
-      "metaDescription": "Assess pixel response time and motion blur.",
-      "title": "Motion Blur Test",
-      "description_p1": "Assess how well your monitor handles fast motion without blurring or smearing details.",
-      "inst1": "Track the moving blocks with your eyes.",
-      "inst2": "Look at the small inner square. If the edges blur completely, your monitor has a slow pixel response time.",
-      "inst3": "Adjust speed and contrast to test under different panel overdrive scenarios."
-    },
-    "hdr-capability-test": {
-      "metaTitle": "HDR Capability Test",
-      "metaDescription": "Verify your browser and OS correctly detect HDR.",
-      "title": "HDR Capability Test",
-      "description_p1": "This tool queries your browser's APIs to determine if High Dynamic Range (HDR) and Wide Color Gamut (P3) are currently enabled and supported by your display chain.",
-      "inst1": "Review the browser-reported capabilities.",
-      "inst2": "If it says 'Not Supported' but your monitor is HDR-capable, ensure HDR is turned on in Windows/macOS display settings.",
-      "inst3": "Ensure you are using a modern browser with hardware acceleration enabled."
-    },
-    "contrast-test": {
-      "metaTitle": "명암비 보정 테스트",
-      "metaDescription": "25단계 동적 레벨을 통해 명암비와 계조 분리 성능을 평가합니다.",
-      "title": "명암비 보정 테스트",
-      "description_p1": "이 테스트는 0% 순수 블랙부터 100% 순수 화이트까지 25단계 그라데이션 그리드를 표시하여 모니터의 명암비 및 감마 설정을 돕습니다.",
-      "inst1": "인접한 블록 간의 명암 차이가 명확하게 구분되는지 확인하세요.",
-      "inst2": "92% 및 96% 블록이 100% 화이트와 뭉개지지 않도록 모니터 명암비를 조정하세요.",
-      "inst3": "하단 제어 표시줄을 사용하여 숫자 백분율을 켜거나 끄고 모드를 전환할 수 있습니다."
-    },
-    "bright-pixel-test": {
-      "metaTitle": "휘점 및 핫 픽셀 테스트",
-      "metaDescription": "어두운 배경에서 항상 켜져 있는 휘점 또는 핫 픽셀을 검사합니다.",
-      "title": "휘점(브라이트 픽셀) 테스트",
-      "description_p1": "휘점(핫 픽셀)은 액정 서브픽셀이나 OLED 발광 소자가 켜진 상태로 고정되어 어두운 배경에서도 계속 빛을 내는 현상입니다.",
+    "gradient-test": {
+      "metaTitle": "컬러 밴딩 테스트 – 8비트/10비트 그라데이션 계단 현상 점검",
+      "metaDescription": "부드러운 그라데이션에서 줄무늬(밴딩) 계단 현상이 발생하는지 확인하여 패널의 색상 계조 표현력을 테스트합니다.",
+      "title": "Gradient Banding Test",
+      "description_p1": "Displays a perfectly smooth 24-bit (16.7 million colors) gradient. On lower quality panels or with restricted bit-depth settings, you will see <strong>banding</strong> (distinct vertical or horizontal lines instead of a smooth transition).",
       "instructions": [
-        "<strong>확인할 점:</strong> 어두운 배경과의 시각적 대비를 최대화하기 위해 어두운 방에서 테스트하세요.",
-        "<strong>사용 방법:</strong> 스페이스 또는 오른쪽 화살표 키를 눌러 순수 블랙, 다크 그레이, RGB 마스크를 순환합니다.",
-        "<strong>관찰 결과:</strong> 검은 화면에서 빛나는 점은 휘점 또는 스턱 서브픽셀입니다. 컨트롤 바의 결함 표시를 클릭하여 정확한 좌표를 기록하세요."
+        "Look closely at the transition from black to the target color.",
+        "A true 10-bit or high-quality 8-bit+FRC panel will display a buttery smooth transition.",
+        "If you see obvious vertical stripes (stair-stepping), your display is struggling with color depth.",
+        "Use <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> or arrow keys to cycle gradients."
       ]
     }
   },
   "Tests": {
-    "burnIn": {
-      "title": "Burn-In Test",
-      "description": "Detect image retention and burn-in on OLED and plasma displays.",
-      "instructions": "Look for faint outlines of static elements."
-    },
-    "colorGamut": {
-      "title": "Color Gamut",
-      "description": "Evaluate the display's ability to render wide color gamuts.",
-      "instructions": "Check if the colors in the center match or blend with the outer ring."
+    "viewingAngle": {
+      "title": "시야각 테스트 – 각도에 따른 색상 왜곡 및 명암 저하 확인",
+      "description": "IPS, VA, OLED, TN 패널을 측면에서 바라보았을 때의 색감 유지력과 명암 왜곡 정도를 점검합니다.",
+      "instructions": "View the screen from extreme angles."
     },
     "screenTearing": {
-      "title": "Screen Tearing",
-      "description": "Identify sync issues causing horizontal tearing.",
+      "title": "화면 찢어짐(티어링) 테스트 – V-Sync, G-Sync, FreeSync 점검",
+      "description": "화면 이동 시 가로로 잘리는 현상(티어링)을 검출하여 수직동기화 및 가변주사율(VRR) 적용 상태를 검증합니다.",
       "instructions": "Watch the moving bar for horizontal tearing."
     },
+    "burnIn": {
+      "title": "OLED 번인 테스트 – 화면 잔상 및 영구적인 자국 확인",
+      "description": "작업표시줄이나 고정 로고 등 OLED 및 LCD 패널에 남은 영구적인 잔상(번인) 흔적을 단색 화면으로 찾아냅니다.",
+      "instructions": "Look for faint outlines of static elements."
+    },
     "blooming": {
-      "title": "Blooming & Halo Test",
-      "description": "Test local dimming zones for blooming around bright objects.",
+      "title": "미니 LED 블루밍 테스트 – 로컬 디밍 빛 번짐 현상 검사",
+      "description": "블랙 배경 속 밝은 물체 주변으로 빛이 새어 나오는 헤일로(블루밍) 현상과 로컬 디밍 품질을 평가합니다.",
       "instructions": "Look for halos around the bright square."
     },
     "touchScreen": {
-      "title": "Touch Screen Test",
-      "description": "Check multi-touch functionality and dead zones.",
+      "title": "터치스크린 테스트 – 멀티터치 인식 및 터치 먹통 영역 점검",
+      "description": "스마트폰, 태블릿, 터치 노트북의 터치 인식 정확도, 동시 입력 포인트, 터치 불량 구역을 온라인으로 테스트합니다.",
       "instructions": "Draw all over the screen to check for dead zones."
     },
     "solidColor": {
-      "title": "Solid Color Purity",
-      "description": "Test full screen color purity.",
+      "title": "단색 순도 테스트 – 전체 화면 단색 표시로 패널 결함 검사",
+      "description": "전체 화면을 순수 단색(빨강, 초록, 파랑, 검정, 흰색)으로 채워 먼지, 이물질, 패널 오염을 꼼꼼히 점검합니다.",
       "instructions": "Look for unevenness."
     },
     "colorAccuracy": {
-      "title": "Color Accuracy",
-      "description": "Evaluate color reproduction accuracy.",
+      "title": "색상 정확도 테스트 – sRGB 기준 색감 및 피부톤 자연스러움 점검",
+      "description": "표준 sRGB 색상 차트와 인물 피부톤 샘플을 통해 모니터의 왜곡 없는 자연스러운 색상 표현을 확인합니다.",
       "instructions": "Verify skin tones and natural colors."
     },
     "flicker": {
-      "title": "Screen Flicker",
-      "description": "Detect PWM dimming flicker.",
+      "title": "화면 깜빡임(플리커) 테스트 – PWM 플리커 및 눈 피로도 점검",
+      "description": "눈의 피로와 두통을 유발할 수 있는 백라이트의 고속 미세 깜빡임(PWM 플리커 현상) 유무를 검사합니다.",
       "instructions": "Use a camera at high shutter speed."
     },
     "sharpness": {
-      "title": "Text Sharpness",
-      "description": "Evaluate subpixel rendering and text clarity.",
+      "title": "선명도 테스트 – 글자 가독성 및 1픽셀 라인 패턴 확인",
+      "description": "글자 외곽선에 부자연스러운 흰 테두리가 생기지 않는 적절한 선명도 설정 값을 찾을 수 있습니다.",
       "instructions": "Check for color fringing."
     },
-    "viewingAngle": {
-      "title": "Viewing Angle",
-      "description": "Test color and contrast shift off-axis.",
-      "instructions": "View the screen from extreme angles."
-    },
     "colorBanding": {
-      "title": "Color Banding",
-      "description": "Check for gradient banding.",
+      "title": "색상 밴딩 테스트 – 매끄러운 그라데이션 계조 점검",
+      "description": "부드러운 색상 전환 구간에 거친 경계선이나 줄무늬가 나타나지 않는지 검사합니다.",
       "instructions": "Look for smooth transitions."
     },
+    "colorGamut": {
+      "title": "색역 테스트 – sRGB, DCI-P3, Adobe RGB 영역 커버리지",
+      "description": "광색역 모니터의 풍부한 색상 표현력과 채도 뭉개짐 없는 정확한 발색을 확인하세요.",
+      "instructions": "Check if the colors in the center match or blend with the outer ring."
+    },
     "resolution-checker": {
-      "title": "해상도 및 PPI 계산기",
-      "description": "Check your browser-reported resolution, viewport size, DPR, color depth, aspect ratio, and frame timing.",
+      "title": "해상도 확인기 – 모니터 네이티브 해상도, CSS 해상도 및 DPR",
+      "description": "모니터의 실제 하드웨어 해상도, 윈도우 배율 적용 해상도, 화면 비율을 손쉽게 확인하세요.",
       "infoTitle": "해상도 및 디스플레이 지오메트리",
       "labels": {
         "logicalRes": "Logical Resolution",
@@ -758,50 +758,64 @@
     }
   },
   "Guides": {
+    "pageTitle": "디스플레이 테스트 가이드 – 모니터, TV, 노트북 화면 점검법",
+    "pageSubtitle": "패널 결함 발견법, 색상 캘리브레이션, 화면 성능 자가 진단을 위한 전문 테크니컬 가이드.",
     "monitor": {
-      "metaTitle": "Monitor Screen Test",
-      "metaDescription": "Test your external monitor.",
+      "metaTitle": "PC 모니터 테스트 방법 – 구입 후 화면 점검 완벽 가이드",
+      "metaDescription": "새 모니터나 중고 모니터를 구매했을 때 필수적인 불량화소, 빛샘, 고스팅 점검 절차를 안내합니다.",
       "title": "Monitor Screen Test",
       "description": "Comprehensive testing for desktop monitors."
     },
     "oled": {
-      "metaTitle": "OLED Screen Test",
-      "metaDescription": "Test your OLED screen.",
+      "metaTitle": "OLED 모니터 점검법 – 번인, 균일도 및 퍼펙트 블랙 테스트",
+      "metaDescription": "OLED 화면 및 TV의 번인(영구 잔상), 저조도 얼룩, 패널 노화 상태를 점검하는 전문 가이드.",
       "title": "OLED Screen Test",
       "description": "Specialized tests for OLED image retention and black levels."
     },
     "laptop": {
-      "metaTitle": "Laptop Screen Test",
-      "metaDescription": "Test your laptop screen.",
+      "metaTitle": "노트북 액정 테스트 방법 – 불량화소, 빛샘, 해상도 점검",
+      "metaDescription": "노트북 패널 구매 및 인수 시 체크리스트: 결함 화소, 힌지 압박 빛샘, 폰트 가독성 확인.",
       "title": "Laptop Screen Test",
       "description": "Tests for typical laptop LCD panels."
     },
     "lcd": {
-      "metaTitle": "LCD Screen Test",
-      "metaDescription": "Test your LCD screen.",
+      "metaTitle": "LCD 화면 테스트 – IPS, VA, TN 패널 비교 및 특성 가이드",
+      "metaDescription": "IPS 고유의 글로우 현상과 불량 빛샘의 차이점을 파악하고 LCD 패널 성능을 정확히 평가하세요.",
       "title": "LCD Screen Test",
       "description": "Tests for LCD backlight bleed and uniformity."
     },
     "tv": {
-      "metaTitle": "TV Screen Test",
-      "metaDescription": "Test your TV screen.",
+      "metaTitle": "TV 화면 테스트 방법 – 4K TV 및 스마트 TV 화질 점검",
+      "metaDescription": "웹 브라우저로 4K TV 화면을 테스트하세요: 모션 부드러움, 그라데이션 표현, 로컬 디밍 품질 점검.",
       "title": "TV Screen Test",
       "description": "Tests for TV motion processing and blooming."
     },
     "mobile": {
-      "metaTitle": "Mobile Screen Test",
-      "metaDescription": "Test your mobile screen.",
+      "metaTitle": "스마트폰 액정 테스트 – 터치 반응 및 OLED 번인 진단",
+      "metaDescription": "휴대폰 및 태블릿 터치스크린의 반응 속도, 멀티터치 오류, OLED 잔상을 온라인에서 점검하세요.",
       "title": "Mobile Screen Test",
       "description": "Tests for mobile touch screens and OLED panels."
     },
-    "pageTitle": "디스플레이 가이드",
-    "pageSubtitle": "특정 기기 점검 방법과 잔상, 빛샘 등 주요 디스플레이 결함 원인을 알아보세요.",
+    "ghostingConcept": {
+      "metaTitle": "모니터 잔상(고스팅) 확인법 – 응답속도와 오버드라이브 설정",
+      "metaDescription": "잔상(고스팅)과 역잔상(오버슈트)의 원인은 무엇일까요? 패널 반응속도 측정과 오버드라이브 최적화 가이드."
+    },
+    "backlightBleedConcept": {
+      "metaTitle": "빛샘 vs IPS 글로우 – 어두운 방에서 정확히 구별하는 방법",
+      "metaDescription": "패널 테두리의 불량 백라이트 빛샘과 IPS 패널 특유의 시야각 글로우 현상을 정확히 구별하는 법."
+    },
+    "pixelDefectsConcept": {
+      "metaTitle": "불량화소 암점 vs 휘점 – 결함 종류와 제조사 무결점 보증 기준",
+      "metaDescription": "꺼진 암점과 항상 켜진 휘점의 차이점, 자가 복구 시도 방법, 패널 제조사의 교환 보증 기준 안내."
+    },
     "deviceGuidesHeading": "기기별 가이드",
     "conceptGuidesHeading": "핵심 개념 및 해설",
     "learnAbout": "{topic}의 원리와 점검 방법을 알아봅니다."
   },
   "Inspection": {
     "hub": {
+      "diagnosticMetaTitle": "디스플레이 진단 마법사 – 화면 이상 증상별 맞춤 테스트",
+      "diagnosticMetaDesc": "화면에 나타나는 이상 증상을 선택하시면 원인을 확인하고 검증할 수 있는 최적의 테스트를 추천해 드립니다.",
       "metaTitle": "Monitor Inspection Workflow",
       "metaDescription": "Check a new or used monitor systematically instead of opening random tests.",
       "title": "Monitor Inspection",
@@ -928,48 +942,85 @@
     }
   },
   "Privacy": {
-    "metaTitle": "Privacy Policy | Monitor Tester",
+    "metaTitle": "Privacy Policy — Monitor Tester",
+    "metaDescription": "Monitor Tester privacy policy: All tests execute locally in your browser. Zero telemetry, zero analytics tracking, and zero remote storage.",
+    "eyebrow": "PRIVACY & DATA POLICY",
     "title": "Privacy Policy",
-    "intro": "Monitor Tester is designed to be a lightweight, privacy-first utility. All diagnostic tests run entirely locally in your web browser.",
-    "dataCollection": "Data Collection",
-    "dataDesc": "We do not collect, transmit, or store any personal information. When you use the Monitor Inspection workflows, your observations are temporarily saved in your browser's local storage (localStorage). This data never leaves your device and can be cleared at any time.",
-    "analytics": "Analytics",
-    "analyticsDesc": "We do not use invasive third-party tracking scripts or advertising networks."
+    "description": "Monitor Tester is designed with a strict privacy-first architecture. All display diagnostic tests and calculations execute entirely inside your local browser.",
+    "lastUpdated": "Last updated: September 2026",
+    "noCollectionTitle": "Zero Remote Data Collection",
+    "noCollectionText": "When you visit Monitor Tester and run display tests, we do NOT collect, transmit, or store any personal data, hardware serial numbers, diagnostic observations, or screen metrics on external servers. There are no backend tracking databases, user accounts, or login requirements.",
+    "localStorageTitle": "Local Browser Storage",
+    "localStorageText": "To provide convenient features such as checklist tracking and defect marker coordinates, Monitor Tester utilizes your browser's private local storage APIs:",
+    "localStorageItem1": "Active Session & Observations (localStorage): Stores your self-reported test ratings (Pass, Check, Issue), custom notes, and pixel defect pin coordinates (X/Y pixels) so your report remains accessible if you refresh the page.",
+    "localStorageItem2": "Workflow Queue (sessionStorage): Temporarily keeps track of your current step in guided inspection workflows (e.g., General Checkup or Used Monitor Inspection). This is automatically cleared when you close your browser tab.",
+    "localStorageClear": "You can clear all stored data at any time by clicking 'Reset' in the test runner, clearing your browser's site data, or using your browser's private / incognito browsing mode.",
+    "cookiesTitle": "No Advertising or Tracking Cookies",
+    "cookiesText": "Monitor Tester does not use third-party advertising cookies, behavioral trackers, or marketing pixels. The site does not sell, rent, or monetize your browsing activity.",
+    "permissionsTitle": "Browser Permissions",
+    "permissionsText": "Monitor Tester requests only the standard Fullscreen API permission when you choose to enter full-screen testing mode. Fullscreen requires an explicit user gesture (such as clicking the Fullscreen button or pressing 'F') as enforced by your browser. We never request camera, microphone, notification, or geographic location permissions."
   },
   "About": {
-    "metaTitle": "About | Monitor Tester",
+    "metaTitle": "About Monitor Tester — Display Diagnostic & Evaluation Utility",
+    "metaDescription": "Learn about Monitor Tester, a free browser-based suite designed to test, inspect, and diagnose computer monitors, laptops, TVs, and mobile displays.",
+    "eyebrow": "ABOUT THE PROJECT",
     "title": "About Monitor Tester",
-    "intro": "Monitor Tester is a specialized web utility built to help you diagnose and calibrate displays without installing heavy software.",
-    "mission": "Our Mission",
-    "missionDesc": "We believe display testing should be accessible, fast, and completely free. Whether you are checking a brand new gaming monitor for dead pixels, inspecting a used TV for burn-in, or calibrating your laptop screen, these tools are designed to provide straightforward, honest results based on visual checks and standard browser APIs.",
-    "disclaimer": "Hardware Limitations",
-    "disclaimerDesc": "Please note that while web browsers are powerful, they cannot directly measure hardware properties like true input latency, precise color gamuts (Delta E), or physical panel health. Our tools are designed for visual inspection and estimation."
+    "description": "A free, privacy-first browser utility built to evaluate, inspect, and troubleshoot computer monitors, laptops, mobile devices, and TVs without software installation.",
+    "missionTitle": "Why Monitor Tester Exists",
+    "missionText": "Buying a new or used monitor often involves uncertainty: dead pixels, backlight bleed, washed-out contrast, and ghosting are difficult to identify during brief in-store checks or unboxings. Monitor Tester was created to provide a complete, accessible suite of diagnostic patterns that anyone can run immediately in any modern web browser.",
+    "howItWorksTitle": "100% In-Browser Execution",
+    "howItWorksText": "Every test runs locally on your device using standard HTML5 Canvas, WebGL, CSS hardware acceleration, and the Screen and Window APIs. No downloads, native installers, or administrative permissions are needed. Your display data stays entirely on your computer.",
+    "testTypesTitle": "What You Can Test",
+    "pixelsCategory": "Pixel Integrity & Panel Defects",
+    "pixelsDesc": "Detect dead pixels, stuck subpixels, bright subpixels, and panel image retention (burn-in) across pure color fields.",
+    "colorCategory": "Color Reproduction & Grayscale",
+    "colorDesc": "Evaluate continuous gradients, color banding steps, color gamut boundaries, and multi-step grayscale ramps.",
+    "luminanceCategory": "Luminance, Contrast & Bleed",
+    "luminanceDesc": "Tune near-black and near-white clipping, check dark-room backlight bleeding, and assess full-screen brightness uniformity.",
+    "motionCategory": "Motion, Response & Gaming",
+    "motionDesc": "Check ghosting trails, evaluate pixel overdrive settings, measure V-Sync refresh rate (Hz), and inspect for screen tearing.",
+    "toolsCategory": "Hardware Diagnostics & Calculators",
+    "toolsDesc": "Inspect detected screen metrics (DPR, color depth), calculate PPI and optimal viewing distances, compare displays, and test multi-touch.",
+    "openSourceTitle": "Open & Community-Driven",
+    "openSourceText": "Monitor Tester is an open-source project. You can inspect the source code, report rendering bugs, suggest new test patterns, or contribute directly on GitHub."
   },
   "Terms": {
-    "metaTitle": "Terms of Use | Monitor Tester",
-    "metaDescription": "Terms of use and disclaimer for the Monitor Tester browser-based display testing utility.",
+    "metaTitle": "Terms of Use — Monitor Tester",
+    "metaDescription": "Terms of use and disclaimer for the Monitor Tester display testing utility.",
+    "eyebrow": "TERMS & DISCLAIMER",
     "title": "Terms of Use",
-    "intro": "By accessing and using Monitor Tester, you agree to these Terms of Use. If you do not agree, please discontinue using the utility.",
-    "useLicense": "Usage & Permitted Use",
-    "useLicenseDesc": "Monitor Tester is provided free of charge for personal and commercial inspection of monitors, laptop screens, and connected displays. All test patterns and algorithms are executed directly within your client browser without server-side data processing.",
-    "disclaimer": "Diagnostic Disclaimer",
-    "disclaimerDesc": "Monitor Tester provides visual inspection tools based on web browser capabilities. It is designed to assist user observation and cannot replace hardware-calibrated optical sensors (such as colorimeters or spectrophotometers). Results are indicative and should be confirmed with manufacturer tools before filing warranty claims.",
-    "limitations": "Limitation of Liability",
-    "limitationsDesc": "In no event shall Monitor Tester or its contributors be liable for any damages arising out of the use or inability to use this web utility, including any perceived display defects or hardware warranty determinations.",
-    "localExecution": "Client-Side Processing",
-    "localExecutionDesc": "All diagnostic calculations, frame timing measurements, and observation logs run entirely on your local machine. No display diagnostics or usage metrics are transmitted or stored remotely."
+    "description": "Please review the following terms and guidelines for using the Monitor Tester web utility and its diagnostic tools.",
+    "lastUpdated": "Last updated: September 2026",
+    "acceptanceTitle": "Acceptance of Terms",
+    "acceptanceText": "By accessing and using Monitor Tester, you acknowledge and agree to these terms. If you do not agree with any part of these terms, please discontinue use of the website.",
+    "natureOfServiceTitle": "Informational & Visual Testing Scope",
+    "natureOfServiceText": "Monitor Tester is an open web utility designed to assist users in visually evaluating display panels using browser-renderable test patterns, motion simulations, and client-side calculations. These tests are intended for visual screening and self-diagnosis.",
+    "noCalibrationTitle": "Not a Replacement for Hardware Colorimeters",
+    "noCalibrationText": "Browser-based software cannot replace physical spectrophotometers, hardware colorimeters (such as Calibrite or Datacolor Spyder), or optical oscilloscopes. Monitor Tester does not generate ICC color profiles, read physical photometric nits, or certify absolute color accuracy (Delta-E).",
+    "disclaimerTitle": "Disclaimer of Warranties",
+    "disclaimerText": "Monitor Tester is provided on an 'AS IS' and 'AS AVAILABLE' basis without warranties of any kind, whether express or implied. While we strive for precision, test results may vary based on operating system display scaling, GPU driver configurations, browser hardware acceleration, and ambient lighting conditions.",
+    "manufacturerTitle": "Manufacturer Warranty Policies",
+    "manufacturerText": "Display manufacturers enforce their own specific warranty terms regarding pixel defects (such as ISO 9241-307 Class 1 or Class 2 standards, which often define minimum thresholds of stuck or dead subpixels before an RMA is authorized). Identifying a defect on Monitor Tester does not automatically guarantee warranty replacement by your device manufacturer.",
+    "openSourceTitle": "Open Source License",
+    "openSourceText": "The underlying source code of Monitor Tester is licensed under the open-source MIT License. You are free to inspect, review, and fork the source code in accordance with the license."
   },
   "Contact": {
-    "metaTitle": "Contact & Support | Monitor Tester",
-    "metaDescription": "Direct contact channels, issue tracker, and contribution guide for Monitor Tester.",
-    "title": "Contact & Support",
-    "intro": "Have feedback, found a bug, or want to contribute to Monitor Tester? Here are the official ways to get in touch with the project.",
-    "reportBug": "Report a Bug or Issue",
-    "reportBugDesc": "Found an issue with a test pattern or browser compatibility? Open an issue on GitHub with your browser version, OS, and display specs.",
-    "contribute": "Contribute Code or Tests",
-    "contributeDesc": "Monitor Tester is an open-source project. Pull requests for new test patterns, localization improvements, and bug fixes are welcome.",
-    "directEmail": "Direct Inquiries",
-    "directEmailDesc": "For general inquiries, partnerships, or direct questions about the project, reach out via email:"
+    "metaTitle": "Contact & Support — Monitor Tester",
+    "metaDescription": "Get in touch with the Monitor Tester open-source project. Report bugs, suggest test patterns, or ask questions.",
+    "eyebrow": "CONTACT & SUPPORT",
+    "title": "Contact & Feedback",
+    "description": "Have feedback, found a display discrepancy, or want to suggest a new test pattern? Here are the best ways to reach the project.",
+    "githubTitle": "GitHub Issue Tracker",
+    "githubDesc": "Report bugs, browser rendering issues, or request new display test patterns on our public GitHub repository.",
+    "githubAction": "Open an Issue on GitHub →",
+    "contributeTitle": "Contribute Code & Guides",
+    "contributeDesc": "Monitor Tester is open source. Pull requests for test improvements, performance optimizations, and translation corrections are warmly welcomed.",
+    "contributeAction": "View GitHub Repository →",
+    "emailTitle": "Direct Project Inquiries",
+    "emailDesc": "For general inquiries, collaborations, or private feedback regarding the project, feel free to reach out directly via email.",
+    "faqTitle": "Check Common Questions",
+    "faqDesc": "Looking for quick guidance on how browser tests work or what dead pixels are? Check our comprehensive FAQ.",
+    "faqAction": "Read the FAQ →"
   },
   "Tools": {
     "metaTitle": "디스플레이 도구 및 계산기 | Monitor Tester",
@@ -1620,5 +1671,9 @@
       "knowledgeBase": "디스플레이 기술 지식베이스 탐색",
       "testLibrary": "전체 테스트 라이브러리 둘러보기"
     }
+  },
+  "KnowledgeBase": {
+    "metaTitle": "디스플레이 지식 백과 – 패널 기술, 용어 및 화면 교정 가이드",
+    "metaDescription": "IPS, OLED, VA, TN 패널 기술의 차이, 각종 화면 결함의 원인, 캘리브레이션 원리를 총정리한 가이드."
   }
 }

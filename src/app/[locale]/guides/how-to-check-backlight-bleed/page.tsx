@@ -1,17 +1,19 @@
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
 import { Link } from "@/i18n/routing";
 import { ArrowRight, Moon } from "lucide-react";
 
+import { generateSeoMetadata } from "@/lib/seo";
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  await params;
-  return {
-    title: "How to Check Backlight Bleed vs IPS Glow",
-    description: "Learn how to differentiate true backlight bleed from normal IPS glow, proper dark room testing methods, and when to request a replacement.",
-    alternates: {
-      canonical: "/guides/how-to-check-backlight-bleed"
-    }
-  };
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Guides.backlightBleedConcept" });
+  return generateSeoMetadata(
+    "/guides/how-to-check-backlight-bleed",
+    t("metaTitle"),
+    t("metaDescription"),
+    locale
+  );
 }
 
 export default async function BacklightBleedGuidePage({ params }: { params: Promise<{ locale: string }> }) {

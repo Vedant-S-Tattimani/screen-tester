@@ -1,12 +1,13 @@
-import { MetadataRoute } from 'next'
- 
+import { MetadataRoute } from 'next';
+import { getBaseUrl } from '@/lib/seo';
+
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://screen-tester-mu.vercel.app';
+  const baseUrl = getBaseUrl();
   return {
     rules: {
       userAgent: '*',
       allow: '/',
     },
     sitemap: `${baseUrl}/sitemap.xml`,
-  }
+  };
 }

@@ -11,7 +11,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "TestPages.dead-pixel-test" });
-  return generateSeoMetadata("/tests/dead-pixel-test", t("metaTitle"), t("metaDescription"));
+  return generateSeoMetadata("/tests/dead-pixel-test", t("metaTitle"), t("metaDescription"), locale);
 }
 
 const COLORS = ["#000000", "#FFFFFF", "#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF"];

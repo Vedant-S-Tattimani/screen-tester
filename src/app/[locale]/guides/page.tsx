@@ -3,16 +3,17 @@ import { setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
 import { TestRow } from "@/components/layout/TestRow";
 import { getGuidesByCategory } from "@/data/guides";
+import { generateSeoMetadata } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const tGuides = await getTranslations({ locale, namespace: "Guides" });
-  return {
-    title: tGuides("pageTitle") || "Display Testing Guides & Concepts",
-    alternates: {
-      canonical: "/guides"
-    }
-  };
+  return generateSeoMetadata(
+    "/guides",
+    tGuides("pageTitle") || "Display Testing Guides & Concepts",
+    tGuides("pageSubtitle") || "Comprehensive technical guides and testing walkthroughs for monitors, laptop displays, TVs, and mobile screens.",
+    locale
+  );
 }
 
 export default async function GuidesPage({ params }: { params: Promise<{ locale: string }> }) {

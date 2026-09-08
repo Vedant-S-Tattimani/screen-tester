@@ -2,18 +2,12 @@ import { getTranslations } from "next-intl/server";
 import { setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
 import { InspectionHub } from "./InspectionHub";
+import { generateSeoMetadata } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Inspection.hub" });
-  
-  return {
-    title: t("metaTitle"),
-    description: t("metaDescription"),
-    alternates: {
-      canonical: "/monitor-inspection"
-    }
-  };
+  return generateSeoMetadata("/monitor-inspection", t("metaTitle"), t("metaDescription"), locale);
 }
 
 export default async function MonitorInspectionPage({ params }: { params: Promise<{ locale: string }> }) {

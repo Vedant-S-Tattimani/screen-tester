@@ -2,10 +2,10 @@ import { MetadataRoute } from 'next';
 import { routing } from '@/i18n/routing';
 import { monitorTests } from '@/data/tests';
 import { monitorGuides } from '@/data/guides';
-
-const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://screen-tester-mu.vercel.app';
+import { getBaseUrl } from '@/lib/seo';
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = getBaseUrl();
   const sitemapEntries: MetadataRoute.Sitemap = [];
 
   const coreRoutes = [
@@ -15,12 +15,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/monitor-inspection', priority: 1.0, changeFrequency: 'monthly' as const },
     { path: '/monitor-inspection/diagnostic', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/monitor-inspection/general', priority: 0.9, changeFrequency: 'monthly' as const },
+    { path: '/monitor-inspection/new', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/monitor-inspection/used', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/monitor-inspection/gaming', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/monitor-inspection/oled', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/monitor-inspection/laptop', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/monitor-inspection/tv', priority: 0.9, changeFrequency: 'monthly' as const },
-    { path: '/monitor-inspection/summary', priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/guides', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/knowledge-base', priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/faq', priority: 0.6, changeFrequency: 'monthly' as const },
@@ -50,6 +50,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
         acc[altLocale] = `${baseUrl}/${altLocale}${route.path}`;
         return acc;
       }, {} as Record<string, string>);
+
+      // Add x-default
+      alternates['x-default'] = `${baseUrl}/en${route.path}`;
 
       sitemapEntries.push({
         url: `${baseUrl}/${locale}${route.path}`,

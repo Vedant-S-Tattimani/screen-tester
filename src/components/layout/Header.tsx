@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import "@/components/ExtensionCleanup";
 import { useState, useRef, useEffect } from "react";
 import { Link, usePathname } from "@/i18n/routing";
@@ -54,21 +55,31 @@ export function Header() {
     <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-xs border-b border-gray-200/80 h-16">
       <div className="mx-auto flex h-full max-w-[1360px] items-center justify-between px-6 sm:px-8 lg:px-12">
         
-        {/* Brand: MONITOR TESTER + Tagline */}
+        {/* Brand: Logo + SCREEN TESTER + Tagline */}
         <Link 
           href="/" 
-          className="inline-flex flex-col group select-none py-1 focus-visible:ring-2 focus-visible:ring-gray-900 rounded" 
+          className="inline-flex items-center gap-2.5 sm:gap-3 group select-none py-1 focus-visible:ring-2 focus-visible:ring-gray-900 rounded" 
           onClick={() => {
             setMobileOpen(false);
             setOpenDropdown(null);
           }}
         >
-          <span className="font-mono text-[13px] sm:text-[14px] font-bold uppercase tracking-[0.14em] text-gray-950 block leading-tight">
-            MONITOR TESTER
-          </span>
-          <span className="text-[8.5px] font-mono font-medium tracking-[0.2em] text-gray-500 block uppercase">
-            CHECK · INSPECT · UNDERSTAND
-          </span>
+          <Image
+            src="/logo.png"
+            alt="Screen Tester Logo"
+            width={38}
+            height={38}
+            priority
+            className="w-8 h-8 sm:w-9 sm:h-9 object-contain shrink-0 aspect-square"
+          />
+          <div className="flex flex-col">
+            <span className="font-mono text-[13px] sm:text-[14px] font-bold uppercase tracking-[0.14em] text-gray-950 block leading-tight">
+              SCREEN TESTER
+            </span>
+            <span className="text-[8.5px] font-mono font-medium tracking-[0.2em] text-gray-500 block uppercase">
+              CHECK · INSPECT · UNDERSTAND
+            </span>
+          </div>
         </Link>
 
         {/* Center Navigation Dropdowns */}
