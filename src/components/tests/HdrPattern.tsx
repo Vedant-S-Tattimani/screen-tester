@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
-import { SunMedium, CheckCircle, XCircle, Layers, Sliders, Info, ShieldCheck, Eye, Moon } from "lucide-react";
+import { SunMedium, CheckCircle, Monitor, Layers, Sliders, Info, ShieldCheck, Eye, Moon } from "lucide-react";
 
 interface HdrPatternProps {
   testId?: string;
@@ -141,8 +141,11 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
                   <CheckCircle className="w-3.5 h-3.5" /> High Dynamic Range Active
                 </span>
               ) : (
-                <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
-                  <XCircle className="w-3.5 h-3.5" /> SDR Pipeline (Standard Dynamic Range)
+                <span 
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-500/20 text-slate-200 border border-slate-500/30"
+                  title="SDR (Standard Dynamic Range) is normal for standard displays. For HDR-capable monitors, press Win + Alt + B in Windows to toggle HDR."
+                >
+                  <Monitor className="w-3.5 h-3.5 text-slate-400" /> SDR Pipeline (Standard Dynamic Range)
                 </span>
               )}
             </div>
