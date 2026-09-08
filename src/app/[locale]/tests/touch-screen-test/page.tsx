@@ -10,8 +10,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "Tests" });
-  return generateSeoMetadata("/tests/touch-screen-test", t("touchScreen.title"), t("touchScreen.description"));
+  const t = await getTranslations({ locale, namespace: "TouchScreenTest" });
+  return generateSeoMetadata("/tests/touch-screen-test", t("metaTitle"), t("metaDescription"));
 }
 
 export default async function TouchScreenTestPage({
@@ -21,16 +21,16 @@ export default async function TouchScreenTestPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations({ locale, namespace: "Tests" });
+  const t = await getTranslations({ locale, namespace: "TouchScreenTest" });
   
   return (
     <TestWrapper
-      title={t("touchScreen.title")}
-      description={t("touchScreen.description")}
-      instructions={t("touchScreen.instructions")}
+      title={t("title")}
+      description={<p>{t("description")}</p>}
+      instructions={<p>{t("disclaimer")}</p>}
       testId="touch-screen-test"
     >
-      <TouchScreenPattern />
+      <TouchScreenPattern testId="touch-screen-test" />
     </TestWrapper>
   );
 }

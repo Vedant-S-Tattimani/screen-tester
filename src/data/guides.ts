@@ -64,6 +64,12 @@ export const monitorGuides: MonitorGuide[] = [
     category: "concept",
     primaryIntent: "how to fix backlight bleed",
     relatedTestIds: ["backlight-bleed-test", "uniformity-test"]
+  },
+  {
+    id: "monitor-viewing-angles-explained",
+    category: "concept",
+    primaryIntent: "monitor viewing angles explained",
+    relatedTestIds: ["viewing-angle-test", "color-test", "uniformity-test"]
   }
 ];
 

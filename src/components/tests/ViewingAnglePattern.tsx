@@ -1,96 +1,467 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 
 interface ViewingAnglePatternProps {
   testId?: string;
 }
 
-type Mode = "wheel" | "bars" | "grid";
+type PatternMode = 
+  | "edgeCenter"
+  | "neutralGray"
+  | "colorBlocks"
+  | "skinTones"
+  | "grayscaleRamp"
+  | "shadowDetail"
+  | "blackField"
+  | "whiteField";
 
-export function ViewingAnglePattern({ testId }: ViewingAnglePatternProps) {
-  const { registerNavigation } = useTestContext();
-  const [mode, setMode] = useState<Mode>("wheel");
+type ObservationChoice = "PASS" | "CHECK" | "ISSUE" | "UNSURE" | null;
+
+const PATTERNS: PatternMode[] = [
+  "edgeCenter",
+  "neutralGray",
+  "colorBlocks",
+  "skinTones",
+  "grayscaleRamp",
+  "shadowDetail",
+  "blackField",
+  "whiteField"
+];
+
+// Standard Macbeth Skin Tone & Reference Swatches
+const REFERENCE_SWATCHES = [
+  { name: "Light Skin", hex: "#c29682", rgb: "194, 150, 130" },
+  { name: "Dark Skin", hex: "#735244", rgb: "115, 82, 68" },
+  { name: "Blue Sky", hex: "#627a9d", rgb: "98, 122, 157" },
+  { name: "Foliage", hex: "#576c43", rgb: "87, 108, 67" },
+  { name: "Orange", hex: "#d67e2c", rgb: "214, 126, 44" },
+  { name: "Neutral Gray", hex: "#7a7a7a", rgb: "122, 122, 122" }
+];
+
+export function ViewingAnglePattern({ testId = "viewing-angle-test" }: ViewingAnglePatternProps) {
+  const t = useTranslations("ViewingAngleTest");
+  const { 
+    registerNavigation, 
+    observation,
+    setObservation
+  } = useTestContext();
+
+  const [patternIndex, setPatternIndex] = useState(0);
+  const [axis, setAxis] = useState<"horizontal" | "vertical">("horizontal");
+
+  const currentMode = PATTERNS[patternIndex];
+
+  const nextPattern = useCallback(() => {
+    setPatternIndex((idx) => (idx + 1) % PATTERNS.length);
+  }, []);
+
+  const prevPattern = useCallback(() => {
+    setPatternIndex((idx) => (idx - 1 + PATTERNS.length) % PATTERNS.length);
+  }, []);
+
+  const resetAll = useCallback(() => {
+    setPatternIndex(0);
+    setAxis("horizontal");
+  }, []);
 
   useEffect(() => {
     registerNavigation({
-      next: () => setMode(m => m === "wheel" ? "bars" : m === "bars" ? "grid" : "wheel"),
-      prev: () => setMode(m => m === "wheel" ? "grid" : m === "grid" ? "bars" : "wheel"),
-      reset: () => setMode("wheel"),
+      next: nextPattern,
+      prev: prevPattern,
+      reset: resetAll,
     });
-  }, [registerNavigation]);
+  }, [registerNavigation, nextPattern, prevPattern, resetAll]);
+
+  // Map observation selection to context
+  const handleSelectObservation = (val: ObservationChoice) => {
+    setObservation(val);
+  };
 
   return (
     <>
-      <div className="absolute inset-0 bg-[#262626] flex items-center justify-center p-4 sm:p-8 overflow-hidden">
-        {mode === "wheel" && (
-          <div className="max-w-md w-full aspect-square bg-[#777777] rounded-full relative shadow-2xl overflow-hidden border-4 border-[#333333]">
-            {/* Center Target Ring */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-56 h-56 rounded-full border-[16px] border-black flex items-center justify-center">
-                <div className="w-28 h-28 rounded-full bg-white shadow-[0_0_40px_white]" />
-              </div>
-            </div>
-
-            {/* Color Wedges */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-1/2 bg-red-600 origin-bottom" style={{ transform: 'translateX(-50%) rotate(0deg)' }} />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-1/2 bg-emerald-600 origin-bottom" style={{ transform: 'translateX(-50%) rotate(120deg)' }} />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-1/2 bg-blue-600 origin-bottom" style={{ transform: 'translateX(-50%) rotate(240deg)' }} />
-            
-            {/* Center Cap */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-52 h-52 rounded-full bg-[#777777] z-10 flex items-center justify-center border-4 border-[#333333]">
-                <div className="w-14 h-14 rounded-full bg-white animate-pulse shadow-md" />
-              </div>
-            </div>
+      <div 
+        className="absolute inset-0 bg-black flex flex-col items-center justify-center p-3 sm:p-6 select-none overflow-hidden"
+        tabIndex={0}
+      >
+        {/* ========================================================= */}
+        {/* TOP NOTICE: BROWSER LIMITATION & INSTRUCTION BANNER      */}
+        {/* ========================================================= */}
+        <div className="absolute top-3 left-4 right-4 z-20 flex flex-col sm:flex-row items-center justify-between gap-2 px-4 py-2 rounded-xl bg-black/80 backdrop-blur-md border border-white/15 text-white shadow-xl pointer-events-auto max-w-5xl mx-auto">
+          <div className="flex items-center gap-2 text-xs">
+            <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30 shrink-0">
+              {t("resultBadge")}
+            </span>
+            <span className="text-white/80 line-clamp-1 hidden sm:inline">
+              {t("instructions")}
+            </span>
           </div>
-        )}
 
-        {mode === "bars" && (
-          <div className="w-full max-w-2xl h-64 flex flex-col rounded-xl overflow-hidden shadow-2xl border border-white/10">
-            <div className="flex-1 bg-red-600 flex items-center justify-center text-xs font-mono font-bold text-white uppercase tracking-widest">Red Shift Target</div>
-            <div className="flex-1 bg-emerald-600 flex items-center justify-center text-xs font-mono font-bold text-black uppercase tracking-widest">Green Shift Target</div>
-            <div className="flex-1 bg-blue-600 flex items-center justify-center text-xs font-mono font-bold text-white uppercase tracking-widest">Blue Shift Target</div>
-            <div className="flex-1 bg-neutral-500 flex items-center justify-center text-xs font-mono font-bold text-black uppercase tracking-widest">Neutral Gamma Reference</div>
-          </div>
-        )}
-
-        {mode === "grid" && (
-          <div className="w-full max-w-xl aspect-square grid grid-cols-4 grid-rows-4 gap-2 p-2 bg-[#1a1a1a] rounded-xl border border-white/10">
-            {Array.from({ length: 16 }).map((_, i) => (
-              <div 
-                key={i} 
-                className="rounded flex items-center justify-center font-mono text-xs font-semibold"
-                style={{ 
-                  backgroundColor: i % 2 === 0 ? "#ffffff" : "#111111",
-                  color: i % 2 === 0 ? "#000000" : "#ffffff"
-                }}
+          <div className="flex items-center gap-2 shrink-0">
+            <span className="text-[11px] font-mono text-white/60 hidden md:inline">
+              {t("axis.label")}:
+            </span>
+            <div className="flex bg-white/10 rounded-lg p-0.5 border border-white/10 text-xs">
+              <button
+                type="button"
+                onClick={() => setAxis("horizontal")}
+                className={`px-2.5 py-1 rounded-md text-[11px] font-medium transition-all ${
+                  axis === "horizontal" 
+                    ? "bg-white text-black font-semibold shadow-xs" 
+                    : "text-white/70 hover:text-white"
+                }`}
               >
-                {i + 1}
+                {t("axis.horizontal")}
+              </button>
+              <button
+                type="button"
+                onClick={() => setAxis("vertical")}
+                className={`px-2.5 py-1 rounded-md text-[11px] font-medium transition-all ${
+                  axis === "vertical" 
+                    ? "bg-white text-black font-semibold shadow-xs" 
+                    : "text-white/70 hover:text-white"
+                }`}
+              >
+                {t("axis.vertical")}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* ========================================================= */}
+        {/* PATTERN 1: EDGE VS CENTER REFERENCE TARGETS              */}
+        {/* ========================================================= */}
+        {currentMode === "edgeCenter" && (
+          <div className="w-full h-full relative flex items-center justify-center p-6">
+            {/* Guide arrow hints for axis */}
+            <div className="absolute inset-x-12 top-1/2 -translate-y-1/2 flex justify-between pointer-events-none opacity-40">
+              <span className="text-3xl font-mono">◂</span>
+              <span className="text-3xl font-mono">▸</span>
+            </div>
+
+            {/* Corner Patches */}
+            <div className="absolute top-16 left-6 flex flex-col items-center">
+              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl bg-[#808080] border-4 border-white/20 shadow-2xl flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-red-600 shadow-md" />
               </div>
-            ))}
+              <span className="text-[10px] font-mono text-white/50 mt-1.5">{t("cornerLabel")}</span>
+            </div>
+
+            <div className="absolute top-16 right-6 flex flex-col items-center">
+              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl bg-[#808080] border-4 border-white/20 shadow-2xl flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-emerald-600 shadow-md" />
+              </div>
+              <span className="text-[10px] font-mono text-white/50 mt-1.5">{t("cornerLabel")}</span>
+            </div>
+
+            <div className="absolute bottom-16 left-6 flex flex-col items-center">
+              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl bg-[#808080] border-4 border-white/20 shadow-2xl flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-blue-600 shadow-md" />
+              </div>
+              <span className="text-[10px] font-mono text-white/50 mt-1.5">{t("cornerLabel")}</span>
+            </div>
+
+            <div className="absolute bottom-16 right-6 flex flex-col items-center">
+              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl bg-[#808080] border-4 border-white/20 shadow-2xl flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-amber-500 shadow-md" />
+              </div>
+              <span className="text-[10px] font-mono text-white/50 mt-1.5">{t("cornerLabel")}</span>
+            </div>
+
+            {/* Direct Normal Center Reference Target */}
+            <div className="flex flex-col items-center z-10">
+              <div className="w-40 h-40 sm:w-56 sm:h-56 rounded-3xl bg-[#808080] border-4 border-white/40 shadow-[0_0_50px_rgba(0,0,0,0.8)] flex flex-col items-center justify-center gap-3">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-full bg-red-600 shadow-sm" />
+                  <div className="w-8 h-8 rounded-full bg-emerald-600 shadow-sm" />
+                  <div className="w-8 h-8 rounded-full bg-blue-600 shadow-sm" />
+                  <div className="w-8 h-8 rounded-full bg-amber-500 shadow-sm" />
+                </div>
+                <div className="w-16 h-16 rounded-full bg-neutral-900 border-2 border-white/30 flex items-center justify-center">
+                  <div className="w-6 h-6 rounded-full bg-white shadow-xs" />
+                </div>
+              </div>
+              <span className="text-xs font-mono font-bold text-white mt-2 bg-white/10 px-3 py-1 rounded-full border border-white/15">
+                {t("centerLabel")}
+              </span>
+            </div>
+          </div>
+        )}
+
+        {/* ========================================================= */}
+        {/* PATTERN 2: NEUTRAL GRAY FULL FIELD (50% LUMINANCE)        */}
+        {/* ========================================================= */}
+        {currentMode === "neutralGray" && (
+          <div className="w-full h-full bg-[#808080] flex flex-col items-center justify-center relative">
+            <div className="max-w-md px-4 py-3 rounded-2xl bg-black/75 backdrop-blur-md text-white text-center border border-white/20 shadow-2xl">
+              <span className="text-xs font-mono font-bold block mb-1">50% Neutral Gray Field (RGB 128)</span>
+              <span className="text-[11px] text-white/80 leading-relaxed block">
+                Observe whether the edges or corners wash out into lighter silver (IPS glow) or shift color tone as you move your head.
+              </span>
+            </div>
+          </div>
+        )}
+
+        {/* ========================================================= */}
+        {/* PATTERN 3: PRIMARY & SECONDARY RGB BLOCKS                 */}
+        {/* ========================================================= */}
+        {currentMode === "colorBlocks" && (
+          <div className="w-full max-w-5xl h-[75%] grid grid-cols-3 grid-rows-2 gap-3 p-2">
+            <div className="bg-[#FF0000] rounded-2xl flex items-center justify-center shadow-lg border border-white/20">
+              <span className="px-3 py-1 rounded-lg bg-black/60 font-mono font-bold text-white text-xs">Red (RGB 255,0,0)</span>
+            </div>
+            <div className="bg-[#00FF00] rounded-2xl flex items-center justify-center shadow-lg border border-white/20">
+              <span className="px-3 py-1 rounded-lg bg-black/60 font-mono font-bold text-white text-xs">Green (RGB 0,255,0)</span>
+            </div>
+            <div className="bg-[#0000FF] rounded-2xl flex items-center justify-center shadow-lg border border-white/20">
+              <span className="px-3 py-1 rounded-lg bg-black/60 font-mono font-bold text-white text-xs">Blue (RGB 0,0,255)</span>
+            </div>
+            <div className="bg-[#FFFF00] rounded-2xl flex items-center justify-center shadow-lg border border-white/20">
+              <span className="px-3 py-1 rounded-lg bg-black/60 font-mono font-bold text-white text-xs">Yellow (R+G)</span>
+            </div>
+            <div className="bg-[#00FFFF] rounded-2xl flex items-center justify-center shadow-lg border border-white/20">
+              <span className="px-3 py-1 rounded-lg bg-black/60 font-mono font-bold text-white text-xs">Cyan (G+B)</span>
+            </div>
+            <div className="bg-[#FF00FF] rounded-2xl flex items-center justify-center shadow-lg border border-white/20">
+              <span className="px-3 py-1 rounded-lg bg-black/60 font-mono font-bold text-white text-xs">Magenta (R+B)</span>
+            </div>
+          </div>
+        )}
+
+        {/* ========================================================= */}
+        {/* PATTERN 4: MACBETH REFERENCE SKIN TONES & NATURAL SWATCHES */}
+        {/* ========================================================= */}
+        {currentMode === "skinTones" && (
+          <div className="w-full max-w-4xl h-[75%] flex flex-col items-center justify-center gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full h-full">
+              {REFERENCE_SWATCHES.map((swatch, i) => (
+                <div 
+                  key={i}
+                  className="rounded-2xl flex flex-col justify-between p-4 shadow-xl border border-white/20 transition-transform"
+                  style={{ backgroundColor: swatch.hex }}
+                >
+                  <span className="px-2 py-0.5 rounded bg-black/70 text-white font-mono text-xs w-fit">
+                    {swatch.name}
+                  </span>
+                  <span className="px-2 py-0.5 rounded bg-black/70 text-white/80 font-mono text-[10px] w-fit">
+                    RGB {swatch.rgb}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <span className="text-xs text-white/70 bg-black/60 px-4 py-1.5 rounded-full border border-white/10 font-mono text-center">
+              Skin tones are sensitive to subtle off-axis chromatic shift.
+            </span>
+          </div>
+        )}
+
+        {/* ========================================================= */}
+        {/* PATTERN 5: SMOOTH & STEPPED GRAYSCALE RAMP                 */}
+        {/* ========================================================= */}
+        {currentMode === "grayscaleRamp" && (
+          <div className="w-full max-w-4xl h-[75%] flex flex-col items-center justify-center gap-6 px-4">
+            {/* Stepped Wedge */}
+            <div className="w-full flex h-24 rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl">
+              {Array.from({ length: 16 }, (_, i) => {
+                const val = Math.round((i / 15) * 255);
+                const isDark = val < 128;
+                return (
+                  <div
+                    key={i}
+                    className="flex-1 h-full flex items-end justify-center pb-2 border-r border-white/10 last:border-r-0"
+                    style={{ backgroundColor: `rgb(${val}, ${val}, ${val})` }}
+                  >
+                    <span className={`text-[10px] font-mono font-bold ${isDark ? "text-white/70" : "text-black/70"}`}>
+                      {Math.round((i / 15) * 100)}%
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Continuous Gradient */}
+            <div className="w-full">
+              <div 
+                className="w-full h-20 rounded-2xl border-2 border-white/20 shadow-2xl relative"
+                style={{ background: "linear-gradient(to right, rgb(0,0,0), rgb(128,128,128), rgb(255,255,255))" }}
+              />
+              <div className="flex justify-between text-[11px] font-mono text-white/60 mt-1.5 px-2">
+                <span>0% Black (0)</span>
+                <span>50% Midtone (128)</span>
+                <span>100% White (255)</span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ========================================================= */}
+        {/* PATTERN 6: SHADOW & HIGHLIGHT DETAIL DISCRIMINATOR        */}
+        {/* ========================================================= */}
+        {currentMode === "shadowDetail" && (
+          <div className="w-full max-w-4xl h-[75%] grid grid-cols-1 sm:grid-cols-2 gap-4 p-2">
+            {/* Dark Low-Key Box */}
+            <div className="bg-black rounded-2xl border border-white/20 p-6 flex flex-col items-center justify-between shadow-2xl">
+              <span className="text-xs font-mono text-white/70 font-semibold uppercase tracking-wider">
+                Low-Key Shadow Detail
+              </span>
+              <div className="flex items-center gap-3">
+                <div className="w-16 h-16 rounded-xl bg-black border border-white/10 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded bg-[#080808]" />
+                </div>
+                <div className="w-16 h-16 rounded-xl bg-black border border-white/10 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded bg-[#101010]" />
+                </div>
+                <div className="w-16 h-16 rounded-xl bg-black border border-white/10 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded bg-[#181818]" />
+                </div>
+              </div>
+              <span className="text-[10px] font-mono text-white/50 text-center">
+                On VA panels, near-black targets will noticeably brighten off-axis.
+              </span>
+            </div>
+
+            {/* Bright High-Key Box */}
+            <div className="bg-white rounded-2xl border border-white/20 p-6 flex flex-col items-center justify-between shadow-2xl text-black">
+              <span className="text-xs font-mono text-black/70 font-semibold uppercase tracking-wider">
+                High-Key Highlight Detail
+              </span>
+              <div className="flex items-center gap-3">
+                <div className="w-16 h-16 rounded-xl bg-white border border-black/10 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded bg-[#f7f7f7]" />
+                </div>
+                <div className="w-16 h-16 rounded-xl bg-white border border-black/10 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded bg-[#efefef]" />
+                </div>
+                <div className="w-16 h-16 rounded-xl bg-white border border-black/10 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded bg-[#e5e5e5]" />
+                </div>
+              </div>
+              <span className="text-[10px] font-mono text-black/60 text-center">
+                Highlights should remain discernible without clipping into pure white.
+              </span>
+            </div>
+          </div>
+        )}
+
+        {/* ========================================================= */}
+        {/* PATTERN 7: FULL BLACK FIELD (0%)                           */}
+        {/* ========================================================= */}
+        {currentMode === "blackField" && (
+          <div className="w-full h-full bg-black flex flex-col items-center justify-center relative">
+            <div className="max-w-md px-4 py-3 rounded-2xl bg-white/10 backdrop-blur-md text-white text-center border border-white/15 shadow-2xl">
+              <span className="text-xs font-mono font-bold block mb-1">Full Black Field (0% Black)</span>
+              <span className="text-[11px] text-white/80 leading-relaxed block">
+                Look diagonally at the corners. IPS displays show a soft silver sheen (IPS glow) that shifts as you move. VA panels show moderate contrast drop. OLED remains pitch black.
+              </span>
+            </div>
+          </div>
+        )}
+
+        {/* ========================================================= */}
+        {/* PATTERN 8: FULL WHITE FIELD (100%)                         */}
+        {/* ========================================================= */}
+        {currentMode === "whiteField" && (
+          <div className="w-full h-full bg-white flex flex-col items-center justify-center relative text-black">
+            <div className="max-w-md px-4 py-3 rounded-2xl bg-black/75 backdrop-blur-md text-white text-center border border-white/20 shadow-2xl">
+              <span className="text-xs font-mono font-bold block mb-1">Full White Field (100% White)</span>
+              <span className="text-[11px] text-white/80 leading-relaxed block">
+                Inspect white point uniformity across wide angles. Look for pinkish, yellowish, or bluish tint shifts toward the edges.
+              </span>
+            </div>
           </div>
         )}
       </div>
 
-      <TestControlBar testId={testId} title="Viewing Angle & Off-Axis Gamma">
-        <div className="flex items-center gap-2">
-          <span className="text-xs font-medium text-muted-foreground uppercase tracking-widest hidden md:inline">Pattern</span>
-          <div className="flex gap-1 bg-muted/50 p-1 rounded-lg border border-border/50">
-            {(["wheel", "bars", "grid"] as Mode[]).map(m => (
-              <button
-                key={m}
-                onClick={() => setMode(m)}
-                className={`px-2.5 py-1 rounded text-xs font-medium uppercase transition-colors ${
-                  mode === m ? "bg-foreground text-background shadow-sm" : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {m === "wheel" ? "Color Wheel" : m === "bars" ? "Color Bars" : "Checkerboard"}
-              </button>
-            ))}
+      {/* ========================================================= */}
+      {/* TEST CONTROL BAR WITH HONEST USER-OBSERVATION CONTROLS     */}
+      {/* ========================================================= */}
+      <TestControlBar testId={testId} title={t("title")}>
+        <div className="flex flex-wrap items-center gap-2">
+          {/* Pattern Selector */}
+          <div className="flex items-center bg-gray-100 p-0.5 rounded-lg border border-gray-200 text-xs">
+            <button
+              type="button"
+              onClick={prevPattern}
+              className="px-2 py-1 text-gray-700 hover:text-black font-mono"
+              title="Previous pattern"
+            >
+              ◂
+            </button>
+            <span className="px-2 py-1 text-[11px] font-semibold text-gray-900 border-x border-gray-200">
+              {t(`modes.${currentMode}`)} ({patternIndex + 1}/{PATTERNS.length})
+            </span>
+            <button
+              type="button"
+              onClick={nextPattern}
+              className="px-2 py-1 text-gray-700 hover:text-black font-mono"
+              title="Next pattern"
+            >
+              ▸
+            </button>
           </div>
+
+          {/* User Observation 5-Point Selector */}
+          <div className="flex items-center gap-1 border-l border-gray-200 pl-2 text-xs">
+            <span className="text-[11px] font-mono text-gray-500 hidden xl:inline mr-1">
+              {t("observationPrompt")}
+            </span>
+            <button
+              type="button"
+              onClick={() => handleSelectObservation(observation === "PASS" ? null : "PASS")}
+              className={`px-2 py-1 rounded-md text-[11px] font-medium transition-all ${
+                observation === "PASS"
+                  ? "bg-emerald-600 text-white font-semibold shadow-xs"
+                  : "bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200"
+              }`}
+            >
+              ✓ {t("observations.normal")}
+            </button>
+            <button
+              type="button"
+              onClick={() => handleSelectObservation(observation === "CHECK" ? null : "CHECK")}
+              className={`px-2 py-1 rounded-md text-[11px] font-medium transition-all ${
+                observation === "CHECK"
+                  ? "bg-blue-600 text-white font-semibold shadow-xs"
+                  : "bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200"
+              }`}
+            >
+              {t("observations.slight")}
+            </button>
+            <button
+              type="button"
+              onClick={() => handleSelectObservation(observation === "ISSUE" ? null : "ISSUE")}
+              className={`px-2 py-1 rounded-md text-[11px] font-medium transition-all ${
+                observation === "ISSUE"
+                  ? "bg-amber-600 text-white font-semibold shadow-xs"
+                  : "bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200"
+              }`}
+            >
+              ⚠ {t("observations.noticeable")}
+            </button>
+            <button
+              type="button"
+              onClick={() => handleSelectObservation(observation === "UNSURE" ? null : "UNSURE")}
+              className={`px-2 py-1 rounded-md text-[11px] font-medium transition-all ${
+                observation === "UNSURE"
+                  ? "bg-purple-600 text-white font-semibold shadow-xs"
+                  : "bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200"
+              }`}
+            >
+              ? {t("observations.unsure")}
+            </button>
+          </div>
+
+          {/* Guide Backlink */}
+          <Link
+            href="/guides/monitor-viewing-angles-explained"
+            className="text-[11px] font-medium text-blue-600 hover:text-blue-800 hover:underline border-l border-gray-200 pl-2 hidden lg:inline"
+          >
+            {t("backToGuide")} →
+          </Link>
         </div>
       </TestControlBar>
     </>

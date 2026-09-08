@@ -10,34 +10,25 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "TestPages.brightness-test" });
+  const t = await getTranslations({ locale, namespace: "BrightnessTest" });
   return generateSeoMetadata("/tests/brightness-test", t("metaTitle"), t("metaDescription"));
 }
 
-export default async function BrightnessTest({
+export default async function BrightnessTestPage({
   params
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations({ locale, namespace: "TestPages.brightness-test" });
+  const t = await getTranslations({ locale, namespace: "BrightnessTest" });
 
   return (
-    <TestWrapper testId="brightness-test"
+    <TestWrapper 
+      testId="brightness-test"
       title={t("title")}
-      description={
-        <>
-          <p>{t("description_p1")}</p>
-        </>
-      }
-      instructions={
-        <ul className="list-disc pl-5 space-y-1">
-          {t.raw("instructions").map((item: string, i: number) => (
-            <li key={i} dangerouslySetInnerHTML={{ __html: item }} />
-          ))}
-        </ul>
-      }
+      description={<p>{t("description")}</p>}
+      instructions={<p>{t("disclaimer")}</p>}
     >
       <BrightnessPattern testId="brightness-test" />
     </TestWrapper>

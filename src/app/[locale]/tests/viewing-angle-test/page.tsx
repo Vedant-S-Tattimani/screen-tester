@@ -10,8 +10,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "Tests" });
-  return generateSeoMetadata("/tests/viewing-angle-test", t("viewingAngle.title"), t("viewingAngle.description"));
+  const t = await getTranslations({ locale, namespace: "ViewingAngleTest" });
+  return generateSeoMetadata("/tests/viewing-angle-test", t("metaTitle"), t("metaDescription"));
 }
 
 export default async function ViewingAngleTestPage({
@@ -21,16 +21,16 @@ export default async function ViewingAngleTestPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations({ locale, namespace: "Tests" });
+  const t = await getTranslations({ locale, namespace: "ViewingAngleTest" });
   
   return (
     <TestWrapper
-      title={t("viewingAngle.title")}
-      description={t("viewingAngle.description")}
-      instructions={t("viewingAngle.instructions")}
+      title={t("title")}
+      description={t("description")}
+      instructions={t("instructions")}
       testId="viewing-angle-test"
     >
-      <ViewingAnglePattern />
+      <ViewingAnglePattern testId="viewing-angle-test" />
     </TestWrapper>
   );
 }
