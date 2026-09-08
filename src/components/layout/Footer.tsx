@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import logoImg from "../../../public/logo.png";
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import { ArrowRight } from "lucide-react";
@@ -25,7 +26,7 @@ export function Footer() {
               className="inline-flex items-center gap-2.5 group select-none py-0.5 focus-visible:ring-2 focus-visible:ring-gray-900 rounded"
             >
               <Image
-                src="/logo.png"
+                src={logoImg}
                 alt="Screen Tester Logo"
                 width={36}
                 height={36}

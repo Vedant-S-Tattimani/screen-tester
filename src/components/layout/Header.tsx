@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import logoImg from "../../../public/logo.png";
 import "@/components/ExtensionCleanup";
 import { useState, useRef, useEffect } from "react";
 import { Link, usePathname } from "@/i18n/routing";
@@ -65,7 +66,7 @@ export function Header() {
           }}
         >
           <Image
-            src="/logo.png"
+            src={logoImg}
             alt="Screen Tester Logo"
             width={38}
             height={38}
