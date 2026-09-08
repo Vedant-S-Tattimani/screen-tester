@@ -1,13 +1,13 @@
-import { MetadataRoute } from 'next'
-import { BASE_URL } from '@/lib/seo'
- 
+import { MetadataRoute } from 'next';
+import { getBaseUrl } from '@/lib/seo';
+
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = BASE_URL;
+  const baseUrl = getBaseUrl();
   return {
     rules: {
       userAgent: '*',
       allow: '/',
     },
     sitemap: `${baseUrl}/sitemap.xml`,
-  }
+  };
 }

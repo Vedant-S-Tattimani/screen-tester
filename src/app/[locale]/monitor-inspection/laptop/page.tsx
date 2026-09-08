@@ -10,12 +10,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const workflow = getWorkflowById("laptop");
   if (!workflow) return {};
   
-  return generateSeoMetadata(
-    "/monitor-inspection/laptop",
-    workflow.title,
-    workflow.shortDescription,
-    locale
-  );
+return generateSeoMetadata("/monitor-inspection/laptop", workflow.title, workflow.shortDescription, locale);
+
 }
 
 export default async function LaptopDisplayInspectionPage({ params }: { params: Promise<{ locale: string }> }) {

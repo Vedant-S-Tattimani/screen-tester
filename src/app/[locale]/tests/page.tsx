@@ -3,17 +3,14 @@ import { setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
 import { TestLibrary } from "@/components/layout/TestLibrary";
 import { getTestsByCategory, type TestCategory, TEST_KEY_MAP } from "@/data/tests";
+import { generateSeoMetadata } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Home" });
+  const tLib = await getTranslations({ locale, namespace: "TestLibrary" });
   
-  return {
-    title: t("browseTests"),
-    alternates: {
-      canonical: "/tests"
-    }
-  };
+  return generateSeoMetadata("/tests", t("browseTests"), tLib("subtitle"), locale);
 }
 
 export default async function TestsPage({ params }: { params: Promise<{ locale: string }> }) {

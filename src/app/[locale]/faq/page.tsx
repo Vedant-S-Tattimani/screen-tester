@@ -3,17 +3,12 @@ import { Metadata } from "next";
 import { FaqClient } from "./FaqClient";
 import { Link } from "@/i18n/routing";
 import { ArrowRight, HelpCircle } from "lucide-react";
+import { generateSeoMetadata } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Faq" });
-  return {
-    title: t("metaTitle"),
-    description: t("metaDescription"),
-    alternates: {
-      canonical: "/faq"
-    }
-  };
+  return generateSeoMetadata("/faq", t("metaTitle"), t("metaDescription"), locale);
 }
 
 export default async function FaqPage({ params }: { params: Promise<{ locale: string }> }) {

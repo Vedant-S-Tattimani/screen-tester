@@ -1,15 +1,17 @@
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
 import { DiagnosticClient } from "./DiagnosticClient";
+import { generateSeoMetadata } from "@/lib/seo";
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: "Display Diagnostic Wizard",
-    description: "Symptom-based display diagnostic guide. Select visual defects to get targeted test recommendations.",
-    alternates: {
-      canonical: "/monitor-inspection/diagnostic"
-    }
-  };
+export async function generateMetadata({ params }: { params?: Promise<{ locale: string }> }): Promise<Metadata> {
+  const locale = params ? (await params).locale : undefined;
+  const t = await getTranslations({ locale: locale || "en", namespace: "Inspection.hub" });
+  return generateSeoMetadata(
+    "/monitor-inspection/diagnostic",
+    t("diagnosticMetaTitle"),
+    t("diagnosticMetaDesc"),
+    locale
+  );
 }
 
 export default async function DiagnosticPage({

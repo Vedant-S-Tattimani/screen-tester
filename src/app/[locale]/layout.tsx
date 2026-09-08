@@ -5,10 +5,10 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
-import { BASE_URL } from "@/lib/seo";
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { ExtensionCleanup } from "@/components/ExtensionCleanup";
+import { getBaseUrl, OG_LOCALES } from "@/lib/seo";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -31,30 +31,61 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Metadata' });
+  const baseUrl = getBaseUrl();
 
   const languages: Record<string, string> = {};
   routing.locales.forEach((loc) => {
-    languages[loc] = `/${loc}`;
+    languages[loc] = `${baseUrl}/${loc}`;
   });
+  languages['x-default'] = `${baseUrl}/en`;
+
+  const canonicalUrl = `${baseUrl}/${locale}`;
 
   return {
-    metadataBase: new URL(BASE_URL),
+    metadataBase: new URL(baseUrl),
     title: {
       template: `%s | ${t('title')}`,
       default: t('title'),
     },
     description: t('description'),
     alternates: {
-      canonical: `/${locale}`,
+      canonical: canonicalUrl,
       languages,
+    },
+    icons: {
+      icon: [
+        { url: '/favicon.ico', sizes: '32x32' },
+        { url: '/icon.png', sizes: '512x512', type: 'image/png' },
+      ],
+      apple: [
+        { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+      ],
+      shortcut: '/favicon.ico',
     },
     openGraph: {
       title: t('title'),
       description: t('description'),
-      url: `/${locale}`,
-      siteName: 'Monitor Tester',
-      locale: locale,
+      url: canonicalUrl,
+      siteName: 'Screen Tester',
+      locale: OG_LOCALES[locale] || locale,
+      alternateLocale: routing.locales
+        .filter((loc) => loc !== locale)
+        .map((loc) => OG_LOCALES[loc] || loc),
       type: 'website',
+      images: [
+        {
+          url: '/logo.png',
+          width: 1024,
+          height: 1024,
+          alt: 'Screen Tester Logo',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary',
+      title: t('title'),
+      description: t('description'),
+      images: ['/logo.png'],
     },
     robots: {
       index: true,

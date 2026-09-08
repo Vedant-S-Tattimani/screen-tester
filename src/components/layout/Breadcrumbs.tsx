@@ -3,7 +3,7 @@
 import { Link } from "@/i18n/routing";
 import { ChevronRight, Home } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
-import { BASE_URL } from "@/lib/seo";
+import { getBaseUrl } from "@/lib/seo";
 
 interface BreadcrumbItem {
   label: string;
@@ -13,6 +13,7 @@ interface BreadcrumbItem {
 export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
   const t = useTranslations("Breadcrumbs");
   const locale = useLocale();
+  const baseUrl = getBaseUrl();
   
   const structuredData = {
     "@context": "https://schema.org",
@@ -22,14 +23,17 @@ export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
         "@type": "ListItem",
         "position": 1,
         "name": t("home"),
-        "item": `${BASE_URL}/${locale}`
+        "item": `${baseUrl}/${locale}`
       },
-      ...items.map((item, index) => ({
-        "@type": "ListItem",
-        "position": index + 2,
-        "name": item.label,
-        "item": `${BASE_URL}/${locale}${item.href}`
-      }))
+      ...items.map((item, index) => {
+        const cleanHref = item.href.startsWith('/') ? item.href : `/${item.href}`;
+        return {
+          "@type": "ListItem",
+          "position": index + 2,
+          "name": item.label,
+          "item": `${baseUrl}/${locale}${cleanHref}`
+        };
+      })
     ]
   };
 

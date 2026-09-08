@@ -5,17 +5,13 @@ import { getWorkflowById } from "@/data/workflows";
 import { notFound } from "next/navigation";
 import { generateSeoMetadata } from "@/lib/seo";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  const { locale } = await params;
+export async function generateMetadata({ params }: { params?: Promise<{ locale: string }> }): Promise<Metadata> {
+  const locale = params ? (await params).locale : undefined;
   const workflow = getWorkflowById("general");
   if (!workflow) return {};
   
-  return generateSeoMetadata(
-    "/monitor-inspection/general",
-    workflow.title,
-    workflow.shortDescription,
-    locale
-  );
+  return generateSeoMetadata("/monitor-inspection/general", workflow.title, workflow.shortDescription, locale);
+
 }
 
 export default async function GeneralInspectionPage({ params }: { params: Promise<{ locale: string }> }) {

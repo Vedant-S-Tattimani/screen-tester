@@ -10,12 +10,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const workflow = getWorkflowById("new");
   if (!workflow) return {};
   
-  return generateSeoMetadata(
-    "/monitor-inspection/new",
-    workflow.title,
-    workflow.shortDescription,
-    locale
-  );
+return generateSeoMetadata("/monitor-inspection/new", workflow.title, workflow.shortDescription, locale);
+
 }
 
 export default async function NewMonitorInspectionPage({ params }: { params: Promise<{ locale: string }> }) {

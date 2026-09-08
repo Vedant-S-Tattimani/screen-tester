@@ -11,7 +11,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "TestPages.ghosting-test" });
-  return generateSeoMetadata("/tests/ghosting-test", t("metaTitle"), t("metaDescription"));
+  return generateSeoMetadata("/tests/ghosting-test", t("metaTitle"), t("metaDescription"), locale);
 }
 
 export default async function GhostingTest({

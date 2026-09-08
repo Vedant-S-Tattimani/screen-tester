@@ -6,19 +6,12 @@ import {
   Monitor, 
   Sun, 
   Activity, 
-  RotateCcw, 
-  Gamepad2, 
-  Laptop, 
-  Tv, 
-  ClipboardCheck, 
+  Palette,
   Sliders, 
   Ruler, 
   Grid, 
   Settings, 
   Eye, 
-  ShieldCheck,
-  Globe,
-  AlertCircle,
   Maximize2
 } from "lucide-react";
 
@@ -37,119 +30,50 @@ export default async function Home({
       {/* ================================================== */}
       {/* 1. HERO SECTION                                    */}
       {/* ================================================== */}
-      <section className="pt-6 sm:pt-8 lg:pt-10 pb-10 sm:pb-12 max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 xl:gap-6 items-center">
+      <section className="pt-4 sm:pt-6 md:pt-8 lg:pt-10 pb-6 sm:pb-8 md:pb-12 max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-4 xl:gap-6 items-center">
           
           {/* Left Hero Column */}
-          <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-center">
+          <div className="md:col-span-7 flex flex-col justify-center">
             {/* Small Eyebrow */}
             <div className="text-[11px] sm:text-xs font-mono font-medium uppercase tracking-[0.22em] text-gray-400 mb-3 sm:mb-3.5 select-none">
               {t("eyebrow")}
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[50px] xl:text-[56px] font-extrabold tracking-[-0.035em] text-gray-950 leading-[1.06] mb-4 sm:mb-5">
+            <h1 className="text-3xl sm:text-4xl md:text-[44px] lg:text-[50px] xl:text-[56px] font-extrabold tracking-[-0.035em] text-gray-950 leading-[1.08] sm:leading-[1.06] mb-3 sm:mb-4 lg:mb-5">
               {t("headline_pt1")}<br />
               {t("headline_pt2")}
             </h1>
 
             {/* Supporting Copy */}
-            <p className="text-[14.5px] sm:text-[15.5px] text-gray-600 leading-relaxed max-w-xl mb-6 font-normal">
+            <p className="text-[14px] sm:text-[15px] lg:text-[15.5px] text-gray-600 leading-relaxed max-w-xl mb-5 sm:mb-6 font-normal">
               {t("description")}
             </p>
 
-            {/* Compact CTAs */}
-            <div className="flex flex-wrap items-center gap-3 mb-8 sm:mb-9">
+            {/* CTA Button */}
+            <div className="flex items-center">
               <Link 
                 href="/tests/dead-pixel-test"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gray-950 hover:bg-black text-white font-medium text-xs sm:text-[13.5px] px-5 py-2.5 rounded-lg transition-all shadow-2xs hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-black hover:bg-neutral-900 text-white font-medium text-xs sm:text-[13.5px] px-6 py-3 rounded-xl transition-all shadow-sm hover:shadow-md focus-visible:ring-2 focus-visible:ring-gray-900"
               >
                 <span>{t("startTesting")}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
-              <Link 
-                href="/monitor-inspection/diagnostic"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gray-50/80 hover:bg-gray-100 text-gray-800 border border-gray-300 hover:border-gray-400 font-medium text-xs sm:text-[13.5px] px-5 py-2.5 rounded-lg transition-all focus-visible:ring-2 focus-visible:ring-gray-900"
-              >
-                <AlertCircle className="w-3.5 h-3.5 text-amber-600" />
-                <span>{t("diagnoseProblem")}</span>
-              </Link>
-            </div>
-
-            {/* Four Capability Points */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-3 xl:gap-5 select-none">
-              {/* 1. Works in your browser */}
-              <div className="flex items-start gap-2.5">
-                <div className="w-5 h-5 flex items-center justify-center shrink-0 text-gray-900 mt-0.5">
-                  <Monitor className="w-4 h-4 stroke-[1.8]" />
-                </div>
-                <div>
-                  <div className="text-xs sm:text-[12.5px] font-semibold text-gray-950 leading-tight">
-                    {t("cap1Title")}
-                  </div>
-                  <div className="text-[10px] sm:text-[11px] text-gray-500 mt-0.5 leading-tight">
-                    {t("cap1Desc")}
-                  </div>
-                </div>
-              </div>
-
-              {/* 2. Private and secure */}
-              <div className="flex items-start gap-2.5">
-                <div className="w-5 h-5 flex items-center justify-center shrink-0 text-gray-900 mt-0.5">
-                  <ShieldCheck className="w-4 h-4 stroke-[1.8]" />
-                </div>
-                <div>
-                  <div className="text-xs sm:text-[12.5px] font-semibold text-gray-950 leading-tight">
-                    {t("cap2Title")}
-                  </div>
-                  <div className="text-[10px] sm:text-[11px] text-gray-500 mt-0.5 leading-tight">
-                    {t("cap2Desc")}
-                  </div>
-                </div>
-              </div>
-
-              {/* 3. Works on any device */}
-              <div className="flex items-start gap-2.5">
-                <div className="w-5 h-5 flex items-center justify-center shrink-0 text-gray-900 mt-0.5">
-                  <Laptop className="w-4 h-4 stroke-[1.8]" />
-                </div>
-                <div>
-                  <div className="text-xs sm:text-[12.5px] font-semibold text-gray-950 leading-tight">
-                    {t("cap3Title")}
-                  </div>
-                  <div className="text-[10px] sm:text-[11px] text-gray-500 mt-0.5 leading-tight">
-                    {t("cap3Desc")}
-                  </div>
-                </div>
-              </div>
-
-              {/* 4. Multi-language */}
-              <div className="flex items-start gap-2.5">
-                <div className="w-5 h-5 flex items-center justify-center shrink-0 text-gray-900 mt-0.5">
-                  <Globe className="w-4 h-4 stroke-[1.8]" />
-                </div>
-                <div>
-                  <div className="text-xs sm:text-[12.5px] font-semibold text-gray-950 leading-tight">
-                    {t("cap4Title")}
-                  </div>
-                  <div className="text-[10px] sm:text-[11px] text-gray-500 mt-0.5 leading-tight">
-                    {t("cap4Desc")}
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 
-          {/* Right Hero Column — Realistic Dell Monitor Visual */}
-          <div className="lg:col-span-5 xl:col-span-5 flex flex-col items-center lg:items-end justify-center relative select-none">
-            <div className="w-full max-w-[560px] relative flex items-center">
+          {/* Right Hero Column — Generic Brand-Neutral Desktop & Smartphone Visual */}
+          <div className="hidden md:flex md:col-span-5 flex-col items-center md:items-end justify-center relative select-none">
+            <div className="w-full max-w-[540px] relative flex items-center">
               <div className="w-full relative">
                 <Image
-                  src="/hero-monitor.jpg"
-                  alt="Desktop monitor displaying calibration grid and grayscale diagnostic test pattern"
+                  src="/hero-devices.webp"
+                  alt="Generic brand-neutral desktop monitor and smartphone displaying screen diagnostic calibration and test patterns"
                   width={1200}
                   height={896}
                   priority
+                  sizes="(max-width: 768px) 0px, (max-width: 1200px) 45vw, 540px"
                   className="w-full h-auto object-contain select-none pointer-events-none"
                 />
               </div>
@@ -187,12 +111,12 @@ export default async function Home({
           {/* 1. Dead Pixels */}
           <Link 
             href="/tests/dead-pixel-test"
-            className="bg-white border border-gray-200/90 hover:border-gray-300 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3 group transition-all hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900 min-h-[50px] sm:min-h-[54px]"
+            className="bg-black hover:bg-neutral-900 text-white border border-neutral-900 hover:border-neutral-800 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3 group transition-all hover:shadow-md focus-visible:ring-2 focus-visible:ring-neutral-400 min-h-[50px] sm:min-h-[54px]"
           >
-            <div className="w-5 h-5 flex items-center justify-center shrink-0 text-gray-800 group-hover:text-gray-950 transition-colors">
+            <div className="w-5 h-5 flex items-center justify-center shrink-0 text-white">
               <Monitor className="w-4 h-4 stroke-[1.8]" />
             </div>
-            <span className="text-xs sm:text-[13px] font-medium text-gray-900 group-hover:text-gray-950 leading-tight">
+            <span className="text-xs sm:text-[13px] font-medium text-white group-hover:text-neutral-200 leading-tight">
               {t("quickDeadPixels")}
             </span>
           </Link>
@@ -200,15 +124,12 @@ export default async function Home({
           {/* 2. Color Test */}
           <Link 
             href="/tests/color-test"
-            className="bg-white border border-gray-200/90 hover:border-gray-300 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3 group transition-all hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900 min-h-[50px] sm:min-h-[54px]"
+            className="bg-black hover:bg-neutral-900 text-white border border-neutral-900 hover:border-neutral-800 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3 group transition-all hover:shadow-md focus-visible:ring-2 focus-visible:ring-neutral-400 min-h-[50px] sm:min-h-[54px]"
           >
-            <div 
-              className="w-4 h-4 rounded-full p-[2.5px] shrink-0" 
-              style={{ background: 'conic-gradient(#ef4444 0deg, #f97316 45deg, #eab308 90deg, #22c55e 135deg, #06b6d4 180deg, #3b82f6 225deg, #8b5cf6 270deg, #ec4899 315deg, #ef4444 360deg)' }}
-            >
-              <div className="w-full h-full rounded-full bg-white" />
+            <div className="w-5 h-5 flex items-center justify-center shrink-0 text-white">
+              <Palette className="w-4 h-4 stroke-[1.8]" />
             </div>
-            <span className="text-xs sm:text-[13px] font-medium text-gray-900 group-hover:text-gray-950 leading-tight">
+            <span className="text-xs sm:text-[13px] font-medium text-white group-hover:text-neutral-200 leading-tight">
               {t("quickColorTest")}
             </span>
           </Link>
@@ -216,12 +137,12 @@ export default async function Home({
           {/* 3. Brightness */}
           <Link 
             href="/tests/brightness-test"
-            className="bg-white border border-gray-200/90 hover:border-gray-300 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3 group transition-all hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900 min-h-[50px] sm:min-h-[54px]"
+            className="bg-black hover:bg-neutral-900 text-white border border-neutral-900 hover:border-neutral-800 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3 group transition-all hover:shadow-md focus-visible:ring-2 focus-visible:ring-neutral-400 min-h-[50px] sm:min-h-[54px]"
           >
-            <div className="w-5 h-5 flex items-center justify-center shrink-0 text-amber-500">
+            <div className="w-5 h-5 flex items-center justify-center shrink-0 text-white">
               <Sun className="w-4 h-4 stroke-[2]" />
             </div>
-            <span className="text-xs sm:text-[13px] font-medium text-gray-900 group-hover:text-gray-950 leading-tight">
+            <span className="text-xs sm:text-[13px] font-medium text-white group-hover:text-neutral-200 leading-tight">
               {t("quickBrightness")}
             </span>
           </Link>
@@ -229,13 +150,13 @@ export default async function Home({
           {/* 4. Contrast */}
           <Link 
             href="/tests/contrast-test"
-            className="bg-white border border-gray-200/90 hover:border-gray-300 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3 group transition-all hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900 min-h-[50px] sm:min-h-[54px]"
+            className="bg-black hover:bg-neutral-900 text-white border border-neutral-900 hover:border-neutral-800 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3 group transition-all hover:shadow-md focus-visible:ring-2 focus-visible:ring-neutral-400 min-h-[50px] sm:min-h-[54px]"
           >
-            <div className="w-4 h-4 rounded-full border border-gray-900 overflow-hidden shrink-0 flex">
-              <div className="w-1/2 h-full bg-gray-900" />
+            <div className="w-4 h-4 rounded-full border border-white/90 overflow-hidden shrink-0 flex">
               <div className="w-1/2 h-full bg-white" />
+              <div className="w-1/2 h-full bg-black" />
             </div>
-            <span className="text-xs sm:text-[13px] font-medium text-gray-900 group-hover:text-gray-950 leading-tight">
+            <span className="text-xs sm:text-[13px] font-medium text-white group-hover:text-neutral-200 leading-tight">
               {t("quickContrast")}
             </span>
           </Link>
@@ -243,9 +164,9 @@ export default async function Home({
           {/* 5. Ghosting */}
           <Link 
             href="/tests/ghosting-test"
-            className="bg-white border border-gray-200/90 hover:border-gray-300 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3 group transition-all hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900 min-h-[50px] sm:min-h-[54px]"
+            className="bg-black hover:bg-neutral-900 text-white border border-neutral-900 hover:border-neutral-800 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3 group transition-all hover:shadow-md focus-visible:ring-2 focus-visible:ring-neutral-400 min-h-[50px] sm:min-h-[54px]"
           >
-            <div className="w-5 h-5 flex items-center justify-center shrink-0 text-gray-800">
+            <div className="w-5 h-5 flex items-center justify-center shrink-0 text-white">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="17" cy="4" r="2"/>
                 <path d="m15 8-5 3-4-2"/>
@@ -253,7 +174,7 @@ export default async function Home({
                 <path d="M10 11v6l-4 3"/>
               </svg>
             </div>
-            <span className="text-xs sm:text-[13px] font-medium text-gray-900 group-hover:text-gray-950 leading-tight">
+            <span className="text-xs sm:text-[13px] font-medium text-white group-hover:text-neutral-200 leading-tight">
               {t("quickGhosting")}
             </span>
           </Link>
@@ -261,155 +182,14 @@ export default async function Home({
           {/* 6. Refresh Rate */}
           <Link 
             href="/tests/refresh-rate-test"
-            className="bg-white border border-gray-200/90 hover:border-gray-300 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3 group transition-all hover:shadow-xs focus-visible:ring-2 focus-visible:ring-gray-900 min-h-[50px] sm:min-h-[54px]"
+            className="bg-black hover:bg-neutral-900 text-white border border-neutral-900 hover:border-neutral-800 rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3 group transition-all hover:shadow-md focus-visible:ring-2 focus-visible:ring-neutral-400 min-h-[50px] sm:min-h-[54px]"
           >
-            <div className="w-5 h-5 flex items-center justify-center shrink-0 text-blue-600">
+            <div className="w-5 h-5 flex items-center justify-center shrink-0 text-white">
               <Activity className="w-4 h-4 stroke-[2]" />
             </div>
-            <span className="text-xs sm:text-[13px] font-medium text-gray-900 group-hover:text-gray-950 leading-tight">
+            <span className="text-xs sm:text-[13px] font-medium text-white group-hover:text-neutral-200 leading-tight">
               {t("quickRefreshRate")}
             </span>
-          </Link>
-        </div>
-      </section>
-
-      {/* ================================================== */}
-      {/* 3. WHAT ARE YOU CHECKING? (INSPECTION WORKFLOWS)   */}
-      {/* ================================================== */}
-      <section className="pt-2 pb-10 sm:pb-12 max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
-        {/* Section Header */}
-        <div className="flex items-end justify-between mb-4 sm:mb-5">
-          <div>
-            <h2 className="text-sm sm:text-base font-bold tracking-tight text-gray-950 uppercase">
-              {t("workflowsTitle")}
-            </h2>
-            <p className="text-xs sm:text-[13px] text-gray-500 mt-0.5">
-              {t("workflowsDesc")}
-            </p>
-          </div>
-          <Link 
-            href="/monitor-inspection"
-            className="text-xs sm:text-[13px] font-medium text-gray-600 hover:text-gray-950 flex items-center gap-1 group transition-colors focus-visible:ring-2 focus-visible:ring-gray-900 rounded p-1"
-          >
-            <span>{t("viewAllWorkflows")}</span>
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-          </Link>
-        </div>
-
-        {/* 6 Workflow Cards (General Checkup + 5 Specialized Workflows) */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3.5">
-          {/* 1. General checkup */}
-          <Link 
-            href="/monitor-inspection/general"
-            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-3 sm:p-4 transition-all flex flex-col justify-between group min-h-[110px] sm:min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
-          >
-            <div>
-              <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center text-gray-800 mb-2 sm:mb-2.5">
-                <ClipboardCheck className="w-4 h-4 stroke-[1.8]" />
-              </div>
-              <h3 className="font-semibold text-xs sm:text-[13px] text-gray-950 mb-0.5 leading-snug">
-                {t("wfGeneralTitle")}
-              </h3>
-              <p className="text-[10.5px] sm:text-[11px] text-gray-500 leading-snug line-clamp-2">
-                {t("wfGeneralDesc")}
-              </p>
-            </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-1.5 sm:mt-2 shrink-0" />
-          </Link>
-
-          {/* 2. Used monitor */}
-          <Link 
-            href="/monitor-inspection/used"
-            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-3 sm:p-4 transition-all flex flex-col justify-between group min-h-[110px] sm:min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
-          >
-            <div>
-              <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center text-gray-800 mb-2 sm:mb-2.5">
-                <RotateCcw className="w-4 h-4 stroke-[1.8]" />
-              </div>
-              <h3 className="font-semibold text-xs sm:text-[13px] text-gray-950 mb-0.5 leading-snug">
-                {t("wfUsedTitle")}
-              </h3>
-              <p className="text-[10.5px] sm:text-[11px] text-gray-500 leading-snug line-clamp-2">
-                {t("wfUsedDesc")}
-              </p>
-            </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-1.5 sm:mt-2 shrink-0" />
-          </Link>
-
-          {/* 2. Gaming display */}
-          <Link 
-            href="/monitor-inspection/gaming"
-            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-3 sm:p-4 transition-all flex flex-col justify-between group min-h-[110px] sm:min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
-          >
-            <div>
-              <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center text-gray-800 mb-2 sm:mb-2.5">
-                <Gamepad2 className="w-4 h-4 stroke-[1.8]" />
-              </div>
-              <h3 className="font-semibold text-xs sm:text-[13px] text-gray-950 mb-0.5 leading-snug">
-                {t("wfGamingTitle")}
-              </h3>
-              <p className="text-[10.5px] sm:text-[11px] text-gray-500 leading-snug line-clamp-2">
-                {t("wfGamingDesc")}
-              </p>
-            </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-1.5 sm:mt-2 shrink-0" />
-          </Link>
-
-          {/* 3. OLED display */}
-          <Link 
-            href="/monitor-inspection/oled"
-            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-3 sm:p-4 transition-all flex flex-col justify-between group min-h-[110px] sm:min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
-          >
-            <div>
-              <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center text-gray-800 mb-2 sm:mb-2.5">
-                <Monitor className="w-4 h-4 stroke-[1.8]" />
-              </div>
-              <h3 className="font-semibold text-xs sm:text-[13px] text-gray-950 mb-0.5 leading-snug">
-                {t("wfOledTitle")}
-              </h3>
-              <p className="text-[10.5px] sm:text-[11px] text-gray-500 leading-snug line-clamp-2">
-                {t("wfOledDesc")}
-              </p>
-            </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-1.5 sm:mt-2 shrink-0" />
-          </Link>
-
-          {/* 4. Laptop display */}
-          <Link 
-            href="/monitor-inspection/laptop"
-            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-3 sm:p-4 transition-all flex flex-col justify-between group min-h-[110px] sm:min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
-          >
-            <div>
-              <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center text-gray-800 mb-2 sm:mb-2.5">
-                <Laptop className="w-4 h-4 stroke-[1.8]" />
-              </div>
-              <h3 className="font-semibold text-xs sm:text-[13px] text-gray-950 mb-0.5 leading-snug">
-                {t("wfLaptopTitle")}
-              </h3>
-              <p className="text-[10.5px] sm:text-[11px] text-gray-500 leading-snug line-clamp-2">
-                {t("wfLaptopDesc")}
-              </p>
-            </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-1.5 sm:mt-2 shrink-0" />
-          </Link>
-
-          {/* 5. TV or large display */}
-          <Link 
-            href="/monitor-inspection/tv"
-            className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-3 sm:p-4 transition-all flex flex-col justify-between group min-h-[110px] sm:min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
-          >
-            <div>
-              <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center text-gray-800 mb-2 sm:mb-2.5">
-                <Tv className="w-4 h-4 stroke-[1.8]" />
-              </div>
-              <h3 className="font-semibold text-xs sm:text-[13px] text-gray-950 mb-0.5 leading-snug">
-                {t("wfTvTitle")}
-              </h3>
-              <p className="text-[10.5px] sm:text-[11px] text-gray-500 leading-snug line-clamp-2">
-                {t("wfTvDesc")}
-              </p>
-            </div>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-950 group-hover:translate-x-0.5 transition-all self-end mt-1.5 sm:mt-2 shrink-0" />
           </Link>
         </div>
       </section>

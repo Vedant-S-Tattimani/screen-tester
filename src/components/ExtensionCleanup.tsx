@@ -90,6 +90,24 @@ if (typeof window !== "undefined") {
       });
     }
   } catch {}
+
+  // 4. Unregister legacy Service Workers & clear CacheStorage from previous localhost projects (e.g. Orca)
+  try {
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (const reg of registrations) {
+          reg.unregister().catch(() => {});
+        }
+      }).catch(() => {});
+    }
+    if ("caches" in window) {
+      caches.keys().then((keys) => {
+        for (const key of keys) {
+          caches.delete(key).catch(() => {});
+        }
+      }).catch(() => {});
+    }
+  } catch {}
 }
 
 export function ExtensionCleanup() {

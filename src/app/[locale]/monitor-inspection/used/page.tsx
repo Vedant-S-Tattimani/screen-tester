@@ -7,13 +7,8 @@ import { generateSeoMetadata } from "@/lib/seo";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Inspection.hub" });
-  
-  return generateSeoMetadata(
-    "/monitor-inspection/used",
-    t("usedMonitor"),
-    t("usedMonitorDesc"),
-    locale
-  );
+return generateSeoMetadata("/monitor-inspection/used", t("usedMonitor"), t("usedMonitorDesc"), locale);
+
 }
 
 export default async function UsedMonitorInspectionPage({ params }: { params: Promise<{ locale: string }> }) {

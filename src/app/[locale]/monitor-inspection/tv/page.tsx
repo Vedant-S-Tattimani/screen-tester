@@ -10,12 +10,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const workflow = getWorkflowById("tv");
   if (!workflow) return {};
   
-  return generateSeoMetadata(
-    "/monitor-inspection/tv",
-    workflow.title,
-    workflow.shortDescription,
-    locale
-  );
+return generateSeoMetadata("/monitor-inspection/tv", workflow.title, workflow.shortDescription, locale);
+
 }
 
 export default async function TvDisplayInspectionPage({ params }: { params: Promise<{ locale: string }> }) {

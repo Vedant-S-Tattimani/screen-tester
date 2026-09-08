@@ -10,12 +10,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const workflow = getWorkflowById("oled");
   if (!workflow) return {};
   
-  return generateSeoMetadata(
-    "/monitor-inspection/oled",
-    workflow.title,
-    workflow.shortDescription,
-    locale
-  );
+return generateSeoMetadata("/monitor-inspection/oled", workflow.title, workflow.shortDescription, locale);
+
 }
 
 export default async function OledInspectionPage({ params }: { params: Promise<{ locale: string }> }) {

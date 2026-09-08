@@ -1,17 +1,19 @@
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
 import { Link } from "@/i18n/routing";
 import { ArrowRight } from "lucide-react";
 
+import { generateSeoMetadata } from "@/lib/seo";
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  await params;
-  return {
-    title: "Dead Pixel vs Stuck Pixel: Diagnosis & Fixes",
-    description: "Understand the visual and physical differences between dead pixels and stuck subpixels, how to test for them, and manufacturer warranty policies.",
-    alternates: {
-      canonical: "/guides/dead-pixel-vs-stuck-pixel"
-    }
-  };
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Guides.pixelDefectsConcept" });
+  return generateSeoMetadata(
+    "/guides/dead-pixel-vs-stuck-pixel",
+    t("metaTitle"),
+    t("metaDescription"),
+    locale
+  );
 }
 
 export default async function DeadPixelVsStuckPixelPage({ params }: { params: Promise<{ locale: string }> }) {

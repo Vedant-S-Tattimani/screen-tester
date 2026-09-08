@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import { ArrowRight } from "lucide-react";
@@ -21,14 +22,23 @@ export function Footer() {
           <div className="lg:col-span-4 pr-0 lg:pr-6">
             <Link 
               href="/" 
-              className="inline-flex flex-col group select-none py-0.5 focus-visible:ring-2 focus-visible:ring-gray-900 rounded"
+              className="inline-flex items-center gap-2.5 group select-none py-0.5 focus-visible:ring-2 focus-visible:ring-gray-900 rounded"
             >
-              <span className="font-mono text-[13px] sm:text-[14px] font-bold uppercase tracking-[0.14em] text-gray-950 block leading-tight">
-                MONITOR TESTER
-              </span>
-              <span className="text-[8.5px] font-mono font-medium tracking-[0.2em] text-gray-500 block uppercase mt-0.5">
-                CHECK · INSPECT · UNDERSTAND
-              </span>
+              <Image
+                src="/logo.png"
+                alt="Screen Tester Logo"
+                width={36}
+                height={36}
+                className="w-8 h-8 object-contain shrink-0 aspect-square"
+              />
+              <div className="flex flex-col">
+                <span className="font-mono text-[13px] sm:text-[14px] font-bold uppercase tracking-[0.14em] text-gray-950 block leading-tight">
+                  SCREEN TESTER
+                </span>
+                <span className="text-[8.5px] font-mono font-medium tracking-[0.2em] text-gray-500 block uppercase mt-0.5">
+                  CHECK · INSPECT · UNDERSTAND
+                </span>
+              </div>
             </Link>
 
             <p className="text-xs text-gray-500 leading-relaxed mt-3.5 max-w-sm">

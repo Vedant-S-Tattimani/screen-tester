@@ -10,12 +10,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const workflow = getWorkflowById("gaming");
   if (!workflow) return {};
   
-  return generateSeoMetadata(
-    "/monitor-inspection/gaming",
-    workflow.title,
-    workflow.shortDescription,
-    locale
-  );
+return generateSeoMetadata("/monitor-inspection/gaming", workflow.title, workflow.shortDescription, locale);
+
 }
 
 export default async function GamingInspectionPage({ params }: { params: Promise<{ locale: string }> }) {
