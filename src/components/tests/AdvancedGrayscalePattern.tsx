@@ -74,19 +74,19 @@ export function AdvancedGrayscalePattern({ testId }: AdvancedGrayscalePatternPro
       </div>
 
       <TestControlBar testId={testId} title="Grayscale & Contrast">
-        <div className="flex items-center gap-2 bg-muted/50 rounded-lg p-1 border border-border/50">
+        <div className="flex items-center gap-2 bg-muted/60 rounded-lg p-1 border border-border/50">
           <button 
             onClick={prevMode}
-            className="p-1 hover:bg-muted rounded transition-colors text-foreground"
+            className="p-1 hover:bg-muted dark:hover:bg-white/10 rounded transition-colors text-gray-900 dark:text-white"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
-          <span className="text-xs font-medium px-2 min-w-[180px] text-center text-foreground">
+          <span className="text-xs font-semibold px-2 min-w-[180px] text-center text-gray-900 dark:text-white">
             {mode.label}
           </span>
           <button 
             onClick={nextMode}
-            className="p-1 hover:bg-muted rounded transition-colors text-foreground"
+            className="p-1 hover:bg-muted dark:hover:bg-white/10 rounded transition-colors text-gray-900 dark:text-white"
           >
             <ChevronRight className="w-4 h-4" />
           </button>

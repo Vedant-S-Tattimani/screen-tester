@@ -76,14 +76,16 @@ export function BloomingPattern({ testId }: BloomingPatternProps) {
 
       <TestControlBar testId={testId} title="Local Dimming & Blooming">
         <div className="flex items-center gap-2">
-          <span className="text-xs font-medium text-muted-foreground uppercase tracking-widest hidden md:inline">Object Size</span>
-          <div className="flex gap-1 bg-muted/50 p-1 rounded-lg border border-border/50">
+          <span className="text-xs font-medium text-muted-foreground dark:text-slate-300 uppercase tracking-widest hidden md:inline">Object Size</span>
+          <div className="flex gap-1 bg-muted/60 p-1 rounded-lg border border-border/50">
             {SIZES.map((s, idx) => (
               <button
                 key={s.label}
                 onClick={() => setSizeIndex(idx)}
-                className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
-                  sizeIndex === idx ? "bg-foreground text-background shadow-sm" : "text-muted-foreground hover:text-foreground"
+                className={`px-2.5 py-1 rounded text-xs font-medium transition-colors ${
+                  sizeIndex === idx 
+                    ? "bg-white text-gray-950 font-bold shadow-xs" 
+                    : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
                 }`}
               >
                 {s.label}

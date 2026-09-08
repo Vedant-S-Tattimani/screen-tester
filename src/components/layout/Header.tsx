@@ -71,6 +71,7 @@ export function Header() {
             width={38}
             height={38}
             priority
+            unoptimized
             className="w-8 h-8 sm:w-9 sm:h-9 object-contain shrink-0 aspect-square"
           />
           <div className="flex flex-col">

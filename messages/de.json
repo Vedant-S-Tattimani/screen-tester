@@ -210,7 +210,20 @@
     "step2Title": "Vollbild aktivieren",
     "step2Desc": "Wechseln Sie in den Vollbildmodus (Taste F11), damit Browserleisten und die Taskleiste keine Randpixel verdecken.",
     "step3Title": "Bei kontrolliertem Licht prüfen",
-    "step3Desc": "Dunkeln Sie den Raum bei Lichthöfen und Kontrastchecks ab. Betrachten Sie das Display frontal sowie aus seitlichen Winkeln."
+    "step3Desc": "Dunkeln Sie den Raum bei Lichthöfen und Kontrastchecks ab. Betrachten Sie das Display frontal sowie aus seitlichen Winkeln.",
+    "allTestsTitle": "ALLE BILDSCHIRMTESTS",
+    "allTestsSubtitle": "Entdecken Sie alle verfügbaren Tests zur Überprüfung Ihres Displays.",
+    "allTestsSearchPlaceholder": "28 Monitortests durchsuchen...",
+    "allTestsFilterAll": "Alle Tests",
+    "allTestsCount": "28 Tests",
+    "allTestsCategories": {
+      "colorPixels": "FARB- UND PIXELTESTS",
+      "gradientContrast": "VERLAUFS- UND KONTRASTTESTS",
+      "uniformityPanel": "HOMOGENITÄTS- UND HINTERGRUNDBELEUCHTUNGSTESTS",
+      "motionPerformance": "BEWEGUNGSSCHÄRFE & BILDWIEDERHOLRATE",
+      "sharpnessCapabilities": "SCHÄRFE- UND FUNKTIONSTESTS"
+    },
+    "allTestsNoResults": "Keine Tests gefunden für"
   },
   "TestLibrary": {
     "categories": {

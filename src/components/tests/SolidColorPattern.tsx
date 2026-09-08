@@ -66,19 +66,19 @@ export function SolidColorPattern({ testId }: SolidColorPatternProps) {
       />
       <TestControlBar testId={testId} title="Solid Color Purity">
         <div className="flex flex-wrap items-center gap-4">
-          <div className="flex items-center gap-1 bg-muted/50 rounded-lg p-1 border border-border/50">
+          <div className="flex items-center gap-1 bg-muted/60 rounded-lg p-1 border border-border/50">
             <button 
               onClick={prevColor}
-              className="p-1 hover:bg-muted rounded transition-colors text-foreground"
+              className="p-1 hover:bg-muted dark:hover:bg-white/10 rounded transition-colors text-gray-900 dark:text-white"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
-            <span className="text-xs font-mono font-medium px-2 min-w-[70px] text-center text-foreground">
+            <span className="text-xs font-mono font-semibold px-2 min-w-[70px] text-center text-gray-900 dark:text-white">
               {STANDARD_COLORS[index].name}
             </span>
             <button 
               onClick={nextColor}
-              className="p-1 hover:bg-muted rounded transition-colors text-foreground"
+              className="p-1 hover:bg-muted dark:hover:bg-white/10 rounded transition-colors text-gray-900 dark:text-white"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -87,7 +87,7 @@ export function SolidColorPattern({ testId }: SolidColorPatternProps) {
           <div className="h-4 w-px bg-border/50 hidden md:block"></div>
           
           <div className="flex items-center gap-2">
-            <label className="text-foreground text-xs font-medium">Custom HEX:</label>
+            <label className="text-gray-800 dark:text-slate-200 text-xs font-medium">Custom HEX:</label>
             <input 
               type="text" 
               placeholder="#FF6B00"
@@ -99,12 +99,7 @@ export function SolidColorPattern({ testId }: SolidColorPatternProps) {
                   setUseCustom(true);
                 }
               }}
-              onFocus={() => {
-                if (customHex.match(/^#([0-9A-F]{3}){1,2}$/i)) {
-                  setUseCustom(true);
-                }
-              }}
-              className="bg-transparent border border-border rounded px-2 py-1 text-foreground font-mono text-xs outline-none focus:border-foreground w-24 transition-colors"
+              className="text-gray-900 dark:text-white bg-white dark:bg-white/10 border border-gray-300 dark:border-white/20 px-2 py-1 rounded text-xs font-mono outline-hidden focus:border-blue-500 w-24 transition-colors"
             />
           </div>
         </div>

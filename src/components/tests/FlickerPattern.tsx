@@ -268,7 +268,9 @@ export function FlickerPattern({ testId = "screen-flicker-test" }: FlickerPatter
                 setIsStrobeConfirmed(false);
               }}
               className={`px-2.5 py-1 rounded-md font-medium transition-all cursor-pointer ${
-                activeMode === "uniform" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"
+                activeMode === "uniform" 
+                  ? "bg-white text-gray-950 font-bold shadow-xs" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               Uniform Alternation
@@ -279,7 +281,9 @@ export function FlickerPattern({ testId = "screen-flicker-test" }: FlickerPatter
                 setIsStrobeConfirmed(false);
               }}
               className={`px-2.5 py-1 rounded-md font-medium transition-all cursor-pointer ${
-                activeMode === "inversion" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"
+                activeMode === "inversion" 
+                  ? "bg-white text-gray-950 font-bold shadow-xs" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               Dot Inversion (Vcom)
@@ -290,7 +294,9 @@ export function FlickerPattern({ testId = "screen-flicker-test" }: FlickerPatter
                 setIsStrobeConfirmed(false);
               }}
               className={`px-2.5 py-1 rounded-md font-medium transition-all cursor-pointer ${
-                activeMode === "strobe_wave" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"
+                activeMode === "strobe_wave" 
+                  ? "bg-white text-gray-950 font-bold shadow-xs" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               Hand / Pen Test
@@ -302,7 +308,7 @@ export function FlickerPattern({ testId = "screen-flicker-test" }: FlickerPatter
             <>
               <button
                 onClick={() => setIsPaused(!isPaused)}
-                className="p-1 hover:bg-muted rounded-full transition-colors border border-border/50 text-foreground"
+                className="p-1 hover:bg-muted dark:hover:bg-white/10 rounded-full transition-colors border border-border/50 text-gray-900 dark:text-white"
                 title={isPaused ? "Play" : "Pause"}
               >
                 {isPaused ? <Play className="w-3.5 h-3.5" /> : <Pause className="w-3.5 h-3.5" />}
@@ -314,7 +320,9 @@ export function FlickerPattern({ testId = "screen-flicker-test" }: FlickerPatter
                     key={s.value}
                     onClick={() => setSpeed(s.value)}
                     className={`px-2 py-0.5 rounded text-[11px] font-mono transition-colors ${
-                      speed === s.value ? "bg-foreground text-background font-semibold shadow-2xs" : "text-muted-foreground hover:text-foreground"
+                      speed === s.value 
+                        ? "bg-white text-gray-950 font-bold shadow-xs" 
+                        : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
                     }`}
                   >
                     {s.label}
@@ -328,7 +336,7 @@ export function FlickerPattern({ testId = "screen-flicker-test" }: FlickerPatter
           <button
             onClick={() => setShowEduInfo(!showEduInfo)}
             className={`flex items-center gap-1 text-xs px-2.5 py-1 rounded-lg border transition-colors ${
-              showEduInfo ? "bg-amber-500/20 text-amber-500 border-amber-500/40" : "hover:bg-muted text-muted-foreground border-border/50"
+              showEduInfo ? "bg-amber-500/20 text-amber-500 border-amber-500/40" : "hover:bg-muted dark:hover:bg-white/10 text-gray-700 dark:text-slate-200 dark:hover:text-white border-border/50"
             }`}
             title="Read about visual flicker and hardware PWM limitations"
           >

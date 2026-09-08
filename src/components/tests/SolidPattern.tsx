@@ -91,7 +91,7 @@ export function SolidPattern({ colors, autoCycleInterval, testId }: SolidPattern
             </button>
           )}
 
-          <div className="flex gap-1.5 sm:gap-2 items-center px-1 sm:px-2">
+          <div className="flex gap-1.5 sm:gap-2 items-center px-1 sm:px-2 overflow-x-auto max-w-[220px] sm:max-w-md no-scrollbar">
             {colors.map((c, i) => (
               <button
                 type="button"

@@ -30,6 +30,7 @@ export function Footer() {
                 alt="Screen Tester Logo"
                 width={36}
                 height={36}
+                unoptimized
                 className="w-8 h-8 object-contain shrink-0 aspect-square"
               />
               <div className="flex flex-col">

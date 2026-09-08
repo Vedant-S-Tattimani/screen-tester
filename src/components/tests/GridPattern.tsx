@@ -236,7 +236,9 @@ export function GridPattern({ type, testId }: GridPatternProps) {
             <button
               onClick={() => setMode("uniform")}
               className={`px-2.5 py-1 rounded-md transition-all font-medium ${
-                mode === "uniform" ? "bg-foreground text-background shadow-xs" : "text-muted-foreground hover:text-foreground"
+                mode === "uniform" 
+                  ? "bg-white text-gray-950 font-bold shadow-xs" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               25 Steps
@@ -244,7 +246,9 @@ export function GridPattern({ type, testId }: GridPatternProps) {
             <button
               onClick={() => setMode("near-black")}
               className={`px-2.5 py-1 rounded-md transition-all font-medium ${
-                mode === "near-black" ? "bg-foreground text-background shadow-xs" : "text-muted-foreground hover:text-foreground"
+                mode === "near-black" 
+                  ? "bg-white text-gray-950 font-bold shadow-xs" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               Near-Black
@@ -252,7 +256,9 @@ export function GridPattern({ type, testId }: GridPatternProps) {
             <button
               onClick={() => setMode("near-white")}
               className={`px-2.5 py-1 rounded-md transition-all font-medium ${
-                mode === "near-white" ? "bg-foreground text-background shadow-xs" : "text-muted-foreground hover:text-foreground"
+                mode === "near-white" 
+                  ? "bg-white text-gray-950 font-bold shadow-xs" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               Near-White
@@ -260,7 +266,9 @@ export function GridPattern({ type, testId }: GridPatternProps) {
             <button
               onClick={() => setMode("gradient")}
               className={`px-2.5 py-1 rounded-md transition-all font-medium ${
-                mode === "gradient" ? "bg-foreground text-background shadow-xs" : "text-muted-foreground hover:text-foreground"
+                mode === "gradient" 
+                  ? "bg-white text-gray-950 font-bold shadow-xs" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               Ramp
@@ -273,7 +281,9 @@ export function GridPattern({ type, testId }: GridPatternProps) {
               <button
                 onClick={() => setShowLabels((p) => !p)}
                 className={`px-2.5 py-1 rounded-md text-xs font-medium border transition-colors ${
-                  showLabels ? "bg-muted text-foreground border-border" : "text-muted-foreground border-transparent hover:bg-muted/50"
+                  showLabels 
+                    ? "bg-white text-gray-950 font-bold shadow-xs" 
+                    : "border-border/50 text-gray-700 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-muted dark:hover:bg-white/10"
                 }`}
               >
                 {showLabels ? "Hide %" : "Show %"}
@@ -282,7 +292,9 @@ export function GridPattern({ type, testId }: GridPatternProps) {
                 <button
                   onClick={() => setShowRgb((p) => !p)}
                   className={`px-2.5 py-1 rounded-md text-xs font-medium border transition-colors ${
-                    showRgb ? "bg-muted text-foreground border-border" : "text-muted-foreground border-transparent hover:bg-muted/50"
+                    showRgb 
+                      ? "bg-white text-gray-950 font-bold shadow-xs" 
+                      : "border-border/50 text-gray-700 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-muted dark:hover:bg-white/10"
                   }`}
                 >
                   {showRgb ? "RGB: On" : "RGB: Off"}

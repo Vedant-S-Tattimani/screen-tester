@@ -248,7 +248,20 @@
     "step2Title": "Go Fullscreen",
     "step2Desc": "Toggle fullscreen mode (press F11) so browser toolbars, tabs, and operating-system taskbars do not obstruct edge pixels.",
     "step3Title": "Inspect Under Controlled Light",
-    "step3Desc": "Dim room lighting when checking backlight bleed and contrast. Inspect the panel from both direct and off-axis angles."
+    "step3Desc": "Dim room lighting when checking backlight bleed and contrast. Inspect the panel from both direct and off-axis angles.",
+    "allTestsTitle": "ALL SCREEN TESTS",
+    "allTestsSubtitle": "Explore all tests available for checking your display.",
+    "allTestsSearchPlaceholder": "Quick search 28 display tests...",
+    "allTestsFilterAll": "All Tests",
+    "allTestsCount": "28 tests",
+    "allTestsCategories": {
+      "colorPixels": "COLOR & PIXEL TESTS",
+      "gradientContrast": "GRADIENT & CONTRAST TESTS",
+      "uniformityPanel": "UNIFORMITY & BACKLIGHT TESTS",
+      "motionPerformance": "MOTION & REFRESH RATE",
+      "sharpnessCapabilities": "SHARPNESS & CAPABILITIES"
+    },
+    "allTestsNoResults": "No tests found matching"
   },
   "TestLibrary": {
     "launchTest": "Launch Test",

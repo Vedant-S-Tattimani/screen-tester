@@ -170,7 +170,9 @@ export function ColorBandingPattern({ testId = "color-banding-test" }: ColorBand
             <button
               onClick={() => setActiveMode("smooth")}
               className={`px-2.5 py-1 rounded-md font-medium transition-all ${
-                activeMode === "smooth" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"
+                activeMode === "smooth" 
+                  ? "bg-white text-gray-950 font-bold shadow-xs" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               Smooth Gradients
@@ -178,7 +180,9 @@ export function ColorBandingPattern({ testId = "color-banding-test" }: ColorBand
             <button
               onClick={() => setActiveMode("bitdepth")}
               className={`px-2.5 py-1 rounded-md font-medium transition-all ${
-                activeMode === "bitdepth" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"
+                activeMode === "bitdepth" 
+                  ? "bg-white text-gray-950 font-bold shadow-xs" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               Bit-Depth Steps
@@ -186,7 +190,9 @@ export function ColorBandingPattern({ testId = "color-banding-test" }: ColorBand
             <button
               onClick={() => setActiveMode("dither")}
               className={`px-2.5 py-1 rounded-md font-medium transition-all ${
-                activeMode === "dither" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"
+                activeMode === "dither" 
+                  ? "bg-white text-gray-950 font-bold shadow-xs" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               Dither / FRC
@@ -198,17 +204,17 @@ export function ColorBandingPattern({ testId = "color-banding-test" }: ColorBand
             <div className="flex items-center gap-1 bg-muted/40 rounded-lg p-0.5 border border-border/40">
               <button 
                 onClick={prevPreset}
-                className="p-1 hover:bg-muted rounded text-foreground transition-colors"
+                className="p-1 hover:bg-muted dark:hover:bg-white/10 rounded text-gray-900 dark:text-white transition-colors"
                 title="Previous gradient (Left Arrow)"
               >
                 <ChevronLeft className="w-3.5 h-3.5" />
               </button>
-              <span className="text-[11px] font-medium px-2 min-w-[140px] text-center text-foreground font-mono">
+              <span className="text-[11px] font-medium px-2 min-w-[140px] text-center text-gray-900 dark:text-white font-mono">
                 {currentPreset.label}
               </span>
               <button 
                 onClick={nextPreset}
-                className="p-1 hover:bg-muted rounded text-foreground transition-colors"
+                className="p-1 hover:bg-muted dark:hover:bg-white/10 rounded text-gray-900 dark:text-white transition-colors"
                 title="Next gradient (Right Arrow)"
               >
                 <ChevronRight className="w-3.5 h-3.5" />
@@ -221,19 +227,19 @@ export function ColorBandingPattern({ testId = "color-banding-test" }: ColorBand
             <div className="flex items-center gap-1 bg-muted/40 rounded-lg p-0.5 border border-border/40 text-xs">
               <button
                 onClick={() => setBitDepthStep(6)}
-                className={`px-2 py-0.5 rounded text-[11px] font-medium ${bitDepthStep === 6 ? "bg-amber-500/20 text-amber-500 font-bold" : "text-muted-foreground"}`}
+                className={`px-2 py-0.5 rounded text-[11px] font-medium ${bitDepthStep === 6 ? "bg-amber-500/30 text-amber-300 font-bold border border-amber-500/50" : "text-gray-600 dark:text-slate-300 hover:text-white"}`}
               >
                 6-bit (64 steps)
               </button>
               <button
                 onClick={() => setBitDepthStep(8)}
-                className={`px-2 py-0.5 rounded text-[11px] font-medium ${bitDepthStep === 8 ? "bg-blue-500/20 text-blue-500 font-bold" : "text-muted-foreground"}`}
+                className={`px-2 py-0.5 rounded text-[11px] font-medium ${bitDepthStep === 8 ? "bg-blue-500/30 text-blue-300 font-bold border border-blue-500/50" : "text-gray-600 dark:text-slate-300 hover:text-white"}`}
               >
                 8-bit (256 steps)
               </button>
               <button
                 onClick={() => setBitDepthStep(10)}
-                className={`px-2 py-0.5 rounded text-[11px] font-medium ${bitDepthStep === 10 ? "bg-emerald-500/20 text-emerald-500 font-bold" : "text-muted-foreground"}`}
+                className={`px-2 py-0.5 rounded text-[11px] font-medium ${bitDepthStep === 10 ? "bg-emerald-500/30 text-emerald-300 font-bold border border-emerald-500/50" : "text-gray-600 dark:text-slate-300 hover:text-white"}`}
               >
                 10-bit (Simulated)
               </button>
@@ -244,7 +250,7 @@ export function ColorBandingPattern({ testId = "color-banding-test" }: ColorBand
           <button
             onClick={() => setShowEduInfo(!showEduInfo)}
             className={`flex items-center gap-1 text-xs px-2.5 py-1 rounded-lg border transition-colors ${
-              showEduInfo ? "bg-amber-500/20 text-amber-500 border-amber-500/40" : "hover:bg-muted text-muted-foreground border-border/50"
+              showEduInfo ? "bg-amber-500/20 text-amber-500 border-amber-500/40" : "hover:bg-muted dark:hover:bg-white/10 text-gray-700 dark:text-slate-200 dark:hover:text-white border-border/50"
             }`}
             title="Read about visual banding vs colorimeter calibration"
           >

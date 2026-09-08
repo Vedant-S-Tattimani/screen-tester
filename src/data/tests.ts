@@ -257,6 +257,7 @@ export const TEST_KEY_MAP: Record<string, { ns: "lib" | "tests", key: string }> 
   "display-info": { ns: "lib", key: "tests.displayInfo" },
   "hdr-capability-test": { ns: "lib", key: "tests.hdrCapabilityTest" },
   "touch-screen-test": { ns: "tests", key: "touchScreen" },
-  "sharpness-test": { ns: "tests", key: "sharpness" }
+  "sharpness-test": { ns: "tests", key: "sharpness" },
+  "custom-pattern": { ns: "tests", key: "customPattern" }
 };
 

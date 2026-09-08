@@ -469,13 +469,13 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
       <TestControlBar testId={testId} title="HDR & Tone-Mapping Calibration">
         <div className="flex flex-wrap items-center gap-2">
           {/* Mode Tabs Switcher */}
-          <div className="flex items-center bg-gray-100 p-0.5 rounded-lg border border-gray-200 text-xs">
+          <div className="flex items-center bg-muted/60 p-0.5 rounded-lg border border-border/50 text-xs">
             <button
               onClick={() => setActiveTab("overview")}
               className={`px-2.5 py-1 rounded-md transition-all font-medium ${
                 activeTab === "overview" 
-                  ? "bg-white text-gray-950 shadow-xs font-semibold" 
-                  : "text-gray-600 hover:text-gray-900"
+                  ? "bg-white text-gray-950 shadow-xs font-bold" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               Pipeline Metrics
@@ -484,8 +484,8 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
               onClick={() => setActiveTab("banding")}
               className={`px-2.5 py-1 rounded-md transition-all font-medium ${
                 activeTab === "banding" 
-                  ? "bg-white text-gray-950 shadow-xs font-semibold" 
-                  : "text-gray-600 hover:text-gray-900"
+                  ? "bg-white text-gray-950 shadow-xs font-bold" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               10-Bit Ramp
@@ -494,8 +494,8 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
               onClick={() => setActiveTab("specular")}
               className={`px-2.5 py-1 rounded-md transition-all font-medium ${
                 activeTab === "specular" 
-                  ? "bg-white text-gray-950 shadow-xs font-semibold" 
-                  : "text-gray-600 hover:text-gray-900"
+                  ? "bg-white text-gray-950 shadow-xs font-bold" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               Highlight Clipping
@@ -504,8 +504,8 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
               onClick={() => setActiveTab("shadow")}
               className={`px-2.5 py-1 rounded-md transition-all font-medium ${
                 activeTab === "shadow" 
-                  ? "bg-white text-gray-950 shadow-xs font-semibold" 
-                  : "text-gray-600 hover:text-gray-900"
+                  ? "bg-white text-gray-950 shadow-xs font-bold" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               Shadow Detail
@@ -514,14 +514,14 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
 
           {/* Controls specific to Highlight Clipping */}
           {activeTab === "specular" && (
-            <div className="flex items-center gap-1.5 border-l border-gray-200 pl-2 text-xs">
-              <span className="text-gray-500 font-mono text-[11px] hidden sm:inline">Delta:</span>
+            <div className="flex items-center gap-1.5 border-l border-border/50 pl-2 text-xs">
+              <span className="text-muted-foreground dark:text-slate-300 font-mono text-[11px] hidden sm:inline">Delta:</span>
               <button
                 onClick={() => setSensitivity("standard")}
                 className={`px-2 py-0.5 rounded text-[11px] font-medium transition-colors ${
                   sensitivity === "standard"
-                    ? "bg-gray-900 text-white font-semibold"
-                    : "bg-gray-100 hover:bg-gray-200 text-gray-700"
+                    ? "bg-white text-gray-950 font-bold shadow-xs"
+                    : "bg-muted/40 hover:bg-muted text-gray-700 dark:text-slate-200 dark:hover:text-white"
                 }`}
                 title="Standard ~2% delta"
               >
@@ -531,8 +531,8 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
                 onClick={() => setSensitivity("subtle")}
                 className={`px-2 py-0.5 rounded text-[11px] font-medium transition-colors ${
                   sensitivity === "subtle"
-                    ? "bg-gray-900 text-white font-semibold"
-                    : "bg-gray-100 hover:bg-gray-200 text-gray-700"
+                    ? "bg-white text-gray-950 font-bold shadow-xs"
+                    : "bg-muted/40 hover:bg-muted text-gray-700 dark:text-slate-200 dark:hover:text-white"
                 }`}
                 title="Subtle ~1% delta"
               >
@@ -542,8 +542,8 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
                 onClick={() => setSensitivity("ultrafine")}
                 className={`px-2 py-0.5 rounded text-[11px] font-medium transition-colors ${
                   sensitivity === "ultrafine"
-                    ? "bg-gray-900 text-white font-semibold"
-                    : "bg-gray-100 hover:bg-gray-200 text-gray-700"
+                    ? "bg-white text-gray-950 font-bold shadow-xs"
+                    : "bg-muted/40 hover:bg-muted text-gray-700 dark:text-slate-200 dark:hover:text-white"
                 }`}
                 title="Ultra-Fine ~0.5% delta"
               >
@@ -552,10 +552,10 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
 
               <button
                 onClick={triggerBlink}
-                className="ml-1 flex items-center gap-1 px-2.5 py-1 rounded-md border border-gray-300 bg-white hover:bg-gray-50 text-gray-800 text-[11px] font-medium transition-colors shadow-2xs"
+                className="ml-1 flex items-center gap-1 px-2.5 py-1 rounded-md border border-border/50 bg-muted/40 hover:bg-muted text-gray-800 dark:text-slate-200 dark:hover:text-white text-[11px] font-medium transition-colors shadow-2xs"
                 title="Momentarily blink reticles so you can spot their exact location"
               >
-                <Eye className="w-3.5 h-3.5 text-blue-600" />
+                <Eye className="w-3.5 h-3.5 text-blue-500" />
                 <span>Flash Reticles</span>
               </button>
             </div>

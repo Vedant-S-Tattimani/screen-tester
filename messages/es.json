@@ -210,7 +210,20 @@
     "step2Title": "Activa la pantalla completa",
     "step2Desc": "Usa el modo de pantalla completa (pulsa F11) para que pestañas y barras del sistema no tapen los píxeles del borde.",
     "step3Title": "Inspecciona con luz controlada",
-    "step3Desc": "Atenúa la luz ambiental para fugas de luz y contraste. Observa el panel de frente y desde diferentes ángulos."
+    "step3Desc": "Atenúa la luz ambiental para fugas de luz y contraste. Observa el panel de frente y desde diferentes ángulos.",
+    "allTestsTitle": "TODOS LOS TESTS DE PANTALLA",
+    "allTestsSubtitle": "Explora todas las pruebas disponibles para comprobar tu pantalla.",
+    "allTestsSearchPlaceholder": "Buscar entre las 28 pruebas de pantalla...",
+    "allTestsFilterAll": "Todos los tests",
+    "allTestsCount": "28 tests",
+    "allTestsCategories": {
+      "colorPixels": "TESTS DE COLOR Y PÍXELES",
+      "gradientContrast": "TESTS DE GRADIENTE Y CONTRASTE",
+      "uniformityPanel": "TESTS DE UNIFORMIDAD Y RETROILUMINACIÓN",
+      "motionPerformance": "MOVIMIENTO Y TASA DE REFRESCO",
+      "sharpnessCapabilities": "NITIDEZ Y CAPACIDADES"
+    },
+    "allTestsNoResults": "No se encontraron tests para"
   },
   "TestLibrary": {
     "categories": {

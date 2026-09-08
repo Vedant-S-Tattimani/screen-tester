@@ -14,7 +14,23 @@ export async function generateMetadata({
   return generateSeoMetadata("/tests/dead-pixel-test", t("metaTitle"), t("metaDescription"), locale);
 }
 
-const COLORS = ["#000000", "#FFFFFF", "#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF"];
+const COLORS = [
+  "#000000", // Pure Black
+  "#FFFFFF", // Pure White
+  "#FF0000", // Pure Red
+  "#00FF00", // Pure Green
+  "#0000FF", // Pure Blue
+  "#00FFFF", // Cyan
+  "#FF00FF", // Magenta
+  "#FFFF00", // Yellow
+  "#FFA500", // Orange
+  "#800080", // Purple
+  "#1A1A1A", // 10% Gray
+  "#404040", // 25% Gray
+  "#808080", // 50% Gray
+  "#BFBFBF", // 75% Gray
+  "#E6E6E6", // 90% Gray
+];
 
 export default async function DeadPixelTest({
   params

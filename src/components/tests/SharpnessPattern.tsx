@@ -305,7 +305,9 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
             <button
               onClick={() => setActiveTab("grids")}
               className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md font-medium transition-all ${
-                activeTab === "grids" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"
+                activeTab === "grids" 
+                  ? "bg-white text-gray-950 font-bold shadow-xs" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               <Grid className="w-3.5 h-3.5" />
@@ -314,7 +316,9 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
             <button
               onClick={() => setActiveTab("typography")}
               className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md font-medium transition-all ${
-                activeTab === "typography" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"
+                activeTab === "typography" 
+                  ? "bg-white text-gray-950 font-bold shadow-xs" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               <Type className="w-3.5 h-3.5" />
@@ -323,7 +327,9 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
             <button
               onClick={() => setActiveTab("moire")}
               className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md font-medium transition-all ${
-                activeTab === "moire" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"
+                activeTab === "moire" 
+                  ? "bg-white text-gray-950 font-bold shadow-xs" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               <CircleDot className="w-3.5 h-3.5" />
@@ -334,7 +340,7 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
           {/* Invert Light / Dark Toggle */}
           <button
             onClick={toggleInverted}
-            className="flex items-center gap-1 text-xs px-2.5 py-1 rounded-lg border border-border/50 hover:bg-muted text-muted-foreground transition-colors"
+            className="flex items-center gap-1 text-xs px-2.5 py-1 rounded-lg border border-border/50 hover:bg-muted dark:hover:bg-white/10 text-gray-700 dark:text-slate-200 dark:hover:text-white transition-colors"
             title="Toggle Black-on-White / White-on-Black"
           >
             {inverted ? <Sun className="w-3.5 h-3.5 text-amber-500" /> : <Moon className="w-3.5 h-3.5" />}
@@ -344,13 +350,15 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
           {/* Moiré Density Slider */}
           {activeTab === "moire" && (
             <div className="flex items-center gap-1.5 text-xs bg-muted/40 px-2 py-0.5 rounded-lg border border-border/40">
-              <span className="text-[10px] text-muted-foreground uppercase font-mono">Density:</span>
+              <span className="text-[10px] text-muted-foreground dark:text-slate-300 uppercase font-mono">Density:</span>
               {[1, 2, 3, 4, 5].map((lvl) => (
                 <button
                   key={lvl}
                   onClick={() => setMoireDensity(lvl)}
-                  className={`w-5 h-5 rounded text-[11px] font-mono font-medium ${
-                    moireDensity === lvl ? "bg-foreground text-background font-bold" : "text-muted-foreground hover:text-foreground"
+                  className={`w-5 h-5 rounded text-[11px] font-mono font-medium transition-colors ${
+                    moireDensity === lvl 
+                      ? "bg-white text-gray-950 font-bold shadow-xs" 
+                      : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
                   }`}
                 >
                   {lvl}
@@ -363,7 +371,7 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
           <button
             onClick={() => setShowEduInfo(!showEduInfo)}
             className={`flex items-center gap-1 text-xs px-2.5 py-1 rounded-lg border transition-colors ${
-              showEduInfo ? "bg-amber-500/20 text-amber-500 border-amber-500/40" : "hover:bg-muted text-muted-foreground border-border/50"
+              showEduInfo ? "bg-amber-500/20 text-amber-500 border-amber-500/40" : "hover:bg-muted dark:hover:bg-white/10 text-gray-700 dark:text-slate-200 dark:hover:text-white border-border/50"
             }`}
             title="Read about sharpness, subpixel rendering, and moiré"
           >

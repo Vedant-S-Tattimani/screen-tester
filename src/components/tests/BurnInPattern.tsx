@@ -261,7 +261,9 @@ export function BurnInPattern({ testId = "burn-in-test" }: BurnInPatternProps) {
                 setPatternIndex(2); // 5% gray
               }}
               className={`px-2.5 py-1 rounded-md font-medium transition-all ${
-                activeMode === "near_black" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"
+                activeMode === "near_black" 
+                  ? "bg-white text-gray-950 font-bold shadow-xs" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               Near-Black (5% Gray)
@@ -272,7 +274,9 @@ export function BurnInPattern({ testId = "burn-in-test" }: BurnInPatternProps) {
                 setPatternIndex(0); // Red
               }}
               className={`px-2.5 py-1 rounded-md font-medium transition-all ${
-                activeMode === "subpixels" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"
+                activeMode === "subpixels" 
+                  ? "bg-white text-gray-950 font-bold shadow-xs" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               Subpixel Aging (RGB/CMY)
@@ -283,7 +287,9 @@ export function BurnInPattern({ testId = "burn-in-test" }: BurnInPatternProps) {
                 resetRetentionTest();
               }}
               className={`px-2.5 py-1 rounded-md font-medium transition-all ${
-                activeMode === "retention_stress" ? "bg-background text-foreground shadow-2xs" : "text-muted-foreground hover:text-foreground"
+                activeMode === "retention_stress" 
+                  ? "bg-white text-gray-950 font-bold shadow-xs" 
+                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
               Retention Stress Test
@@ -295,17 +301,17 @@ export function BurnInPattern({ testId = "burn-in-test" }: BurnInPatternProps) {
             <div className="flex items-center gap-1 bg-muted/40 rounded-lg p-0.5 border border-border/40 text-xs">
               <button 
                 onClick={prevPattern}
-                className="p-1 hover:bg-muted rounded text-foreground transition-colors"
+                className="p-1 hover:bg-muted dark:hover:bg-white/10 rounded text-gray-900 dark:text-white transition-colors"
                 title="Previous pattern (Left Arrow)"
               >
                 <ChevronLeft className="w-3.5 h-3.5" />
               </button>
-              <span className="text-[11px] font-medium px-2 min-w-[120px] text-center text-foreground font-mono truncate">
+              <span className="text-[11px] font-medium px-2 min-w-[120px] text-center text-gray-900 dark:text-white font-mono truncate">
                 {currentPattern.label}
               </span>
               <button 
                 onClick={nextPattern}
-                className="p-1 hover:bg-muted rounded text-foreground transition-colors"
+                className="p-1 hover:bg-muted dark:hover:bg-white/10 rounded text-gray-900 dark:text-white transition-colors"
                 title="Next pattern (Right Arrow)"
               >
                 <ChevronRight className="w-3.5 h-3.5" />
@@ -317,7 +323,7 @@ export function BurnInPattern({ testId = "burn-in-test" }: BurnInPatternProps) {
           <button
             onClick={() => setShowEduInfo(!showEduInfo)}
             className={`flex items-center gap-1 text-xs px-2.5 py-1 rounded-lg border transition-colors ${
-              showEduInfo ? "bg-amber-500/20 text-amber-500 border-amber-500/40" : "hover:bg-muted text-muted-foreground border-border/50"
+              showEduInfo ? "bg-amber-500/20 text-amber-500 border-amber-500/40" : "hover:bg-muted dark:hover:bg-white/10 text-gray-700 dark:text-slate-200 dark:hover:text-white border-border/50"
             }`}
             title="Read about OLED near-black banding and burn-in"
           >

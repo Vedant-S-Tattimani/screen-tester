@@ -120,15 +120,15 @@ export function GammaPattern({ testId }: GammaPatternProps) {
       <TestControlBar testId={testId} title="Gamma Calibration">
         <div className="flex flex-wrap items-center gap-3">
           {/* Preset Buttons */}
-          <div className="flex items-center gap-1 bg-muted/50 p-1 rounded-lg border border-border/50">
+          <div className="flex items-center gap-1 bg-muted/60 p-1 rounded-lg border border-border/50">
             {PRESET_GAMMAS.map(p => (
               <button
                 key={p.value}
                 onClick={() => setSelectedGamma(p.value)}
-                className={`px-2 py-1 rounded text-xs font-medium transition-colors focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-hidden ${
+                className={`px-2.5 py-1 rounded text-xs font-medium transition-colors focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-hidden ${
                   selectedGamma === p.value 
-                    ? "bg-foreground text-background shadow-xs font-semibold" 
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "bg-white text-gray-950 shadow-xs font-bold" 
+                    : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
                 }`}
               >
                 {p.label}
@@ -137,8 +137,8 @@ export function GammaPattern({ testId }: GammaPatternProps) {
           </div>
 
           {/* Continuous Gamma Slider */}
-          <div className="flex items-center gap-2 bg-muted/30 px-3 py-1.5 rounded-lg border border-border/50">
-            <Sliders className="w-3.5 h-3.5 text-muted-foreground" />
+          <div className="flex items-center gap-2 bg-muted/40 px-3 py-1.5 rounded-lg border border-border/50">
+            <Sliders className="w-3.5 h-3.5 text-gray-500 dark:text-slate-300" />
             <input
               type="range"
               min="1.6"
@@ -150,9 +150,9 @@ export function GammaPattern({ testId }: GammaPatternProps) {
               aria-valuemin={1.6}
               aria-valuemax={2.6}
               aria-valuenow={selectedGamma}
-              className="w-24 sm:w-32 accent-foreground cursor-pointer"
+              className="w-24 sm:w-32 accent-blue-500 cursor-pointer"
             />
-            <span className="font-mono text-xs font-bold tabular-nums w-12 text-right text-foreground">
+            <span className="font-mono text-xs font-bold tabular-nums w-12 text-right text-gray-900 dark:text-white">
               {selectedGamma.toFixed(2)}
             </span>
           </div>
@@ -160,7 +160,7 @@ export function GammaPattern({ testId }: GammaPatternProps) {
           {/* Reset Button */}
           <button
             onClick={() => setSelectedGamma(2.2)}
-            className="p-1.5 hover:bg-muted rounded-lg transition-colors border border-border/50 text-muted-foreground hover:text-foreground focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-hidden"
+            className="p-1.5 hover:bg-muted dark:hover:bg-white/10 rounded-lg transition-colors border border-border/50 text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-hidden"
             title="Reset to 2.2 Standard"
             aria-label="Reset Gamma to 2.2 Standard"
           >
