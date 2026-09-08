@@ -2,15 +2,16 @@
 
 import { useState, useMemo, useEffect } from "react";
 import { Link } from "@/i18n/routing";
-import { 
+import { useTranslations } from "next-intl";
+import {
   ArrowLeft, Ruler, Calculator, Monitor, Compass, Info, Save, ShieldCheck
 } from "lucide-react";
-import { 
-  getSavedMonitorProfiles, 
-  getComparisonObservations, 
-  saveComparisonObservations, 
-  MonitorProfile, 
-  ComparisonObservations 
+import {
+  getSavedMonitorProfiles,
+  getComparisonObservations,
+  saveComparisonObservations,
+  MonitorProfile,
+  ComparisonObservations
 } from "@/lib/inspectionStorage";
 
 interface DisplayPreset {
@@ -85,6 +86,8 @@ function parseProfileToDisplay(profile: MonitorProfile, fallbackIndex: number): 
 }
 
 export function CompareDisplaysClient() {
+  const t = useTranslations("CompareDisplays");
+
   const [activeTab, setActiveTab] = useState<"comparator" | "ppi" | "resolution" | "aspect">("comparator");
 
   // --- Tab 1: Comparator State ---
@@ -145,7 +148,7 @@ export function CompareDisplaysClient() {
       updatedAt: Date.now()
     };
     saveComparisonObservations(obs);
-    setSavedObsSuccess("User comparison observations saved locally.");
+    setSavedObsSuccess(t("comparator.obsSavedSuccess"));
     setTimeout(() => setSavedObsSuccess(null), 4000);
   };
 
@@ -169,6 +172,7 @@ export function CompareDisplaysClient() {
 
   // -------------------------------------------------------------
   // CALCULATIONS WITH EXTREME VALUE & INVALID INPUT SAFETY
+  // (Formulas completely unchanged per specifications)
   // -------------------------------------------------------------
 
   // Display A & B Specs for Comparator
@@ -385,22 +389,22 @@ export function CompareDisplaysClient() {
         <div className="flex items-center gap-2 text-xs font-mono uppercase text-gray-400 mb-6">
           <Link href="/tests" className="hover:text-gray-900 flex items-center gap-1 transition-colors">
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>ALL TESTS</span>
+            <span>{t("breadcrumbAll")}</span>
           </Link>
           <span>/</span>
-          <span className="text-gray-900 font-semibold">DISPLAY CALCULATORS & COMPARATOR</span>
+          <span className="text-gray-900 font-semibold">{t("breadcrumbTitle")}</span>
         </div>
 
         {/* Title */}
         <div className="mb-8">
           <div className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-gray-400 mb-2">
-            PRECISION DISPLAY MATHEMATICS
+            {t("eyebrow")}
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-950">
-            Display Calculators & Benchmark Suite
+            {t("title")}
           </h1>
           <p className="text-gray-500 text-sm sm:text-base mt-2 max-w-2xl leading-relaxed">
-            Exact mathematical calculators for pixel density (PPI), visual acuity viewing distance, missing resolution dimensions, and aspect ratio geometry.
+            {t("subtitle")}
           </p>
         </div>
 
@@ -415,7 +419,7 @@ export function CompareDisplaysClient() {
             }`}
           >
             <Monitor className="w-4 h-4" />
-            <span>Compare Displays</span>
+            <span>{t("tabs.comparator")}</span>
           </button>
 
           <button
@@ -427,7 +431,7 @@ export function CompareDisplaysClient() {
             }`}
           >
             <Ruler className="w-4 h-4" />
-            <span>PPI & Viewing Distance</span>
+            <span>{t("tabs.ppi")}</span>
           </button>
 
           <button
@@ -439,7 +443,7 @@ export function CompareDisplaysClient() {
             }`}
           >
             <Calculator className="w-4 h-4" />
-            <span>Resolution & Missing Dimension</span>
+            <span>{t("tabs.resolution")}</span>
           </button>
 
           <button
@@ -451,7 +455,7 @@ export function CompareDisplaysClient() {
             }`}
           >
             <Compass className="w-4 h-4" />
-            <span>Aspect Ratio Analyzer</span>
+            <span>{t("tabs.aspect")}</span>
           </button>
         </div>
 
@@ -472,14 +476,14 @@ export function CompareDisplaysClient() {
               {/* Selector A */}
               <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/70">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-mono font-bold uppercase text-gray-500">DISPLAY A</span>
+                  <span className="text-xs font-mono font-bold uppercase text-gray-500">{t("comparator.displayA")}</span>
                   <div className="flex items-center gap-1 text-[11px] font-mono">
                     <button
                       type="button"
                       onClick={() => setSourceModeA("preset")}
                       className={`px-2 py-0.5 rounded-md ${sourceModeA === "preset" ? "bg-blue-600 text-white font-semibold" : "text-gray-500 hover:text-gray-800"}`}
                     >
-                      Presets
+                      {t("comparator.modePreset")}
                     </button>
                     <span>|</span>
                     <button
@@ -487,7 +491,7 @@ export function CompareDisplaysClient() {
                       onClick={() => setSourceModeA("saved")}
                       className={`px-2 py-0.5 rounded-md ${sourceModeA === "saved" ? "bg-blue-600 text-white font-semibold" : "text-gray-500 hover:text-gray-800"}`}
                     >
-                      Saved Profiles ({savedProfiles.length})
+                      {t("comparator.modeSaved")} ({savedProfiles.length})
                     </button>
                   </div>
                 </div>
@@ -506,7 +510,7 @@ export function CompareDisplaysClient() {
                   <div>
                     {savedProfiles.length === 0 ? (
                       <div className="text-xs text-gray-500 p-2 bg-white rounded-xl border border-gray-200">
-                        No saved profiles found. Save a profile in <Link href="/monitor-inspection/summary" className="text-blue-600 underline">Inspection Summary</Link>.
+                        {t("comparator.noSaved")} <Link href="/monitor-inspection/summary" className="text-blue-600 underline">{t("comparator.summaryLink")}</Link>.
                       </div>
                     ) : (
                       <select
@@ -528,14 +532,14 @@ export function CompareDisplaysClient() {
               {/* Selector B */}
               <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/70">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-mono font-bold uppercase text-gray-500">DISPLAY B</span>
+                  <span className="text-xs font-mono font-bold uppercase text-gray-500">{t("comparator.displayB")}</span>
                   <div className="flex items-center gap-1 text-[11px] font-mono">
                     <button
                       type="button"
                       onClick={() => setSourceModeB("preset")}
                       className={`px-2 py-0.5 rounded-md ${sourceModeB === "preset" ? "bg-purple-600 text-white font-semibold" : "text-gray-500 hover:text-gray-800"}`}
                     >
-                      Presets
+                      {t("comparator.modePreset")}
                     </button>
                     <span>|</span>
                     <button
@@ -543,7 +547,7 @@ export function CompareDisplaysClient() {
                       onClick={() => setSourceModeB("saved")}
                       className={`px-2 py-0.5 rounded-md ${sourceModeB === "saved" ? "bg-purple-600 text-white font-semibold" : "text-gray-500 hover:text-gray-800"}`}
                     >
-                      Saved Profiles ({savedProfiles.length})
+                      {t("comparator.modeSaved")} ({savedProfiles.length})
                     </button>
                   </div>
                 </div>
@@ -562,7 +566,7 @@ export function CompareDisplaysClient() {
                   <div>
                     {savedProfiles.length === 0 ? (
                       <div className="text-xs text-gray-500 p-2 bg-white rounded-xl border border-gray-200">
-                        No saved profiles found. Save a profile in <Link href="/monitor-inspection/summary" className="text-blue-600 underline">Inspection Summary</Link>.
+                        {t("comparator.noSaved")} <Link href="/monitor-inspection/summary" className="text-blue-600 underline">{t("comparator.summaryLink")}</Link>.
                       </div>
                     ) : (
                       <select
@@ -585,55 +589,55 @@ export function CompareDisplaysClient() {
             {/* Side-by-side Technical Metrics Table */}
             <div className="border border-gray-200 rounded-2xl overflow-hidden bg-white mb-10 shadow-2xs">
               <div className="bg-slate-50 px-5 py-3 border-b border-gray-200 font-mono text-xs uppercase font-semibold text-gray-600 flex items-center justify-between">
-                <span>Display Hardware & Geometry Comparison</span>
-                <span className="text-[10px] text-gray-400">Mathematical Benchmarks</span>
+                <span>{t("hardwareComparison")}</span>
+                <span className="text-[10px] text-gray-400">{t("benchmarks")}</span>
               </div>
               <table className="w-full text-left text-sm border-collapse">
                 <thead>
                   <tr className="border-b border-gray-200 bg-white">
-                    <th className="py-3 px-5 font-mono text-xs font-semibold text-gray-500 uppercase">Parameter</th>
+                    <th className="py-3 px-5 font-mono text-xs font-semibold text-gray-500 uppercase">{t("parameter")}</th>
                     <th className="py-3 px-5 font-mono text-xs font-semibold text-blue-600 uppercase">{displayA.name}</th>
                     <th className="py-3 px-5 font-mono text-xs font-semibold text-purple-600 uppercase">{displayB.name}</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100 font-mono text-xs sm:text-sm">
                   <tr>
-                    <td className="py-3 px-5 font-sans font-medium text-gray-700">Pixel Density (PPI)</td>
+                    <td className="py-3 px-5 font-sans font-medium text-gray-700">{t("comparator.ppi")}</td>
                     <td className="py-3 px-5 font-bold text-gray-950">{specsA.ppi} PPI</td>
                     <td className="py-3 px-5 font-bold text-gray-950">{specsB.ppi} PPI</td>
                   </tr>
                   <tr>
-                    <td className="py-3 px-5 font-sans font-medium text-gray-700">Resolution</td>
+                    <td className="py-3 px-5 font-sans font-medium text-gray-700">{t("comparator.nativeRes")}</td>
                     <td className="py-3 px-5 text-gray-900">{displayA.width} × {displayA.height}</td>
                     <td className="py-3 px-5 text-gray-900">{displayB.width} × {displayB.height}</td>
                   </tr>
                   <tr>
-                    <td className="py-3 px-5 font-sans font-medium text-gray-700">Refresh Rate</td>
+                    <td className="py-3 px-5 font-sans font-medium text-gray-700">{t("comparator.refreshRate")}</td>
                     <td className="py-3 px-5 text-gray-900 font-semibold">{displayA.refreshRate || "60Hz"}</td>
                     <td className="py-3 px-5 text-gray-900 font-semibold">{displayB.refreshRate || "60Hz"}</td>
                   </tr>
                   <tr>
-                    <td className="py-3 px-5 font-sans font-medium text-gray-700">Panel Type</td>
+                    <td className="py-3 px-5 font-sans font-medium text-gray-700">{t("comparator.panelType")}</td>
                     <td className="py-3 px-5 text-gray-900">{displayA.panelType || "IPS"}</td>
                     <td className="py-3 px-5 text-gray-900">{displayB.panelType || "IPS"}</td>
                   </tr>
                   <tr>
-                    <td className="py-3 px-5 font-sans font-medium text-gray-700">Total Megapixels</td>
+                    <td className="py-3 px-5 font-sans font-medium text-gray-700">{t("comparator.megapixels")}</td>
                     <td className="py-3 px-5 text-gray-900">{specsA.mp} MP</td>
                     <td className="py-3 px-5 text-gray-900">{specsB.mp} MP</td>
                   </tr>
                   <tr>
-                    <td className="py-3 px-5 font-sans font-medium text-gray-700">Physical Dimensions</td>
+                    <td className="py-3 px-5 font-sans font-medium text-gray-700">{t("comparator.widthHeight")}</td>
                     <td className="py-3 px-5 text-gray-900">{specsA.pwIn}&quot; × {specsA.phIn}&quot; ({specsA.pwCm} × {specsA.phCm} cm)</td>
                     <td className="py-3 px-5 text-gray-900">{specsB.pwIn}&quot; × {specsB.phIn}&quot; ({specsB.pwCm} × {specsB.phCm} cm)</td>
                   </tr>
                   <tr>
-                    <td className="py-3 px-5 font-sans font-medium text-gray-700">Retina Viewing Distance</td>
+                    <td className="py-3 px-5 font-sans font-medium text-gray-700">{t("comparator.retinaDist")}</td>
                     <td className="py-3 px-5 text-gray-900">≥ {specsA.retinaIn}&quot; ({specsA.retinaCm} cm)</td>
                     <td className="py-3 px-5 text-gray-900">≥ {specsB.retinaIn}&quot; ({specsB.retinaCm} cm)</td>
                   </tr>
                   <tr>
-                    <td className="py-3 px-5 font-sans font-medium text-gray-700">Aspect Ratio</td>
+                    <td className="py-3 px-5 font-sans font-medium text-gray-700">{t("comparator.aspectRatio")}</td>
                     <td className="py-3 px-5 text-gray-900">{specsA.aspect}</td>
                     <td className="py-3 px-5 text-gray-900">{specsB.aspect}</td>
                   </tr>
@@ -645,29 +649,29 @@ export function CompareDisplaysClient() {
             <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-5 mb-10 text-xs">
               <div className="flex items-center gap-2 text-slate-800 font-bold mb-1">
                 <ShieldCheck className="w-4 h-4 text-slate-600" />
-                <span>Neutral Comparison Policy</span>
+                <span>{t("neutralPolicyTitle")}</span>
               </div>
               <p className="text-slate-600 leading-relaxed font-sans">
-                Monitor Tester does not declare: <em className="font-semibold text-slate-900">&ldquo;Monitor A is better&rdquo;</em>. Visual display evaluation involves inherent engineering trade-offs (e.g. OLED infinite contrast vs IPS color consistency and longevity vs Fast-IPS motion response). The user decides which monitor best matches their specific visual requirements and ambient environment.
+                {t("neutralPolicyDesc")}
               </p>
             </div>
 
             {/* User Observations & Subjective Comparison Section */}
             <div className="border border-gray-200 rounded-2xl p-6 bg-white shadow-2xs mb-10 space-y-6">
-              <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-100 pb-3">
                 <div>
-                  <h3 className="text-base font-bold text-gray-950">User Display Observations Journal</h3>
+                  <h3 className="text-base font-bold text-gray-950">{t("journalTitle")}</h3>
                   <p className="text-xs text-gray-500 font-mono mt-0.5">
-                    Record your real-world visual observations side-by-side.
+                    {t("journalSubtitle")}
                   </p>
                 </div>
                 <button
                   type="button"
                   onClick={handleSaveObservations}
-                  className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gray-900 text-white text-xs font-medium hover:bg-gray-800 shadow-2xs transition-colors"
+                  className="self-start sm:self-auto flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gray-900 text-white text-xs font-medium hover:bg-gray-800 shadow-2xs transition-colors shrink-0"
                 >
                   <Save className="w-3.5 h-3.5" />
-                  <span>Save Observations</span>
+                  <span>{t("comparator.saveObs")}</span>
                 </button>
               </div>
 
@@ -675,25 +679,25 @@ export function CompareDisplaysClient() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-4 bg-slate-50/70 rounded-xl border border-slate-200/80">
                   <label className="block text-xs font-semibold text-blue-700 mb-1">
-                    {displayA.name} — Color Observations:
+                    {displayA.name} — {t("comparator.obsColor")}:
                   </label>
                   <textarea
                     rows={2}
                     value={colorNotesA}
                     onChange={(e) => setColorNotesA(e.target.value)}
-                    placeholder="e.g., Warmer white point, vibrant saturation, accurate skin tones..."
+                    placeholder={t("comparator.obsColorPlaceholder")}
                     className="w-full text-xs p-2.5 bg-white border border-gray-200 rounded-lg text-gray-800"
                   />
                 </div>
                 <div className="p-4 bg-slate-50/70 rounded-xl border border-slate-200/80">
                   <label className="block text-xs font-semibold text-purple-700 mb-1">
-                    {displayB.name} — Color Observations:
+                    {displayB.name} — {t("comparator.obsColor")}:
                   </label>
                   <textarea
                     rows={2}
                     value={colorNotesB}
                     onChange={(e) => setColorNotesB(e.target.value)}
-                    placeholder="e.g., Cooler 6500K tint, wider DCI-P3 coverage, neutral grays..."
+                    placeholder={t("comparator.obsColorPlaceholder")}
                     className="w-full text-xs p-2.5 bg-white border border-gray-200 rounded-lg text-gray-800"
                   />
                 </div>
@@ -703,25 +707,25 @@ export function CompareDisplaysClient() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-4 bg-slate-50/70 rounded-xl border border-slate-200/80">
                   <label className="block text-xs font-semibold text-blue-700 mb-1">
-                    {displayA.name} — Uniformity & Bleed:
+                    {displayA.name} — {t("comparator.obsUniformity")}:
                   </label>
                   <textarea
                     rows={2}
                     value={uniformityNotesA}
                     onChange={(e) => setUniformityNotesA(e.target.value)}
-                    placeholder="e.g., Slight IPS glow in bottom-right corner, uniform center..."
+                    placeholder={t("comparator.obsUniformityPlaceholder")}
                     className="w-full text-xs p-2.5 bg-white border border-gray-200 rounded-lg text-gray-800"
                   />
                 </div>
                 <div className="p-4 bg-slate-50/70 rounded-xl border border-slate-200/80">
                   <label className="block text-xs font-semibold text-purple-700 mb-1">
-                    {displayB.name} — Uniformity & Bleed:
+                    {displayB.name} — {t("comparator.obsUniformity")}:
                   </label>
                   <textarea
                     rows={2}
                     value={uniformityNotesB}
                     onChange={(e) => setUniformityNotesB(e.target.value)}
-                    placeholder="e.g., Pure black background without light bleed, subtle near-black banding..."
+                    placeholder={t("comparator.obsUniformityPlaceholder")}
                     className="w-full text-xs p-2.5 bg-white border border-gray-200 rounded-lg text-gray-800"
                   />
                 </div>
@@ -731,25 +735,25 @@ export function CompareDisplaysClient() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-4 bg-slate-50/70 rounded-xl border border-slate-200/80">
                   <label className="block text-xs font-semibold text-blue-700 mb-1">
-                    {displayA.name} — Brightness & Contrast:
+                    {displayA.name} — {t("comparator.obsBrightness")}:
                   </label>
                   <textarea
                     rows={2}
                     value={brightnessNotesA}
                     onChange={(e) => setBrightnessNotesA(e.target.value)}
-                    placeholder="e.g., 400 nits comfortable in daylight, standard 1000:1 contrast..."
+                    placeholder={t("comparator.obsBrightnessPlaceholder")}
                     className="w-full text-xs p-2.5 bg-white border border-gray-200 rounded-lg text-gray-800"
                   />
                 </div>
                 <div className="p-4 bg-slate-50/70 rounded-xl border border-slate-200/80">
                   <label className="block text-xs font-semibold text-purple-700 mb-1">
-                    {displayB.name} — Brightness & Contrast:
+                    {displayB.name} — {t("comparator.obsBrightness")}:
                   </label>
                   <textarea
                     rows={2}
                     value={brightnessNotesB}
                     onChange={(e) => setBrightnessNotesB(e.target.value)}
-                    placeholder="e.g., Infinite contrast ratio, ABL dims full-screen white windows..."
+                    placeholder={t("comparator.obsBrightnessPlaceholder")}
                     className="w-full text-xs p-2.5 bg-white border border-gray-200 rounded-lg text-gray-800"
                   />
                 </div>
@@ -759,25 +763,25 @@ export function CompareDisplaysClient() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-4 bg-slate-50/70 rounded-xl border border-slate-200/80">
                   <label className="block text-xs font-semibold text-blue-700 mb-1">
-                    {displayA.name} — Motion & Response:
+                    {displayA.name} — {t("comparator.obsMotion")}:
                   </label>
                   <textarea
                     rows={2}
                     value={motionNotesA}
                     onChange={(e) => setMotionNotesA(e.target.value)}
-                    placeholder="e.g., Slight inverse overshoot at Faster overdrive, clear 144Hz..."
+                    placeholder={t("comparator.obsMotionPlaceholder")}
                     className="w-full text-xs p-2.5 bg-white border border-gray-200 rounded-lg text-gray-800"
                   />
                 </div>
                 <div className="p-4 bg-slate-50/70 rounded-xl border border-slate-200/80">
                   <label className="block text-xs font-semibold text-purple-700 mb-1">
-                    {displayB.name} — Motion & Response:
+                    {displayB.name} — {t("comparator.obsMotion")}:
                   </label>
                   <textarea
                     rows={2}
                     value={motionNotesB}
                     onChange={(e) => setMotionNotesB(e.target.value)}
-                    placeholder="e.g., Instant pixel response, zero ghosting trails, slight 240Hz sample-and-hold blur..."
+                    placeholder={t("comparator.obsMotionPlaceholder")}
                     className="w-full text-xs p-2.5 bg-white border border-gray-200 rounded-lg text-gray-800"
                   />
                 </div>
@@ -786,13 +790,13 @@ export function CompareDisplaysClient() {
               {/* Overall Personal Verdict */}
               <div className="pt-2 border-t border-gray-100">
                 <label className="block text-xs font-bold text-gray-800 mb-1">
-                  Your Personal Decision & Workflow Fit:
+                  {t("verdictLabel")}
                 </label>
                 <textarea
                   rows={2}
                   value={userConclusion}
                   onChange={(e) => setUserConclusion(e.target.value)}
-                  placeholder="e.g., Display A is preferred for productivity and office work due to high text sharpness, while Display B is chosen for gaming and dark-room movies."
+                  placeholder={t("verdictPlaceholder")}
                   className="w-full text-xs p-2.5 bg-slate-50 border border-gray-200 rounded-lg text-gray-800 focus:bg-white"
                 />
               </div>
@@ -809,11 +813,11 @@ export function CompareDisplaysClient() {
               {/* Inputs Form */}
               <div className="lg:col-span-5 border border-gray-200 rounded-2xl p-6 bg-gray-50/70 space-y-4">
                 <h3 className="text-sm font-semibold text-gray-950 uppercase tracking-wider font-mono">
-                  Display Physical & Pixel Inputs
+                  {t("ppi.title")}
                 </h3>
 
                 <div>
-                  <label className="block text-xs font-medium text-gray-700 mb-1">Diagonal Screen Size (Inches)</label>
+                  <label className="block text-xs font-medium text-gray-700 mb-1">{t("ppi.screenDiagonal")}</label>
                   <input
                     type="number"
                     step="0.1"
@@ -826,7 +830,7 @@ export function CompareDisplaysClient() {
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-medium text-gray-700 mb-1">Width (Pixels)</label>
+                    <label className="block text-xs font-medium text-gray-700 mb-1">{t("ppi.resWidth")}</label>
                     <input
                       type="number"
                       step="1"
@@ -837,7 +841,7 @@ export function CompareDisplaysClient() {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-gray-700 mb-1">Height (Pixels)</label>
+                    <label className="block text-xs font-medium text-gray-700 mb-1">{t("ppi.resHeight")}</label>
                     <input
                       type="number"
                       step="1"
@@ -851,19 +855,19 @@ export function CompareDisplaysClient() {
 
                 <div>
                   <div className="flex items-center justify-between mb-1">
-                    <label className="block text-xs font-medium text-gray-700">Viewing Distance</label>
+                    <label className="block text-xs font-medium text-gray-700">{t("ppi.viewingDist")}</label>
                     <div className="flex items-center gap-1 text-[11px] font-mono">
                       <button
                         onClick={() => setDistanceUnit("in")}
                         className={`px-2 py-0.5 rounded ${distanceUnit === "in" ? "bg-gray-950 text-white" : "text-gray-500"}`}
                       >
-                        Inches
+                        {t("ppi.unitInches")}
                       </button>
                       <button
                         onClick={() => setDistanceUnit("cm")}
                         className={`px-2 py-0.5 rounded ${distanceUnit === "cm" ? "bg-gray-950 text-white" : "text-gray-500"}`}
                       >
-                        CM
+                        {t("ppi.unitCm")}
                       </button>
                     </div>
                   </div>
@@ -879,7 +883,7 @@ export function CompareDisplaysClient() {
 
                 {/* Quick Presets */}
                 <div className="pt-2">
-                  <span className="text-[11px] font-mono uppercase text-gray-400 block mb-2">QUICK SIZES</span>
+                  <span className="text-[11px] font-mono uppercase text-gray-400 block mb-2">{t("quickSizes")}</span>
                   <div className="flex flex-wrap gap-1.5">
                     {[
                       { s: "24", w: "1920", h: "1080", label: "24\" 1080p" },
@@ -909,41 +913,41 @@ export function CompareDisplaysClient() {
               <div className="lg:col-span-7 border border-gray-200 rounded-2xl p-6 bg-white flex flex-col justify-between">
                 <div>
                   <h3 className="text-sm font-semibold text-gray-950 uppercase tracking-wider font-mono mb-4">
-                    Computed Optical Metrics
+                    {t("ppi.specTitle")}
                   </h3>
 
                   {ppiResults.isValid ? (
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
                       <div className="p-4 rounded-xl bg-gray-50 border border-gray-100">
-                        <span className="text-xs text-gray-400 font-mono uppercase block mb-1">Pixel Density</span>
+                        <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("ppi.cardDensity")}</span>
                         <span className="text-2xl font-bold font-mono text-gray-950 tabular-nums">
                           {ppiResults.ppi} <span className="text-xs font-normal">PPI</span>
                         </span>
                       </div>
 
                       <div className="p-4 rounded-xl bg-gray-50 border border-gray-100">
-                        <span className="text-xs text-gray-400 font-mono uppercase block mb-1">Retina Distance</span>
+                        <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("ppi.cardRetina")}</span>
                         <span className="text-2xl font-bold font-mono text-blue-600 tabular-nums">
                           {ppiResults.retinaIn}&quot; <span className="text-xs font-normal text-gray-500">({ppiResults.retinaCm}cm)</span>
                         </span>
                       </div>
 
                       <div className="p-4 rounded-xl bg-gray-50 border border-gray-100">
-                        <span className="text-xs text-gray-400 font-mono uppercase block mb-1">Horizontal FOV</span>
+                        <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("ppi.cardFov")}</span>
                         <span className="text-2xl font-bold font-mono text-emerald-600 tabular-nums">
                           {ppiResults.fovDeg > 0 ? `${ppiResults.fovDeg}°` : "--"}
                         </span>
                       </div>
 
                       <div className="p-4 rounded-xl bg-gray-50 border border-gray-100">
-                        <span className="text-xs text-gray-400 font-mono uppercase block mb-1">Pixel Pitch</span>
+                        <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("ppi.cardPitch")}</span>
                         <span className="text-lg font-bold font-mono text-gray-900 tabular-nums">
                           {ppiResults.pixelPitchMm} mm
                         </span>
                       </div>
 
                       <div className="p-4 rounded-xl bg-gray-50 border border-gray-100">
-                        <span className="text-xs text-gray-400 font-mono uppercase block mb-1">Physical Size</span>
+                        <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("ppi.specDimensions")}</span>
                         <span className="text-sm font-bold font-mono text-gray-900 block tabular-nums">
                           {ppiResults.pwIn}&quot; × {ppiResults.phIn}&quot;
                         </span>
@@ -953,7 +957,7 @@ export function CompareDisplaysClient() {
                       </div>
 
                       <div className="p-4 rounded-xl bg-gray-50 border border-gray-100">
-                        <span className="text-xs text-gray-400 font-mono uppercase block mb-1">Total Pixels</span>
+                        <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("ppi.specTotalPixels")}</span>
                         <span className="text-lg font-bold font-mono text-gray-900 tabular-nums">
                           {ppiResults.megapixels} MP
                         </span>
@@ -961,7 +965,7 @@ export function CompareDisplaysClient() {
                     </div>
                   ) : (
                     <div className="py-8 text-center text-sm text-gray-400 border border-dashed border-gray-200 rounded-xl mb-6">
-                      Enter positive numbers for screen size and resolution above.
+                      {t("invalidPositive")}
                     </div>
                   )}
                 </div>
@@ -970,13 +974,13 @@ export function CompareDisplaysClient() {
                 <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-600 leading-relaxed space-y-2">
                   <div className="flex items-center gap-2 font-semibold text-gray-900">
                     <Info className="w-4 h-4 text-blue-600" />
-                    <span>Viewing Distance & Visual Acuity Limits</span>
+                    <span>{t("guidanceTitle")}</span>
                   </div>
                   <p>
-                    <strong>Visual Acuity Threshold:</strong> A person with normal 20/20 vision has an angular resolution limit of approximately 1 arcminute (1/60th of a degree). At distances greater than <strong>{ppiResults.retinaIn}&quot;</strong>, human eye physiology cannot resolve individual pixels.
+                    {t("guidanceAcuity", { dist: `${ppiResults.retinaIn}" / ${ppiResults.retinaCm}cm` })}
                   </p>
                   <p>
-                    <strong>No Single Universal Perfect Distance:</strong> Ergonomic desktop work favors arms-length positioning (50–75cm / 20–30&quot;) to minimize neck strain and rapid eye accommodation fatigue. Cinema and competitive gaming prioritize field-of-view immersion (SMPTE 30° or THX 40°).
+                    {t("guidanceErgonomic")}
                   </p>
                 </div>
               </div>
@@ -992,12 +996,12 @@ export function CompareDisplaysClient() {
             {/* Box A: Direct Resolution Classification */}
             <div className="border border-gray-200 rounded-2xl p-6 bg-gray-50/70">
               <h3 className="text-sm font-semibold text-gray-950 uppercase tracking-wider font-mono mb-4">
-                1. Resolution Inspector
+                {t("resolution.title")}
               </h3>
 
               <div className="grid grid-cols-2 gap-3 mb-4">
                 <div>
-                  <label className="block text-xs font-medium text-gray-700 mb-1">Width (px)</label>
+                  <label className="block text-xs font-medium text-gray-700 mb-1">{t("resolution.dimWidth")}</label>
                   <input
                     type="number"
                     value={resWStr}
@@ -1007,7 +1011,7 @@ export function CompareDisplaysClient() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-700 mb-1">Height (px)</label>
+                  <label className="block text-xs font-medium text-gray-700 mb-1">{t("resolution.dimHeight")}</label>
                   <input
                     type="number"
                     value={resHStr}
@@ -1021,25 +1025,25 @@ export function CompareDisplaysClient() {
               {resResults.isValid ? (
                 <div className="space-y-2.5 text-xs font-mono pt-2 border-t border-gray-200">
                   <div className="flex justify-between py-1">
-                    <span className="text-gray-500 font-sans">Industry Classification:</span>
+                    <span className="text-gray-500 font-sans">{t("resolution.standardClass")}:</span>
                     <span className="font-bold text-gray-900">{resResults.classification}</span>
                   </div>
                   <div className="flex justify-between py-1">
-                    <span className="text-gray-500 font-sans">Mathematical Aspect Ratio:</span>
+                    <span className="text-gray-500 font-sans">{t("resolution.aspectName")}:</span>
                     <span className="font-bold text-blue-600">{resResults.aspect}</span>
                   </div>
                   <div className="flex justify-between py-1">
-                    <span className="text-gray-500 font-sans">Total Pixels:</span>
+                    <span className="text-gray-500 font-sans">{t("resolution.totalPixels")}:</span>
                     <span className="font-bold text-gray-900">{resResults.totalPixels}</span>
                   </div>
                   <div className="flex justify-between py-1">
-                    <span className="text-gray-500 font-sans">Total Megapixels:</span>
+                    <span className="text-gray-500 font-sans">{t("comparator.megapixels")}:</span>
                     <span className="font-bold text-gray-900">{resResults.megapixels} MP</span>
                   </div>
                 </div>
               ) : (
                 <div className="text-xs text-gray-400 py-4 text-center">
-                  Please enter valid positive dimensions.
+                  {t("invalidPositive")}
                 </div>
               )}
             </div>
@@ -1047,11 +1051,11 @@ export function CompareDisplaysClient() {
             {/* Box B: Missing Dimension Solver */}
             <div className="border border-gray-200 rounded-2xl p-6 bg-white shadow-xs">
               <h3 className="text-sm font-semibold text-gray-950 uppercase tracking-wider font-mono mb-4">
-                2. Missing Dimension Solver
+                {t("resolution.subtitle")}
               </h3>
 
               <div className="mb-4">
-                <label className="block text-xs font-medium text-gray-700 mb-1">Target Aspect Ratio</label>
+                <label className="block text-xs font-medium text-gray-700 mb-1">{t("resolution.targetRatio")}</label>
                 <select
                   value={targetRatioIndex}
                   onChange={(e) => setTargetRatioIndex(Number(e.target.value))}
@@ -1065,18 +1069,18 @@ export function CompareDisplaysClient() {
 
               <div className="grid grid-cols-2 gap-3 mb-4">
                 <div>
-                  <label className="block text-xs font-medium text-gray-700 mb-1">Known Dimension</label>
+                  <label className="block text-xs font-medium text-gray-700 mb-1">{t("resolution.knownDim")}</label>
                   <select
                     value={knownDimension}
                     onChange={(e) => setKnownDimension(e.target.value as "width" | "height")}
                     className="w-full bg-white border border-gray-300 rounded-xl px-3 py-2 text-xs sm:text-sm font-medium text-gray-900 capitalize"
                   >
-                    <option value="width">Width is known</option>
-                    <option value="height">Height is known</option>
+                    <option value="width">{t("knownWidth")}</option>
+                    <option value="height">{t("knownHeight")}</option>
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-700 mb-1">Dimension Value (px)</label>
+                  <label className="block text-xs font-medium text-gray-700 mb-1">{t("resolution.valuePx")}</label>
                   <input
                     type="number"
                     value={knownValueStr}
@@ -1089,13 +1093,16 @@ export function CompareDisplaysClient() {
 
               <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 text-xs font-mono space-y-2">
                 <div className="text-gray-500 font-sans">
-                  Calculated Missing {knownDimension === "width" ? "Height" : "Width"}:
+                  {t("calculatedMissing", { dim: knownDimension === "width" ? t("resolution.dimHeight") : t("resolution.dimWidth") })}
                 </div>
                 <div className="text-2xl font-bold text-gray-950">
                   {resResults.solvedDimension > 0 ? `${resResults.solvedDimension} px` : "--"}
                 </div>
                 <div className="text-gray-500 text-[11px] font-sans">
-                  Full Resolution: {knownDimension === "width" ? `${knownValueStr} × ${resResults.solvedDimension}` : `${resResults.solvedDimension} × ${knownValueStr}`} ({resResults.solvedMegapixels} MP)
+                  {t("fullResolution", {
+                    val: knownDimension === "width" ? `${knownValueStr} × ${resResults.solvedDimension}` : `${resResults.solvedDimension} × ${knownValueStr}`,
+                    mp: resResults.solvedMegapixels
+                  })}
                 </div>
               </div>
             </div>
@@ -1109,11 +1116,11 @@ export function CompareDisplaysClient() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-10">
             <div className="lg:col-span-5 border border-gray-200 rounded-2xl p-6 bg-gray-50/70 space-y-4">
               <h3 className="text-sm font-semibold text-gray-950 uppercase tracking-wider font-mono">
-                Aspect Ratio Inputs
+                {t("aspect.title")}
               </h3>
 
               <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">Width (px / units)</label>
+                <label className="block text-xs font-medium text-gray-700 mb-1">{t("aspect.inputWidth")}</label>
                 <input
                   type="number"
                   value={arWidthStr}
@@ -1124,7 +1131,7 @@ export function CompareDisplaysClient() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">Height (px / units)</label>
+                <label className="block text-xs font-medium text-gray-700 mb-1">{t("aspect.inputHeight")}</label>
                 <input
                   type="number"
                   value={arHeightStr}
@@ -1136,7 +1143,7 @@ export function CompareDisplaysClient() {
 
               {/* Standard Ratio Presets */}
               <div className="pt-2">
-                <span className="text-[11px] font-mono uppercase text-gray-400 block mb-2">COMMON RATIOS</span>
+                <span className="text-[11px] font-mono uppercase text-gray-400 block mb-2">{t("commonRatios")}</span>
                 <div className="flex flex-wrap gap-1.5">
                   {STANDARD_RATIOS.map((r) => (
                     <button
@@ -1157,38 +1164,38 @@ export function CompareDisplaysClient() {
             <div className="lg:col-span-7 border border-gray-200 rounded-2xl p-6 bg-white flex flex-col justify-between">
               <div>
                 <h3 className="text-sm font-semibold text-gray-950 uppercase tracking-wider font-mono mb-4">
-                  Aspect Ratio Breakdown
+                  {t("aspect.subtitle")}
                 </h3>
 
                 {arResults.isValid ? (
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
                     <div className="p-4 rounded-xl bg-gray-50 border border-gray-100">
-                      <span className="text-xs text-gray-400 font-mono uppercase block mb-1">Simplified Ratio</span>
+                      <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("aspect.simplifiedRatio")}</span>
                       <span className="text-2xl font-bold font-mono text-blue-600 tabular-nums">
                         {arResults.simplified}
                       </span>
                     </div>
 
                     <div className="p-4 rounded-xl bg-gray-50 border border-gray-100">
-                      <span className="text-xs text-gray-400 font-mono uppercase block mb-1">Decimal Ratio</span>
+                      <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("aspect.decimalRatio")}</span>
                       <span className="text-2xl font-bold font-mono text-gray-950 tabular-nums">
                         {arResults.decimal}
                       </span>
                     </div>
 
                     <div className="p-4 rounded-xl bg-gray-50 border border-gray-100">
-                      <span className="text-xs text-gray-400 font-mono uppercase block mb-1">Closest Standard</span>
+                      <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("aspect.nearestStandard")}</span>
                       <span className="text-sm font-bold text-gray-950 block truncate">
                         {arResults.closestStandard}
                       </span>
                       <span className="text-[11px] text-gray-500 font-mono">
-                        Deviation: {arResults.deviationPercent}
+                        {t("deviation", { val: arResults.deviationPercent })}
                       </span>
                     </div>
                   </div>
                 ) : (
                   <div className="text-xs text-gray-400 py-6 text-center border border-dashed border-gray-200 rounded-xl mb-6">
-                    Enter positive numbers for width and height.
+                    {t("invalidPositive")}
                   </div>
                 )}
               </div>
@@ -1197,7 +1204,7 @@ export function CompareDisplaysClient() {
               {arResults.isValid && (
                 <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 flex flex-col items-center justify-center">
                   <span className="text-[11px] font-mono uppercase text-gray-400 mb-3">
-                    Proportional Aspect Geometry Preview
+                    {t("aspectPreview")}
                   </span>
                   <div
                     style={{

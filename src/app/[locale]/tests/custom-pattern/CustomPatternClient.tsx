@@ -2,13 +2,14 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { Link } from "@/i18n/routing";
-import { 
-  ArrowLeft, Maximize2, Minimize2, Grid, CheckSquare, Palette, 
-  CircleDot, Crosshair, AlignJustify, Columns, Type, 
+import { useTranslations } from "next-intl";
+import {
+  ArrowLeft, Maximize2, Minimize2, Grid, CheckSquare, Palette,
+  CircleDot, Crosshair, AlignJustify, Columns, Type,
   Sun, Sparkles, Layers, ArrowUpDown
 } from "lucide-react";
 
-export type CustomPatternPreset = 
+export type CustomPatternPreset =
   | "black"
   | "white"
   | "rgb"
@@ -22,22 +23,24 @@ export type CustomPatternPreset =
   | "text"
   | "moire";
 
-const PRESET_DEFINITIONS: { id: CustomPatternPreset; label: string; icon: typeof Grid; category: string }[] = [
-  { id: "black", label: "Black (0%)", icon: Sun, category: "Solids" },
-  { id: "white", label: "White (100%)", icon: Sun, category: "Solids" },
-  { id: "rgb", label: "RGB Primaries", icon: Palette, category: "Color" },
-  { id: "grayscale", label: "Grayscale Ramps", icon: Layers, category: "Color" },
-  { id: "gradient", label: "Smooth Gradient", icon: Sparkles, category: "Color" },
-  { id: "checkerboard", label: "Checkerboard", icon: CheckSquare, category: "Geometry" },
-  { id: "grid", label: "2D Grid", icon: Grid, category: "Geometry" },
-  { id: "horizontal_lines", label: "Horizontal Lines", icon: AlignJustify, category: "Lines" },
-  { id: "vertical_lines", label: "Vertical Lines", icon: Columns, category: "Lines" },
-  { id: "sharpness", label: "1px Sharpness", icon: Crosshair, category: "Precision" },
-  { id: "text", label: "Text Rendering", icon: Type, category: "Precision" },
-  { id: "moire", label: "Moiré & Siemens", icon: CircleDot, category: "Precision" },
+const PRESET_DEFINITIONS: { id: CustomPatternPreset; icon: typeof Grid }[] = [
+  { id: "black", icon: Sun },
+  { id: "white", icon: Sun },
+  { id: "rgb", icon: Palette },
+  { id: "grayscale", icon: Layers },
+  { id: "gradient", icon: Sparkles },
+  { id: "checkerboard", icon: CheckSquare },
+  { id: "grid", icon: Grid },
+  { id: "horizontal_lines", icon: AlignJustify },
+  { id: "vertical_lines", icon: Columns },
+  { id: "sharpness", icon: Crosshair },
+  { id: "text", icon: Type },
+  { id: "moire", icon: CircleDot },
 ];
 
 export function CustomPatternClient() {
+  const t = useTranslations("CustomPattern");
+
   const [activePreset, setActivePreset] = useState<CustomPatternPreset>("grid");
   const [gridSize, setGridSize] = useState<number>(40);
   const [lineWidth, setLineWidth] = useState<number>(1);
@@ -89,7 +92,7 @@ export function CustomPatternClient() {
     setColor2(temp);
   };
 
-  // Canvas Drawing Routine
+  // Canvas Drawing Routine (Strictly preserving pattern mathematics and rendering)
   const drawPattern = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -308,23 +311,23 @@ export function CustomPatternClient() {
         <div className="flex items-center gap-2 text-xs font-mono uppercase text-gray-400 mb-6">
           <Link href="/tests" className="hover:text-gray-900 flex items-center gap-1 transition-colors">
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>ALL TESTS</span>
+            <span>{t("breadcrumbAll")}</span>
           </Link>
           <span>/</span>
-          <span className="text-gray-900 font-semibold">CUSTOM TEST PATTERN GENERATOR</span>
+          <span className="text-gray-900 font-semibold">{t("breadcrumbTitle")}</span>
         </div>
 
         {/* Title */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
           <div>
             <div className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-gray-400 mb-2">
-              PRECISION DISPLAY GENERATOR
+              {t("eyebrow")}
             </div>
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-950">
-              Custom Test Pattern Generator
+              {t("title")}
             </h1>
             <p className="text-gray-500 text-sm sm:text-base mt-1.5 leading-relaxed max-w-2xl">
-              Synthesize 12 specialized calibration patterns with deep controls for grid density, line thickness, color channels, typography, and moiré interference.
+              {t("subtitle")}
             </p>
           </div>
 
@@ -333,7 +336,7 @@ export function CustomPatternClient() {
             className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gray-950 text-white text-xs sm:text-sm font-medium hover:bg-black transition-colors"
           >
             {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
-            <span>{isFullscreen ? "Exit Fullscreen (F)" : "Enter Fullscreen (F)"}</span>
+            <span>{isFullscreen ? t("exitFullscreen") : t("enterFullscreen")}</span>
           </button>
         </div>
 
@@ -342,7 +345,7 @@ export function CustomPatternClient() {
         {/* ========================================================= */}
         <div className="border border-gray-200 rounded-2xl p-4 bg-gray-50/80 mb-6">
           <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-gray-400 mb-3">
-            SELECT CALIBRATION PRESET
+            {t("selectorTitle")}
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
             {PRESET_DEFINITIONS.map((p) => {
@@ -352,6 +355,7 @@ export function CustomPatternClient() {
                 <button
                   key={p.id}
                   onClick={() => setActivePreset(p.id)}
+                  title={t(`presets.${p.id}.desc` as "presets.grid.desc")}
                   className={`flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium transition-all ${
                     isActive
                       ? "bg-gray-950 text-white shadow-xs"
@@ -359,7 +363,7 @@ export function CustomPatternClient() {
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5 shrink-0" />
-                  <span className="truncate">{p.label}</span>
+                  <span className="truncate">{t(`presets.${p.id}.label` as "presets.grid.label")}</span>
                 </button>
               );
             })}
@@ -373,7 +377,7 @@ export function CustomPatternClient() {
           {/* Spacing / Grid Size */}
           {["grid", "checkerboard", "horizontal_lines", "vertical_lines", "moire"].includes(activePreset) && (
             <div className="flex items-center gap-3 text-xs">
-              <span className="font-mono text-gray-500 uppercase">Spacing:</span>
+              <span className="font-mono text-gray-500 uppercase">{t("controls.spacing", { val: gridSize })}:</span>
               <input
                 type="range"
                 min="2"
@@ -390,7 +394,7 @@ export function CustomPatternClient() {
           {/* Line Weight / Thickness */}
           {["grid", "horizontal_lines", "vertical_lines", "sharpness", "moire"].includes(activePreset) && (
             <div className="flex items-center gap-3 text-xs">
-              <span className="font-mono text-gray-500 uppercase">Line Weight:</span>
+              <span className="font-mono text-gray-500 uppercase">{t("controls.lineWidth", { val: lineWidth })}:</span>
               <input
                 type="range"
                 min="1"
@@ -407,16 +411,18 @@ export function CustomPatternClient() {
           {/* Gradient Orientation */}
           {activePreset === "gradient" && (
             <div className="flex items-center gap-2 text-xs">
-              <span className="font-mono text-gray-500 uppercase">Type:</span>
-              {(["horizontal", "vertical", "radial"] as const).map((t) => (
+              <span className="font-mono text-gray-500 uppercase">{t("controls.gradientType")}:</span>
+              {(["horizontal", "vertical", "radial"] as const).map((gradDir) => (
                 <button
-                  key={t}
-                  onClick={() => setGradientType(t)}
+                  key={gradDir}
+                  onClick={() => setGradientType(gradDir)}
                   className={`px-2.5 py-1 rounded-md capitalize font-medium ${
-                    gradientType === t ? "bg-gray-950 text-white" : "bg-white border border-gray-200 text-gray-700"
+                    gradientType === gradDir ? "bg-gray-950 text-white" : "bg-white border border-gray-200 text-gray-700"
                   }`}
                 >
-                  {t}
+                  {gradDir === "horizontal" && t("controls.gradHorizontal")}
+                  {gradDir === "vertical" && t("controls.gradVertical")}
+                  {gradDir === "radial" && t("controls.gradRadial")}
                 </button>
               ))}
             </div>
@@ -426,17 +432,17 @@ export function CustomPatternClient() {
           {activePreset === "text" && (
             <div className="flex flex-wrap items-center gap-4 text-xs w-full lg:w-auto">
               <div className="flex items-center gap-2 flex-1 min-w-[200px]">
-                <span className="font-mono text-gray-500 uppercase">Text:</span>
+                <span className="font-mono text-gray-500 uppercase">{t("controls.customText")}:</span>
                 <input
                   type="text"
                   value={customText}
                   onChange={(e) => setCustomText(e.target.value)}
                   className="flex-1 bg-white border border-gray-200 rounded-lg px-3 py-1.5 text-xs text-gray-900 font-mono"
-                  placeholder="Type custom test string..."
+                  placeholder={t("controls.textPlaceholder")}
                 />
               </div>
               <div className="flex items-center gap-2">
-                <span className="font-mono text-gray-500 uppercase">Size:</span>
+                <span className="font-mono text-gray-500 uppercase">{t("controls.fontSize", { val: fontSize })}:</span>
                 <input
                   type="range"
                   min="10"
@@ -457,7 +463,7 @@ export function CustomPatternClient() {
                       fontWeight === w ? "bg-gray-950 text-white font-semibold" : "bg-white border border-gray-200 text-gray-700"
                     }`}
                   >
-                    {w}
+                    {w === "normal" ? t("controls.weightNormal") : t("controls.weightBold")}
                   </button>
                 ))}
               </div>
@@ -466,33 +472,33 @@ export function CustomPatternClient() {
 
           {/* Color Palettes (FG and BG) */}
           {!["black", "white", "rgb", "grayscale"].includes(activePreset) && (
-            <div className="flex items-center gap-4 text-xs">
+            <div className="flex flex-wrap items-center gap-4 text-xs">
               <div className="flex items-center gap-2">
-                <span className="text-gray-500 font-mono uppercase">FG:</span>
+                <span className="text-gray-500 font-mono uppercase">{t("controls.fgColor")}:</span>
                 <input
                   type="color"
                   value={color1}
                   onChange={(e) => setColor1(e.target.value)}
                   className="w-6 h-6 rounded-md cursor-pointer border border-gray-300"
-                  title="Foreground Color"
+                  title={t("controls.fgColor")}
                 />
               </div>
 
               <div className="flex items-center gap-2">
-                <span className="text-gray-500 font-mono uppercase">BG:</span>
+                <span className="text-gray-500 font-mono uppercase">{t("controls.bgColor")}:</span>
                 <input
                   type="color"
                   value={color2}
                   onChange={(e) => setColor2(e.target.value)}
                   className="w-6 h-6 rounded-md cursor-pointer border border-gray-300"
-                  title="Background Color"
+                  title={t("controls.bgColor")}
                 />
               </div>
 
               <button
                 onClick={invertColors}
                 className="p-1.5 rounded-lg border border-gray-200 bg-white hover:bg-gray-100 text-gray-700 transition-colors"
-                title="Invert Foreground and Background Colors"
+                title={t("controls.invert")}
               >
                 <ArrowUpDown className="w-3.5 h-3.5" />
               </button>
@@ -514,7 +520,7 @@ export function CustomPatternClient() {
           {/* Fullscreen Floating Controls */}
           {isFullscreen && (
             <div className="absolute top-4 right-4 bg-black/80 backdrop-blur-md text-white px-4 py-2 rounded-xl text-xs flex items-center gap-3 border border-white/10 shadow-xl">
-              <span className="font-mono">Press ESC or F to exit</span>
+              <span className="font-mono">{t("fullscreenHint")}</span>
               <button
                 onClick={toggleFullscreen}
                 className="p-1 hover:bg-white/20 rounded transition-colors"
@@ -528,21 +534,21 @@ export function CustomPatternClient() {
         {/* Pattern Explanation & Usage Notes */}
         <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/50">
-            <h3 className="text-xs font-mono uppercase font-bold text-gray-400 mb-2">Display Geometry</h3>
+            <h3 className="text-xs font-mono uppercase font-bold text-gray-400 mb-2">{t("cards.geometry.title")}</h3>
             <p className="text-xs text-gray-600 leading-relaxed">
-              Use <strong>2D Grid</strong> and <strong>Checkerboard</strong> to verify straight lines, aspect ratio proportion, and barrel/pincushion optical distortion across curved displays.
+              {t("cards.geometry.desc")}
             </p>
           </div>
           <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/50">
-            <h3 className="text-xs font-mono uppercase font-bold text-gray-400 mb-2">Pixel Sharpness</h3>
+            <h3 className="text-xs font-mono uppercase font-bold text-gray-400 mb-2">{t("cards.sharpness.title")}</h3>
             <p className="text-xs text-gray-600 leading-relaxed">
-              The <strong>1px Sharpness</strong> preset renders alternating 1-pixel hairline lines at 1:1 hardware mapping to detect blurry scaling interpolation or mismatched native resolutions.
+              {t("cards.sharpness.desc")}
             </p>
           </div>
           <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/50">
-            <h3 className="text-xs font-mono uppercase font-bold text-gray-400 mb-2">Moiré & Interference</h3>
+            <h3 className="text-xs font-mono uppercase font-bold text-gray-400 mb-2">{t("cards.moire.title")}</h3>
             <p className="text-xs text-gray-600 leading-relaxed">
-              <strong>Moiré concentric rings</strong> expose spatial frequency beating against display pixel pitch and non-integer OS scaling (e.g. 125% or 150% scaling).
+              {t("cards.moire.desc")}
             </p>
           </div>
         </div>

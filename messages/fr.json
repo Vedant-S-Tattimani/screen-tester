@@ -1137,5 +1137,371 @@
       "title": "UTILITAIRES ASSOCIÉS",
       "compareDisplays": "Calculateur de comparaison d'écrans (PPI, distance, ratio)"
     }
+  },
+  "InspectionSummary": {
+    "reportBadge": "RAPPORT DE TEST DU MONITEUR",
+    "defaultTitle": "Inspection Visuelle de l'Écran",
+    "workflowType": "Type de Flux",
+    "generalCheckup": "Vérification Générale",
+    "saveToHistory": "Enregistrer dans l'historique",
+    "exportJson": "Exporter JSON",
+    "importJson": "Importer JSON",
+    "printPdf": "Imprimer / PDF",
+    "metrics": {
+      "completed": "Tests terminés",
+      "observed": "Observé",
+      "needsAttention": "Nécessite attention",
+      "unknown": "Inconnu",
+      "notTested": "Non testé"
+    },
+    "integrityBanner": "Rapport factuel d'inspection observé par l'utilisateur. Zéro score synthétique inventé.",
+    "clientStorageBadge": "100% Stockage Local du Navigateur",
+    "displayInfo": {
+      "title": "Informations sur l'Écran (Signalées par le Navigateur)",
+      "subtitle": "Paramètres légitimes signalés par les API du navigateur reflétant le compositeur de l'OS.",
+      "resolution": "Résolution de l'Écran",
+      "logical": "Logique : {val}",
+      "viewport": "Zone d'Affichage Active",
+      "viewportDesc": "Zone de mise en page CSS",
+      "dpr": "Ratio de Pixels de l'Appareil",
+      "dprDesc": "Facteur d'échelle de l'OS",
+      "colorDepth": "Profondeur de Couleur & Orientation"
+    },
+    "profile": {
+      "title": "Profil Matériel du Moniteur",
+      "edit": "Modifier le Profil",
+      "cancel": "Annuler",
+      "save": "Enregistrer le Profil",
+      "brand": "Marque :",
+      "model": "Modèle / Numéro :",
+      "size": "Taille de l'Écran :",
+      "resolution": "Résolution Native :",
+      "refreshRate": "Taux de Rafraîchissement :",
+      "panelType": "Type de Dalle :",
+      "selectPanel": "Sélectionner la dalle...",
+      "purchaseDate": "Date d'Achat :",
+      "notes": "Notes Matérielles & Connectique :",
+      "unspecified": "Moniteur non spécifié",
+      "specs": "Spécifications de la Dalle",
+      "resRefresh": "Résolution & Fréquence",
+      "notesPrefix": "Notes Matérielles : {notes}",
+      "brandModel": "Marque & Modèle",
+      "panelOther": "Autre"
+    },
+    "checklist": {
+      "title": "Liste de Contrôle d'Inspection & Résultats",
+      "emptyTitle": "Aucune observation enregistrée dans cette session.",
+      "emptyDesc": "Exécutez une inspection structurée pour générer des résultats et recommandations.",
+      "startGeneral": "Démarrer la Vérification Générale",
+      "startUsed": "Démarrer la Vérification Occasion",
+      "browseAll": "Parcourir tous les flux d'inspection",
+      "retest": "Re-tester",
+      "runTest": "Lancer le Test"
+    },
+    "defects": {
+      "badge": "MARQUÉ PAR L'UTILISATEUR / OBSERVÉ",
+      "title": "Défauts de Pixels Marqués & Emplacements ({count})",
+      "colIndex": "#",
+      "colClass": "Classification",
+      "colCoords": "Coordonnées (CSS X, Y)",
+      "colPosition": "Position à l'Écran",
+      "colPattern": "Mire de Test",
+      "colNote": "Note",
+      "colAction": "Action",
+      "deleteTitle": "Supprimer le marqueur de défaut",
+      "types": {
+        "dead": "mort",
+        "stuck": "bloqué",
+        "bright": "brillant",
+        "unknown": "inconnu"
+      }
+    },
+    "notes": {
+      "title": "Notes Générales d'Inspection",
+      "desc": "Documentez l'éclairage ambiant, le câble (DP/HDMI) et vos observations. Sauvegarde locale automatique.",
+      "placeholder": "ex. : Inspecté dans une pièce sombre. Aucune fuite de lumière observée. Profil couleur d'usine équilibré..."
+    },
+    "actions": {
+      "startNew": "Démarrer une Nouvelle Inspection",
+      "clearObservations": "Effacer les Observations",
+      "exportJson": "Exporter JSON",
+      "printPdf": "Imprimer / Exporter PDF"
+    },
+    "history": {
+      "title": "Historique Local des Inspections",
+      "count": "{count} enregistrements stockés",
+      "emptyTitle": "Aucune inspection archivée pour l'instant.",
+      "emptyDesc": "Cliquez sur \"Enregistrer dans l'historique\" pour archiver ce rapport.",
+      "testsCount": "{count} tests",
+      "flawsCount": "{count} Défauts",
+      "exportTitle": "Exporter cet enregistrement en JSON",
+      "viewDetails": "Voir Détails",
+      "deleteTitle": "Supprimer l'enregistrement",
+      "modalTitle": "Enregistrement d'Inspection Archivé",
+      "modalTests": "Tests :",
+      "modalObserved": "Observé :",
+      "modalNeedsAttn": "Nécessite Attention :",
+      "modalFlaws": "Défauts de Pixels :",
+      "modalScreen": "Écran : {val}",
+      "modalDpr": "DPR : {val}x",
+      "modalViewport": "Affichage : {val}",
+      "modalDepth": "Profondeur : {val}-bit",
+      "modalNotes": "Notes :",
+      "modalObservations": "Observations des Tests :",
+      "modalExport": "Exporter l'Enregistrement JSON",
+      "modalClose": "Fermer"
+    },
+    "empty": {
+      "title": "Aucun Rapport d'Inspection Actif",
+      "description": "Vous n'avez pas encore exécuté de flux d'inspection. Choisissez un flux dans le Centre d'Inspection pour tester votre écran et générer un rapport complet.",
+      "cta": "Aller au Centre d'Inspection"
+    },
+    "confirmClear": "Êtes-vous sûr de vouloir effacer les observations actuelles ?",
+    "confirmStartNew": "Démarrer une nouvelle inspection ? Cela réinitialisera la session active tout en préservant votre historique.",
+    "toasts": {
+      "archived": "Rapport archivé dans l'historique local.",
+      "exported": "Rapport exporté avec succès au format JSON.",
+      "imported": "Rapport d'inspection importé avec succès.",
+      "importInvalid": "Format de fichier JSON non valide.",
+      "noSession": "Aucune session active à exporter."
+    },
+    "tooltipSaveHistory": "Archiver le rapport localement pour référence future",
+    "tooltipExportJson": "Exporter le rapport au format JSON structuré",
+    "tooltipImportJson": "Charger un rapport JSON précédemment exporté"
+  },
+  "CustomPattern": {
+    "breadcrumbAll": "TOUS LES TESTS",
+    "breadcrumbTitle": "GÉNÉRATEUR DE MIRES PERSONNALISÉES",
+    "eyebrow": "GÉNÉRATEUR D'AFFICHAGE DE PRÉCISION",
+    "title": "Générateur de Mires de Test Personnalisées",
+    "subtitle": "Synthétisez 12 mires de calibrage spécialisées avec un contrôle précis de la grille, de l'épaisseur de ligne, des canaux de couleur, de la typographie et du moiré.",
+    "enterFullscreen": "Plein Écran (F)",
+    "exitFullscreen": "Quitter Plein Écran (F)",
+    "selectorTitle": "SÉLECTIONNER UNE MIRE DE CALIBRAGE",
+    "presets": {
+      "black": {
+        "label": "Noir (0%)",
+        "desc": "Champ de référence noir absolu RVB (0, 0, 0) pour dalles OLED/IPS."
+      },
+      "white": {
+        "label": "Blanc (100%)",
+        "desc": "Mire de référence de luminance maximale 255."
+      },
+      "rgb": {
+        "label": "Primaires RVB",
+        "desc": "Barres verticales pures en canaux Rouge, Vert et Bleu."
+      },
+      "grayscale": {
+        "label": "Rampes de Gris",
+        "desc": "Rampes de gris horizontales progressives et en 16 paliers."
+      },
+      "gradient": {
+        "label": "Dégradé Linéaire",
+        "desc": "Dégradé de couleur interpolé haute précision linéaire ou radial."
+      },
+      "checkerboard": {
+        "label": "Damier",
+        "desc": "Motif en damier géométrique à fort contraste pour mesure ANSI."
+      },
+      "grid": {
+        "label": "Grille 2D",
+        "desc": "Grille d'alignement configurable pour géométrie et convergence."
+      },
+      "horizontal_lines": {
+        "label": "Lignes Horizontales",
+        "desc": "Lignes horizontales alternées pour la résolution de paires de lignes."
+      },
+      "vertical_lines": {
+        "label": "Lignes Verticales",
+        "desc": "Bandes verticales alternées pour phase et synchronisation pixel."
+      },
+      "sharpness": {
+        "label": "Netteté 1px",
+        "desc": "Mires d'alignement pixel par pixel au ratio 1:1."
+      },
+      "text": {
+        "label": "Rendu de Texte",
+        "desc": "Bloc pangramme en plusieurs graisses pour évaluer l'anticrénelage sous-pixel."
+      },
+      "moire": {
+        "label": "Moiré & Siemens",
+        "desc": "Anneaux concentriques et étoile radiale d'interférence haute fréquence."
+      }
+    },
+    "controls": {
+      "density": "Taille de Grille ({val}px)",
+      "lineWidth": "Épaisseur de Ligne ({val}px)",
+      "fgColor": "Couleur Premier Plan",
+      "bgColor": "Couleur d'Arrière-Plan",
+      "invert": "Inverser",
+      "gradientType": "Type de Dégradé",
+      "gradHorizontal": "Horizontal",
+      "gradVertical": "Vertical",
+      "gradRadial": "Radial (Centré)",
+      "customText": "Texte d'Exemple",
+      "fontSize": "Taille de Police ({val}px)",
+      "fontWeight": "Graisse de Police",
+      "weightNormal": "Normal (400)",
+      "weightMedium": "Moyen (500)",
+      "weightBold": "Gras (700)",
+      "spacing": "Espacement ({val}px)",
+      "textPlaceholder": "Saisir un texte de test personnalisé..."
+    },
+    "notes": {
+      "title": "Note de Calibrage :",
+      "sharpness": "La mire de netteté 1px affiche des lignes de 1 pixel nettes au ratio matériel 1:1 pour détecter les interpolations floues d'échelle.",
+      "general": "Appuyez sur la touche 'F' de votre clavier pour basculer en mode plein écran sans barres d'outils."
+    },
+    "cards": {
+      "geometry": {
+        "title": "Géométrie de l'Écran",
+        "desc": "Utilisez la grille 2D et le damier pour vérifier la rectitude des lignes, les proportions et les distorsions sur écrans incurvés."
+      },
+      "sharpness": {
+        "title": "Netteté des Pixels",
+        "desc": "La mire 1px trace des lignes d'un pixel au ratio 1:1 pour révéler les interpolations floues d'échelle ou les résolutions inadaptées."
+      },
+      "moire": {
+        "title": "Moiré & Interférences",
+        "desc": "Les anneaux concentriques mettent en évidence les battements de fréquence spatiale avec le pas de masque et les échelles non entières (ex. 125% ou 150%)."
+      }
+    },
+    "fullscreenHint": "Appuyez sur Échap ou F pour quitter"
+  },
+  "CompareDisplays": {
+    "breadcrumbAll": "TOUS LES TESTS",
+    "breadcrumbTitle": "COMPARATEUR D'ÉCRANS & CALCULATRICES",
+    "eyebrow": "COMPARATEUR DE SPÉCIFICATIONS & CALCULATRICE PPI",
+    "title": "Outils de Comparaison d'Écrans & Formats",
+    "subtitle": "Comparez avec précision les dimensions réelles, la densité de pixels (PPI), la distance de recul et les formats d'image de deux écrans.",
+    "tabs": {
+      "comparator": "Comparateur Côte à Côte",
+      "ppi": "PPI & Distance de Vision",
+      "resolution": "Résolution & Dimensions",
+      "aspect": "Outil Format d'Image"
+    },
+    "comparator": {
+      "displayA": "Écran A",
+      "displayB": "Écran B",
+      "modePreset": "Préréglage Standard",
+      "modeSaved": "Profil Enregistré",
+      "selectPreset": "Sélectionner un préréglage...",
+      "selectSaved": "Sélectionner un profil enregistré...",
+      "noSaved": "Aucun profil enregistré trouvé. Enregistrez un profil dans le",
+      "diagSize": "Diagonale",
+      "nativeRes": "Résolution Native",
+      "aspectRatio": "Format d'Image",
+      "panelType": "Type de Dalle",
+      "refreshRate": "Taux de Rafraîchissement",
+      "specsHeader": "Dimensions Physiques & Densité",
+      "widthHeight": "Largeur × Hauteur",
+      "area": "Surface Totale",
+      "ppi": "Densité de Pixels",
+      "megapixels": "Pixels Totaux",
+      "retinaDist": "Distance Retina (20/20 Snellen)",
+      "retinaDistDesc": "Distance à laquelle les pixels individuels deviennent invisibles à l'œil nu ({valIn} po / {valCm} cm).",
+      "obsTitle": "Observations Comparatives",
+      "obsSubtitle": "Documentez les différences visuelles constatées en affichant des mires identiques sur les deux écrans.",
+      "obsColor": "Balance des Couleurs & Teinte",
+      "obsColorPlaceholder": "ex. : L'écran A est plus chaud (D65), l'écran B tire vers un bleu plus froid...",
+      "obsUniformity": "Uniformité & Contraste",
+      "obsUniformityPlaceholder": "ex. : L'écran A présente des fuites IPS dans les coins ; l'écran B OLED offre un noir parfait...",
+      "obsBrightness": "Luminosité & Reflets",
+      "obsBrightnessPlaceholder": "ex. : Le revêtement mat de l'écran A diffuse les reflets ; l'écran B brillant offre un contraste plus éclatant...",
+      "obsMotion": "Netteté en Mouvement & Ghosting",
+      "obsMotionPlaceholder": "ex. : L'écran B à 240Hz présente une traînée nettement plus réduite que l'écran A à 60Hz...",
+      "obsConclusion": "Verdict / Recommandation Globale",
+      "obsConclusionPlaceholder": "ex. : L'écran B est bien supérieur pour les jeux compétitifs ; l'écran A est recommandé pour la retouche photo...",
+      "saveObs": "Enregistrer les Notes de Comparaison",
+      "obsSavedSuccess": "Observations comparatives enregistrées localement.",
+      "summaryLink": "Résumé d'inspection"
+    },
+    "ppi": {
+      "title": "Calculatrice de Densité de Pixels & Acuité Visuelle",
+      "subtitle": "Calculez les pixels par pouce (PPI), le pas de masque (pixel pitch) et la distance de recul minimale pour une netteté 'Retina'.",
+      "screenDiagonal": "Diagonale de l'Écran (pouces)",
+      "resWidth": "Résolution Horizontale (px)",
+      "resHeight": "Résolution Verticale (px)",
+      "viewingDist": "Votre Distance de Recul",
+      "unitInches": "Pouces",
+      "unitCm": "Centimètres",
+      "cardDensity": "Densité de Pixels",
+      "cardPitch": "Pas de Pixel",
+      "cardRetina": "Distance Retina (20/20)",
+      "cardFov": "Champ de Vision Horizontal",
+      "specTitle": "Dimensions Physiques Calculées",
+      "specDimensions": "Dimensions de l'Écran",
+      "specArea": "Surface d'Affichage",
+      "specTotalPixels": "Résolution Totale",
+      "specFov": "Champ de Vision (Horizontal)"
+    },
+    "resolution": {
+      "title": "Calculateur de Résolution & Dimensions",
+      "subtitle": "Déterminez les dimensions exactes en pixels à partir d'un format d'image et d'une dimension connue.",
+      "knownDim": "Dimension Connue",
+      "dimWidth": "Largeur (Horizontale)",
+      "dimHeight": "Hauteur (Verticale)",
+      "valuePx": "Valeur en Pixels",
+      "targetRatio": "Format Cible",
+      "resultsTitle": "Dimensions Calculées",
+      "calcRes": "Résolution Résultante",
+      "aspectName": "Format d'Image",
+      "totalPixels": "Pixels Totaux",
+      "standardClass": "Classification"
+    },
+    "aspect": {
+      "title": "Simplificateur de Format d'Image",
+      "subtitle": "Saisissez les pixels horizontaux et verticaux pour obtenir le ratio mathématique simplifié et le format standard correspondant.",
+      "inputWidth": "Largeur en Pixels",
+      "inputHeight": "Hauteur en Pixels",
+      "simplifiedRatio": "Ratio Mathématique",
+      "decimalRatio": "Ratio Décimal",
+      "nearestStandard": "Format Standard le Plus Proche",
+      "gcd": "Plus Grand Commun Diviseur (PGCD)"
+    },
+    "presets": {
+      "fhd24": "24\" Full HD (1080p)",
+      "qhd27": "27\" Quad HD (1440p)",
+      "uhd27": "27\" 4K Ultra HD",
+      "oled27": "27\" OLED 240Hz Gaming",
+      "uhd32": "32\" 4K Ultra HD",
+      "uwqhd34": "34\" Ultrawide (UWQHD)",
+      "suw49": "49\" Super Ultrawide",
+      "mac14": "14\" Portable (Retina)",
+      "mac16": "16\" Portable (Retina)",
+      "tv55": "55\" TV 4K Salon",
+      "tv65": "65\" TV 4K Salon"
+    },
+    "ratios": {
+      "r16_9": "16:9 (Panoramique Standard)",
+      "r16_10": "16:10 (Productivité & PC portables)",
+      "r21_9": "21:9 (Ultrawide Cinéma)",
+      "r32_9": "32:9 (Super Ultrawide)",
+      "r4_3": "4:3 (Rétro / Classique)",
+      "r5_4": "5:4 (Station de Travail)",
+      "r3_2": "3:2 (Tablettes & Portables)",
+      "r1_1": "1:1 (Carré)"
+    },
+    "neutralPolicyTitle": "Politique de Comparaison Neutre",
+    "neutralPolicyDesc": "Monitor Tester ne déclare jamais : \"L'écran A est meilleur\". Chaque dalle implique des compromis d'ingénierie (ex. contraste infini OLED vs fidélité et durabilité IPS vs rapidité Fast-IPS). L'utilisateur choisit selon son environnement.",
+    "journalTitle": "Journal d'Observations de l'Utilisateur",
+    "journalSubtitle": "Consignez vos observations visuelles directes côte à côte.",
+    "verdictLabel": "Votre Décision Personnelle & Conclusion :",
+    "verdictPlaceholder": "ex. : L'écran A est préféré en bureautique pour sa netteté de texte ; l'écran B excelle pour le jeu et les films dans le noir.",
+    "guidanceTitle": "Distance de Vision & Limites de l'Acuité Visuelle",
+    "guidanceAcuity": "Seuil d'Acuité Visuelle : Une vue 20/20 standard résout environ 1 minute d'arc. À des distances supérieures à {dist}, l'œil humain ne discerne plus les pixels.",
+    "guidanceErgonomic": "Pas de distance universelle unique : Le travail sur bureau privilégie une distance de bras tendu (50–75 cm) pour préserver les yeux et le cou.",
+    "knownWidth": "La largeur est connue",
+    "knownHeight": "La hauteur est connue",
+    "calculatedMissing": "{dim} calculée manquante :",
+    "fullResolution": "Résolution Complète : {val} ({mp} MP)",
+    "invalidPositive": "Veuillez saisir des dimensions positives valides.",
+    "aspectPreview": "Aperçu Géométrique Proportionnel",
+    "quickSizes": "FORMATS RAPIDES",
+    "commonRatios": "RATIOS COURANTS",
+    "parameter": "Paramètre",
+    "deviation": "Écart : {val}",
+    "benchmarks": "Métriques Mathématiques",
+    "hardwareComparison": "Comparatif Matériel & Géométrie"
   }
 }

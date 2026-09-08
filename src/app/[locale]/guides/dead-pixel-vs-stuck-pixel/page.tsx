@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   await params;
   return {
-    title: "Dead Pixel vs Stuck Pixel: Diagnosis & Fixes | Monitor Tester",
+    title: "Dead Pixel vs Stuck Pixel: Diagnosis & Fixes",
     description: "Understand the visual and physical differences between dead pixels and stuck subpixels, how to test for them, and manufacturer warranty policies.",
     alternates: {
       canonical: "/guides/dead-pixel-vs-stuck-pixel"

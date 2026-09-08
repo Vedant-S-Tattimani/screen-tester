@@ -7,7 +7,7 @@ import { ArrowRight, HelpCircle } from "lucide-react";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   await params;
   return {
-    title: "Frequently Asked Questions | Monitor Tester",
+    title: "Frequently Asked Questions",
     description: "Clear, honest technical answers to common questions about browser display testing, dead pixel detection, color calibration, refresh rate, and resolution.",
     alternates: {
       canonical: "/faq"

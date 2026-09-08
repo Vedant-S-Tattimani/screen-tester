@@ -9,7 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
   if (!workflow) return {};
   
   return {
-    title: `${workflow.title} | Monitor Tester`,
+    title: workflow.title,
     description: workflow.shortDescription,
     alternates: {
       canonical: "/monitor-inspection/general"

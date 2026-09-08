@@ -1128,5 +1128,371 @@
       "title": "RELATED UTILITIES",
       "compareDisplays": "Display Comparison Calculator (PPI, Distance, Aspect Ratio)"
     }
+  },
+  "InspectionSummary": {
+    "reportBadge": "MONITOR TEST REPORT",
+    "defaultTitle": "Visual Display Inspection",
+    "workflowType": "Workflow Type",
+    "generalCheckup": "General Checkup",
+    "saveToHistory": "Save to History",
+    "exportJson": "Export JSON",
+    "importJson": "Import JSON",
+    "printPdf": "Print / PDF",
+    "metrics": {
+      "completed": "Tests Completed",
+      "observed": "Observed",
+      "needsAttention": "Needs attention",
+      "unknown": "Unknown",
+      "notTested": "Not tested"
+    },
+    "integrityBanner": "Factual user-observed inspection record. Zero mathematically invented or synthetic health scores.",
+    "clientStorageBadge": "100% Client-Side Local Storage",
+    "displayInfo": {
+      "title": "Display Information (Browser-Reported)",
+      "subtitle": "Legitimate parameters reported by browser APIs. Browser reported metrics reflect OS compositor values, not direct hardware EEPROM telemetry.",
+      "resolution": "Screen Resolution",
+      "logical": "Logical: {val}",
+      "viewport": "Active Viewport",
+      "viewportDesc": "CSS Layout area",
+      "dpr": "Device Pixel Ratio",
+      "dprDesc": "OS Scaling Factor",
+      "colorDepth": "Color & Orientation"
+    },
+    "profile": {
+      "title": "Monitor Hardware Profile",
+      "edit": "Edit Profile",
+      "cancel": "Cancel",
+      "save": "Save Profile",
+      "brand": "Brand:",
+      "model": "Model Name / Number:",
+      "size": "Display Size:",
+      "resolution": "Native Resolution:",
+      "refreshRate": "Refresh Rate:",
+      "panelType": "Panel Type:",
+      "selectPanel": "Select panel type...",
+      "purchaseDate": "Purchase Date:",
+      "notes": "Hardware / Port Notes:",
+      "unspecified": "Unspecified Monitor",
+      "specs": "Panel Specs",
+      "resRefresh": "Resolution & Refresh",
+      "notesPrefix": "Hardware Notes: {notes}",
+      "brandModel": "Brand & Model",
+      "panelOther": "Other"
+    },
+    "checklist": {
+      "title": "Inspection Checklist & Observed Results",
+      "emptyTitle": "No test observations recorded in this session yet.",
+      "emptyDesc": "Run a structured inspection to generate diagnostic findings, observations, and recommendations.",
+      "startGeneral": "Start General Checkup",
+      "startUsed": "Start Used Monitor Checkup",
+      "browseAll": "Browse all inspection workflows",
+      "retest": "Re-test",
+      "runTest": "Run Test"
+    },
+    "defects": {
+      "badge": "USER-MARKED / OBSERVED",
+      "title": "Marked Pixel Flaws & Locations ({count})",
+      "colIndex": "#",
+      "colClass": "Classification",
+      "colCoords": "Coordinates (CSS X, Y)",
+      "colPosition": "Screen Position",
+      "colPattern": "Test Pattern",
+      "colNote": "Note",
+      "colAction": "Action",
+      "deleteTitle": "Delete defect marker",
+      "types": {
+        "dead": "dead",
+        "stuck": "stuck",
+        "bright": "bright",
+        "unknown": "unknown"
+      }
+    },
+    "notes": {
+      "title": "Overall Inspection Notes",
+      "desc": "Document room ambient lighting conditions, video cable type (DP/HDMI), and general observations. Autosaved to local storage.",
+      "placeholder": "e.g., Inspected in a pitch-black room. No backlight bleed observed. Factory color profile appears balanced..."
+    },
+    "actions": {
+      "startNew": "Start New Inspection",
+      "clearObservations": "Clear Observations",
+      "exportJson": "Export JSON",
+      "printPdf": "Print / Export PDF"
+    },
+    "history": {
+      "title": "Local Inspection History",
+      "count": "{count} past records stored",
+      "emptyTitle": "No past inspections archived yet.",
+      "emptyDesc": "Click \"Save to History\" above to archive the current inspection report.",
+      "testsCount": "{count} tests",
+      "flawsCount": "{count} Flaws",
+      "exportTitle": "Export this past record as JSON",
+      "viewDetails": "View Details",
+      "deleteTitle": "Delete record",
+      "modalTitle": "Archived Inspection Record",
+      "modalTests": "Tests:",
+      "modalObserved": "Observed:",
+      "modalNeedsAttn": "Needs Attn:",
+      "modalFlaws": "Pixel Flaws:",
+      "modalScreen": "Screen: {val}",
+      "modalDpr": "DPR: {val}x",
+      "modalViewport": "Viewport: {val}",
+      "modalDepth": "Depth: {val}-bit",
+      "modalNotes": "Notes:",
+      "modalObservations": "Test Observations:",
+      "modalExport": "Export Record JSON",
+      "modalClose": "Close"
+    },
+    "empty": {
+      "title": "No Inspection Report Yet",
+      "description": "You haven't run an inspection workflow yet. Select an inspection workflow from the Inspection Hub to systematically test your display and generate a comprehensive diagnostic report.",
+      "cta": "Go to Inspection Hub"
+    },
+    "confirmClear": "Are you sure you want to clear current active inspection observations?",
+    "confirmStartNew": "Start a new inspection? This will reset the current active inspection session while keeping your archived history intact.",
+    "toasts": {
+      "archived": "Report archived to local history.",
+      "exported": "Report exported successfully as JSON.",
+      "imported": "Inspection report imported successfully.",
+      "importInvalid": "Invalid report JSON format.",
+      "noSession": "No active inspection session to export."
+    },
+    "tooltipSaveHistory": "Archive report locally for future reference",
+    "tooltipExportJson": "Export report as structured JSON",
+    "tooltipImportJson": "Load a previously exported JSON report"
+  },
+  "CustomPattern": {
+    "breadcrumbAll": "ALL TESTS",
+    "breadcrumbTitle": "CUSTOM TEST PATTERN GENERATOR",
+    "eyebrow": "PRECISION DISPLAY GENERATOR",
+    "title": "Custom Test Pattern Generator",
+    "subtitle": "Synthesize 12 specialized calibration patterns with deep controls for grid density, line thickness, color channels, typography, and moiré interference.",
+    "enterFullscreen": "Enter Fullscreen (F)",
+    "exitFullscreen": "Exit Fullscreen (F)",
+    "selectorTitle": "SELECT CALIBRATION PRESET",
+    "presets": {
+      "black": {
+        "label": "Black (0%)",
+        "desc": "Pure RGB (0, 0, 0) OLED/IPS black level reference field."
+      },
+      "white": {
+        "label": "White (100%)",
+        "desc": "Maximum 255 peak luminance reference field."
+      },
+      "rgb": {
+        "label": "RGB Primaries",
+        "desc": "Full vertical pure Red, Green, and Blue primary channel bars."
+      },
+      "grayscale": {
+        "label": "Grayscale Ramps",
+        "desc": "16-step stepped and smooth horizontal grayscale luminance ramps."
+      },
+      "gradient": {
+        "label": "Smooth Gradient",
+        "desc": "High-bit-depth interpolated linear or radial color gradient."
+      },
+      "checkerboard": {
+        "label": "Checkerboard",
+        "desc": "High-contrast geometric checker pattern for ANSI contrast."
+      },
+      "grid": {
+        "label": "2D Grid",
+        "desc": "Configurable alignment grid for geometry and convergence."
+      },
+      "horizontal_lines": {
+        "label": "Horizontal Lines",
+        "desc": "Alternating horizontal scanlines for line-pair resolution."
+      },
+      "vertical_lines": {
+        "label": "Vertical Lines",
+        "desc": "Alternating vertical stripes for pixel clock and phase alignment."
+      },
+      "sharpness": {
+        "label": "1px Sharpness",
+        "desc": "1-pixel native crosshairs, quadrants, and concentric targets."
+      },
+      "text": {
+        "label": "Text Rendering",
+        "desc": "Multi-weight pangram text block to evaluate subpixel antialiasing."
+      },
+      "moire": {
+        "label": "Moiré & Siemens",
+        "desc": "Concentric interference rings and high-frequency starburst."
+      }
+    },
+    "controls": {
+      "density": "Grid & Block Size ({val}px)",
+      "lineWidth": "Line Thickness ({val}px)",
+      "fgColor": "Foreground Color",
+      "bgColor": "Background Color",
+      "invert": "Invert",
+      "gradientType": "Gradient Direction",
+      "gradHorizontal": "Horizontal",
+      "gradVertical": "Vertical",
+      "gradRadial": "Radial (Concentric)",
+      "customText": "Custom Text Sample",
+      "fontSize": "Font Size ({val}px)",
+      "fontWeight": "Font Weight",
+      "weightNormal": "Regular (400)",
+      "weightMedium": "Medium (500)",
+      "weightBold": "Bold (700)",
+      "spacing": "Spacing ({val}px)",
+      "textPlaceholder": "Type custom test string..."
+    },
+    "notes": {
+      "title": "Calibration Note:",
+      "sharpness": "The 1px Sharpness preset renders alternating 1-pixel hairline lines at 1:1 hardware mapping to detect blurry scaling interpolation or mismatched native resolutions.",
+      "general": "Press 'F' on your keyboard to view in clean edge-to-edge fullscreen mode without browser toolbars."
+    },
+    "cards": {
+      "geometry": {
+        "title": "Display Geometry",
+        "desc": "Use 2D Grid and Checkerboard to verify straight lines, aspect ratio proportion, and barrel/pincushion optical distortion across curved displays."
+      },
+      "sharpness": {
+        "title": "Pixel Sharpness",
+        "desc": "The 1px Sharpness preset renders alternating 1-pixel hairline lines at 1:1 hardware mapping to detect blurry scaling interpolation or mismatched native resolutions."
+      },
+      "moire": {
+        "title": "Moiré & Interference",
+        "desc": "Moiré concentric rings expose spatial frequency beating against display pixel pitch and non-integer OS scaling (e.g. 125% or 150% scaling)."
+      }
+    },
+    "fullscreenHint": "Press ESC or F to exit"
+  },
+  "CompareDisplays": {
+    "breadcrumbAll": "ALL TESTS",
+    "breadcrumbTitle": "DISPLAY COMPARATOR & CALCULATORS",
+    "eyebrow": "SIDE-BY-SIDE SPECIFICATION COMPARATOR & PPI CALCULATOR",
+    "title": "Display Comparer & Aspect Ratio Tools",
+    "subtitle": "Accurately compare physical screen sizes, pixel densities (PPI), viewing distance thresholds, and aspect ratios between any two monitors.",
+    "tabs": {
+      "comparator": "Side-by-Side Comparator",
+      "ppi": "PPI & Viewing Distance",
+      "resolution": "Resolution & Dimensions",
+      "aspect": "Aspect Ratio Tool"
+    },
+    "comparator": {
+      "displayA": "Display A",
+      "displayB": "Display B",
+      "modePreset": "Standard Preset",
+      "modeSaved": "Saved Profile",
+      "selectPreset": "Select display preset...",
+      "selectSaved": "Select saved profile...",
+      "noSaved": "No saved monitor profiles found. Save a profile in",
+      "diagSize": "Diagonal Size",
+      "nativeRes": "Native Resolution",
+      "aspectRatio": "Aspect Ratio",
+      "panelType": "Panel Type",
+      "refreshRate": "Refresh Rate",
+      "specsHeader": "Physical Dimensions & Density",
+      "widthHeight": "Width × Height",
+      "area": "Total Surface Area",
+      "ppi": "Pixel Density",
+      "megapixels": "Total Pixels",
+      "retinaDist": "Snellen 20/20 Visual Acuity Distance",
+      "retinaDistDesc": "Distance where individual pixels become indistinguishable to 20/20 vision ({valIn} in / {valCm} cm).",
+      "obsTitle": "Subjective Side-by-Side Observations",
+      "obsSubtitle": "Document visual differences observed when running matching test patterns across both displays.",
+      "obsColor": "Color Balance & Tint",
+      "obsColorPlaceholder": "e.g., Display A appears slightly warmer with D65 white point, Display B leans cooler blue...",
+      "obsUniformity": "Uniformity & Contrast",
+      "obsUniformityPlaceholder": "e.g., Display A IPS glow visible on bottom corners; Display B OLED achieves perfect zero-nit black...",
+      "obsBrightness": "Brightness & Glare",
+      "obsBrightnessPlaceholder": "e.g., Display A matte coating diffuses office reflections; Display B glossy finish produces deeper vibrancy...",
+      "obsMotion": "Motion Clarity & Ghosting",
+      "obsMotionPlaceholder": "e.g., Display B at 240Hz has significantly less trailing blur than Display A at 60Hz...",
+      "obsConclusion": "Overall Recommendation / Verdict",
+      "obsConclusionPlaceholder": "e.g., Display B is markedly superior for competitive gaming; Display A is preferred for photo color grading...",
+      "saveObs": "Save Comparison Notes",
+      "obsSavedSuccess": "Comparison observations saved locally.",
+      "summaryLink": "Inspection Summary"
+    },
+    "ppi": {
+      "title": "Pixel Density & Visual Acuity Calculator",
+      "subtitle": "Calculate pixels per inch (PPI), physical pixel pitch, and the minimum viewing distance required for 'Retina' resolution.",
+      "screenDiagonal": "Screen Diagonal (inches)",
+      "resWidth": "Horizontal Resolution (px)",
+      "resHeight": "Vertical Resolution (px)",
+      "viewingDist": "Your Viewing Distance",
+      "unitInches": "Inches",
+      "unitCm": "Centimeters",
+      "cardDensity": "Pixel Density",
+      "cardPitch": "Pixel Pitch",
+      "cardRetina": "Retina Distance (20/20)",
+      "cardFov": "Horizontal FOV",
+      "specTitle": "Calculated Physical Specifications",
+      "specDimensions": "Screen Dimensions",
+      "specArea": "Display Area",
+      "specTotalPixels": "Total Resolution",
+      "specFov": "Field of View (Horizontal)"
+    },
+    "resolution": {
+      "title": "Resolution & Dimension Solver",
+      "subtitle": "Determine the exact pixel dimensions or physical size corresponding to an aspect ratio and known dimension.",
+      "knownDim": "Known Dimension",
+      "dimWidth": "Width (Horizontal)",
+      "dimHeight": "Height (Vertical)",
+      "valuePx": "Value in Pixels",
+      "targetRatio": "Target Aspect Ratio",
+      "resultsTitle": "Calculated Dimensions",
+      "calcRes": "Resulting Resolution",
+      "aspectName": "Aspect Ratio",
+      "totalPixels": "Total Pixels",
+      "standardClass": "Classification"
+    },
+    "aspect": {
+      "title": "Aspect Ratio Simplifier",
+      "subtitle": "Enter any horizontal and vertical pixel counts to find the simplified mathematical ratio and nearest standard industry format.",
+      "inputWidth": "Width in Pixels",
+      "inputHeight": "Height in Pixels",
+      "simplifiedRatio": "Mathematical Aspect Ratio",
+      "decimalRatio": "Decimal Ratio",
+      "nearestStandard": "Nearest Standard Format",
+      "gcd": "Greatest Common Divisor (GCD)"
+    },
+    "presets": {
+      "fhd24": "24\" Full HD (1080p)",
+      "qhd27": "27\" Quad HD (1440p)",
+      "uhd27": "27\" 4K Ultra HD",
+      "oled27": "27\" OLED 240Hz Gaming",
+      "uhd32": "32\" 4K Ultra HD",
+      "uwqhd34": "34\" Ultrawide (UWQHD)",
+      "suw49": "49\" Super Ultrawide",
+      "mac14": "14\" Laptop (Retina)",
+      "mac16": "16\" Laptop (Retina)",
+      "tv55": "55\" 4K Living Room TV",
+      "tv65": "65\" 4K Living Room TV"
+    },
+    "ratios": {
+      "r16_9": "16:9 (Standard Widescreen)",
+      "r16_10": "16:10 (Productivity & Laptops)",
+      "r21_9": "21:9 (Ultrawide Cinematic)",
+      "r32_9": "32:9 (Super Ultrawide)",
+      "r4_3": "4:3 (Legacy / Retro)",
+      "r5_4": "5:4 (Classic Workstation)",
+      "r3_2": "3:2 (Modern Tablets & Laptops)",
+      "r1_1": "1:1 (Square)"
+    },
+    "neutralPolicyTitle": "Neutral Comparison Policy",
+    "neutralPolicyDesc": "Monitor Tester does not declare: \"Monitor A is better\". Visual display evaluation involves inherent engineering trade-offs (e.g. OLED infinite contrast vs IPS color consistency and longevity vs Fast-IPS motion response). The user decides which monitor best matches their specific visual requirements and ambient environment.",
+    "journalTitle": "User Display Observations Journal",
+    "journalSubtitle": "Record your real-world visual observations side-by-side.",
+    "verdictLabel": "Your Personal Decision & Workflow Fit:",
+    "verdictPlaceholder": "e.g., Display A is preferred for productivity and office work due to high text sharpness, while Display B is chosen for gaming and dark-room movies.",
+    "guidanceTitle": "Viewing Distance & Visual Acuity Limits",
+    "guidanceAcuity": "Visual Acuity Threshold: A person with normal 20/20 vision has an angular resolution limit of approximately 1 arcminute (1/60th of a degree). At distances greater than {dist}, human eye physiology cannot resolve individual pixels.",
+    "guidanceErgonomic": "No Single Universal Perfect Distance: Ergonomic desktop work favors arms-length positioning (50–75cm / 20–30\") to minimize neck strain and rapid eye accommodation fatigue. Cinema and competitive gaming prioritize field-of-view immersion (SMPTE 30° or THX 40°).",
+    "knownWidth": "Width is known",
+    "knownHeight": "Height is known",
+    "calculatedMissing": "Calculated Missing {dim}:",
+    "fullResolution": "Full Resolution: {val} ({mp} MP)",
+    "invalidPositive": "Please enter valid positive dimensions.",
+    "aspectPreview": "Proportional Aspect Geometry Preview",
+    "quickSizes": "QUICK SIZES",
+    "commonRatios": "COMMON RATIOS",
+    "parameter": "Parameter",
+    "deviation": "Deviation: {val}",
+    "benchmarks": "Mathematical Benchmarks",
+    "hardwareComparison": "Display Hardware & Geometry Comparison"
   }
 }

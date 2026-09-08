@@ -4,7 +4,7 @@ import { DiagnosticClient } from "./DiagnosticClient";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Display Diagnostic Wizard | Monitor Tester",
+    title: "Display Diagnostic Wizard",
     description: "Symptom-based display diagnostic guide. Select visual defects to get targeted test recommendations.",
     alternates: {
       canonical: "/monitor-inspection/diagnostic"

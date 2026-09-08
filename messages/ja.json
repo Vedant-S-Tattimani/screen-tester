@@ -1137,5 +1137,371 @@
       "title": "関連ユーティリティ",
       "compareDisplays": "ディスプレイ比較計算ツール（PPI・視距離・アスペクト比）"
     }
+  },
+  "InspectionSummary": {
+    "reportBadge": "モニター検査レポート",
+    "defaultTitle": "ディスプレイ目視検査",
+    "workflowType": "ワークフロー種別",
+    "generalCheckup": "総合点検",
+    "saveToHistory": "履歴に保存",
+    "exportJson": "JSONエクスポート",
+    "importJson": "JSONインポート",
+    "printPdf": "印刷 / PDF出力",
+    "metrics": {
+      "completed": "完了したテスト",
+      "observed": "確認済み",
+      "needsAttention": "要確認",
+      "unknown": "不明",
+      "notTested": "未テスト"
+    },
+    "integrityBanner": "ユーザーによる客観的な観察記録。架空の総合スコア等は付与しません。",
+    "clientStorageBadge": "100% ブラウザ内ローカル保存",
+    "displayInfo": {
+      "title": "ディスプレイ情報（ブラウザ取得値）",
+      "subtitle": "ブラウザAPIが報告する正規のパラメータです。OSコンポジターの値に基づきます。",
+      "resolution": "画面解像度",
+      "logical": "論理: {val}",
+      "viewport": "アクティブ表示領域",
+      "viewportDesc": "CSSレイアウト領域",
+      "dpr": "デバイスピクセル比（DPR）",
+      "dprDesc": "OS拡大縮小率",
+      "colorDepth": "色深度・向き"
+    },
+    "profile": {
+      "title": "モニター機器プロファイル",
+      "edit": "プロファイル編集",
+      "cancel": "キャンセル",
+      "save": "保存",
+      "brand": "メーカー名:",
+      "model": "型番・モデル名:",
+      "size": "画面サイズ:",
+      "resolution": "ネイティブ解像度:",
+      "refreshRate": "リフレッシュレート:",
+      "panelType": "パネル種別:",
+      "selectPanel": "パネル種別を選択...",
+      "purchaseDate": "購入日:",
+      "notes": "接続・ハードウェアメモ:",
+      "unspecified": "未指定のモニター",
+      "specs": "パネル仕様",
+      "resRefresh": "解像度・レート",
+      "notesPrefix": "ハードウェアメモ: {notes}",
+      "brandModel": "メーカー & 型番",
+      "panelOther": "その他"
+    },
+    "checklist": {
+      "title": "検査チェックリスト & 観察結果",
+      "emptyTitle": "このセッションの検査観察結果はまだありません。",
+      "emptyDesc": "体系的な検査ワークフローを実行して診断結果と推奨事項を作成してください。",
+      "startGeneral": "総合点検を開始",
+      "startUsed": "中古モニター点検を開始",
+      "browseAll": "全ワークフローを見る",
+      "retest": "再テスト",
+      "runTest": "テスト開始"
+    },
+    "defects": {
+      "badge": "ユーザー記録 / 目視確認",
+      "title": "記録された欠陥ピクセル & 位置 ({count})",
+      "colIndex": "#",
+      "colClass": "分類",
+      "colCoords": "座標 (CSS X, Y)",
+      "colPosition": "画面比率",
+      "colPattern": "テストパターン",
+      "colNote": "メモ",
+      "colAction": "操作",
+      "deleteTitle": "欠陥マーカーを削除",
+      "types": {
+        "dead": "ドット抜け",
+        "stuck": "輝点/スタック",
+        "bright": "常時点灯",
+        "unknown": "不明"
+      }
+    },
+    "notes": {
+      "title": "総合検査メモ",
+      "desc": "室内照明、接続ケーブル（DP/HDMI）、全体的な印象を記録できます。自動保存されます。",
+      "placeholder": "例: 暗室にて検査実施。目立つバックライト漏れなし。初期カラープロファイルは自然..."
+    },
+    "actions": {
+      "startNew": "新しい検査を開始",
+      "clearObservations": "記録を消去",
+      "exportJson": "JSON書き出し",
+      "printPdf": "印刷 / PDF保存"
+    },
+    "history": {
+      "title": "ローカル検査履歴",
+      "count": "{count} 件の記録を保存中",
+      "emptyTitle": "過去の検査履歴はありません。",
+      "emptyDesc": "上の「履歴に保存」をクリックして現在の検査結果を保管できます。",
+      "testsCount": "{count} テスト",
+      "flawsCount": "{count} 件の不具合",
+      "exportTitle": "この履歴をJSONで書き出す",
+      "viewDetails": "詳細を見る",
+      "deleteTitle": "履歴を削除",
+      "modalTitle": "保管された検査記録",
+      "modalTests": "テスト数:",
+      "modalObserved": "確認済み:",
+      "modalNeedsAttn": "要確認:",
+      "modalFlaws": "欠陥ピクセル:",
+      "modalScreen": "解像度: {val}",
+      "modalDpr": "DPR: {val}x",
+      "modalViewport": "表示領域: {val}",
+      "modalDepth": "色深度: {val}ビット",
+      "modalNotes": "メモ:",
+      "modalObservations": "個別テスト結果:",
+      "modalExport": "記録をJSON書き出し",
+      "modalClose": "閉じる"
+    },
+    "empty": {
+      "title": "検査レポートがありません",
+      "description": "検査ワークフローがまだ実行されていません。検査ハブからワークフローを選択してディスプレイの点検を行い、総合レポートを作成してください。",
+      "cta": "検査ハブへ移動"
+    },
+    "confirmClear": "現在のセッションの検査観察記録を消去してもよろしいですか？",
+    "confirmStartNew": "新しい検査を開始しますか？現在のセッションはリセットされますが、保管済みの履歴は保持されます。",
+    "toasts": {
+      "archived": "レポートをローカル履歴に保存しました。",
+      "exported": "レポートをJSONとして正常に書き出しました。",
+      "imported": "検査レポートをインポートしました。",
+      "importInvalid": "無効なJSONファイル形式です。",
+      "noSession": "書き出すアクティブな検査セッションがありません。"
+    },
+    "tooltipSaveHistory": "レポートをローカル履歴にアーカイブして保存",
+    "tooltipExportJson": "レポートを構造化JSONとしてエクスポート",
+    "tooltipImportJson": "以前にエクスポートしたJSONレポートを読み込む"
+  },
+  "CustomPattern": {
+    "breadcrumbAll": "すべてのテスト",
+    "breadcrumbTitle": "カスタムテストパターン生成ツール",
+    "eyebrow": "精密ディスプレイスキャン",
+    "title": "カスタムテストパターン生成ツール",
+    "subtitle": "グリッド密度、線幅、RGBカラー、テキスト表示、モアレ干渉など12種類の専門的キャリブレーションパターンを生成します。",
+    "enterFullscreen": "フルスクリーン表示 (F)",
+    "exitFullscreen": "フルスクリーン解除 (F)",
+    "selectorTitle": "キャリブレーションパターンの選択",
+    "presets": {
+      "black": {
+        "label": "黒 (0%)",
+        "desc": "OLEDやIPSの黒レベル確認用純粋黒（0, 0, 0）画面。"
+      },
+      "white": {
+        "label": "白 (100%)",
+        "desc": "最大輝度255の均一性確認用リファレンス画面。"
+      },
+      "rgb": {
+        "label": "RGB原色バー",
+        "desc": "純粋な赤・緑・青の原色カラーバー。"
+      },
+      "grayscale": {
+        "label": "グレースケール階調",
+        "desc": "16段階ステップおよび無段階の滑らかな輝度階調ランプ。"
+      },
+      "gradient": {
+        "label": "スムーズグラデーション",
+        "desc": "高階調のリニアまたはラジアルグラデーション。"
+      },
+      "checkerboard": {
+        "label": "チェッカーボード",
+        "desc": "ANSIコントラスト評価用の高コントラスト市松模様。"
+      },
+      "grid": {
+        "label": "2Dグリッド",
+        "desc": "画面の幾何学的歪みやコンバージェンス確認用格子。"
+      },
+      "horizontal_lines": {
+        "label": "水平ストライプ",
+        "desc": "走査線解像度評価用の交互水平ライン。"
+      },
+      "vertical_lines": {
+        "label": "垂直ストライプ",
+        "desc": "ピクセルクロックおよび位相調整用の交互縦縞ライン。"
+      },
+      "sharpness": {
+        "label": "1pxシャープネス",
+        "desc": "1:1等倍ドットマッピング検査用クロスヘアと幾何学ターゲット。"
+      },
+      "text": {
+        "label": "テキストレンダリング",
+        "desc": "サブピクセルレンダリング評価用パングラムテキスト。"
+      },
+      "moire": {
+        "label": "モアレ＆ジーメンス",
+        "desc": "高周波干渉リングと放射状星形パターン。"
+      }
+    },
+    "controls": {
+      "density": "グリッド・ブロックサイズ ({val}px)",
+      "lineWidth": "線幅 ({val}px)",
+      "fgColor": "前景色",
+      "bgColor": "背景色",
+      "invert": "反転",
+      "gradientType": "グラデーション方向",
+      "gradHorizontal": "水平",
+      "gradVertical": "垂直",
+      "gradRadial": "放射状（円形）",
+      "customText": "カスタム表示テキスト",
+      "fontSize": "フォントサイズ ({val}px)",
+      "fontWeight": "文字の太さ",
+      "weightNormal": "標準 (400)",
+      "weightMedium": "中 (500)",
+      "weightBold": "太字 (700)",
+      "spacing": "間隔 ({val}px)",
+      "textPlaceholder": "テスト用テキストを入力..."
+    },
+    "notes": {
+      "title": "調整のヒント:",
+      "sharpness": "1pxシャープネスパターンはハードウェア等倍1:1で1ドットの細線を描画し、スケーリングによるボケや滲みを検出します。",
+      "general": "キーボードの「F」キーを押すと、ブラウザツールバーのない全画面表示に切り替わります。"
+    },
+    "cards": {
+      "geometry": {
+        "title": "ディスプレイの幾何構造",
+        "desc": "2Dグリッドと市松模様を使用して、直線の歪み、アスペクト比の歪み、湾曲ディスプレイの樽型/糸巻き型収差を検証します。"
+      },
+      "sharpness": {
+        "title": "ピクセル鮮鋭度",
+        "desc": "1px鮮鋭度プリセットは、1:1のハードウェアマッピングで1ピクセルのヘアラインを描画し、ぼやけたスケーリングや解像度不一致を検出します。"
+      },
+      "moire": {
+        "title": "モアレと干渉縞",
+        "desc": "同心円パターンにより、ピクセルピッチとOSの非整数倍スケーリング（125%や150%など）による空間周波数の干渉縞を可視化します。"
+      }
+    },
+    "fullscreenHint": "ESCまたはFキーで終了"
+  },
+  "CompareDisplays": {
+    "breadcrumbAll": "すべてのテスト",
+    "breadcrumbTitle": "ディスプレイ比較 & 各種計算ツール",
+    "eyebrow": "スペック直接比較 & PPI計算機",
+    "title": "ディスプレイ比較 & アスペクト比ツール",
+    "subtitle": "2台のモニターの画面サイズ、画素密度（PPI）、レティーナ視認距離、アスペクト比を正確に比較します。",
+    "tabs": {
+      "comparator": "2画面スペック比較",
+      "ppi": "PPI & 視認距離計算",
+      "resolution": "解像度 & 実寸法",
+      "aspect": "アスペクト比ツール"
+    },
+    "comparator": {
+      "displayA": "ディスプレイ A",
+      "displayB": "ディスプレイ B",
+      "modePreset": "標準プリセット",
+      "modeSaved": "保存したプロファイル",
+      "selectPreset": "プリセットを選択...",
+      "selectSaved": "保存済みプロファイルを選択...",
+      "noSaved": "保存されたプロファイルがありません。プロファイルを登録してください:",
+      "diagSize": "対角画面サイズ",
+      "nativeRes": "ネイティブ解像度",
+      "aspectRatio": "アスペクト比",
+      "panelType": "パネル種別",
+      "refreshRate": "リフレッシュレート",
+      "specsHeader": "物理寸法 & 画素密度",
+      "widthHeight": "横幅 × 高さ",
+      "area": "総画面面積",
+      "ppi": "画素密度 (PPI)",
+      "megapixels": "総画素数",
+      "retinaDist": "Retina限界視認距離 (視力1.0)",
+      "retinaDistDesc": "個々のピクセルが識別不能になる最短距離 ({valIn} インチ / {valCm} cm)。",
+      "obsTitle": "2画面並行比較メモ",
+      "obsSubtitle": "同一テストパターンを2台に同時表示した際の見た目の差異を記録します。",
+      "obsColor": "色合い・ホワイトバランス",
+      "obsColorPlaceholder": "例: 画面AはD65で自然な暖色、画面Bは青白い寒色傾向...",
+      "obsUniformity": "均一性・コントラスト",
+      "obsUniformityPlaceholder": "例: 画面Aは四隅にIPSグローあり。画面BはOLEDで完全な漆黒を再現...",
+      "obsBrightness": "輝度・表面反射",
+      "obsBrightnessPlaceholder": "例: 画面Aのノングレアは蛍光灯の映り込みを低減。画面Bの光沢は鮮やか...",
+      "obsMotion": "残像感・応答性能",
+      "obsMotionPlaceholder": "例: 画面Bの240Hzは画面Aの60Hzに比べ明らかに残像が少ない...",
+      "obsConclusion": "総合評価・おすすめ用途",
+      "obsConclusionPlaceholder": "例: 画面BはFPS等の競技ゲーム向き。画面Aは写真現像・動画編集向き...",
+      "saveObs": "比較メモを保存",
+      "obsSavedSuccess": "比較メモをローカルに保存しました。",
+      "summaryLink": "検査概要"
+    },
+    "ppi": {
+      "title": "画素密度 & 視認限界距離計算機",
+      "subtitle": "画面インチ数と解像度からPPI、ドットピッチ、ピクセルが溶け込むレティーナ距離を算出します。",
+      "screenDiagonal": "対角画面サイズ（インチ）",
+      "resWidth": "水平解像度（px）",
+      "resHeight": "垂直解像度（px）",
+      "viewingDist": "現在の視認距離",
+      "unitInches": "インチ",
+      "unitCm": "センチメートル",
+      "cardDensity": "画素密度",
+      "cardPitch": "ドットピッチ",
+      "cardRetina": "Retina限界距離",
+      "cardFov": "水平視野角 (FOV)",
+      "specTitle": "算出された物理仕様",
+      "specDimensions": "画面実寸法",
+      "specArea": "実表示面積",
+      "specTotalPixels": "総ピクセル数",
+      "specFov": "水平視認角度"
+    },
+    "resolution": {
+      "title": "解像度 & 画面寸法ソルバー",
+      "subtitle": "指定したアスペクト比と片側のサイズから、正確な対向解像度および画面サイズを逆算します。",
+      "knownDim": "既知の基準寸法",
+      "dimWidth": "水平（横幅）",
+      "dimHeight": "垂直（高さ）",
+      "valuePx": "ピクセル値",
+      "targetRatio": "目標アスペクト比",
+      "resultsTitle": "計算結果",
+      "calcRes": "算出された解像度",
+      "aspectName": "画面比率",
+      "totalPixels": "総ピクセル数",
+      "standardClass": "規格分類"
+    },
+    "aspect": {
+      "title": "アスペクト比約分ツール",
+      "subtitle": "任意の縦横解像度を入力すると、最小公倍数による数学的整数比と最も近い業界標準規格を特定します。",
+      "inputWidth": "横幅ピクセル",
+      "inputHeight": "縦幅ピクセル",
+      "simplifiedRatio": "数学的アスペクト比",
+      "decimalRatio": "小数比率",
+      "nearestStandard": "近似する標準規格",
+      "gcd": "最大公約数 (GCD)"
+    },
+    "presets": {
+      "fhd24": "24インチ Full HD (1080p)",
+      "qhd27": "27インチ Quad HD (1440p)",
+      "uhd27": "27インチ 4K Ultra HD",
+      "oled27": "27インチ OLED 240Hz Gaming",
+      "uhd32": "32インチ 4K Ultra HD",
+      "uwqhd34": "34インチ ウルトラワイド (UWQHD)",
+      "suw49": "49インチ スーパーウルトラワイド",
+      "mac14": "14インチ ノートPC (Retina)",
+      "mac16": "16インチ ノートPC (Retina)",
+      "tv55": "55インチ 4K リビングTV",
+      "tv65": "65インチ 4K リビングTV"
+    },
+    "ratios": {
+      "r16_9": "16:9 (標準ワイド)",
+      "r16_10": "16:10 (ビジネス・ノートPC)",
+      "r21_9": "21:9 (シネマウルトラワイド)",
+      "r32_9": "32:9 (スーパーウルトラワイド)",
+      "r4_3": "4:3 (クラシック/レトロ)",
+      "r5_4": "5:4 (スクエアワークステーション)",
+      "r3_2": "3:2 (タブレット・Surface等)",
+      "r1_1": "1:1 (正方形)"
+    },
+    "neutralPolicyTitle": "中立的な比較方針",
+    "neutralPolicyDesc": "Monitor Testerは「モニターAの方が優れている」といった恣意的な断定を行いません。ディスプレイ技術には固有のトレードオフが存在します（OLEDの無限コントラスト対IPSの色安定性と長寿命対Fast-IPSの応答性）。お客様の使用環境に最適な画面をご自身で判断いただけます。",
+    "journalTitle": "観察記録ノート",
+    "journalSubtitle": "実際の表示の違いを項目ごとに記録・保存できます。",
+    "verdictLabel": "用途に応じた判断・結論:",
+    "verdictPlaceholder": "例：ディスプレイAは文字の鮮明さから事務作業に最適、ディスプレイBは映画鑑賞やゲームに適している...",
+    "guidanceTitle": "視聴距離と視覚限界",
+    "guidanceAcuity": "視力限界値: 正常な視力（20/20）の分解能限界は約1分角です。{dist} 以上の距離では、人間の肉眼で個々のピクセルを識別できなくなります（網膜解像度）。",
+    "guidanceErgonomic": "最適な距離は用途依存: デスクワークでは目の疲労や首への負担を減らすため腕の長さ（50〜75cm）が推奨されます。",
+    "knownWidth": "横幅を指定",
+    "knownHeight": "高さを指定",
+    "calculatedMissing": "計算された{dim}:",
+    "fullResolution": "完全な解像度: {val} ({mp} MP)",
+    "invalidPositive": "有効な正の数値を入力してください。",
+    "aspectPreview": "アスペクト比プレビュー",
+    "quickSizes": "定番サイズ",
+    "commonRatios": "標準比率",
+    "parameter": "測定項目",
+    "deviation": "誤差: {val}",
+    "benchmarks": "幾何数学ベンチマーク",
+    "hardwareComparison": "画面仕様・幾何比較"
   }
 }

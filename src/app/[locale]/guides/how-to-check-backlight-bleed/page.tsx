@@ -6,7 +6,7 @@ import { ArrowRight, Moon } from "lucide-react";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   await params;
   return {
-    title: "How to Check Backlight Bleed vs IPS Glow | Monitor Tester",
+    title: "How to Check Backlight Bleed vs IPS Glow",
     description: "Learn how to differentiate true backlight bleed from normal IPS glow, proper dark room testing methods, and when to request a replacement.",
     alternates: {
       canonical: "/guides/how-to-check-backlight-bleed"

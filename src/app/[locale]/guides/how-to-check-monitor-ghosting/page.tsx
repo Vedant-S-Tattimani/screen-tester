@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   await params;
   return {
-    title: "How to Check Monitor Ghosting & Pixel Response Time | Monitor Tester",
+    title: "How to Check Monitor Ghosting & Pixel Response Time",
     description: "Learn what monitor ghosting and inverse ghosting (coronas) are, how to inspect pixel response times, and how to configure overdrive.",
     alternates: {
       canonical: "/guides/how-to-check-monitor-ghosting"

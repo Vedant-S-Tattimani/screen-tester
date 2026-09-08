@@ -1137,5 +1137,371 @@
       "title": "VERWANDTE WERKZEUGE",
       "compareDisplays": "Bildschirm-Vergleichsrechner (PPI, Abstand, Seitenverhältnis)"
     }
+  },
+  "InspectionSummary": {
+    "reportBadge": "MONITOR-PRÜFBERICHT",
+    "defaultTitle": "Visuelle Display-Inspektion",
+    "workflowType": "Workflow-Typ",
+    "generalCheckup": "Allgemeine Prüfung",
+    "saveToHistory": "Im Verlauf speichern",
+    "exportJson": "JSON exportieren",
+    "importJson": "JSON importieren",
+    "printPdf": "Drucken / PDF",
+    "metrics": {
+      "completed": "Tests abgeschlossen",
+      "observed": "Beobachtet",
+      "needsAttention": "Auffällig",
+      "unknown": "Unklar",
+      "notTested": "Nicht getestet"
+    },
+    "integrityBanner": "Faktischer, benutzerbeobachteter Inspektionsbericht. Keine künstlichen Bewertungsnoten.",
+    "clientStorageBadge": "100 % lokaler Browserspeicher",
+    "displayInfo": {
+      "title": "Display-Informationen (Browser-gemeldet)",
+      "subtitle": "Gültige Browser-API-Parameter. Werte stammen vom Betriebssystem-Compositor, nicht aus der EEPROM-Hardware.",
+      "resolution": "Bildschirmauflösung",
+      "logical": "Logisch: {val}",
+      "viewport": "Aktives Ansichtsfenster",
+      "viewportDesc": "CSS-Layoutbereich",
+      "dpr": "Geräte-Pixeldichte (DPR)",
+      "dprDesc": "Skalierungsfaktor des OS",
+      "colorDepth": "Farbtiefe & Ausrichtung"
+    },
+    "profile": {
+      "title": "Monitor-Hardwareprofil",
+      "edit": "Profil bearbeiten",
+      "cancel": "Abbrechen",
+      "save": "Profil speichern",
+      "brand": "Marke:",
+      "model": "Modellname / Nummer:",
+      "size": "Displaygröße:",
+      "resolution": "Native Auflösung:",
+      "refreshRate": "Bildwiederholfrequenz:",
+      "panelType": "Panel-Typ:",
+      "selectPanel": "Panel-Typ wählen...",
+      "purchaseDate": "Kaufdatum:",
+      "notes": "Hardware- & Anschlussnotizen:",
+      "unspecified": "Unbekannter Monitor",
+      "specs": "Panel-Spezifikationen",
+      "resRefresh": "Auflösung & Frequenz",
+      "notesPrefix": "Hardware-Notizen: {notes}",
+      "brandModel": "Marke & Modell",
+      "panelOther": "Sonstige"
+    },
+    "checklist": {
+      "title": "Inspektions-Checkliste & beobachtete Ergebnisse",
+      "emptyTitle": "In dieser Sitzung wurden noch keine Beobachtungen erfasst.",
+      "emptyDesc": "Führen Sie eine strukturierte Prüfung durch, um Befunde und Empfehlungen zu generieren.",
+      "startGeneral": "Allgemeine Prüfung starten",
+      "startUsed": "Gebraucht-Monitor-Prüfung starten",
+      "browseAll": "Alle Inspektions-Workflows durchsuchen",
+      "retest": "Erneut testen",
+      "runTest": "Test ausführen"
+    },
+    "defects": {
+      "badge": "BENUTZER-MARKIERT / BEOBACHTET",
+      "title": "Markierte Pixelfehler & Positionen ({count})",
+      "colIndex": "#",
+      "colClass": "Klassifizierung",
+      "colCoords": "Koordinaten (CSS X, Y)",
+      "colPosition": "Bildschirmposition",
+      "colPattern": "Testmuster",
+      "colNote": "Notiz",
+      "colAction": "Aktion",
+      "deleteTitle": "Pixelfehlermarkierung löschen",
+      "types": {
+        "dead": "tot",
+        "stuck": "hängend",
+        "bright": "hell",
+        "unknown": "unbekannt"
+      }
+    },
+    "notes": {
+      "title": "Allgemeine Inspektionsnotizen",
+      "desc": "Raumbeleuchtung, Kabeltyp (DP/HDMI) und generelle Beobachtungen dokumentieren. Automatisch lokal gespeichert.",
+      "placeholder": "z. B. In abgedunkeltem Raum geprüft. Kein Backlight Bleed festgestellt. Werkseitiges Farbprofil wirkt ausgewogen..."
+    },
+    "actions": {
+      "startNew": "Neue Inspektion starten",
+      "clearObservations": "Beobachtungen leeren",
+      "exportJson": "JSON exportieren",
+      "printPdf": "Drucken / PDF exportieren"
+    },
+    "history": {
+      "title": "Lokaler Inspektionsverlauf",
+      "count": "{count} gespeicherte Einträge",
+      "emptyTitle": "Noch keine Prüfungen archiviert.",
+      "emptyDesc": "Klicken Sie oben auf \"Im Verlauf speichern\", um den aktuellen Bericht zu archivieren.",
+      "testsCount": "{count} Tests",
+      "flawsCount": "{count} Fehler",
+      "exportTitle": "Diesen Eintrag als JSON exportieren",
+      "viewDetails": "Details anzeigen",
+      "deleteTitle": "Eintrag löschen",
+      "modalTitle": "Archivierter Prüfbericht",
+      "modalTests": "Tests:",
+      "modalObserved": "Beobachtet:",
+      "modalNeedsAttn": "Auffällig:",
+      "modalFlaws": "Pixelfehler:",
+      "modalScreen": "Bildschirm: {val}",
+      "modalDpr": "DPR: {val}x",
+      "modalViewport": "Viewport: {val}",
+      "modalDepth": "Farbtiefe: {val}-Bit",
+      "modalNotes": "Notizen:",
+      "modalObservations": "Testbeobachtungen:",
+      "modalExport": "Eintrag als JSON exportieren",
+      "modalClose": "Schließen"
+    },
+    "empty": {
+      "title": "Noch kein Inspektionsbericht vorhanden",
+      "description": "Sie haben noch keinen Inspektions-Workflow durchgeführt. Wählen Sie im Inspektionszentrum einen Workflow aus, um Ihr Display systematisch zu prüfen und einen Bericht zu erstellen.",
+      "cta": "Zum Inspektionszentrum"
+    },
+    "confirmClear": "Möchten Sie die aktuellen Beobachtungen dieser Sitzung wirklich löschen?",
+    "confirmStartNew": "Möchten Sie eine neue Inspektion starten? Die aktuelle Sitzung wird zurückgesetzt, Ihr Archiv bleibt erhalten.",
+    "toasts": {
+      "archived": "Bericht erfolgreich im Verlauf archiviert.",
+      "exported": "Bericht erfolgreich als JSON exportiert.",
+      "imported": "Inspektionsbericht erfolgreich importiert.",
+      "importInvalid": "Ungültiges JSON-Dateiformat.",
+      "noSession": "Keine aktive Sitzung zum Exportieren vorhanden."
+    },
+    "tooltipSaveHistory": "Bericht lokal für spätere Referenz archivieren",
+    "tooltipExportJson": "Bericht als strukturiertes JSON exportieren",
+    "tooltipImportJson": "Zuvor exportierten JSON-Bericht laden"
+  },
+  "CustomPattern": {
+    "breadcrumbAll": "ALLE TESTS",
+    "breadcrumbTitle": "BENUTZERDEFINIERTER TESTBILD-GENERATOR",
+    "eyebrow": "PRÄZISIONS-DISPLAY-GENERATOR",
+    "title": "Benutzerdefinierter Testbild-Generator",
+    "subtitle": "Erzeugen Sie 12 spezialisierte Kalibriermuster mit präziser Kontrolle über Gitterdichte, Linienstärke, Farbkanäle, Typografie und Moiré-Muster.",
+    "enterFullscreen": "Vollbildmodus (F)",
+    "exitFullscreen": "Vollbild beenden (F)",
+    "selectorTitle": "KALIBRIERMUSTER AUSWÄHLEN",
+    "presets": {
+      "black": {
+        "label": "Schwarz (0 %)",
+        "desc": "Reines RGB (0, 0, 0) Schwarzfeld für OLED/IPS-Schwarzwertprüfungen."
+      },
+      "white": {
+        "label": "Weiß (100 %)",
+        "desc": "Maximales 255-Spitzenhelligkeits-Referenzfeld."
+      },
+      "rgb": {
+        "label": "RGB-Primärfarben",
+        "desc": "Vertikale Primärfarbbalken in reinem Rot, Grün und Blau."
+      },
+      "grayscale": {
+        "label": "Graustufen-Rampen",
+        "desc": "16-stufige sowie stufenlose horizontale Grauwertverläufe."
+      },
+      "gradient": {
+        "label": "Weicher Farbverlauf",
+        "desc": "Präziser linearer oder radialer Farbverlauf mit hoher Farbtiefe."
+      },
+      "checkerboard": {
+        "label": "Schachbrettmuster",
+        "desc": "Kontrastreiches Schachbrettfeld zur ANSI-Kontrastbewertung."
+      },
+      "grid": {
+        "label": "2D-Gitter",
+        "desc": "Konfigurierbares Ausrichtungsgitter für Bildgeometrie und Konvergenz."
+      },
+      "horizontal_lines": {
+        "label": "Horizontale Linien",
+        "desc": "Abwechselnde Zeilenlinien zur Prüfung der Zeilenauflösung."
+      },
+      "vertical_lines": {
+        "label": "Vertikale Linien",
+        "desc": "Abwechselnde Streifen zur Prüfung von Pixeltakt und Phasenlage."
+      },
+      "sharpness": {
+        "label": "1px Schärfemuster",
+        "desc": "Pixelgenaue Fadenkreuze, Quadranten und konzentrische Zielscheiben."
+      },
+      "text": {
+        "label": "Textdarstellung",
+        "desc": "Pangramm-Textblock in mehreren Schriftstärken zur Subpixel-Beurteilung."
+      },
+      "moire": {
+        "label": "Moiré & Siemensstern",
+        "desc": "Konzentrische Ringe und hochfrequente Radiallinien zur Interferenzprüfung."
+      }
+    },
+    "controls": {
+      "density": "Gitter- & Blockgröße ({val} px)",
+      "lineWidth": "Linienstärke ({val} px)",
+      "fgColor": "Vordergrundfarbe",
+      "bgColor": "Hintergrundfarbe",
+      "invert": "Umkehren",
+      "gradientType": "Verlaufsrichtung",
+      "gradHorizontal": "Horizontal",
+      "gradVertical": "Vertikal",
+      "gradRadial": "Radial (Zentriert)",
+      "customText": "Benutzerdefinierter Text",
+      "fontSize": "Schriftgröße ({val} px)",
+      "fontWeight": "Schriftstärke",
+      "weightNormal": "Normal (400)",
+      "weightMedium": "Mittel (500)",
+      "weightBold": "Fett (700)",
+      "spacing": "Abstand ({val}px)",
+      "textPlaceholder": "Benutzerdefinierten Prüftext eingeben..."
+    },
+    "notes": {
+      "title": "Kalibrierhinweis:",
+      "sharpness": "Das 1px-Schärfemuster rendert haardünne Linien im Verhältnis 1:1, um unschärfe Skalierungsinterpolation zu entlarven.",
+      "general": "Drücken Sie die Taste 'F', um das Muster im Vollbildmodus ohne störende Browserleisten anzuzeigen."
+    },
+    "cards": {
+      "geometry": {
+        "title": "Display-Geometrie",
+        "desc": "Verwenden Sie 2D-Gitter und Schachbrett, um gerade Linien, Seitenverhältnis-Proportionen und Kissen-/Tonnen-Verzerrungen bei gekrümmten Displays zu prüfen."
+      },
+      "sharpness": {
+        "title": "Pixel-Schärfe",
+        "desc": "Das 1px-Schärfemuster stellt abwechselnde 1-Pixel-Haarlinien im nativen 1:1-Verhältnis dar, um unscharfe Skalierungen oder abweichende Auflösungen aufzudecken."
+      },
+      "moire": {
+        "title": "Moiré & Interferenz",
+        "desc": "Konzentrische Moiré-Ringe visualisieren Frequenzüberlagerungen gegen den Pixelabstand und krumme Betriebssystem-Skalierungen (z. B. 125% oder 150%)."
+      }
+    },
+    "fullscreenHint": "Drücken Sie ESC oder F zum Beenden"
+  },
+  "CompareDisplays": {
+    "breadcrumbAll": "ALLE TESTS",
+    "breadcrumbTitle": "DISPLAY-VERGLEICH & RECHNER",
+    "eyebrow": "SPEZIFIKATIONSVERGLEICH & PPI-RECHNER",
+    "title": "Display-Vergleich & Seitenverhältnis-Tools",
+    "subtitle": "Vergleichen Sie Bildschirmmaße, Pixeldichten (PPI), Sehabstandsschwellen und Bildformate zweier Monitore präzise.",
+    "tabs": {
+      "comparator": "Direktvergleich",
+      "ppi": "PPI & Sehabstand",
+      "resolution": "Auflösung & Maße",
+      "aspect": "Seitenverhältnis-Tool"
+    },
+    "comparator": {
+      "displayA": "Display A",
+      "displayB": "Display B",
+      "modePreset": "Standard-Vorlage",
+      "modeSaved": "Gespeichertes Profil",
+      "selectPreset": "Display-Vorlage wählen...",
+      "selectSaved": "Gespeichertes Profil wählen...",
+      "noSaved": "Keine Profile gefunden. Speichern Sie ein Profil in der",
+      "diagSize": "Diagonale",
+      "nativeRes": "Native Auflösung",
+      "aspectRatio": "Seitenverhältnis",
+      "panelType": "Panel-Typ",
+      "refreshRate": "Bildwiederholfrequenz",
+      "specsHeader": "Physische Maße & Pixeldichte",
+      "widthHeight": "Breite × Höhe",
+      "area": "Gesamtfläche",
+      "ppi": "Pixeldichte",
+      "megapixels": "Gesamtpixel",
+      "retinaDist": "Retina-Sehabstand (20/20 Snellen)",
+      "retinaDistDesc": "Abstand, ab dem einzelne Pixel für das menschliche Auge unsichtbar werden ({valIn} Zoll / {valCm} cm).",
+      "obsTitle": "Subjektive Vergleichsbeobachtungen",
+      "obsSubtitle": "Dokumentieren Sie visuelle Unterschiede beim gleichzeitigen Betrachten beider Monitore.",
+      "obsColor": "Farbbalance & Tönung",
+      "obsColorPlaceholder": "z. B. Display A wirkt wärmer (D65), Display B neigt zu kühlem Blauton...",
+      "obsUniformity": "Ausleuchtung & Kontrast",
+      "obsUniformityPlaceholder": "z. B. Display A zeigt IPS-Glow in Ecken; Display B OLED erzielt echtes Tiefschwarz...",
+      "obsBrightness": "Helligkeit & Spiegelung",
+      "obsBrightnessPlaceholder": "z. B. Display A Mattierung streut Raumlicht; Display B Glanzbeschichtung liefert sattere Farben...",
+      "obsMotion": "Bewegungsschärfe & Ghosting",
+      "obsMotionPlaceholder": "z. B. Display B bei 240Hz zieht deutlich weniger Schweif als Display A bei 60Hz...",
+      "obsConclusion": "Gesamtempfehlung / Fazit",
+      "obsConclusionPlaceholder": "z. B. Display B eignet sich optimal für Gaming; Display A ist für Bildbearbeitung überlegen...",
+      "saveObs": "Vergleichsnotizen speichern",
+      "obsSavedSuccess": "Vergleichsnotizen lokal gespeichert.",
+      "summaryLink": "Inspektionsübersicht"
+    },
+    "ppi": {
+      "title": "Pixeldichte & Sehabstandsrechner",
+      "subtitle": "Berechnen Sie Pixeldichte (PPI), Pixelabstand (Pixel Pitch) und den Mindestabstand für 'Retina'-Schärfe.",
+      "screenDiagonal": "Bildschirmdiagonale (Zoll)",
+      "resWidth": "Horizontale Auflösung (px)",
+      "resHeight": "Vertikale Auflösung (px)",
+      "viewingDist": "Ihr Sehabstand",
+      "unitInches": "Zoll",
+      "unitCm": "Zentimeter",
+      "cardDensity": "Pixeldichte",
+      "cardPitch": "Pixelabstand",
+      "cardRetina": "Retina-Abstand (20/20)",
+      "cardFov": "Horizontales Sichtfeld",
+      "specTitle": "Berechnete Displaymaße",
+      "specDimensions": "Bildschirmmaße",
+      "specArea": "Sichtbare Fläche",
+      "specTotalPixels": "Gesamtauflösung",
+      "specFov": "Blickwinkel (Horizontal)"
+    },
+    "resolution": {
+      "title": "Auflösungs- & Dimensionsrechner",
+      "subtitle": "Ermitteln Sie die exakten Pixelmaße zu einem gegebenen Seitenverhältnis und einer bekannten Dimension.",
+      "knownDim": "Bekannte Dimension",
+      "dimWidth": "Breite (Horizontal)",
+      "dimHeight": "Höhe (Vertikal)",
+      "valuePx": "Wert in Pixeln",
+      "targetRatio": "Ziel-Seitenverhältnis",
+      "resultsTitle": "Berechnete Maße",
+      "calcRes": "Resultierende Auflösung",
+      "aspectName": "Seitenverhältnis",
+      "totalPixels": "Gesamtpixel",
+      "standardClass": "Klassifizierung"
+    },
+    "aspect": {
+      "title": "Seitenverhältnis-Rechner",
+      "subtitle": "Geben Sie Bildpunkte für Breite und Höhe ein, um das gekürzte mathematische Seitenverhältnis zu ermitteln.",
+      "inputWidth": "Breite in Pixeln",
+      "inputHeight": "Höhe in Pixeln",
+      "simplifiedRatio": "Mathematisches Seitenverhältnis",
+      "decimalRatio": "Dezimalverhältnis",
+      "nearestStandard": "Nächstgelegener Standard",
+      "gcd": "Größter gemeinsamer Teiler (ggT)"
+    },
+    "presets": {
+      "fhd24": "24\" Full HD (1080p)",
+      "qhd27": "27\" Quad HD (1440p)",
+      "uhd27": "27\" 4K Ultra HD",
+      "oled27": "27\" OLED 240Hz Gaming",
+      "uhd32": "32\" 4K Ultra HD",
+      "uwqhd34": "34\" Ultrawide (UWQHD)",
+      "suw49": "49\" Super Ultrawide",
+      "mac14": "14\" Laptop (Retina)",
+      "mac16": "16\" Laptop (Retina)",
+      "tv55": "55\" 4K Wohnzimmer-TV",
+      "tv65": "65\" 4K Wohnzimmer-TV"
+    },
+    "ratios": {
+      "r16_9": "16:9 (Standard-Breitbild)",
+      "r16_10": "16:10 (Produktivität & Laptops)",
+      "r21_9": "21:9 (Ultrawide Kinolook)",
+      "r32_9": "32:9 (Super Ultrawide)",
+      "r4_3": "4:3 (Klassisch / Retro)",
+      "r5_4": "5:4 (Arbeitsplatz)",
+      "r3_2": "3:2 (Tablets & Notebooks)",
+      "r1_1": "1:1 (Quadratisch)"
+    },
+    "neutralPolicyTitle": "Neutrale Vergleichsrichtlinie",
+    "neutralPolicyDesc": "Monitor Tester bewertet niemals: \"Monitor A ist besser\". Die Anzeigebeurteilung unterliegt grundlegenden technischen Kompromissen (z. B. OLED-Kontrast vs. IPS-Farbstabilität und Lebensdauer vs. Fast-IPS-Reaktionszeit). Sie entscheiden, welches Display am besten zu Ihrem Anwendungsbereich passt.",
+    "journalTitle": "Benutzer-Beobachtungsprotokoll",
+    "journalSubtitle": "Dokumentieren Sie visuelle Beobachtungen im direkten Vergleich.",
+    "verdictLabel": "Ihre persönliche Entscheidung & Eignung:",
+    "verdictPlaceholder": "z. B. Monitor A wird wegen der Textschärfe für Office bevorzugt; Monitor B eignet sich ideal für Gaming und Filme im Dunkeln.",
+    "guidanceTitle": "Betrachtungsabstand & Sehschärfe-Grenzwerte",
+    "guidanceAcuity": "Sehschärfe-Grenze: Bei normaler Sehkraft (20/20) beträgt das Auflösungsvermögen ca. 1 Bogenminute. Bei Abständen über {dist} kann das menschliche Auge einzelne Pixel nicht mehr auflösen.",
+    "guidanceErgonomic": "Kein universeller Abstand: Für Schreibtisch-Arbeit wird eine Armlänge (50–75 cm) empfohlen, um Nacken und Augen zu schonen. Film und Gaming bevorzugen ein immersiveres Sichtfeld (SMPTE 30° oder THX 40°).",
+    "knownWidth": "Breite ist bekannt",
+    "knownHeight": "Höhe ist bekannt",
+    "calculatedMissing": "Berechnete fehlende {dim}:",
+    "fullResolution": "Gesamtauflösung: {val} ({mp} MP)",
+    "invalidPositive": "Bitte gültige positive Werte eingeben.",
+    "aspectPreview": "Geometrische Seitenverhältnis-Vorschau",
+    "quickSizes": "SCHNELLWAHL",
+    "commonRatios": "HÄUFIGE FORMATE",
+    "parameter": "Parameter",
+    "deviation": "Abweichung: {val}",
+    "benchmarks": "Mathematische Benchmarks",
+    "hardwareComparison": "Display-Hardware & Geometrievergleich"
   }
 }

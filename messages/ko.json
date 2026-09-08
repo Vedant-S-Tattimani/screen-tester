@@ -1137,5 +1137,371 @@
       "title": "관련 유틸리티",
       "compareDisplays": "디스플레이 비교 계산기 (PPI, 시청 거리, 화면비)"
     }
+  },
+  "InspectionSummary": {
+    "reportBadge": "모니터 점검 보고서",
+    "defaultTitle": "디스플레이 육안 점검",
+    "workflowType": "워크플로우 유형",
+    "generalCheckup": "종합 점검",
+    "saveToHistory": "기록에 저장",
+    "exportJson": "JSON 내보내기",
+    "importJson": "JSON 가져오기",
+    "printPdf": "인쇄 / PDF 출력",
+    "metrics": {
+      "completed": "완료된 테스트",
+      "observed": "관찰됨",
+      "needsAttention": "점검 필요",
+      "unknown": "불확실",
+      "notTested": "미실시"
+    },
+    "integrityBanner": "사용자 관찰 기반의 사실 점검 기록입니다. 인위적인 점수를 부여하지 않습니다.",
+    "clientStorageBadge": "100% 브라우저 로컬 저장",
+    "displayInfo": {
+      "title": "디스플레이 정보 (브라우저 감지값)",
+      "subtitle": "브라우저 API가 보고하는 표준 사양입니다. OS 컴포지터 기준 값입니다.",
+      "resolution": "화면 해상도",
+      "logical": "논리 해상도: {val}",
+      "viewport": "활성 뷰포트",
+      "viewportDesc": "CSS 레이아웃 영역",
+      "dpr": "디바이스 픽셀 비율 (DPR)",
+      "dprDesc": "OS 배율 스케일링",
+      "colorDepth": "색상 수 및 화면 방향"
+    },
+    "profile": {
+      "title": "모니터 하드웨어 프로필",
+      "edit": "프로필 편집",
+      "cancel": "취소",
+      "save": "프로필 저장",
+      "brand": "제조사:",
+      "model": "모델명 / 모델 번호:",
+      "size": "화면 크기:",
+      "resolution": "권장 기본 해상도:",
+      "refreshRate": "주사율:",
+      "panelType": "패널 종류:",
+      "selectPanel": "패널 종류 선택...",
+      "purchaseDate": "구매일자:",
+      "notes": "연결 단자 및 하드웨어 메모:",
+      "unspecified": "미지정 모니터",
+      "specs": "패널 사양",
+      "resRefresh": "해상도 및 주사율",
+      "notesPrefix": "하드웨어 메모: {notes}",
+      "brandModel": "제조사 및 모델",
+      "panelOther": "기타"
+    },
+    "checklist": {
+      "title": "점검 체크리스트 및 관찰 결과",
+      "emptyTitle": "현재 세션에 기록된 점검 관찰 항목이 없습니다.",
+      "emptyDesc": "구조화된 점검 워크플로우를 진행하여 진단 결과와 권장 조치를 확인하세요.",
+      "startGeneral": "종합 점검 시작",
+      "startUsed": "중고 모니터 점검 시작",
+      "browseAll": "전체 점검 워크플로우 보기",
+      "retest": "다시 테스트",
+      "runTest": "테스트 실행"
+    },
+    "defects": {
+      "badge": "사용자 마킹 / 관찰됨",
+      "title": "마킹된 불량 화소 및 위치 ({count})",
+      "colIndex": "#",
+      "colClass": "유형",
+      "colCoords": "좌표 (CSS X, Y)",
+      "colPosition": "화면 위치 비율",
+      "colPattern": "테스트 패턴",
+      "colNote": "메모",
+      "colAction": "관리",
+      "deleteTitle": "불량 화소 마커 삭제",
+      "types": {
+        "dead": "암점(Dead)",
+        "stuck": "휘점(Stuck)",
+        "bright": "광점(Bright)",
+        "unknown": "알수없음"
+      }
+    },
+    "notes": {
+      "title": "종합 점검 소견",
+      "desc": "실내 조명 상태, 케이블 종류(DP/HDMI) 및 육안 관찰 소견을 기록합니다. 로컬에 자동 저장됩니다.",
+      "placeholder": "예: 암실 환경에서 점검. 빛샘 현상 없음. 기본 팩토리 캘리브레이션 색감 자연스러움..."
+    },
+    "actions": {
+      "startNew": "새 점검 시작",
+      "clearObservations": "기록 초기화",
+      "exportJson": "JSON 내보내기",
+      "printPdf": "인쇄 / PDF 저장"
+    },
+    "history": {
+      "title": "로컬 점검 이력",
+      "count": "{count}개의 기록 저장됨",
+      "emptyTitle": "저장된 이전 점검 기록이 없습니다.",
+      "emptyDesc": "상단의 '기록에 저장'을 눌러 현재 점검 결과를 보관하세요.",
+      "testsCount": "{count}개 테스트",
+      "flawsCount": "{count}개 불량",
+      "exportTitle": "이 기록을 JSON으로 내보내기",
+      "viewDetails": "상세 보기",
+      "deleteTitle": "기록 삭제",
+      "modalTitle": "보관된 점검 기록",
+      "modalTests": "테스트:",
+      "modalObserved": "관찰됨:",
+      "modalNeedsAttn": "점검 필요:",
+      "modalFlaws": "불량 화소:",
+      "modalScreen": "해상도: {val}",
+      "modalDpr": "DPR: {val}x",
+      "modalViewport": "뷰포트: {val}",
+      "modalDepth": "색상深度: {val}비트",
+      "modalNotes": "소견:",
+      "modalObservations": "세부 테스트 결과:",
+      "modalExport": "기록 JSON 내보내기",
+      "modalClose": "닫기"
+    },
+    "empty": {
+      "title": "점검 보고서가 없습니다",
+      "description": "아직 점검 워크플로우를 진행하지 않았습니다. 점검 허브에서 적합한 워크플로우를 선택하여 모니터를 점검하고 종합 보고서를 생성하세요.",
+      "cta": "점검 허브로 이동"
+    },
+    "confirmClear": "현재 세션의 점검 관찰 기록을 초기화하시겠습니까?",
+    "confirmStartNew": "새 점검을 시작하시겠습니까? 현재 활성 세션은 재설정되며, 기존 저장된 이력은 안전하게 보존됩니다.",
+    "toasts": {
+      "archived": "보고서가 로컬 기록에 보관되었습니다.",
+      "exported": "보고서가 JSON 파일로 정상 내보내기 되었습니다.",
+      "imported": "점검 보고서를 성공적으로 가져왔습니다.",
+      "importInvalid": "올바르지 않은 JSON 파일 형식입니다.",
+      "noSession": "내보낼 활성 점검 세션이 없습니다."
+    },
+    "tooltipSaveHistory": "향후 참조를 위해 보고서를 로컬에 보관",
+    "tooltipExportJson": "보고서를 구조화된 JSON으로 내보내기",
+    "tooltipImportJson": "이전에 내보낸 JSON 보고서 불러오기"
+  },
+  "CustomPattern": {
+    "breadcrumbAll": "전체 테스트",
+    "breadcrumbTitle": "사용자 지정 패턴 생성기",
+    "eyebrow": "정밀 디스플레이 패턴 생성기",
+    "title": "사용자 지정 테스트 패턴 생성기",
+    "subtitle": "격자 밀도, 선 두께, 색상 채널, 텍스트 렌더링 및 모아레 간섭을 제어할 수 있는 12가지 특수 교정 패턴을 생성합니다.",
+    "enterFullscreen": "전체 화면 (F)",
+    "exitFullscreen": "전체 화면 종료 (F)",
+    "selectorTitle": "교정 프리셋 선택",
+    "presets": {
+      "black": {
+        "label": "블랙 (0%)",
+        "desc": "OLED 및 IPS 블랙 레벨 확인용 순수 RGB (0, 0, 0) 패턴."
+      },
+      "white": {
+        "label": "화이트 (100%)",
+        "desc": "최대 255 피크 밝기 균일성 확인용 기준 패턴."
+      },
+      "rgb": {
+        "label": "RGB 원색 바",
+        "desc": "순수 빨강, 초록, 파랑 기본 색상 세로 바."
+      },
+      "grayscale": {
+        "label": "그레이스케일 램프",
+        "desc": "16단계 계조 및 매끄러운 수평 명암비 램프."
+      },
+      "gradient": {
+        "label": "부드러운 그라디언트",
+        "desc": "고비트 선형 또는 방사형 보간 색상 그라디언트."
+      },
+      "checkerboard": {
+        "label": "체커보드 (바둑판)",
+        "desc": "ANSI 명암비 측정을 위한 고대비 격자 패턴."
+      },
+      "grid": {
+        "label": "2D 격자",
+        "desc": "기하학적 왜곡 및 수렴 교정용 격자망."
+      },
+      "horizontal_lines": {
+        "label": "수평선",
+        "desc": "수평 주사선 해상도 평가를 위한 교대 라인."
+      },
+      "vertical_lines": {
+        "label": "수직선",
+        "desc": "픽셀 클록 및 위상 정렬을 위한 교대 세로 스트라이프."
+      },
+      "sharpness": {
+        "label": "1px 선명도",
+        "desc": "1:1 픽셀 매핑 검사를 위한 십자선 및 동심원 타겟."
+      },
+      "text": {
+        "label": "텍스트 렌더링",
+        "desc": "서브픽셀 안티앨리어싱 평가용 다중 굵기 팬그램 텍스트."
+      },
+      "moire": {
+        "label": "모아레 & 지멘스 스타",
+        "desc": "고주파 간섭 링 및 방사형 스타버스트 패턴."
+      }
+    },
+    "controls": {
+      "density": "격자 및 블록 크기 ({val}px)",
+      "lineWidth": "선 두께 ({val}px)",
+      "fgColor": "전경색",
+      "bgColor": "배경색",
+      "invert": "색상 반전",
+      "gradientType": "그라디언트 방향",
+      "gradHorizontal": "수평",
+      "gradVertical": "수직",
+      "gradRadial": "방사형 (원형)",
+      "customText": "사용자 지정 텍스트",
+      "fontSize": "글꼴 크기 ({val}px)",
+      "fontWeight": "글꼴 굵기",
+      "weightNormal": "보통 (400)",
+      "weightMedium": "중간 (500)",
+      "weightBold": "굵게 (700)",
+      "spacing": "간격 ({val}px)",
+      "textPlaceholder": "사용자 지정 테스트 텍스트 입력..."
+    },
+    "notes": {
+      "title": "교정 안내:",
+      "sharpness": "1px 선명도 프리셋은 1:1 하드웨어 매핑으로 1픽셀 라인을 렌더링하여 디스플레이 스케일링 보케를 즉시 감지합니다.",
+      "general": "키보드의 'F' 키를 누르면 브라우저 툴바 없이 깔끔한 전체 화면으로 전환됩니다."
+    },
+    "cards": {
+      "geometry": {
+        "title": "디스플레이 기하 구조",
+        "desc": "2D 격자 및 체크판 패턴을 사용하여 직선 왜곡, 화면 비율 왜곡 및 커브드 모니터의 왜곡을 점검합니다."
+      },
+      "sharpness": {
+        "title": "픽셀 선명도",
+        "desc": "1px 선명도 프리셋은 1:1 하드웨어 매핑으로 1픽셀 헤어라인을 렌더링하여 흐릿한 스케일링이나 해상도 불일치를 감지합니다."
+      },
+      "moire": {
+        "title": "모아레 및 간섭 패턴",
+        "desc": "동심원 패턴을 통해 픽셀 피치 및 비정수 OS 배율(125%, 150%)에 따른 공간 주파수 간섭을 시각화합니다."
+      }
+    },
+    "fullscreenHint": "ESC 또는 F를 눌러 종료"
+  },
+  "CompareDisplays": {
+    "breadcrumbAll": "전체 테스트",
+    "breadcrumbTitle": "디스플레이 비교 및 계산기",
+    "eyebrow": "사양 직접 비교 및 PPI 계산기",
+    "title": "디스플레이 비교 및 화면비 도구",
+    "subtitle": "두 모니터의 화면 크기, 픽셀 밀도(PPI), 레티나 시청 거리 및 화면 비율을 정밀하게 비교합니다.",
+    "tabs": {
+      "comparator": "화면 1:1 비교",
+      "ppi": "PPI 및 시청 거리",
+      "resolution": "해상도 및 규격",
+      "aspect": "화면비 도구"
+    },
+    "comparator": {
+      "displayA": "디스플레이 A",
+      "displayB": "디스플레이 B",
+      "modePreset": "표준 프리셋",
+      "modeSaved": "저장된 프로필",
+      "selectPreset": "프리셋 선택...",
+      "selectSaved": "저장된 프로필 선택...",
+      "noSaved": "저장된 프로필이 없습니다. 다음에서 프로필을 저장하세요:",
+      "diagSize": "대각선 크기",
+      "nativeRes": "기본 해상도",
+      "aspectRatio": "화면비",
+      "panelType": "패널 종류",
+      "refreshRate": "주사율",
+      "specsHeader": "물리적 규격 및 픽셀 밀도",
+      "widthHeight": "가로 × 세로",
+      "area": "총 화면 면적",
+      "ppi": "픽셀 밀도 (PPI)",
+      "megapixels": "총 픽셀 수",
+      "retinaDist": "레티나 한계 시청 거리 (시력 1.0)",
+      "retinaDistDesc": "개별 픽셀이 사람의 눈에 구별되지 않는 최소 거리 ({valIn} 인치 / {valCm} cm).",
+      "obsTitle": "동시 비교 관찰 소견",
+      "obsSubtitle": "두 디스플레이에 동일한 패턴을 띄워 확인한 육안 차이점을 기록합니다.",
+      "obsColor": "색상 밸런스 및 틴트",
+      "obsColorPlaceholder": "예: 디스플레이 A는 D65에 가깝고 따뜻한 톤, 디스플레이 B는 시원한 푸른 톤...",
+      "obsUniformity": "균일도 및 명암비",
+      "obsUniformityPlaceholder": "예: 디스플레이 A는 모서리 IPS 글로우 발생, 디스플레이 B OLED는 완벽한 트루 블랙...",
+      "obsBrightness": "밝기 및 반사율",
+      "obsBrightnessPlaceholder": "예: 디스플레이 A 논글레어는 조명 분산, 디스플레이 B 글레어는 깊이감 있는 명암...",
+      "obsMotion": "움직임 선명도 및 잔상",
+      "obsMotionPlaceholder": "예: 디스플레이 B의 240Hz는 디스플레이 A의 60Hz보다 눈에 띄게 잔상이 적음...",
+      "obsConclusion": "종합 추천 및 용도 판정",
+      "obsConclusionPlaceholder": "예: 디스플레이 B는 FPS 게임에 적합, 디스플레이 A는 사진 보정 및 영상 작업에 추천...",
+      "saveObs": "비교 메모 저장",
+      "obsSavedSuccess": "비교 관찰 소견이 로컬에 저장되었습니다.",
+      "summaryLink": "점검 요약"
+    },
+    "ppi": {
+      "title": "픽셀 밀도 및 시각 인지 계산기",
+      "subtitle": "화면 인치 수와 해상도를 입력하여 PPI, 픽셀 피치 및 'Retina' 해상도 시청 거리를 계산합니다.",
+      "screenDiagonal": "화면 대각선 (인치)",
+      "resWidth": "가로 해상도 (px)",
+      "resHeight": "세로 해상도 (px)",
+      "viewingDist": "현재 시청 거리",
+      "unitInches": "인치",
+      "unitCm": "센티미터",
+      "cardDensity": "픽셀 밀도",
+      "cardPitch": "픽셀 피치",
+      "cardRetina": "레티나 거리 (20/20)",
+      "cardFov": "수평 시야각 (FOV)",
+      "specTitle": "계산된 물리적 사양",
+      "specDimensions": "화면 실제 크기",
+      "specArea": "표시 영역 면적",
+      "specTotalPixels": "총 해상도",
+      "specFov": "수평 시야각"
+    },
+    "resolution": {
+      "title": "해상도 및 크기 솔버",
+      "subtitle": "비율과 기준 치수를 기반으로 정확한 픽셀 해상도 및 물리적 규격을 도출합니다.",
+      "knownDim": "알고 있는 기준 치수",
+      "dimWidth": "가로 (수평)",
+      "dimHeight": "세로 (수직)",
+      "valuePx": "픽셀 값",
+      "targetRatio": "목표 화면 비율",
+      "resultsTitle": "계산 결과",
+      "calcRes": "도출된 해상도",
+      "aspectName": "화면 비율",
+      "totalPixels": "총 픽셀 수",
+      "standardClass": "규격 분류"
+    },
+    "aspect": {
+      "title": "화면 비율 단순화 도구",
+      "subtitle": "임의의 가로 및 세로 픽셀을 입력하여 기약분수 정수 비율과 가장 가까운 산업 표준 규격을 찾습니다.",
+      "inputWidth": "가로 픽셀 수",
+      "inputHeight": "세로 픽셀 수",
+      "simplifiedRatio": "수학적 화면 비율",
+      "decimalRatio": "소수 비율",
+      "nearestStandard": "근접 표준 규격",
+      "gcd": "최대공약수 (GCD)"
+    },
+    "presets": {
+      "fhd24": "24인치 Full HD (1080p)",
+      "qhd27": "27인치 Quad HD (1440p)",
+      "uhd27": "27인치 4K Ultra HD",
+      "oled27": "27인치 OLED 240Hz 게이밍",
+      "uhd32": "32인치 4K Ultra HD",
+      "uwqhd34": "34인치 울트라와이드 (UWQHD)",
+      "suw49": "49인치 슈퍼 울트라와이드",
+      "mac14": "14인치 노트북 (Retina)",
+      "mac16": "16인치 노트북 (Retina)",
+      "tv55": "55인치 4K 거실 TV",
+      "tv65": "65인치 4K 거실 TV"
+    },
+    "ratios": {
+      "r16_9": "16:9 (표준 와이드)",
+      "r16_10": "16:10 (업무용 & 노트북)",
+      "r21_9": "21:9 (영화관 울트라와이드)",
+      "r32_9": "32:9 (슈퍼 울트라와이드)",
+      "r4_3": "4:3 (클래식 / 레트로)",
+      "r5_4": "5:4 (정사각 워크스테이션)",
+      "r3_2": "3:2 (태블릿 및 노트북)",
+      "r1_1": "1:1 (정사각형)"
+    },
+    "neutralPolicyTitle": "중립적 비교 원칙",
+    "neutralPolicyDesc": "Monitor Tester는 \"모니터 A가 더 우수하다\"고 선언하지 않습니다. 디스플레이 평가는 고유한 하드웨어 절충점(OLED의 명암비 vs IPS의 색 일관성 및 수명 vs Fast-IPS의 응답 속도)을 가집니다. 사용 환경에 맞는 모니터를 직접 선택하세요.",
+    "journalTitle": "사용자 디스플레이 관찰 기록",
+    "journalSubtitle": "실제 시각적 차이를 항목별로 비교하여 기록합니다.",
+    "verdictLabel": "개인적 결정 및 작업 적합도:",
+    "verdictPlaceholder": "예: 디스플레이 A는 텍스트 선명도로 사무 작업에 선호되며, 디스플레이 B는 게임 및 영화 감상에 적합합니다.",
+    "guidanceTitle": "시청 거리 및 시력 한계",
+    "guidanceAcuity": "시력 한계치: 정상 시력(20/20)의 각분해능 한계는 약 1분각입니다. {dist} 이상의 거리에서는 인간의 눈으로 개별 픽셀을 구분할 수 없습니다(레티나 해상도).",
+    "guidanceErgonomic": "단일 권장 거리 없음: 데스크톱 작업은 목과 눈의 피로를 최소화하기 위해 팔 길이(50~75cm) 배치를 권장합니다.",
+    "knownWidth": "가로 너비 알고 있음",
+    "knownHeight": "세로 높이 알고 있음",
+    "calculatedMissing": "계산된 {dim}:",
+    "fullResolution": "전체 해상도: {val} ({mp} MP)",
+    "invalidPositive": "올바른 양수 값을 입력하세요.",
+    "aspectPreview": "비율 기하학 미리보기",
+    "quickSizes": "빠른 크기",
+    "commonRatios": "주요 화면 비율",
+    "parameter": "측정 항목",
+    "deviation": "편차: {val}",
+    "benchmarks": "수학적 벤치마크",
+    "hardwareComparison": "화면 사양 및 기하 구조 비교"
   }
 }

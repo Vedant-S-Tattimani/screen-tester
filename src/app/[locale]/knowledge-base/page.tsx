@@ -6,7 +6,7 @@ import { BookOpen, ShieldCheck, Eye, ArrowRight, Layers } from "lucide-react";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   await params;
   return {
-    title: "Display Knowledge Base & Technical Guide | Monitor Tester",
+    title: "Display Knowledge Base & Technical Guide",
     description: "In-depth technical explanations of display panel technologies (IPS, OLED, VA, TN), common screen defects, calibration principles, and troubleshooting.",
     alternates: {
       canonical: "/knowledge-base"

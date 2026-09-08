@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   if (!workflow) return {};
   
   return {
-    title: `${workflow.title} | Monitor Tester`,
+    title: workflow.title,
     description: workflow.shortDescription,
     alternates: {
       canonical: "/monitor-inspection/laptop"

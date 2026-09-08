@@ -8,7 +8,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const t = await getTranslations({ locale, namespace: "Inspection.hub" });
   
   return {
-    title: `${t("usedMonitor")} | Monitor Tester`,
+    title: t("usedMonitor"),
     description: t("usedMonitorDesc"),
     alternates: {
       canonical: "/monitor-inspection/used"
