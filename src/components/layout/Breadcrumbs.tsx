@@ -1,5 +1,9 @@
+"use client";
+
 import { Link } from "@/i18n/routing";
 import { ChevronRight, Home } from "lucide-react";
+import { useTranslations, useLocale } from "next-intl";
+import { BASE_URL } from "@/lib/seo";
 
 interface BreadcrumbItem {
   label: string;
@@ -7,6 +11,8 @@ interface BreadcrumbItem {
 }
 
 export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
+  const t = useTranslations("Breadcrumbs");
+  const locale = useLocale();
   
   const structuredData = {
     "@context": "https://schema.org",
@@ -15,20 +21,20 @@ export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
       {
         "@type": "ListItem",
         "position": 1,
-        "name": "Home",
-        "item": "https://monitortester.com/en" // Base URL, ideally dynamic but fine for now
+        "name": t("home"),
+        "item": `${BASE_URL}/${locale}`
       },
       ...items.map((item, index) => ({
         "@type": "ListItem",
         "position": index + 2,
         "name": item.label,
-        "item": `https://monitortester.com/en${item.href}`
+        "item": `${BASE_URL}/${locale}${item.href}`
       }))
     ]
   };
 
   return (
-    <nav aria-label="Breadcrumb" className="mb-8 w-full">
+    <nav aria-label={t("ariaLabel")} className="mb-8 w-full">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -37,7 +43,7 @@ export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
         <li>
           <Link href="/" className="hover:text-foreground transition-colors flex items-center">
             <Home className="w-4 h-4" />
-            <span className="sr-only">Home</span>
+            <span className="sr-only">{t("home")}</span>
           </Link>
         </li>
         {items.map((item, index) => (

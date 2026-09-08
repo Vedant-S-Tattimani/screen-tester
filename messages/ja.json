@@ -313,7 +313,9 @@
       }
     },
     "searchPlaceholder": "テストを検索...",
-    "subtitle": "豊富なモニター診断ツール一覧。すべてのテストはお使いのブラウザ上でローカルに実行されます。"
+    "subtitle": "豊富なモニター診断ツール一覧。すべてのテストはお使いのブラウザ上でローカルに実行されます。",
+    "relatedTitle": "関連テスト",
+    "noResults": "「{query}」に一致するテストは見つかりませんでした。"
   },
   "TestWrapper": {
     "howToTest": "テスト方法",
@@ -363,7 +365,10 @@
       "moveDown": "下へ移動",
       "remove": "キューから削除",
       "restart": "最初から再開",
-      "completeReport": "完了してレポートを見る"
+      "completeReport": "完了してレポートを見る",
+      "sequenceLabel": "キューステップ",
+      "manageQueue": "キューを管理",
+      "stepProgress": "テスト {x} / {y}"
     },
     "pixelDefect": {
       "bannerInstruction": "画面上をクリックしてピクセル欠陥をマークしてください",
@@ -824,7 +829,8 @@
       "aboutWorkflowsDesc": "体系的な手順でテストを進め、異常箇所を記録し、ドット抜けの正確な座標をマークして客観的な点検レポートを保存できます。作為的なスコアは一切ありません。",
       "savedReports": "保存済みレポートと履歴",
       "wfGeneralTitle": "総合ディスプレイ点検",
-      "wfGeneralDesc": "ドット抜け、発色、動画応答性をバランスよく確認する基本チェック。"
+      "wfGeneralDesc": "ドット抜け、発色、動画応答性をバランスよく確認する基本チェック。",
+      "checklistTitle": "検査チェックリスト"
     },
     "gaming": {
       "metaTitle": "Gaming Monitor Inspection",
@@ -928,7 +934,7 @@
     }
   },
   "Privacy": {
-    "metaTitle": "Privacy Policy | Monitor Tester",
+    "metaTitle": "Privacy Policy",
     "title": "Privacy Policy",
     "intro": "Monitor Tester is designed to be a lightweight, privacy-first utility. All diagnostic tests run entirely locally in your web browser.",
     "dataCollection": "Data Collection",
@@ -937,7 +943,7 @@
     "analyticsDesc": "We do not use invasive third-party tracking scripts or advertising networks."
   },
   "About": {
-    "metaTitle": "About | Monitor Tester",
+    "metaTitle": "About",
     "title": "About Monitor Tester",
     "intro": "Monitor Tester is a specialized web utility built to help you diagnose and calibrate displays without installing heavy software.",
     "mission": "Our Mission",
@@ -946,7 +952,7 @@
     "disclaimerDesc": "Please note that while web browsers are powerful, they cannot directly measure hardware properties like true input latency, precise color gamuts (Delta E), or physical panel health. Our tools are designed for visual inspection and estimation."
   },
   "Terms": {
-    "metaTitle": "Terms of Use | Monitor Tester",
+    "metaTitle": "Terms of Use",
     "metaDescription": "Terms of use and disclaimer for the Monitor Tester browser-based display testing utility.",
     "title": "Terms of Use",
     "intro": "By accessing and using Monitor Tester, you agree to these Terms of Use. If you do not agree, please discontinue using the utility.",
@@ -960,7 +966,7 @@
     "localExecutionDesc": "All diagnostic calculations, frame timing measurements, and observation logs run entirely on your local machine. No display diagnostics or usage metrics are transmitted or stored remotely."
   },
   "Contact": {
-    "metaTitle": "Contact & Support | Monitor Tester",
+    "metaTitle": "Contact & Support",
     "metaDescription": "Direct contact channels, issue tracker, and contribution guide for Monitor Tester.",
     "title": "Contact & Support",
     "intro": "Have feedback, found a bug, or want to contribute to Monitor Tester? Here are the official ways to get in touch with the project.",
@@ -972,7 +978,7 @@
     "directEmailDesc": "For general inquiries, partnerships, or direct questions about the project, reach out via email:"
   },
   "Tools": {
-    "metaTitle": "ディスプレイツール＆計算機 | Monitor Tester",
+    "metaTitle": "ディスプレイツール＆計算機",
     "metaDescription": "特殊なディスプレイ計算機、ハードウェアプローブ、テストパターンユーティリティ。",
     "title": "ディスプレイツール＆計算機",
     "subtitle": "ブラウザのハードウェア機能の検査、ピクセル密度の計算、ディスプレイ寸法の比較、テストパターン生成のための専用ユーティリティ。",
@@ -1577,7 +1583,7 @@
     "hardwareComparison": "画面仕様・幾何比較"
   },
   "Faq": {
-    "metaTitle": "よくある質問 (FAQ) | Monitor Tester",
+    "metaTitle": "よくある質問 (FAQ)",
     "metaDescription": "ブラウザベースのディスプレイテスト、ドット抜け検出、カラーキャリブレーション、リフレッシュレート、解像度に関する明確で技術的な回答。",
     "eyebrow": "ヘルプ & テクニカル FAQ",
     "title": "よくある質問",
@@ -1620,5 +1626,10 @@
       "knowledgeBase": "ディスプレイ知識ベースを見る",
       "testLibrary": "全テストライブラリを見る"
     }
+  },
+  "Breadcrumbs": {
+    "home": "ホーム",
+    "tests": "テスト",
+    "ariaLabel": "パンくずリスト"
   }
 }

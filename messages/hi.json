@@ -313,7 +313,9 @@
       }
     },
     "searchPlaceholder": "परीक्षण खोजें...",
-    "subtitle": "मॉनिटर परीक्षण उपयोगिताओं की हमारी पूरी लाइब्रेरी देखें। सभी परीक्षण आपके ब्राउज़र में स्थानीय रूप से चलते हैं।"
+    "subtitle": "मॉनिटर परीक्षण उपयोगिताओं की हमारी पूरी लाइब्रेरी देखें। सभी परीक्षण आपके ब्राउज़र में स्थानीय रूप से चलते हैं।",
+    "relatedTitle": "संबंधित परीक्षण",
+    "noResults": "“{query}” से मेल खाता कोई परीक्षण नहीं मिला।"
   },
   "TestWrapper": {
     "howToTest": "परीक्षण कैसे करें",
@@ -363,7 +365,10 @@
       "moveDown": "नीचे ले जाएं",
       "remove": "कतार से हटाएं",
       "restart": "पुनः आरंभ करें",
-      "completeReport": "पूर्ण करें और रिपोर्ट देखें"
+      "completeReport": "पूर्ण करें और रिपोर्ट देखें",
+      "sequenceLabel": "कतार क्रम",
+      "manageQueue": "कतार प्रबंधित करें",
+      "stepProgress": "परीक्षण {x} / {y}"
     },
     "pixelDefect": {
       "bannerInstruction": "पिक्सेल दोष चिह्नित करने के लिए कहीं भी क्लिक करें",
@@ -824,7 +829,8 @@
       "aboutWorkflowsDesc": "व्यवस्थित क्रम चलाएं, दोषों को चिह्नित करें और बिना किसी कृत्रिम स्कोर के तथ्यात्मक रिपोर्ट सहेजें।",
       "savedReports": "सहेजी गई रिपोर्ट और इतिहास",
       "wfGeneralTitle": "सामान्य डिस्प्ले जांच",
-      "wfGeneralDesc": "डेड पिक्सल, रंग और मोशन के लिए आवश्यक संपूर्ण विज़ुअल जांच।"
+      "wfGeneralDesc": "डेड पिक्सल, रंग और मोशन के लिए आवश्यक संपूर्ण विज़ुअल जांच।",
+      "checklistTitle": "निरीक्षण चेकलिस्ट"
     },
     "gaming": {
       "metaTitle": "Gaming Monitor Inspection",
@@ -928,7 +934,7 @@
     }
   },
   "Privacy": {
-    "metaTitle": "Privacy Policy | Monitor Tester",
+    "metaTitle": "Privacy Policy",
     "title": "Privacy Policy",
     "intro": "Monitor Tester is designed to be a lightweight, privacy-first utility. All diagnostic tests run entirely locally in your web browser.",
     "dataCollection": "Data Collection",
@@ -937,7 +943,7 @@
     "analyticsDesc": "We do not use invasive third-party tracking scripts or advertising networks."
   },
   "About": {
-    "metaTitle": "About | Monitor Tester",
+    "metaTitle": "About",
     "title": "About Monitor Tester",
     "intro": "Monitor Tester is a specialized web utility built to help you diagnose and calibrate displays without installing heavy software.",
     "mission": "Our Mission",
@@ -946,7 +952,7 @@
     "disclaimerDesc": "Please note that while web browsers are powerful, they cannot directly measure hardware properties like true input latency, precise color gamuts (Delta E), or physical panel health. Our tools are designed for visual inspection and estimation."
   },
   "Terms": {
-    "metaTitle": "Terms of Use | Monitor Tester",
+    "metaTitle": "Terms of Use",
     "metaDescription": "Terms of use and disclaimer for the Monitor Tester browser-based display testing utility.",
     "title": "Terms of Use",
     "intro": "By accessing and using Monitor Tester, you agree to these Terms of Use. If you do not agree, please discontinue using the utility.",
@@ -960,7 +966,7 @@
     "localExecutionDesc": "All diagnostic calculations, frame timing measurements, and observation logs run entirely on your local machine. No display diagnostics or usage metrics are transmitted or stored remotely."
   },
   "Contact": {
-    "metaTitle": "Contact & Support | Monitor Tester",
+    "metaTitle": "Contact & Support",
     "metaDescription": "Direct contact channels, issue tracker, and contribution guide for Monitor Tester.",
     "title": "Contact & Support",
     "intro": "Have feedback, found a bug, or want to contribute to Monitor Tester? Here are the official ways to get in touch with the project.",
@@ -972,7 +978,7 @@
     "directEmailDesc": "For general inquiries, partnerships, or direct questions about the project, reach out via email:"
   },
   "Tools": {
-    "metaTitle": "डिस्प्ले उपकरण और कैलकुलेटर | Monitor Tester",
+    "metaTitle": "डिस्प्ले उपकरण और कैलकुलेटर",
     "metaDescription": "विशेष डिस्प्ले कैलकुलेटर, हार्डवेयर जांच और परीक्षण पैटर्न उपकरण।",
     "title": "डिस्प्ले उपकरण और कैलकुलेटर",
     "subtitle": "ब्राउज़र हार्डवेयर क्षमताओं की जांच, पिक्सेल घनत्व की गणना, डिस्प्ले आयामों की तुलना और पैटर्न उत्पन्न करने के लिए विशेष उपकरण।",
@@ -1577,7 +1583,7 @@
     "hardwareComparison": "डिस्प्ले हार्डवेयर और ज्यामिति तुलना"
   },
   "Faq": {
-    "metaTitle": "अक्सर पूछे जाने वाले प्रश्न (FAQ) | Monitor Tester",
+    "metaTitle": "अक्सर पूछे जाने वाले प्रश्न (FAQ)",
     "metaDescription": "ब्राउज़र डिस्प्ले परीक्षण, डेड पिक्सल पहचान, रंग अंशांकन, रिफ्रेश दर और रिज़ॉल्यूशन से संबंधित स्पष्ट और तकनीकी उत्तर।",
     "eyebrow": "सहायता और तकनीकी प्रश्नोत्तरी",
     "title": "अक्सर पूछे जाने वाले प्रश्न",
@@ -1620,5 +1626,10 @@
       "knowledgeBase": "डिस्प्ले नॉलेज बेस देखें",
       "testLibrary": "पूरी टेस्ट लाइब्रेरी ब्राउज़ करें"
     }
+  },
+  "Breadcrumbs": {
+    "home": "होम",
+    "tests": "परीक्षण",
+    "ariaLabel": "ब्रेडक्रम्ब"
   }
 }

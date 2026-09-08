@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
+import { BASE_URL } from "@/lib/seo";
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { ExtensionCleanup } from "@/components/ExtensionCleanup";
@@ -37,7 +38,7 @@ export async function generateMetadata({
   });
 
   return {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://screen-tester-mu.vercel.app'),
+    metadataBase: new URL(BASE_URL),
     title: {
       template: `%s | ${t('title')}`,
       default: t('title'),

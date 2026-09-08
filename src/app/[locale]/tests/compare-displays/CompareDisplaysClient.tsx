@@ -386,7 +386,7 @@ export function CompareDisplaysClient() {
     <div className="bg-white min-h-screen py-10 sm:py-14 text-gray-900">
       <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
         {/* Header Breadcrumb */}
-        <div className="flex items-center gap-2 text-xs font-mono uppercase text-gray-400 mb-6">
+        <div className="flex items-center gap-2 text-xs font-mono uppercase text-gray-500 mb-6">
           <Link href="/tests" className="hover:text-gray-900 flex items-center gap-1 transition-colors">
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>{t("breadcrumbAll")}</span>
@@ -397,7 +397,7 @@ export function CompareDisplaysClient() {
 
         {/* Title */}
         <div className="mb-8">
-          <div className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-gray-400 mb-2">
+          <div className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-gray-600 mb-2">
             {t("eyebrow")}
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-950">
@@ -590,7 +590,7 @@ export function CompareDisplaysClient() {
             <div className="border border-gray-200 rounded-2xl overflow-hidden bg-white mb-10 shadow-2xs">
               <div className="bg-slate-50 px-5 py-3 border-b border-gray-200 font-mono text-xs uppercase font-semibold text-gray-600 flex items-center justify-between">
                 <span>{t("hardwareComparison")}</span>
-                <span className="text-[10px] text-gray-400">{t("benchmarks")}</span>
+                <span className="text-[10px] text-gray-600">{t("benchmarks")}</span>
               </div>
               <table className="w-full text-left text-sm border-collapse">
                 <thead>
@@ -883,7 +883,7 @@ export function CompareDisplaysClient() {
 
                 {/* Quick Presets */}
                 <div className="pt-2">
-                  <span className="text-[11px] font-mono uppercase text-gray-400 block mb-2">{t("quickSizes")}</span>
+                  <span className="text-[11px] font-mono uppercase text-gray-600 block mb-2">{t("quickSizes")}</span>
                   <div className="flex flex-wrap gap-1.5">
                     {[
                       { s: "24", w: "1920", h: "1080", label: "24\" 1080p" },
@@ -919,35 +919,35 @@ export function CompareDisplaysClient() {
                   {ppiResults.isValid ? (
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
                       <div className="p-4 rounded-xl bg-gray-50 border border-gray-100">
-                        <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("ppi.cardDensity")}</span>
+                        <span className="text-xs text-gray-600 font-mono uppercase block mb-1">{t("ppi.cardDensity")}</span>
                         <span className="text-2xl font-bold font-mono text-gray-950 tabular-nums">
                           {ppiResults.ppi} <span className="text-xs font-normal">PPI</span>
                         </span>
                       </div>
 
                       <div className="p-4 rounded-xl bg-gray-50 border border-gray-100">
-                        <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("ppi.cardRetina")}</span>
+                        <span className="text-xs text-gray-600 font-mono uppercase block mb-1">{t("ppi.cardRetina")}</span>
                         <span className="text-2xl font-bold font-mono text-blue-600 tabular-nums">
                           {ppiResults.retinaIn}&quot; <span className="text-xs font-normal text-gray-500">({ppiResults.retinaCm}cm)</span>
                         </span>
                       </div>
 
                       <div className="p-4 rounded-xl bg-gray-50 border border-gray-100">
-                        <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("ppi.cardFov")}</span>
+                        <span className="text-xs text-gray-600 font-mono uppercase block mb-1">{t("ppi.cardFov")}</span>
                         <span className="text-2xl font-bold font-mono text-emerald-600 tabular-nums">
                           {ppiResults.fovDeg > 0 ? `${ppiResults.fovDeg}°` : "--"}
                         </span>
                       </div>
 
                       <div className="p-4 rounded-xl bg-gray-50 border border-gray-100">
-                        <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("ppi.cardPitch")}</span>
+                        <span className="text-xs text-gray-600 font-mono uppercase block mb-1">{t("ppi.cardPitch")}</span>
                         <span className="text-lg font-bold font-mono text-gray-900 tabular-nums">
                           {ppiResults.pixelPitchMm} mm
                         </span>
                       </div>
 
                       <div className="p-4 rounded-xl bg-gray-50 border border-gray-100">
-                        <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("ppi.specDimensions")}</span>
+                        <span className="text-xs text-gray-600 font-mono uppercase block mb-1">{t("ppi.specDimensions")}</span>
                         <span className="text-sm font-bold font-mono text-gray-900 block tabular-nums">
                           {ppiResults.pwIn}&quot; × {ppiResults.phIn}&quot;
                         </span>
@@ -957,14 +957,14 @@ export function CompareDisplaysClient() {
                       </div>
 
                       <div className="p-4 rounded-xl bg-gray-50 border border-gray-100">
-                        <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("ppi.specTotalPixels")}</span>
+                        <span className="text-xs text-gray-600 font-mono uppercase block mb-1">{t("ppi.specTotalPixels")}</span>
                         <span className="text-lg font-bold font-mono text-gray-900 tabular-nums">
                           {ppiResults.megapixels} MP
                         </span>
                       </div>
                     </div>
                   ) : (
-                    <div className="py-8 text-center text-sm text-gray-400 border border-dashed border-gray-200 rounded-xl mb-6">
+                    <div className="py-8 text-center text-sm text-gray-500 border border-dashed border-gray-200 rounded-xl mb-6">
                       {t("invalidPositive")}
                     </div>
                   )}
@@ -1042,7 +1042,7 @@ export function CompareDisplaysClient() {
                   </div>
                 </div>
               ) : (
-                <div className="text-xs text-gray-400 py-4 text-center">
+                <div className="text-xs text-gray-500 py-4 text-center">
                   {t("invalidPositive")}
                 </div>
               )}
@@ -1143,7 +1143,7 @@ export function CompareDisplaysClient() {
 
               {/* Standard Ratio Presets */}
               <div className="pt-2">
-                <span className="text-[11px] font-mono uppercase text-gray-400 block mb-2">{t("commonRatios")}</span>
+                <span className="text-[11px] font-mono uppercase text-gray-600 block mb-2">{t("commonRatios")}</span>
                 <div className="flex flex-wrap gap-1.5">
                   {STANDARD_RATIOS.map((r) => (
                     <button
@@ -1170,21 +1170,21 @@ export function CompareDisplaysClient() {
                 {arResults.isValid ? (
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
                     <div className="p-4 rounded-xl bg-gray-50 border border-gray-100">
-                      <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("aspect.simplifiedRatio")}</span>
+                      <span className="text-xs text-gray-600 font-mono uppercase block mb-1">{t("aspect.simplifiedRatio")}</span>
                       <span className="text-2xl font-bold font-mono text-blue-600 tabular-nums">
                         {arResults.simplified}
                       </span>
                     </div>
 
                     <div className="p-4 rounded-xl bg-gray-50 border border-gray-100">
-                      <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("aspect.decimalRatio")}</span>
+                      <span className="text-xs text-gray-600 font-mono uppercase block mb-1">{t("aspect.decimalRatio")}</span>
                       <span className="text-2xl font-bold font-mono text-gray-950 tabular-nums">
                         {arResults.decimal}
                       </span>
                     </div>
 
                     <div className="p-4 rounded-xl bg-gray-50 border border-gray-100">
-                      <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("aspect.nearestStandard")}</span>
+                      <span className="text-xs text-gray-600 font-mono uppercase block mb-1">{t("aspect.nearestStandard")}</span>
                       <span className="text-sm font-bold text-gray-950 block truncate">
                         {arResults.closestStandard}
                       </span>
@@ -1194,7 +1194,7 @@ export function CompareDisplaysClient() {
                     </div>
                   </div>
                 ) : (
-                  <div className="text-xs text-gray-400 py-6 text-center border border-dashed border-gray-200 rounded-xl mb-6">
+                  <div className="text-xs text-gray-500 py-6 text-center border border-dashed border-gray-200 rounded-xl mb-6">
                     {t("invalidPositive")}
                   </div>
                 )}
@@ -1203,7 +1203,7 @@ export function CompareDisplaysClient() {
               {/* Wireframe Proportional Shape Box */}
               {arResults.isValid && (
                 <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 flex flex-col items-center justify-center">
-                  <span className="text-[11px] font-mono uppercase text-gray-400 mb-3">
+                  <span className="text-[11px] font-mono uppercase text-gray-600 mb-3">
                     {t("aspectPreview")}
                   </span>
                   <div

@@ -2,8 +2,9 @@ import { MetadataRoute } from 'next';
 import { routing } from '@/i18n/routing';
 import { monitorTests } from '@/data/tests';
 import { monitorGuides } from '@/data/guides';
+import { BASE_URL } from '@/lib/seo';
 
-const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://screen-tester-mu.vercel.app';
+const baseUrl = BASE_URL;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const sitemapEntries: MetadataRoute.Sitemap = [];
@@ -14,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/tools', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/monitor-inspection', priority: 1.0, changeFrequency: 'monthly' as const },
     { path: '/monitor-inspection/diagnostic', priority: 0.9, changeFrequency: 'monthly' as const },
+    { path: '/monitor-inspection/new', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/monitor-inspection/general', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/monitor-inspection/used', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/monitor-inspection/gaming', priority: 0.9, changeFrequency: 'monthly' as const },

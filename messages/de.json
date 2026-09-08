@@ -313,7 +313,9 @@
       }
     },
     "searchPlaceholder": "Tests durchsuchen...",
-    "subtitle": "Erkunden Sie unsere vollständige Bibliothek von Monitor-Testtools. Alle Tests laufen lokal in Ihrem Browser."
+    "subtitle": "Erkunden Sie unsere vollständige Bibliothek von Monitor-Testtools. Alle Tests laufen lokal in Ihrem Browser.",
+    "relatedTitle": "Ähnliche Tests",
+    "noResults": "Keine Tests gefunden für „{query}“."
   },
   "TestWrapper": {
     "howToTest": "Wie man testet",
@@ -363,7 +365,10 @@
       "moveDown": "Nach unten verschieben",
       "remove": "Aus Warteschlange entfernen",
       "restart": "Neu starten",
-      "completeReport": "Abschließen & Bericht ansehen"
+      "completeReport": "Abschließen & Bericht ansehen",
+      "sequenceLabel": "Warteschlangen-Ablauf",
+      "manageQueue": "Warteschlange verwalten",
+      "stepProgress": "Test {x} von {y}"
     },
     "pixelDefect": {
       "bannerInstruction": "Klicken Sie auf den Bildschirm, um einen Pixelfehler zu markieren",
@@ -824,7 +829,8 @@
       "aboutWorkflowsDesc": "Führen Sie strukturierte Abläufe durch, markieren Sie Auffälligkeiten, setzen Sie Pixelfehler-Markierungen mit genauen Koordinaten und speichern Sie sachliche Berichte ohne künstliche Scores.",
       "savedReports": "Gespeicherte Berichte & Verlauf",
       "wfGeneralTitle": "Allgemeine Display-Prüfung",
-      "wfGeneralDesc": "Grundlegende Rundum-Prüfung auf Pixelfehler, Farbtreue und Bewegungsschärfe."
+      "wfGeneralDesc": "Grundlegende Rundum-Prüfung auf Pixelfehler, Farbtreue und Bewegungsschärfe.",
+      "checklistTitle": "Inspektions-Checkliste"
     },
     "gaming": {
       "metaTitle": "Gaming Monitor Inspection",
@@ -928,7 +934,7 @@
     }
   },
   "Privacy": {
-    "metaTitle": "Privacy Policy | Monitor Tester",
+    "metaTitle": "Privacy Policy",
     "title": "Privacy Policy",
     "intro": "Monitor Tester is designed to be a lightweight, privacy-first utility. All diagnostic tests run entirely locally in your web browser.",
     "dataCollection": "Data Collection",
@@ -937,7 +943,7 @@
     "analyticsDesc": "We do not use invasive third-party tracking scripts or advertising networks."
   },
   "About": {
-    "metaTitle": "About | Monitor Tester",
+    "metaTitle": "About",
     "title": "About Monitor Tester",
     "intro": "Monitor Tester is a specialized web utility built to help you diagnose and calibrate displays without installing heavy software.",
     "mission": "Our Mission",
@@ -946,7 +952,7 @@
     "disclaimerDesc": "Please note that while web browsers are powerful, they cannot directly measure hardware properties like true input latency, precise color gamuts (Delta E), or physical panel health. Our tools are designed for visual inspection and estimation."
   },
   "Terms": {
-    "metaTitle": "Terms of Use | Monitor Tester",
+    "metaTitle": "Terms of Use",
     "metaDescription": "Terms of use and disclaimer for the Monitor Tester browser-based display testing utility.",
     "title": "Terms of Use",
     "intro": "By accessing and using Monitor Tester, you agree to these Terms of Use. If you do not agree, please discontinue using the utility.",
@@ -960,7 +966,7 @@
     "localExecutionDesc": "All diagnostic calculations, frame timing measurements, and observation logs run entirely on your local machine. No display diagnostics or usage metrics are transmitted or stored remotely."
   },
   "Contact": {
-    "metaTitle": "Contact & Support | Monitor Tester",
+    "metaTitle": "Contact & Support",
     "metaDescription": "Direct contact channels, issue tracker, and contribution guide for Monitor Tester.",
     "title": "Contact & Support",
     "intro": "Have feedback, found a bug, or want to contribute to Monitor Tester? Here are the official ways to get in touch with the project.",
@@ -972,7 +978,7 @@
     "directEmailDesc": "For general inquiries, partnerships, or direct questions about the project, reach out via email:"
   },
   "Tools": {
-    "metaTitle": "Display-Werkzeuge & Rechner | Monitor Tester",
+    "metaTitle": "Display-Werkzeuge & Rechner",
     "metaDescription": "Spezialisierte Display-Rechner, Hardware-Prüfungen und Testmuster-Tools.",
     "title": "Display-Werkzeuge & Rechner",
     "subtitle": "Spezialisierte Werkzeuge zur Prüfung von Browser-Hardwarefunktionen, Pixeldichte, Display-Vergleichen und Testmustern.",
@@ -1577,7 +1583,7 @@
     "hardwareComparison": "Display-Hardware & Geometrievergleich"
   },
   "Faq": {
-    "metaTitle": "Häufig gestellte Fragen | Monitor Tester",
+    "metaTitle": "Häufig gestellte Fragen",
     "metaDescription": "Klare, fundierte technische Antworten auf Fragen zu Displaytests im Browser, Pixelfehlererkennung, Kalibrierung, Bildwiederholfrequenz und Auflösung.",
     "eyebrow": "HILFE & TECHNISCHE FAQ",
     "title": "Häufig gestellte Fragen",
@@ -1620,5 +1626,10 @@
       "knowledgeBase": "Display-Wissensdatenbank erkunden",
       "testLibrary": "Komplette Testbibliothek ansehen"
     }
+  },
+  "Breadcrumbs": {
+    "home": "Startseite",
+    "tests": "Tests",
+    "ariaLabel": "Brotkrumennavigation"
   }
 }

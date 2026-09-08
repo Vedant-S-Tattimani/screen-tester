@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Search } from "lucide-react";
 import { TestRow } from "@/components/layout/TestRow";
 
@@ -17,6 +18,7 @@ interface TestCategory {
 }
 
 export function TestLibrary({ categories, searchPlaceholder }: { categories: TestCategory[], searchPlaceholder: string }) {
+  const t = useTranslations("TestLibrary");
   const [query, setQuery] = useState("");
 
   const filteredCategories = categories.map(cat => ({
@@ -69,7 +71,7 @@ export function TestLibrary({ categories, searchPlaceholder }: { categories: Tes
         </div>
       ) : (
         <div className="py-24 text-center text-muted-foreground">
-          No tests found matching &ldquo;{query}&rdquo;.
+          {t("noResults", { query })}
         </div>
       )}
     </div>

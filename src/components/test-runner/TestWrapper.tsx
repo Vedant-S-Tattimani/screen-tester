@@ -37,6 +37,7 @@ const STORAGE_KEY_WORKFLOW = "monitor-tester-workflow";
 
 export function TestWrapper({ title, description, instructions, children, testId }: TestWrapperProps) {
   const t = useTranslations("TestWrapper");
+  const tBreadcrumbs = useTranslations("Breadcrumbs");
   const router = useRouter();
   const pathname = usePathname();
   
@@ -330,7 +331,7 @@ export function TestWrapper({ title, description, instructions, children, testId
           <div className="w-full mb-8">
             {testId && (
               <Breadcrumbs items={[
-                { label: "Tests", href: "/tests" },
+                { label: tBreadcrumbs("tests"), href: "/tests" },
                 { label: title, href: `/tests/${testId}` }
               ]} />
             )}
@@ -346,16 +347,16 @@ export function TestWrapper({ title, description, instructions, children, testId
               {workflowIndex !== -1 && (
                 <div className="bg-muted/40 rounded-xl p-3 border border-border/60 text-right min-w-[210px]">
                   <div className="flex items-center justify-between gap-3 mb-1">
-                    <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold font-mono">Queue Sequence</span>
+                    <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold font-mono">{t("queue.sequenceLabel")}</span>
                     <button 
                       onClick={() => setIsQueueDrawerOpen(true)}
                       className="text-[11px] text-blue-600 hover:text-blue-700 font-medium underline"
                     >
-                      Manage Queue
+                      {t("queue.manageQueue")}
                     </button>
                   </div>
                   <div className="text-sm font-semibold text-foreground">
-                    Test {workflowIndex + 1} of {workflowSequence.length}
+                    {t("queue.stepProgress", { x: workflowIndex + 1, y: workflowSequence.length })}
                   </div>
                   <div className="w-full bg-border/60 h-1.5 rounded-full overflow-hidden mt-2">
                     <div 

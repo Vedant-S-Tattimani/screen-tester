@@ -313,7 +313,9 @@
       }
     },
     "searchPlaceholder": "테스트 검색...",
-    "subtitle": "디스플레이 진단 툴 전체 라이브러리를 둘러보세요. 모든 테스트는 브라우저에서 로컬로 안전하게 실행됩니다."
+    "subtitle": "디스플레이 진단 툴 전체 라이브러리를 둘러보세요. 모든 테스트는 브라우저에서 로컬로 안전하게 실행됩니다.",
+    "relatedTitle": "관련 테스트",
+    "noResults": "“{query}”와(과) 일치하는 테스트가 없습니다."
   },
   "TestWrapper": {
     "howToTest": "테스트 방법",
@@ -363,7 +365,10 @@
       "moveDown": "아래로 이동",
       "remove": "대기열에서 제거",
       "restart": "처음부터 다시 시작",
-      "completeReport": "완료하고 리포트 보기"
+      "completeReport": "완료하고 리포트 보기",
+      "sequenceLabel": "대기열 순서",
+      "manageQueue": "대기열 관리",
+      "stepProgress": "테스트 {x} / {y}"
     },
     "pixelDefect": {
       "bannerInstruction": "화면 아무 곳이나 클릭하여 불량 화소를 표시하세요",
@@ -824,7 +829,8 @@
       "aboutWorkflowsDesc": "체계적인 순서로 테스트하고, 이상 유무를 기록하며, 불량 화소 좌표를 정확히 표시하여 신뢰할 수 있는 보고서를 저장할 수 있습니다.",
       "savedReports": "저장된 보고서 및 기록",
       "wfGeneralTitle": "일반 디스플레이 점검",
-      "wfGeneralDesc": "불량 화소, 색상 및 잔상을 두루 확인하는 필수 기본 점검입니다."
+      "wfGeneralDesc": "불량 화소, 색상 및 잔상을 두루 확인하는 필수 기본 점검입니다.",
+      "checklistTitle": "점검 체크리스트"
     },
     "gaming": {
       "metaTitle": "Gaming Monitor Inspection",
@@ -928,7 +934,7 @@
     }
   },
   "Privacy": {
-    "metaTitle": "Privacy Policy | Monitor Tester",
+    "metaTitle": "Privacy Policy",
     "title": "Privacy Policy",
     "intro": "Monitor Tester is designed to be a lightweight, privacy-first utility. All diagnostic tests run entirely locally in your web browser.",
     "dataCollection": "Data Collection",
@@ -937,7 +943,7 @@
     "analyticsDesc": "We do not use invasive third-party tracking scripts or advertising networks."
   },
   "About": {
-    "metaTitle": "About | Monitor Tester",
+    "metaTitle": "About",
     "title": "About Monitor Tester",
     "intro": "Monitor Tester is a specialized web utility built to help you diagnose and calibrate displays without installing heavy software.",
     "mission": "Our Mission",
@@ -946,7 +952,7 @@
     "disclaimerDesc": "Please note that while web browsers are powerful, they cannot directly measure hardware properties like true input latency, precise color gamuts (Delta E), or physical panel health. Our tools are designed for visual inspection and estimation."
   },
   "Terms": {
-    "metaTitle": "Terms of Use | Monitor Tester",
+    "metaTitle": "Terms of Use",
     "metaDescription": "Terms of use and disclaimer for the Monitor Tester browser-based display testing utility.",
     "title": "Terms of Use",
     "intro": "By accessing and using Monitor Tester, you agree to these Terms of Use. If you do not agree, please discontinue using the utility.",
@@ -960,7 +966,7 @@
     "localExecutionDesc": "All diagnostic calculations, frame timing measurements, and observation logs run entirely on your local machine. No display diagnostics or usage metrics are transmitted or stored remotely."
   },
   "Contact": {
-    "metaTitle": "Contact & Support | Monitor Tester",
+    "metaTitle": "Contact & Support",
     "metaDescription": "Direct contact channels, issue tracker, and contribution guide for Monitor Tester.",
     "title": "Contact & Support",
     "intro": "Have feedback, found a bug, or want to contribute to Monitor Tester? Here are the official ways to get in touch with the project.",
@@ -972,7 +978,7 @@
     "directEmailDesc": "For general inquiries, partnerships, or direct questions about the project, reach out via email:"
   },
   "Tools": {
-    "metaTitle": "디스플레이 도구 및 계산기 | Monitor Tester",
+    "metaTitle": "디스플레이 도구 및 계산기",
     "metaDescription": "특수 디스플레이 계산기, 하드웨어 프로브 및 테스트 패턴 유틸리티.",
     "title": "디스플레이 도구 및 계산기",
     "subtitle": "브라우저 하드웨어 기능 검사, 픽셀 밀도 계산, 디스플레이 크기 비교 및 테스트 패턴 생성을 위한 전용 유틸리티.",
@@ -1577,7 +1583,7 @@
     "hardwareComparison": "화면 사양 및 기하 구조 비교"
   },
   "Faq": {
-    "metaTitle": "자주 묻는 질문 (FAQ) | Monitor Tester",
+    "metaTitle": "자주 묻는 질문 (FAQ)",
     "metaDescription": "브라우저 기반 디스플레이 테스트, 불량 화소 감지, 색상 보정, 주사율 및 해상도에 대한 명확하고 기술적인 답변.",
     "eyebrow": "도움말 & 기술 FAQ",
     "title": "자주 묻는 질문",
@@ -1620,5 +1626,10 @@
       "knowledgeBase": "디스플레이 기술 지식베이스 탐색",
       "testLibrary": "전체 테스트 라이브러리 둘러보기"
     }
+  },
+  "Breadcrumbs": {
+    "home": "홈",
+    "tests": "테스트",
+    "ariaLabel": "브레드크럼"
   }
 }

@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next'
+import { BASE_URL } from '@/lib/seo'
  
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://screen-tester-mu.vercel.app';
+  const baseUrl = BASE_URL;
   return {
     rules: {
       userAgent: '*',

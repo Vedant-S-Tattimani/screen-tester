@@ -25,7 +25,7 @@ export function WorkflowLauncher({ sequence, steps, buttonLabel, workflowTitle, 
   return (
     <div className="space-y-12">
       <div className="flex items-center justify-between border-b border-border/60 pb-8">
-        <h2 className="text-xl font-semibold text-foreground">Inspection Checklist</h2>
+        <h2 className="text-xl font-semibold text-foreground">{t("checklistTitle")}</h2>
         <button 
           onClick={() => startWorkflow(sequence, workflowTitle, workflowId)}
           className="flex items-center gap-2 bg-foreground text-background px-6 py-3 rounded-full font-medium hover:bg-foreground/90 transition-transform hover:scale-[1.02] active:scale-[0.98]"

@@ -1,6 +1,8 @@
 import { routing } from "@/i18n/routing";
 import { getLocale } from "next-intl/server";
 
+export const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://screen-tester.com";
+
 export async function generateSeoMetadata(
   path: string,
   title: string,
@@ -20,7 +22,7 @@ export async function generateSeoMetadata(
     activeLocale = "en";
   }
 
-  const baseUrl = "https://monitortester.com";
+  const baseUrl = BASE_URL;
   
   const alternates = routing.locales.reduce((acc, loc) => {
     acc[loc] = `${baseUrl}/${loc}${path}`;

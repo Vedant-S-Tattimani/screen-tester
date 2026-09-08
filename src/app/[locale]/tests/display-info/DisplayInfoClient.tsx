@@ -450,7 +450,7 @@ export function DisplayInfoClient() {
         )}
 
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-xs font-mono uppercase text-gray-400 mb-6">
+        <div className="flex items-center gap-2 text-xs font-mono uppercase text-gray-500 mb-6">
           <Link href="/tests" className="hover:text-gray-900 flex items-center gap-1 transition-colors">
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>{t("breadcrumb.allTests")}</span>
@@ -462,7 +462,7 @@ export function DisplayInfoClient() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
           <div>
-            <div className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-gray-400 mb-2">
+            <div className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-gray-600 mb-2">
               {t("header.eyebrow")}
             </div>
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-950">
@@ -507,16 +507,16 @@ export function DisplayInfoClient() {
         {/* ========================================================= */}
         <div className="mb-12">
           <div className="flex items-center justify-between border-b border-gray-200 pb-3 mb-6">
-            <h2 className="text-sm font-mono font-bold tracking-[0.15em] text-gray-400 uppercase">
+            <h2 className="text-sm font-mono font-bold tracking-[0.15em] text-gray-600 uppercase">
               {t("geometry.title")}
             </h2>
-            <span className="text-xs font-mono text-gray-400">{t("geometry.subtitle")}</span>
+            <span className="text-xs font-mono text-gray-500">{t("geometry.subtitle")}</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {/* Card 1: Logical Resolution */}
             <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/70">
-              <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("geometry.logicalRes")}</span>
+              <span className="text-xs text-gray-600 font-mono uppercase block mb-1">{t("geometry.logicalRes")}</span>
               <span className="text-2xl font-bold font-mono text-gray-950 block tabular-nums">
                 {screenInfo.w > 0 ? `${screenInfo.w} × ${screenInfo.h}` : t("geometry.probing")}
               </span>
@@ -525,7 +525,7 @@ export function DisplayInfoClient() {
 
             {/* Card 2: Estimated Physical Pixels */}
             <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/70">
-              <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("geometry.estimatedPhysicalRes")}</span>
+              <span className="text-xs text-gray-600 font-mono uppercase block mb-1">{t("geometry.estimatedPhysicalRes")}</span>
               <span className="text-2xl font-bold font-mono text-gray-950 block tabular-nums">
                 {screenInfo.w > 0 ? `${physicalW} × ${physicalH}` : t("geometry.probing")}
               </span>
@@ -534,7 +534,7 @@ export function DisplayInfoClient() {
 
             {/* Card 3: Viewport Dimensions */}
             <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/70">
-              <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("geometry.currentViewport")}</span>
+              <span className="text-xs text-gray-600 font-mono uppercase block mb-1">{t("geometry.currentViewport")}</span>
               <span className="text-2xl font-bold font-mono text-gray-950 block tabular-nums">
                 {screenInfo.innerW > 0 ? `${screenInfo.innerW} × ${screenInfo.innerH}` : t("geometry.probing")}
               </span>
@@ -543,7 +543,7 @@ export function DisplayInfoClient() {
 
             {/* Card 4: Device Pixel Ratio */}
             <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/70">
-              <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("geometry.dprLabel")}</span>
+              <span className="text-xs text-gray-600 font-mono uppercase block mb-1">{t("geometry.dprLabel")}</span>
               <span className="text-2xl font-bold font-mono text-blue-600 block tabular-nums">
                 {screenInfo.dpr.toFixed(2)}x
               </span>
@@ -556,7 +556,7 @@ export function DisplayInfoClient() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
             {/* Available Screen Area */}
             <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/50">
-              <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("geometry.availScreenArea")}</span>
+              <span className="text-xs text-gray-600 font-mono uppercase block mb-1">{t("geometry.availScreenArea")}</span>
               <span className="text-xl font-semibold font-mono text-gray-900 block tabular-nums">
                 {screenInfo.availW} × {screenInfo.availH}
               </span>
@@ -565,7 +565,7 @@ export function DisplayInfoClient() {
 
             {/* Color & Pixel Depth */}
             <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/50">
-              <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("geometry.colorDepth")}</span>
+              <span className="text-xs text-gray-600 font-mono uppercase block mb-1">{t("geometry.colorDepth")}</span>
               <span className="text-xl font-semibold font-mono text-gray-900 block tabular-nums">
                 {screenInfo.colorDepth}-bit / {screenInfo.pixelDepth}-bit
               </span>
@@ -574,7 +574,7 @@ export function DisplayInfoClient() {
 
             {/* Screen Orientation */}
             <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/50">
-              <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("geometry.screenOrientation")}</span>
+              <span className="text-xs text-gray-600 font-mono uppercase block mb-1">{t("geometry.screenOrientation")}</span>
               <span className="text-xl font-semibold font-mono text-gray-900 block capitalize">
                 {screenInfo.orientationType.replace("-", " ")}
               </span>
@@ -583,7 +583,7 @@ export function DisplayInfoClient() {
 
             {/* Observed Refresh Rate */}
             <div className="border border-gray-200 rounded-2xl p-5 bg-gray-50/50">
-              <span className="text-xs text-gray-400 font-mono uppercase block mb-1">{t("geometry.frameTiming")}</span>
+              <span className="text-xs text-gray-600 font-mono uppercase block mb-1">{t("geometry.frameTiming")}</span>
               <span className="text-xl font-semibold font-mono text-emerald-600 block tabular-nums">
                 {screenInfo.refreshRate > 0 ? `~${screenInfo.refreshRate} Hz` : t("geometry.measuring")}
               </span>
@@ -597,10 +597,10 @@ export function DisplayInfoClient() {
         {/* ========================================================= */}
         <div className="mb-12">
           <div className="flex items-center justify-between border-b border-gray-200 pb-3 mb-6">
-            <h2 className="text-sm font-mono font-bold tracking-[0.15em] text-gray-400 uppercase">
+            <h2 className="text-sm font-mono font-bold tracking-[0.15em] text-gray-600 uppercase">
               {t("capabilities.title")}
             </h2>
-            <span className="text-xs font-mono text-gray-400">{t("capabilities.subtitle")}</span>
+            <span className="text-xs font-mono text-gray-500">{t("capabilities.subtitle")}</span>
           </div>
 
           <div className="border border-gray-200 rounded-2xl overflow-hidden bg-white">
@@ -628,7 +628,7 @@ export function DisplayInfoClient() {
                           <span>{t("capabilities.notSupported")}</span>
                         </span>
                       ) : (
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-50 text-gray-400 border border-gray-100">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-50 text-gray-600 border border-gray-100">
                           <span>{t("capabilities.checking")}</span>
                         </span>
                       )}
@@ -646,10 +646,10 @@ export function DisplayInfoClient() {
         {/* ========================================================= */}
         <div className="mb-12">
           <div className="flex items-center justify-between border-b border-gray-200 pb-3 mb-6">
-            <h2 className="text-sm font-mono font-bold tracking-[0.15em] text-gray-400 uppercase">
+            <h2 className="text-sm font-mono font-bold tracking-[0.15em] text-gray-600 uppercase">
               {t("webgl.title")}
             </h2>
-            <span className="text-xs font-mono text-gray-400">{t("webgl.subtitle")}</span>
+            <span className="text-xs font-mono text-gray-500">{t("webgl.subtitle")}</span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -743,10 +743,10 @@ export function DisplayInfoClient() {
         {/* ========================================================= */}
         <div className="mb-12">
           <div className="flex items-center justify-between border-b border-gray-200 pb-3 mb-6">
-            <h2 className="text-sm font-mono font-bold tracking-[0.15em] text-gray-400 uppercase">
+            <h2 className="text-sm font-mono font-bold tracking-[0.15em] text-gray-600 uppercase">
               {t("multiScreen.title")}
             </h2>
-            <span className="text-xs font-mono text-gray-400">{t("multiScreen.subtitle")}</span>
+            <span className="text-xs font-mono text-gray-500">{t("multiScreen.subtitle")}</span>
           </div>
 
           <div className="border border-gray-200 rounded-2xl p-6 bg-gray-50/70">
@@ -832,14 +832,14 @@ export function DisplayInfoClient() {
         {/* Quick Links to Calculators */}
         <div className="border-t border-gray-200 pt-8 flex flex-wrap items-center justify-between gap-4">
           <div>
-            <span className="text-xs font-mono uppercase text-gray-400 block mb-1">{t("related.title")}</span>
+            <span className="text-xs font-mono uppercase text-gray-600 block mb-1">{t("related.title")}</span>
             <div className="flex flex-wrap items-center gap-3">
               <Link
                 href="/tests/resolution-checker"
                 className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors flex items-center gap-1"
               >
                 <span>{tTools("items.resolutionChecker.title")}</span>
-                <span className="text-gray-400">→</span>
+                <span className="text-gray-500">→</span>
               </Link>
               <span className="text-gray-300">•</span>
               <Link
@@ -847,7 +847,7 @@ export function DisplayInfoClient() {
                 className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors flex items-center gap-1"
               >
                 <span>{t("related.compareDisplays")}</span>
-                <span className="text-gray-400">→</span>
+                <span className="text-gray-500">→</span>
               </Link>
               <span className="text-gray-300">•</span>
               <Link
@@ -855,7 +855,7 @@ export function DisplayInfoClient() {
                 className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors flex items-center gap-1"
               >
                 <span>{tTools("items.customPattern.title")}</span>
-                <span className="text-gray-400">→</span>
+                <span className="text-gray-500">→</span>
               </Link>
             </div>
           </div>

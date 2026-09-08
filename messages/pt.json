@@ -313,7 +313,9 @@
       }
     },
     "searchPlaceholder": "Buscar testes...",
-    "subtitle": "Explore nossa biblioteca completa de utilitários para monitores. Todos os testes rodam localmente no seu navegador."
+    "subtitle": "Explore nossa biblioteca completa de utilitários para monitores. Todos os testes rodam localmente no seu navegador.",
+    "relatedTitle": "Testes relacionados",
+    "noResults": "Nenhum teste encontrado para “{query}”."
   },
   "TestWrapper": {
     "howToTest": "Como testar",
@@ -363,7 +365,10 @@
       "moveDown": "Mover para baixo",
       "remove": "Remover da fila",
       "restart": "Reiniciar",
-      "completeReport": "Concluir e ver relatório"
+      "completeReport": "Concluir e ver relatório",
+      "sequenceLabel": "Sequência da fila",
+      "manageQueue": "Gerenciar fila",
+      "stepProgress": "Teste {x} de {y}"
     },
     "pixelDefect": {
       "bannerInstruction": "Clique em qualquer lugar para marcar o defeito de pixel",
@@ -824,7 +829,8 @@
       "aboutWorkflowsDesc": "Execute sequências estruturadas, marque anomalias, registre coordenadas exatas de defeitos e salve relatórios factuais sem pontuações artificiais.",
       "savedReports": "Relatórios salvos e histórico",
       "wfGeneralTitle": "Verificação geral da tela",
-      "wfGeneralDesc": "Verificação visual essencial para pixels mortos, cores e movimento."
+      "wfGeneralDesc": "Verificação visual essencial para pixels mortos, cores e movimento.",
+      "checklistTitle": "Lista de verificação de inspeção"
     },
     "gaming": {
       "metaTitle": "Gaming Monitor Inspection",
@@ -928,7 +934,7 @@
     }
   },
   "Privacy": {
-    "metaTitle": "Privacy Policy | Monitor Tester",
+    "metaTitle": "Privacy Policy",
     "title": "Privacy Policy",
     "intro": "Monitor Tester is designed to be a lightweight, privacy-first utility. All diagnostic tests run entirely locally in your web browser.",
     "dataCollection": "Data Collection",
@@ -937,7 +943,7 @@
     "analyticsDesc": "We do not use invasive third-party tracking scripts or advertising networks."
   },
   "About": {
-    "metaTitle": "About | Monitor Tester",
+    "metaTitle": "About",
     "title": "About Monitor Tester",
     "intro": "Monitor Tester is a specialized web utility built to help you diagnose and calibrate displays without installing heavy software.",
     "mission": "Our Mission",
@@ -946,7 +952,7 @@
     "disclaimerDesc": "Please note that while web browsers are powerful, they cannot directly measure hardware properties like true input latency, precise color gamuts (Delta E), or physical panel health. Our tools are designed for visual inspection and estimation."
   },
   "Terms": {
-    "metaTitle": "Terms of Use | Monitor Tester",
+    "metaTitle": "Terms of Use",
     "metaDescription": "Terms of use and disclaimer for the Monitor Tester browser-based display testing utility.",
     "title": "Terms of Use",
     "intro": "By accessing and using Monitor Tester, you agree to these Terms of Use. If you do not agree, please discontinue using the utility.",
@@ -960,7 +966,7 @@
     "localExecutionDesc": "All diagnostic calculations, frame timing measurements, and observation logs run entirely on your local machine. No display diagnostics or usage metrics are transmitted or stored remotely."
   },
   "Contact": {
-    "metaTitle": "Contact & Support | Monitor Tester",
+    "metaTitle": "Contact & Support",
     "metaDescription": "Direct contact channels, issue tracker, and contribution guide for Monitor Tester.",
     "title": "Contact & Support",
     "intro": "Have feedback, found a bug, or want to contribute to Monitor Tester? Here are the official ways to get in touch with the project.",
@@ -972,7 +978,7 @@
     "directEmailDesc": "For general inquiries, partnerships, or direct questions about the project, reach out via email:"
   },
   "Tools": {
-    "metaTitle": "Ferramentas e calculadoras de tela | Monitor Tester",
+    "metaTitle": "Ferramentas e calculadoras de tela",
     "metaDescription": "Calculadoras de exibição especializadas, testes de hardware e utilitários de padrões de teste.",
     "title": "Ferramentas e calculadoras de tela",
     "subtitle": "Utilitários especializados para inspecionar recursos de hardware, calcular densidade de pixels, comparar dimensões e gerar padrões de teste.",
@@ -1577,7 +1583,7 @@
     "hardwareComparison": "Comparativo de Hardware e Geometria"
   },
   "Faq": {
-    "metaTitle": "Perguntas Frequentes (FAQ) | Monitor Tester",
+    "metaTitle": "Perguntas Frequentes (FAQ)",
     "metaDescription": "Respostas técnicas claras e honestas sobre testes de tela no navegador, detecção de dead pixels, calibração de cor, taxa de atualização e resolução.",
     "eyebrow": "AJUDA & FAQ TÉCNICO",
     "title": "Perguntas Frequentes",
@@ -1620,5 +1626,10 @@
       "knowledgeBase": "Explorar base de conhecimento de telas",
       "testLibrary": "Navegar pelo catálogo completo de testes"
     }
+  },
+  "Breadcrumbs": {
+    "home": "Início",
+    "tests": "Testes",
+    "ariaLabel": "Navegação estrutural"
   }
 }

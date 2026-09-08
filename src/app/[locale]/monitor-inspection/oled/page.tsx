@@ -3,19 +3,19 @@ import { Metadata } from "next";
 import { WorkflowLauncher } from "@/components/layout/WorkflowLauncher";
 import { getWorkflowById } from "@/data/workflows";
 import { notFound } from "next/navigation";
+import { generateSeoMetadata } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  await params;
+  const { locale } = await params;
   const workflow = getWorkflowById("oled");
   if (!workflow) return {};
   
-  return {
-    title: workflow.title,
-    description: workflow.shortDescription,
-    alternates: {
-      canonical: "/monitor-inspection/oled"
-    }
-  };
+  return generateSeoMetadata(
+    "/monitor-inspection/oled",
+    workflow.title,
+    workflow.shortDescription,
+    locale
+  );
 }
 
 export default async function OledInspectionPage({ params }: { params: Promise<{ locale: string }> }) {

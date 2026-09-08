@@ -129,7 +129,7 @@
     "copyright": "Monitor Tester. All rights reserved."
   },
   "Terms": {
-    "metaTitle": "Terms of Use | Monitor Tester",
+    "metaTitle": "Terms of Use",
     "metaDescription": "Terms of use and disclaimer for the Monitor Tester browser-based display testing utility.",
     "title": "Terms of Use",
     "intro": "By accessing and using Monitor Tester, you agree to these Terms of Use. If you do not agree, please discontinue using the utility.",
@@ -143,7 +143,7 @@
     "localExecutionDesc": "All diagnostic calculations, frame timing measurements, and observation logs run entirely on your local machine. No display diagnostics or usage metrics are transmitted or stored remotely."
   },
   "Contact": {
-    "metaTitle": "Contact & Support | Monitor Tester",
+    "metaTitle": "Contact & Support",
     "metaDescription": "Direct contact channels, issue tracker, and contribution guide for Monitor Tester.",
     "title": "Contact & Support",
     "intro": "Have feedback, found a bug, or want to contribute to Monitor Tester? Here are the official ways to get in touch with the project.",
@@ -339,7 +339,9 @@
       }
     },
     "searchPlaceholder": "Search tests...",
-    "subtitle": "Explore our complete library of monitor testing utilities. All tests run locally in your browser."
+    "subtitle": "Explore our complete library of monitor testing utilities. All tests run locally in your browser.",
+    "relatedTitle": "Related Tests",
+    "noResults": "No tests found matching “{query}”."
   },
   "TestWrapper": {
     "howToTest": "How to test",
@@ -389,7 +391,10 @@
       "moveDown": "Move down",
       "remove": "Remove from queue",
       "restart": "Restart",
-      "completeReport": "Complete & View Report"
+      "completeReport": "Complete & View Report",
+      "sequenceLabel": "Queue Sequence",
+      "manageQueue": "Manage Queue",
+      "stepProgress": "Test {x} of {y}"
     },
     "pixelDefect": {
       "bannerInstruction": "Click anywhere to mark pixel defect",
@@ -841,7 +846,8 @@
       "aboutWorkflowsDesc": "Run structured sequences, mark tests as normal or needing attention, drop pixel defect pins with exact coordinates, and save factual inspection reports. Zero synthetic scores.",
       "savedReports": "Saved Reports & History",
       "wfGeneralTitle": "General Display Checkup",
-      "wfGeneralDesc": "Essential all-around visual checkup for dead pixels, color, and motion."
+      "wfGeneralDesc": "Essential all-around visual checkup for dead pixels, color, and motion.",
+      "checklistTitle": "Inspection Checklist"
     },
     "gaming": {
       "metaTitle": "Gaming Monitor Inspection",
@@ -945,7 +951,7 @@
     }
   },
   "Privacy": {
-    "metaTitle": "Privacy Policy | Monitor Tester",
+    "metaTitle": "Privacy Policy",
     "title": "Privacy Policy",
     "intro": "Monitor Tester is designed to be a lightweight, privacy-first utility. All diagnostic tests run entirely locally in your web browser.",
     "dataCollection": "Data Collection",
@@ -954,7 +960,7 @@
     "analyticsDesc": "We do not use invasive third-party tracking scripts or advertising networks."
   },
   "About": {
-    "metaTitle": "About | Monitor Tester",
+    "metaTitle": "About",
     "title": "About Monitor Tester",
     "intro": "Monitor Tester is a specialized web utility built to help you diagnose and calibrate displays without installing heavy software.",
     "mission": "Our Mission",
@@ -963,7 +969,7 @@
     "disclaimerDesc": "Please note that while web browsers are powerful, they cannot directly measure hardware properties like true input latency, precise color gamuts (Delta E), or physical panel health. Our tools are designed for visual inspection and estimation."
   },
   "Tools": {
-    "metaTitle": "Display Tools & Calculators | Monitor Tester",
+    "metaTitle": "Display Tools & Calculators",
     "metaDescription": "Specialized display calculators, hardware probes, and test pattern utilities.",
     "title": "Display Tools & Calculators",
     "subtitle": "Specialized utilities to inspect browser hardware capabilities, calculate pixel density, compare display dimensions, and generate test patterns.",
@@ -1568,7 +1574,7 @@
     "hardwareComparison": "Display Hardware & Geometry Comparison"
   },
   "Faq": {
-    "metaTitle": "Frequently Asked Questions | Monitor Tester",
+    "metaTitle": "Frequently Asked Questions",
     "metaDescription": "Clear, honest technical answers to common questions about browser display testing, dead pixel detection, color calibration, refresh rate, and resolution.",
     "eyebrow": "HELP & TECHNICAL FAQ",
     "title": "Frequently Asked Questions",
@@ -1611,5 +1617,10 @@
       "knowledgeBase": "Explore Display Knowledge Base",
       "testLibrary": "Browse Complete Test Library"
     }
+  },
+  "Breadcrumbs": {
+    "home": "Home",
+    "tests": "Tests",
+    "ariaLabel": "Breadcrumb"
   }
 }

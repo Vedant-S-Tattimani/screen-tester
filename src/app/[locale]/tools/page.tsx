@@ -87,7 +87,7 @@ export default async function ToolsPage({
         
         {/* Header */}
         <div className="mb-10 sm:mb-12">
-          <div className="text-xs font-mono uppercase tracking-[0.2em] text-gray-400 font-semibold mb-2">
+          <div className="text-xs font-mono uppercase tracking-[0.2em] text-gray-600 font-semibold mb-2">
             {t("eyebrow")}
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-gray-950 mb-3">

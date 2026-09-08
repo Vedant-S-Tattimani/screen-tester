@@ -12,7 +12,7 @@ export function RelatedTests({ testId }: { testId: string }) {
   return (
     <div className="mt-16 pt-12 border-t border-border/50 w-full">
       <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">
-        Related Tests
+        {tLib("relatedTitle")}
       </h2>
       <div className="flex flex-col">
         {related.map(test => {
