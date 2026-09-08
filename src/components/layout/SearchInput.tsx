@@ -177,7 +177,7 @@ export function SearchInput({
   return (
     <div className="relative w-full" ref={containerRef}>
       <div className="flex items-center bg-[#f1f2f4] hover:bg-[#eaebed] focus-within:bg-white focus-within:ring-2 focus-within:ring-blue-500/20 focus-within:border-gray-300 border border-transparent rounded-full px-3 py-1.5 transition-all w-full">
-        <Search className="w-3.5 h-3.5 text-gray-400 mr-2 shrink-0" />
+        <Search className="w-3.5 h-3.5 text-gray-500 mr-2 shrink-0" />
         <input
           id={id}
           name={name}
@@ -194,7 +194,7 @@ export function SearchInput({
           onKeyDown={handleKeyDown}
           placeholder={placeholder}
           aria-label={placeholder}
-          className="w-full bg-transparent text-gray-900 placeholder:text-gray-400 text-xs focus:outline-none"
+          className="w-full bg-transparent text-gray-900 placeholder:text-gray-500 text-xs focus:outline-none"
         />
         {query && (
           <button
@@ -202,7 +202,7 @@ export function SearchInput({
               setQuery("");
               setIsOpen(false);
             }}
-            className="p-0.5 text-gray-400 hover:text-gray-600 rounded-full ml-1"
+            className="p-0.5 text-gray-500 hover:text-gray-700 rounded-full ml-1"
             aria-label="Clear query"
           >
             <span className="text-xs font-bold leading-none">&times;</span>
@@ -227,12 +227,12 @@ export function SearchInput({
                   <div className="text-xs font-semibold text-gray-900 truncate">
                     {item.title}
                   </div>
-                  <div className="text-[10px] font-mono uppercase tracking-wider text-gray-400">
+                  <div className="text-[10px] font-mono uppercase tracking-wider text-gray-500">
                     {item.subtitle}
                   </div>
                 </div>
               </div>
-              <ChevronRight className="w-3 h-3 text-gray-400 shrink-0 ml-2" />
+              <ChevronRight className="w-3 h-3 text-gray-500 shrink-0 ml-2" />
             </button>
           ))}
         </div>

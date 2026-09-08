@@ -69,7 +69,7 @@ export function LanguageSwitcher({ dropUp = false }: LanguageSwitcherProps = {})
                   }`}
                 >
                   <span>{t(l as "en" | "hi" | "es" | "fr" | "de" | "pt" | "ja" | "ko")}</span>
-                  <span className="uppercase text-[10px] font-mono text-gray-400">{l}</span>
+                  <span className="uppercase text-[10px] font-mono text-gray-500">{l}</span>
                 </button>
               </li>
             ))}

@@ -319,7 +319,79 @@
     "howToTest": "Cómo probar",
     "startTest": "Iniciar Prueba",
     "fullscreen": "Pantalla Completa",
-    "exit": "Salir"
+    "exit": "Salir",
+    "observationLabel": "Observación:",
+    "observationPlaceholder": "Describa lo que observa (p. ej., leve punto brillante cerca de la esquina superior izquierda)...",
+    "closeNote": "Cerrar",
+    "controlsLabel": "Controles",
+    "markDefect": "Marcar defecto",
+    "markingActive": "Marcado activo",
+    "markDefectTitle": "Haga clic en la pantalla para registrar coordenadas de píxeles sospechosos",
+    "looksNormal": "Normal (Verificado)",
+    "looksNormalTitle": "Se ve normal (Aprobado)",
+    "needsAttention": "Requiere atención",
+    "needsAttentionTitle": "Problema observado",
+    "unsure": "Incierto",
+    "unsureTitle": "No estoy seguro",
+    "addNote": "+ Nota",
+    "noteAdded": "Nota guardada",
+    "noteTitle": "Añadir nota de observación escrita",
+    "prev": "Ant",
+    "prevAria": "Prueba anterior en la secuencia",
+    "skip": "Omitir",
+    "skipAria": "Omitir prueba",
+    "skipTitle": "Pasar a la siguiente prueba sin registrar problemas",
+    "continue": "Continuar →",
+    "continueAria": "Continuar a la siguiente prueba",
+    "complete": "Completar y ver informe",
+    "completeAria": "Finalizar secuencia de inspección",
+    "fullscreenAria": "Pantalla completa (F)",
+    "exitAria": "Salir de pantalla completa (F)",
+    "fullscreenHelp": "Presione ESC o F para salir de pantalla completa • Espacio para pausar",
+    "queue": {
+      "eyebrow": "Secuencia de inspección",
+      "title": "Gestor de cola de pruebas",
+      "close": "Cerrar",
+      "closeAria": "Cerrar gestor de cola",
+      "completedStats": "{completed} de {total} completadas",
+      "currentStep": "Actual: Paso {step}",
+      "remaining": "{count} restantes",
+      "addPlaceholder": "+ Añadir prueba a la cola...",
+      "addBtn": "Añadir",
+      "activeBadge": "Activa",
+      "moveUp": "Mover arriba",
+      "moveDown": "Mover abajo",
+      "remove": "Quitar de la cola",
+      "restart": "Reiniciar",
+      "completeReport": "Completar y ver informe"
+    },
+    "pixelDefect": {
+      "bannerInstruction": "Haga clic en la pantalla para marcar el defecto de píxel",
+      "doneMarking": "Terminar marcado",
+      "pinTitle": "MARCADO POR USUARIO: Defecto {type} en X: {x}, Y: {y}",
+      "pinBadgeUserMarked": "MARCADO POR USUARIO",
+      "pinBadgeDefect": "Defecto {type}",
+      "dialogEyebrow": "MARCADO POR USUARIO / OBSERVADO",
+      "dialogTitle": "Marcador de anomalía de píxel",
+      "closeAria": "Cerrar diálogo",
+      "locationLabel": "Ubicación (CSS X, Y):",
+      "relativePos": "Posición relativa:",
+      "canvasSize": "Tamaño de lienzo:",
+      "defectTypeLabel": "Tipo de defecto:",
+      "types": {
+        "dead": "● Píxel muerto (Negro)",
+        "stuck": "● Píxel atascado (Color)",
+        "bright": "● Píxel brillante",
+        "unknown": "○ Otra anomalía"
+      },
+      "notesLabel": "Nota de observación (opcional):",
+      "notesPlaceholder": "p. ej., Visible sobre fondo blanco",
+      "deleteMarker": "Eliminar marcador",
+      "done": "Listo",
+      "listTitle": "Defectos de píxeles observados",
+      "emptyList": "No se han marcado defectos de píxeles en esta pantalla.",
+      "closeBtn": "Cerrar"
+    }
   },
   "TestPages": {
     "backlight-bleed-test": {
@@ -1503,5 +1575,50 @@
     "deviation": "Desviación: {val}",
     "benchmarks": "Parámetros Matemáticos",
     "hardwareComparison": "Comparación de Hardware y Geometría"
+  },
+  "Faq": {
+    "metaTitle": "Preguntas frecuentes | Monitor Tester",
+    "metaDescription": "Respuestas técnicas claras y rigurosas sobre pruebas de pantalla en navegador, detección de píxeles muertos, calibración, frecuencia y resolución.",
+    "eyebrow": "AYUDA Y PREGUNTAS FRECUENTES",
+    "title": "Preguntas frecuentes",
+    "description": "Explicaciones técnicas transparentes sobre lo que las pruebas en navegador pueden inspeccionar, sus límites y cómo obtener resultados precisos.",
+    "items": {
+      "q1": {
+        "question": "¿Puede un navegador detectar píxeles muertos automáticamente?",
+        "answer": "No. Un navegador web carece de sensores ópticos o cámaras para inspeccionar subpíxeles de hardware. Monitor Tester genera campos de color primario puros de borde a borde (rojo, verde, azul, negro, blanco, magenta, cian, amarillo), permitiendo al ojo humano identificar puntos oscuros (muertos) o brillantes (atascados) con total precisión."
+      },
+      "q2": {
+        "question": "¿Funciona en portátiles y televisores?",
+        "answer": "Sí. Monitor Tester se ejecuta mediante APIs web estándar (Canvas, requestAnimationFrame, Fullscreen API, MatchMedia) en cualquier navegador moderno en Windows, macOS, ChromeOS, Linux, Android e iOS. En televisores vía HDMI, configure la relación de aspecto en 'Just Scan' / 1:1 y el modo de imagen en 'PC' o 'Juego' para evitar sobreescaneo o sobreenfoque artificial."
+      },
+      "q3": {
+        "question": "¿Se recopilan los datos de mi pantalla o mis resultados?",
+        "answer": "No. Monitor Tester es una utilidad web que funciona íntegramente en el cliente. No se transmite ninguna observación diagnóstica, identificador de hardware o métrica a ningún servidor externo. Si registra observaciones (PASS, CHECK, ISSUE), se guardan en el almacenamiento local de su navegador y pueden borrarse en cualquier momento."
+      },
+      "q4": {
+        "question": "¿Puede sustituir a un colorímetro o espectrofotómetro físico?",
+        "answer": "No. Un navegador no puede generar perfiles de color ICC ni calibrar Delta-E sin un sensor óptico físico (como Calibrite o Datacolor Spyder). Monitor Tester proporciona patrones visuales de gradiente, rampas de escala de grises y límites de gama cromática (sRGB, Display P3) para ajustar contraste, gamma y saturación a simple vista, pero no reemplaza la calibración por sensor."
+      },
+      "q5": {
+        "question": "¿Puede un navegador medir el brillo de la pantalla (nits)?",
+        "answer": "No. Los navegadores no pueden medir la luminancia fotométrica física (candelas por metro cuadrado / nits) emitida por la retroiluminación o los emisores OLED. El navegador muestra parches de escala de grises escalonados del 0 % al 100 % para ajustar brillo y contraste hasta distinguir sombras (1–5 %) y luces (95–99 %) sin recortes."
+      },
+      "q6": {
+        "question": "¿Puede un navegador medir el tiempo de respuesta (GtG / MPRT)?",
+        "answer": "No. Medir la velocidad de transición gris a gris (GtG) requiere osciloscopios con fotodiodos ópticos o cámaras de seguimiento de alta velocidad. El navegador mide los tiempos de cuadro mediante requestAnimationFrame, pero no puede determinar el tiempo de giro de los cristales líquidos. La prueba de Ghosting ayuda a calibrar visualmente el nivel de overdrive."
+      },
+      "q7": {
+        "question": "¿Por qué la resolución detectada difiere de la especificación de mi monitor?",
+        "answer": "Los sistemas operativos modernos aplican factores de escalado (como 125 %, 150 % o 200 % en portátiles Retina/4K) para que la interfaz sea legible. Las propiedades de window.screen reportan píxeles CSS lógicos. Multiplicar la resolución lógica por window.devicePixelRatio (DPR) revela la resolución física nativa real del panel."
+      },
+      "q8": {
+        "question": "¿Por qué mi tasa de refresco difiere de la que admite mi monitor?",
+        "answer": "Si su monitor de 144Hz o 240Hz solo marca 60Hz, las causas habituales son: (1) La configuración de pantalla de Windows/macOS tiene fijado 60Hz por defecto; (2) Limitación de ancho de banda del cable HDMI (se requiere DisplayPort o HDMI 2.1 para alta frecuencia en 1440p/4K); (3) Aceleración por hardware desactivada en el navegador; o (4) Modo de ahorro de batería activo."
+      }
+    },
+    "links": {
+      "knowledgeBase": "Explorar base de conocimientos de pantallas",
+      "testLibrary": "Ver catálogo completo de pruebas"
+    }
   }
 }

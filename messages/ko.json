@@ -319,7 +319,79 @@
     "howToTest": "테스트 방법",
     "startTest": "테스트 시작",
     "fullscreen": "전체 화면",
-    "exit": "종료"
+    "exit": "종료",
+    "observationLabel": "관찰 결과:",
+    "observationPlaceholder": "화면 상태를 기록하세요 (예: 왼쪽 상단 근처에 미세한 광점 있음)...",
+    "closeNote": "닫기",
+    "controlsLabel": "조작 패널",
+    "markDefect": "결함 표시",
+    "markingActive": "표시 모드 활성",
+    "markDefectTitle": "화면을 클릭하여 의심되는 픽셀 좌표를 기록합니다",
+    "looksNormal": "정상 (확인됨)",
+    "looksNormalTitle": "정상으로 보임 (통과)",
+    "needsAttention": "점검 필요",
+    "needsAttentionTitle": "이상 현상 발견",
+    "unsure": "불확실",
+    "unsureTitle": "판단하기 어려움",
+    "addNote": "+ 메모",
+    "noteAdded": "메모 입력됨",
+    "noteTitle": "서면 관찰 메모 추가",
+    "prev": "이전",
+    "prevAria": "순서상 이전 테스트로 이동",
+    "skip": "건너뛰기",
+    "skipAria": "테스트 건너뛰기",
+    "skipTitle": "결과를 기록하지 않고 다음 테스트로 진행",
+    "continue": "계속 진행 →",
+    "continueAria": "다음 테스트로 계속",
+    "complete": "완료 및 리포트",
+    "completeAria": "점검 순서 완료",
+    "fullscreenAria": "전체 화면 시작 (F)",
+    "exitAria": "전체 화면 종료 (F)",
+    "fullscreenHelp": "전체 화면을 종료하려면 ESC 또는 F 키를 누르세요 • 일시 정지는 스페이스바",
+    "queue": {
+      "eyebrow": "점검 순서",
+      "title": "테스트 대기열 관리자",
+      "close": "닫기",
+      "closeAria": "대기열 관리자 닫기",
+      "completedStats": "{total}개 중 {completed}개 완료",
+      "currentStep": "현재: {step}단계",
+      "remaining": "{count}개 남음",
+      "addPlaceholder": "+ 대기열에 테스트 추가...",
+      "addBtn": "추가",
+      "activeBadge": "진행 중",
+      "moveUp": "위로 이동",
+      "moveDown": "아래로 이동",
+      "remove": "대기열에서 제거",
+      "restart": "처음부터 다시 시작",
+      "completeReport": "완료하고 리포트 보기"
+    },
+    "pixelDefect": {
+      "bannerInstruction": "화면 아무 곳이나 클릭하여 불량 화소를 표시하세요",
+      "doneMarking": "표시 완료",
+      "pinTitle": "사용자 기록: X: {x}, Y: {y} 위치의 {type} 픽셀 결함",
+      "pinBadgeUserMarked": "사용자 기록",
+      "pinBadgeDefect": "{type} 결함",
+      "dialogEyebrow": "사용자 기록 / 육안 관찰",
+      "dialogTitle": "픽셀 결함 마커",
+      "closeAria": "대화상자 닫기",
+      "locationLabel": "위치 (CSS X, Y):",
+      "relativePos": "상대 위치:",
+      "canvasSize": "캔버스 해상도:",
+      "defectTypeLabel": "결함 유형:",
+      "types": {
+        "dead": "● 암점·데드 픽셀 (검정)",
+        "stuck": "● 휘점·스턱 픽셀 (색상)",
+        "bright": "● 영구 발광 픽셀",
+        "unknown": "○ 기타 이상"
+      },
+      "notesLabel": "관찰 메모 (선택사항):",
+      "notesPlaceholder": "예: 흰색 배경에서 두드러짐",
+      "deleteMarker": "마커 삭제",
+      "done": "완료",
+      "listTitle": "기록된 픽셀 결함 목록",
+      "emptyList": "이 화면에 표시된 픽셀 결함이 없습니다.",
+      "closeBtn": "닫기"
+    }
   },
   "TestPages": {
     "backlight-bleed-test": {
@@ -1503,5 +1575,50 @@
     "deviation": "편차: {val}",
     "benchmarks": "수학적 벤치마크",
     "hardwareComparison": "화면 사양 및 기하 구조 비교"
+  },
+  "Faq": {
+    "metaTitle": "자주 묻는 질문 (FAQ) | Monitor Tester",
+    "metaDescription": "브라우저 기반 디스플레이 테스트, 불량 화소 감지, 색상 보정, 주사율 및 해상도에 대한 명확하고 기술적인 답변.",
+    "eyebrow": "도움말 & 기술 FAQ",
+    "title": "자주 묻는 질문",
+    "description": "브라우저 테스트가 감지할 수 있는 영역과 하드웨어적 한계, 정확한 테스트 결과를 얻는 방법을 기술적으로 솔직하게 설명합니다.",
+    "items": {
+      "q1": {
+        "question": "브라우저가 불량 화소를 자동으로 감지할 수 있나요?",
+        "answer": "아니요. 웹 브라우저는 물리적 하드웨어 서브픽셀을 직접 검사할 광학 센서나 카메라가 없습니다. 대신 Monitor Tester는 화면 전체에 단일 파장의 기본 색상(빨강, 초록, 파랑, 검정, 흰색, 마젠타, 시안, 노랑)을 꽉 채워 렌더링하여, 사용자가 어두운 암점(데드 픽셀)이나 켜진 광점(스턱 픽셀)을 100% 정밀도로 즉시 찾아낼 수 있도록 돕습니다."
+      },
+      "q2": {
+        "question": "노트북과 TV에서도 작동하나요?",
+        "answer": "네. Monitor Tester는 표준 웹 API(Canvas, requestAnimationFrame, Fullscreen API, MatchMedia)만을 기반으로 제작되어 Windows, macOS, ChromeOS, Linux, Android, iOS의 모든 최신 브라우저에서 실행됩니다. HDMI로 TV를 연결하여 테스트할 때는 화면 비율을 'Just Scan(원본 크기)' / 1:1로 설정하고 영상 모드를 'PC' 또는 '게임'으로 설정하세요."
+      },
+      "q3": {
+        "question": "내 디스플레이 데이터나 테스트 결과가 수집되나요?",
+        "answer": "아니요. Monitor Tester는 100% 클라이언트 측에서 실행되는 웹 유틸리티입니다. 진단 결과, 하드웨어 식별자, 화면 측정값은 외부 서버나 제3자 추적 서비스로 전송되지 않습니다. 기록하신 관찰 결과는 브라우저의 로컬 저장소(localStorage)에만 안전하게 보관되며 언제든지 삭제할 수 있습니다."
+      },
+      "q4": {
+        "question": "하드웨어 캘리브레이터(측색기)를 대체할 수 있나요?",
+        "answer": "아니요. 웹 브라우저는 물리적인 광학 센서(Calibrite, Datacolor Spyder 등) 없이 ICC 색상 프로파일을 생성하거나 Delta-E 색상 정확도를 측정할 수 없습니다. 시각적 그라데이션, 계조 램프, 색역 경계(sRGB, Display P3)를 제공하여 육안 조정을 돕지만, 센서 기반 캘리브레이션을 대신할 수는 없습니다."
+      },
+      "q5": {
+        "question": "브라우저가 화면 밝기(nits)를 측정할 수 있나요?",
+        "answer": "아니요. 브라우저는 백라이트나 OLED 유기 소자에서 방출되는 물리적 광도(cd/m² / nits)를 측정할 수 없습니다. 0%부터 100%까지 단계별 회색조 패치를 표시하여 암부(1~5%)와 명부(95~99%) 디테일이 뭉개지지 않도록 모니터 자체 밝기/명암 다이얼을 조정하는 데 도움을 줍니다."
+      },
+      "q6": {
+        "question": "브라우저가 픽셀 응답 속도(GtG / MPRT)를 측정할 수 있나요?",
+        "answer": "아니요. Gray-to-Gray(GtG) 응답 속도를 측정하려면 특수 초고속 광학 센서 오실로스코프나 추적 카메라가 필요합니다. 브라우저는 프레임 렌더링 주기를 측정할 뿐, 액정 분자의 물리적 회전 시간을 측정할 수는 없습니다. 잔상 테스트는 모니터의 오버드라이브 설정을 눈으로 보며 튜닝하도록 돕습니다."
+      },
+      "q7": {
+        "question": "감지된 해상도가 모니터 스펙과 다른 이유는 무엇인가요?",
+        "answer": "최신 운영체제는 고해상도 화면에서 글꼴과 UI를 읽기 쉽게 유지하기 위해 디스플레이 배율(125%, 150%, Retina/4K의 200% 등)을 적용합니다. window.screen 속성은 논리적 CSS 픽셀을 반환합니다. 논리 해상도에 window.devicePixelRatio(DPR)를 곱하면 실제 모니터의 물리적 네이티브 해상도가 계산됩니다."
+      },
+      "q8": {
+        "question": "주사율이 모니터 지원 사양보다 낮게 나오는 이유는 무엇인가요?",
+        "answer": "144Hz나 240Hz 모니터가 60Hz로만 표시되는 주요 원인은 다음과 같습니다: (1) Windows/macOS 디스플레이 설정에서 주사율이 기본값 60Hz로 남아있는 경우; (2) HDMI 케이블 대역폭 한계(1440p/4K 고주사율은 DisplayPort 또는 HDMI 2.1 필요); (3) 브라우저 하드웨어 가속 비활성화; 또는 (4) 배터리 절전 모드 작동."
+      }
+    },
+    "links": {
+      "knowledgeBase": "디스플레이 기술 지식베이스 탐색",
+      "testLibrary": "전체 테스트 라이브러리 둘러보기"
+    }
   }
 }

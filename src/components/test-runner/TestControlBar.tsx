@@ -87,13 +87,13 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
             : "bg-slate-50 border border-slate-200 text-slate-800"
         )}>
           <span className="font-semibold text-[11px] uppercase tracking-wider text-muted-foreground shrink-0 font-mono">
-            Observation:
+            {t("observationLabel")}
           </span>
           <input 
             type="text"
             value={observationNotes || ""}
             onChange={(e) => setObservationNotes(e.target.value)}
-            placeholder="Describe what you see (e.g., slight bright dot near upper left corner)..."
+            placeholder={t("observationPlaceholder")}
             className={cn(
               "flex-1 bg-transparent border-none outline-hidden text-xs",
               isFullscreen ? "text-white placeholder-white/40" : "text-slate-900 placeholder-slate-400"
@@ -104,7 +104,7 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
             onClick={() => setShowNotesInput(false)}
             className="text-[10px] uppercase font-mono tracking-wider opacity-60 hover:opacity-100 px-1"
           >
-            Close
+            {t("closeNote")}
           </button>
         </div>
       )}
@@ -123,7 +123,7 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
             <>
               <div className="flex items-center gap-1.5 text-muted-foreground text-xs font-semibold uppercase tracking-wider shrink-0 font-mono">
                 <Settings2 className="w-3.5 h-3.5" />
-                <span>Controls</span>
+                <span>{t("controlsLabel")}</span>
               </div>
               <div className="h-4 w-px bg-border/60 hidden md:block" />
               <div className="flex flex-wrap items-center gap-2">
@@ -146,10 +146,10 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
                       ? "bg-white/10 hover:bg-white/20 text-white border-white/20" 
                       : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"
                 )}
-                title="Click anywhere on screen to record suspicious pixel coordinates"
+                title={t("markDefectTitle")}
               >
                 <span className="text-[11px]">📍</span>
-                <span>{isPixelToolActive ? "Marking Active" : "Mark Defect"}</span>
+                <span>{isPixelToolActive ? t("markingActive") : t("markDefect")}</span>
                 {pixelDefects && pixelDefects.length > 0 && (
                   <span className="ml-0.5 px-1.5 py-0.2 bg-black/40 rounded-full text-[10px] font-mono">
                     {pixelDefects.length}
@@ -175,11 +175,11 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
                     ? "bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/40" 
                     : isFullscreen ? "hover:bg-white/10 text-white/70" : "hover:bg-slate-100 text-slate-600"
                 )}
-                title="Looks normal (Pass)"
+                title={t("looksNormalTitle")}
                 aria-pressed={observation === "PASS"}
               >
                 <CheckCircle2 className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Looks normal</span>
+                <span className="hidden sm:inline">{t("looksNormal")}</span>
               </button>
 
               <button
@@ -191,11 +191,11 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
                     ? "bg-red-500/20 text-red-600 dark:text-red-400 border border-red-500/40" 
                     : isFullscreen ? "hover:bg-white/10 text-white/70" : "hover:bg-slate-100 text-slate-600"
                 )}
-                title="Needs attention (Issue observed)"
+                title={t("needsAttentionTitle")}
                 aria-pressed={observation === "ISSUE"}
               >
                 <XCircle className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Needs attention</span>
+                <span className="hidden sm:inline">{t("needsAttention")}</span>
               </button>
 
               <button 
@@ -207,11 +207,11 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
                     ? "bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/40" 
                     : isFullscreen ? "hover:bg-white/10 text-white/70" : "hover:bg-slate-100 text-slate-600"
                 )}
-                title="Unsure"
+                title={t("unsureTitle")}
                 aria-pressed={observation === "CHECK" || observation === "UNSURE"}
               >
                 <HelpCircle className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Unsure</span>
+                <span className="hidden sm:inline">{t("unsure")}</span>
               </button>
 
               {/* Note toggle */}
@@ -224,9 +224,9 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
                     ? "bg-blue-100 text-blue-700" 
                     : isFullscreen ? "text-white/60 hover:text-white" : "text-slate-500 hover:text-slate-900"
                 )}
-                title="Add written observation note"
+                title={t("noteTitle")}
               >
-                📝 {observationNotes ? "Note Added" : "+ Note"}
+                📝 {observationNotes ? t("noteAdded") : t("addNote")}
               </button>
             </div>
           )}
@@ -238,27 +238,27 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
                 type="button"
                 onClick={goPrevInWorkflow} 
                 disabled={!hasPrevInWorkflow} 
-                aria-label="Previous test in sequence"
+                aria-label={t("prevAria")}
                 className="text-xs font-medium px-2.5 py-1.5 rounded-lg hover:bg-muted disabled:opacity-30 disabled:pointer-events-none transition-colors"
               >
-                Prev
+                {t("prev")}
               </button>
               <button 
                 type="button"
                 onClick={skipTestInWorkflow} 
-                aria-label="Skip test"
+                aria-label={t("skipAria")}
                 className="text-xs font-medium px-2.5 py-1.5 rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
-                title="Skip to next test without recording an issue"
+                title={t("skipTitle")}
               >
-                Skip
+                {t("skip")}
               </button>
               <button 
                 type="button"
                 onClick={goNextInWorkflow} 
-                aria-label={hasNextInWorkflow ? "Continue to next test" : "Finish inspection sequence"}
+                aria-label={hasNextInWorkflow ? t("continueAria") : t("completeAria")}
                 className="text-xs font-medium px-3.5 py-1.5 rounded-lg bg-foreground text-background hover:bg-foreground/90 transition-colors shadow-xs"
               >
-                {hasNextInWorkflow ? "Continue →" : "Complete & Report"}
+                {hasNextInWorkflow ? t("continue") : t("complete")}
               </button>
             </div>
           )}
@@ -269,18 +269,18 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
             onClick={toggleFullscreen}
             className="flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg hover:bg-muted transition-colors border border-border/40 ml-auto md:ml-0 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-hidden"
             title={isFullscreen ? t("exit") : t("fullscreen")}
-            aria-label={isFullscreen ? "Exit Fullscreen (F)" : "Enter Fullscreen (F)"}
+            aria-label={isFullscreen ? t("exitAria") : t("fullscreenAria")}
           >
             {isFullscreen ? (
               <>
                 <Minimize className="w-3.5 h-3.5" />
-                <span>Exit</span>
+                <span>{t("exit")}</span>
                 <kbd className="hidden sm:inline text-[10px] font-mono opacity-50 ml-0.5">[F]</kbd>
               </>
             ) : (
               <>
                 <Maximize className="w-3.5 h-3.5" />
-                <span>Fullscreen</span>
+                <span>{t("fullscreen")}</span>
                 <kbd className="hidden sm:inline text-[10px] font-mono opacity-50 ml-0.5">[F]</kbd>
               </>
             )}
@@ -292,7 +292,7 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
       {/* Subtle ESC hint in fullscreen */}
       {isFullscreen && (
         <div className="text-white/40 text-[10px] font-mono tracking-widest uppercase mt-2 text-center select-none">
-          Press ESC or F to exit fullscreen • Space to pause
+          {t("fullscreenHelp")}
         </div>
       )}
     </div>

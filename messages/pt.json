@@ -319,7 +319,79 @@
     "howToTest": "Como testar",
     "startTest": "Iniciar Teste",
     "fullscreen": "Tela Cheia",
-    "exit": "Sair"
+    "exit": "Sair",
+    "observationLabel": "Observação:",
+    "observationPlaceholder": "Descreva o que você observa (ex.: ponto brilhante tênue perto do canto superior esquerdo)...",
+    "closeNote": "Fechar",
+    "controlsLabel": "Controles",
+    "markDefect": "Marcar defeito",
+    "markingActive": "Marcação ativa",
+    "markDefectTitle": "Clique na tela para registrar as coordenadas de pixels suspeitos",
+    "looksNormal": "Normal (Verificado)",
+    "looksNormalTitle": "Parece normal (Aprovado)",
+    "needsAttention": "Requer atenção",
+    "needsAttentionTitle": "Problema observado",
+    "unsure": "Incerto",
+    "unsureTitle": "Não tenho certeza",
+    "addNote": "+ Nota",
+    "noteAdded": "Nota gravada",
+    "noteTitle": "Adicionar nota de observação escrita",
+    "prev": "Ant",
+    "prevAria": "Teste anterior na sequência",
+    "skip": "Pular",
+    "skipAria": "Pular teste",
+    "skipTitle": "Ir para o próximo teste sem registrar problema",
+    "continue": "Continuar →",
+    "continueAria": "Continuar para o próximo teste",
+    "complete": "Concluir e ver relatório",
+    "completeAria": "Concluir sequência de inspeção",
+    "fullscreenAria": "Tela cheia (F)",
+    "exitAria": "Sair da tela cheia (F)",
+    "fullscreenHelp": "Pressione ESC ou F para sair da tela cheia • Espaço para pausar",
+    "queue": {
+      "eyebrow": "Sequência de inspeção",
+      "title": "Gerenciador de fila de testes",
+      "close": "Fechar",
+      "closeAria": "Fechar gerenciador de fila",
+      "completedStats": "{completed} de {total} concluídos",
+      "currentStep": "Atual: Etapa {step}",
+      "remaining": "{count} restantes",
+      "addPlaceholder": "+ Adicionar teste à fila...",
+      "addBtn": "Adicionar",
+      "activeBadge": "Ativo",
+      "moveUp": "Mover para cima",
+      "moveDown": "Mover para baixo",
+      "remove": "Remover da fila",
+      "restart": "Reiniciar",
+      "completeReport": "Concluir e ver relatório"
+    },
+    "pixelDefect": {
+      "bannerInstruction": "Clique em qualquer lugar para marcar o defeito de pixel",
+      "doneMarking": "Concluir marcação",
+      "pinTitle": "MARCADO PELO USUÁRIO: Defeito {type} em X: {x}, Y: {y}",
+      "pinBadgeUserMarked": "MARCADO PELO USUÁRIO",
+      "pinBadgeDefect": "Defeito {type}",
+      "dialogEyebrow": "MARCADO PELO USUÁRIO / OBSERVADO",
+      "dialogTitle": "Marcador de anomalia de pixel",
+      "closeAria": "Fechar diálogo",
+      "locationLabel": "Localização (CSS X, Y):",
+      "relativePos": "Posição relativa:",
+      "canvasSize": "Tamanho do canvas:",
+      "defectTypeLabel": "Tipo de defeito:",
+      "types": {
+        "dead": "● Pixel morto (Preto)",
+        "stuck": "● Pixel preso (Cor)",
+        "bright": "● Pixel brilhante",
+        "unknown": "○ Outra anomalia"
+      },
+      "notesLabel": "Nota de observação (opcional):",
+      "notesPlaceholder": "ex.: Visível sobre fundo branco",
+      "deleteMarker": "Excluir marcador",
+      "done": "Pronto",
+      "listTitle": "Defeitos de pixels observados",
+      "emptyList": "Nenhum defeito de pixel marcado nesta tela.",
+      "closeBtn": "Fechar"
+    }
   },
   "TestPages": {
     "backlight-bleed-test": {
@@ -1503,5 +1575,50 @@
     "deviation": "Desvio: {val}",
     "benchmarks": "Métricas Matemáticas",
     "hardwareComparison": "Comparativo de Hardware e Geometria"
+  },
+  "Faq": {
+    "metaTitle": "Perguntas Frequentes (FAQ) | Monitor Tester",
+    "metaDescription": "Respostas técnicas claras e honestas sobre testes de tela no navegador, detecção de dead pixels, calibração de cor, taxa de atualização e resolução.",
+    "eyebrow": "AJUDA & FAQ TÉCNICO",
+    "title": "Perguntas Frequentes",
+    "description": "Explicações técnicas rigorosas sobre o que os testes no navegador podem avaliar, seus limites físicos e como obter os resultados mais precisos.",
+    "items": {
+      "q1": {
+        "question": "Um navegador pode detectar dead pixels automaticamente?",
+        "answer": "Não. Um navegador web não possui sensores ópticos ou câmera para inspecionar subpixels de hardware. Em vez disso, o Monitor Tester renderiza campos de cores primárias puras de ponta a ponta (vermelho, verde, azul, preto, branco, magenta, ciano, amarelo), permitindo que o olho humano identifique pontos escuros (mortos) ou permanentemente brilhantes (presos) com 100% de precisão."
+      },
+      "q2": {
+        "question": "Funciona em notebooks e televisores?",
+        "answer": "Sim. O Monitor Tester é construído exclusivamente sobre APIs web padronizadas (Canvas, requestAnimationFrame, Fullscreen API, MatchMedia) e roda em qualquer navegador moderno no Windows, macOS, ChromeOS, Linux, Android e iOS. Em TVs via HDMI, configure o aspecto para 'Just Scan' / 1:1 e o modo de imagem para 'PC' ou 'Jogos' para evitar cortes ou nitidez artificial excessiva."
+      },
+      "q3": {
+        "question": "Os dados da minha tela ou os resultados dos testes são coletados?",
+        "answer": "Não. O Monitor Tester é um utilitário puramente do lado do cliente. Nenhuma observação diagnóstica, identificador de hardware ou métrica de tela é transmitida a servidores remotos ou serviços de rastreamento. Suas anotações (PASS, CHECK, ISSUE) ficam salvas no armazenamento local do seu navegador e podem ser limpas a qualquer momento."
+      },
+      "q4": {
+        "question": "Pode substituir um colorímetro ou espectrofotômetro de hardware?",
+        "answer": "Não. Um navegador web não consegue gerar perfis de cor ICC ou calibrar precisão Delta-E sem um sensor óptico físico (como Calibrite ou Datacolor Spyder). O utilitário fornece gradientes visuais, rampas de escala de cinza e limites de gama (sRGB, Display P3) para ajuste visual de contraste e gama, mas não substitui a calibração por hardware."
+      },
+      "q5": {
+        "question": "Um navegador pode medir o brilho da tela (nits)?",
+        "answer": "Não. Navegadores não podem medir a luminância fotométrica física (candela por metro quadrado / nits) emitida pelo backlight ou diodos OLED. O navegador exibe blocos graduados de 0% a 100% de escala de cinza para você ajustar brilho e contraste até distinguir os tons próximos ao preto (1–5%) e ao branco (95–99%) sem cortes."
+      },
+      "q6": {
+        "question": "Um navegador pode medir o tempo de resposta do pixel (GtG / MPRT)?",
+        "answer": "Não. A medição de transição cinza para cinza (GtG) exige osciloscópios com fotodiodos ópticos ou câmeras de perseguição de alta velocidade. O navegador afere os intervalos de quadros via requestAnimationFrame, mas não mede o tempo de rotação dos cristais líquidos. O teste de Ghosting ajuda a afinar o overdrive visualmente."
+      },
+      "q7": {
+        "question": "Por que a resolução detectada difere da especificação do meu monitor?",
+        "answer": "Sistemas operacionais modernos aplicam fatores de escala (como 125%, 150% ou 200% em notebooks Retina/4K) para manter a interface legível. As dimensões de window.screen reportam pixels CSS lógicos. A multiplicação da resolução lógica pelo window.devicePixelRatio (DPR) revela a resolução nativa física do painel."
+      },
+      "q8": {
+        "question": "Por que minha taxa de atualização é menor do que a que o monitor suporta?",
+        "answer": "Se o seu monitor de 144Hz ou 240Hz acusa apenas 60Hz no teste, as causas comuns são: (1) As configurações de tela do Windows/macOS estão travadas em 60Hz por padrão; (2) Limitação de largura de banda do cabo HDMI (DisplayPort ou HDMI 2.1 é necessário para altas taxas em 1440p/4K); (3) Aceleração de hardware desativada no navegador; ou (4) Modo de economia de bateria ativo."
+      }
+    },
+    "links": {
+      "knowledgeBase": "Explorar base de conhecimento de telas",
+      "testLibrary": "Navegar pelo catálogo completo de testes"
+    }
   }
 }

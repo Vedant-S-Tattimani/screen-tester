@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { 
   PixelDefectMarker, 
   PixelDefectType, 
@@ -27,6 +28,7 @@ export function PixelDefectOverlay({
   viewportRef,
   isFullscreen
 }: PixelDefectOverlayProps) {
+  const t = useTranslations("TestWrapper");
   const [markers, setMarkers] = useState<PixelDefectMarker[]>([]);
   const [selectedMarker, setSelectedMarker] = useState<PixelDefectMarker | null>(null);
   const [showListModal, setShowListModal] = useState(false);
@@ -47,6 +49,21 @@ export function PixelDefectOverlay({
       loadMarkers();
     });
   }, [loadMarkers]);
+
+  // Handle Escape key to close popover or modal
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        if (selectedMarker) {
+          setSelectedMarker(null);
+        } else if (showListModal) {
+          setShowListModal(false);
+        }
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedMarker, showListModal]);
 
   // Handle clicking on viewport when marker mode is active
   const handleViewportClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -125,13 +142,13 @@ export function PixelDefectOverlay({
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
             </span>
-            <span>Click anywhere to mark pixel defect</span>
+            <span>{t("pixelDefect.bannerInstruction")}</span>
             <span className="text-white/40">|</span>
             <button 
               onClick={(e) => { e.stopPropagation(); onToggleActive(); }}
               className="text-white/70 hover:text-white underline text-[11px]"
             >
-              Done Marking
+              {t("pixelDefect.doneMarking")}
             </button>
           </div>
         )}
@@ -151,7 +168,7 @@ export function PixelDefectOverlay({
                 top: `${marker.yPercent}%`
               }}
               className="defect-pin absolute -translate-x-1/2 -translate-y-1/2 z-30 pointer-events-auto cursor-pointer group"
-              title={`USER-MARKED: ${marker.type.toUpperCase()} pixel defect at X: ${marker.x}, Y: ${marker.y}`}
+              title={t("pixelDefect.pinTitle", { type: marker.type.toUpperCase(), x: marker.x, y: marker.y })}
             >
               {/* Pin Ring Target */}
               <div className="relative flex items-center justify-center">
@@ -169,9 +186,9 @@ export function PixelDefectOverlay({
 
               {/* Pin Hover Badge */}
               <div className="hidden group-hover:block absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 whitespace-nowrap bg-black/90 text-white text-[10px] font-mono px-2 py-1 rounded shadow-xl border border-white/10 pointer-events-none">
-                <div className="text-red-400 font-bold uppercase">USER-MARKED</div>
+                <div className="text-red-400 font-bold uppercase">{t("pixelDefect.pinBadgeUserMarked")}</div>
                 <div>X: {marker.x} px | Y: {marker.y} px</div>
-                <div className="capitalize text-white/70">{marker.type} defect</div>
+                <div className="capitalize text-white/70">{t("pixelDefect.pinBadgeDefect", { type: marker.type })}</div>
               </div>
             </div>
           );
@@ -181,6 +198,9 @@ export function PixelDefectOverlay({
       {/* Marker Edit Popover Dialog */}
       {selectedMarker && (
         <div 
+          role="dialog"
+          aria-modal="false"
+          aria-labelledby="pixel-flaw-dialog-title"
           className={cn(
             "defect-dialog fixed z-50 bg-white text-slate-900 rounded-2xl shadow-2xl border border-slate-200 p-5 w-80 font-sans animate-in fade-in zoom-in-95 duration-150",
             isFullscreen ? "bottom-24 left-1/2 -translate-x-1/2" : "bottom-6 right-6"
@@ -190,15 +210,16 @@ export function PixelDefectOverlay({
             <div>
               <div className="text-[10px] font-mono uppercase tracking-wider text-amber-600 font-bold flex items-center gap-1">
                 <AlertTriangle className="w-3 h-3" />
-                USER-MARKED / OBSERVED
+                {t("pixelDefect.dialogEyebrow")}
               </div>
-              <div className="text-sm font-semibold text-slate-900 mt-0.5">
-                Pixel Flaw Marker
+              <div id="pixel-flaw-dialog-title" className="text-sm font-semibold text-slate-900 mt-0.5">
+                {t("pixelDefect.dialogTitle")}
               </div>
             </div>
             <button 
               onClick={() => setSelectedMarker(null)}
-              className="text-slate-400 hover:text-slate-700 p-1 rounded-md"
+              aria-label={t("pixelDefect.closeAria")}
+              className="text-slate-500 hover:text-slate-700 p-1 rounded-md"
             >
               <X className="w-4 h-4" />
             </button>
@@ -207,50 +228,47 @@ export function PixelDefectOverlay({
           <div className="space-y-3 text-xs">
             <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200/80 font-mono text-[11px] space-y-1">
               <div className="flex justify-between text-slate-600">
-                <span>Location (CSS X, Y):</span>
+                <span>{t("pixelDefect.locationLabel")}</span>
                 <span className="font-bold text-slate-900">{selectedMarker.x}px, {selectedMarker.y}px</span>
               </div>
               <div className="flex justify-between text-slate-600">
-                <span>Relative Position:</span>
+                <span>{t("pixelDefect.relativePos")}</span>
                 <span className="font-bold text-slate-900">{selectedMarker.xPercent}%, {selectedMarker.yPercent}%</span>
               </div>
               <div className="flex justify-between text-slate-500 text-[10px]">
-                <span>Canvas Size:</span>
+                <span>{t("pixelDefect.canvasSize")}</span>
                 <span>{selectedMarker.viewportWidth} × {selectedMarker.viewportHeight}</span>
               </div>
             </div>
 
             <div>
-              <label className="block font-medium text-slate-700 mb-1.5">Defect Type:</label>
+              <label className="block font-medium text-slate-700 mb-1.5">{t("pixelDefect.defectTypeLabel")}</label>
               <div className="grid grid-cols-2 gap-1.5">
-                {(["dead", "stuck", "bright", "unknown"] as PixelDefectType[]).map((t) => (
+                {(["dead", "stuck", "bright", "unknown"] as PixelDefectType[]).map((defectType) => (
                   <button
-                    key={t}
+                    key={defectType}
                     type="button"
-                    onClick={() => handleUpdateType(t)}
+                    onClick={() => handleUpdateType(defectType)}
                     className={cn(
                       "px-2.5 py-1.5 rounded-md border text-center font-medium capitalize transition-colors",
-                      selectedMarker.type === t 
-                        ? "bg-slate-900 text-white border-slate-900 shadow-xs" 
+                      selectedMarker.type === defectType
+                        ? "bg-slate-900 text-white border-slate-900 shadow-xs"
                         : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
                     )}
                   >
-                    {t === "dead" && "● Dead (Black)"}
-                    {t === "stuck" && "● Stuck (Color)"}
-                    {t === "bright" && "● Bright Pixel"}
-                    {t === "unknown" && "○ Other Flaw"}
+                    {t(`pixelDefect.types.${defectType}`)}
                   </button>
                 ))}
               </div>
             </div>
 
             <div>
-              <label className="block font-medium text-slate-700 mb-1">Observation Note (optional):</label>
+              <label className="block font-medium text-slate-700 mb-1">{t("pixelDefect.notesLabel")}</label>
               <input 
                 type="text"
                 value={selectedMarker.notes || ""}
                 onChange={(e) => handleUpdateNotes(e.target.value)}
-                placeholder="e.g., Noticeable on white background"
+                placeholder={t("pixelDefect.notesPlaceholder")}
                 className="w-full px-2.5 py-1.5 border border-slate-200 rounded-md text-xs focus:ring-1 focus:ring-blue-500 focus:outline-hidden"
               />
             </div>
@@ -262,14 +280,14 @@ export function PixelDefectOverlay({
                 className="flex items-center gap-1 text-red-600 hover:text-red-700 hover:bg-red-50 px-2 py-1 rounded transition-colors text-xs"
               >
                 <Trash2 className="w-3.5 h-3.5" />
-                <span>Delete Marker</span>
+                <span>{t("pixelDefect.deleteMarker")}</span>
               </button>
               <button
                 type="button"
                 onClick={() => setSelectedMarker(null)}
                 className="px-3 py-1 bg-slate-900 text-white rounded hover:bg-slate-800 text-xs font-medium"
               >
-                Done
+                {t("pixelDefect.done")}
               </button>
             </div>
           </div>
@@ -278,23 +296,29 @@ export function PixelDefectOverlay({
 
       {/* Markers List Modal */}
       {showListModal && (
-        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="pixel-defect-list-title"
+          className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4"
+        >
           <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
             <div className="flex items-center justify-between border-b pb-3 mb-4">
               <div>
-                <h3 className="font-bold text-slate-900">User-Observed Pixel Defects</h3>
-                <p className="text-xs text-amber-600 font-mono">USER-MARKED / OBSERVED</p>
+                <h3 id="pixel-defect-list-title" className="font-bold text-slate-900">{t("pixelDefect.listTitle")}</h3>
+                <p className="text-xs text-amber-600 font-mono">{t("pixelDefect.dialogEyebrow")}</p>
               </div>
               <button 
                 onClick={() => setShowListModal(false)}
-                className="text-slate-400 hover:text-slate-700"
+                aria-label={t("pixelDefect.closeAria")}
+                className="text-slate-500 hover:text-slate-700"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             {markers.length === 0 ? (
-              <p className="text-sm text-slate-500 py-6 text-center">No pixel defects marked on this screen.</p>
+              <p className="text-sm text-slate-500 py-6 text-center">{t("pixelDefect.emptyList")}</p>
             ) : (
               <div className="space-y-2 max-h-60 overflow-y-auto pr-1">
                 {markers.map((m, i) => (
@@ -307,7 +331,8 @@ export function PixelDefectOverlay({
                     <button 
                       onClick={() => handleDeleteMarker(m.id)}
                       className="text-red-500 hover:text-red-700 p-1"
-                      title="Delete marker"
+                      title={t("pixelDefect.deleteMarker")}
+                      aria-label={t("pixelDefect.deleteMarker")}
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                     </button>
@@ -321,7 +346,7 @@ export function PixelDefectOverlay({
                 onClick={() => setShowListModal(false)}
                 className="px-4 py-2 bg-slate-900 text-white text-xs font-medium rounded-lg"
               >
-                Close
+                {t("pixelDefect.closeBtn")}
               </button>
             </div>
           </div>

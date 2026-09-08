@@ -66,7 +66,7 @@ export function Header() {
           <span className="font-mono text-[13px] sm:text-[14px] font-bold uppercase tracking-[0.14em] text-gray-950 block leading-tight">
             MONITOR TESTER
           </span>
-          <span className="text-[8.5px] font-mono font-medium tracking-[0.2em] text-gray-400 block uppercase">
+          <span className="text-[8.5px] font-mono font-medium tracking-[0.2em] text-gray-500 block uppercase">
             CHECK · INSPECT · UNDERSTAND
           </span>
         </Link>
@@ -89,12 +89,12 @@ export function Header() {
               aria-expanded={openDropdown === "tests"}
             >
               <span>{t("nav.tests")}</span>
-              <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-150 ${openDropdown === "tests" ? "rotate-180 text-gray-900" : "text-gray-400"}`} />
+              <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-150 ${openDropdown === "tests" ? "rotate-180 text-gray-900" : "text-gray-500"}`} />
             </button>
 
             {openDropdown === "tests" && (
               <div className="absolute top-full left-1/2 -translate-x-1/2 w-64 bg-white border border-gray-200/90 rounded-2xl shadow-xl p-2 z-50 animate-in fade-in-50 zoom-in-95 duration-100">
-                <div className="text-[10px] font-mono uppercase tracking-wider text-gray-400 px-3 py-1.5 border-b border-gray-100 mb-1">
+                <div className="text-[10px] font-mono uppercase tracking-wider text-gray-500 px-3 py-1.5 border-b border-gray-100 mb-1">
                   {t("dropdown.popularTests")}
                 </div>
                 <div className="space-y-0.5">
@@ -104,7 +104,7 @@ export function Header() {
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
                     <span>{t("dropdown.deadPixels")}</span>
-                    <span className="text-[10px] text-gray-400 font-mono">PIXELS</span>
+                    <span className="text-[10px] text-gray-500 font-mono">PIXELS</span>
                   </Link>
                   <Link 
                     href="/tests/color-test"
@@ -112,7 +112,7 @@ export function Header() {
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
                     <span>{t("dropdown.colorTest")}</span>
-                    <span className="text-[10px] text-gray-400 font-mono">COLOR</span>
+                    <span className="text-[10px] text-gray-500 font-mono">COLOR</span>
                   </Link>
                   <Link 
                     href="/tests/brightness-test"
@@ -120,7 +120,7 @@ export function Header() {
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
                     <span>{t("dropdown.brightness")}</span>
-                    <span className="text-[10px] text-gray-400 font-mono">LUM</span>
+                    <span className="text-[10px] text-gray-500 font-mono">LUM</span>
                   </Link>
                   <Link 
                     href="/tests/contrast-test"
@@ -128,7 +128,7 @@ export function Header() {
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
                     <span>{t("dropdown.contrast")}</span>
-                    <span className="text-[10px] text-gray-400 font-mono">LUM</span>
+                    <span className="text-[10px] text-gray-500 font-mono">LUM</span>
                   </Link>
                   <Link 
                     href="/tests/ghosting-test"
@@ -136,7 +136,7 @@ export function Header() {
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
                     <span>{t("dropdown.ghosting")}</span>
-                    <span className="text-[10px] text-gray-400 font-mono">MOTION</span>
+                    <span className="text-[10px] text-gray-500 font-mono">MOTION</span>
                   </Link>
                   <Link 
                     href="/tests/refresh-rate-test"
@@ -144,7 +144,7 @@ export function Header() {
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
                     <span>{t("dropdown.refreshRate")}</span>
-                    <span className="text-[10px] text-gray-400 font-mono">HZ</span>
+                    <span className="text-[10px] text-gray-500 font-mono">HZ</span>
                   </Link>
                 </div>
                 <div className="mt-1 pt-1 border-t border-gray-100">
@@ -176,12 +176,12 @@ export function Header() {
               aria-expanded={openDropdown === "inspection"}
             >
               <span>{t("nav.inspection")}</span>
-              <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-150 ${openDropdown === "inspection" ? "rotate-180 text-gray-900" : "text-gray-400"}`} />
+              <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-150 ${openDropdown === "inspection" ? "rotate-180 text-gray-900" : "text-gray-500"}`} />
             </button>
 
             {openDropdown === "inspection" && (
               <div className="absolute top-full left-1/2 -translate-x-1/2 w-64 bg-white border border-gray-200/90 rounded-2xl shadow-xl p-2 z-50 animate-in fade-in-50 zoom-in-95 duration-100">
-                <div className="text-[10px] font-mono uppercase tracking-wider text-gray-400 px-3 py-1.5 border-b border-gray-100 mb-1">
+                <div className="text-[10px] font-mono uppercase tracking-wider text-gray-500 px-3 py-1.5 border-b border-gray-100 mb-1">
                   {t("dropdown.troubleshootInspect")}
                 </div>
                 <div className="space-y-0.5">
@@ -199,7 +199,7 @@ export function Header() {
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
                     <span>{t("dropdown.generalCheckup")}</span>
-                    <span className="text-[10px] text-gray-400">{t("dropdown.subAllRound")}</span>
+                    <span className="text-[10px] text-gray-500">{t("dropdown.subAllRound")}</span>
                   </Link>
                   <Link 
                     href="/monitor-inspection/used"
@@ -207,7 +207,7 @@ export function Header() {
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
                     <span>{t("dropdown.usedMonitor")}</span>
-                    <span className="text-[10px] text-gray-400">{t("dropdown.subPrePurchase")}</span>
+                    <span className="text-[10px] text-gray-500">{t("dropdown.subPrePurchase")}</span>
                   </Link>
                   <Link 
                     href="/monitor-inspection/gaming"
@@ -215,7 +215,7 @@ export function Header() {
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
                     <span>{t("dropdown.gamingDisplay")}</span>
-                    <span className="text-[10px] text-gray-400">{t("dropdown.subHzMotion")}</span>
+                    <span className="text-[10px] text-gray-500">{t("dropdown.subHzMotion")}</span>
                   </Link>
                   <Link 
                     href="/monitor-inspection/oled"
@@ -223,7 +223,7 @@ export function Header() {
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
                     <span>{t("dropdown.oledDisplay")}</span>
-                    <span className="text-[10px] text-gray-400">{t("dropdown.subBurnIn")}</span>
+                    <span className="text-[10px] text-gray-500">{t("dropdown.subBurnIn")}</span>
                   </Link>
                   <Link 
                     href="/monitor-inspection/laptop"
@@ -231,7 +231,7 @@ export function Header() {
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
                     <span>{t("dropdown.laptopDisplay")}</span>
-                    <span className="text-[10px] text-gray-400">{t("dropdown.subDpiScale")}</span>
+                    <span className="text-[10px] text-gray-500">{t("dropdown.subDpiScale")}</span>
                   </Link>
                   <Link 
                     href="/monitor-inspection/tv"
@@ -239,7 +239,7 @@ export function Header() {
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
                     <span>{t("inspection.tv")}</span>
-                    <span className="text-[10px] text-gray-400">{t("inspection.tvSubtitle")}</span>
+                    <span className="text-[10px] text-gray-500">{t("inspection.tvSubtitle")}</span>
                   </Link>
                 </div>
                 <div className="mt-1 pt-1 border-t border-gray-100 flex flex-col gap-0.5">
@@ -279,12 +279,12 @@ export function Header() {
               aria-expanded={openDropdown === "tools"}
             >
               <span>{t("nav.tools")}</span>
-              <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-150 ${openDropdown === "tools" ? "rotate-180 text-gray-900" : "text-gray-400"}`} />
+              <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-150 ${openDropdown === "tools" ? "rotate-180 text-gray-900" : "text-gray-500"}`} />
             </button>
 
             {openDropdown === "tools" && (
               <div className="absolute top-full left-1/2 -translate-x-1/2 w-64 bg-white border border-gray-200/90 rounded-2xl shadow-xl p-2 z-50 animate-in fade-in-50 zoom-in-95 duration-100">
-                <div className="text-[10px] font-mono uppercase tracking-wider text-gray-400 px-3 py-1.5 border-b border-gray-100 mb-1">
+                <div className="text-[10px] font-mono uppercase tracking-wider text-gray-500 px-3 py-1.5 border-b border-gray-100 mb-1">
                   {t("dropdown.utilitiesTools")}
                 </div>
                 <div className="space-y-0.5">
@@ -294,7 +294,7 @@ export function Header() {
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
                     <span>{t("dropdown.displayInfo")}</span>
-                    <span className="text-[10px] text-gray-400 font-mono">GPU / INFO</span>
+                    <span className="text-[10px] text-gray-500 font-mono">GPU / INFO</span>
                   </Link>
                   <Link 
                     href="/tests/resolution-checker"
@@ -302,7 +302,7 @@ export function Header() {
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
                     <span>{t("dropdown.resolutionPpi")}</span>
-                    <span className="text-[10px] text-gray-400 font-mono">GEOMETRY</span>
+                    <span className="text-[10px] text-gray-500 font-mono">GEOMETRY</span>
                   </Link>
                   <Link 
                     href="/tests/compare-displays"
@@ -310,7 +310,7 @@ export function Header() {
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
                     <span>{t("dropdown.compareDisplays")}</span>
-                    <span className="text-[10px] text-gray-400 font-mono">COMPARE</span>
+                    <span className="text-[10px] text-gray-500 font-mono">COMPARE</span>
                   </Link>
                   <Link 
                     href="/tests/custom-pattern"
@@ -318,7 +318,7 @@ export function Header() {
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
                     <span>{t("dropdown.customPattern")}</span>
-                    <span className="text-[10px] text-gray-400 font-mono">PATTERN</span>
+                    <span className="text-[10px] text-gray-500 font-mono">PATTERN</span>
                   </Link>
                 </div>
                 <div className="mt-1 pt-1 border-t border-gray-100">
@@ -350,12 +350,12 @@ export function Header() {
               aria-expanded={openDropdown === "guides"}
             >
               <span>{t("nav.guides")}</span>
-              <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-150 ${openDropdown === "guides" ? "rotate-180 text-gray-900" : "text-gray-400"}`} />
+              <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-150 ${openDropdown === "guides" ? "rotate-180 text-gray-900" : "text-gray-500"}`} />
             </button>
 
             {openDropdown === "guides" && (
               <div className="absolute top-full left-1/2 -translate-x-1/2 w-64 bg-white border border-gray-200/90 rounded-2xl shadow-xl p-2 z-50 animate-in fade-in-50 zoom-in-95 duration-100">
-                <div className="text-[10px] font-mono uppercase tracking-wider text-gray-400 px-3 py-1.5 border-b border-gray-100 mb-1">
+                <div className="text-[10px] font-mono uppercase tracking-wider text-gray-500 px-3 py-1.5 border-b border-gray-100 mb-1">
                   {t("dropdown.practicalGuides")}
                 </div>
                 <div className="space-y-0.5">

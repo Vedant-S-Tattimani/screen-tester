@@ -26,7 +26,7 @@ export function Footer() {
               <span className="font-mono text-[13px] sm:text-[14px] font-bold uppercase tracking-[0.14em] text-gray-950 block leading-tight">
                 MONITOR TESTER
               </span>
-              <span className="text-[8.5px] font-mono font-medium tracking-[0.2em] text-gray-400 block uppercase mt-0.5">
+              <span className="text-[8.5px] font-mono font-medium tracking-[0.2em] text-gray-500 block uppercase mt-0.5">
                 CHECK · INSPECT · UNDERSTAND
               </span>
             </Link>

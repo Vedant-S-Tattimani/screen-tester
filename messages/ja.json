@@ -319,7 +319,79 @@
     "howToTest": "テスト方法",
     "startTest": "テスト開始",
     "fullscreen": "フルスクリーン",
-    "exit": "終了"
+    "exit": "終了",
+    "observationLabel": "観察結果:",
+    "observationPlaceholder": "目視で確認した状態を入力（例: 左上付近にわずかな輝点あり）...",
+    "closeNote": "閉じる",
+    "controlsLabel": "操作パネル",
+    "markDefect": "欠陥をマーク",
+    "markingActive": "マーク中",
+    "markDefectTitle": "画面上をクリックして気になるピクセル座標を記録",
+    "looksNormal": "正常 (確認済)",
+    "looksNormalTitle": "正常に見える (合格)",
+    "needsAttention": "要確認",
+    "needsAttentionTitle": "問題を確認",
+    "unsure": "不明",
+    "unsureTitle": "判断が難しい",
+    "addNote": "+ メモ",
+    "noteAdded": "メモ追加済",
+    "noteTitle": "目視メモを追記する",
+    "prev": "前へ",
+    "prevAria": "シーケンスの前のテストへ戻る",
+    "skip": "スキップ",
+    "skipAria": "テストをスキップ",
+    "skipTitle": "問題を記録せずに次のテストへ進む",
+    "continue": "次へ進む →",
+    "continueAria": "次のテストへ進む",
+    "complete": "完了 & レポート",
+    "completeAria": "点検シーケンスを完了する",
+    "fullscreenAria": "全画面表示 (F)",
+    "exitAria": "全画面を終了 (F)",
+    "fullscreenHelp": "ESC または F キーで全画面終了 • スペースキーで一時停止",
+    "queue": {
+      "eyebrow": "点検シーケンス",
+      "title": "テストキュー管理",
+      "close": "閉じる",
+      "closeAria": "キュー管理を閉じる",
+      "completedStats": "{total} 件中 {completed} 件完了",
+      "currentStep": "現在: ステップ {step}",
+      "remaining": "残り {count} 件",
+      "addPlaceholder": "+ テストをキューに追加...",
+      "addBtn": "追加",
+      "activeBadge": "実行中",
+      "moveUp": "上へ移動",
+      "moveDown": "下へ移動",
+      "remove": "キューから削除",
+      "restart": "最初から再開",
+      "completeReport": "完了してレポートを見る"
+    },
+    "pixelDefect": {
+      "bannerInstruction": "画面上をクリックしてピクセル欠陥をマークしてください",
+      "doneMarking": "マーク完了",
+      "pinTitle": "ユーザーマーク: {type} ピクセル欠陥 (X: {x}, Y: {y})",
+      "pinBadgeUserMarked": "ユーザーマーク",
+      "pinBadgeDefect": "{type} 欠陥",
+      "dialogEyebrow": "ユーザー記録 / 目視観察",
+      "dialogTitle": "ピクセル欠陥マーカー",
+      "closeAria": "ダイアログを閉じる",
+      "locationLabel": "座標 (CSS X, Y):",
+      "relativePos": "相対位置:",
+      "canvasSize": "キャンバス解像度:",
+      "defectTypeLabel": "欠陥の種類:",
+      "types": {
+        "dead": "● 黒点・デッドピクセル (黒)",
+        "stuck": "● 輝点・スタックピクセル (色)",
+        "bright": "● 常時点灯ピクセル",
+        "unknown": "○ その他の不具合"
+      },
+      "notesLabel": "観察メモ (任意):",
+      "notesPlaceholder": "例: 白背景で目立つ",
+      "deleteMarker": "マーカーを削除",
+      "done": "完了",
+      "listTitle": "記録されたピクセル欠陥一覧",
+      "emptyList": "この画面で記録されたピクセル欠陥はありません。",
+      "closeBtn": "閉じる"
+    }
   },
   "TestPages": {
     "backlight-bleed-test": {
@@ -1503,5 +1575,50 @@
     "deviation": "誤差: {val}",
     "benchmarks": "幾何数学ベンチマーク",
     "hardwareComparison": "画面仕様・幾何比較"
+  },
+  "Faq": {
+    "metaTitle": "よくある質問 (FAQ) | Monitor Tester",
+    "metaDescription": "ブラウザベースのディスプレイテスト、ドット抜け検出、カラーキャリブレーション、リフレッシュレート、解像度に関する明確で技術的な回答。",
+    "eyebrow": "ヘルプ & テクニカル FAQ",
+    "title": "よくある質問",
+    "description": "ブラウザテストで検出できる項目、測定できない物理的限界、正確な結果を得るための方法を技術的に正直に解説します。",
+    "items": {
+      "q1": {
+        "question": "ブラウザはドット抜けを自動検出できますか？",
+        "answer": "いいえ。Webブラウザには物理ハードウェアのサブピクセルを検査する光学センサーやカメラがありません。Monitor Testerは画面全体に単一周波の原色（赤、緑、青、黒、白、マゼンタ、シアン、黄）を隙間なく表示し、人間の目で黒点（デッドピクセル）や輝点（スタックピクセル）を100%の精度で直ちに識別できるようにします。"
+      },
+      "q2": {
+        "question": "ノートPCやテレビでも利用できますか？",
+        "answer": "はい。Monitor Testerは標準Web API（Canvas、requestAnimationFrame、Fullscreen API、MatchMedia）上に構築されており、Windows、macOS、ChromeOS、Linux、Android、iOSのモダンブラウザで動作します。テレビをHDMI接続してテストする場合は、画面比率を「ジャストスキャン」/ 1:1に、映像モードを「PC」または「ゲーム」に設定してください。"
+      },
+      "q3": {
+        "question": "ディスプレイのデータやテスト結果は収集されますか？",
+        "answer": "いいえ。Monitor Testerは完全にクライアント側で動作するWebユーティリティです。診断結果、ハードウェア識別子、画面メトリクスが外部サーバーや第三者トラッキングサービスに送信されることは一切ありません。記録されたテスト観察結果はブラウザのローカルストレージに安全に保持され、いつでも消去可能です。"
+      },
+      "q4": {
+        "question": "測色計や分光放射計（キャリブレーター）の代わりになりますか？",
+        "answer": "いいえ。Webブラウザは専用の光学センサーハードウェア（CalibriteやDatacolor Spyder等）なしにICCカラープロファイルを生成したりDelta-E色差を測定することはできません。視覚的な階調グラデーション、グレースケールバー、色域境界（sRGB、Display P3）を提供して目視調整を補助しますが、センサー校正の代替にはなりません。"
+      },
+      "q5": {
+        "question": "ブラウザでディスプレイの輝度（nits）を測定できますか？",
+        "answer": "いいえ。ブラウザはバックライトやOLED素子から放射される物理的な測光輝度（cd/m² / nits）を測定できません。ブラウザは0%から100%までの段階的なグレースケールパッチを表示し、黒浮き（1〜5%）や白飛び（95〜99%）を潰さずに識別できるようモニター本体の輝度・コントラストダイヤルを調整するために役立ちます。"
+      },
+      "q6": {
+        "question": "ブラウザで応答速度（GtG / MPRT）を測定できますか？",
+        "answer": "いいえ。Gray-to-Gray（GtG）遷移速度の測定には専用の高速光センサーオシロスコープや追跡カメラが必要です。ブラウザはrequestAnimationFrameを通じてフレーム描画タイミングを計測しますが、液晶分子が物理的に配向するミリ秒数は計測できません。ゴーストテストはオーバードライブの目視確認を支援します。"
+      },
+      "q7": {
+        "question": "報告された解像度がモニター仕様と異なるのはなぜですか？",
+        "answer": "近年のOSでは高解像度画面でも文字やUIを読みやすく保つため、表示スケーリング（125%、150%、Retina/4Kの200%など）が適用されます。window.screenは論理CSSピクセルを返します。論理解像度にwindow.devicePixelRatio（DPR）を掛けることで、物理的なネイティブパネル解像度が算出されます。"
+      },
+      "q8": {
+        "question": "リフレッシュレートがモニター対応値より低く表示されるのはなぜですか？",
+        "answer": "144Hzや240Hz対応モニターで60Hzしか検出されない主な原因は次の通りです: (1) Windows/macOSのディスプレイ設定で高リフレッシュレートが未選択； (2) HDMIケーブルの帯域制限（1440p/4K高リフレッシュにはDisplayPortまたはHDMI 2.1が必要）； (3) ブラウザのハードウェアアクセラレーションが無効； (4) バッテリー節電モード作動中。"
+      }
+    },
+    "links": {
+      "knowledgeBase": "ディスプレイ知識ベースを見る",
+      "testLibrary": "全テストライブラリを見る"
+    }
   }
 }

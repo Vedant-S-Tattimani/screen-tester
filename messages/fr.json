@@ -319,7 +319,79 @@
     "howToTest": "Comment tester",
     "startTest": "Commencer le Test",
     "fullscreen": "Plein Écran",
-    "exit": "Quitter"
+    "exit": "Quitter",
+    "observationLabel": "Observation :",
+    "observationPlaceholder": "Décrivez ce que vous observez (ex. léger point lumineux en haut à gauche)...",
+    "closeNote": "Fermer",
+    "controlsLabel": "Contrôles",
+    "markDefect": "Marquer défaut",
+    "markingActive": "Marquage actif",
+    "markDefectTitle": "Cliquez sur l'écran pour enregistrer les coordonnées d'un pixel suspect",
+    "looksNormal": "Normal (Vérifié)",
+    "looksNormalTitle": "Semble normal (Conforme)",
+    "needsAttention": "À surveiller",
+    "needsAttentionTitle": "Problème constaté",
+    "unsure": "Incertain",
+    "unsureTitle": "Difficile à déterminer",
+    "addNote": "+ Note",
+    "noteAdded": "Note ajoutée",
+    "noteTitle": "Ajouter une note d'observation écrite",
+    "prev": "Préc",
+    "prevAria": "Test précédent dans la séquence",
+    "skip": "Ignorer",
+    "skipAria": "Ignorer le test",
+    "skipTitle": "Passer au test suivant sans enregistrer d'anomalie",
+    "continue": "Continuer →",
+    "continueAria": "Passer au test suivant",
+    "complete": "Terminer et voir rapport",
+    "completeAria": "Terminer la séquence d'inspection",
+    "fullscreenAria": "Plein écran (F)",
+    "exitAria": "Quitter le plein écran (F)",
+    "fullscreenHelp": "Appuyez sur Échap ou F pour quitter le plein écran • Espace pour mettre en pause",
+    "queue": {
+      "eyebrow": "Séquence d'inspection",
+      "title": "Gestionnaire de file de tests",
+      "close": "Fermer",
+      "closeAria": "Fermer le gestionnaire de file",
+      "completedStats": "{completed} sur {total} terminés",
+      "currentStep": "Actuel : Étape {step}",
+      "remaining": "{count} restants",
+      "addPlaceholder": "+ Ajouter un test à la file...",
+      "addBtn": "Ajouter",
+      "activeBadge": "En cours",
+      "moveUp": "Monter",
+      "moveDown": "Descendre",
+      "remove": "Retirer de la file",
+      "restart": "Recommencer",
+      "completeReport": "Terminer et voir le rapport"
+    },
+    "pixelDefect": {
+      "bannerInstruction": "Cliquez n'importe où pour marquer le défaut de pixel",
+      "doneMarking": "Terminer le marquage",
+      "pinTitle": "MARQUÉ PAR L'UTILISATEUR : Défaut {type} à X : {x}, Y : {y}",
+      "pinBadgeUserMarked": "MARQUÉ PAR L'UTILISATEUR",
+      "pinBadgeDefect": "Défaut {type}",
+      "dialogEyebrow": "MARQUÉ PAR L'UTILISATEUR / OBSERVÉ",
+      "dialogTitle": "Marqueur d'anomalie de pixel",
+      "closeAria": "Fermer le dialogue",
+      "locationLabel": "Emplacement (CSS X, Y) :",
+      "relativePos": "Position relative :",
+      "canvasSize": "Taille du canevas :",
+      "defectTypeLabel": "Type de défaut :",
+      "types": {
+        "dead": "● Pixel mort (Noir)",
+        "stuck": "● Pixel bloqué (Couleur)",
+        "bright": "● Pixel brillant",
+        "unknown": "○ Autre anomalie"
+      },
+      "notesLabel": "Note d'observation (optionnel) :",
+      "notesPlaceholder": "ex. Visible sur fond blanc",
+      "deleteMarker": "Supprimer le marqueur",
+      "done": "Terminé",
+      "listTitle": "Défauts de pixels observés",
+      "emptyList": "Aucun défaut de pixel marqué sur cet écran.",
+      "closeBtn": "Fermer"
+    }
   },
   "TestPages": {
     "backlight-bleed-test": {
@@ -1503,5 +1575,50 @@
     "deviation": "Écart : {val}",
     "benchmarks": "Métriques Mathématiques",
     "hardwareComparison": "Comparatif Matériel & Géométrie"
+  },
+  "Faq": {
+    "metaTitle": "Foire aux questions | Monitor Tester",
+    "metaDescription": "Réponses techniques claires et précises aux questions sur les tests d'affichage sur navigateur, détection de pixels morts, calibration et fréquence.",
+    "eyebrow": "AIDE & FAQ TECHNIQUE",
+    "title": "Foire aux questions",
+    "description": "Explications techniques rigoureuses sur ce que les tests sur navigateur peuvent analyser, leurs limites physiques et comment obtenir des résultats fiables.",
+    "items": {
+      "q1": {
+        "question": "Un navigateur peut-il détecter les pixels morts automatiquement ?",
+        "answer": "Non. Un navigateur web ne dispose d'aucun capteur optique ni caméra pour analyser les sous-pixels physiques. Monitor Tester affiche des aplats de couleurs primaires pures bord à bord (rouge, vert, bleu, noir, blanc, magenta, cyan, jaune), permettant à l'œil humain d'identifier immédiatement les sous-pixels noirs (morts) ou allumés en permanence (bloqués)."
+      },
+      "q2": {
+        "question": "Cela fonctionne-t-il sur les ordinateurs portables et téléviseurs ?",
+        "answer": "Oui. Monitor Tester repose entièrement sur les APIs web standards (Canvas, requestAnimationFrame, Fullscreen API, MatchMedia) et fonctionne dans tout navigateur moderne sur Windows, macOS, ChromeOS, Linux, Android et iOS. Pour les téléviseurs via HDMI, réglez le format sur 'Point par point' / 1:1 et le mode d'image sur 'PC' ou 'Jeu'."
+      },
+      "q3": {
+        "question": "Mes données d'affichage ou résultats de test sont-ils collectés ?",
+        "answer": "Non. Monitor Tester est un utilitaire exécuté strictement côté client. Aucune observation de diagnostic, identifiant matériel ou métrique n'est envoyée vers un serveur distant ou service de suivi tiers. Vos observations enregistrées sont stockées dans le stockage local de votre navigateur et peuvent être supprimées à tout moment."
+      },
+      "q4": {
+        "question": "Cela peut-il remplacer un colorimètre ou spectrophotomètre matériel ?",
+        "answer": "Non. Un navigateur ne peut pas générer de profil colorimétrique ICC ni mesurer la précision Delta-E sans capteur optique physique (type Calibrite ou Datacolor Spyder). Monitor Tester fournit des mires de dégradés visuels, échelles de gris et limites d'espaces colorimétriques (sRGB, Display P3) pour régler le contraste et la saturation à l'œil nu."
+      },
+      "q5": {
+        "question": "Un navigateur peut-il mesurer la luminosité de l'écran (nits) ?",
+        "answer": "Non. Les navigateurs ne peuvent pas mesurer la luminance photométrique physique (candela par mètre carré / nits) émise par le rétroéclairage ou les diodes OLED. Le navigateur affiche des mires de gris graduées de 0 % à 100 % afin de régler la luminosité matérielle jusqu'à distinguer les nuances sombres (1–5 %) et claires (95–99 %)."
+      },
+      "q6": {
+        "question": "Un navigateur peut-il mesurer le temps de réponse (GtG / MPRT) ?",
+        "answer": "Non. La mesure de la transition de gris à gris (GtG) requiert des oscilloscopes à photodiodes optiques ou caméras de poursuite à haute vitesse. Le navigateur mesure les intervalles d'affichage via requestAnimationFrame, mais ne peut déterminer le temps de bascule physique des cristaux liquides. Le test de rémanence permet d'ajuster l'overdrive à l'œil."
+      },
+      "q7": {
+        "question": "Pourquoi la résolution affichée diffère-t-elle des spécifications de mon écran ?",
+        "answer": "Les systèmes d'exploitation modernes appliquent des facteurs de mise à l'échelle (125 %, 150 %, 200 % sur écrans Retina/4K) pour garantir la lisibilité de l'interface. Les dimensions de window.screen indiquent des pixels CSS logiques. Multiplier la résolution logique par window.devicePixelRatio (DPR) donne la résolution physique native de votre dalle."
+      },
+      "q8": {
+        "question": "Pourquoi ma fréquence de rafraîchissement est-elle inférieure à celle de mon écran ?",
+        "answer": "Si votre écran 144Hz ou 240Hz n'affiche que 60Hz, les causes fréquentes sont : (1) Les paramètres d'affichage de l'OS sont restés à 60Hz par défaut ; (2) La bande passante du câble HDMI est limitée (DisplayPort ou HDMI 2.1 requis en 1440p/4K) ; (3) L'accélération matérielle du navigateur est désactivée ; ou (4) Le mode économie d'énergie bride le rafraîchissement."
+      }
+    },
+    "links": {
+      "knowledgeBase": "Explorer la base de connaissances d'affichage",
+      "testLibrary": "Parcourir la bibliothèque complète de tests"
+    }
   }
 }

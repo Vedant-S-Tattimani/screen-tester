@@ -319,7 +319,79 @@
     "howToTest": "Wie man testet",
     "startTest": "Test Starten",
     "fullscreen": "Vollbild",
-    "exit": "Beenden"
+    "exit": "Beenden",
+    "observationLabel": "Beobachtung:",
+    "observationPlaceholder": "Beschreiben Sie Auffälligkeiten (z. B. feiner heller Punkt oben links)...",
+    "closeNote": "Schließen",
+    "controlsLabel": "Steuerung",
+    "markDefect": "Fehler markieren",
+    "markingActive": "Markieren aktiv",
+    "markDefectTitle": "Klicken Sie auf den Bildschirm, um verdächtige Pixelkoordinaten zu erfassen",
+    "looksNormal": "Normal (Geprüft)",
+    "looksNormalTitle": "Sieht normal aus (Bestanden)",
+    "needsAttention": "Auffällig",
+    "needsAttentionTitle": "Problem festgestellt",
+    "unsure": "Unsicher",
+    "unsureTitle": "Nicht sicher",
+    "addNote": "+ Notiz",
+    "noteAdded": "Notiz erfasst",
+    "noteTitle": "Schriftliche Notiz hinzufügen",
+    "prev": "Zurück",
+    "prevAria": "Vorheriger Test in der Sequenz",
+    "skip": "Überspringen",
+    "skipAria": "Test überspringen",
+    "skipTitle": "Zum nächsten Test wechseln, ohne Fehler zu protokollieren",
+    "continue": "Weiter →",
+    "continueAria": "Weiter zum nächsten Test",
+    "complete": "Abschließen & Bericht",
+    "completeAria": "Inspektionssequenz abschließen",
+    "fullscreenAria": "Vollbildmodus aktivieren (F)",
+    "exitAria": "Vollbildmodus beenden (F)",
+    "fullscreenHelp": "ESC oder F zum Beenden des Vollbilds drücken • Leertaste zum Pausieren",
+    "queue": {
+      "eyebrow": "Inspektionssequenz",
+      "title": "Test-Warteschlangen-Manager",
+      "close": "Schließen",
+      "closeAria": "Warteschlangen-Manager schließen",
+      "completedStats": "{completed} von {total} abgeschlossen",
+      "currentStep": "Aktuell: Schritt {step}",
+      "remaining": "{count} verbleibend",
+      "addPlaceholder": "+ Test zur Warteschlange hinzufügen...",
+      "addBtn": "Hinzufügen",
+      "activeBadge": "Aktiv",
+      "moveUp": "Nach oben verschieben",
+      "moveDown": "Nach unten verschieben",
+      "remove": "Aus Warteschlange entfernen",
+      "restart": "Neu starten",
+      "completeReport": "Abschließen & Bericht ansehen"
+    },
+    "pixelDefect": {
+      "bannerInstruction": "Klicken Sie auf den Bildschirm, um einen Pixelfehler zu markieren",
+      "doneMarking": "Markieren beenden",
+      "pinTitle": "VOM NUTZER MARKIERT: {type}-Pixelfehler bei X: {x}, Y: {y}",
+      "pinBadgeUserMarked": "VOM NUTZER MARKIERT",
+      "pinBadgeDefect": "{type}-Fehler",
+      "dialogEyebrow": "VOM NUTZER MARKIERT / BEOBACHTET",
+      "dialogTitle": "Pixelfehler-Markierung",
+      "closeAria": "Dialog schließen",
+      "locationLabel": "Position (CSS X, Y):",
+      "relativePos": "Relative Position:",
+      "canvasSize": "Canvas-Größe:",
+      "defectTypeLabel": "Fehlertyp:",
+      "types": {
+        "dead": "● Toter Pixel (Schwarz)",
+        "stuck": "● Hängender Pixel (Farbe)",
+        "bright": "● Heller Pixel",
+        "unknown": "○ Sonstiger Fehler"
+      },
+      "notesLabel": "Beobachtungsnotiz (optional):",
+      "notesPlaceholder": "z. B. auf weißem Hintergrund sichtbar",
+      "deleteMarker": "Markierung löschen",
+      "done": "Fertig",
+      "listTitle": "Vom Nutzer beobachtete Pixelfehler",
+      "emptyList": "Keine Pixelfehler auf diesem Bildschirm markiert.",
+      "closeBtn": "Schließen"
+    }
   },
   "TestPages": {
     "backlight-bleed-test": {
@@ -1503,5 +1575,50 @@
     "deviation": "Abweichung: {val}",
     "benchmarks": "Mathematische Benchmarks",
     "hardwareComparison": "Display-Hardware & Geometrievergleich"
+  },
+  "Faq": {
+    "metaTitle": "Häufig gestellte Fragen | Monitor Tester",
+    "metaDescription": "Klare, fundierte technische Antworten auf Fragen zu Displaytests im Browser, Pixelfehlererkennung, Kalibrierung, Bildwiederholfrequenz und Auflösung.",
+    "eyebrow": "HILFE & TECHNISCHE FAQ",
+    "title": "Häufig gestellte Fragen",
+    "description": "Ehrliche technische Erklärungen darüber, was browserbasierte Tests analysieren können, wo ihre Grenzen liegen und wie Sie verlässliche Prüfergebnisse erzielen.",
+    "items": {
+      "q1": {
+        "question": "Kann ein Browser Pixelfehler automatisch erkennen?",
+        "answer": "Nein. Ein Webbrowser besitzt keinen optischen Sensor oder eine Kamera zur physischen Hardwareprüfung. Stattdessen stellt Monitor Tester vollflächige Vollfarbbilder dar (Rot, Grün, Blau, Schwarz, Weiß, Magenta, Cyan, Gelb), sodass das menschliche Auge dunkle (tote) oder permanent leuchtende (hängende) Subpixel mit höchster Präzision sofort erkennen kann."
+      },
+      "q2": {
+        "question": "Funktioniert dies auch auf Laptops und Fernsehgeräten?",
+        "answer": "Ja. Monitor Tester basiert vollständig auf standardisierten Web-APIs (Canvas, requestAnimationFrame, Fullscreen API, MatchMedia) und läuft in jedem modernen HTML5-Browser unter Windows, macOS, ChromeOS, Linux, Android und iOS. Bei Fernsehern über HDMI sollte das Bildseitenverhältnis auf 'Just Scan' / 1:1 und der Bildmodus auf 'PC' oder 'Spiel' gestellt werden, um Overscan und Nachschärfungsartefakte zu vermeiden."
+      },
+      "q3": {
+        "question": "Werden meine Bildschirmdaten oder Testergebnisse erfasst?",
+        "answer": "Nein. Monitor Tester ist ein vollständig clientseitiges Web-Werkzeug. Es werden keinerlei Diagnosebeobachtungen, Hardware-Kennungen oder Bildschirmmetriken an externe Server oder Tracking-Dienste übertragen. Wenn Sie Beobachtungen (PASS, CHECK, ISSUE) festhalten, verbleiben diese im lokalen Browserspeicher (localStorage) und können jederzeit gelöscht werden."
+      },
+      "q4": {
+        "question": "Kann dies ein Hardware-Kolorimeter oder Spektralfotometer ersetzen?",
+        "answer": "Nein. Ein Webbrowser kann ohne optische Sensorhardware (wie Calibrite oder Datacolor Spyder) kein ICC-Farbprofil erstellen oder Delta-E-Werte messen. Monitor Tester liefert visuelle Farbverläufe, Graustufenkeile und Farbraumgrenzen (sRGB, Display P3), um Kontrast, Gamma und Farbsättigung nach Augenmaß abzustimmen – ersetzt aber keine Hardware-Sensorkalibrierung."
+      },
+      "q5": {
+        "question": "Kann ein Browser die Displayhelligkeit (Nits) messen?",
+        "answer": "Nein. Webbrowser können die physikalische fotometrische Leuchtdichte (Candela pro Quadratmeter / Nits) der Hintergrundbeleuchtung oder OLED-Pixel nicht messen. Der Browser zeigt abgestufte Graufelder von 0 % bis 100 % an, damit Sie Hardware-Helligkeit und Kontrast so einstellen können, dass Tiefen (1–5 %) und Lichter (95–99 %) ohne Überstrahlung differenzierbar sind."
+      },
+      "q6": {
+        "question": "Kann ein Browser die Pixelreaktionszeit (GtG / MPRT) messen?",
+        "answer": "Nein. Die Gray-to-Gray-Umschaltzeit (GtG) erfordert spezielle Hochgeschwindigkeits-Messgeräte oder Pursuit-Kameras. Der Browser erfasst die Frame-Ausgabezeitpunkte per requestAnimationFrame, kann jedoch nicht messen, wie viele Millisekunden die Flüssigkristalle zur Ausrichtung benötigen. Der Ghosting-Test bietet bewegte Testobjekte, um das Overdrive des Monitors optisch abzustimmen."
+      },
+      "q7": {
+        "question": "Warum weicht die gemeldete Auflösung von den Angaben des Monitors ab?",
+        "answer": "Moderne Betriebssysteme nutzen Skalierungsfaktoren (wie 125 %, 150 % oder 200 % auf Retina- und 4K-Laptops), damit Schriften und Bedienelemente lesbar bleiben. Die Dimensionen in window.screen geben logische CSS-Pixel an. Die Multiplikation der logischen Auflösung mit window.devicePixelRatio (DPR) ergibt die tatsächliche native physikalische Panelauflösung."
+      },
+      "q8": {
+        "question": "Warum weicht meine Bildwiederholfrequenz von der Monitorspezifikation ab?",
+        "answer": "Wenn Ihr 144Hz- oder 240Hz-Monitor im Test nur 60Hz anzeigt, sind typische Ursachen: (1) Windows/macOS-Anzeigeeinstellungen stehen standardmäßig auf 60Hz; (2) HDMI-Kabelbandbreitenbegrenzung (für 1440p/4K mit hoher Frequenz ist DisplayPort oder HDMI 2.1 erforderlich); (3) Browser-Hardwarebeschleunigung ist deaktiviert; oder (4) Energiesparmodus drosselt die Bildrate."
+      }
+    },
+    "links": {
+      "knowledgeBase": "Display-Wissensdatenbank erkunden",
+      "testLibrary": "Komplette Testbibliothek ansehen"
+    }
   }
 }

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 import { monitorTests } from "@/data/tests";
 import { normalizeWorkflowPath } from "@/lib/workflow";
 import { 
@@ -37,9 +38,22 @@ export function QueueDrawer({
   workflowIndex,
   completedTestIds
 }: QueueDrawerProps) {
+  const t = useTranslations("TestWrapper");
   const router = useRouter();
   const [selectedToAdd, setSelectedToAdd] = useState("");
   const [localSequence, setLocalSequence] = useState<string[]>(workflowSequence);
+
+  // Close on Escape key
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, onClose]);
 
   useEffect(() => {
     queueMicrotask(() => {
@@ -133,20 +147,24 @@ export function QueueDrawer({
   );
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex justify-end">
+    <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex justify-end" role="dialog" aria-modal="true" aria-labelledby="queue-drawer-title">
       <div className="bg-white w-full max-w-md h-full shadow-2xl flex flex-col font-sans animate-in slide-in-from-right duration-200">
         
         {/* Drawer Header */}
         <div className="p-6 border-b border-gray-100 flex items-center justify-between bg-slate-50/50">
           <div>
             <div className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-semibold">
-              Inspection Sequence
+              {t("queue.eyebrow")}
             </div>
-            <h2 className="text-lg font-bold text-gray-900 mt-0.5">Test Queue Manager</h2>
+            <h2 id="queue-drawer-title" className="text-lg font-bold text-gray-900 mt-0.5">
+              {t("queue.title")}
+            </h2>
           </div>
           <button 
             onClick={onClose}
-            className="p-2 text-gray-400 hover:text-gray-700 rounded-lg hover:bg-gray-100 transition-colors"
+            aria-label={t("queue.closeAria")}
+            title={t("queue.close")}
+            className="p-2 text-gray-500 hover:text-gray-700 rounded-lg hover:bg-gray-100 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -155,7 +173,7 @@ export function QueueDrawer({
         {/* Inspection Progress Bar & Stats */}
         <div className="px-6 py-4 bg-white border-b border-gray-100">
           <div className="flex items-center justify-between text-xs mb-1.5">
-            <span className="font-semibold text-gray-700">{completedCount} of {totalCount} completed</span>
+            <span className="font-semibold text-gray-700">{t("queue.completedStats", { completed: completedCount, total: totalCount })}</span>
             <span className="font-mono text-gray-500">{progressPercent}%</span>
           </div>
           <div className="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
@@ -165,8 +183,8 @@ export function QueueDrawer({
             />
           </div>
           <div className="flex items-center justify-between text-[11px] text-gray-500 mt-2 font-mono">
-            <span>Current: Step {workflowIndex + 1}</span>
-            <span>{Math.max(0, totalCount - workflowIndex - 1)} remaining</span>
+            <span>{t("queue.currentStep", { step: workflowIndex + 1 })}</span>
+            <span>{t("queue.remaining", { count: Math.max(0, totalCount - workflowIndex - 1) })}</span>
           </div>
         </div>
 
@@ -177,7 +195,7 @@ export function QueueDrawer({
             onChange={(e) => setSelectedToAdd(e.target.value)}
             className="flex-1 px-3 py-1.5 text-xs bg-white border border-gray-200 rounded-lg text-gray-700 focus:outline-hidden focus:ring-1 focus:ring-blue-500"
           >
-            <option value="">+ Add test to queue...</option>
+            <option value="">{t("queue.addPlaceholder")}</option>
             {availableTests.map((t) => (
               <option key={t.id} value={t.id}>
                 {t.primaryIntent.replace("monitor", "").trim()} ({t.category})
@@ -190,7 +208,7 @@ export function QueueDrawer({
             className="px-3 py-1.5 bg-gray-900 text-white text-xs font-medium rounded-lg hover:bg-gray-800 disabled:opacity-40 transition-colors shrink-0 flex items-center gap-1"
           >
             <Plus className="w-3.5 h-3.5" />
-            <span>Add</span>
+            <span>{t("queue.addBtn")}</span>
           </button>
         </div>
 
@@ -231,7 +249,7 @@ export function QueueDrawer({
                       {formatTestTitle(path)}
                       {isCurrent && (
                         <span className="text-[9px] font-mono uppercase bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded font-bold">
-                          Active
+                          {t("queue.activeBadge")}
                         </span>
                       )}
                     </div>
@@ -243,23 +261,26 @@ export function QueueDrawer({
                   <button
                     onClick={() => handleMoveUp(index)}
                     disabled={index === 0}
-                    className="p-1 text-gray-400 hover:text-gray-700 disabled:opacity-20 rounded"
-                    title="Move up"
+                    className="p-1 text-gray-500 hover:text-gray-700 disabled:opacity-20 rounded"
+                    title={t("queue.moveUp")}
+                    aria-label={t("queue.moveUp")}
                   >
                     <ArrowUp className="w-3.5 h-3.5" />
                   </button>
                   <button
                     onClick={() => handleMoveDown(index)}
                     disabled={index === localSequence.length - 1}
-                    className="p-1 text-gray-400 hover:text-gray-700 disabled:opacity-20 rounded"
-                    title="Move down"
+                    className="p-1 text-gray-500 hover:text-gray-700 disabled:opacity-20 rounded"
+                    title={t("queue.moveDown")}
+                    aria-label={t("queue.moveDown")}
                   >
                     <ArrowDown className="w-3.5 h-3.5" />
                   </button>
                   <button
                     onClick={() => handleRemove(index)}
-                    className="p-1 text-gray-400 hover:text-red-600 rounded"
-                    title="Remove from queue"
+                    className="p-1 text-gray-500 hover:text-red-600 rounded"
+                    title={t("queue.remove")}
+                    aria-label={t("queue.remove")}
                   >
                     <Trash2 className="w-3.5 h-3.5" />
                   </button>
@@ -276,14 +297,14 @@ export function QueueDrawer({
             className="flex items-center gap-1.5 text-xs font-medium text-gray-600 hover:text-gray-900 px-3 py-2 rounded-lg border border-gray-200 hover:bg-white transition-colors"
           >
             <RotateCcw className="w-3.5 h-3.5" />
-            <span>Restart</span>
+            <span>{t("queue.restart")}</span>
           </button>
           <button
             onClick={handleCompleteQueue}
             className="flex items-center gap-1.5 text-xs font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors ml-auto shadow-xs"
           >
             <Flag className="w-3.5 h-3.5" />
-            <span>Complete & View Report</span>
+            <span>{t("queue.completeReport")}</span>
           </button>
         </div>
 
