@@ -299,13 +299,17 @@ export function TestWrapper({ title, description, instructions, children, testId
     const shouldBeFs = safeSessionGet<boolean>(STORAGE_KEY_FULLSCREEN, false);
 
     if (isDocFs) {
-      setIsFullscreen(true);
-      safeSessionSet(STORAGE_KEY_FULLSCREEN, true);
+      queueMicrotask(() => {
+        setIsFullscreen(true);
+        safeSessionSet(STORAGE_KEY_FULLSCREEN, true);
+      });
     } else if (shouldBeFs && workflowIndex !== -1) {
-      setIsFullscreen(true);
-      if (document.documentElement?.requestFullscreen) {
-        document.documentElement.requestFullscreen().catch(() => {});
-      }
+      queueMicrotask(() => {
+        setIsFullscreen(true);
+        if (document.documentElement?.requestFullscreen) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        }
+      });
     }
 
     const handleFullscreenChange = () => {
