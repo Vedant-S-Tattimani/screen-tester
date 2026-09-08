@@ -351,7 +351,8 @@
       }
     },
     "searchPlaceholder": "Search tests...",
-    "subtitle": "Explore our complete library of monitor testing utilities. All tests run locally in your browser."
+    "subtitle": "Explore our complete library of monitor testing utilities. All tests run locally in your browser.",
+    "relatedTitle": "Related Tests"
   },
   "TestWrapper": {
     "howToTest": "How to test",

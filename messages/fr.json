@@ -313,7 +313,8 @@
       }
     },
     "searchPlaceholder": "Rechercher des tests...",
-    "subtitle": "Découvrez notre collection complète d'outils pour écrans. Tous les tests s'exécutent localement dans votre navigateur."
+    "subtitle": "Découvrez notre collection complète d'outils pour écrans. Tous les tests s'exécutent localement dans votre navigateur.",
+    "relatedTitle": "Tests associés"
   },
   "TestWrapper": {
     "howToTest": "Comment tester",

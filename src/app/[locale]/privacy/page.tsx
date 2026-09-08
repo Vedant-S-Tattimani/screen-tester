@@ -6,7 +6,6 @@ import {
   Database, 
   Lock, 
   Maximize, 
-  ArrowRight,
   Mail
 } from "lucide-react";
 

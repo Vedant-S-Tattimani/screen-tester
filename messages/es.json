@@ -313,7 +313,8 @@
       }
     },
     "searchPlaceholder": "Buscar pruebas...",
-    "subtitle": "Explore nuestra biblioteca completa de utilidades para monitores. Todas las pruebas se ejecutan localmente en su navegador."
+    "subtitle": "Explore nuestra biblioteca completa de utilidades para monitores. Todas las pruebas se ejecutan localmente en su navegador.",
+    "relatedTitle": "Pruebas relacionadas"
   },
   "TestWrapper": {
     "howToTest": "Cómo probar",

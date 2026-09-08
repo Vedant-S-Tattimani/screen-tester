@@ -12,7 +12,7 @@ export const OG_LOCALES: Record<string, string> = {
   ko: "ko_KR",
 };
 
-export function getBaseUrl(forceProduction: boolean = false): string {
+export function getBaseUrl(): string {
   // 1. Explicit environment variable configured (e.g. production NEXT_PUBLIC_APP_URL=https://screen-tester.com)
   if (process.env.NEXT_PUBLIC_APP_URL) {
     return process.env.NEXT_PUBLIC_APP_URL.replace(/\/+$/, '');

@@ -313,7 +313,8 @@
       }
     },
     "searchPlaceholder": "Buscar testes...",
-    "subtitle": "Explore nossa biblioteca completa de utilitários para monitores. Todos os testes rodam localmente no seu navegador."
+    "subtitle": "Explore nossa biblioteca completa de utilitários para monitores. Todos os testes rodam localmente no seu navegador.",
+    "relatedTitle": "Testes relacionados"
   },
   "TestWrapper": {
     "howToTest": "Como testar",

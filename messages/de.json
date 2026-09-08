@@ -313,7 +313,8 @@
       }
     },
     "searchPlaceholder": "Tests durchsuchen...",
-    "subtitle": "Erkunden Sie unsere vollständige Bibliothek von Monitor-Testtools. Alle Tests laufen lokal in Ihrem Browser."
+    "subtitle": "Erkunden Sie unsere vollständige Bibliothek von Monitor-Testtools. Alle Tests laufen lokal in Ihrem Browser.",
+    "relatedTitle": "Ähnliche Tests"
   },
   "TestWrapper": {
     "howToTest": "Wie man testet",

@@ -1,6 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
-import { Link } from "@/i18n/routing";
 import { 
   FileText, 
   AlertTriangle, 
