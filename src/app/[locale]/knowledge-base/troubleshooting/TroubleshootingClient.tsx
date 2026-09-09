@@ -20,9 +20,11 @@ import {
   ExternalLink,
   Wrench,
   Layers,
+  BookOpen,
   X
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { getArticleByTroubleshootingId } from "@/data/knowledgeBase";
 
 export function TroubleshootingClient() {
   const t = useTranslations("Troubleshooting");
@@ -315,6 +317,27 @@ export function TroubleshootingClient() {
                         </p>
                       </div>
                     </div>
+
+                    {/* Section 6: Knowledge Base Background Reference */}
+                    {(() => {
+                      const kbArticle = getArticleByTroubleshootingId(topic.id);
+                      if (!kbArticle) return null;
+                      return (
+                        <div className="p-3.5 bg-blue-50/60 border border-blue-200/80 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs">
+                          <div className="flex items-center gap-2 text-blue-950 font-medium">
+                            <BookOpen className="w-4 h-4 text-blue-600 shrink-0" />
+                            <span>Technical Reference: <strong>{kbArticle.title}</strong></span>
+                          </div>
+                          <Link
+                            href={`/knowledge-base/${kbArticle.slug}`}
+                            className="inline-flex items-center gap-1 font-semibold text-blue-700 hover:text-blue-900 hover:underline shrink-0"
+                          >
+                            <span>Read Knowledge Article</span>
+                            <ArrowRight className="w-3 h-3" />
+                          </Link>
+                        </div>
+                      );
+                    })()}
                   </div>
                 )}
               </article>

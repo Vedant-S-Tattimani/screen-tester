@@ -332,6 +332,38 @@ export const BROWSER_CAPABILITIES_DATA: BrowserCapabilityEntry[] = [
       androidBrowsers: "PARTIAL"
     },
     notes: "Supported in modern Chromium browsers. Safari and older browsers route sound exclusively to system default audio output."
+  },
+  {
+    id: "audio-capture",
+    name: "Audio Capture & Input Streams",
+    category: "platform",
+    apiSpec: "navigator.mediaDevices.getUserMedia({ audio: true })",
+    description: "Captures live audio streams from local microphones, headsets, or USB audio interfaces for level analysis and diagnostics.",
+    hardwareDistinction: "Inspects digital PCM audio data stream; does not measure physical sound pressure levels (dB SPL) or transducer response.",
+    supportMatrix: {
+      chromium: "REQUIRES USER PERMISSION",
+      firefox: "REQUIRES USER PERMISSION",
+      safariDesktop: "REQUIRES USER PERMISSION",
+      iosSafari: "REQUIRES USER PERMISSION",
+      androidBrowsers: "REQUIRES USER PERMISSION"
+    },
+    notes: "Requires secure context (HTTPS) and explicit user permission prompt. Audio is processed purely in local device RAM."
+  },
+  {
+    id: "media-recorder",
+    name: "MediaStream Recording API (MediaRecorder)",
+    category: "platform",
+    apiSpec: "window.MediaRecorder",
+    description: "Encodes and records audio streams directly in the browser with pause, resume, and format detection.",
+    hardwareDistinction: "Generates local audio container blobs; operates 100% in client memory without cloud upload.",
+    supportMatrix: {
+      chromium: "SUPPORTED",
+      firefox: "SUPPORTED",
+      safariDesktop: "SUPPORTED",
+      iosSafari: "SUPPORTED",
+      androidBrowsers: "SUPPORTED"
+    },
+    notes: "Supported MIME codecs vary across browsers (WebM/Opus on Chromium and Firefox; MP4/AAC supported on modern Safari)."
   }
 ];
 
@@ -561,5 +593,23 @@ export const TEST_REQUIREMENTS_MATRIX: TestRequirementEntry[] = [
     fullscreenRecommended: false,
     webglRequired: false,
     notes: "Synthesizes precision audio test tones and verifies stereo channel separation using Web Audio API."
+  },
+  {
+    testId: "microphone-test",
+    testName: "Microphone Test",
+    orientation: "Universal",
+    touchCapable: true,
+    fullscreenRecommended: false,
+    webglRequired: false,
+    notes: "Requests microphone permission to visualize real-time input amplitude, waveform oscillation, and clipping telemetry."
+  },
+  {
+    testId: "voice-recorder",
+    testName: "Voice Recorder",
+    orientation: "Universal",
+    touchCapable: true,
+    fullscreenRecommended: false,
+    webglRequired: false,
+    notes: "Uses MediaRecorder for local voice recording, pause/resume, playback, and instant client-side download."
   }
 ];

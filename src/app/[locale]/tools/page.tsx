@@ -10,7 +10,8 @@ import {
   AlertCircle, 
   ClipboardCheck, 
   ArrowRight,
-  Cpu
+  Cpu,
+  Mic
 } from "lucide-react";
 
 export async function generateMetadata({
@@ -71,11 +72,18 @@ const TOOLS_CONFIG = [
     iconColor: "text-amber-600"
   },
   {
+    id: "voice-recorder",
+    key: "voiceRecorder",
+    href: "/tools/voice-recorder",
+    icon: Mic,
+    iconColor: "text-rose-600"
+  },
+  {
     id: "inspection-summary",
     key: "summary",
     href: "/monitor-inspection/summary",
     icon: ClipboardCheck,
-    iconColor: "text-rose-600"
+    iconColor: "text-purple-600"
   }
 ];
 

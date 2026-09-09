@@ -297,7 +297,13 @@ export const monitorTests: MonitorTest[] = [
     id: "speaker-test",
     category: "deviceInput",
     primaryIntent: "speaker and audio output channel test",
-    relatedTestIds: ["vibration-test", "display-info"]
+    relatedTestIds: ["microphone-test", "vibration-test", "display-info"]
+  },
+  {
+    id: "microphone-test",
+    category: "deviceInput",
+    primaryIntent: "microphone and audio input stream test",
+    relatedTestIds: ["speaker-test", "webcam-test", "display-info"]
   }
 ];
 
@@ -360,6 +366,7 @@ export const TEST_KEY_MAP: Record<string, { ns: "lib" | "tests", key: string }> 
   "gyroscope-test": { ns: "tests", key: "gyroscopeTest" },
   "vibration-test": { ns: "tests", key: "vibrationTest" },
   "webcam-test": { ns: "tests", key: "webcamTest" },
-  "speaker-test": { ns: "tests", key: "speakerTest" }
+  "speaker-test": { ns: "tests", key: "speakerTest" },
+  "microphone-test": { ns: "tests", key: "microphoneTest" }
 };
 

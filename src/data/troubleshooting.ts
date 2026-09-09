@@ -756,6 +756,51 @@ export const TROUBLESHOOTING_TOPICS: TroubleshootingTopic[] = [
       "Swap left/right physical speaker wires if channels are reversed"
     ],
     whenToStop: "Stop audio immediately if hearing high-distortion clipping or burning smells from amplifier equipment."
+  },
+  {
+    id: "microphone-issues",
+    title: "Microphone & Audio Input Issues",
+    category: "deviceInput",
+    categoryTitle: "Device & Input Problems",
+    symptom: "Microphone is not detected, permission was denied, no input amplitude is received, audio volume is extremely low, or sound is severely clipped and distorted.",
+    possibleCauses: [
+      "Browser microphone permission was denied, dismissed, or blocked by site settings",
+      "Operating system privacy settings block desktop browser microphone access (Windows Settings / macOS Privacy & Security)",
+      "Physical microphone hardware mute switch is engaged or headset inline cable switch is toggled off",
+      "Microphone is locked in exclusive mode by another communication application (Zoom, Microsoft Teams, Discord, OBS)",
+      "Wrong input audio device is selected in the browser (e.g. inactive webcam mic instead of dedicated headset mic)",
+      "Operating system input gain or microphone boost is set too low (near 0%) or too high (causing severe digital clipping)",
+      "Insecure origin: getUserMedia requires a secure context (HTTPS or localhost)",
+      "Browser-specific implementation difference (e.g. permission policies or unsupported audio constraints in older mobile browsers)"
+    ],
+    checks: [
+      "Check the browser URL address bar: Click the microphone icon and ensure permission is set to 'Allow'",
+      "On Windows: Open Settings > Privacy & security > Microphone, and verify 'Let apps access your microphone' and 'Let desktop apps access your microphone' are both ON",
+      "On macOS: Open System Settings > Privacy & Security > Microphone, and ensure your browser has a checkmark enabled",
+      "Inspect the physical headset cable, USB dongle, or laptop chassis for an inline hardware mute slider or LED indicator",
+      "Verify the default input device in system sound settings (Windows Sound Control Panel / macOS Sound Input)",
+      "Close any background communication apps that might hold an exclusive audio input lock"
+    ],
+    whatScreenTesterCanTest: {
+      description: "Screen Tester accesses your microphone stream locally via getUserMedia, visualizes real-time PCM input waveforms, tracks RMS and peak volume levels, flags digital clipping, and allows recording a 5-second audio loopback test.",
+      links: [
+        { label: "Microphone Test", testId: "microphone-test", testPath: "/tests/microphone-test" },
+        { label: "Voice Recorder", testId: "voice-recorder", testPath: "/tools/voice-recorder" }
+      ]
+    },
+    whatScreenTesterCannotDetermine: [
+      "Acoustic Sound Pressure Level (dB SPL) or ambient room decibels",
+      "Microphone capsule physical frequency response curve (Hz to kHz)",
+      "Physical hardware transducer damage or diaphragm moisture degradation",
+      "Total Harmonic Distortion (THD) or analog signal-to-noise ratio (SNR)"
+    ],
+    actions: [
+      "Allow microphone access when prompted by the browser dialog",
+      "Select the specific microphone hardware device in the test dropdown menu instead of 'Default'",
+      "Adjust input sensitivity in your operating system sound control panel so speaking reaches 50-75% on the level meter without hitting red clipping",
+      "If testing in an external or embedded webview, launch the test in standard Chrome, Edge, Safari, or Firefox"
+    ],
+    whenToStop: "Stop testing if you observe severe electrical humming, burning smell, or excessive heat from an external USB audio interface or phantom power box."
   }
 ];
 

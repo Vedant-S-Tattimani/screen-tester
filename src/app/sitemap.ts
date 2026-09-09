@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next';
 import { routing } from '@/i18n/routing';
 import { monitorTests } from '@/data/tests';
 import { monitorGuides } from '@/data/guides';
+import { KNOWLEDGE_ARTICLES } from '@/data/knowledgeBase';
 import { getBaseUrl } from '@/lib/seo';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -22,9 +23,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/monitor-inspection/laptop', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/monitor-inspection/tv', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/guides', priority: 0.9, changeFrequency: 'monthly' as const },
-    { path: '/knowledge-base', priority: 0.7, changeFrequency: 'monthly' as const },
+    { path: '/knowledge-base', priority: 0.8, changeFrequency: 'monthly' as const },
     { path: '/knowledge-base/troubleshooting', priority: 0.8, changeFrequency: 'monthly' as const },
     { path: '/tools/browser-compatibility', priority: 0.8, changeFrequency: 'monthly' as const },
+    { path: '/tools/voice-recorder', priority: 0.8, changeFrequency: 'monthly' as const },
     { path: '/faq', priority: 0.6, changeFrequency: 'monthly' as const },
     { path: '/about', priority: 0.5, changeFrequency: 'yearly' as const },
     { path: '/contact', priority: 0.5, changeFrequency: 'yearly' as const },
@@ -44,7 +46,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'monthly' as const
   }));
 
-  const allRoutes = [...coreRoutes, ...testRoutes, ...guideRoutes];
+  const knowledgeRoutes = KNOWLEDGE_ARTICLES.map(article => ({
+    path: `/knowledge-base/${article.slug}`,
+    priority: 0.8,
+    changeFrequency: 'monthly' as const
+  }));
+
+  const allRoutes = [...coreRoutes, ...testRoutes, ...guideRoutes, ...knowledgeRoutes];
 
   allRoutes.forEach((route) => {
     routing.locales.forEach((locale) => {

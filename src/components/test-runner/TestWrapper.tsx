@@ -21,7 +21,8 @@ import {
   startNewInspectionSession 
 } from "@/lib/inspectionStorage";
 import { getTroubleshootingByTestId } from "@/data/troubleshooting";
-import { Wrench, ArrowRight } from "lucide-react";
+import { getArticleByTestId } from "@/data/knowledgeBase";
+import { Wrench, ArrowRight, BookOpen } from "lucide-react";
 import { PixelDefectOverlay } from "./PixelDefectOverlay";
 import { QueueDrawer } from "./QueueDrawer";
 import { cn } from "@/lib/utils";
@@ -505,22 +506,47 @@ export function TestWrapper({ title, description, instructions, children, testId
           </div>
         )}
         
+        {/* Knowledge Base Link for Relevant Test */}
+        {!isFullscreen && testId && (
+          (() => {
+            const kbArticle = getArticleByTestId(testId);
+            if (!kbArticle) return null;
+            return (
+              <div className="mt-12 w-full max-w-4xl p-4 bg-blue-50/50 border border-blue-200/80 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs shadow-2xs">
+                <div className="flex items-center gap-2.5 text-blue-950">
+                  <BookOpen className="w-4 h-4 text-blue-600 shrink-0" />
+                  <span>
+                    Learn more in the Knowledge Base &bull; <strong>{kbArticle.title}</strong>
+                  </span>
+                </div>
+                <Link
+                  href={`/knowledge-base/${kbArticle.slug}`}
+                  className="inline-flex items-center gap-1.5 font-semibold text-blue-700 hover:text-blue-900 hover:underline shrink-0"
+                >
+                  <span>Read Technical Guide</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            );
+          })()
+        )}
+
         {/* Troubleshooting Link for Relevant Test */}
         {!isFullscreen && testId && (
           (() => {
             const topic = getTroubleshootingByTestId(testId);
             if (!topic) return null;
             return (
-              <div className="mt-12 w-full max-w-4xl p-4 bg-slate-50 border border-slate-200/80 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs shadow-2xs">
+              <div className="mt-3 w-full max-w-4xl p-4 bg-slate-50 border border-slate-200/80 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs shadow-2xs">
                 <div className="flex items-center gap-2.5 text-slate-700">
-                  <Wrench className="w-4 h-4 text-blue-600 shrink-0" />
+                  <Wrench className="w-4 h-4 text-purple-600 shrink-0" />
                   <span>
                     Having trouble with this test? &bull; <strong>{topic.title}</strong>
                   </span>
                 </div>
                 <Link
                   href={`/knowledge-base/troubleshooting#${topic.id}`}
-                  className="inline-flex items-center gap-1.5 font-semibold text-blue-600 hover:text-blue-700 hover:underline shrink-0"
+                  className="inline-flex items-center gap-1.5 font-semibold text-purple-700 hover:text-purple-900 hover:underline shrink-0"
                 >
                   <span>Troubleshooting Guide</span>
                   <ArrowRight className="w-3.5 h-3.5" />
