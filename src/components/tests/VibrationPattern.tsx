@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback, useSyncExternalStore } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
 import { 
@@ -29,15 +29,18 @@ type VibrationStatus =
 
 type UserHapticObservation = "FEEL_YES" | "FEEL_NO" | "UNSURE" | null;
 
+const emptySubscribe = () => () => {};
+
 export function VibrationPattern({ testId = "vibration-test" }: VibrationPatternProps) {
   const { setObservation } = useTestContext();
 
-  const isVibrationSupported = typeof navigator !== "undefined" && typeof navigator.vibrate === "function";
-
-  const [status, setStatus] = useState<VibrationStatus>(() => {
-    if (typeof navigator === "undefined") return "IDLE";
-    return typeof navigator.vibrate === "function" ? "IDLE" : "UNSUPPORTED";
-  });
+  const isVibrationSupported = useSyncExternalStore(
+    emptySubscribe,
+    () => typeof navigator !== "undefined" && typeof navigator.vibrate === "function",
+    () => false
+  );
+  const [status, setStatus] = useState<VibrationStatus>("IDLE");
+  const effectiveStatus: VibrationStatus = !isVibrationSupported ? "UNSUPPORTED" : status;
   const [activePatternName, setActivePatternName] = useState<string>("");
   const [userFelt, setUserFelt] = useState<UserHapticObservation>(null);
   const [customInput, setCustomInput] = useState<string>("200, 100, 200, 100, 300");
@@ -144,32 +147,32 @@ export function VibrationPattern({ testId = "vibration-test" }: VibrationPattern
       {/* Top HUD / Status Bar */}
       <div className="flex flex-wrap items-center justify-between gap-3 p-3 bg-slate-900/90 border-b border-slate-800 text-xs">
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5 font-mono">
+          <div className="flex items-center gap-1.5 font-mono" suppressHydrationWarning>
             <Vibrate className="w-4 h-4 text-blue-400 shrink-0" />
             <span className="text-slate-400 uppercase text-[10px] tracking-wider">Status:</span>
-            {status === "VIBRATING" && (
+            {effectiveStatus === "VIBRATING" && (
               <span className="inline-flex items-center gap-1 text-amber-400 font-semibold animate-pulse">
                 <span className="w-2 h-2 rounded-full bg-amber-500 animate-ping" />
                 Vibrating ({activePatternName})
               </span>
             )}
-            {status === "ACCEPTED" && (
+            {effectiveStatus === "ACCEPTED" && (
               <span className="text-emerald-400 font-semibold">Command Accepted by Browser</span>
             )}
-            {status === "IDLE" && (
+            {effectiveStatus === "IDLE" && (
               <span className="text-slate-400 font-medium">Ready</span>
             )}
-            {status === "REJECTED" && (
+            {effectiveStatus === "REJECTED" && (
               <span className="text-rose-400 font-medium">Command Rejected / Unavailable</span>
             )}
-            {status === "UNSUPPORTED" && (
+            {effectiveStatus === "UNSUPPORTED" && (
               <span className="text-rose-400 font-medium">Vibration API Unsupported</span>
             )}
           </div>
 
           <div className="h-4 w-px bg-slate-800" />
 
-          <div className="flex items-center gap-1.5 font-mono text-slate-400">
+          <div className="flex items-center gap-1.5 font-mono text-slate-400" suppressHydrationWarning>
             <span className="uppercase text-[10px] tracking-wider">API:</span>
             <span className="text-slate-200">
               {isVibrationSupported ? "navigator.vibrate" : "Not Available"}
@@ -178,7 +181,7 @@ export function VibrationPattern({ testId = "vibration-test" }: VibrationPattern
         </div>
 
         {/* Global Stop Button */}
-        {status === "VIBRATING" && (
+        {effectiveStatus === "VIBRATING" && (
           <button
             type="button"
             onClick={stopVibration}
@@ -315,7 +318,7 @@ export function VibrationPattern({ testId = "vibration-test" }: VibrationPattern
           )}
 
           <p className="text-[11px] text-slate-500">
-            Specify alternating vibration and pause durations in milliseconds (e.g. <code>vibrate, pause, vibrate, pause</code>). Safety limits cap single pulses at 1,000ms and total duration at 3,000ms.
+            Specify alternating vibration and pause durations in milliseconds (e.g. <code>vibrate, pause, vibrate, pause</code>). Vibration patterns are intentionally limited to short durations. Safety limits cap single pulses at 1,000ms and total duration at 3,000ms.
           </p>
         </div>
 

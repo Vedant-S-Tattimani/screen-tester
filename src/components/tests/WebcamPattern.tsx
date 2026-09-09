@@ -387,7 +387,7 @@ export function WebcamPattern({ testId = "webcam-test" }: WebcamPatternProps) {
             </p>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-slate-900 border border-slate-800 rounded-full text-[11px] text-slate-400 font-mono">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-              <span>100% Local &bull; Zero Uploads &bull; No Mic</span>
+              <span>Local processing &bull; Zero uploads &bull; No microphone access</span>
             </div>
           </div>
         )}
@@ -492,7 +492,7 @@ export function WebcamPattern({ testId = "webcam-test" }: WebcamPatternProps) {
       <div className="p-3 bg-slate-900 border-t border-slate-800 text-[11px] text-slate-400 leading-relaxed flex items-start gap-2.5">
         <ShieldAlert className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
         <div>
-          <strong className="text-slate-200">Hardware & Privacy Notice:</strong> Video frames remain 100% strictly local to this browser window and are never transmitted, analyzed by AI, or stored on external servers. The browser reports negotiated stream dimensions; it cannot verify physical lens MTF resolution or color reproduction fidelity.
+          <strong className="text-slate-200">Hardware & Privacy Notice:</strong> Video frames are processed locally within this browser window and are never transmitted, analyzed externally, or stored on servers. The browser reports negotiated stream dimensions; it cannot verify physical lens optical resolution or color reproduction accuracy.
         </div>
       </div>
 

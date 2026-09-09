@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback, useSyncExternalStore } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
 import { 
@@ -38,6 +38,8 @@ const CONTACT_COLORS = [
   { bg: "bg-teal-500", border: "border-teal-500", shadow: "shadow-teal-500/50" }
 ];
 
+const emptySubscribe = () => () => {};
+
 export function MultiTouchPattern({ testId = "multi-touch-test" }: MultiTouchPatternProps) {
   useTestContext();
   const surfaceRef = useRef<HTMLDivElement>(null);
@@ -59,13 +61,12 @@ export function MultiTouchPattern({ testId = "multi-touch-test" }: MultiTouchPat
   // Edge / Corner targets touched (8 targets: 4 corners + 4 edges)
   const [edgeTouched, setEdgeTouched] = useState<boolean[]>(Array(8).fill(false));
 
-  // Browser reported maxTouchPoints
-  const [browserMaxTouchPoints] = useState<number>(() => {
-    if (typeof navigator !== "undefined" && "maxTouchPoints" in navigator) {
-      return navigator.maxTouchPoints;
-    }
-    return 0;
-  });
+  // Browser reported maxTouchPoints (0 on server, evaluated via useSyncExternalStore on client)
+  const browserMaxTouchPoints = useSyncExternalStore(
+    emptySubscribe,
+    () => (typeof navigator !== "undefined" && "maxTouchPoints" in navigator ? navigator.maxTouchPoints || 0 : 0),
+    () => 0
+  );
 
   // Handle pointer tracking
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
@@ -259,8 +260,8 @@ export function MultiTouchPattern({ testId = "multi-touch-test" }: MultiTouchPat
           <div className="h-4 w-px bg-slate-800 hidden md:block" />
 
           <div className="hidden md:flex items-center gap-1.5 font-mono text-slate-400">
-            <span className="uppercase text-[10px] tracking-wider">Reported Max:</span>
-            <span className="text-slate-200 font-semibold">{browserMaxTouchPoints}</span>
+            <span className="uppercase text-[10px] tracking-wider" title="Browser-reported navigator.maxTouchPoints">Browser-Reported Max:</span>
+            <span className="text-slate-200 font-semibold" suppressHydrationWarning>{browserMaxTouchPoints}</span>
           </div>
         </div>
 
@@ -486,7 +487,7 @@ export function MultiTouchPattern({ testId = "multi-touch-test" }: MultiTouchPat
       <div className="p-3 bg-slate-900 border-t border-slate-800 text-[11px] text-slate-400 leading-relaxed flex items-start gap-2.5">
         <ShieldAlert className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
         <div>
-          <strong className="text-slate-200">Hardware Boundary Notice:</strong> This test observes pointer events exposed by your browser and operating system. It does not measure physical touchscreen hardware latency, pressure accuracy, or panel digitizer grid density. Browser touch gestures or palm rejection drivers can filter simultaneous touch contacts.
+          <strong className="text-slate-200">Hardware Boundary Notice:</strong> This test observes pointer events exposed by your browser and operating system. It does not measure physical touchscreen hardware latency, pressure accuracy, or panel digitizer grid density. Browser-reported navigator.maxTouchPoints reflects what the browser interface reports and may differ from physical hardware limits. Browser touch gestures or palm rejection drivers can filter simultaneous touch contacts.
         </div>
       </div>
 
