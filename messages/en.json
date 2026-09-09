@@ -1879,7 +1879,9 @@
       "browserDetected": "BROWSER-DETECTED",
       "userProvided": "USER-PROVIDED",
       "userObserved": "USER OBSERVATIONS",
-      "notAvailable": "NOT AVAILABLE"
+      "notAvailable": "NOT AVAILABLE",
+      "relevantChecks": "RECOMMENDED FOR THIS MODEL",
+      "observedIssueGuides": "OBSERVED ISSUE GUIDES"
     },
     "statusBuckets": {
       "normalObservations": "NORMAL OBSERVATIONS",
@@ -1908,7 +1910,9 @@
       "browserDetected": "5. Browser-Detected Results",
       "visualObservations": "6. Visual Observations",
       "pixelDefects": "7. Pixel Defects",
-      "notes": "8. Notes"
+      "notes": "8. Notes",
+      "recommendedChecks": "3B. Model-Specific Recommended Checks",
+      "troubleshooting": "7B. Troubleshooting References"
     },
     "browserDetectedLabels": {
       "sectionDesc": "Objectively detected browser API and OS compositor parameters. Separated from human visual judgments.",
@@ -1949,7 +1953,10 @@
     "print": {
       "printReport": "Print Report",
       "disclaimer": "This inspection report contains client-side browser telemetry and human visual observations recorded using Screen Tester. Zero synthetic or simulated scores."
-    }
+    },
+    "recommendedChecksNote": "Targeted test recommendations derived from your display specifications and panel technology.",
+    "troubleshootingNote": "Direct links to practical troubleshooting guides based on issues observed during this inspection session.",
+    "viewTroubleshootingAction": "View Troubleshooting Guide"
   },
   "CustomPattern": {
     "breadcrumbAll": "ALL TESTS",

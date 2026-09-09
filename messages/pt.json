@@ -1888,7 +1888,9 @@
       "browserDetected": "DETECTADO PELO NAVEGADOR",
       "userProvided": "FORNECIDO PELO USUÁRIO",
       "userObserved": "OBSERVAÇÕES VISUAIS",
-      "notAvailable": "NÃO DISPONÍVEL"
+      "notAvailable": "NÃO DISPONÍVEL",
+      "relevantChecks": "RECOMENDADO PARA ESTE MODELO",
+      "observedIssueGuides": "GUIAS DE PROBLEMAS OBSERVADOS"
     },
     "statusBuckets": {
       "normalObservations": "OBSERVAÇÕES NORMAIS",
@@ -1917,7 +1919,9 @@
       "browserDetected": "5. Resultados detectados pelo navegador",
       "visualObservations": "6. Observações visuais",
       "pixelDefects": "7. Defeitos de pixels",
-      "notes": "8. Notas"
+      "notes": "8. Notas",
+      "recommendedChecks": "3B. Verificações Recomendadas Específicas do Modelo",
+      "troubleshooting": "7B. Referências de Solução de Problemas"
     },
     "browserDetectedLabels": {
       "sectionDesc": "Parâmetros detectados objetivamente por meio de APIs do navegador e compositor do SO. Separados de avaliações visuais humanas.",
@@ -1958,7 +1962,10 @@
     "print": {
       "printReport": "Imprimir relatório",
       "disclaimer": "Este relatório de inspeção contém telemetria do navegador do cliente e observações visuais humanas registradas com o Screen Tester. Zero pontuações sintéticas."
-    }
+    },
+    "recommendedChecksNote": "Recomendações de teste direcionadas derivadas das especificações do seu ecrã e tecnologia de painel.",
+    "troubleshootingNote": "Links diretos para guias práticos de solução de problemas com base nos problemas observados nesta sessão.",
+    "viewTroubleshootingAction": "Ver Guia de Solução de Problemas"
   },
   "CustomPattern": {
     "breadcrumbAll": "TODOS OS TESTES",

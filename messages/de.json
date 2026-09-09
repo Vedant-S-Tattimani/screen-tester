@@ -1888,7 +1888,9 @@
       "browserDetected": "VOM BROWSER ERKANNT",
       "userProvided": "BENUTZERANGABE",
       "userObserved": "VISUELLE BEOBACHTUNGEN",
-      "notAvailable": "NICHT VERFÜGBAR"
+      "notAvailable": "NICHT VERFÜGBAR",
+      "relevantChecks": "FÜR DIESES MODELL EMPFOHLEN",
+      "observedIssueGuides": "LEITFÄDEN FÜR BEOBACHTETE PROBLEME"
     },
     "statusBuckets": {
       "normalObservations": "NORMALE BEOBACHTUNGEN",
@@ -1917,7 +1919,9 @@
       "browserDetected": "5. Vom Browser erkannte Ergebnisse",
       "visualObservations": "6. Visuelle Beobachtungen",
       "pixelDefects": "7. Pixelfehler",
-      "notes": "8. Notizen"
+      "notes": "8. Notizen",
+      "recommendedChecks": "3B. Modellspezifische Empfohlene Prüfungen",
+      "troubleshooting": "7B. Fehlerbehebungshinweise"
     },
     "browserDetectedLabels": {
       "sectionDesc": "Objektiv über Browser-APIs und OS-Compositor ermittelte Parameter. Getrennt von visuellen Beurteilungen.",
@@ -1958,7 +1962,10 @@
     "print": {
       "printReport": "Bericht drucken",
       "disclaimer": "Dieser Inspektionsbericht enthält clientseitige Browser-Telemetriedaten und visuelle Beobachtungen, die mit Screen Tester aufgezeichnet wurden. Keine synthetischen Scores."
-    }
+    },
+    "recommendedChecksNote": "Gezielte Testempfehlungen basierend auf Ihren Bildschirmspezifikationen und der Panel-Technologie.",
+    "troubleshootingNote": "Direkte Links zu praktischen Fehlerbehebungsleitfäden basierend auf in dieser Sitzung beobachteten Problemen.",
+    "viewTroubleshootingAction": "Fehlerbehebungsanleitung Anzeigen"
   },
   "CustomPattern": {
     "breadcrumbAll": "ALLE TESTS",

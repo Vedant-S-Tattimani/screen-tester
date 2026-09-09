@@ -1888,7 +1888,9 @@
       "browserDetected": "브라우저 감지 정보",
       "userProvided": "사용자 입력 규격",
       "userObserved": "사용자 육안 관찰",
-      "notAvailable": "사용 불가"
+      "notAvailable": "사용 불가",
+      "relevantChecks": "이 모델 권장 사항",
+      "observedIssueGuides": "관찰된 문제 가이드"
     },
     "statusBuckets": {
       "normalObservations": "정상 관찰 결과",
@@ -1917,7 +1919,9 @@
       "browserDetected": "5. 브라우저 감지 결과",
       "visualObservations": "6. 육안 관찰",
       "pixelDefects": "7. 픽셀 결함",
-      "notes": "8. 메모"
+      "notes": "8. 메모",
+      "recommendedChecks": "3B. 모델별 권장 점검 항목",
+      "troubleshooting": "7B. 문제 해결 참조"
     },
     "browserDetectedLabels": {
       "sectionDesc": "브라우저 API 및 OS 컴포지터에서 객관적으로 감지된 매개변수입니다. 사람의 육안 판단과 명확히 구분됩니다.",
@@ -1958,7 +1962,10 @@
     "print": {
       "printReport": "보고서 인쇄",
       "disclaimer": "이 검사 보고서에는 Screen Tester를 사용하여 기록된 클라이언트 측 브라우저 텔레메트리 및 사람의 육안 관찰 내용이 포함되어 있습니다. 인위적인 점수는 일절 생성하지 않습니다."
-    }
+    },
+    "recommendedChecksNote": "디스플레이 사양 및 패널 기술에 따른 맞춤형 테스트 권장 사항.",
+    "troubleshootingNote": "이번 검사 세션에서 관찰된 문제를 바탕으로 한 실용적인 문제 해결 가이드 바로가기.",
+    "viewTroubleshootingAction": "문제 해결 가이드 보기"
   },
   "CustomPattern": {
     "breadcrumbAll": "전체 테스트",

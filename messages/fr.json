@@ -1888,7 +1888,9 @@
       "browserDetected": "DÉTECTÉ PAR LE NAVIGATEUR",
       "userProvided": "FOURNI PAR L'UTILISATEUR",
       "userObserved": "OBSERVATIONS VISUELLES",
-      "notAvailable": "NON DISPONIBLE"
+      "notAvailable": "NON DISPONIBLE",
+      "relevantChecks": "RECOMMANDÉ POUR CE MODÈLE",
+      "observedIssueGuides": "GUIDES DES PROBLÈMES OBSERVÉS"
     },
     "statusBuckets": {
       "normalObservations": "OBSERVATIONS NORMALES",
@@ -1917,7 +1919,9 @@
       "browserDetected": "5. Résultats détectés par le navigateur",
       "visualObservations": "6. Observations visuelles",
       "pixelDefects": "7. Défauts de pixels",
-      "notes": "8. Remarques"
+      "notes": "8. Remarques",
+      "recommendedChecks": "3B. Vérifications Recommandées Spécifiques au Modèle",
+      "troubleshooting": "7B. Références de Dépannage"
     },
     "browserDetectedLabels": {
       "sectionDesc": "Paramètres objectivement détectés via les API du navigateur et le compositeur du système d'exploitation. Séparés des jugements visuels humains.",
@@ -1958,7 +1962,10 @@
     "print": {
       "printReport": "Imprimer le rapport",
       "disclaimer": "Ce rapport d'inspection contient la télémétrie du navigateur côté client et des observations visuelles humaines enregistrées avec Screen Tester. Zéro score synthétique."
-    }
+    },
+    "recommendedChecksNote": "Recommandations de test ciblées basées sur les spécifications de votre écran et la technologie de la dalle.",
+    "troubleshootingNote": "Liens directs vers des guides pratiques de dépannage basés sur les problèmes observés lors de cette session.",
+    "viewTroubleshootingAction": "Consulter le Guide de Dépannage"
   },
   "CustomPattern": {
     "breadcrumbAll": "TOUS LES TESTS",

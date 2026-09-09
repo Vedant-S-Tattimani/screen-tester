@@ -1888,7 +1888,9 @@
       "browserDetected": "ブラウザ検出情報",
       "userProvided": "ユーザー入力仕様",
       "userObserved": "目視観察結果",
-      "notAvailable": "利用不可"
+      "notAvailable": "利用不可",
+      "relevantChecks": "このモデルの推奨項目",
+      "observedIssueGuides": "検出された問題のガイド"
     },
     "statusBuckets": {
       "normalObservations": "正常な観察結果",
@@ -1917,7 +1919,9 @@
       "browserDetected": "5. ブラウザ検出結果",
       "visualObservations": "6. 目視観察",
       "pixelDefects": "7. ピクセル欠陥",
-      "notes": "8. メモ"
+      "notes": "8. メモ",
+      "recommendedChecks": "3B. モデル別推奨点検項目",
+      "troubleshooting": "7B. トラブルシューティング参照"
     },
     "browserDetectedLabels": {
       "sectionDesc": "ブラウザAPIおよびOSコンポジタから客観的に検出されたパラメータ。人間の目視判断とは明確に分離されています。",
@@ -1958,7 +1962,10 @@
     "print": {
       "printReport": "レポートを印刷",
       "disclaimer": "この検査レポートには、Screen Testerを使用して記録されたクライアント側ブラウザテレメトリと目視観察が含まれています。合成スコアは一切含まれません。"
-    }
+    },
+    "recommendedChecksNote": "ディスプレイ仕様とパネルテクノロジーに基づいた対象テストの推奨項目。",
+    "troubleshootingNote": "このセクションで確認された問題に基づいた実用的なトラブルシューティングガイドへの直接リンク。",
+    "viewTroubleshootingAction": "トラブルシューティングガイドを見る"
   },
   "CustomPattern": {
     "breadcrumbAll": "すべてのテスト",
