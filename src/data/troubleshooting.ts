@@ -176,6 +176,7 @@ export const TROUBLESHOOTING_TOPICS: TroubleshootingTopic[] = [
       description: "Screen Tester benchmarks browser requestAnimationFrame intervals against display vsync timestamps to observe the active operating refresh rate.",
       links: [
         { label: "Refresh Rate Test", testId: "refresh-rate-test", testPath: "/tests/refresh-rate-test" },
+        { label: "VRR / Adaptive Sync Visual Inspection", testId: "vrr-test", testPath: "/tests/vrr-test" },
         { label: "Frame Rate & Motion Test", testId: "frame-rate-test", testPath: "/tests/frame-rate-test" }
       ]
     },
@@ -214,6 +215,7 @@ export const TROUBLESHOOTING_TOPICS: TroubleshootingTopic[] = [
       description: "Screen Tester provides high-contrast horizontal moving bar patterns specifically engineered to reveal tearing boundaries across browser compositor cycles.",
       links: [
         { label: "Screen Tearing Test", testId: "screen-tearing-test", testPath: "/tests/screen-tearing-test" },
+        { label: "VRR / Adaptive Sync Visual Inspection", testId: "vrr-test", testPath: "/tests/vrr-test" },
         { label: "Ghosting & Motion Test", testId: "ghosting-test", testPath: "/tests/ghosting-test" }
       ]
     },
@@ -337,7 +339,9 @@ export const TROUBLESHOOTING_TOPICS: TroubleshootingTopic[] = [
       links: [
         { label: "Colour Contrast Test", testId: "contrast-test", testPath: "/tests/contrast-test" },
         { label: "Color Test", testId: "color-test", testPath: "/tests/color-test" },
-        { label: "Color Banding Test", testId: "color-banding-test", testPath: "/tests/color-banding-test" }
+        { label: "Color Banding Test", testId: "color-banding-test", testPath: "/tests/color-banding-test" },
+        { label: "Gradient & Banding Test", testId: "gradient-banding-test", testPath: "/tests/gradient-banding-test" },
+        { label: "Near-Black & Shadow Detail", testId: "near-black-test", testPath: "/tests/near-black-test" }
       ]
     },
     whatScreenTesterCannotDetermine: [
@@ -375,6 +379,8 @@ export const TROUBLESHOOTING_TOPICS: TroubleshootingTopic[] = [
       description: "Screen Tester provides fine 1-pixel alternating line patterns, subpixel orientation grids, and high-frequency sharpness charts to inspect text and edge rendering.",
       links: [
         { label: "Sharpness Test", testId: "sharpness-test", testPath: "/tests/sharpness-test" },
+        { label: "Text Clarity & Subpixel Test", testId: "text-clarity-test", testPath: "/tests/text-clarity-test" },
+        { label: "Scaling & Aspect Ratio Test", testId: "scaling-aspect-test", testPath: "/tests/scaling-aspect-test" },
         { label: "Resolution Checker", testId: "resolution-checker", testPath: "/tests/resolution-checker" }
       ]
     },
@@ -411,6 +417,7 @@ export const TROUBLESHOOTING_TOPICS: TroubleshootingTopic[] = [
       description: "Screen Tester displays uniform monochrome and neutral gray fields (25%, 50%, 75%) to allow thorough visual inspection across the entire panel surface.",
       links: [
         { label: "Uniformity Test", testId: "uniformity-test", testPath: "/tests/uniformity-test" },
+        { label: "Near-Black & Shadow Detail", testId: "near-black-test", testPath: "/tests/near-black-test" },
         { label: "Brightness Test", testId: "brightness-test", testPath: "/tests/brightness-test" }
       ]
     },
@@ -480,6 +487,7 @@ export const TROUBLESHOOTING_TOPICS: TroubleshootingTopic[] = [
     whatScreenTesterCanTest: {
       description: "Screen Tester tests whether the browser environment reports CSS high dynamic range query support and renders high-contrast luminance step charts.",
       links: [
+        { label: "HDR Visual Inspection", testId: "hdr-test", testPath: "/tests/hdr-test" },
         { label: "HDR Capability Test", testId: "hdr-capability-test", testPath: "/tests/hdr-capability-test" },
         { label: "Colour Contrast Test", testId: "contrast-test", testPath: "/tests/contrast-test" }
       ]
@@ -519,6 +527,8 @@ export const TROUBLESHOOTING_TOPICS: TroubleshootingTopic[] = [
     whatScreenTesterCanTest: {
       description: "Screen Tester renders corner boundary boxes and 1-pixel edge registration markers to immediately verify whether 1:1 pixel mapping is active.",
       links: [
+        { label: "TV Overscan & 1:1 Pixel Mapping", testId: "tv-overscan-test", testPath: "/tests/tv-overscan-test" },
+        { label: "Scaling & Aspect Ratio Test", testId: "scaling-aspect-test", testPath: "/tests/scaling-aspect-test" },
         { label: "Resolution Checker", testId: "resolution-checker", testPath: "/tests/resolution-checker" },
         { label: "Sharpness Test", testId: "sharpness-test", testPath: "/tests/sharpness-test" }
       ]

@@ -1,7 +1,7 @@
 import { generateSeoMetadata } from "@/lib/seo";
 import { Metadata } from "next";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
-import { UniformityPattern } from "@/components/tests/UniformityPattern";
+import { HdrVisualPattern } from "@/components/tests/HdrVisualPattern";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export async function generateMetadata({
@@ -10,21 +10,22 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "TestPages.uniformity-test" });
-  return generateSeoMetadata("/tests/uniformity-test", t("metaTitle"), t("metaDescription"));
+  const t = await getTranslations({ locale, namespace: "TestPages.hdr-test" });
+  return generateSeoMetadata("/tests/hdr-test", t("metaTitle"), t("metaDescription"));
 }
 
-export default async function UniformityTest({
+export default async function HdrTestPage({
   params
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations({ locale, namespace: "TestPages.uniformity-test" });
+  const t = await getTranslations({ locale, namespace: "TestPages.hdr-test" });
 
   return (
-    <TestWrapper testId="uniformity-test"
+    <TestWrapper
+      testId="hdr-test"
       title={t("title")}
       description={
         <>
@@ -39,7 +40,7 @@ export default async function UniformityTest({
         </ul>
       }
     >
-      <UniformityPattern testId="uniformity-test" />
+      <HdrVisualPattern testId="hdr-test" />
     </TestWrapper>
   );
 }

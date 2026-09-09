@@ -331,5 +331,86 @@ export const TEST_REQUIREMENTS_MATRIX: TestRequirementEntry[] = [
     fullscreenRecommended: false,
     webglRequired: true,
     notes: "Utilizes WebGL debug extension to query unmasked graphics card vendor and renderer string."
+  },
+  {
+    testId: "vrr-test",
+    testName: "VRR / Adaptive Sync Inspection",
+    orientation: "Desktop-oriented",
+    touchCapable: false,
+    fullscreenRecommended: true,
+    webglRequired: false,
+    notes: "Evaluates frame pacing and judder across configurable animation loads in Fullscreen mode."
+  },
+  {
+    testId: "hdr-test",
+    testName: "HDR Visual Inspection",
+    orientation: "Desktop-oriented",
+    touchCapable: false,
+    fullscreenRecommended: true,
+    webglRequired: false,
+    notes: "Inspects specular highlight clipping, tone curves, and wide gamut color swatches."
+  },
+  {
+    testId: "near-black-test",
+    testName: "Near-Black & Shadow Detail Test",
+    orientation: "Universal",
+    touchCapable: true,
+    fullscreenRecommended: true,
+    webglRequired: false,
+    notes: "Best inspected in a fully darkened room to verify low-luminance grayscale step visibility."
+  },
+  {
+    testId: "gradient-banding-test",
+    testName: "Gradient & Banding Test",
+    orientation: "Universal",
+    touchCapable: true,
+    fullscreenRecommended: true,
+    webglRequired: false,
+    notes: "Smooth full-screen gradients for detecting bit-depth quantization and color stepping."
+  },
+  {
+    testId: "text-clarity-test",
+    testName: "Text Clarity & Subpixel Test",
+    orientation: "Universal",
+    touchCapable: true,
+    fullscreenRecommended: false,
+    webglRequired: false,
+    notes: "Evaluates font edge sharpness and subpixel color fringing across sizes and contrast pairs."
+  },
+  {
+    testId: "backlight-bleed-test",
+    testName: "Backlight Bleed vs. IPS Glow",
+    orientation: "Universal",
+    touchCapable: true,
+    fullscreenRecommended: true,
+    webglRequired: false,
+    notes: "Examines black-field corner glow and bezel pinch leakage at varying head angles."
+  },
+  {
+    testId: "uniformity-test",
+    testName: "Screen Uniformity Test",
+    orientation: "Universal",
+    touchCapable: true,
+    fullscreenRecommended: true,
+    webglRequired: false,
+    notes: "Multi-point solid grayscale and primary fields to inspect luminance falloff and DSE."
+  },
+  {
+    testId: "tv-overscan-test",
+    testName: "TV Overscan & 1:1 Pixel Mapping",
+    orientation: "Desktop-oriented",
+    touchCapable: false,
+    fullscreenRecommended: true,
+    webglRequired: false,
+    notes: "Verifies 1-pixel outer edge boundary lines and corner markers to detect overscan cropping on TVs."
+  },
+  {
+    testId: "scaling-aspect-test",
+    testName: "Scaling & Aspect Ratio Test",
+    orientation: "Universal",
+    touchCapable: true,
+    fullscreenRecommended: true,
+    webglRequired: false,
+    notes: "Concentric circular geometry and square aspect grids to detect non-uniform stretching."
   }
 ];

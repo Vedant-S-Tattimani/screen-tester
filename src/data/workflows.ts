@@ -27,22 +27,22 @@ export const inspectionWorkflows: InspectionWorkflow[] = [
     sequence: [
       "/tests/resolution-checker",
       "/tests/dead-pixel-test",
-      "/tests/color-test",
-      "/tests/brightness-test",
-      "/tests/contrast-test",
       "/tests/uniformity-test",
-      "/tests/backlight-bleed-test",
+      "/tests/near-black-test",
+      "/tests/gradient-banding-test",
+      "/tests/text-clarity-test",
+      "/tests/scaling-aspect-test",
       "/tests/ghosting-test",
       "/tests/refresh-rate-test"
     ],
     steps: [
       { title: "Resolution & Display Info", description: "Verify native resolution, DPR scaling, and display parameters." },
       { title: "Dead Pixel Locator", description: "Cycle through pure solid fields to locate dead or stuck subpixels." },
-      { title: "Color Reproduction", description: "Check RGB primaries and secondary color fields." },
-      { title: "Brightness & Shadow Detail", description: "Ensure near-black details do not crush into dark blocks." },
-      { title: "Contrast Steps", description: "Verify luminance step separation between highlight and shadow swatches." },
-      { title: "Screen Uniformity", description: "Inspect neutral gray fields for clouding, vignetting, or dirty screen effect." },
-      { title: "Backlight Bleed & Glow", description: "Dark room inspection to locate edge pinching and backlight leakage." },
+      { title: "Screen Uniformity", description: "Inspect neutral gray and solid fields for clouding, vignetting, or dirty screen effect." },
+      { title: "Near-Black Shadow Detail", description: "Verify dark tone step separation and shadow detail near true black." },
+      { title: "Gradient & Banding", description: "Inspect tonal transitions from black to white without quantization banding." },
+      { title: "Text Clarity & Subpixels", description: "Evaluate font anti-aliasing and subpixel edge sharpness across font sizes." },
+      { title: "Scaling & Aspect Ratio", description: "Check geometric circles and square grids for stretching or squashing." },
       { title: "Ghosting & Motion Trails", description: "Observe moving contrast blocks to test pixel response time." },
       { title: "Refresh Rate & Frame Timing", description: "Benchmark browser animation timing against panel refresh rate." }
     ]
@@ -91,20 +91,20 @@ export const inspectionWorkflows: InspectionWorkflow[] = [
     inspectionTip: "Test your monitor at its advertised maximum refresh rate with Overdrive set to 'Normal' before testing 'Extreme/Faster' to identify inverse ghosting (pixel overshoot halos).",
     browserLimitations: "Variable Refresh Rate (G-Sync / FreeSync) dynamic variable frame pacing requires native DirectX/Vulkan game execution to test dynamic fluctuating refresh rate floors.",
     sequence: [
+      "/tests/vrr-test",
+      "/tests/screen-tearing-test",
       "/tests/refresh-rate-test",
       "/tests/ghosting-test",
-      "/tests/screen-tearing-test",
-      "/tests/screen-flicker-test",
-      "/tests/hdr-capability-test",
-      "/tests/motion-blur-test"
+      "/tests/hdr-test",
+      "/tests/text-clarity-test"
     ],
     steps: [
+      { title: "VRR & Adaptive Sync Inspection", description: "Observe variable frame pacing stability and judder across changing workload levels." },
+      { title: "Screen Tearing & V-Sync", description: "Stress-test scanline tearing across high-velocity horizontal and vertical motion." },
       { title: "Refresh Rate Verification", description: "Benchmark browser requestAnimationFrame timing against native gaming panel refresh rate." },
       { title: "Ghosting, Overdrive & Black Smearing", description: "Evaluate pixel response transitions, overshoot halos (inverse ghosting), and VA dark-level smearing." },
-      { title: "Screen Tearing & V-Sync", description: "Stress-test scanline tearing across high-velocity horizontal and vertical motion." },
-      { title: "Flicker & Strobing Observation", description: "Inspect for PWM backlight pulsation, Vcom voltage bias flicker, and motion blur strobing artifacts." },
-      { title: "HDR Dynamic Range & Gaming Reticles", description: "Verify OS HDR signal handshake, wide color gamut, and specular highlight clipping." },
-      { title: "Motion Clarity & Persistence", description: "Assess backlight strobing (ULMB, ELMB, DyAc) and moving object clarity." }
+      { title: "HDR Visual Inspection", description: "Inspect specular highlights, clipping, and wide gamut rendering." },
+      { title: "Text & In-Game UI Clarity", description: "Assess small font legibility and subpixel edge rendering for HUD and text." }
     ]
   },
   {
@@ -116,20 +116,20 @@ export const inspectionWorkflows: InspectionWorkflow[] = [
     inspectionTip: "Observe dark gray patterns (1%, 2%, 5% gray) in a pitch-black room to inspect OLED near-black vertical banding and panel uniformity without ambient reflections.",
     browserLimitations: "OLED Automatic Brightness Limiter (ABL) dims large 100% white browser windows; laboratory burn-in quantification requires optical luminance meters. Temporary electronic charge accumulation (image retention) should be distinguished from permanent subpixel emitter degradation (burn-in).",
     sequence: [
-      "/tests/burn-in-test",
+      "/tests/near-black-test",
       "/tests/uniformity-test",
-      "/tests/color-banding-test",
-      "/tests/black-level-test",
-      "/tests/hdr-capability-test",
-      "/tests/motion-blur-test"
+      "/tests/hdr-test",
+      "/tests/text-clarity-test",
+      "/tests/motion-blur-test",
+      "/tests/dead-pixel-test"
     ],
     steps: [
-      { title: "Near-Black & Burn-In Observation", description: "Inspect 1%, 2%, and 5% near-black fields plus subpixel primary aging screens for static UI ghosting." },
-      { title: "Luminance & Dark Uniformity", description: "Check panel-wide uniformity across 5%, 15%, and 50% neutral gray fields for clouding or dark spots." },
-      { title: "Color Banding & Gradient Steps", description: "Ensure smooth 8-bit/10-bit color transitions without quantization banding or posterization." },
-      { title: "True Infinite Black Level", description: "Confirm complete subpixel shutoff in pure black scenes with zero backlight glow." },
+      { title: "Near-Black & Shadow Separation", description: "Inspect 0.25% to 5% dark steps to evaluate subtle shadow detail and OLED turn-on behavior." },
+      { title: "Luminance & Dark Uniformity", description: "Check panel-wide uniformity across 5%, 20%, and 50% neutral gray fields for vertical banding." },
       { title: "HDR & Specular Highlights", description: "Verify wide color gamut presentation and peak highlight roll-off without ABL clipping." },
-      { title: "Motion Clarity & Persistence", description: "Observe near-instantaneous OLED subpixel response transitions alongside sample-and-hold eye tracking motion blur." }
+      { title: "Text Rendering & Triangular Subpixels", description: "Inspect subpixel font rendering (RGB/WRGB/QD-OLED) for color fringing on text edges." },
+      { title: "Sample-and-Hold Motion Clarity", description: "Observe instantaneous OLED subpixel transitions alongside eye tracking persistence blur." },
+      { title: "Subpixel Dropout & Burn-In Check", description: "Scan primary solid fields for inactive subpixels or static UI retention." }
     ]
   },
   {
@@ -211,30 +211,20 @@ export const inspectionWorkflows: InspectionWorkflow[] = [
     inspectionTip: "Switch your TV picture preset to 'PC', 'Game', or 'Filmmaker' mode and set aspect ratio to 'Just Scan' / 1:1 to disable sharpness edge enhancement and overscan cropping.",
     browserLimitations: "TV picture processing features (such as motion interpolation / soap opera effect) must be enabled or disabled directly in the TV's hardware settings menu.",
     sequence: [
-      "/tests/resolution-checker",
-      "/tests/dead-pixel-test",
-      "/tests/color-test",
-      "/tests/grayscale-test",
-      "/tests/black-level-test",
-      "/tests/white-level-test",
+      "/tests/hdr-test",
+      "/tests/near-black-test",
       "/tests/uniformity-test",
-      "/tests/blooming-test",
-      "/tests/hdr-capability-test",
-      "/tests/motion-blur-test",
-      "/tests/refresh-rate-test"
+      "/tests/tv-overscan-test",
+      "/tests/scaling-aspect-test",
+      "/tests/viewing-angle-test"
     ],
     steps: [
-      { title: "Resolution & Aspect Ratio (Overscan)", description: "Verify full 4K/1080p display output without edges cropped by TV overscan." },
-      { title: "Dead Pixels on Large Screen", description: "Scan the large panel surface for cluster or isolated subpixel defects." },
-      { title: "Color Rendition & Saturation", description: "Check primary and secondary color rendering across full screen." },
-      { title: "Grayscale Tone Balance", description: "Ensure neutral color temperature without unwanted green or magenta tinting." },
-      { title: "Black Level Calibration", description: "Tune HDMI black level (Full 0-255 vs Limited 16-235) to prevent shadow crush." },
-      { title: "White Level & Highlights", description: "Ensure bright areas retain detail without blooming or clipping." },
-      { title: "Uniformity & Dirty Screen Effect (DSE)", description: "Pan across a gray field to detect vertical banding or dark spots common in TVs." },
-      { title: "Local Dimming & Blooming", description: "Evaluate haloing around bright objects against deep black backgrounds." },
-      { title: "HDR Capabilities", description: "Verify TV HDR10 dynamic range handshake from the connected device." },
-      { title: "Motion Blur & Judder", description: "Check motion clarity with native refresh rate before post-processing." },
-      { title: "Frame Timing Verification", description: "Check stability and frame drops at 60Hz or 120Hz." }
+      { title: "HDR Visual Inspection", description: "Verify high dynamic range highlight roll-off and wide color gamut rendering." },
+      { title: "Near-Black Shadow Detail", description: "Check HDMI black level to avoid shadow crush or washed-out elevated blacks." },
+      { title: "Uniformity & Dirty Screen Effect (DSE)", description: "Pan across gray fields to detect vertical banding or dark spots common in large panels." },
+      { title: "TV Overscan & 1:1 Pixel Mapping", description: "Verify full 4K/1080p display output without edge pixels cropped by television overscan." },
+      { title: "Aspect Ratio & Scaling Geometry", description: "Confirm circular and square test patterns retain mathematically correct aspect proportions." },
+      { title: "Living Room Viewing Angles", description: "Assess off-axis color and contrast degradation from wide seating positions." }
     ]
   }
 ];

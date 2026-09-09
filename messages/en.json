@@ -271,7 +271,8 @@
       "luminanceContrast": "LUMINANCE & CONTRAST",
       "displayBacklight": "BACKLIGHT & SCREEN UNIFORMITY",
       "motionPerformance": "MOTION PERFORMANCE",
-      "displayCapabilities": "DISPLAY CAPABILITIES"
+      "displayCapabilities": "DISPLAY CAPABILITIES",
+      "advancedDisplay": "ADVANCED DISPLAY"
     },
     "tags": {
       "visual": "VISUAL",
@@ -663,6 +664,83 @@
         "<strong>HOW TO USE:</strong> A true 10-bit or high-quality 8-bit+FRC panel will display a buttery smooth transition.",
         "<strong>WHAT YOU MAY NOTICE:</strong> If you see obvious vertical stripes (stair-stepping), your display is struggling with color depth. Use <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> or arrow keys to cycle gradients."
       ]
+    },
+    "vrr-test": {
+      "metaTitle": "VRR & Adaptive Sync Visual Inspection – G-Sync & FreeSync Frame Pacing",
+      "metaDescription": "Visually inspect variable refresh rate (VRR), G-Sync, and FreeSync frame pacing under dynamic workloads. Check for judder, stutter, and tearing online.",
+      "title": "VRR / Adaptive Sync Visual Inspection",
+      "description_p1": "This test helps you visually inspect variable refresh rate behavior and animation frame pacing under changing frame workloads. Browser animation timing can provide evidence about frame pacing consistency, but cannot prove that a specific VRR hardware mode is engaged.",
+      "instructions": [
+        "<strong>SETUP GUIDANCE:</strong> 1. Enable VRR / FreeSync / G-Sync Compatible in your monitor's OSD menu. 2. Enable Variable Refresh Rate or G-Sync in Windows/GPU control panel. 3. Enter Fullscreen for optimal frame presentation.",
+        "<strong>MOTION WORKLOADS:</strong> Switch between Low (30 FPS), Medium (60 FPS), High (Max rAF), and Dynamic Sweep workloads to observe frame pacing stability across varied refresh rates.",
+        "<strong>WHAT TO WATCH FOR:</strong> Watch the vertical bars and pendulum. Notice whether the motion remains fluid and tear-free, or exhibits tearing, stutter, judder, or uneven pacing."
+      ]
+    },
+    "hdr-test": {
+      "metaTitle": "HDR Visual Inspection – Highlight Clipping & Tone Mapping Check",
+      "metaDescription": "Controlled visual HDR inspection pattern to check specular highlight preservation, tone curve rolloff, shadow detail, and wide gamut color rendering.",
+      "title": "HDR Visual Inspection",
+      "description_p1": "Provides a controlled visual HDR inspection workflow to evaluate highlight clipping, tone curve rolloff, and near-black separation. Peak luminance in nits requires physical laboratory equipment; this visual test evaluates relative tone reproduction in your browser.",
+      "instructions": [
+        "<strong>OS & DISPLAY SETUP:</strong> Verify that HDR is toggled ON in Windows Display Settings or macOS System Settings, and that your monitor's HDR picture mode is active.",
+        "<strong>HIGHLIGHT CLIPPING:</strong> Inspect the specular highlight steps (90% to 100%). Look for the point where bright segments blend together or clip into solid white.",
+        "<strong>SHADOW & WIDE GAMUT:</strong> Check near-black blocks (0% to 10%) for shadow crush, and compare the standard SDR reference against wide gamut Display P3 primary color patches."
+      ]
+    },
+    "near-black-test": {
+      "metaTitle": "Near-Black & Shadow Detail Test – Dark Tone Grayscale Separation",
+      "metaDescription": "Inspect subtle dark-tone separation and shadow details near true black. Test 0% to 10% grayscale luminance steps in a darkened environment.",
+      "title": "Near-Black & Shadow Detail Test",
+      "description_p1": "Inspect subtle dark-tone separation and shadow transition behavior just above reference black. Low-luminance dark steps help identify black crush, elevated black floors, or panel vertical banding without claiming laboratory photometric guarantees.",
+      "instructions": [
+        "<strong>VIEWING CONDITIONS:</strong> For accurate results, view this test in a dimly lit or dark room to allow your eyes to adapt to subtle dark gradations.",
+        "<strong>STEP SEPARATION:</strong> Inspect steps 0.25%, 0.5%, 1%, 2%, 3%, 4%, 5%, 6%, 8%, and 10%. Check whether the lowest steps are clearly distinct from true black (0%).",
+        "<strong>OLED & LCD DETAILS:</strong> OLED owners should check for near-black transition smoothness and vertical banding. LCD owners should inspect for elevated black floors or muddy dark detail."
+      ]
+    },
+    "gradient-banding-test": {
+      "metaTitle": "Gradient & Banding Test – 8-Bit, 10-Bit & Color Transition Diagnostic",
+      "metaDescription": "Test display gradient smoothness and color stepping across grayscale, RGB, and dark tonal ramps. Detect bit-depth truncation and quantization banding.",
+      "title": "Gradient & Banding Test",
+      "description_p1": "Evaluate display gradient smoothness and detect unwanted quantization banding, harsh tonal steps, or color shifts. A browser canvas cannot definitively prove panel hardware bit depth, but provides high-fidelity reference ramps for visual inspection.",
+      "instructions": [
+        "<strong>GRADIENT MODES:</strong> Switch between Horizontal Grayscale, Vertical Grayscale, RGB Primaries, and Dark Shadow (0%–25%) to inspect tonal transitions across ranges.",
+        "<strong>BANDING VS SMOOTHNESS:</strong> Look for distinct vertical or horizontal stripes (stepping) across what should be continuous smooth color ramps.",
+        "<strong>QUANTIZATION COMPARISON:</strong> Toggle the 64-step quantization simulator to contrast intentional digital stepping against your display's native gradient handling."
+      ]
+    },
+    "text-clarity-test": {
+      "metaTitle": "Text Clarity & Subpixel Rendering Test – Font Sharpness & Fringing Check",
+      "metaDescription": "Inspect text clarity, subpixel color fringing, and font rendering sharpness across multiple sizes, contrasts, and high-frequency line gratings.",
+      "title": "Text Clarity & Subpixel Rendering Test",
+      "description_p1": "Inspect practical on-screen text rendering clarity, edge sharpness, and subpixel color fringing. Evaluates how your display handles typography across various font sizes and contrast pairings under your current OS scaling settings.",
+      "instructions": [
+        "<strong>SETUP & SCALING:</strong> Ensure browser zoom is set to 100% (Ctrl+0 / Cmd+0) and your operating system is running at native display resolution.",
+        "<strong>FONT SIZES & CONTRAST:</strong> Inspect paragraph and code samples from 8px to 32px in both positive (dark on light) and negative (light on dark) polarities.",
+        "<strong>SUBPIXEL FRINGING:</strong> Look closely at the vertical edges of black letters on white backgrounds for colored red or blue halos (common on BGR or non-standard subpixel layouts)."
+      ]
+    },
+    "tv-overscan-test": {
+      "metaTitle": "TV Overscan & 1:1 Pixel Mapping Test – Edge Cropping & Aspect Ratio",
+      "metaDescription": "Check if your television or external monitor is cropping desktop edges or distorting pixels. Verifies 1:1 pixel mapping and overscan settings.",
+      "title": "TV Overscan & 1:1 Pixel Mapping Test",
+      "description_p1": "Determine whether your television or external display is cropping outer desktop edges due to legacy overscan zooming. Precise 1-pixel outer borders, corner markers, and high-frequency checkerboard patterns verify true 1:1 pixel mapping.",
+      "instructions": [
+        "<strong>TV PICTURE SETTINGS:</strong> On your television remote, open Picture Settings and set Aspect Ratio to 'Just Scan', 'Screen Fit', 'Dot by Dot', or '1:1' (do NOT use '16:9' or 'Zoom').",
+        "<strong>BORDER REGISTRATION:</strong> Enter Fullscreen. Check if all four outer 1px, 2px, and 5px colored border lines are fully visible around all screen edges.",
+        "<strong>CHECKERBOARD MOIRÉ:</strong> Inspect the 1:1 checkerboard patches in the center and corners. If you see wavy moiré rings or shimmering, the TV is scaling or blurring pixels."
+      ]
+    },
+    "scaling-aspect-test": {
+      "metaTitle": "Scaling & Aspect Ratio Test – Geometry, Distortion & Stretch Check",
+      "metaDescription": "Test display scaling uniformity and aspect ratio distortion. Features concentric true circles, square grids, and multi-aspect reference frames.",
+      "title": "Scaling & Aspect Ratio Inspection",
+      "description_p1": "Inspect display scaling uniformity and geometry to detect non-uniform stretching, squashing, or incorrect aspect ratio modes. Concentric circles and calibrated grid overlays expose anamorphic distortion immediately.",
+      "instructions": [
+        "<strong>TRUE GEOMETRY:</strong> Inspect the concentric center circles. They must appear perfectly circular. If they look oval or egg-shaped, your display is stretching the image.",
+        "<strong>SQUARE GRID:</strong> Verify that the background grid lines form perfect equal squares rather than elongated rectangles.",
+        "<strong>ASPECT FRAMES:</strong> Switch between 16:9, 16:10, 4:3, and 21:9 reference outlines to verify how your display handles non-native content aspect ratios."
+      ]
     }
   },
   "Tests": {
@@ -809,6 +887,41 @@
     "customPattern": {
       "title": "Custom Test Pattern",
       "description": "Generate customizable test patterns with adjustable grids, gradients, geometry, and color bars."
+    },
+    "vrrTest": {
+      "title": "VRR & Adaptive Sync Visual Inspection – Frame Pacing & Tearing Check",
+      "description": "Visually inspect variable refresh frame pacing, tearing, and judder under dynamic animation workloads.",
+      "instructions": "Watch moving vertical bars under different workloads for tearing and stutter."
+    },
+    "hdrVisualTest": {
+      "title": "HDR Visual Inspection – Highlight Clipping & Tone Curve Check",
+      "description": "Controlled visual test for specular highlight clipping, tone mapping rolloff, and wide gamut rendering.",
+      "instructions": "Inspect specular highlight bars for clipping and verify near-black shadow detail."
+    },
+    "nearBlackTest": {
+      "title": "Near-Black & Shadow Detail Test – Low-Luminance Separation Check",
+      "description": "Evaluate subtle dark-tone separation, black crush, and near-black gradation above true black.",
+      "instructions": "Look for step separation between 0% and 5% near-black blocks in a dark room."
+    },
+    "gradientBandingTest": {
+      "title": "Gradient & Banding Test – Smooth Color & Grayscale Transitions",
+      "description": "Detect harsh tonal stepping, quantization lines, and color shifts across smooth linear gradients.",
+      "instructions": "Examine horizontal and vertical gradients for visible color or grayscale banding."
+    },
+    "textClarityTest": {
+      "title": "Text Clarity & Subpixel Test – Font Sharpness & Edge Halos",
+      "description": "Evaluate font rendering sharpness, edge halos, and subpixel color fringing across sizes.",
+      "instructions": "Read fine text samples and inspect 1px line gratings for edge clarity and fringing."
+    },
+    "tvOverscanTest": {
+      "title": "TV Overscan & 1:1 Pixel Mapping – Edge Cropping & Aspect Check",
+      "description": "Detect edge cropping and scaling distortion when connecting PCs or laptops to televisions.",
+      "instructions": "Verify all outer colored border lines are visible and check 1:1 checkerboard for moiré."
+    },
+    "scalingAspectTest": {
+      "title": "Scaling & Aspect Ratio Inspection – Geometry & Distortion Check",
+      "description": "Detect non-uniform stretching, egg-shaped circles, and aspect ratio mismatches.",
+      "instructions": "Check concentric circles for true roundness and verify square grid alignment."
     }
   },
   "Guides": {

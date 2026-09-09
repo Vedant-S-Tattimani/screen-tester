@@ -1,7 +1,7 @@
 import { generateSeoMetadata } from "@/lib/seo";
 import { Metadata } from "next";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
-import { UniformityPattern } from "@/components/tests/UniformityPattern";
+import { ScalingAspectPattern } from "@/components/tests/ScalingAspectPattern";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export async function generateMetadata({
@@ -10,21 +10,22 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "TestPages.uniformity-test" });
-  return generateSeoMetadata("/tests/uniformity-test", t("metaTitle"), t("metaDescription"));
+  const t = await getTranslations({ locale, namespace: "TestPages.scaling-aspect-test" });
+  return generateSeoMetadata("/tests/scaling-aspect-test", t("metaTitle"), t("metaDescription"));
 }
 
-export default async function UniformityTest({
+export default async function ScalingAspectTestPage({
   params
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations({ locale, namespace: "TestPages.uniformity-test" });
+  const t = await getTranslations({ locale, namespace: "TestPages.scaling-aspect-test" });
 
   return (
-    <TestWrapper testId="uniformity-test"
+    <TestWrapper
+      testId="scaling-aspect-test"
       title={t("title")}
       description={
         <>
@@ -39,7 +40,7 @@ export default async function UniformityTest({
         </ul>
       }
     >
-      <UniformityPattern testId="uniformity-test" />
+      <ScalingAspectPattern testId="scaling-aspect-test" />
     </TestWrapper>
   );
 }

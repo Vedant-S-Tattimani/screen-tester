@@ -232,7 +232,8 @@
       "luminanceContrast": "Luminance & Contraste",
       "displayBacklight": "RÉTROÉCLAIRAGE ET UNIFORMITÉ DE L'ÉCRAN",
       "motionPerformance": "Performance de Mouvement",
-      "displayCapabilities": "Capacités d'Affichage"
+      "displayCapabilities": "Capacités d'Affichage",
+      "advancedDisplay": "AFFICHAGE AVANCÉ"
     },
     "launchTest": "Lancer le Test",
     "tags": {
@@ -634,6 +635,83 @@
         "If you see obvious vertical stripes (stair-stepping), your display is struggling with color depth.",
         "Use <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> or arrow keys to cycle gradients."
       ]
+    },
+    "vrr-test": {
+      "metaTitle": "Inspection Visuelle VRR & Adaptive Sync – Fluidité G-Sync & FreeSync",
+      "metaDescription": "Inspectez visuellement le taux de rafraîchissement variable (VRR), G-Sync et FreeSync sous différentes charges. Vérifiez les saccades et le déchirement d'écran.",
+      "title": "Inspection Visuelle VRR / Adaptive Sync",
+      "description_p1": "Ce test vous permet d'inspecter visuellement le comportement du taux de rafraîchissement variable et la fluidité des animations. La synchronisation du navigateur donne des indications précieuses mais ne peut prouver à elle seule l'activation matérielle du VRR.",
+      "instructions": [
+        "<strong>CONFIGURATION:</strong> 1. Activez VRR / FreeSync / G-Sync dans l'OSD de votre écran. 2. Activez le taux de rafraîchissement variable dans Windows/pilotes GPU. 3. Passez en Plein écran.",
+        "<strong>CHARGES DE MOUVEMENT:</strong> Basculez entre Basse (30 FPS), Moyenne (60 FPS), Élevée et Balayage dynamique pour observer la stabilité de l'affichage.",
+        "<strong>OBSERVATION:</strong> Regardez les barres verticales et le pendule. Vérifiez si le mouvement reste fluide ou s'il présente des déchirements d'écran (tearing) ou des micro-saccades."
+      ]
+    },
+    "hdr-test": {
+      "metaTitle": "Inspection Visuelle HDR – Écrêtage des Hautes Lumières & Courbe de Ton",
+      "metaDescription": "Mire visuelle HDR contrôlée pour inspecter la préservation des hautes lumières, l'écrêtage, les détails sombres et le rendu des couleurs à large gamme.",
+      "title": "Inspection Visuelle HDR",
+      "description_p1": "Fournit une mire visuelle HDR contrôlée pour évaluer l'écrêtage des hautes lumières et la séparation des tons sombres. La luminosité de pointe en nits exige des appareils optiques de laboratoire; ce test évalue la gradation tonale dans le navigateur.",
+      "instructions": [
+        "<strong>RÉGLAGES SYSTÈME:</strong> Assurez-vous que le HDR est activé dans les paramètres d'affichage de Windows/macOS et que le mode HDR de l'écran est actif.",
+        "<strong>ÉCRÊTAGE DES HAUTES LUMIÈRES:</strong> Inspectez les échelons brillants (90 % à 100 %). Repérez le seuil où les blocs clairs se fondent en blanc uniforme.",
+        "<strong>OMBRES ET LARGE GAMME:</strong> Examinez les carrés proches du noir (0 % à 10 %) et comparez la référence SDR aux échantillons Display P3."
+      ]
+    },
+    "near-black-test": {
+      "metaTitle": "Test Proche du Noir & Détails des Ombres – Séparation des Tons Sombres",
+      "metaDescription": "Inspectez la subtile séparation des tons sombres et le détail dans les ombres juste au-dessus du noir pur. Échelons de 0 % à 10 % dans l'obscurité.",
+      "title": "Test Proche du Noir & Détails des Ombres",
+      "description_p1": "Inspectez la séparation des teintes sombres juste au-dessus du noir de référence. Les échelons sombres permettent d'identifier l'écrasement des noirs (black crush) ou les noirs délavés sans prétendre à des mesures de laboratoire.",
+      "instructions": [
+        "<strong>CONDITIONS D'OBSERVATION:</strong> Effectuez ce test dans une pièce sombre pour adapter votre vue aux nuances sombres les plus délicates.",
+        "<strong>SÉPARATION DES ÉCHELONS:</strong> Inspectez les échelons 0,25 %, 0,5 %, 1 %, 2 %, 3 %, 4 %, 5 %, 6 %, 8 % et 10 %. Vérifiez s'ils se distinguent du noir pur (0 %).",
+        "<strong>OLED ET LCD:</strong> Sur OLED, vérifiez la régularité et l'absence de bandes verticales; sur LCD, observez si le noir est trop gris ou bouché."
+      ]
+    },
+    "gradient-banding-test": {
+      "metaTitle": "Test de Dégradé & Banding – Diagnostic 8 Bits, 10 Bits & Transitions",
+      "metaDescription": "Testez la fluidité des dégradés de l'écran et repérez les bandes de quantification sur les échelles de gris, RGB et ombres sombres.",
+      "title": "Test de Dégradé & Banding",
+      "description_p1": "Évaluez la progressivité des dégradés à l'écran et détectez les bandes de quantification indésirables ou les sauts de teinte. Le canvas du navigateur n'atteste pas de la profondeur matérielle mais offre des mires haute fidélité.",
+      "instructions": [
+        "<strong>MODES DE DÉGRADÉ:</strong> Basculez entre Nuances de gris horizontales/verticales, Primaires RGB et Ombres sombres (0 %–25 %).",
+        "<strong>BANDES VS FLUIDITÉ:</strong> Repérez toute ligne de démarcation ou cassure au sein des rampes de couleurs censées être parfaitement continues.",
+        "<strong>SIMULATEUR DE QUANTIFICATION:</strong> Activez le comparateur 64 étapes pour contraster un découpage volontaire avec la réponse native de votre écran."
+      ]
+    },
+    "text-clarity-test": {
+      "metaTitle": "Test de Netteté du Texte & Rendu Sous-Pixel – Précision & Franges",
+      "metaDescription": "Inspectez la netteté du texte, les franges colorées de sous-pixels et le rendu typographique sur plusieurs tailles, contrastes et trames de lignes.",
+      "title": "Test de Netteté du Texte & Sous-Pixels",
+      "description_p1": "Inspectez la clarté du texte affiché, la netteté des contours et les franges colorées selon les réglages actuels de mise à l'échelle de votre système d'exploitation.",
+      "instructions": [
+        "<strong>MISE À L'ÉCHELLE:</strong> Assurez-vous que le zoom du navigateur est à 100 % (Ctrl+0) et que le système utilise la résolution native de la dalle.",
+        "<strong>TAILLES & CONTRASTE:</strong> Examinez des échantillons de texte de 8px à 32px en contraste positif (texte sombre) et négatif (texte clair).",
+        "<strong>FRANGES COLORÉES:</strong> Observez de près les bords verticaux des lettres pour déceler d'éventuels liserés rouges ou bleus (fréquent sur matrices BGR ou non standard)."
+      ]
+    },
+    "tv-overscan-test": {
+      "metaTitle": "Test Overscan TV & Mappage 1:1 – Rognage des Bords & Format",
+      "metaDescription": "Vérifiez si votre téléviseur ou écran externe rogne les bords du bureau ou déforme les pixels. Contrôle du mappage 1:1 des pixels.",
+      "title": "Test Overscan TV & Mappage 1:1",
+      "description_p1": "Déterminez si votre téléviseur rogne les bords extérieurs du bureau à cause du surbalayage (overscan). Des bordures de 1 pixel et des mires en damier vérifient le mappage 1:1 exact.",
+      "instructions": [
+        "<strong>RÉGLAGES TV:</strong> Sur la télécommande, réglez le format d'image sur 'Signal original' (Just Scan), 'Adapter à l'écran' ou '1:1' (évitez '16:9' ou 'Zoom').",
+        "<strong>BORDURES EXTÉRIEURES:</strong> Passez en Plein écran. Vérifiez que les 4 lignes colorées extérieures de 1px, 2px et 5px sont intégralement visibles.",
+        "<strong>DAMIER 1:1:</strong> Inspectez les damiers 1:1. Des cercles ou vagues de moiré indiquent que le téléviseur applique un rééchantillonnage ou un flou."
+      ]
+    },
+    "scaling-aspect-test": {
+      "metaTitle": "Inspection de Mise à l'Échelle & Format – Géométrie & Déformation",
+      "metaDescription": "Testez la géométrie de l'écran et le ratio d'aspect pour détecter les étirements ou distorsions grâce à des cercles parfaits et des grilles carrées.",
+      "title": "Inspection de Mise à l'Échelle & Format",
+      "description_p1": "Inspectez la géométrie d'affichage et l'uniformité du cadrage pour détecter les étirements anormaux ou les mauvais formats d'image. Les cercles concentriques et grilles carrées révèlent toute anamorphose.",
+      "instructions": [
+        "<strong>GÉOMÉTRIE PARFAITE:</strong> Observez les cercles concentriques au centre. Ils doivent être parfaitement ronds. S'ils sont ovales, l'image est déformée.",
+        "<strong>GRILLE CARRÉE:</strong> Assurez-vous que les lignes de la grille forment des carrés parfaits et non des rectangles allongés.",
+        "<strong>CADRES DE RATIO:</strong> Basculez entre les gabarits 16:9, 16:10, 4:3 et 21:9 pour vérifier l'adaptation des formats non natifs."
+      ]
     }
   },
   "Tests": {
@@ -780,6 +858,41 @@
     "customPattern": {
       "title": "Mire de test personnalisée",
       "description": "Générez des mires de test personnalisables avec des grilles ajustables, des dégradés, des formes géométriques et des mires de couleur."
+    },
+    "vrrTest": {
+      "title": "Inspection Visuelle VRR & Adaptive Sync – Fluidité & Tearing",
+      "description": "Contrôle visuel du taux de rafraîchissement variable, saccades et tearing sous différentes charges.",
+      "instructions": "Observez les barres verticales sous diverses vitesses pour repérer déchirements et saccades."
+    },
+    "hdrVisualTest": {
+      "title": "Inspection Visuelle HDR – Écrêtage & Mappage Tonal",
+      "description": "Test visuel contrôlé pour l'écrêtage des hautes lumières, la courbe de tonalité et le gamut étendu.",
+      "instructions": "Inspectez les barres lumineuses pour déceler l'écrêtage et vérifiez les détails sombres."
+    },
+    "nearBlackTest": {
+      "title": "Test Proche du Noir & Détails des Ombres – Séparation Sombres",
+      "description": "Évaluez la séparation des tons très sombres, le black crush et la gradation au-dessus du noir.",
+      "instructions": "Vérifiez dans le noir la distinction des blocs sombres entre 0 % et 5 %."
+    },
+    "gradientBandingTest": {
+      "title": "Test de Dégradé & Banding – Transitions Tonales Régulières",
+      "description": "Détectez les cassures tonales, lignes de quantification et bandes sur les dégradés.",
+      "instructions": "Inspectez les dégradés horizontaux et verticaux pour repérer toute démarcation visible."
+    },
+    "textClarityTest": {
+      "title": "Test de Netteté du Texte & Sous-Pixels – Précision & Franges",
+      "description": "Évaluez la netteté typographique, les contours et les franges colorées de sous-pixels.",
+      "instructions": "Lisez les échantillons de texte et inspectez les trames 1px pour contrôler la clarté."
+    },
+    "tvOverscanTest": {
+      "title": "TV Overscan & Mappage 1:1 – Rognage d'Image & Format",
+      "description": "Détectez le rognage des bords et la mauvaise mise à l'échelle lors du raccordement à un téléviseur.",
+      "instructions": "Vérifiez que toutes les bordures extérieures sont visibles et contrôlez le damier."
+    },
+    "scalingAspectTest": {
+      "title": "Inspection de Format & Échelle – Géométrie & Déformation",
+      "description": "Détectez les étirements inégaux, cercles ovales et erreurs de ratio d'affichage.",
+      "instructions": "Vérifiez la rondeur exacte des cercles concentriques et la régularité du quadrillage."
     }
   },
   "Guides": {

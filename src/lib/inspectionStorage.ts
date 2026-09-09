@@ -501,6 +501,41 @@ export function getTroubleshootingRecommendations(
       symptomId: "hdr-not-working",
       title: "HDR Not Working Troubleshooting",
       summary: "Step-by-step resolution for Windows/macOS HDR toggles, washed-out SDR content, and cable limitations."
+    },
+    "vrr-test": {
+      symptomId: "screen-tearing",
+      title: "Screen Tearing & VRR Troubleshooting",
+      summary: "Diagnose VRR/Adaptive-Sync frame pacing, V-Sync configurations, and tearing under motion."
+    },
+    "hdr-test": {
+      symptomId: "hdr-not-working",
+      title: "HDR Not Working Troubleshooting",
+      summary: "Step-by-step resolution for OS HDR toggles, clipped highlights, crushed shadows, and cable bandwidth."
+    },
+    "near-black-test": {
+      symptomId: "uneven-brightness",
+      title: "Near-Black & Shadow Detail Guide",
+      summary: "Address near-black crush, elevated black levels, and dark-field transition irregularities."
+    },
+    "gradient-banding-test": {
+      symptomId: "washed-out-colors",
+      title: "Gradient Banding & Color Steps Guide",
+      summary: "Troubleshoot bit depth quantization, color banding, and smooth gradient rendering."
+    },
+    "text-clarity-test": {
+      symptomId: "blurry-text",
+      title: "Blurry Text & Subpixel Fringing Guide",
+      summary: "Inspect font sharpness, subpixel fringing, and OS DPI scaling alignment."
+    },
+    "tv-overscan-test": {
+      symptomId: "tv-overscan-fit",
+      title: "TV Overscan & 1:1 Pixel Mapping Guide",
+      summary: "Troubleshoot cropped desktop edges, TV overscan zoom modes, and 1:1 pixel mapping."
+    },
+    "scaling-aspect-test": {
+      symptomId: "tv-overscan-fit",
+      title: "Scaling & Aspect Ratio Guide",
+      summary: "Inspect non-uniform stretching, incorrect aspect ratios, and desktop scaling distortion."
     }
   };
 

@@ -232,7 +232,8 @@
       "luminanceContrast": "Leuchtdichte & Kontrast",
       "displayBacklight": "HINTERGRUNDBELEUCHTUNG & BILDSCHIRM-GLEICHMÄSSIGKEIT",
       "motionPerformance": "Bewegungsleistung",
-      "displayCapabilities": "Anzeigefunktionen"
+      "displayCapabilities": "Anzeigefunktionen",
+      "advancedDisplay": "ERWEITERTE BILDSCHIRMTESTS"
     },
     "launchTest": "Test Starten",
     "tags": {
@@ -634,6 +635,83 @@
         "If you see obvious vertical stripes (stair-stepping), your display is struggling with color depth.",
         "Use <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> or arrow keys to cycle gradients."
       ]
+    },
+    "vrr-test": {
+      "metaTitle": "VRR & Adaptive Sync Visuelle Inspektion – G-Sync & FreeSync Frame-Pacing",
+      "metaDescription": "Überprüfen Sie Bildwiederholraten (VRR), G-Sync und FreeSync Frame-Pacing unter dynamischen Lasten visuell auf Ruckeln und Tearing.",
+      "title": "VRR / Adaptive Sync Visuelle Inspektion",
+      "description_p1": "Dieser Test hilft Ihnen, das Verhalten variabler Bildwiederholraten und das Frame-Pacing von Animationen visuell zu überprüfen. Das Browser-Timing liefert Hinweise auf die Pacing-Konsistenz, kann jedoch keinen bestimmten VRR-Hardwaremodus garantieren.",
+      "instructions": [
+        "<strong>EINRICHTUNG:</strong> 1. Aktivieren Sie VRR / FreeSync / G-Sync im Monitor-OSD. 2. Aktivieren Sie Variable Bildwiederholfrequenz in den Windows-/Grafikkarteneinstellungen. 3. Wechseln Sie in den Vollbildmodus.",
+        "<strong>ANIMATIONSLAST:</strong> Wechseln Sie zwischen niedriger (30 FPS), mittlerer (60 FPS), hoher Last und dynamischem Durchlauf, um die Stabilität bei variablen Raten zu beobachten.",
+        "<strong>BEOBACHTUNG:</strong> Beobachten Sie die vertikalen Balken und das Pendel auf flüssige Bewegungen, Tearing-Kanten oder Mikroruckler."
+      ]
+    },
+    "hdr-test": {
+      "metaTitle": "Visuelle HDR-Inspektion – Highlight-Clipping & Tone-Mapping-Test",
+      "metaDescription": "Kontrolliertes visuelles HDR-Testmuster zur Überprüfung von Glanzlicht-Clipping, Tonwertkurven, Schattendetails und Wide-Color-Gamut.",
+      "title": "Visuelle HDR-Inspektion",
+      "description_p1": "Bietet einen kontrollierten visuellen Workflow zur Überprüfung von Highlight-Clipping, Tonwertkurven und Schattendetails. Die Spitzenhelligkeit in Nits erfordert optische Laborgeräte; dieser Test bewertet die relative Tonwertabstufung im Browser.",
+      "instructions": [
+        "<strong>SYSTEM-EINRICHTUNG:</strong> Stellen Sie sicher, dass HDR in den Windows-/macOS-Anzeigeeinstellungen aktiviert ist und der HDR-Bildmodus des Monitors aktiv ist.",
+        "<strong>HIGHLIGHT-CLIPPING:</strong> Untersuchen Sie die Glanzlichtstufen (90 % bis 100 %). Achten Sie darauf, ab welcher Stufe helle Felder zu Weiß verschmelzen.",
+        "<strong>SCHATTEN & FARBRAUM:</strong> Überprüfen Sie dunkle Blöcke (0 % bis 10 %) auf Detailverlust und vergleichen Sie die SDR-Referenz mit dem Display-P3-Farbraum."
+      ]
+    },
+    "near-black-test": {
+      "metaTitle": "Nah-Schwarz & Schattendetail-Test – Dunkelton-Abstufung & Black-Crush",
+      "metaDescription": "Überprüfen Sie die feine Differenzierung von Dunkeltönen nahe echtem Schwarz. Testen Sie Graustufen von 0 % bis 10 % im abgedunkelten Raum.",
+      "title": "Nah-Schwarz & Schattendetail-Test",
+      "description_p1": "Prüfen Sie die Differenzierung feinster Dunkeltöne knapp über dem Referenzschwarz. Dunkle Graustufen helfen, Black Crush, aufgehellte Schwarzwerte oder Panel-Streifen ohne Messgeräte zu erkennen.",
+      "instructions": [
+        "<strong>TESTBEDINGUNGEN:</strong> Führen Sie diesen Test in einem abgedunkelten Raum durch, damit sich Ihre Augen an feine Dunkelstufen anpassen können.",
+        "<strong>STUFEN-TRENNUNG:</strong> Prüfen Sie die Stufen 0,25 %, 0,5 %, 1 %, 2 %, 3 %, 4 %, 5 %, 6 %, 8 % und 10 % auf klare Unterscheidbarkeit von echtem Schwarz (0 %).",
+        "<strong>OLED & LCD:</strong> Bei OLED auf sanfte Übergänge und vertikales Banding achten; bei LCD auf graue Aufhellungen oder verwaschene Details prüfen."
+      ]
+    },
+    "gradient-banding-test": {
+      "metaTitle": "Farbverlauf & Banding-Test – 8-Bit, 10-Bit & Farbübergangs-Prüfung",
+      "metaDescription": "Testen Sie die Gleichmäßigkeit von Farbverläufen und erkennen Sie Quantisierungsstreifen in Graustufen-, RGB- und Schattenverläufen.",
+      "title": "Farbverlauf & Banding-Test",
+      "description_p1": "Prüfen Sie Farbverläufe auf störende Farbabstufungen, Treppeneffekte oder Farbverschiebungen. Ein Browser-Canvas kann die Bit-Tiefe des Panels nicht beweisen, bietet jedoch hochwertige visuelle Referenzen.",
+      "instructions": [
+        "<strong>VERLAUFSMODI:</strong> Wechseln Sie zwischen horizontalen/vertikalen Graustufen, RGB-Farben und Schattenverläufen (0 %–25 %).",
+        "<strong>BANDING VS. WEICHE ÜBERGÄNGE:</strong> Achten Sie auf sichtbare Linien und Streifen in kontinuierlichen Verläufen.",
+        "<strong>QUANTISIERUNGS-SIMULATOR:</strong> Schalten Sie den 64-Stufen-Vergleich ein, um gezielte digitale Abstufungen mit der nativen Panel-Wiedergabe zu vergleichen."
+      ]
+    },
+    "text-clarity-test": {
+      "metaTitle": "Textschärfe & Subpixel-Rendering-Test – Schriftkonturen & Farbsäume",
+      "metaDescription": "Überprüfen Sie Textschärfe, Subpixel-Farbsäume und Lesbarkeit bei verschiedenen Schriftgrößen, Kontrasten und Linienrastern.",
+      "title": "Textschärfe & Subpixel-Rendering-Test",
+      "description_p1": "Prüfen Sie die Textschärfe, Kantendefinition und Subpixel-Farbsäume Ihres Bildschirms bei verschiedenen Schriftgrößen und Skalierungseinstellungen.",
+      "instructions": [
+        "<strong>SKALIERUNG:</strong> Stellen Sie sicher, dass der Browser-Zoom 100 % beträgt (Strg+0) und das Betriebssystem die native Monitorauflösung nutzt.",
+        "<strong>SCHRIFTGRÖSSEN:</strong> Prüfen Sie Textmuster von 8px bis 32px in positiver (schwarz auf weiß) und negativer (weiß auf schwarz) Darstellung.",
+        "<strong>SUBPIXEL-FARBSÄUME:</strong> Achten Sie an den vertikalen Buchstabenrändern auf rote oder blaue Farbsäume (typisch bei BGR- oder OLED-Layouts)."
+      ]
+    },
+    "tv-overscan-test": {
+      "metaTitle": "TV-Overscan & 1:1 Pixel-Mapping-Test – Bildrand-Beschnitt & Skalierung",
+      "metaDescription": "Prüfen Sie, ob Ihr Fernseher Bildränder abschneidet oder Pixel verzerrt. Testet 1:1 Pixel-Mapping und TV-Overscan-Einstellungen.",
+      "title": "TV-Overscan & 1:1 Pixel-Mapping-Test",
+      "description_p1": "Stellen Sie fest, ob Ihr Fernseher Bildränder durch veraltetes Overscan beschneidet. Exakte 1-Pixel-Randlinien, Eckmarkierungen und Schachbrettmuster sichern echtes 1:1 Pixel-Mapping.",
+      "instructions": [
+        "<strong>TV-BILDEINSTELLUNGEN:</strong> Stellen Sie das Bildformat am Fernseher auf 'Just Scan', 'Bildanpassung', 'Dot by Dot' oder '1:1' (nicht '16:9' oder 'Zoom').",
+        "<strong>RANDLINIEN:</strong> Aktivieren Sie den Vollbildmodus. Prüfen Sie, ob alle farbigen 1px-, 2px- und 5px-Außenlinien an allen vier Kanten vollständig sichtbar sind.",
+        "<strong>SCHACHBRETT-MUSTER:</strong> Betrachten Sie die 1:1-Schachbrettfelder. Bei Wellenmustern (Moiré) skaliert oder interpoliert das Gerät das Bild ungenau."
+      ]
+    },
+    "scaling-aspect-test": {
+      "metaTitle": "Skalierung & Seitenverhältnis-Inspektion – Geometrie & Bildverzerrung",
+      "metaDescription": "Testen Sie Bildgeometrie und Seitenverhältnisse auf ungleichmäßige Streckung, Stauchung und Verzerrungen mit echten Kreisen und Rastern.",
+      "title": "Skalierung & Seitenverhältnis-Inspektion",
+      "description_p1": "Überprüfen Sie die Bildgeometrie auf Verzerrungen, ungleichmäßige Dehnung oder falsche Seitenverhältnisse. Konzentrische Kreise und quadratische Raster decken anamorphotische Verzerrungen sofort auf.",
+      "instructions": [
+        "<strong>GEOMETRIE-PRÜFUNG:</strong> Betrachten Sie die mittleren Kreise. Sie müssen perfekt rund sein. Wenn sie oval wirken, verzerrt das Display das Bild.",
+        "<strong>QUADRATISCHES RASTER:</strong> Stellen Sie sicher, dass das Hintergrundgitter aus exakt gleichmäßigen Quadraten und nicht aus Rechtecken besteht.",
+        "<strong>FORMAT-RAHMEN:</strong> Wechseln Sie zwischen 16:9, 16:10, 4:3 und 21:9 Rahmen, um die Formatanpassung nicht-nativer Inhalte zu überprüfen."
+      ]
     }
   },
   "Tests": {
@@ -780,6 +858,41 @@
     "customPattern": {
       "title": "Benutzerdefiniertes Testmuster",
       "description": "Generieren Sie anpassbare Testmuster mit einstellbaren Gittern, Farbverläufen, Geometrien und Farbbalken."
+    },
+    "vrrTest": {
+      "title": "VRR & Adaptive Sync Visuelle Inspektion – Frame-Pacing & Tearing-Check",
+      "description": "Visuelle Überprüfung von variabler Bildwiederholrate, Tearing und Ruckeln unter Animationen.",
+      "instructions": "Vertikale Bewegungsbalken bei unterschiedlichen Lasten auf Tearing und Ruckler beobachten."
+    },
+    "hdrVisualTest": {
+      "title": "Visuelle HDR-Inspektion – Highlight-Clipping & Tonwertkurve",
+      "description": "Kontrollierter Test für Glanzlicht-Clipping, Tone-Mapping und Wide-Gamut-Darstellung.",
+      "instructions": "Glanzlichtbalken auf Clipping prüfen und Schattendetails nahe Schwarz kontrollieren."
+    },
+    "nearBlackTest": {
+      "title": "Nah-Schwarz & Schattendetail-Test – Dunkelton-Differenzierung",
+      "description": "Überprüfung feiner Dunkelton-Trennung, Black Crush und Schattenübergängen über Schwarz.",
+      "instructions": "Im dunklen Raum auf Unterscheidbarkeit von 0 % bis 5 % Graustufenfeldern achten."
+    },
+    "gradientBandingTest": {
+      "title": "Farbverlauf & Banding-Test – Weiche Farb- & Graustufenübergänge",
+      "description": "Erkennen Sie störende Stufenbildung, Quantisierungsstreifen und Farbtrennung in Verläufen.",
+      "instructions": "Horizontale und vertikale Verläufe auf sichtbare Streifenbildung untersuchen."
+    },
+    "textClarityTest": {
+      "title": "Textschärfe & Subpixel-Test – Kantenschärfe & Farbsäume",
+      "description": "Prüfung von Schriftrandschärfe, Lichthöfen und Subpixel-Farbsäumen bei Schriftgrößen.",
+      "instructions": "Feine Schriftmuster und 1px Linienraster auf Randschärfe und Farbsäume prüfen."
+    },
+    "tvOverscanTest": {
+      "title": "TV-Overscan & 1:1 Pixel-Mapping – Bildbeschnitt & Formatprüfung",
+      "description": "Erkennen Sie Bildkantenbeschnitt und Skalierungsfehler beim Anschluss an Fernsehgeräte.",
+      "instructions": "Äußere Randlinien auf Vollständigkeit prüfen und Schachbrett auf Moiré kontrollieren."
+    },
+    "scalingAspectTest": {
+      "title": "Skalierung & Seitenverhältnis-Inspektion – Geometrie & Verzerrung",
+      "description": "Erkennen Sie ungleichmäßige Dehnung, eiförmige Kreise und falsche Seitenverhältnisse.",
+      "instructions": "Konzentrische Kreise auf Kreisform und Quadratgitter auf Gleichmäßigkeit prüfen."
     }
   },
   "Guides": {

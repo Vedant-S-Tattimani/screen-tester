@@ -232,7 +232,8 @@
       "luminanceContrast": "Luminancia y Contraste",
       "displayBacklight": "RETROILUMINACIÓN Y UNIFORMIDAD DE PANTALLA",
       "motionPerformance": "Rendimiento de Movimiento",
-      "displayCapabilities": "Capacidades de Pantalla"
+      "displayCapabilities": "Capacidades de Pantalla",
+      "advancedDisplay": "PANTALLA AVANZADA"
     },
     "launchTest": "Iniciar Prueba",
     "tags": {
@@ -634,6 +635,83 @@
         "If you see obvious vertical stripes (stair-stepping), your display is struggling with color depth.",
         "Use <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> or arrow keys to cycle gradients."
       ]
+    },
+    "vrr-test": {
+      "metaTitle": "Inspección Visual VRR y Adaptive Sync – Ritmo de Cuadros G-Sync y FreeSync",
+      "metaDescription": "Inspeccione visualmente la tasa de refresco variable (VRR), G-Sync y FreeSync bajo cargas dinámicas. Verifique tirones, judder y desgarro de pantalla.",
+      "title": "Inspección Visual de VRR / Adaptive Sync",
+      "description_p1": "Esta prueba le ayuda a inspeccionar visualmente el comportamiento de la tasa de refresco variable y la estabilidad del ritmo de cuadros. La temporización de animación del navegador aporta indicios sobre la fluidez, pero no puede garantizar que un modo de hardware VRR específico esté activo.",
+      "instructions": [
+        "<strong>CONFIGURACIÓN:</strong> 1. Active VRR / FreeSync / G-Sync en el menú OSD de su monitor. 2. Active la tasa de refresco variable en los ajustes de Windows/GPU. 3. Active Pantalla Completa.",
+        "<strong>CARGAS DE MOVIMIENTO:</strong> Alterne entre carga Baja (30 FPS), Media (60 FPS), Alta y Barrido dinámico para observar la estabilidad de cuadros.",
+        "<strong>QUÉ OBSERVAR:</strong> Observe las barras verticales y el péndulo. Compruebe si el movimiento es fluido o presenta desgarro (tearing), saltos o tirones."
+      ]
+    },
+    "hdr-test": {
+      "metaTitle": "Inspección Visual HDR – Recorte de Brillo y Curva de Tonos",
+      "metaDescription": "Patrón de inspección visual HDR controlado para evaluar la preservación de altas luces, recorte de brillo, sombras y gama de color amplia.",
+      "title": "Inspección Visual HDR",
+      "description_p1": "Proporciona un flujo de inspección visual HDR controlado para evaluar el recorte de reflejos brillantes, la curva de tonos y la separación en sombras. El brillo máximo en nits requiere equipo óptico de laboratorio; esta prueba evalúa la gradación tonal en su navegador.",
+      "instructions": [
+        "<strong>AJUSTES DEL SISTEMA:</strong> Asegúrese de que HDR esté activado en los ajustes de pantalla de Windows/macOS y que el modo HDR del monitor esté activo.",
+        "<strong>RECORTE DE ALTAS LUCES:</strong> Inspeccione los pasos de brillo especular (90 % al 100 %). Localice el punto donde los bloques claros se funden en blanco sólido.",
+        "<strong>SOMBRAS Y GAMA AMPLIA:</strong> Verifique los bloques cercanos al negro (0 % al 10 %) y compare la referencia SDR con los parches de color Display P3."
+      ]
+    },
+    "near-black-test": {
+      "metaTitle": "Prueba de Tonos Cercanos al Negro – Detalle en Sombras y Separación",
+      "metaDescription": "Inspeccione la separación sutil de tonos oscuros y detalle en sombras cerca del negro puro. Pruebe pasos de escala de grises del 0 % al 10 % en una sala oscura.",
+      "title": "Prueba de Tonos Cercanos al Negro y Sombras",
+      "description_p1": "Inspeccione la separación de tonos oscuros sutiles justo por encima del negro de referencia. Los pasos oscuros ayudan a detectar aplastamiento de negros (black crush), negros elevados o bandas verticales sin suponer medidas de laboratorio.",
+      "instructions": [
+        "<strong>CONDICIONES DE VISIÓN:</strong> Realice esta prueba en una habitación oscura para permitir que sus ojos se adapten a las gradaciones oscuras.",
+        "<strong>SEPARACIÓN DE PASOS:</strong> Inspeccione los pasos de 0,25 %, 0,5 %, 1 %, 2 %, 3 %, 4 %, 5 %, 6 %, 8 % y 10 %. Compruebe si son distinguibles del negro absoluto (0 %).",
+        "<strong>OLED Y LCD:</strong> En paneles OLED verifique la suavidad de transición y bandas verticales; en LCD verifique negros lavados o pérdida de detalle."
+      ]
+    },
+    "gradient-banding-test": {
+      "metaTitle": "Prueba de Gradientes y Banding – Diagnóstico de 8 Bits, 10 Bits y Color",
+      "metaDescription": "Evalúe la suavidad de gradientes y detecte bandas de cuantificación en escalas de grises, RGB y sombras oscuras.",
+      "title": "Prueba de Gradientes y Banding",
+      "description_p1": "Evalúe la suavidad de los gradientes en pantalla y detecte bandas indeseadas de cuantificación o saltos de color. Un lienzo de navegador no demuestra la profundidad de bits física, pero ofrece patrones de referencia visual de alta fidelidad.",
+      "instructions": [
+        "<strong>MODOS DE GRADIENTE:</strong> Alterne entre Escala de Grises Horizontal/Vertical, Primarios RGB y Sombras Oscuras (0 %–25 %).",
+        "<strong>BANDAS FRENTE A SUAVIDAD:</strong> Busque franjas o líneas escalonadas visibles a lo largo de lo que deberían ser transiciones continuas.",
+        "<strong>SIMULADOR DE CUANTIFICACIÓN:</strong> Active la comparación de 64 pasos para contrastar escalonamiento intencional con la respuesta nativa del monitor."
+      ]
+    },
+    "text-clarity-test": {
+      "metaTitle": "Prueba de Claridad de Texto y Subpíxeles – Nitidez y Halos de Color",
+      "metaDescription": "Inspeccione la claridad de fuentes, halos de color en subpíxeles y nitidez de renderizado en varios tamaños, contrastes y rejillas de 1 píxel.",
+      "title": "Prueba de Claridad de Texto y Subpíxeles",
+      "description_p1": "Inspeccione la nitidez del renderizado de texto, la definición de bordes y los halos de color en subpíxeles según su escala de pantalla actual del sistema operativo.",
+      "instructions": [
+        "<strong>ESCALADO:</strong> Asegúrese de que el zoom del navegador esté al 100 % (Ctrl+0) y el sistema operativo use la resolución nativa de la pantalla.",
+        "<strong>TAMAÑOS Y CONTRASTE:</strong> Revise muestras de texto de 8px a 32px en polaridad positiva (texto oscuro) y negativa (texto claro).",
+        "<strong>HALOS DE SUBPÍXEL:</strong> Observe de cerca los bordes verticales de las letras negras sobre blanco para detectar halos rojos o azules (típico en matrices BGR o no estándar)."
+      ]
+    },
+    "tv-overscan-test": {
+      "metaTitle": "Prueba de Overscan en TV y Mapeo 1:1 – Recorte de Bordes y Aspecto",
+      "metaDescription": "Compruebe si su televisor o pantalla externa recorta los bordes del escritorio o distorsiona píxeles. Verifica el mapeo de píxeles 1:1.",
+      "title": "Prueba de Overscan en TV y Mapeo 1:1",
+      "description_p1": "Determine si su televisor recorta los bordes del escritorio debido a la función de sobreexploración (overscan). Líneas perimetrales exactas de 1 píxel y patrones de damero verifican el mapeo 1:1 real.",
+      "instructions": [
+        "<strong>AJUSTES DEL TELEVISOR:</strong> En el mando de la TV, configure el formato de imagen en 'Solo Escaneo' (Just Scan), 'Ajuste de Pantalla' o '1:1' (evite '16:9' o 'Zoom').",
+        "<strong>LÍNEAS PERIMETRALES:</strong> Entre en Pantalla Completa. Verifique que las cuatro líneas de borde de 1px, 2px y 5px sean visibles en los cuatro extremos.",
+        "<strong>PATRÓN DE DAMERO:</strong> Observe los bloques de damero 1:1. Si aprecia anillos ondulados de moiré, el televisor está escalando o desenfocando los píxeles."
+      ]
+    },
+    "scaling-aspect-test": {
+      "metaTitle": "Inspección de Escalado y Relación de Aspecto – Geometría y Distorsión",
+      "metaDescription": "Compruebe la geometría y la relación de aspecto para detectar estiramientos o distorsiones con círculos concéntricos y cuadrículas cuadradas.",
+      "title": "Inspección de Escalado y Relación de Aspecto",
+      "description_p1": "Inspeccione la geometría y la uniformidad de escalado para detectar estiramientos desiguales o relaciones de aspecto erróneas. Círculos concéntricos y cuadrículas exponen cualquier deformación de inmediato.",
+      "instructions": [
+        "<strong>GEOMETRÍA EXACTA:</strong> Observe los círculos concéntricos centrales. Deben verse perfectamente redondos. Si parecen ovalados, la pantalla está deformando la imagen.",
+        "<strong>CUADRÍCULA CUADRADA:</strong> Verifique que las líneas de fondo formen cuadrados perfectos y no rectángulos alargados.",
+        "<strong>MARCOS DE ASPECTO:</strong> Alterne entre referencias 16:9, 16:10, 4:3 y 21:9 para comprobar cómo gestiona la pantalla contenidos no nativos."
+      ]
     }
   },
   "Tests": {
@@ -780,6 +858,41 @@
     "customPattern": {
       "title": "Patrón de prueba personalizado",
       "description": "Genere patrones de prueba personalizables con cuadrículas ajustables, degradados, geometría y barras de color."
+    },
+    "vrrTest": {
+      "title": "Inspección Visual VRR y Adaptive Sync – Ritmo de Cuadros y Tearing",
+      "description": "Inspección visual de tasa de refresco variable, tirones y desgarro bajo animaciones dinámicas.",
+      "instructions": "Observe barras verticales en movimiento bajo distintas cargas para detectar desgarro o saltos."
+    },
+    "hdrVisualTest": {
+      "title": "Inspección Visual HDR – Recorte de Brillo y Curva de Tonos",
+      "description": "Prueba visual controlada para recorte de altas luces, mapeo de tonos y gama amplia de color.",
+      "instructions": "Inspeccione barras de altas luces para detectar recortes y compruebe sombras oscuras."
+    },
+    "nearBlackTest": {
+      "title": "Prueba de Tonos Cercanos al Negro – Separación en Sombras",
+      "description": "Evalúe la separación de tonos oscuros, aplastamiento de negros y gradación sobre el negro.",
+      "instructions": "Busque separación de pasos entre bloques oscuros del 0 % al 5 % en una habitación oscura."
+    },
+    "gradientBandingTest": {
+      "title": "Prueba de Gradientes y Banding – Transición Suave de Tonos",
+      "description": "Detecte escalonamiento tonal, líneas de cuantificación y saltos de color en gradientes.",
+      "instructions": "Examine gradientes horizontales y verticales en busca de bandas de color visibles."
+    },
+    "textClarityTest": {
+      "title": "Prueba de Claridad de Texto y Subpíxeles – Nitidez y Halos",
+      "description": "Evalúe la nitidez de fuentes tipográficas, halos y franjas de subpíxeles en varios tamaños.",
+      "instructions": "Lea muestras de texto y compruebe rejillas de 1 píxel para evaluar nitidez y halos."
+    },
+    "tvOverscanTest": {
+      "title": "TV Overscan y Mapeo 1:1 – Recorte de Bordes y Relación de Aspecto",
+      "description": "Detecte recorte de bordes y distorsión de escala al conectar ordenadores a televisores.",
+      "instructions": "Verifique la visibilidad de todas las líneas exteriores y revise el damero 1:1."
+    },
+    "scalingAspectTest": {
+      "title": "Inspección de Escalado y Aspecto – Geometría y Deformación",
+      "description": "Detecte estiramiento no uniforme, círculos ovalados y desajustes de aspecto de imagen.",
+      "instructions": "Compruebe que los círculos concéntricos sean redondos y la cuadrícula uniforme."
     }
   },
   "Guides": {

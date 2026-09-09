@@ -1,4 +1,4 @@
-export type TestCategory = "pixels" | "color" | "luminance" | "display" | "motion" | "capabilities";
+export type TestCategory = "pixels" | "color" | "luminance" | "display" | "motion" | "capabilities" | "advanced";
 
 export interface MonitorTest {
   id: string; // The URL slug (e.g. 'dead-pixel-test')
@@ -63,13 +63,13 @@ export const monitorTests: MonitorTest[] = [
     id: "color-banding-test",
     category: "color",
     primaryIntent: "monitor color banding test",
-    relatedTestIds: ["color-test", "gamma-test"]
+    relatedTestIds: ["color-test", "gamma-test", "gradient-banding-test"]
   },
   {
     id: "color-gamut-test",
     category: "color",
     primaryIntent: "monitor color gamut test",
-    relatedTestIds: ["color-test", "hdr-capability-test", "color-accuracy-test"]
+    relatedTestIds: ["color-test", "hdr-capability-test", "hdr-test", "color-accuracy-test"]
   },
   {
     id: "color-accuracy-test",
@@ -95,7 +95,7 @@ export const monitorTests: MonitorTest[] = [
     id: "black-level-test",
     category: "luminance",
     primaryIntent: "monitor black level test",
-    relatedTestIds: ["white-level-test", "contrast-test", "brightness-test", "backlight-bleed-test"]
+    relatedTestIds: ["white-level-test", "contrast-test", "brightness-test", "near-black-test"]
   },
   {
     id: "white-level-test",
@@ -119,27 +119,71 @@ export const monitorTests: MonitorTest[] = [
     id: "viewing-angle-test",
     category: "luminance",
     primaryIntent: "monitor viewing angle test",
-    relatedTestIds: ["color-test", "uniformity-test"]
+    relatedTestIds: ["color-test", "uniformity-test", "backlight-bleed-test"]
   },
 
   // DISPLAY & BACKLIGHT
-  {
-    id: "uniformity-test",
-    category: "display",
-    primaryIntent: "screen uniformity test",
-    relatedTestIds: ["backlight-bleed-test", "solid-color-test"]
-  },
-  {
-    id: "backlight-bleed-test",
-    category: "display",
-    primaryIntent: "backlight bleed test",
-    relatedTestIds: ["uniformity-test", "black-level-test", "blooming-test"]
-  },
   {
     id: "blooming-test",
     category: "display",
     primaryIntent: "monitor blooming test",
     relatedTestIds: ["backlight-bleed-test", "black-level-test"]
+  },
+
+  // ADVANCED DISPLAY
+  {
+    id: "vrr-test",
+    category: "advanced",
+    primaryIntent: "vrr adaptive sync visual inspection",
+    relatedTestIds: ["refresh-rate-test", "screen-tearing-test", "ghosting-test"]
+  },
+  {
+    id: "hdr-test",
+    category: "advanced",
+    primaryIntent: "hdr visual inspection",
+    relatedTestIds: ["hdr-capability-test", "color-gamut-test", "black-level-test"]
+  },
+  {
+    id: "near-black-test",
+    category: "advanced",
+    primaryIntent: "near black shadow detail test",
+    relatedTestIds: ["black-level-test", "uniformity-test", "contrast-test"]
+  },
+  {
+    id: "gradient-banding-test",
+    category: "advanced",
+    primaryIntent: "gradient banding visual test",
+    relatedTestIds: ["color-banding-test", "color-test", "grayscale-test"]
+  },
+  {
+    id: "text-clarity-test",
+    category: "advanced",
+    primaryIntent: "text clarity and subpixel rendering test",
+    relatedTestIds: ["sharpness-test", "resolution-checker", "scaling-aspect-test"]
+  },
+  {
+    id: "uniformity-test",
+    category: "advanced",
+    primaryIntent: "screen uniformity test",
+    relatedTestIds: ["backlight-bleed-test", "solid-color-test", "near-black-test"]
+  },
+  {
+    id: "backlight-bleed-test",
+    category: "advanced",
+    primaryIntent: "backlight bleed vs ips glow test",
+    relatedTestIds: ["uniformity-test", "black-level-test", "blooming-test"]
+  },
+  {
+    id: "tv-overscan-test",
+    category: "advanced",
+    primaryIntent: "tv overscan and 1 to 1 pixel mapping test",
+    relatedTestIds: ["resolution-checker", "scaling-aspect-test", "sharpness-test"]
+  },
+  {
+    id: "scaling-aspect-test",
+    category: "advanced",
+    primaryIntent: "scaling and aspect ratio inspection",
+    relatedTestIds: ["tv-overscan-test", "resolution-checker", "text-clarity-test"]
   },
 
   // MOTION
@@ -265,6 +309,13 @@ export const TEST_KEY_MAP: Record<string, { ns: "lib" | "tests", key: string }> 
   "touch-screen-test": { ns: "tests", key: "touchScreen" },
   "sharpness-test": { ns: "tests", key: "sharpness" },
   "custom-pattern": { ns: "tests", key: "customPattern" },
-  "stuck-pixel-fixer": { ns: "tests", key: "stuckPixelFixer" }
+  "stuck-pixel-fixer": { ns: "tests", key: "stuckPixelFixer" },
+  "vrr-test": { ns: "tests", key: "vrrTest" },
+  "hdr-test": { ns: "tests", key: "hdrVisualTest" },
+  "near-black-test": { ns: "tests", key: "nearBlackTest" },
+  "gradient-banding-test": { ns: "tests", key: "gradientBandingTest" },
+  "text-clarity-test": { ns: "tests", key: "textClarityTest" },
+  "tv-overscan-test": { ns: "tests", key: "tvOverscanTest" },
+  "scaling-aspect-test": { ns: "tests", key: "scalingAspectTest" }
 };
 
