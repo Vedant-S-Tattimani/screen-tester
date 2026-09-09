@@ -485,13 +485,153 @@ export function DisplayInfoClient() {
         </div>
 
         {/* Prominent Disclaimer Banner */}
-        <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-5 mb-10 flex items-start gap-3.5 text-xs sm:text-sm text-amber-900 dark:text-amber-200 leading-relaxed">
+        <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-5 mb-8 flex items-start gap-3.5 text-xs sm:text-sm text-amber-900 dark:text-amber-200 leading-relaxed">
           <ShieldAlert className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
           <div>
             <strong className="font-semibold block mb-1">
               {t("disclaimer.title")}
             </strong>
             {t("disclaimer.body")}
+          </div>
+        </div>
+
+        {/* 3-Tier Hardware & Browser Capability Boundary Breakdown */}
+        <div className="mb-12 border border-gray-200 rounded-3xl p-6 sm:p-8 bg-gray-50/60 shadow-2xs">
+          <div className="max-w-2xl mb-6">
+            <span className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-blue-700 mb-1.5 block">
+              {t("tiers.eyebrow")}
+            </span>
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-gray-950">
+              {t("tiers.title")}
+            </h2>
+            <p className="text-gray-600 text-xs sm:text-sm mt-1.5 leading-relaxed">
+              {t("tiers.subtitle")}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* TIER 1: BROWSER-DETECTED */}
+            <div className="rounded-2xl border border-emerald-200 bg-emerald-50/40 p-5 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-emerald-800 bg-emerald-100/80 px-2 py-0.5 rounded-md border border-emerald-300/60">
+                    {t("tiers.tier1Badge")}
+                  </span>
+                  <span className="text-xs text-emerald-700 font-mono font-medium">{t("tiers.tier1Type")}</span>
+                </div>
+                <h3 className="text-base font-semibold text-gray-950 mb-1.5">{t("tiers.tier1Heading")}</h3>
+                <p className="text-xs text-gray-600 leading-relaxed mb-4">{t("tiers.tier1Desc")}</p>
+                <ul className="text-xs space-y-2 text-gray-700 font-mono">
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-emerald-600 font-bold">✓</span>
+                    <span>{t("tiers.tier1Item1")}</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-emerald-600 font-bold">✓</span>
+                    <span>{t("tiers.tier1Item2")}</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-emerald-600 font-bold">✓</span>
+                    <span>{t("tiers.tier1Item3")}</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-emerald-600 font-bold">✓</span>
+                    <span>{t("tiers.tier1Item4")}</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-emerald-600 font-bold">✓</span>
+                    <span>{t("tiers.tier1Item5")}</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="mt-4 pt-3 border-t border-emerald-200/60 text-[11px] text-emerald-800">
+                <Link href="/tools/browser-compatibility" className="underline font-medium hover:text-emerald-950">
+                  {t("tiers.tier1Link")} →
+                </Link>
+              </div>
+            </div>
+
+            {/* TIER 2: USER-PROVIDED */}
+            <div className="rounded-2xl border border-blue-200 bg-blue-50/40 p-5 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-blue-800 bg-blue-100/80 px-2 py-0.5 rounded-md border border-blue-300/60">
+                    {t("tiers.tier2Badge")}
+                  </span>
+                  <span className="text-xs text-blue-700 font-mono font-medium">{t("tiers.tier2Type")}</span>
+                </div>
+                <h3 className="text-base font-semibold text-gray-950 mb-1.5">{t("tiers.tier2Heading")}</h3>
+                <p className="text-xs text-gray-600 leading-relaxed mb-4">{t("tiers.tier2Desc")}</p>
+                <ul className="text-xs space-y-2 text-gray-700 font-mono">
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-blue-600 font-bold">•</span>
+                    <span>{t("tiers.tier2Item1")}</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-blue-600 font-bold">•</span>
+                    <span>{t("tiers.tier2Item2")}</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-blue-600 font-bold">•</span>
+                    <span>{t("tiers.tier2Item3")}</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-blue-600 font-bold">•</span>
+                    <span>{t("tiers.tier2Item4")}</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-blue-600 font-bold">•</span>
+                    <span>{t("tiers.tier2Item5")}</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="mt-4 pt-3 border-t border-blue-200/60 text-[11px] text-blue-800">
+                <Link href="/monitor-inspection/summary" className="underline font-medium hover:text-blue-950">
+                  {t("tiers.tier2Link")} →
+                </Link>
+              </div>
+            </div>
+
+            {/* TIER 3: NOT DETERMINABLE */}
+            <div className="rounded-2xl border border-gray-300 bg-gray-100/80 p-5 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-gray-700 bg-gray-200 px-2 py-0.5 rounded-md border border-gray-300">
+                    {t("tiers.tier3Badge")}
+                  </span>
+                  <span className="text-xs text-gray-600 font-mono font-medium">{t("tiers.tier3Type")}</span>
+                </div>
+                <h3 className="text-base font-semibold text-gray-950 mb-1.5">{t("tiers.tier3Heading")}</h3>
+                <p className="text-xs text-gray-600 leading-relaxed mb-4">{t("tiers.tier3Desc")}</p>
+                <ul className="text-xs space-y-2 text-gray-600 font-mono">
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-red-500 font-bold">✕</span>
+                    <span>{t("tiers.tier3Item1")}</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-red-500 font-bold">✕</span>
+                    <span>{t("tiers.tier3Item2")}</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-red-500 font-bold">✕</span>
+                    <span>{t("tiers.tier3Item3")}</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-red-500 font-bold">✕</span>
+                    <span>{t("tiers.tier3Item4")}</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-red-500 font-bold">✕</span>
+                    <span>{t("tiers.tier3Item5")}</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="mt-4 pt-3 border-t border-gray-300/60 text-[11px] text-gray-700">
+                <Link href="/knowledge-base/troubleshooting" className="underline font-medium hover:text-gray-950">
+                  {t("tiers.tier3Link")} →
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -855,6 +995,22 @@ export function DisplayInfoClient() {
                 className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors flex items-center gap-1"
               >
                 <span>{tTools("items.customPattern.title")}</span>
+                <span className="text-gray-500">→</span>
+              </Link>
+              <span className="text-gray-300">•</span>
+              <Link
+                href="/knowledge-base/troubleshooting"
+                className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors flex items-center gap-1"
+              >
+                <span>{t("related.troubleshootingGuide")}</span>
+                <span className="text-gray-500">→</span>
+              </Link>
+              <span className="text-gray-300">•</span>
+              <Link
+                href="/tools/browser-compatibility"
+                className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors flex items-center gap-1"
+              >
+                <span>{t("related.browserCompatibility")}</span>
                 <span className="text-gray-500">→</span>
               </Link>
             </div>

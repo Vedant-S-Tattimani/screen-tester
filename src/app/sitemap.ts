@@ -23,6 +23,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/monitor-inspection/tv', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/guides', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/knowledge-base', priority: 0.7, changeFrequency: 'monthly' as const },
+    { path: '/knowledge-base/troubleshooting', priority: 0.8, changeFrequency: 'monthly' as const },
+    { path: '/tools/browser-compatibility', priority: 0.8, changeFrequency: 'monthly' as const },
     { path: '/faq', priority: 0.6, changeFrequency: 'monthly' as const },
     { path: '/about', priority: 0.5, changeFrequency: 'yearly' as const },
     { path: '/contact', priority: 0.5, changeFrequency: 'yearly' as const },

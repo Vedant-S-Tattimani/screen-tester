@@ -14,7 +14,9 @@ import {
   FileText,
   Clock,
   Layers,
-  Sparkles
+  Sparkles,
+  Wrench,
+  ArrowRight
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { InspectionReportData } from "./types";
@@ -288,6 +290,27 @@ export function InspectionReport({
           </div>
 
           <div className="p-3 bg-slate-50/60 rounded-xl border border-slate-200/70 print:bg-white print:border-slate-300">
+            <span className="text-slate-500 block text-[10px] font-mono uppercase">{t("profile.displayType")}</span>
+            <span className="font-semibold text-slate-900 text-xs mt-0.5 block">
+              {data.userProfile.displayType || "Standard Monitor"}
+            </span>
+          </div>
+
+          <div className="p-3 bg-slate-50/60 rounded-xl border border-slate-200/70 print:bg-white print:border-slate-300">
+            <span className="text-slate-500 block text-[10px] font-mono uppercase">{t("profile.hdrSupport")}</span>
+            <span className="font-semibold text-slate-900 text-xs mt-0.5 block">
+              {data.userProfile.hdrSupport || "—"}
+            </span>
+          </div>
+
+          <div className="p-3 bg-slate-50/60 rounded-xl border border-slate-200/70 print:bg-white print:border-slate-300">
+            <span className="text-slate-500 block text-[10px] font-mono uppercase">{t("profile.vrrSupport")}</span>
+            <span className="font-semibold text-slate-900 text-xs mt-0.5 block">
+              {data.userProfile.vrrSupport || "—"}
+            </span>
+          </div>
+
+          <div className="p-3 bg-slate-50/60 rounded-xl border border-slate-200/70 print:bg-white print:border-slate-300">
             <span className="text-slate-500 block text-[10px] font-mono uppercase">{t("profile.serialNumber")}</span>
             <span className="font-semibold text-slate-900 text-xs font-mono mt-0.5 block">
               {data.userProfile.serialNumber || "—"}
@@ -301,7 +324,7 @@ export function InspectionReport({
             </span>
           </div>
 
-          <div className="p-3 bg-slate-50/60 rounded-xl border border-slate-200/70 print:bg-white print:border-slate-300">
+          <div className="p-3 bg-slate-50/60 rounded-xl border border-slate-200/70 print:bg-white print:border-slate-300 sm:col-span-2">
             <span className="text-slate-500 block text-[10px] font-mono uppercase">{t("profile.notes")}</span>
             <span className="text-slate-700 text-xs mt-0.5 block truncate" title={data.userProfile.notes}>
               {data.userProfile.notes || "—"}
@@ -309,6 +332,60 @@ export function InspectionReport({
           </div>
         </div>
       </section>
+
+      {/* =========================================================================
+          SECTION 3B: Model-Specific Recommended Checks (RECOMMENDATION ONLY)
+          ========================================================================= */}
+      {data.recommendedChecks && data.recommendedChecks.length > 0 && (
+        <section className="p-6 sm:p-8 border-b border-slate-100 print:py-4 break-inside-avoid bg-slate-50/40">
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-purple-600" />
+              <h2 className="text-base font-bold text-slate-900">{t("sections.recommendedChecks")}</h2>
+            </div>
+            <span className="px-2 py-0.5 bg-purple-50 border border-purple-200 text-purple-700 rounded text-[10px] font-mono font-bold uppercase print:border-slate-400 print:text-black">
+              {t("badges.relevantChecks")}
+            </span>
+          </div>
+          <p className="text-xs text-slate-500 font-mono mb-4 print:mb-2">
+            {t("recommendedChecksNote")}
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            {data.recommendedChecks.map((check) => (
+              <div 
+                key={check.id}
+                className="p-3.5 bg-white rounded-xl border border-slate-200/80 shadow-2xs flex flex-col justify-between gap-2 print:border-slate-300"
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-1">
+                    <strong className="text-slate-900 text-xs font-semibold">{check.title}</strong>
+                    <span className={cn(
+                      "px-1.5 py-0.5 rounded text-[9px] font-mono font-bold uppercase shrink-0",
+                      check.category === "panel" && "bg-blue-50 text-blue-700 border border-blue-200",
+                      check.category === "usage" && "bg-emerald-50 text-emerald-700 border border-emerald-200",
+                      check.category === "general" && "bg-slate-100 text-slate-700 border border-slate-200"
+                    )}>
+                      {check.category === "panel" ? "Panel Target" : check.category === "usage" ? "Usage Target" : "Standard"}
+                    </span>
+                  </div>
+                  <p className="text-slate-600 text-[11px] leading-relaxed">
+                    {check.reason}
+                  </p>
+                </div>
+                {check.relevantTestId && (
+                  <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono">
+                    <span className="text-slate-400">Target test pattern:</span>
+                    <span className="text-blue-600 font-medium capitalize">
+                      {check.relevantTestId.replace("-test", "").replace(/-/g, " ")}
+                    </span>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* =========================================================================
           SECTION 4: Test Results (All Tests, Status, Observation, Notes)
@@ -561,6 +638,59 @@ export function InspectionReport({
                 ))}
               </tbody>
             </table>
+          </div>
+        </section>
+      )}
+
+      {/* =========================================================================
+          SECTION 7B: Troubleshooting References (Deterministic mapping from Needs Attention)
+          ========================================================================= */}
+      {data.troubleshootingReferences && data.troubleshootingReferences.length > 0 && (
+        <section className="p-6 sm:p-8 border-b border-slate-100 bg-red-50/20 print:bg-transparent print:py-4 break-inside-avoid">
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center gap-2">
+              <Wrench className="w-4 h-4 text-red-600" />
+              <h2 className="text-base font-bold text-slate-900">
+                {t("sections.troubleshooting")} ({data.troubleshootingReferences.length})
+              </h2>
+            </div>
+            <span className="px-2 py-0.5 bg-red-100 text-red-800 border border-red-200 rounded text-[10px] font-mono font-bold uppercase print:border-slate-400 print:text-black">
+              {t("badges.observedIssueGuides")}
+            </span>
+          </div>
+          <p className="text-xs text-slate-500 font-mono mb-4 print:mb-2">
+            {t("troubleshootingNote")}
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            {data.troubleshootingReferences.map((ref) => (
+              <div
+                key={ref.symptomId}
+                className="p-4 bg-white rounded-xl border border-red-200/80 shadow-2xs flex flex-col justify-between gap-3 print:border-slate-300"
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-1.5">
+                    <span className="text-[10px] font-mono font-bold uppercase text-red-700 bg-red-50 px-2 py-0.5 rounded border border-red-100">
+                      Issue Observed in {ref.triggerTestName}
+                    </span>
+                  </div>
+                  <h3 className="font-bold text-slate-900 text-sm">{ref.title}</h3>
+                  <p className="text-slate-600 text-xs mt-1 leading-relaxed">
+                    {ref.summary}
+                  </p>
+                </div>
+
+                <div className="pt-2 border-t border-slate-100 print:hidden">
+                  <a
+                    href={`/knowledge-base/troubleshooting#${ref.symptomId}`}
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 hover:underline"
+                  >
+                    <span>{t("viewTroubleshootingAction")}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
       )}

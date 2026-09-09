@@ -1018,7 +1018,12 @@
       "aboutWorkflowsDesc": "Führen Sie strukturierte Abläufe durch, markieren Sie Auffälligkeiten, setzen Sie Pixelfehler-Markierungen mit genauen Koordinaten und speichern Sie sachliche Berichte ohne künstliche Scores.",
       "savedReports": "Gespeicherte Berichte & Verlauf",
       "wfGeneralTitle": "Allgemeine Display-Prüfung",
-      "wfGeneralDesc": "Grundlegende Rundum-Prüfung auf Pixelfehler, Farbtreue und Bewegungsschärfe."
+      "wfGeneralDesc": "Grundlegende Rundum-Prüfung auf Pixelfehler, Farbtreue und Bewegungsschärfe.",
+      "checklistTitle": "Inspektions-Checkliste",
+      "checklistDesc": "Die Checkliste hebt empfohlene Testbereiche basierend auf dem Displayprofil und dem Inspektionszweck hervor.",
+      "profileLabel": "Display-Profil:",
+      "unspecified": "Nicht spezifizierter Monitor",
+      "editProfile": "Profil-Spezifikationen bearbeiten"
     },
     "gaming": {
       "metaTitle": "Gaming Monitor Inspection",
@@ -1182,19 +1187,7 @@
     "manufacturerTitle": "Herstellergarantierichtlinien",
     "manufacturerText": "Display-Hersteller setzen ihre eigenen spezifischen Garantiebedingungen bezüglich Pixeldefekten durch (wie ISO 13406-2-Normen). Unsere Testergebnisse beeinflussen diese Richtlinien nicht.",
     "openSourceTitle": "Open Source",
-    "openSourceText": "Monitor Tester ist Open Source. Sie können den Quellcode auf GitHub überprüfen, Fehler melden oder Verbesserungen vorschlagen.",
-    "diagnosticTitle": "Nur zu Diagnosezwecken",
-    "diagnosticText": "Die auf dieser Website verfügbaren Tests und Werkzeuge dienen ausschließlich Diagnose- und Bildungszwecken. Ergebnisse können je nach Gerät, Browser, Betriebssystem und Konfiguration variieren.",
-    "accuracyTitle": "Genauigkeitsgrenzen",
-    "accuracyText": "Browserbasierte Tests können professionell kalibrierte Hardware-Tools nicht ersetzen. Gemessene Werte wie Bildwiederholrate, Farbtiefe und HDR-Unterstützung werden von Browser-APIs gemeldet und können von professionellen Kalibrierungswerkzeugen abweichen.",
-    "liabilityTitle": "Haftungsbeschränkung",
-    "liabilityText": "Wir übernehmen keine Verantwortung für Entscheidungen, die auf der Grundlage der Ergebnisse von Monitor Tester getroffen werden, einschließlich Garantieansprüche, Kauf- oder Rückgabeentscheidungen.",
-    "warrantyTitle": "Garantieberatung",
-    "warrantyText": "Unsere Testergebnisse sind nur als Referenz gedacht. Für Garantieansprüche konsultieren Sie bitte die Richtlinien Ihres Herstellers und lassen Sie Ihr Display professionell bewerten.",
-    "changeTitle": "Änderungen",
-    "changeText": "Wir behalten uns das Recht vor, diese Bedingungen jederzeit ohne vorherige Ankündigung zu ändern.",
-    "contactTitle": "Kontakt",
-    "contactText": "Wenn Sie Fragen haben, kontaktieren Sie uns über GitHub."
+    "openSourceText": "Monitor Tester ist Open Source. Sie können den Quellcode auf GitHub überprüfen, Fehler melden oder Verbesserungen vorschlagen."
   },
   "Contact": {
     "metaTitle": "Contact & Support — Monitor Tester",
@@ -1212,14 +1205,7 @@
     "emailDesc": "Für allgemeine Anfragen, Kooperationen oder privates Feedback zum Projekt können Sie uns gerne kontaktieren.",
     "faqTitle": "Häufige Fragen überprüfen",
     "faqDesc": "Suchen Sie schnelle Anleitung dazu, wie Browser-Tests funktionieren oder was tote Pixel sind? Lesen Sie unsere umfassenden FAQ.",
-    "faqAction": "FAQ lesen →",
-    "githubText": "Melden Sie Fehler, schlagen Sie Funktionen vor oder tragen Sie zu unserem GitHub-Repository bei.",
-    "githubButton": "Auf GitHub ansehen",
-    "emailText": "Senden Sie uns eine E-Mail für direkte Anfragen, Kooperationsanfragen oder Geschäftsanfragen.",
-    "bugTitle": "Fehlerbericht",
-    "bugText": "Wenn Sie ein technisches Problem gefunden haben, öffnen Sie bitte ein Issue auf GitHub mit Details.",
-    "featureTitle": "Funktionsanfrage",
-    "featureText": "Vorschläge für neue Tests oder Verbesserungen? Wir begrüßen Feedback."
+    "faqAction": "FAQ lesen →"
   },
   "Tools": {
     "metaTitle": "Display-Werkzeuge & Rechner | Monitor Tester",
@@ -1258,6 +1244,11 @@
         "badge": "BERICHT",
         "title": "Inspektionsberichte & Fehlerprotokoll",
         "description": "Beobachtungen überprüfen, markierte Pixelfehler-Koordinaten einsehen, Hardwareprofile verwalten und Berichte exportieren oder drucken."
+      },
+      "browserCompatibility": {
+        "title": "Browser-Kompatibilität",
+        "description": "Prüfen Sie Live-Browser-Display- und Plattform-APIs im Vergleich zu Hardware-Grenzen.",
+        "badge": "PROBE & MATRIX"
       }
     }
   },
@@ -1457,7 +1448,44 @@
     },
     "related": {
       "title": "VERWANDTE WERKZEUGE",
-      "compareDisplays": "Bildschirm-Vergleichsrechner (PPI, Abstand, Seitenverhältnis)"
+      "compareDisplays": "Bildschirm-Vergleichsrechner (PPI, Abstand, Seitenverhältnis)",
+      "troubleshootingGuide": "Fehlerbehebung",
+      "browserCompatibility": "Browser-Kompatibilität"
+    },
+    "tiers": {
+      "eyebrow": "TECHNISCHE FÄHIGKEITSGRENZEN",
+      "title": "Was Browser erkennen können & was nicht",
+      "subtitle": "Um Fehldiagnosen zu vermeiden, trennt Screen Tester Browser-APIs streng von physischen Hardwarespezifikationen.",
+      "tier1Badge": "EBENE 1",
+      "tier1Type": "Vom Browser erkannt",
+      "tier1Heading": "Live-Browser-Telemetrie",
+      "tier1Desc": "APIs, die in diesem Browserkontext direkt über JavaScript abgefragt werden können.",
+      "tier1Item1": "Viewport-Abmessungen (CSS-Pixel)",
+      "tier1Item2": "Device Pixel Ratio (DPR-Skalierung)",
+      "tier1Item3": "Farbtiefe (z. B. 24-Bit / 30-Bit)",
+      "tier1Item4": "Bildschirmausrichtung & Drehwinkel",
+      "tier1Item5": "WebGL-GPU-Renderer & Grenzwerte",
+      "tier1Link": "Browser-Fähigkeiten ansehen",
+      "tier2Badge": "EBENE 2",
+      "tier2Type": "Vom Benutzer angegeben",
+      "tier2Heading": "Hardware-Spezifikationen",
+      "tier2Desc": "Spezifikationen, die der Benutzer aus der Monitordokumentation angibt.",
+      "tier2Item1": "Hersteller & Modellbezeichnung",
+      "tier2Item2": "Native physische Auflösung",
+      "tier2Item3": "Nennbildwiederholfrequenz (Hz)",
+      "tier2Item4": "Nennhelligkeit & Kontrastverhältnis",
+      "tier2Item5": "Panel-Technologie & HDR-Stufe",
+      "tier2Link": "Inspektionsprofil bearbeiten",
+      "tier3Badge": "EBENE 3",
+      "tier3Type": "Nicht bestimmbar",
+      "tier3Heading": "Hardware-Einschränkungen",
+      "tier3Desc": "Messwerte, die über Web-APIs nicht ermittelt oder verifiziert werden können.",
+      "tier3Item1": "Exakte physische Bildschirmdiagonale",
+      "tier3Item2": "Echte OS/GPU-Hardware-Bildwiederholfrequenz",
+      "tier3Item3": "Gemessene Leuchtdichte in Nits (cd/m²)",
+      "tier3Item4": "Labor-Farbgenauigkeit (ΔE)",
+      "tier3Item5": "Panel-Degradation & interner Zustand",
+      "tier3Link": "Fehlerbehebungsleitfaden"
     }
   },
   "InspectionSummary": {
@@ -1511,7 +1539,40 @@
       "panelOther": "Sonstige",
       "ratedBrightness": "Nennhelligkeit (cd/m²):",
       "ratedContrast": "Nennkontrastverhältnis:",
-      "serialNumber": "Seriennummer / Referenz:"
+      "serialNumber": "Seriennummer / Referenz:",
+      "displayType": "Display-Technologie",
+      "selectDisplayType": "Display-Technologie auswählen...",
+      "hdrSupport": "HDR-Unterstützung",
+      "selectHdrSupport": "HDR-Unterstützung auswählen...",
+      "vrrSupport": "Adaptive Sync / VRR",
+      "selectVrrSupport": "VRR-Unterstützung auswählen...",
+      "hdrOptions": {
+        "none": "Nur SDR",
+        "hdr10": "HDR10",
+        "hdr400": "DisplayHDR 400",
+        "hdr600": "DisplayHDR 600",
+        "hdr1000": "DisplayHDR 1000+",
+        "dolbyVision": "Dolby Vision",
+        "other": "Sonstiges HDR"
+      },
+      "vrrOptions": {
+        "none": "Feste Bildwiederholrate (kein VRR)",
+        "gsync": "NVIDIA G-Sync",
+        "freesync": "AMD FreeSync",
+        "hdmiVrr": "HDMI 2.1 VRR",
+        "adaptiveSync": "VESA Adaptive-Sync",
+        "other": "Sonstiges VRR"
+      },
+      "displayTypeOptions": {
+        "ips": "IPS (In-Plane Switching)",
+        "va": "VA (Vertical Alignment)",
+        "tn": "TN (Twisted Nematic)",
+        "oled": "OLED / QD-OLED / WOLED",
+        "miniLed": "Mini-LED",
+        "crt": "Röhrenmonitor (CRT)",
+        "projector": "Projektor / Beamer",
+        "other": "Sonstiges"
+      }
     },
     "checklist": {
       "title": "Inspektions-Checkliste & beobachtete Ergebnisse",
@@ -2162,7 +2223,9 @@
   "Breadcrumbs": {
     "home": "Startseite",
     "tests": "Tests",
-    "ariaLabel": "Brotkrumennavigation"
+    "ariaLabel": "Brotkrumennavigation",
+    "tools": "Werkzeuge",
+    "knowledgeBase": "Wissensdatenbank"
   },
   "StuckPixelFixerTest": {
     "metaTitle": "Stuck-Pixel-Reparierer – Schneller Farbzyklus-Pixel-Exerciser",
@@ -2213,6 +2276,121 @@
       "notesPlaceholder": "Notizen zum Pixelverhalten hinzufügen (Farbe, Position, Reaktion)...",
       "saveObservation": "Beobachtung speichern",
       "observationSaved": "Beobachtung in der Inspektionssitzung erfasst."
+    }
+  },
+  "Troubleshooting": {
+    "metaTitle": "Monitor-Fehlerbehebung – Häufige Anzeigeprobleme & Lösungen",
+    "metaDescription": "Strukturierte Diagnoseanleitungen für Bildschirmsignal, falsche Auflösung, Bildwiederholfrequenz, Flackern, Tearing, Pixelfehler und TV-Skalierung.",
+    "breadcrumb": {
+      "home": "Startseite",
+      "knowledgeBase": "Wissensdatenbank",
+      "troubleshooting": "Fehlerbehebung"
+    },
+    "header": {
+      "eyebrow": "DISPLAY-DIAGNOSE & LÖSUNGEN",
+      "title": "Leitfaden zur Display-Fehlerbehebung",
+      "subtitle": "Strukturierte Fehlerbehebung für Signal, Geometrie, Bildwiederholrate, Pixelfehler und Bildartefakte."
+    },
+    "disclaimer": {
+      "title": "Geltungsbereich & Sicherheitshinweis",
+      "body": "Screen Tester ist ein browserbasiertes Diagnosetool. Es kann keine physischen Hardwaredefekte reparieren, keine internen Hardware-Lookup-Tabellen kalibrieren und keine Grafikkartentreiber überschreiben. Blicken Sie niemals längere Zeit auf schnell blinkende Muster. Bei Hardwarefehlern oder Sicherheitsbedenken trennen Sie das Gerät vom Stromnetz und wenden Sie sich an den Hersteller."
+    },
+    "searchPlaceholder": "Symptome filtern (z. B. Flackern, falsche Auflösung, Tearing, Pixelfehler)...",
+    "categories": {
+      "all": "Alle Symptome",
+      "display": "Display-Probleme",
+      "pixels": "Pixel-Probleme",
+      "imageQuality": "Bildqualität",
+      "tv": "TV-Probleme"
+    },
+    "clearSearch": "Suche löschen",
+    "showingCount": "{count} von {total} Fehlerbehebungsleitfäden angezeigt",
+    "allCategories": "Alle Symptome",
+    "noResultsTitle": "Keine passenden Symptome gefunden",
+    "noResultsDesc": "Versuchen Sie, Ihre Suchanfrage anzupassen oder eine andere Kategorie zu wählen.",
+    "resetFilters": "Filter zurücksetzen",
+    "sections": {
+      "possibleCauses": "Mögliche Ursachen",
+      "checksToPerform": "Zu prüfende Punkte",
+      "practicalActions": "Praktische nächste Schritte",
+      "whatScreenTesterCanTest": "Was Screen Tester testen kann",
+      "whatScreenTesterCannotDetermine": "Was Screen Tester nicht bestimmen kann",
+      "whenToStop": "Wann aufhören / Fachservice aufsuchen"
+    }
+  },
+  "BrowserCompatibility": {
+    "metaTitle": "Browser-Display-Kompatibilität & API-Fähigkeiten",
+    "metaDescription": "Technische Live-Verifizierung von Browser-Display-APIs, Plattformgrenzen und browserübergreifenden Funktionsmatrizen.",
+    "breadcrumb": {
+      "home": "Startseite",
+      "tools": "Werkzeuge",
+      "browserCompatibility": "Browser-Kompatibilität"
+    },
+    "header": {
+      "eyebrow": "PLATTFORMFÄHIGKEITEN & HARDWARE-GRENZEN",
+      "title": "Browser-Display-Fähigkeitsprobe",
+      "subtitle": "Technische Live-Prüfung von Browser-Display-APIs, Plattformgrenzen und Kompatibilitätsmatrizen."
+    },
+    "honestyNotice": {
+      "title": "Browser-API-Fähigkeit ≠ Physische Display-Hardwarefähigkeit",
+      "body": "Moderne Browser können Viewport-Dimensionen, Pixeldichten und Frame-Timings erfassen, jedoch weder die physische Panel-Diagonale noch die Hintergrundbeleuchtung (Nits), LUTs oder zertifizierte Reaktionszeiten auslesen. Eine API-Unterstützung im Browser beweist nicht, dass Ihre Hardware dies nativ unterstützt."
+    },
+    "probeTitle": "Live-Browser-Display-Fähigkeiten",
+    "probeSubtitle": "Dynamisch in Ihrer aktuellen Browserumgebung ermittelt",
+    "colCapability": "Fähigkeit / API",
+    "colStatus": "Aktueller Status",
+    "colType": "Erkennungstyp",
+    "colDesc": "Technischer Umfang & Zweck",
+    "matrixTitle": "Browser- & Plattform-Kompatibilitätsmatrix",
+    "matrixSubtitle": "Plattform-Basislinie für moderne Desktop- und Mobil-Browser",
+    "colPlatformChromium": "Modernes Chromium",
+    "colPlatformFirefox": "Aktuelles Firefox",
+    "colPlatformSafari": "Aktuelles Safari",
+    "colPlatformIos": "iOS Safari",
+    "colPlatformAndroid": "Android",
+    "testsMatrixTitle": "Screen Tester Testanforderungsmatrix",
+    "testsMatrixSubtitle": "Hardware-, Eingabe- und Umgebungsabhängigkeiten je Testkategorie",
+    "colTestName": "Testmodul",
+    "colTargetDevice": "Zielplattform",
+    "colInputReq": "Eingabemethode",
+    "colFullscreenReq": "Vollbild",
+    "colWebglReq": "WebGL",
+    "badgeSupported": "Unterstützt",
+    "badgePartial": "Teilweise",
+    "badgeNotAvailable": "Nicht verfügbar",
+    "badgePermission": "Erfordert Berechtigung",
+    "badgeDependent": "Browserabhängig",
+    "reqOptional": "Optional",
+    "reqRequired": "Erforderlich",
+    "reqNone": "Standard-DOM",
+    "reqTouch": "Touch / Pointer",
+    "reqMouseKeyboard": "Maus / Tastatur",
+    "platformDesktopMobile": "Desktop & Mobil",
+    "platformDesktop": "Desktop empfohlen",
+    "platformMobile": "Nur Mobil / Touch"
+  },
+  "InspectionReport": {
+    "badges": {
+      "relevantChecks": "RELEVANTE PRÜFUNGEN",
+      "observedIssueGuides": "FEHLERBEHEBUNGSLEITFÄDEN"
+    },
+    "sections": {
+      "recommendedChecks": "Empfohlene Modell- & Szenario-Prüfungen",
+      "troubleshooting": "Fehlerbehebungsreferenzen"
+    },
+    "recommendedChecksNote": "Diese Prüfungen sind nach der angegebenen Display-Technologie und dem Inspektionszweck priorisiert. Es handelt sich um Empfehlungen zur visuellen Überprüfung, nicht um eine Diagnose von Defekten.",
+    "troubleshootingNote": "Gezielte Fehlerbehebungsleitfäden für Tests, die während dieser Inspektion als 'Aufmerksamkeitsbedarf' markiert wurden.",
+    "viewTroubleshootingAction": "Fehlerbehebung öffnen",
+    "categoryLabels": {
+      "uniformity": "Homogenität & Bleed",
+      "nearBlack": "Near-Black & Schatten",
+      "color": "Farbe & Farbraum",
+      "pixel": "Pixelintegrität",
+      "motion": "Bewegung & Refresh",
+      "hdr": "HDR & Dynamikumfang",
+      "text": "Text & Skalierung",
+      "tv": "TV & Overscan",
+      "input": "Eingabe & Touch"
     }
   }
 }

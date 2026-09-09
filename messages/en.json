@@ -1047,7 +1047,12 @@
       "aboutWorkflowsDesc": "Run structured sequences, mark tests as normal or needing attention, drop pixel defect pins with exact coordinates, and save factual inspection reports. Zero synthetic scores.",
       "savedReports": "Saved Reports & History",
       "wfGeneralTitle": "General Display Checkup",
-      "wfGeneralDesc": "Essential all-around visual checkup for dead pixels, color, and motion."
+      "wfGeneralDesc": "Essential all-around visual checkup for dead pixels, color, and motion.",
+      "checklistTitle": "Inspection Checklist",
+      "checklistDesc": "Checklist targets recommended testing areas based on your display's profile and inspection purpose.",
+      "profileLabel": "Display Profile:",
+      "unspecified": "Unspecified Monitor",
+      "editProfile": "Edit Profile Specifications"
     },
     "gaming": {
       "metaTitle": "Gaming Monitor Inspection",
@@ -1230,6 +1235,11 @@
         "badge": "REPORTING",
         "title": "Inspection Reports & Defect Log",
         "description": "Review recorded observations, inspect dropped pixel defect coordinates, review hardware profiles, and export or print inspection documentation."
+      },
+      "browserCompatibility": {
+        "title": "Browser Compatibility",
+        "description": "Probe live browser display and platform APIs against hardware capability boundaries.",
+        "badge": "PROBE & MATRIX"
       }
     }
   },
@@ -1429,7 +1439,44 @@
     },
     "related": {
       "title": "RELATED UTILITIES",
-      "compareDisplays": "Display Comparison Calculator (PPI, Distance, Aspect Ratio)"
+      "compareDisplays": "Display Comparison Calculator (PPI, Distance, Aspect Ratio)",
+      "troubleshootingGuide": "Troubleshooting Guide",
+      "browserCompatibility": "Browser Compatibility"
+    },
+    "tiers": {
+      "eyebrow": "TECHNICAL CAPABILITY BOUNDARIES",
+      "title": "What Browsers Can & Cannot Detect",
+      "subtitle": "To prevent false diagnosis, Screen Tester strictly separates browser APIs from physical hardware specifications.",
+      "tier1Badge": "TIER 1",
+      "tier1Type": "Browser-Detected",
+      "tier1Heading": "Live Browser Telemetry",
+      "tier1Desc": "APIs directly queryable by JavaScript in this browsing context.",
+      "tier1Item1": "Viewport dimensions (CSS pixels)",
+      "tier1Item2": "Device Pixel Ratio (DPR scaling)",
+      "tier1Item3": "Color bit depth (e.g. 24-bit / 30-bit)",
+      "tier1Item4": "Screen orientation & angle",
+      "tier1Item5": "WebGL GPU renderer & limits",
+      "tier1Link": "View Browser Capabilities",
+      "tier2Badge": "TIER 2",
+      "tier2Type": "User-Provided",
+      "tier2Heading": "Hardware Specifications",
+      "tier2Desc": "Specifications provided by the user from monitor documentation.",
+      "tier2Item1": "Manufacturer & model name",
+      "tier2Item2": "Native physical resolution",
+      "tier2Item3": "Rated refresh rate (Hz)",
+      "tier2Item4": "Rated brightness & contrast",
+      "tier2Item5": "Panel technology & HDR tier",
+      "tier2Link": "Edit Inspection Profile",
+      "tier3Badge": "TIER 3",
+      "tier3Type": "Not Determinable",
+      "tier3Heading": "Hardware Limitations",
+      "tier3Desc": "Metrics that cannot be determined or verified through web APIs.",
+      "tier3Item1": "Exact physical panel diagonal",
+      "tier3Item2": "True OS/GPU hardware refresh rate",
+      "tier3Item3": "Measured luminance in nits (cd/m²)",
+      "tier3Item4": "Laboratory color accuracy (ΔE)",
+      "tier3Item5": "Panel degradation & internal health",
+      "tier3Link": "Troubleshooting Guide"
     }
   },
   "InspectionSummary": {
@@ -1483,7 +1530,40 @@
       "panelOther": "Other",
       "ratedBrightness": "Rated Brightness (cd/m²):",
       "ratedContrast": "Rated Contrast Ratio:",
-      "serialNumber": "Serial / Inventory Ref:"
+      "serialNumber": "Serial / Inventory Ref:",
+      "displayType": "Display Technology",
+      "selectDisplayType": "Select display technology...",
+      "hdrSupport": "HDR Support",
+      "selectHdrSupport": "Select HDR support...",
+      "vrrSupport": "Adaptive Sync / VRR",
+      "selectVrrSupport": "Select VRR support...",
+      "hdrOptions": {
+        "none": "SDR Only",
+        "hdr10": "HDR10",
+        "hdr400": "DisplayHDR 400",
+        "hdr600": "DisplayHDR 600",
+        "hdr1000": "DisplayHDR 1000+",
+        "dolbyVision": "Dolby Vision",
+        "other": "Other HDR"
+      },
+      "vrrOptions": {
+        "none": "Fixed Refresh Rate (No VRR)",
+        "gsync": "NVIDIA G-Sync",
+        "freesync": "AMD FreeSync",
+        "hdmiVrr": "HDMI 2.1 VRR",
+        "adaptiveSync": "VESA Adaptive-Sync",
+        "other": "Other VRR"
+      },
+      "displayTypeOptions": {
+        "ips": "IPS (In-Plane Switching)",
+        "va": "VA (Vertical Alignment)",
+        "tn": "TN (Twisted Nematic)",
+        "oled": "OLED / QD-OLED / WOLED",
+        "miniLed": "Mini-LED",
+        "crt": "CRT",
+        "projector": "Projector",
+        "other": "Other"
+      }
     },
     "checklist": {
       "title": "Inspection Checklist & Observed Results",
@@ -2134,7 +2214,9 @@
   "Breadcrumbs": {
     "home": "Home",
     "tests": "Tests",
-    "ariaLabel": "Breadcrumb"
+    "ariaLabel": "Breadcrumb",
+    "tools": "Tools",
+    "knowledgeBase": "Knowledge Base"
   },
   "StuckPixelFixerTest": {
     "metaTitle": "Stuck Pixel Fixer – Rapid Color Cycling Pixel Exerciser",
@@ -2185,6 +2267,121 @@
       "notesPlaceholder": "Add any notes on pixel behavior (sub-pixel color, location, screen response)...",
       "saveObservation": "Save Observation",
       "observationSaved": "Observation recorded to inspection session."
+    }
+  },
+  "Troubleshooting": {
+    "metaTitle": "Display Troubleshooting Guide – Common Monitor Problems & Fixes",
+    "metaDescription": "Structured diagnostic guides for display signal, wrong resolution, refresh rate, flickering, tearing, dead pixels, and TV scaling.",
+    "breadcrumb": {
+      "home": "Home",
+      "knowledgeBase": "Knowledge Base",
+      "troubleshooting": "Troubleshooting"
+    },
+    "header": {
+      "eyebrow": "DISPLAY DIAGNOSTICS & RESOLUTION",
+      "title": "Display Troubleshooting Guide",
+      "subtitle": "Structured troubleshooting for display signal, geometry, refresh rate, pixel defects, and visual artifacts."
+    },
+    "disclaimer": {
+      "title": "Screen Tester Scope & Safety Notice",
+      "body": "Screen Tester is an in-browser diagnostic tool. It cannot fix physical hardware defects, calibrate internal hardware lookup tables, or override operating system display drivers. Never stare at rapidly flashing patterns for prolonged periods. For hardware faults or electrical safety concerns, disconnect power and contact the manufacturer or a certified service provider."
+    },
+    "searchPlaceholder": "Filter symptoms (e.g. flickering, wrong resolution, tearing, dead pixel)...",
+    "categories": {
+      "all": "All Symptoms",
+      "display": "Display Problems",
+      "pixels": "Pixel Problems",
+      "imageQuality": "Image Quality",
+      "tv": "TV Problems"
+    },
+    "clearSearch": "Clear search",
+    "showingCount": "Showing {count} of {total} troubleshooting guides",
+    "allCategories": "All Symptoms",
+    "noResultsTitle": "No matching symptoms found",
+    "noResultsDesc": "Try adjusting your search query or selecting a different category.",
+    "resetFilters": "Reset Filters",
+    "sections": {
+      "possibleCauses": "Possible Causes",
+      "checksToPerform": "Checks to Perform",
+      "practicalActions": "Practical Next Steps",
+      "whatScreenTesterCanTest": "What Screen Tester Can Test",
+      "whatScreenTesterCannotDetermine": "What Screen Tester Cannot Determine",
+      "whenToStop": "When to Stop / Seek Professional Service"
+    }
+  },
+  "BrowserCompatibility": {
+    "metaTitle": "Browser Display Compatibility & API Capabilities",
+    "metaDescription": "Live technical verification of browser display APIs, platform boundaries, and cross-browser feature support matrices.",
+    "breadcrumb": {
+      "home": "Home",
+      "tools": "Tools",
+      "browserCompatibility": "Browser Compatibility"
+    },
+    "header": {
+      "eyebrow": "PLATFORM CAPABILITIES & HARDWARE BOUNDARIES",
+      "title": "Browser Display Capability Probe",
+      "subtitle": "Live technical verification of browser display APIs, platform boundaries, and cross-browser feature matrices."
+    },
+    "honestyNotice": {
+      "title": "Browser API Capability ≠ Physical Display Hardware Capability",
+      "body": "Modern browsers can report viewport dimensions, device pixel ratios, and frame timings, but they cannot directly read the physical panel diagonal size, native backlight luminance (nits), hardware lookup tables (LUT), or certified response times. A browser supporting an API does not prove your physical display supports that feature natively."
+    },
+    "probeTitle": "Live Browser Display Capabilities",
+    "probeSubtitle": "Dynamically probed from your current browser environment",
+    "colCapability": "Capability / API",
+    "colStatus": "Current Status",
+    "colType": "Detection Type",
+    "colDesc": "Technical Scope & Purpose",
+    "matrixTitle": "Cross-Browser & Platform Support Matrix",
+    "matrixSubtitle": "Platform compatibility baseline across major desktop and mobile browsers",
+    "colPlatformChromium": "Modern Chromium",
+    "colPlatformFirefox": "Recent Firefox",
+    "colPlatformSafari": "Recent Safari",
+    "colPlatformIos": "iOS Safari",
+    "colPlatformAndroid": "Android",
+    "testsMatrixTitle": "Screen Tester Test Requirements Matrix",
+    "testsMatrixSubtitle": "Hardware, input, and environment dependencies by test category",
+    "colTestName": "Test Module",
+    "colTargetDevice": "Target Platform",
+    "colInputReq": "Input Method",
+    "colFullscreenReq": "Fullscreen",
+    "colWebglReq": "WebGL",
+    "badgeSupported": "Supported",
+    "badgePartial": "Partial",
+    "badgeNotAvailable": "Not Available",
+    "badgePermission": "Requires Permission",
+    "badgeDependent": "Browser Dependent",
+    "reqOptional": "Optional",
+    "reqRequired": "Required",
+    "reqNone": "Standard DOM",
+    "reqTouch": "Touch / Pointer",
+    "reqMouseKeyboard": "Mouse / Keyboard",
+    "platformDesktopMobile": "Desktop & Mobile",
+    "platformDesktop": "Desktop Recommended",
+    "platformMobile": "Mobile / Touch Only"
+  },
+  "InspectionReport": {
+    "badges": {
+      "relevantChecks": "RELEVANT CHECKS",
+      "observedIssueGuides": "TROUBLESHOOTING GUIDES"
+    },
+    "sections": {
+      "recommendedChecks": "Model & Scenario Recommended Checks",
+      "troubleshooting": "Troubleshooting References"
+    },
+    "recommendedChecksNote": "These checks are prioritized based on the user-provided display technology and inspection scenario. They are recommendations to guide visual observation, not a claim or diagnosis of hardware defects.",
+    "troubleshootingNote": "Direct troubleshooting guidance matched to tests marked as 'Needs Attention' during this inspection.",
+    "viewTroubleshootingAction": "View Troubleshooting Guide",
+    "categoryLabels": {
+      "uniformity": "Uniformity & Bleed",
+      "nearBlack": "Near-Black & Shadow",
+      "color": "Color & Gamut",
+      "pixel": "Pixel Integrity",
+      "motion": "Motion & Refresh",
+      "hdr": "HDR & Dynamic Range",
+      "text": "Text & Scaling",
+      "tv": "TV & Overscan",
+      "input": "Input & Touch"
     }
   }
 }

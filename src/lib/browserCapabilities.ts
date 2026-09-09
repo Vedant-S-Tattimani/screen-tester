@@ -223,4 +223,47 @@ export function safeSessionRemove(key: string): boolean {
   }
 }
 
+export function supportsPointerEvents(): boolean {
+  if (typeof window === 'undefined') return false;
+  return 'PointerEvent' in window;
+}
+
+export function supportsWebAudio(): boolean {
+  if (typeof window === 'undefined') return false;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return !!(window.AudioContext || (window as any).webkitAudioContext);
+}
+
+export function supportsMediaDevices(): boolean {
+  if (typeof navigator === 'undefined') return false;
+  return !!(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices);
+}
+
+export function supportsVibration(): boolean {
+  if (typeof navigator === 'undefined') return false;
+  return 'vibrate' in navigator;
+}
+
+export function supportsWakeLock(): boolean {
+  if (typeof navigator === 'undefined') return false;
+  return 'wakeLock' in navigator;
+}
+
+export function supportsLocalStorage(): boolean {
+  if (typeof window === 'undefined') return false;
+  try {
+    const testKey = '__st_probe__';
+    localStorage.setItem(testKey, testKey);
+    localStorage.removeItem(testKey);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export function supportsPrint(): boolean {
+  if (typeof window === 'undefined') return false;
+  return typeof window.print === 'function';
+}
+
 

@@ -4,7 +4,9 @@ import {
   PixelDefectMarker, 
   PixelDefectType,
   BrowserDisplaySnapshot,
-  DEFAULT_MONITOR_PROFILE
+  DEFAULT_MONITOR_PROFILE,
+  getRecommendedChecklist,
+  getTroubleshootingRecommendations
 } from "@/lib/inspectionStorage";
 import { monitorTests } from "@/data/tests";
 import { InspectionReportData, InspectionTestResultRow } from "./types";
@@ -212,12 +214,19 @@ export function buildInspectionReportData(
       notes: t.notes
     }));
 
+  // Model-specific and scenario-adaptive recommended checks
+  const recommendedChecks = getRecommendedChecklist(userProfile, workflowId);
+
+  // Deterministic troubleshooting recommendations from user-marked issues
+  const troubleshootingReferences = getTroubleshootingRecommendations(observationsMap);
+
   return {
     inspectionId,
     isArchived,
     timestamp,
     workflowTitle,
     workflowId,
+    inspectionPurpose: workflowTitle,
     overview: {
       totalTests,
       completedCount,
@@ -248,10 +257,12 @@ export function buildInspectionReportData(
       webglVendor: options.webglInfo?.vendor || "System GPU"
     },
     userProfile,
+    recommendedChecks,
     testResults,
     browserDetectedResults,
     visualObservations,
     pixelDefects: allPixelDefects,
+    troubleshootingReferences,
     generalNotes: source.generalNotes || ""
   };
 }

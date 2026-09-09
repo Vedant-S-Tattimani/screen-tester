@@ -1018,7 +1018,12 @@
       "aboutWorkflowsDesc": "Execute sequências estruturadas, marque anomalias, registre coordenadas exatas de defeitos e salve relatórios factuais sem pontuações artificiais.",
       "savedReports": "Relatórios salvos e histórico",
       "wfGeneralTitle": "Verificação geral da tela",
-      "wfGeneralDesc": "Verificação visual essencial para pixels mortos, cores e movimento."
+      "wfGeneralDesc": "Verificação visual essencial para pixels mortos, cores e movimento.",
+      "checklistTitle": "Lista de verificação de inspeção",
+      "checklistDesc": "A lista direciona as áreas de teste recomendadas com base no perfil da tela e no objetivo da inspeção.",
+      "profileLabel": "Perfil de tela:",
+      "unspecified": "Monitor não especificado",
+      "editProfile": "Editar especificações do perfil"
     },
     "gaming": {
       "metaTitle": "Gaming Monitor Inspection",
@@ -1182,19 +1187,7 @@
     "manufacturerTitle": "Políticas de Garantia do Fabricante",
     "manufacturerText": "Os fabricantes de telas aplicam seus próprios termos de garantia específicos em relação a defeitos de pixels (como as normas ISO 13406-2). Nossos resultados de teste não afetam essas políticas.",
     "openSourceTitle": "Código Aberto",
-    "openSourceText": "Monitor Tester é de código aberto. Você pode revisar o código-fonte, relatar erros ou sugerir melhorias no GitHub.",
-    "diagnosticTitle": "Apenas para Fins de Diagnóstico",
-    "diagnosticText": "Os testes e ferramentas disponíveis neste site são exclusivamente para fins de diagnóstico e educacionais. Os resultados podem variar dependendo do seu dispositivo, navegador, sistema operacional e configuração.",
-    "accuracyTitle": "Limitações de Precisão",
-    "accuracyText": "Testes baseados em navegador não podem substituir ferramentas de hardware calibradas profissionalmente. Valores medidos como taxa de atualização, profundidade de cor e suporte HDR são relatados pelas APIs do navegador e podem diferir de ferramentas de calibração profissional.",
-    "liabilityTitle": "Isenção de Responsabilidade",
-    "liabilityText": "Não somos responsáveis por decisões tomadas com base nos resultados do Monitor Tester, incluindo reivindicações de garantia, decisões de compra ou devolução.",
-    "warrantyTitle": "Assessoria de Garantia",
-    "warrantyText": "Nossos resultados de teste são apenas para referência. Para reivindicações de garantia, consulte as diretrizes do fabricante e obtenha uma avaliação profissional da sua tela.",
-    "changeTitle": "Alterações",
-    "changeText": "Reservamo-nos o direito de alterar estes termos a qualquer momento sem aviso prévio.",
-    "contactTitle": "Contato",
-    "contactText": "Se você tiver dúvidas, entre em contato conosco pelo GitHub."
+    "openSourceText": "Monitor Tester é de código aberto. Você pode revisar o código-fonte, relatar erros ou sugerir melhorias no GitHub."
   },
   "Contact": {
     "metaTitle": "Contact & Support — Monitor Tester",
@@ -1212,14 +1205,7 @@
     "emailDesc": "Para consultas gerais, colaborações ou feedback privado sobre o projeto, fique à vontade para entrar em contato.",
     "faqTitle": "Verificar Perguntas Frequentes",
     "faqDesc": "Procurando orientação rápida sobre como os testes de navegador funcionam ou o que são pixels mortos? Confira nossas FAQ abrangentes.",
-    "faqAction": "Ler as FAQ →",
-    "githubText": "Relate erros, sugira recursos ou contribua em nosso repositório do GitHub.",
-    "githubButton": "Ver no GitHub",
-    "emailText": "Envie-nos um e-mail para consultas diretas, solicitações de colaboração ou consultas comerciais.",
-    "bugTitle": "Relatório de Bugs",
-    "bugText": "Se você encontrou um problema técnico, abra um issue no GitHub com detalhes.",
-    "featureTitle": "Solicitação de Recursos",
-    "featureText": "Sugestões para novos testes ou melhorias? Recebemos feedback."
+    "faqAction": "Ler as FAQ →"
   },
   "Tools": {
     "metaTitle": "Ferramentas e calculadoras de tela | Monitor Tester",
@@ -1258,6 +1244,11 @@
         "badge": "RELATÓRIOS",
         "title": "Relatórios de inspeção e registro de defeitos",
         "description": "Examine observações registradas, inspecione coordenadas de defeitos de pixel, perfis de hardware e exporte ou imprima relatórios."
+      },
+      "browserCompatibility": {
+        "title": "Compatibilidade do navegador",
+        "description": "Examine as APIs de tela e plataforma em tempo real frente aos limites do hardware.",
+        "badge": "SONDA E MATRIZ"
       }
     }
   },
@@ -1457,7 +1448,44 @@
     },
     "related": {
       "title": "UTILITÁRIOS RELACIONADOS",
-      "compareDisplays": "Calculadora de comparação de telas (PPI, distância, proporção)"
+      "compareDisplays": "Calculadora de comparação de telas (PPI, distância, proporção)",
+      "troubleshootingGuide": "Guia de solução de problemas",
+      "browserCompatibility": "Compatibilidade do navegador"
+    },
+    "tiers": {
+      "eyebrow": "LIMITES DE CAPACIDADE TÉCNICA",
+      "title": "O que os navegadores podem e não podem detectar",
+      "subtitle": "Para evitar falsos diagnósticos, o Screen Tester separa rigorosamente as APIs do navegador das especificações físicas de hardware.",
+      "tier1Badge": "NÍVEL 1",
+      "tier1Type": "Detectado pelo navegador",
+      "tier1Heading": "Telemetria ao vivo do navegador",
+      "tier1Desc": "APIs consultáveis diretamente via JavaScript neste contexto de navegação.",
+      "tier1Item1": "Dimensões da janela (pixels CSS)",
+      "tier1Item2": "Escala Device Pixel Ratio (DPR)",
+      "tier1Item3": "Profundidade de cor (ex.: 24 bits / 30 bits)",
+      "tier1Item4": "Orientação e ângulo da tela",
+      "tier1Item5": "Renderizador GPU e limites WebGL",
+      "tier1Link": "Ver recursos do navegador",
+      "tier2Badge": "NÍVEL 2",
+      "tier2Type": "Fornecido pelo usuário",
+      "tier2Heading": "Especificações de hardware",
+      "tier2Desc": "Especificações informadas pelo usuário a partir da documentação do monitor.",
+      "tier2Item1": "Fabricante e modelo",
+      "tier2Item2": "Resolução nativa física",
+      "tier2Item3": "Taxa de atualização nominal (Hz)",
+      "tier2Item4": "Brilho e contraste nominais",
+      "tier2Item5": "Tecnologia do painel e nível HDR",
+      "tier2Link": "Editar perfil de inspeção",
+      "tier3Badge": "NÍVEL 3",
+      "tier3Type": "Não determinável",
+      "tier3Heading": "Limitações de hardware",
+      "tier3Desc": "Métricas que não podem ser determinadas ou verificadas por meio de APIs web.",
+      "tier3Item1": "Diagonal física exata do painel",
+      "tier3Item2": "Taxa de atualização real de hardware do SO/GPU",
+      "tier3Item3": "Luminância medida em nits (cd/m²)",
+      "tier3Item4": "Precisão de cor de laboratório (ΔE)",
+      "tier3Item5": "Degradação do painel e saúde interna",
+      "tier3Link": "Guia de solução de problemas"
     }
   },
   "InspectionSummary": {
@@ -1511,7 +1539,40 @@
       "panelOther": "Outro",
       "ratedBrightness": "Brilho nominal (cd/m²):",
       "ratedContrast": "Taxa de contraste nominal:",
-      "serialNumber": "Nº de série / Ref:"
+      "serialNumber": "Nº de série / Ref:",
+      "displayType": "Tecnologia de tela",
+      "selectDisplayType": "Selecionar tecnologia...",
+      "hdrSupport": "Suporte a HDR",
+      "selectHdrSupport": "Selecionar suporte a HDR...",
+      "vrrSupport": "Sincronização adaptativa / VRR",
+      "selectVrrSupport": "Selecionar suporte a VRR...",
+      "hdrOptions": {
+        "none": "Apenas SDR",
+        "hdr10": "HDR10",
+        "hdr400": "DisplayHDR 400",
+        "hdr600": "DisplayHDR 600",
+        "hdr1000": "DisplayHDR 1000+",
+        "dolbyVision": "Dolby Vision",
+        "other": "Outro HDR"
+      },
+      "vrrOptions": {
+        "none": "Taxa fixa (Sem VRR)",
+        "gsync": "NVIDIA G-Sync",
+        "freesync": "AMD FreeSync",
+        "hdmiVrr": "HDMI 2.1 VRR",
+        "adaptiveSync": "VESA Adaptive-Sync",
+        "other": "Outro VRR"
+      },
+      "displayTypeOptions": {
+        "ips": "IPS (In-Plane Switching)",
+        "va": "VA (Vertical Alignment)",
+        "tn": "TN (Twisted Nematic)",
+        "oled": "OLED / QD-OLED / WOLED",
+        "miniLed": "Mini-LED",
+        "crt": "CRT",
+        "projector": "Projetor",
+        "other": "Outro"
+      }
     },
     "checklist": {
       "title": "Lista de Verificação e Resultados Observados",
@@ -2162,7 +2223,9 @@
   "Breadcrumbs": {
     "home": "Início",
     "tests": "Testes",
-    "ariaLabel": "Navegação estrutural"
+    "ariaLabel": "Navegação estrutural",
+    "tools": "Ferramentas",
+    "knowledgeBase": "Base de conhecimento"
   },
   "StuckPixelFixerTest": {
     "metaTitle": "Fixador de Pixels Presos – Exercitador de Cores Rápidas",
@@ -2213,6 +2276,121 @@
       "notesPlaceholder": "Adicione notas sobre o comportamento do pixel...",
       "saveObservation": "Salvar observação",
       "observationSaved": "Observação registrada na sessão."
+    }
+  },
+  "Troubleshooting": {
+    "metaTitle": "Guia de solução de problemas de tela – Falhas comuns e soluções",
+    "metaDescription": "Guias estruturados de diagnóstico para ausência de sinal, resolução incorreta, taxa de atualização, cintilação, tearing, pixels mortos e escala em TV.",
+    "breadcrumb": {
+      "home": "Início",
+      "knowledgeBase": "Base de conhecimento",
+      "troubleshooting": "Solução de problemas"
+    },
+    "header": {
+      "eyebrow": "DIAGNÓSTICO E RESOLUÇÃO DE TELA",
+      "title": "Guia de solução de problemas de exibição",
+      "subtitle": "Solução estruturada para falhas de sinal, geometria, taxa de atualização, defeitos de pixel e artefatos visuais."
+    },
+    "disclaimer": {
+      "title": "Escopo e aviso de segurança do Screen Tester",
+      "body": "O Screen Tester é uma ferramenta de diagnóstico no navegador. Ele não repara defeitos físicos de hardware, não calibra tabelas LUT internas e não substitui os drivers de vídeo do sistema operacional. Nunca olhe fixamente para padrões piscantes rápidos por períodos prolongados. Para falhas elétricas ou de hardware, desconecte a energia e procure a assistência técnica autorizada."
+    },
+    "searchPlaceholder": "Filtrar sintomas (ex.: cintilação, resolução errada, tearing, pixel morto)...",
+    "categories": {
+      "all": "Todos os sintomas",
+      "display": "Problemas de tela",
+      "pixels": "Problemas de pixel",
+      "imageQuality": "Qualidade de imagem",
+      "tv": "Problemas em TV"
+    },
+    "clearSearch": "Limpar busca",
+    "showingCount": "Mostrando {count} de {total} guias de solução de problemas",
+    "allCategories": "Todos os sintomas",
+    "noResultsTitle": "Nenhum sintoma correspondente encontrado",
+    "noResultsDesc": "Tente ajustar sua busca ou selecionar uma categoria diferente.",
+    "resetFilters": "Redefinir filtros",
+    "sections": {
+      "possibleCauses": "Causas possíveis",
+      "checksToPerform": "Verificações a realizar",
+      "practicalActions": "Próximos passos práticos",
+      "whatScreenTesterCanTest": "O que o Screen Tester pode testar",
+      "whatScreenTesterCannotDetermine": "O que o Screen Tester não pode determinar",
+      "whenToStop": "Quando parar / Procurar assistência técnica"
+    }
+  },
+  "BrowserCompatibility": {
+    "metaTitle": "Compatibilidade de exibição do navegador e recursos de API",
+    "metaDescription": "Verificação técnica ao vivo das APIs de exibição do navegador, limites de plataforma e matrizes de suporte entre navegadores.",
+    "breadcrumb": {
+      "home": "Início",
+      "tools": "Ferramentas",
+      "browserCompatibility": "Compatibilidade do navegador"
+    },
+    "header": {
+      "eyebrow": "CAPACIDADES DE PLATAFORMA E LIMITES DE HARDWARE",
+      "title": "Sonda de recursos de exibição do navegador",
+      "subtitle": "Verificação técnica ao vivo de APIs de exibição, limites de plataforma e matrizes de compatibilidade entre navegadores."
+    },
+    "honestyNotice": {
+      "title": "Capacidade da API do navegador ≠ Capacidade física do monitor",
+      "body": "Navegadores modernos podem informar dimensões da janela de exibição, densidade de pixels e sincronização de quadros, mas não conseguem medir diretamente a diagonal física da tela, a luminância real (nits), tabelas LUT de hardware nem o tempo de resposta certificado. O suporte do navegador a uma API não prova que sua tela suporta esse recurso nativamente."
+    },
+    "probeTitle": "Recursos de exibição do navegador em tempo real",
+    "probeSubtitle": "Sondados dinamicamente no seu ambiente de navegação atual",
+    "colCapability": "Capacidade / API",
+    "colStatus": "Status atual",
+    "colType": "Tipo de detecção",
+    "colDesc": "Escopo técnico e finalidade",
+    "matrixTitle": "Matriz de suporte entre navegadores e plataformas",
+    "matrixSubtitle": "Referência de compatibilidade nos principais navegadores para desktop e dispositivos móveis",
+    "colPlatformChromium": "Chromium moderno",
+    "colPlatformFirefox": "Firefox recente",
+    "colPlatformSafari": "Safari recente",
+    "colPlatformIos": "iOS Safari",
+    "colPlatformAndroid": "Android",
+    "testsMatrixTitle": "Matriz de requisitos dos testes do Screen Tester",
+    "testsMatrixSubtitle": "Dependências de hardware, entrada e ambiente por categoria de teste",
+    "colTestName": "Módulo de teste",
+    "colTargetDevice": "Plataforma alvo",
+    "colInputReq": "Método de entrada",
+    "colFullscreenReq": "Tela cheia",
+    "colWebglReq": "WebGL",
+    "badgeSupported": "Compatível",
+    "badgePartial": "Parcial",
+    "badgeNotAvailable": "Indisponível",
+    "badgePermission": "Requer permissão",
+    "badgeDependent": "Depende do navegador",
+    "reqOptional": "Opcional",
+    "reqRequired": "Obrigatório",
+    "reqNone": "DOM padrão",
+    "reqTouch": "Toque / Ponteiro",
+    "reqMouseKeyboard": "Mouse / Teclado",
+    "platformDesktopMobile": "Desktop e móvel",
+    "platformDesktop": "Recomendado para desktop",
+    "platformMobile": "Apenas móvel / toque"
+  },
+  "InspectionReport": {
+    "badges": {
+      "relevantChecks": "VERIFICAÇÕES RELEVANTES",
+      "observedIssueGuides": "GUIAS DE SOLUÇÃO DE PROBLEMAS"
+    },
+    "sections": {
+      "recommendedChecks": "Verificações recomendadas por modelo e cenário",
+      "troubleshooting": "Referências de solução de problemas"
+    },
+    "recommendedChecksNote": "Estas verificações são priorizadas com base na tecnologia de tela e no objetivo da inspeção informados. São recomendações para orientar a observação visual, não um diagnóstico de defeito de hardware.",
+    "troubleshootingNote": "Guias de solução de problemas direcionados aos testes marcados como 'Requer atenção' durante esta inspeção.",
+    "viewTroubleshootingAction": "Ver guia de solução de problemas",
+    "categoryLabels": {
+      "uniformity": "Uniformidade e vazamento",
+      "nearBlack": "Tons escuros e sombras",
+      "color": "Cor e gamut",
+      "pixel": "Integridade de pixels",
+      "motion": "Movimento e atualização",
+      "hdr": "HDR e alcance dinâmico",
+      "text": "Texto e escala",
+      "tv": "TV e overscan",
+      "input": "Entrada e toque"
     }
   }
 }

@@ -36,7 +36,10 @@ import {
   MonitorProfile,
   CompletedInspection,
   BrowserDisplaySnapshot,
-  DEFAULT_MONITOR_PROFILE
+  DEFAULT_MONITOR_PROFILE,
+  DisplayType,
+  HdrSupportOption,
+  VrrSupportOption
 } from "@/lib/inspectionStorage";
 import { 
   getWebGLDiagnostics, 
@@ -423,6 +426,47 @@ export function InspectionSummary() {
                 <option value="TN">TN</option>
                 <option value="Mini-LED">Mini-LED</option>
                 <option value="Other">{t("profile.panelOther")}</option>
+              </select>
+            </div>
+            <div>
+              <label className="block font-medium text-slate-700 mb-1">{t("profile.displayType")}</label>
+              <select
+                value={profileDraft.displayType || ""}
+                onChange={(e) => setProfileDraft({ ...profileDraft, displayType: (e.target.value || undefined) as DisplayType | undefined })}
+                className="w-full px-3 py-1.5 border border-slate-300 rounded-lg bg-white"
+              >
+                <option value="">{t("profile.selectDisplayType")}</option>
+                <option value="Monitor">Desktop Monitor</option>
+                <option value="Gaming">Gaming Monitor</option>
+                <option value="TV">Television (TV)</option>
+                <option value="Laptop">Laptop Display</option>
+                <option value="Other">{t("profile.panelOther")}</option>
+              </select>
+            </div>
+            <div>
+              <label className="block font-medium text-slate-700 mb-1">{t("profile.hdrSupport")}</label>
+              <select
+                value={profileDraft.hdrSupport || ""}
+                onChange={(e) => setProfileDraft({ ...profileDraft, hdrSupport: (e.target.value || undefined) as HdrSupportOption | undefined })}
+                className="w-full px-3 py-1.5 border border-slate-300 rounded-lg bg-white"
+              >
+                <option value="">{t("profile.unspecified")}</option>
+                <option value="Yes">Supported / Enabled</option>
+                <option value="No">No / SDR Only</option>
+              </select>
+            </div>
+            <div>
+              <label className="block font-medium text-slate-700 mb-1">{t("profile.vrrSupport")}</label>
+              <select
+                value={profileDraft.vrrSupport || ""}
+                onChange={(e) => setProfileDraft({ ...profileDraft, vrrSupport: (e.target.value || undefined) as VrrSupportOption | undefined })}
+                className="w-full px-3 py-1.5 border border-slate-300 rounded-lg bg-white"
+              >
+                <option value="">{t("profile.unspecified")}</option>
+                <option value="G-Sync">NVIDIA G-Sync</option>
+                <option value="FreeSync">AMD FreeSync</option>
+                <option value="Adaptive-Sync">VESA Adaptive-Sync</option>
+                <option value="None">None / Fixed Refresh</option>
               </select>
             </div>
             <div>

@@ -39,16 +39,23 @@ export interface BrowserDisplaySnapshot {
   capturedAt: number;
 }
 
+export type DisplayType = "Monitor" | "TV" | "Laptop" | "Gaming" | "Other" | "";
+export type HdrSupportOption = "Yes" | "No" | "Unspecified" | "";
+export type VrrSupportOption = "G-Sync" | "FreeSync" | "Adaptive-Sync" | "None" | "Unspecified" | "";
+
 export interface MonitorProfile {
   id?: string;
   brand: string;
   model: string;
+  displayType?: DisplayType;
   size: string; // e.g. "27\""
   resolution: string; // e.g. "2560x1440"
   refreshRate: string; // e.g. "144Hz"
   panelType: string; // "IPS" | "VA" | "OLED" | "TN" | "Mini-LED" | "Other" | ""
   ratedBrightness?: string; // e.g. "400 cd/m²"
   ratedContrast?: string; // e.g. "1000:1"
+  hdrSupport?: HdrSupportOption;
+  vrrSupport?: VrrSupportOption;
   serialNumber?: string; // optional reference
   purchaseDate: string; // YYYY-MM-DD
   notes: string;
@@ -111,16 +118,417 @@ const LEGACY_KEY_WORKFLOW = "monitor-tester-workflow";
 export const DEFAULT_MONITOR_PROFILE: MonitorProfile = {
   brand: "",
   model: "",
+  displayType: "",
   size: "",
   resolution: "",
   refreshRate: "",
   panelType: "",
   ratedBrightness: "",
   ratedContrast: "",
+  hdrSupport: "",
+  vrrSupport: "",
   serialNumber: "",
   purchaseDate: "",
   notes: ""
 };
+
+export interface RecommendedCheckItem {
+  id: string;
+  title: string;
+  reason: string;
+  relevantTestId?: string;
+  category: "panel" | "usage" | "general";
+}
+
+/**
+ * Returns model-specific and scenario-adaptive recommended checks.
+ * STRICT PRINCIPLE: Uses pure recommendation language ("Relevant checks for OLED displays"),
+ * NEVER defect-assumption or diagnosis language ("Your OLED has burn-in").
+ */
+export function getRecommendedChecklist(
+  profile?: MonitorProfile,
+  workflowId?: string
+): RecommendedCheckItem[] {
+  const checks: RecommendedCheckItem[] = [];
+  const panel = (profile?.panelType || "").toUpperCase();
+  const displayType = (profile?.displayType || "").toLowerCase();
+  const isOled = panel.includes("OLED");
+  const isLcd = panel.includes("IPS") || panel.includes("VA") || panel.includes("TN") || panel.includes("MINI-LED") || (!isOled && panel.length > 0);
+  const isTv = displayType === "tv" || workflowId === "tv";
+  const isGaming = displayType === "gaming" || workflowId === "gaming" || (profile?.vrrSupport && profile.vrrSupport !== "None");
+  const isLaptop = displayType === "laptop" || workflowId === "laptop";
+
+  if (isOled) {
+    checks.push(
+      {
+        id: "oled-near-black",
+        title: "Near-Black Transition Behavior",
+        reason: "Self-emissive subpixels switch entirely off for true black; evaluate whether subtle shadow detail steps cleanly without crushing.",
+        relevantTestId: "black-level-test",
+        category: "panel"
+      },
+      {
+        id: "oled-uniformity",
+        title: "Low-Luminance Gray Uniformity",
+        reason: "Self-emissive panels may show subtle vertical banding on 5% to 20% dark gray fields.",
+        relevantTestId: "uniformity-test",
+        category: "panel"
+      },
+      {
+        id: "oled-pixels",
+        title: "Subpixel Dropout & Pixel Integrity",
+        reason: "Inspect solid primary color fields (Red, Green, Blue, White) for inactive subpixels.",
+        relevantTestId: "dead-pixel-test",
+        category: "panel"
+      },
+      {
+        id: "oled-hdr-abl",
+        title: "HDR Headroom & Brightness Limiting (ABL)",
+        reason: "Assess panel brightness behavior when transitioning between small specular highlights and full-screen bright scenes.",
+        relevantTestId: "hdr-capability-test",
+        category: "panel"
+      },
+      {
+        id: "oled-subpixel-text",
+        title: "Subpixel Layout & Text Rendering",
+        reason: "Triangular or non-standard subpixel layouts may produce subtle color fringing on high-contrast text edges.",
+        relevantTestId: "sharpness-test",
+        category: "panel"
+      },
+      {
+        id: "oled-motion",
+        title: "Motion Clarity & Persistence",
+        reason: "Instantaneous physical pixel transition times make sample-and-hold eye tracking persistence the primary factor in motion perception.",
+        relevantTestId: "ghosting-test",
+        category: "panel"
+      }
+    );
+  } else if (isLcd) {
+    checks.push(
+      {
+        id: "lcd-bleed",
+        title: "Backlight Uniformity & Bezel Pinch",
+        reason: "LCD panels rely on external LED backlights; check in a darkened room for edge pinching or uneven corner light leakage.",
+        relevantTestId: "backlight-bleed-test",
+        category: "panel"
+      },
+      {
+        id: "lcd-uniformity",
+        title: "Screen Surface Uniformity",
+        reason: "Check neutral 50% gray fields for corner vignetting, diffuser clouding, or color tint shifts across the panel area.",
+        relevantTestId: "uniformity-test",
+        category: "panel"
+      },
+      {
+        id: "lcd-viewing-angle",
+        title: "Off-Axis Viewing Angle Stability",
+        reason: "Examine whether contrast diminishes or colors shift when viewing the panel from horizontal or vertical angles.",
+        relevantTestId: "viewing-angle-test",
+        category: "panel"
+      },
+      {
+        id: "lcd-contrast-black",
+        title: "Black-Level Separation & Contrast",
+        reason: "Verify separation between deepest black and the lowest visible grayscale steps without crushing shadows.",
+        relevantTestId: "contrast-test",
+        category: "panel"
+      },
+      {
+        id: "lcd-pixel-defects",
+        title: "Dead & Stuck Subpixel Check",
+        reason: "Check light backgrounds for dark dead pixels and dark backgrounds for bright stuck subpixels.",
+        relevantTestId: "dead-pixel-test",
+        category: "panel"
+      },
+      {
+        id: "lcd-motion-ghosting",
+        title: "Liquid Crystal Response & Ghosting",
+        reason: "Evaluate crystal transition speed and overdrive tuning to ensure neither dark smearing nor bright overshoot halos appear.",
+        relevantTestId: "ghosting-test",
+        category: "panel"
+      }
+    );
+  }
+
+  if (isTv) {
+    checks.push(
+      {
+        id: "tv-overscan",
+        title: "Overscan & 1:1 Pixel Mapping",
+        reason: "Ensure the television picture mode is set to 'Just Scan' or 'Fit to Screen' so edges are not cropped.",
+        relevantTestId: "resolution-checker",
+        category: "usage"
+      },
+      {
+        id: "tv-aspect-ratio",
+        title: "Aspect Ratio & Geometric Proportions",
+        reason: "Verify circular and square test patterns retain mathematically correct aspect ratios without vertical stretching.",
+        relevantTestId: "resolution-checker",
+        category: "usage"
+      },
+      {
+        id: "tv-viewing-angle",
+        title: "Living Room Viewing Angles",
+        reason: "Confirm consistent color and contrast from off-center seating positions.",
+        relevantTestId: "viewing-angle-test",
+        category: "usage"
+      }
+    );
+  }
+
+  if (isGaming) {
+    checks.push(
+      {
+        id: "gaming-refresh-sync",
+        title: "Operating Refresh Rate Synchronization",
+        reason: "Confirm that browser animation timing and OS display output match the panel's rated high-refresh capability.",
+        relevantTestId: "refresh-rate-test",
+        category: "usage"
+      },
+      {
+        id: "gaming-tearing",
+        title: "Screen Tearing & Frame Pacing",
+        reason: "Observe moving contrast bars across refresh cycles to inspect V-Sync alignment and tearing behavior.",
+        relevantTestId: "screen-tearing-test",
+        category: "usage"
+      },
+      {
+        id: "gaming-overdrive",
+        title: "Overdrive Tuning & Inverse Ghosting (Overshoot)",
+        reason: "Ensure monitor overdrive voltage is balanced to prevent bright trailing halos around moving objects.",
+        relevantTestId: "ghosting-test",
+        category: "usage"
+      },
+      {
+        id: "gaming-flicker",
+        title: "Flicker & Backlight Strobing Stability",
+        reason: "Inspect for high-frequency strobing or backlight modulation that could cause visual fatigue during long gaming sessions.",
+        relevantTestId: "screen-flicker-test",
+        category: "usage"
+      }
+    );
+  }
+
+  if (isLaptop) {
+    checks.push(
+      {
+        id: "laptop-scaling",
+        title: "HiDPI OS Scaling & Viewport Rendering",
+        reason: "Verify logical layout dimensions align with OS scale factor for crisp application rendering.",
+        relevantTestId: "resolution-checker",
+        category: "usage"
+      },
+      {
+        id: "laptop-color-balance",
+        title: "Color Primaries & White Point Balance",
+        reason: "Check RGB reproduction and neutral white consistency across the integrated display panel.",
+        relevantTestId: "color-test",
+        category: "usage"
+      }
+    );
+  }
+
+  // If no specific panel or usage provided, provide balanced general checks
+  if (checks.length === 0) {
+    checks.push(
+      {
+        id: "gen-resolution",
+        title: "Native Resolution & Scaling Verification",
+        reason: "Verify active browser layout area matches recommended operating system display settings.",
+        relevantTestId: "resolution-checker",
+        category: "general"
+      },
+      {
+        id: "gen-pixels",
+        title: "Pixel Flaw Inspection",
+        reason: "Scan primary and monochrome fields for inactive or stuck subpixels.",
+        relevantTestId: "dead-pixel-test",
+        category: "general"
+      },
+      {
+        id: "gen-luminance",
+        title: "Luminance Steps & Shadow Separation",
+        reason: "Confirm highlight and shadow detail steps are distinctly separated.",
+        relevantTestId: "brightness-test",
+        category: "general"
+      },
+      {
+        id: "gen-uniformity",
+        title: "Panel Uniformity Check",
+        reason: "Evaluate screen surface for luminance or tint variations across the viewing area.",
+        relevantTestId: "uniformity-test",
+        category: "general"
+      },
+      {
+        id: "gen-motion",
+        title: "Motion Clarity & Trail Inspection",
+        reason: "Observe animated elements to evaluate liquid crystal transition response.",
+        relevantTestId: "ghosting-test",
+        category: "general"
+      }
+    );
+  }
+
+  return checks;
+}
+
+export interface TroubleshootingReferenceItem {
+  symptomId: string;
+  title: string;
+  triggerTestId: string;
+  triggerTestName: string;
+  summary: string;
+}
+
+/**
+ * Deterministically maps test observations marked with NEEDS_ATTENTION (or ISSUE)
+ * to relevant troubleshooting guides.
+ * STRICT PRINCIPLE: Deterministic mapping only, zero AI inference or guessing.
+ */
+export function getTroubleshootingRecommendations(
+  observations: Record<string, TestObservationItem>
+): TroubleshootingReferenceItem[] {
+  const results: TroubleshootingReferenceItem[] = [];
+  const seenSymptomIds = new Set<string>();
+
+  const mapping: Record<string, { symptomId: string; title: string; summary: string }> = {
+    "refresh-rate-test": {
+      symptomId: "wrong-refresh-rate",
+      title: "Wrong Refresh Rate Troubleshooting",
+      summary: "Troubleshoot display refresh rate settings, cable bandwidth limits, and browser animation timing mismatches."
+    },
+    "frame-rate-test": {
+      symptomId: "wrong-refresh-rate",
+      title: "Wrong Refresh Rate Troubleshooting",
+      summary: "Diagnose frame pacing mismatches, GPU compositor drops, and display output configuration."
+    },
+    "screen-tearing-test": {
+      symptomId: "screen-tearing",
+      title: "Screen Tearing Troubleshooting",
+      summary: "Diagnose V-Sync mismatches, VRR/Adaptive-Sync configurations, and browser compositor pacing."
+    },
+    "screen-flicker-test": {
+      symptomId: "flickering",
+      title: "Display Flickering Troubleshooting",
+      summary: "Troubleshoot PWM backlight modulation, VRR brightness fluctuation, and video cable signal integrity."
+    },
+    "flicker-test": {
+      symptomId: "flickering",
+      title: "Display Flickering Troubleshooting",
+      summary: "Diagnose high-frequency backlight flicker and refresh rate instability."
+    },
+    "dead-pixel-test": {
+      symptomId: "dead-stuck-bright-pixel",
+      title: "Dead, Stuck & Bright Pixel Guide",
+      summary: "Understand the physical difference between dead and stuck subpixels, manufacturer warranty tolerances, and localized exercising."
+    },
+    "stuck-pixel-test": {
+      symptomId: "dead-stuck-bright-pixel",
+      title: "Dead, Stuck & Bright Pixel Guide",
+      summary: "Identify stuck energized subpixels and safe visual stimulation techniques."
+    },
+    "bright-pixel-test": {
+      symptomId: "dead-stuck-bright-pixel",
+      title: "Dead, Stuck & Bright Pixel Guide",
+      summary: "Inspect for hot or permanently energized subpixel flaws on dark backgrounds."
+    },
+    "stuck-pixel-fixer": {
+      symptomId: "dead-stuck-bright-pixel",
+      title: "Dead, Stuck & Bright Pixel Guide",
+      summary: "Review stuck pixel characteristics, stimulation safety, and return thresholds."
+    },
+    "backlight-bleed-test": {
+      symptomId: "backlight-bleed-ips-glow",
+      title: "Backlight Bleed vs. IPS Glow Guide",
+      summary: "Distinguish fixed bezel mechanical pinch from angle-dependent IPS optical glow."
+    },
+    "viewing-angle-test": {
+      symptomId: "backlight-bleed-ips-glow",
+      title: "Backlight Bleed vs. IPS Glow Guide",
+      summary: "Analyze viewing angle optical shifts, IPS glow behavior, and contrast degradation off-axis."
+    },
+    "black-level-test": {
+      symptomId: "backlight-bleed-ips-glow",
+      title: "Backlight Bleed & Black Level Guide",
+      summary: "Investigate elevated black floors, backlight light leakage, and dynamic contrast settings."
+    },
+    "brightness-test": {
+      symptomId: "uneven-brightness",
+      title: "Uneven Brightness & Uniformity Guide",
+      summary: "Address edge vignetting, diffuser clouding, ambient light interference, and shadow crushing."
+    },
+    "uniformity-test": {
+      symptomId: "uneven-brightness",
+      title: "Uneven Brightness & Uniformity Guide",
+      summary: "Diagnose dirty screen effect (DSE), edge falloff, and color tint variations across the panel."
+    },
+    "contrast-test": {
+      symptomId: "washed-out-colors",
+      title: "Washed Out Colors & Contrast Guide",
+      summary: "Troubleshoot RGB full vs. limited range mismatches, color bit depth, and HDR tone mapping issues."
+    },
+    "color-test": {
+      symptomId: "washed-out-colors",
+      title: "Washed Out Colors & Contrast Guide",
+      summary: "Diagnose color tinting, incorrect ICC profiles, and wide color gamut clamping."
+    },
+    "color-banding-test": {
+      symptomId: "washed-out-colors",
+      title: "Color Banding & Gradient Steps Guide",
+      summary: "Troubleshoot 6-bit vs 8-bit color depth, GPU quantization, and gradient banding."
+    },
+    "gamma-test": {
+      symptomId: "washed-out-colors",
+      title: "Washed Out Colors & Gamma Guide",
+      summary: "Address washed-out midtones or crushed darks caused by mismatched gamma curves (sRGB vs 2.2)."
+    },
+    "sharpness-test": {
+      symptomId: "blurry-text",
+      title: "Blurry Text & Scaling Troubleshooting",
+      summary: "Resolve OS scaling artifacts, non-native resolution blur, and subpixel font rendering fringing."
+    },
+    "resolution-checker": {
+      symptomId: "wrong-resolution",
+      title: "Wrong Resolution & Scaling Troubleshooting",
+      summary: "Align operating system desktop resolution and scaling with the display's physical panel grid."
+    },
+    "display-info": {
+      symptomId: "wrong-resolution",
+      title: "Wrong Resolution & Display Settings Guide",
+      summary: "Understand browser-reported viewport vs. physical hardware resolution."
+    },
+    "hdr-capability-test": {
+      symptomId: "hdr-not-working",
+      title: "HDR Not Working Troubleshooting",
+      summary: "Step-by-step resolution for Windows/macOS HDR toggles, washed-out SDR content, and cable limitations."
+    }
+  };
+
+  Object.entries(observations).forEach(([rawTestId, obs]) => {
+    if (obs.result === "ISSUE" || (obs.result as string) === "NEEDS_ATTENTION") {
+      const cleanId = rawTestId.replace(/^\//, "").replace(/^tests\//, "");
+      const entry = mapping[cleanId] || mapping[`${cleanId}-test`] || mapping[cleanId.replace(/-test$/, "")];
+      if (entry && !seenSymptomIds.has(entry.symptomId)) {
+        seenSymptomIds.add(entry.symptomId);
+        const testTitle = cleanId
+          .replace("-test", "")
+          .split("-")
+          .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+          .join(" ");
+
+        results.push({
+          symptomId: entry.symptomId,
+          title: entry.title,
+          triggerTestId: cleanId,
+          triggerTestName: testTitle,
+          summary: entry.summary
+        });
+      }
+    }
+  });
+
+  return results;
+}
 
 /**
  * Loads the active inspection session or initializes a clean default session.

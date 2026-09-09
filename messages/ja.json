@@ -1018,7 +1018,12 @@
       "aboutWorkflowsDesc": "体系的な手順でテストを進め、異常箇所を記録し、ドット抜けの正確な座標をマークして客観的な点検レポートを保存できます。作為的なスコアは一切ありません。",
       "savedReports": "保存済みレポートと履歴",
       "wfGeneralTitle": "総合ディスプレイ点検",
-      "wfGeneralDesc": "ドット抜け、発色、動画応答性をバランスよく確認する基本チェック。"
+      "wfGeneralDesc": "ドット抜け、発色、動画応答性をバランスよく確認する基本チェック。",
+      "checklistTitle": "検査チェックリスト",
+      "checklistDesc": "モニターのプロファイルと検査目的に応じて推奨されるテスト項目を案内します。",
+      "profileLabel": "ディスプレイ情報:",
+      "unspecified": "未指定のモニター",
+      "editProfile": "仕様情報を編集する"
     },
     "gaming": {
       "metaTitle": "Gaming Monitor Inspection",
@@ -1182,19 +1187,7 @@
     "manufacturerTitle": "製造業者の保証ポリシー",
     "manufacturerText": "ディスプレイメーカーは、ピクセル欠陥（ISO 13406-2などの基準）に関して独自の特定の保証条件を適用します。当社のテスト結果はこれらのポリシーに影響しません。",
     "openSourceTitle": "オープンソース",
-    "openSourceText": "モニターテスターはオープンソースです。GitHubでソースコードを確認したり、バグを報告したり、改善を提案したりできます。",
-    "diagnosticTitle": "診断目的のみ",
-    "diagnosticText": "このウェブサイトで利用可能なテストとツールは、診断および教育目的のみです。結果は、デバイス、ブラウザ、オペレーティングシステム、および設定によって異なる場合があります。",
-    "accuracyTitle": "精度の制限",
-    "accuracyText": "ブラウザベースのテストは、専門的にキャリブレーションされたハードウェアツールの代替にはなりません。リフレッシュレート、色深度、HDRサポートなどの測定値はブラウザAPIによって報告され、専門的なキャリブレーションツールとは異なる場合があります。",
-    "liabilityTitle": "責任の否認",
-    "liabilityText": "保証請求、購入または返品の決定を含む、モニターテスターの結果に基づいて下された決定について、当社は責任を負いません。",
-    "warrantyTitle": "保証アドバイス",
-    "warrantyText": "当社のテスト結果はあくまで参考用です。保証請求については、製造者のガイドラインを参照し、ディスプレイの専門的な評価を受けてください。",
-    "changeTitle": "変更",
-    "changeText": "当社は、事前通知なしにいつでもこれらの規約を変更する権利を留保します。",
-    "contactTitle": "お問い合わせ",
-    "contactText": "ご質問がある場合は、GitHubを通じてお問い合わせください。"
+    "openSourceText": "モニターテスターはオープンソースです。GitHubでソースコードを確認したり、バグを報告したり、改善を提案したりできます。"
   },
   "Contact": {
     "metaTitle": "Contact & Support — Monitor Tester",
@@ -1212,14 +1205,7 @@
     "emailDesc": "一般的なお問い合わせ、コラボレーション、またはプロジェクトに関するプライベートなフィードバックについては、お気軽にご連絡ください。",
     "faqTitle": "よくある質問を確認する",
     "faqDesc": "ブラウザテストの仕組みやデッドピクセルとは何かについて素早いガイダンスをお探しですか？包括的なFAQをご覧ください。",
-    "faqAction": "FAQを読む →",
-    "githubText": "バグを報告したり、機能を提案したり、GitHubリポジトリに貢献したりしてください。",
-    "githubButton": "GitHubで見る",
-    "emailText": "直接のお問い合わせ、コラボレーションのリクエスト、またはビジネスに関するお問い合わせはメールでご連絡ください。",
-    "bugTitle": "バグレポート",
-    "bugText": "技術的な問題を見つけた場合は、詳細とともにGitHubでissueを開いてください。",
-    "featureTitle": "機能リクエスト",
-    "featureText": "新しいテストや改善の提案はありますか？フィードバックを歓迎します。"
+    "faqAction": "FAQを読む →"
   },
   "Tools": {
     "metaTitle": "ディスプレイツール＆計算機 | Monitor Tester",
@@ -1258,6 +1244,11 @@
         "badge": "レポート",
         "title": "点検レポートと不具合記録",
         "description": "記録した目視結果の確認、ドット抜けの位置座標一覧、ハードウェア構成の確認、印刷およびJSON保存が行えます。"
+      },
+      "browserCompatibility": {
+        "title": "ブラウザ互換性",
+        "description": "ブラウザの表示・プラットフォームAPIをハードウェアの制約境界と照らし合わせて検証します。",
+        "badge": "プローブ＆マトリクス"
       }
     }
   },
@@ -1457,7 +1448,44 @@
     },
     "related": {
       "title": "関連ユーティリティ",
-      "compareDisplays": "ディスプレイ比較計算ツール（PPI・視距離・アスペクト比）"
+      "compareDisplays": "ディスプレイ比較計算ツール（PPI・視距離・アスペクト比）",
+      "troubleshootingGuide": "トラブルシューティングガイド",
+      "browserCompatibility": "ブラウザ互換性"
+    },
+    "tiers": {
+      "eyebrow": "技術的な機能境界",
+      "title": "ブラウザが検出できるもの・できないもの",
+      "subtitle": "誤診を防ぐため、Screen TesterはブラウザAPIと物理ハードウェア仕様を厳密に区別します。",
+      "tier1Badge": "ティア 1",
+      "tier1Type": "ブラウザ検出",
+      "tier1Heading": "リアルタイムブラウザテレメトリ",
+      "tier1Desc": "この閲覧コンテキストでJavaScriptが直接取得できるAPI。",
+      "tier1Item1": "ビューポート寸法（CSSピクセル）",
+      "tier1Item2": "デバイスピクセル比（DPRスケーリング）",
+      "tier1Item3": "色深度（例: 24ビット / 30ビット）",
+      "tier1Item4": "画面の向きと角度",
+      "tier1Item5": "WebGL GPUレンダラーと制限値",
+      "tier1Link": "ブラウザ機能を確認",
+      "tier2Badge": "ティア 2",
+      "tier2Type": "ユーザー入力",
+      "tier2Heading": "ハードウェア仕様",
+      "tier2Desc": "モニターのマニュアルなどからユーザーが提供する仕様情報。",
+      "tier2Item1": "メーカーとモデル名",
+      "tier2Item2": "物理ネイティブ解像度",
+      "tier2Item3": "定格リフレッシュレート（Hz）",
+      "tier2Item4": "定格輝度とコントラスト比",
+      "tier2Item5": "パネル技術とHDR等級",
+      "tier2Link": "検査プロファイルを編集",
+      "tier3Badge": "ティア 3",
+      "tier3Type": "検出不可",
+      "tier3Heading": "ハードウェア制限",
+      "tier3Desc": "Web APIを介して特定または検証することができない測定値。",
+      "tier3Item1": "正確な物理パネル対角サイズ",
+      "tier3Item2": "OS/GPUで設定されたハードウェア真のリフレッシュレート",
+      "tier3Item3": "実測輝度（nit / cd/m²）",
+      "tier3Item4": "ラボ測定の色精度（ΔE）",
+      "tier3Item5": "パネルの劣化度・内部ヘルス状態",
+      "tier3Link": "トラブルシューティングガイド"
     }
   },
   "InspectionSummary": {
@@ -1511,7 +1539,40 @@
       "panelOther": "その他",
       "ratedBrightness": "公称輝度 (cd/m²):",
       "ratedContrast": "公称コントラスト比:",
-      "serialNumber": "シリアル番号 / 参照ID:"
+      "serialNumber": "シリアル番号 / 参照ID:",
+      "displayType": "ディスプレイ技術",
+      "selectDisplayType": "ディスプレイ技術を選択...",
+      "hdrSupport": "HDR対応",
+      "selectHdrSupport": "HDR対応を選択...",
+      "vrrSupport": "可変リフレッシュレート / VRR",
+      "selectVrrSupport": "VRR対応を選択...",
+      "hdrOptions": {
+        "none": "SDRのみ",
+        "hdr10": "HDR10",
+        "hdr400": "DisplayHDR 400",
+        "hdr600": "DisplayHDR 600",
+        "hdr1000": "DisplayHDR 1000+",
+        "dolbyVision": "Dolby Vision",
+        "other": "その他のHDR"
+      },
+      "vrrOptions": {
+        "none": "固定リフレッシュレート（VRRなし）",
+        "gsync": "NVIDIA G-Sync",
+        "freesync": "AMD FreeSync",
+        "hdmiVrr": "HDMI 2.1 VRR",
+        "adaptiveSync": "VESA Adaptive-Sync",
+        "other": "その他のVRR"
+      },
+      "displayTypeOptions": {
+        "ips": "IPS（In-Plane Switching）",
+        "va": "VA（Vertical Alignment）",
+        "tn": "TN（Twisted Nematic）",
+        "oled": "OLED / QD-OLED / WOLED",
+        "miniLed": "Mini-LED",
+        "crt": "CRT（ブラウン管）",
+        "projector": "プロジェクター",
+        "other": "その他"
+      }
     },
     "checklist": {
       "title": "検査チェックリスト & 観察結果",
@@ -2162,7 +2223,9 @@
   "Breadcrumbs": {
     "home": "ホーム",
     "tests": "テスト",
-    "ariaLabel": "パンくずリスト"
+    "ariaLabel": "パンくずリスト",
+    "tools": "ツール",
+    "knowledgeBase": "ナレッジベース"
   },
   "StuckPixelFixerTest": {
     "metaTitle": "スタックピクセル修復ツール – 高速カラー点滅エクササイザー",
@@ -2213,6 +2276,121 @@
       "notesPlaceholder": "ピクセルの挙動に関するメモを入力...",
       "saveObservation": "観察結果を保存",
       "observationSaved": "検査セッションに記録されました。"
+    }
+  },
+  "Troubleshooting": {
+    "metaTitle": "ディスプレイ トラブルシューティング ガイド – よくある問題と解決法",
+    "metaDescription": "映像信号、解像度の不一致、リフレッシュレート、ちらつき、テアリング、ドット抜け、TVスケーリングの体系的診断ガイド。",
+    "breadcrumb": {
+      "home": "ホーム",
+      "knowledgeBase": "ナレッジベース",
+      "troubleshooting": "トラブルシューティング"
+    },
+    "header": {
+      "eyebrow": "ディスプレイ診断と解決",
+      "title": "ディスプレイトラブルシューティングガイド",
+      "subtitle": "信号、幾何形状、リフレッシュレート、ピクセル欠陥、映像の乱れに対する構造化されたトラブルシューティング。"
+    },
+    "disclaimer": {
+      "title": "Screen Testerの検証範囲と安全上のご注意",
+      "body": "Screen Testerはブラウザ内で動作する診断補助ツールです。物理的なハードウェア破損の修復、内部ルックアップテーブルの校正、グラフィックドライバの上書きは行えません。高速点滅パターンを長時間注視しないでください。ハードウェア障害や安全上の問題がある場合は電源を切り、メーカー窓口にご相談ください。"
+    },
+    "searchPlaceholder": "症状を絞り込む（例: ちらつき、解像度、テアリング、ドット抜け）...",
+    "categories": {
+      "all": "すべての症状",
+      "display": "表示・信号の問題",
+      "pixels": "ピクセルの問題",
+      "imageQuality": "画質・色合い",
+      "tv": "テレビ特有の問題"
+    },
+    "clearSearch": "検索をクリア",
+    "showingCount": "{total}件中{count}件のガイドを表示",
+    "allCategories": "すべての症状",
+    "noResultsTitle": "一致する症状が見つかりませんでした",
+    "noResultsDesc": "検索キーワードを変更するか、別のカテゴリーを選択してください。",
+    "resetFilters": "フィルターをリセット",
+    "sections": {
+      "possibleCauses": "考えられる原因",
+      "checksToPerform": "確認すべき項目",
+      "practicalActions": "具体的な対処法",
+      "whatScreenTesterCanTest": "Screen Testerでテストできること",
+      "whatScreenTesterCannotDetermine": "Screen Testerでは特定できないこと",
+      "whenToStop": "点検を中止し修理を依頼すべき状況"
+    }
+  },
+  "BrowserCompatibility": {
+    "metaTitle": "ブラウザのディスプレイ互換性とAPI機能",
+    "metaDescription": "ブラウザの表示API、プラットフォームの制約、クロスブラウザ機能マトリクスのライブ技術検証。",
+    "breadcrumb": {
+      "home": "ホーム",
+      "tools": "ツール",
+      "browserCompatibility": "ブラウザ互換性"
+    },
+    "header": {
+      "eyebrow": "プラットフォーム機能とハードウェア境界",
+      "title": "ブラウザディスプレイ機能プローブ",
+      "subtitle": "ブラウザの表示API、プラットフォームの限界、主要ブラウザの互換性マトリクスのライブ検証。"
+    },
+    "honestyNotice": {
+      "title": "ブラウザAPIの対応能力 ≠ 物理ディスプレイのハードウェア能力",
+      "body": "現代のブラウザはビューポート解像度やピクセル比、フレーム描画タイミングを取得できますが、物理パネルのインチ数、バックライトの実輝度（nits）、ハードウェアLUT、公称応答速度を直接測定することはできません。ブラウザがAPIをサポートしていても、ディスプレイがその機能をネイティブに備えている証明にはなりません。"
+    },
+    "probeTitle": "リアルタイムブラウザ表示機能",
+    "probeSubtitle": "現在のブラウザ環境から動的に検出された機能ステータス",
+    "colCapability": "機能 / API",
+    "colStatus": "現在の状態",
+    "colType": "検出タイプ",
+    "colDesc": "技術的範囲と目的",
+    "matrixTitle": "ブラウザ＆プラットフォーム対応マトリクス",
+    "matrixSubtitle": "主要なデスクトップおよびモバイルブラウザの互換性基準",
+    "colPlatformChromium": "現代のChromium",
+    "colPlatformFirefox": "最近のFirefox",
+    "colPlatformSafari": "最近のSafari",
+    "colPlatformIos": "iOS Safari",
+    "colPlatformAndroid": "Android",
+    "testsMatrixTitle": "Screen Tester テスト要件マトリクス",
+    "testsMatrixSubtitle": "テストカテゴリ別のハードウェア・入力・環境依存性",
+    "colTestName": "テスト項目",
+    "colTargetDevice": "対象プラットフォーム",
+    "colInputReq": "入力方式",
+    "colFullscreenReq": "全画面表示",
+    "colWebglReq": "WebGL",
+    "badgeSupported": "対応",
+    "badgePartial": "一部対応",
+    "badgeNotAvailable": "非対応",
+    "badgePermission": "許可が必要",
+    "badgeDependent": "ブラウザ依存",
+    "reqOptional": "任意",
+    "reqRequired": "必須",
+    "reqNone": "標準DOM",
+    "reqTouch": "タッチ / ポインター",
+    "reqMouseKeyboard": "マウス / キーボード",
+    "platformDesktopMobile": "PC・モバイル両対応",
+    "platformDesktop": "PC推奨",
+    "platformMobile": "モバイル・タッチ専用"
+  },
+  "InspectionReport": {
+    "badges": {
+      "relevantChecks": "推奨チェック項目",
+      "observedIssueGuides": "トラブルシューティング案内"
+    },
+    "sections": {
+      "recommendedChecks": "モデル・用途別の推奨確認項目",
+      "troubleshooting": "関連トラブルシューティング"
+    },
+    "recommendedChecksNote": "これらの確認項目は、入力されたディスプレイ技術や検査目的に基づいて優先付けられています。目視観察の指針であり、欠陥の診断結果ではありません。",
+    "troubleshootingNote": "今回の検査で「要確認」と記録されたテストに対応するトラブルシューティングガイドです。",
+    "viewTroubleshootingAction": "解決ガイドを開く",
+    "categoryLabels": {
+      "uniformity": "均一性＆光漏れ",
+      "nearBlack": "ニアブラック＆暗部階調",
+      "color": "色再現＆色域",
+      "pixel": "ドット抜け検証",
+      "motion": "残像＆リフレッシュ",
+      "hdr": "HDR＆明暗差",
+      "text": "文字鮮明度＆拡大率",
+      "tv": "テレビ＆オーバースキャン",
+      "input": "入力＆タッチ精度"
     }
   }
 }

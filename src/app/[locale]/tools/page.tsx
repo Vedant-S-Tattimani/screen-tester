@@ -9,7 +9,8 @@ import {
   Ruler, 
   AlertCircle, 
   ClipboardCheck, 
-  ArrowRight 
+  ArrowRight,
+  Cpu
 } from "lucide-react";
 
 export async function generateMetadata({
@@ -33,6 +34,13 @@ const TOOLS_CONFIG = [
     href: "/tests/display-info",
     icon: Monitor,
     iconColor: "text-blue-600"
+  },
+  {
+    id: "browser-compatibility",
+    key: "browserCompatibility",
+    href: "/tools/browser-compatibility",
+    icon: Cpu,
+    iconColor: "text-cyan-600"
   },
   {
     id: "compare-displays",

@@ -1,4 +1,9 @@
-import { PixelDefectMarker, MonitorProfile } from "@/lib/inspectionStorage";
+import { 
+  PixelDefectMarker, 
+  MonitorProfile, 
+  RecommendedCheckItem, 
+  TroubleshootingReferenceItem 
+} from "@/lib/inspectionStorage";
 
 export interface InspectionReportOverviewData {
   totalTests: number;
@@ -48,9 +53,11 @@ export interface InspectionReportData {
   timestamp: string;
   workflowTitle: string;
   workflowId: string;
+  inspectionPurpose?: string;
   overview: InspectionReportOverviewData;
   displayInfo: BrowserDisplayDetectedData;
   userProfile: MonitorProfile;
+  recommendedChecks: RecommendedCheckItem[];
   testResults: InspectionTestResultRow[];
   browserDetectedResults: Array<{
     title: string;
@@ -65,5 +72,7 @@ export interface InspectionReportData {
     notes: string;
   }>;
   pixelDefects: PixelDefectMarker[];
+  troubleshootingReferences: TroubleshootingReferenceItem[];
   generalNotes: string;
 }
+
