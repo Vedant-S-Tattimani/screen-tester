@@ -44,7 +44,7 @@ type MicState =
   | "UNSUPPORTED" 
   | "ERROR";
 
-interface TrackTelemetry {
+interface BrowserAudioInfo {
   deviceId: string | null;
   channelCount: number | null;
   sampleRate: number | null;
@@ -72,8 +72,8 @@ export function MicrophonePattern({ testId = "microphone-test" }: MicrophonePatt
   const [isSilence, setIsSilence] = useState<boolean>(true);
   const [isClipping, setIsClipping] = useState<boolean>(false);
 
-  // Hardware/Track Telemetry
-  const [telemetry, setTelemetry] = useState<TrackTelemetry>({
+  // Browser Audio Information
+  const [audioInfo, setAudioInfo] = useState<BrowserAudioInfo>({
     deviceId: null,
     channelCount: null,
     sampleRate: null
@@ -234,11 +234,11 @@ export function MicrophonePattern({ testId = "microphone-test" }: MicrophonePatt
       const stream = await getMicrophoneStream(deviceIdToUse || undefined);
       streamRef.current = stream;
 
-      // Extract track settings telemetry
+      // Extract browser-reported audio track settings
       const audioTrack = stream.getAudioTracks()[0];
       if (audioTrack) {
         const settings = audioTrack.getSettings();
-        setTelemetry({
+        setAudioInfo({
           deviceId: settings.deviceId || null,
           channelCount: settings.channelCount || 1,
           sampleRate: settings.sampleRate || null,
@@ -365,7 +365,7 @@ export function MicrophonePattern({ testId = "microphone-test" }: MicrophonePatt
     setObservationSubReason(label);
     setObservation(result);
 
-    const notes = `Microphone input evaluation: ${label}. Selected device: ${telemetry.deviceId || "Default"}. Sample rate: ${telemetry.sampleRate ? telemetry.sampleRate + "Hz" : "Unknown"}. Peak level observed: ${peakLevel}%.`;
+    const notes = `Microphone input evaluation: ${label}. Selected device: ${audioInfo.deviceId || "Default"}. Sample rate: ${audioInfo.sampleRate ? audioInfo.sampleRate + "Hz" : "Unknown"}. Peak digital level observed: ${peakLevel}%.`;
     recordTestObservation(testId, result, notes);
   };
 
@@ -481,14 +481,21 @@ export function MicrophonePattern({ testId = "microphone-test" }: MicrophonePatt
             <p className="text-xs text-rose-200/80 leading-relaxed">
               {t("denied.description")}
             </p>
-            <div className="pt-2">
+            <div className="pt-2 flex flex-wrap items-center gap-4">
               <button
                 type="button"
                 onClick={() => startMicrophone()}
-                className="px-3.5 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-xs font-medium transition-colors"
+                className="px-3.5 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-xs font-medium transition-colors cursor-pointer"
               >
                 {t("buttons.retryPermission")}
               </button>
+              <Link
+                href="/knowledge-base/troubleshooting#microphone-issues"
+                className="text-xs text-rose-300 hover:underline flex items-center gap-1 font-medium"
+              >
+                <span>{t("troubleshooting.viewGuide")}</span>
+                <span>→</span>
+              </Link>
             </div>
           </div>
         )}
@@ -502,13 +509,50 @@ export function MicrophonePattern({ testId = "microphone-test" }: MicrophonePatt
             <p className="text-xs text-amber-200/80 leading-relaxed">
               {t("notFound.description")}
             </p>
-            <button
-              type="button"
-              onClick={() => refreshDevices()}
-              className="px-3.5 py-1.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-white text-xs font-medium transition-colors"
-            >
-              {t("buttons.refreshDevices")}
-            </button>
+            <div className="pt-2 flex flex-wrap items-center gap-4">
+              <button
+                type="button"
+                onClick={() => refreshDevices()}
+                className="px-3.5 py-1.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-white text-xs font-medium transition-colors cursor-pointer"
+              >
+                {t("buttons.refreshDevices")}
+              </button>
+              <Link
+                href="/knowledge-base/troubleshooting#microphone-issues"
+                className="text-xs text-amber-300 hover:underline flex items-center gap-1 font-medium"
+              >
+                <span>{t("troubleshooting.viewGuide")}</span>
+                <span>→</span>
+              </Link>
+            </div>
+          </div>
+        )}
+
+        {(micState === "IN_USE" || micState === "UNSUPPORTED" || micState === "ERROR") && (
+          <div className="p-6 bg-slate-900/80 rounded-2xl border border-slate-800 space-y-3">
+            <div className="flex items-center gap-2 text-amber-400 font-bold text-sm">
+              <AlertTriangle className="w-5 h-5" />
+              <span>{t(`states.${micState.toLowerCase()}`)}</span>
+            </div>
+            <p className="text-xs text-slate-300 leading-relaxed">
+              {t("errors.failedToAccess")}
+            </p>
+            <div className="pt-2 flex flex-wrap items-center gap-4">
+              <button
+                type="button"
+                onClick={() => startMicrophone()}
+                className="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium transition-colors cursor-pointer"
+              >
+                {t("buttons.retryPermission")}
+              </button>
+              <Link
+                href="/knowledge-base/troubleshooting#microphone-issues"
+                className="text-xs text-blue-400 hover:underline flex items-center gap-1 font-medium"
+              >
+                <span>{t("troubleshooting.viewGuide")}</span>
+                <span>→</span>
+              </Link>
+            </div>
           </div>
         )}
 
@@ -650,7 +694,7 @@ export function MicrophonePattern({ testId = "microphone-test" }: MicrophonePatt
               </div>
             </div>
 
-            {/* Technical Information & Hardware Telemetry Grid */}
+            {/* Browser Audio Information Grid */}
             <div className="p-4 bg-slate-900/60 rounded-2xl border border-slate-800 space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
@@ -666,25 +710,25 @@ export function MicrophonePattern({ testId = "microphone-test" }: MicrophonePatt
                 <div className="p-2.5 bg-slate-950/60 rounded-xl border border-slate-800/80">
                   <span className="text-[10px] text-slate-500 font-mono block">{t("telemetry.channels")}</span>
                   <span className="font-semibold text-slate-200 mt-0.5 block">
-                    {telemetry.channelCount ? `${telemetry.channelCount} ${telemetry.channelCount === 1 ? "Mono" : "Stereo"}` : "—"}
+                    {audioInfo.channelCount ? `${audioInfo.channelCount} ${audioInfo.channelCount === 1 ? "Mono" : "Stereo"}` : "—"}
                   </span>
                 </div>
                 <div className="p-2.5 bg-slate-950/60 rounded-xl border border-slate-800/80">
                   <span className="text-[10px] text-slate-500 font-mono block">{t("telemetry.sampleRate")}</span>
                   <span className="font-semibold text-slate-200 mt-0.5 block">
-                    {telemetry.sampleRate ? `${telemetry.sampleRate} Hz` : "—"}
+                    {audioInfo.sampleRate ? `${audioInfo.sampleRate} Hz` : "—"}
                   </span>
                 </div>
                 <div className="p-2.5 bg-slate-950/60 rounded-xl border border-slate-800/80">
                   <span className="text-[10px] text-slate-500 font-mono block">{t("telemetry.noiseSuppression")}</span>
                   <span className="font-semibold text-slate-200 mt-0.5 block">
-                    {telemetry.noiseSuppression !== null ? (telemetry.noiseSuppression ? "Active" : "Off") : "Browser managed"}
+                    {audioInfo.noiseSuppression !== null ? (audioInfo.noiseSuppression ? "Active" : "Off") : "Browser managed"}
                   </span>
                 </div>
                 <div className="p-2.5 bg-slate-950/60 rounded-xl border border-slate-800/80">
                   <span className="text-[10px] text-slate-500 font-mono block">{t("telemetry.echoCancellation")}</span>
                   <span className="font-semibold text-slate-200 mt-0.5 block">
-                    {telemetry.echoCancellation !== null ? (telemetry.echoCancellation ? "Active" : "Off") : "Browser managed"}
+                    {audioInfo.echoCancellation !== null ? (audioInfo.echoCancellation ? "Active" : "Off") : "Browser managed"}
                   </span>
                 </div>
               </div>

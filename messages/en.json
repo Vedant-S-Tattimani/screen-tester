@@ -811,13 +811,13 @@
     },
     "microphone-test": {
       "metaTitle": "Microphone Test – Online Mic Check, Live Level & Audio Waveform Inspection",
-      "metaDescription": "Test your microphone and audio input online. Live audio level meter, waveform oscilloscope, digital clipping indicator, and 100% private in-browser loopback test.",
+      "metaDescription": "Test your microphone and audio input online. Live audio level meter, waveform oscilloscope, digital clipping indicator, and local in-browser loopback check.",
       "title": "Microphone Test",
-      "description_p1": "Verify microphone hardware connectivity, browser audio capture, and live input amplitude. Audio data remains strictly within device memory; zero sound is recorded, processed by AI, or sent across the network.",
+      "description_p1": "Verify microphone connectivity, browser audio capture, and relative input amplitude. Screen Tester does not upload captured microphone audio or recordings to its servers. Audio processing and recordings are handled locally in the browser.",
       "instructions": [
         "<strong>START MICROPHONE:</strong> Click 'Start Microphone' and allow browser audio access when prompted (video is never requested).",
         "<strong>INPUT LEVEL & WAVEFORM:</strong> Speak or make sound toward the microphone. Verify that the waveform oscillates and the live input meter registers between 30% and 80%.",
-        "<strong>LOOPBACK CHECK & OBSERVATION:</strong> Use the 5-second loopback test to hear your voice through your speakers or headphones, then record your acoustic evaluation."
+        "<strong>LOCAL LOOPBACK & OBSERVATION:</strong> Record a 5-second sample to listen to your captured audio locally (headphones recommended to avoid acoustic feedback), then record your observation."
       ]
     }
   },
@@ -2674,8 +2674,8 @@
       "description": "No audio input devices were detected by the operating system. Verify your USB or 3.5mm microphone connection or check physical privacy switches."
     },
     "loopback": {
-      "title": "Audio Loopback Check",
-      "description": "Record a quick 5-second test sample to listen back to your voice through your speakers or headphones.",
+      "title": "Local Audio Loopback Check",
+      "description": "Record a 5-second sample to listen to your captured audio locally. When playing back through external speakers, speaker-to-microphone acoustic feedback or echo may occur; headphones are recommended.",
       "startRecordSample": "Record 5s Sample",
       "recordingCountdown": "Recording... {seconds}s",
       "playSample": "Play Sample",
@@ -2683,7 +2683,7 @@
       "verifySpeakers": "Test Speakers"
     },
     "telemetry": {
-      "title": "Hardware Audio Telemetry",
+      "title": "Browser Audio Information",
       "channels": "Channel Count",
       "sampleRate": "Sample Rate",
       "noiseSuppression": "Noise Suppression",
@@ -2694,7 +2694,7 @@
     },
     "observation": {
       "title": "User Acoustic Observation (Mandatory Human Check)",
-      "description": "The browser evaluates digital PCM signal amplitude, but cannot measure physical acoustic distortion or room SPL decibels. How does the input behave?",
+      "description": "The browser evaluates relative digital PCM signal amplitude, but cannot measure physical acoustic distortion or room SPL decibels. How does the input behave?",
       "recordedBadge": "Recorded",
       "workingNormally": "Working normally",
       "inputDetected": "Input detected",
@@ -2704,20 +2704,23 @@
       "unsure": "Unsure"
     },
     "privacy": {
-      "title": "Privacy & Client-Side Sandbox",
-      "notice": "Audio is processed purely in your browser's local memory (RAM) via the Web Audio API. Zero audio streams or recordings are transmitted to any cloud servers."
+      "title": "Local Processing Notice",
+      "notice": "Screen Tester does not upload captured microphone audio or recordings to its servers. Audio processing and recordings are handled locally in the browser."
     },
     "errors": {
       "failedToAccess": "Failed to access microphone hardware."
+    },
+    "troubleshooting": {
+      "viewGuide": "Troubleshooting Guide"
     }
   },
   "VoiceRecorder": {
-    "metaTitle": "Voice Recorder – Free Online Audio & Mic Recording Tool (100% Private)",
-    "metaDescription": "Record voice notes and audio clips directly in your browser. Pause, resume, playback, and download audio files locally. 100% private client-side recording.",
+    "metaTitle": "Voice Recorder – Free Online Audio & Microphone Recording Tool",
+    "metaDescription": "Record voice notes and audio clips directly in your browser. Pause, resume, playback, and download audio files locally with in-browser processing.",
     "header": {
       "eyebrow": "Online Audio Tool",
       "title": "Voice Recorder",
-      "subtitle": "A lightweight, zero-install voice recorder operating entirely within your browser memory. Pause, resume, listen to instant playback, and download audio locally."
+      "subtitle": "A lightweight voice recorder operating locally within your browser. Screen Tester does not upload captured audio or recordings to its servers."
     },
     "labels": {
       "microphone": "Microphone Input",
@@ -2739,8 +2742,8 @@
       "delete": "Delete"
     },
     "privacy": {
-      "title": "Client-Side Privacy Standard",
-      "notice": "Voice recordings are created in local device memory via the MediaRecorder API. No audio is ever uploaded, transcribed by external servers, or stored remotely.",
+      "title": "Local Processing Standard",
+      "notice": "Screen Tester does not upload captured microphone audio or recordings to its servers. Audio processing and recordings are handled locally in the browser.",
       "limitTitle": "Duration Limit",
       "limitNotice": "Recordings are capped at 5 minutes to prevent uncontrolled memory allocation during diagnostic testing."
     },

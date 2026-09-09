@@ -601,7 +601,7 @@ export const TEST_REQUIREMENTS_MATRIX: TestRequirementEntry[] = [
     touchCapable: true,
     fullscreenRecommended: false,
     webglRequired: false,
-    notes: "Requests microphone permission to visualize real-time input amplitude, waveform oscillation, and clipping telemetry."
+    notes: "Requests microphone permission to visualize real-time input amplitude, waveform oscillation, and relative clipping indicators."
   },
   {
     testId: "voice-recorder",

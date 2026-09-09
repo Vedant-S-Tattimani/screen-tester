@@ -762,43 +762,45 @@ export const TROUBLESHOOTING_TOPICS: TroubleshootingTopic[] = [
     title: "Microphone & Audio Input Issues",
     category: "deviceInput",
     categoryTitle: "Device & Input Problems",
-    symptom: "Microphone is not detected, permission was denied, no input amplitude is received, audio volume is extremely low, or sound is severely clipped and distorted.",
+    symptom: "Microphone is not detected, permission was denied, no input amplitude is registered, audio volume is extremely low, sound is severely clipped/distorted, wrong device is selected, browser cannot access microphone, or microphone works in one browser but not another.",
     possibleCauses: [
-      "Browser microphone permission was denied, dismissed, or blocked by site settings",
-      "Operating system privacy settings block desktop browser microphone access (Windows Settings / macOS Privacy & Security)",
-      "Physical microphone hardware mute switch is engaged or headset inline cable switch is toggled off",
-      "Microphone is locked in exclusive mode by another communication application (Zoom, Microsoft Teams, Discord, OBS)",
-      "Wrong input audio device is selected in the browser (e.g. inactive webcam mic instead of dedicated headset mic)",
-      "Operating system input gain or microphone boost is set too low (near 0%) or too high (causing severe digital clipping)",
-      "Insecure origin: getUserMedia requires a secure context (HTTPS or localhost)",
-      "Browser-specific implementation difference (e.g. permission policies or unsupported audio constraints in older mobile browsers)"
+      "1. Microphone Not Detected: Physical USB or 3.5mm cable disconnected, audio interface powered off, or operating system driver missing",
+      "2. Microphone Permission Denied: Site audio permission was blocked or dismissed in the browser address bar prompt",
+      "3. No Input Detected: Physical microphone hardware mute switch is engaged, inline cable slider is muted, or another application holds an exclusive audio lock",
+      "4. Microphone Input Very Low: Operating system input volume/gain or microphone boost is set near 0% in system sound settings",
+      "5. Microphone Clipping / Distortion: Input gain is set excessively high in OS settings or speaking too close to capsule, causing digital waveform clipping",
+      "6. Wrong Microphone Selected: Browser defaulted to an inactive virtual device, webcam microphone, or monitor audio pass-through instead of your dedicated headset/mic",
+      "7. Browser Cannot Access Microphone: Insecure HTTP origin (getUserMedia requires HTTPS or localhost), OS privacy settings block desktop browsers, or browser sandbox flags restrict media capture",
+      "8. Works in One Browser But Not Another: Browser-specific permission policies, conflicting privacy extensions (shields/blockers) active in one browser, or differing WebRTC feature support"
     ],
     checks: [
-      "Check the browser URL address bar: Click the microphone icon and ensure permission is set to 'Allow'",
-      "On Windows: Open Settings > Privacy & security > Microphone, and verify 'Let apps access your microphone' and 'Let desktop apps access your microphone' are both ON",
-      "On macOS: Open System Settings > Privacy & Security > Microphone, and ensure your browser has a checkmark enabled",
-      "Inspect the physical headset cable, USB dongle, or laptop chassis for an inline hardware mute slider or LED indicator",
-      "Verify the default input device in system sound settings (Windows Sound Control Panel / macOS Sound Input)",
-      "Close any background communication apps that might hold an exclusive audio input lock"
+      "Check 1 (Hardware Connection & Mute): Inspect physical USB, XLR, or 3.5mm connectors. Check for inline cable mute switches, physical mute buttons, or LED indicators",
+      "Check 2 (Browser Permission): Click the microphone/lock/tune icon in the browser address bar and verify audio access is set to 'Allow'",
+      "Check 3 (OS Privacy Settings - Windows): Open Settings > Privacy & security > Microphone. Ensure 'Let apps access your microphone' and 'Let desktop apps access your microphone' are both ON",
+      "Check 4 (OS Privacy Settings - macOS): Open System Settings > Privacy & Security > Microphone. Verify your specific browser has a checkmark enabled",
+      "Check 5 (Device Selection & Gain): Open Windows Sound Settings or macOS Sound Input. Select the correct device and adjust input volume to 60–80% so speech registers clearly",
+      "Check 6 (Exclusive Mode Locks): Close background conferencing and recording software (Zoom, Microsoft Teams, Discord, OBS, Skype) that may capture exclusive input access",
+      "Check 7 (Browser Extensions & Profiles): If the mic works in Chrome but fails in Firefox/Safari, test in a Private/Incognito window with all extensions disabled to rule out privacy shields"
     ],
     whatScreenTesterCanTest: {
-      description: "Screen Tester accesses your microphone stream locally via getUserMedia, visualizes real-time PCM input waveforms, tracks RMS and peak volume levels, flags digital clipping, and allows recording a 5-second audio loopback test.",
+      description: "Screen Tester accesses your microphone stream locally via getUserMedia, visualizes real-time PCM input waveforms, tracks relative RMS and peak digital levels, flags digital clipping, and allows recording a 5-second audio loopback test.",
       links: [
         { label: "Microphone Test", testId: "microphone-test", testPath: "/tests/microphone-test" },
         { label: "Voice Recorder", testId: "voice-recorder", testPath: "/tools/voice-recorder" }
       ]
     },
     whatScreenTesterCannotDetermine: [
-      "Acoustic Sound Pressure Level (dB SPL) or ambient room decibels",
-      "Microphone capsule physical frequency response curve (Hz to kHz)",
-      "Physical hardware transducer damage or diaphragm moisture degradation",
+      "Acoustic Sound Pressure Level (dB SPL) or room ambient decibels (requires a physically calibrated sound level meter)",
+      "Microphone capsule analog frequency response curve (Hz to kHz)",
+      "Physical transducer damage, diaphragm tear, or moisture corrosion",
       "Total Harmonic Distortion (THD) or analog signal-to-noise ratio (SNR)"
     ],
     actions: [
-      "Allow microphone access when prompted by the browser dialog",
-      "Select the specific microphone hardware device in the test dropdown menu instead of 'Default'",
-      "Adjust input sensitivity in your operating system sound control panel so speaking reaches 50-75% on the level meter without hitting red clipping",
-      "If testing in an external or embedded webview, launch the test in standard Chrome, Edge, Safari, or Firefox"
+      "Grant permission when prompted by the browser dialog or click the address bar icon to change blocked status to 'Allow'",
+      "Select your specific microphone device from the test dropdown rather than relying on system 'Default'",
+      "Adjust microphone input sensitivity in OS Sound Control Panel so normal speech registers at 40–75% without clipping",
+      "Ensure the page is served over HTTPS or localhost, as required by the W3C Media Capture and Streams specification",
+      "If microphone functions in another browser, disable privacy/adblock extensions in the affected browser or clear site permissions"
     ],
     whenToStop: "Stop testing if you observe severe electrical humming, burning smell, or excessive heat from an external USB audio interface or phantom power box."
   }

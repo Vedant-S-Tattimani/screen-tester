@@ -782,13 +782,13 @@
     },
     "microphone-test": {
       "metaTitle": "Test de Microphone – Vérification de Micro en Ligne, Niveau et Forme d'Onde",
-      "metaDescription": "Testez votre microphone en ligne. Vumètre en temps réel, oscilloscope d'onde, indicateur d'écrêtage et test d'écoute en boucle 100% privé.",
+      "metaDescription": "Testez votre microphone et votre entrée audio en ligne. Vumètre audio en direct, oscilloscope de forme d'onde, indicateur d'écrêtage numérique et test de bouclage local dans le navigateur.",
       "title": "Test de Microphone",
-      "description_p1": "Vérifiez la connectivité de votre microphone, la capture audio et l'amplitude d'entrée. Les données audio restent exclusivement dans la mémoire locale de l'appareil.",
+      "description_p1": "Vérifiez la connectivité du microphone, la capture audio dans le navigateur et l'amplitude relative du signal. Screen Tester ne téléverse aucun audio capturé ni aucun enregistrement vers ses serveurs. Le traitement audio et les enregistrements sont gérés localement dans le navigateur.",
       "instructions": [
         "<strong>DÉMARRER LE MICROPHONE :</strong> Cliquez sur 'Démarrer le microphone' et autorisez l'accès audio demandé par le navigateur.",
         "<strong>NIVEAU & FORME D'ONDE :</strong> Parlez vers le microphone. Vérifiez que la forme d'onde réagit et que le vumètre oscille entre 30% et 80%.",
-        "<strong>TEST D'ÉCOUTE & OBSERVATION :</strong> Enregistrez un extrait de 5 secondes pour réécouter votre voix au casque ou sur haut-parleurs."
+        "<strong>BOUCLAGE LOCAL & OBSERVATION :</strong> Enregistrez un échantillon de 5 secondes pour écouter votre audio capturé localement (casque recommandé pour éviter le larsen), puis enregistrez votre observation."
       ]
     }
   },
@@ -2683,8 +2683,8 @@
       "description": "Le système n'a détecté aucun périphérique audio. Vérifiez le branchement ou les commutateurs physiques de sourdine."
     },
     "loopback": {
-      "title": "Écoute en boucle (Bouclage audio)",
-      "description": "Enregistrez un échantillon rapide de 5 secondes pour écouter votre voix directement sur vos haut-parleurs ou votre casque.",
+      "title": "Vérification du bouclage audio local",
+      "description": "Enregistrez un échantillon de 5 secondes pour écouter votre audio capturé localement. Lors de la lecture sur des haut-parleurs externes, un effet Larsen ou un écho acoustique peut survenir ; l'utilisation d'un casque est recommandée.",
       "startRecordSample": "Enregistrer 5s d'échantillon",
       "recordingCountdown": "Enregistrement... {seconds}s",
       "playSample": "Lire l'échantillon",
@@ -2692,7 +2692,7 @@
       "verifySpeakers": "Tester les haut-parleurs"
     },
     "telemetry": {
-      "title": "Télémétrie audio matérielle",
+      "title": "Informations audio du navigateur",
       "channels": "Canaux",
       "sampleRate": "Fréquence d'échantillonnage",
       "noiseSuppression": "Suppression du bruit",
@@ -2703,7 +2703,7 @@
     },
     "observation": {
       "title": "Observation acoustique utilisateur (Évaluation humaine)",
-      "description": "Le navigateur évalue les niveaux numériques PCM, mais ne peut mesurer l'acoustique de la pièce. Comment se comporte le signal ?",
+      "description": "Le navigateur évalue l'amplitude relative du signal numérique PCM, mais ne peut pas mesurer la distorsion acoustique physique ni les décibels SPL de la pièce. Comment se comporte le signal d'entrée ?",
       "recordedBadge": "Enregistré",
       "workingNormally": "Fonctionne normalement",
       "inputDetected": "Signal détecté",
@@ -2713,20 +2713,23 @@
       "unsure": "Incertain"
     },
     "privacy": {
-      "title": "Confidentialité & Traitement local",
-      "notice": "Le flux audio est traité exclusivement dans la mémoire vive (RAM) de votre navigateur. Aucun flux n'est envoyé sur des serveurs distants."
+      "title": "Avis de traitement local",
+      "notice": "Screen Tester ne téléverse aucun audio capturé ni aucun enregistrement vers ses serveurs. Le traitement audio et les enregistrements sont gérés localement dans le navigateur."
     },
     "errors": {
       "failedToAccess": "Impossible d'accéder au matériel de microphone."
+    },
+    "troubleshooting": {
+      "viewGuide": "Guide de dépannage"
     }
   },
   "VoiceRecorder": {
-    "metaTitle": "Enregistreur Vocal – Outil Audio en Ligne Gratuit (100% Privé)",
-    "metaDescription": "Enregistrez votre voix directement dans votre navigateur. Mettez en pause, reprenez, écoutez et téléchargez localement sans aucun envoi sur le cloud.",
+    "metaTitle": "Enregistreur vocal – Outil gratuit d'enregistrement audio et micro en ligne",
+    "metaDescription": "Enregistrez des notes vocales et des extraits audio directement dans votre navigateur. Mettez en pause, reprenez, écoutez et téléchargez localement avec traitement dans le navigateur.",
     "header": {
       "eyebrow": "Outil audio en ligne",
       "title": "Enregistreur Vocal",
-      "subtitle": "Un enregistreur vocal léger fonctionnant entièrement dans la mémoire de votre navigateur. Enregistrez, mettez en pause et téléchargez localement."
+      "subtitle": "Un enregistreur vocal léger fonctionnant localement dans la mémoire de votre navigateur. Screen Tester ne téléverse aucun audio vers ses serveurs."
     },
     "labels": {
       "microphone": "Entrée microphone",
@@ -2748,8 +2751,8 @@
       "delete": "Supprimer"
     },
     "privacy": {
-      "title": "Standard de confidentialité locale",
-      "notice": "Les enregistrements sont créés en mémoire RAM via l'API MediaRecorder. Aucun audio n'est transmis ni stocké à distance.",
+      "title": "Norme de traitement local",
+      "notice": "Screen Tester ne téléverse aucun audio capturé ni aucun enregistrement vers ses serveurs. Le traitement audio et les enregistrements sont gérés localement dans le navigateur.",
       "limitTitle": "Limite de temps",
       "limitNotice": "Les enregistrements sont limités à 5 minutes pour préserver les ressources mémoire de l'appareil."
     },

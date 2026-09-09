@@ -782,13 +782,13 @@
     },
     "microphone-test": {
       "metaTitle": "Mikrofon-Test – Online-Mikrofonprüfung, Pegelanzeige & Wellenform",
-      "metaDescription": "Testen Sie Ihr Mikrofon online. Echtzeit-Eingangspegelanzeige, Wellenform-Oszilloskop, Clipping-Erkennung und 100% privater lokaler Loopback-Test.",
+      "metaDescription": "Testen Sie Ihr Mikrofon und Ihren Audioeingang online. Live-Audio-Pegelmesser, Wellenform-Oszilloskop, digitale Übersteuerungsanzeige und lokaler Loopback-Check im Browser.",
       "title": "Mikrofon-Test",
-      "description_p1": "Überprüfen Sie die Hardware-Verbindung, den Audio-Stream und den Eingangspegel Ihres Mikrofons. Audiodaten verbleiben ausschließlich im lokalen Gerätespeicher; es wird nichts auf Server übertragen.",
+      "description_p1": "Überprüfen Sie Mikrofonverbindung, Browser-Audioerfassung und relative Eingangsamplitude. Screen Tester lädt keine erfassten Audiodaten oder Aufnahmen auf seine Server hoch. Die Audioverarbeitung und Aufnahmen erfolgen lokal im Browser.",
       "instructions": [
         "<strong>MIKROFON STARTEN:</strong> Klicken Sie auf 'Mikrofon starten' und erlauben Sie den Mikrofonzugriff (Video wird niemals angefordert).",
         "<strong>PEGEL & WELLENFORM:</strong> Sprechen Sie in das Mikrofon. Prüfen Sie, ob die Wellenform ausschlägt und der Pegelmesser zwischen 30 % und 80 % anzeigt.",
-        "<strong>LOOPBACK-TEST:</strong> Nehmen Sie eine 5-sekündige Hörprobe auf, um Ihre Stimme über Lautsprecher oder Kopfhörer zu überprüfen."
+        "<strong>LOKALER LOOPBACK & BEOBACHTUNG:</strong> Nehmen Sie eine 5-Sekunden-Stichprobe auf, um Ihr erfasstes Audio lokal anzuhören (Kopfhörer empfohlen, um akustische Rückkopplungen zu vermeiden), und tragen Sie anschließend Ihre Beobachtung ein."
       ]
     }
   },
@@ -2683,8 +2683,8 @@
       "description": "Es wurde kein Audioeingangsgerät vom Betriebssystem gefunden. Überprüfen Sie Kabelverbindungen und physische Stummschalter."
     },
     "loopback": {
-      "title": "Audio-Loopback-Hörprobe",
-      "description": "Nehmen Sie eine kurze 5-sekündige Probe auf, um Ihre Stimme direkt über Lautsprecher oder Kopfhörer abzuhören.",
+      "title": "Lokaler Audio-Loopback-Check",
+      "description": "Nehmen Sie eine 5-Sekunden-Stichprobe auf, um Ihr erfasstes Audio lokal anzuhören. Bei der Wiedergabe über externe Lautsprecher können akustische Rückkopplungen oder Echos zwischen Lautsprecher und Mikrofon auftreten; Kopfhörer werden empfohlen.",
       "startRecordSample": "5s Probe aufnehmen",
       "recordingCountdown": "Aufnahme... {seconds}s",
       "playSample": "Probe abspielen",
@@ -2692,7 +2692,7 @@
       "verifySpeakers": "Lautsprecher testen"
     },
     "telemetry": {
-      "title": "Hardware-Audio-Telemetrie",
+      "title": "Browser-Audioinformationen",
       "channels": "Kanäle",
       "sampleRate": "Abtastrate",
       "noiseSuppression": "Rauschunterdrückung",
@@ -2703,7 +2703,7 @@
     },
     "observation": {
       "title": "Akustische Benutzerbeobachtung (Menschliche Prüfung)",
-      "description": "Der Browser prüft digitale PCM-Pegel, kann aber keine physische Raumakustik messen. Wie verhält sich der Eingang?",
+      "description": "Der Browser wertet die relative digitale PCM-Signalamplitude aus, kann jedoch keine physische akustische Verzerrung oder Raum-SPL-Dezibel messen. Wie verhält sich das Eingangssignal?",
       "recordedBadge": "Gespeichert",
       "workingNormally": "Funktioniert normal",
       "inputDetected": "Eingang erkannt",
@@ -2713,20 +2713,23 @@
       "unsure": "Unsicher"
     },
     "privacy": {
-      "title": "Datenschutz & Lokale Verarbeitung",
-      "notice": "Audiodaten werden ausschließlich im lokalen Speicher (RAM) verarbeitet. Keine Streams oder Aufnahmen werden an Cloud-Server gesendet."
+      "title": "Hinweis zur lokalen Verarbeitung",
+      "notice": "Screen Tester lädt keine erfassten Mikrofon-Audiodaten oder Aufnahmen auf seine Server hoch. Die Audioverarbeitung und Aufnahmen erfolgen lokal im Browser."
     },
     "errors": {
       "failedToAccess": "Zugriff auf die Mikrofon-Hardware fehlgeschlagen."
+    },
+    "troubleshooting": {
+      "viewGuide": "Fehlerbehebungs-Leitfaden"
     }
   },
   "VoiceRecorder": {
-    "metaTitle": "Sprachrekorder – Kostenloses Online-Audiotool (100% Privat)",
-    "metaDescription": "Sprachaufnahmen direkt im Browser erstellen. Pausieren, fortsetzen, anhören und lokal herunterladen. 100% privat ohne Server-Upload.",
+    "metaTitle": "Sprachrekorder – Kostenloses Online-Audio- & Mikrofon-Aufnahmetool",
+    "metaDescription": "Nehmen Sie Sprachmemos und Audioclips direkt im Browser auf. Pausieren, fortsetzen, abspielen und Audiodateien lokal mit browserbasierter Verarbeitung herunterladen.",
     "header": {
       "eyebrow": "Online-Audio-Werkzeug",
       "title": "Sprachrekorder",
-      "subtitle": "Ein schlanker Sprachrekorder, der vollständig im Browserspeicher arbeitet. Aufnehmen, pausieren, sofort anhören und lokal speichern."
+      "subtitle": "Ein leichtgewichtiger Sprachrekorder, der lokal in Ihrem Browser arbeitet. Screen Tester lädt keine erfassten Audiodaten oder Aufnahmen auf seine Server hoch."
     },
     "labels": {
       "microphone": "Mikrofoneingang",
@@ -2748,8 +2751,8 @@
       "delete": "Löschen"
     },
     "privacy": {
-      "title": "Lokaler Datenschutzstandard",
-      "notice": "Sprachaufnahmen entstehen im RAM über die MediaRecorder-API. Keine Audiodaten werden hochgeladen oder auf Servern gespeichert.",
+      "title": "Standard für lokale Verarbeitung",
+      "notice": "Screen Tester lädt keine erfassten Mikrofon-Audiodaten oder Aufnahmen auf seine Server hoch. Die Audioverarbeitung und Aufnahmen erfolgen lokal im Browser.",
       "limitTitle": "Zeitlimit",
       "limitNotice": "Aufnahmen sind auf 5 Minuten begrenzt, um den lokalen Speicher zu schonen."
     },

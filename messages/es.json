@@ -782,13 +782,13 @@
     },
     "microphone-test": {
       "metaTitle": "Prueba de Micrófono – Verificación Online, Medidor de Nivel y Onda de Audio",
-      "metaDescription": "Prueba tu micrófono online. Medidor de nivel en tiempo real, osciloscopio de onda, indicador de saturación y prueba de reproducción local 100% privada.",
+      "metaDescription": "Pruebe su micrófono y entrada de audio en línea. Medidor de nivel de audio en vivo, osciloscopio de forma de onda, indicador de recorte digital y prueba de bucle local en el navegador.",
       "title": "Prueba de Micrófono",
-      "description_p1": "Verifica la conexión del micrófono, la captura de audio y la amplitud en tiempo real. Los datos de audio permanecen únicamente en la memoria local del dispositivo; ningún sonido se transmite por la red.",
+      "description_p1": "Verifique la conectividad del micrófono, la captura de audio en el navegador y la amplitud relativa de entrada. Screen Tester no sube el audio ni las grabaciones del micrófono a sus servidores. El procesamiento de audio y las grabaciones se manejan localmente en el navegador.",
       "instructions": [
         "<strong>INICIAR MICRÓFONO:</strong> Haz clic en 'Iniciar micrófono' y permite el acceso al audio cuando el navegador lo solicite.",
         "<strong>NIVEL Y FORMA DE ONDA:</strong> Habla hacia el micrófono. Comprueba que la onda oscile y que el medidor marque entre 30% y 80%.",
-        "<strong>REPRODUCCIÓN Y OBSERVACIÓN:</strong> Graba una muestra de 5 segundos para escuchar tu voz por los altavoces o auriculares y registra tu evaluación."
+        "<strong>BUCLE LOCAL Y OBSERVACIÓN:</strong> Grabe una muestra de 5 segundos para escuchar el audio capturado localmente (se recomiendan auriculares para evitar retroalimentación acústica), luego registre su observación."
       ]
     }
   },
@@ -2683,8 +2683,8 @@
       "description": "El sistema no detectó dispositivos de audio. Revisa las conexiones físicas o los interruptores de silencio."
     },
     "loopback": {
-      "title": "Prueba de escucha local",
-      "description": "Graba una muestra rápida de 5 segundos para escuchar tu voz en los altavoces o auriculares.",
+      "title": "Comprobación de bucle de audio local",
+      "description": "Grabe una muestra de 5 segundos para escuchar su audio capturado localmente. Al reproducir a través de altavoces externos, puede producirse retroalimentación o eco acústico entre altavoces y micrófono; se recomiendan auriculares.",
       "startRecordSample": "Grabar muestra de 5s",
       "recordingCountdown": "Grabando... {seconds}s",
       "playSample": "Reproducir muestra",
@@ -2692,7 +2692,7 @@
       "verifySpeakers": "Probar altavoces"
     },
     "telemetry": {
-      "title": "Telemetría de audio de hardware",
+      "title": "Información de audio del navegador",
       "channels": "Canales",
       "sampleRate": "Frecuencia de muestreo",
       "noiseSuppression": "Supresión de ruido",
@@ -2703,7 +2703,7 @@
     },
     "observation": {
       "title": "Observación acústica del usuario (Evaluación humana)",
-      "description": "El navegador evalúa niveles digitales PCM, pero no puede medir la acústica de la habitación. ¿Cómo responde la entrada?",
+      "description": "El navegador evalúa la amplitud relativa de la señal digital PCM, pero no puede medir la distorsión acústica física ni los decibelios SPL de la sala. ¿Cómo se comporta la entrada?",
       "recordedBadge": "Registrado",
       "workingNormally": "Funciona normalmente",
       "inputDetected": "Entrada detectada",
@@ -2713,20 +2713,23 @@
       "unsure": "Inseguro"
     },
     "privacy": {
-      "title": "Privacidad y entorno local",
-      "notice": "El audio se procesa únicamente en la memoria local (RAM) mediante la Web Audio API. Ninguna transmisión se envía a servidores en la nube."
+      "title": "Aviso de procesamiento local",
+      "notice": "Screen Tester no sube el audio ni las grabaciones del micrófono a sus servidores. El procesamiento de audio y las grabaciones se manejan localmente en el navegador."
     },
     "errors": {
       "failedToAccess": "No se pudo acceder al hardware del micrófono."
+    },
+    "troubleshooting": {
+      "viewGuide": "Guía de solución de problemas"
     }
   },
   "VoiceRecorder": {
-    "metaTitle": "Grabadora de Voz – Grabación Online Gratis (100% Privada)",
-    "metaDescription": "Graba notas de voz directamente en tu navegador. Pausa, reanuda, escucha y descarga archivos de audio localmente sin subir nada a internet.",
+    "metaTitle": "Grabadora de voz – Herramienta gratuita de grabación de audio y micrófono en línea",
+    "metaDescription": "Grabe notas de voz y clips de audio directamente en su navegador. Pause, reanude, reproduzca y descargue archivos de audio localmente con procesamiento en el navegador.",
     "header": {
       "eyebrow": "Herramienta de audio online",
       "title": "Grabadora de Voz",
-      "subtitle": "Una grabadora ligera que funciona totalmente en la memoria del navegador. Graba, pausa, escucha de inmediato y descarga archivos localmente."
+      "subtitle": "Una grabadora de voz ligera que funciona localmente en la memoria de su navegador. Screen Tester no sube audio ni grabaciones a sus servidores."
     },
     "labels": {
       "microphone": "Entrada de micrófono",
@@ -2748,8 +2751,8 @@
       "delete": "Eliminar"
     },
     "privacy": {
-      "title": "Estándar de privacidad local",
-      "notice": "Las grabaciones se generan en la memoria RAM mediante la API MediaRecorder. No se sube ningún archivo ni se procesa de forma remota.",
+      "title": "Estándar de procesamiento local",
+      "notice": "Screen Tester no sube el audio ni las grabaciones del micrófono a sus servidores. El procesamiento de audio y las grabaciones se manejan localmente en el navegador.",
       "limitTitle": "Límite de tiempo",
       "limitNotice": "Las grabaciones tienen un tope de 5 minutos para evitar el consumo descontrolado de memoria."
     },
