@@ -5,6 +5,8 @@ import { monitorGuides } from '@/data/guides';
 import { KNOWLEDGE_ARTICLES } from '@/data/knowledgeBase';
 import { getBaseUrl } from '@/lib/seo';
 
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = getBaseUrl();
   const sitemapEntries: MetadataRoute.Sitemap = [];
