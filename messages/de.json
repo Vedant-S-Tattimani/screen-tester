@@ -141,9 +141,9 @@
   },
   "Home": {
     "eyebrow": "TESTEN. PRÜFEN. VERSTEHEN.",
-    "headline_pt1": "Überprüfen Sie Ihr Display.",
-    "headline_pt2": "Finden Sie die Fehler.",
-    "description": "Eine umfassende Suite von Werkzeugen zum Testen Ihres Monitors auf Pixelfehler, Backlight-Bleed, Farbgenauigkeit, Bewegungsunschärfe und mehr. Kostenlos, präzise und direkt im Browser.",
+    "headline_pt1": "Bildschirmtest",
+    "headline_pt2": "Kostenloser Online Monitor Test",
+    "description": "Kostenloser Bildschirmtest und Monitortest online. Testen Sie Ihren Bildschirm auf Pixelfehler, Farbwiedergabe, Farbkalibrierung, Bildwiederholrate, Helligkeit, Kontrast und Ghosting direkt im Webbrowser.",
     "startTesting": "Test Starten",
     "browseTests": "Alle Tests Anzeigen",
     "cap1Title": "Läuft im Browser",
@@ -227,7 +227,17 @@
     "moreFreeTestingToolsTitle": "Weitere Kostenlose Test-Werkzeuge",
     "keyboardTesterTitle": "Tastatur-Tester",
     "keyboardTesterDesc": "Testen Sie jede Taste auf Ihrer Tastatur online mit unserem kostenlosen Tastatur-Tester.",
-    "testYourKeyboard": "Tastatur Testen →"
+    "testYourKeyboard": "Tastatur Testen →",
+    "aboutEyebrow": "ÜBER MONITOR TESTER",
+    "aboutTitle": "Online Bildschirmtest & Monitor-Diagnosetool",
+    "aboutLead": "Screen Tester ist ein kostenloses Online-Tool zur schnellen und präzisen Überprüfung von PC-Monitoren, Laptop-Displays und Fernsehern direkt im Browser – ohne Installation von Software.",
+    "aboutP1": "Unsere Diagnosesuite bietet gezielte visuelle Testmuster zur Erkennung typischer Displayfehler: Pixelfehler Test (tote und hängende Subpixel), Backlight Bleeding, Farbkalibrierung Monitor und RGB-Homogenität, Schwarz- und Weißwerte, Kontrast sowie Ghosting Test Monitor zur Beurteilung von Schlierenbildung.",
+    "aboutP2": "Entwickelt für Gamer, Käufer von neuen oder gebrauchten Monitoren, Laptop-Besitzer und Medienschaffende. Alle Prüfungen laufen zu 100 % lokal über HTML5 und WebGL auf Ihrem Gerät – ohne Datenerfassung.",
+    "aboutLimitationsTitle": "Grenzen browserbasierter Tests & Kalibrierungshinweis",
+    "aboutLimitationsDesc": "Alle Tests dienen der visuellen Inspektion durch das menschliche Auge unter kontrollierten Lichtverhältnissen. Screen Tester ersetzt keine optischen Labormessgeräte (wie Kolorimeter oder Fotodioden-Oszilloskope) und schreibt keine ICC-Farbprofile in Ihr Betriebssystem. Für verlässliche Ergebnisse reinigen Sie das Panel, wechseln Sie in den Vollbildmodus (F11) und stellen Sie die Betriebssystem-Skalierung auf 100 % ein.",
+    "badgeBrowser": "100 % im Webbrowser",
+    "badgeNoInstall": "Keine Software nötig",
+    "badgePrivacy": "Lokale & private Prüfung"
   },
   "TestLibrary": {
     "categories": {

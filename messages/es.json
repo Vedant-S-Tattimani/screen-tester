@@ -1,7 +1,7 @@
 {
   "Metadata": {
-    "title": "Test de Pantalla y Monitor – Probador de Pantalla y Píxeles Muertos",
-    "description": "Test de pantalla y probador de monitor online gratis. Realiza pruebas de pantalla completas: test de píxeles muertos, prueba de color, tasa de refresco y ghosting."
+    "title": "Test de Pantalla y Test de Monitor – Probador de Pantalla y Píxeles Muertos",
+    "description": "Test de pantalla y test de monitor online gratis. Realiza pruebas de pantalla completas: test de píxeles muertos, prueba de color, tasa de refresco y ghosting."
   },
   "Header": {
     "title": "Probador de Monitor",
@@ -141,9 +141,9 @@
   },
   "Home": {
     "eyebrow": "PROBAR. INSPECCIONAR. COMPRENDER.",
-    "headline_pt1": "Comprueba tu pantalla.",
-    "headline_pt2": "Encuentra los defectos.",
-    "description": "Un conjunto completo de herramientas para probar su monitor en busca de píxeles muertos, fugas de luz, precisión de color, desenfoque de movimiento y más. Gratis, preciso y directo en su navegador.",
+    "headline_pt1": "Test de Pantalla",
+    "headline_pt2": "Prueba y Test de Monitor Online",
+    "description": "Test de pantalla y test de monitor online gratis. Realiza una prueba de pantalla completa para comprobar píxeles muertos, colores, calibración visual, tasa de refresco, brillo, contraste y ghosting directamente en tu navegador.",
     "startTesting": "Iniciar Pruebas",
     "browseTests": "Explorar Todas las Pruebas",
     "cap1Title": "Funciona en el navegador",
@@ -227,7 +227,17 @@
     "moreFreeTestingToolsTitle": "Más Herramientas de Prueba Gratuitas",
     "keyboardTesterTitle": "Probador de Teclado",
     "keyboardTesterDesc": "Prueba cada tecla de tu teclado en línea con nuestro probador de teclado gratuito.",
-    "testYourKeyboard": "Probar Tu Teclado →"
+    "testYourKeyboard": "Probar Tu Teclado →",
+    "aboutEyebrow": "ACERCA DE SCREEN TESTER",
+    "aboutTitle": "Herramienta de Test de Pantalla y Diagnóstico de Monitor Online",
+    "aboutLead": "Screen Tester es una herramienta gratuita en línea diseñada para realizar un test de pantalla y test de monitor exhaustivo directamente desde el navegador web, sin necesidad de instalar programas ni controladores.",
+    "aboutP1": "Nuestra suite de pruebas de pantalla ofrece patrones visuales precisos para detectar defectos comunes del panel: test de píxeles muertos y atascados, fugas de luz (backlight bleed), prueba de color de pantalla, fidelidad RGB, contraste, brillo y prueba de ghosting para evaluar el tiempo de respuesta.",
+    "aboutP2": "Ideal para gamers, usuarios que compran un monitor nuevo o de segunda mano, propietarios de portátiles y profesionales visuales. Todas las comprobaciones se ejecutan en el navegador de manera privada y local mediante HTML5 y WebGL.",
+    "aboutLimitationsTitle": "Alcance del Test en Navegador y Nota de Calibración",
+    "aboutLimitationsDesc": "Todas las herramientas están diseñadas para la inspección visual directa por parte del usuario bajo condiciones de luz controladas. Screen Tester no sustituye a instrumentos ópticos de laboratorio (como colorímetros físicos o fotodiodos) ni modifica los perfiles ICC del sistema operativo. Para una evaluación óptima, limpie su pantalla, active la pantalla completa (F11) y configure el escalado al 100%.",
+    "badgeBrowser": "100% en el Navegador",
+    "badgeNoInstall": "Sin Instalación de Software",
+    "badgePrivacy": "Diagnóstico Local y Privado"
   },
   "TestLibrary": {
     "categories": {

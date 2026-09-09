@@ -3,568 +3,498 @@
 import { useState, useEffect, useCallback } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
-import { useTranslations } from "next-intl";
+import { ChevronLeft, ChevronRight, Eye, Info, ShieldAlert, CheckCircle2 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface ContrastPatternProps {
   testId?: string;
 }
 
-type PatternId =
-  | "grayscaleRamp"
-  | "steppedGrayscale"
-  | "shadowDetail"
-  | "highlightDetail"
-  | "checkerboard"
-  | "colorBlocks"
-  | "colorPairs"
-  | "textContrast";
+type ContrastMode = "fullRange" | "blackLevel" | "whiteLevel" | "gradientRamp";
 
-const PATTERN_IDS: PatternId[] = [
-  "grayscaleRamp",
-  "steppedGrayscale",
-  "shadowDetail",
-  "highlightDetail",
-  "checkerboard",
-  "colorBlocks",
-  "colorPairs",
-  "textContrast"
+interface ModeInfo {
+  id: ContrastMode;
+  label: string;
+  description: string;
+}
+
+const CONTRAST_MODES: ModeInfo[] = [
+  {
+    id: "fullRange",
+    label: "Full Range Scale",
+    description: "Inspect tonal steps from absolute black (0) to absolute white (255) simultaneously."
+  },
+  {
+    id: "blackLevel",
+    label: "Black Level (Shadows)",
+    description: "Check if near-black details are distinct or crushed into pure black."
+  },
+  {
+    id: "whiteLevel",
+    label: "White Level (Highlights)",
+    description: "Check if bright highlights are distinct or clipped into pure white."
+  },
+  {
+    id: "gradientRamp",
+    label: "Smooth Gradient Ramp",
+    description: "Inspect continuous tonal gradation for banding lines or posterization."
+  }
 ];
 
-// Similar tone color pairs for color contrast discrimination
-const SIMILAR_COLOR_PAIRS = [
-  { label: "Dark Blue vs Dark Navy", colorA: "#0a192f", colorB: "#0f2347" },
-  { label: "Deep Red vs Burgundy", colorA: "#800020", colorB: "#990026" },
-  { label: "Forest Green vs Dark Olive", colorA: "#1e3f20", colorB: "#2d4f2a" },
-  { label: "Warm Gold vs Light Ochre", colorA: "#d4af37", colorB: "#c5a028" },
-  { label: "Slate Gray vs Steel Gray", colorA: "#4a5568", colorB: "#5a6578" },
-  { label: "Purple vs Indigo", colorA: "#4b0082", colorB: "#5c069e" },
+// Near-black discrete RGB values for shadow detail inspection (0 to 18)
+const NEAR_BLACK_STEPS = [
+  { label: "0 (Pure Black)", rgb: 0, percent: "0.0%" },
+  { label: "1", rgb: 2, percent: "0.8%" },
+  { label: "2", rgb: 4, percent: "1.6%" },
+  { label: "3", rgb: 7, percent: "2.7%" },
+  { label: "4", rgb: 10, percent: "3.9%" },
+  { label: "5", rgb: 13, percent: "5.1%" },
+  { label: "6", rgb: 16, percent: "6.3%" },
+  { label: "7", rgb: 20, percent: "7.8%" },
+  { label: "8", rgb: 25, percent: "9.8%" },
+  { label: "9", rgb: 30, percent: "11.8%" }
 ];
+
+// Near-white discrete RGB values for highlight detail inspection (235 to 255)
+const NEAR_WHITE_STEPS = [
+  { label: "235", rgb: 235, percent: "92.2%" },
+  { label: "240", rgb: 240, percent: "94.1%" },
+  { label: "245", rgb: 245, percent: "96.1%" },
+  { label: "248", rgb: 248, percent: "97.3%" },
+  { label: "250", rgb: 250, percent: "98.0%" },
+  { label: "252", rgb: 252, percent: "98.8%" },
+  { label: "253", rgb: 253, percent: "99.2%" },
+  { label: "254", rgb: 254, percent: "99.6%" },
+  { label: "255 (Pure White)", rgb: 255, percent: "100%" }
+];
+
+// Full range 16-step grayscale distribution
+const FULL_RANGE_STEPS = Array.from({ length: 16 }, (_, i) => {
+  const rgb = Math.round((i / 15) * 255);
+  const pct = Math.round((i / 15) * 100);
+  return { rgb, pct };
+});
 
 export function ContrastPattern({ testId = "contrast-test" }: ContrastPatternProps) {
-  const t = useTranslations("ContrastTest");
-  const { 
-    registerNavigation,
-    setObservation
-  } = useTestContext();
+  const { registerNavigation } = useTestContext();
+  const [activeModeIndex, setActiveModeIndex] = useState(0);
 
-  const [patternIndex, setPatternIndex] = useState(0);
-  const [userRatedContrast, setUserRatedContrast] = useState("");
-  const [showRatedModal, setShowRatedModal] = useState(false);
+  const currentMode = CONTRAST_MODES[activeModeIndex];
 
-  // 5 observation dimensions
-  const [blackDetailObs, setBlackDetailObs] = useState<string | null>(null);
-  const [whiteDetailObs, setWhiteDetailObs] = useState<string | null>(null);
-  const [grayscaleObs, setGrayscaleObs] = useState<string | null>(null);
-  const [colorSepObs, setColorSepObs] = useState<string | null>(null);
-  const [textContrastObs, setTextContrastObs] = useState<string | null>(null);
-
-  const currentPattern = PATTERN_IDS[patternIndex];
-
-  const nextPattern = useCallback(() => {
-    setPatternIndex((idx) => (idx + 1) % PATTERN_IDS.length);
+  const nextMode = useCallback(() => {
+    setActiveModeIndex((prev) => (prev + 1) % CONTRAST_MODES.length);
   }, []);
 
-  const prevPattern = useCallback(() => {
-    setPatternIndex((idx) => (idx - 1 + PATTERN_IDS.length) % PATTERN_IDS.length);
-  }, []);
-
-  const resetAll = useCallback(() => {
-    setPatternIndex(0);
-    setBlackDetailObs(null);
-    setWhiteDetailObs(null);
-    setGrayscaleObs(null);
-    setColorSepObs(null);
-    setTextContrastObs(null);
+  const prevMode = useCallback(() => {
+    setActiveModeIndex((prev) => (prev - 1 + CONTRAST_MODES.length) % CONTRAST_MODES.length);
   }, []);
 
   useEffect(() => {
     registerNavigation({
-      next: nextPattern,
-      prev: prevPattern,
-      reset: resetAll,
+      next: nextMode,
+      prev: prevMode,
+      reset: () => setActiveModeIndex(0),
     });
-  }, [registerNavigation, nextPattern, prevPattern, resetAll]);
-
-  // Aggregate user observation to update TestWrapper status
-  const updateAggregateStatus = (
-    bd: string | null,
-    wd: string | null,
-    gs: string | null,
-    cs: string | null,
-    tc: string | null
-  ) => {
-    if (bd === "lost" || bd === "raised" || wd === "clipped" || gs === "banding" || cs === "shift" || tc === "hard") {
-      setObservation("ISSUE");
-    } else if (bd === "good" && wd === "good" && gs === "smooth" && cs === "clear" && tc === "clear") {
-      setObservation("PASS");
-    } else if (bd || wd || gs || cs || tc) {
-      setObservation("CHECK");
-    }
-  };
+  }, [registerNavigation, nextMode, prevMode]);
 
   return (
     <>
-      <div 
-        className="absolute inset-0 flex flex-col items-center justify-center bg-black select-none overflow-hidden"
+      {/* Viewport Test Area */}
+      <div
+        className="absolute inset-0 flex flex-col items-center justify-center select-none overflow-hidden transition-colors duration-200 cursor-pointer"
+        onClick={nextMode}
         tabIndex={0}
+        aria-label={`Contrast test: ${currentMode.label}. Click or use arrow keys to change mode.`}
+        style={{
+          backgroundColor:
+            currentMode.id === "blackLevel"
+              ? "#000000"
+              : currentMode.id === "whiteLevel"
+              ? "#FFFFFF"
+              : "#111111"
+        }}
       >
-        {/* Top Information & Pattern Count Banner */}
-        <div className="absolute top-3 left-4 right-4 z-20 flex flex-col sm:flex-row items-center justify-between gap-2 px-4 py-2 rounded-xl bg-black/80 backdrop-blur-md border border-white/15 text-white shadow-xl pointer-events-auto max-w-5xl mx-auto">
-          <div className="flex items-center gap-2 text-xs">
-            <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 shrink-0">
-              {t("resultBadge")}
-            </span>
-            <span className="text-white/80 line-clamp-1 text-[11px] sm:text-xs">
-              {t("prepNotice")}
-            </span>
-          </div>
-
-          <div className="flex items-center gap-2 shrink-0">
-            <span className="text-[11px] font-mono text-white/70 bg-white/10 px-2.5 py-0.5 rounded-md border border-white/10">
-              {t("patternCount", { current: patternIndex + 1, total: PATTERN_IDS.length })}
-            </span>
+        {/* Concise On-Screen Inspection Instruction Badge (Click-through) */}
+        <div className="absolute top-4 left-4 right-4 z-20 flex justify-center pointer-events-none">
+          <div className="bg-black/80 dark:bg-black/90 backdrop-blur-md px-4 py-2.5 rounded-xl border border-white/15 text-white shadow-xl max-w-2xl text-center space-y-1">
+            <div className="flex items-center justify-center gap-2 text-xs font-semibold text-blue-400">
+              <Eye className="w-3.5 h-3.5" />
+              <span>{currentMode.label}</span>
+              <span className="text-white/40">•</span>
+              <span className="text-white/60 font-mono text-[11px]">
+                Stage {activeModeIndex + 1} of {CONTRAST_MODES.length}
+              </span>
+            </div>
+            <p className="text-[11px] sm:text-xs text-white/90 leading-normal">
+              Look closely at the darkest and brightest patches. You should be able to distinguish near-black from black and near-white from white.
+            </p>
           </div>
         </div>
 
         {/* ========================================================= */}
-        {/* PATTERN 1: SMOOTH CONTINUOUS GRAYSCALE RAMP               */}
+        {/* MODE 1: FULL RANGE SCALE (All levels from Black to White)  */}
         {/* ========================================================= */}
-        {currentPattern === "grayscaleRamp" && (
-          <div className="w-full max-w-4xl h-[75%] flex flex-col items-center justify-center p-6 gap-6">
-            <div className="w-full text-center">
-              <span className="text-xs sm:text-sm font-semibold text-white block">
-                {t("patterns.grayscaleRamp")}
-              </span>
-              <span className="text-[11px] text-white/60 font-mono mt-0.5 block">
-                Evaluates tonal gradation smoothness. Inspect for vertical banding lines or discoloration.
-              </span>
+        {currentMode.id === "fullRange" && (
+          <div className="w-full max-w-5xl px-4 sm:px-8 py-16 flex flex-col items-center justify-center gap-6 text-white">
+            {/* 16-step discrete tonal ramp */}
+            <div className="w-full space-y-2">
+              <div className="flex items-center justify-between text-[11px] font-mono text-white/70 px-1">
+                <span>0% Pure Black (RGB 0)</span>
+                <span className="hidden sm:inline">50% Midtone (RGB 128)</span>
+                <span>100% Pure White (RGB 255)</span>
+              </div>
+              <div className="grid grid-cols-8 sm:grid-cols-16 gap-1 w-full p-2 bg-black/60 rounded-2xl border border-white/15 shadow-2xl">
+                {FULL_RANGE_STEPS.map((step, idx) => (
+                  <div
+                    key={idx}
+                    className="h-20 sm:h-28 rounded-lg flex flex-col justify-between p-1.5 transition-transform hover:scale-105"
+                    style={{ backgroundColor: `rgb(${step.rgb}, ${step.rgb}, ${step.rgb})` }}
+                  >
+                    <span
+                      className="text-[9px] font-mono font-bold"
+                      style={{ color: step.rgb > 128 ? "#000000" : "#FFFFFF" }}
+                    >
+                      {step.pct}%
+                    </span>
+                    <span
+                      className="text-[8px] font-mono opacity-60 hidden md:block"
+                      style={{ color: step.rgb > 128 ? "#000000" : "#FFFFFF" }}
+                    >
+                      {step.rgb}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="w-full">
-              <div 
-                className="w-full h-28 sm:h-36 rounded-2xl border-2 border-white/20 shadow-2xl relative"
-                style={{ background: "linear-gradient(to right, rgb(0,0,0), rgb(128,128,128), rgb(255,255,255))" }}
-              />
-              <div className="flex justify-between text-[11px] font-mono text-white/60 mt-2 px-2">
-                <span>0% Black (0)</span>
-                <span>25% Dark Gray (64)</span>
-                <span>50% Midtone (128)</span>
-                <span>75% Light Gray (192)</span>
-                <span>100% White (255)</span>
+            {/* Side-by-side Dark vs Bright Discrimination Patches */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+              {/* Near-Black Reference Zone */}
+              <div className="p-4 rounded-2xl bg-black border border-white/20 shadow-xl space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-white font-mono">Shadow Discrimination</span>
+                  <span className="text-[10px] font-mono text-emerald-400">Target: Step 2 distinct from 0</span>
+                </div>
+                <div className="grid grid-cols-5 gap-1.5">
+                  {NEAR_BLACK_STEPS.slice(0, 5).map((step, i) => (
+                    <div
+                      key={step.rgb}
+                      className={cn(
+                        "h-16 rounded-lg flex flex-col items-center justify-between p-1.5 border transition-all",
+                        i === 0 ? "border-white/30" : i === 2 ? "border-blue-500 ring-1 ring-blue-500" : "border-white/10"
+                      )}
+                      style={{ backgroundColor: `rgb(${step.rgb}, ${step.rgb}, ${step.rgb})` }}
+                    >
+                      <span className="text-[10px] font-mono font-bold text-white/90">{step.rgb}</span>
+                      <span className="text-[8px] font-mono text-white/50">{step.percent}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Near-White Reference Zone */}
+              <div className="p-4 rounded-2xl bg-white text-black border border-black/20 shadow-xl space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold font-mono">Highlight Discrimination</span>
+                  <span className="text-[10px] font-mono text-blue-600 font-bold">Target: 253 distinct from 255</span>
+                </div>
+                <div className="grid grid-cols-5 gap-1.5">
+                  {NEAR_WHITE_STEPS.slice(4).map((step, i) => (
+                    <div
+                      key={step.rgb}
+                      className={cn(
+                        "h-16 rounded-lg flex flex-col items-center justify-between p-1.5 border transition-all",
+                        step.rgb === 255 ? "border-black/40" : step.rgb === 253 ? "border-blue-600 ring-1 ring-blue-600" : "border-black/10"
+                      )}
+                      style={{ backgroundColor: `rgb(${step.rgb}, ${step.rgb}, ${step.rgb})` }}
+                    >
+                      <span className="text-[10px] font-mono font-bold text-black/90">{step.rgb}</span>
+                      <span className="text-[8px] font-mono text-black/60">{step.percent}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         )}
 
         {/* ========================================================= */}
-        {/* PATTERN 2: 16-STEP QUANTIZED GRAYSCALE WEDGE              */}
+        {/* MODE 2: BLACK LEVEL (Near-Black Shadow Detail)            */}
         {/* ========================================================= */}
-        {currentPattern === "steppedGrayscale" && (
-          <div className="w-full max-w-4xl h-[75%] flex flex-col items-center justify-center p-6 gap-6">
-            <div className="w-full text-center">
+        {currentMode.id === "blackLevel" && (
+          <div className="w-full max-w-5xl px-4 sm:px-8 py-16 flex flex-col items-center justify-center gap-6">
+            <div className="text-center space-y-1">
               <span className="text-xs sm:text-sm font-semibold text-white block">
-                {t("patterns.steppedGrayscale")}
+                Black Level & Shadow Detail Calibration
               </span>
-              <span className="text-[11px] text-white/60 font-mono mt-0.5 block">
-                Each step should be visually distinct from its immediate neighbors.
+              <span className="text-xs text-amber-300 font-mono font-semibold block">
+                Each block is slightly brighter than pure black. Can you distinguish the steps from the black surround?
               </span>
             </div>
 
-            <div className="w-full flex h-28 sm:h-36 rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl">
-              {Array.from({ length: 16 }, (_, i) => {
-                const val = Math.round((i / 15) * 255);
-                const pct = Math.round((i / 15) * 100);
-                const isDark = val < 128;
+            {/* Stepped shadow patches with embedded inner squares */}
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 w-full p-4 rounded-2xl bg-black border border-white/20 shadow-2xl">
+              {NEAR_BLACK_STEPS.map((step, i) => (
+                <div
+                  key={step.rgb}
+                  className={cn(
+                    "h-28 sm:h-32 rounded-xl flex flex-col items-center justify-between p-2.5 border transition-all relative group",
+                    i === 0 
+                      ? "border-white/40 ring-1 ring-white/20" 
+                      : i === 2 
+                      ? "border-emerald-400 ring-1 ring-emerald-400/60" 
+                      : "border-white/10 hover:border-white/30"
+                  )}
+                  style={{ backgroundColor: `rgb(${step.rgb}, ${step.rgb}, ${step.rgb})` }}
+                >
+                  <div className="flex items-center justify-between w-full">
+                    <span className="text-[10px] font-mono font-bold text-white/90">RGB {step.rgb}</span>
+                    {i === 2 && (
+                      <span className="text-[8px] uppercase tracking-wider font-bold bg-emerald-600 text-white px-1 py-0.5 rounded">
+                        Key Step
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Inner subtle square patch for visibility discrimination */}
+                  <div
+                    className="w-10 h-10 rounded-md border border-white/10 flex items-center justify-center shadow-xs"
+                    style={{ backgroundColor: `rgb(${Math.min(255, step.rgb + 4)}, ${Math.min(255, step.rgb + 4)}, ${Math.min(255, step.rgb + 4)})` }}
+                  >
+                    <span className="text-[8px] font-mono text-white/40 font-bold">+4</span>
+                  </div>
+
+                  <span className="text-xs font-mono font-bold text-amber-300">{step.percent}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="text-xs font-mono text-amber-200 text-center max-w-xl font-semibold bg-black/70 px-4 py-2 rounded-xl border border-white/20">
+              If steps 1 through 3 blend completely into the background, your display has <strong>crushed blacks</strong> (contrast too high or gamma too steep).
+            </div>
+          </div>
+        )}
+
+        {/* ========================================================= */}
+        {/* MODE 3: WHITE LEVEL (Near-White Highlight Detail)          */}
+        {/* ========================================================= */}
+        {currentMode.id === "whiteLevel" && (
+          <div className="w-full max-w-5xl px-4 sm:px-8 py-16 flex flex-col items-center justify-center gap-6">
+            <div className="text-center space-y-1">
+              <span className="text-xs sm:text-sm font-semibold text-black block">
+                White Level & Highlight Clipping Calibration
+              </span>
+              <span className="text-[11px] text-black/60 font-mono block">
+                Each block is slightly darker than pure white. Can you distinguish the steps from the white surround?
+              </span>
+            </div>
+
+            {/* Stepped highlight patches with embedded inner squares */}
+            <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 w-full p-4 rounded-2xl bg-white border border-black/20 shadow-2xl">
+              {NEAR_WHITE_STEPS.map((step) => {
+                const isKey = step.rgb === 253 || step.rgb === 254;
                 return (
                   <div
-                    key={i}
-                    className="flex-1 h-full flex flex-col items-center justify-between py-2 border-r border-white/10 last:border-r-0"
-                    style={{ backgroundColor: `rgb(${val}, ${val}, ${val})` }}
+                    key={step.rgb}
+                    className={cn(
+                      "h-28 sm:h-32 rounded-xl flex flex-col items-center justify-between p-2.5 border transition-all relative",
+                      step.rgb === 255 
+                        ? "border-black/50 ring-1 ring-black/30" 
+                        : isKey 
+                        ? "border-blue-600 ring-1 ring-blue-600/50" 
+                        : "border-black/10 hover:border-black/30"
+                    )}
+                    style={{ backgroundColor: `rgb(${step.rgb}, ${step.rgb}, ${step.rgb})` }}
                   >
-                    <span className={`text-[10px] font-mono font-bold ${isDark ? "text-white/70" : "text-black/70"}`}>
-                      {pct}%
-                    </span>
-                    <span className={`text-[8px] font-mono ${isDark ? "text-white/50" : "text-black/50"}`}>
-                      {val}
-                    </span>
+                    <div className="flex items-center justify-between w-full">
+                      <span className="text-[10px] font-mono font-bold text-black/90">RGB {step.rgb}</span>
+                      {isKey && (
+                        <span className="text-[8px] uppercase tracking-wider font-bold bg-blue-600 text-white px-1 py-0.5 rounded">
+                          Key Step
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Inner subtle darker patch */}
+                    <div
+                      className="w-10 h-10 rounded-md border border-black/10 flex items-center justify-center shadow-xs"
+                      style={{ backgroundColor: `rgb(${Math.max(0, step.rgb - 4)}, ${Math.max(0, step.rgb - 4)}, ${Math.max(0, step.rgb - 4)})` }}
+                    >
+                      <span className="text-[8px] font-mono text-black/40 font-bold">-4</span>
+                    </div>
+
+                    <span className="text-[9px] font-mono text-black/60">{step.percent}</span>
                   </div>
                 );
               })}
             </div>
+
+            <div className="text-[11px] font-mono text-black/60 text-center max-w-xl">
+              If steps 252, 253, and 254 look identical to pure white 255, your display has <strong>clipped whites</strong> (monitor contrast or brightness is set too high).
+            </div>
           </div>
         )}
 
         {/* ========================================================= */}
-        {/* PATTERN 3: DARK SHADOW DETAIL (NEAR-BLACK DISCRIMINATION)  */}
+        {/* MODE 4: SMOOTH GRADIENT RAMP (Continuous 0-255)          */}
         {/* ========================================================= */}
-        {currentPattern === "shadowDetail" && (
-          <div className="w-full max-w-4xl h-[75%] flex flex-col items-center justify-center p-6 gap-6">
-            <div className="w-full text-center">
+        {currentMode.id === "gradientRamp" && (
+          <div className="w-full max-w-4xl px-4 sm:px-8 py-16 flex flex-col items-center justify-center gap-6 text-white">
+            <div className="text-center space-y-1">
               <span className="text-xs sm:text-sm font-semibold text-white block">
-                {t("patterns.shadowDetail")}
+                Continuous 0–255 Grayscale Dynamic Range
               </span>
-              <span className="text-[11px] text-white/60 font-mono mt-0.5 block">
-                Inspect near-black blocks against true reference black (0%).
-              </span>
-            </div>
-
-            <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 w-full max-w-3xl p-4 bg-black rounded-2xl border border-white/20 shadow-2xl">
-              {[
-                { label: "0% Ref", rgb: 0, pct: "0%" },
-                { label: "1% Step", rgb: 3, pct: "1%" },
-                { label: "2% Target", rgb: 5, pct: "2%" },
-                { label: "3% Near-Black", rgb: 8, pct: "3%" },
-                { label: "5% Shadow", rgb: 13, pct: "5%" },
-                { label: "8% Shadow", rgb: 20, pct: "8%" },
-                { label: "10% Low-Mid", rgb: 26, pct: "10%" },
-                { label: "12% Midtone", rgb: 31, pct: "12%" },
-                { label: "15% Midtone", rgb: 38, pct: "15%" },
-                { label: "20% Quarter", rgb: 51, pct: "20%" },
-              ].map((b, idx) => (
-                <div
-                  key={idx}
-                  className={`h-24 rounded-xl flex flex-col items-center justify-between p-2 border ${
-                    b.pct === "2%" ? "border-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.3)]" : "border-white/10"
-                  }`}
-                  style={{ backgroundColor: `rgb(${b.rgb}, ${b.rgb}, ${b.rgb})` }}
-                >
-                  <span className="text-[10px] font-mono font-bold text-white/70">{b.pct}</span>
-                  <span className="text-[8px] font-mono text-white/50">RGB {b.rgb}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* ========================================================= */}
-        {/* PATTERN 4: BRIGHT HIGHLIGHT DETAIL                         */}
-        {/* ========================================================= */}
-        {currentPattern === "highlightDetail" && (
-          <div className="w-full max-w-4xl h-[75%] flex flex-col items-center justify-center p-6 gap-6">
-            <div className="w-full text-center">
-              <span className="text-xs sm:text-sm font-semibold text-white block">
-                {t("patterns.highlightDetail")}
-              </span>
-              <span className="text-[11px] text-white/60 font-mono mt-0.5 block">
-                Inspect near-white blocks against peak reference white (100%).
+              <span className="text-[11px] text-white/60 font-mono block">
+                Inspect for smooth, seamless transitions. Check for abrupt vertical banding lines or uneven tints.
               </span>
             </div>
 
-            <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 w-full max-w-3xl p-4 bg-white rounded-2xl border border-neutral-300 shadow-2xl">
-              {[
-                { label: "80%", rgb: 204 },
-                { label: "85%", rgb: 217 },
-                { label: "88%", rgb: 224 },
-                { label: "90%", rgb: 230 },
-                { label: "92%", rgb: 235 },
-                { label: "94%", rgb: 240 },
-                { label: "96%", rgb: 245 },
-                { label: "98%", rgb: 250 },
-                { label: "99%", rgb: 252 },
-                { label: "100%", rgb: 255 },
-              ].map((w, idx) => (
-                <div
-                  key={idx}
-                  className={`h-24 rounded-xl flex flex-col items-center justify-between p-2 border ${
-                    w.label === "98%" ? "border-blue-500 shadow-xs" : "border-black/10"
-                  }`}
-                  style={{ backgroundColor: `rgb(${w.rgb}, ${w.rgb}, ${w.rgb})` }}
-                >
-                  <span className="text-[10px] font-mono font-bold text-black/70">{w.label}</span>
-                  <span className="text-[8px] font-mono text-black/50">RGB {w.rgb}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* ========================================================= */}
-        {/* PATTERN 5: HIGH-FREQUENCY CHECKERBOARD                    */}
-        {/* ========================================================= */}
-        {currentPattern === "checkerboard" && (
-          <div className="w-full max-w-2xl aspect-square grid grid-cols-8 grid-rows-8 p-3 bg-neutral-900 rounded-2xl border border-white/20 shadow-2xl">
-            {Array.from({ length: 64 }, (_, i) => {
-              const row = Math.floor(i / 8);
-              const col = i % 8;
-              const isWhite = (row + col) % 2 === 0;
-              return (
-                <div
-                  key={i}
-                  className={`rounded-sm transition-colors ${
-                    isWhite ? "bg-white" : "bg-black"
-                  }`}
-                />
-              );
-            })}
-          </div>
-        )}
-
-        {/* ========================================================= */}
-        {/* PATTERN 6: SATURATED RGB COLOR BLOCKS                     */}
-        {/* ========================================================= */}
-        {currentPattern === "colorBlocks" && (
-          <div className="w-full max-w-4xl h-[75%] grid grid-cols-3 grid-rows-2 gap-3 p-4">
-            <div className="bg-[#FF0000] rounded-2xl flex flex-col items-center justify-center p-4 border border-white/20 shadow-xl">
-              <span className="px-3 py-1 rounded bg-black/60 font-mono font-bold text-white text-xs">Pure Red</span>
-            </div>
-            <div className="bg-[#00FF00] rounded-2xl flex flex-col items-center justify-center p-4 border border-white/20 shadow-xl">
-              <span className="px-3 py-1 rounded bg-black/60 font-mono font-bold text-white text-xs">Pure Green</span>
-            </div>
-            <div className="bg-[#0000FF] rounded-2xl flex flex-col items-center justify-center p-4 border border-white/20 shadow-xl">
-              <span className="px-3 py-1 rounded bg-black/60 font-mono font-bold text-white text-xs">Pure Blue</span>
-            </div>
-            <div className="bg-[#FFFF00] rounded-2xl flex flex-col items-center justify-center p-4 border border-white/20 shadow-xl">
-              <span className="px-3 py-1 rounded bg-black/60 font-mono font-bold text-white text-xs">Yellow</span>
-            </div>
-            <div className="bg-[#00FFFF] rounded-2xl flex flex-col items-center justify-center p-4 border border-white/20 shadow-xl">
-              <span className="px-3 py-1 rounded bg-black/60 font-mono font-bold text-white text-xs">Cyan</span>
-            </div>
-            <div className="bg-[#FF00FF] rounded-2xl flex flex-col items-center justify-center p-4 border border-white/20 shadow-xl">
-              <span className="px-3 py-1 rounded bg-black/60 font-mono font-bold text-white text-xs">Magenta</span>
-            </div>
-          </div>
-        )}
-
-        {/* ========================================================= */}
-        {/* PATTERN 7: SIMILAR-TONE COLOR PAIRS                       */}
-        {/* ========================================================= */}
-        {currentPattern === "colorPairs" && (
-          <div className="w-full max-w-4xl h-[75%] grid grid-cols-2 sm:grid-cols-3 gap-4 p-4">
-            {SIMILAR_COLOR_PAIRS.map((pair, idx) => (
-              <div
-                key={idx}
-                className="rounded-2xl border border-white/20 p-3 bg-neutral-900 flex flex-col justify-between shadow-xl"
-              >
-                <span className="text-[11px] font-mono text-white/80 mb-2 font-semibold">
-                  {pair.label}
-                </span>
-                <div className="flex-1 flex rounded-xl overflow-hidden border border-white/10">
-                  <div className="flex-1" style={{ backgroundColor: pair.colorA }} />
-                  <div className="flex-1" style={{ backgroundColor: pair.colorB }} />
-                </div>
-                <div className="flex justify-between text-[9px] font-mono text-white/50 mt-2">
-                  <span>{pair.colorA}</span>
-                  <span>{pair.colorB}</span>
-                </div>
+            {/* Continuous Smooth Gradient Bar */}
+            <div className="w-full space-y-2">
+              <div 
+                className="w-full h-28 sm:h-36 rounded-2xl border-2 border-white/20 shadow-2xl relative"
+                style={{ background: "linear-gradient(to right, rgb(0,0,0), rgb(128,128,128), rgb(255,255,255))" }}
+              />
+              <div className="flex justify-between text-[10px] sm:text-xs font-mono text-white/60 px-1">
+                <span>0 (Pure Black)</span>
+                <span>64 (Dark)</span>
+                <span>128 (Midtone)</span>
+                <span>192 (Light)</span>
+                <span>255 (Pure White)</span>
               </div>
-            ))}
-          </div>
-        )}
-
-        {/* ========================================================= */}
-        {/* PATTERN 8: TEXT CONTRAST ON CONTRASTING BACKGROUNDS       */}
-        {/* ========================================================= */}
-        {currentPattern === "textContrast" && (
-          <div className="w-full max-w-4xl h-[75%] grid grid-cols-1 sm:grid-cols-2 gap-4 p-4">
-            {/* Box 1: Pure Black with White Text */}
-            <div className="bg-black text-white p-6 rounded-2xl border border-white/20 flex flex-col justify-between shadow-xl">
-              <span className="text-xs font-mono text-white/50 uppercase">Max Contrast (21:1)</span>
-              <p className="text-sm font-medium leading-relaxed">
-                The quick brown fox jumps over the lazy dog. 1234567890. Crisp edge definition on pure black.
-              </p>
-              <span className="text-[10px] font-mono text-white/60">White #FFFFFF on Black #000000</span>
             </div>
 
-            {/* Box 2: Pure White with Black Text */}
-            <div className="bg-white text-black p-6 rounded-2xl border border-neutral-300 flex flex-col justify-between shadow-xl">
-              <span className="text-xs font-mono text-black/50 uppercase">Max Inverted (21:1)</span>
-              <p className="text-sm font-medium leading-relaxed">
-                The quick brown fox jumps over the lazy dog. 1234567890. Zero subpixel color fringing or bleeding.
-              </p>
-              <span className="text-[10px] font-mono text-black/60">Black #000000 on White #FFFFFF</span>
-            </div>
-
-            {/* Box 3: Dark Gray with Light Gray Text (Medium Contrast) */}
-            <div className="bg-[#222222] text-[#cccccc] p-6 rounded-2xl border border-white/15 flex flex-col justify-between shadow-xl">
-              <span className="text-xs font-mono text-white/50 uppercase">Medium Contrast (~7:1)</span>
-              <p className="text-sm font-medium leading-relaxed">
-                Comfortable UI contrast. Text should remain sharp and easily readable without eye fatigue.
-              </p>
-              <span className="text-[10px] font-mono text-white/50">#CCCCCC on #222222</span>
-            </div>
-
-            {/* Box 4: Low Contrast Threshold Test */}
-            <div className="bg-[#333333] text-[#777777] p-6 rounded-2xl border border-white/15 flex flex-col justify-between shadow-xl">
-              <span className="text-xs font-mono text-white/50 uppercase">Low Contrast (~2.5:1)</span>
-              <p className="text-sm font-medium leading-relaxed">
-                Subtle contrast threshold. Displays with poor contrast or washed-out gamma will make this difficult to resolve.
-              </p>
-              <span className="text-[10px] font-mono text-white/50">#777777 on #333333</span>
+            {/* 32-step stepped wedge directly below for quantization comparison */}
+            <div className="w-full space-y-1.5 mt-4">
+              <span className="text-[11px] font-mono text-white/70 block">
+                32-Step Quantized Luminance Steps:
+              </span>
+              <div className="grid grid-cols-16 sm:grid-cols-32 gap-0.5 w-full h-12 rounded-xl overflow-hidden border border-white/20">
+                {Array.from({ length: 32 }, (_, i) => {
+                  const val = Math.round((i / 31) * 255);
+                  return (
+                    <div
+                      key={i}
+                      className="h-full transition-opacity hover:opacity-80"
+                      style={{ backgroundColor: `rgb(${val}, ${val}, ${val})` }}
+                      title={`Step ${i + 1}/32: RGB ${val}`}
+                    />
+                  );
+                })}
+              </div>
             </div>
           </div>
         )}
       </div>
 
-      {/* ========================================================= */}
-      {/* TEST CONTROL BAR WITH 5 OBSERVATION CONTROLS              */}
-      {/* ========================================================= */}
-      <TestControlBar testId={testId} title={t("title")}>
+      {/* Control Bar Dock */}
+      <TestControlBar testId={testId} title="Color Contrast & Range Inspection">
         <div className="flex flex-wrap items-center gap-2">
-          {/* Pattern Selector */}
-          <div className="flex items-center bg-gray-100 p-0.5 rounded-lg border border-gray-200 text-xs">
+          {/* Mode Switcher Buttons */}
+          <div className="flex items-center gap-1 bg-muted/60 dark:bg-white/10 p-1 rounded-lg border border-border/50">
             <button
               type="button"
-              onClick={prevPattern}
-              className="px-2 py-1 text-gray-700 hover:text-black font-mono"
-              title="Previous pattern"
+              onClick={(e) => {
+                e.stopPropagation();
+                prevMode();
+              }}
+              className="p-1.5 hover:bg-white/20 rounded transition-colors text-amber-300 cursor-pointer"
+              title="Previous mode (Left Arrow)"
+              aria-label="Previous mode"
             >
-              ◂
+              <ChevronLeft className="w-4 h-4" />
             </button>
-            <span className="px-2 py-1 text-[11px] font-semibold text-gray-900 border-x border-gray-200">
-              {patternIndex + 1}/{PATTERN_IDS.length}
-            </span>
-            <button
-              type="button"
-              onClick={nextPattern}
-              className="px-2 py-1 text-gray-700 hover:text-black font-mono"
-              title="Next pattern"
-            >
-              ▸
-            </button>
-          </div>
 
-          {/* Black Detail */}
-          <div className="flex items-center gap-1 border-l border-gray-200 pl-2 text-xs">
-            <span className="text-[10px] font-mono text-gray-500 hidden xl:inline">
-              Blacks:
-            </span>
-            <button
-              type="button"
-              onClick={() => {
-                const next = blackDetailObs === "good" ? null : "good";
-                setBlackDetailObs(next);
-                updateAggregateStatus(next, whiteDetailObs, grayscaleObs, colorSepObs, textContrastObs);
-              }}
-              className={`px-2 py-1 rounded-md text-[11px] font-medium transition-all ${
-                blackDetailObs === "good"
-                  ? "bg-emerald-600 text-white font-semibold shadow-xs"
-                  : "bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200"
-              }`}
-            >
-              ✓ {t("obsBlackGood")}
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                const next = blackDetailObs === "lost" ? null : "lost";
-                setBlackDetailObs(next);
-                updateAggregateStatus(next, whiteDetailObs, grayscaleObs, colorSepObs, textContrastObs);
-              }}
-              className={`px-2 py-1 rounded-md text-[11px] font-medium transition-all ${
-                blackDetailObs === "lost"
-                  ? "bg-amber-600 text-white font-semibold shadow-xs"
-                  : "bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200"
-              }`}
-            >
-              {t("obsBlackLost")}
-            </button>
-          </div>
+            <div className="flex items-center gap-1.5">
+              {CONTRAST_MODES.map((mode, idx) => (
+                <button
+                  key={mode.id}
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveModeIndex(idx);
+                  }}
+                  className={cn(
+                    "px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer",
+                    idx === activeModeIndex
+                      ? "bg-amber-400 text-slate-950 shadow-md ring-2 ring-amber-300 font-extrabold"
+                      : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/15 border border-white/20 font-semibold"
+                  )}
+                >
+                  {mode.label.split(" (")[0]}
+                </button>
+              ))}
+            </div>
 
-          {/* Grayscale Banding */}
-          <div className="flex items-center gap-1 border-l border-gray-200 pl-2 text-xs">
-            <span className="text-[10px] font-mono text-gray-500 hidden xl:inline">
-              Ramp:
-            </span>
             <button
               type="button"
-              onClick={() => {
-                const next = grayscaleObs === "smooth" ? null : "smooth";
-                setGrayscaleObs(next);
-                updateAggregateStatus(blackDetailObs, whiteDetailObs, next, colorSepObs, textContrastObs);
+              onClick={(e) => {
+                e.stopPropagation();
+                nextMode();
               }}
-              className={`px-2 py-1 rounded-md text-[11px] font-medium transition-all ${
-                grayscaleObs === "smooth"
-                  ? "bg-emerald-600 text-white font-semibold shadow-xs"
-                  : "bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200"
-              }`}
+              className="p-1.5 hover:bg-white/20 rounded transition-colors text-amber-300 cursor-pointer"
+              title="Next mode (Right Arrow / Click)"
+              aria-label="Next mode"
             >
-              ✓ {t("obsGraySmooth")}
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                const next = grayscaleObs === "banding" ? null : "banding";
-                setGrayscaleObs(next);
-                updateAggregateStatus(blackDetailObs, whiteDetailObs, next, colorSepObs, textContrastObs);
-              }}
-              className={`px-2 py-1 rounded-md text-[11px] font-medium transition-all ${
-                grayscaleObs === "banding"
-                  ? "bg-amber-600 text-white font-semibold shadow-xs"
-                  : "bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200"
-              }`}
-            >
-              {t("obsGrayBanding")}
-            </button>
-          </div>
-
-          {/* Text Contrast */}
-          <div className="flex items-center gap-1 border-l border-gray-200 pl-2 text-xs">
-            <span className="text-[10px] font-mono text-gray-500 hidden xl:inline">
-              Text:
-            </span>
-            <button
-              type="button"
-              onClick={() => {
-                const next = textContrastObs === "clear" ? null : "clear";
-                setTextContrastObs(next);
-                updateAggregateStatus(blackDetailObs, whiteDetailObs, grayscaleObs, colorSepObs, next);
-              }}
-              className={`px-2 py-1 rounded-md text-[11px] font-medium transition-all ${
-                textContrastObs === "clear"
-                  ? "bg-emerald-600 text-white font-semibold shadow-xs"
-                  : "bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200"
-              }`}
-            >
-              ✓ {t("obsTextClear")}
-            </button>
-          </div>
-
-          {/* Optional User-Provided Contrast Ratio */}
-          <div className="border-l border-gray-200 pl-2">
-            <button
-              type="button"
-              onClick={() => setShowRatedModal(!showRatedModal)}
-              className="text-[11px] font-medium px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors"
-              title="Add optional manufacturer-rated contrast ratio specification"
-            >
-              {userRatedContrast ? `Rated: ${userRatedContrast}` : "+ Rated Contrast"}
+              <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>
       </TestControlBar>
-
-      {/* Modal for entering user-provided manufacturer rated contrast ratio */}
-      {showRatedModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
-          <div className="bg-white rounded-2xl p-6 max-w-sm w-full shadow-2xl border border-gray-200 text-slate-900 space-y-4">
-            <div>
-              <h3 className="text-sm font-bold text-gray-900">{t("userProvidedTitle")}</h3>
-              <p className="text-xs text-gray-500 mt-1">{t("userProvidedDisclaimer")}</p>
-            </div>
-            <div>
-              <label className="text-xs font-semibold text-gray-700 block mb-1">
-                {t("userProvidedInputLabel")}
-              </label>
-              <input
-                type="text"
-                value={userRatedContrast}
-                onChange={(e) => setUserRatedContrast(e.target.value)}
-                placeholder={t("userProvidedPlaceholder")}
-                className="w-full px-3 py-2 text-xs border border-gray-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-            <div className="flex justify-end gap-2 pt-2">
-              <button
-                type="button"
-                onClick={() => setShowRatedModal(false)}
-                className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-900 text-white hover:bg-black"
-              >
-                Save
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </>
+  );
+}
+
+/**
+ * Educational & Calibration Guidance
+ * Rendered cleanly below the viewport via extraControls in TestWrapper
+ */
+export function ContrastGuidance() {
+  return (
+    <div className="w-full max-w-4xl mx-auto bg-card border border-border/70 rounded-2xl p-5 shadow-xs space-y-4">
+      {/* Honesty Banner */}
+      <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl text-xs text-blue-950 dark:text-blue-200 leading-relaxed space-y-1">
+        <div className="flex items-center gap-2 font-semibold">
+          <ShieldAlert className="w-4 h-4 text-blue-500 shrink-0" />
+          <span>Visual Inspection Aid (Not a Physical Hardware Light Meter)</span>
+        </div>
+        <p>
+          Standard web browsers render RGB pixel patterns directly to your operating system pipeline. Browsers cannot physically measure native contrast ratios (e.g. 1000:1 or 1,000,000:1) without external hardware photometer sensors. This test provides calibrated visual steps to evaluate shadow detail, white clipping, and gradation smoothness.
+        </p>
+      </div>
+
+      {/* 3 Clear Inspection Directives */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+        <div className="p-3.5 rounded-xl bg-muted/30 border border-border/40 space-y-1.5">
+          <div className="flex items-center gap-1.5 font-bold text-foreground">
+            <Eye className="w-4 h-4 text-emerald-500 shrink-0" />
+            <span>1. What You Are Testing</span>
+          </div>
+          <p className="text-muted-foreground leading-relaxed">
+            Checks whether near-black shadow tones and near-white highlight steps remain distinguishable from pure black and pure white without washing out or clipping.
+          </p>
+        </div>
+
+        <div className="p-3.5 rounded-xl bg-muted/30 border border-border/40 space-y-1.5">
+          <div className="flex items-center gap-1.5 font-bold text-foreground">
+            <CheckCircle2 className="w-4 h-4 text-blue-500 shrink-0" />
+            <span>2. What To Do</span>
+          </div>
+          <p className="text-muted-foreground leading-relaxed">
+            View the display perpendicular to your eyes at normal distance. In the Black Level test, check if steps 2 and 3 are visible. In White Level, check if steps 253 and 254 remain distinct.
+          </p>
+        </div>
+
+        <div className="p-3.5 rounded-xl bg-muted/30 border border-border/40 space-y-1.5">
+          <div className="flex items-center gap-1.5 font-bold text-foreground">
+            <Info className="w-4 h-4 text-amber-500 shrink-0" />
+            <span>3. What Indicates a Problem</span>
+          </div>
+          <p className="text-muted-foreground leading-relaxed">
+            <strong>Crushed blacks:</strong> Dark patches merge into black (raise brightness or adjust gamma). <strong>Clipped whites:</strong> Bright patches blend into white (lower monitor contrast).
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }

@@ -1,6 +1,4 @@
-"use client";
-
-import { safeStorageGet, safeStorageSet, safeSessionGet, safeSessionSet } from "./browserCapabilities";
+import { safeStorageGet, safeStorageSet, safeSessionGet, safeSessionSet, safeSessionRemove } from "./browserCapabilities";
 
 export type ObservationResult = "PASS" | "ISSUE" | "UNSURE" | "LOOKS_NORMAL" | "NEEDS_ATTENTION" | null;
 
@@ -74,7 +72,7 @@ export interface ComparisonObservations {
 
 export interface ActiveInspectionSession {
   id: string;
-  workflowId?: string; // "general" | "used" | "gaming" | "oled" | "laptop" | "tv" | "diagnostic" | "custom"
+  workflowId?: string; // "general" | "used" | "gaming" | "oled" | "laptop" | "tv" | "diagnostic" | "auto-test" | "custom"
   workflowTitle: string;
   queue: string[]; // List of test paths, e.g. ["/tests/dead-pixel-test", ...]
   currentIndex: number;
@@ -85,6 +83,7 @@ export interface ActiveInspectionSession {
   generalNotes: string;
   monitorProfile: MonitorProfile;
   displaySnapshot?: BrowserDisplaySnapshot;
+  isAutoTest?: boolean;
 }
 
 export interface CompletedInspection {
@@ -111,9 +110,119 @@ const KEY_SAVED_PROFILES = "monitor_tester_saved_profiles";
 const KEY_INSPECTION_HISTORY = "monitor_tester_inspection_history";
 const KEY_COMPARISON_OBSERVATIONS = "monitor_tester_comparison_observations";
 
+// Guided Auto Test Storage Keys
+export const KEY_AUTO_TEST_ACTIVE = "screen_tester_auto_test_active";
+export const KEY_AUTO_TEST_PAUSED = "screen_tester_auto_test_paused";
+export const KEY_AUTO_TEST_COLOR = "screen_tester_auto_test_color";
+
+// Standard Guided Auto Test Queue
+export const AUTO_TEST_QUEUE = [
+  "/tests/dead-pixel-test",     // 1. Dead & Stuck Pixel Inspection (Black, White, RGB, CMY)
+  "/tests/uniformity-test",     // 2. Color Uniformity & Clouding Test
+  "/tests/color-banding-test",  // 3. Grayscale, Gradient & Banding Test
+  "/tests/gamma-test",          // 4. Gamma Tracking Calibration
+  "/tests/sharpness-test",      // 5. Pattern & Text Sharpness Test
+  "/tests/ghosting-test",       // 6. Motion & Ghosting Trailing Test
+  "/tests/custom-pattern",      // 7. Precision Test Patterns (Grayscale, Primaries, Moire, etc.)
+  "/tests/contrast-test",       // 8. Color Contrast & Range Inspection
+  "/tests/brightness-test"      // 9. Brightness & Luminance Test
+];
+
 // Legacy keys for backward compatibility
 const LEGACY_KEY_OBSERVATIONS = "monitor-tester-observations";
 const LEGACY_KEY_WORKFLOW = "monitor-tester-workflow";
+
+export function isAutoTestSessionActive(): boolean {
+  if (typeof window === "undefined") return false;
+  return safeSessionGet<string | null>(KEY_AUTO_TEST_ACTIVE, null) === "true";
+}
+
+export function setAutoTestSessionActive(active: boolean): void {
+  if (typeof window === "undefined") return;
+  if (active) {
+    safeSessionSet(KEY_AUTO_TEST_ACTIVE, "true");
+  } else {
+    safeSessionRemove(KEY_AUTO_TEST_ACTIVE);
+    safeSessionRemove(KEY_AUTO_TEST_PAUSED);
+    safeSessionRemove(KEY_AUTO_TEST_COLOR);
+  }
+}
+
+export function isAutoTestPaused(): boolean {
+  if (typeof window === "undefined") return false;
+  return safeSessionGet<string | null>(KEY_AUTO_TEST_PAUSED, null) === "true";
+}
+
+export function setAutoTestPaused(paused: boolean): void {
+  if (typeof window === "undefined") return;
+  safeSessionSet(KEY_AUTO_TEST_PAUSED, paused ? "true" : "false");
+}
+
+export interface OverallVisualVerdict {
+  status: "NO_ISSUES" | "NEEDS_ATTENTION" | "POSSIBLE_PIXEL_ISSUE" | "MULTIPLE_AREAS_NEED_ATTENTION" | "UNSURE";
+  headline: string;
+  description: string;
+}
+
+export function computeOverallVisualVerdict(
+  observations: Record<string, TestObservationItem>,
+  pixelDefectsCount: number
+): OverallVisualVerdict {
+  const values = Object.values(observations);
+  const completed = values.filter(v => v.result !== null);
+
+  const attentionTests = completed.filter(v => v.result === "ISSUE" || (v.result as string) === "NEEDS_ATTENTION");
+  const unsureTests = completed.filter(v => v.result === "UNSURE" || (v.result as string) === "CHECK");
+
+  const pixelIssueObs = observations["dead-pixel-test"]?.result === "ISSUE" || pixelDefectsCount > 0;
+  const nonPixelAttentionCount = attentionTests.filter(v => v.testId !== "dead-pixel-test").length;
+
+  if (pixelIssueObs && nonPixelAttentionCount > 0) {
+    return {
+      status: "MULTIPLE_AREAS_NEED_ATTENTION",
+      headline: "DISPLAY VISUAL CHECK: MULTIPLE AREAS NEED ATTENTION",
+      description: "Visual issues were reported across multiple display tests, including possible pixel anomalies and pattern tests."
+    };
+  }
+
+  if (pixelIssueObs) {
+    return {
+      status: "POSSIBLE_PIXEL_ISSUE",
+      headline: "DISPLAY VISUAL CHECK: POSSIBLE PIXEL ISSUE",
+      description: "A possible dead or stuck pixel was reported during the visual solid-color inspection. Inspect the indicated area again using individual color tests."
+    };
+  }
+
+  if (attentionTests.length > 1) {
+    return {
+      status: "MULTIPLE_AREAS_NEED_ATTENTION",
+      headline: "DISPLAY VISUAL CHECK: MULTIPLE AREAS NEED ATTENTION",
+      description: "One or more visual issues were reported during the screen inspection."
+    };
+  }
+
+  if (attentionTests.length === 1) {
+    return {
+      status: "NEEDS_ATTENTION",
+      headline: "DISPLAY VISUAL CHECK: NEEDS ATTENTION",
+      description: "One or more visual issues were reported during the screen inspection."
+    };
+  }
+
+  if (unsureTests.length > 0) {
+    return {
+      status: "UNSURE",
+      headline: "DISPLAY VISUAL CHECK: INCONCLUSIVE EVALUATION",
+      description: "Some areas could not be conclusively evaluated."
+    };
+  }
+
+  return {
+    status: "NO_ISSUES",
+    headline: "DISPLAY VISUAL CHECK: NO ISSUES REPORTED",
+    description: "All visual inspection steps were observed and marked as looking normal without defects."
+  };
+}
 
 export const DEFAULT_MONITOR_PROFILE: MonitorProfile = {
   brand: "",

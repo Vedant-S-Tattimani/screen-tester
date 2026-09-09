@@ -9,7 +9,10 @@ import {
   Settings, 
   Eye, 
   Maximize2,
-  Keyboard
+  Keyboard,
+  Monitor,
+  ShieldCheck,
+  Cpu
 } from "lucide-react";
 
 import { AllScreenTests, type ScreenTestCategory, type ScreenTestItem } from "@/components/home/AllScreenTests";
@@ -173,8 +176,7 @@ export default async function Home({
 
             {/* Main Headline */}
             <h1 className="text-3xl sm:text-4xl md:text-[44px] lg:text-[50px] xl:text-[56px] font-extrabold tracking-[-0.035em] text-gray-950 leading-[1.08] sm:leading-[1.06] mb-3 sm:mb-4 lg:mb-5">
-              {t("headline_pt1")}<br />
-              {t("headline_pt2")}
+              {t("h1")}
             </h1>
 
             {/* Supporting Copy */}
@@ -400,7 +402,64 @@ export default async function Home({
       </section>
 
       {/* ================================================== */}
-      {/* 6. MORE FREE TESTING TOOLS SECTION                 */}
+      {/* 6. ABOUT SCREEN TESTER (AUTHORITY & BIO)           */}
+      {/* ================================================== */}
+      <section className="border-t border-gray-200/80 bg-white py-12 sm:py-16">
+        <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
+          {/* Section Header */}
+          <div className="mb-6 sm:mb-8 max-w-3xl">
+            <div className="text-[11px] sm:text-xs font-mono font-medium uppercase tracking-[0.22em] text-gray-400 mb-2 select-none">
+              {t("aboutEyebrow")}
+            </div>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-gray-950">
+              {t("aboutTitle")}
+            </h2>
+            <p className="text-sm sm:text-base text-gray-600 mt-2.5 leading-relaxed">
+              {t("aboutLead")}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+            {/* Left Narrative Column */}
+            <div className="lg:col-span-7 space-y-4 text-xs sm:text-sm text-gray-600 leading-relaxed">
+              <p>{t("aboutP1")}</p>
+              <p>{t("aboutP2")}</p>
+              
+              {/* Feature Badges */}
+              <div className="pt-3 flex flex-wrap gap-2.5">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-200/80 text-xs font-medium text-gray-800">
+                  <Monitor className="w-3.5 h-3.5 text-gray-600" />
+                  <span>{t("badgeBrowser")}</span>
+                </div>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-200/80 text-xs font-medium text-gray-800">
+                  <ShieldCheck className="w-3.5 h-3.5 text-gray-600" />
+                  <span>{t("badgePrivacy")}</span>
+                </div>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-200/80 text-xs font-medium text-gray-800">
+                  <Cpu className="w-3.5 h-3.5 text-gray-600" />
+                  <span>{t("badgeNoInstall")}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Limitations & Calibration Note Card */}
+            <div className="lg:col-span-5 bg-gray-50/70 border border-gray-200/90 rounded-2xl p-5 sm:p-6">
+              <div className="flex items-center gap-2.5 text-gray-900 font-semibold text-xs sm:text-sm mb-2.5">
+                <div className="w-7 h-7 rounded-lg bg-gray-200/80 flex items-center justify-center text-gray-800 shrink-0">
+                  <Sliders className="w-3.5 h-3.5 stroke-[2]" />
+                </div>
+                <span>{t("aboutLimitationsTitle")}</span>
+              </div>
+              <p className="text-[11.5px] sm:text-xs text-gray-500 leading-relaxed">
+                {t("aboutLimitationsDesc")}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================== */}
+      {/* 7. MORE FREE TESTING TOOLS SECTION                 */}
       {/* ================================================== */}
       <section className="border-t border-gray-200/80 bg-white py-10 sm:py-12">
         <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
@@ -435,6 +494,28 @@ export default async function Home({
           </div>
         </div>
       </section>
+
+      {/* Structured Data: WebApplication JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Screen Tester",
+            "url": `https://screen-tester.com/${locale}`,
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "All",
+            "browserRequirements": "Requires HTML5 Canvas and WebGL support",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "description": t("description")
+          })
+        }}
+      />
 
     </div>
   );

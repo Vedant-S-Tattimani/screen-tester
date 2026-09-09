@@ -2,7 +2,8 @@ import {
   PixelDefectMarker, 
   MonitorProfile, 
   RecommendedCheckItem, 
-  TroubleshootingReferenceItem 
+  TroubleshootingReferenceItem,
+  OverallVisualVerdict
 } from "@/lib/inspectionStorage";
 
 export interface InspectionReportOverviewData {
@@ -55,6 +56,7 @@ export interface InspectionReportData {
   workflowId: string;
   inspectionPurpose?: string;
   overview: InspectionReportOverviewData;
+  overallVerdict: OverallVisualVerdict;
   displayInfo: BrowserDisplayDetectedData;
   userProfile: MonitorProfile;
   recommendedChecks: RecommendedCheckItem[];

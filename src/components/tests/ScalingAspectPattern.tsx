@@ -119,8 +119,8 @@ export function ScalingAspectPattern({ testId = "scaling-aspect-test" }: Scaling
       <div className="mt-6 w-full max-w-4xl bg-card border border-border/70 rounded-2xl p-5 shadow-sm space-y-5">
         <div className="flex flex-wrap items-center justify-between gap-3">
           {/* Frame Filter */}
-          <div className="flex flex-wrap items-center gap-1.5 bg-muted/60 p-1.5 rounded-xl border border-border/60">
-            <span className="text-[11px] font-mono px-2 text-muted-foreground uppercase">Guides:</span>
+          <div className="flex flex-wrap items-center gap-1.5 bg-muted/60 dark:bg-white/10 p-1.5 rounded-xl border border-border/60">
+            <span className="text-[11px] font-mono px-2 text-amber-500 dark:text-amber-300 font-bold uppercase tracking-wider">Guides:</span>
             {[
               { id: "all", label: "All Frames" },
               { id: "16-9", label: "16:9 Widescreen" },
@@ -131,10 +131,10 @@ export function ScalingAspectPattern({ testId = "scaling-aspect-test" }: Scaling
               <button
                 key={f.id}
                 onClick={() => setActiveFrame(f.id as AspectFrameMode)}
-                className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all ${
+                className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer ${
                   activeFrame === f.id
-                    ? "bg-foreground text-background shadow-xs font-semibold"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                    ? "bg-amber-500 dark:bg-amber-400 text-slate-950 shadow-md ring-2 ring-amber-300 font-extrabold"
+                    : "text-slate-700 dark:text-cyan-100 hover:text-foreground hover:bg-muted font-semibold"
                 }`}
               >
                 {f.label}

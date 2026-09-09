@@ -210,9 +210,6 @@ export function safeSessionSet(key: string, value: unknown): boolean {
   }
 }
 
-/**
- * Safely remove a key from sessionStorage without throwing exceptions.
- */
 export function safeSessionRemove(key: string): boolean {
   try {
     sessionStorage.removeItem(key);

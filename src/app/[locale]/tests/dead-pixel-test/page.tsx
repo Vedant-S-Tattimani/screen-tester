@@ -23,13 +23,6 @@ const COLORS = [
   "#00FFFF", // Cyan
   "#FF00FF", // Magenta
   "#FFFF00", // Yellow
-  "#FFA500", // Orange
-  "#800080", // Purple
-  "#1A1A1A", // 10% Gray
-  "#404040", // 25% Gray
-  "#808080", // 50% Gray
-  "#BFBFBF", // 75% Gray
-  "#E6E6E6", // 90% Gray
 ];
 
 export default async function DeadPixelTest({

@@ -179,9 +179,10 @@
   },
   "Home": {
     "eyebrow": "TEST. INSPECT. UNDERSTAND.",
-    "headline_pt1": "Check your display.",
-    "headline_pt2": "Find the flaws.",
-    "description": "A comprehensive suite of tools to test your monitor for dead pixels, backlight bleed, color accuracy, motion blur, and more. Free, precise, and works directly in your browser.",
+    "h1": "Screen Tester – Online Screen & Monitor Test",
+    "headline_pt1": "Screen Tester",
+    "headline_pt2": "Online Screen & Monitor Test",
+    "description": "Free online screen tester and monitor test tool. Test your screen or monitor online for dead pixels, color accuracy, refresh rate, brightness, contrast, and ghosting directly in your browser.",
     "startTesting": "Start Testing",
     "browseTests": "Browse All Tests",
     "cap1Title": "Works in your browser",
@@ -265,7 +266,18 @@
     "moreFreeTestingToolsTitle": "More Free Testing Tools",
     "keyboardTesterTitle": "Keyboard Tester",
     "keyboardTesterDesc": "Test every key on your keyboard online with our free Keyboard Tester.",
-    "testYourKeyboard": "Test Your Keyboard →"
+    "testYourKeyboard": "Test Your Keyboard →",
+    "aboutEyebrow": "ABOUT SCREEN TESTER",
+    "aboutHeading": "About Screen Tester",
+    "aboutTitle": "Online Screen Test & Monitor Diagnostic Tool",
+    "aboutLead": "Screen Tester is a free online tool designed for comprehensive display and monitor testing directly in your web browser, with no software or drivers required.",
+    "aboutP1": "Screen Tester is a free online tool for checking your screen, monitor, or display directly in your web browser. It provides visual tests for common display issues such as dead pixels, colors, brightness, contrast, refresh rate, and screen ghosting.",
+    "aboutP2": "The tool is useful for checking new or used monitors, laptop displays, gaming screens, and other displays without installing additional software. The tests provide visual inspection patterns and should be treated as a practical reference rather than laboratory-grade hardware measurements.",
+    "aboutLimitationsTitle": "Browser-Based Testing Scope & Calibration Note",
+    "aboutLimitationsDesc": "All tests provide visual diagnostic patterns for human inspection under controlled viewing conditions. Screen Tester does not replace optical hardware sensors (such as spectrophotometers, colorimeters, or photodiode oscilloscopes) and does not modify operating-system color profiles. For optimal results, clean your screen, inspect in fullscreen mode (F11), and verify display scaling is set to 100%.",
+    "badgeBrowser": "100% In-Browser Testing",
+    "badgeNoInstall": "No Software Required",
+    "badgePrivacy": "Private & Secure Evaluation"
   },
   "TestLibrary": {
     "launchTest": "Launch Test",

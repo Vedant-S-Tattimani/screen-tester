@@ -18,7 +18,13 @@ import {
   PixelDefectMarker, 
   PixelDefectType, 
   ObservationResult, 
-  startNewInspectionSession 
+  startNewInspectionSession,
+  archiveCurrentInspection,
+  AUTO_TEST_QUEUE,
+  isAutoTestSessionActive,
+  setAutoTestSessionActive,
+  isAutoTestPaused,
+  setAutoTestPaused
 } from "@/lib/inspectionStorage";
 import { getTroubleshootingByTestId } from "@/data/troubleshooting";
 import { getArticleByTestId } from "@/data/knowledgeBase";
@@ -47,12 +53,7 @@ export function TestWrapper({ title, description, instructions, children, testId
   const pathname = usePathname();
   
   const isRunning = true; // Always running inline
-  const [isFullscreen, setIsFullscreen] = useState(() => {
-    if (typeof document !== "undefined") {
-      return document.fullscreenElement !== null || safeSessionGet<boolean>(STORAGE_KEY_FULLSCREEN, false);
-    }
-    return false;
-  });
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   
   // Observation State
@@ -69,11 +70,17 @@ export function TestWrapper({ title, description, instructions, children, testId
   const [workflowIndex, setWorkflowIndex] = useState(-1);
   const [completedTestIds, setCompletedTestIds] = useState<string[]>([]);
   const [isQueueDrawerOpen, setIsQueueDrawerOpen] = useState(false);
+
+  // Guided Auto Test State
+  const [isAutoTest, setIsAutoTest] = useState(false);
+  const [isAutoTestPausedState, setIsAutoTestPausedState] = useState(false);
+  const [autoTestSecondsLeft, setAutoTestSecondsLeft] = useState(7);
+  const [activeColorName, setActiveColorName] = useState("");
   
   const containerRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   
-  // Load workflow, active session & observation from storage on mount and route change
+  // Load workflow, active session, observation & auto-test state on mount and route change
   useEffect(() => {
     queueMicrotask(() => {
       const activeSession = getActiveInspectionSession();
@@ -100,6 +107,13 @@ export function TestWrapper({ title, description, instructions, children, testId
         }
       }
       
+      // Auto test flags from session storage
+      const autoActive = isAutoTestSessionActive();
+      const autoPaused = isAutoTestPaused();
+      setIsAutoTest(autoActive);
+      setIsAutoTestPausedState(autoPaused);
+      setAutoTestSecondsLeft(7);
+
       if (testId) {
         const currentObs = getTestObservation(testId);
         if (currentObs) {
@@ -136,11 +150,12 @@ export function TestWrapper({ title, description, instructions, children, testId
   // Pixel Defect Marker helpers
   const addMarker = useCallback((x: number, y: number, viewportWidth: number, viewportHeight: number, type: PixelDefectType = "dead") => {
     if (!testId) return;
-    const marker = addPixelDefectMarker(testId, x, y, viewportWidth, viewportHeight, type);
+    const colorTag = activeColorName || undefined;
+    const marker = addPixelDefectMarker(testId, x, y, viewportWidth, viewportHeight, type, colorTag);
     setPixelDefects(prev => [...prev, marker]);
     setActiveMarker(marker);
     setObservationState("ISSUE");
-  }, [testId]);
+  }, [testId, activeColorName]);
 
   const removeMarker = useCallback((id: string) => {
     if (!testId) return;
@@ -172,6 +187,8 @@ export function TestWrapper({ title, description, instructions, children, testId
       sessionStorage.removeItem(STORAGE_KEY_WORKFLOW); 
     } catch {}
     safeSessionRemove(STORAGE_KEY_FULLSCREEN);
+    setAutoTestSessionActive(false);
+    setIsAutoTest(false);
     setWorkflowSequence([]);
     setWorkflowIndex(-1);
     setIsFullscreen(false);
@@ -180,6 +197,37 @@ export function TestWrapper({ title, description, instructions, children, testId
     }
     router.push("/");
   }, [router]);
+
+  // Guided Auto Test controls
+  const startGuidedAutoTest = useCallback((customQueue?: string[]) => {
+    const queue = customQueue && customQueue.length > 0 ? customQueue : AUTO_TEST_QUEUE;
+    const normalized = queue.map((item) => (
+      typeof normalizeWorkflowPath === "function" ? normalizeWorkflowPath(item) : item
+    ));
+    safeSessionSet(STORAGE_KEY_WORKFLOW, normalized);
+    setAutoTestSessionActive(true);
+    setAutoTestPaused(false);
+    setIsAutoTest(true);
+    setIsAutoTestPausedState(false);
+    setAutoTestSecondsLeft(7);
+    startNewInspectionSession("Guided Auto Screen Test", normalized, "auto-test");
+    router.push(normalized[0]);
+  }, [router]);
+
+  const stopGuidedAutoTest = useCallback(() => {
+    setAutoTestSessionActive(false);
+    setAutoTestPaused(false);
+    setIsAutoTest(false);
+    setIsAutoTestPausedState(false);
+  }, []);
+
+  const toggleAutoTestPause = useCallback(() => {
+    setIsAutoTestPausedState(prev => {
+      const next = !prev;
+      setAutoTestPaused(next);
+      return next;
+    });
+  }, []);
 
   const hasNextInWorkflow = workflowIndex !== -1 && workflowIndex < workflowSequence.length - 1;
   const hasPrevInWorkflow = workflowIndex > 0;
@@ -197,14 +245,18 @@ export function TestWrapper({ title, description, instructions, children, testId
       const target = typeof normalizeWorkflowPath === "function" ? normalizeWorkflowPath(nextPath) : nextPath;
       router.push(target);
     } else if (workflowIndex === workflowSequence.length - 1) {
-      // Done with workflow -> exit fullscreen and go to summary
+      // Done with workflow -> archive inspection, exit fullscreen and go to summary
       safeSessionRemove(STORAGE_KEY_FULLSCREEN);
+      if (isAutoTest) {
+        setAutoTestSessionActive(false);
+      }
+      archiveCurrentInspection();
       if (document.fullscreenElement) {
         document.exitFullscreen().catch(() => {});
       }
       router.push("/monitor-inspection/summary");
     }
-  }, [hasNextInWorkflow, workflowIndex, workflowSequence, router, isFullscreen]);
+  }, [hasNextInWorkflow, workflowIndex, workflowSequence, router, isFullscreen, isAutoTest]);
 
   const goPrevInWorkflow = useCallback(() => {
     if (hasPrevInWorkflow) {
@@ -220,6 +272,29 @@ export function TestWrapper({ title, description, instructions, children, testId
       router.push(target);
     }
   }, [hasPrevInWorkflow, workflowIndex, workflowSequence, router, isFullscreen]);
+
+  // Guided Auto Test timer for tests other than dead-pixel-test and custom-pattern
+  const autoTestSecondsLeftRef = useRef(autoTestSecondsLeft);
+  autoTestSecondsLeftRef.current = autoTestSecondsLeft;
+
+  useEffect(() => {
+    if (!isAutoTest || isAutoTestPausedState) return;
+    if (testId === "dead-pixel-test" || testId === "custom-pattern") return;
+
+    const timer = setInterval(() => {
+      if (autoTestSecondsLeftRef.current <= 1) {
+        setAutoTestSecondsLeft(7);
+        if (!observation) {
+          setObservation("PASS");
+        }
+        goNextInWorkflow();
+      } else {
+        setAutoTestSecondsLeft((prev) => prev - 1);
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [isAutoTest, isAutoTestPausedState, testId, observation, setObservation, goNextInWorkflow]);
 
   const skipTestInWorkflow = useCallback(() => {
     if (hasNextInWorkflow) {
@@ -395,7 +470,15 @@ export function TestWrapper({ title, description, instructions, children, testId
       goNextInWorkflow,
       goPrevInWorkflow,
       skipTestInWorkflow,
-      restartWorkflow
+      restartWorkflow,
+      isAutoTest,
+      isAutoTestPaused: isAutoTestPausedState,
+      autoTestSecondsLeft,
+      toggleAutoTestPause,
+      startGuidedAutoTest,
+      stopGuidedAutoTest,
+      activeColorName,
+      setActiveColorName
     }}>
       <div className={cn(
         "flex flex-col w-full transition-all duration-300",
@@ -424,7 +507,7 @@ export function TestWrapper({ title, description, instructions, children, testId
                 <div className="bg-muted/40 rounded-xl p-3 border border-border/60 text-right min-w-[210px]">
                   <div className="flex items-center justify-between gap-3 mb-1">
                     <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold font-mono">
-                      {t.has("queue.sequenceLabel") ? t("queue.sequenceLabel") : "Queue Sequence"}
+                      {isAutoTest ? "Guided Auto Test" : (t.has("queue.sequenceLabel") ? t("queue.sequenceLabel") : "Queue Sequence")}
                     </span>
                     <button 
                       onClick={() => setIsQueueDrawerOpen(true)}
@@ -440,7 +523,7 @@ export function TestWrapper({ title, description, instructions, children, testId
                   </div>
                   <div className="w-full bg-border/60 h-1.5 rounded-full overflow-hidden mt-2">
                     <div 
-                      className="bg-blue-600 h-full rounded-full transition-all duration-300"
+                      className={cn("h-full rounded-full transition-all duration-300", isAutoTest ? "bg-amber-400" : "bg-blue-600")}
                       style={{ width: `${Math.round(((workflowIndex + 1) / Math.max(1, workflowSequence.length)) * 100)}%` }}
                     />
                   </div>
@@ -471,6 +554,81 @@ export function TestWrapper({ title, description, instructions, children, testId
                 : "aspect-video rounded-xl border border-gray-200/90 shadow-sm min-h-[420px] sm:min-h-[500px]"
             )}
           >
+            {/* Guided Auto Test Top Banner */}
+            {isAutoTest && (
+              <div 
+                data-control-bar="true"
+                className="absolute top-3 sm:top-4 left-1/2 -translate-x-1/2 w-[calc(100vw-1.5rem)] max-w-2xl bg-black/85 backdrop-blur-md text-white px-4 py-3 rounded-2xl border border-white/20 shadow-2xl z-40 animate-fade-in flex flex-col gap-2 pointer-events-auto"
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping" />
+                    <span className="text-xs font-mono font-bold tracking-wider text-amber-300 uppercase">
+                      Guided Auto Test
+                    </span>
+                    <span className="text-xs font-mono text-gray-300">
+                      • Test {workflowIndex !== -1 ? workflowIndex + 1 : 1} of {workflowSequence.length || 9}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-1.5">
+                    <button
+                      type="button"
+                      onClick={toggleAutoTestPause}
+                      className={cn(
+                        "px-2.5 py-1 rounded-lg text-xs font-mono font-semibold transition-all cursor-pointer",
+                        isAutoTestPausedState
+                          ? "bg-emerald-600 hover:bg-emerald-500 text-white shadow-xs"
+                          : "bg-white/15 hover:bg-white/25 text-white border border-white/20"
+                      )}
+                      title={isAutoTestPausedState ? "Resume auto test" : "Pause auto test"}
+                    >
+                      {isAutoTestPausedState ? "▶ Resume" : `⏸ Pause (${autoTestSecondsLeft}s)`}
+                    </button>
+                    {hasPrevInWorkflow && (
+                      <button
+                        type="button"
+                        onClick={goPrevInWorkflow}
+                        className="px-2 py-1 rounded-lg text-xs font-mono text-gray-300 hover:text-white hover:bg-white/15 transition-colors cursor-pointer"
+                        title="Previous test"
+                      >
+                        ❮ Prev
+                      </button>
+                    )}
+                    <button
+                      type="button"
+                      onClick={goNextInWorkflow}
+                      className="px-2 py-1 rounded-lg text-xs font-mono text-gray-300 hover:text-white hover:bg-white/15 transition-colors cursor-pointer"
+                      title="Skip to next test"
+                    >
+                      Skip ❯
+                    </button>
+                    <button
+                      type="button"
+                      onClick={stopGuidedAutoTest}
+                      className="text-gray-400 hover:text-red-400 text-xs px-1.5 py-1 transition-colors cursor-pointer ml-1"
+                      title="Exit Guided Auto Test"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                </div>
+
+                <div className="text-xs text-gray-200 leading-snug border-t border-white/10 pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <span>
+                    {testId === "dead-pixel-test"
+                      ? "Look carefully across the entire screen for any pixel that remains a different color."
+                      : "Your screen is now being checked with this visual pattern. Inspect the screen and select your observation below."}
+                  </span>
+                  {testId === "dead-pixel-test" && activeColorName && (
+                    <span className="font-mono text-[11px] font-bold px-2 py-0.5 rounded bg-white/15 text-amber-300 shrink-0 self-start sm:self-auto">
+                      COLOR: {activeColorName}
+                    </span>
+                  )}
+                </div>
+              </div>
+            )}
+
             {children}
             {testId && (
               <PixelDefectOverlay

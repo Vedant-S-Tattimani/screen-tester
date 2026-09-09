@@ -30,7 +30,6 @@ import {
   Droplet, 
   Sparkles, 
   Hand,
-  Search,
   ArrowRight,
   Monitor
 } from "lucide-react";
@@ -53,9 +52,9 @@ interface AllScreenTestsProps {
   categories: ScreenTestCategory[];
   sectionTitle: string;
   sectionSubtitle: string;
-  searchPlaceholder: string;
+  searchPlaceholder?: string;
   filterAllText: string;
-  noResultsText: string;
+  noResultsText?: string;
 }
 
 function getTestIcon(id: string) {
@@ -132,90 +131,52 @@ export function AllScreenTests({
   categories,
   sectionTitle,
   sectionSubtitle,
-  searchPlaceholder,
   filterAllText,
-  noResultsText
+  noResultsText = "No tests found"
 }: AllScreenTestsProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  const [searchQuery, setSearchQuery] = useState<string>("");
 
   const totalTestsCount = useMemo(() => {
     return categories.reduce((sum, cat) => sum + cat.tests.length, 0);
   }, [categories]);
 
-  // Filtered tests logic
+  // Filtered tests logic (by category)
   const filteredCategories = useMemo(() => {
-    const query = searchQuery.trim().toLowerCase();
-
-    return categories.map((category) => {
-      // If user selected a category tab and it's not this one, filter out
-      if (selectedCategory !== "all" && category.id !== selectedCategory) {
-        return { ...category, tests: [] };
-      }
-
-      // Filter by search query if any
-      const matchingTests = category.tests.filter((test) => {
-        if (!query) return true;
-        return (
-          test.title.toLowerCase().includes(query) ||
-          test.description.toLowerCase().includes(query) ||
-          test.id.toLowerCase().includes(query)
-        );
-      });
-
-      return { ...category, tests: matchingTests };
-    }).filter((category) => category.tests.length > 0);
-  }, [categories, selectedCategory, searchQuery]);
+    return categories
+      .map((category) => {
+        if (selectedCategory !== "all" && category.id !== selectedCategory) {
+          return { ...category, tests: [] };
+        }
+        return category;
+      })
+      .filter((category) => category.tests.length > 0);
+  }, [categories, selectedCategory]);
 
   return (
     <section className="pt-2 pb-12 sm:pb-16 max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12" id="all-screen-tests">
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 sm:mb-8 border-b border-gray-100 pb-5">
-        <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-gray-400 select-none">
-              LIBRARY · {totalTestsCount} TESTS
-            </span>
-          </div>
-          <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight text-gray-950 uppercase">
-            {sectionTitle}
-          </h2>
-          <p className="text-xs sm:text-[13.5px] text-gray-500 mt-1 max-w-xl">
-            {sectionSubtitle}
-          </p>
+      <div className="mb-6 sm:mb-8 border-b border-gray-100 pb-5">
+        <div className="flex items-center gap-2 mb-1">
+          <span className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-gray-400 select-none">
+            LIBRARY · {totalTestsCount} TESTS
+          </span>
         </div>
-
-        {/* Quick Search Input */}
-        <div className="w-full md:w-72 relative">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-            <Search className="w-3.5 h-3.5" />
-          </div>
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder={searchPlaceholder}
-            className="w-full pl-9 pr-7 py-2 text-xs bg-gray-50/70 border border-gray-200/90 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:bg-white transition-all"
-          />
-          {searchQuery && (
-            <button
-              onClick={() => setSearchQuery("")}
-              className="absolute inset-y-0 right-0 pr-3 flex items-center text-xs text-gray-400 hover:text-gray-900 cursor-pointer"
-            >
-              ×
-            </button>
-          )}
-        </div>
+        <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight text-gray-950 uppercase">
+          {sectionTitle}
+        </h2>
+        <p className="text-xs sm:text-[13.5px] text-gray-500 mt-1 max-w-xl">
+          {sectionSubtitle}
+        </p>
       </div>
 
-      {/* Category Filter Pills */}
-      <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-3 mb-6 sm:mb-8 no-scrollbar select-none">
+      {/* Category Filter Pills (Wrap to prevent any text clipping on smaller screens) */}
+      <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 mb-6 sm:mb-8 select-none">
         <button
           onClick={() => setSelectedCategory("all")}
-          className={`px-3 sm:px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap cursor-pointer ${
+          className={`inline-flex items-center justify-center shrink-0 h-9 sm:h-9.5 px-3.5 sm:px-4 rounded-xl text-xs sm:text-[13px] font-medium transition-all duration-150 whitespace-nowrap cursor-pointer border ${
             selectedCategory === "all"
-              ? "bg-gray-950 text-white shadow-2xs"
-              : "bg-gray-100/80 hover:bg-gray-200/70 text-gray-600 hover:text-gray-950"
+              ? "bg-gray-950 border-gray-950 text-white shadow-xs"
+              : "bg-gray-100/90 hover:bg-gray-200/80 border-gray-300 hover:border-gray-400 text-gray-700 hover:text-gray-950"
           }`}
         >
           {filterAllText} ({totalTestsCount})
@@ -225,10 +186,10 @@ export function AllScreenTests({
           <button
             key={cat.id}
             onClick={() => setSelectedCategory(cat.id)}
-            className={`px-3 sm:px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap cursor-pointer ${
+            className={`inline-flex items-center justify-center shrink-0 h-9 sm:h-9.5 px-3.5 sm:px-4 rounded-xl text-xs sm:text-[13px] font-medium transition-all duration-150 whitespace-nowrap cursor-pointer border ${
               selectedCategory === cat.id
-                ? "bg-gray-950 text-white shadow-2xs"
-                : "bg-gray-100/80 hover:bg-gray-200/70 text-gray-600 hover:text-gray-950"
+                ? "bg-gray-950 border-gray-950 text-white shadow-xs"
+                : "bg-gray-100/90 hover:bg-gray-200/80 border-gray-300 hover:border-gray-400 text-gray-700 hover:text-gray-950"
             }`}
           >
             {cat.title} ({cat.tests.length})
@@ -258,10 +219,10 @@ export function AllScreenTests({
                   <Link
                     key={test.id}
                     href={test.href}
-                    className="group bg-white hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-3 sm:p-3.5 transition-all flex items-start gap-3 shadow-2xs hover:shadow-xs min-h-[76px] focus-visible:ring-2 focus-visible:ring-gray-900"
+                    className="group bg-white hover:bg-gray-50/90 border border-gray-300 hover:border-gray-400 rounded-xl p-3 sm:p-3.5 transition-all flex items-start gap-3 shadow-2xs hover:shadow-xs min-h-[76px] focus-visible:ring-2 focus-visible:ring-gray-900"
                   >
-                    {/* Icon */}
-                    <div className="w-7 h-7 rounded-lg bg-gray-100 text-gray-700 flex items-center justify-center shrink-0 group-hover:bg-gray-950 group-hover:text-white transition-colors mt-0.5">
+                    {/* Icon Small Box */}
+                    <div className="w-7 h-7 rounded-lg bg-gray-100 border border-gray-300 text-gray-700 flex items-center justify-center shrink-0 group-hover:bg-gray-950 group-hover:text-white group-hover:border-gray-950 transition-all mt-0.5">
                       {getTestIcon(test.id)}
                     </div>
 
@@ -286,16 +247,13 @@ export function AllScreenTests({
       ) : (
         <div className="py-16 text-center bg-gray-50/50 border border-dashed border-gray-200 rounded-2xl">
           <p className="text-xs sm:text-sm text-gray-500">
-            {noResultsText} &ldquo;<span className="font-medium text-gray-900">{searchQuery}</span>&rdquo;
+            {noResultsText}
           </p>
           <button
-            onClick={() => {
-              setSearchQuery("");
-              setSelectedCategory("all");
-            }}
+            onClick={() => setSelectedCategory("all")}
             className="mt-3 text-xs font-semibold text-gray-900 hover:underline cursor-pointer"
           >
-            Clear filters
+            Show all tests
           </button>
         </div>
       )}

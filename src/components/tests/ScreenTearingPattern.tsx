@@ -204,18 +204,18 @@ export function ScreenTearingPattern({ testId }: ScreenTearingPatternProps) {
                 role="radio"
                 aria-checked={speed === s.value}
                 aria-label={`${s.label} preset`}
-                className={`px-2.5 py-1 rounded text-xs font-medium transition-colors focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-hidden ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:outline-hidden cursor-pointer ${
                   speed === s.value 
-                    ? "bg-white text-gray-950 shadow-xs font-bold" 
-                    : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
+                    ? "bg-amber-400 text-slate-950 shadow-md font-extrabold ring-2 ring-amber-300" 
+                    : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/10 border border-white/15 font-semibold"
                 }`}
               >
-                <span className="font-mono tabular-nums">{idx + 1}.</span> {s.label}
+                <span className="font-mono tabular-nums text-amber-300">{idx + 1}.</span> {s.label}
               </button>
             ))}
           </div>
 
-          <span className="text-xs text-muted-foreground dark:text-slate-300 hidden sm:inline font-mono">
+          <span className="text-xs text-amber-300 font-bold hidden sm:inline font-mono">
             V-Sync Scanline Stress
           </span>
         </div>

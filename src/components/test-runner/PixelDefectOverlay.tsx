@@ -12,6 +12,7 @@ import {
 } from "@/lib/inspectionStorage";
 import { Trash2, X, AlertTriangle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTestContext } from "./TestContext";
 
 interface PixelDefectOverlayProps {
   testId: string;
@@ -29,6 +30,7 @@ export function PixelDefectOverlay({
   isFullscreen
 }: PixelDefectOverlayProps) {
   const t = useTranslations("TestWrapper");
+  const { activeColorName } = useTestContext();
   const [markers, setMarkers] = useState<PixelDefectMarker[]>([]);
   const [selectedMarker, setSelectedMarker] = useState<PixelDefectMarker | null>(null);
   const [showListModal, setShowListModal] = useState(false);
@@ -84,7 +86,8 @@ export function PixelDefectOverlay({
       y,
       Math.round(rect.width),
       Math.round(rect.height),
-      "dead"
+      "dead",
+      activeColorName || undefined
     );
 
     loadMarkers();
@@ -185,10 +188,13 @@ export function PixelDefectOverlay({
               </div>
 
               {/* Pin Hover Badge */}
-              <div className="hidden group-hover:block absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 whitespace-nowrap bg-black/90 text-white text-[10px] font-mono px-2 py-1 rounded shadow-xl border border-white/10 pointer-events-none">
-                <div className="text-red-400 font-bold uppercase">{t("pixelDefect.pinBadgeUserMarked")}</div>
-                <div>X: {marker.x} px | Y: {marker.y} px</div>
-                <div className="capitalize text-white/70">{t("pixelDefect.pinBadgeDefect", { type: marker.type })}</div>
+              <div className="hidden group-hover:block absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 whitespace-nowrap bg-black/90 text-white text-[10px] font-mono px-2 py-1 rounded shadow-xl border border-white/10 pointer-events-none z-50">
+                <div className="text-red-400 font-bold uppercase">User-Reported Pixel Location</div>
+                <div>Location: approximately {marker.xPercent}% from left, {marker.yPercent}% from top</div>
+                {marker.colorAtMark && (
+                  <div className="text-amber-300 font-semibold">Observed during: {marker.colorAtMark} test</div>
+                )}
+                <div className="capitalize text-white/70">Type: Possible {marker.type} pixel</div>
               </div>
             </div>
           );
@@ -210,10 +216,10 @@ export function PixelDefectOverlay({
             <div>
               <div className="text-[10px] font-mono uppercase tracking-wider text-amber-600 font-bold flex items-center gap-1">
                 <AlertTriangle className="w-3 h-3" />
-                {t("pixelDefect.dialogEyebrow")}
+                User-Reported Pixel
               </div>
               <div id="pixel-flaw-dialog-title" className="text-sm font-semibold text-slate-900 mt-0.5">
-                {t("pixelDefect.dialogTitle")}
+                Suspected Pixel Location
               </div>
             </div>
             <button 
@@ -228,17 +234,27 @@ export function PixelDefectOverlay({
           <div className="space-y-3 text-xs">
             <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200/80 font-mono text-[11px] space-y-1">
               <div className="flex justify-between text-slate-600">
-                <span>{t("pixelDefect.locationLabel")}</span>
-                <span className="font-bold text-slate-900">{selectedMarker.x}px, {selectedMarker.y}px</span>
+                <span>Location:</span>
+                <span className="font-bold text-slate-900">~{selectedMarker.xPercent}% left, ~{selectedMarker.yPercent}% top</span>
               </div>
               <div className="flex justify-between text-slate-600">
-                <span>{t("pixelDefect.relativePos")}</span>
-                <span className="font-bold text-slate-900">{selectedMarker.xPercent}%, {selectedMarker.yPercent}%</span>
+                <span>{t("pixelDefect.locationLabel")}</span>
+                <span className="text-slate-800">{selectedMarker.x}px, {selectedMarker.y}px</span>
               </div>
+              {selectedMarker.colorAtMark && (
+                <div className="flex justify-between text-amber-800 bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200 text-[10px]">
+                  <span>Observed during:</span>
+                  <span className="font-bold uppercase">{selectedMarker.colorAtMark} pattern</span>
+                </div>
+              )}
               <div className="flex justify-between text-slate-500 text-[10px]">
                 <span>{t("pixelDefect.canvasSize")}</span>
                 <span>{selectedMarker.viewportWidth} × {selectedMarker.viewportHeight}</span>
               </div>
+            </div>
+
+            <div className="text-[10px] text-slate-500 bg-slate-100 p-2 rounded leading-tight">
+              <span className="font-semibold text-slate-700">Guide:</span> Permanently black across colors indicates a possible <em>dead pixel</em>. Remaining a fixed color (e.g. red, green, blue) indicates a possible <em>stuck pixel</em>.
             </div>
 
             <div>

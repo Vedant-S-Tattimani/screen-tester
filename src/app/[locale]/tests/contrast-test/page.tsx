@@ -1,7 +1,7 @@
 import { generateSeoMetadata } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
-import { ContrastPattern } from "@/components/tests/ContrastPattern";
+import { ContrastPattern, ContrastGuidance } from "@/components/tests/ContrastPattern";
 import { Metadata } from "next";
 
 export async function generateMetadata({
@@ -29,6 +29,7 @@ export default async function ContrastTestPage({
       title={t("title")}
       description={<p>{t("description")}</p>}
       instructions={<p>{t("disclaimer")}</p>}
+      extraControls={<ContrastGuidance />}
     >
       <ContrastPattern testId="contrast-test" />
     </TestWrapper>

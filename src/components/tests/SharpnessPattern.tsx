@@ -301,38 +301,38 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
       <TestControlBar testId={testId} title="Sharpness & Text Clarity">
         <div className="flex flex-wrap items-center gap-3">
           {/* Mode Tabs */}
-          <div className="flex items-center bg-muted/60 p-0.5 rounded-lg border border-border/60 text-xs">
+          <div className="flex items-center bg-black/60 dark:bg-black/80 p-1 rounded-xl border border-white/20 text-xs">
             <button
               onClick={() => setActiveTab("grids")}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md font-medium transition-all ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
                 activeTab === "grids" 
-                  ? "bg-white text-gray-950 font-bold shadow-xs" 
-                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
+                  ? "bg-amber-400 text-slate-950 shadow-md ring-2 ring-amber-300" 
+                  : "text-cyan-100 hover:text-white hover:bg-white/20 bg-white/10 font-semibold border border-white/15"
               }`}
             >
-              <Grid className="w-3.5 h-3.5" />
+              <Grid className={`w-3.5 h-3.5 ${activeTab === "grids" ? "text-slate-950" : "text-amber-300"}`} />
               <span>1px Grids</span>
             </button>
             <button
               onClick={() => setActiveTab("typography")}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md font-medium transition-all ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
                 activeTab === "typography" 
-                  ? "bg-white text-gray-950 font-bold shadow-xs" 
-                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
+                  ? "bg-amber-400 text-slate-950 shadow-md ring-2 ring-amber-300" 
+                  : "text-cyan-100 hover:text-white hover:bg-white/20 bg-white/10 font-semibold border border-white/15"
               }`}
             >
-              <Type className="w-3.5 h-3.5" />
+              <Type className={`w-3.5 h-3.5 ${activeTab === "typography" ? "text-slate-950" : "text-amber-300"}`} />
               <span>Text Lab</span>
             </button>
             <button
               onClick={() => setActiveTab("moire")}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md font-medium transition-all ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
                 activeTab === "moire" 
-                  ? "bg-white text-gray-950 font-bold shadow-xs" 
-                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
+                  ? "bg-amber-400 text-slate-950 shadow-md ring-2 ring-amber-300" 
+                  : "text-cyan-100 hover:text-white hover:bg-white/20 bg-white/10 font-semibold border border-white/15"
               }`}
             >
-              <CircleDot className="w-3.5 h-3.5" />
+              <CircleDot className={`w-3.5 h-3.5 ${activeTab === "moire" ? "text-slate-950" : "text-amber-300"}`} />
               <span>Moiré Pattern</span>
             </button>
           </div>
@@ -340,25 +340,25 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
           {/* Invert Light / Dark Toggle */}
           <button
             onClick={toggleInverted}
-            className="flex items-center gap-1 text-xs px-2.5 py-1 rounded-lg border border-border/50 hover:bg-muted dark:hover:bg-white/10 text-gray-700 dark:text-slate-200 dark:hover:text-white transition-colors"
+            className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg border border-white/20 hover:bg-white/25 bg-white/10 text-amber-200 hover:text-white font-bold transition-colors cursor-pointer"
             title="Toggle Black-on-White / White-on-Black"
           >
-            {inverted ? <Sun className="w-3.5 h-3.5 text-amber-500" /> : <Moon className="w-3.5 h-3.5" />}
+            {inverted ? <Sun className="w-3.5 h-3.5 text-amber-400" /> : <Moon className="w-3.5 h-3.5 text-amber-300" />}
             <span>{inverted ? "Light BG" : "Dark BG"}</span>
           </button>
 
           {/* Moiré Density Slider */}
           {activeTab === "moire" && (
-            <div className="flex items-center gap-1.5 text-xs bg-muted/40 px-2 py-0.5 rounded-lg border border-border/40">
-              <span className="text-[10px] text-muted-foreground dark:text-slate-300 uppercase font-mono">Density:</span>
+            <div className="flex items-center gap-1.5 text-xs bg-black/60 px-2.5 py-1 rounded-lg border border-white/20">
+              <span className="text-[10px] text-amber-300 font-bold uppercase font-mono tracking-wider">Density:</span>
               {[1, 2, 3, 4, 5].map((lvl) => (
                 <button
                   key={lvl}
                   onClick={() => setMoireDensity(lvl)}
-                  className={`w-5 h-5 rounded text-[11px] font-mono font-medium transition-colors ${
+                  className={`w-5 h-5 rounded text-xs font-mono font-bold transition-colors cursor-pointer ${
                     moireDensity === lvl 
-                      ? "bg-white text-gray-950 font-bold shadow-xs" 
-                      : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
+                      ? "bg-white text-gray-950 font-extrabold shadow-xs" 
+                      : "text-cyan-100 hover:text-white hover:bg-white/20 bg-white/10 border border-white/15"
                   }`}
                 >
                   {lvl}
@@ -370,12 +370,12 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
           {/* Educational Guide Button */}
           <button
             onClick={() => setShowEduInfo(!showEduInfo)}
-            className={`flex items-center gap-1 text-xs px-2.5 py-1 rounded-lg border transition-colors ${
-              showEduInfo ? "bg-amber-500/20 text-amber-500 border-amber-500/40" : "hover:bg-muted dark:hover:bg-white/10 text-gray-700 dark:text-slate-200 dark:hover:text-white border-border/50"
+            className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg border transition-colors cursor-pointer font-semibold ${
+              showEduInfo ? "bg-amber-500 text-slate-950 border-amber-300 font-bold" : "hover:bg-white/20 bg-white/10 text-amber-200 hover:text-white border-white/20"
             }`}
             title="Read about sharpness, subpixel rendering, and moiré"
           >
-            <Info className="w-3.5 h-3.5" />
+            <Info className="w-3.5 h-3.5 text-amber-300" />
             <span className="hidden sm:inline">Guide</span>
           </button>
         </div>

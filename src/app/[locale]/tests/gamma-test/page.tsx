@@ -1,7 +1,7 @@
 import { generateSeoMetadata } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
-import { GammaPattern } from "@/components/tests/GammaPattern";
+import { GammaPattern, GammaGuidance } from "@/components/tests/GammaPattern";
 import { Metadata } from "next";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -27,8 +27,9 @@ export default async function GammaTestPage({ params }: { params: Promise<{ loca
           <li dangerouslySetInnerHTML={{ __html: t.raw("inst4") }} />
         </ol>
       }
+      extraControls={<GammaGuidance />}
     >
-      <GammaPattern />
+      <GammaPattern testId="gamma-test" />
     </TestWrapper>
   );
 }

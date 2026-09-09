@@ -240,11 +240,11 @@ export function ColorGamutPattern({ testId }: ColorGamutPatternProps) {
 
       <TestControlBar testId={testId} title="Color Gamut (DCI-P3)">
         <div className="flex items-center gap-2 text-xs">
-          <span className="text-muted-foreground">Status:</span>
-          <span className={`font-mono px-2.5 py-1 rounded text-[11px] font-semibold ${
-            p3Supported ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30" : "bg-muted text-muted-foreground"
+          <span className="text-amber-300 font-bold font-mono uppercase tracking-wider">Status:</span>
+          <span className={`font-mono px-3 py-1 rounded-lg text-xs font-bold ${
+            p3Supported ? "bg-emerald-500/30 text-emerald-300 border border-emerald-400/50" : "bg-white/10 text-cyan-200 border border-white/20"
           }`}>
-            {p3Supported ? "Wide Gamut Detected" : "Standard Gamut (sRGB)"}
+            {p3Supported ? "Wide Gamut Detected (Display P3)" : "Standard Gamut (sRGB)"}
           </span>
         </div>
       </TestControlBar>

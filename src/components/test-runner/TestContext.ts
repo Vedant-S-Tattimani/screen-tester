@@ -52,6 +52,16 @@ export interface TestContextType {
   goPrevInWorkflow: () => void;
   skipTestInWorkflow: () => void;
   restartWorkflow: () => void;
+
+  // Guided Auto Test System
+  isAutoTest: boolean;
+  isAutoTestPaused: boolean;
+  autoTestSecondsLeft: number;
+  toggleAutoTestPause: () => void;
+  startGuidedAutoTest: (customQueue?: string[]) => void;
+  stopGuidedAutoTest: () => void;
+  activeColorName: string;
+  setActiveColorName: (name: string) => void;
 }
 
 export const TestContext = createContext<TestContextType>({
@@ -87,6 +97,14 @@ export const TestContext = createContext<TestContextType>({
   goPrevInWorkflow: () => {},
   skipTestInWorkflow: () => {},
   restartWorkflow: () => {},
+  isAutoTest: false,
+  isAutoTestPaused: false,
+  autoTestSecondsLeft: 0,
+  toggleAutoTestPause: () => {},
+  startGuidedAutoTest: () => {},
+  stopGuidedAutoTest: () => {},
+  activeColorName: "",
+  setActiveColorName: () => {},
 });
 
 export function useTestContext() {

@@ -469,43 +469,43 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
       <TestControlBar testId={testId} title="HDR & Tone-Mapping Calibration">
         <div className="flex flex-wrap items-center gap-2">
           {/* Mode Tabs Switcher */}
-          <div className="flex items-center bg-muted/60 p-0.5 rounded-lg border border-border/50 text-xs">
+          <div className="flex items-center bg-black/60 dark:bg-black/80 p-1 rounded-xl border border-white/20 text-xs">
             <button
               onClick={() => setActiveTab("overview")}
-              className={`px-2.5 py-1 rounded-md transition-all font-medium ${
+              className={`px-3 py-1.5 rounded-lg transition-all font-bold cursor-pointer ${
                 activeTab === "overview" 
-                  ? "bg-white text-gray-950 shadow-xs font-bold" 
-                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
+                  ? "bg-amber-400 text-slate-950 shadow-md font-extrabold ring-2 ring-amber-300" 
+                  : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/10 border border-white/15 font-semibold"
               }`}
             >
               Pipeline Metrics
             </button>
             <button
               onClick={() => setActiveTab("banding")}
-              className={`px-2.5 py-1 rounded-md transition-all font-medium ${
+              className={`px-3 py-1.5 rounded-lg transition-all font-bold cursor-pointer ${
                 activeTab === "banding" 
-                  ? "bg-white text-gray-950 shadow-xs font-bold" 
-                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
+                  ? "bg-amber-400 text-slate-950 shadow-md font-extrabold ring-2 ring-amber-300" 
+                  : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/10 border border-white/15 font-semibold"
               }`}
             >
               10-Bit Ramp
             </button>
             <button
               onClick={() => setActiveTab("specular")}
-              className={`px-2.5 py-1 rounded-md transition-all font-medium ${
+              className={`px-3 py-1.5 rounded-lg transition-all font-bold cursor-pointer ${
                 activeTab === "specular" 
-                  ? "bg-white text-gray-950 shadow-xs font-bold" 
-                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
+                  ? "bg-amber-400 text-slate-950 shadow-md font-extrabold ring-2 ring-amber-300" 
+                  : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/10 border border-white/15 font-semibold"
               }`}
             >
               Highlight Clipping
             </button>
             <button
               onClick={() => setActiveTab("shadow")}
-              className={`px-2.5 py-1 rounded-md transition-all font-medium ${
+              className={`px-3 py-1.5 rounded-lg transition-all font-bold cursor-pointer ${
                 activeTab === "shadow" 
-                  ? "bg-white text-gray-950 shadow-xs font-bold" 
-                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
+                  ? "bg-amber-400 text-slate-950 shadow-md font-extrabold ring-2 ring-amber-300" 
+                  : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/10 border border-white/15 font-semibold"
               }`}
             >
               Shadow Detail
@@ -514,14 +514,14 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
 
           {/* Controls specific to Highlight Clipping */}
           {activeTab === "specular" && (
-            <div className="flex items-center gap-1.5 border-l border-border/50 pl-2 text-xs">
-              <span className="text-muted-foreground dark:text-slate-300 font-mono text-[11px] hidden sm:inline">Delta:</span>
+            <div className="flex items-center gap-1.5 border-l border-white/20 pl-2 text-xs">
+              <span className="text-amber-300 font-mono text-xs font-bold hidden sm:inline">Delta:</span>
               <button
                 onClick={() => setSensitivity("standard")}
-                className={`px-2 py-0.5 rounded text-[11px] font-medium transition-colors ${
+                className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   sensitivity === "standard"
-                    ? "bg-white text-gray-950 font-bold shadow-xs"
-                    : "bg-muted/40 hover:bg-muted text-gray-700 dark:text-slate-200 dark:hover:text-white"
+                    ? "bg-white text-gray-950 font-extrabold shadow-xs"
+                    : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/10 border border-white/15"
                 }`}
                 title="Standard ~2% delta"
               >
@@ -529,10 +529,10 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
               </button>
               <button
                 onClick={() => setSensitivity("subtle")}
-                className={`px-2 py-0.5 rounded text-[11px] font-medium transition-colors ${
+                className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   sensitivity === "subtle"
-                    ? "bg-white text-gray-950 font-bold shadow-xs"
-                    : "bg-muted/40 hover:bg-muted text-gray-700 dark:text-slate-200 dark:hover:text-white"
+                    ? "bg-white text-gray-950 font-extrabold shadow-xs"
+                    : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/10 border border-white/15"
                 }`}
                 title="Subtle ~1% delta"
               >
@@ -540,10 +540,10 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
               </button>
               <button
                 onClick={() => setSensitivity("ultrafine")}
-                className={`px-2 py-0.5 rounded text-[11px] font-medium transition-colors ${
+                className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   sensitivity === "ultrafine"
-                    ? "bg-white text-gray-950 font-bold shadow-xs"
-                    : "bg-muted/40 hover:bg-muted text-gray-700 dark:text-slate-200 dark:hover:text-white"
+                    ? "bg-white text-gray-950 font-extrabold shadow-xs"
+                    : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/10 border border-white/15"
                 }`}
                 title="Ultra-Fine ~0.5% delta"
               >

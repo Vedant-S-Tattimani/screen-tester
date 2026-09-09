@@ -73,15 +73,15 @@ export function ColorAccuracyPattern({ testId }: ColorAccuracyPatternProps) {
         <div className="flex items-center gap-2">
           <button
             onClick={() => setShowLabels(v => !v)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-colors cursor-pointer ${
               showLabels 
-                ? "bg-white text-gray-950 font-bold shadow-xs border-transparent" 
-                : "bg-muted/60 text-gray-700 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white dark:hover:bg-white/10 border-border/50"
+                ? "bg-amber-400 text-slate-950 font-extrabold shadow-md ring-2 ring-amber-300 border-amber-300" 
+                : "bg-white/15 text-cyan-100 font-semibold hover:text-white hover:bg-white/25 border border-white/20"
             }`}
           >
             {showLabels ? "Hide Hex / Names" : "Show Hex / Names"}
           </button>
-          <span className="text-xs text-muted-foreground dark:text-slate-300 hidden sm:inline">
+          <span className="text-xs text-amber-300 font-mono font-bold hidden sm:inline">
             24 Standard Reference Patches
           </span>
         </div>

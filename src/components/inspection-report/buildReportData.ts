@@ -6,7 +6,8 @@ import {
   BrowserDisplaySnapshot,
   DEFAULT_MONITOR_PROFILE,
   getRecommendedChecklist,
-  getTroubleshootingRecommendations
+  getTroubleshootingRecommendations,
+  computeOverallVisualVerdict
 } from "@/lib/inspectionStorage";
 import { monitorTests } from "@/data/tests";
 import { InspectionReportData, InspectionTestResultRow } from "./types";
@@ -220,6 +221,9 @@ export function buildInspectionReportData(
   // Deterministic troubleshooting recommendations from user-marked issues
   const troubleshootingReferences = getTroubleshootingRecommendations(observationsMap);
 
+  // Factual visual inspection overall verdict
+  const overallVerdict = computeOverallVisualVerdict(observationsMap, allPixelDefects.length);
+
   return {
     inspectionId,
     isArchived,
@@ -242,6 +246,7 @@ export function buildInspectionReportData(
         notTested: notTestedCount
       }
     },
+    overallVerdict,
     displayInfo: {
       screenResolution: snapshot?.physicalResolution || "1920 × 1080",
       logicalResolution: snapshot?.logicalResolution || "1920 × 1080",

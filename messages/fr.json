@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "Test Écran & Test Moniteur – Vérification Complète d'Affichage en Ligne",
-    "description": "Test écran et test moniteur gratuit en ligne. Vérifiez votre affichage : test pixels morts, test des couleurs, calibration visuelle de l'écran, taux de rafraîchissement et ghosting."
+    "description": "Test écran et test moniteur gratuit en ligne. Effectuez un test de l'écran complet : test pixels morts, test des couleurs, calibration écran visuelle, taux de rafraîchissement et ghosting."
   },
   "Header": {
     "title": "Testeur de Moniteur",
@@ -141,9 +141,9 @@
   },
   "Home": {
     "eyebrow": "TESTER. INSPECTER. COMPRENDRE.",
-    "headline_pt1": "Vérifiez votre écran.",
-    "headline_pt2": "Trouvez les défauts.",
-    "description": "Une suite complète d'outils pour tester votre écran : pixels morts, fuites de lumière, précision des couleurs, flou de mouvement et plus. Gratuit, précis et directement dans votre navigateur.",
+    "headline_pt1": "Test Écran",
+    "headline_pt2": "Test de Moniteur et Affichage en Ligne",
+    "description": "Test écran et test de moniteur gratuit en ligne. Effectuez un test complet de l'écran pour détecter les pixels morts, vérifier les couleurs, la calibration écran visuelle, le taux de rafraîchissement et le ghosting directement dans votre navigateur.",
     "startTesting": "Lancer les Tests",
     "browseTests": "Parcourir Tous les Tests",
     "cap1Title": "Fonctionne dans le navigateur",
@@ -227,7 +227,17 @@
     "moreFreeTestingToolsTitle": "Plus d'Outils de Test Gratuits",
     "keyboardTesterTitle": "Testeur de Clavier",
     "keyboardTesterDesc": "Testez chaque touche de votre clavier en ligne avec notre testeur de clavier gratuit.",
-    "testYourKeyboard": "Tester Votre Clavier →"
+    "testYourKeyboard": "Tester Votre Clavier →",
+    "aboutEyebrow": "À PROPOS DE SCREEN TESTER",
+    "aboutTitle": "Outil de Test Écran et Diagnostic Moniteur en Ligne",
+    "aboutLead": "Screen Tester est un utilitaire gratuit en ligne permettant d'effectuer un test écran et un test de moniteur complet directement dans votre navigateur web, sans aucun logiciel ni extension à installer.",
+    "aboutP1": "Notre plateforme propose des mires et motifs de test visuels de haute précision pour identifier les défauts d'affichage : test pixels morts et sous-pixels bloqués, fuites de rétroéclairage (backlight bleed), test des couleurs et calibration écran visuelle, contraste, luminosité et test ghosting écran pour évaluer la rémanence.",
+    "aboutP2": "Conçu pour les joueurs, les acheteurs d'écrans neufs ou d'occasion, les utilisateurs d'ordinateurs portables et les créateurs visuels, chaque test s'exécute intégralement côté client via HTML5 Canvas et WebGL en toute confidentialité.",
+    "aboutLimitationsTitle": "Périmètre du Test par Navigateur et Précision",
+    "aboutLimitationsDesc": "Ces mires fournissent une évaluation visuelle fiable destinée à l'œil humain dans des conditions d'éclairage maîtrisées. Screen Tester ne remplace pas une sonde de calibration matérielle (colorimètre) ni un capteur optique de laboratoire, et ne modifie pas les profils colorimétriques ICC du système d'exploitation. Pour un diagnostic optimal, nettoyez votre écran, basculez en plein écran (F11) et réglez la mise à l'échelle sur 100%.",
+    "badgeBrowser": "100% dans le Navigateur",
+    "badgeNoInstall": "Aucun Logiciel Requis",
+    "badgePrivacy": "Analyse Locale et Confidentielle"
   },
   "TestLibrary": {
     "categories": {
@@ -431,8 +441,8 @@
       ]
     },
     "color-test": {
-      "metaTitle": "Test des Couleurs Écran – Calibration Visuelle & Fidélité RVB",
-      "metaDescription": "Test des couleurs d'écran et calibration visuelle en ligne. Contrôlez la pureté RVB, l'équilibre chromatique et l'homogénéité de votre moniteur.",
+      "metaTitle": "Test des Couleurs & Calibration Écran – Fidélité RVB & Balance Visuelle",
+      "metaDescription": "Test des couleurs et calibration écran visuelle en ligne. Contrôlez la pureté RVB, l'équilibre chromatique et l'homogénéité de votre moniteur sans logiciel.",
       "title": "Test des Couleurs Écran & Calibration Visuelle",
       "description_p1": "Effectuez un test des couleurs d'écran pour vérifier la justesse et la calibration visuelle de votre moniteur. En passant en revue des aplats de couleurs primaires et secondaires, repérez d'éventuelles dérives colorimétriques et défauts d'uniformité.",
       "instructions": [

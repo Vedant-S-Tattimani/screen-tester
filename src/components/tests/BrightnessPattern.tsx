@@ -3,555 +3,457 @@
 import { useState, useEffect, useCallback } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
-import { useTranslations } from "next-intl";
+import { ChevronLeft, ChevronRight, Eye, Info, ShieldAlert, CheckCircle2 } from "lucide-react";
+import { cn } from "@/lib/utils";
+
 interface BrightnessPatternProps {
   testId?: string;
 }
 
-type PatternId =
-  | "blackField"
-  | "shadowRamp"
+type BrightnessStage =
+  | "nearBlackSteps"
+  | "blackScreen"
   | "midGray"
-  | "whiteField"
-  | "highlightRamp"
-  | "shadowDetail"
-  | "highlightDetail"
-  | "checkerboard";
+  | "nearWhiteSteps"
+  | "whiteScreen";
 
-const PATTERN_IDS: PatternId[] = [
-  "blackField",
-  "shadowRamp",
-  "midGray",
-  "whiteField",
-  "highlightRamp",
-  "shadowDetail",
-  "highlightDetail",
-  "checkerboard"
+interface StageInfo {
+  id: BrightnessStage;
+  label: string;
+  shortTitle: string;
+  instruction: string;
+  adjustmentTip: string;
+}
+
+const BRIGHTNESS_STAGES: StageInfo[] = [
+  {
+    id: "nearBlackSteps",
+    label: "Stage 1: Near-Black Steps (0%–8%)",
+    shortTitle: "Near-Black Steps",
+    instruction: "Look closely at the dark patches. You should be able to distinguish step 2% and 3% from pure black 0%.",
+    adjustmentTip: "Lower or raise your monitor brightness until the darkest steps are distinguishable without making black look gray."
+  },
+  {
+    id: "blackScreen",
+    label: "Stage 2: Full Black Screen (0%)",
+    shortTitle: "Black Screen (0%)",
+    instruction: "Inspect the screen in a dimly lit room to see if black looks truly black or visibly glowing.",
+    adjustmentTip: "If black looks milky gray or has aggressive edge glow, lower your monitor brightness."
+  },
+  {
+    id: "midGray",
+    label: "Stage 3: Neutral Mid-Gray (50%)",
+    shortTitle: "Mid-Gray (50%)",
+    instruction: "Evaluate overall luminance comfort. The 50% neutral gray field should look natural without causing eye strain.",
+    adjustmentTip: "Adjust brightness until text and documents look comfortable to read in your ambient room lighting."
+  },
+  {
+    id: "nearWhiteSteps",
+    label: "Stage 4: Near-White Steps (92%–100%)",
+    shortTitle: "Near-White Steps",
+    instruction: "Look closely at the bright highlight steps. Can you distinguish steps 98% and 99% from 100% pure white?",
+    adjustmentTip: "If the highest white patches blend into white, lower your monitor contrast or brightness to recover highlight detail."
+  },
+  {
+    id: "whiteScreen",
+    label: "Stage 5: Full White Screen (100%)",
+    shortTitle: "White Screen (100%)",
+    instruction: "Check if the peak white screen looks excessively dim or uncomfortably glaring, and check overall luminance uniformity.",
+    adjustmentTip: "If the screen causes squinting, reduce monitor brightness."
+  }
 ];
 
-// Near-black 1% increments (0% to 10%)
-const SHADOW_STEPS = Array.from({ length: 11 }, (_, i) => ({
-  percent: i,
-  rgb: Math.round((i / 100) * 255),
-}));
+// Calibrated near-black luminance steps
+const SHADOW_STEPS = [
+  { label: "0% (Pure Black)", rgb: 0, percent: "0.0%" },
+  { label: "1%", rgb: 3, percent: "1.2%" },
+  { label: "2% (Target)", rgb: 5, percent: "2.0%" },
+  { label: "3%", rgb: 8, percent: "3.1%" },
+  { label: "4%", rgb: 10, percent: "3.9%" },
+  { label: "6%", rgb: 15, percent: "5.9%" },
+  { label: "8%", rgb: 20, percent: "7.8%" }
+];
 
-// Near-white 1% increments (90% to 100%)
-const HIGHLIGHT_STEPS = Array.from({ length: 11 }, (_, i) => {
-  const pct = 90 + i;
-  return {
-    percent: pct,
-    rgb: Math.round((pct / 100) * 255),
-  };
-});
+// Calibrated near-white luminance steps
+const HIGHLIGHT_STEPS = [
+  { label: "92%", rgb: 235, percent: "92.2%" },
+  { label: "94%", rgb: 240, percent: "94.1%" },
+  { label: "96%", rgb: 245, percent: "96.1%" },
+  { label: "98% (Target)", rgb: 250, percent: "98.0%" },
+  { label: "99%", rgb: 252, percent: "98.8%" },
+  { label: "100% (Pure White)", rgb: 255, percent: "100%" }
+];
 
 export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatternProps) {
-  const t = useTranslations("BrightnessTest");
-  const { 
-    registerNavigation,
-    setObservation
-  } = useTestContext();
+  const { registerNavigation } = useTestContext();
+  const [activeStageIndex, setActiveStageIndex] = useState(0);
 
-  const [patternIndex, setPatternIndex] = useState(0);
-  const [userRatedLuminance, setUserRatedLuminance] = useState("");
-  const [blackObs, setBlackObs] = useState<string | null>(null);
-  const [whiteObs, setWhiteObs] = useState<string | null>(null);
-  const [overallObs, setOverallObs] = useState<string | null>(null);
-  const [showUserProvidedModal, setShowUserProvidedModal] = useState(false);
+  const currentStage = BRIGHTNESS_STAGES[activeStageIndex];
 
-  const currentPattern = PATTERN_IDS[patternIndex];
-
-  const nextPattern = useCallback(() => {
-    setPatternIndex((idx) => (idx + 1) % PATTERN_IDS.length);
+  const nextStage = useCallback(() => {
+    setActiveStageIndex((prev) => (prev + 1) % BRIGHTNESS_STAGES.length);
   }, []);
 
-  const prevPattern = useCallback(() => {
-    setPatternIndex((idx) => (idx - 1 + PATTERN_IDS.length) % PATTERN_IDS.length);
-  }, []);
-
-  const resetAll = useCallback(() => {
-    setPatternIndex(0);
-    setBlackObs(null);
-    setWhiteObs(null);
-    setOverallObs(null);
+  const prevStage = useCallback(() => {
+    setActiveStageIndex((prev) => (prev - 1 + BRIGHTNESS_STAGES.length) % BRIGHTNESS_STAGES.length);
   }, []);
 
   useEffect(() => {
     registerNavigation({
-      next: nextPattern,
-      prev: prevPattern,
-      reset: resetAll,
+      next: nextStage,
+      prev: prevStage,
+      reset: () => setActiveStageIndex(0),
     });
-  }, [registerNavigation, nextPattern, prevPattern, resetAll]);
-
-  // Update TestWrapper observation status when user observations change
-  const updateAggregateObservation = (b: string | null, w: string | null, o: string | null) => {
-    if (b === "crushed" || b === "lifted" || w === "clipped" || o === "tooDim" || o === "tooBright" || o === "uneven") {
-      setObservation("ISSUE");
-    } else if (b === "visible" && w === "visible" && o === "appropriate") {
-      setObservation("PASS");
-    } else if (b || w || o) {
-      setObservation("CHECK");
-    }
-  };
-
-  const handleBlackObs = (val: string) => {
-    const nextVal = blackObs === val ? null : val;
-    setBlackObs(nextVal);
-    updateAggregateObservation(nextVal, whiteObs, overallObs);
-  };
-
-  const handleWhiteObs = (val: string) => {
-    const nextVal = whiteObs === val ? null : val;
-    setWhiteObs(nextVal);
-    updateAggregateObservation(blackObs, nextVal, overallObs);
-  };
-
-  const handleOverallObs = (val: string) => {
-    const nextVal = overallObs === val ? null : val;
-    setOverallObs(nextVal);
-    updateAggregateObservation(blackObs, whiteObs, nextVal);
-  };
+  }, [registerNavigation, nextStage, prevStage]);
 
   return (
     <>
-      <div 
-        className="absolute inset-0 flex flex-col items-center justify-center select-none overflow-hidden transition-colors duration-200"
+      {/* Viewport Test Area */}
+      <div
+        className="absolute inset-0 flex flex-col items-center justify-center select-none overflow-hidden transition-colors duration-200 cursor-pointer"
+        onClick={nextStage}
         tabIndex={0}
+        aria-label={`Brightness test: ${currentStage.label}. Click or use arrow keys to advance.`}
+        style={{
+          backgroundColor:
+            currentStage.id === "blackScreen"
+              ? "#000000"
+              : currentStage.id === "whiteScreen"
+              ? "#FFFFFF"
+              : currentStage.id === "midGray"
+              ? "#808080"
+              : currentStage.id === "nearWhiteSteps"
+              ? "#FFFFFF"
+              : "#0a0a0a"
+        }}
       >
-        {/* ========================================================= */}
-        {/* TOP NOTICE: BROWSER LIMITATION & BANNER                  */}
-        {/* ========================================================= */}
-        <div className="absolute top-3 left-4 right-4 z-20 flex flex-col sm:flex-row items-center justify-between gap-2 px-4 py-2 rounded-xl bg-black/80 backdrop-blur-md border border-white/15 text-white shadow-xl pointer-events-auto max-w-5xl mx-auto">
-          <div className="flex items-center gap-2 text-xs">
-            <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30 shrink-0">
-              {t("resultBadge")}
-            </span>
-            <span className="text-white/80 line-clamp-1 text-[11px] sm:text-xs">
-              {t("prepNotice")}
-            </span>
-          </div>
-
-          <div className="flex items-center gap-2 shrink-0">
-            <span className="text-[11px] font-mono text-white/70 bg-white/10 px-2.5 py-0.5 rounded-md border border-white/10">
-              {t("patternCount", { current: patternIndex + 1, total: PATTERN_IDS.length })}
-            </span>
+        {/* Concise On-Screen Instruction Floating Banner (Click-through) */}
+        <div className="absolute top-4 left-4 right-4 z-20 flex justify-center pointer-events-none">
+          <div className="bg-black/85 dark:bg-black/90 backdrop-blur-md px-4 py-2.5 rounded-xl border border-white/15 text-white shadow-xl max-w-2xl text-center space-y-1">
+            <div className="flex items-center justify-center gap-2 text-xs font-semibold text-amber-400">
+              <Eye className="w-3.5 h-3.5" />
+              <span>{currentStage.shortTitle}</span>
+              <span className="text-white/40">•</span>
+              <span className="text-white/60 font-mono text-[11px]">
+                Stage {activeStageIndex + 1} of {BRIGHTNESS_STAGES.length}
+              </span>
+            </div>
+            <p className="text-[11px] sm:text-xs text-white/90 leading-normal">
+              {currentStage.instruction}
+            </p>
+            <p className="text-[10px] text-amber-300/80 font-mono">
+              💡 {currentStage.adjustmentTip}
+            </p>
           </div>
         </div>
 
         {/* ========================================================= */}
-        {/* PATTERN 1: FULL BLACK FIELD (0%)                          */}
+        {/* STAGE 1: NEAR-BLACK SHADOW STEPS (0%–8%)                  */}
         {/* ========================================================= */}
-        {currentPattern === "blackField" && (
-          <div className="w-full h-full bg-black flex items-center justify-center p-6">
-            <div className="max-w-md p-4 rounded-2xl bg-neutral-900/80 backdrop-blur-md border border-white/15 text-center text-white shadow-2xl">
-              <span className="text-xs font-mono font-bold block mb-1">
-                {t("patterns.blackField")}
-              </span>
-              <span className="text-[11px] text-white/70 block leading-relaxed">
-                RGB (0, 0, 0) reference black. If the screen glows noticeably or appears washed out in a dark room, monitor brightness is set too high.
-              </span>
-            </div>
-          </div>
-        )}
-
-        {/* ========================================================= */}
-        {/* PATTERN 2: NEAR-BLACK SHADOW RAMP (0% TO 10%)             */}
-        {/* ========================================================= */}
-        {currentPattern === "shadowRamp" && (
-          <div className="w-full h-full bg-black flex flex-col items-center justify-center p-4 sm:p-8 space-y-4">
-            <div className="max-w-xl text-center">
+        {currentStage.id === "nearBlackSteps" && (
+          <div className="w-full max-w-5xl px-4 sm:px-8 py-16 flex flex-col items-center justify-center gap-6 text-white">
+            <div className="text-center space-y-1">
               <span className="text-xs sm:text-sm font-semibold text-white block">
-                {t("patterns.shadowRamp")}
+                Near-Black Luminance Discrimination
               </span>
-              <span className="text-[11px] text-white/60 font-mono mt-0.5 block">
-                Target: Step +2% (RGB 5) should be barely discernible from true black (0%).
+              <span className="text-[11px] text-white/60 font-mono block">
+                Target: Step 2% (RGB 5) should be barely distinguishable from pure black 0% (RGB 0).
               </span>
             </div>
 
-            <div className="grid grid-cols-6 sm:grid-cols-11 gap-1.5 sm:gap-2 w-full max-w-4xl p-3 rounded-2xl bg-black border border-white/15 shadow-2xl">
-              {SHADOW_STEPS.map((step) => {
-                const color = `rgb(${step.rgb}, ${step.rgb}, ${step.rgb})`;
-                const isTarget = step.percent === 2;
+            {/* Stepped shadow patches */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-3 w-full p-4 rounded-2xl bg-black border border-white/20 shadow-2xl">
+              {SHADOW_STEPS.map((step, idx) => {
+                const isTarget = idx === 2;
                 return (
                   <div
-                    key={step.percent}
-                    className={`h-24 sm:h-32 flex flex-col items-center justify-between py-2 px-1 rounded-xl transition-all ${
-                      isTarget 
-                        ? "border-2 border-blue-500 shadow-[0_0_12px_rgba(59,130,246,0.4)]" 
-                        : "border border-white/10"
-                    }`}
-                    style={{ backgroundColor: color }}
-                  >
-                    <span className={`text-[10px] sm:text-xs font-bold font-mono ${isTarget ? "text-blue-300" : "text-white/70"}`}>
-                      {step.percent}%
-                    </span>
-                    {isTarget && (
-                      <span className="text-[8px] uppercase tracking-wider font-bold bg-blue-600/90 text-white px-1 py-0.2 rounded">
-                        Target
-                      </span>
+                    key={step.rgb}
+                    className={cn(
+                      "h-32 sm:h-36 rounded-xl flex flex-col items-center justify-between p-3 border transition-all relative group",
+                      idx === 0 
+                        ? "border-white/40 ring-1 ring-white/20" 
+                        : isTarget 
+                        ? "border-emerald-400 ring-2 ring-emerald-400/60 shadow-[0_0_15px_rgba(52,211,153,0.3)]" 
+                        : "border-white/10 hover:border-white/30"
                     )}
-                    <span className="text-[8px] sm:text-[9px] font-mono text-white/50">
+                    style={{ backgroundColor: `rgb(${step.rgb}, ${step.rgb}, ${step.rgb})` }}
+                  >
+                    <div className="flex flex-col items-center w-full">
+                      <span className="text-xs font-mono font-bold text-white/90">
+                        {step.label.split(" (")[0]}
+                      </span>
+                      {isTarget && (
+                        <span className="text-[8px] uppercase tracking-wider font-bold bg-emerald-600 text-white px-1.5 py-0.2 rounded mt-0.5">
+                          Calibration Target
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Inner comparison dot */}
+                    <div
+                      className="w-10 h-10 rounded-md border border-white/15 flex items-center justify-center shadow-xs"
+                      style={{ backgroundColor: `rgb(${step.rgb + 4}, ${step.rgb + 4}, ${step.rgb + 4})` }}
+                    >
+                      <span className="text-[8px] font-mono text-white/40 font-bold">+4</span>
+                    </div>
+
+                    <span className="text-xs font-mono font-bold text-amber-300">
                       RGB {step.rgb}
                     </span>
                   </div>
                 );
               })}
             </div>
+
+            <div className="text-xs font-mono text-amber-200 text-center max-w-xl font-semibold bg-black/70 px-4 py-2 rounded-xl border border-white/20">
+              If steps 1% and 2% are invisible, raise your monitor brightness. If 0% looks gray, lower your monitor brightness.
+            </div>
           </div>
         )}
 
         {/* ========================================================= */}
-        {/* PATTERN 3: MID-GRAY FIELD (50%)                           */}
+        {/* STAGE 2: FULL BLACK SCREEN (0%)                           */}
         {/* ========================================================= */}
-        {currentPattern === "midGray" && (
-          <div className="w-full h-full bg-[#808080] flex items-center justify-center p-6">
-            <div className="max-w-md p-4 rounded-2xl bg-black/75 backdrop-blur-md border border-white/20 text-center text-white shadow-2xl">
-              <span className="text-xs font-mono font-bold block mb-1">
-                {t("patterns.midGray")}
+        {currentStage.id === "blackScreen" && (
+          <div className="w-full h-full flex flex-col items-center justify-center p-6 text-white">
+            <div className="max-w-md p-5 rounded-2xl bg-neutral-950/95 backdrop-blur-md border border-white/25 text-center shadow-2xl space-y-2 pointer-events-none">
+              <span className="text-xs font-mono uppercase font-bold text-amber-400 tracking-wider block">
+                Pure Black Field RGB (0, 0, 0)
               </span>
-              <span className="text-[11px] text-white/80 block leading-relaxed">
-                RGB (128, 128, 128) neutral midtone field. Evaluates overall display luminance comfort without glare or clipping.
+              <p className="text-xs text-white font-medium leading-relaxed">
+                Check whether black appears deeply black or visibly glowing / milky in your environment.
+              </p>
+              <span className="text-xs font-mono text-cyan-300 font-bold block">
+                Click anywhere or press Right Arrow to advance to Mid-Gray
               </span>
             </div>
           </div>
         )}
 
         {/* ========================================================= */}
-        {/* PATTERN 4: FULL WHITE FIELD (100%)                        */}
+        {/* STAGE 3: NEUTRAL MID-GRAY FIELD (50%)                     */}
         {/* ========================================================= */}
-        {currentPattern === "whiteField" && (
-          <div className="w-full h-full bg-white flex items-center justify-center p-6 text-black">
-            <div className="max-w-md p-4 rounded-2xl bg-black/75 backdrop-blur-md border border-white/20 text-center text-white shadow-2xl">
-              <span className="text-xs font-mono font-bold block mb-1">
-                {t("patterns.whiteField")}
+        {currentStage.id === "midGray" && (
+          <div className="w-full max-w-4xl px-4 py-16 flex flex-col items-center justify-center gap-6 text-black">
+            <div className="max-w-md p-5 rounded-2xl bg-black/80 backdrop-blur-md border border-white/20 text-center text-white shadow-2xl space-y-2 pointer-events-none">
+              <span className="text-xs font-mono uppercase font-bold text-blue-400 tracking-wider block">
+                50% Neutral Midtone RGB (128, 128, 128)
               </span>
-              <span className="text-[11px] text-white/80 block leading-relaxed">
-                RGB (255, 255, 255) peak white field. Checks whether the display is too harsh or causes aggressive power throttling (ABL dimming).
-              </span>
+              <p className="text-xs text-white/80 leading-relaxed">
+                Assess overall brightness comfort. The gray field should feel balanced in your ambient room lighting without causing eye strain.
+              </p>
+            </div>
+
+            {/* Reference steps (25%, 50%, 75%) for contextual comparison */}
+            <div className="grid grid-cols-3 gap-3 w-full max-w-lg p-3 bg-black/60 rounded-2xl border border-white/20 shadow-xl">
+              <div className="h-20 rounded-xl bg-[#404040] flex flex-col items-center justify-center text-white font-mono text-xs">
+                <span>25% Gray</span>
+                <span className="text-[10px] opacity-60">RGB 64</span>
+              </div>
+              <div className="h-20 rounded-xl bg-[#808080] border-2 border-blue-400 flex flex-col items-center justify-center text-white font-mono text-xs shadow-md">
+                <span className="font-bold">50% Midtone</span>
+                <span className="text-[10px] opacity-70">RGB 128</span>
+              </div>
+              <div className="h-20 rounded-xl bg-[#BFBFBF] flex flex-col items-center justify-center text-black font-mono text-xs">
+                <span>75% Gray</span>
+                <span className="text-[10px] opacity-60">RGB 192</span>
+              </div>
             </div>
           </div>
         )}
 
         {/* ========================================================= */}
-        {/* PATTERN 5: NEAR-WHITE HIGHLIGHT RAMP (90% TO 100%)        */}
+        {/* STAGE 4: NEAR-WHITE HIGHLIGHT STEPS (92%–100%)            */}
         {/* ========================================================= */}
-        {currentPattern === "highlightRamp" && (
-          <div className="w-full h-full bg-black flex flex-col items-center justify-center p-4 sm:p-8 space-y-4">
-            <div className="max-w-xl text-center">
-              <span className="text-xs sm:text-sm font-semibold text-white block">
-                {t("patterns.highlightRamp")}
+        {currentStage.id === "nearWhiteSteps" && (
+          <div className="w-full max-w-5xl px-4 sm:px-8 py-16 flex flex-col items-center justify-center gap-6 text-black">
+            <div className="text-center space-y-1">
+              <span className="text-xs sm:text-sm font-semibold text-black block">
+                Near-White Highlight Detail & Clipping
               </span>
-              <span className="text-[11px] text-white/60 font-mono mt-0.5 block">
-                Target: Steps 98% and 99% should remain distinguishable from 100% pure white.
+              <span className="text-[11px] text-black/60 font-mono block">
+                Target: Step 98% (RGB 250) and 99% (RGB 252) should be distinguishable from 100% (RGB 255).
               </span>
             </div>
 
-            <div className="grid grid-cols-6 sm:grid-cols-11 gap-1.5 sm:gap-2 w-full max-w-4xl p-3 rounded-2xl bg-neutral-900 border border-white/15 shadow-2xl">
-              {HIGHLIGHT_STEPS.map((step) => {
-                const color = `rgb(${step.rgb}, ${step.rgb}, ${step.rgb})`;
-                const isTarget = step.percent === 98;
+            {/* Stepped highlight patches */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 w-full p-4 rounded-2xl bg-white border border-black/20 shadow-2xl">
+              {HIGHLIGHT_STEPS.map((step, idx) => {
+                const isTarget = idx === 3;
                 return (
                   <div
-                    key={step.percent}
-                    className={`h-24 sm:h-32 flex flex-col items-center justify-between py-2 px-1 rounded-xl transition-all ${
-                      isTarget 
-                        ? "border-2 border-blue-500 shadow-[0_0_12px_rgba(59,130,246,0.4)]" 
-                        : "border border-neutral-700"
-                    }`}
-                    style={{ backgroundColor: color }}
-                  >
-                    <span className={`text-[10px] sm:text-xs font-bold font-mono ${isTarget ? "text-blue-900" : "text-black/80"}`}>
-                      {step.percent}%
-                    </span>
-                    {isTarget && (
-                      <span className="text-[8px] uppercase tracking-wider font-bold bg-blue-600 text-white px-1 py-0.2 rounded">
-                        Target
-                      </span>
+                    key={step.rgb}
+                    className={cn(
+                      "h-32 sm:h-36 rounded-xl flex flex-col items-center justify-between p-3 border transition-all relative",
+                      step.rgb === 255 
+                        ? "border-black/50 ring-1 ring-black/30" 
+                        : isTarget 
+                        ? "border-blue-600 ring-2 ring-blue-600/60 shadow-[0_0_15px_rgba(37,99,235,0.3)]" 
+                        : "border-black/10 hover:border-black/30"
                     )}
-                    <span className="text-[8px] sm:text-[9px] font-mono text-black/60">
+                    style={{ backgroundColor: `rgb(${step.rgb}, ${step.rgb}, ${step.rgb})` }}
+                  >
+                    <div className="flex flex-col items-center w-full">
+                      <span className="text-xs font-mono font-bold text-black/90">
+                        {step.label.split(" (")[0]}
+                      </span>
+                      {isTarget && (
+                        <span className="text-[8px] uppercase tracking-wider font-bold bg-blue-600 text-white px-1.5 py-0.2 rounded mt-0.5">
+                          Calibration Target
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Inner darker comparison dot */}
+                    <div
+                      className="w-10 h-10 rounded-md border border-black/15 flex items-center justify-center shadow-xs"
+                      style={{ backgroundColor: `rgb(${step.rgb - 4}, ${step.rgb - 4}, ${step.rgb - 4})` }}
+                    >
+                      <span className="text-[8px] font-mono text-black/40 font-bold">-4</span>
+                    </div>
+
+                    <span className="text-[10px] font-mono text-black/60">
                       RGB {step.rgb}
                     </span>
                   </div>
                 );
               })}
             </div>
-          </div>
-        )}
 
-        {/* ========================================================= */}
-        {/* PATTERN 6: SHADOW DETAIL DISCRIMINATOR                    */}
-        {/* ========================================================= */}
-        {currentPattern === "shadowDetail" && (
-          <div className="w-full h-full bg-black flex flex-col items-center justify-center p-6 gap-6">
-            <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-12">
-              <div className="flex flex-col items-center gap-2">
-                <div className="w-32 h-32 sm:w-44 sm:h-44 rounded-3xl bg-black border border-white/20 flex items-center justify-center shadow-2xl">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-[#050505] flex items-center justify-center border border-white/10">
-                    <span className="text-[10px] font-mono text-white/50">+2%</span>
-                  </div>
-                </div>
-                <span className="text-xs font-mono text-white/70">Sub-Shadow (+2% RGB 5)</span>
-              </div>
-
-              <div className="flex flex-col items-center gap-2">
-                <div className="w-32 h-32 sm:w-44 sm:h-44 rounded-3xl bg-[#050505] border border-white/20 flex items-center justify-center shadow-2xl">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-[#0d0d0d] flex items-center justify-center border border-white/10">
-                    <span className="text-[10px] font-mono text-white/50">+5%</span>
-                  </div>
-                </div>
-                <span className="text-xs font-mono text-white/70">Near-Black (+5% RGB 13)</span>
-              </div>
+            <div className="text-[11px] font-mono text-black/60 text-center max-w-xl">
+              If steps 98% and 99% merge seamlessly into 100% white, bright details are <strong>clipped</strong> (contrast or brightness is set too high).
             </div>
-
-            <span className="text-xs text-white/60 font-mono text-center max-w-md bg-white/5 px-4 py-1.5 rounded-full border border-white/10">
-              Both inner squares must be distinguishable from their respective surrounding boxes.
-            </span>
           </div>
         )}
 
         {/* ========================================================= */}
-        {/* PATTERN 7: HIGHLIGHT DETAIL DISCRIMINATOR                 */}
+        {/* STAGE 5: FULL WHITE SCREEN (100%)                         */}
         {/* ========================================================= */}
-        {currentPattern === "highlightDetail" && (
-          <div className="w-full h-full bg-neutral-900 flex flex-col items-center justify-center p-6 gap-6">
-            <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-12">
-              <div className="flex flex-col items-center gap-2">
-                <div className="w-32 h-32 sm:w-44 sm:h-44 rounded-3xl bg-white border border-neutral-300 flex items-center justify-center shadow-2xl">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-[#fafafa] flex items-center justify-center border border-neutral-200">
-                    <span className="text-[10px] font-mono text-black/50">98%</span>
-                  </div>
-                </div>
-                <span className="text-xs font-mono text-white/70">Specular (98% RGB 250)</span>
-              </div>
-
-              <div className="flex flex-col items-center gap-2">
-                <div className="w-32 h-32 sm:w-44 sm:h-44 rounded-3xl bg-[#f2f2f2] border border-neutral-300 flex items-center justify-center shadow-2xl">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-[#e5e5e5] flex items-center justify-center border border-neutral-200">
-                    <span className="text-[10px] font-mono text-black/50">90%</span>
-                  </div>
-                </div>
-                <span className="text-xs font-mono text-white/70">High-Key (90% RGB 230)</span>
-              </div>
+        {currentStage.id === "whiteScreen" && (
+          <div className="w-full h-full flex flex-col items-center justify-center p-6 text-black">
+            <div className="max-w-md p-5 rounded-2xl bg-white/90 backdrop-blur-md border border-black/20 text-center shadow-2xl space-y-2 pointer-events-none">
+              <span className="text-xs font-mono uppercase font-bold text-blue-600 tracking-wider block">
+                Pure White Field RGB (255, 255, 255)
+              </span>
+              <p className="text-xs text-black/80 leading-relaxed">
+                Check whether peak brightness looks comfortably readable or uncomfortably harsh, and verify that corners and edges have uniform brightness.
+              </p>
+              <span className="text-[10px] font-mono text-black/50 block">
+                Click anywhere or press Right Arrow to cycle back to Stage 1
+              </span>
             </div>
-
-            <span className="text-xs text-white/60 font-mono text-center max-w-md bg-white/5 px-4 py-1.5 rounded-full border border-white/10">
-              Inner squares must not blend into the outer white frames.
-            </span>
-          </div>
-        )}
-
-        {/* ========================================================= */}
-        {/* PATTERN 8: CONTRAST REFERENCE CHECKERBOARD               */}
-        {/* ========================================================= */}
-        {currentPattern === "checkerboard" && (
-          <div className="w-full max-w-2xl aspect-square grid grid-cols-4 grid-rows-4 p-2 bg-neutral-950 rounded-2xl border border-white/20 shadow-2xl">
-            {Array.from({ length: 16 }, (_, i) => {
-              const row = Math.floor(i / 4);
-              const col = i % 4;
-              const isWhite = (row + col) % 2 === 0;
-              return (
-                <div
-                  key={i}
-                  className={`flex items-center justify-center rounded-lg font-mono text-[11px] font-bold ${
-                    isWhite ? "bg-white text-black" : "bg-black text-white"
-                  }`}
-                >
-                  {isWhite ? "100%" : "0%"}
-                </div>
-              );
-            })}
           </div>
         )}
       </div>
 
-      {/* ========================================================= */}
-      {/* TEST CONTROL BAR WITH USER OBSERVATION CONTROLS           */}
-      {/* ========================================================= */}
-      <TestControlBar testId={testId} title={t("title")}>
+      {/* Control Bar Dock */}
+      <TestControlBar testId={testId} title="Brightness & Luminance Test">
         <div className="flex flex-wrap items-center gap-2">
-          {/* Pattern Cycle Buttons */}
-          <div className="flex items-center bg-gray-100 p-0.5 rounded-lg border border-gray-200 text-xs">
+          {/* Stage Switcher Strip */}
+          <div className="flex items-center gap-1 bg-muted/60 dark:bg-white/10 p-1 rounded-lg border border-border/50">
             <button
               type="button"
-              onClick={prevPattern}
-              className="px-2 py-1 text-gray-700 hover:text-black font-mono"
-              title="Previous pattern"
+              onClick={(e) => {
+                e.stopPropagation();
+                prevStage();
+              }}
+              className="p-1.5 hover:bg-white/20 rounded transition-colors text-amber-300 cursor-pointer"
+              title="Previous stage (Left Arrow)"
+              aria-label="Previous stage"
             >
-              ◂
+              <ChevronLeft className="w-4 h-4" />
             </button>
-            <span className="px-2 py-1 text-[11px] font-semibold text-gray-900 border-x border-gray-200">
-              {patternIndex + 1}/{PATTERN_IDS.length}
-            </span>
-            <button
-              type="button"
-              onClick={nextPattern}
-              className="px-2 py-1 text-gray-700 hover:text-black font-mono"
-              title="Next pattern"
-            >
-              ▸
-            </button>
-          </div>
 
-          {/* Black Level Observation */}
-          <div className="flex items-center gap-1 border-l border-gray-200 pl-2 text-xs">
-            <span className="text-[10px] font-mono text-gray-500 hidden xl:inline">
-              Black:
-            </span>
-            <button
-              type="button"
-              onClick={() => handleBlackObs("visible")}
-              className={`px-2 py-1 rounded-md text-[11px] font-medium transition-all ${
-                blackObs === "visible"
-                  ? "bg-emerald-600 text-white font-semibold shadow-xs"
-                  : "bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200"
-              }`}
-              title={t("obsBlackDetailVisible")}
-            >
-              ✓ Visible
-            </button>
-            <button
-              type="button"
-              onClick={() => handleBlackObs("crushed")}
-              className={`px-2 py-1 rounded-md text-[11px] font-medium transition-all ${
-                blackObs === "crushed"
-                  ? "bg-red-600 text-white font-semibold shadow-xs"
-                  : "bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200"
-              }`}
-              title={t("obsBlackCrushed")}
-            >
-              Crushed
-            </button>
-            <button
-              type="button"
-              onClick={() => handleBlackObs("lifted")}
-              className={`px-2 py-1 rounded-md text-[11px] font-medium transition-all ${
-                blackObs === "lifted"
-                  ? "bg-amber-600 text-white font-semibold shadow-xs"
-                  : "bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200"
-              }`}
-              title={t("obsBlackLifted")}
-            >
-              Lifted
-            </button>
-          </div>
+            <div className="flex items-center gap-1.5">
+              {BRIGHTNESS_STAGES.map((stg, idx) => (
+                <button
+                  key={stg.id}
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveStageIndex(idx);
+                  }}
+                  className={cn(
+                    "px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer",
+                    idx === activeStageIndex
+                      ? "bg-amber-400 text-slate-950 shadow-md ring-2 ring-amber-300"
+                      : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/15 border border-white/20 font-semibold"
+                  )}
+                >
+                  {stg.shortTitle}
+                </button>
+              ))}
+            </div>
 
-          {/* White Level Observation */}
-          <div className="flex items-center gap-1 border-l border-gray-200 pl-2 text-xs">
-            <span className="text-[10px] font-mono text-gray-500 hidden xl:inline">
-              White:
-            </span>
             <button
               type="button"
-              onClick={() => handleWhiteObs("visible")}
-              className={`px-2 py-1 rounded-md text-[11px] font-medium transition-all ${
-                whiteObs === "visible"
-                  ? "bg-emerald-600 text-white font-semibold shadow-xs"
-                  : "bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200"
-              }`}
-              title={t("obsWhiteDetailVisible")}
+              onClick={(e) => {
+                e.stopPropagation();
+                nextStage();
+              }}
+              className="p-1.5 hover:bg-white/20 rounded transition-colors text-amber-300 cursor-pointer"
+              title="Next stage (Right Arrow / Click)"
+              aria-label="Next stage"
             >
-              ✓ Visible
-            </button>
-            <button
-              type="button"
-              onClick={() => handleWhiteObs("clipped")}
-              className={`px-2 py-1 rounded-md text-[11px] font-medium transition-all ${
-                whiteObs === "clipped"
-                  ? "bg-red-600 text-white font-semibold shadow-xs"
-                  : "bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200"
-              }`}
-              title={t("obsWhiteClipped")}
-            >
-              Clipped
-            </button>
-          </div>
-
-          {/* Overall Brightness */}
-          <div className="flex items-center gap-1 border-l border-gray-200 pl-2 text-xs">
-            <span className="text-[10px] font-mono text-gray-500 hidden xl:inline">
-              Overall:
-            </span>
-            <button
-              type="button"
-              onClick={() => handleOverallObs("appropriate")}
-              className={`px-2 py-1 rounded-md text-[11px] font-medium transition-all ${
-                overallObs === "appropriate"
-                  ? "bg-emerald-600 text-white font-semibold shadow-xs"
-                  : "bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200"
-              }`}
-            >
-              Appropriate
-            </button>
-            <button
-              type="button"
-              onClick={() => handleOverallObs("tooDim")}
-              className={`px-2 py-1 rounded-md text-[11px] font-medium transition-all ${
-                overallObs === "tooDim"
-                  ? "bg-amber-600 text-white font-semibold shadow-xs"
-                  : "bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200"
-              }`}
-            >
-              Too Dim
-            </button>
-            <button
-              type="button"
-              onClick={() => handleOverallObs("tooBright")}
-              className={`px-2 py-1 rounded-md text-[11px] font-medium transition-all ${
-                overallObs === "tooBright"
-                  ? "bg-amber-600 text-white font-semibold shadow-xs"
-                  : "bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200"
-              }`}
-            >
-              Too Bright
-            </button>
-          </div>
-
-          {/* Optional User-Provided Rated cd/m² modal toggle */}
-          <div className="border-l border-gray-200 pl-2">
-            <button
-              type="button"
-              onClick={() => setShowUserProvidedModal(!showUserProvidedModal)}
-              className="text-[11px] font-medium px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors"
-              title="Add optional manufacturer-rated brightness specification"
-            >
-              {userRatedLuminance ? `Rated: ${userRatedLuminance} cd/m²` : "+ Rated cd/m²"}
+              <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>
       </TestControlBar>
-
-      {/* Modal for entering user-provided manufacturer rated brightness */}
-      {showUserProvidedModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
-          <div className="bg-white rounded-2xl p-6 max-w-sm w-full shadow-2xl border border-gray-200 text-slate-900 space-y-4">
-            <div>
-              <h3 className="text-sm font-bold text-gray-900">{t("userProvidedTitle")}</h3>
-              <p className="text-xs text-gray-500 mt-1">{t("userProvidedDisclaimer")}</p>
-            </div>
-            <div>
-              <label className="text-xs font-semibold text-gray-700 block mb-1">
-                {t("userProvidedInputLabel")}
-              </label>
-              <input
-                type="text"
-                value={userRatedLuminance}
-                onChange={(e) => setUserRatedLuminance(e.target.value)}
-                placeholder={t("userProvidedPlaceholder")}
-                className="w-full px-3 py-2 text-xs border border-gray-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-            <div className="flex justify-end gap-2 pt-2">
-              <button
-                type="button"
-                onClick={() => setShowUserProvidedModal(false)}
-                className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-900 text-white hover:bg-black"
-              >
-                Save
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </>
+  );
+}
+
+/**
+ * Educational Guidance & Honest Calibration Guide
+ * Rendered below viewport via extraControls in TestWrapper
+ */
+export function BrightnessGuidance() {
+  return (
+    <div className="w-full max-w-4xl mx-auto bg-card border border-border/70 rounded-2xl p-5 shadow-xs space-y-4">
+      {/* Honesty Banner */}
+      <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl text-xs text-blue-950 dark:text-blue-200 leading-relaxed space-y-1">
+        <div className="flex items-center gap-2 font-semibold">
+          <ShieldAlert className="w-4 h-4 text-blue-500 shrink-0" />
+          <span>Visual Calibration Aid (Physical Luminance in cd/m² Requires Hardware)</span>
+        </div>
+        <p>
+          A standard web browser cannot measure true physical screen brightness (cd/m² or nits) because web APIs do not have access to photometer sensor hardware. This test provides controlled visual targets so you can adjust your monitor&apos;s physical brightness and contrast controls to achieve optimal shadow and highlight distinction.
+        </p>
+      </div>
+
+      {/* 3 Clear Inspection Directives */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+        <div className="p-3.5 rounded-xl bg-muted/30 border border-border/40 space-y-1.5">
+          <div className="flex items-center gap-1.5 font-bold text-foreground">
+            <Eye className="w-4 h-4 text-emerald-500 shrink-0" />
+            <span>1. What You Are Testing</span>
+          </div>
+          <p className="text-muted-foreground leading-relaxed">
+            Evaluates shadow detail visibility and highlight retention across dark, midtone, and bright test fields.
+          </p>
+        </div>
+
+        <div className="p-3.5 rounded-xl bg-muted/30 border border-border/40 space-y-1.5">
+          <div className="flex items-center gap-1.5 font-bold text-foreground">
+            <CheckCircle2 className="w-4 h-4 text-blue-500 shrink-0" />
+            <span>2. What To Do</span>
+          </div>
+          <p className="text-muted-foreground leading-relaxed">
+            Open your monitor&apos;s On-Screen Display (OSD). In Stage 1, adjust brightness until step 2% is barely visible. In Stage 4, ensure step 98% doesn&apos;t wash out into 100% white.
+          </p>
+        </div>
+
+        <div className="p-3.5 rounded-xl bg-muted/30 border border-border/40 space-y-1.5">
+          <div className="flex items-center gap-1.5 font-bold text-foreground">
+            <Info className="w-4 h-4 text-amber-500 shrink-0" />
+            <span>3. What Indicates a Problem</span>
+          </div>
+          <p className="text-muted-foreground leading-relaxed">
+            <strong>Crushed darks:</strong> Dark steps merge into 0% black. <strong>Blown-out highlights:</strong> Bright steps merge into 100% white. <strong>Excessive glow:</strong> Pure black looks visibly glowing gray.
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }

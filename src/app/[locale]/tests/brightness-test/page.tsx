@@ -1,7 +1,7 @@
 import { generateSeoMetadata } from "@/lib/seo";
 import { Metadata } from "next";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
-import { BrightnessPattern } from "@/components/tests/BrightnessPattern";
+import { BrightnessPattern, BrightnessGuidance } from "@/components/tests/BrightnessPattern";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export async function generateMetadata({
@@ -29,6 +29,7 @@ export default async function BrightnessTestPage({
       title={t("title")}
       description={<p>{t("description")}</p>}
       instructions={<p>{t("disclaimer")}</p>}
+      extraControls={<BrightnessGuidance />}
     >
       <BrightnessPattern testId="brightness-test" />
     </TestWrapper>

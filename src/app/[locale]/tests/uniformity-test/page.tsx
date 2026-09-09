@@ -1,7 +1,7 @@
 import { generateSeoMetadata } from "@/lib/seo";
 import { Metadata } from "next";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
-import { UniformityPattern } from "@/components/tests/UniformityPattern";
+import { UniformityPattern, UniformityGuidance } from "@/components/tests/UniformityPattern";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export async function generateMetadata({
@@ -38,6 +38,7 @@ export default async function UniformityTest({
           ))}
         </ul>
       }
+      extraControls={<UniformityGuidance />}
     >
       <UniformityPattern testId="uniformity-test" />
     </TestWrapper>

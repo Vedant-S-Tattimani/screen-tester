@@ -1,7 +1,7 @@
 {
   "Metadata": {
-    "title": "Teste de Tela e Monitor – Testador de Tela e Display Online",
-    "description": "Teste de tela e testador de monitor online grátis. Execute diagnósticos completos de tela: teste de pixels mortos, cores, calibração, taxa de atualização e ghosting."
+    "title": "Teste de Tela e Teste de Monitor – Testador de Tela e Display Online",
+    "description": "Teste de tela e teste de monitor online grátis. Execute diagnósticos completos: teste de display, teste de pixels mortos, cores, taxa de atualização e ghosting."
   },
   "Header": {
     "title": "Testador de Monitor",
@@ -141,9 +141,9 @@
   },
   "Home": {
     "eyebrow": "TESTAR. INSPECIONAR. COMPREENDER.",
-    "headline_pt1": "Verifique seu display.",
-    "headline_pt2": "Encontre os defeitos.",
-    "description": "Um conjunto completo de ferramentas para testar seu monitor contra pixels mortos, vazamento de luz, precisão de cores, borrão de movimento e mais. Gratuito, preciso e direto no seu navegador.",
+    "headline_pt1": "Teste de Tela",
+    "headline_pt2": "Testador e Teste de Monitor Online",
+    "description": "Teste de tela e teste de monitor online grátis. Execute diagnósticos completos de tela e teste de display para checar pixels mortos, cores, calibração visual, taxa de atualização, brilho, contraste e ghosting no navegador.",
     "startTesting": "Iniciar Testes",
     "browseTests": "Explorar Todos os Testes",
     "cap1Title": "Funciona no seu navegador",
@@ -227,7 +227,17 @@
     "moreFreeTestingToolsTitle": "Mais Ferramentas de Teste Gratuitas",
     "keyboardTesterTitle": "Testador de Teclado",
     "keyboardTesterDesc": "Teste todas as teclas do seu teclado online com o nosso testador de teclado gratuito.",
-    "testYourKeyboard": "Testar Seu Teclado →"
+    "testYourKeyboard": "Testar Seu Teclado →",
+    "aboutEyebrow": "SOBRE O SCREEN TESTER",
+    "aboutTitle": "Ferramenta de Teste de Tela e Diagnóstico de Monitor Online",
+    "aboutLead": "O Screen Tester é uma ferramenta online gratuita desenvolvida para realizar testes de tela, testes de monitor e teste de display diretamente no navegador web, sem necessidade de baixar ou instalar aplicativos.",
+    "aboutP1": "Nossa plataforma reúne padrões visuais precisos para inspecionar imperfeições de painel: teste de pixels mortos e acesos (stuck), vazamento de luz (backlight bleed), teste de cores da tela e fidelidade RGB, contraste, níveis de preto e teste de ghosting para checar tempo de resposta e rastros de movimento.",
+    "aboutP2": "Criado para gamers de PC, proprietários de notebooks, profissionais de imagem e quem comprou um monitor novo ou usado. Todos os diagnósticos rodam localmente via HTML5 e WebGL de forma privada e segura.",
+    "aboutLimitationsTitle": "Escopo dos Testes no Navegador e Limitações Técnicas",
+    "aboutLimitationsDesc": "Os testes oferecem padrões visuais para inspeção direta pelo olho humano sob condições controladas de luminosidade. O Screen Tester não substitui instrumentos ópticos de laboratório (como colorímetros de hardware ou fotodiodos) e não altera perfis de cores ICC do sistema. Para melhores resultados, limpe a tela, ative a tela cheia (F11) e deixe a escala de tela em 100%.",
+    "badgeBrowser": "100% no Navegador",
+    "badgeNoInstall": "Sem Instalação de Programas",
+    "badgePrivacy": "Avaliação Segura e Privada"
   },
   "TestLibrary": {
     "categories": {

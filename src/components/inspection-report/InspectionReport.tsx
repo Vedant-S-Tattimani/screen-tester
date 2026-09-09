@@ -124,6 +124,150 @@ export function InspectionReport({
           )}
         </div>
 
+        {/* Overall Visual Check Verdict Banner */}
+        {data.overallVerdict && (
+          <div className={cn(
+            "mb-6 p-4 sm:p-5 rounded-2xl border flex items-start gap-3.5 shadow-2xs break-inside-avoid",
+            data.overallVerdict.status === "NO_ISSUES" && "bg-emerald-50/90 border-emerald-300 text-emerald-950",
+            data.overallVerdict.status === "POSSIBLE_PIXEL_ISSUE" && "bg-red-50/90 border-red-300 text-red-950",
+            data.overallVerdict.status === "NEEDS_ATTENTION" && "bg-red-50/90 border-red-300 text-red-950",
+            data.overallVerdict.status === "MULTIPLE_AREAS_NEED_ATTENTION" && "bg-red-50/90 border-red-300 text-red-950",
+            data.overallVerdict.status === "UNSURE" && "bg-amber-50/90 border-amber-300 text-amber-950"
+          )}>
+            {data.overallVerdict.status === "NO_ISSUES" && <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />}
+            {(data.overallVerdict.status === "POSSIBLE_PIXEL_ISSUE" || data.overallVerdict.status === "MULTIPLE_AREAS_NEED_ATTENTION") && (
+              <AlertTriangle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
+            )}
+            {data.overallVerdict.status === "NEEDS_ATTENTION" && <XCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />}
+            {data.overallVerdict.status === "UNSURE" && <HelpCircle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />}
+
+            <div className="flex-1">
+              <div className="text-[10px] font-mono font-bold uppercase tracking-wider opacity-75">
+                Overall Visual Inspection Result
+              </div>
+              <h2 className="text-base sm:text-lg font-bold tracking-tight font-mono mt-0.5">
+                {data.overallVerdict.headline}
+              </h2>
+              <p className="text-xs sm:text-sm mt-1 leading-relaxed opacity-90">
+                {data.overallVerdict.description}
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* Dedicated Dead / Stuck Pixel Inspection Card */}
+        {(() => {
+          const deadPixelResult = data.testResults.find(
+            (t) => t.testId === "dead-pixel-test" || t.testId === "solid-color-test"
+          );
+          const hasPixelDefects = data.pixelDefects && data.pixelDefects.length > 0;
+          const isPixelIssueReported = 
+            deadPixelResult?.observation === "NEEDS_ATTENTION" || 
+            hasPixelDefects || 
+            data.overallVerdict?.status === "POSSIBLE_PIXEL_ISSUE";
+          const isPixelCleanReported = 
+            deadPixelResult?.observation === "LOOKS_NORMAL" && !hasPixelDefects && !isPixelIssueReported;
+
+          if (isPixelIssueReported) {
+            return (
+              <div className="mb-6 p-5 sm:p-6 rounded-2xl border-2 border-red-500/80 bg-red-50/80 text-red-950 shadow-xs break-inside-avoid">
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                  <div className="flex items-start gap-3.5">
+                    <AlertTriangle className="w-6 h-6 text-red-600 shrink-0 mt-0.5" />
+                    <div className="space-y-2">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="px-2 py-0.5 bg-red-200/80 text-red-900 rounded text-[10px] font-mono font-bold uppercase tracking-wider">
+                            PIXEL INSPECTION
+                          </span>
+                          <span className="text-xs font-mono text-red-700 font-bold uppercase">
+                            STATUS: NEEDS FURTHER INSPECTION
+                          </span>
+                        </div>
+                        <h3 className="text-lg font-bold tracking-tight text-red-950 mt-1">
+                          ⚠ POSSIBLE DEAD/STUCK PIXEL
+                        </h3>
+                        <p className="text-xs sm:text-sm text-red-900 mt-1 leading-relaxed">
+                          A possible pixel issue was reported during the visual inspection. Inspect the indicated area again using the individual color tests.
+                        </p>
+                      </div>
+
+                      <div className="bg-white/95 p-3.5 rounded-xl border border-red-200 text-xs text-slate-800 space-y-2 font-mono">
+                        {deadPixelResult?.notes && (
+                          <div className="text-[11px]">
+                            <span className="text-slate-500">Observed during: </span>
+                            <strong className="text-red-700 font-bold">{deadPixelResult.notes}</strong>
+                          </div>
+                        )}
+
+                        {data.pixelDefects.length > 0 && (
+                          <div className="space-y-1 pt-1 border-t border-red-100">
+                            <span className="text-[11px] font-bold text-slate-700 uppercase block">
+                              User-Reported Pixel Locations ({data.pixelDefects.length}):
+                            </span>
+                            <ul className="space-y-1 text-[11px] text-slate-700">
+                              {data.pixelDefects.map((defect, idx) => (
+                                <li key={defect.id} className="flex flex-wrap items-center gap-2">
+                                  <span className="text-red-600 font-bold">#{idx + 1}</span>
+                                  <span>Location: approximately {defect.xPercent}% from left, {defect.yPercent}% from top</span>
+                                  {defect.colorAtMark && (
+                                    <span className="text-amber-800 bg-amber-50 px-1.5 py-0.2 rounded border border-amber-200 text-[10px]">
+                                      Observed during: {defect.colorAtMark} test
+                                    </span>
+                                  )}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+
+                        <div className="pt-2 border-t border-red-100 text-[11px] text-slate-600 leading-relaxed font-sans">
+                          <span className="font-semibold text-slate-800">Dead vs Stuck Differentiation:</span> A pixel that remains black may be a possible <em>dead pixel</em>. A pixel that remains a fixed color during different test colors may be a possible <em>stuck pixel</em>. Browser software cannot directly access physical display subpixels; careful visual inspection confirms the finding.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <a
+                    href="/tests/dead-pixel-test"
+                    className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-semibold shrink-0 transition-colors shadow-xs self-start sm:self-center"
+                    title="Inspect Pixel Again"
+                  >
+                    <Wrench className="w-3.5 h-3.5" />
+                    <span>Inspect Pixel Again</span>
+                  </a>
+                </div>
+              </div>
+            );
+          }
+
+          if (isPixelCleanReported) {
+            return (
+              <div className="mb-6 p-4 rounded-xl border border-emerald-300 bg-emerald-50/80 text-emerald-950 flex items-center justify-between gap-3 break-inside-avoid">
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                  <div>
+                    <h3 className="text-xs sm:text-sm font-bold text-emerald-950">
+                      ✓ PIXEL INSPECTION
+                    </h3>
+                    <p className="text-xs text-emerald-800 mt-0.5">
+                      No pixel issues were reported during the visual inspection across solid-color test fields.
+                    </p>
+                  </div>
+                </div>
+                <a
+                  href="/tests/dead-pixel-test"
+                  className="text-[11px] font-semibold text-emerald-700 hover:text-emerald-900 underline shrink-0"
+                >
+                  Re-test Pixels
+                </a>
+              </div>
+            );
+          }
+
+          return null;
+        })()}
+
         {/* Metric Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-6 gap-2.5">
           <div className="bg-slate-50/70 p-3 rounded-xl border border-slate-200/80 print:bg-white print:border-slate-300">

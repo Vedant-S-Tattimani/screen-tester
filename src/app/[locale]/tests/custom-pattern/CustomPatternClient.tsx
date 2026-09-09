@@ -8,43 +8,43 @@ import { useTestContext } from "@/components/test-runner/TestContext";
 import {
   Grid, CheckSquare, Palette, CircleDot, Crosshair,
   AlignJustify, Columns, Type, Sun, Sparkles, Layers,
-  ArrowUpDown, SlidersHorizontal
+  ArrowUpDown, SlidersHorizontal, Play, Pause
 } from "lucide-react";
 
 export type CustomPatternPreset =
-  | "black"
-  | "white"
-  | "rgb"
-  | "grayscale"
-  | "gradient"
-  | "checkerboard"
   | "grid"
+  | "checkerboard"
   | "horizontal_lines"
   | "vertical_lines"
+  | "grayscale"
+  | "rgb"
   | "sharpness"
-  | "text"
-  | "moire";
+  | "moire"
+  | "gradient"
+  | "black"
+  | "white"
+  | "text";
 
-const PRESET_DEFINITIONS: { id: CustomPatternPreset; icon: typeof Grid }[] = [
-  { id: "grid", icon: Grid },
-  { id: "checkerboard", icon: CheckSquare },
-  { id: "horizontal_lines", icon: AlignJustify },
-  { id: "vertical_lines", icon: Columns },
-  { id: "black", icon: Sun },
-  { id: "white", icon: Sun },
-  { id: "rgb", icon: Palette },
-  { id: "grayscale", icon: Layers },
-  { id: "gradient", icon: Sparkles },
-  { id: "sharpness", icon: Crosshair },
-  { id: "text", icon: Type },
-  { id: "moire", icon: CircleDot },
-];
+export interface PatternOption {
+  id: CustomPatternPreset;
+  label: string;
+  icon: typeof Grid;
+  desc: string;
+}
 
-const PRIMARY_ALIGNMENT_PRESETS: CustomPatternPreset[] = [
-  "grid",
-  "checkerboard",
-  "horizontal_lines",
-  "vertical_lines",
+export const ALL_PATTERN_OPTIONS: PatternOption[] = [
+  { id: "grid", label: "2D Grid", icon: Grid, desc: "Geometry, pincushion, and alignment verification" },
+  { id: "checkerboard", label: "Checkerboard", icon: CheckSquare, desc: "ANSI contrast & local dimming bleed" },
+  { id: "horizontal_lines", label: "H-Lines", icon: AlignJustify, desc: "Raster scanlines & clock phase" },
+  { id: "vertical_lines", label: "V-Lines", icon: Columns, desc: "Pixel clock tracking & vertical sharpness" },
+  { id: "grayscale", label: "Grayscale Ramps", icon: Layers, desc: "Stepped & continuous tone gradation ramps" },
+  { id: "rgb", label: "RGB Primaries", icon: Palette, desc: "Subpixel saturation & pure primary color bars" },
+  { id: "sharpness", label: "Sharpness", icon: Crosshair, desc: "Optical focus, edge ringing & Siemens star" },
+  { id: "moire", label: "Moiré", icon: CircleDot, desc: "Interference rings & spatial aliasing" },
+  { id: "gradient", label: "Smooth Gradient", icon: Sparkles, desc: "Linear & radial quantization banding test" },
+  { id: "black", label: "Black (0%)", icon: Sun, desc: "Backlight bleed & true black floor" },
+  { id: "white", label: "White (100%)", icon: Sun, desc: "Peak luminance & white uniformity" },
+  { id: "text", label: "Text Clarity", icon: Type, desc: "Font anti-aliasing & subpixel ClearType rendering" },
 ];
 
 interface CustomPatternRunnerProps {
@@ -62,7 +62,10 @@ interface CustomPatternRunnerProps {
   fontSize: number;
   fontWeight: string;
   gradientType: "horizontal" | "vertical" | "radial";
+  setGradientType: (g: "horizontal" | "vertical" | "radial") => void;
 }
+
+const AUTO_TEST_INTERVAL = 3; // 3 seconds per pattern
 
 function CustomPatternRunner({
   activePreset,
@@ -79,10 +82,19 @@ function CustomPatternRunner({
   fontSize,
   fontWeight,
   gradientType,
+  setGradientType,
 }: CustomPatternRunnerProps) {
-  const { registerNavigation } = useTestContext();
+  const { 
+    registerNavigation,
+    isAutoTest,
+    isAutoTestPaused,
+    goNextInWorkflow,
+    observation,
+    setObservation
+  } = useTestContext();
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [showAllPresetsMenu, setShowAllPresetsMenu] = useState(false);
+  const [isAutoTesting, setIsAutoTesting] = useState(false);
+  const [countdown, setCountdown] = useState(AUTO_TEST_INTERVAL);
 
   // Invert colors helper
   const invertColors = useCallback(() => {
@@ -91,32 +103,23 @@ function CustomPatternRunner({
     setColor2(temp);
   }, [color1, color2, setColor1, setColor2]);
 
-  // Keyboard navigation through unrepeated alignment features
+  // Keyboard navigation through ALL patterns
   useEffect(() => {
     registerNavigation({
       next: () => {
-        setActivePreset(
-          (() => {
-            const idx = PRIMARY_ALIGNMENT_PRESETS.indexOf(activePreset);
-            if (idx === -1 || idx === PRIMARY_ALIGNMENT_PRESETS.length - 1) {
-              return PRIMARY_ALIGNMENT_PRESETS[0];
-            }
-            return PRIMARY_ALIGNMENT_PRESETS[idx + 1];
-          })()
-        );
+        const idx = ALL_PATTERN_OPTIONS.findIndex((p) => p.id === activePreset);
+        const nextIdx = (idx + 1) % ALL_PATTERN_OPTIONS.length;
+        setActivePreset(ALL_PATTERN_OPTIONS[nextIdx].id);
+        setCountdown(AUTO_TEST_INTERVAL);
       },
       prev: () => {
-        setActivePreset(
-          (() => {
-            const idx = PRIMARY_ALIGNMENT_PRESETS.indexOf(activePreset);
-            if (idx <= 0) {
-              return PRIMARY_ALIGNMENT_PRESETS[PRIMARY_ALIGNMENT_PRESETS.length - 1];
-            }
-            return PRIMARY_ALIGNMENT_PRESETS[idx - 1];
-          })()
-        );
+        const idx = ALL_PATTERN_OPTIONS.findIndex((p) => p.id === activePreset);
+        const prevIdx = idx <= 0 ? ALL_PATTERN_OPTIONS.length - 1 : idx - 1;
+        setActivePreset(ALL_PATTERN_OPTIONS[prevIdx].id);
+        setCountdown(AUTO_TEST_INTERVAL);
       },
       reset: () => {
+        setIsAutoTesting(false);
         setActivePreset("grid");
         setGridSize(40);
         setLineWidth(1);
@@ -125,6 +128,68 @@ function CustomPatternRunner({
       },
     });
   }, [registerNavigation, activePreset, setActivePreset, setGridSize, setLineWidth, setColor1, setColor2]);
+
+  // Guided Auto Test cycling across all 7 precision patterns (2.2s each)
+  const activePresetRef = useRef(activePreset);
+  activePresetRef.current = activePreset;
+
+  useEffect(() => {
+    if (!isAutoTest || isAutoTestPaused) return;
+
+    const timer = setInterval(() => {
+      const idx = ALL_PATTERN_OPTIONS.findIndex((p) => p.id === activePresetRef.current);
+      if (idx >= ALL_PATTERN_OPTIONS.length - 1) {
+        if (!observation) {
+          setObservation("PASS");
+        }
+        goNextInWorkflow();
+      } else {
+        setActivePreset(ALL_PATTERN_OPTIONS[idx + 1].id);
+      }
+    }, 2200);
+
+    return () => clearInterval(timer);
+  }, [isAutoTest, isAutoTestPaused, observation, setObservation, goNextInWorkflow, setActivePreset]);
+
+  // Standalone local Auto Test automatic cycling timer
+  useEffect(() => {
+    if (!isAutoTesting) return;
+
+    // Advance to next test pattern every 3 seconds
+    const advanceTimer = setInterval(() => {
+      const idx = ALL_PATTERN_OPTIONS.findIndex((p) => p.id === activePreset);
+      const nextIdx = (idx + 1) % ALL_PATTERN_OPTIONS.length;
+      setActivePreset(ALL_PATTERN_OPTIONS[nextIdx].id);
+      setCountdown(AUTO_TEST_INTERVAL);
+    }, AUTO_TEST_INTERVAL * 1000);
+
+    // 1-second countdown ticker for UI pill
+    const countdownTimer = setInterval(() => {
+      setCountdown((prev) => (prev > 1 ? prev - 1 : AUTO_TEST_INTERVAL));
+    }, 1000);
+
+    return () => {
+      clearInterval(advanceTimer);
+      clearInterval(countdownTimer);
+    };
+  }, [isAutoTesting, activePreset, setActivePreset]);
+
+  // Toggle Auto Test mode
+  const toggleAutoTest = () => {
+    setCountdown(AUTO_TEST_INTERVAL);
+    setIsAutoTesting((prev) => !prev);
+  };
+
+  // Canvas click to advance to next pattern
+  const handleCanvasClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLElement;
+    if (target.closest("[data-control-bar]")) return;
+
+    const idx = ALL_PATTERN_OPTIONS.findIndex((p) => p.id === activePreset);
+    const nextIdx = (idx + 1) % ALL_PATTERN_OPTIONS.length;
+    setActivePreset(ALL_PATTERN_OPTIONS[nextIdx].id);
+    setCountdown(AUTO_TEST_INTERVAL);
+  };
 
   // Precision Canvas Drawing Routine
   const drawPattern = useCallback(() => {
@@ -162,29 +227,50 @@ function CustomPatternRunner({
         break;
       }
       case "rgb": {
-        const barW = w / 3;
-        ctx.fillStyle = "#FF0000";
-        ctx.fillRect(0, 0, Math.ceil(barW), h);
-        ctx.fillStyle = "#00FF00";
-        ctx.fillRect(Math.floor(barW), 0, Math.ceil(barW), h);
-        ctx.fillStyle = "#0000FF";
-        ctx.fillRect(Math.floor(barW * 2), 0, Math.ceil(barW), h);
+        const bars = [
+          { color: "#FF0000", label: "R" },
+          { color: "#00FF00", label: "G" },
+          { color: "#0000FF", label: "B" },
+          { color: "#00FFFF", label: "C" },
+          { color: "#FF00FF", label: "M" },
+          { color: "#FFFF00", label: "Y" },
+          { color: "#FFFFFF", label: "W" },
+          { color: "#808080", label: "50%" },
+          { color: "#000000", label: "K" },
+        ];
+        const barW = w / bars.length;
+        bars.forEach((bar, i) => {
+          ctx.fillStyle = bar.color;
+          ctx.fillRect(Math.floor(i * barW), 0, Math.ceil(barW), h);
+        });
         break;
       }
       case "grayscale": {
-        const steps = 16;
-        const stepW = w / steps;
-        for (let i = 0; i < steps; i++) {
-          const val = Math.round((i / (steps - 1)) * 255);
+        // High-precision stepped & continuous Grayscale Ramps
+        const topH = Math.floor(h * 0.4);
+        const steps16 = 16;
+        const stepW16 = w / steps16;
+        for (let i = 0; i < steps16; i++) {
+          const val = Math.round((i / (steps16 - 1)) * 255);
           ctx.fillStyle = `rgb(${val}, ${val}, ${val})`;
-          ctx.fillRect(Math.floor(i * stepW), 0, Math.ceil(stepW), Math.floor(h * 0.5));
+          ctx.fillRect(Math.floor(i * stepW16), 0, Math.ceil(stepW16), topH);
         }
-        const vSteps = 8;
-        const vStepH = (h * 0.5) / vSteps;
-        for (let i = 0; i < vSteps; i++) {
-          const val = Math.round((i / (vSteps - 1)) * 255);
+
+        const midH = Math.floor(h * 0.25);
+        const grad = ctx.createLinearGradient(0, 0, w, 0);
+        grad.addColorStop(0, "#000000");
+        grad.addColorStop(1, "#FFFFFF");
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, topH, w, midH);
+
+        const botY = topH + midH;
+        const botH = h - botY;
+        const steps32 = 32;
+        const stepW32 = w / steps32;
+        for (let i = 0; i < steps32; i++) {
+          const val = Math.round((i / (steps32 - 1)) * 255);
           ctx.fillStyle = `rgb(${val}, ${val}, ${val})`;
-          ctx.fillRect(0, Math.floor(h * 0.5 + i * vStepH), w, Math.ceil(vStepH));
+          ctx.fillRect(Math.floor(i * stepW32), botY, Math.ceil(stepW32), botH);
         }
         break;
       }
@@ -241,12 +327,19 @@ function CustomPatternRunner({
         break;
       }
       case "sharpness": {
-        ctx.fillStyle = color1;
-        ctx.fillRect(Math.floor(w / 2), 0, Math.max(1, Math.floor(1 * dpr)), h);
-        ctx.fillRect(0, Math.floor(h / 2), w, Math.max(1, Math.floor(1 * dpr)));
+        ctx.fillStyle = color2;
+        ctx.fillRect(0, 0, w, h);
 
-        const quadW = Math.floor(w * 0.4);
-        const quadH = Math.floor(h * 0.4);
+        ctx.fillStyle = color1;
+        ctx.strokeStyle = color1;
+
+        const centerThick = Math.max(1, Math.floor(1 * dpr));
+        ctx.fillRect(Math.floor(w / 2), 0, centerThick, h);
+        ctx.fillRect(0, Math.floor(h / 2), w, centerThick);
+
+        const quadW = Math.floor(w * 0.35);
+        const quadH = Math.floor(h * 0.35);
+
         for (let x = 20 * dpr; x < quadW; x += 2 * dpr) {
           ctx.fillRect(Math.floor(x), Math.floor(20 * dpr), Math.max(1, Math.floor(1 * dpr)), quadH);
         }
@@ -260,11 +353,16 @@ function CustomPatternRunner({
         }
         const cx = w - quadW / 2;
         const cy = h - quadH / 2;
-        ctx.strokeStyle = color1;
         ctx.lineWidth = Math.max(1, Math.floor(1 * dpr));
-        for (let r = 10 * dpr; r < Math.min(quadW, quadH) / 2; r += 6 * dpr) {
+        for (let r = 10 * dpr; r < Math.min(quadW, quadH) / 2; r += 5 * dpr) {
           ctx.beginPath();
           ctx.arc(cx, cy, r, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+
+        for (let r = 20 * dpr; r < Math.min(w, h) * 0.22; r += 8 * dpr) {
+          ctx.beginPath();
+          ctx.arc(w / 2, h / 2, r, 0, Math.PI * 2);
           ctx.stroke();
         }
         break;
@@ -296,7 +394,7 @@ function CustomPatternRunner({
         const cx = w / 2;
         const cy = h / 2;
         const maxR = Math.hypot(cx, cy);
-        const step = Math.max(2, Math.round(gridSize * 0.15 * dpr));
+        const step = Math.max(2, Math.round(gridSize * 0.12 * dpr));
 
         ctx.strokeStyle = color1;
         ctx.lineWidth = scaledLine;
@@ -307,7 +405,7 @@ function CustomPatternRunner({
           ctx.stroke();
         }
 
-        const numSpokes = Math.max(12, Math.round(64 / (gridSize / 20)));
+        const numSpokes = Math.max(16, Math.round(72 / (gridSize / 20)));
         for (let i = 0; i < numSpokes; i++) {
           const theta = (i * 2 * Math.PI) / numSpokes;
           ctx.beginPath();
@@ -329,138 +427,117 @@ function CustomPatternRunner({
   return (
     <>
       {/* Viewport Canvas container */}
-      <div className="absolute inset-0 bg-black flex items-center justify-center overflow-hidden select-none">
+      <div
+        onClick={handleCanvasClick}
+        className="absolute inset-0 bg-black flex items-center justify-center overflow-hidden select-none cursor-pointer"
+        title="Click to cycle to the next test pattern"
+      >
         <canvas ref={canvasRef} className="w-full h-full block" />
       </div>
 
+      {/* Auto Test Floating Status Pill */}
+      {(isAutoTesting || isAutoTest) && (
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-black/80 backdrop-blur-md text-white text-xs font-mono px-4 py-1.5 rounded-full border border-amber-500/40 shadow-xl flex items-center gap-2.5 pointer-events-none z-30 animate-fade-in">
+          <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
+          <span className="text-gray-300">AUTO TESTING:</span>
+          <span className="font-bold text-amber-300">
+            {ALL_PATTERN_OPTIONS.find((p) => p.id === activePreset)?.label}
+          </span>
+          <span className="text-gray-400 text-[11px] bg-white/10 px-1.5 py-0.5 rounded">
+            Pattern {ALL_PATTERN_OPTIONS.findIndex((p) => p.id === activePreset) + 1}/{ALL_PATTERN_OPTIONS.length}
+          </span>
+        </div>
+      )}
+
       {/* Control Bar integrated with TestRunner & Fullscreen */}
       <TestControlBar testId="custom-pattern" title="Precision Test Patterns">
-        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-          {/* Primary Alignment Presets (Unrepeated from prior tests in Basic Check) */}
-          <div className="flex items-center bg-muted/60 p-0.5 rounded-lg border border-border/60 text-xs">
-            <button
-              onClick={() => setActivePreset("grid")}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md font-medium transition-all ${
-                activePreset === "grid"
-                  ? "bg-white text-gray-950 font-bold shadow-xs"
-                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
-              }`}
-              title="2D Grid: Calibration & Alignment"
-            >
-              <Grid className="w-3.5 h-3.5 shrink-0" />
-              <span className="hidden sm:inline">2D Grid</span>
-            </button>
-
-            <button
-              onClick={() => setActivePreset("checkerboard")}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md font-medium transition-all ${
-                activePreset === "checkerboard"
-                  ? "bg-white text-gray-950 font-bold shadow-xs"
-                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
-              }`}
-              title="Checkerboard: Geometry & ANSI Contrast"
-            >
-              <CheckSquare className="w-3.5 h-3.5 shrink-0" />
-              <span className="hidden sm:inline">Checkerboard</span>
-            </button>
-
-            <button
-              onClick={() => setActivePreset("horizontal_lines")}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md font-medium transition-all ${
-                activePreset === "horizontal_lines"
-                  ? "bg-white text-gray-950 font-bold shadow-xs"
-                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
-              }`}
-              title="Horizontal Lines: Raster Scan & Phase"
-            >
-              <AlignJustify className="w-3.5 h-3.5 shrink-0" />
-              <span className="hidden sm:inline">H-Lines</span>
-            </button>
-
-            <button
-              onClick={() => setActivePreset("vertical_lines")}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md font-medium transition-all ${
-                activePreset === "vertical_lines"
-                  ? "bg-white text-gray-950 font-bold shadow-xs"
-                  : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
-              }`}
-              title="Vertical Lines: Clock Timing & Sharpness"
-            >
-              <Columns className="w-3.5 h-3.5 shrink-0" />
-              <span className="hidden sm:inline">V-Lines</span>
-            </button>
+        <div className="flex flex-col gap-2 w-full">
+          {/* Main Strip: Direct Option Tabs */}
+          <div className="flex items-center gap-2 w-full">
+            {/* Direct Option Tab Strip (All options directly in tab strip, no hidden presets) */}
+            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar p-1 bg-black/60 dark:bg-black/80 rounded-xl border border-white/20 text-xs flex-1 max-w-[85vw]">
+              {ALL_PATTERN_OPTIONS.map((item) => {
+                const Icon = item.icon;
+                const isSel = activePreset === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => {
+                      setActivePreset(item.id);
+                      setCountdown(AUTO_TEST_INTERVAL);
+                    }}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg whitespace-nowrap transition-all cursor-pointer ${
+                      isSel
+                        ? "bg-amber-400 text-slate-950 font-bold shadow-md ring-2 ring-amber-300"
+                        : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/15 font-semibold border border-white/25 shadow-xs"
+                    }`}
+                    title={`${item.label}: ${item.desc}`}
+                  >
+                    <Icon className={`w-3.5 h-3.5 shrink-0 ${isSel ? "text-slate-950" : "text-amber-300"}`} />
+                    <span className="text-xs font-semibold">{item.label}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
-          {/* Quick Density Steps */}
-          {["grid", "checkerboard", "horizontal_lines", "vertical_lines"].includes(activePreset) && (
-            <div className="flex items-center gap-1.5 text-xs bg-muted/40 px-2 py-0.5 rounded-lg border border-border/40">
-              <span className="text-[10px] text-muted-foreground dark:text-slate-300 uppercase font-mono">Density:</span>
-              {[20, 40, 60, 80].map((sz) => (
-                <button
-                  key={sz}
-                  onClick={() => setGridSize(sz)}
-                  className={`px-1.5 py-0.5 rounded text-[11px] font-mono font-medium transition-colors ${
-                    gridSize === sz
-                      ? "bg-white text-gray-950 font-bold shadow-xs"
-                      : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
-                  }`}
-                >
-                  {sz}px
-                </button>
-              ))}
-            </div>
-          )}
-
-          {/* Invert Colors Button */}
-          <button
-            onClick={invertColors}
-            className="flex items-center gap-1 text-xs px-2.5 py-1 rounded-lg border border-border/50 hover:bg-muted dark:hover:bg-white/10 text-gray-700 dark:text-slate-200 dark:hover:text-white transition-colors"
-            title="Invert Colors"
-          >
-            <ArrowUpDown className="w-3.5 h-3.5" />
-            <span className="hidden md:inline">Invert</span>
-          </button>
-
-          {/* Toggle All 12 Presets Dropdown */}
-          <div className="relative">
-            <button
-              onClick={() => setShowAllPresetsMenu(!showAllPresetsMenu)}
-              className={`flex items-center gap-1 text-xs px-2.5 py-1 rounded-lg border transition-colors ${
-                showAllPresetsMenu
-                  ? "bg-white text-gray-950 font-bold shadow-xs border-border"
-                  : "border-border/50 hover:bg-muted dark:hover:bg-white/10 text-gray-700 dark:text-slate-200"
-              }`}
-              title="Select from all 12 calibration presets"
-            >
-              <SlidersHorizontal className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">All Presets</span>
-            </button>
-
-            {showAllPresetsMenu && (
-              <div className="absolute bottom-full mb-2 right-0 bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-700 rounded-xl shadow-2xl p-2 z-50 w-56 grid grid-cols-2 gap-1 text-xs">
-                {PRESET_DEFINITIONS.map((p) => {
-                  const Icon = p.icon;
-                  const isSel = activePreset === p.id;
-                  return (
+          {/* Secondary Contextual Controls Strip */}
+          <div className="flex items-center justify-between gap-3 text-xs pt-1 border-t border-white/15">
+            <div className="flex items-center gap-2">
+              {/* Quick Density Steps */}
+              {["grid", "checkerboard", "horizontal_lines", "vertical_lines", "moire"].includes(activePreset) && (
+                <div className="flex items-center gap-1.5 bg-black/70 px-2.5 py-1 rounded-lg border border-white/25">
+                  <span className="text-[11px] text-amber-300 font-bold uppercase font-mono tracking-wider">Density:</span>
+                  {[20, 40, 60, 80].map((sz) => (
                     <button
-                      key={p.id}
-                      onClick={() => {
-                        setActivePreset(p.id);
-                        setShowAllPresetsMenu(false);
-                      }}
-                      className={`flex items-center gap-1.5 px-2 py-1.5 rounded-lg text-left transition-colors ${
-                        isSel
-                          ? "bg-gray-900 text-white font-medium"
-                          : "text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-neutral-800"
+                      key={sz}
+                      type="button"
+                      onClick={() => setGridSize(sz)}
+                      className={`px-2.5 py-0.5 rounded text-xs font-mono font-bold transition-all cursor-pointer ${
+                        gridSize === sz
+                          ? "bg-white text-slate-950 font-extrabold shadow-xs"
+                          : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/10 border border-white/15"
                       }`}
                     >
-                      <Icon className="w-3 h-3 shrink-0" />
-                      <span className="truncate capitalize">{p.id.replace("_", " ")}</span>
+                      {sz}px
                     </button>
-                  );
-                })}
-              </div>
-            )}
+                  ))}
+                </div>
+              )}
+
+              {/* Gradient Type Quick Selector */}
+              {activePreset === "gradient" && (
+                <div className="flex items-center gap-1.5 bg-black/70 px-2.5 py-1 rounded-lg border border-white/25">
+                  <span className="text-[11px] text-amber-300 font-bold uppercase font-mono tracking-wider">Style:</span>
+                  {(["horizontal", "vertical", "radial"] as const).map((gradDir) => (
+                    <button
+                      key={gradDir}
+                      type="button"
+                      onClick={() => setGradientType(gradDir)}
+                      className={`px-2.5 py-0.5 rounded text-xs font-bold capitalize transition-all cursor-pointer ${
+                        gradientType === gradDir
+                          ? "bg-white text-slate-950 font-extrabold shadow-xs"
+                          : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/10 border border-white/15"
+                      }`}
+                    >
+                      {gradDir}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Invert Colors Button */}
+            <button
+              onClick={invertColors}
+              type="button"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/25 hover:bg-white/25 bg-white/15 text-amber-200 hover:text-white font-bold transition-all cursor-pointer shrink-0 ml-auto shadow-xs"
+              title="Invert Foreground and Background Colors"
+            >
+              <ArrowUpDown className="w-3.5 h-3.5 text-amber-300" />
+              <span className="text-xs font-bold">Invert</span>
+            </button>
           </div>
         </div>
       </TestControlBar>
@@ -496,22 +573,22 @@ export function CustomPatternClient() {
           {t("selectorTitle")}
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
-          {PRESET_DEFINITIONS.map((p) => {
+          {ALL_PATTERN_OPTIONS.map((p) => {
             const Icon = p.icon;
             const isActive = activePreset === p.id;
             return (
               <button
                 key={p.id}
                 onClick={() => setActivePreset(p.id)}
-                title={t(`presets.${p.id}.desc` as "presets.grid.desc")}
-                className={`flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium transition-all ${
+                title={p.desc}
+                className={`flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer ${
                   isActive
                     ? "bg-gray-950 text-white shadow-xs"
                     : "bg-white text-gray-700 hover:text-gray-950 border border-gray-200/80 hover:border-gray-300"
                 }`}
               >
                 <Icon className="w-3.5 h-3.5 shrink-0" />
-                <span className="truncate">{t(`presets.${p.id}.label` as "presets.grid.label")}</span>
+                <span className="truncate">{p.label}</span>
               </button>
             );
           })}
@@ -706,6 +783,7 @@ export function CustomPatternClient() {
         fontSize={fontSize}
         fontWeight={fontWeight}
         gradientType={gradientType}
+        setGradientType={setGradientType}
       />
     </TestWrapper>
   );
