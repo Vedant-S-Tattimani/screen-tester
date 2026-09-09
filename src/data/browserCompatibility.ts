@@ -237,6 +237,101 @@ export const BROWSER_CAPABILITIES_DATA: BrowserCapabilityEntry[] = [
       iosSafari: "SUPPORTED",
       androidBrowsers: "SUPPORTED"
     }
+  },
+  {
+    id: "device-motion",
+    name: "DeviceMotionEvent (Accelerometer)",
+    category: "input",
+    apiSpec: "window.DeviceMotionEvent",
+    description: "Exposes real-time acceleration vectors (with and without gravity) and rotation rates from device inertial sensors.",
+    hardwareDistinction: "Displays OS sensor-fusion telemetry; does not verify physical MEMS accelerometer calibration or factory bias.",
+    supportMatrix: {
+      chromium: "SUPPORTED",
+      firefox: "SUPPORTED",
+      safariDesktop: "NOT AVAILABLE",
+      iosSafari: "REQUIRES USER PERMISSION",
+      androidBrowsers: "SUPPORTED"
+    },
+    notes: "Requires user permission prompt on iOS 13+ via DeviceMotionEvent.requestPermission(). Desktop workstations without sensors fire no events."
+  },
+  {
+    id: "device-orientation",
+    name: "DeviceOrientationEvent (Gyroscope)",
+    category: "input",
+    apiSpec: "window.DeviceOrientationEvent",
+    description: "Provides physical rotation angles (alpha/yaw, beta/pitch, gamma/roll) relative to the Earth coordinate frame.",
+    hardwareDistinction: "Reports calculated angular coordinates; does not measure physical gyroscope mechanical drift or magnetic declination.",
+    supportMatrix: {
+      chromium: "SUPPORTED",
+      firefox: "SUPPORTED",
+      safariDesktop: "NOT AVAILABLE",
+      iosSafari: "REQUIRES USER PERMISSION",
+      androidBrowsers: "SUPPORTED"
+    },
+    notes: "Requires secure context (HTTPS) and explicit user-gesture permission handshake on modern iOS browsers."
+  },
+  {
+    id: "vibration-api",
+    name: "Vibration API",
+    category: "platform",
+    apiSpec: "navigator.vibrate()",
+    description: "Triggers tactile vibration motor pulses and timed vibration sequences on supported mobile devices.",
+    hardwareDistinction: "Sends command to operating system vibration service; browser cannot verify physical motor movement, force, or tactile sensation.",
+    supportMatrix: {
+      chromium: "SUPPORTED",
+      firefox: "SUPPORTED",
+      safariDesktop: "NOT AVAILABLE",
+      iosSafari: "NOT AVAILABLE",
+      androidBrowsers: "SUPPORTED"
+    },
+    notes: "Not supported in Apple iOS Safari or desktop browsers. Android browsers require user interaction."
+  },
+  {
+    id: "get-user-media",
+    name: "MediaDevices.getUserMedia (Camera Preview)",
+    category: "platform",
+    apiSpec: "navigator.mediaDevices.getUserMedia()",
+    description: "Requests access to local video stream endpoints for live real-time camera testing and preview verification.",
+    hardwareDistinction: "Operates 100% locally in browser memory without network transmission; cannot measure physical optical lens MTF resolution.",
+    supportMatrix: {
+      chromium: "REQUIRES USER PERMISSION",
+      firefox: "REQUIRES USER PERMISSION",
+      safariDesktop: "REQUIRES USER PERMISSION",
+      iosSafari: "REQUIRES USER PERMISSION",
+      androidBrowsers: "REQUIRES USER PERMISSION"
+    },
+    notes: "Requires HTTPS and explicit user approval. Camera preview stream is never recorded or uploaded."
+  },
+  {
+    id: "media-track-settings",
+    name: "MediaStreamTrack.getSettings()",
+    category: "platform",
+    apiSpec: "MediaStreamTrack.prototype.getSettings()",
+    description: "Reads active video stream runtime parameters including resolution width, height, aspect ratio, frame rate, and facing mode.",
+    hardwareDistinction: "Reports browser pipeline negotiated capture configuration; may differ from native camera sensor maximum physical resolution.",
+    supportMatrix: {
+      chromium: "SUPPORTED",
+      firefox: "SUPPORTED",
+      safariDesktop: "SUPPORTED",
+      iosSafari: "SUPPORTED",
+      androidBrowsers: "SUPPORTED"
+    }
+  },
+  {
+    id: "audio-output-selection",
+    name: "Audio Output Device Selection (setSinkId)",
+    category: "platform",
+    apiSpec: "AudioContext.setSinkId() / HTMLMediaElement.setSinkId()",
+    description: "Routes synthesized audio test tones directly to a specific user-selected hardware speaker or headphone output endpoint.",
+    hardwareDistinction: "Directs audio stream to OS device sink ID; does not measure acoustic speaker sound pressure level or room acoustics.",
+    supportMatrix: {
+      chromium: "SUPPORTED",
+      firefox: "PARTIAL",
+      safariDesktop: "NOT AVAILABLE",
+      iosSafari: "NOT AVAILABLE",
+      androidBrowsers: "PARTIAL"
+    },
+    notes: "Supported in modern Chromium browsers. Safari and older browsers route sound exclusively to system default audio output."
   }
 ];
 
@@ -412,5 +507,59 @@ export const TEST_REQUIREMENTS_MATRIX: TestRequirementEntry[] = [
     fullscreenRecommended: true,
     webglRequired: false,
     notes: "Concentric circular geometry and square aspect grids to detect non-uniform stretching."
+  },
+  {
+    testId: "multi-touch-test",
+    testName: "Standalone Multi-Touch Test",
+    orientation: "Universal",
+    touchCapable: true,
+    fullscreenRecommended: true,
+    webglRequired: false,
+    notes: "Evaluates simultaneous pointerdown contacts, pointerId tracking, and edge rejection with touch-action: none."
+  },
+  {
+    testId: "accelerometer-test",
+    testName: "Accelerometer Test",
+    orientation: "Mobile-oriented",
+    touchCapable: true,
+    fullscreenRecommended: false,
+    webglRequired: false,
+    notes: "Visualizes live 3-axis linear acceleration and gravitational vectors reported via DeviceMotionEvent."
+  },
+  {
+    testId: "gyroscope-test",
+    testName: "Gyroscope Test",
+    orientation: "Mobile-oriented",
+    touchCapable: true,
+    fullscreenRecommended: false,
+    webglRequired: false,
+    notes: "Exposes alpha/beta/gamma rotation angles on an attitude gauge using DeviceOrientationEvent."
+  },
+  {
+    testId: "vibration-test",
+    testName: "Vibration Test",
+    orientation: "Mobile-oriented",
+    touchCapable: true,
+    fullscreenRecommended: false,
+    webglRequired: false,
+    notes: "Triggers calibrated tactile pulses via navigator.vibrate with safety duration limits."
+  },
+  {
+    testId: "webcam-test",
+    testName: "Webcam Test",
+    orientation: "Universal",
+    touchCapable: true,
+    fullscreenRecommended: true,
+    webglRequired: false,
+    notes: "Requests local getUserMedia video stream for real-time preview, resolution telemetry, and local snapshots."
+  },
+  {
+    testId: "speaker-test",
+    testName: "Speaker Test",
+    orientation: "Universal",
+    touchCapable: true,
+    fullscreenRecommended: false,
+    webglRequired: false,
+    notes: "Synthesizes precision audio test tones and verifies stereo channel separation using Web Audio API."
   }
 ];

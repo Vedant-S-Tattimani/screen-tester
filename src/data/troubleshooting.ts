@@ -1,4 +1,4 @@
-export type TroubleshootingCategory = "display" | "pixels" | "imageQuality" | "tv";
+export type TroubleshootingCategory = "display" | "pixels" | "imageQuality" | "tv" | "deviceInput";
 
 export interface TroubleshootingTestLink {
   label: string;
@@ -27,7 +27,8 @@ export const TROUBLESHOOTING_CATEGORIES: Array<{ id: TroubleshootingCategory; la
   { id: "display", label: "Display Problems" },
   { id: "pixels", label: "Pixel Problems" },
   { id: "imageQuality", label: "Image Quality" },
-  { id: "tv", label: "TV Problems" }
+  { id: "tv", label: "TV Problems" },
+  { id: "deviceInput", label: "Device & Input Problems" }
 ];
 
 export const TROUBLESHOOTING_TOPICS: TroubleshootingTopic[] = [
@@ -543,6 +544,218 @@ export const TROUBLESHOOTING_TOPICS: TroubleshootingTopic[] = [
       "In GPU Control Panel: Ensure desktop resizing is set to 'No Scaling' at native 1080p/4K resolution"
     ],
     whenToStop: "Once 'Just Scan' or PC mode is engaged on the television, the full desktop boundary will snap precisely to the outer bezel edges with zero cropping."
+  },
+
+  // =========================================================================
+  // DEVICE & INPUT PROBLEMS
+  // =========================================================================
+  {
+    id: "multi-touch-issues",
+    title: "Multi-Touch & Contact Registration Problems",
+    category: "deviceInput",
+    categoryTitle: "Device & Input Problems",
+    symptom: "Touches are not detected, simultaneous multi-finger gestures register as single touches, or touching the screen scrolls the web page.",
+    possibleCauses: [
+      "Operating system touchscreen HID digitizer driver recognizes limited simultaneous contacts",
+      "Browser gesture navigation or page scrolling intercepting touch actions",
+      "Stylus or palm rejection software disabling secondary touch points",
+      "Contaminants or moisture on capacitive glass digitizer surface"
+    ],
+    checks: [
+      "Verify whether the test surface has touch-action: none enabled to prevent accidental browser scrolling",
+      "Clean the capacitive screen surface with a dry microfiber cloth",
+      "In Windows Settings > Pen & Touch or Android Developer Options, verify multi-touch tap indicators"
+    ],
+    whatScreenTesterCanTest: {
+      description: "Screen Tester listens to raw Pointer Events (pointerdown, pointermove, pointerup) and displays simultaneous contact coordinates and peak contact counts.",
+      links: [
+        { label: "Multi-Touch Test", testId: "multi-touch-test", testPath: "/tests/multi-touch-test" },
+        { label: "Touch Screen Test", testId: "touch-screen-test", testPath: "/tests/touch-screen-test" }
+      ]
+    },
+    whatScreenTesterCannotDetermine: [
+      "Physical digitizer hardware polling rate in Hz",
+      "Capacitive touch layer signal-to-noise ratio",
+      "Internal optical bonding layer defects"
+    ],
+    actions: [
+      "Update or reinstall touchscreen HID digitizer drivers in OS Device Manager",
+      "Test in Fullscreen mode to eliminate browser address bar gesture interference",
+      "Test across multiple fingers slowly to check for digitizer dead zones"
+    ],
+    whenToStop: "Stop if the glass panel is cracked, unusually hot to the touch, or erratic ghost touches occur without physical contact."
+  },
+  {
+    id: "accelerometer-issues",
+    title: "Accelerometer & Motion Sensor Issues",
+    category: "deviceInput",
+    categoryTitle: "Device & Input Problems",
+    symptom: "Accelerometer test displays 'Sensor Unavailable' or values remain 0.0 m/s² when tilting or moving the device.",
+    possibleCauses: [
+      "Desktop computer or external monitor has no physical accelerometer sensor hardware",
+      "Browser motion permissions denied or blocked by OS privacy settings",
+      "Insecure context (HTTP) blocking DeviceMotionEvent",
+      "iOS Safari requires explicit user gesture initiation via DeviceMotionEvent.requestPermission()"
+    ],
+    checks: [
+      "Check if testing on a desktop PC without built-in IMU motion sensors",
+      "Confirm the page is served over secure HTTPS (or localhost)",
+      "Click 'Start Sensor' to trigger the browser permission request prompt"
+    ],
+    whatScreenTesterCanTest: {
+      description: "Screen Tester queries DeviceMotionEvent to report live linear acceleration (X, Y, Z) and gravity vectors as calculated by browser APIs.",
+      links: [
+        { label: "Accelerometer Test", testId: "accelerometer-test", testPath: "/tests/accelerometer-test" }
+      ]
+    },
+    whatScreenTesterCannotDetermine: [
+      "Laboratory MEMS sensor calibration or bias offset",
+      "True physical temperature drift of the accelerometer chip",
+      "Physical gravitational field strength in micro-g"
+    ],
+    actions: [
+      "In iOS Settings > Safari, ensure 'Motion & Orientation Access' is enabled",
+      "In Android Chrome Settings > Site Settings > Motion Sensors, set to Allow",
+      "Test on a mobile phone or tablet equipped with physical motion hardware"
+    ],
+    whenToStop: "Stop if the device is a standard desktop computer without motion sensor hardware; the browser cannot synthesize physical sensor readings."
+  },
+  {
+    id: "gyroscope-issues",
+    title: "Gyroscope & Orientation Sensor Issues",
+    category: "deviceInput",
+    categoryTitle: "Device & Input Problems",
+    symptom: "Orientation angles (alpha, beta, gamma) do not update, or attitude gauge remains frozen.",
+    possibleCauses: [
+      "Device lacks a hardware gyroscope (common on budget tablets or desktop PCs)",
+      "Browser permission was denied or dismissed",
+      "Device orientation locked by operating system rotation lock"
+    ],
+    checks: [
+      "Check if OS auto-rotate or rotation lock is toggled on",
+      "Look for the browser permission prompt when clicking 'Start Sensor'",
+      "Verify device is physically capable of rotation detection"
+    ],
+    whatScreenTesterCanTest: {
+      description: "Screen Tester listens to DeviceOrientationEvent and visualizes roll (gamma), pitch (beta), and yaw (alpha) on an interactive attitude gauge.",
+      links: [
+        { label: "Gyroscope Test", testId: "gyroscope-test", testPath: "/tests/gyroscope-test" }
+      ]
+    },
+    whatScreenTesterCannotDetermine: [
+      "Physical gyroscope drift rate in degrees per hour",
+      "Magnetic declination or true geomagnetic sensor alignment"
+    ],
+    actions: [
+      "Grant orientation permission in browser site settings",
+      "Calibrate device compass and gyroscope using figure-8 motion in OS maps app",
+      "Switch to a mobile device with integrated 6-axis or 9-axis IMU"
+    ],
+    whenToStop: "Stop if the device hardware does not include an orientation gyroscope."
+  },
+  {
+    id: "vibration-issues",
+    title: "Vibration API & Haptics Issues",
+    category: "deviceInput",
+    categoryTitle: "Device & Input Problems",
+    symptom: "Clicking vibration test buttons produces no physical tactile feedback or displays 'Vibration Unsupported'.",
+    possibleCauses: [
+      "Browser does not implement the Vibration API (e.g. Apple iOS Safari / iPadOS)",
+      "Desktop PC, laptop, or external monitor lacks a physical haptic motor",
+      "OS battery saver mode or 'Do Not Disturb' has disabled vibration motors",
+      "Vibration requires a direct user gesture to execute"
+    ],
+    checks: [
+      "Confirm testing on an Android device or supported mobile browser",
+      "Check OS Settings > Sound & Haptics > Vibration is turned ON",
+      "Verify battery saver mode is not disabling system haptics"
+    ],
+    whatScreenTesterCanTest: {
+      description: "Screen Tester verifies whether navigator.vibrate is exposed by your browser and whether vibration commands are accepted by the browser engine.",
+      links: [
+        { label: "Vibration Test", testId: "vibration-test", testPath: "/tests/vibration-test" }
+      ]
+    },
+    whatScreenTesterCannotDetermine: [
+      "Physical vibration motor RPM, force in milli-g, or ERM/LRA coil wear",
+      "Whether the user actually felt the physical tactile pulse"
+    ],
+    actions: [
+      "Test on a supported Android browser (Chrome, Firefox Mobile)",
+      "Verify device vibration settings in system sound controls"
+    ],
+    whenToStop: "Stop if using iOS Safari or a desktop computer without vibration hardware; the Vibration API is intentionally unavailable on these platforms."
+  },
+  {
+    id: "webcam-issues",
+    title: "Webcam & Camera Access Issues",
+    category: "deviceInput",
+    categoryTitle: "Device & Input Problems",
+    symptom: "Camera preview shows a black screen, permission was denied, or camera fails to start.",
+    possibleCauses: [
+      "Browser camera permission was blocked or denied",
+      "Camera is currently opened with exclusive lock by another application (Zoom, Teams, OBS, Skype)",
+      "Physical camera privacy shutter or hardware privacy switch is closed",
+      "Insecure context (HTTP instead of HTTPS)",
+      "USB webcam cable or driver disconnected"
+    ],
+    checks: [
+      "Check the browser address bar for the camera permission icon and ensure it is set to 'Allow'",
+      "Inspect the laptop bezel for a physical sliding privacy shutter or function key privacy switch",
+      "Close other video applications that may have an exclusive lock on the camera device"
+    ],
+    whatScreenTesterCanTest: {
+      description: "Screen Tester requests local video stream via getUserMedia, displays live aspect-ratio-accurate preview, and reports browser-detected resolution and frame rate.",
+      links: [
+        { label: "Webcam Test", testId: "webcam-test", testPath: "/tests/webcam-test" }
+      ]
+    },
+    whatScreenTesterCannotDetermine: [
+      "Physical lens optical MTF resolution or distortion",
+      "Exact color accuracy (CRI) of the image sensor",
+      "Physical shutter state if the sensor output is solid black pixels"
+    ],
+    actions: [
+      "In Windows Settings > Privacy & security > Camera, ensure 'Let apps access your camera' is ON",
+      "In macOS System Settings > Privacy & Security > Camera, check browser permission",
+      "Reconnect external USB webcam to a direct USB 3.0 port"
+    ],
+    whenToStop: "Stop if the webcam hardware produces smoke, excessive heat, or physical mechanical buzzing."
+  },
+  {
+    id: "speaker-issues",
+    title: "Speaker & Audio Output Issues",
+    category: "deviceInput",
+    categoryTitle: "Device & Input Problems",
+    symptom: "No audio is heard, sound is distorted, or left and right channels are reversed or silent.",
+    possibleCauses: [
+      "System volume is muted or set too low",
+      "Browser tab is muted",
+      "Audio output is routed to wrong audio endpoint (e.g. Bluetooth headphones in other room or disconnected HDMI audio)",
+      "Stereo panner reveals reversed physical wiring or defective speaker driver"
+    ],
+    checks: [
+      "Check browser tab mute indicator",
+      "Verify operating system audio output device selection (Speakers vs HDMI vs Headset)",
+      "Slowly increase volume in Screen Tester and check left/right separation"
+    ],
+    whatScreenTesterCanTest: {
+      description: "Screen Tester synthesizes clean test sine waves (100Hz, 440Hz, 2500Hz) and distinct left/right channel isolation using Web Audio API.",
+      links: [
+        { label: "Speaker Test", testId: "speaker-test", testPath: "/tests/speaker-test" }
+      ]
+    },
+    whatScreenTesterCannotDetermine: [
+      "Acoustic Sound Pressure Level (SPL) in dB",
+      "True acoustic Total Harmonic Distortion (THD)",
+      "Room acoustics or speaker enclosure resonance"
+    ],
+    actions: [
+      "Select the correct output audio sink if supported",
+      "Check headphone or 3.5mm audio jack seating",
+      "Swap left/right physical speaker wires if channels are reversed"
+    ],
+    whenToStop: "Stop audio immediately if hearing high-distortion clipping or burning smells from amplifier equipment."
   }
 ];
 

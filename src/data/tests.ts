@@ -1,4 +1,4 @@
-export type TestCategory = "pixels" | "color" | "luminance" | "display" | "motion" | "capabilities" | "advanced";
+export type TestCategory = "pixels" | "color" | "luminance" | "display" | "motion" | "capabilities" | "advanced" | "deviceInput";
 
 export interface MonitorTest {
   id: string; // The URL slug (e.g. 'dead-pixel-test')
@@ -260,6 +260,44 @@ export const monitorTests: MonitorTest[] = [
     category: "capabilities",
     primaryIntent: "custom test pattern generator",
     relatedTestIds: ["sharpness-test", "uniformity-test", "compare-displays"]
+  },
+
+  // DEVICE & INPUT
+  {
+    id: "multi-touch-test",
+    category: "deviceInput",
+    primaryIntent: "standalone multi touch test",
+    relatedTestIds: ["touch-screen-test", "resolution-checker"]
+  },
+  {
+    id: "accelerometer-test",
+    category: "deviceInput",
+    primaryIntent: "accelerometer and motion sensor test",
+    relatedTestIds: ["gyroscope-test", "vibration-test"]
+  },
+  {
+    id: "gyroscope-test",
+    category: "deviceInput",
+    primaryIntent: "gyroscope and device orientation test",
+    relatedTestIds: ["accelerometer-test", "vibration-test"]
+  },
+  {
+    id: "vibration-test",
+    category: "deviceInput",
+    primaryIntent: "vibration and haptic feedback test",
+    relatedTestIds: ["speaker-test", "accelerometer-test"]
+  },
+  {
+    id: "webcam-test",
+    category: "deviceInput",
+    primaryIntent: "webcam and camera stream test",
+    relatedTestIds: ["display-info", "resolution-checker"]
+  },
+  {
+    id: "speaker-test",
+    category: "deviceInput",
+    primaryIntent: "speaker and audio output channel test",
+    relatedTestIds: ["vibration-test", "display-info"]
   }
 ];
 
@@ -316,6 +354,12 @@ export const TEST_KEY_MAP: Record<string, { ns: "lib" | "tests", key: string }> 
   "gradient-banding-test": { ns: "tests", key: "gradientBandingTest" },
   "text-clarity-test": { ns: "tests", key: "textClarityTest" },
   "tv-overscan-test": { ns: "tests", key: "tvOverscanTest" },
-  "scaling-aspect-test": { ns: "tests", key: "scalingAspectTest" }
+  "scaling-aspect-test": { ns: "tests", key: "scalingAspectTest" },
+  "multi-touch-test": { ns: "tests", key: "multiTouchTest" },
+  "accelerometer-test": { ns: "tests", key: "accelerometerTest" },
+  "gyroscope-test": { ns: "tests", key: "gyroscopeTest" },
+  "vibration-test": { ns: "tests", key: "vibrationTest" },
+  "webcam-test": { ns: "tests", key: "webcamTest" },
+  "speaker-test": { ns: "tests", key: "speakerTest" }
 };
 

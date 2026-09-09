@@ -60,7 +60,8 @@ export default async function TestsPage({ params }: { params: Promise<{ locale: 
     mapTestsToI18n("display", "categories.displayBacklight"),
     mapTestsToI18n("motion", "categories.motionPerformance"),
     mapTestsToI18n("capabilities", "categories.displayCapabilities"),
-    mapTestsToI18n("advanced", "categories.advancedDisplay")
+    mapTestsToI18n("advanced", "categories.advancedDisplay"),
+    mapTestsToI18n("deviceInput", "categories.deviceInput")
   ];
 
   return (
