@@ -223,7 +223,11 @@
       "motionPerformance": "मोशन और रिफ्रेश रेट टेस्ट",
       "sharpnessCapabilities": "शार्पनेस और क्षमताएं"
     },
-    "allTestsNoResults": "कोई टेस्ट नहीं मिला"
+    "allTestsNoResults": "कोई टेस्ट नहीं मिला",
+    "moreFreeTestingToolsTitle": "अन्य निःशुल्क परीक्षण उपकरण",
+    "keyboardTesterTitle": "कीबोर्ड टेस्टर",
+    "keyboardTesterDesc": "हमारे निःशुल्क कीबोर्ड टेस्टर के साथ अपने कीबोर्ड की हर कुंजी का ऑनलाइन परीक्षण करें।",
+    "testYourKeyboard": "अपना कीबोर्ड टेस्ट करें →"
   },
   "TestLibrary": {
     "categories": {

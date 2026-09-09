@@ -223,7 +223,11 @@
       "motionPerformance": "BEWEGUNGSSCHÄRFE & BILDWIEDERHOLRATE",
       "sharpnessCapabilities": "SCHÄRFE- UND FUNKTIONSTESTS"
     },
-    "allTestsNoResults": "Keine Tests gefunden für"
+    "allTestsNoResults": "Keine Tests gefunden für",
+    "moreFreeTestingToolsTitle": "Weitere Kostenlose Test-Werkzeuge",
+    "keyboardTesterTitle": "Tastatur-Tester",
+    "keyboardTesterDesc": "Testen Sie jede Taste auf Ihrer Tastatur online mit unserem kostenlosen Tastatur-Tester.",
+    "testYourKeyboard": "Tastatur Testen →"
   },
   "TestLibrary": {
     "categories": {

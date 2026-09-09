@@ -170,6 +170,14 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <a 
+                  href="https://keyboardtester1.com/" 
+                  className="hover:text-gray-950 transition-colors block py-0.5 font-medium text-gray-900"
+                >
+                  Keyboard Tester
+                </a>
+              </li>
+              <li>
                 <Link href="/knowledge-base" className="hover:text-gray-950 transition-colors block py-0.5">
                   {t("links.knowledgeBase")}
                 </Link>

@@ -223,7 +223,11 @@
       "motionPerformance": "MOVIMIENTO Y TASA DE REFRESCO",
       "sharpnessCapabilities": "NITIDEZ Y CAPACIDADES"
     },
-    "allTestsNoResults": "No se encontraron tests para"
+    "allTestsNoResults": "No se encontraron tests para",
+    "moreFreeTestingToolsTitle": "Más Herramientas de Prueba Gratuitas",
+    "keyboardTesterTitle": "Probador de Teclado",
+    "keyboardTesterDesc": "Prueba cada tecla de tu teclado en línea con nuestro probador de teclado gratuito.",
+    "testYourKeyboard": "Probar Tu Teclado →"
   },
   "TestLibrary": {
     "categories": {

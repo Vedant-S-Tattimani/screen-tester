@@ -223,7 +223,11 @@
       "motionPerformance": "모션 및 주사율 테스트",
       "sharpnessCapabilities": "선명도 및 디스플레이 기능 테스트"
     },
-    "allTestsNoResults": "검색 결과가 없습니다:"
+    "allTestsNoResults": "검색 결과가 없습니다:",
+    "moreFreeTestingToolsTitle": "추가 무료 테스트 도구",
+    "keyboardTesterTitle": "키보드 테스터",
+    "keyboardTesterDesc": "무료 키보드 테스터로 키보드의 모든 키를 온라인에서 테스트해보세요.",
+    "testYourKeyboard": "키보드 테스트하기 →"
   },
   "TestLibrary": {
     "categories": {

@@ -223,7 +223,11 @@
       "motionPerformance": "MOUVEMENT ET TAUX DE RAFRAÎCHISSEMENT",
       "sharpnessCapabilities": "NETTETÉ ET CAPACITÉS"
     },
-    "allTestsNoResults": "Aucun test trouvé pour"
+    "allTestsNoResults": "Aucun test trouvé pour",
+    "moreFreeTestingToolsTitle": "Plus d'Outils de Test Gratuits",
+    "keyboardTesterTitle": "Testeur de Clavier",
+    "keyboardTesterDesc": "Testez chaque touche de votre clavier en ligne avec notre testeur de clavier gratuit.",
+    "testYourKeyboard": "Tester Votre Clavier →"
   },
   "TestLibrary": {
     "categories": {

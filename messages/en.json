@@ -261,7 +261,11 @@
       "motionPerformance": "MOTION & REFRESH RATE",
       "sharpnessCapabilities": "SHARPNESS & CAPABILITIES"
     },
-    "allTestsNoResults": "No tests found matching"
+    "allTestsNoResults": "No tests found matching",
+    "moreFreeTestingToolsTitle": "More Free Testing Tools",
+    "keyboardTesterTitle": "Keyboard Tester",
+    "keyboardTesterDesc": "Test every key on your keyboard online with our free Keyboard Tester.",
+    "testYourKeyboard": "Test Your Keyboard →"
   },
   "TestLibrary": {
     "launchTest": "Launch Test",

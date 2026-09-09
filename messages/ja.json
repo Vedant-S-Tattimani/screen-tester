@@ -223,7 +223,11 @@
       "motionPerformance": "残像（モーション）・リフレッシュレート",
       "sharpnessCapabilities": "鮮鋭度（シャープネス）・機能テスト"
     },
-    "allTestsNoResults": "一致するテストが見つかりません:"
+    "allTestsNoResults": "一致するテストが見つかりません:",
+    "moreFreeTestingToolsTitle": "その他の無料テストツール",
+    "keyboardTesterTitle": "キーボードテスター",
+    "keyboardTesterDesc": "無料のキーボードテスターで、オンラインでキーボードのすべてのキーをテストできます。",
+    "testYourKeyboard": "キーボードをテストする →"
   },
   "TestLibrary": {
     "categories": {

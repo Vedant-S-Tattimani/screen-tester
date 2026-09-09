@@ -223,7 +223,11 @@
       "motionPerformance": "MOVIMENTO E TAXA DE ATUALIZAÇÃO",
       "sharpnessCapabilities": "NITIDEZ E CAPACIDADES"
     },
-    "allTestsNoResults": "Nenhum teste encontrado para"
+    "allTestsNoResults": "Nenhum teste encontrado para",
+    "moreFreeTestingToolsTitle": "Mais Ferramentas de Teste Gratuitas",
+    "keyboardTesterTitle": "Testador de Teclado",
+    "keyboardTesterDesc": "Teste todas as teclas do seu teclado online com o nosso testador de teclado gratuito.",
+    "testYourKeyboard": "Testar Seu Teclado →"
   },
   "TestLibrary": {
     "categories": {

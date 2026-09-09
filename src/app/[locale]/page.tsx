@@ -8,7 +8,8 @@ import {
   Grid, 
   Settings, 
   Eye, 
-  Maximize2
+  Maximize2,
+  Keyboard
 } from "lucide-react";
 
 import { AllScreenTests, type ScreenTestCategory, type ScreenTestItem } from "@/components/home/AllScreenTests";
@@ -394,6 +395,43 @@ export default async function Home({
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================== */}
+      {/* 6. MORE FREE TESTING TOOLS SECTION                 */}
+      {/* ================================================== */}
+      <section className="border-t border-gray-200/80 bg-white py-10 sm:py-12">
+        <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
+          {/* Section Header */}
+          <div className="mb-5 sm:mb-6">
+            <h2 className="text-sm sm:text-base font-bold tracking-tight text-gray-950 uppercase">
+              {t("moreFreeTestingToolsTitle")}
+            </h2>
+          </div>
+
+          {/* Tool Card */}
+          <div className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-4 sm:p-5 transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 max-w-2xl">
+            <div className="flex items-start gap-3.5 sm:gap-4">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-gray-100 border border-gray-200/60 flex items-center justify-center text-gray-800 shrink-0 mt-0.5">
+                <Keyboard className="w-4 h-4 sm:w-4.5 sm:h-4.5 stroke-[1.8]" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-xs sm:text-[14px] text-gray-950 mb-0.5 leading-snug">
+                  {t("keyboardTesterTitle")}
+                </h3>
+                <p className="text-[11px] sm:text-xs text-gray-500 leading-relaxed max-w-md">
+                  {t("keyboardTesterDesc")}
+                </p>
+              </div>
+            </div>
+            <a
+              href="https://keyboardtester1.com/"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs sm:text-[13px] font-semibold text-white bg-gray-900 hover:bg-gray-800 rounded-lg transition-colors shrink-0 focus-visible:ring-2 focus-visible:ring-gray-900 outline-none"
+            >
+              <span>{t("testYourKeyboard")}</span>
+            </a>
           </div>
         </div>
       </section>
