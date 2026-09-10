@@ -121,14 +121,14 @@ export default async function RootLayout({
     <html lang={locale} className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`} suppressHydrationWarning>
       <head>
         {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PGC54J02ZD" />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DHGBWM8X0R" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-PGC54J02ZD');
+              gtag('config', 'G-DHGBWM8X0R');
             `,
           }}
         />
