@@ -9,7 +9,6 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { ExtensionCleanup } from "@/components/ExtensionCleanup";
 import { getBaseUrl, OG_LOCALES } from "@/lib/seo";
-import Script from "next/script";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -121,14 +120,9 @@ export default async function RootLayout({
   return (
     <html lang={locale} className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`} suppressHydrationWarning>
       <head>
-        {/* Google Analytics tag (gtag.js) */}
-        <Script
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-PGC54J02ZD"
-        />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PGC54J02ZD" />
+        <script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
