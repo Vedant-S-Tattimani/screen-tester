@@ -1,6 +1,3 @@
-https://screen-tester-bsf.pages.dev/* https://screen-tester.com/:splat 301
-https://*.pages.dev/* https://screen-tester.com/:splat 301
-
 / /en 301
 /:locale/resolution-checker /:locale/tests/resolution-checker 301
 /resolution-checker /en/tests/resolution-checker 301
