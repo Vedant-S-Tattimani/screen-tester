@@ -119,6 +119,26 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`} suppressHydrationWarning>
+      <head>
+        {/* Anti-Duplicate Content Shield: Permanently redirects .pages.dev to custom domain screen-tester.com and injects noindex */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  if (typeof window !== 'undefined' && window.location.hostname.indexOf('.pages.dev') !== -1) {
+                    var m = document.createElement('meta');
+                    m.name = 'robots';
+                    m.content = 'noindex, nofollow';
+                    document.head.appendChild(m);
+                    window.location.replace('https://screen-tester.com' + window.location.pathname + window.location.search + window.location.hash);
+                  }
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-background text-foreground" suppressHydrationWarning>
         <ExtensionCleanup />
         <NextIntlClientProvider locale={locale} messages={messages}>
