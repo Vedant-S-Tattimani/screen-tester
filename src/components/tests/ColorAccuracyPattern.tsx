@@ -50,12 +50,12 @@ export function ColorAccuracyPattern({ testId }: ColorAccuracyPatternProps) {
 
   return (
     <>
-      <div className="absolute inset-0 bg-[#222222] flex items-center justify-center p-3 sm:p-6 text-white overflow-hidden">
-        <div className="w-full max-w-4xl aspect-[3/2] bg-[#141414] border-4 sm:border-8 border-[#141414] rounded-lg shadow-2xl grid grid-cols-6 grid-rows-4 gap-1 sm:gap-2 p-1 sm:p-2">
+      <div className="absolute inset-0 bg-[#222222] flex items-center justify-center p-2 sm:p-4 pb-14 sm:pb-16 text-white overflow-hidden">
+        <div className="w-full h-full bg-[#141414] border-2 sm:border-4 border-[#141414] rounded-lg shadow-2xl grid grid-cols-6 grid-rows-4 gap-1.5 sm:gap-2.5 p-1.5 sm:p-2.5">
           {COLOR_CHECKER.map((color, i) => (
             <div 
               key={i} 
-              className="w-full h-full rounded shadow-sm relative group cursor-pointer transition-transform duration-200"
+              className="w-full h-full rounded-md shadow-sm relative group cursor-pointer transition-transform duration-200 min-h-0"
               style={{ backgroundColor: color.hex }}
             >
               <div className={`absolute inset-0 flex flex-col items-center justify-center bg-black/75 transition-opacity rounded ${
@@ -76,12 +76,12 @@ export function ColorAccuracyPattern({ testId }: ColorAccuracyPatternProps) {
             className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-colors cursor-pointer ${
               showLabels 
                 ? "bg-amber-400 text-slate-950 font-extrabold shadow-md ring-2 ring-amber-300 border-amber-300" 
-                : "bg-white/15 text-cyan-100 font-semibold hover:text-white hover:bg-white/25 border border-white/20"
+                : "bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-50 border-slate-200 dark:bg-white/15 dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/25 dark:border-white/20 font-semibold"
             }`}
           >
             {showLabels ? "Hide Hex / Names" : "Show Hex / Names"}
           </button>
-          <span className="text-xs text-amber-300 font-mono font-bold hidden sm:inline">
+          <span className="text-xs text-amber-600 dark:text-amber-300 font-mono font-bold hidden sm:inline">
             24 Standard Reference Patches
           </span>
         </div>

@@ -350,14 +350,14 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
       <TestControlBar testId={testId} title="Brightness & Luminance Test">
         <div className="flex flex-wrap items-center gap-2">
           {/* Stage Switcher Strip */}
-          <div className="flex items-center gap-1 bg-muted/60 dark:bg-white/10 p-1 rounded-lg border border-border/50">
+          <div className="flex items-center gap-1 bg-slate-100 dark:bg-white/10 p-1 rounded-lg border border-slate-200 dark:border-border/50">
             <button
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
                 prevStage();
               }}
-              className="p-1.5 hover:bg-white/20 rounded transition-colors text-amber-300 cursor-pointer"
+              className="p-1.5 hover:bg-slate-200 dark:hover:bg-white/20 rounded transition-colors text-amber-600 dark:text-amber-300 cursor-pointer"
               title="Previous stage (Left Arrow)"
               aria-label="Previous stage"
             >
@@ -376,8 +376,8 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
                   className={cn(
                     "px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer",
                     idx === activeStageIndex
-                      ? "bg-amber-400 text-slate-950 shadow-md ring-2 ring-amber-300"
-                      : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/15 border border-white/20 font-semibold"
+                      ? "bg-amber-400 text-slate-950 shadow-md ring-2 ring-amber-300 font-extrabold"
+                      : "bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-100 border border-slate-200 dark:bg-white/15 dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/25 dark:border-white/20 font-semibold"
                   )}
                 >
                   {stg.shortTitle}
@@ -391,7 +391,7 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
                 e.stopPropagation();
                 nextStage();
               }}
-              className="p-1.5 hover:bg-white/20 rounded transition-colors text-amber-300 cursor-pointer"
+              className="p-1.5 hover:bg-slate-200 dark:hover:bg-white/20 rounded transition-colors text-amber-600 dark:text-amber-300 cursor-pointer"
               title="Next stage (Right Arrow / Click)"
               aria-label="Next stage"
             >
@@ -412,12 +412,12 @@ export function BrightnessGuidance() {
   return (
     <div className="w-full max-w-4xl mx-auto bg-card border border-border/70 rounded-2xl p-5 shadow-xs space-y-4">
       {/* Honesty Banner */}
-      <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl text-xs text-blue-950 dark:text-blue-200 leading-relaxed space-y-1">
+      <div className="p-4 bg-blue-50 border border-blue-200 dark:bg-blue-950/40 dark:border-blue-800 rounded-xl text-xs text-blue-950 dark:text-blue-100 leading-relaxed space-y-1">
         <div className="flex items-center gap-2 font-semibold">
-          <ShieldAlert className="w-4 h-4 text-blue-500 shrink-0" />
+          <ShieldAlert className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
           <span>Visual Calibration Aid (Physical Luminance in cd/m² Requires Hardware)</span>
         </div>
-        <p>
+        <p className="text-blue-900 dark:text-blue-200">
           A standard web browser cannot measure true physical screen brightness (cd/m² or nits) because web APIs do not have access to photometer sensor hardware. This test provides controlled visual targets so you can adjust your monitor&apos;s physical brightness and contrast controls to achieve optimal shadow and highlight distinction.
         </p>
       </div>

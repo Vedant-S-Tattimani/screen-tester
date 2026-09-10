@@ -225,7 +225,7 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
         className={cn(
           "transition-all duration-300 ease-out select-none flex flex-col gap-2",
           isFullscreen 
-            ? "dark fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 px-2 sm:px-4 w-[calc(100vw-1rem)] sm:w-fit max-w-[96vw] z-50" 
+            ? "dark fixed bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 px-2 sm:px-4 w-[calc(100vw-1rem)] md:w-auto max-w-[96vw] z-50" 
             : "w-full",
           isFullscreen && !isControlsVisible 
             ? "opacity-0 pointer-events-none translate-y-8 scale-98" 
@@ -280,7 +280,7 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
         <div className={cn(
           "flex flex-wrap items-center justify-between gap-2 sm:gap-3 w-full max-h-[80vh] overflow-y-auto sm:overflow-visible no-scrollbar",
           isFullscreen 
-            ? "dark bg-black/90 backdrop-blur-md px-3 py-2 sm:px-5 sm:py-2.5 rounded-2xl shadow-2xl border border-white/20 text-white" 
+            ? "dark bg-black/90 backdrop-blur-md px-3 py-2 sm:px-4 sm:py-2.5 rounded-2xl shadow-2xl border border-white/20 text-white" 
             : "bg-white border border-gray-200/90 rounded-xl px-4 py-2.5 sm:py-3 shadow-xs text-gray-900"
         )}>
           
@@ -333,11 +333,11 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
           </div>
 
           {/* Global Controls & Workflow Navigation */}
-          <div className={cn("flex flex-wrap sm:flex-nowrap items-center gap-1.5 sm:gap-2 shrink-0 w-full md:w-auto justify-between md:justify-end", children ? "mt-1.5 md:mt-0" : "")}>
+          <div className={cn("flex flex-wrap items-center gap-1.5 sm:gap-2 w-full md:w-auto justify-end", children ? "mt-1.5 md:mt-0" : "")}>
             
             {/* Observation Panel: Looks Normal / Needs Attention / Unsure */}
             {activeTestId && (
-              <div className="flex items-center gap-1 border-r border-border/50 pr-1.5 sm:pr-2 mr-0.5 sm:mr-1">
+              <div className="flex flex-wrap items-center gap-1 border-r border-border/50 pr-1.5 sm:pr-2 mr-0.5 sm:mr-1">
                 <button 
                   type="button"
                   onClick={() => handleSelectObservation("PASS")}
@@ -463,7 +463,7 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
               type="button"
               onClick={toggleFullscreen}
               className={cn(
-                "flex items-center gap-1 sm:gap-1.5 text-xs font-bold px-2.5 sm:px-3 py-1.5 rounded-lg transition-colors border ml-auto md:ml-0 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-hidden shrink-0",
+                "flex items-center gap-1 sm:gap-1.5 text-xs font-bold px-2.5 sm:px-3 py-1.5 rounded-lg transition-colors border focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-hidden shrink-0 cursor-pointer",
                 isFullscreen ? "border-white/30 text-white hover:bg-white/20" : "border-slate-300 text-slate-900 hover:bg-slate-100"
               )}
               title={isFullscreen ? t("exit") : t("fullscreen")}

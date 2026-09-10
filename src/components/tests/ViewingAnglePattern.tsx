@@ -144,45 +144,45 @@ export function ViewingAnglePattern({ testId = "viewing-angle-test" }: ViewingAn
             </div>
 
             {/* Corner Patches */}
-            <div className="absolute top-16 left-6 flex flex-col items-center">
-              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl bg-[#808080] border-4 border-white/20 shadow-2xl flex items-center justify-center">
-                <div className="w-10 h-10 rounded-full bg-red-600 shadow-md" />
+            <div className="absolute top-14 sm:top-16 left-4 sm:left-10 flex flex-col items-center">
+              <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-2xl bg-[#808080] border-3 sm:border-4 border-white/25 shadow-2xl flex items-center justify-center">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-red-600 shadow-md" />
               </div>
-              <span className="text-[10px] font-mono text-white/50 mt-1.5">{t("cornerLabel")}</span>
+              <span className="text-[10px] font-mono text-white/50 mt-1">{t("cornerLabel")}</span>
             </div>
 
-            <div className="absolute top-16 right-6 flex flex-col items-center">
-              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl bg-[#808080] border-4 border-white/20 shadow-2xl flex items-center justify-center">
-                <div className="w-10 h-10 rounded-full bg-emerald-600 shadow-md" />
+            <div className="absolute top-14 sm:top-16 right-4 sm:right-10 flex flex-col items-center">
+              <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-2xl bg-[#808080] border-3 sm:border-4 border-white/25 shadow-2xl flex items-center justify-center">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-emerald-600 shadow-md" />
               </div>
-              <span className="text-[10px] font-mono text-white/50 mt-1.5">{t("cornerLabel")}</span>
+              <span className="text-[10px] font-mono text-white/50 mt-1">{t("cornerLabel")}</span>
             </div>
 
-            <div className="absolute bottom-16 left-6 flex flex-col items-center">
-              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl bg-[#808080] border-4 border-white/20 shadow-2xl flex items-center justify-center">
-                <div className="w-10 h-10 rounded-full bg-blue-600 shadow-md" />
+            <div className="absolute bottom-24 sm:bottom-28 left-4 sm:left-10 flex flex-col items-center">
+              <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-2xl bg-[#808080] border-3 sm:border-4 border-white/25 shadow-2xl flex items-center justify-center">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-blue-600 shadow-md" />
               </div>
-              <span className="text-[10px] font-mono text-white/50 mt-1.5">{t("cornerLabel")}</span>
+              <span className="text-[10px] font-mono text-white/50 mt-1">{t("cornerLabel")}</span>
             </div>
 
-            <div className="absolute bottom-16 right-6 flex flex-col items-center">
-              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl bg-[#808080] border-4 border-white/20 shadow-2xl flex items-center justify-center">
-                <div className="w-10 h-10 rounded-full bg-amber-500 shadow-md" />
+            <div className="absolute bottom-24 sm:bottom-28 right-4 sm:right-10 flex flex-col items-center">
+              <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-2xl bg-[#808080] border-3 sm:border-4 border-white/25 shadow-2xl flex items-center justify-center">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-amber-500 shadow-md" />
               </div>
-              <span className="text-[10px] font-mono text-white/50 mt-1.5">{t("cornerLabel")}</span>
+              <span className="text-[10px] font-mono text-white/50 mt-1">{t("cornerLabel")}</span>
             </div>
 
             {/* Direct Normal Center Reference Target */}
             <div className="flex flex-col items-center z-10">
-              <div className="w-40 h-40 sm:w-56 sm:h-56 rounded-3xl bg-[#808080] border-4 border-white/40 shadow-[0_0_50px_rgba(0,0,0,0.8)] flex flex-col items-center justify-center gap-3">
+              <div className="w-36 h-36 sm:w-48 sm:h-48 rounded-3xl bg-[#808080] border-4 border-white/40 shadow-[0_0_50px_rgba(0,0,0,0.8)] flex flex-col items-center justify-center gap-2.5">
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-red-600 shadow-sm" />
-                  <div className="w-8 h-8 rounded-full bg-emerald-600 shadow-sm" />
-                  <div className="w-8 h-8 rounded-full bg-blue-600 shadow-sm" />
-                  <div className="w-8 h-8 rounded-full bg-amber-500 shadow-sm" />
+                  <div className="w-7 h-7 rounded-full bg-red-600 shadow-sm" />
+                  <div className="w-7 h-7 rounded-full bg-emerald-600 shadow-sm" />
+                  <div className="w-7 h-7 rounded-full bg-blue-600 shadow-sm" />
+                  <div className="w-7 h-7 rounded-full bg-amber-500 shadow-sm" />
                 </div>
-                <div className="w-16 h-16 rounded-full bg-neutral-900 border-2 border-white/30 flex items-center justify-center">
-                  <div className="w-6 h-6 rounded-full bg-white shadow-xs" />
+                <div className="w-14 h-14 rounded-full bg-neutral-900 border-2 border-white/30 flex items-center justify-center">
+                  <div className="w-5 h-5 rounded-full bg-white shadow-xs" />
                 </div>
               </div>
               <span className="text-xs font-mono font-bold text-white mt-2 bg-white/10 px-3 py-1 rounded-full border border-white/15">
@@ -377,88 +377,36 @@ export function ViewingAnglePattern({ testId = "viewing-angle-test" }: ViewingAn
       </div>
 
       {/* ========================================================= */}
-      {/* TEST CONTROL BAR WITH HONEST USER-OBSERVATION CONTROLS     */}
-      {/* ========================================================= */}
+      {/* TEST CONTROL BAR */}
       <TestControlBar testId={testId} title={t("title")}>
         <div className="flex flex-wrap items-center gap-2">
           {/* Pattern Selector */}
-          <div className="flex items-center bg-gray-100 p-0.5 rounded-lg border border-gray-200 text-xs">
+          <div className="flex items-center bg-slate-100 dark:bg-black/60 p-1 rounded-xl border border-slate-200 dark:border-white/20 text-xs">
             <button
               type="button"
               onClick={prevPattern}
-              className="px-2 py-1 text-gray-700 hover:text-black font-mono"
+              className="px-2.5 py-1 text-slate-700 dark:text-slate-200 hover:text-black dark:hover:text-white font-mono cursor-pointer"
               title="Previous pattern"
             >
               ◂
             </button>
-            <span className="px-2 py-1 text-[11px] font-semibold text-gray-900 border-x border-gray-200">
+            <span className="px-2.5 py-1 text-xs font-bold text-slate-900 dark:text-amber-300 border-x border-slate-200 dark:border-white/20">
               {t(`modes.${currentMode}`)} ({patternIndex + 1}/{PATTERNS.length})
             </span>
             <button
               type="button"
               onClick={nextPattern}
-              className="px-2 py-1 text-gray-700 hover:text-black font-mono"
+              className="px-2.5 py-1 text-slate-700 dark:text-slate-200 hover:text-black dark:hover:text-white font-mono cursor-pointer"
               title="Next pattern"
             >
               ▸
             </button>
           </div>
 
-          {/* User Observation 5-Point Selector */}
-          <div className="flex items-center gap-1 border-l border-gray-200 pl-2 text-xs">
-            <span className="text-[11px] font-mono text-gray-500 hidden xl:inline mr-1">
-              {t("observationPrompt")}
-            </span>
-            <button
-              type="button"
-              onClick={() => handleSelectObservation(observation === "PASS" ? null : "PASS")}
-              className={`px-2 py-1 rounded-md text-[11px] font-medium transition-all ${
-                observation === "PASS"
-                  ? "bg-emerald-600 text-white font-semibold shadow-xs"
-                  : "bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200"
-              }`}
-            >
-              ✓ {t("observations.normal")}
-            </button>
-            <button
-              type="button"
-              onClick={() => handleSelectObservation(observation === "CHECK" ? null : "CHECK")}
-              className={`px-2 py-1 rounded-md text-[11px] font-medium transition-all ${
-                observation === "CHECK"
-                  ? "bg-blue-600 text-white font-semibold shadow-xs"
-                  : "bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200"
-              }`}
-            >
-              {t("observations.slight")}
-            </button>
-            <button
-              type="button"
-              onClick={() => handleSelectObservation(observation === "ISSUE" ? null : "ISSUE")}
-              className={`px-2 py-1 rounded-md text-[11px] font-medium transition-all ${
-                observation === "ISSUE"
-                  ? "bg-amber-600 text-white font-semibold shadow-xs"
-                  : "bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200"
-              }`}
-            >
-              ⚠ {t("observations.noticeable")}
-            </button>
-            <button
-              type="button"
-              onClick={() => handleSelectObservation(observation === "UNSURE" ? null : "UNSURE")}
-              className={`px-2 py-1 rounded-md text-[11px] font-medium transition-all ${
-                observation === "UNSURE"
-                  ? "bg-purple-600 text-white font-semibold shadow-xs"
-                  : "bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200"
-              }`}
-            >
-              ? {t("observations.unsure")}
-            </button>
-          </div>
-
           {/* Guide Backlink */}
           <Link
             href="/guides/monitor-viewing-angles-explained"
-            className="text-[11px] font-medium text-blue-600 hover:text-blue-800 hover:underline border-l border-gray-200 pl-2 hidden lg:inline"
+            className="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline px-2 hidden sm:inline"
           >
             {t("backToGuide")} →
           </Link>

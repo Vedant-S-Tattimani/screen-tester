@@ -469,13 +469,13 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
       <TestControlBar testId={testId} title="HDR & Tone-Mapping Calibration">
         <div className="flex flex-wrap items-center gap-2">
           {/* Mode Tabs Switcher */}
-          <div className="flex items-center bg-black/60 dark:bg-black/80 p-1 rounded-xl border border-white/20 text-xs">
+          <div className="flex items-center bg-slate-100 dark:bg-black/80 p-1 rounded-xl border border-slate-200 dark:border-white/20 text-xs">
             <button
               onClick={() => setActiveTab("overview")}
               className={`px-3 py-1.5 rounded-lg transition-all font-bold cursor-pointer ${
                 activeTab === "overview" 
                   ? "bg-amber-400 text-slate-950 shadow-md font-extrabold ring-2 ring-amber-300" 
-                  : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/10 border border-white/15 font-semibold"
+                  : "bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-50 border border-slate-200 dark:bg-white/10 dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/25 dark:border-white/15 font-semibold"
               }`}
             >
               Pipeline Metrics
@@ -485,7 +485,7 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
               className={`px-3 py-1.5 rounded-lg transition-all font-bold cursor-pointer ${
                 activeTab === "banding" 
                   ? "bg-amber-400 text-slate-950 shadow-md font-extrabold ring-2 ring-amber-300" 
-                  : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/10 border border-white/15 font-semibold"
+                  : "bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-50 border border-slate-200 dark:bg-white/10 dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/25 dark:border-white/15 font-semibold"
               }`}
             >
               10-Bit Ramp
@@ -495,7 +495,7 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
               className={`px-3 py-1.5 rounded-lg transition-all font-bold cursor-pointer ${
                 activeTab === "specular" 
                   ? "bg-amber-400 text-slate-950 shadow-md font-extrabold ring-2 ring-amber-300" 
-                  : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/10 border border-white/15 font-semibold"
+                  : "bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-50 border border-slate-200 dark:bg-white/10 dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/25 dark:border-white/15 font-semibold"
               }`}
             >
               Highlight Clipping
@@ -505,7 +505,7 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
               className={`px-3 py-1.5 rounded-lg transition-all font-bold cursor-pointer ${
                 activeTab === "shadow" 
                   ? "bg-amber-400 text-slate-950 shadow-md font-extrabold ring-2 ring-amber-300" 
-                  : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/10 border border-white/15 font-semibold"
+                  : "bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-50 border border-slate-200 dark:bg-white/10 dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/25 dark:border-white/15 font-semibold"
               }`}
             >
               Shadow Detail
@@ -514,14 +514,14 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
 
           {/* Controls specific to Highlight Clipping */}
           {activeTab === "specular" && (
-            <div className="flex items-center gap-1.5 border-l border-white/20 pl-2 text-xs">
-              <span className="text-amber-300 font-mono text-xs font-bold hidden sm:inline">Delta:</span>
+            <div className="flex items-center gap-1.5 border-l border-slate-300 dark:border-white/20 pl-2 text-xs">
+              <span className="text-amber-600 dark:text-amber-300 font-mono text-xs font-bold hidden sm:inline">Delta:</span>
               <button
                 onClick={() => setSensitivity("standard")}
                 className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   sensitivity === "standard"
-                    ? "bg-white text-gray-950 font-extrabold shadow-xs"
-                    : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/10 border border-white/15"
+                    ? "bg-slate-900 dark:bg-white text-white dark:text-gray-950 font-extrabold shadow-xs"
+                    : "text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-white/20 bg-white dark:bg-white/10 border border-slate-200 dark:border-white/15"
                 }`}
                 title="Standard ~2% delta"
               >
@@ -531,8 +531,8 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
                 onClick={() => setSensitivity("subtle")}
                 className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   sensitivity === "subtle"
-                    ? "bg-white text-gray-950 font-extrabold shadow-xs"
-                    : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/10 border border-white/15"
+                    ? "bg-slate-900 dark:bg-white text-white dark:text-gray-950 font-extrabold shadow-xs"
+                    : "text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-white/20 bg-white dark:bg-white/10 border border-slate-200 dark:border-white/15"
                 }`}
                 title="Subtle ~1% delta"
               >
@@ -542,8 +542,8 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
                 onClick={() => setSensitivity("ultrafine")}
                 className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   sensitivity === "ultrafine"
-                    ? "bg-white text-gray-950 font-extrabold shadow-xs"
-                    : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/10 border border-white/15"
+                    ? "bg-slate-900 dark:bg-white text-white dark:text-gray-950 font-extrabold shadow-xs"
+                    : "text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-white/20 bg-white dark:bg-white/10 border border-slate-200 dark:border-white/15"
                 }`}
                 title="Ultra-Fine ~0.5% delta"
               >

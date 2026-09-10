@@ -308,7 +308,7 @@ export function VrrPattern({ testId = "vrr-test" }: VrrPatternProps) {
                 className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all capitalize cursor-pointer ${
                   workload === lvl
                     ? "bg-amber-500 dark:bg-amber-400 text-slate-950 shadow-md ring-2 ring-amber-300 font-extrabold"
-                    : "text-slate-700 dark:text-cyan-100 hover:text-foreground hover:bg-muted font-semibold"
+                    : "text-slate-700 dark:text-slate-200 hover:text-foreground hover:bg-muted font-semibold"
                 }`}
               >
                 {lvl}

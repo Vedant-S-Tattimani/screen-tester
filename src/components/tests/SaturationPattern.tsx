@@ -90,8 +90,8 @@ export function SaturationPattern({ testId }: SaturationPatternProps) {
 
       <TestControlBar testId={testId} title="Color Saturation & Transitions">
         <div className="flex items-center gap-2">
-          <span className="text-xs font-bold text-amber-300 uppercase tracking-wider font-mono hidden md:inline">Mode:</span>
-          <div className="flex gap-1.5 bg-black/60 dark:bg-black/80 p-1 rounded-xl border border-white/20">
+          <span className="text-xs font-bold text-amber-600 dark:text-amber-300 uppercase tracking-wider font-mono hidden md:inline">Mode:</span>
+          <div className="flex gap-1.5 bg-slate-100 dark:bg-black/80 p-1 rounded-xl border border-slate-200 dark:border-white/20">
             {(["all", "hue", "rgb"] as Mode[]).map(m => (
               <button
                 key={m}
@@ -99,7 +99,7 @@ export function SaturationPattern({ testId }: SaturationPatternProps) {
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase transition-all cursor-pointer ${
                   mode === m 
                     ? "bg-amber-400 text-slate-950 font-extrabold shadow-md ring-2 ring-amber-300" 
-                    : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/10 border border-white/15 font-semibold"
+                    : "bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-50 border border-slate-200 dark:bg-white/10 dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/25 dark:border-white/15 font-semibold"
                 }`}
               >
                 {m === "all" ? "Combined" : m === "hue" ? "Rainbow" : "RGB Steps"}

@@ -391,14 +391,14 @@ export function ContrastPattern({ testId = "contrast-test" }: ContrastPatternPro
       <TestControlBar testId={testId} title="Color Contrast & Range Inspection">
         <div className="flex flex-wrap items-center gap-2">
           {/* Mode Switcher Buttons */}
-          <div className="flex items-center gap-1 bg-muted/60 dark:bg-white/10 p-1 rounded-lg border border-border/50">
+          <div className="flex items-center gap-1 bg-slate-100 dark:bg-white/10 p-1 rounded-lg border border-slate-200 dark:border-border/50">
             <button
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
                 prevMode();
               }}
-              className="p-1.5 hover:bg-white/20 rounded transition-colors text-amber-300 cursor-pointer"
+              className="p-1.5 hover:bg-slate-200 dark:hover:bg-white/20 rounded transition-colors text-amber-600 dark:text-amber-300 cursor-pointer"
               title="Previous mode (Left Arrow)"
               aria-label="Previous mode"
             >
@@ -418,7 +418,7 @@ export function ContrastPattern({ testId = "contrast-test" }: ContrastPatternPro
                     "px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer",
                     idx === activeModeIndex
                       ? "bg-amber-400 text-slate-950 shadow-md ring-2 ring-amber-300 font-extrabold"
-                      : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/15 border border-white/20 font-semibold"
+                      : "bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-100 border border-slate-200 dark:bg-white/15 dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/25 dark:border-white/20 font-semibold"
                   )}
                 >
                   {mode.label.split(" (")[0]}
@@ -432,7 +432,7 @@ export function ContrastPattern({ testId = "contrast-test" }: ContrastPatternPro
                 e.stopPropagation();
                 nextMode();
               }}
-              className="p-1.5 hover:bg-white/20 rounded transition-colors text-amber-300 cursor-pointer"
+              className="p-1.5 hover:bg-slate-200 dark:hover:bg-white/20 rounded transition-colors text-amber-600 dark:text-amber-300 cursor-pointer"
               title="Next mode (Right Arrow / Click)"
               aria-label="Next mode"
             >
@@ -453,12 +453,12 @@ export function ContrastGuidance() {
   return (
     <div className="w-full max-w-4xl mx-auto bg-card border border-border/70 rounded-2xl p-5 shadow-xs space-y-4">
       {/* Honesty Banner */}
-      <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl text-xs text-blue-950 dark:text-blue-200 leading-relaxed space-y-1">
+      <div className="p-4 bg-blue-50 border border-blue-200 dark:bg-blue-950/40 dark:border-blue-800 rounded-xl text-xs text-blue-950 dark:text-blue-100 leading-relaxed space-y-1">
         <div className="flex items-center gap-2 font-semibold">
-          <ShieldAlert className="w-4 h-4 text-blue-500 shrink-0" />
+          <ShieldAlert className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
           <span>Visual Inspection Aid (Not a Physical Hardware Light Meter)</span>
         </div>
-        <p>
+        <p className="text-blue-900 dark:text-blue-200">
           Standard web browsers render RGB pixel patterns directly to your operating system pipeline. Browsers cannot physically measure native contrast ratios (e.g. 1000:1 or 1,000,000:1) without external hardware photometer sensors. This test provides calibrated visual steps to evaluate shadow detail, white clipping, and gradation smoothness.
         </p>
       </div>

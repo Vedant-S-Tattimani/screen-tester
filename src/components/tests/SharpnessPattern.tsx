@@ -324,38 +324,38 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
       <TestControlBar testId={testId} title="Sharpness & Text Clarity">
         <div className="flex flex-wrap items-center gap-3">
           {/* Mode Tabs */}
-          <div className="flex items-center bg-black/60 dark:bg-black/80 p-1 rounded-xl border border-white/20 text-xs">
+          <div className="flex items-center bg-slate-100 dark:bg-black/80 p-1 rounded-xl border border-slate-200 dark:border-white/20 text-xs">
             <button
               onClick={() => setActiveTab("grids")}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
                 activeTab === "grids" 
-                  ? "bg-amber-400 text-slate-950 shadow-md ring-2 ring-amber-300" 
-                  : "text-cyan-100 hover:text-white hover:bg-white/20 bg-white/10 font-semibold border border-white/15"
+                  ? "bg-amber-400 text-slate-950 shadow-md ring-2 ring-amber-300 font-extrabold" 
+                  : "bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-50 border border-slate-200 dark:bg-white/10 dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/20 dark:border-white/15 font-semibold"
               }`}
             >
-              <Grid className={`w-3.5 h-3.5 ${activeTab === "grids" ? "text-slate-950" : "text-amber-300"}`} />
+              <Grid className={`w-3.5 h-3.5 ${activeTab === "grids" ? "text-slate-950" : "text-amber-600 dark:text-amber-300"}`} />
               <span>1px Grids</span>
             </button>
             <button
               onClick={() => setActiveTab("typography")}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
                 activeTab === "typography" 
-                  ? "bg-amber-400 text-slate-950 shadow-md ring-2 ring-amber-300" 
-                  : "text-cyan-100 hover:text-white hover:bg-white/20 bg-white/10 font-semibold border border-white/15"
+                  ? "bg-amber-400 text-slate-950 shadow-md ring-2 ring-amber-300 font-extrabold" 
+                  : "bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-50 border border-slate-200 dark:bg-white/10 dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/20 dark:border-white/15 font-semibold"
               }`}
             >
-              <Type className={`w-3.5 h-3.5 ${activeTab === "typography" ? "text-slate-950" : "text-amber-300"}`} />
+              <Type className={`w-3.5 h-3.5 ${activeTab === "typography" ? "text-slate-950" : "text-amber-600 dark:text-amber-300"}`} />
               <span>Text Lab</span>
             </button>
             <button
               onClick={() => setActiveTab("moire")}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
                 activeTab === "moire" 
-                  ? "bg-amber-400 text-slate-950 shadow-md ring-2 ring-amber-300" 
-                  : "text-cyan-100 hover:text-white hover:bg-white/20 bg-white/10 font-semibold border border-white/15"
+                  ? "bg-amber-400 text-slate-950 shadow-md ring-2 ring-amber-300 font-extrabold" 
+                  : "bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-50 border border-slate-200 dark:bg-white/10 dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/20 dark:border-white/15 font-semibold"
               }`}
             >
-              <CircleDot className={`w-3.5 h-3.5 ${activeTab === "moire" ? "text-slate-950" : "text-amber-300"}`} />
+              <CircleDot className={`w-3.5 h-3.5 ${activeTab === "moire" ? "text-slate-950" : "text-amber-600 dark:text-amber-300"}`} />
               <span>Moiré Pattern</span>
             </button>
           </div>
@@ -363,25 +363,25 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
           {/* Invert Light / Dark Toggle */}
           <button
             onClick={toggleInverted}
-            className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg border border-white/20 hover:bg-white/25 bg-white/10 text-amber-200 hover:text-white font-bold transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg border border-slate-200 dark:border-white/20 hover:bg-slate-200 dark:hover:bg-white/25 bg-slate-100 dark:bg-white/10 text-slate-800 dark:text-amber-200 hover:text-slate-950 dark:hover:text-white font-bold transition-colors cursor-pointer"
             title="Toggle Black-on-White / White-on-Black"
           >
-            {inverted ? <Sun className="w-3.5 h-3.5 text-amber-400" /> : <Moon className="w-3.5 h-3.5 text-amber-300" />}
+            {inverted ? <Sun className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" /> : <Moon className="w-3.5 h-3.5 text-amber-600 dark:text-amber-300" />}
             <span>{inverted ? "Light BG" : "Dark BG"}</span>
           </button>
 
           {/* Moiré Density Slider */}
           {activeTab === "moire" && (
-            <div className="flex items-center gap-1.5 text-xs bg-black/60 px-2.5 py-1 rounded-lg border border-white/20">
-              <span className="text-[10px] text-amber-300 font-bold uppercase font-mono tracking-wider">Density:</span>
+            <div className="flex items-center gap-1.5 text-xs bg-slate-100 dark:bg-black/60 px-2.5 py-1 rounded-lg border border-slate-200 dark:border-white/20">
+              <span className="text-[10px] text-amber-600 dark:text-amber-300 font-bold uppercase font-mono tracking-wider">Density:</span>
               {[1, 2, 3, 4, 5].map((lvl) => (
                 <button
                   key={lvl}
                   onClick={() => setMoireDensity(lvl)}
                   className={`w-5 h-5 rounded text-xs font-mono font-bold transition-colors cursor-pointer ${
                     moireDensity === lvl 
-                      ? "bg-white text-gray-950 font-extrabold shadow-xs" 
-                      : "text-cyan-100 hover:text-white hover:bg-white/20 bg-white/10 border border-white/15"
+                      ? "bg-slate-900 dark:bg-white text-white dark:text-gray-950 font-extrabold shadow-xs" 
+                      : "text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-white/20 bg-white dark:bg-white/10 border border-slate-200 dark:border-white/15"
                   }`}
                 >
                   {lvl}

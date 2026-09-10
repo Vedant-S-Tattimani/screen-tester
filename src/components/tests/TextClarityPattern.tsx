@@ -178,7 +178,7 @@ export function TextClarityPattern({ testId = "text-clarity-test" }: TextClarity
                 className={`px-3.5 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer ${
                   theme === btn.id
                     ? "bg-amber-500 dark:bg-amber-400 text-slate-950 shadow-md ring-2 ring-amber-300 font-extrabold"
-                    : "bg-muted dark:bg-white/10 text-slate-700 dark:text-cyan-100 font-semibold hover:text-foreground hover:bg-muted/80"
+                    : "bg-muted dark:bg-white/10 text-slate-700 dark:text-slate-200 font-semibold hover:text-foreground hover:bg-muted/80"
                 }`}
               >
                 {btn.label}

@@ -195,7 +195,7 @@ export function ScreenTearingPattern({ testId }: ScreenTearingPatternProps) {
           <div 
             role="radiogroup" 
             aria-label="Sweep Speed Presets" 
-            className="flex items-center gap-1 bg-muted/60 p-1 rounded-lg border border-border/50"
+            className="flex items-center gap-1 bg-slate-100 dark:bg-white/10 p-1 rounded-lg border border-slate-200 dark:border-border/50"
           >
             {SPEED_PRESETS.map((s, idx) => (
               <button
@@ -207,15 +207,15 @@ export function ScreenTearingPattern({ testId }: ScreenTearingPatternProps) {
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:outline-hidden cursor-pointer ${
                   speed === s.value 
                     ? "bg-amber-400 text-slate-950 shadow-md font-extrabold ring-2 ring-amber-300" 
-                    : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/10 border border-white/15 font-semibold"
+                    : "bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-50 border border-slate-200 dark:bg-white/10 dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/25 dark:border-white/15 font-semibold"
                 }`}
               >
-                <span className="font-mono tabular-nums text-amber-300">{idx + 1}.</span> {s.label}
+                <span className="font-mono tabular-nums text-amber-600 dark:text-amber-300">{idx + 1}.</span> {s.label}
               </button>
             ))}
           </div>
 
-          <span className="text-xs text-amber-300 font-bold hidden sm:inline font-mono">
+          <span className="text-xs text-amber-600 dark:text-amber-300 font-bold hidden sm:inline font-mono">
             V-Sync Scanline Stress
           </span>
         </div>

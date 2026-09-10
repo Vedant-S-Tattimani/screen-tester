@@ -184,7 +184,7 @@ export function GammaPattern({ testId = "gamma-test" }: GammaPatternProps) {
       <TestControlBar testId={testId} title="Gamma Calibration">
         <div className="flex flex-wrap items-center gap-2 sm:gap-3">
           {/* Preset Buttons */}
-          <div className="flex items-center gap-1.5 bg-black/60 dark:bg-black/80 p-1 rounded-xl border border-white/20">
+          <div className="flex items-center gap-1.5 bg-slate-100 dark:bg-black/80 p-1 rounded-xl border border-slate-200 dark:border-white/20">
             {PRESET_GAMMAS.map((p) => (
               <button
                 key={p.value}
@@ -194,7 +194,7 @@ export function GammaPattern({ testId = "gamma-test" }: GammaPatternProps) {
                   "px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold transition-all focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:outline-hidden cursor-pointer",
                   Math.abs(selectedGamma - p.value) < 0.04
                     ? "bg-amber-400 text-slate-950 font-extrabold shadow-md ring-2 ring-amber-300"
-                    : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/15 border border-white/20 font-semibold"
+                    : "bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-50 border border-slate-200 dark:bg-white/15 dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/25 dark:border-white/20 font-semibold"
                 )}
               >
                 {p.label.split(" (")[0]} ({p.value})
@@ -203,8 +203,8 @@ export function GammaPattern({ testId = "gamma-test" }: GammaPatternProps) {
           </div>
 
           {/* Continuous Gamma Slider */}
-          <div className="flex items-center gap-2 bg-black/70 px-3 py-1.5 rounded-xl border border-white/25">
-            <Sliders className="w-3.5 h-3.5 text-amber-300" />
+          <div className="flex items-center gap-2 bg-slate-100 dark:bg-black/70 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-white/25">
+            <Sliders className="w-3.5 h-3.5 text-amber-600 dark:text-amber-300" />
             <input
               type="range"
               min="1.6"
@@ -216,9 +216,9 @@ export function GammaPattern({ testId = "gamma-test" }: GammaPatternProps) {
               aria-valuemin={1.6}
               aria-valuemax={2.6}
               aria-valuenow={selectedGamma}
-              className="w-24 sm:w-36 accent-amber-400 cursor-pointer"
+              className="w-24 sm:w-36 accent-amber-500 dark:accent-amber-400 cursor-pointer"
             />
-            <span className="font-mono text-xs font-bold tabular-nums w-12 text-right text-amber-300">
+            <span className="font-mono text-xs font-bold tabular-nums w-12 text-right text-amber-600 dark:text-amber-300">
               {selectedGamma.toFixed(2)}
             </span>
           </div>
@@ -227,11 +227,11 @@ export function GammaPattern({ testId = "gamma-test" }: GammaPatternProps) {
           <button
             type="button"
             onClick={resetGamma}
-            className="p-2 rounded-lg border border-white/25 hover:bg-white/25 bg-white/15 text-amber-300 hover:text-white transition-colors cursor-pointer"
+            className="p-2 rounded-lg border border-slate-200 dark:border-white/25 hover:bg-slate-200 dark:hover:bg-white/25 bg-slate-100 dark:bg-white/15 text-slate-800 dark:text-amber-300 hover:text-slate-950 dark:hover:text-white transition-colors cursor-pointer"
             title="Reset to Gamma 2.2 Standard"
             aria-label="Reset to 2.2"
           >
-            <RotateCcw className="w-3.5 h-3.5 text-amber-300" />
+            <RotateCcw className="w-3.5 h-3.5 text-amber-600 dark:text-amber-300" />
           </button>
         </div>
       </TestControlBar>
@@ -247,12 +247,12 @@ export function GammaGuidance() {
   return (
     <div className="w-full max-w-4xl mx-auto bg-card border border-border/70 rounded-2xl p-5 shadow-xs space-y-4">
       {/* Honesty Banner */}
-      <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl text-xs text-blue-950 dark:text-blue-200 leading-relaxed space-y-1">
+      <div className="p-4 bg-blue-50 border border-blue-200 dark:bg-blue-950/40 dark:border-blue-800 rounded-xl text-xs text-blue-950 dark:text-blue-100 leading-relaxed space-y-1">
         <div className="flex items-center gap-2 font-semibold">
-          <ShieldAlert className="w-4 h-4 text-blue-500 shrink-0" />
+          <ShieldAlert className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
           <span>Visual Gamma Calibration Aid (Not Automated Measurement)</span>
         </div>
-        <p>
+        <p className="text-blue-900 dark:text-blue-200">
           Gamma curves describe the non-linear relationship between digital input voltage/signal and the physical photon luminance emitted by your display panel. Standard web browsers cannot automatically measure physical panel gamma without an external colorimeter or spectrophotometer sensor. This test creates an optical luminance balance pattern so your eyes can detect whether your monitor is tracking the sRGB Gamma 2.2 standard.
         </p>
       </div>

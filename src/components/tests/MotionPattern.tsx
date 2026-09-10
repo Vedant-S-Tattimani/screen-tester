@@ -252,13 +252,13 @@ export function MotionPattern({ testId = "ghosting-test" }: MotionPatternProps) 
       <TestControlBar testId={testId} title="Motion & Response Time">
         <div className="flex flex-wrap items-center gap-3">
           {/* Mode Selector */}
-          <div className="flex items-center bg-black/60 dark:bg-black/80 p-1 rounded-xl border border-white/20 text-xs">
+          <div className="flex items-center bg-slate-100 dark:bg-black/80 p-1 rounded-xl border border-slate-200 dark:border-white/20 text-xs">
             <button
               onClick={() => setActiveMode("ghosting")}
               className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
                 activeMode === "ghosting" 
                   ? "bg-amber-400 text-slate-950 font-extrabold shadow-md ring-2 ring-amber-300" 
-                  : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/10 font-semibold border border-white/15"
+                  : "bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-50 border border-slate-200 dark:bg-white/10 dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/25 dark:border-white/15 font-semibold"
               }`}
             >
               Ghosting
@@ -268,7 +268,7 @@ export function MotionPattern({ testId = "ghosting-test" }: MotionPatternProps) 
               className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
                 activeMode === "overdrive" 
                   ? "bg-amber-400 text-slate-950 font-extrabold shadow-md ring-2 ring-amber-300" 
-                  : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/10 font-semibold border border-white/15"
+                  : "bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-50 border border-slate-200 dark:bg-white/10 dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/25 dark:border-white/15 font-semibold"
               }`}
             >
               Overdrive (Overshoot)
@@ -278,7 +278,7 @@ export function MotionPattern({ testId = "ghosting-test" }: MotionPatternProps) 
               className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
                 activeMode === "blacksmear" 
                   ? "bg-amber-400 text-slate-950 font-extrabold shadow-md ring-2 ring-amber-300" 
-                  : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/10 font-semibold border border-white/15"
+                  : "bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-50 border border-slate-200 dark:bg-white/10 dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/25 dark:border-white/15 font-semibold"
               }`}
             >
               Black Smearing
@@ -286,16 +286,16 @@ export function MotionPattern({ testId = "ghosting-test" }: MotionPatternProps) 
           </div>
 
           {/* Speed Presets */}
-          <div className="flex items-center gap-1.5 bg-black/60 rounded-xl px-2.5 py-1 border border-white/20 text-xs">
-            <span className="text-[10px] text-amber-300 font-bold uppercase font-mono px-1">Speed:</span>
+          <div className="flex items-center gap-1.5 bg-slate-100 dark:bg-black/60 rounded-xl px-2.5 py-1 border border-slate-200 dark:border-white/20 text-xs">
+            <span className="text-[10px] text-amber-600 dark:text-amber-300 font-bold uppercase font-mono px-1">Speed:</span>
             {SPEED_PRESETS.map((s) => (
               <button
                 key={s}
                 onClick={() => setSpeed(s)}
                 className={`px-2 py-0.5 rounded text-xs font-mono font-bold transition-all cursor-pointer ${
                   speed === s 
-                    ? "bg-white text-gray-950 font-extrabold shadow-xs" 
-                    : "text-cyan-100 hover:text-white hover:bg-white/20 bg-white/10 border border-white/15"
+                    ? "bg-slate-900 dark:bg-white text-white dark:text-gray-950 font-extrabold shadow-xs" 
+                    : "text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-white/20 bg-white dark:bg-white/10 border border-slate-200 dark:border-white/15"
                 }`}
               >
                 {s}
@@ -305,15 +305,15 @@ export function MotionPattern({ testId = "ghosting-test" }: MotionPatternProps) 
 
           {/* Contrast Selector for Ghosting Mode */}
           {activeMode === "ghosting" && (
-            <div className="flex items-center gap-1.5 bg-black/60 rounded-xl px-2.5 py-1 border border-white/20 text-xs">
+            <div className="flex items-center gap-1.5 bg-slate-100 dark:bg-black/60 rounded-xl px-2.5 py-1 border border-slate-200 dark:border-white/20 text-xs">
               {(["high", "medium", "low"] as const).map((c) => (
                 <button
                   key={c}
                   onClick={() => setContrast(c)}
                   className={`px-2 py-0.5 rounded text-xs capitalize font-bold transition-all cursor-pointer ${
                     contrast === c 
-                      ? "bg-white text-gray-950 font-extrabold shadow-xs" 
-                      : "text-cyan-100 hover:text-white hover:bg-white/20 bg-white/10 border border-white/15"
+                      ? "bg-slate-900 dark:bg-white text-white dark:text-gray-950 font-extrabold shadow-xs" 
+                      : "text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-white/20 bg-white dark:bg-white/10 border border-slate-200 dark:border-white/15"
                   }`}
                 >
                   {c}

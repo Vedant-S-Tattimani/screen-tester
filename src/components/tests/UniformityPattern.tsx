@@ -182,11 +182,11 @@ export function UniformityPattern({ testId = "uniformity-test" }: UniformityPatt
                 "inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg border transition-all focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-amber-400 cursor-pointer",
                 showGrid
                   ? "bg-blue-600 text-white border-blue-400 shadow-md ring-2 ring-blue-300"
-                  : "bg-white/10 hover:bg-white/20 text-cyan-100 border-white/20 font-semibold"
+                  : "bg-slate-100 text-slate-800 hover:text-slate-950 hover:bg-slate-200 border-slate-200 dark:bg-white/10 dark:hover:bg-white/20 dark:text-slate-100 dark:border-white/20 font-semibold"
               )}
               title={showGrid ? "Hide Alignment Grid" : `Show ${gridSize}x${gridSize} Alignment Grid`}
             >
-              <Grid className={cn("w-3.5 h-3.5", showGrid ? "text-white" : "text-amber-300")} />
+              <Grid className={cn("w-3.5 h-3.5", showGrid ? "text-white" : "text-amber-600 dark:text-amber-300")} />
               <span className="hidden sm:inline">{showGrid ? "Hide Grid" : `Grid (${gridSize}x${gridSize})`}</span>
             </button>
             {showGrid && (
@@ -196,7 +196,7 @@ export function UniformityPattern({ testId = "uniformity-test" }: UniformityPatt
                   e.stopPropagation();
                   setGridSize((prev) => (prev === 3 ? 5 : 3));
                 }}
-                className="px-2.5 py-1.5 bg-black/60 hover:bg-black/80 text-amber-300 text-xs font-mono font-bold rounded-lg border border-white/25 transition-all focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-amber-400 cursor-pointer"
+                className="px-2.5 py-1.5 bg-slate-100 dark:bg-black/60 hover:bg-slate-200 dark:hover:bg-black/80 text-amber-600 dark:text-amber-300 text-xs font-mono font-bold rounded-lg border border-slate-200 dark:border-white/25 transition-all focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-amber-400 cursor-pointer"
                 title="Switch Grid Resolution (3x3 / 5x5)"
               >
                 {gridSize === 3 ? "5x5" : "3x3"}

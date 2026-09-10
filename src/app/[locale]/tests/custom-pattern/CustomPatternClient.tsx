@@ -470,11 +470,11 @@ function CustomPatternRunner({
                     className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg whitespace-nowrap transition-all cursor-pointer ${
                       isSel
                         ? "bg-amber-400 text-slate-950 font-bold shadow-md ring-2 ring-amber-300"
-                        : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/15 font-semibold border border-white/25 shadow-xs"
+                        : "bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-50 border border-slate-200 dark:bg-white/15 dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/25 dark:border-white/25 shadow-xs font-semibold"
                     }`}
                     title={`${item.label}: ${item.desc}`}
                   >
-                    <Icon className={`w-3.5 h-3.5 shrink-0 ${isSel ? "text-slate-950" : "text-amber-300"}`} />
+                    <Icon className={`w-3.5 h-3.5 shrink-0 ${isSel ? "text-slate-950" : "text-amber-600 dark:text-amber-300"}`} />
                     <span className="text-xs font-semibold">{item.label}</span>
                   </button>
                 );
@@ -483,12 +483,12 @@ function CustomPatternRunner({
           </div>
 
           {/* Secondary Contextual Controls Strip */}
-          <div className="flex items-center justify-between gap-3 text-xs pt-1 border-t border-white/15">
+          <div className="flex items-center justify-between gap-3 text-xs pt-1 border-t border-slate-200 dark:border-white/15">
             <div className="flex items-center gap-2">
               {/* Quick Density Steps */}
               {["grid", "checkerboard", "horizontal_lines", "vertical_lines", "moire"].includes(activePreset) && (
-                <div className="flex items-center gap-1.5 bg-black/70 px-2.5 py-1 rounded-lg border border-white/25">
-                  <span className="text-[11px] text-amber-300 font-bold uppercase font-mono tracking-wider">Density:</span>
+                <div className="flex items-center gap-1.5 bg-slate-100 dark:bg-black/70 px-2.5 py-1 rounded-lg border border-slate-200 dark:border-white/25">
+                  <span className="text-[11px] text-amber-600 dark:text-amber-300 font-bold uppercase font-mono tracking-wider">Density:</span>
                   {[20, 40, 60, 80].map((sz) => (
                     <button
                       key={sz}
@@ -496,8 +496,8 @@ function CustomPatternRunner({
                       onClick={() => setGridSize(sz)}
                       className={`px-2.5 py-0.5 rounded text-xs font-mono font-bold transition-all cursor-pointer ${
                         gridSize === sz
-                          ? "bg-white text-slate-950 font-extrabold shadow-xs"
-                          : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/10 border border-white/15"
+                          ? "bg-slate-900 dark:bg-white text-white dark:text-slate-950 font-extrabold shadow-xs"
+                          : "text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-white/25 bg-white dark:bg-white/10 border border-slate-200 dark:border-white/15"
                       }`}
                     >
                       {sz}px
@@ -508,8 +508,8 @@ function CustomPatternRunner({
 
               {/* Gradient Type Quick Selector */}
               {activePreset === "gradient" && (
-                <div className="flex items-center gap-1.5 bg-black/70 px-2.5 py-1 rounded-lg border border-white/25">
-                  <span className="text-[11px] text-amber-300 font-bold uppercase font-mono tracking-wider">Style:</span>
+                <div className="flex items-center gap-1.5 bg-slate-100 dark:bg-black/70 px-2.5 py-1 rounded-lg border border-slate-200 dark:border-white/25">
+                  <span className="text-[11px] text-amber-600 dark:text-amber-300 font-bold uppercase font-mono tracking-wider">Style:</span>
                   {(["horizontal", "vertical", "radial"] as const).map((gradDir) => (
                     <button
                       key={gradDir}
@@ -517,8 +517,8 @@ function CustomPatternRunner({
                       onClick={() => setGradientType(gradDir)}
                       className={`px-2.5 py-0.5 rounded text-xs font-bold capitalize transition-all cursor-pointer ${
                         gradientType === gradDir
-                          ? "bg-white text-slate-950 font-extrabold shadow-xs"
-                          : "text-cyan-100 hover:text-white hover:bg-white/25 bg-white/10 border border-white/15"
+                          ? "bg-slate-900 dark:bg-white text-white dark:text-slate-950 font-extrabold shadow-xs"
+                          : "text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-white/25 bg-white dark:bg-white/10 border border-slate-200 dark:border-white/15"
                       }`}
                     >
                       {gradDir}

@@ -1,7 +1,7 @@
 import { generateSeoMetadata } from "@/lib/seo";
 import { Metadata } from "next";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
-import { BacklightBleedPattern } from "@/components/tests/BacklightBleedPattern";
+import { BacklightBleedPattern, BacklightBleedGuidance } from "@/components/tests/BacklightBleedPattern";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export async function generateMetadata({
@@ -24,7 +24,8 @@ export default async function BacklightBleedTest({
   const t = await getTranslations({ locale, namespace: "TestPages.backlight-bleed-test" });
 
   return (
-    <TestWrapper testId="backlight-bleed-test"
+    <TestWrapper 
+      testId="backlight-bleed-test"
       title={t("title")}
       description={
         <>
@@ -38,6 +39,7 @@ export default async function BacklightBleedTest({
           ))}
         </ul>
       }
+      extraControls={<BacklightBleedGuidance />}
     >
       <BacklightBleedPattern testId="backlight-bleed-test" />
     </TestWrapper>

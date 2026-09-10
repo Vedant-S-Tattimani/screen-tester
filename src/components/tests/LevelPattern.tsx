@@ -36,21 +36,21 @@ export function LevelPattern({ type, testId }: LevelPatternProps) {
   return (
     <>
       <div 
-        className="absolute inset-0 flex flex-col items-center justify-center p-3 sm:p-5 select-none overflow-hidden"
+        className="absolute inset-0 flex flex-col items-center justify-between p-2 sm:p-4 pb-14 sm:pb-16 select-none overflow-hidden"
         style={{ backgroundColor: bg }}
       >
         {/* Top Target Calibration Hint */}
-        <div className={`mb-2 px-3 py-1 rounded-full text-[11px] sm:text-xs text-center max-w-xl truncate ${
+        <div className={`mb-1.5 px-3.5 py-1 rounded-full text-[11px] sm:text-xs text-center max-w-xl truncate shrink-0 ${
           type === "black" 
-            ? "bg-neutral-900/80 border border-neutral-800 text-neutral-400" 
-            : "bg-neutral-100 border border-neutral-200 text-neutral-600"
+            ? "bg-neutral-900/90 border border-neutral-800 text-neutral-300" 
+            : "bg-neutral-100 border border-neutral-300 text-neutral-800"
         }`}>
           {type === "black"
             ? "Black Level Target: Adjust monitor brightness until squares 1–3 are barely discernible from the black surround."
             : "White Level Target: Adjust monitor contrast until squares 252–254 are discernible from pure white without clipping."}
         </div>
 
-        <div className="grid grid-cols-5 grid-rows-5 gap-1.5 sm:gap-2.5 w-full max-w-3xl h-full max-h-[82%] min-h-0">
+        <div className="grid grid-cols-5 grid-rows-5 gap-1.5 sm:gap-2.5 w-full h-full flex-1 min-h-0">
           {steps.map((value, index) => {
             const color = `rgb(${value}, ${value}, ${value})`;
             const label = type === "black" ? `${index + 1}` : `${value}`;

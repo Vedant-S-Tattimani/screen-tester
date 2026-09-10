@@ -28,7 +28,7 @@ import {
 } from "@/lib/inspectionStorage";
 import { getTroubleshootingByTestId } from "@/data/troubleshooting";
 import { getArticleByTestId } from "@/data/knowledgeBase";
-import { Wrench, ArrowRight, BookOpen } from "lucide-react";
+import { Wrench, ArrowRight, BookOpen, Maximize } from "lucide-react";
 import { PixelDefectOverlay } from "./PixelDefectOverlay";
 import { QueueDrawer } from "./QueueDrawer";
 import { cn } from "@/lib/utils";
@@ -503,32 +503,48 @@ export function TestWrapper({ title, description, instructions, children, testId
                 </div>
               </div>
               
-              {workflowIndex !== -1 && (
-                <div className="bg-muted/40 rounded-xl p-3 border border-border/60 text-right min-w-[210px]">
-                  <div className="flex items-center justify-between gap-3 mb-1">
-                    <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold font-mono">
-                      {isAutoTest ? "Guided Auto Test" : (t.has("queue.sequenceLabel") ? t("queue.sequenceLabel") : "Queue Sequence")}
-                    </span>
-                    <button 
-                      onClick={() => setIsQueueDrawerOpen(true)}
-                      className="text-[11px] text-blue-600 hover:text-blue-700 font-medium underline"
-                    >
-                      {t.has("queue.manageQueue") ? t("queue.manageQueue") : "Manage Queue"}
-                    </button>
+              <div className="flex flex-wrap sm:flex-nowrap items-center sm:items-stretch gap-2.5 shrink-0 self-start md:self-end">
+                {/* Dedicated Fullscreen Trigger beside Queue Sequence */}
+                <button
+                  type="button"
+                  onClick={toggleFullscreen}
+                  className="flex items-center justify-center gap-2 px-4 py-2.5 sm:py-3 bg-slate-900 hover:bg-slate-800 text-white rounded-xl shadow-xs border border-slate-700/80 transition-all text-xs font-semibold hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                  title="Toggle Fullscreen Mode [F]"
+                  aria-label="Toggle Fullscreen Mode"
+                >
+                  <Maximize className="w-4 h-4 text-amber-400 shrink-0" />
+                  <span className="font-mono text-xs font-bold whitespace-nowrap">
+                    Fullscreen <span className="text-amber-400 hidden sm:inline">[F]</span>
+                  </span>
+                </button>
+
+                {workflowIndex !== -1 && (
+                  <div className="bg-muted/40 rounded-xl p-3 border border-border/60 text-right min-w-[210px]">
+                    <div className="flex items-center justify-between gap-3 mb-1">
+                      <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold font-mono">
+                        {isAutoTest ? "Guided Auto Test" : (t.has("queue.sequenceLabel") ? t("queue.sequenceLabel") : "Queue Sequence")}
+                      </span>
+                      <button 
+                        onClick={() => setIsQueueDrawerOpen(true)}
+                        className="text-[11px] text-blue-600 hover:text-blue-700 font-medium underline"
+                      >
+                        {t.has("queue.manageQueue") ? t("queue.manageQueue") : "Manage Queue"}
+                      </button>
+                    </div>
+                    <div className="text-sm font-semibold text-foreground">
+                      {t.has("queue.stepProgress") 
+                        ? t("queue.stepProgress", { x: workflowIndex + 1, y: workflowSequence.length }) 
+                        : `Test ${workflowIndex + 1} of ${workflowSequence.length}`}
+                    </div>
+                    <div className="w-full bg-border/60 h-1.5 rounded-full overflow-hidden mt-2">
+                      <div 
+                        className={cn("h-full rounded-full transition-all duration-300", isAutoTest ? "bg-amber-400" : "bg-blue-600")}
+                        style={{ width: `${Math.round(((workflowIndex + 1) / Math.max(1, workflowSequence.length)) * 100)}%` }}
+                      />
+                    </div>
                   </div>
-                  <div className="text-sm font-semibold text-foreground">
-                    {t.has("queue.stepProgress") 
-                      ? t("queue.stepProgress", { x: workflowIndex + 1, y: workflowSequence.length }) 
-                      : `Test ${workflowIndex + 1} of ${workflowSequence.length}`}
-                  </div>
-                  <div className="w-full bg-border/60 h-1.5 rounded-full overflow-hidden mt-2">
-                    <div 
-                      className={cn("h-full rounded-full transition-all duration-300", isAutoTest ? "bg-amber-400" : "bg-blue-600")}
-                      style={{ width: `${Math.round(((workflowIndex + 1) / Math.max(1, workflowSequence.length)) * 100)}%` }}
-                    />
-                  </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
         )}

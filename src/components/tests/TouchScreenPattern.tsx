@@ -128,7 +128,7 @@ export function TouchScreenPattern({ testId = "touch-screen-test" }: TouchScreen
     });
   }, [registerNavigation, handleReset]);
 
-  // Sync canvas dimensions on resize
+    // Sync canvas dimensions on resize
   useEffect(() => {
     if (mode !== "draw" || !canvasRef.current) return;
     const cvs = canvasRef.current;
@@ -138,6 +138,21 @@ export function TouchScreenPattern({ testId = "touch-screen-test" }: TouchScreen
       cvs.height = rect.height;
     }
   }, [mode, isFullscreen]);
+
+  // Prevent default mobile pinch/pull-to-refresh gestures while touching test canvas
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const preventGesture = (e: TouchEvent) => {
+      if (e.cancelable) e.preventDefault();
+    };
+    el.addEventListener("touchstart", preventGesture, { passive: false });
+    el.addEventListener("touchmove", preventGesture, { passive: false });
+    return () => {
+      el.removeEventListener("touchstart", preventGesture);
+      el.removeEventListener("touchmove", preventGesture);
+    };
+  }, []);
 
   // Hold Timer animation
   useEffect(() => {
@@ -177,6 +192,24 @@ export function TouchScreenPattern({ testId = "touch-screen-test" }: TouchScreen
     });
 
     // Mode Specific Logic
+    if (mode === "grid") {
+      const target = document.elementFromPoint(e.clientX, e.clientY);
+      const tileBtn = target?.closest("[data-tile-index]") as HTMLElement | null;
+      if (tileBtn && tileBtn.dataset.tileIndex !== undefined) {
+        const idx = parseInt(tileBtn.dataset.tileIndex, 10);
+        if (!isNaN(idx)) handleTileTouch(idx);
+      }
+    }
+
+    if (mode === "edge") {
+      const target = document.elementFromPoint(e.clientX, e.clientY);
+      const edgeBtn = target?.closest("[data-edge-index]") as HTMLElement | null;
+      if (edgeBtn && edgeBtn.dataset.edgeIndex !== undefined) {
+        const idx = parseInt(edgeBtn.dataset.edgeIndex, 10);
+        if (!isNaN(idx)) handleEdgeTargetTouch(idx);
+      }
+    }
+
     if (mode === "draw") {
       isDrawingRef.current = true;
       const cvs = canvasRef.current;
@@ -219,6 +252,26 @@ export function TouchScreenPattern({ testId = "touch-screen-test" }: TouchScreen
       next.set(e.pointerId, { ...existing, x, y });
       return next;
     });
+
+    // Touch/drag swipe across grid tiles
+    if (mode === "grid") {
+      const target = document.elementFromPoint(e.clientX, e.clientY);
+      const tileBtn = target?.closest("[data-tile-index]") as HTMLElement | null;
+      if (tileBtn && tileBtn.dataset.tileIndex !== undefined) {
+        const idx = parseInt(tileBtn.dataset.tileIndex, 10);
+        if (!isNaN(idx)) handleTileTouch(idx);
+      }
+    }
+
+    // Touch/drag swipe across perimeter edge targets
+    if (mode === "edge") {
+      const target = document.elementFromPoint(e.clientX, e.clientY);
+      const edgeBtn = target?.closest("[data-edge-index]") as HTMLElement | null;
+      if (edgeBtn && edgeBtn.dataset.edgeIndex !== undefined) {
+        const idx = parseInt(edgeBtn.dataset.edgeIndex, 10);
+        if (!isNaN(idx)) handleEdgeTargetTouch(idx);
+      }
+    }
 
     if (mode === "draw" && isDrawingRef.current) {
       const cvs = canvasRef.current;
@@ -387,36 +440,40 @@ export function TouchScreenPattern({ testId = "touch-screen-test" }: TouchScreen
         {/* MODE 1: TOUCH GRID (24 TILES)                             */}
         {/* ========================================================= */}
         {mode === "grid" && (
-          <div className="w-full max-w-5xl h-[76%] flex flex-col items-center justify-between p-2 mt-10">
-            <div className="w-full flex items-center justify-between px-2 text-xs font-mono text-white/70 mb-1.5">
-              <span>{t("grid.instructions")}</span>
-              <span className="font-bold text-white bg-white/10 px-2 py-0.5 rounded">
+          <div className="w-full h-full flex flex-col justify-between p-2 sm:p-4 pt-14 pb-16 sm:pb-20 max-w-7xl mx-auto">
+            <div className="w-full flex items-center justify-between px-2 text-xs font-mono text-white/70 mb-1.5 shrink-0">
+              <span className="truncate pr-2">{t("grid.instructions")}</span>
+              <span className="font-bold text-white bg-white/10 px-2 py-0.5 rounded shrink-0">
                 {t("grid.progress", { touched: gridTouchedCount, total: 24 })}
               </span>
             </div>
 
-            <div className="w-full flex-1 grid grid-cols-6 grid-rows-4 gap-2">
+            <div className="w-full flex-1 grid grid-cols-4 sm:grid-cols-6 grid-rows-6 sm:grid-rows-4 gap-1.5 sm:gap-2.5 min-h-0">
               {gridTouched.map((touched, i) => (
                 <button
                   key={i}
                   type="button"
+                  data-tile-index={i}
                   onPointerDown={(e) => {
                     e.stopPropagation();
                     handleTileTouch(i);
                   }}
-                  className={`rounded-xl border transition-all duration-150 flex flex-col items-center justify-center font-mono text-xs font-bold ${
+                  onPointerEnter={(e) => {
+                    if (e.buttons > 0) handleTileTouch(i);
+                  }}
+                  className={`rounded-xl border transition-all duration-100 flex flex-col items-center justify-center font-mono text-xs sm:text-sm font-bold touch-none select-none ${
                     touched 
                       ? "bg-emerald-600/90 border-emerald-400 text-white shadow-[0_0_15px_rgba(16,185,129,0.3)] scale-[0.98]" 
-                      : "bg-white/5 hover:bg-white/10 border-white/15 text-white/40"
+                      : "bg-white/5 hover:bg-white/10 active:bg-emerald-700/50 border-white/15 text-white/40"
                   }`}
                 >
                   <span>{i + 1}</span>
-                  {touched && <CheckCircle2 className="w-4 h-4 mt-1 text-emerald-200" />}
+                  {touched && <CheckCircle2 className="w-4 h-4 mt-0.5 text-emerald-200" />}
                 </button>
               ))}
             </div>
 
-            <div className="mt-2 flex items-center justify-between w-full px-2">
+            <div className="mt-2 flex items-center justify-between w-full px-2 shrink-0">
               <button
                 type="button"
                 onClick={handleReset}
@@ -439,8 +496,8 @@ export function TouchScreenPattern({ testId = "touch-screen-test" }: TouchScreen
         {/* MODE 2: TOUCH PATH / DRAWING CANVAS                       */}
         {/* ========================================================= */}
         {mode === "draw" && (
-          <div className="w-full h-[76%] relative flex flex-col items-center mt-10">
-            <div className="w-full flex items-center justify-between px-4 text-xs font-mono text-white/70 mb-1.5">
+          <div className="w-full h-full relative flex flex-col pt-14 pb-16 sm:pb-20 p-2 sm:p-4 max-w-7xl mx-auto">
+            <div className="w-full flex items-center justify-between px-2 text-xs font-mono text-white/70 mb-1.5 shrink-0">
               <span>{t("draw.instructions")}</span>
               <div className="flex items-center gap-3">
                 <span className="text-white/60">
@@ -457,7 +514,7 @@ export function TouchScreenPattern({ testId = "touch-screen-test" }: TouchScreen
               </div>
             </div>
 
-            <div className="w-full flex-1 relative rounded-2xl overflow-hidden border border-white/20 bg-black shadow-2xl">
+            <div className="w-full flex-1 relative rounded-2xl overflow-hidden border border-white/20 bg-black shadow-2xl min-h-0">
               <canvas
                 ref={canvasRef}
                 className="absolute inset-0 w-full h-full"
@@ -477,8 +534,8 @@ export function TouchScreenPattern({ testId = "touch-screen-test" }: TouchScreen
         {/* MODE 3: MULTI-TOUCH TRACKING                              */}
         {/* ========================================================= */}
         {mode === "multi" && (
-          <div className="w-full max-w-4xl h-[76%] flex flex-col items-center justify-center p-6 mt-10 text-center">
-            <div className="max-w-md p-6 rounded-3xl bg-neutral-900/90 border border-white/20 shadow-2xl space-y-4">
+          <div className="w-full h-full flex flex-col items-center justify-center p-4 pt-14 pb-16 sm:pb-20 text-center">
+            <div className="w-full max-w-md p-6 rounded-3xl bg-neutral-900/90 border border-white/20 shadow-2xl space-y-4">
               <div className="w-12 h-12 rounded-2xl bg-blue-500/20 text-blue-400 border border-blue-500/30 flex items-center justify-center mx-auto">
                 <Hand className="w-6 h-6" />
               </div>
@@ -521,7 +578,7 @@ export function TouchScreenPattern({ testId = "touch-screen-test" }: TouchScreen
         {/* MODE 4: EDGE & CORNER PERIMETER TEST                      */}
         {/* ========================================================= */}
         {mode === "edge" && (
-          <div className="w-full h-[76%] relative flex items-center justify-center p-4 mt-10">
+          <div className="w-full h-full relative flex items-center justify-center p-4 pt-14 pb-16 sm:pb-20">
             <span className="text-xs font-mono text-white/60 bg-black/70 px-4 py-2 rounded-xl border border-white/15 z-10 text-center max-w-sm">
               {t("edge.instructions")}<br/>
               <strong className="text-white mt-1 block">
@@ -529,29 +586,30 @@ export function TouchScreenPattern({ testId = "touch-screen-test" }: TouchScreen
               </strong>
             </span>
 
-            {/* 9 Perimeter buttons positioned around frame */}
+            {/* 9 Perimeter buttons positioned around frame avoiding toolbars */}
             {[
-              { idx: 0, pos: "top-2 left-2", label: "TL" },
-              { idx: 1, pos: "top-2 left-1/2 -translate-x-1/2", label: "TC" },
-              { idx: 2, pos: "top-2 right-2", label: "TR" },
-              { idx: 3, pos: "top-1/2 left-2 -translate-y-1/2", label: "ML" },
+              { idx: 0, pos: "top-14 sm:top-16 left-3 sm:left-4", label: "TL" },
+              { idx: 1, pos: "top-14 sm:top-16 left-1/2 -translate-x-1/2", label: "TC" },
+              { idx: 2, pos: "top-14 sm:top-16 right-3 sm:right-4", label: "TR" },
+              { idx: 3, pos: "top-1/2 left-3 sm:left-4 -translate-y-1/2", label: "ML" },
               { idx: 4, pos: "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2", label: "CTR" },
-              { idx: 5, pos: "top-1/2 right-2 -translate-y-1/2", label: "MR" },
-              { idx: 6, pos: "bottom-2 left-2", label: "BL" },
-              { idx: 7, pos: "bottom-2 left-1/2 -translate-x-1/2", label: "BC" },
-              { idx: 8, pos: "bottom-2 right-2", label: "BR" },
+              { idx: 5, pos: "top-1/2 right-3 sm:right-4 -translate-y-1/2", label: "MR" },
+              { idx: 6, pos: "bottom-16 sm:bottom-20 left-3 sm:left-4", label: "BL" },
+              { idx: 7, pos: "bottom-16 sm:bottom-20 left-1/2 -translate-x-1/2", label: "BC" },
+              { idx: 8, pos: "bottom-16 sm:bottom-20 right-3 sm:right-4", label: "BR" },
             ].map((target) => (
               <button
                 key={target.idx}
                 type="button"
+                data-edge-index={target.idx}
                 onPointerDown={(e) => {
                   e.stopPropagation();
                   handleEdgeTargetTouch(target.idx);
                 }}
-                className={`absolute ${target.pos} w-16 h-16 sm:w-20 sm:h-20 rounded-2xl border-2 flex flex-col items-center justify-center font-mono font-bold text-xs transition-all ${
+                className={`absolute ${target.pos} w-14 h-14 sm:w-20 sm:h-20 rounded-2xl border-2 flex flex-col items-center justify-center font-mono font-bold text-xs transition-all touch-none select-none ${
                   edgeTouched[target.idx]
                     ? "bg-emerald-600 border-emerald-400 text-white shadow-[0_0_15px_rgba(16,185,129,0.5)]"
-                    : "bg-white/10 border-white/30 text-white/70 hover:bg-white/20"
+                    : "bg-white/10 border-white/30 text-white/70 hover:bg-white/20 active:bg-emerald-700/50"
                 }`}
               >
                 <span>{target.label}</span>
@@ -565,7 +623,7 @@ export function TouchScreenPattern({ testId = "touch-screen-test" }: TouchScreen
         {/* MODE 5: TOUCH HOLD DURATION TEST                          */}
         {/* ========================================================= */}
         {mode === "hold" && (
-          <div className="w-full max-w-md h-[76%] flex flex-col items-center justify-center p-6 mt-10 text-center gap-6">
+          <div className="w-full max-w-md h-full flex flex-col items-center justify-center p-6 pt-14 pb-16 sm:pb-20 text-center gap-6 mx-auto">
             <div className="space-y-1">
               <h3 className="text-base sm:text-lg font-bold text-white">
                 {t("modes.hold")}
@@ -576,7 +634,7 @@ export function TouchScreenPattern({ testId = "touch-screen-test" }: TouchScreen
             </div>
 
             <div
-              className={`w-44 h-44 rounded-full border-4 flex flex-col items-center justify-center transition-all cursor-pointer ${
+              className={`w-40 h-40 sm:w-48 sm:h-48 rounded-full border-4 flex flex-col items-center justify-center transition-all cursor-pointer select-none touch-none ${
                 holdSuccess 
                   ? "bg-emerald-600 border-emerald-300 shadow-[0_0_30px_rgba(16,185,129,0.5)]" 
                   : holdStartTime !== null 
@@ -612,7 +670,7 @@ export function TouchScreenPattern({ testId = "touch-screen-test" }: TouchScreen
         {/* MODE 6: TOUCH RELEASE & EVENT DETECTION                   */}
         {/* ========================================================= */}
         {mode === "release" && (
-          <div className="w-full max-w-md h-[76%] flex flex-col items-center justify-center p-6 mt-10 text-center gap-6">
+          <div className="w-full max-w-md h-full flex flex-col items-center justify-center p-6 pt-14 pb-16 sm:pb-20 text-center gap-6 mx-auto">
             <div className="space-y-1">
               <h3 className="text-base sm:text-lg font-bold text-white">
                 {t("modes.release")}
@@ -622,7 +680,7 @@ export function TouchScreenPattern({ testId = "touch-screen-test" }: TouchScreen
               </p>
             </div>
 
-            <div className="w-40 h-40 rounded-3xl bg-neutral-900 border-2 border-white/20 flex flex-col items-center justify-center gap-2 shadow-2xl">
+            <div className="w-40 h-40 rounded-3xl bg-neutral-900 border-2 border-white/20 flex flex-col items-center justify-center gap-2 shadow-2xl touch-none select-none">
               <Activity className="w-8 h-8 text-blue-400" />
               <span className="text-xs font-mono font-bold text-white">
                 {t("release.target")}
