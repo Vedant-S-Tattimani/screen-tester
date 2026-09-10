@@ -1,4 +1,4 @@
-/ /en 302
+/ /en 301
 /:locale/resolution-checker /:locale/tests/resolution-checker 301
 /resolution-checker /en/tests/resolution-checker 301
 /:locale/resolution-test /:locale/tests/resolution-checker 301

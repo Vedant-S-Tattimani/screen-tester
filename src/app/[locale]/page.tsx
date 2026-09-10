@@ -17,6 +17,7 @@ import {
 
 import { AllScreenTests, type ScreenTestCategory, type ScreenTestItem } from "@/components/home/AllScreenTests";
 import { StartTestingCTA } from "@/components/home/StartTestingCTA";
+import { getBaseUrl } from "@/lib/seo";
 
 export default async function Home({
   params
@@ -503,7 +504,7 @@ export default async function Home({
             "@context": "https://schema.org",
             "@type": "WebApplication",
             "name": "Screen Tester",
-            "url": `https://screen-tester.com/${locale}`,
+            "url": `${getBaseUrl()}/${locale}`,
             "applicationCategory": "UtilitiesApplication",
             "operatingSystem": "All",
             "browserRequirements": "Requires HTML5 Canvas and WebGL support",
