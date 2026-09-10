@@ -194,12 +194,26 @@ export function MotionPattern({ testId = "ghosting-test" }: MotionPatternProps) 
 
   return (
     <>
-      <div className="absolute inset-0 cursor-none overflow-hidden select-none">
+      <div 
+        className="absolute inset-0 cursor-pointer overflow-hidden select-none"
+        onClick={cycleSpeed}
+        title="Click anywhere to increase speed (120 → 240 → 480 → 960 → 1440 → 1920 px/s)"
+      >
         <canvas ref={canvasRef} className="block w-full h-full" />
+
+        {/* Floating Speed & Mode Cue */}
+        <div className="absolute top-3 left-3 pointer-events-none flex items-center gap-2 bg-black/75 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/20 text-white text-xs font-mono shadow-md z-10">
+          <span className="text-amber-400 font-bold">{speed} px/s</span>
+          <span className="text-white/40">•</span>
+          <span className="text-white/70 text-[11px]">Click screen to increase speed</span>
+        </div>
 
         {/* Educational Disclaimer Dialog */}
         {showEduInfo && (
-          <div className="absolute top-6 left-1/2 -translate-x-1/2 max-w-xl w-[92%] bg-neutral-950/95 backdrop-blur-md border border-white/20 rounded-2xl p-5 text-white shadow-2xl z-40 text-xs">
+          <div 
+            onClick={(e) => e.stopPropagation()}
+            className="absolute top-6 left-1/2 -translate-x-1/2 max-w-xl w-[92%] bg-neutral-950/95 backdrop-blur-md border border-white/20 rounded-2xl p-5 text-white shadow-2xl z-40 text-xs cursor-default"
+          >
             <div className="flex items-center justify-between pb-3 border-b border-white/10">
               <div className="flex items-center gap-2 font-semibold text-amber-400">
                 <Info className="w-4 h-4" />

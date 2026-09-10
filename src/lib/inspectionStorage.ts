@@ -124,8 +124,8 @@ export const AUTO_TEST_QUEUE = [
   "/tests/sharpness-test",      // 5. Pattern & Text Sharpness Test
   "/tests/ghosting-test",       // 6. Motion & Ghosting Trailing Test
   "/tests/custom-pattern",      // 7. Precision Test Patterns (Grayscale, Primaries, Moire, etc.)
-  "/tests/contrast-test",       // 8. Color Contrast & Range Inspection
-  "/tests/brightness-test"      // 9. Brightness & Luminance Test
+  "/tests/saturation-test",     // 8. Color Saturation Test
+  "/tests/refresh-rate-test"    // 9. Refresh Rate & Frame Timing Test
 ];
 
 // Legacy keys for backward compatibility

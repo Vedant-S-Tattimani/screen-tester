@@ -37,7 +37,7 @@ export function StartTestingCTA({ label }: StartTestingCTAProps) {
       onClick={handleStartBasicCheck}
       type="button"
       className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-black hover:bg-neutral-900 text-white font-medium text-xs sm:text-[13.5px] px-6 py-3 rounded-xl transition-all shadow-sm hover:shadow-md focus-visible:ring-2 focus-visible:ring-gray-900 cursor-pointer"
-      title="Start basic display test sequence covering solid colors, gradients, contrast, patterns, and motion"
+      title="Start basic display test sequence covering solid colors, gradients, sharpness, motion, color saturation, and refresh rate"
     >
       <span>{label}</span>
       <ArrowRight className="w-3.5 h-3.5" />

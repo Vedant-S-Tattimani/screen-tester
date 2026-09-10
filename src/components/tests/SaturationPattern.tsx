@@ -14,9 +14,13 @@ export function SaturationPattern({ testId }: SaturationPatternProps) {
   const { registerNavigation } = useTestContext();
   const [mode, setMode] = useState<Mode>("all");
 
+  const cycleMode = () => {
+    setMode((m) => (m === "all" ? "hue" : m === "hue" ? "rgb" : "all"));
+  };
+
   useEffect(() => {
     registerNavigation({
-      next: () => setMode(m => m === "all" ? "hue" : m === "hue" ? "rgb" : "all"),
+      next: cycleMode,
       prev: () => setMode(m => m === "all" ? "rgb" : m === "rgb" ? "hue" : "all"),
       reset: () => setMode("all"),
     });
@@ -24,7 +28,20 @@ export function SaturationPattern({ testId }: SaturationPatternProps) {
 
   return (
     <>
-      <div className="absolute inset-0 flex flex-col bg-black overflow-hidden">
+      <div 
+        className="absolute inset-0 flex flex-col bg-black overflow-hidden cursor-pointer select-none"
+        onClick={cycleMode}
+        title="Click anywhere to cycle mode: Combined → Rainbow (Hue) → RGB Steps"
+      >
+        {/* Floating Mode Cue */}
+        <div className="absolute top-3 left-3 pointer-events-none flex items-center gap-2 bg-black/75 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/20 text-white text-xs font-mono shadow-md z-10">
+          <span className="text-amber-400 font-bold uppercase tracking-wider">
+            {mode === "all" ? "Combined" : mode === "hue" ? "Rainbow (Hue)" : "RGB Steps"}
+          </span>
+          <span className="text-white/40">•</span>
+          <span className="text-white/70 text-[11px]">Click screen to cycle</span>
+        </div>
+
         {/* Hue Spectrum */}
         {(mode === "all" || mode === "hue") && (
           <div 

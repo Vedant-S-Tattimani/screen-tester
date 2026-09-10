@@ -78,7 +78,10 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
       ctx.fillStyle = fg;
       ctx.font = `${Math.round(12 * dpr)}px monospace`;
       ctx.textAlign = "center";
-      ctx.fillText("1:1 PIXEL-MAPPED 1PX CALIBRATION MATRIX", centerX, Math.round(28 * dpr));
+      ctx.fillText("1:1 PIXEL-MAPPED 1PX CALIBRATION MATRIX", centerX, Math.round(26 * dpr));
+      ctx.fillStyle = midGray;
+      ctx.font = `${Math.round(9.5 * dpr)}px monospace`;
+      ctx.fillText("Click screen to toggle black / white background", centerX, Math.round(42 * dpr));
 
       // 1. Center 1px Checkerboard
       const cbSize = Math.min(Math.round(260 * dpr), Math.floor(w * 0.28));
@@ -156,12 +159,26 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
       ctx.font = `${Math.round(11 * dpr)}px monospace`;
       ctx.textAlign = "center";
       ctx.fillText(`Moiré Interference Frequency (Step: ${ringGap}px • Rays: ${rays})`, centerX, Math.round(26 * dpr));
+      ctx.fillStyle = midGray;
+      ctx.font = `${Math.round(9.5 * dpr)}px monospace`;
+      ctx.fillText("Click screen to toggle black / white background", centerX, Math.round(42 * dpr));
     }
   }, [activeTab, inverted, moireDensity]);
 
+  const handleViewportClick = (e: React.MouseEvent) => {
+    // If text was highlighted/selected, do not trigger background toggle
+    const selection = window.getSelection();
+    if (selection && selection.toString().length > 0) return;
+    toggleInverted();
+  };
+
   return (
     <>
-      <div className="absolute inset-0 overflow-hidden select-none">
+      <div 
+        className="absolute inset-0 overflow-hidden select-none cursor-pointer"
+        onClick={handleViewportClick}
+        title="Click to toggle black/white background"
+      >
         {activeTab !== "typography" ? (
           <canvas ref={canvasRef} className="block w-full h-full" />
         ) : (
@@ -181,6 +198,9 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
                 </h2>
                 <p className="text-xs text-muted-foreground mt-1">
                   Inspect font rasterization, subpixel fringing (ClearType / FreeType), and contrast legibility across multiple sizes and weights.
+                  <span className="block mt-1.5 font-mono text-[11.5px] text-amber-500 dark:text-amber-400 font-semibold">
+                    💡 Click anywhere to toggle black/white background
+                  </span>
                 </p>
               </div>
 
@@ -265,7 +285,10 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
 
         {/* Educational Information Popover */}
         {showEduInfo && (
-          <div className="absolute top-6 left-1/2 -translate-x-1/2 max-w-xl w-[92%] bg-neutral-950/95 backdrop-blur-md border border-white/20 rounded-2xl p-5 text-white shadow-2xl z-40 text-xs">
+          <div 
+            onClick={(e) => e.stopPropagation()}
+            className="absolute top-6 left-1/2 -translate-x-1/2 max-w-xl w-[92%] bg-neutral-950/95 backdrop-blur-md border border-white/20 rounded-2xl p-5 text-white shadow-2xl z-40 text-xs cursor-default"
+          >
             <div className="flex items-center justify-between pb-3 border-b border-white/10">
               <div className="flex items-center gap-2 font-semibold text-amber-400">
                 <Info className="w-4 h-4" />
