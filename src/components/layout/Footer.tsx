@@ -48,9 +48,9 @@ export function Footer() {
             </p>
 
             <div className="mt-4">
-              <a href="https://thedevtoolsdir.com/product/screen-tester?ref=badge" rel="dofollow">
+              <a href="https://thedevtoolsindex.com/product/screen-tester?ref=badge" rel="dofollow">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://thedevtoolsdir.com/badge/screen-tester.svg" alt="Featured on TheDevToolsDir" width="160" height="44" />
+                <img src="https://thedevtoolsindex.com/badge/screen-tester.svg" alt="Featured on TheDevToolsIndex" width="160" height="44" />
               </a>
             </div>
           </div>
