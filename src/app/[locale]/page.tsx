@@ -62,7 +62,14 @@ export default async function Home({
     "screen-tearing-test": "screenTearing",
     "screen-flicker-test": "flicker",
     "touch-screen-test": "touchScreen",
-    "sharpness-test": "sharpness"
+    "sharpness-test": "sharpness",
+    "multi-touch-test": "multiTouchTest",
+    "accelerometer-test": "accelerometerTest",
+    "gyroscope-test": "gyroscopeTest",
+    "vibration-test": "vibrationTest",
+    "webcam-test": "webcamTest",
+    "speaker-test": "speakerTest",
+    "microphone-test": "microphoneTest"
   };
 
   const getTestItem = (id: string, category: string): ScreenTestItem => {
@@ -156,6 +163,19 @@ export default async function Home({
         getTestItem("sharpness-test", "sharpnessCapabilities"),
         getTestItem("hdr-capability-test", "sharpnessCapabilities"),
         getTestItem("touch-screen-test", "sharpnessCapabilities")
+      ]
+    },
+    {
+      id: "deviceInput",
+      title: t("allTestsCategories.deviceInput"),
+      tests: [
+        getTestItem("multi-touch-test", "deviceInput"),
+        getTestItem("accelerometer-test", "deviceInput"),
+        getTestItem("gyroscope-test", "deviceInput"),
+        getTestItem("vibration-test", "deviceInput"),
+        getTestItem("webcam-test", "deviceInput"),
+        getTestItem("speaker-test", "deviceInput"),
+        getTestItem("microphone-test", "deviceInput")
       ]
     }
   ];

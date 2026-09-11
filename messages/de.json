@@ -213,15 +213,16 @@
     "step3Desc": "Dunkeln Sie den Raum bei Lichthöfen und Kontrastchecks ab. Betrachten Sie das Display frontal sowie aus seitlichen Winkeln.",
     "allTestsTitle": "ALLE BILDSCHIRMTESTS",
     "allTestsSubtitle": "Entdecken Sie alle verfügbaren Tests zur Überprüfung Ihres Displays.",
-    "allTestsSearchPlaceholder": "28 Monitortests durchsuchen...",
+    "allTestsSearchPlaceholder": "35 Monitortests durchsuchen...",
     "allTestsFilterAll": "Alle Tests",
-    "allTestsCount": "28 Tests",
+    "allTestsCount": "35 Tests",
     "allTestsCategories": {
       "colorPixels": "FARB- UND PIXELTESTS",
       "gradientContrast": "VERLAUFS- UND KONTRASTTESTS",
       "uniformityPanel": "HOMOGENITÄTS- UND HINTERGRUNDBELEUCHTUNGSTESTS",
       "motionPerformance": "BEWEGUNGSSCHÄRFE & BILDWIEDERHOLRATE",
-      "sharpnessCapabilities": "SCHÄRFE- UND FUNKTIONSTESTS"
+      "sharpnessCapabilities": "SCHÄRFE- UND FUNKTIONSTESTS",
+      "deviceInput": "GERÄTE & EINGABE"
     },
     "allTestsNoResults": "Keine Tests gefunden für",
     "moreFreeTestingToolsTitle": "Weitere Kostenlose Test-Werkzeuge",

@@ -19,6 +19,7 @@ export default async function TestsPage({ params }: { params: Promise<{ locale: 
   const tLib = await getTranslations({ locale, namespace: "TestLibrary" });
   const tTests = await getTranslations({ locale, namespace: "Tests" });
   const tHome = await getTranslations({ locale, namespace: "Home" });
+  const tTools = await getTranslations({ locale, namespace: "Tools" });
 
   const mapTestsToI18n = (categoryId: string, translationCategory: string) => {
     const tests = getTestsByCategory(categoryId as TestCategory);
@@ -35,9 +36,15 @@ export default async function TestsPage({ params }: { params: Promise<{ locale: 
             if (mapping.ns === "lib") {
               title = tLib(`${mapping.key}.title`) || title;
               description = tLib(`${mapping.key}.description`) || description;
+            } else if (mapping.ns === "tools") {
+              title = tTools(`items.${mapping.key}.title`) || title;
+              description = tTools(`items.${mapping.key}.description`) || description;
             } else {
               title = tTests(`${mapping.key}.title`) || title;
-              description = tTests(`${mapping.key}.description`) || description;
+              description = 
+                (tTests.has(`${mapping.key}.description`) ? tTests(`${mapping.key}.description`) : "") ||
+                (tTests.has(`${mapping.key}.metaDescription`) ? tTests(`${mapping.key}.metaDescription`) : "") ||
+                description;
             }
           } catch {
             // fallback

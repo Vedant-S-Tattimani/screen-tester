@@ -213,15 +213,16 @@
     "step3Desc": "バックライト漏れやコントラストを確認する際は室内の照明を落とし、正面だけでなく斜めの角度からも観察してください。",
     "allTestsTitle": "すべての画面テスト",
     "allTestsSubtitle": "ディスプレイの診断に利用可能なすべてのテストを一覧。",
-    "allTestsSearchPlaceholder": "28種類の画面テストを検索...",
+    "allTestsSearchPlaceholder": "35種類の画面テストを検索...",
     "allTestsFilterAll": "すべてのテスト",
-    "allTestsCount": "28テスト",
+    "allTestsCount": "35テスト",
     "allTestsCategories": {
       "colorPixels": "カラー・画素（ピクセル）テスト",
       "gradientContrast": "グラデーション・コントラストテスト",
       "uniformityPanel": "画面均一性・バックライト診断",
       "motionPerformance": "残像（モーション）・リフレッシュレート",
-      "sharpnessCapabilities": "鮮鋭度（シャープネス）・機能テスト"
+      "sharpnessCapabilities": "鮮鋭度（シャープネス）・機能テスト",
+      "deviceInput": "デバイスと入力"
     },
     "allTestsNoResults": "一致するテストが見つかりません:",
     "moreFreeTestingToolsTitle": "その他の無料テストツール",

@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 export function RelatedTests({ testId }: { testId: string }) {
   const tLib = useTranslations("TestLibrary");
   const tTests = useTranslations("Tests");
+  const tTools = useTranslations("Tools");
   
   const related = getRelatedTests(testId);
   if (related.length === 0) return null;
@@ -25,9 +26,15 @@ export function RelatedTests({ testId }: { testId: string }) {
               if (mapping.ns === "lib") {
                 title = tLib(`${mapping.key}.title`) || title;
                 description = tLib(`${mapping.key}.description`) || description;
+              } else if (mapping.ns === "tools") {
+                title = tTools(`items.${mapping.key}.title`) || title;
+                description = tTools(`items.${mapping.key}.description`) || description;
               } else {
                 title = tTests(`${mapping.key}.title`) || title;
-                description = tTests(`${mapping.key}.description`) || description;
+                description = 
+                  (tTests.has(`${mapping.key}.description`) ? tTests(`${mapping.key}.description`) : "") ||
+                  (tTests.has(`${mapping.key}.metaDescription`) ? tTests(`${mapping.key}.metaDescription`) : "") ||
+                  description;
               }
             } catch {
               // fallback

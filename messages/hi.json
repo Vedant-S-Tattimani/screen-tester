@@ -214,15 +214,16 @@
     "step3Desc": "बैकलाइट ब्लीड और कंट्रास्ट जांचने के लिए कमरे की रोशनी कम करें। पैनल को सीधे सामने और विभिन्न कोणों से देखें।",
     "allTestsTitle": "सभी स्क्रीन टेस्ट",
     "allTestsSubtitle": "अपने डिस्प्ले की जांच के लिए उपलब्ध सभी टेस्ट देखें।",
-    "allTestsSearchPlaceholder": "28 डिस्प्ले टेस्ट में खोजें...",
+    "allTestsSearchPlaceholder": "35 डिस्प्ले टेस्ट में खोजें...",
     "allTestsFilterAll": "सभी टेस्ट",
-    "allTestsCount": "28 परीक्षण",
+    "allTestsCount": "35 परीक्षण",
     "allTestsCategories": {
       "colorPixels": "कलर और पिक्सल टेस्ट",
       "gradientContrast": "ग्रेडिएंट और कंट्रास्ट टेस्ट",
       "uniformityPanel": "एकरूपता और बैकलाइट टेस्ट",
       "motionPerformance": "मोशन और रिफ्रेश रेट टेस्ट",
-      "sharpnessCapabilities": "शार्पनेस और क्षमताएं"
+      "sharpnessCapabilities": "शार्पनेस और क्षमताएं",
+      "deviceInput": "डिवाइस और इनपुट"
     },
     "allTestsNoResults": "कोई टेस्ट नहीं मिला",
     "moreFreeTestingToolsTitle": "अन्य निःशुल्क परीक्षण उपकरण",

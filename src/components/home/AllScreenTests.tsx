@@ -31,7 +31,14 @@ import {
   Sparkles, 
   Hand,
   ArrowRight,
-  Monitor
+  Monitor,
+  Fingerprint,
+  Smartphone,
+  RotateCcw,
+  Vibrate,
+  Webcam,
+  Volume2,
+  Mic
 } from "lucide-react";
 
 export interface ScreenTestItem {
@@ -122,6 +129,20 @@ function getTestIcon(id: string) {
       return <Sparkles className="w-3.5 h-3.5 stroke-[1.8]" />;
     case "touch-screen-test":
       return <Hand className="w-3.5 h-3.5 stroke-[1.8]" />;
+    case "multi-touch-test":
+      return <Fingerprint className="w-3.5 h-3.5 stroke-[1.8]" />;
+    case "accelerometer-test":
+      return <Smartphone className="w-3.5 h-3.5 stroke-[1.8]" />;
+    case "gyroscope-test":
+      return <RotateCcw className="w-3.5 h-3.5 stroke-[1.8]" />;
+    case "vibration-test":
+      return <Vibrate className="w-3.5 h-3.5 stroke-[1.8]" />;
+    case "webcam-test":
+      return <Webcam className="w-3.5 h-3.5 stroke-[1.8]" />;
+    case "speaker-test":
+      return <Volume2 className="w-3.5 h-3.5 stroke-[1.8]" />;
+    case "microphone-test":
+      return <Mic className="w-3.5 h-3.5 stroke-[1.8]" />;
     default:
       return <Monitor className="w-3.5 h-3.5 stroke-[1.8]" />;
   }

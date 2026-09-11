@@ -6,10 +6,10 @@ import { TestControlBar } from "../test-runner/TestControlBar";
 import { 
   Hand, 
   RotateCcw, 
-  ShieldAlert, 
   Fingerprint, 
   Timer
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface MultiTouchPatternProps {
   testId?: string;
@@ -41,10 +41,53 @@ const CONTACT_COLORS = [
 const emptySubscribe = () => () => {};
 
 export function MultiTouchPattern({ testId = "multi-touch-test" }: MultiTouchPatternProps) {
-  useTestContext();
+  const { isFullscreen } = useTestContext();
   const surfaceRef = useRef<HTMLDivElement>(null);
 
   const [mode, setMode] = useState<MultiTouchMode>("free");
+  const [isHudVisible, setIsHudVisible] = useState(true);
+  const hideHudTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const scheduleHudHide = useCallback((delay = 3000) => {
+    if (hideHudTimeoutRef.current) {
+      clearTimeout(hideHudTimeoutRef.current);
+      hideHudTimeoutRef.current = null;
+    }
+    hideHudTimeoutRef.current = setTimeout(() => {
+      setIsHudVisible(false);
+    }, delay);
+  }, []);
+
+  useEffect(() => {
+    if (!isFullscreen) {
+      setIsHudVisible(true);
+      return;
+    }
+
+    setIsHudVisible(true);
+    scheduleHudHide(3000);
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (e.clientY <= 90) {
+        setIsHudVisible(true);
+        scheduleHudHide(3000);
+      }
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "h" || e.key === "H") {
+        setIsHudVisible((prev) => !prev);
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("keydown", handleKeyDown);
+      if (hideHudTimeoutRef.current) clearTimeout(hideHudTimeoutRef.current);
+    };
+  }, [isFullscreen, scheduleHudHide]);
   const [contacts, setContacts] = useState<Map<number, ActiveContact>>(new Map());
   const [peakContacts, setPeakContacts] = useState<number>(0);
   const [lastPointerType, setLastPointerType] = useState<string>("none");
@@ -233,89 +276,45 @@ export function MultiTouchPattern({ testId = "multi-touch-test" }: MultiTouchPat
   }, []);
 
   return (
-    <div className="flex flex-col h-full w-full select-none bg-slate-950 text-slate-100">
-      {/* Top Telemetry & HUD */}
-      <div className="flex flex-wrap items-center justify-between gap-3 p-3 bg-slate-900/90 border-b border-slate-800 text-xs">
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5 font-mono">
-            <Hand className="w-4 h-4 text-blue-400 shrink-0" />
-            <span className="text-slate-400 uppercase text-[10px] tracking-wider">Active:</span>
-            <span className="text-sm font-bold text-blue-400">{contacts.size}</span>
+    <div className="relative w-full h-full select-none bg-slate-950 text-slate-100 overflow-hidden">
+      {/* Floating Non-Blocking Telemetry Pill at Top */}
+      <div 
+        className={cn(
+          "absolute top-3 left-1/2 -translate-x-1/2 z-30 pointer-events-none transition-all duration-300",
+          isFullscreen && !isHudVisible ? "opacity-0 -translate-y-4" : "opacity-100 translate-y-0"
+        )}
+      >
+        <div className="flex items-center gap-2 sm:gap-3 px-3.5 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-white/15 text-xs text-slate-200 shadow-2xl font-mono">
+          <div className="flex items-center gap-1.5">
+            <Hand className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+            <span className="text-[10px] text-slate-400 uppercase tracking-wider">Active:</span>
+            <span className="text-xs font-bold text-blue-400">{contacts.size}</span>
           </div>
 
-          <div className="h-4 w-px bg-slate-800" />
+          <div className="h-3 w-px bg-white/20" />
 
-          <div className="flex items-center gap-1.5 font-mono">
-            <span className="text-slate-400 uppercase text-[10px] tracking-wider">Peak Observed:</span>
-            <span className="text-sm font-bold text-emerald-400">{peakContacts}</span>
+          <div className="flex items-center gap-1.5">
+            <span className="text-[10px] text-slate-400 uppercase tracking-wider">Peak:</span>
+            <span className="text-xs font-bold text-emerald-400">{peakContacts}</span>
           </div>
 
-          <div className="h-4 w-px bg-slate-800 hidden sm:block" />
+          <div className="h-3 w-px bg-white/20 hidden sm:block" />
 
-          <div className="hidden sm:flex items-center gap-1.5 font-mono text-slate-400">
-            <span className="uppercase text-[10px] tracking-wider">Pointer:</span>
-            <span className="capitalize text-slate-200">{lastPointerType}</span>
+          <div className="hidden sm:flex items-center gap-1.5 text-slate-400">
+            <span className="text-[10px] uppercase tracking-wider">Pointer:</span>
+            <span className="text-xs capitalize text-slate-200">{lastPointerType}</span>
           </div>
 
-          <div className="h-4 w-px bg-slate-800 hidden md:block" />
+          <div className="h-3 w-px bg-white/20 hidden md:block" />
 
-          <div className="hidden md:flex items-center gap-1.5 font-mono text-slate-400">
-            <span className="uppercase text-[10px] tracking-wider" title="Browser-reported navigator.maxTouchPoints">Browser-Reported Max:</span>
-            <span className="text-slate-200 font-semibold" suppressHydrationWarning>{browserMaxTouchPoints}</span>
+          <div className="hidden md:flex items-center gap-1.5 text-slate-400">
+            <span className="text-[10px] uppercase tracking-wider" title="Browser-reported navigator.maxTouchPoints">Max:</span>
+            <span className="text-xs text-slate-200 font-semibold" suppressHydrationWarning>{browserMaxTouchPoints}</span>
           </div>
-        </div>
-
-        {/* Mode Switcher */}
-        <div className="flex items-center gap-1 bg-slate-950/80 p-1 rounded-lg border border-slate-800">
-          <button
-            type="button"
-            onClick={() => setMode("free")}
-            className={`px-2.5 py-1 text-xs font-medium rounded-md transition-colors ${
-              mode === "free" ? "bg-blue-600 text-white shadow-xs" : "text-slate-400 hover:text-white"
-            }`}
-          >
-            Free Touch
-          </button>
-          <button
-            type="button"
-            onClick={() => setMode("grid")}
-            className={`px-2.5 py-1 text-xs font-medium rounded-md transition-colors ${
-              mode === "grid" ? "bg-blue-600 text-white shadow-xs" : "text-slate-400 hover:text-white"
-            }`}
-          >
-            Grid
-          </button>
-          <button
-            type="button"
-            onClick={() => setMode("hold")}
-            className={`px-2.5 py-1 text-xs font-medium rounded-md transition-colors ${
-              mode === "hold" ? "bg-blue-600 text-white shadow-xs" : "text-slate-400 hover:text-white"
-            }`}
-          >
-            Hold
-          </button>
-          <button
-            type="button"
-            onClick={() => setMode("edges")}
-            className={`px-2.5 py-1 text-xs font-medium rounded-md transition-colors ${
-              mode === "edges" ? "bg-blue-600 text-white shadow-xs" : "text-slate-400 hover:text-white"
-            }`}
-          >
-            Edges
-          </button>
-          <button
-            type="button"
-            onClick={handleReset}
-            className="ml-1 p-1 text-slate-400 hover:text-white hover:bg-slate-800 rounded-md transition-colors"
-            title="Reset All Counters"
-            aria-label="Reset All Counters"
-          >
-            <RotateCcw className="w-3.5 h-3.5" />
-          </button>
         </div>
       </div>
 
-      {/* Main Touch Canvas / Surface */}
+      {/* Main Touch Canvas / Surface - 100% full screen */}
       <div 
         ref={surfaceRef}
         onPointerDown={handlePointerDown}
@@ -324,7 +323,7 @@ export function MultiTouchPattern({ testId = "multi-touch-test" }: MultiTouchPat
         onPointerCancel={handlePointerCancel}
         onPointerLeave={handlePointerCancel}
         style={{ touchAction: "none" }}
-        className="relative flex-1 w-full min-h-[360px] sm:min-h-[460px] bg-radial from-slate-900 to-black overflow-hidden cursor-crosshair select-none"
+        className="absolute inset-0 w-full h-full bg-radial from-slate-900 to-black overflow-hidden cursor-crosshair select-none"
       >
         {/* Mode Overlay: Free Touch */}
         {mode === "free" && (
@@ -483,15 +482,60 @@ export function MultiTouchPattern({ testId = "multi-touch-test" }: MultiTouchPat
         })}
       </div>
 
-      {/* Technical Honesty Disclaimer Banner */}
-      <div className="p-3 bg-slate-900 border-t border-slate-800 text-[11px] text-slate-400 leading-relaxed flex items-start gap-2.5">
-        <ShieldAlert className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-        <div>
-          <strong className="text-slate-200">Hardware Boundary Notice:</strong> This test observes pointer events exposed by your browser and operating system. It does not measure physical touchscreen hardware latency, pressure accuracy, or panel digitizer grid density. Browser-reported navigator.maxTouchPoints reflects what the browser interface reports and may differ from physical hardware limits. Browser touch gestures or palm rejection drivers can filter simultaneous touch contacts.
+      {/* Test Control Bar with Mode Switcher & Global Actions */}
+      <TestControlBar testId={testId} title="Multi-Touch Test">
+        <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-900/80 p-0.5 rounded-lg border border-slate-200 dark:border-slate-800">
+          <button
+            type="button"
+            onClick={() => setMode("free")}
+            className={cn(
+              "px-2.5 py-1 text-xs font-medium rounded-md transition-colors cursor-pointer",
+              mode === "free" ? "bg-blue-600 text-white shadow-xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+            )}
+          >
+            Free Touch
+          </button>
+          <button
+            type="button"
+            onClick={() => setMode("grid")}
+            className={cn(
+              "px-2.5 py-1 text-xs font-medium rounded-md transition-colors cursor-pointer",
+              mode === "grid" ? "bg-blue-600 text-white shadow-xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+            )}
+          >
+            Grid
+          </button>
+          <button
+            type="button"
+            onClick={() => setMode("hold")}
+            className={cn(
+              "px-2.5 py-1 text-xs font-medium rounded-md transition-colors cursor-pointer",
+              mode === "hold" ? "bg-blue-600 text-white shadow-xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+            )}
+          >
+            Hold
+          </button>
+          <button
+            type="button"
+            onClick={() => setMode("edges")}
+            className={cn(
+              "px-2.5 py-1 text-xs font-medium rounded-md transition-colors cursor-pointer",
+              mode === "edges" ? "bg-blue-600 text-white shadow-xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+            )}
+          >
+            Edges
+          </button>
+          <button
+            type="button"
+            onClick={handleReset}
+            className="ml-0.5 p-1 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-800 rounded-md transition-colors cursor-pointer"
+            title="Reset All Counters"
+            aria-label="Reset All Counters"
+          >
+            <RotateCcw className="w-3.5 h-3.5" />
+          </button>
         </div>
-      </div>
-
-      <TestControlBar testId={testId} title="Standalone Multi-Touch Test" />
+      </TestControlBar>
     </div>
   );
 }

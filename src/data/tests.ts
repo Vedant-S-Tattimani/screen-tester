@@ -246,7 +246,7 @@ export const monitorTests: MonitorTest[] = [
   {
     id: "compare-displays",
     category: "capabilities",
-    primaryIntent: "compare display sizes and resolutions",
+    primaryIntent: "Compare Display Sizes & Resolutions",
     relatedTestIds: ["resolution-checker", "custom-pattern"]
   },
   {
@@ -321,7 +321,7 @@ export function getRelatedTests(testId: string): MonitorTest[] {
   return test.relatedTestIds.map(id => getTestById(id)).filter(Boolean) as MonitorTest[];
 }
 
-export const TEST_KEY_MAP: Record<string, { ns: "lib" | "tests", key: string }> = {
+export const TEST_KEY_MAP: Record<string, { ns: "lib" | "tests" | "tools", key: string }> = {
   "dead-pixel-test": { ns: "lib", key: "tests.deadPixel" },
   "stuck-pixel-test": { ns: "lib", key: "tests.stuckPixel" },
   "bright-pixel-test": { ns: "lib", key: "tests.brightPixel" },
@@ -342,13 +342,14 @@ export const TEST_KEY_MAP: Record<string, { ns: "lib" | "tests", key: string }> 
   "uniformity-test": { ns: "lib", key: "tests.uniformityTest" },
   "backlight-bleed-test": { ns: "lib", key: "tests.backlightBleed" },
   "blooming-test": { ns: "tests", key: "blooming" },
-  "ghosting-test": { ns: "lib", key: "tests.ghostingTest" },
-  "motion-blur-test": { ns: "lib", key: "tests.ghostingTest" }, 
+  "ghosting-test": { ns: "tests", key: "ghostingTest" },
+  "motion-blur-test": { ns: "tests", key: "motionBlurTest" }, 
   "refresh-rate-test": { ns: "lib", key: "tests.refreshRate" },
   "screen-tearing-test": { ns: "tests", key: "screenTearing" },
   "screen-flicker-test": { ns: "tests", key: "flicker" },
-  "resolution-checker": { ns: "lib", key: "tests.displayInfo" },
+  "resolution-checker": { ns: "tests", key: "resolution-checker" },
   "display-info": { ns: "lib", key: "tests.displayInfo" },
+  "compare-displays": { ns: "tools", key: "compareDisplays" },
   "hdr-capability-test": { ns: "lib", key: "tests.hdrCapabilityTest" },
   "touch-screen-test": { ns: "tests", key: "touchScreen" },
   "sharpness-test": { ns: "tests", key: "sharpness" },

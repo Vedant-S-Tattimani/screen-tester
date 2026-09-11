@@ -213,15 +213,16 @@
     "step3Desc": "빛샘 및 명암비 점검 시 실내 조명을 어둡게 조절하고, 화면을 정면뿐만 아니라 측면 각도에서도 살펴보세요.",
     "allTestsTitle": "모든 화면 테스트",
     "allTestsSubtitle": "디스플레이를 점검할 수 있는 모든 테스트를 살펴보세요.",
-    "allTestsSearchPlaceholder": "28개 화면 테스트 검색...",
+    "allTestsSearchPlaceholder": "35개 화면 테스트 검색...",
     "allTestsFilterAll": "모든 테스트",
-    "allTestsCount": "28개 테스트",
+    "allTestsCount": "35개 테스트",
     "allTestsCategories": {
       "colorPixels": "색상 및 픽셀 테스트",
       "gradientContrast": "계조 및 명암비 테스트",
       "uniformityPanel": "화면 균일도 및 백라이트 테스트",
       "motionPerformance": "모션 및 주사율 테스트",
-      "sharpnessCapabilities": "선명도 및 디스플레이 기능 테스트"
+      "sharpnessCapabilities": "선명도 및 디스플레이 기능 테스트",
+      "deviceInput": "기기 및 입력"
     },
     "allTestsNoResults": "검색 결과가 없습니다:",
     "moreFreeTestingToolsTitle": "추가 무료 테스트 도구",

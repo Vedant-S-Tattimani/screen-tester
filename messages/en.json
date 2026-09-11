@@ -252,15 +252,16 @@
     "step3Desc": "Dim room lighting when checking backlight bleed and contrast. Inspect the panel from both direct and off-axis angles.",
     "allTestsTitle": "ALL SCREEN TESTS",
     "allTestsSubtitle": "Explore all tests available for checking your display.",
-    "allTestsSearchPlaceholder": "Quick search 28 display tests...",
+    "allTestsSearchPlaceholder": "Quick search 35 display & device tests...",
     "allTestsFilterAll": "All Tests",
-    "allTestsCount": "28 tests",
+    "allTestsCount": "35 tests",
     "allTestsCategories": {
       "colorPixels": "COLOR & PIXEL TESTS",
       "gradientContrast": "GRADIENT & CONTRAST TESTS",
       "uniformityPanel": "UNIFORMITY & BACKLIGHT TESTS",
       "motionPerformance": "MOTION & REFRESH RATE",
-      "sharpnessCapabilities": "SHARPNESS & CAPABILITIES"
+      "sharpnessCapabilities": "SHARPNESS & CAPABILITIES",
+      "deviceInput": "DEVICE & INPUT"
     },
     "allTestsNoResults": "No tests found matching",
     "moreFreeTestingToolsTitle": "More Free Testing Tools",
@@ -313,8 +314,8 @@
         "description": "Fill the screen with solid colors to easily spot stuck or dead pixels on your monitor."
       },
       "stuckPixel": {
-        "title": "Stuck Pixel Fixer",
-        "description": "Attempt to revive stuck subpixels by rapidly cycling high-contrast colors in the affected area."
+        "title": "Stuck Pixel Test",
+        "description": "Examine primary RGB color fields to identify isolated frozen or stuck subpixels."
       },
       "brightPixel": {
         "title": "Bright Pixel Test",
@@ -890,8 +891,15 @@
     },
     "colorGamut": {
       "title": "Color Gamut Test – sRGB, DCI-P3 & Adobe RGB Coverage Check",
-      "description": "Inspect wide color gamut support and verify rich saturation rendering without clipping.",
-      "instructions": "Check if the colors in the center match or blend with the outer ring."
+      "description": "Inspect wide color gamut support and verify rich saturation rendering without clipping."
+    },
+    "ghostingTest": {
+      "title": "Monitor Ghosting Test – Pixel Response Time & Trail Check",
+      "description": "Evaluate pixel response times, trailing ghost artifacts, and overdrive coronas with high-speed moving patterns."
+    },
+    "motionBlurTest": {
+      "title": "Motion Blur Test – Display Motion Clarity & MPRT Check",
+      "description": "Analyze motion resolution, persistence blur, and MPRT tracking on fast-paced scenes and moving test objects."
     },
     "resolution-checker": {
       "title": "Screen Resolution Checker – Native vs Logical Pixels & DPR",
