@@ -46,6 +46,13 @@ export function Footer() {
             <p className="text-xs text-gray-500 leading-relaxed mt-3.5 max-w-sm">
               {t("description")}
             </p>
+
+            <div className="mt-4">
+              <a href="https://thedevtoolsdir.com/product/screen-tester?ref=badge" rel="dofollow">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="https://thedevtoolsdir.com/badge/screen-tester.svg" alt="Featured on TheDevToolsDir" width="160" height="44" />
+              </a>
+            </div>
           </div>
 
           {/* Column 2: Tests (2 cols) */}
