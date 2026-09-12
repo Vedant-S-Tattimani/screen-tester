@@ -3,6 +3,8 @@ import { Metadata } from "next";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
 import { RefreshRatePattern } from "@/components/tests/RefreshRatePattern";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 
 export async function generateMetadata({
   params
@@ -22,6 +24,8 @@ export default async function RefreshRateTest({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "TestPages.refresh-rate-test" });
+  const explainerData = getFeatureExplainer("refresh-rate-test", locale);
+  const explainerLabels = getExplainerLabels(locale);
 
   return (
     <TestWrapper testId="refresh-rate-test"
@@ -38,8 +42,14 @@ export default async function RefreshRateTest({
           ))}
         </ul>
       }
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }
     >
       <RefreshRatePattern testId="refresh-rate-test" />
     </TestWrapper>
   );
 }
+

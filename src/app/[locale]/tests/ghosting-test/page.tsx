@@ -3,6 +3,8 @@ import { Metadata } from "next";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
 import { MotionPattern } from "@/components/tests/MotionPattern";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 
 export async function generateMetadata({
   params
@@ -22,6 +24,8 @@ export default async function GhostingTest({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "TestPages.ghosting-test" });
+  const explainerData = getFeatureExplainer("ghosting-test", locale);
+  const explainerLabels = getExplainerLabels(locale);
 
   return (
     <TestWrapper testId="ghosting-test"
@@ -38,8 +42,14 @@ export default async function GhostingTest({
           ))}
         </ul>
       }
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }
     >
       <MotionPattern testId="ghosting-test" />
     </TestWrapper>
   );
 }
+

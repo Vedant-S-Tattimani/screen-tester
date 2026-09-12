@@ -529,15 +529,14 @@
       ]
     },
     "stuck-pixel-test": {
-      "metaTitle": "Reparador de Píxeles Atascados – Test y Estimulación Rápida RGB",
-      "metaDescription": "Identifica subpíxeles atascados e intenta reactivarlos mediante ciclos rápidos de colores primarios rojo, verde y azul.",
-      "title": "Reparador y Test de Píxeles Atascados",
-      "description_p1": "A diferencia de un píxel muerto (que es permanentemente negro), un <strong>píxel atascado</strong> es un único subpíxel que siempre está encendido.",
+      "metaTitle": "Prueba de píxeles atascados",
+      "metaDescription": "Prueba de píxeles atascados en línea gratuita. Inspeccione fondos oscuros y máscaras de colores primarios para aislar subpíxeles encendidos de forma continua.",
+      "title": "Prueba de píxeles atascados",
+      "description_p1": "Una prueba de píxeles atascados le ayuda a inspeccionar su pantalla en busca de subpíxeles individuales que permanecen continuamente iluminados en rojo, verde o azul.",
       "instructions": [
-        "<strong>Warning:</strong> This test flashes bright colors rapidly. Do not use if you are sensitive to flashing lights.",
-        "The test will automatically cycle between Red, Green, and Blue at a high frequency.",
-        "Leave it running over the stuck pixel for 10-15 minutes to attempt a fix.",
-        "Use <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> to pause the strobing effect."
+        "<strong>QUÉ VERIFICAR:</strong> Asegúrese de que la pantalla esté limpia. El polvo puede parecer un defecto de píxel.",
+        "<strong>CÓMO USAR:</strong> Presione <kbd class=\"px-1 bg-background border border-border rounded\">Espacio</kbd> o <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd> para alternar entre fondos oscuros y máscaras de color.",
+        "<strong>QUÉ PUEDE NOTAR:</strong> Un punto iluminado en rojo, verde o azul sobre fondo negro es un <strong>subpíxel atascado</strong>. Si lo detecta, puede probar la herramienta Reparador de píxeles atascados."
       ]
     },
     "uniformity-test": {
@@ -867,8 +866,8 @@
       "instructions": "Comprueba si los colores del centro coinciden o se fusionan con el anillo exterior."
     },
     "resolution-checker": {
-      "title": "Comprobador de Resolución – Píxeles Físicos vs Lógicos y DPR",
-      "description": "Descubre la resolución nativa de tu monitor, la resolución CSS escalada, la relación de aspecto y el factor DPR.",
+      "title": "Comprobador de resolución de pantalla",
+      "description": "Compruebe la resolución informada por el navegador, las dimensiones del viewport, el Device Pixel Ratio (DPR) y la relación de aspecto en línea.",
       "infoTitle": "RESOLUCIÓN Y GEOMETRÍA DE PANTALLA",
       "labels": {
         "logicalRes": "Resolución Lógica",

@@ -85,7 +85,7 @@ function parseProfileToDisplay(profile: MonitorProfile, fallbackIndex: number): 
   };
 }
 
-export function CompareDisplaysClient() {
+export function CompareDisplaysClient({ educationalContent }: { educationalContent?: React.ReactNode } = {}) {
   const t = useTranslations("CompareDisplays");
 
   const [activeTab, setActiveTab] = useState<"comparator" | "ppi" | "resolution" | "aspect">("comparator");
@@ -1222,7 +1222,15 @@ export function CompareDisplaysClient() {
             </div>
           </div>
         )}
+
+        {/* Feature Explainer & Search Intent Details */}
+        {educationalContent && (
+          <div className="w-full mt-12">
+            {educationalContent}
+          </div>
+        )}
       </div>
     </div>
   );
 }
+

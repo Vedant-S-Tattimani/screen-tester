@@ -3,6 +3,8 @@ import { Metadata } from "next";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
 import { VrrPattern } from "@/components/tests/VrrPattern";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 
 export async function generateMetadata({
   params
@@ -11,7 +13,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "TestPages.vrr-test" });
-  return generateSeoMetadata("/tests/vrr-test", t("metaTitle"), t("metaDescription"));
+  return generateSeoMetadata("/tests/vrr-test", t("metaTitle"), t("metaDescription"), locale);
 }
 
 export default async function VrrTestPage({
@@ -22,6 +24,8 @@ export default async function VrrTestPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "TestPages.vrr-test" });
+  const explainerData = getFeatureExplainer("vrr-test", locale);
+  const explainerLabels = getExplainerLabels(locale);
 
   return (
     <TestWrapper
@@ -39,8 +43,14 @@ export default async function VrrTestPage({
           ))}
         </ul>
       }
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }
     >
       <VrrPattern testId="vrr-test" />
     </TestWrapper>
   );
 }
+

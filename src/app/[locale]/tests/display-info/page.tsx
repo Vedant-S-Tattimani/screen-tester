@@ -1,13 +1,22 @@
 import { generateSeoMetadata } from "@/lib/seo";
 import { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { DisplayInfoClient } from "./DisplayInfoClient";
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "DisplayInfo" });
   return generateSeoMetadata(
     "/tests/display-info",
-    "Display Information & Browser Capabilities | Monitor Tester",
-    "Query legitimate browser-reported display parameters, viewport geometry, Device Pixel Ratio, WebGL 3D rendering, and multi-monitor topology."
+    t("header.title"),
+    t("header.subtitle"),
+    locale
   );
 }
 
@@ -18,7 +27,18 @@ export default async function DisplayInfoPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const explainerData = getFeatureExplainer("display-info", locale);
+  const explainerLabels = getExplainerLabels(locale);
 
-  return <DisplayInfoClient />;
+  return (
+    <DisplayInfoClient
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }
+    />
+  );
 }
+
 

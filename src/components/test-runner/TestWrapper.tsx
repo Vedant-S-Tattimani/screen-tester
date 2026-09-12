@@ -41,13 +41,14 @@ interface TestWrapperProps {
   children: ReactNode;
   testId?: string;
   extraControls?: ReactNode;
+  educationalContent?: ReactNode;
 }
 
 const STORAGE_KEY_OBSERVATIONS = "monitor-tester-observations";
 const STORAGE_KEY_WORKFLOW = "monitor-tester-workflow";
 const STORAGE_KEY_FULLSCREEN = "screen-tester-fullscreen";
 
-export function TestWrapper({ title, description, instructions, children, testId, extraControls }: TestWrapperProps) {
+export function TestWrapper({ title, description, instructions, children, testId, extraControls, educationalContent }: TestWrapperProps) {
   const t = useTranslations("TestWrapper");
   const tBreadcrumbs = useTranslations("Breadcrumbs");
   const router = useRouter();
@@ -705,6 +706,13 @@ export function TestWrapper({ title, description, instructions, children, testId
             <div className="prose prose-neutral dark:prose-invert max-w-none text-muted-foreground text-lg leading-relaxed space-y-4">
               {instructions}
             </div>
+          </div>
+        )}
+
+        {/* Technical Explainer & Search Intent Details - Only visible when inline */}
+        {!isFullscreen && educationalContent && (
+          <div className="w-full mt-12 max-w-4xl">
+            {educationalContent}
           </div>
         )}
         

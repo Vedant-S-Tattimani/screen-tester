@@ -3,6 +3,8 @@ import { Metadata } from "next";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
 import { UniformityPattern, UniformityGuidance } from "@/components/tests/UniformityPattern";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 
 export async function generateMetadata({
   params
@@ -11,7 +13,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "TestPages.uniformity-test" });
-  return generateSeoMetadata("/tests/uniformity-test", t("metaTitle"), t("metaDescription"));
+  return generateSeoMetadata("/tests/uniformity-test", t("metaTitle"), t("metaDescription"), locale);
 }
 
 export default async function UniformityTest({
@@ -22,6 +24,8 @@ export default async function UniformityTest({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "TestPages.uniformity-test" });
+  const explainerData = getFeatureExplainer("uniformity-test", locale);
+  const explainerLabels = getExplainerLabels(locale);
 
   return (
     <TestWrapper testId="uniformity-test"
@@ -38,9 +42,15 @@ export default async function UniformityTest({
           ))}
         </ul>
       }
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }
       extraControls={<UniformityGuidance />}
     >
       <UniformityPattern testId="uniformity-test" />
     </TestWrapper>
   );
 }
+

@@ -53,7 +53,7 @@ const InfoRow = ({ label, value, unit = "" }: { label: string, value: React.Reac
   </div>
 );
 
-export function ResolutionCheckerClient() {
+export function ResolutionCheckerClient({ educationalContent }: { educationalContent?: React.ReactNode } = {}) {
   const t = useTranslations("Tests.resolution-checker");
   const router = useRouter();
   
@@ -450,6 +450,13 @@ export function ResolutionCheckerClient() {
         </div>
       </div>
       
+      {/* Feature Explainer & Search Intent Details */}
+      {educationalContent && (
+        <div className="w-full">
+          {educationalContent}
+        </div>
+      )}
+
       {/* RELATED TOOLS */}
       <div className="w-full pt-8 border-t border-border/50 flex flex-wrap items-center justify-between gap-4">
         <div>

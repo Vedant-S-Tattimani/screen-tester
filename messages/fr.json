@@ -529,15 +529,14 @@
       ]
     },
     "stuck-pixel-test": {
-      "metaTitle": "Réparateur de Pixels Bloqués – Test et Déblocage Rapide RVB",
-      "metaDescription": "Repérez les sous-pixels bloqués et tentez de les réactiver grâce à un défilement ultra-rapide de couleurs RVB primaires.",
-      "title": "Réparateur et Test de Pixels Coincés",
-      "description_p1": "Contrairement à un pixel mort (qui est en permanence noir), un <strong>pixel coincé</strong> est un unique sous-pixel qui reste toujours allumé.",
+      "metaTitle": "Test de sous-pixels bloqués",
+      "metaDescription": "Test en ligne de pixels bloqués pour écrans et moniteurs. Inspectez des fonds sombres et des masques de couleurs primaires pour détecter les sous-pixels allumés.",
+      "title": "Test de sous-pixels bloqués",
+      "description_p1": "Un test de pixels bloqués vous permet d'inspecter votre écran pour repérer les sous-pixels individuels restant continuellement allumés en rouge, vert ou bleu.",
       "instructions": [
-        "<strong>Warning:</strong> This test flashes bright colors rapidly. Do not use if you are sensitive to flashing lights.",
-        "The test will automatically cycle between Red, Green, and Blue at a high frequency.",
-        "Leave it running over the stuck pixel for 10-15 minutes to attempt a fix.",
-        "Use <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> to pause the strobing effect."
+        "<strong>CE QU'IL FAUT VÉRIFIER:</strong> Assurez-vous que l'écran est propre. La poussière peut être confondue avec un défaut de pixel.",
+        "<strong>UTILISATION:</strong> Appuyez sur <kbd class=\"px-1 bg-background border border-border rounded\">Espace</kbd> ou <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd> pour basculer entre fonds sombres et masques de couleurs primaires.",
+        "<strong>CE QUE VOUS POUVEZ OBSERVER:</strong> Un point lumineux rouge, vert ou bleu sur fond noir est un <strong>sous-pixel bloqué</strong>. En cas de détection, vous pouvez tenter une stimulation avec notre outil de réparation."
       ]
     },
     "uniformity-test": {
@@ -867,8 +866,8 @@
       "instructions": "Vérifiez si les couleurs au centre correspondent ou se fondent avec l'anneau extérieur."
     },
     "resolution-checker": {
-      "title": "Vérificateur de Résolution – Pixels Physiques, Résolution CSS et DPR",
-      "description": "Découvrez la résolution physique native de votre écran, son format d'image et son facteur de mise à l'échelle.",
+      "title": "Vérificateur de résolution d'écran",
+      "description": "Vérifiez la résolution d'écran signalée par le navigateur, les dimensions du viewport, le Device Pixel Ratio (DPR) et le format d'image en ligne.",
       "infoTitle": "RÉSOLUTION ET GÉOMÉTRIE DE L'ÉCRAN",
       "labels": {
         "logicalRes": "Résolution Logique",

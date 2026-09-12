@@ -3,17 +3,21 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
 import { MotionPattern } from "@/components/tests/MotionPattern";
 import { Metadata } from "next";
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "TestPages.motion-blur-test" });
-  return generateSeoMetadata("/tests/motion-blur-test", t("metaTitle"), t("metaDescription"));
+  return generateSeoMetadata("/tests/motion-blur-test", t("metaTitle"), t("metaDescription"), locale);
 }
 
 export default async function MotionBlurTestPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "TestPages.motion-blur-test" });
+  const explainerData = getFeatureExplainer("motion-blur-test", locale);
+  const explainerLabels = getExplainerLabels(locale);
 
   return (
     <TestWrapper testId="motion-blur-test"
@@ -26,8 +30,14 @@ export default async function MotionBlurTestPage({ params }: { params: Promise<{
           <li>{t("inst3")}</li>
         </ol>
       }
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }
     >
       <MotionPattern testId="motion-blur-test" />
     </TestWrapper>
   );
 }
+

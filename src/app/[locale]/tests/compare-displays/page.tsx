@@ -2,6 +2,8 @@ import { generateSeoMetadata } from "@/lib/seo";
 import { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { CompareDisplaysClient } from "./CompareDisplaysClient";
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 
 export async function generateMetadata({
   params
@@ -24,6 +26,17 @@ export default async function CompareDisplaysPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const explainerData = getFeatureExplainer("compare-displays", locale);
+  const explainerLabels = getExplainerLabels(locale);
 
-  return <CompareDisplaysClient />;
+  return (
+    <CompareDisplaysClient
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }
+    />
+  );
 }
+

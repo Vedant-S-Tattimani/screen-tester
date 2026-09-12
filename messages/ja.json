@@ -529,15 +529,14 @@
       ]
     },
     "stuck-pixel-test": {
-      "metaTitle": "スタックピクセル修復テスト – 高速RGB切り替えによるドット刺激",
-      "metaDescription": "特定の色で固まったスタックピクセルを検出し、高周波のRGB原色点滅により画素の正常復帰を試みます。",
-      "title": "固着ピクセル修正 & テスト",
-      "description_p1": "デッドピクセル（恒久的に黒）とは異なり、<strong>固着ピクセル</strong>は常にオンになっている単一のサブピクセルです。",
+      "metaTitle": "スタックピクセルテスト (輝点テスト)",
+      "metaDescription": "モニターやノートPC画面のスタックピクセル（輝点）を検査する無料オンラインテスト。黒画面や単色マスクで常時点灯しているRGBサブピクセルを特定します。",
+      "title": "スタックピクセルテスト (輝点テスト)",
+      "description_p1": "スタックピクセルテストは、常に赤・緑・青のいずれかで点灯し続ける異常なサブピクセル（輝点）を特定するための目視検査ツールです。",
       "instructions": [
-        "<strong>Warning:</strong> This test flashes bright colors rapidly. Do not use if you are sensitive to flashing lights.",
-        "The test will automatically cycle between Red, Green, and Blue at a high frequency.",
-        "Leave it running over the stuck pixel for 10-15 minutes to attempt a fix.",
-        "Use <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> to pause the strobing effect."
+        "<strong>確認項目:</strong> テスト前に画面の埃を拭き取ってください。埃がドット抜けに見えることがあります。",
+        "<strong>使い方:</strong> <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> または <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd> キーを押して黒画面や各色マスクを切り替えます。",
+        "<strong>着眼点:</strong> 黒背景上で赤・緑・青のいずれかに明るく光り続ける微小な点が<strong>スタックピクセル（輝点）</strong>です。見つかった場合はスタックピクセル修復ツールで刺激を試みることができます。"
       ]
     },
     "uniformity-test": {
@@ -867,8 +866,8 @@
       "instructions": "中央の色が外側のリングと一致するかブレンドするか確認します。"
     },
     "resolution-checker": {
-      "title": "解像度チェッカー – 物理ネイティブ解像度とCSS解像度・DPR",
-      "description": "画面の物理的な解像度、OSスケーリング後のCSS解像度、アスペクト比を瞬時に確認できます。",
+      "title": "画面解像度チェッカー",
+      "description": "ブラウザが報告する画面解像度、ビューポート寸法、デバイスピクセル比（DPR）、アスペクト比をオンラインで確認します。",
       "infoTitle": "解像度とディスプレイジオメトリ",
       "labels": {
         "logicalRes": "論理解像度",

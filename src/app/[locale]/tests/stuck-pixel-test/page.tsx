@@ -3,6 +3,8 @@ import { Metadata } from "next";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
 import { SolidPattern } from "@/components/tests/SolidPattern";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 
 export async function generateMetadata({
   params
@@ -11,7 +13,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "TestPages.stuck-pixel-test" });
-  return generateSeoMetadata("/tests/stuck-pixel-test", t("metaTitle"), t("metaDescription"));
+  return generateSeoMetadata("/tests/stuck-pixel-test", t("metaTitle"), t("metaDescription"), locale);
 }
 
 const STROBE_COLORS = ["#FF0000", "#00FF00", "#0000FF"];
@@ -24,6 +26,8 @@ export default async function StuckPixelTest({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "TestPages.stuck-pixel-test" });
+  const explainerData = getFeatureExplainer("stuck-pixel-test", locale);
+  const explainerLabels = getExplainerLabels(locale);
 
   return (
     <TestWrapper testId="stuck-pixel-test"
@@ -40,8 +44,14 @@ export default async function StuckPixelTest({
           ))}
         </ul>
       }
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }
     >
       <SolidPattern colors={STROBE_COLORS} autoCycleInterval={100} testId="stuck-pixel-test" />
     </TestWrapper>
   );
 }
+

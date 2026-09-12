@@ -30,7 +30,7 @@ interface ScreenDetailInfo {
 
 const emptySubscribe = () => () => {};
 
-export function DisplayInfoClient() {
+export function DisplayInfoClient({ educationalContent }: { educationalContent?: React.ReactNode } = {}) {
   const router = useRouter();
   const t = useTranslations("DisplayInfo");
   const tTools = useTranslations("Tools");
@@ -968,6 +968,13 @@ export function DisplayInfoClient() {
             )}
           </div>
         </div>
+
+        {/* Feature Explainer & Search Intent Details */}
+        {educationalContent && (
+          <div className="w-full">
+            {educationalContent}
+          </div>
+        )}
 
         {/* Quick Links to Calculators */}
         <div className="border-t border-gray-200 pt-8 flex flex-wrap items-center justify-between gap-4">

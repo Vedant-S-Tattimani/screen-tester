@@ -3,6 +3,8 @@ import { Metadata } from "next";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
 import { SolidPattern } from "@/components/tests/SolidPattern";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 
 export async function generateMetadata({
   params
@@ -33,6 +35,8 @@ export default async function DeadPixelTest({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "TestPages.dead-pixel-test" });
+  const explainerData = getFeatureExplainer("dead-pixel-test", locale);
+  const explainerLabels = getExplainerLabels(locale);
 
   return (
     <TestWrapper testId="dead-pixel-test"
@@ -49,8 +53,14 @@ export default async function DeadPixelTest({
           ))}
         </ul>
       }
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }
     >
       <SolidPattern colors={COLORS} testId="dead-pixel-test" />
     </TestWrapper>
   );
 }
+

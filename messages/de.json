@@ -529,15 +529,14 @@
       ]
     },
     "stuck-pixel-test": {
-      "metaTitle": "Hängender Pixelfehlertest – Subpixel Reparieren & Aufwecken",
-      "metaDescription": "Erkennen Sie hängende Subpixel und versuchen Sie deren Reaktivierung durch schnelle Farbwechsel in Rot, Grün und Blau.",
-      "title": "Feststeckende-Pixel-Reparatur & Test",
-      "description_p1": "Im Gegensatz zu einem toten Pixel (der dauerhaft schwarz ist) ist ein <strong>feststeckender Pixel</strong> ein einzelner Subpixel, der immer eingeschaltet ist.",
+      "metaTitle": "Stuck-Pixel-Test",
+      "metaDescription": "Kostenloser Online-Stuck-Pixel-Test für Monitore und Bildschirme. Prüfen Sie dunkle Felder und Primärfarbmasken, um leuchtende Subpixel zu erkennen.",
+      "title": "Stuck-Pixel-Test",
+      "description_p1": "Ein Stuck-Pixel-Test hilft Ihnen, Ihren Bildschirm auf einzelne Subpixel zu untersuchen, die dauerhaft in Rot, Grün oder Blau leuchten. Untersuchen Sie dunkle Hintergründe, um festsitzende Subpixel von toten Pixeln zu unterscheiden.",
       "instructions": [
-        "<strong>Warning:</strong> This test flashes bright colors rapidly. Do not use if you are sensitive to flashing lights.",
-        "The test will automatically cycle between Red, Green, and Blue at a high frequency.",
-        "Leave it running over the stuck pixel for 10-15 minutes to attempt a fix.",
-        "Use <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> to pause the strobing effect."
+        "<strong>WAS ZU PRÜFEN IST:</strong> Stellen Sie sicher, dass Ihr Bildschirm sauber ist. Staub kann wie ein Pixelfehler wirken.",
+        "<strong>BEDIENUNG:</strong> Drücken Sie <kbd class=\"px-1 bg-background border border-border rounded\">Leertaste</kbd> oder <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd>, um zwischen dunklen Feldern und Primärfarbmasken zu wechseln.",
+        "<strong>WAS AUFFALLEN KANN:</strong> Ein leuchtender Punkt in Rot, Grün oder Blau auf schwarzem Hintergrund ist ein <strong>festsitzender Subpixel</strong>. Falls erkannt, können Sie mit dem Stuck-Pixel-Reparierer eine Reaktivierung versuchen."
       ]
     },
     "uniformity-test": {
@@ -867,8 +866,8 @@
       "instructions": "Überprüfen Sie, ob die Farben in der Mitte mit dem äußeren Ring übereinstimmen oder ineinander übergehen."
     },
     "resolution-checker": {
-      "title": "Auflösungs-Prüfer – Native Pixel, CSS-Auflösung & DPR",
-      "description": "Ermitteln Sie die physikalische native Bildschirmauflösung, das Seitenverhältnis und den Skalierungsfaktor.",
+      "title": "Bildschirmauflösung prüfen",
+      "description": "Überprüfen Sie vom Browser gemeldete Bildschirmauflösung, Viewport-Abmessungen, Device Pixel Ratio (DPR) und Seitenverhältnis online.",
       "infoTitle": "AUFLÖSUNG & DISPLAY-GEOMETRIE",
       "labels": {
         "logicalRes": "Logische Auflösung",

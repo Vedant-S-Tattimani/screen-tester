@@ -3,6 +3,8 @@ import { Metadata } from "next";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
 import { WebcamPattern } from "@/components/tests/WebcamPattern";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 
 export async function generateMetadata({
   params
@@ -11,7 +13,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "TestPages.webcam-test" });
-  return generateSeoMetadata("/tests/webcam-test", t("metaTitle"), t("metaDescription"));
+  return generateSeoMetadata("/tests/webcam-test", t("metaTitle"), t("metaDescription"), locale);
 }
 
 export default async function WebcamTestPage({
@@ -22,6 +24,8 @@ export default async function WebcamTestPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "TestPages.webcam-test" });
+  const explainerData = getFeatureExplainer("webcam-test", locale);
+  const explainerLabels = getExplainerLabels(locale);
 
   return (
     <TestWrapper
@@ -39,8 +43,14 @@ export default async function WebcamTestPage({
           ))}
         </ul>
       }
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }
     >
       <WebcamPattern testId="webcam-test" />
     </TestWrapper>
   );
 }
+

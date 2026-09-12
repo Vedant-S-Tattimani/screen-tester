@@ -3,6 +3,8 @@ import { Metadata } from "next";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
 import { BacklightBleedPattern, BacklightBleedGuidance } from "@/components/tests/BacklightBleedPattern";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 
 export async function generateMetadata({
   params
@@ -11,7 +13,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "TestPages.backlight-bleed-test" });
-  return generateSeoMetadata("/tests/backlight-bleed-test", t("metaTitle"), t("metaDescription"));
+  return generateSeoMetadata("/tests/backlight-bleed-test", t("metaTitle"), t("metaDescription"), locale);
 }
 
 export default async function BacklightBleedTest({
@@ -22,6 +24,8 @@ export default async function BacklightBleedTest({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "TestPages.backlight-bleed-test" });
+  const explainerData = getFeatureExplainer("backlight-bleed-test", locale);
+  const explainerLabels = getExplainerLabels(locale);
 
   return (
     <TestWrapper 
@@ -39,9 +43,15 @@ export default async function BacklightBleedTest({
           ))}
         </ul>
       }
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }
       extraControls={<BacklightBleedGuidance />}
     >
       <BacklightBleedPattern testId="backlight-bleed-test" />
     </TestWrapper>
   );
 }
+

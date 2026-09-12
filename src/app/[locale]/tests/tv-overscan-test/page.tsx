@@ -3,6 +3,8 @@ import { Metadata } from "next";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
 import { TvOverscanPattern } from "@/components/tests/TvOverscanPattern";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 
 export async function generateMetadata({
   params
@@ -11,7 +13,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "TestPages.tv-overscan-test" });
-  return generateSeoMetadata("/tests/tv-overscan-test", t("metaTitle"), t("metaDescription"));
+  return generateSeoMetadata("/tests/tv-overscan-test", t("metaTitle"), t("metaDescription"), locale);
 }
 
 export default async function TvOverscanTestPage({
@@ -22,6 +24,8 @@ export default async function TvOverscanTestPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "TestPages.tv-overscan-test" });
+  const explainerData = getFeatureExplainer("tv-overscan-test", locale);
+  const explainerLabels = getExplainerLabels(locale);
 
   return (
     <TestWrapper
@@ -39,8 +43,14 @@ export default async function TvOverscanTestPage({
           ))}
         </ul>
       }
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }
     >
       <TvOverscanPattern testId="tv-overscan-test" />
     </TestWrapper>
   );
 }
+

@@ -529,15 +529,14 @@
       ]
     },
     "stuck-pixel-test": {
-      "metaTitle": "낀 화소(스턱픽셀) 복구 테스트 – 초고속 RGB 깜빡임 자극",
-      "metaDescription": "특정 색상으로 멈춰 있는 서브픽셀을 찾고, 초고속 RGB 삼원색 점멸 자극을 통해 픽셀 활성화를 시도합니다.",
-      "title": "고착 픽셀 수리 및 테스트",
-      "description_p1": "불량 픽셀(영구적으로 검정)과 달리, <strong>고착 픽셀</strong>은 항상 켜져 있는 단일 서브픽셀입니다.",
+      "metaTitle": "스턱 픽셀 테스트 (고정 픽셀 검사)",
+      "metaDescription": "모니터 및 노트북 화면의 스턱 픽셀(고정 서브픽셀)을 검사하는 무료 온라인 테스트. 어두운 배경과 RGB 마스크를 통해 항상 켜져 있는 서브픽셀을 식별합니다.",
+      "title": "스턱 픽셀 테스트 (고정 픽셀 검사)",
+      "description_p1": "스턱 픽셀 테스트는 화면에서 빨강, 초록, 파랑 중 특정 색상으로 계속 켜져 있는 서브픽셀(휘점)을 시각적으로 식별할 수 있도록 지원합니다.",
       "instructions": [
-        "<strong>Warning:</strong> This test flashes bright colors rapidly. Do not use if you are sensitive to flashing lights.",
-        "The test will automatically cycle between Red, Green, and Blue at a high frequency.",
-        "Leave it running over the stuck pixel for 10-15 minutes to attempt a fix.",
-        "Use <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> to pause the strobing effect."
+        "<strong>확인 사항:</strong> 시작하기 전 화면의 먼지를 닦아내세요. 먼지가 픽셀 결함처럼 보일 수 있습니다.",
+        "<strong>사용 방법:</strong> <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> 또는 <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd> 키를 눌러 어두운 배경과 단색 마스크를 전환합니다.",
+        "<strong>관찰 요령:</strong> 검은 배경에서 빨간색, 초록색, 파란색으로 밝게 빛나는 미세한 점은 <strong>스턱 서브픽셀</strong>입니다. 발견 시 전용 스턱 픽셀 복구 도구를 시도해 볼 수 있습니다."
       ]
     },
     "uniformity-test": {
@@ -867,8 +866,8 @@
       "instructions": "중앙의 색상이 외부 링과 일치하거나 혼합되는지 확인합니다."
     },
     "resolution-checker": {
-      "title": "해상도 확인기 – 모니터 네이티브 해상도, CSS 해상도 및 DPR",
-      "description": "모니터의 실제 하드웨어 해상도, 윈도우 배율 적용 해상도, 화면 비율을 손쉽게 확인하세요.",
+      "title": "화면 해상도 체커",
+      "description": "브라우저에서 보고하는 화면 해상도, 뷰포트 크기, 디바이스 픽셀 비율(DPR) 및 화면 화면비를 온라인에서 확인합니다.",
       "infoTitle": "해상도 및 디스플레이 지오메트리",
       "labels": {
         "logicalRes": "논리 해상도",

@@ -562,14 +562,14 @@
       ]
     },
     "stuck-pixel-test": {
-      "metaTitle": "Stuck Pixel Fixer",
-      "metaDescription": "Locate stuck subpixels and attempt to un-stick them using high-frequency red, green, and blue primary color cycling patterns.",
-      "title": "Stuck Pixel Fixer & Test",
-      "description_p1": "Unlike a dead pixel (which is permanently black), a <strong>stuck pixel</strong> is a single subpixel (red, green, or blue) that is permanently turned on. Sometimes, rapidly cycling colors can un-stick the liquid crystal.",
+      "metaTitle": "Stuck Pixel Test",
+      "metaDescription": "Free online stuck pixel test for monitors and screens. Inspect pure dark fields and primary color masks to isolate and detect stuck RGB subpixels.",
+      "title": "Stuck Pixel Test",
+      "description_p1": "A stuck pixel test helps you inspect your screen for individual subpixels that remain continuously illuminated with red, green, or blue light. Inspect dark backgrounds and color channels to distinguish stuck subpixels from dead pixels.",
       "instructions": [
-        "<strong>WHAT TO CHECK:</strong> This test flashes bright colors rapidly. Do not use if you are sensitive to flashing lights.",
-        "<strong>HOW TO USE:</strong> The test will automatically cycle between Red, Green, and Blue at a high frequency.",
-        "<strong>WHAT YOU MAY NOTICE:</strong> Leave it running over the stuck pixel for 10-15 minutes to attempt a fix. Use <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> to pause the strobing effect."
+        "<strong>WHAT TO CHECK:</strong> Ensure your screen is clean before starting. Dust can look like pixel defects.",
+        "<strong>HOW TO USE:</strong> Press <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> or <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd> to cycle between dark fields and primary color masks.",
+        "<strong>WHAT YOU MAY NOTICE:</strong> An illuminated pinpoint of red, green, or blue on a black background is a <strong>stuck subpixel</strong>. If detected, you can attempt visual cycling using our Stuck Pixel Fixer tool."
       ]
     },
     "uniformity-test": {
@@ -905,8 +905,8 @@
       "description": "Analyze motion resolution, persistence blur, and MPRT tracking on fast-paced scenes and moving test objects."
     },
     "resolution-checker": {
-      "title": "Screen Resolution Checker – Native vs Logical Pixels & DPR",
-      "description": "Check your screen's physical native resolution, scaled CSS resolution, aspect ratio, and Device Pixel Ratio.",
+      "title": "Screen Resolution Checker",
+      "description": "Check browser-reported screen resolution, viewport dimensions, Device Pixel Ratio (DPR), and screen aspect ratio online.",
       "infoTitle": "RESOLUTION & DISPLAY GEOMETRY",
       "labels": {
         "logicalRes": "Logical Resolution",

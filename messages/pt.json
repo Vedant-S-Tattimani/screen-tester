@@ -529,15 +529,14 @@
       ]
     },
     "stuck-pixel-test": {
-      "metaTitle": "Recuperador de Pixels Presos – Teste e Reativação Rápida RGB",
-      "metaDescription": "Localize subpixels presos e tente desprendê-los com alternância rápida de cores primárias vermelha, verde e azul.",
-      "title": "Reparador e Teste de Pixels Presos",
-      "description_p1": "Ao contrário de um pixel morto (que é permanentemente preto), um <strong>pixel preso</strong> é um único subpixel que está sempre ligado.",
+      "metaTitle": "Teste de pixel preso",
+      "metaDescription": "Teste online gratuito de pixels presos para monitores e telas. Inspecione campos escuros e máscaras de cores primárias para isolar subpixels acesos continuamente.",
+      "title": "Teste de pixel preso",
+      "description_p1": "O teste de pixels presos ajuda a inspecionar sua tela para identificar subpixels individuais que permanecem acesos continuamente em vermelho, verde ou azul.",
       "instructions": [
-        "<strong>Warning:</strong> This test flashes bright colors rapidly. Do not use if you are sensitive to flashing lights.",
-        "The test will automatically cycle between Red, Green, and Blue at a high frequency.",
-        "Leave it running over the stuck pixel for 10-15 minutes to attempt a fix.",
-        "Use <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> to pause the strobing effect."
+        "<strong>O QUE VERIFICAR:</strong> Certifique-se de que a tela esteja limpa antes de começar. Poeira pode parecer um defeito no pixel.",
+        "<strong>COMO USAR:</strong> Pressione <kbd class=\"px-1 bg-background border border-border rounded\">Espaço</kbd> ou <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd> para alternar entre campos escuros e máscaras de cores.",
+        "<strong>O QUE NOTAR:</strong> Um ponto luminoso vermelho, verde ou azul em fundo preto é um <strong>subpixel preso</strong>. Se detectado, você pode tentar a estimulação com o Recuperador de Pixels Presos."
       ]
     },
     "uniformity-test": {
@@ -867,8 +866,8 @@
       "instructions": "Verifique se as cores no centro correspondem ou se misturam com o anel externo."
     },
     "resolution-checker": {
-      "title": "Verificador de Resolução – Resolução Nativa, CSS e Fator DPR",
-      "description": "Descubra a resolução física real do seu monitor, a resolução lógica do navegador e o aspecto de tela.",
+      "title": "Verificador de resolução de tela",
+      "description": "Verifique a resolução relatada pelo navegador, dimensões do viewport, Device Pixel Ratio (DPR) e proporção de tela online.",
       "infoTitle": "RESOLUÇÃO E GEOMETRIA DA TELA",
       "labels": {
         "logicalRes": "Resolução Lógica",

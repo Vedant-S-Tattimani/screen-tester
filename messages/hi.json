@@ -529,15 +529,14 @@
       ]
     },
     "stuck-pixel-test": {
-      "metaTitle": "स्टक पिक्सल फिक्सर और टेस्ट – अटके हुए पिक्सल को ठीक करने का प्रयास",
-      "metaDescription": "अटके हुए सबपिक्सल की पहचान करें और हाई-स्पीड RGB कलर साइकिलिंग द्वारा उन्हें एक्टिवेट करने का प्रयास करें।",
-      "title": "स्टक पिक्सल फिक्सर और टेस्ट",
-      "description_p1": "एक डेड पिक्सल (जो स्थायी रूप से काला है) के विपरीत, एक <strong>स्टक पिक्सल</strong> एक एकल सबपिक्सल है जो हमेशा चालू रहता है।",
+      "metaTitle": "अटका हुआ पिक्सेल टेस्ट (Stuck Pixel Test)",
+      "metaDescription": "मॉनिटर और स्क्रीन के लिए ऑनलाइन स्टक पिक्सेल टेस्ट। लगातार चमकने वाले लाल, हरे या नीले सब-पिक्सेल की पहचान करने के लिए डार्क फ़ील्ड का निरीक्षण करें।",
+      "title": "अटका हुआ पिक्सेल टेस्ट (Stuck Pixel Test)",
+      "description_p1": "स्टक पिक्सेल परीक्षण आपके डिस्प्ले पर उन सब-पिक्सेल की पहचान करने में मदद करता है जो लगातार लाल, हरे या नीले रंग में प्रदीप्त रहते हैं।",
       "instructions": [
-        "<strong>Warning:</strong> This test flashes bright colors rapidly. Do not use if you are sensitive to flashing lights.",
-        "The test will automatically cycle between Red, Green, and Blue at a high frequency.",
-        "Leave it running over the stuck pixel for 10-15 minutes to attempt a fix.",
-        "Use <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> to pause the strobing effect."
+        "<strong>क्या जांचें:</strong> परीक्षण शुरू करने से पहले सुनिश्चित करें कि स्क्रीन साफ है। धूल पिक्सेल दोष जैसी लग सकती है।",
+        "<strong>उपयोग कैसे करें:</strong> गहरे बैकग्राउंड और प्राथमिक रंग मास्क के बीच बदलने के लिए <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> या <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd> दबाएं।",
+        "<strong>आप क्या देख सकते हैं:</strong> काली स्क्रीन पर लाल, हरे या नीले रंग का चमकदार बिंदु एक <strong>अटका हुआ सब-पिक्सेल</strong> है। यदि ऐसा मिलता है, तो आप हमारे स्टक पिक्सेल फिक्सर टूल का उपयोग कर सकते हैं।"
       ]
     },
     "uniformity-test": {
@@ -867,8 +866,8 @@
       "instructions": "जांचें कि केंद्र के रंग बाहरी रिंग से मेल खाते हैं या मिलते हैं।"
     },
     "resolution-checker": {
-      "title": "स्क्रीन रेजोल्यूशन चेकर – नेटिव पिक्सल, CSS रेजोल्यूशन और DPR",
-      "description": "अपने मॉनिटर का भौतिक नेटिव रेजोल्यूशन, आस्पेक्ट रेशियो और डिवाइस पिक्सल रेशियो जानें।",
+      "title": "स्क्रीन रिज़ॉल्यूशन चेकर",
+      "description": "ब्राउज़र-रिपोर्ट किए गए स्क्रीन रिज़ॉल्यूशन, व्यूपोर्ट आयाम, डिवाइस पिक्सेल अनुपात (DPR), और पहलू अनुपात की ऑनलाइन जांच करें।",
       "infoTitle": "रिज़ॉल्यूशन और डिस्प्ले ज्यामिति",
       "labels": {
         "logicalRes": "तार्किक रिज़ॉल्यूशन",
