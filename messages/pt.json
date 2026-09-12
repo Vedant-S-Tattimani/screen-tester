@@ -1796,6 +1796,355 @@
       "workflowCtaButton": "Iniciar fluxo para monitor novo",
       "relatedTestsHeading": "Conjunto de testes recomendado",
       "osdLinksTitle": "Testes de verificação de sinal e OSD"
+    },
+    "displayportVsHdmi": {
+      "metaTitle": "DisplayPort vs HDMI: Largura de banda, revisões e subamostragem de croma | Screen Tester",
+      "metaDescription": "Guia técnico aprofundado sobre DisplayPort vs HDMI: largura de banda bruta vs útil, revisões (DP 1.4/2.1, HDMI 2.0/2.1), subamostragem de croma (RGB vs 4:2:0) e gargalos de tela.",
+      "badge": "Guia técnico de protocolos",
+      "title": "DisplayPort vs HDMI: Largura de banda, revisões e subamostragem de croma",
+      "subtitle": "Um guia prático de engenharia explicando largura de banda bruta vs utilizável, revisões de protocolo, subamostragem de croma 4:4:4 vs 4:2:0, transporte HDR e como solucionar gargalos de exibição.",
+      "breadcrumbsGuides": "Guias",
+      "breadcrumbsDpHdmi": "DisplayPort vs HDMI",
+      "honestyTitle": "Rigor técnico e escopo de verificação",
+      "honestyDesc": "O Screen Tester opera dentro de um ambiente isolado de navegador web. As APIs do navegador podem inspecionar resolução de viewport, cadência de quadros e gamas de cor declaradas, mas não podem medir fisicamente taxas elétricas em cabos de cobre, impedância, circuitos PHY de GPU ou estados internos de compressão DSC. Distinguimos quatro camadas fundamentais:",
+      "honestyItems": [
+        {
+          "badge": "Fabricante / Especificação",
+          "title": "Padrões teóricos de hardware",
+          "desc": "As capacidades teóricas anunciadas em fichas técnicas (ex.: HDMI 2.1 48 Gbps ou DisplayPort 1.4 HBR3). O suporte real depende do projeto da placa, controladores internos e firmware."
+        },
+        {
+          "badge": "Relatado pelo SO / Usuário",
+          "title": "Estado operacional negociado",
+          "desc": "Resolução, taxa de atualização, profundidade de cor e formato negociados entre o driver gráfico e o EDID/DisplayID do monitor, visíveis nas configurações avançadas de vídeo."
+        },
+        {
+          "badge": "Relatado pelo navegador",
+          "title": "Contexto de janela e renderização",
+          "desc": "Dimensões, taxa de atualização e perfis de cor expostos a aplicações web. Um navegador reportando 60 Hz não atesta as capacidades físicas plenas do painel."
+        },
+        {
+          "badge": "Observação visual",
+          "title": "Qualidade percebida na tela",
+          "desc": "Artefatos visíveis como halos coloridos em textos (subamostragem de croma), faixas em degradês (8 bits vs 10 bits), microengasgos ou telas pretas por perda de sinal."
+        }
+      ],
+      "interfaceTitle": "1. O que é cada interface: Origens e arquitetura",
+      "interfaceDesc": "DisplayPort e HDMI foram projetados para solucionar desafios de engenharia distintos, resultando em arquiteturas de sinalização amplamente diferentes:",
+      "interfaceItems": [
+        {
+          "title": "DisplayPort: O padrão aberto para PCs",
+          "desc": "Criado pela Video Electronics Standards Association (VESA) como um padrão aberto e livre de royalties voltado para computadores. Adota arquitetura de dados em pacotes semelhante ao PCI Express e Ethernet, enviando micropacotes por 1, 2 ou 4 vias diferenciais de alta velocidade. É ideal para taxas de atualização variáveis (VRR), painéis integrados (eDP) e conexão em cadeia (MST)."
+        },
+        {
+          "title": "HDMI: O padrão para eletrônicos de consumo e AV",
+          "desc": "Desenvolvido por um consórcio de fabricantes audiovisuais (Sony, Philips, Panasonic, Toshiba) para televisores, receptores AV e consoles. Historicamente baseado em TMDS com canal de clock dedicado, evoluiu no HDMI 2.1 para o Fixed Rate Link (FRL), adotando estrutura em pacotes por 3 ou 4 vias para atingir maiores velocidades."
+        }
+      ],
+      "connectorTitle": "2. Por que o formato do conector NÃO garante capacidade",
+      "connectorDesc": "É um erro comum presumir que o formato físico do conector ou cabo assegura determinadas velocidades ou recursos. A geometria externa não define a capacidade do controlador interno:",
+      "connectorItems": [
+        {
+          "title": "Regras de nomenclatura vs portas físicas",
+          "desc": "Conforme as regras do HDMI Forum, aparelhos podem ser rotulados como 'HDMI 2.1' mesmo se suportarem apenas velocidades antigas de HDMI 2.0 (18 Gbps TMDS) sem FRL ou VRR. O consumidor deve verificar a tabela técnica detalhada do fabricante."
+        },
+        {
+          "title": "Limites de escalonadores internos e placas T-Con",
+          "desc": "Um monitor pode exibir conexões físicas DisplayPort 1.4 ou HDMI 2.1, mas seu circuito interno ou firmware pode limitar a taxa real a 24 Gbps ou restringir cores RGB de 10 bits a frequências menores."
+        }
+      ],
+      "hdmiRevisionsTitle": "3. Revisões HDMI: Padrões de protocolo e modos reais",
+      "hdmiRevisionsDesc": "O HDMI passou por revisões marcantes. Os modos acessíveis dependem da implementação exata de cada fabricante:",
+      "hdmiRevisionsItems": [
+        {
+          "title": "HDMI 1.4 (TMDS)",
+          "desc": "Taxa bruta máxima de 10,2 Gbps (carga útil útil ~8,16 Gbps com codificação 8b/10b). Suporta 1080p até 120/144 Hz e 4K até 30 Hz (ou 4K 24 Hz RGB). Insuficiente para jogos modernos em 1440p ou 4K HDR."
+        },
+        {
+          "title": "HDMI 2.0 / 2.0b (TMDS)",
+          "desc": "Taxa bruta máxima de 18,0 Gbps (carga útil ~14,4 Gbps com codificação 8b/10b). Padronizou 4K a 60 Hz 8 bits RGB. 4K 60 Hz com HDR de 10 bits ultrapassa 14,4 Gbps, forçando redução de croma para YCbCr 4:2:2 ou 4:2:0."
+        },
+        {
+          "title": "HDMI 2.1 / 2.1a (Fixed Rate Link - FRL)",
+          "desc": "Substitui TMDS por FRL com codificação eficiente 16b/18b (~11,1 % de perda). Taxas brutas de FRL1 (9 Gbps) a FRL6 (48 Gbps bruto / ~42,6 Gbps útil). Permite 4K 120 Hz 10 bits RGB sem compressão, 8K 60 Hz e HDMI VRR."
+        }
+      ],
+      "dpRevisionsTitle": "4. Gerações DisplayPort: Capacidades de protocolo",
+      "dpRevisionsDesc": "O DisplayPort expande sua largura de banda elevando a frequência de transmissão em quatro vias diferenciais dedicadas:",
+      "dpRevisionsItems": [
+        {
+          "title": "DisplayPort 1.2 (HBR2)",
+          "desc": "O modo High Bit Rate 2 entrega 21,6 Gbps brutos em 4 vias (carga útil ~17,28 Gbps com 8b/10b). Suporta 1080p 240 Hz, 1440p 144 Hz e 4K 60 Hz RGB não comprimido de 8 bits, além de conexão em cadeia MST."
+        },
+        {
+          "title": "DisplayPort 1.4 / 1.4a (HBR3)",
+          "desc": "O modo High Bit Rate 3 atinge 32,4 Gbps brutos (carga útil ~25,92 Gbps com 8b/10b). Introduz compressão DSC 1.2a e metadados HDR estáticos. Viabiliza 1440p 240 Hz sem compressão (8 bits) e 4K 144 Hz (8 bits sem compressão ou 10 bits HDR com DSC)."
+        },
+        {
+          "title": "DisplayPort 2.1 / 2.1a (UHBR)",
+          "desc": "Os modos Ultra High Bit Rate utilizam codificação moderna 128b/132b (~97 % de eficiência). Abrange UHBR10 (40 Gbps bruto / 38,69 Gbps útil), UHBR13.5 (54 Gbps / 52,22 Gbps) e UHBR20 (80 Gbps / 77,37 Gbps), viabilizando 4K 240 Hz 10 bits HDR não comprimido."
+        }
+      ],
+      "bandwidthTitle": "5. Entendendo largura de banda: Taxa bruta de link vs carga útil efetiva",
+      "bandwidthDesc": "Materiais promocionais costumam citar a 'taxa bruta de link', mas os monitores operam com a 'carga útil utilizável':",
+      "bandwidthItems": [
+        {
+          "title": "Sobrecarga de codificação de linha (8b/10b vs 16b/18b vs 128b/132b)",
+          "desc": "Para manter sincronismo de clock e neutralidade de corrente contínua, os protocolos inserem bits de controle. A codificação 8b/10b (HDMI 1.4/2.0, DP 1.2/1.4) consome 20 % da banda. O HDMI 2.1 FRL consome 11,1 %, enquanto o DP 2.1 UHBR perde apenas ~3 %."
+        },
+        {
+          "title": "Intervalos de supressão (Blanking) e pacotes de controle",
+          "desc": "Os sinais digitais exigem intervalos de supressão horizontal e vertical para sincronizar linhas e quadros. Áudio e criptografia HDCP reduzem a taxa útil de pixels em outros 3 % a 8 %."
+        },
+        {
+          "title": "Comparativo de carga útil utilizável no mundo real",
+          "desc": "Devido às diferenças de codificação, o HDMI 2.0 (18 Gbps brutos) entrega ~14,4 Gbps úteis. O DisplayPort 1.4 (32,4 Gbps) fornece ~25,92 Gbps úteis. O HDMI 2.1 FRL6 (48 Gbps) fornece ~42,66 Gbps úteis. O DisplayPort 2.1 UHBR20 (80 Gbps) entrega ~77,37 Gbps úteis."
+        }
+      ],
+      "resRefreshTitle": "6. Combinações de resolução e taxa de atualização",
+      "resRefreshDesc": "A largura de banda necessária segue uma fórmula: Largura × Altura × Taxa (Hz) × Profundidade de bits × Multiplicador + Sobrecarga de sincronização. Exemplos de referência:",
+      "resRefreshItems": [
+        {
+          "combo": "1080p @ 60 Hz (8 bits RGB)",
+          "payload": "~3,2 Gbps de carga útil",
+          "notes": "Suportado com ampla folga por HDMI 1.4 e DisplayPort 1.2."
+        },
+        {
+          "combo": "1080p @ 240 Hz (8 bits RGB)",
+          "payload": "~14,0 Gbps de carga útil",
+          "notes": "Compatível com DisplayPort 1.2 (17,28 Gbps) e HDMI 2.0 (14,4 Gbps). HDMI 1.4 não suporta."
+        },
+        {
+          "combo": "1440p @ 144 Hz (8 bits RGB)",
+          "payload": "~14,1 Gbps de carga útil",
+          "notes": "Suportado com tranquilidade por DisplayPort 1.2/1.4. No limite do HDMI 2.0 (geralmente exige blanking reduzido)."
+        },
+        {
+          "combo": "1440p @ 240 Hz (10 bits HDR RGB)",
+          "payload": "~29,7 Gbps de carga útil",
+          "notes": "Supera DisplayPort 1.4 sem compressão (25,92 Gbps) e HDMI 2.0. Requer DP 1.4 com DSC ou HDMI 2.1."
+        },
+        {
+          "combo": "4K (3840×2160) @ 60 Hz (8 bits RGB)",
+          "payload": "~12,5 Gbps de carga útil",
+          "notes": "Padrão de monitores de escritório modernos. Compatível com HDMI 2.0 e DP 1.2. HDR em HDMI 2.0 exige subamostragem."
+        },
+        {
+          "combo": "4K @ 120 Hz (10 bits HDR RGB)",
+          "payload": "~32,3 Gbps de carga útil",
+          "notes": "Requer HDMI 2.1 (40/48 Gbps sem compressão) ou DisplayPort 1.4 com DSC. Inviável sem compressão em DP 1.4."
+        },
+        {
+          "combo": "4K @ 240 Hz (10 bits HDR RGB)",
+          "payload": "~68,5 Gbps de carga útil",
+          "notes": "Supera todas as conexões não comprimidas exceto DP 2.1 UHBR20. Utiliza compressão DSC em HDMI 2.1 e DP 1.4."
+        }
+      ],
+      "resRefreshLinksTitle": "Verificar resolução e taxa de atualização configuradas",
+      "chromaTitle": "7. Subamostragem de croma: RGB vs 4:4:4 vs 4:2:2 vs 4:2:0",
+      "chromaDesc": "Quando a largura de banda do cabo não é suficiente para a resolução e taxa desejadas, a GPU precisa reduzir a frequência ou comprimir a informação de cor:",
+      "chromaItems": [
+        {
+          "title": "RGB e YCbCr 4:4:4 (Cor completa sem compressão)",
+          "desc": "Cada pixel preserva seus próprios dados de luminância (brilho) e crominância (cor). É indispensável em monitores de PC. Sistemas operacionais utilizam renderização de fontes por subpixels (ClearType), controlando individualmente subpixels vermelhos, verdes e azuis. O modo 4:4:4 assegura textos cristalinos e bordas nítidas."
+        },
+        {
+          "title": "YCbCr 4:2:2 (Subamostragem horizontal)",
+          "desc": "A resolução de cor é reduzida pela metade na horizontal, enquanto a luminância permanece total (economia de ~33 % de banda). Textos coloridos finos e linhas de código exibem sangramento de cor e bordas borradas."
+        },
+        {
+          "title": "YCbCr 4:2:0 (Subamostragem horizontal e vertical)",
+          "desc": "A resolução de cor cai pela metade em ambos os eixos (50 % de economia de banda). Embora adequado para filmes e consoles em TVs distantes, em um monitor de computador em distância de leitura, o 4:2:0 torna o texto muito borrado e desconfortável."
+        }
+      ],
+      "chromaLinksTitle": "Avaliar nitidez de texto e artefatos de subamostragem",
+      "bitDepthTitle": "8. Profundidade de cor: Impacto de 8 bits vs 10 bits na largura de banda",
+      "bitDepthDesc": "A profundidade de bits define a precisão das gradações em cada canal de cor, impactando diretamente o tráfego de dados:",
+      "bitDepthItems": [
+        {
+          "title": "Cor de 8 bits (16,7 milhões de cores)",
+          "desc": "Oferece 256 níveis por canal RGB (2^8), somando 24 bits por pixel (bpp). É o padrão tradicional para computação SDR e consome menos largura de banda."
+        },
+        {
+          "title": "Cor de 10 bits (1,07 bilhão de cores)",
+          "desc": "Oferece 1.024 níveis por canal RGB (2^10), totalizando 30 bits por pixel (bpp). Exige exatamente 25 % mais largura de banda utilizável do que 8 bits na mesma resolução e frequência. Elimina faixas em degradês e é obrigatório para HDR."
+        },
+        {
+          "title": "8 bits + FRC (Frame Rate Control)",
+          "desc": "Muitos monitores divulgam '1,07 bilhão de cores', mas usam um painel de 8 bits com pontilhamento temporal (FRC). A GPU costuma enviar um sinal real de 10 bits pelo cabo (consumindo banda de 10 bits) e o monitor o modula internamente."
+        }
+      ],
+      "hdrTitle": "9. A cadeia completa de transporte de sinal HDR",
+      "hdrDesc": "O High Dynamic Range (HDR) não é um recurso isolado; requer uma cadeia contínua e compatível de ponta a ponta:",
+      "hdrChainItems": [
+        {
+          "step": "Saída física da GPU",
+          "desc": "A placa gráfica deve ser capaz de emitir pacotes de metadados HDR (CTA-861-G / SMPTE ST 2086)."
+        },
+        {
+          "step": "Sistema operacional e driver",
+          "desc": "O sistema de exibição precisa negociar o espaço de cor estendido (contêiner Rec.2020) e ativar 10 bits."
+        },
+        {
+          "step": "Cabo físico e largura de banda",
+          "desc": "O cabo precisa comportar a transmissão de 10 bits na resolução desejada sem forçar subamostragem 4:2:0."
+        },
+        {
+          "step": "Controlador e painel da tela",
+          "desc": "O processador do monitor e a iluminação precisam interpretar os metadados e oferecer brilho e contraste de pico reais."
+        }
+      ],
+      "hdrLinksTitle": "Testar capacidades ativas de HDR e alcance dinâmico",
+      "dscTitle": "10. Display Stream Compression (DSC): Princípios e realidades",
+      "dscDesc": "Quando a largura de banda física não comporta monitores de alta resolução e alta frequência, a indústria adota o DSC:",
+      "dscItems": [
+        {
+          "title": "O que é o DSC",
+          "desc": "Um algoritmo de compressão por fatias com latência quase nula (DSC 1.2a) padronizado pela VESA e integrado ao DisplayPort 1.4/2.1 e HDMI 2.1, operando na escala de microssegundos."
+        },
+        {
+          "title": "Visualmente sem perdas vs matematicamente sem perdas",
+          "desc": "O DSC comprime em proporção próxima de 3:1 de forma matematicamente com perdas, mas foi comprovado em testes cegos como visualmente imperceptível para texto e jogos."
+        },
+        {
+          "title": "DSC não é 'largura de banda infinita'",
+          "desc": "Exige hardware compatível na GPU e no monitor. Se algum ponto da conexão não suportar decodificação DSC, os modos de alta velocidade não poderão ser ativados."
+        }
+      ],
+      "vrrTitle": "11. Taxa de atualização variável (VRR): Padrões e particularidades",
+      "vrrDesc": "Jogar sem rasgos de tela (tearing) depende de VRR, mas os protocolos variam entre DisplayPort e HDMI:",
+      "vrrItems": [
+        {
+          "title": "VESA Adaptive-Sync (DisplayPort)",
+          "desc": "A base do AMD FreeSync e Nvidia G-Sync Compatible em monitores de PC. Historicamente, placas Nvidia só ativavam G-Sync Compatible via DisplayPort."
+        },
+        {
+          "title": "HDMI VRR (HDMI 2.1)",
+          "desc": "Padronizado na especificação HDMI 2.1 FRL. Amplamente suportado em televisores gamer modernos (OLED, Mini-LED) e consoles (PS5, Xbox Series X)."
+        },
+        {
+          "title": "AMD FreeSync via HDMI (Legado)",
+          "desc": "Extensão proprietária da AMD para conexões HDMI 1.4 e 2.0. Funciona em placas Radeon, mas drivers Nvidia costumam não reconhecer G-Sync em monitores que só oferecem FreeSync por HDMI."
+        }
+      ],
+      "vrrLinksTitle": "Testar sincronização adaptativa e cadência de quadros",
+      "cableTitle": "12. Qualidade do cabo, comprimento e certificações oficiais",
+      "cableDesc": "Sinais digitais de alta frequência degradam rapidamente no cobre. De 18 a 48 e 80 Gbps, a qualidade construtiva do cabo é crucial:",
+      "cableItems": [
+        {
+          "title": "Atenuação de sinal com a distância",
+          "desc": "Cabos de cobre passivos com mais de 2 metros sofrem perdas acentuadas em HDMI 2.1 (48 Gbps) ou DP 2.1 (UHBR). Para distâncias de 3 a 5 metros ou mais, cabos ópticos ativos (AOC) são recomendados."
+        },
+        {
+          "title": "Selos oficiais de certificação",
+          "desc": "Procure etiquetas holográficas: 'Ultra High Speed HDMI' (48 Gbps FRL), 'Premium High Speed' (18 Gbps) ou logos VESA 'DP80' / 'DP40'. Cabos genéricos sem certificação são a causa número um de telas pretas intermitentes."
+        },
+        {
+          "title": "Cuidados mecânicos com os conectores",
+          "desc": "Não dobre cabos bruscamente perto do conector. Evite forças de alavanca sobre portas conectadas e deixe folga suficiente ao ajustar a altura do monitor."
+        }
+      ],
+      "laptopDockTitle": "13. Notebooks, USB-C DP Alt Mode, docks e adaptadores",
+      "laptopDockDesc": "Conectar notebooks por USB-C, docks multifuncionais e adaptadores envolve particularidades de largura de banda:",
+      "laptopDockItems": [
+        {
+          "title": "USB-C DisplayPort Alt Mode (Divisão de 2 vias vs 4 vias)",
+          "desc": "O conector USB-C possui 4 pares de alta velocidade. Ligado direto ao monitor, as 4 vias transportam vídeo. Ao usar um dock que trafega dados USB 3.0 (5/10 Gbps), 2 vias são reservadas para dados, cortando a banda de vídeo pela metade sem DSC."
+        },
+        {
+          "title": "Conexão em cadeia Multi-Stream Transport (MST)",
+          "desc": "O DisplayPort permite encadear vários monitores em um só cabo. Todos compartilham a banda da porta. Importante: o macOS NÃO suporta MST para estender telas (apenas espelha a mesma imagem); Windows e Linux suportam plenamente."
+        },
+        {
+          "title": "Adaptadores ativos vs passivos",
+          "desc": "Adaptadores passivos DP++ só convertem sinais até as velocidades do HDMI 1.4/2.0. Para HDMI 2.1 ou conversão de HDMI para DP, são necessários adaptadores ativos alimentados, que costumam desativar VRR ou HDR."
+        }
+      ],
+      "determineTitle": "14. Como descobrir o que sua configuração específica suporta",
+      "determineDesc": "Siga este roteiro metódico para identificar as reais capacidades de sua cadeia de hardware:",
+      "determineSteps": [
+        "Passo 1: Consulte a ficha técnica da GPU para checar as versões de saída (ex.: DP 1.4a vs DP 2.1, taxa FRL de HDMI 2.1) e suporte a DSC.",
+        "Passo 2: Verifique no manual do monitor quais portas físicas oferecem a velocidade total (frequentemente apenas uma porta específica suporta HDMI 2.1 ou altas taxas).",
+        "Passo 3: Abra as configurações avançadas de vídeo do sistema operacional para inspecionar resolução ativa, taxa de atualização e profundidade de cor.",
+        "Passo 4: Abra o painel de controle da GPU (NVIDIA / AMD / Intel) para conferir e configurar o formato de cor de saída (RGB vs YCbCr) e faixa dinâmica.",
+        "Passo 5: Certifique-se de que o cabo de vídeo possui certificação oficial para a taxa de dados desejada."
+      ],
+      "troubleshootTitle": "15. Solução de problemas comuns de interface e sinal",
+      "troubleshootDesc": "Sintomas frequentes quando os limites de banda são excedidos ou a negociação falha:",
+      "troubleshootScenarios": [
+        {
+          "title": "Tela preta ou cortes intermitentes de sinal em alta taxa",
+          "symptom": "A imagem funciona no desktop, mas apaga temporariamente ao abrir jogos ou ao mudar para 120/144 Hz.",
+          "cause": "Largura de banda insuficiente do cabo ou atenuação de alta frequência. O sinal perde pacotes sob carga.",
+          "fix": "Encurtar o cabo (menos de 2 m), trocar por cabo certificado ou reduzir ligeiramente a frequência para testar estabilidade."
+        },
+        {
+          "title": "Opções de alta frequência ausentes nas configurações do SO",
+          "symptom": "Windows ou macOS exibem apenas até 60 Hz ou 100 Hz em um monitor de 144 Hz / 240 Hz.",
+          "cause": "Conexão por porta limitada a HDMI 2.0/1.4 ou redução para 2 vias em dock USB-C.",
+          "fix": "Mudar para DisplayPort, ativar o modo de alta taxa no menu OSD do monitor ou ligar direto na GPU dedicada."
+        },
+        {
+          "title": "Opção HDR desativada ou cores opacas e esbranquiçadas",
+          "symptom": "Não é possível ativar o HDR ou o desktop fica acinzentado e sem contraste.",
+          "cause": "Banda insuficiente para transmitir 10 bits ou ausência de local dimming na entrada selecionada.",
+          "fix": "Ajustar a porta para modo 'Aprimorado' no OSD do monitor, usar DisplayPort e checar os 10 bits no driver da GPU."
+        },
+        {
+          "title": "YCbCr 4:2:2 ou 4:2:0 forçado (halos coloridos em textos)",
+          "symptom": "O driver impõe YCbCr422/420; RGB 4:4:4 fica inacessível; fontes finas mostram bordas coloridas.",
+          "cause": "Resolução, taxa de atualização e 10 bits excedem a capacidade não comprimida da porta sem DSC.",
+          "fix": "Reduzir a taxa em um nível, usar 8 bits para trabalho de escritório ou atualizar para DP 1.4 / HDMI 2.1."
+        },
+        {
+          "title": "Opção de VRR / G-Sync ausente no painel da GPU",
+          "symptom": "O painel da Nvidia não exibe 'Configurar G-SYNC' ou o AMD FreeSync acusa não suportado.",
+          "cause": "Conectar placa Nvidia via HDMI a um monitor que só suporta VRR por DisplayPort ou FreeSync proprietário.",
+          "fix": "Conectar por DisplayPort. Em televisores, ativar o HDMI 2.1 VRR e o Modo Jogo nos ajustes da TV."
+        },
+        {
+          "title": "Monitor só funciona em resolução ou taxa reduzida",
+          "symptom": "O monitor roda em 1080p em vez de 4K, ou 4K apenas a 30 Hz.",
+          "cause": "Conexão em porta HDMI 1.4 antiga ou adaptador passivo fora de especificação.",
+          "fix": "Consultar o manual do monitor para achar a porta rápida, remover adaptadores passivos e ligar direto na GPU."
+        }
+      ],
+      "troubleshootLinksTitle": "Base de conhecimento completa para solução de problemas de vídeo",
+      "decisionTitle": "16. Matriz prática de decisão: Quando escolher DP ou HDMI?",
+      "decisionDesc": "Guia prático para selecionar a interface ideal com base em seus equipamentos:",
+      "decisionMatrix": [
+        {
+          "useCase": "Jogos no PC com monitor de alta taxa de atualização",
+          "recommended": "DisplayPort (DP 1.4 ou 2.1)",
+          "why": "Garante total compatibilidade com G-Sync e FreeSync, previne subamostragem de cor e atinge as maiores taxas em monitores."
+        },
+        {
+          "useCase": "PC conectado a televisor 4K/120Hz moderno",
+          "recommended": "HDMI 2.1 (Ultra High Speed 48G)",
+          "why": "TVs OLED e Mini-LED não possuem entradas DisplayPort; o HDMI 2.1 entrega 4K 120Hz/144Hz 10 bits RGB com HDMI VRR."
+        },
+        {
+          "useCase": "Consoles de videogame (PS5, Xbox Series X)",
+          "recommended": "HDMI 2.1",
+          "why": "Consoles contam exclusivamente com saídas HDMI e necessitam de HDMI 2.1 para 4K 120Hz, VRR e ALLM."
+        },
+        {
+          "useCase": "Múltiplos monitores no Windows ou Linux",
+          "recommended": "DisplayPort (MST Daisy-Chain)",
+          "why": "Permite ligar vários monitores em série a partir de uma única saída da GPU, facilitando a organização de cabos."
+        },
+        {
+          "useCase": "Notebook com dock USB-C ou Thunderbolt",
+          "recommended": "DisplayPort via USB-C (Alt Mode)",
+          "why": "Oferece maior largura de banda para múltiplas telas e suporte nativo a DSC em bases de conexão modernas."
+        },
+        {
+          "useCase": "Home theater com receiver AV ou soundbar",
+          "recommended": "HDMI (com eARC)",
+          "why": "Padrão universal para transportar áudio surround multicanal sem compressão (Dolby Atmos, DTS:X)."
+        }
+      ],
+      "relatedTestsHeading": "Conjunto recomendado de testes de diagnóstico"
     }
   },
   "Inspection": {

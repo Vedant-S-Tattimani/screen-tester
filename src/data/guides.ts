@@ -85,6 +85,19 @@ export const monitorGuides: MonitorGuide[] = [
     category: "concept",
     primaryIntent: "monitor viewing angles explained",
     relatedTestIds: ["viewing-angle-test", "color-test", "uniformity-test"]
+  },
+  {
+    id: "displayport-vs-hdmi-bandwidth-chroma",
+    category: "concept",
+    primaryIntent: "DisplayPort vs HDMI: Bandwidth, Revisions & Chroma Subsampling",
+    relatedTestIds: [
+      "refresh-rate-test",
+      "hdr-test",
+      "vrr-test",
+      "resolution-checker",
+      "text-clarity-test",
+      "color-test"
+    ]
   }
 ];
 
