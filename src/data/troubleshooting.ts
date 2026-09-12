@@ -178,7 +178,7 @@ export const TROUBLESHOOTING_TOPICS: TroubleshootingTopic[] = [
       links: [
         { label: "Refresh Rate Test", testId: "refresh-rate-test", testPath: "/tests/refresh-rate-test" },
         { label: "VRR / Adaptive Sync Visual Inspection", testId: "vrr-test", testPath: "/tests/vrr-test" },
-        { label: "Frame Rate & Motion Test", testId: "frame-rate-test", testPath: "/tests/frame-rate-test" }
+        { label: "Motion Blur & Clarity Test", testId: "motion-blur-test", testPath: "/tests/motion-blur-test" }
       ]
     },
     whatScreenTesterCannotDetermine: [
@@ -297,6 +297,7 @@ export const TROUBLESHOOTING_TOPICS: TroubleshootingTopic[] = [
       description: "Screen Tester offers solid primary and monochrome fields to inspect subpixel states, allows recording exact coordinate markers, and provides an experimental localized rapid color cycling tool.",
       links: [
         { label: "Dead Pixel Test", testId: "dead-pixel-test", testPath: "/tests/dead-pixel-test" },
+        { label: "Stuck Pixel Test", testId: "stuck-pixel-test", testPath: "/tests/stuck-pixel-test" },
         { label: "Stuck Pixel Fixer", testId: "stuck-pixel-fixer", testPath: "/tests/stuck-pixel-fixer" },
         { label: "Bright Pixel Test", testId: "bright-pixel-test", testPath: "/tests/bright-pixel-test" }
       ]

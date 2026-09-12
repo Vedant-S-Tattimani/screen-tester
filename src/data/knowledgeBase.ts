@@ -233,7 +233,7 @@ export const KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
         answer: "No web application can read internal GPU hardware registers to certify G-Sync engagement. Screen Tester provides visual pendulum patterns to observe whether tearing and judder are absent."
       }
     ],
-    relatedTestIds: ["refresh-rate-test", "vrr-test", "ghosting-test"],
+    relatedTestIds: ["refresh-rate-test", "vrr-test"],
     relatedTroubleshootingIds: ["wrong-refresh-rate", "screen-tearing", "flickering"],
     relatedArticleSlugs: ["screen-tearing-and-v-sync", "monitor-ghosting-and-motion-blur"],
     primarySearchIntent: "monitor refresh rate test and explanation",
@@ -304,7 +304,7 @@ export const KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
         answer: "Yes, modern browsers on Windows and macOS support HDR video playback and CSS wide-gamut colors when hardware acceleration is enabled and the operating system is in HDR mode."
       }
     ],
-    relatedTestIds: ["hdr-test", "hdr-capability-test", "gradient-banding-test"],
+    relatedTestIds: ["hdr-test", "hdr-capability-test"],
     relatedTroubleshootingIds: ["hdr-not-working", "washed-out-colors"],
     relatedArticleSlugs: ["color-depth-and-banding", "black-levels-and-shadow-detail"],
     primarySearchIntent: "hdr display explained test",

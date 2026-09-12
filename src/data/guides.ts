@@ -1,7 +1,7 @@
 export type GuideCategory = "device" | "concept" | "workflow";
 
 export interface MonitorGuide {
-  id: string; // The URL slug (e.g. 'how-to-check-monitor-ghosting')
+  id: string; // The URL slug (e.g. 'monitor-screen-test')
   category: GuideCategory;
   primaryIntent: string;
   relatedTestIds: string[];
