@@ -4148,6 +4148,245 @@
             "answer": "Nein. Webbrowser können nicht auf physikalische Messsonden oder interne Alterungszähler des Panels zugreifen. Screen Tester liefert kalibrierte Sichtmuster, für exakte Leuchtdichten und Hardwarediagnosen sind jedoch Laborgeräte nötig."
           }
         ]
+      },
+      "refresh-rate-and-frame-rates": {
+        "title": "Multi-Monitor-Setup: Unterschiedliche Bildwiederholraten, DPI-Skalierung & Ruckeln",
+        "subtitle": "Bildwiederholraten-Abweichungen, Frame-Pacing des Compositors, Betriebssystem-Skalierung und flüssige Darstellung auf mehreren Bildschirmen.",
+        "description": "Erfahren Sie, warum Multi-Monitor-Setups mit gemischten Bildwiederholraten (60Hz, 144Hz, 165Hz) und abweichender DPI-Skalierung ruckeln können, wie Compositor Frames takten und wie Sie Ruckeln beheben.",
+        "directAnswer": "Ruckeln und Skalierungsfehler auf Multi-Monitor-Systemen entstehen, wenn der Desktop-Compositor des Betriebssystems, der Grafikkartentreiber oder Rendering-Pipelines Schwierigkeiten haben, unterschiedliche Bildwiederholraten oder fraktionale DPI-Skalierungen über mehrere Displays hinweg synchron darzustellen.",
+        "whyItMatters": "Moderne Arbeitsplätze kombinieren häufig ungleiche Bildschirme – etwa ein schnelles Gaming-Display neben einem Standard-Zweitmonitor oder ein Notebook, das an einen 4K-Bildschirm angeschlossen ist. Wenn Bildwiederholfrequenzen, Pixeldichten oder Farbprofile voneinander abweichen, können minimale Asynchronitäten Mauszeiger-Ruckeln, Videowiedergabe-Judder oder unscharfe Schrift erzeugen. Die Diagnose erfordert eine präzise Trennung von Monitor-Hardware, Treiber, Betriebssystem-Compositor und Anwendungs-Rendering.",
+        "whatToLookFor": [
+          "Ungleichmäßige, stockende Mauszeiger-Bewegung beim Wechsel von einem High-Refresh-Hauptbildschirm auf ein Standard-Zweitdisplay",
+          "Sichtbares Ruckeln oder Bildaussetzer beim Abspielen von Videos auf einem Monitor, während auf dem anderen gescrollt oder gearbeitet wird",
+          "Plötzliche Größenänderungen oder unscharfe Schrift beim Verschieben von Fenstern über Bildschirmgrenzen mit unterschiedlicher Skalierung",
+          "Mikroruckler oder ungleichmäßiges Frame-Pacing in fensterbasierten Spielen oder Browser-Animationen bei aktivem Zweitbildschirm",
+          "Inkonsistente Bildlauf-Geschmeidigkeit zwischen den einzelnen Bildschirmen einer Multi-Monitor-Konfiguration",
+          "Unerwartetes Zurücksetzen oder Sperren der Bildwiederholrate auf einen niedrigeren Wert nach dem Standby oder Systemstart"
+        ],
+        "howToTest": [
+          "Öffnen Sie den [Bildwiederholraten-Test](/tests/refresh-rate-test) in Screen Tester und beobachten Sie die Frame-Pacing-Intervalle auf jedem Bildschirm einzeln.",
+          "Ziehen Sie das Browserfenster mit dem [Bildwiederholraten-Test](/tests/refresh-rate-test) über die Grenze zwischen beiden Bildschirmen, um die Anpassung der Bildrate zu prüfen.",
+          "Starten Sie den [VRR-Test](/tests/vrr-test), um Bewegungsabläufe auf Tearing oder Taktschwankungen unter Multi-Display-Bedingungen visuell zu prüfen.",
+          "Beurteilen Sie Schriftkanten und UI-Skalierungswechsel mit dem [Textschärfe-Test](/tests/text-clarity-test).",
+          "Vergleichen Sie Schlierenbildung und Bewegungsunschärfe auf beiden Monitoren mit dem [Bewegungsunschärfe-Test](/tests/motion-blur-test) und [Ghosting-Test](/tests/ghosting-test).",
+          "Fragen Sie vom Browser gemeldete Bildschirmabmessungen und Geräte-Pixeldichten mit [Display-Informationen](/tests/display-info) ab.",
+          "Prüfen Sie Hardwarebeschleunigung und Display-APIs Ihres Browsers unter [Browser-Kompatibilität](/tools/browser-compatibility).",
+          "Konsultieren Sie unseren interaktiven [Leitfaden zur Fehlerbehebung](/knowledge-base/troubleshooting), falls ein Bildschirm auf einer Standardfrequenz blockiert bleibt."
+        ],
+        "whatScreenTesterCanObserve": [
+          "Browser-seitige Animations-Zeitstempel über `requestAnimationFrame` auf dem aktuell aktiven Bildschirm",
+          "Statistische Standardabweichung der Frame-Pacing-Intervalle im Browser (Aufspüren von Mikrorucklern und ausgelassenen Callbacks)",
+          "Vom Browser gemeldetes Geräte-Pixel-Verhältnis (`window.devicePixelRatio`) und CSS-Viewport-Dimensionen je Display",
+          "Visuelle Vergleiche von Bewegungsflüssigkeit, Pendel-Gleichmäßigkeit und Scroll-Verhalten über Displays hinweg",
+          "Verfügbarkeit moderner Browser-APIs zur Platzierung von Fenstern auf mehreren Bildschirmen"
+        ],
+        "whatScreenTesterCannotDetermine": [
+          "Tatsächliches Hardware-Scanout-Timing des Panels oder Oszillator-Taktung über DisplayPort- oder HDMI-Kabel",
+          "Interne GPU-Präsentationswarteschlangen, Treiber-Flip-Queues oder V-Sync-Hardware-Interrupts",
+          "Interne Puffer-Tauschzyklen des Desktop-Fenster-Compositors (Windows DWM, Linux Wayland/X11, macOS Quartz)",
+          "Echte physische Monitordichte (DPI) unabhängig von den Angaben des Betriebssystems",
+          "Physikalische Signalintegrität, Kabelbandbreite oder Port-Leitungsbeschränkungen der Grafikkarte"
+        ],
+        "commonCauses": [
+          "Desktop-Fenster-Manager des Betriebssystems synchronisiert unabhängige Bildwechselfrequenzen ungleichmäßig",
+          "Hardwarebeschleunigte Videowiedergabe auf einem Zweitdisplay bindet GPU-Präsentationsthreads an dessen Bildrate",
+          "Fraktionale DPI-Skalierungsunterschiede (z. B. 100 % auf 1440p neben 150 % auf 4K) erzwingen unschärfere Bitmap-Skalierung",
+          "Variable Refresh Rate (G-Sync / FreeSync) ist im Fenstermodus aktiv und kollidiert mit Hintergrundanimationen auf dem Zweitbildschirm",
+          "Grafikkarten-Speichertakt taktet wegen abweichender Monitor-Timing-Standards (CVT vs. CVT-RB) unregelmäßig oder verharrt im Maximalzustand",
+          "Hybride Grafikumschaltung bei Laptops leitet externe Bildsignale über den Framebuffer der integrierten Grafikeinheit"
+        ],
+        "whatToDoNext": [
+          "Prüfen Sie in den erweiterten Anzeige-Einstellungen des Betriebssystems, ob jeder Monitor auf seine maximale Bildwiederholrate eingestellt ist.",
+          "Testen Sie bei Rucklern mit gemischten Bildraten, ob das Betreiben des Zweitbildschirms an einem ganzzahligen Teiler des Hauptmonitors Abhilfe schafft.",
+          "Gleichen Sie Skalierungseinstellungen an oder aktivieren Sie in den Programmeigenschaften die erweiterte DPI-Erkennung für ältere Software.",
+          "Stellen Sie G-Sync oder FreeSync im Grafikkartentreiber versuchsweise auf 'Nur Vollbildmodus', um Compositor-Konflikte zu vermeiden.",
+          "Trennen Sie den Zweitbildschirm vorübergehend ab, um zu isolieren, ob das Ruckeln monitorspezifisch ist oder durch den Multi-Display-Betrieb ausgelöst wird."
+        ],
+        "sections": [
+          {
+            "title": "Warum Multi-Monitor-Setups mit gemischten Bildraten unterschiedlich reagieren",
+            "content": [
+              "Die Kombination von Bildschirmen mit ungleichen Bildwiederholraten – beispielsweise ein 144Hz-, 165Hz- oder 240Hz-Gaming-Monitor neben einem klassischen 60Hz-Zweitdisplay – gehört heute zum Standard vieler Arbeitsplätze. Häufig stellen Anwender jedoch fest, dass nach dem Anschluss des Zweitmonitors minimale Ruckler auftreten, die im Einzelbetrieb nicht vorhanden waren.",
+              "Zu den typischen Auffälligkeiten zählen unruhige Bewegungen beim Scrollen im Browser, Aussetzer bei animierten Fenstern, ein stockender Mauszeiger oder Ruckeln bei der Videowiedergabe. Wichtig ist: Unterschiedliche Frequenzen führen keineswegs zwangsläufig zu Rucklern. Moderne Grafikkarten und Betriebssysteme sind technisch darauf ausgelegt, mehrere Bildschirme mit unabhängigen Taktungen anzusteuern.",
+              "Ob die Darstellung flüssig bleibt, hängt von einer Kette zusammenhängender Faktoren ab: der Architektur des Desktop-Compositors, dem Grafiktreiber, der Hardwarebeschleunigung im Browser, Video-Rendering-Schnittstellen und dem Energiemanagement der GPU. Eine fundierte Diagnose setzt voraus, das Zusammenspiel dieser Ebenen zu analysieren, anstatt voreilig von einem Hardwaredefekt des Monitors auszugehen."
+            ],
+            "bullets": [
+              "Unterschiedliche Bildwiederholraten erzeugen nicht automatisch Ruckeln, stellen aber höhere Ansprüche an den Desktop-Compositor.",
+              "Mögliche Symptome sind Mauszeiger-Zittern, unruhiges Scrollen im Browser und Frame-Drops bei Fenstern.",
+              "Die Gesamtflüssigkeit hängt von Betriebssystem, Treiber, Hardwarebeschleunigung und Monitor-Timing ab.",
+              "Browser-Tests überprüfen die Bildabgabe auf Anwendungsebene, nicht das physische Panel-Scanout."
+            ]
+          },
+          {
+            "title": "Gemischte Frequenzen in der Praxis: Typische Szenarien und Bildausgabe",
+            "content": [
+              "In einer Umgebung mit mehreren Bildschirmen erhält jedes Display von der Grafikkarte ein eigenes vertikales Austastsignal (V-Sync). Bei verbreiteten Kombinationen wie 60Hz neben 144Hz, 60Hz neben 165Hz oder 120Hz neben 144Hz stimmen die zeitlichen Abstände der Bildaktualisierungen nicht überein: Ein 60Hz-Monitor aktualisiert sich etwa alle 16,67ms, ein 144Hz-Monitor hingegen etwa alle 6,94ms.",
+              "Läuft auf dem 60Hz-Zweitmonitor eine Animation oder ein Video, während auf dem 144Hz-Hauptbildschirm gearbeitet oder gespielt wird, muss der Desktop-Fenster-Manager zwei asynchrone Präsentationswarteschlangen verwalten. Frühere Compositor-Generationen synchronisierten die gesamte Desktop-Oberfläche häufig auf den kleinsten gemeinsamen Nenner und drosselten dadurch auch schnelle Displays auf 60 FPS.",
+              "Moderne Compositor (wie aktuelle Versionen des Windows Desktop Window Managers oder Wayland unter Linux) verwenden separate Präsentationsschleifen je Monitor. Dennoch kann es auf Anwendungsebene zu Konflikten kommen: Wenn Chromium-Browser oder Mediaplayer auf dem 60Hz-Bildschirm per Hardware dekodieren, können GPU-Ressourcen kurzzeitig gebunden werden. Das Prüfen jedes Monitors einzeln hilft herauszufinden, ob Software-Einflüsse vorliegen."
+            ],
+            "bullets": [
+              "Unterschiedliche Frequenzen (z. B. 60Hz + 144Hz) arbeiten mit nicht synchronisierten Bildwechselintervallen.",
+              "Der Desktop-Fenster-Manager muss Puffer für jeden Bildschirm unabhängig voneinander bereitstellen.",
+              "Videowiedergabe auf langsameren Bildschirmen kann Präsentations-Threads der GPU temporär beeinflussen.",
+              "Browser-Benchmarks analysieren softwareseitige Bildübergaben, nicht die physische Panel-Ansteuerung."
+            ]
+          },
+          {
+            "title": "DPI-Skalierung auf mehreren Bildschirmen: Fraktionale Skalierung und Schärfe",
+            "content": [
+              "Multi-Monitor-Konfigurationen vereinen oft Bildschirme mit sehr unterschiedlichen Diagonalen und nativen Auflösungen. Ein gängiges Beispiel ist ein 27-Zoll-4K-Monitor (mit 150 % Skalierung) neben einem 24-Zoll-Full-HD-Bildschirm (mit 100 % Skalierung) oder ein kompaktes Notebook an einem externen Großdisplay.",
+              "Bei unterschiedlichen Skalierungsstufen (etwa 100 %, 125 %, 150 % oder 200 %) muss das Betriebssystem die Benutzeroberfläche für jede Pixeldichte separat berechnen. Moderne Anwendungen mit Unterstützung für dynamische Per-Monitor-DPI berechnen Vektorelemente und Schriftgrößen beim Übergang über den Bildschirmrand nahtlos neu.",
+              "Ältere Desktop-Programme ohne moderne DPI-Unterstützung können ihre Oberfläche jedoch nicht dynamisch neu zeichnen. Werden sie auf einen Bildschirm mit anderer Skalierung gezogen, behandelt das Betriebssystem das Fenster als Bitmap und vergrößert oder verkleinert es per Interpolation. Die Folge sind unscharfe Schriften und verwaschene Symbole. Der [Textschärfe-Test](/tests/text-clarity-test) hilft festzustellen, ob Schriftunschärfe auf Skalierungsinterpolation oder Subpixel-Rendering zurückgeht."
+            ],
+            "bullets": [
+              "Gemischte Skalierungsfaktoren erfordern eine getrennte Berechnung der Desktop-Oberflächen.",
+              "Moderne Software zeichnet Schriften und Vektoren beim Wechsel des Monitors dynamisch scharf neu.",
+              "Ältere Programme werden vom Betriebssystem oft als Rastergrafik skaliert, was zu Unschärfe führt.",
+              "Beim Verschieben über Skalierungsgrenzen hinweg können kurze Ruckler oder Neuskalierungs-Pausen auftreten."
+            ]
+          },
+          {
+            "title": "Auflösung, Viewport und Skalierung: Digitale Koordinaten vs. Display-Panel",
+            "content": [
+              "Um das Verhalten im Mehrschirmbetrieb exakt einzuordnen, müssen physische Paneldaten von Software-Abstraktionen getrennt werden. Anwender verwechseln häufig Betriebssystem-Skalierung, Anwendungszoom, Browserzoom, CSS-Pixel und physische Pixel.",
+              "Die physische Auflösung beschreibt das feste mikroskopische Raster aus Subpixeln auf dem Displayglas (z. B. 3840 × 2160 physische RGB-Elemente). Das Geräte-Pixel-Verhältnis (Device Pixel Ratio, DPR) ist der Faktor, den das Betriebssystem an den Webbrowser meldet: Bei 150 % Skalierung beträgt DPR 1,5, bei 200 % Skalierung 2,0. Der logische Viewport (CSS-Pixel) definiert den Koordinatenraum für Weblayouts (`window.innerWidth` und `window.innerHeight`).",
+              "Screen Tester setzt auf technische Transparenz: Webbrowser erfassen Kennzahlen wie Viewport-Größen, Geometrie und das gemeldete `window.devicePixelRatio` über Standard-APIs sehr genau. Der Browser hat jedoch keinen direkten Zugriff auf optische Eigenschaften des Monitorpanels. Eine Webanwendung kann weder die reale Subpixel-Größe noch Scaler-Filter im Monitorgehäuse direkt im Labor messen."
+            ],
+            "bullets": [
+              "Physische Auflösung: Das reale, unveränderliche Subpixel-Raster auf dem Display-Panel.",
+              "Device Pixel Ratio (DPR): Der vom Betriebssystem an Browser übergebene Skalierungsfaktor.",
+              "CSS-Pixel: Die softwareseitige Koordinatenebene für das Rendern von Schriften und Weblayouts.",
+              "Grenzen des Browsers: Web-APIs melden logische Koordinaten und DPR, keine optischen Panel-Messungen."
+            ]
+          },
+          {
+            "title": "Strukturierte Multi-Monitor-Fehlerdiagnose: Ein systematischer Ablauf",
+            "content": [
+              "Um Ruckeln, Zeiger-Zittern oder Skalierungsfehler auf mehreren Bildschirmen einzugrenzen, sollten Einstellungen niemals willkürlich verändert werden. Ein strukturierter Ablauf hilft bei der Ursachenanalyse:",
+              "Schritt A: Ausgangskonfiguration festhalten. Notieren Sie Auflösung, eingestellte Bildrate, Skalierung, Kabelverbindung (DisplayPort oder HDMI) und HDR-Status für jedes Display.",
+              "Schritt B: Displays einzeln testen. Trennen Sie Zweitmonitore ab und prüfen Sie den Hauptbildschirm allein mit dem [Bildwiederholraten-Test](/tests/refresh-rate-test) auf vollständige Ruckelfreiheit.",
+              "Schritt C: Gesamtsystem im Leerlauf prüfen. Schließen Sie den Zweitbildschirm wieder an, ohne Programme im Hintergrund zu öffnen, und wiederholen Sie den [Bildwiederholraten-Test](/tests/refresh-rate-test).",
+              "Schritt D: Fenster über Grenzen bewegen. Ziehen Sie das Testfenster über die Bildschirmgrenze, um zu beobachten, ob die Bildrate einbricht oder Schrift unscharf wird.",
+              "Schritt E: Aktives Scrollen und Bewegung prüfen. Testen Sie das Scrollverhalten auf beiden Bildschirmen mit dem [Bildwiederholraten-Test](/tests/refresh-rate-test) und [Bewegungsunschärfe-Test](/tests/motion-blur-test).",
+              "Schritt F: Medienwiedergabe im Hintergrund zuschalten. Starten Sie ein Video auf dem Zweitbildschirm, während auf dem Hauptschirm Bewegungstests laufen, um Compositor-Konflikte zu erkennen.",
+              "Schritt G: Immer nur eine Einstellung anpassen. Ändern Sie jeweils nur einen Parameter (z. B. Hardwarebeschleunigung umschalten oder Bildraten-Teiler anpassen) und testen Sie erneut."
+            ],
+            "bullets": [
+              "Schritt A: Alle Auflösungen, Frequenzen, Skalierungsstufen und Schnittstellen dokumentieren.",
+              "Schritt B: Monitore einzeln prüfen, um die Basisfunktion ohne Multi-Monitor-Einfluss zu sichern.",
+              "Schritt C: Beide Bildschirme im Leerlauf anschließen und das Frame-Pacing überprüfen.",
+              "Schritt D & E: Fenster über Grenzen ziehen und die Scroll-Flüssigkeit bewerten.",
+              "Schritt F & G: Videolasten testen und Einstellungen schrittweise einzeln verändern."
+            ]
+          },
+          {
+            "title": "Die Ursachenebene eingrenzen: Ein ebenenbasiertes Diagnosemodell",
+            "content": [
+              "Da Ruckeln im Desktopbetrieb an verschiedenen Stellen des Gesamtsystems entstehen kann, hilft eine Unterteilung in funktionale Ebenen:",
+              "1. Display- & Panel-Ebene: Ursachen im Monitor selbst, etwa fehlerhafter EDID-Austausch über DDC-Leitungen oder ungünstige Overdrive-Einstellungen im OSD. Überprüfung mit dem [Ghosting-Test](/tests/ghosting-test).",
+              "2. Signal- & Schnittstellen-Ebene: Probleme durch unzureichende Kabelbandbreite, passive Adapter, alte Kabelversionen oder überlastete DisplayPort-MST-Hubs. Überprüfung mit [Display-Informationen](/tests/display-info).",
+              "3. GPU- & Treiber-Ebene: Warteschlangen der Grafikkarte, Speichertakt-Sperren oder inkompatible Energiesparstufen. Abhilfe durch Treiber-Updates oder saubere Neuinstallation.",
+              "4. Betriebssystem-Compositor-Ebene: Der Desktop-Fenster-Manager taktet asynchrone V-Sync-Intervalle ungleichmäßig. Vergleich zwischen Einzel- und Mehrschirmbetrieb.",
+              "5. Anwendungs- & Browser-Ebene: Prozessarchitektur des Webbrowsers, GPU-Rasterisierung oder Hintergrund-Tab-Drosselung. Überprüfung unter [Browser-Kompatibilität](/tools/browser-compatibility).",
+              "6. Video-Decoding-Ebene: Hardwarebeschleunigte Video-Decoder binden Präsentationszyklen an feste Videobildraten (24, 30 oder 60 FPS)."
+            ],
+            "bullets": [
+              "Display-Ebene: Monitor-Firmware, EDID-Kommunikation oder OSD-Overdrive-Einstellungen.",
+              "Signal-Ebene: Kabelbandbreite, DisplayPort-/HDMI-Spezifikationen oder Hub-Engpässe.",
+              "GPU-Ebene: Bildausgabe-Warteschlangen, Speichertaktung und Treibereinstellungen.",
+              "Compositor-Ebene: Fenster-Manager-Koordination über ungleiche Bildwechselzyklen.",
+              "Anwendungsebene: Browser-Rendering, Hardwarebeschleunigung und Prozessprioritäten.",
+              "Videowiedergabe-Ebene: Decoder-Bindung an feste Bildraten von Medieninhalten."
+            ]
+          },
+          {
+            "title": "Gemischte HDR- und SDR-Konfigurationen: Helligkeit, Farbraum und Compositor",
+            "content": [
+              "Der gemeinsame Betrieb eines HDR-fähigen Monitors neben einem reinen SDR-Bildschirm stellt den Desktop-Compositor vor zusätzliche Aufgaben. Ist HDR auf einem Display aktiv, während das Nachbardisplay im Standard-Farbraum arbeitet, müssen zwei verschiedene Farbräume und Helligkeitskurven simultan verwaltet werden.",
+              "Unter Windows übersetzt der Compositor standardmäßige sRGB-Elemente in einen erweiterten Container für das HDR-Display und gibt parallel natives 8-Bit-sRGB an den SDR-Monitor aus. Ist der Schieberegler für 'SDR-Inhalt-Helligkeit' nicht harmonisch eingestellt, wirken weiße Fenster auf einem Display extrem hell oder dunkel im direkten Vergleich.",
+              "Wird ein Fenster über die Bildschirmgrenze verschoben, muss das Betriebssystem das Tonemapping dynamisch neu berechnen, was zu kurzen Verzögerungen oder Farbsprüngen führen kann. [Display-Informationen](/tests/display-info) zeigen gemeldete HDR-Eigenschaften an, können aber die interne Farbmanagement-Genauigkeit des Betriebssystems nicht zertifizieren."
+            ],
+            "bullets": [
+              "Gemischte HDR/SDR-Setups erfordern simultane Farbraum- und Tonemapping-Berechnungen durch den Compositor.",
+              "Der Helligkeitsregler für SDR-Inhalte sollte abgestimmt werden, um Weißwerte anzugleichen.",
+              "Das Verschieben von Medienfenstern über HDR/SDR-Grenzen stößt dynamische Anpassungen an.",
+              "Browser-APIs zeigen gemeldete HDR-Werte an, messen aber keine Kalibrierungspräzision."
+            ]
+          },
+          {
+            "title": "Variable Refresh Rate (VRR) im Mehrschirmbetrieb: Sync-Verhalten im Fenstermodus",
+            "content": [
+              "Variable Bildwiederholraten (VRR) – wie NVIDIA G-Sync, AMD FreeSync oder VESA Adaptive-Sync – passen die Monitorfrequenz kontinuierlich an die Frame-Lieferung der Grafikkarte an. Im Vollbild-Gaming auf einem einzelnen Display sorgt dies für ruckelfreie Übergänge. Auf Multi-Monitor-Desktops können jedoch Wechselwirkungen auftreten.",
+              "Ist VRR im Grafikkartentreiber für 'Fenster- und Vollbildmodus' aktiviert, versucht der Treiber, die Bildrate des Hauptmonitors an das jeweils aktive Fenster zu koppeln. Laufen auf dem Zweitmonitor gleichzeitig animierte Browser-Tabs, Videos oder Chat-Tools, kann die Synchronisation schwanken, was sich in Flimmern oder Mikrorucklern äußern kann.",
+              "Mit dem [VRR-Test](/tests/vrr-test) und [Bildwiederholraten-Test](/tests/refresh-rate-test) in Screen Tester lässt sich die Gleichmäßigkeit der Bewegung visuell überprüfen. Treten in Fensterspielen Ruckler auf, schafft das Umstellen der VRR-Option im Treiber auf 'Nur Vollbildmodus' oft sofortige Abhilfe."
+            ],
+            "bullets": [
+              "VRR passt die Displayfrequenz dynamisch an die Bildausgabe der Grafikkarte an.",
+              "Fensterbasiertes VRR kann durch Hintergrundanimationen auf Zweitbildschirmen irritiert werden.",
+              "Uneinheitliche Taktvorgaben können Desktop-Flimmern oder unruhiges Pacing auslösen.",
+              "Screen Tester ermöglicht eine optische Sichtprüfung, liest aber keine internen Treiberregister aus."
+            ]
+          },
+          {
+            "title": "Laptop und externer Monitor: Dockingstations, Stromsparmodi und Hybridgrafik",
+            "content": [
+              "Der Anschluss eines externen Monitors an ein Notebook bringt spezifische technische Aspekte mit sich. Viele moderne Laptops arbeiten mit Hybridgrafik (etwa NVIDIA Optimus, AMD SmartAccess Graphics oder Apple Unified Memory), bei der integrierte und dedizierte Grafikprozessoren zusammenwirken.",
+              "Je nach interner Verschaltung steuert die energiesparende integrierte GPU oft das interne Display an, während externe Videoanschlüsse direkt mit der dedizierten GPU verbunden sind oder durch den Framebuffer der integrierten GPU geschleift werden. Dieser Kopiervorgang über den Systembus kann zusätzliche Latenzen und Mikroruckler begünstigen.",
+              "Zudem greifen im Akkubetrieb strikte Energiesparrichtlinien. Auch wenn der Akkubetrieb Frequenzen nicht zwangsläufig drosselt, schalten manche Geräte auf 60Hz zurück oder drosseln PCIe-Verbindungen. Bewegungstests am Stromnetz helfen, reine Energiespardrosselungen von grundlegenden Konfigurationskonflikten zu trennen."
+            ],
+            "bullets": [
+              "Hybridgrafik-Systeme verteilen interne und externe Bildschirme auf unterschiedliche Controller.",
+              "Durchgeschleifte Bildsignale können zusätzliche Bus-Kopierzeiten und Latenzen erzeugen.",
+              "Thunderbolt- und USB-C-Docks teilen sich Übertragungsbandbreite mit Daten- und Netzwerkströmen.",
+              "Akkusparprofile können GPU- und PCIe-Takte drosseln; Tests am Netzteil durchführen."
+            ]
+          },
+          {
+            "title": "Praktische Lösungsansätze und nächste Schritte",
+            "content": [
+              "Treten auf Ihrem Multi-Monitor-Setup Ruckler, Zeiger-Zittern oder unscharfe Skalierungen auf, können folgende praxiserprobte Schritte helfen, die Darstellung zu stabilisieren:",
+              "1. Bildwiederholraten in den Anzeige-Einstellungen prüfen: Kontrollieren Sie in den erweiterten Anzeige-Einstellungen Ihres Betriebssystems, ob jeder Monitor auf seine maximale native Bildrate eingestellt ist.",
+              "2. Skalierung anpassen oder ganzzahlige Frequenzteiler testen: Stellen Sie Displays bei Textunschärfe nach Möglichkeit auf einheitliche Skalierungsstufen. Bei 144Hz neben 60Hz kann das Einstellen von 120Hz auf dem Hauptmonitor (als ganzzahliges Vielfaches von 60Hz) das Compositor-Pacing spürbar verbessern.",
+              "3. VRR-Einstellungen im Treiber anpassen: Begrenzen Sie G-Sync oder FreeSync im Treiber auf den reinen Vollbildmodus, um Desktop-Synchronisationskonflikte zu vermeiden.",
+              "4. Hardwarebeschleunigung im Browser testen: Schalten Sie die Option 'Grafikbeschleunigung verwenden' in den Browser-Einstellungen versuchsweise um, um Compositor- von Treiberproblemen zu trennen.",
+              "5. Grafiktreiber-Neustart: Unter Windows können Sie den Grafiktreiber bei hängendem Desktop-Compositing mit der Tastenkombination Win + Strg + Umschalt + B im laufenden Betrieb neu initialisieren.",
+              "Ausführliche Anleitungen zu Hardware- und Verbindungsproblemen finden Sie in unserem interaktiven [Leitfaden zur Fehlerbehebung](/knowledge-base/troubleshooting)."
+            ],
+            "bullets": [
+              "Anzeige-Einstellungen kontrollieren: Sicherstellen, dass Displays mit voller nativer Frequenz arbeiten.",
+              "Ganzzahlige Frequenzen testen: Bei 60Hz-Zweitdisplays 120Hz auf dem Hauptschirm ausprobieren.",
+              "VRR auf Vollbild beschränken: Konflikte mit Fenstern auf Zweitmonitoren vermeiden.",
+              "Browser-Hardwarebeschleunigung umschalten: Rendering-Einflüsse gezielt isolieren.",
+              "Grafik-Pipeline neu starten: Mit Win + Strg + Umschalt + B den Grafiktreiber unter Windows zurücksetzen."
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "Warum fühlt sich mein 144Hz-Monitor wie 60Hz an, wenn ein Video auf dem Zweitbildschirm läuft?",
+            "answer": "Hardwarebeschleunigte Videowiedergabe auf einem 60Hz-Zweitmonitor kann dazu führen, dass der Desktop-Compositor oder der Browser Präsentations-Threads der GPU an den 60Hz-Takt bindet. Das Deaktivieren der Hardwarebeschleunigung im Browser oder aktuelle Grafiktreiber können dies häufig beheben."
+          },
+          {
+            "question": "Ist es schädlich oder problematisch, einen 60Hz-Monitor mit einem 144Hz- oder 165Hz-Monitor zu betreiben?",
+            "answer": "Nein. Moderne Grafikkarten und Betriebssysteme können problemlos unabhängige Frequenzen ausgeben. Zwar gab es bei älteren Systemen gelegentlich Pacing-Schwierigkeiten, doch heute entstehen Probleme meist nur durch softwareseitige Auslastungen und nicht durch Hardwarebeschränkungen."
+          },
+          {
+            "question": "Warum werden Fenster unscharf, wenn sie zwischen Monitoren mit unterschiedlicher Skalierung verschoben werden?",
+            "answer": "Programme, die moderne Per-Monitor-DPI-Funktionen nicht unterstützen, können ihre Benutzeroberfläche beim Bildschirmwechsel nicht dynamisch neu zeichnen. Das Betriebssystem vergrößert das Fenster stattdessen wie ein Bild, was zu unscharfen Schriften führt."
+          },
+          {
+            "question": "Kann G-Sync oder FreeSync auf Multi-Monitor-Desktops Ruckeln verursachen?",
+            "answer": "Ja, insbesondere wenn VRR für den Fenster- und Vollbildmodus aktiv ist. Wenn Hintergrundprogramme auf einem ungesyncten Zweitbildschirm aktualisiert werden, kann der Treiber zwischen den Taktquellen schwanken und Desktop-Ruckler hervorrufen."
+          },
+          {
+            "question": "Warum ruckelt mein externer Monitor am Laptop im Akkubetrieb?",
+            "answer": "Im Akkubetrieb greifen oft strikte Energiesparprofile, die Speichertakte und PCIe-Bandbreiten drosseln können. Schließen Sie das Notebook an das Stromnetz an, um reine Energiesparmaßnahmen von Konfigurationsfehlern zu trennen."
+          },
+          {
+            "question": "Kann Screen Tester mein GPU-Scanout-Timing messen oder Multi-Monitor-Ruckeln reparieren?",
+            "answer": "Nein. Webbrowser laufen in einer geschützten Sandbox und haben keinen Zugriff auf interne GPU-Register oder Hardware-Scanout-Leitungen. Screen Tester bietet visuelle Prüfmuster zur Beobachtung; Anpassungen müssen im Betriebssystem oder Treiber vorgenommen werden."
+          }
+        ]
       }
     }
   },

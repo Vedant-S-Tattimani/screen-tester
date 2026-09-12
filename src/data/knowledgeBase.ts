@@ -169,75 +169,248 @@ export const KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
   {
     slug: "refresh-rate-and-frame-rates",
     category: "display-basics",
-    title: "Refresh Rate, Frame Pacing & Variable Refresh Rate (VRR)",
-    subtitle: "How panel refresh cycles, GPU frame delivery, and browser animation timing interact.",
-    description: "Understand monitor refresh rate (Hz), frame rate (FPS), browser animation timing limitations, and variable refresh rate technologies like G-Sync and FreeSync.",
-    directAnswer: "Refresh rate (measured in Hertz, Hz) is how many times per second your monitor draws a new image, while frame rate (FPS) is the speed at which your graphics card generates frames.",
-    whyItMatters: "If your monitor is set to a lower refresh rate than it supports (such as running a 144Hz gaming display at default 60Hz), you lose motion fluidity, increase perceived input lag, and fail to benefit from your display hardware.",
+    title: "Multi-Monitor Mixed Refresh, DPI Scaling & Stutter",
+    subtitle: "Understanding refresh rate disparity, compositor frame pacing, OS display scaling, and multi-display motion consistency.",
+    description: "Learn why multi-monitor setups with mixed refresh rates (60Hz, 144Hz, 165Hz) and different DPI scaling can stutter, how compositors schedule frames, and how to troubleshoot desktop fluidity.",
+    directAnswer: "Multi-monitor stutter and scaling anomalies occur when an operating system desktop compositor, graphics driver, or application pipeline struggles to synchronize differing display refresh rates or coordinate fractional DPI scale factors across multiple monitor surfaces.",
+    whyItMatters: "Modern computing environments frequently combine heterogeneous displays—such as a high-refresh gaming monitor alongside a standard secondary screen, or a laptop display connected to an external 4K monitor. When refresh rates, physical pixel densities, or color pipelines differ, subtle desynchronization can introduce mouse cursor lag, video playback judder, window-dragging stutter, or blurry text rendering. Diagnosing these issues requires isolating whether the anomaly originates in the physical display, the GPU driver, the OS window manager, or the application rendering loop.",
     whatToLookFor: [
-      "Choppy mouse cursor motion when sweeping across the desktop",
-      "Stutter or frame skipping during fast scrolling or high-speed gaming",
-      "Mismatch between advertised monitor refresh rate (e.g., 144Hz) and browser-observed frame timing",
-      "Screen tearing when frame delivery is unsynchronized with the display scanout"
-    ],
+      "Uneven or choppy mouse cursor motion when sweeping from a high-refresh primary monitor across to a secondary display",
+      "Visible stutter or dropped animation frames when playing video on one monitor while scrolling or interacting on another",
+      "Sudden jump in window dimensions or blurred text rendering when dragging an application across borders between screens with different scaling percentages",
+      "Micro-stutter or erratic frame pacing in windowed games or browser animations when a secondary display is active",
+      "Inconsistent browser scrolling fluidity between individual monitors in a multi-display arrangement",
+      "Display resolution or refresh rate unexpectedly resetting or locking to a lower frequency after sleep or system boot"
+],
     howToTest: [
-      "Run the Refresh Rate Test in Screen Tester to observe real-time `requestAnimationFrame` render intervals",
-      "Inspect the frame pacing histogram for jitter, dropped animation frames, or micro-stutters",
-      "Run the VRR Visual Inspection test under dynamic motion workloads to inspect tearlines and frame cadence"
-    ],
+      "Open the [Refresh Rate Test](/tests/refresh-rate-test) in Screen Tester and observe frame pacing intervals on each monitor individually.",
+      "Drag the active browser window containing the [Refresh Rate Test](/tests/refresh-rate-test) across the boundary between your displays and observe whether frame delivery adapts smoothly.",
+      "Launch the [VRR Test](/tests/vrr-test) to visually inspect motion smoothness and check for tearing or frame cadence irregularities under multi-display loads.",
+      "Evaluate desktop text rendering and UI scaling transitions using the [Text Clarity Test](/tests/text-clarity-test).",
+      "Compare motion persistence and trailing across both monitors using the [Motion Blur Test](/tests/motion-blur-test) and [Ghosting Test](/tests/ghosting-test).",
+      "Query browser-reported screen dimensions, device pixel ratios, and multi-display API parameters with [Display Information](/tests/display-info).",
+      "Inspect browser hardware acceleration and display API capabilities using [Browser Compatibility](/tools/browser-compatibility).",
+      "Consult our interactive [Troubleshooting Guide](/knowledge-base/troubleshooting) if a monitor remains locked to a fallback refresh rate."
+],
     whatScreenTesterCanObserve: [
-      "Timestamp intervals between successive browser rendering cycles via `requestAnimationFrame`",
-      "Estimated active display refresh rate derived from mathematical frame delta statistical averaging",
-      "Frame pacing consistency (jitter standard deviation, dropped frame counts during animation loops)"
-    ],
+      "Browser-level animation callback timestamps via `requestAnimationFrame` on the active display surface",
+      "Statistical standard deviation of browser frame pacing intervals (detecting micro-jitter and dropped callbacks)",
+      "Browser-reported Device Pixel Ratio (`window.devicePixelRatio`) and CSS logical viewport geometry per screen",
+      "Visual comparison of motion smoothness, pendulum cadence, and scrolling behavior across displays",
+      "Browser API support for experimental multi-screen window placement and display enumeration"
+],
     whatScreenTesterCannotDetermine: [
-      "Hardware panel G-Sync module state or VESA Adaptive-Sync handshake protocol over DisplayPort/HDMI",
-      "Hardware backlight strobe frequency (ULMB, DyAc, or ELMB black frame insertion)",
-      "Physical pixel liquid crystal rise/fall response times (GtG transition milliseconds)"
-    ],
+      "Physical display panel scanout line timing or crystal oscillator synchronization over DisplayPort/HDMI cables",
+      "Internal GPU hardware presentation queue states, driver flip queue depth, or V-Sync hardware interrupts",
+      "Operating system desktop window manager (DWM, Wayland, or Quartz) compositor internal buffer swap schedules",
+      "True physical monitor DPI or panel pixel density independent of operating system scaling reporting",
+      "Physical signal integrity, cable bandwidth saturation, or GPU display engine port lane bandwidth limits"
+],
     commonCauses: [
-      "Operating system display settings left at default 60Hz after connecting a high-refresh monitor",
-      "Using an older HDMI 1.4 or uncertified video cable that lacks bandwidth for high refresh rates at native resolution",
-      "Browser hardware acceleration disabled, forcing software CPU composition capped at 60 FPS",
-      "Secondary low-refresh display (e.g., 60Hz screen alongside 144Hz) forcing browser compositor downclocking"
-    ],
+      "Operating system desktop window manager struggling to synchronize independent presentation intervals across mixed refresh rates",
+      "Hardware-accelerated video decoding or GPU-accelerated browser animations on a secondary monitor forcing GPU downclocking or compositor cadence lock",
+      "Fractional DPI scaling mismatches (e.g., 100% on a 1440p monitor paired with 150% on a 4K display) requiring bitmap resampling in legacy applications",
+      "Variable Refresh Rate (G-Sync / FreeSync) attempting to engage in windowed mode while background applications update on an unsynchronized secondary display",
+      "GPU memory clock locking to maximum power states or fluctuating erratically due to differing display timing standards (CVT vs. CVT-RB)",
+      "Laptop dynamic GPU switching (optimus/hybrid graphics) passing external display signals through an integrated graphics compositor bottleneck"
+],
     whatToDoNext: [
-      "Open Windows Display Settings > Advanced Display and verify the Refresh Rate dropdown is set to maximum",
-      "Ensure your GPU control panel (NVIDIA Control Panel or AMD Software) has G-Sync/FreeSync enabled",
-      "Verify your video cable is DisplayPort 1.4 or HDMI 2.1 capable of full native bandwidth"
-    ],
+      "Verify that each display is explicitly configured to its highest native refresh rate in your operating system's advanced display settings.",
+      "If motion stutters with mixed refresh displays, test running the secondary display at an integer divisor of the high-refresh monitor when supported.",
+      "Align OS scaling where practical, or configure application compatibility settings to use system (enhanced) per-monitor DPI awareness for legacy software.",
+      "In GPU control panels, test configuring Variable Refresh Rate for 'Full Screen Only' rather than 'Windowed and Full Screen' to prevent desktop compositor conflicts.",
+      "Isolate root causes by disconnecting secondary displays temporarily to verify whether stutter is display-specific or multi-display induced."
+],
     sections: [
       {
-        title: "Hz vs. FPS: The Crucial Difference",
-        content: [
-          "Refresh rate (Hz) is a fixed physical cycle of the display hardware: a 120Hz panel refreshes its scanout lines every 8.33 milliseconds, regardless of whether the source image changed.",
-          "Frame rate (FPS) is variable: it reflects the computational speed of the graphics pipeline rendering completed image frames to the front frame buffer.",
-          "When FPS exceeds Hz or falls out of synchronization, screen tearing occurs. When FPS drops below Hz without VRR, duplicate frames produce motion stutter and judder."
-        ]
+            "title": "Why Mixed-Refresh Multi-Monitor Setups Can Behave Differently",
+            "content": [
+                  "Running multiple monitors with differing refresh rates—such as pairing a 144Hz, 165Hz, or 240Hz gaming panel with a 60Hz or 75Hz secondary screen—is an exceptionally common workspace arrangement. However, users frequently observe that adding a secondary display introduces subtle motion irregularities that were completely absent when running a single high-refresh screen.",
+                  "Symptoms can include visible stutter during browser scrolling, dropped frames in animated desktop UI elements, inconsistent mouse cursor fluidity, video playback judder, or perceived sluggishness during desktop navigation. It is vital to emphasize that mixed refresh rates do not inherently cause hardware stutter; modern operating systems and GPUs are architecturally capable of driving multiple independent display clocks simultaneously.",
+                  "Whether motion remains perfectly fluid depends on an intricate chain of hardware and software variables: operating system compositor architecture, GPU driver scheduling, active browser hardware acceleration pathways, video rendering APIs, display timing standards, and GPU power state management. Diagnosing perceived stutter requires understanding how these layers interact rather than attributing the problem to monitor hardware defects."
+            ],
+            "bullets": [
+                  "Mixed refresh rates do not automatically cause stutter, but they place heightened demands on desktop window compositors.",
+                  "Users may observe mouse cursor judder, inconsistent scrolling, video micro-stutter, or animation frame drops.",
+                  "Fluidity depends on OS compositors, GPU drivers, hardware acceleration, and display timing standards.",
+                  "Browser testing evaluates application-layer frame delivery, not physical panel timing or GPU hardware failure."
+            ]
       },
       {
-        title: "Browser requestAnimationFrame Mechanics",
-        content: [
-          "Web browsers align animation loops with the monitor vertical blanking interval using the `requestAnimationFrame` API. On properly configured high-refresh systems, browsers fire callbacks at 120Hz, 144Hz, or 240Hz.",
-          "However, browsers will throttle frame rates to 60 FPS if running on battery power, if background video playback dictates a 30/60 FPS cadence, or if hardware acceleration is unavailable."
-        ]
+            "title": "Mixed Refresh Rates in Practice: Common Scenarios & Frame Presentation",
+            "content": [
+                  "In a multi-monitor environment, each display receives an independent vertical blanking signal from the graphics card. In popular configurations such as 60Hz paired with 144Hz, 60Hz paired with 165Hz, or 120Hz paired with 144Hz, the frame intervals between displays do not align evenly. For example, a 60Hz screen refreshes roughly every 16.67ms, while a 144Hz screen refreshes roughly every 6.94ms.",
+                  "When an animated application or video player runs on the 60Hz secondary display while a game or web browser operates on the 144Hz primary monitor, the operating system desktop window manager must manage two asynchronous presentation queues. Historically, legacy desktop compositors would synchronize desktop presentation to the lowest common denominator, capping animations on the high-refresh screen to 60 FPS or causing severe frame pacing stutter.",
+                  "Modern window compositors (such as recent iterations of Windows DWM and Wayland on Linux) utilize independent presentation loops per display to decouple refresh rates. However, software-level contention can still occur: hardware-accelerated Chromium browsers or media players decoding video on a 60Hz screen can sometimes lock GPU presentation threads, creating temporary judder on the primary monitor. Testing each screen individually helps verify whether frame delivery is throttled by desktop software."
+            ],
+            "bullets": [
+                  "Heterogeneous configurations (e.g., 60Hz + 144Hz, 60Hz + 165Hz) operate with unaligned vertical blanking intervals.",
+                  "Desktop window compositors must independently schedule and flip presentation buffers for each connected screen.",
+                  "Background media decoding on a lower-refresh screen can occasionally throttle GPU presentation threads.",
+                  "Browser requestAnimationFrame benchmarks observe software frame delivery, not panel hardware scanout."
+            ]
+      },
+      {
+            "title": "DPI Scaling Across Multiple Screens: Fractional Scaling & Text Clarity",
+            "content": [
+                  "Modern multi-monitor setups frequently combine displays with drastically different physical sizes and native resolutions. A common example is pairing a 27-inch 4K monitor (requiring 150% or 175% OS scaling) with a 24-inch 1080p monitor (operating at 100% native scaling), or connecting a compact 13-inch laptop screen to a large external desktop display.",
+                  "When displays run at different scaling percentages (such as 100%, 125%, 150%, or 200%), the operating system must calculate desktop coordinates and rasterize user interfaces independently for each target pixel density. Modern per-monitor DPI-aware applications re-render vector assets and recalculate font metrics dynamically as windows cross the monitor boundary.",
+                  "However, older desktop applications that lack modern Per-Monitor DPI v2 awareness cannot re-render dynamically. When moved to a secondary monitor with a different scale factor, the operating system window manager treats the application window as an off-screen bitmap and applies fractional bilinear or bicubic scaling. This causes blurry fonts, fuzzy toolbar icons, and disproportionate window sizing. Testing font edges across displays with the [Text Clarity Test](/tests/text-clarity-test) helps identify whether text softness stems from fractional scaling or subpixel font rendering."
+            ],
+            "bullets": [
+                  "Mixed DPI configurations (e.g., 100% paired with 150% or 200%) require per-monitor UI layout adjustments.",
+                  "Per-monitor aware software re-renders vector elements dynamically to maintain razor-sharp text.",
+                  "Legacy applications that lack per-monitor DPI support are scaled as bitmaps by the OS, causing blurriness.",
+                  "Moving windows across scaling boundaries can cause temporary layout jumps or interface redraw pauses."
+            ]
+      },
+      {
+            "title": "Resolution, Viewports & Scaling Interactions: Digital Coordinates vs. Physical Glass",
+            "content": [
+                  "Understanding multi-monitor behavior requires clearly separating physical panel specifications from software rendering abstractions. Users often confuse operating system scaling, application zoom, browser zoom, CSS pixels, and physical hardware dots.",
+                  "Physical Resolution represents the actual hardware grid of microscopic subpixels manufactured into the display glass (e.g., 3840 × 2160 physical RGB triads). Device Pixel Ratio (DPR) is the multiplier reported by the operating system to the web browser: at 150% scaling, DPR is 1.5; at 200% scaling, DPR is 2.0. Logical Viewport (CSS pixels) represents the coordinate space that web applications use to layout web pages (`window.innerWidth` and `window.innerHeight`).",
+                  "Screen Tester emphasizes technical honesty: web browsers can accurately report software metrics such as viewport dimensions, screen geometry, and reported `window.devicePixelRatio` using standard DOM APIs. However, browsers have no direct physical optical connection to the monitor chassis. A browser cannot inspect physical subpixel pitch, verify optical dot pitch, or certify chassis scaler filters without physical laboratory measurement instruments."
+            ],
+            "bullets": [
+                  "Physical Resolution: The fixed microscopic physical grid of subpixels on the display panel.",
+                  "Device Pixel Ratio (DPR): The operating system scale multiplier exposed to web browser engines.",
+                  "CSS Logical Pixels: The software coordinate abstraction used for web page layout and typography.",
+                  "Measurement Reality: Web APIs report software coordinates and DPR, not physical panel optical pitch."
+            ]
+      },
+      {
+            "title": "Structured Multi-Monitor Troubleshooting Procedure: A Disciplined Sequence",
+            "content": [
+                  "When troubleshooting stutter, cursor judder, or scaling anomalies in a multi-display environment, avoid randomly altering settings. Follow this disciplined 7-step sequence to isolate variables systematically:",
+                  "Step A: Document Baseline Configuration. Record the native resolution, configured refresh rate, operating system scaling percentage, cable connection type (DisplayPort vs HDMI), and HDR status for each connected display.",
+                  "Step B: Test Displays Individually. Disconnect all secondary monitors and test the primary high-refresh monitor alone using the [Refresh Rate Test](/tests/refresh-rate-test). Confirm that single-display motion is completely smooth and free of stutter.",
+                  "Step C: Test the Combined Multi-Display State. Reconnect the secondary display without opening any background media or applications. Run the [Refresh Rate Test](/tests/refresh-rate-test) on the primary display to observe if idle secondary displays introduce frame pacing jitter.",
+                  "Step D: Move Windows Across Boundaries. Drag the test browser window across the display boundary. Observe whether frame rate delivery drops during boundary crossing or whether text becomes blurry when crossing different scaling domains.",
+                  "Step E: Test Active Browser Scrolling & Animation. Perform rapid scrolling on both displays using the [Refresh Rate Test](/tests/refresh-rate-test) and [Motion Blur Test](/tests/motion-blur-test) to observe whether browser compositor loops stay locked to the active screen.",
+                  "Step F: Introduce Background Media Workloads. Launch a streaming video or hardware-accelerated video playback on the secondary display while running motion tests on the primary screen to evaluate compositor contention.",
+                  "Step G: Modify One Variable at a Time. If stutter emerges, change a single setting—such as disabling hardware acceleration in the browser, testing an integer refresh rate divisor, or toggling VRR—and re-test before making further adjustments."
+            ],
+            "bullets": [
+                  "Phase A: Document exact baseline resolutions, refresh rates, scaling percentages, and connection interfaces.",
+                  "Phase B: Test displays in isolation to confirm single-monitor motion fluidity before evaluating multi-screen setups.",
+                  "Phase C: Reconnect displays and benchmark idle vs. loaded multi-monitor compositor frame pacing.",
+                  "Phase D & E: Move windows across scaling boundaries and test browser scrolling smoothness.",
+                  "Phase F & G: Introduce media playback workloads and modify only one system variable at a time."
+            ]
+      },
+      {
+            "title": "Isolating the Likely Fault Layer: An Architectural Diagnostic Model",
+            "content": [
+                  "Because a symptom like 'desktop stutter' can originate at multiple distinct points in the computer architecture, effective troubleshooting requires categorizing observations into specific layers:",
+                  "1. Display & Panel Layer: Faults originating in the monitor hardware itself. Examples include panel firmware handshake drops, EDID corruption over DDC pins, or incorrect internal OSD overdrive configurations. Test with [Ghosting Test](/tests/ghosting-test).",
+                  "2. Connection & Signal Configuration Layer: Issues caused by cable bandwidth constraints, passive adapters, uncertified HDMI/DisplayPort cables, or multi-stream transport (MST) hubs saturating interface lanes. Verify with [Display Information](/tests/display-info).",
+                  "3. GPU & Driver Layer: Driver-level display presentation queue management, memory clock state throttling, or improper multi-display power state clamping. Update or clean-install graphics drivers.",
+                  "4. Operating System Compositor Layer: Desktop window manager (Windows DWM, Linux Wayland/X11, macOS Quartz) scheduling presentation loops across unaligned vertical blanking intervals. Test single vs. dual monitor behavior.",
+                  "5. Application & Browser Layer: Web browser process architecture, GPU rasterization flags, or background tab throttling policies. Verify with [Browser Compatibility](/tools/browser-compatibility).",
+                  "6. Video Playback & Media Pipeline: Hardware-accelerated video decoders (NVDEC, AMF, QuickSync) locking rendering cadence to 24, 30, or 60 FPS video frame rates during playback."
+            ],
+            "bullets": [
+                  "Display Layer: Monitor firmware, EDID communication, or OSD overdrive settings.",
+                  "Signal Layer: Cable bandwidth limitations, display interface revisions, or MST hub bottlenecks.",
+                  "GPU & Driver Layer: Display presentation queues, memory clock states, and driver settings.",
+                  "OS Compositor Layer: Window manager scheduling across asynchronous vertical blanking intervals.",
+                  "Application Layer: Web browser rendering pipelines, hardware acceleration, and process scheduling.",
+                  "Video Pipeline Layer: Media decoder cadence conflicts locking presentation to video frame rates."
+            ]
+      },
+      {
+            "title": "Mixed HDR and SDR Environments: Luminance, Gamut & Compositor Mapping",
+            "content": [
+                  "Pairing a High Dynamic Range (HDR) monitor alongside a Standard Dynamic Range (SDR) display introduces additional software compositing complexity. When HDR is enabled on one monitor while the adjacent display operates in SDR, the operating system compositor must manage two completely different color spaces and luminance curves simultaneously.",
+                  "In Windows, the desktop compositor translates standard sRGB desktop elements into an scRGB or HDR10 container for the HDR display while simultaneously outputting native 8-bit sRGB to the SDR screen. If the operating system's 'SDR Content Brightness' slider is miscalibrated, desktop applications, white web pages, and productivity software can appear dramatically brighter or dimmer on one monitor compared to the other.",
+                  "Furthermore, moving video players or wide-gamut applications across display boundaries requires the OS to recalculate tone mapping on the fly, which can trigger momentary window stutter or color shifts. Screen Tester tools like [Display Information](/tests/display-info) report browser-detected dynamic range capabilities, but web software cannot certify underlying operating system color management engine correctness."
+            ],
+            "bullets": [
+                  "Mixed HDR/SDR configurations require the OS compositor to manage dual color spaces and tone curves simultaneously.",
+                  "SDR content brightness sliders must be calibrated to balance white levels across adjacent displays.",
+                  "Moving media windows across HDR/SDR boundaries triggers dynamic tone mapping recalculations.",
+                  "Browser media queries expose reported HDR support, but cannot certify OS color pipeline accuracy."
+            ]
+      },
+      {
+            "title": "Variable Refresh Rate (VRR) Across Multiple Displays: Windowed Sync Realities",
+            "content": [
+                  "Variable Refresh Rate (VRR)—including NVIDIA G-Sync, AMD FreeSync, and VESA Adaptive-Sync—is engineered to dynamically synchronize monitor refresh cycles with GPU render output. In single-display fullscreen gaming, VRR delivers exceptionally smooth, tear-free motion. However, in multi-monitor desktop setups, VRR can introduce unexpected interactions.",
+                  "When VRR is configured for 'Windowed and Full Screen' mode in GPU control panels, the graphics driver attempts to lock the primary display's refresh rate to the active window. If an animated browser tab, hardware-accelerated streaming video, or chat application updates on an adjacent secondary monitor, the GPU driver can become confused about which application should dictate the VRR refresh rate, resulting in violent refresh rate fluctuations, desktop flickering, or micro-stutters.",
+                  "To evaluate motion behavior, run the [VRR Test](/tests/vrr-test) and [Refresh Rate Test](/tests/refresh-rate-test) in Screen Tester. Observe whether frame cadence remains stable when background windows are active. If stutter occurs during windowed gaming, setting VRR to 'Full Screen Only' in your GPU control panel frequently eliminates compositor synchronization conflicts."
+            ],
+            "bullets": [
+                  "VRR synchronizes monitor refresh rate dynamically to GPU frame rendering.",
+                  "Windowed VRR can trigger refresh rate conflicts when background animations run on secondary screens.",
+                  "Unsynchronized background updates can induce desktop flickering or erratic frame pacing.",
+                  "Screen Tester provides visual cadence inspection, but cannot inspect GPU driver VRR handshake registers."
+            ]
+      },
+      {
+            "title": "Laptop & External Monitor Configurations: Docking, Power States & Hybrid Graphics",
+            "content": [
+                  "Connecting an external monitor to a laptop introduces unique architectural considerations that differ from desktop systems. Most modern laptops utilize hybrid graphics (such as NVIDIA Optimus, AMD SmartAccess Graphics, or Apple unified memory), where the integrated GPU (iGPU) and discrete GPU (dGPU) divide display responsibilities.",
+                  "Depending on the laptop motherboard routing, the internal laptop panel is typically driven by the energy-efficient iGPU, while external video ports (HDMI, USB-C DisplayPort Alternate Mode, or Thunderbolt) may connect directly to the high-performance dGPU or pass through the iGPU frame buffer. When an external display passes through the iGPU, high-framerate rendering must copy completed frames across the system bus to the integrated display controller, creating an additional compositing hop that can introduce micro-stutter.",
+                  "Furthermore, operating on battery power engages aggressive power-saving profiles in both the operating system and GPU drivers. While battery operation does not universally throttle refresh rates, many laptops default to 60Hz internal refresh rates or engage conservative PCIe link power states on battery. Testing motion while connected to AC power isolates power-management throttling from multi-display configuration issues."
+            ],
+            "bullets": [
+                  "Hybrid graphics architectures (iGPU + dGPU) route internal and external display signals across different controllers.",
+                  "Display signals routed through integrated graphics can encounter bus copy latency and compositor bottlenecks.",
+                  "Thunderbolt and USB-C docks share interface bandwidth across video, USB data, and Ethernet streams.",
+                  "Battery power profiles may engage conservative GPU and PCIe link power states; test on AC mains power."
+            ]
+      },
+      {
+            "title": "Practical Troubleshooting Adjustments & Next Steps",
+            "content": [
+                  "If you experience stutter, cursor judder, or scaling blurriness on your multi-monitor setup, use these practical, non-destructive troubleshooting steps to restore desktop fluidity:",
+                  "1. Verify Refresh Rates in OS Settings: Open your operating system advanced display settings and confirm that each monitor is explicitly assigned its highest rated refresh rate. Windows updates or driver installations occasionally revert secondary monitors to default 60Hz.",
+                  "2. Align Scaling or Test Integer Divisors: If mixed scaling causes application blurriness, test setting both displays to 100% or 200% where practical. In mixed refresh setups (e.g., 144Hz + 60Hz), test setting the high-refresh monitor to 120Hz (an exact integer multiple of 60Hz) to evaluate if compositor frame pacing improves.",
+                  "3. Adjust GPU VRR Configuration: In the NVIDIA Control Panel or AMD Software, set G-Sync or FreeSync to 'Enable for full screen mode' rather than 'Enable for windowed and full screen mode'.",
+                  "4. Test Browser Hardware Acceleration: In your browser settings, toggle 'Use graphics acceleration when available'. If browser scrolling stutters on a secondary screen, toggling this setting isolates browser compositor issues from GPU driver bugs.",
+                  "5. Restart the Graphics Stack: In Windows, press Win + Ctrl + Shift + B to restart the graphics driver without rebooting your system if multi-display desktop compositing becomes unresponsive.",
+                  "For comprehensive diagnostics on specific hardware faults or display connection issues, consult the interactive [Troubleshooting Guide](/knowledge-base/troubleshooting)."
+            ],
+            "bullets": [
+                  "Check OS Settings: Ensure all monitors are configured to their native rated refresh rates.",
+                  "Test Integer Refresh Ratios: In 60Hz + 144Hz setups, test 120Hz to evaluate integer frame divisor pacing.",
+                  "Configure VRR for Full Screen: Limit VRR to full-screen games to avoid desktop compositor contention.",
+                  "Toggle Browser Hardware Acceleration: Test browser rendering performance with acceleration toggled.",
+                  "Restart Graphics Pipeline: Use Win + Ctrl + Shift + B in Windows to recover stalled desktop compositing."
+            ]
       }
-    ],
+],
     faq: [
       {
-        question: "Why does my 144Hz monitor only show 60Hz in the test?",
-        answer: "The most common cause is that Windows or macOS has not been configured to output 144Hz. Open your OS display settings to verify the output refresh rate, and ensure hardware acceleration is toggled ON in your browser settings."
+            "question": "Why does my 144Hz monitor feel like 60Hz when video plays on my second monitor?",
+            "answer": "Hardware-accelerated video decoding on a 60Hz secondary display can cause certain operating system window compositors and browser rendering engines to lock GPU presentation threads to the 60Hz cadence, introducing judder on the high-refresh screen. Disabling hardware acceleration in the media browser or testing updated GPU drivers often helps resolve this interaction."
       },
       {
-        question: "Can a browser test prove that G-Sync is actively working?",
-        answer: "No web application can read internal GPU hardware registers to certify G-Sync engagement. Screen Tester provides visual pendulum patterns to observe whether tearing and judder are absent."
+            "question": "Is it bad to pair a 60Hz monitor with a 144Hz or 165Hz gaming monitor?",
+            "answer": "No. Modern operating systems and graphics cards are fully capable of outputting independent refresh rates across multiple displays. While older compositors sometimes struggled with frame pacing, modern systems handle mixed refresh rates well under most workloads. When issues arise, they typically stem from software-level compositor contention rather than hardware limitations."
+      },
+      {
+            "question": "Why do windows become blurry when dragged between monitors with different scaling?",
+            "answer": "When moving an application between displays with differing DPI scale factors (e.g., 100% and 150%), applications that lack modern Per-Monitor DPI awareness cannot re-render their user interface dynamically. The operating system stretches the window as a low-resolution bitmap, resulting in blurry fonts and soft graphics."
+      },
+      {
+            "question": "Can G-Sync or FreeSync cause stutter on multi-monitor desktop setups?",
+            "answer": "Yes, specifically when VRR is configured for both windowed and fullscreen modes. If an application updates in the background on an unsynchronized secondary monitor, the GPU driver may struggle to determine which application controls the dynamic refresh rate, causing desktop flickering and frame pacing stutter."
+      },
+      {
+            "question": "Why does my laptop external monitor stutter when running on battery?",
+            "answer": "Operating on battery power engages aggressive system power-saving policies, which can reduce GPU memory clock speeds, throttle CPU boost states, or lower PCIe bus bandwidth. Testing while connected to AC mains power helps distinguish power-state throttling from display configuration issues."
+      },
+      {
+            "question": "Can Screen Tester measure my GPU's hardware scanout timing or fix multi-monitor stutter?",
+            "answer": "No. Web browsers operate within a sandboxed software environment and cannot access low-level GPU hardware registers, physical cable scanout intervals, or driver presentation queues. Screen Tester provides visual inspection patterns to help you observe frame pacing, but resolving multi-monitor issues requires adjusting operating system and driver settings."
       }
-    ],
-    relatedTestIds: ["refresh-rate-test", "vrr-test"],
+],
+    relatedTestIds: ["refresh-rate-test", "vrr-test", "text-clarity-test", "motion-blur-test", "ghosting-test", "display-info"],
     relatedTroubleshootingIds: ["wrong-refresh-rate", "screen-tearing", "flickering"],
     relatedArticleSlugs: ["screen-tearing-and-v-sync", "monitor-ghosting-and-motion-blur"],
-    primarySearchIntent: "monitor refresh rate test and explanation",
-    readingTimeMinutes: 6
+    primarySearchIntent: "how to troubleshoot mixed refresh rate, DPI scaling, and stutter on multi-monitor setups",
+    readingTimeMinutes: 10
   },
   {
     slug: "hdr-display-fundamentals",

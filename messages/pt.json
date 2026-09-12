@@ -4148,6 +4148,245 @@
             "answer": "Não. Navegadores web não conseguem interagir com fotodiodos de laboratório nem com os contadores de desgaste do painel. O Screen Tester disponibiliza padrões visuais, mas medições certificadas exigem instrumentação profissional."
           }
         ]
+      },
+      "refresh-rate-and-frame-rates": {
+        "title": "Configuração multimonitor: Taxas de atualização mistas, escala DPI e gaguejo (stutter)",
+        "subtitle": "Disparidade de taxas de atualização, frame pacing do compositor, dimensionamento do SO e fluidez multitelas.",
+        "description": "Descubra por que configurações multimonitor com taxas mistas (60Hz, 144Hz, 165Hz) e escala DPI diferente podem engasgar e como recuperar a fluidez do desktop.",
+        "directAnswer": "Engasgos, travamentos e anomalias de escala em sistemas multimonitor ocorrem quando o compositor de janelas do sistema operacional, o driver gráfico ou os aplicativos encontram dificuldades para sincronizar taxas de atualização díspares ou coordenar fatores de escala DPI fracionários entre várias telas.",
+        "whyItMatters": "Espaços de trabalho modernos combinam frequentemente telas heterogêneas, como um monitor gamer de alta taxa de atualização ao lado de um monitor secundário padrão ou um notebook conectado a uma tela 4K externa. Quando taxas de atualização, densidades de pixels ou espaços de cor divergem, pequenos desalinhamentos provocam atrasos no cursor, travamentos na reprodução de vídeo ou fontes embaçadas. O diagnóstico exige isolar se a falha decorre do hardware da tela, do driver da placa de vídeo, do compositor do SO ou da renderização do aplicativo.",
+        "whatToLookFor": [
+          "Movimento truncado ou aos trancos no cursor do mouse ao passar da tela principal rápida para o monitor secundário",
+          "Engasgos visíveis ou quadros descartados ao reproduzir vídeo em uma tela enquanto rola páginas ou digita na outra",
+          "Saltos bruscos de tamanho da janela ou texto desfocado ao arrastar programas entre telas com escalas de DPI diferentes",
+          "Microtravamentos (micro-stuttering) ou cadência irregular em jogos em modo janela ou animações web com o segundo monitor ativo",
+          "Fluidez de rolagem inconsistente no navegador entre os diferentes monitores que compõem o sistema",
+          "Taxa de atualização ou resolução que retorna inesperadamente para um valor baixo após o modo de espera ou reinicialização"
+        ],
+        "howToTest": [
+          "Abra o [Teste de taxa de atualização](/tests/refresh-rate-test) no Screen Tester e acompanhe a cadência de quadros em cada monitor individualmente.",
+          "Arraste a janela do navegador com o [Teste de taxa de atualização](/tests/refresh-rate-test) pela borda entre as duas telas para observar a transição de taxa de quadros.",
+          "Execute o [Teste de VRR](/tests/vrr-test) para avaliar visualmente a estabilidade de movimento e constatar eventuais quebras ou oscilações de sincronia.",
+          "Avalie a precisão tipográfica e as mudanças de escala da interface com o [Teste de nitidez de texto](/tests/text-clarity-test).",
+          "Compare a retenção de movimento e o rastro em ambos os monitores com o [Teste de desfoque de movimento](/tests/motion-blur-test) e o [Teste de ghosting](/tests/ghosting-test).",
+          "Consulte as dimensões de tela e a relação de pixels informadas pelo navegador em [Informações da tela](/tests/display-info).",
+          "Examine o suporte à aceleração por hardware e recursos de exibição em [Compatibilidade do navegador](/tools/browser-compatibility).",
+          "Acesse nosso [Guia de solução de problemas](/knowledge-base/troubleshooting) interativo caso um monitor permaneça bloqueado em uma frequência inferior."
+        ],
+        "whatScreenTesterCanObserve": [
+          "Carimbos de data/hora dos callbacks de animação do navegador via `requestAnimationFrame` na tela ativa",
+          "Desvio padrão estatístico dos intervalos de quadros do navegador (identificação de microengasgos e quadros perdidos)",
+          "Relação de pixels do dispositivo (`window.devicePixelRatio`) e geometria lógica do viewport CSS por monitor",
+          "Comparação visual da suavidade de movimento, regularidade pendular e rolagem de páginas entre telas",
+          "Compatibilidade com APIs recentes de navegadores voltadas para janelas e múltiplos monitores"
+        ],
+        "whatScreenTesterCannotDetermine": [
+          "Temporização física de varredura das linhas do painel ou frequência do oscilador via cabos DisplayPort ou HDMI",
+          "Filas internas de saída de quadros da GPU, profundidade de buffers de troca ou interrupções V-Sync de hardware",
+          "Cronograma de troca de buffers do compositor de janelas do SO (Windows DWM, Linux Wayland/X11, macOS Quartz)",
+          "Densidade real física (DPI) do painel de forma desvinculada dos parâmetros transmitidos pelo sistema operacional",
+          "Integridade física do sinal, saturação de largura de banda do cabo ou limitações das vias de saída da GPU"
+        ],
+        "commonCauses": [
+          "O compositor de janelas do sistema operacional coordena com dificuldade intervalos de saída independentes entre taxas desiguais",
+          "A decodificação de vídeo acelerada por hardware no monitor secundário atrela as threads de exibição da GPU à sua frequência",
+          "Diferenças de escala DPI fracionária (ex.: 100% em 1440p combinado a 150% em 4K) forçam o reescalonamento borrado em bitmap",
+          "Taxa de atualização variável (G-Sync/FreeSync) em modo janela colide com animações em segundo plano no outro monitor",
+          "O clock da memória da GPU varia desordenadamente ou trava no patamar máximo por divergências de temporização (CVT vs CVT-RB)",
+          "Arquitetura de gráficos híbridos em notebooks transmitindo o sinal da tela externa pelo buffer da GPU integrada"
+        ],
+        "whatToDoNext": [
+          "Confira nas configurações avançadas de vídeo do sistema operacional se cada monitor está definido para sua taxa nativa mais alta.",
+          "Se houver engasgos com taxas mistas, teste configurar a tela secundária em um divisor inteiro da principal quando possível.",
+          "Padronize a escala do sistema sempre que viável ou ajuste as opções de compatibilidade DPI por monitor para softwares antigos.",
+          "Defina o G-Sync ou FreeSync no painel da placa gráfica para 'Apenas tela cheia' para evitar disputas no desktop.",
+          "Desconecte temporariamente a tela secundária para isolar se a falha é do próprio monitor ou decorre do uso multitelas."
+        ],
+        "sections": [
+          {
+            "title": "Por que sistemas multimonitor com taxas de atualização mistas se comportam de modo diferente",
+            "content": [
+              "Utilizar múltiplos monitores com taxas de atualização diferentes — como parear uma tela gamer de 144Hz, 165Hz ou 240Hz com um monitor secundário de 60Hz ou 75Hz — é uma prática bastante difundida. Contudo, muitos usuários notam pequenas irregularidades de movimento que não existiam ao usar apenas uma tela rápida.",
+              "Entre os sintomas comuns estão travamentos ao rolar páginas no navegador, perda de quadros em janelas animadas, hesitação no ponteiro do mouse ou pequenos engasgos na reprodução de vídeos. Vale frisar que frequências mistas não provocam falhas de hardware por si só; placas de vídeo e sistemas operacionais modernos possuem capacidade arquitetural para fornecer frequências independentes simultâneas.",
+              "A preservação da fluidez visual depende do sincronismo de diversos componentes: o compositor de janelas do sistema operacional, o driver gráfico, as opções de aceleração por hardware do navegador, as APIs multimídia e a gestão energética da GPU. Diagnosticar os travamentos exige compreender como essas camadas interagem antes de supor defeito no monitor."
+            ],
+            "bullets": [
+              "Taxas mistas não geram travamentos automaticamente, mas exigem maior esforço do compositor de janelas.",
+              "Podem ocorrer saltos no cursor, rolagem irregular no navegador e quadros perdidos em animações.",
+              "A fluidez depende do alinhamento entre SO, driver, aceleração gráfica e temporização dos monitores.",
+              "Os testes em navegador avaliam o fluxo de quadros das aplicações, não o escaneamento físico do painel."
+            ]
+          },
+          {
+            "title": "Taxas de atualização mistas na prática: Cenários comuns e exibição de quadros",
+            "content": [
+              "Em uma configuração multitelas, cada monitor recebe um sinal de sincronização vertical independente da placa de vídeo. Em arranjos frequentes como 60Hz com 144Hz, 60Hz com 165Hz ou 120Hz com 144Hz, os intervalos de atualização não se cruzam perfeitamente: um monitor de 60Hz atualiza a cada 16,67ms aprox., enquanto o de 144Hz o faz a cada 6,94ms.",
+              "Caso uma animação ou vídeo seja reproduzido na tela de 60Hz enquanto a tela de 144Hz executa jogos ou navegação, o compositor do sistema precisa coordenar duas filas de exibição assíncronas. No passado, compositores mais antigos nivelavam toda a interface pelo menor denominador comum, limitando também o monitor veloz a 60 FPS.",
+              "Compositores modernos contam com rotinas de exibição desacopladas para cada monitor. Mesmo assim, atritos de software continuam possíveis: a decodificação de vídeo por hardware na tela de 60Hz pode monopolizar threads gráficas. Avaliar cada monitor separadamente ajuda a verificar se limitações de software estão ativas."
+            ],
+            "bullets": [
+              "Frequências assimétricas (ex.: 60Hz + 144Hz) operam com ciclos de atualização desfasados.",
+              "O gerenciador de janelas do SO precisa manter buffers de exibição separados para cada monitor.",
+              "A reprodução de vídeo na tela secundária pode atrelar temporariamente os processos da GPU à sua taxa.",
+              "Medições com requestAnimationFrame avaliam o desempenho do software, sem certificar a eletrônica do painel."
+            ]
+          },
+          {
+            "title": "Escala de DPI em múltiplos monitores: Escalonamento fracionário e nitidez de fontes",
+            "content": [
+              "Espaços multimonitor frequentemente combinam aparelhos de tamanhos e resoluções nativas muito distintas. Um exemplo corriqueiro é um monitor 4K de 27 polegadas (com escala a 150%) ao lado de uma tela Full HD de 24 polegadas (a 100%), ou um notebook compacto ligado a um monitor grande.",
+              "Quando os monitores utilizam porcentagens de escala diferentes (100%, 125%, 150% ou 200%), o sistema operacional precisa calcular e desenhar a interface de forma independente para cada densidade. Programas modernos adaptados para DPI por monitor recalculam seus elementos vetoriais e tipografias dinamicamente ao cruzar a borda das telas.",
+              "Por outro lado, aplicativos mais antigos sem suporte moderno a DPI por tela não se redesenham em tempo real. Ao passarem para um monitor com outra escala, o sistema estica a janela como um mapa de bits, deixando letras e ícones embaçados. O [Teste de nitidez de texto](/tests/text-clarity-test) permite verificar se a falta de definição se deve ao escalonamento fracionário ou à renderização de subpixels."
+            ],
+            "bullets": [
+              "Escalas mistas exigem que o SO processe densidades de exibição distintas simultaneamente.",
+              "Aplicações modernas redesenham fontes e vetores para preservar contornos nítidos entre telas.",
+              "Programas antigos sofrem ampliação em bitmap pelo SO, o que produz aspecto desfocado.",
+              "Mover janelas entre monitores com escalas desiguais pode gerar pequenos saltos visuais momentâneos."
+            ]
+          },
+          {
+            "title": "Resolução, viewports e escala: Coordenadas digitais versus o painel físico",
+            "content": [
+              "Para avaliar corretamente o comportamento multimonitor é indispensável separar as especificações do painel físico das camadas de software. É frequente confundir o dimensionamento do SO, o zoom do aplicativo, o zoom do navegador, os pixels CSS e os pixels físicos da tela.",
+              "A resolução física corresponde à matriz imutável de subpixels fabricada no vidro do painel (ex.: 3840 × 2160 tríades RGB). A relação de pixels do dispositivo (Device Pixel Ratio, DPR) é o multiplicador repassado pelo SO ao navegador: a 150% de escala, o DPR é 1,5; a 200%, vale 2,0. O viewport lógico (pixels CSS) define o plano de coordenadas para a estruturação das páginas web (`window.innerWidth` e `window.innerHeight`).",
+              "O Screen Tester opera com transparência técnica: os navegadores relatam as dimensões do viewport e o `window.devicePixelRatio` com precisão por meio de APIs oficiais. Entretanto, o navegador não possui instrumentos ópticos para examinar o espaçamento real dos subpixels ou certificar os filtros de escala do chassi do monitor."
+            ],
+            "bullets": [
+              "Resolução física: A grade de subpixels construída de forma fixa no painel da tela.",
+              "Device Pixel Ratio (DPR): O coeficiente de multiplicação fornecido pelo SO aos motores de navegadores.",
+              "Pixels lógicos CSS: O plano de coordenadas empregado para diagramar páginas e exibir tipografia.",
+              "Limites de aferição: As APIs web fornecem dados lógicos e DPR, sem efetuar medições ópticas de laboratório."
+            ]
+          },
+          {
+            "title": "Roteiro estruturado de diagnóstico multimonitor: Sequência metódica",
+            "content": [
+              "Ao investigar engasgos, instabilidade no cursor ou textos embaçados em múltiplas telas, evite mexer em configurações de modo aleatório. Siga este roteiro em 7 etapas:",
+              "Etapa A: Registrar a configuração base. Anote a resolução nativa, a taxa de atualização configurada, a porcentagem de escala, o cabo utilizado (DisplayPort ou HDMI) e o status do HDR em cada tela.",
+              "Etapa B: Testar cada tela individualmente. Desconecte os monitores secundários e utilize o [Teste de taxa de atualização](/tests/refresh-rate-test) no monitor principal para certificar-se de sua fluidez básica.",
+              "Etapa C: Testar o conjunto sem cargas adicionais. Reconecte o segundo monitor sem abrir programas em segundo plano e repita o [Teste de taxa de atualização](/tests/refresh-rate-test).",
+              "Etapa D: Mover janelas entre monitores. Arraste a janela de testes através da divisão das telas para observar se há queda na taxa de quadros ou se as fontes ficam borradas.",
+              "Etapa E: Testar rolagem e animação. Faça rolagens rápidas em ambas as telas usando o [Teste de taxa de atualização](/tests/refresh-rate-test) e o [Teste de desfoque de movimento](/tests/motion-blur-test).",
+              "Etapa F: Incluir reprodução de vídeo. Execute um vídeo na tela secundária enquanto realiza testes na principal para detectar eventuais gargalos de composição.",
+              "Etapa G: Ajustar apenas uma variável por vez. Altere um único parâmetro (como alternar a aceleração gráfica ou trocar a taxa por um múltiplo inteiro) e teste novamente."
+            ],
+            "bullets": [
+              "Etapa A: Documentar resoluções, taxas de atualização, escalas e padrões de cabos.",
+              "Etapa B: Verificar cada monitor separadamente para validar o comportamento individual.",
+              "Etapa C: Conectar ambas as telas em repouso para analisar a estabilidade da taxa de quadros.",
+              "Etapa D e E: Mover janelas entre as telas e verificar a suavidade da rolagem de páginas.",
+              "Etapa F e G: Testar com reprodução de mídia e alterar somente uma configuração por teste."
+            ]
+          },
+          {
+            "title": "Isolamento da camada responsável: Modelo de diagnóstico em níveis",
+            "content": [
+              "Como os engasgos no desktop podem se originar em diferentes partes da estrutura do computador, organizá-los por camadas facilita a solução:",
+              "1. Camada de tela e painel: Inconsistências no monitor, como falhas de comunicação EDID nas linhas DDC ou overdrives incorretos no menu OSD. Avaliação com o [Teste de ghosting](/tests/ghosting-test).",
+              "2. Camada de conexão e sinal: Limitações de largura de banda em cabos, adaptadores passivos obsoletos ou gargalos em hubs DisplayPort MST. Verificação com [Informações da tela](/tests/display-info).",
+              "3. Camada de GPU e driver: Gerenciamento das filas de saída gráfica, clocks de memória travados ou estados de economia de energia instáveis. Correção via atualização ou instalação limpa de drivers.",
+              "4. Camada do compositor do SO: Dificuldade do gerenciador de janelas (Windows DWM, Linux Wayland/X11, macOS Quartz) em harmonizar ciclos V-Sync assimétricos. Comparação entre tela única e multitelas.",
+              "5. Camada de aplicativos e navegador: Estrutura de processos do navegador, renderização gráfica e suspensão de abas inativas. Teste em [Compatibilidade do navegador](/tools/browser-compatibility).",
+              "6. Camada de mídia e vídeo: Decodificadores de hardware atrelando os ciclos de apresentação da GPU à cadência fixa dos arquivos de vídeo (24, 30 ou 60 FPS)."
+            ],
+            "bullets": [
+              "Camada de tela: Firmware do monitor, leitura de dados EDID e ajustes OSD.",
+              "Camada de sinal: Largura de banda do cabo, versão das portas e limitações de hubs.",
+              "Camada de GPU: Filas de saída de vídeo, frequências de memória e parâmetros do driver.",
+              "Camada do compositor: Gestor de janelas operando sobre ciclos de varredura desiguais.",
+              "Camada de aplicativos: Renderização web, aceleração por hardware e processos do navegador.",
+              "Camada de vídeo: Travamento de frequência induzido por decodificadores de mídia."
+            ]
+          },
+          {
+            "title": "Ambientes mistos de HDR e SDR: Luminância, espaço de cores e composição",
+            "content": [
+              "Conectar um monitor HDR ao lado de uma tela SDR comum traz desafios adicionais ao compositor da área de trabalho. Quando uma tela opera em HDR e a contígua em SDR, o sistema precisa calcular dois espaços de cor e duas curvas de luminância em tempo real.",
+              "No Windows, o compositor converte elementos sRGB padrão em um formato estendido para o monitor HDR, ao mesmo tempo em que envia sRGB nativo de 8 bits para a tela SDR. Se a barra 'Brilho do conteúdo SDR' estiver desajustada, os fundos brancos parecerão excessivamente claros ou opacos ao comparar os monitores.",
+              "Além disso, arrastar programas com reprodução de vídeo entre monitores exige que o sistema refaça o mapeamento de tons na hora, podendo causar pequenos travamentos ou oscilações de tonalidade. A seção [Informações da tela](/tests/display-info) exibe o suporte HDR identificado, mas o navegador não avalia a precisão de cor do SO."
+            ],
+            "bullets": [
+              "Setups combinando HDR e SDR demandam cálculos simultâneos de cores e dinâmica luminosa.",
+              "A barra de brilho para conteúdo SDR deve ser calibrada para equilibrar os brancos entre as telas.",
+              "Mover janelas de vídeo entre os monitores força o recálculo imediato das curvas de tons.",
+              "APIs de navegadores apontam o suporte informado, sem certificar a precisão de calibração do SO."
+            ]
+          },
+          {
+            "title": "Taxa de atualização variável (VRR) em múltiplos monitores: Sincronização em janela",
+            "content": [
+              "Tecnologias de taxa de atualização variável (VRR) — como NVIDIA G-Sync, AMD FreeSync e VESA Adaptive-Sync — ajustam continuamente a frequência do monitor à geração de quadros da placa gráfica. Embora entreguem excelente fluidez em jogos em tela cheia com um só monitor, em arranjos multitelas podem ocorrer comportamentos imprevistos.",
+              "Ao habilitar o VRR para 'Modo janela e tela cheia' no painel de controle gráfico, o driver tenta associar a frequência da tela à janela em primeiro plano. Se em outra tela houver animações ativas no navegador, vídeos ou mensageiros, o driver pode hesitar sobre qual aplicativo priorizar, resultando em oscilações de brilho e engasgos.",
+              "Por meio do [Teste de VRR](/tests/vrr-test) e do [Teste de taxa de atualização](/tests/refresh-rate-test) no Screen Tester, é possível inspecionar a regularidade do movimento. Havendo travamentos em jogos em modo janela, restringir o VRR para 'Apenas tela cheia' costuma eliminar esses conflitos de sincronia."
+            ],
+            "bullets": [
+              "O VRR acompanha a velocidade com que a placa de vídeo conclui a renderização dos quadros.",
+              "O modo janela do VRR pode sofrer interferências de aplicativos em execução nas telas secundárias.",
+              "Oscilações no sincronismo podem provocar cintilações ou perda de fluidez na área de trabalho.",
+              "O Screen Tester possibilita a avaliação visual da cadência, sem consultar registradores da GPU."
+            ]
+          },
+          {
+            "title": "Notebook e monitor externo: Docks, perfis de energia e gráficos híbridos",
+            "content": [
+              "Ligar uma tela externa a um notebook apresenta particularidades distintas dos computadores de mesa. A maioria dos notebooks atuais utiliza gráficos híbridos (como NVIDIA Optimus, AMD SmartAccess ou memória unificada da Apple), nos quais chips integrados e dedicados compartilham tarefas.",
+              "De acordo com o projeto da placa-mãe, o painel do notebook costuma ser alimentado pelo chip integrado de baixo consumo, enquanto as saídas de vídeo externas (HDMI ou USB-C) podem se conectar diretamente à placa dedicada ou transitar pelo buffer do chip integrado. Esse trajeto adicional de transferência de dados pelo barramento pode gerar pequenas latências e engasgos.",
+              "Além disso, o funcionamento na bateria impõe perfis rígidos de economia. Sem necessariamente reduzir a taxa em todos os casos, muitos computadores retornam para 60Hz ou cortam a velocidade de vias PCIe. Conduzir os testes com o computador plugado à tomada ajuda a diferenciar limitações de energia de falhas reais de configuração."
+            ],
+            "bullets": [
+              "Sistemas gráficos híbridos dividem telas internas e portas externas entre diferentes controladores.",
+              "Sinais roteados através do chip integrado podem sofrer atrasos de cópia no barramento.",
+              "Docks USB-C ou Thunderbolt dividem largura de banda com dados e conexões de rede.",
+              "O uso na bateria pode restringir clocks da GPU; conduza as verificações conectado à tomada."
+            ]
+          },
+          {
+            "title": "Ajustes práticos recomendados e próximos passos",
+            "content": [
+              "Se você constatar engasgos, atrasos no cursor ou tipografias borradas em seu setup multitelas, estas intervenções não destrutivas podem restaurar a suavidade do sistema:",
+              "1. Confirmar frequências nas configurações do SO: Acesse as opções avançadas de tela do sistema operacional e confirme se cada monitor está na frequência máxima suportada.",
+              "2. Unificar escalas ou testar divisores inteiros: Padronize a escala onde houver perda de nitidez. Em setups de 144Hz e 60Hz, experimente colocar a tela principal em 120Hz (múltiplo inteiro de 60Hz) para avaliar se o compositor opera com maior estabilidade.",
+              "3. Ajustar o escopo do VRR no driver: No software da NVIDIA ou AMD, configure o G-Sync ou FreeSync para funcionar unicamente no modo tela cheia.",
+              "4. Alternar a aceleração por hardware no navegador: Ligue ou desligue essa opção nas configurações do navegador para verificar se a rolagem instável decorre do navegador ou de falhas de driver.",
+              "5. Reiniciar o subsistema de vídeo: No Windows, pressione as teclas Win + Ctrl + Shift + B para reiniciar o driver de vídeo sem fechar seus programas caso a composição do desktop trave.",
+              "Para orientações aprofundadas sobre problemas de cabos ou falhas de hardware, consulte nosso [Guia de solução de problemas](/knowledge-base/troubleshooting) interativo."
+            ],
+            "bullets": [
+              "Checar ajustes do sistema: Garantir que cada monitor funcione em sua frequência nativa máxima.",
+              "Experimentar divisores inteiros: Com telas de 60Hz, testar 120Hz no monitor de alta velocidade.",
+              "Limitar VRR à tela cheia: Prevenir conflitos com janelas ativas nos monitores adjacentes.",
+              "Testar aceleração de hardware: Ligar/desligar o recurso no navegador para isolar instabilidades.",
+              "Reinicializar o driver de vídeo: Usar Win + Ctrl + Shift + B no Windows para restaurar a composição."
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "Por que meu monitor de 144Hz parece operar a 60Hz quando assisto a um vídeo na outra tela?",
+            "answer": "A decodificação de vídeo acelerada por hardware em uma tela de 60Hz pode levar o compositor do sistema operacional ou o navegador a sincronizar as threads de exibição da GPU a essa taxa, causando engasgos na tela principal. Desativar a aceleração gráfica no navegador ou atualizar os drivers de vídeo frequentemente soluciona o caso."
+          },
+          {
+            "question": "É prejudicial ou inadequado utilizar um monitor de 60Hz junto a um de 144Hz ou 165Hz?",
+            "answer": "Não. Os sistemas operacionais e placas gráficas modernas suportam frequências independentes com tranquilidade. Embora sistemas legados apresentassem falhas de cadência, as instabilidades atuais derivam de sobrecargas pontuais de software e não de restrições de hardware."
+          },
+          {
+            "question": "Por que as janelas ficam embaçadas quando arrastadas entre monitores com escalas de DPI diferentes?",
+            "answer": "Programas antigos que não contam com suporte nativo a DPI por monitor não conseguem redesenhar sua interface em tempo real. O sistema operacional redimensiona a janela esticando-a como imagem, o que produz aspecto desfocado em textos e ícones."
+          },
+          {
+            "question": "O G-Sync ou FreeSync pode provocar engasgos na área de trabalho em computadores multimonitor?",
+            "answer": "Sim, sobretudo quando a sincronização variável está autorizada para modo janela e tela cheia simultaneamente. Caso uma janela em segundo plano na outra tela seja atualizada, o driver pode hesitar sobre qual taxa priorizar, gerando cintilação e perda de fluidez."
+          },
+          {
+            "question": "Por que a tela externa conectada ao notebook apresenta engasgos quando opero na bateria?",
+            "answer": "O uso na bateria aciona esquemas rigorosos de economia de energia que podem reduzir o clock da memória da GPU ou a velocidade de barramentos PCIe. Testar o equipamento ligado à tomada permite constatar se o comportamento provém de economia energética ou de ajustes de tela."
+          },
+          {
+            "question": "O Screen Tester consegue aferir o escaneamento físico da minha GPU ou corrigir engasgos multimonitor?",
+            "answer": "Não. Navegadores web rodam em um ambiente restrito de segurança e não têm acesso a registradores de baixo nível da GPU ou aos sinais físicos dos cabos. O Screen Tester disponibiliza padrões para verificação visual; as correções devem ser feitas no sistema operacional ou no driver."
+          }
+        ]
       }
     }
   },

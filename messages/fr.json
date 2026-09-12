@@ -4148,6 +4148,245 @@
             "answer": "Non. Les navigateurs web ne peuvent pas dialoguer avec des sondes de mesure optique ni interroger les compteurs d'usure internes de la dalle. Screen Tester fournit des mires d'inspection visuelle, mais les mesures certifiées requièrent des équipements de laboratoire."
           }
         ]
+      },
+      "refresh-rate-and-frame-rates": {
+        "title": "Configuration multi-écran : Fréquences mixtes, mise à l'échelle DPI et saccades",
+        "subtitle": "Disparité des taux de rafraîchissement, synchronisation du compositeur, échelle du système et fluidité multi-moniteur.",
+        "description": "Découvrez pourquoi les configurations multi-écrans aux fréquences mixtes (60Hz, 144Hz, 165Hz) et échelles DPI différentes saccadent et comment restaurer la fluidité.",
+        "directAnswer": "Les saccades et défauts d'échelle en multi-écran surviennent lorsque le compositeur de fenêtres du système d'exploitation, le pilote graphique ou les applications peinent à cadencer harmonieusement des fréquences d'affichage dissemblables ou des facteurs d'échelle DPI fractionnaires sur plusieurs écrans.",
+        "whyItMatters": "Les espaces de travail actuels associent fréquemment des écrans hétérogènes, comme un écran gaming rapide aux côtés d'un écran secondaire bureautique ou un ordinateur portable relié à un moniteur 4K externe. Lorsque les fréquences, densités de pixels ou espaces colorimétriques divergent, de légers désalignements peuvent provoquer des sauts du curseur, des micro-ralentissements vidéo ou un flou typographique. Le diagnostic nécessite d'isoler l'écran, le pilote, le compositeur du système d'exploitation et le moteur de rendu applicatif.",
+        "whatToLookFor": [
+          "Mouvement heurté ou saccadé du curseur de la souris lors du passage d'un écran principal fluide à un écran secondaire standard",
+          "Saccades visibles ou pertes d'images lors de la lecture d'une vidéo sur un moniteur pendant le défilement ou la saisie sur l'autre",
+          "Changement brutal de taille ou flou sur les textes lors du déplacement d'une fenêtre d'un écran à un autre avec une échelle différente",
+          "Micro-saccades ou irrégularités de défilement dans les jeux en mode fenêtré ou les animations web lorsqu'un second moniteur est branché",
+          "Fluidité de défilement inégale entre les différents écrans composant l'espace de travail",
+          "Fréquence de rafraîchissement ou résolution retombant inopinément à une valeur basse après une mise en veille ou un redémarrage"
+        ],
+        "howToTest": [
+          "Lancez le [Test de taux de rafraîchissement](/tests/refresh-rate-test) dans Screen Tester et observez les intervalles d'images sur chaque écran individuellement.",
+          "Glissez la fenêtre du navigateur exécutant le [Test de taux de rafraîchissement](/tests/refresh-rate-test) à cheval entre vos écrans pour tester l'adaptation dynamique.",
+          "Exécutez le [Test VRR](/tests/vrr-test) pour inspecter visuellement la régularité du mouvement et déceler d'éventuels déchirements ou ruptures de cadence.",
+          "Évaluez la netteté typographique et les transitions d'échelle de l'interface avec le [Test de clarté du texte](/tests/text-clarity-test).",
+          "Comparez la persistance et les traînées de mouvement sur vos deux écrans à l'aide du [Test de flou de mouvement](/tests/motion-blur-test) et du [Test de ghosting](/tests/ghosting-test).",
+          "Consultez les définitions d'écran et ratios de pixels rapportés par le navigateur via [Informations sur l'affichage](/tests/display-info).",
+          "Examinez l'accélération matérielle et les capacités d'affichage de votre navigateur sous [Compatibilité du navigateur](/tools/browser-compatibility).",
+          "Consultez notre [Guide de dépannage](/knowledge-base/troubleshooting) interactif si un écran reste bloqué sur une fréquence par défaut."
+        ],
+        "whatScreenTesterCanObserve": [
+          "Horodatage des rappels d'animation du navigateur via `requestAnimationFrame` sur la surface de l'écran actif",
+          "Écart-type statistique des intervalles de trames du navigateur (détection des micro-saccades et trames perdues)",
+          "Ratio de pixels de l'appareil (`window.devicePixelRatio`) et dimensions géométriques du viewport CSS par écran",
+          "Comparaison visuelle de la fluidité cinématique, de la cadence pendulaire et du défilement entre moniteurs",
+          "Prise en charge des API récentes du navigateur pour le positionnement de fenêtres multi-écrans"
+        ],
+        "whatScreenTesterCannotDetermine": [
+          "Synchronisation physique de balayage du panneau ou fréquence d'oscillation matérielle via DisplayPort ou HDMI",
+          "Files d'attente internes de présentation du processeur graphique (GPU) ou interruptions matérielles V-Sync",
+          "Calendrier d'échange de tampons internes du compositeur de bureau (Windows DWM, Linux Wayland/X11, macOS Quartz)",
+          "Densité physique réelle (DPI) de la dalle indépendamment des paramètres transmis par le système d'exploitation",
+          "Intégrité physique du signal vidéo, saturation de la bande passante du câble ou limites des lignes de ports GPU"
+        ],
+        "commonCauses": [
+          "Le gestionnaire de fenêtres du système d'exploitation peine à cadencer des intervalles de présentation indépendants entre fréquences inégales",
+          "Le décodage vidéo accéléré matériellement sur l'écran secondaire contraint les threads de rendu GPU à sa propre cadence",
+          "Les disparités d'échelle DPI fractionnaire (ex. 100 % sur 1440p couplé à 150 % sur 4K) forcent un rééchantillonnage matriciel flou",
+          "Le rafraîchissement variable (G-Sync / FreeSync) actif en mode fenêtré entre en conflit avec des animations d'arrière-plan sur l'autre écran",
+          "La fréquence de la mémoire vidéo varie de façon instable en raison de normes de synchronisation divergentes (CVT vs CVT-RB)",
+          "L'architecture graphique hybride d'un ordinateur portable fait transiter le signal externe par le tampon de la puce intégrée"
+        ],
+        "whatToDoNext": [
+          "Vérifiez dans les paramètres d'affichage avancés du système d'exploitation que chaque écran exploite sa fréquence native maximale.",
+          "En présence de saccades avec des taux mixtes, testez l'ajustement de l'écran secondaire sur un diviseur entier de l'écran principal.",
+          "Harmonisez l'échelle du système lorsque c'est envisageable ou activez les options de compatibilité DPI par écran pour les anciens logiciels.",
+          "Dans le panneau de configuration graphique, basculez G-Sync ou FreeSync sur 'Plein écran uniquement' pour éviter les conflits bureautiques.",
+          "Débranchez temporairement l'écran secondaire pour vérifier si le comportement est propre à l'écran ou lié à la configuration multi-moniteur."
+        ],
+        "sections": [
+          {
+            "title": "Pourquoi les configurations multi-écrans à fréquences mixtes réagissent différemment",
+            "content": [
+              "Associer plusieurs moniteurs aux taux de rafraîchissement inégaux — par exemple un écran gaming à 144Hz, 165Hz ou 240Hz aux côtés d'un moniteur bureautique à 60Hz ou 75Hz — est une pratique très répandue. Néanmoins, les utilisateurs remarquent régulièrement de légères irrégularités de mouvement qui n'existaient pas avec un moniteur unique.",
+              "Les désagréments rapportés comprennent des saccades lors du défilement dans le navigateur, des pertes de fluidité dans les animations de fenêtres, des sursauts du curseur ou des micro-coupures en vidéo. Il convient de souligner que des fréquences mixtes ne provoquent pas intrinsèquement de défaillance matérielle : les cartes graphiques et systèmes récents sont conçus pour générer des flux d'horloge indépendants simultanément.",
+              "La fluidité finale dépend d'un ensemble de maillons interdépendants : le compositeur de fenêtres du système d'exploitation, le pilote graphique, l'accélération matérielle du navigateur, les API multimédias et la gestion d'énergie du GPU. Établir un diagnostic impose d'examiner ces interactions logicielles plutôt que de suspecter une panne matérielle de l'écran."
+            ],
+            "bullets": [
+              "Les fréquences mixtes ne génèrent pas automatiquement de saccades, mais sollicitent davantage le compositeur.",
+              "Des hésitations du curseur, des défilements heurtés et des pertes de trames peuvent survenir.",
+              "La fluidité dépend du système d'exploitation, des pilotes, de l'accélération matérielle et du cadencement d'écran.",
+              "Les tests par navigateur mesurent la distribution des images par les applications, non le balayage de la dalle."
+            ]
+          },
+          {
+            "title": "Fréquences mixtes en pratique : Scénarios courants et présentation des images",
+            "content": [
+              "Dans un environnement multi-écrans, chaque afficheur reçoit un signal de rafraîchissement vertical distinct. Lors de combinaisons fréquentes telles que 60Hz avec 144Hz, 60Hz avec 165Hz ou 120Hz avec 144Hz, les intervalles de renouvellement ne s'alignent pas : un écran à 60Hz se rafraîchit environ toutes les 16,67ms, alors qu'un écran à 144Hz s'actualise toutes les 6,94ms.",
+              "Lorsqu'une animation ou une vidéo s'exécute sur l'écran 60Hz pendant qu'un jeu ou un navigateur fonctionne sur le moniteur 144Hz, le gestionnaire de fenêtres doit coordonner deux files de présentation asynchrones. Sur les systèmes plus anciens, le compositeur synchronisait souvent l'ensemble du bureau sur le plus petit dénominateur commun, bridant ainsi l'écran rapide à 60 FPS.",
+              "Les compositeurs contemporains (comme les versions récentes de Windows DWM ou Wayland sous Linux) exploitent des boucles de présentation découplées. Cependant, des blocages ponctuels subsistent : le décodage vidéo matériel sur l'écran à 60Hz peut mobiliser des ressources GPU partagées. Tester chaque écran séparément permet de vérifier si un composant logiciel freine la fluidité."
+            ],
+            "bullets": [
+              "Des fréquences asymétriques (ex. 60Hz + 144Hz) fonctionnent avec des cycles de balayage désynchronisés.",
+              "Le gestionnaire de fenêtres doit gérer des tampons de rendu séparés pour chaque moniteur actif.",
+              "La lecture vidéo sur l'écran secondaire peut interférer avec les processus de rendu de la carte graphique.",
+              "Les mesures requestAnimationFrame évaluent les trames logicielles sans certifier le cadencement physique."
+            ]
+          },
+          {
+            "title": "Mise à l'échelle DPI sur plusieurs écrans : Échelle fractionnaire et netteté du texte",
+            "content": [
+              "Les configurations multi-moniteurs juxtaposent souvent des diagonales et des définitions natives très dissemblables. Un exemple classique est un écran 4K de 27 pouces (nécessitant une échelle à 150 % ou 175 %) associé à un moniteur Full HD de 24 pouces (à 100 %), ou un ordinateur portable relié à un grand moniteur externe.",
+              "Lorsque les écrans utilisent des facteurs d'échelle différents (100 %, 125 %, 150 % ou 200 %), le système d'exploitation doit calculer et tracer l'interface utilisateur pour chaque densité de pixels. Les applications modernes conçues pour le DPI par écran recalculent dynamiquement leurs éléments vectoriels et polices lors du franchissement de la bordure.",
+              "À l'inverse, les logiciels historiques dépourvus de compatibilité DPI par écran ne peuvent se redessiner à la volée. En passant sur un moniteur à l'échelle différente, ils sont étirés comme de simples images bitmap par le système, rendant polices et icônes floues. Le [Test de clarté du texte](/tests/text-clarity-test) aide à déterminer si un manque de netteté découle d'un rééchantillonnage d'échelle ou du rendu de sous-pixels."
+            ],
+            "bullets": [
+              "Les échelles DPI mixtes obligent le système à calculer des densités d'affichage indépendantes.",
+              "Les applications compatibles recalculent polices et vecteurs pour conserver une netteté parfaite.",
+              "Les programmes plus anciens subissent un agrandissement bitmap qui engendre un flou visuel.",
+              "Le déplacement de fenêtres d'un écran à l'autre peut occasionner de légers soubresauts d'interface."
+            ]
+          },
+          {
+            "title": "Définition, viewports et mise à l'échelle : Coordonnées numériques et dalle physique",
+            "content": [
+              "Pour interpréter correctement les phénomènes multi-écrans, il est indispensable de séparer les données physiques de la dalle des abstractions logicielles. On confond couramment l'échelle du système d'exploitation, le zoom applicatif, le zoom navigateur, les pixels CSS et les sous-pixels matériels.",
+              "La définition physique correspond à la grille matérielle de sous-pixels intégrée à la dalle de verre (par exemple 3840 × 2160 triades RVB). Le ratio de pixels de l'appareil (Device Pixel Ratio, DPR) est le coefficient transmis par le système au navigateur : à 150 % d'échelle, le DPR est de 1,5 ; à 200 %, il vaut 2,0. Le viewport logique (pixels CSS) définit l'espace de coordonnées pour la mise en page web (`window.innerWidth` et `window.innerHeight`).",
+              "Screen Tester applique une rigueur stricte : les navigateurs web indiquent avec fidélité les dimensions du viewport et le `window.devicePixelRatio` au moyen des API web standard. Toutefois, le navigateur ne dispose d'aucun capteur optique pour mesurer la taille physique des sous-pixels ou certifier les filtres du processeur interne de l'écran."
+            ],
+            "bullets": [
+              "Définition physique : Le maillage microscopique et immuable de sous-pixels de la dalle.",
+              "Device Pixel Ratio (DPR) : Le multiplicateur d'échelle fourni par le système au navigateur.",
+              "Pixels logiques CSS : Le repère géométrique exploité pour dimensionner et afficher les pages web.",
+              "Limites de mesure : Les API web rapportent des données logicielles, non des relevés physiques d'optique."
+            ]
+          },
+          {
+            "title": "Procédure de diagnostic méthodique pour le multi-écran : Une séquence rigoureuse",
+            "content": [
+              "Pour résoudre saccades, sursauts du curseur ou flou d'affichage sur plusieurs écrans, évitez de modifier vos réglages au hasard. Suivez ce protocole en 7 étapes :",
+              "Étape A : Consigner la configuration initiale. Notez la définition native, le taux de rafraîchissement paramétré, l'échelle du système, la connectique (DisplayPort ou HDMI) et l'état HDR de chaque écran.",
+              "Étape B : Tester chaque écran isolément. Déconnectez les moniteurs secondaires et évaluez l'écran principal seul avec le [Test de taux de rafraîchissement](/tests/refresh-rate-test) pour vous assurer de sa fluidité de base.",
+              "Étape C : Tester l'ensemble au repos. Rebranchez le moniteur secondaire sans ouvrir d'applications lourdes en arrière-plan et réitérez le [Test de taux de rafraîchissement](/tests/refresh-rate-test).",
+              "Étape D : Déplacer les fenêtres entre écrans. Faites glisser la fenêtre de test d'un moniteur à l'autre pour observer si le débit d'images s'effondre ou si le texte devient flou.",
+              "Étape E : Évaluer le défilement et l'animation. Réalisez des défilements dynamiques sur chaque écran avec le [Test de taux de rafraîchissement](/tests/refresh-rate-test) et le [Test de flou de mouvement](/tests/motion-blur-test).",
+              "Étape F : Ajouter la lecture d'une vidéo. Lancez une vidéo sur l'écran secondaire pendant que vous menez des tests d'animation sur l'écran principal pour détecter d'éventuels conflits de compositeur.",
+              "Étape G : Modifier un seul paramètre à la fois. Ajustez un seul réglage (comme l'accélération matérielle ou un diviseur de fréquence) et testez à nouveau avant toute autre modification."
+            ],
+            "bullets": [
+              "Étape A : Relever définitions, fréquences, pourcentages d'échelle et liaisons matérielles.",
+              "Étape B : Éprouver chaque moniteur séparément pour valider ses performances intrinsèques.",
+              "Étape C : Vérifier la régularité du cadencement sur l'ensemble des écrans sans charge d'arrière-plan.",
+              "Étape D et E : Déplacer les fenêtres d'un écran à l'autre et apprécier la fluidité de défilement.",
+              "Étape F et G : Ajouter des charges vidéo et n'ajuster qu'une variable à la fois."
+            ]
+          },
+          {
+            "title": "Identifier la couche responsable : Un modèle de diagnostic par niveaux",
+            "content": [
+              "Les saccades sur le bureau pouvant trouver leur origine à plusieurs étages de la chaîne informatique, il est précieux de ventiler les constats par strates :",
+              "1. Couche d'affichage et dalle : Anomalies propres au moniteur, telles qu'une communication EDID altérée sur les canaux DDC ou un overdrive mal calibré dans l'OSD. À contrôler avec le [Test de ghosting](/tests/ghosting-test).",
+              "2. Couche de liaison et signal : Contraintes de débit du câble, adaptateurs passifs inadaptés ou saturation d'un hub DisplayPort MST. À vérifier via [Informations sur l'affichage](/tests/display-info).",
+              "3. Couche GPU et pilote : Ordonnancement des files de présentation graphique, fréquences mémoire bloquées ou profils d'alimentation multi-écrans. À corriger par une mise à jour ou réinstallation propre du pilote.",
+              "4. Couche du compositeur système : Le gestionnaire de fenêtres (Windows DWM, Linux Wayland/X11, macOS Quartz) synchronise difficilement des cycles V-Sync asynchrones. Comparer le mode solo et multi-écran.",
+              "5. Couche logicielle et navigateur : Structure des processus du navigateur, tramage GPU ou suspension d'onglets en arrière-plan. À tester sous [Compatibilité du navigateur](/tools/browser-compatibility).",
+              "6. Couche de lecture vidéo : Puces de décodage matériel liant les cycles de rendu graphique à la cadence fixe du média (24, 30 ou 60 FPS)."
+            ],
+            "bullets": [
+              "Couche écran : Micrologiciel du moniteur, dialogue EDID ou réglages d'overdrive OSD.",
+              "Couche signal : Bande passante des câbles, versions de connectique ou goulots d'étranglement de hubs.",
+              "Couche GPU : Files d'attente d'images, fréquences mémoire et profils du pilote graphique.",
+              "Couche compositeur : Gestionnaire de fenêtres opérant sur des fréquences d'affichage dissemblables.",
+              "Couche applicative : Moteur de rendu du navigateur, accélération graphique et gestion des tâches.",
+              "Couche vidéo : Synchronisation rigide induite par les décodeurs matériels sur les vidéos."
+            ]
+          },
+          {
+            "title": "Environnements mixtes HDR et SDR : Luminance, espace colorimétrique et composition",
+            "content": [
+              "Exploiter un écran HDR à côté d'un moniteur SDR standard complexifie la tâche du compositeur de bureau. Quand un écran fonctionne en HDR et le second en SDR, le système doit traiter simultanément deux espaces de couleur et deux courbes de luminance distinctes.",
+              "Sous Windows, le compositeur convertit les éléments sRGB habituels dans un conteneur étendu pour l'écran HDR, tout en distribuant du sRGB 8 bits natif au moniteur SDR. Si le curseur 'Luminosité du contenu SDR' est mal équilibré, les fenêtres blanches apparaîtront trop éclatantes ou trop sombres d'un moniteur à l'autre.",
+              "De plus, déplacer des lecteurs vidéo d'un écran à l'autre impose un recalcul immédiat du mappage tonal, ce qui peut engendrer de brèves saccades ou des sursauts de teinte. L'outil [Informations sur l'affichage](/tests/display-info) précise les capacités HDR détectées, sans pouvoir mesurer la conformité colorimétrique du système."
+            ],
+            "bullets": [
+              "Les configurations mixtes HDR/SDR imposent un traitement simultané des espaces de couleur et de la dynamique.",
+              "L'ajustement du niveau de blanc pour le contenu SDR harmonise la luminosité entre écrans.",
+              "Faire glisser des médias d'un moniteur à l'autre déclenche des réajustements de tons instantanés.",
+              "Les requêtes de navigateur signalent la compatibilité HDR sans en certifier l'exactitude de calibration."
+            ]
+          },
+          {
+            "title": "Fréquence de rafraîchissement variable (VRR) en multi-écran : Réalités du mode fenêtré",
+            "content": [
+              "Le rafraîchissement variable (VRR) — comprenant NVIDIA G-Sync, AMD FreeSync et VESA Adaptive-Sync — adapte dynamiquement la fréquence de l'écran au flux d'images délivré par la carte graphique. Si l'expérience est remarquable en jeu plein écran sur un moniteur unique, des interactions inattendues peuvent émerger en multi-moniteur.",
+              "Lorsque le VRR est configuré pour le 'Mode fenêtré et plein écran' dans le panneau graphique, le pilote tente d'aligner la fréquence de l'écran principal sur la fenêtre active. Si des éléments animés tournent sur l'écran secondaire (navigateur, vidéo ou messagerie), le pilote peut hésiter sur la source de synchronisation, provoquant clignotements ou saccades.",
+              "Grâce au [Test VRR](/tests/vrr-test) et au [Test de taux de rafraîchissement](/tests/refresh-rate-test) de Screen Tester, vous pouvez visualiser la stabilité du mouvement. En cas d'irrégularités dans les jeux fenêtrés, restreindre le VRR au 'Plein écran uniquement' élimine généralement ces conflits de composition."
+            ],
+            "bullets": [
+              "Le VRR fait varier en temps réel la fréquence de l'écran pour suivre le rendu de la carte graphique.",
+              "Le mode fenêtré peut être perturbé par des animations s'exécutant sur les écrans secondaires.",
+              "Des fluctuations de synchronisation peuvent générer des clignotements ou des saccades d'interface.",
+              "Screen Tester propose une évaluation visuelle de la cadence, sans sonder les registres internes du pilote."
+            ]
+          },
+          {
+            "title": "Ordinateur portable et écran externe : Stations d'accueil, énergie et graphiques hybrides",
+            "content": [
+              "Brancher un moniteur externe sur un ordinateur portable introduit des paramètres architecturaux singuliers. La plupart des PC portables récents font appel à des graphiques hybrides (comme NVIDIA Optimus, AMD SmartAccess Graphics ou la mémoire unifiée Apple), où puces intégrée et dédiée collaborent.",
+              "Selon le câblage de la carte mère, la dalle du portable est souvent reliée à la puce intégrée économe, tandis que les sorties vidéo externes (HDMI, USB-C DisplayPort ou Thunderbolt) peuvent aboutir directement à la carte dédiée ou transiter par la mémoire de la puce intégrée. Ce transfert d'images sur le bus système peut ajouter de la latence et de légères saccades.",
+              "Par ailleurs, le fonctionnement sur batterie applique des stratégies d'économie d'énergie strictes. Sans toujours brider d'office la fréquence, de nombreux ordinateurs repassent à 60Hz ou réduisent la bande passante des lignes PCIe. Réaliser les tests sur secteur permet de faire la part entre contraintes d'alimentation et soucis de configuration d'affichage."
+            ],
+            "bullets": [
+              "Les architectures graphiques hybrides séparent l'écran interne et les sorties externes sur plusieurs puces.",
+              "Les signaux vidéo routés par la puce graphique intégrée peuvent subir des délais de copie sur le bus.",
+              "Les stations d'accueil Thunderbolt ou USB-C partagent leur débit avec les données et le réseau.",
+              "L'alimentation sur batterie peut brider les performances graphiques ; effectuez vos essais sur secteur."
+            ]
+          },
+          {
+            "title": "Ajustements pratiques et prochaines étapes recommandées",
+            "content": [
+              "Si vous constatez des saccades, des hésitations du curseur ou des textes flous sur votre ensemble multi-écrans, ces mesures simples et sans risque peuvent restaurer la fluidité :",
+              "1. Vérifier les fréquences dans les réglages du système : Consultez les paramètres d'affichage avancés de votre système d'exploitation et confirmez que chaque écran est réglé sur sa fréquence native maximale.",
+              "2. Harmoniser les échelles ou tester un multiple entier : Si le texte paraît flou, unifiez l'échelle des écrans lorsque possible. Pour un couple 144Hz et 60Hz, régler l'écran rapide sur 120Hz (multiple entier de 60Hz) peut grandement améliorer la fluidité du compositeur.",
+              "3. Restreindre le VRR au plein écran : Dans le panneau de configuration NVIDIA ou AMD, réglez G-Sync ou FreeSync sur 'Activer pour le mode plein écran uniquement'.",
+              "4. Tester l'accélération matérielle du navigateur : Basculez l'option 'Utiliser l'accélération graphique' dans les réglages du navigateur pour différencier un souci de compositeur d'une anomalie de pilote.",
+              "5. Réinitialiser la pile graphique : Sous Windows, utilisez le raccourci Win + Ctrl + Maj + B pour réinitialiser le pilote graphique à chaud si l'interface du bureau devient brusquement saccadée.",
+              "Pour approfondir l'analyse de pannes matérielles ou de liaisons vidéo, consultez notre [Guide de dépannage](/knowledge-base/troubleshooting) interactif."
+            ],
+            "bullets": [
+              "Contrôler les options du système : S'assurer que chaque moniteur est paramétré à sa fréquence native la plus haute.",
+              "Essayer des ratios entiers de fréquence : Avec un écran à 60Hz, tester 120Hz sur l'écran rapide.",
+              "Limiter le VRR au plein écran : Prévenir les conflits avec des fenêtres sur les écrans annexes.",
+              "Basculer l'accélération matérielle : Isoler précisément l'origine des saccades dans le navigateur.",
+              "Relancer le pilote graphique : Utiliser Win + Ctrl + Maj + B sous Windows pour réveiller le compositeur."
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "Pourquoi mon écran 144Hz donne-t-il l'impression de tourner à 60Hz dès qu'une vidéo est lue sur l'autre écran ?",
+            "answer": "Le décodage vidéo matériel sur un moniteur secondaire à 60Hz peut inciter le compositeur de fenêtres ou le navigateur à synchroniser les threads de rendu GPU sur cette cadence, générant des saccades sur l'écran principal. Désactiver l'accélération matérielle dans le navigateur ou mettre à jour le pilote graphique résout couramment ce désagrément."
+          },
+          {
+            "question": "Est-il déconseillé ou néfaste d'associer un moniteur 60Hz à un écran 144Hz ou 165Hz ?",
+            "answer": "Non. Les cartes graphiques et systèmes récents gèrent sans encombre des fréquences asymétriques. Même si d'anciens systèmes éprouvaient parfois des difficultés de cadencement, ces anomalies découlent aujourd'hui de surcharges logicielles temporaires et non de limitations matérielles."
+          },
+          {
+            "question": "Pourquoi les fenêtres deviennent-elles floues en passant d'un écran à un autre avec une échelle différente ?",
+            "answer": "Les logiciels plus anciens qui n'intègrent pas la prise en charge moderne du DPI par écran ne peuvent pas retracer leur interface à la volée. Le système étire alors la fenêtre comme s'il s'agissait d'une image, ce qui adoucit et rend flous textes et icônes."
+          },
+          {
+            "question": "G-Sync ou FreeSync peuvent-ils occasionner des saccades sur un bureau multi-écrans ?",
+            "answer": "Oui, principalement lorsque le rafraîchissement variable est autorisé en mode fenêtré et plein écran. Si une application s'anime en arrière-plan sur un écran non synchronisé, le pilote graphique peut hésiter sur la fréquence à appliquer, provoquant clignotements et irrégularités."
+          },
+          {
+            "question": "Pourquoi mon écran externe branché à un ordinateur portable saccade-t-il sur batterie ?",
+            "answer": "Le passage sur batterie active des profils d'économie d'énergie stricts qui peuvent abaisser la fréquence de la mémoire vidéo ou brider les liaisons PCIe. Effectuer vos vérifications sur secteur aide à distinguer une mesure d'économie d'une réelle anomalie de configuration."
+          },
+          {
+            "question": "Screen Tester peut-il mesurer les temps de balayage de mon GPU ou réparer les saccades multi-écrans ?",
+            "answer": "Non. Les navigateurs web s'exécutent dans un environnement sécurisé et isolé qui ne permet pas d'accéder aux registres bas niveau du GPU ou aux lignes physiques du câble. Screen Tester offre des mires d'observation visuelle ; les correctifs doivent être appliqués dans le système d'exploitation ou le pilote."
+          }
+        ]
       }
     }
   },
