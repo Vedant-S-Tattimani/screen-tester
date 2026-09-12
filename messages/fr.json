@@ -4413,7 +4413,7 @@
           "Consignez vos observations dans l'[Inspection écran neuf](/monitor-inspection/new) ou l'[Inspection écran d'occasion](/monitor-inspection/used)"
         ],
         "whatScreenTesterCanObserve": [
-          "Affichage plein écran de plages chromatiques pures (RVB), de blanc pur et de noir profond",
+          "Affichage de couleurs de test définies, incluant les champs RVB, le blanc pur et le noir pur",
           "Anomalies visuelles signalées par l'utilisateur, relevés de coordonnées et notes d'inspection",
           "Séquences d'alternance chromatique rapide générées par le moteur de rendu du navigateur",
           "Différenciation visuelle entre points sombres sur fond clair et points lumineux sur fond sombre",

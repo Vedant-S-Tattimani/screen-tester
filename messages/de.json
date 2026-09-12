@@ -4413,7 +4413,7 @@
           "Halten Sie die Beobachtungen in der [Neuer-Monitor-Inspektion](/monitor-inspection/new) oder [Gebrauchter-Monitor-Inspektion](/monitor-inspection/used) fest"
         ],
         "whatScreenTesterCanObserve": [
-          "Darstellung kalibrierter Vollbild-Farbflächen (Rot, Grün, Blau), reinen Weiß- und Schwarzwerten",
+          "Darstellung definierter Testfarben, einschließlich RGB-Feldern, reinem Weiß und reinem Schwarz",
           "Vom Nutzer erfasste optische Auffälligkeiten, Koordinatenzuordnungen und Prüfnotizen",
           "Schnelle RGB- und Hochkontrast-Farbwechselsequenzen über die Browser-Rendering-Engine",
           "Visuelle Unterscheidung zwischen dauerhaft dunklen Punkten auf Weiß und Leuchtpunkten auf Schwarz",

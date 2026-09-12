@@ -4413,7 +4413,7 @@
           "Registre los hallazgos en la [Inspección de monitor nuevo](/monitor-inspection/new) o [Inspección de monitor usado](/monitor-inspection/used)"
         ],
         "whatScreenTesterCanObserve": [
-          "Representación en pantalla completa de campos cromáticos puros (RGB), blanco puro y negro profundo",
+          "Visualización de colores de prueba definidos, incluidos campos RGB, blanco puro y negro puro",
           "Anomalías visuales reportadas por el usuario, asignación de coordenadas y notas de inspección",
           "Patrones de alternancia cromática rápida mediante el renderizado web del navegador",
           "Diferenciación visual entre defectos oscuros en fondos claros y puntos brillantes en fondos oscuros",

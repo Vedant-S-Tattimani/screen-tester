@@ -4414,7 +4414,7 @@
           "Document your findings within the [New Monitor Inspection](/monitor-inspection/new) or [Used Monitor Inspection](/monitor-inspection/used) checklist"
         ],
         "whatScreenTesterCanObserve": [
-          "Rendering of calibrated full-screen pure chromatic fields (Red, Green, Blue), solid white, and deep black",
+          "Display defined test colors, including RGB fields, pure white, and pure black",
           "User-reported visual anomalies, coordinate mapping, and documented defect notes during testing sessions",
           "Rapid RGB and high-contrast color cycling patterns delivered through the browser display canvas",
           "Visual distinction between defects that appear dark on white fields versus those illuminated on dark fields",
