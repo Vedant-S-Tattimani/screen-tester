@@ -2231,16 +2231,16 @@
       "brightnessContrastDesc": "La luminosité et le contraste sont les commandes les plus fréquemment modifiées, mais aussi les plus mal comprises. Comprendre leur fonctionnement matériel et numérique évite de détériorer l'image.",
       "brightnessContrastItems": [
         {
-          "title": "Luminosité : puissance du rétroéclairage",
-          "desc": "Ajuste l'alimentation électrique des LED de rétroéclairage (ou l'émission des pixels OLED). Elle fait varier l'intensité lumineuse globale sans écrêter les valeurs numériques RGB de l'image. Adaptez-la à la lumière de votre pièce (25–50 % en ambiance tamisée). Le JavaScript du navigateur ne peut pas mesurer les nits (cd/m²)."
+          "title": "Luminosité : Puissance du rétroéclairage",
+          "desc": "Régule l'alimentation électrique fournie au rétroéclairage LED (ou à l'émission des pixels OLED). Contrôle la luminance globale sans altérer les valeurs de code RVB numériques. Ajustez toujours la luminosité en fonction de l'éclairage ambiant (niveaux plus bas et confortables dans une pièce sombre, plus élevés en pleine journée). Le JavaScript du navigateur ne peut pas mesurer physiquement la luminance optique."
         },
         {
-          "title": "Contraste : mappage numérique du point blanc",
-          "desc": "Le contraste règle le gain du signal numérique dans le scaler ; il ne modifie PAS le taux de contraste physique de la dalle (IPS ~1000:1, VA ~3000:1, OLED infini). Le pousser au-delà du défaut écrête les hautes lumières en blanc pur 255 (clipping) ; le baisser décolore l'image dans un gris terne."
+          "title": "Contraste : Étalonnage numérique du point blanc",
+          "desc": "Contrôle la mise à l'échelle numérique des valeurs RVB en entrée. Sur les liaisons numériques (DisplayPort et HDMI), régler le contraste au-delà de la valeur d'usine par défaut provoque un écrêtage numérique, fusionnant les tons clairs (IRE 240–255) en une surface blanche sans nuance."
         },
         {
-          "title": "Valeurs de référence et vérification",
-          "desc": "Conservez le contraste à sa valeur d'usine (généralement 50 ou 70). Vérifiez l'absence d'écrêtage des blancs et la lisibilité des ombres avec les tests Échelle de gris et Nuances sombres de Screen Tester."
+          "title": "Point de référence et vérification",
+          "desc": "Conservez le contraste sur sa valeur par défaut d'origine (généralement 50 ou 70 selon les modèles). Utilisez le Gradient Banding Test et le Test des Blancs pour vérifier des dégradés réguliers sans zones claires brûlées."
         }
       ],
       "overdriveTitle": "3. Overdrive / Paramètres de temps de réponse",
@@ -2307,20 +2307,20 @@
       "hdrDesc": "Le High Dynamic Range (HDR) accroît la dynamique et le volume des couleurs. Cependant, basculer le réglage 'HDR' dans l'OSD d'un moniteur est souvent source de malentendus.",
       "hdrItems": [
         {
-          "title": "Prise en charge du signal vs capacité réelle de la dalle",
-          "desc": "Un réglage OSD 'HDR: Activé' permet simplement au scaler de décoder un signal HDR10. Cela ne dote pas magiquement le moniteur d'une luminance crête de 1000 nits ni du rétroéclairage par zone requis pour un vrai rendu HDR."
+          "title": "Compatibilité de signal vs capacité réelle de la dalle",
+          "desc": "L'option OSD 'HDR : Activé' autorise simplement le scaler de l'écran à accepter un flux HDR10/PQ émis par le système. Elle ne confère pas magiquement au matériel la luminance de pointe élevée, le large espace colorimétrique ou le contraste localisé indispensables à un véritable rendu HDR."
         },
         {
-          "title": "Le piège des moniteurs d'entrée de gamme 'HDR400'",
-          "desc": "Sur les moniteurs Edge-Lit classiques à luminosité modérée (~350 nits), activer le HDR dégrade souvent l'image : les noirs virent au gris délavé, le bureau SDR paraît fade et les réglages de l'OSD sont verrouillés."
+          "title": "Le piège du HDR d'entrée de gamme Edge-Lit",
+          "desc": "Sur les dalles LCD Edge-Lit classiques dotées d'une gradation globale et d'une luminosité modeste, activer le HDR dégrade souvent l'image : les noirs deviennent grisâtres, le bureau SDR paraît terne et l'OSD verrouille les réglages de couleur et de luminosité."
         },
         {
-          "title": "Quand le HDR vaut-il vraiment la peine ?",
-          "desc": "Le HDR prend toute sa dimension sur les écrans dotés d'un contrôle individuel des pixels (OLED) ou d'un rétroéclairage Mini-LED à plusieurs centaines de zones, où les reflets éclatants côtoient des noirs parfaits."
+          "title": "Quand le HDR apporte une réelle valeur ajoutée",
+          "desc": "Le HDR offre un impact visuel authentique principalement sur les écrans à contrôle par pixel (OLED / QD-OLED) ou dotés d'un rétroéclairage FALD/Mini-LED à centaines de zones, où les hautes lumières atteignent un éclat intense tout en préservant des noirs profonds."
         },
         {
           "title": "Vérification visuelle dans le navigateur",
-          "desc": "Utilisez le Test HDR de Screen Tester pour vérifier si votre écran restitue fidèlement les nuances lumineuses ou s'il écrête brutalement les dégradés en aplats blancs uniformes."
+          "desc": "Ouvrez le HDR Test de Screen Tester pour vérifier si le navigateur et le système d'exploitation gèrent correctement le canevas HDR sans écrêtage des reflets ni dérive colorimétrique en SDR."
         }
       ],
       "gammaTitle": "7. Réglages du Gamma : courbes et tons moyens",
@@ -2471,19 +2471,16 @@
           "desc": "Effectuez une réinitialisation au déballage d'un écran neuf, avant de tester un moniteur d'occasion, ou en cas de dérives colorimétriques étranges et de menus grisés."
         }
       ],
-      "baselineTitle": "15. Configuration de base recommandée : le point de départ idéal",
-      "baselineDesc": "Chaque modèle de moniteur et chaque environnement lumineux sont uniques. Suivre cette base conservatrice et méthodique garantit une image équilibrée avant tout affinement :",
+      "baselineTitle": "15. Procédure pratique de test contrôlé",
+      "baselineDesc": "Lors du réglage de votre écran, suivez ce protocole méthodique en 7 étapes. Remarque : Les mires visuelles de Screen Tester permettent d'observer les anomalies visuelles sous conditions contrôlées ; elles ne mesurent ni ne certifient les registres électroniques internes ni la luminance optique physique.",
       "baselineSteps": [
-        "Réinitialiser aux réglages d'usine : Effectuez un reset ou sélectionnez le profil 'Standard' ou 'Utilisateur' pour désactiver les traitements d'image superflus.",
-        "Définir la résolution native et la fréquence native maximale : Dans votre système d'exploitation et pilote GPU, confirmez la résolution native et le taux maximal stable.",
-        "Ajuster la luminosité à la pièce : Réglez la luminosité entre 25 % et 40 % dans une pièce sombre, ou 50–70 % en journée. Évitez les 100 % permanents éblouissants.",
-        "Conserver le contraste par défaut : Laissez le contraste sur sa valeur d'usine (50 ou 70) pour prévenir tout écrêtage des blancs et dégradés en escalier.",
-        "Régler l'Overdrive sur le palier intermédiaire : Choisissez 'Fast', 'Normal' ou Niveau 2–3. Évitez les modes 'Extrême' pour éliminer les halos de dépassement.",
-        "Laisser le MBR / Strobing désactivé : Gardez le rétroéclairage clignotant éteint pour le quotidien ; ne l'activez que pour l'e-sport rapide si la baisse d'éclat vous convient.",
-        "Activer le VRR / Adaptive Sync : Enclenchez le VRR dans l'OSD et dans le pilote graphique pour supprimer les déchirures d'image avec une latence minime.",
-        "Garder la netteté neutre : Vérifiez que la netteté est sur sa position neutre (souvent 50 % ou 0) pour épargner au texte des contours blancs déformants.",
-        "Laisser le Black Equalizer sur neutre : Maintenez le Shadow Boost à 0 ou valeur par défaut pour respecter le contraste naturel et la vision des réalisateurs.",
-        "Noter et mémoriser vos réglages : Relevez vos paramètres validés ou sauvegardez-les dans un profil utilisateur de votre moniteur."
+        "1. Enregistrer l'état OSD actuel : Notez l'ensemble des profils d'image, gains de couleur et fonctions spéciales avant d'effectuer la moindre modification.",
+        "2. Établir une configuration de référence : Choisissez la définition native, la fréquence de rafraîchissement native et un profil d'image standard avec une luminosité confortable.",
+        "3. Ne modifier qu'UN SEUL paramètre à la fois : Ajustez une seule option d'un cran ou palier à la fois afin d'isoler précisément son incidence visuelle.",
+        "4. Relancer le test Screen Tester dédié : Affichez la mire de test conçue spécifiquement pour la caractéristique visuelle visée.",
+        "5. Comparer visuellement avant et après : Observez sous un éclairage identique les variations de traînées, de halos de dépassement ou de neutralité des couleurs.",
+        "6. Noter le réglage et l'effet constaté : Consignez si le changement a amélioré la netteté, provoqué des artefacts visibles ou causé une dégradation.",
+        "7. Conserver ou restaurer les valeurs : Validez le réglage avantageux ou rétablissez la référence précédente en cas d'anomalie constatée."
       ],
       "testingMatrixTitle": "16. Comment tester méthodiquement chaque modification",
       "testingMatrixDesc": "L'étalonnage est un processus rigoureux : ne modifiez qu'un seul paramètre OSD à la fois, puis lancez immédiatement le test visuel correspondant pour évaluer le résultat.",
@@ -2493,63 +2490,69 @@
       "testingMatrixRows": [
         {
           "setting": "Overdrive / Temps de réponse",
-          "toolName": "Test de Ghosting",
+          "toolName": "Ghosting Test",
           "toolHref": "/tests/ghosting-test",
-          "goal": "Vérifier la traînée de flou (trop faible) vs les halos lumineux d'overshoot (trop fort)."
+          "goal": "Vérifier l'absence de traînées de flou (trop bas) et de halos lumineux d'overshoot (trop haut)."
         },
         {
-          "setting": "Réduction de flou de mouvement (MBR)",
-          "toolName": "Test de Flou de Mouvement",
+          "setting": "Motion Blur Reduction (MBR)",
+          "toolName": "Motion Blur Test",
           "toolHref": "/tests/motion-blur-test",
-          "goal": "Évaluer le gain de netteté en déplacement face au scintillement et à la perte d'éclat."
+          "goal": "Évaluer la netteté du mouvement face à la fatigue visuelle liée au scintillement et à la baisse d'éclat."
         },
         {
           "setting": "Adaptive Sync / VRR",
-          "toolName": "Test VRR",
+          "toolName": "VRR Test",
           "toolHref": "/tests/vrr-test",
-          "goal": "Contrôler la fluidité des mouvements et l'absence totale de déchirement d'image."
+          "goal": "Contrôler la fluidité de la cadence d'animation et l'absence totale de déchirement horizontal (tearing)."
         },
         {
-          "setting": "Bascule du mode HDR",
-          "toolName": "Test HDR",
+          "setting": "Bascule Mode HDR",
+          "toolName": "HDR Test",
           "toolHref": "/tests/hdr-test",
-          "goal": "Observer le rendu des dégradés clairs et vérifier que le contraste du bureau SDR reste intact."
+          "goal": "Vérifier les dégradés des hautes lumières et s'assurer de la préservation du contraste du bureau SDR."
         },
         {
-          "setting": "Taux de rafraîchissement / Overclock",
-          "toolName": "Test de Taux de Rafraîchissement",
+          "setting": "Fréquence d'affichage / Overclock",
+          "toolName": "Refresh Rate Test",
           "toolHref": "/tests/refresh-rate-test",
-          "goal": "Confirmer la cadence réelle des trames et s'assurer de l'absence de saccades."
+          "goal": "Confirmer la régularité du balayage d'images et écarter tout saut ou perte de trames."
         },
         {
-          "setting": "Réglage de la netteté",
-          "toolName": "Test de Clarté du Texte",
+          "setting": "Réglage de Netteté (Sharpness)",
+          "toolName": "Text Clarity Test",
           "toolHref": "/tests/text-clarity-test",
-          "goal": "S'assurer de contours de polices nets et lisibles sans franges blanches de ringing."
+          "goal": "Garantir des contours de caractères nets sans lisérés blancs artificiels ni flou de contour."
         },
         {
-          "setting": "Gamma et contraste",
-          "toolName": "Test de Banding de Dégradé",
+          "setting": "Gamma et Contraste",
+          "toolName": "Gradient Banding Test",
           "toolHref": "/tests/gradient-banding-test",
-          "goal": "Contrôler la régularité des 256 niveaux de gris sans marches d'escalier brutales."
+          "goal": "Vérifier la progressivité des nuances sur 256 niveaux de gris sans formation de bandes marquées."
         },
         {
           "setting": "Black Equalizer / Shadow Boost",
-          "toolName": "Test Nuances Sombres",
+          "toolName": "Near-Black Test",
           "toolHref": "/tests/near-black-test",
-          "goal": "Distinguer les gris très sombres sans éclaircir le noir absolu en une bouillie grise."
+          "goal": "Assurer la lisibilité des détails sombres sans transformer le noir profond en voile grisâtre."
         },
         {
-          "setting": "Température de couleur et gains RGB",
-          "toolName": "Test d'Uniformité",
+          "setting": "Température de couleur et gains RVB",
+          "toolName": "Uniformity Test",
           "toolHref": "/tests/uniformity-test",
-          "goal": "Inspecter une surface blanche complète pour s'assurer d'un blanc neutre sans dominante."
+          "goal": "Inspecter un fond blanc intégral pour vérifier la neutralité du point blanc sans dominante colorée."
+        },
+        {
+          "setting": "Local Dimming (Gradation locale)",
+          "toolName": "Uniformity Test",
+          "toolHref": "/tests/uniformity-test",
+          "goal": "Observer les halos lumineux (blooming) autour des éléments clairs mobiles sur fond sombre."
         },
         {
           "setting": "Format d'image et mise à l'échelle",
-          "toolName": "Test de Redimensionnement et Format",
+          "toolName": "Scaling & Aspect Ratio Test",
           "toolHref": "/tests/scaling-aspect-test",
-          "goal": "Vérifier que les définitions non natives conservent des proportions géométriques exactes."
+          "goal": "S'assurer que les définitions non natives conservent leurs proportions et leur géométrie d'origine."
         }
       ],
       "mistakesTitle": "17. Erreurs courantes dans l'OSD à éviter",
@@ -4404,18 +4407,21 @@
             ]
           },
           {
-            "title": "Comportement de l'écran de PC portable sur batterie vs secteur : Fréquences, énergie et mise à l'échelle",
+            "title": "Protocole contrôlé d'isolation multi-écrans : Démarche diagnostique pas à pas",
             "content": [
-              "L'alimentation d'un ordinateur portable sur batterie modifie radicalement les enveloppes thermique et électrique par rapport au raccordement au secteur. Afin de préserver l'autonomie, le système d'exploitation, le processeur et les pilotes graphiques appliquent des mécanismes de bridage dynamique susceptibles d'affecter la fluidité d'affichage.",
-              "Sur batterie, les profils d'alimentation (comme Meilleure efficacité énergétique, Utilisation normale ou Performances optimales sous Windows ; mode économie d'énergie sous macOS ; profils énergétiques sous Linux) restreignent les processus d'arrière-plan. Les cartes graphiques abaissent leurs fréquences d'horloge (P-states), tandis que le bus PCIe passe en mode d'économie d'énergie (ASPM L0s/L1), ce qui réduit la bande passante vers les contrôleurs d'affichage.",
-              "Parallèlement, les dalles modernes exploitent des fréquences de rafraîchissement adaptatives. Avec la Fréquence de rafraîchissement dynamique (DRR) de Windows 11 ou le microprogramme constructeur, les écrans rapides (120Hz, 144Hz, 240Hz) basculent souvent à 60Hz ou activent l'autorafraîchissement de dalle (PSR) lorsqu'ils sont sur batterie. Des fonctions comme le CABC, l'Intel DPST ou l'AMD Vari-Bright modulent également le rétroéclairage et les courbes de gamma selon l'image affichée.",
-              "Néanmoins, le passage sur batterie ne bride pas systématiquement l'affichage sur tous les modèles. Certains PC portables de jeu dotés de commutateurs MUX maintiennent leur plein taux de rafraîchissement au détriment de l'autonomie, tandis que les ultraportables favorisent l'économie d'énergie. Distinguer un comportement intentionnel d'une anomalie requiert un protocole de test rigoureux."
-            ],
-            "bullets": [
-              "Le mode batterie applique des profils d'économie d'énergie stricts au CPU, au GPU et au bus PCIe ASPM.",
-              "La fréquence dynamique (DRR) et l'autorafraîchissement (PSR) peuvent ramener l'écran à 60Hz sur batterie.",
-              "Les technologies adaptatives (CABC, Intel DPST, AMD Vari-Bright) modifient dynamiquement contraste et luminosité.",
-              "Les profils de batterie ne brident pas universellement les écrans ; le comportement varie selon les réglages OEM et OS."
+              "Pour diagnostiquer les saccades, les irrégularités de synchronisation ou les anomalies d'échelle dans un environnement multi-écrans, modifier des paramètres au hasard crée des interactions imprévisibles. Suivez ce protocole d'isolation rigoureux et sans danger matériel pour identifier précisément le composant en cause.",
+              "Architecture diagnostique et niveaux de preuve : Distinguez rigoureusement quatre niveaux d'observation : (1) Rapporté par le navigateur : cadence de trames rAF, devicePixelRatio et dimensions du viewport (reflètent les boucles logicielles, non le balayage physique de la dalle) ; (2) Rapporté par le système d'exploitation : fréquence de rafraîchissement configurée, pourcentage de mise à l'échelle et statut HDR ; (3) Observé par l'utilisateur : saccades perceptibles, instabilité du curseur et fluidité de déplacement des fenêtres ; (4) Spécifications du fabricant : limites de la dalle, bande passante des câbles et capacités de la station d'accueil.",
+              "Démarche d'isolation progressive (Ne modifiez qu'UNE seule variable à la fois) :",
+              "Étape 1 : Documenter la CONFIGURATION DE RÉFÉRENCE (BASELINE). Notez les définitions, fréquences de rafraîchissement, pourcentages d'échelle, modes HDR et types de liaisons de chaque écran.",
+              "Étape 2 : Tester chaque écran individuellement. Désactivez les écrans secondaires dans les réglages système ou débranchez-les en toute sécurité. Testez l'écran principal à haute fréquence seul avec le [Refresh Rate Test](/tests/refresh-rate-test) et le [Motion Blur Test](/tests/motion-blur-test).",
+              "Étape 3 : Tester avec des fréquences de rafraîchissement identiques. Réactivez l'écran secondaire mais configurez temporairement tous les écrans à la même fréquence (par exemple 60 Hz). Observez si les saccades disparaissent à fréquence égale.",
+              "Étape 4 : Tester des fréquences de rafraîchissement mixtes. Rétablissez la fréquence native élevée de l'écran principal (144 Hz ou 165 Hz) tout en laissant l'écran secondaire à 60 Hz. Vérifiez si la lecture vidéo ou les animations sur l'écran secondaire perturbent la fluidité de l'écran principal.",
+              "Étape 5 : Isoler les configurations de mise à l'échelle. Testez d'abord les deux écrans à 100 % d'échelle, puis avec des facteurs d'échelle fractionnaires mixtes (ex. 125 % à côté de 100 %). Déplacez des fenêtres d'un écran à l'autre pour examiner la netteté du texte.",
+              "Étape 6 : Tester les combinaisons HDR / SDR. Lors de l'association d'un écran HDR et d'un écran SDR, comparez le comportement avec le mode HDR activé puis désactivé dans les paramètres du système d'exploitation.",
+              "Étape 7 : Tester le VRR activé puis désactivé. Si vous disposez du rafraîchissement variable (G-Sync / FreeSync), activez et désactivez le VRR dans le pilote graphique et lancez le [VRR Test](/tests/vrr-test).",
+              "Étape 8 : Comparer écran interne et écran externe sur PC portable. Testez la fluidité de la dalle intégrée, puis celle d'un écran externe relié directement au châssis sans concentrateur intermédiaire.",
+              "Étape 9 : Contourner temporairement les stations d'accueil (docks/hubs). En cas d'utilisation d'une station USB-C ou d'un boîtier MST, reliez directement l'écran à une sortie vidéo native pour écarter toute saturation de bande passante.",
+              "Étape 10 : Confronter les résultats du navigateur avec les données système. Croisez les informations affichées dans [Display Information](/tests/display-info) et [Browser Compatibility](/tools/browser-compatibility) avec les paramètres de votre système d'exploitation. N'effectuez aucune manipulation matérielle risquée et évitez les débranchements répétés et brusques. Pour approfondir, consultez le [Guide de dépannage](/knowledge-base/troubleshooting)."
             ]
           }
         ],

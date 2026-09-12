@@ -2231,16 +2231,16 @@
       "brightnessContrastDesc": "Brilho e contraste são os controles mais alterados e menos compreendidos. Entender seu comportamento digital e de hardware evita degradar seriamente a imagem.",
       "brightnessContrastItems": [
         {
-          "title": "Brilho: Luminância da Luz de Fundo",
-          "desc": "Ajusta a potência fornecida à luz de fundo LED (ou emissão de pixels OLED). Ele altera a saída de luz geral sem cortar os valores numéricos RGB da imagem. Ajuste conforme a luz do ambiente (25–50% em salas escuras). O JavaScript do navegador não mede nits (cd/m²)."
+          "title": "Brilho: Luminância da retroiluminação",
+          "desc": "Ajusta a potência elétrica fornecida à retroiluminação LED (ou emissão dos píxeis OLED). Controla a luminância geral sem alterar os valores de código RGB digitais. Ajuste sempre o brilho à luz ambiente (níveis mais baixos e confortáveis em salas escuras, superiores com luz natural). O JavaScript do navegador não consegue medir luminância ótica fisicamente."
         },
         {
-          "title": "Contraste: Mapeamento Digital do Ponto Branco",
-          "desc": "O contraste ajusta o ganho do sinal digital no scaler; NÃO altera a taxa de contraste físico do painel (IPS ~1000:1, VA ~3000:1, OLED infinito). Aumentá-lo além do padrão queima os brancos para branco puro 255 (clipping); reduzi-lo demais deixa a imagem cinzenta e sem vida."
+          "title": "Contraste: Mapeamento digital do ponto branco",
+          "desc": "Controla o dimensionamento digital dos valores RGB recebidos. Em ligações digitais (DisplayPort e HDMI), aumentar o contraste acima do padrão de fábrica força o corte de altas luzes, fundindo os tons claros (IRE 240–255) numa mancha branca uniforme sem detalhe."
         },
         {
-          "title": "Linha de Base e Verificação",
-          "desc": "Mantenha o contraste no valor padrão de fábrica (geralmente 50 ou 70). Verifique a ausência de corte de brancos e perda de sombras com os testes de Escala de Cinza e Quase Preto do Screen Tester."
+          "title": "Base de teste e verificação",
+          "desc": "Mantenha o contraste no valor de fábrica original (habitualmente 50 ou 70 conforme o modelo). Utilize o Gradient Banding Test e o Teste de Brancos para verificar gradientes suaves sem cortes de destaques."
         }
       ],
       "overdriveTitle": "3. Overdrive / Configurações de Tempo de Resposta",
@@ -2307,20 +2307,20 @@
       "hdrDesc": "O High Dynamic Range (HDR) expande contraste e volume de cores. No entanto, ativar o 'HDR' no menu do monitor costuma gerar grandes equívocos entre os usuários.",
       "hdrItems": [
         {
-          "title": "Suporte a Sinal vs. Capacidade Real da Tela",
-          "desc": "A opção 'HDR: Ligado' no OSD apenas habilita o scaler a interpretar um sinal HDR10. Isso não confere magicamente 1000 nits de brilho de pico nem zonas de escurecimento local ao painel."
+          "title": "Suporte de sinalização vs. capacidade real do painel",
+          "desc": "A opção 'HDR: Ligado' no OSD apenas autoriza o processador do ecrã a receber o sinal HDR10/PQ emitido pelo sistema. NÃO confere magicamente ao hardware a elevada luminância de pico, ampla gama de cores ou contraste localizado necessários para uma apresentação HDR autêntica."
         },
         {
-          "title": "A Armadilha dos Monitores 'HDR400' de Entrada",
-          "desc": "Em telas Edge-Lit comuns com brilho modesto (~350 nits), ligar o HDR costuma piorar a imagem: os pretos viram cinza esbranquiçado, o desktop SDR fica opaco e o OSD bloqueia os controles."
+          "title": "A armadilha do HDR básico Edge-Lit",
+          "desc": "Em ecrãs LCD edge-lit comuns com atenuação global e brilho modesto, ativar o HDR costuma degradar a imagem: os pretos tornam-se cinzentos, o conteúdo SDR perde contraste e o OSD bloqueia os controlos de cor e brilho."
         },
         {
-          "title": "Quando o HDR Realmente Vale a Pena",
-          "desc": "O HDR se destaca de verdade em telas com controle de luz por pixel (OLED) ou Mini-LED com centenas de zonas de local dimming, onde pontos de luz intensa convivem com pretos profundos."
+          "title": "Quando o HDR oferece verdadeiro valor",
+          "desc": "O HDR proporciona impacto visual genuíno principalmente em ecrãs com controlo de emissão por píxel (OLED / QD-OLED) ou retroiluminação FALD/Mini-LED com centenas de zonas, onde brilhos intensos coexistem com pretos puros."
         },
         {
-          "title": "Avaliação Visual no Navegador",
-          "desc": "Use o Teste HDR do Screen Tester para verificar se seu monitor reproduz gradações em altas luzes ou se queima os tons brilhantes transformando-os em blocos brancos sólidos."
+          "title": "Verificação visual no navegador",
+          "desc": "Abra o HDR Test do Screen Tester para verificar se o navegador e o sistema operativo processam a saída HDR em tela sem cortes de realces nem distorção no espaço de cor SDR."
         }
       ],
       "gammaTitle": "7. Configurações de Gama: Curvas e Tons Médios",
@@ -2471,19 +2471,16 @@
           "desc": "Faça uma redefinição ao desembalar um monitor novo, antes de testar uma tela usada, ou se a imagem apresentar desvios de cor estranhos e menus bloqueados."
         }
       ],
-      "baselineTitle": "15. Linha de Base Recomendada: O Ponto de Partida Ideal",
-      "baselineDesc": "Cada modelo e ambiente é único, mas adotar este ponto de partida conservador e metódico garante cores equilibradas e movimentos limpos antes de fazer ajustes finos:",
+      "baselineTitle": "15. Procedimento prático de teste controlado",
+      "baselineDesc": "Ao calibrar as opções OSD do monitor, siga este protocolo rigoroso de 7 passos. Nota: Os padrões visuais do Screen Tester auxiliam na observação de artefactos percetivos sob condições controladas; não medem nem certificam registos eletrónicos nem a luminância ótica fisicamente.",
       "baselineSteps": [
-        "Restaurar para os Padrões de Fábrica: Faça um reset ou selecione o perfil 'Padrão' ou 'Usuário' para desativar filtros de pós-processamento desnecessários.",
-        "Definir Resolução Nativa e Frequência Máxima Estável: No sistema operacional e nas configurações da GPU, confirme a resolução física e a maior taxa estável nativa.",
-        "Ajustar o Brilho ao Ambiente: Configure o brilho entre 25% e 40% em locais escuros ou 50–70% em locais iluminados. Evite o uso constante em 100%.",
-        "Manter o Contraste no Valor Padrão: Deixe o contraste no padrão de fábrica (geralmente 50 ou 70) para evitar queimar os brancos e estragar os degradês.",
-        "Ajustar Overdrive no Nível Intermediário: Escolha 'Fast', 'Normal' ou Nível 2–3. Evite 'Extreme' para não sofrer com os halos do ghosting inverso.",
-        "Manter MBR / Strobing Desligado: Deixe a luz pulsada desligada no dia a dia; use apenas em partidas de e-sports de ritmo acelerado se tolerar a perda de brilho.",
-        "Ativar VRR / Adaptive Sync: Ligue o VRR tanto no OSD quanto no driver gráfico para eliminar o tearing com latência mínima de entrada.",
-        "Manter a Nitidez Neutra: Verifique se a nitidez está na posição neutra (50% ou 0 conforme a marca) para não poluir os textos com bordas brancas artificiais.",
-        "Manter o Black Equalizer Neutro: Deixe o Shadow Boost em 0 ou padrão para preservar o contraste natural e a intenção dos diretores e criadores.",
-        "Anotar as Configurações Aprovadas: Anote os valores validados ou salve-os em um perfil de usuário do monitor para restaurá-los com facilidade."
+        "1. Registar o estado atual do OSD: Anote todos os perfis de imagem, ganhos de cor e opções especiais antes de qualquer alteração.",
+        "2. Estabelecer uma base neutra: Configure a resolução nativa, taxa de atualização nativa e um perfil de imagem padrão com brilho confortável.",
+        "3. Alterar apenas UMA opção de cada vez: Modifique um único parâmetro num só nível ou patamar para isolar com exatidão o seu impacto visual.",
+        "4. Executar novamente o teste Screen Tester correspondente: Abra o padrão de teste concebido para a propriedade visual pretendida.",
+        "5. Comparar visualmente antes e depois: Sob a mesma iluminação ambiente, avalie se houve alteração no rasto de movimento, halos de overshoot ou equilíbrio de cor.",
+        "6. Anotar a alteração e o efeito observado: Registe se a modificação melhorou a nitidez, introduziu artefactos visuais ou provocou degradação.",
+        "7. Restaurar as definições preferidas: Conserve o ajuste vantajoso ou reponha a base anterior se tiverem surgido anomalias visuais."
       ],
       "testingMatrixTitle": "16. Como Testar as Mudanças de Forma Metódica",
       "testingMatrixDesc": "Ajustar o monitor é um processo metódico: altere apenas uma configuração do OSD por vez e execute em seguida o teste visual correspondente para avaliar o resultado real.",
@@ -2492,64 +2489,70 @@
       "tableHeaderGoal": "O Que Observar e Avaliar",
       "testingMatrixRows": [
         {
-          "setting": "Overdrive / Tempo de Resposta",
-          "toolName": "Teste de Ghosting",
+          "setting": "Overdrive / Tempo de resposta",
+          "toolName": "Ghosting Test",
           "toolHref": "/tests/ghosting-test",
-          "goal": "Observar rastros borrados (muito fraco) vs. halos brilhantes de overshoot (muito forte)."
+          "goal": "Verificar ausência de arrasto (demasiado baixo) face a halos luminosos de overshoot (demasiado alto)."
         },
         {
-          "setting": "Redução de Desfoque (MBR)",
-          "toolName": "Desfoque de Movimento",
+          "setting": "Motion Blur Reduction (MBR)",
+          "toolName": "Motion Blur Test",
           "toolHref": "/tests/motion-blur-test",
-          "goal": "Avaliar o ganho de nitidez em movimento frente à cintilação e à queda de brilho."
+          "goal": "Avaliar clareza de movimento perante cansaço visual por cintilação e perda de luminosidade."
         },
         {
           "setting": "Adaptive Sync / VRR",
-          "toolName": "Teste VRR",
+          "toolName": "VRR Test",
           "toolHref": "/tests/vrr-test",
-          "goal": "Conferir a fluidez dos movimentos e a ausência total de cortes horizontais (tearing)."
+          "goal": "Garantir cadência de animação fluida e ausência de linhas horizontais de corte (tearing)."
         },
         {
-          "setting": "Modo HDR",
-          "toolName": "Teste HDR",
+          "setting": "Ativação do Modo HDR",
+          "toolName": "HDR Test",
           "toolHref": "/tests/hdr-test",
-          "goal": "Verificar a suavidade dos tons claros e checar se o contraste do desktop SDR não foi prejudicado."
+          "goal": "Verificar a gradação de realces claros e assegurar a preservação do contraste do ambiente de trabalho SDR."
         },
         {
-          "setting": "Taxa de Atualização / Overclock",
-          "toolName": "Teste de Taxa de Atualização",
+          "setting": "Taxa de atualização / Overclock",
+          "toolName": "Refresh Rate Test",
           "toolHref": "/tests/refresh-rate-test",
-          "goal": "Confirmar a taxa de entrega de quadros e verificar se não há engasgos ou perda de frames."
+          "goal": "Confirmar estabilidade da sincronização de fotogramas e excluir perdas ou saltos de quadros."
         },
         {
-          "setting": "Ajuste de Nitidez",
-          "toolName": "Teste de Clareza de Texto",
+          "setting": "Ajuste de Nitidez (Sharpness)",
+          "toolName": "Text Clarity Test",
           "toolHref": "/tests/text-clarity-test",
-          "goal": "Garantir bordas de letras bem definidas sem halos brancos ao redor nem borrões."
+          "goal": "Assegurar contornos de texto nítidos sem rebordos brancos artificiais nem perda de definição."
         },
         {
           "setting": "Gama e Contraste",
-          "toolName": "Bandas em Degradê",
+          "toolName": "Gradient Banding Test",
           "toolHref": "/tests/gradient-banding-test",
-          "goal": "Checar transições suaves nos 256 tons de cinza sem degraus ou faixas marcadas."
+          "goal": "Verificar transições suaves em 256 níveis de cinzento sem faixas marcadas de descontinuidade."
         },
         {
           "setting": "Black Equalizer / Shadow Boost",
-          "toolName": "Teste de Quase Preto",
+          "toolName": "Near-Black Test",
           "toolHref": "/tests/near-black-test",
-          "goal": "Distinguir tons escuros sutis sem transformar o preto absoluto em um cinza leitoso."
+          "goal": "Assegurar detalhe legível nas sombras escuras sem transformar o preto genuíno em cinzento leitoso."
         },
         {
-          "setting": "Temperatura de Cor e RGB",
-          "toolName": "Teste de Uniformidade",
+          "setting": "Temperatura de cor e ganhos RGB",
+          "toolName": "Uniformity Test",
           "toolHref": "/tests/uniformity-test",
-          "goal": "Inspecionar um fundo branco para garantir um branco neutro sem manchas de cor."
+          "goal": "Inspecionar um ecrã branco total para confirmar um equilíbrio neutro sem dominantes cromáticas."
         },
         {
-          "setting": "Proporção de Tela e Escala",
-          "toolName": "Escala e Proporção",
+          "setting": "Atenuação Local (Local Dimming)",
+          "toolName": "Uniformity Test",
+          "toolHref": "/tests/uniformity-test",
+          "goal": "Observar halos de blooming e transições luminosas em redor de elementos claros sobre fundos escuros."
+        },
+        {
+          "setting": "Proporção de aspeto e escalamento",
+          "toolName": "Scaling & Aspect Ratio Test",
           "toolHref": "/tests/scaling-aspect-test",
-          "goal": "Verificar se resoluções não nativas mantêm proporções geométricas perfeitas e pixels nítidos."
+          "goal": "Assegurar que resoluções não nativas conservam as proporções e geometria geométrica originais."
         }
       ],
       "mistakesTitle": "17. Erros Comuns no OSD que Devem Ser Evitados",
@@ -4404,18 +4407,21 @@
             ]
           },
           {
-            "title": "Comportamento do ecrã do portátil com bateria vs. corrente: Frequências, energia e dimensionamento",
+            "title": "Protocolo controlado de isolamento multimonitor: Fluxo de diagnóstico passo a passo",
             "content": [
-              "Utilizar um computador portátil alimentado por bateria (CC) altera profundamente os limites térmicos e energéticos face à ligação à rede elétrica (CA). Para maximizar a autonomia, o sistema operativo e os controladores da CPU e da GPU acionam mecanismos de poupança dinâmica que afetam de forma percetível a renderização do ecrã e a fluidez dos movimentos.",
-              "Em modo de bateria, os planos do sistema operativo (como Melhor eficiência energética, Equilibrado ou Melhor desempenho no Windows; modo de baixo consumo no macOS; perfis energéticos no Linux) limitam tarefas secundárias. As placas gráficas reduzem as frequências do núcleo e da memória (P-states), enquanto o barramento PCIe entra em modos de poupança ASPM (L0s/L1) para conter o consumo, o que diminui a largura de banda para os controladores de vídeo.",
-              "Paralelamente, os ecrãs modernos empregam taxas de atualização dinâmicas. Com a Taxa de Atualização Dinâmica (DRR) do Windows 11 ou o firmware do fabricante, painéis rápidos (120Hz, 144Hz, 240Hz) recuam frequentemente para 60Hz ou acionam o autorrefresco de painel (PSR) quando inativos na bateria. Soluções como CABC, Intel DPST ou AMD Vari-Bright modulam ainda a retroiluminação e a curva de gama com base no conteúdo exibido.",
-              "Contudo, a utilização da bateria NÃO restringe a taxa de atualização de forma obrigatória em todos os modelos. Computadores de jogos com comutadores MUX conseguem sustentar frequências elevadas com bateria à custa de um consumo acelerado, ao passo que os modelos ultraportáteis priorizam a duração da carga. Distinguir se uma quebra de desempenho é intencional ou um estrangulamento requer testes comparativos estruturados."
-            ],
-            "bullets": [
-              "A bateria aciona estados de poupança na CPU, GPU e ligações PCIe ASPM para preservar energia.",
-              "A taxa dinâmica (DRR) e o autorrefresco (PSR) podem baixar o painel para 60Hz na bateria.",
-              "Tecnologias adaptativas (CABC, Intel DPST, AMD Vari-Bright) modulam contraste e brilho dinamicamente.",
-              "Os perfis de bateria não limitam os ecrãs de forma universal; depende das configurações OEM e do SO."
+              "Ao diagnosticar quebras de movimento, cadência irregular de fotogramas ou anomalias de escala num ambiente com múltiplos monitores, realizar ajustes aleatórios gera confusão entre variáveis. Siga este procedimento metódico e seguro para isolar a camada responsável de forma conclusiva.",
+              "Arquitetura de diagnóstico e níveis de evidência: Distinga claramente quatro níveis de observação: (1) Reportado pelo navegador: cadência de fotogramas rAF, devicePixelRatio e dimensões do viewport (refletem a execução do software e não o varrimento físico do painel); (2) Reportado pelo SO: taxa de atualização configurada, percentagem de escala e estado HDR comunicados pelo sistema operativo; (3) Observado pelo utilizador: quebras de fluidez percetíveis, saltos do cursor e arrastamento de janelas; (4) Especificação do fabricante: limites do painel, largura de banda das portas e capacidade da doca.",
+              "Procedimento disciplinado de isolamento (Altere apenas UMA variável de cada vez):",
+              "Fase 1: Documentação da BASELINE. Antes de quaisquer alterações, anote as resoluções, taxas de atualização, escalas de visualização, estados de HDR e ligações de cabo de cada ecrã.",
+              "Fase 2: Testar cada ecrã de forma independente. Desative os monitores secundários nas definições do sistema ou desligue os cabos com segurança. Teste o monitor principal de alta frequência isoladamente com o [Refresh Rate Test](/tests/refresh-rate-test) e o [Motion Blur Test](/tests/motion-blur-test).",
+              "Fase 3: Testar taxas de atualização idênticas. Reative o ecrã secundário mas configure temporariamente todos os ecrãs com a mesma taxa de atualização (por exemplo, ambos a 60 Hz). Avalie se a instabilidade desaparece com frequências emparelhadas.",
+              "Fase 4: Testar taxas de atualização mistas. Restaure o monitor principal para a sua taxa alta nativa (144 Hz ou 165 Hz) mantendo o secundário a 60 Hz. Verifique se a reprodução de vídeo ou janelas ativas no ecrã secundário provocam quebras no ecrã principal.",
+              "Fase 5: Testar configurações de escala. Teste ambos os monitores a 100% e posteriormente com escalas fracionárias mistas (ex.: 125% ao lado de 100%). Arraste janelas entre ecrãs para avaliar a nitidez do texto e a fluidez do compositor.",
+              "Fase 6: Testar combinações de HDR / SDR. Se combinar um ecrã HDR com um SDR, compare o comportamento com HDR ativado e desativado nas definições do sistema para avaliar o mapeamento de tons e a luminosidade do ambiente de trabalho.",
+              "Fase 7: Testar VRR Ativado vs. Desativado. Caso utilize taxa de atualização variável (G-Sync / FreeSync), ative e desative o VRR no painel da GPU e execute o [VRR Test](/tests/vrr-test).",
+              "Fase 8: Testar ecrã interno vs. saída externa em portáteis. Em computadores portáteis, teste o ecrã integrado isoladamente e compare-o com um monitor externo ligado diretamente ao chassis sem hubs intermédios.",
+              "Fase 9: Testar sem docas nem adaptadores intermédios. Se utilizar uma doca USB-C ou hub MST, ligue o monitor diretamente a uma porta de vídeo nativa para excluir saturação da largura de banda do controlador da doca.",
+              "Fase 10: Comparar observações do navegador com a configuração do SO. Cruze os dados apresentados em [Display Information](/tests/display-info) e [Browser Compatibility](/tools/browser-compatibility) com as definições do sistema operativo. Não efetue manipulações arriscadas de hardware nem desligue cabos de forma brusca e repetida. Para assistência adicional, consulte o [Guia de Resolução de Problemas](/knowledge-base/troubleshooting)."
             ]
           }
         ],

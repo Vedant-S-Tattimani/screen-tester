@@ -2231,16 +2231,16 @@
       "brightnessContrastDesc": "Helligkeit und Kontrast werden am häufigsten verstellt, aber oft missverstanden. Das Verständnis ihrer Hardware- und Digitalsignalebenen verhindert Bildverfälschungen.",
       "brightnessContrastItems": [
         {
-          "title": "Helligkeit: Hintergrundbeleuchtung",
-          "desc": "Steuert die Stromzufuhr der LED-Hintergrundbeleuchtung (oder OLED-Pixel-Emission) und damit die physische Leuchtkraft, ohne digitale RGB-Werte zu beschneiden. Passen Sie sie an das Umgebungslicht an (25–50 % in dunklen Räumen). Browser-JavaScript kann Nits (cd/m²) nicht messen."
+          "title": "Helligkeit: Hintergrundbeleuchtungs-Luminanz",
+          "desc": "Regelt die elektrische Leistungsabgabe an die LED-Hintergrundbeleuchtung (oder OLED-Pixel-Emission). Steuert die Gesamthelligkeit des Displays, ohne digitale RGB-Werte zu verändern. Passen Sie die Helligkeit an das Umgebungslicht an (angenehm niedrigere Werte in dunklen Räumen, höher bei Tageslicht). Browser-JavaScript kann optische Leuchtdichte nicht physikalisch messen."
         },
         {
-          "title": "Kontrast: Digitale Weißpunkt-Skalierung",
-          "desc": "Kontrast regelt die digitale Signalverstärkung im Scaler – er verändert NICHT das physische Panel-Kontrastverhältnis (IPS ~1000:1, VA ~3000:1, OLED unendlich). Zu hoher Kontrast beschneidet helle Nuancen zu reinem Weiß (Clipping); zu niedriger Kontrast lässt das Bild flau und grau wirken."
+          "title": "Kontrast: Digitales Weißpunkt-Mapping",
+          "desc": "Steuert die digitale Skalierung der Eingangs-RGB-Werte. Bei digitalen Signalen (DisplayPort/HDMI) führt ein Kontrast über dem Standardwert zu digitalem Highlight-Clipping, wodurch helle Nuancen (IRE 240–255) zu einer strukturlosen Weißfläche verschmelzen."
         },
         {
-          "title": "Standardwerte & Überprüfung",
-          "desc": "Belassen Sie Kontrast auf dem Werksstandard (meist 50 oder 70). Prüfen Sie Weißwert-Clipping und Schattendetails mit den Screen Tester Graustufen- und Nahinfraschwarz-Tests."
+          "title": "Test-Baseline & Verifikation",
+          "desc": "Belassen Sie den Kontrast auf dem Werksstandard (modellabhängig meist 50 oder 70). Nutzen Sie den Gradient Banding Test und Weißwert-Test, um zu prüfen, ob Graustufen ohne abgeschnittene Weißtöne sauber abgestuft bleiben."
         }
       ],
       "overdriveTitle": "3. Overdrive / Reaktionszeit-Einstellungen",
@@ -2307,20 +2307,20 @@
       "hdrDesc": "High Dynamic Range (HDR) erweitert Dynamik und Farbraum. Ein 'HDR: Ein'-Schalter im Monitor-Menü führt jedoch häufig zu falschen Erwartungen.",
       "hdrItems": [
         {
-          "title": "Signalkompatibilität vs. echte Panel-Fähigkeit",
-          "desc": "Ein OSD-Schalter erlaubt dem Scaler lediglich die Verarbeitung eines HDR10-Signals. Er verleiht einem einfachen Display jedoch weder 1000 Nits Spitzenhelligkeit noch echtes Local Dimming."
+          "title": "Signalisierungsunterstützung vs. Panel-Fähigkeit",
+          "desc": "Die OSD-Option 'HDR: Ein' erlaubt dem Monitor-Scaler lediglich, ein HDR10/PQ-Signal des Betriebssystems zu empfangen. Sie verleiht dem physischen Panel jedoch nicht automatisch die hohe Spitzenhelligkeit, den breiten Farbraum oder den lokalen Kontrast echter HDR-Darstellung."
         },
         {
-          "title": "Die 'HDR400'-Falle bei Edge-Lit-Displays",
-          "desc": "Auf günstigen Edge-Lit-Monitoren verschlechtert HDR oft das Bild: Schwarzwerte werden zu milchigem Grau aufgehellt, SDR-Inhalte wirken ausgewaschen und OSD-Regler werden gesperrt."
+          "title": "Die Falle einfacher Edge-Lit-HDR-Displays",
+          "desc": "Auf herkömmlichen Edge-Lit-LCDs mit globaler Dimmung und moderater Spitzenhelligkeit verschlechtert HDR häufig das Bild: Schwarztöne werden zu milchigem Grau aufgehellt, SDR-Desktopinhalte wirken blass und OSD-Farboptionen werden oft gesperrt."
         },
         {
-          "title": "Wann HDR wirklich Sinn macht",
-          "desc": "HDR lohnt sich primär auf Displays mit pixelgenauer Helligkeitssteuerung (OLED) oder hunderten Zonen (Mini-LED), wo Spitzenglanzlichter neben echtem Tiefschwarz strahlen können."
+          "title": "Wann HDR echten Mehrwert bietet",
+          "desc": "HDR entfaltet seinen visuellen Nutzen vor allem auf Displays mit pixelgenauer Helligkeitssteuerung (OLED / QD-OLED) oder FALD/Mini-LED-Hintergrundbeleuchtung mit Hunderten Zonen, wo helle Glanzlichter neben echtem Tiefschwarz dargestellt werden können."
         },
         {
           "title": "Visuelle Prüfung im Browser",
-          "desc": "Prüfen Sie mit dem Screen Tester HDR-Test, ob Ihr Monitor feine Helligkeitsabstufungen in Spitzenglanzlichtern differenziert oder zu einheitlichen weißen Flächen überstrahlt."
+          "desc": "Öffnen Sie den Screen Tester HDR Test, um zu überprüfen, ob Browser und Betriebssystem die HDR-Canvas-Ausgabe ohne Farbverschiebungen oder Highlight-Clipping verarbeiten."
         }
       ],
       "gammaTitle": "7. Gamma-Einstellungen: Kurven und Mitteltöne",
@@ -2471,19 +2471,16 @@
           "desc": "Führen Sie einen Reset durch, wenn Sie einen Monitor neu auspacken, ein Gebrauchtgerät prüfen oder unerklärliche Farbverfälschungen und gesperrte Menüs auftreten."
         }
       ],
-      "baselineTitle": "15. Praxiserprobte Baseline: Die ideale Ausgangsbasis",
-      "baselineDesc": "Jedes Monitormodell ist einzigartig. Mit dieser konservativen, methodischen Ausgangsbasis stellen Sie eine ausgewogene Bildqualität sicher, bevor Sie feine Nuancen justieren:",
+      "baselineTitle": "15. Praktisches kontrolliertes Testverfahren",
+      "baselineDesc": "Befolgen Sie bei der OSD-Optimierung dieses disziplinierte 7-Stufen-Protokoll. Hinweis: Browserbasierte Testmuster dienen der visuellen Beobachtung wahrnehmbarer Artefakte unter kontrollierten Bedingungen; sie messen oder zertifizieren keine internen Hardwareregister oder optische Leuchtdichten.",
       "baselineSteps": [
-        "Auf Standard zurücksetzen: Führen Sie einen Werksreset durch oder wählen Sie das Profil 'Standard' / 'Benutzer', um dynamische Bildverbieger abzuschalten.",
-        "Native Auflösung & maximale native Hz einstellen: Wählen Sie im Betriebssystem die native Panelauflösung und die höchste stabile Bildwiederholrate.",
-        "Helligkeit an den Raum anpassen: Stellen Sie Helligkeit auf 25–40 % bei gedämpftem Licht oder 50–70 % bei Tageslicht ein. 100 % blendet meist unnötig.",
-        "Kontrast auf Werksstandard belassen: Belassen Sie Kontrast auf Standard (meist 50 oder 70), um Weißwert-Clipping und stufige Farbverläufe zu vermeiden.",
-        "Overdrive auf die mittlere Stufe stellen: Wählen Sie 'Fast', 'Normal' oder Stufe 2–3. Meiden Sie 'Extreme' / 'Fastest', um unschöne Lichthöfe zu verhindern.",
-        "MBR / Backlight Strobing deaktiviert lassen: Für den Alltag ausgeschaltet lassen; nur gezielt bei schnellen E-Sport-Matches aktivieren, falls der Helligkeitsverlust toleriert wird.",
-        "VRR / Adaptive Sync aktivieren: Schalten Sie VRR im Monitor-OSD und im GPU-Treiber ein, um Bildrisse bei minimalem Input-Lag zu unterbinden.",
-        "Schärfe neutral halten: Prüfen Sie, dass der Schärferegler auf neutralem Bypass steht (meist 50 % oder 0), um weiße Kantenkränze um Text zu vermeiden.",
-        "Black Equalizer neutral belassen: Stellen Sie Shadow Boost / Black Equalizer auf 0 oder Standard, um echten Kontrast und künstlerische Bildtiefe zu bewahren.",
-        "Einstellungen notieren oder speichern: Halten Sie Ihre geprüften Werte fest oder sichern Sie sie in einem OSD-Benutzerprofil."
+        "1. Aktuellen OSD-Status dokumentieren: Halten Sie alle vorhandenen Bildprofile, Farbkanäle und Gaming-Optionen vor Änderungen schriftlich fest.",
+        "2. Ausgangsbasis herstellen: Wählen Sie native Auflösung, native Bildwiederholrate und ein neutrales Standard-Bildprofil mit angenehmer Helligkeit.",
+        "3. Nur EINE Einstellung gleichzeitig ändern: Passen Sie jeweils nur einen einzelnen Parameter um eine Stufe an, um dessen Auswirkung exakt zu isolieren.",
+        "4. Entsprechenden Screen Tester Test wiederholen: Öffnen Sie das für diesen Bildparameter vorgesehene Testmuster.",
+        "5. Visuell vorher und nachher vergleichen: Achten Sie unter identischen Lichtverhältnissen auf Veränderungen bei Schlieren, Überschwingern oder Farbstichen.",
+        "6. Einstellung und Beobachtung festhalten: Notieren Sie, ob die Änderung Schärfe und Klarheit verbesserte, Artefakte erzeugte oder Nachteile brachte.",
+        "7. Bevorzugte Werte dauerhaft übernehmen: Behalten Sie die optimale Einstellung bei oder setzen Sie den Wert zurück, falls Bildfehler auftraten."
       ],
       "testingMatrixTitle": "16. Einstellungen methodisch testen",
       "testingMatrixDesc": "Kalibrierung ist ein schrittweiser Prozess. Ändern Sie immer nur genau eine OSD-Einstellung und überprüfen Sie das Ergebnis sofort mit dem passenden visuellen Test.",
@@ -2493,63 +2490,69 @@
       "testingMatrixRows": [
         {
           "setting": "Overdrive / Reaktionszeit",
-          "toolName": "Ghosting-Test",
+          "toolName": "Ghosting Test",
           "toolHref": "/tests/ghosting-test",
-          "goal": "Prüfen auf träge Nachziehschlieren (zu niedrig) vs. leuchtende Overshoot-Coronas (zu hoch)."
+          "goal": "Prüfen auf Nachzieheffekte (zu niedrig) vs. leuchtende Überschwing-Halos (zu hoch)."
         },
         {
-          "setting": "Bewegungsunschärfe-Reduzierung (MBR)",
-          "toolName": "Bewegungsunschärfe-Test",
+          "setting": "Motion Blur Reduction (MBR)",
+          "toolName": "Motion Blur Test",
           "toolHref": "/tests/motion-blur-test",
-          "goal": "Bewertung von Bewegungsschärfe gegenüber Flimmern und Helligkeitsverlust."
+          "goal": "Bewertung der Bewegungsschärfe gegenüber Flimmerbelastung und Helligkeitsverlust."
         },
         {
           "setting": "Adaptive Sync / VRR",
-          "toolName": "VRR-Test",
+          "toolName": "VRR Test",
           "toolHref": "/tests/vrr-test",
-          "goal": "Beobachtung flüssiger Bildübergänge und Ausbleiben horizontaler Risslinien."
+          "goal": "Prüfen auf ruckelfreie Bildfolge und Abwesenheit horizontaler Tearing-Linien."
         },
         {
-          "setting": "HDR-Modus Schalter",
-          "toolName": "HDR-Test",
+          "setting": "HDR-Modus umschalten",
+          "toolName": "HDR Test",
           "toolHref": "/tests/hdr-test",
-          "goal": "Prüfen auf saubere Helligkeitsverläufe in Glanzlichtern und Erhalt des SDR-Desktop-Kontrasts."
+          "goal": "Überprüfung von Helligkeitsstufen und Erhalt des Kontrasts im normalen Desktop-Betrieb."
         },
         {
           "setting": "Bildwiederholrate / Overclock",
-          "toolName": "Bildwiederholraten-Test",
+          "toolName": "Refresh Rate Test",
           "toolHref": "/tests/refresh-rate-test",
-          "goal": "Überprüfung der Frame-Ausgabe und Test auf Ruckler oder ausgelassene Frames."
+          "goal": "Bestätigung stabiler Bildtaktung und Ausschluss ausgelassener Frames."
         },
         {
-          "setting": "Schärfe-Justierung",
-          "toolName": "Text-Clarity-Test",
+          "setting": "Schärfe-Regler",
+          "toolName": "Text Clarity Test",
           "toolHref": "/tests/text-clarity-test",
-          "goal": "Sicherstellen klar lesbarer Schriftkanten ohne weiße Ringing-Lichthöfe oder Unschärfe."
+          "goal": "Lesbarkeit von Textkanten ohne künstliche weiße Doppelkonturen oder Weichzeichnung sicherstellen."
         },
         {
           "setting": "Gamma & Kontrast",
-          "toolName": "Gradient-Banding-Test",
+          "toolName": "Gradient Banding Test",
           "toolHref": "/tests/gradient-banding-test",
-          "goal": "Kontrolle auf stufenlose, weiche Tonwertübergänge über 256 Graustufen ohne Streifenbildung."
+          "goal": "Kontrolle auf stufenlose Verläufe über 256 Graustufen ohne harte Farbstreifen."
         },
         {
           "setting": "Black Equalizer / Shadow Boost",
-          "toolName": "Nahinfraschwarz-Test",
+          "toolName": "Near-Black Test",
           "toolHref": "/tests/near-black-test",
-          "goal": "Differenzierung dunkler Nuancen ohne Aufhellung von echtem Tiefschwarz zu Nebelgrau."
+          "goal": "Differenzierung dunkler Schattenbereiche gewährleisten, ohne reines Schwarz in Grau aufzuhellen."
         },
         {
-          "setting": "Farbtemperatur & RGB-Gains",
-          "toolName": "Uniformitäts-Test",
+          "setting": "Farbtemperatur & RGB-Werte",
+          "toolName": "Uniformity Test",
           "toolHref": "/tests/uniformity-test",
-          "goal": "Prüfung einer weißen Vollfläche auf neutralen Weißabgleich ohne störende Farbstiche."
+          "goal": "Vollflächiges Weißbild auf neutralen Weißabgleich ohne störende Farbstiche überprüfen."
+        },
+        {
+          "setting": "Local Dimming",
+          "toolName": "Uniformity Test",
+          "toolHref": "/tests/uniformity-test",
+          "goal": "Zonen-Blooming (Lichthöfe) und Lichtaustritt um bewegte helle Elemente auf dunklem Grund prüfen."
         },
         {
           "setting": "Seitenverhältnis & Skalierung",
-          "toolName": "Skalierungs- & Seitenverhältnis-Test",
+          "toolName": "Scaling & Aspect Ratio Test",
           "toolHref": "/tests/scaling-aspect-test",
-          "goal": "Sicherstellen unverzerrter Proportionen und exakter Pixelgrenzen bei Nicht-Nativauflösungen."
+          "goal": "Sicherstellen, dass nicht-native Auflösungen korrekte Bildproportionen behalten."
         }
       ],
       "mistakesTitle": "17. Häufige OSD-Fehler vermeiden",
@@ -4404,18 +4407,21 @@
             ]
           },
           {
-            "title": "Laptop-Displayverhalten im Akku- vs. Netzbetrieb: Taktraten, Spannungen und Skalierung",
+            "title": "Kontrolliertes Multi-Monitor-Isolationsprotokoll: Schrittweise Fehlerdiagnose",
             "content": [
-              "Der Betrieb eines Laptops im Akkubetrieb verändert die thermischen und energetischen Rahmenbedingungen gegenüber dem Netzbetrieb grundlegend. Um die Akkulaufzeit zu maximieren, aktivieren Betriebssystem, Prozessor und Grafiktreiber dynamische Drosselungsmechanismen, die die Bildwiedergabe und Bewegungsflüssigkeit spürbar beeinflussen können.",
-              "Im Akkubetrieb reduzieren Betriebssysteme (wie Windows-Energiemodi: Beste Energieeffizienz, Ausbalanciert, Beste Leistung; macOS-Stromsparmodus; Linux-Energieprofile) Hintergrundaktivitäten. Grafikkarten drosseln Kern- und Speichertakte (P-States), während der PCIe-Bus in Stromsparmodi (ASPM L0s/L1) wechselt, wodurch die Übertragungsbandbreite zwischen GPU und Display-Controllern sinkt.",
-              "Gleichzeitig greifen moderne Panels auf dynamische Bildwiederholraten zurück. Unter Windows 11 Dynamic Refresh Rate (DRR) oder herstellerspezifischer Firmware schalten High-Refresh-Panels (120Hz, 144Hz, 240Hz) im Leerlauf oder bei Akkubetrieb oft auf 60Hz zurück oder nutzen Panel Self-Refresh (PSR). Technologien wie Content-Adaptive Brightness Control (CABC), Intel Display Power Saving Technology (DPST) oder AMD Vari-Bright modulieren zudem Helligkeit und Gamma dynamisch anhand der Bildinhalte.",
-              "Der Akkubetrieb führt jedoch nicht auf jedem Laptop zwingend zu reduzierten Bildwiederholraten. Leistungsstarke Gaming-Laptops mit MUX-Schaltern halten oft auch im Akkubetrieb die volle Bildwiederholrate auf Kosten rascher Entladung aufrecht, während Ultrabooks maximale Effizienz priorisieren. Ob ein beobachtetes Verhalten gewollt oder ein Problem ist, lässt sich durch systematische Tests ermitteln."
-            ],
-            "bullets": [
-              "Akkubetrieb aktiviert konservative CPU-, GPU- und PCIe-ASPM-Energiesparzustände.",
-              "Dynamic Refresh Rate (DRR) und Panel Self-Refresh (PSR) können die Bildwiederholrate auf 60Hz senken.",
-              "Adaptive Helligkeitsfunktionen (CABC, Intel DPST, AMD Vari-Bright) verändern Kontrast und Hintergrundlicht dynamisch.",
-              "Akkumodi drosseln Displays nicht universell; das Verhalten variiert je nach Hersteller- und OS-Konfiguration."
+              "Bei der Behebung von Ruckeln, ungleichmäßigem Frame-Pacing oder Skalierungsfehlern in Multi-Monitor-Umgebungen führen zufällige Änderungen zu unübersichtlichen Wechselwirkungen. Befolgen Sie dieses disziplinierte, zerstörungsfreie Isolationsverfahren, um die verantwortliche Schicht präzise einzugrenzen.",
+              "Diagnostische Schichten & Nachweisebenen: Unterscheiden Sie stets vier Ebenen: (1) Vom Browser gemeldet: rAF-Frame-Taktung, devicePixelRatio und Viewport-Größe – diese spiegeln die JavaScript-Ereignisschleife wider, nicht den physikalischen Panel-Scanout; (2) Vom Betriebssystem gemeldet: konfigurierte Bildwiederholrate, Skalierungsfaktor und HDR-Status; (3) Vom Benutzer beobachtet: visuelles Ruckeln, Mauszeiger-Zittern und Fensterbewegung; (4) Herstellerspezifikation: maximale Panel-Bildwiederholrate, Kabelbandbreite und Dockingstation-Grenzwerte.",
+              "Disziplinierter Isolationsablauf (Ändern Sie stets nur EINE Variable gleichzeitig):",
+              "Schritt 1: BASELINE dokumentieren. Halten Sie alle konfigurierten Auflösungen, Bildwiederholraten, Skalierungsprozente, HDR-Zustände und Kabelverbindungen schriftlich fest.",
+              "Schritt 2: Jeden Bildschirm unabhängig testen. Deaktivieren Sie sekundäre Displays in den OS-Einstellungen oder trennen Sie sie sicher. Prüfen Sie den primären High-Refresh-Monitor allein mit dem [Refresh Rate Test](/tests/refresh-rate-test) und dem [Motion Blur Test](/tests/motion-blur-test).",
+              "Schritt 3: Identische Bildwiederholraten testen. Aktivieren Sie den zweiten Monitor, stellen Sie jedoch vorübergehend alle Displays auf dieselbe Bildwiederholrate ein (z. B. beide auf 60 Hz). Prüfen Sie, ob Ruckeln bei identischer Frequenz verschwindet.",
+              "Schritt 4: Gemischte Bildwiederholraten testen. Setzen Sie den Hauptmonitor auf seine native hohe Bildwiederholrate (z. B. 144 Hz) zurück. Prüfen Sie, ob Hintergrundanimationen oder Videos auf dem 60-Hz-Zweitmonitor Frame-Jitter auf dem Hauptbildschirm auslösen.",
+              "Schritt 5: Skalierungskonfigurationen isolieren. Testen Sie beide Monitore zunächst mit 100 % Skalierung, danach mit gemischter Skalierung (z. B. 125 % neben 100 %). Ziehen Sie Fenster über die Bildschirmgrenze, um Textschärfe und Ruckeln zu beurteilen.",
+              "Schritt 6: HDR/SDR-Kombinationen testen. Falls ein HDR- und ein SDR-Monitor kombiniert werden, vergleichen Sie das Verhalten mit aktiviertem vs. deaktiviertem HDR in den Windows- oder OS-Einstellungen.",
+              "Schritt 7: VRR Ein/Aus testen. Schalten Sie Adaptive Sync / G-Sync im GPU-Treiber versuchsweise ein und aus und führen Sie den [VRR Test](/tests/vrr-test) durch, um Fenster-Sync-Konflikte zu erkennen.",
+              "Schritt 8: Internes Panel vs. externes Routing bei Laptops. Testen Sie das interne Laptop-Display isoliert und vergleichen Sie es mit einem direkt angeschlossenen externen Monitor ohne Zwischenadapter.",
+              "Schritt 9: Docks & Adapter versuchsweise umgehen. Falls Sie ein USB-C-Dock oder einen MST-Hub nutzen, schließen Sie das Display testweise direkt an einen nativen Port an, um Bandbreitenengpässe des Docks auszuschließen.",
+              "Schritt 10: Browser-Ergebnisse mit OS-Werten abgleichen. Vergleichen Sie die Browser-Ausgaben im Tool [Display Information](/tests/display-info) und [Browser Compatibility](/tools/browser-compatibility) mit den Betriebssystemeinstellungen. Führen Sie keine riskanten Hardware-Manipulationen durch und vermeiden Sie aggressives Kabelumstecken. Weitere Hilfestellungen finden Sie im [Troubleshooting Guide](/knowledge-base/troubleshooting)."
             ]
           }
         ],

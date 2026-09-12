@@ -423,19 +423,22 @@ export const KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
             ]
       },
       {
-            "title": "Laptop Display Behavior on Battery vs. AC Power: Power Rails, Clocks & Dynamic Scaling",
-            "content": [
-                  "Operating a laptop on DC battery power fundamentally changes the system's thermal and power envelopes compared to AC mains power. To maximize battery endurance, the operating system, CPU, and GPU firmware engage dynamic power-capping mechanisms that can noticeably alter display rendering and motion behavior.",
-                  "Under battery power, operating systems (such as Windows Power Modes: Best Power Efficiency, Balanced, and Best Performance; macOS Low Power Mode; or Linux energy profiles) reduce background service activity and enforce conservative clock states. GPUs reduce core clock frequencies and downscale memory P-states, while PCIe buses enter Active State Power Management (ASPM L0s/L1) to conserve wattage, reducing bus bandwidth between the GPU and display controllers.",
-                  "Simultaneously, modern display panels frequently engage dynamic refresh mechanisms. Under Windows 11 Dynamic Refresh Rate (DRR) or manufacturer display firmware, high-refresh panels (120Hz, 144Hz, 240Hz) may automatically downclock to 60Hz or engage Panel Self-Refresh (PSR) when idle or running on battery. Content-Adaptive Brightness Control (CABC), Intel Display Power Saving Technology (DPST), or AMD Vari-Bright also dynamically modulate backlight luminance and gamma curves based on screen content.",
-                  "However, battery operation does NOT universally reduce refresh rate or disable display features across all laptops. High-performance gaming laptops with discrete GPU MUX switches may maintain full refresh rates on battery at the cost of rapid battery drain, while ultrabooks prioritize power efficiency. Understanding whether an observed behavior is an intentional power-saving adaptation or an unexpected bottleneck requires systematic testing."
-            ],
-            "bullets": [
-                  "Battery operation engages conservative CPU, GPU, and PCIe ASPM link power states to conserve wattage.",
-                  "Dynamic Refresh Rate (DRR) and Panel Self-Refresh (PSR) may reduce panel refresh to 60Hz on DC power.",
-                  "Adaptive brightness features (CABC, Intel DPST, AMD Vari-Bright) dynamically alter contrast and backlight.",
-                  "Battery power profiles do not universally throttle displays; behavior depends on OEM and OS configurations."
-            ]
+        title: "Controlled Multi-Monitor Isolation Protocol: Step-by-Step Diagnostic Flow",
+        content: [
+          "When diagnosing motion stutter, irregular frame pacing, or scaling anomalies in a multi-monitor setup, random adjustments create confounding variables. Follow this disciplined, non-destructive isolation procedure to identify the specific software, display, or interface layer responsible.",
+          "Diagnostic Architecture & Evidence Layers: To interpret findings accurately, distinguish four distinct observation layers: (1) Browser reported: requestAnimationFrame dispatch cadence, devicePixelRatio, and viewport dimensions—these reflect software rendering loops, not physical panel scanout; (2) OS reported: configured refresh rate, display scaling percentage, and HDR state exposed via operating system display APIs; (3) User observed: visible stutter, cursor judder, motion fluidness, and window drag responsiveness; (4) Manufacturer specification: panel refresh limits, connector bandwidth, and dock/hub throughput limits.",
+          "Disciplined Isolation Procedure (Change ONE variable at a time):",
+          "Phase 1: BASELINE Documentation. Before making adjustments, record all currently configured resolutions, refresh rates, OS scaling percentages, HDR states, and cable interfaces for every display.",
+          "Phase 2: Test Each Display Independently. Disconnect secondary displays via OS display settings or safe cable removal. Test the primary high-refresh screen alone using the [Refresh Rate Test](/tests/refresh-rate-test) and [Motion Blur Test](/tests/motion-blur-test). Confirm that single-display rendering is completely fluid and free of micro-stutter.",
+          "Phase 3: Test Matching Refresh Rates. Re-enable the secondary display, but temporarily configure all displays to the same common refresh rate (e.g., set both monitors to 60 Hz). Re-run tests to evaluate whether compositor stutter persists when refresh rates match.",
+          "Phase 4: Test Mixed Refresh Rates. Restore the primary display to its higher native refresh rate (e.g., 144 Hz or 165 Hz) while leaving the secondary at 60 Hz. Observe whether secondary window updates (such as an active video stream or hardware-accelerated app) introduce frame pacing jitter on the primary screen.",
+          "Phase 5: Test Each Scaling Configuration. Align both monitors to 100% integer scaling, then test mixed fractional scaling (e.g., 125% or 150% alongside 100%). Drag a window across screen boundaries to inspect for text blurriness or compositor drag hesitation.",
+          "Phase 6: Test HDR / SDR Combinations. If pairing an HDR display with an SDR screen, test with HDR enabled versus disabled in your OS display settings to observe tone mapping transitions and desktop luminance consistency.",
+          "Phase 7: Test VRR On vs. Off. If using Variable Refresh Rate (G-Sync / FreeSync / Adaptive Sync), toggle VRR on and off in your GPU control panel and run the [VRR Test](/tests/vrr-test). Test windowed vs. fullscreen sync behavior to identify background compositor contention.",
+          "Phase 8: Test Internal vs. External Display Routing. On laptops, test motion behavior on the internal screen alone, then compare with an external monitor plugged directly into the laptop chassis without intermediate hubs.",
+          "Phase 9: Test Dock / Adapter Removed Where Practical. If utilizing a USB-C multi-port dock, MST hub, or passive display adapter, connect the display directly to a native system video port where practical to isolate dock controller bandwidth saturation.",
+          "Phase 10: Compare Browser Behavior with OS-Reported Configuration. Cross-reference browser observations in [Display Information](/tests/display-info) and API diagnostics in [Browser Compatibility](/tools/browser-compatibility) against operating system display settings. Note: Do not perform unsafe hardware manipulation or repeatedly plug and unplug cables aggressively. For general troubleshooting, consult the [Troubleshooting Guide](/knowledge-base/troubleshooting)."
+        ]
       }
 ],
     faq: [
