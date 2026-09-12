@@ -651,70 +651,205 @@ export const KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     primarySearchIntent: "backlight bleed vs ips glow difference test",
     readingTimeMinutes: 6
   },
-  {
+    {
     slug: "monitor-ghosting-and-motion-blur",
     category: "display-problems",
     title: "Monitor Ghosting, Motion Blur & Overdrive Overshoot",
-    subtitle: "Pixel response time (GtG), eye persistence (MPRT), overdrive tuning, and corona artifacts.",
-    description: "Understand the differences between slow pixel response ghosting, human eye persistence blur, and monitor overdrive overshoot (inverse ghosting).",
-    directAnswer: "Monitor ghosting is a visual trailing artifact caused by slow liquid crystals struggling to transition to new colors quickly enough, while inverse ghosting (overshoot) is caused by excessive voltage that pushes crystals past their target shade.",
-    whyItMatters: "Misconfiguring your monitor's overdrive setting can severely degrade motion clarity. Setting overdrive too low creates dark smearing, while setting it too high creates distracting bright glowing halos behind moving objects.",
+    subtitle: "VA dark-level smearing, response-time overdrive tuning, inverse ghosting coronas, and motion persistence.",
+    description: "Understand why VA monitors show dark-level smearing, how aggressive overdrive causes bright halos or inverse ghosting, and how to visually diagnose motion artifacts.",
+    directAnswer: "Monitor ghosting is a trailing artifact caused by slow liquid crystal transitions, particularly on dark-to-dark and near-black shades on VA panels. Conversely, overdrive overshoot (inverse ghosting) produces bright or dark glowing halos (coronas) when excessive voltage drives liquid crystals past their intended luminance target.",
+    whyItMatters: "Overdrive tuning represents a fundamental engineering trade-off: insufficient acceleration causes sluggish transitions and visible dark smearing, while overly aggressive overdrive drives liquid crystals past their target shade, producing distracting glowing coronas. Achieving optimal motion clarity requires balancing these forces across your monitor's refresh rate and operating temperature.",
     whatToLookFor: [
-      "Dark smearing or colored trails lagging behind high-contrast moving objects (ghosting)",
-      "Bright, glowing white or inverted colored halos preceding or following moving objects (overshoot / corona)",
-      "Severe black smearing on VA panels when dark objects move across dark gray backgrounds",
-      "Loss of text readability when scrolling quickly through documents or web pages"
-    ],
+      "Dark trailing or purple/black smearing lagging behind dark graphics moving across dark-gray or mid-tone backgrounds (characteristic dark-level smearing on VA panels)",
+      "Bright, glowing white or inverted color halos (coronas) trailing or outlining moving objects (overdrive overshoot / inverse ghosting)",
+      "Faint trailing silhouettes matching the object's original color without glowing edges (conventional GtG ghosting from slow transitions)",
+      "Uniform softness and edge blur across the entire scene during motion caused by human retinal persistence across sample-and-hold display frames (MPRT)",
+      "Changes in trailing length or the sudden appearance of overshoot coronas when operating at lower refresh rates or during Variable Refresh Rate (VRR) frame drops",
+      "Discontinuous positional jumping, stuttering, or judder stemming from GPU frame delivery rather than physical display panel pixel response"
+],
     howToTest: [
-      "Launch the Ghosting Test in Screen Tester to watch calibrated blocks move across high-contrast backgrounds",
-      "Switch between low, medium, and high velocity to inspect trail persistence",
-      "Open your monitor OSD menu and toggle through your monitor's Overdrive / Response Time settings (e.g., Off, Normal, Fast, Extreme) to find the optimal balance with zero overshoot"
-    ],
+      "Open the [Ghosting Test](/tests/ghosting-test) in Screen Tester and observe moving blocks against both high-contrast and dark-contrast gray backgrounds.",
+      "Test across low, medium, and high velocities to evaluate how trailing length scales with motion speed.",
+      "Access your monitor's On-Screen Display (OSD) and navigate to the Overdrive / Response Time setting (consult our [Monitor OSD Settings Guide](/guides/monitor-osd-settings-explained)).",
+      "Step systematically through each available overdrive level (e.g., Off, Normal, Fast, Extreme); identify the setting that suppresses trailing without generating bright halos.",
+      "Launch the [Motion Blur Test](/tests/motion-blur-test) to distinguish sample-and-hold retinal persistence from physical pixel response limitations.",
+      "If using G-Sync or FreeSync, evaluate motion behavior across varying frame rates using the [VRR Test](/tests/vrr-test) to check for lower-refresh overshoot.",
+      "Repeat observations at your normal operating refresh rate and after the display has warmed up to normal operating temperature."
+],
     whatScreenTesterCanObserve: [
-      "Rendering of high-velocity moving test blocks synchronized with display refresh intervals",
-      "Visual display of various color contrast pairings (e.g., dark gray on black vs. bright cyan on dark gray)",
-      "User visual tracking of trail length and halo intensity"
-    ],
+      "Visual observation of dark trails, color silhouettes, and glowing overshoot coronas behind moving patterns",
+      "Rendering of calibrated test patterns across diverse contrast pairs (including dark-gray-on-black and cyan-on-gray)",
+      "Relative visual changes in trailing length and corona intensity across different monitor OSD overdrive presets",
+      "User-observed variations in motion clarity when testing across different configured refresh rates",
+      "Comparative observation between sample-and-hold eye tracking persistence and liquid crystal transition delay"
+],
     whatScreenTesterCannotDetermine: [
-      "Physical pixel transition times in milliseconds (Gray-to-Gray, GtG)",
-      "Moving Picture Response Time (MPRT) measured with a laboratory high-speed pursuit camera",
-      "Exact voltage waveforms delivered by the panel timing controller (T-Con)"
-    ],
+      "Laboratory oscilloscope photodiode Gray-to-Gray (GtG) response times measured in milliseconds",
+      "Complete 256-level pixel transition matrices across all starting and ending luminance levels",
+      "Certified Moving Picture Response Time (MPRT) captured with a synchronized high-speed pursuit camera",
+      "Internal panel timing controller (T-Con) drive voltage waveforms or exact percentage overshoot",
+      "Total display input latency or scaler image processing delay"
+],
     commonCauses: [
-      "Monitor Overdrive / Trace Free / AMA set to 'Extreme' or 'Ultra-Fast', inducing severe voltage overshoot",
-      "Monitor Overdrive disabled or set to 'Off', leaving slow liquid crystals with no voltage acceleration",
-      "VA panel architecture with inherently slow dark-level liquid crystal transitions (black smearing)",
-      "Monitor running at low ambient room temperatures, which physically slows liquid crystal viscosity"
-    ],
+      "Sluggish liquid crystal reorientation on dark-to-dark and near-black transitions (a known physical characteristic of VA panel architecture)",
+      "Monitor Overdrive / Trace Free / AMA set to an aggressive 'Extreme' mode, producing excessive voltage overshoot",
+      "Monitor Overdrive completely disabled or set to 'Off', leaving slow liquid crystals with zero voltage acceleration",
+      "Static overdrive tuning without variable overdrive compensation, causing severe coronas when VRR frame rates drop",
+      "Low ambient room temperature temporarily increasing liquid crystal fluid viscosity before the display warms up",
+      "GPU frame pacing hiccups, V-Sync dropouts, or irregular frame delivery mistaken for panel response limitations"
+],
     whatToDoNext: [
-      "Open your monitor's on-screen display (OSD) and locate 'Overdrive', 'Response Time', or 'Trace Free'",
-      "Select the middle setting (typically 'Fast' or 'Normal'). Avoid 'Extreme' as it almost universally causes overshoot",
-      "Ensure your monitor is running at its maximum advertised refresh rate (e.g., 144Hz or 240Hz)"
-    ],
+      "Open your monitor's OSD and set the picture mode to a neutral preset; avoid artificial sharpness or extreme 'FPS' modes.",
+      "Locate the Overdrive setting and select a balanced middle setting (typically 'Normal' or 'Fast'); avoid 'Extreme'.",
+      "Ensure your monitor is configured to its intended native refresh rate in your operating system display settings.",
+      "Test motion clarity in the [Ghosting Test](/tests/ghosting-test) and [Motion Blur Test](/tests/motion-blur-test) to verify trailing reduction.",
+      "If gaming with VRR (G-Sync or FreeSync), test at lower refresh rates using the [VRR Test](/tests/vrr-test) to ensure overshoot stays controlled.",
+      "If stutter or judder persists independently of pixel trailing, inspect your graphics pipeline using the [Troubleshooting Guide](/knowledge-base/troubleshooting)."
+],
     sections: [
-      {
-        title: "GtG vs. MPRT: Two Different Types of Motion Blur",
-        content: [
-          "Gray-to-Gray (GtG) response time measures how long it takes a physical liquid crystal to rotate and change color (e.g., 1ms to 10ms). Slow GtG causes ghosting trails.",
-          "Moving Picture Response Time (MPRT) is caused by human eye tracking across a sample-and-hold display. Even if GtG was 0ms (as on an OLED), an image held on screen for 16.7ms (60Hz) smears on the human retina as your eye moves. Higher refresh rates (120Hz, 240Hz, 360Hz) or backlight strobing reduce MPRT."
-        ]
-      }
-    ],
+        {
+                "title": "VA Dark-Level Smearing: Why Near-Black Transitions Lag",
+                "content": [
+                        "Vertical Alignment (VA) panels orient liquid crystal molecules perpendicular to the glass substrate in their uncharged resting state. In this position, they block backlight illumination exceptionally well, yielding deep black levels and static contrast ratios often ranging between 3000:1 and 5000:1.",
+                        "However, transitioning liquid crystals between deep black (RGB 0,0,0) and dark gray involves very small electric potential differences. Reorienting molecules under low voltage differentials requires significantly more physical time than larger transitions, such as switching from black to pure white. When dark graphics move across dark or mid-gray backgrounds, the delayed liquid crystal transitions produce elongated black or purple streaks—a phenomenon known as dark-level smearing.",
+                        "Crucially, dark-level transition behavior varies substantially across panel generations, specific monitor models, scaler firmware, overdrive tuning, refresh rate, and operating temperature. Modern 'Fast VA' panels with high-voltage driving have markedly reduced this gap compared to legacy designs. Quoted manufacturer response times (e.g., '1ms GtG') reflect cherry-picked best-case transitions and do not describe all pixel transitions equally."
+                ],
+                "bullets": [
+                        "Near-black and dark-to-dark transitions involve subtle voltage steps that reorient crystals slower than full-voltage white transitions.",
+                        "Visible black smearing is most noticeable when scrolling white-on-black text or panning cameras across shadowy environments.",
+                        "Magnitude varies significantly by panel generation, scaler tuning, firmware, and temperature; there is no universal response-time figure for all VA panels.",
+                        "Manufacturer '1ms' specifications do not represent full-matrix response times and often require unusable overdrive settings."
+                ]
+        },
+        {
+                "title": "Response-Time Overshoot & Inverse Ghosting: The Cost of Overdrive",
+                "content": [
+                        "To accelerate sluggish liquid crystal transitions, monitor manufacturers implement overdrive (also branded as Trace Free, AMA, Response Time, or Ramp Up). Overdrive applies a temporary voltage spike at the beginning of a refresh cycle to force liquid crystals into their new alignment faster than native voltage allows.",
+                        "When overdrive is tuned conservatively, crystals reach their target shade within the active refresh interval. However, if the overdrive voltage is overly aggressive, the crystals surge past the target luminance before rebounding. This optical error produces response-time overshoot, commonly called inverse ghosting or coronas.",
+                        "Inverse ghosting manifests as bright, glowing, or inverted halos trailing moving objects. Overdrive is a fundamental engineering compromise: reducing overdrive reduces overshoot while potentially increasing conventional trailing, whereas increasing overdrive speeds up transitions but risks distracting coronas. Increasing overdrive indefinitely does not improve response time; beyond an optimal threshold, it severely degrades visual fidelity."
+                ],
+                "bullets": [
+                        "Overdrive accelerates liquid crystal rotation by delivering a brief higher-voltage surge at the start of the frame interval.",
+                        "Excessive voltage drives crystals past their intended luminance target before settling, generating bright glowing halos (coronas).",
+                        "Overdrive tuning is a direct engineering trade-off between standard trailing blur and inverse ghosting halos.",
+                        "Setting overdrive to maximum or 'Extreme' almost universally introduces severe overshoot artifacts that ruin motion clarity."
+                ]
+        },
+        {
+                "title": "Distinguishing the Five Core Motion Artifacts",
+                "content": [
+                        "Motion clarity defects are frequently conflated because users perceive any visual imperfection during movement as generic 'blur'. However, effective diagnosis requires distinguishing between five distinct physical phenomena, which can occur simultaneously on the same display:",
+                        "1. Dark-Level Smearing: Elongated dark or purple streaks trailing dark objects across dark backgrounds, caused specifically by slow near-black liquid crystal transitions (prevalent on VA panels).",
+                        "2. Conventional Ghosting / Trailing: Soft silhouettes matching the moving object's original color, caused by liquid crystal transition times that exceed the refresh frame interval across standard color pairs.",
+                        "3. Overdrive Overshoot / Inverse Ghosting: Bright glowing or inverted color halos (coronas) outlining moving edges, caused by excessive overdrive voltage boosting pixels past their target luminance.",
+                        "4. Eye Tracking Persistence (Sample-and-Hold / MPRT): Full-scene uniform motion softness caused by the human eye smoothly tracking moving imagery while each frame is held statically on screen. This affects all sample-and-hold displays (including 0.03ms OLEDs) and is mitigated primarily by higher refresh rates or backlight strobing.",
+                        "5. Low Frame Rate & Frame Pacing Issues: Discrete positional stutter, hitching, or judder caused by irregular GPU frame delivery or V-Sync mismatch, entirely independent of display panel pixel response."
+                ],
+                "bullets": [
+                        "Dark-Level Smearing: Sluggish near-black crystal transitions; visible as dark trailing against dark backgrounds.",
+                        "Conventional Ghosting: Faint color-matched silhouettes; caused by slow overall liquid crystal GtG response.",
+                        "Inverse Ghosting (Overshoot): Bright glowing or inverted halos; caused by excessive monitor overdrive voltage.",
+                        "Retinal Persistence (MPRT): Uniform motion softness on sample-and-hold screens; reduced by higher refresh rates, not liquid crystal overdrive.",
+                        "Frame Pacing / Stutter: Jerky positional jumps; caused by GPU frame delivery or refresh synchronization, not panel physics."
+                ]
+        },
+        {
+                "title": "VRR & Refresh-Rate Overdrive Interactions",
+                "content": [
+                        "A monitor's overdrive calibration is optimized for a specific frame duration. At 165Hz, each frame lasts approximately 6.06ms, requiring an aggressive voltage pulse to complete transitions quickly. At 60Hz, however, the frame duration expands to 16.67ms, giving liquid crystals nearly three times as long to transition naturally.",
+                        "Monitors with premium scalers implement 'variable overdrive', which dynamically attenuates the overdrive voltage as refresh rate decreases during Variable Refresh Rate (VRR, G-Sync, FreeSync) operation. This maintains crisp transitions at 165Hz while avoiding overshoot when framerates fluctuate.",
+                        "Conversely, many budget or mainstream monitors utilize fixed overdrive tables. An overdrive setting that delivers clean motion at 165Hz can generate aggressive overshoot coronas when demanding gameplay causes the frame rate to drop into the 60–80Hz range. Browser tools cannot certify internal scaler voltage curves, but users can visually evaluate refresh-rate-dependent behavior using the [VRR Test](/tests/vrr-test) and [Ghosting Test](/tests/ghosting-test)."
+                ],
+                "bullets": [
+                        "Frame duration increases dramatically as refresh rates drop (e.g., 6.06ms at 165Hz versus 16.67ms at 60Hz).",
+                        "Displays lacking dynamic variable overdrive can exhibit severe overshoot coronas during lower-framerate VRR gameplay.",
+                        "Monitors with variable overdrive dynamically scale voltage pulses across the refresh spectrum to maintain balanced motion.",
+                        "Test both at maximum refresh rate and at lower rates (e.g., 60Hz–80Hz) to choose an overdrive setting that remains stable during frame dips."
+                ]
+        },
+        {
+                "title": "Temperature, Operating Conditions & Panel Variations",
+                "content": [
+                        "Liquid crystals are suspended in a fluid matrix whose physical viscosity changes with ambient operating temperature. When a monitor is first turned on in a cold room, the fluid is denser, temporarily slowing down molecular rotation.",
+                        "Users may observe pronounced dark smearing or trailing upon a cold boot that gradually diminishes over 15 to 30 minutes as internal backlight warmth raises the panel to normal operating temperature. For accurate evaluation, always test motion performance after the display has reached thermal equilibrium.",
+                        "Furthermore, two monitors utilizing the identical panel family can exhibit noticeably different motion characteristics. Differences in scaler hardware, firmware algorithms, factory overdrive look-up tables (LUTs), and manufacturing tolerances mean that motion clarity cannot be judged solely by panel type or datasheet specifications."
+                ],
+                "bullets": [
+                        "Cold ambient temperatures increase liquid crystal fluid viscosity, temporarily slowing transitions until the display warms up.",
+                        "Evaluate motion clarity only after the monitor has operated continuously for 15 to 30 minutes in normal ambient conditions.",
+                        "Identical panel families behave differently across monitor models due to proprietary scaler firmware and overdrive tuning.",
+                        "Avoid categorizing temporary cold-start trailing as a permanent hardware defect."
+                ]
+        },
+        {
+                "title": "Practical OSD Investigation Routine",
+                "content": [
+                        "To determine the optimal overdrive setting for your monitor without laboratory equipment, conduct a disciplined visual investigation in Screen Tester:",
+                        "1. Configure a neutral picture profile (e.g., Standard or Custom) in your monitor's OSD and ensure your target refresh rate is active in your operating system display settings.",
+                        "2. Launch the [Ghosting Test](/tests/ghosting-test) in Screen Tester and observe moving blocks across both dark-gray and medium-contrast backgrounds.",
+                        "3. Open your monitor's OSD, locate Overdrive / Response Time (see our [Monitor OSD Settings Guide](/guides/monitor-osd-settings-explained)), and cycle systematically from Off to Normal, Fast, and Extreme.",
+                        "4. Identify the transition boundary: note the setting where trailing trails recede before glowing overshoot halos (coronas) become prominent.",
+                        "5. Repeat the test at lower refresh rates if you use G-Sync or FreeSync, ensuring that overshoot does not become distracting during lower-framerate VRR gaming.",
+                        "Do not prescribe a universal setting such as 'Always use High'. The ideal overdrive level is monitor-specific and represents a balanced trade-off between trailing and overshoot."
+                ],
+                "bullets": [
+                        "Step 1: Set a neutral picture preset and confirm native refresh rate in operating system settings.",
+                        "Step 2: Run the [Ghosting Test](/tests/ghosting-test) to observe block trailing across dark and light backgrounds.",
+                        "Step 3: Toggle OSD Overdrive settings from Off through Normal, Fast, and Extreme.",
+                        "Step 4: Select the highest setting that suppresses trailing without creating visible bright or dark coronas.",
+                        "Step 5: Verify stability across both high and lower refresh rates for VRR workloads."
+                ]
+        },
+        {
+                "title": "Visual Interpretation Guide: What Your Eyes Are Seeing",
+                "content": [
+                        "When visually assessing moving test patterns, use this reference guide to correlate observed symptoms with their underlying physical mechanisms:",
+                        "Visible Dark Trail Behind Dark Objects: May indicate slower dark-level transition behavior (characteristic of near-black transitions on VA panels). Test one level higher overdrive if halos do not appear, and ensure the display has reached normal operating temperature.",
+                        "Bright or Dark Corona Around Moving Objects: May indicate overdrive overshoot (inverse ghosting) from excessive voltage acceleration. Reduce your monitor's OSD overdrive by one level.",
+                        "General Softness Across the Entire Scene: Involves human retinal persistence across sample-and-hold display frames (MPRT) rather than pixel transition speed alone. Increase display refresh rate or evaluate backlight strobing if supported.",
+                        "Inconsistent Behavior at Different Refresh Rates: May indicate refresh-rate-dependent overdrive tuning (lack of dynamic variable overdrive during VRR). Select a balanced setting that remains stable at lower frame rates.",
+                        "Stuttering or Discrete Judder During Motion: Investigate frame delivery, GPU frame pacing, V-Sync configuration, or browser rendering performance rather than assuming physical pixel response is the cause. Consult the [Troubleshooting Guide](/knowledge-base/troubleshooting) for step-by-step diagnostic checks."
+                ],
+                "bullets": [
+                        "Dark trailing → Slower dark-level transitions; test moderate overdrive boost and verify room temperature.",
+                        "Glowing bright/dark halos → Overdrive overshoot; decrease OSD overdrive preset by one step.",
+                        "Full-scene softness → Sample-and-hold retinal persistence (MPRT); increase refresh rate or test strobing.",
+                        "Overshoot only at lower FPS → Fixed overdrive table in VRR; pick a setting tuned for lower refresh stability.",
+                        "Jerky stuttering → Frame pacing or pipeline sync issue; consult the [Troubleshooting Guide](/knowledge-base/troubleshooting)."
+                ]
+        }
+],
     faq: [
-      {
-        question: "What is inverse ghosting or 'coronas'?",
-        answer: "Inverse ghosting (overshoot) occurs when a monitor over-accelerates liquid crystals using excessive voltage. Instead of settling at the target color, the crystal overshoots, creating a bright glowing halo that mirrors the moving object."
-      },
-      {
-        question: "Can an OLED monitor suffer from ghosting?",
-        answer: "OLED pixels transition in approximately 0.03 milliseconds, completely eliminating GtG ghosting. Any motion blur observed on an OLED is pure sample-and-hold eye tracking persistence (MPRT), solved by running at higher refresh rates."
-      }
-    ],
-    relatedTestIds: ["ghosting-test", "motion-blur-test", "refresh-rate-test"],
-    relatedTroubleshootingIds: ["wrong-refresh-rate"],
+        {
+                "question": "Why do VA monitors show more dark-level smearing than IPS or TN monitors?",
+                "answer": "VA (Vertical Alignment) pixels orient crystals vertically at rest to block backlight effectively, creating high static contrast. However, transitions between near-black shades involve small voltage steps, making crystal reorientation slower than larger transitions. The exact severity depends on panel generation, monitor firmware, overdrive tuning, and temperature."
+        },
+        {
+                "question": "What causes bright or dark 'coronas' (overshoot / inverse ghosting)?",
+                "answer": "Overshoot occurs when a monitor applies an overly aggressive overdrive voltage spike to accelerate liquid crystal transitions. Instead of smoothly stopping at the target shade, the crystals surge past the target luminance, creating glowing bright or dark inverted halos around moving objects."
+        },
+        {
+                "question": "Should I always set my monitor's overdrive to the maximum setting?",
+                "answer": "No. Setting overdrive to maximum or 'Extreme' almost universally introduces severe response-time overshoot (inverse ghosting). The best overdrive setting is monitor-dependent and represents a deliberate balance between reducing conventional trailing and avoiding distracting overshoot coronas."
+        },
+        {
+                "question": "Why do glowing coronas appear when my frame rate drops during VRR gaming?",
+                "answer": "At lower refresh rates (e.g., 60Hz), each frame is displayed for a longer duration (16.7ms vs. 6ms at 165Hz). If the monitor lacks dynamic variable overdrive, the fixed high-voltage pulse designed for 165Hz causes severe overshoot during longer 60Hz frame intervals."
+        },
+        {
+                "question": "Can cold ambient room temperatures make ghosting worse?",
+                "answer": "Yes. Liquid crystal molecules operate in a fluid whose viscosity increases at lower temperatures. When first powered on in a cold room, pixel transitions can be noticeably slower until internal backlight warmth raises the panel to normal operating temperature."
+        },
+        {
+                "question": "Can Screen Tester measure my monitor's exact response time in milliseconds?",
+                "answer": "No. Web browsers cannot interface with hardware photodiodes or oscilloscopes. Screen Tester enables visual observation of motion trailing and overshoot, but certified millisecond response-time measurements require specialized physical laboratory equipment."
+        }
+],
+    relatedTestIds: ["ghosting-test", "motion-blur-test", "vrr-test", "refresh-rate-test"],
+    relatedTroubleshootingIds: ["wrong-refresh-rate", "flickering"],
     relatedArticleSlugs: ["refresh-rate-and-frame-rates", "screen-tearing-and-v-sync"],
-    primarySearchIntent: "monitor ghosting test overdrive overshoot",
-    readingTimeMinutes: 6
+    primarySearchIntent: "monitor ghosting test overdrive overshoot va smearing",
+    readingTimeMinutes: 8
   },
   {
     slug: "screen-tearing-and-v-sync",

@@ -3678,6 +3678,225 @@
       "noResultsSubtitle": "Tente ajustar sua consulta de pesquisa ou filtro de categoria.",
       "readArticle": "Ler artigo",
       "minRead": "min de leitura"
+    },
+    "articleUi": {
+      "technicalReference": "Referência técnica",
+      "directDefinition": "Definição técnica direta",
+      "whyItMatters": "Por que é importante",
+      "whatToLookFor": "O que os usuários devem observar",
+      "howToTest": "Como testar este parâmetro",
+      "boundariesTitle": "Limites de teste técnico e metodologia",
+      "boundariesDesc": "O Screen Tester prioriza a transparência: diferenciamos com clareza o que os navegadores podem inspecionar matematicamente do que exige sondas físicas laboratoriais.",
+      "canObserveTitle": "O que o Screen Tester pode observar",
+      "cannotDetermineTitle": "Exige equipamento de laboratório físico",
+      "commonCauses": "Causas comuns",
+      "whatToDoNext": "Próximas etapas recomendadas",
+      "faq": "Perguntas frequentes",
+      "interactiveTool": "Ferramenta de teste interativa",
+      "interactiveToolDesc": "Execute o padrão de teste interativo para avaliar visualmente esta característica no seu monitor.",
+      "launchTest": "Iniciar padrão de teste interativo",
+      "troubleshooting": "Guia de solução de problemas",
+      "troubleshootingDesc": "Precisa de soluções físicas e de software passo a passo? Consulte o tópico de solução de problemas.",
+      "inspectCauses": "Ver causas, verificações e correções",
+      "relatedArticles": "Artigos relacionados",
+      "backToIndex": "← Voltar ao índice da base de conhecimento",
+      "minRead": "min de leitura",
+      "guide": "Guia técnico"
+    },
+    "articles": {
+      "monitor-ghosting-and-motion-blur": {
+        "title": "Ghosting do monitor, desfoque de movimento e overshoot de overdrive",
+        "subtitle": "Smearing em níveis escuros em painéis VA, ajuste de overdrive, halos de ghosting inverso e persistência de movimento.",
+        "description": "Entenda por que monitores VA apresentam smearing em tons escuros, como o overdrive agressivo causa halos brilhantes ou ghosting inverso e como diagnosticar artefatos de movimento visualmente.",
+        "directAnswer": "O ghosting do monitor é um rastro visual residual causado pela lentidão das transições dos cristais líquidos, particularmente em transições de tons escuros a escuros em painéis VA. Por outro lado, o overshoot de overdrive (ghosting inverso) gera halos brilhantes ou escuros (coroas) quando uma voltagem excessiva impulsiona os cristais além de sua luminância alvo.",
+        "whyItMatters": "O ajuste de overdrive é um equilíbrio essencial de engenharia: pouca aceleração de voltagem resulta em transições lentas e arrasto escuro (smearing), enquanto um overdrive excessivo ultrapassa o tom pretendido, gerando coroas brilhantes incômodas. Atingir a nitidez ideal requer balancear essas forças conforme a taxa de atualização e a temperatura operacional.",
+        "whatToLookFor": [
+          "Rastros escuros ou manchas roxas/pretas atrás de elementos gráficos escuros em movimento sobre fundos cinza-escuro ou médios (smearing escuro característico de painéis VA)",
+          "Halos brilhantes brancos ou de cores invertidas (coroas) contornando objetos em movimento (overshoot de overdrive / ghosting inverso)",
+          "Silhuetas tênues com a cor original do objeto sem bordas brilhantes (ghosting GtG convencional por transições lentas)",
+          "Desfoque uniforme em toda a cena durante o movimento provocado pela persistência retiniana humana em telas sample-and-hold (MPRT)",
+          "Alterações no comprimento do rastro ou surgimento súbito de coroas de overshoot em taxas de atualização menores ou quedas de taxa de quadros em VRR",
+          "Saltos de quadros ou engasgos (stuttering) decorrentes da entrega de quadros pela GPU e não do tempo de resposta físico do painel"
+        ],
+        "howToTest": [
+          "Abra o [Teste de ghosting](/tests/ghosting-test) no Screen Tester e observe os blocos em movimento contra fundos de alto contraste e cinza-escuro.",
+          "Alterne entre velocidades baixa, média e alta para verificar como o comprimento do rastro varia com a velocidade.",
+          "Abra o menu OSD do monitor e localize o ajuste de Overdrive / Tempo de resposta (consulte nosso [Guia de configurações OSD do monitor](/guides/monitor-osd-settings-explained)).",
+          "Passe sistematicamente por cada nível de overdrive (ex.: Desligado, Normal, Rápido, Extremo); identifique a opção que atenua o rastro sem gerar halos brilhantes.",
+          "Inicie o [Teste de desfoque de movimento](/tests/motion-blur-test) para distinguir a persistência ocular (sample-and-hold) dos atrasos físicos dos cristais líquidos.",
+          "Se utilizar G-Sync ou FreeSync, avalie o comportamento com o [Teste de VRR](/tests/vrr-test) para verificar se ocorre overshoot em taxas de quadros mais baixas.",
+          "Repita a verificação na sua taxa de atualização habitual e após o monitor atingir a temperatura operacional ideal."
+        ],
+        "whatScreenTesterCanObserve": [
+          "Observação visual de rastros escuros, silhuetas de cor e coroas brilhantes de overshoot atrás dos padrões em movimento",
+          "Exibição de padrões de teste calibrados combinando contrastes variados (incluindo cinza-escuro sobre preto e ciano sobre cinza)",
+          "Mudanças visuais relativas no comprimento do rastro e na intensidade do halo entre diferentes predefinições de overdrive no OSD",
+          "Diferenças de clareza percebidas pelo usuário ao testar em diversas taxas de atualização configuradas",
+          "Comparação direta entre a persistência ocular de rastreamento e o atraso de transição dos cristais líquidos"
+        ],
+        "whatScreenTesterCannotDetermine": [
+          "Curvas de tempo de resposta Gray-to-Gray (GtG) medidas em milissegundos por fotodiodo e osciloscópio de laboratório",
+          "Matrizes completas de transição de 256 níveis cobrindo todas as luminâncias de partida e de chegada",
+          "Tempo de resposta de imagem em movimento (MPRT) certificado com câmera de perseguição de alta velocidade",
+          "Formas de onda de voltagem da controladora T-Con ou porcentagem exata de overshoot",
+          "Atraso total de entrada (input lag) ou tempo de processamento da placa de escala interna (scaler)"
+        ],
+        "commonCauses": [
+          "Reorientação vagarosa dos cristais líquidos em transições de escuro para escuro e tons próximos ao preto (propriedade física de painéis VA)",
+          "Overdrive / Trace Free / AMA configurado no modo 'Extremo', gerando um pulso excessivo de voltagem e overshoot",
+          "Overdrive completamente desativado, deixando os cristais líquidos sem nenhuma aceleração elétrica",
+          "Tabela fixa de overdrive sem compensação variável, causando severas coroas luminosas durante quedas de FPS em VRR",
+          "Baixa temperatura ambiente aumentando temporariamente a viscosidade do fluido de cristal líquido antes do aquecimento",
+          "Instabilidade de entrega de quadros pela GPU (frame pacing) ou falhas de V-Sync confundidas com lentidão da tela"
+        ],
+        "whatToDoNext": [
+          "Selecione um perfil de imagem neutro no OSD e evite modos de nitidez artificial ou modos 'FPS' exagerados.",
+          "Ajuste o Overdrive para um nível intermediário balanceado (normalmente 'Normal' ou 'Rápido'); evite 'Extremo'.",
+          "Verifique se o monitor está configurado para sua taxa de atualização nativa máxima nas configurações do sistema operacional.",
+          "Confira a nitidez no [Teste de ghosting](/tests/ghosting-test) e no [Teste de desfoque de movimento](/tests/motion-blur-test).",
+          "Ao jogar com VRR (G-Sync ou FreeSync), confira no [Teste de VRR](/tests/vrr-test) se o overshoot não se torna incômodo em baixas taxas de quadros.",
+          "Se notar engasgos independentes do rastro de pixels, inspecione seu pipeline gráfico com o [Guia de solução de problemas](/knowledge-base/troubleshooting)."
+        ],
+        "sections": [
+          {
+            "title": "Smearing em tons escuros no VA: por que transições escuras demoram",
+            "content": [
+              "Os painéis de alinhamento vertical (VA) posicionam as moléculas de cristal líquido de maneira perpendicular ao substrato de vidro em repouso. Nessa posição, bloqueiam a luz de fundo com extrema eficiência, alcançando pretos profundos e relações de contraste estático entre 3000:1 e 5000:1.",
+              "Entretanto, a transição do preto puro (RGB 0,0,0) para o cinza-escuro envolve diferenças mínimas de potencial elétrico. Reorientar as moléculas com baixa voltagem exige muito mais tempo físico do que transições completas (como do preto para o branco puro). Quando elementos escuros se movem sobre fundos escuros, esse atraso gera riscos pretos ou roxos — fenômeno conhecido como dark-level smearing.",
+              "Esse comportamento varia conforme a geração do painel, o modelo do monitor, o firmware, o overdrive e a temperatura. Painéis modernos 'Fast VA' com acionamento de alta voltagem reduziram significativamente essa diferença. O tempo de resposta anunciado de '1 ms GtG' reflete apenas transições isoladas em condições ideais e não representa o comportamento geral em transições escuras."
+            ],
+            "bullets": [
+              "Transições perto do preto utilizam pequenos degraus de voltagem, girando os cristais mais lentamente do que transições para o branco.",
+              "O arrasto preto é especialmente perceptível ao rolar textos em modo escuro ou ao mover a câmera em cenários sombrios.",
+              "A intensidade varia consideravelmente com a geração do painel, calibração do scaler e temperatura; não há um número único em ms.",
+              "Especificações de 1 ms baseiam-se em medições isoladas com overdrive agressivo e não refletem o uso diário equilibrado."
+            ]
+          },
+          {
+            "title": "Overshoot de tempo de resposta e ghosting inverso: o custo do overdrive",
+            "content": [
+              "Para acelerar transições lentas, os fabricantes implementam o overdrive (também chamado de Trace Free, AMA ou Tempo de Resposta). Ele aplica um pico breve de sobretensão no início do quadro para forçar os cristais a girarem mais depressa do que com a voltagem padrão.",
+              "Com moderação, os cristais atingem a luminância correta dentro do intervalo do quadro. Contudo, se a voltagem for agressiva, os cristais ultrapassam o tom desejado antes de se estabilizarem. Esse erro ótico produz o overshoot de tempo de resposta, também chamado de ghosting inverso ou coroas.",
+              "O ghosting inverso manifesta-se como halos brilhantes ou invertidos contornando as bordas dos objetos em movimento. O overdrive é um compromisso direto de engenharia: diminuí-lo reduz o overshoot, mas pode aumentar o rastro convencional; aumentá-lo acelera as transições, mas cria coroas luminosas indesejadas. Levá-lo ao máximo não aprimora a fidelidade visual."
+            ],
+            "bullets": [
+              "O overdrive acelera a rotação molecular aplicando um pico de sobretensão no começo de cada quadro.",
+              "Voltagem excessiva faz os cristais ultrapassarem o brilho pretendido, gerando halos brilhantes (coroas).",
+              "A calibração do overdrive é um equilíbrio direto entre o rastro comum e os halos de ghosting inverso.",
+              "Usar o nível máximo ou 'Extremo' quase invariavelmente introduz anomalias de overshoot que prejudicam a imagem."
+            ]
+          },
+          {
+            "title": "Diferenciando os cinco principais artefatos de movimento",
+            "content": [
+              "Imperfeições visuais em movimento são comumente confundidas sob o termo genérico 'desfoque'. Para um diagnóstico correto, é necessário distinguir cinco fenômenos físicos distintos que podem coexistir na mesma tela:",
+              "1. Dark-Level Smearing: Rastros escuros ou roxos atrás de elementos escuros sobre fundos escuros, decorrentes da lentidão em transições de tons quase pretos (comum em painéis VA).",
+              "2. Ghosting convencional: Silhuetas tênues com a cor original do objeto, causadas por tempos de transição GtG maiores que o ciclo do quadro.",
+              "3. Overshoot de overdrive / Ghosting inverso: Halos brilhantes ou com cores invertidas contornando as bordas móveis, provocados por excesso de voltagem de overdrive.",
+              "4. Persistência retiniana (Sample-and-Hold / MPRT): Suavização geral em toda a cena decorrente do rastreamento ocular sobre quadros estáticos exibidos continuamente. Ocorre em qualquer tela LCD e OLED e é atenuada por taxas de atualização maiores ou estroboscopia.",
+              "5. Instabilidade de frame pacing e engasgos: Saltos espasmódicos e travamentos decorrentes da placa gráfica ou sincronização de quadros, independentes da velocidade do painel."
+            ],
+            "bullets": [
+              "Dark-Level Smearing: Transições lentas nos pretos; arrasto escuro sobre fundo escuro.",
+              "Ghosting convencional: Silhueta da mesma cor; resposta GtG global lenta dos cristais.",
+              "Ghosting inverso (Overshoot): Halos brilhantes; voltagem de overdrive em excesso.",
+              "Persistência ocular (MPRT): Desfoque uniforme em movimento; mitigado com taxas de hertz maiores.",
+              "Frame Pacing / Engasgos: Movimentos aos trancos; falha de sincronização ou da GPU, não do painel."
+            ]
+          },
+          {
+            "title": "Interações entre VRR, taxa de atualização e overdrive",
+            "content": [
+              "A calibração do overdrive é dimensionada para uma duração de quadro específica. Em 165 Hz, cada quadro dura cerca de 6,06 ms, exigindo um impulso elétrico forte. Em 60 Hz, essa duração salta para 16,67 ms, dando quase o triplo de tempo para os cristais mudarem de estado.",
+              "Monitores premium possuem 'overdrive variável', que diminui automaticamente a intensidade da sobretensão conforme a taxa cai durante o uso de VRR (G-Sync, FreeSync). Isso mantém a transição limpa em 165 Hz sem provocar halos em 60 Hz.",
+              "Já modelos de entrada utilizam tabelas fixas. Um nível impecável em 165 Hz pode gerar coroas agressivas de overshoot quando jogos pesados caem para 60–80 Hz. Você pode inspecionar esse comportamento com o [Teste de VRR](/tests/vrr-test) e o [Teste de ghosting](/tests/ghosting-test)."
+            ],
+            "bullets": [
+              "A duração do quadro aumenta drasticamente em frequências mais baixas (6,06 ms a 165 Hz versus 16,67 ms a 60 Hz).",
+              "Monitores sem overdrive variável podem apresentar fortes halos de overshoot em VRR a baixos FPS.",
+              "Telas com overdrive variável modulam a intensidade elétrica dinamicamente em toda a faixa de operação.",
+              "Teste tanto na taxa máxima quanto em 60–80 Hz para selecionar um overdrive estável mesmo em quedas de quadros."
+            ]
+          },
+          {
+            "title": "Temperatura, condições operacionais e variabilidade de fabricação",
+            "content": [
+              "As moléculas de cristal líquido estão imersas em um fluido cuja viscosidade varia conforme a temperatura ambiente. Ao ligar o monitor em um ambiente frio, o líquido é mais denso, tornando a rotação molecular momentaneamente mais lenta.",
+              "O arrasto visual acentuado ao ligar o monitor a frio costuma diminuir gradualmente ao longo de 15 a 30 minutos, conforme o calor do backlight estabiliza o painel na sua temperatura de funcionamento normal. Avalie sempre o monitor após esse aquecimento.",
+              "Além disso, dois monitores que compartilham o mesmo modelo de painel podem exibir clareza de movimento bastante diferente devido a circuitos do scaler, algoritmos de firmware, calibrações de fábrica e tolerâncias dos componentes."
+            ],
+            "bullets": [
+              "Ambientes frios aumentam a viscosidade do cristal líquido, acentuando temporariamente o rastro.",
+              "Avalie a nitidez em movimento apenas após 15 a 30 minutos de funcionamento contínuo.",
+              "Painéis idênticos comportam-se de forma diferente entre fabricantes devido ao firmware do scaler.",
+              "Não classifique o arrasto inicial em dias frios como um defeito definitivo de hardware."
+            ]
+          },
+          {
+            "title": "Rotina prática de inspeção no OSD",
+            "content": [
+              "Para encontrar o melhor ajuste de overdrive no seu monitor sem equipamentos laboratoriais, siga este procedimento no Screen Tester:",
+              "1. Ajuste um perfil de imagem neutro (Padrão ou Personalizado) no OSD e confirme a taxa de atualização nativa no sistema operacional.",
+              "2. Inicie o [Teste de ghosting](/tests/ghosting-test) no Screen Tester e observe os blocos em movimento contra fundos escuros e médios.",
+              "3. Abra o OSD do monitor, procure Overdrive / Tempo de resposta (veja o [Guia de configurações OSD do monitor](/guides/monitor-osd-settings-explained)) e teste de Desligado a Extremo.",
+              "4. Encontre o limiar: determine o nível mais alto onde o rastro diminui antes que halos luminosos (overshoot) apareçam.",
+              "5. Repita o teste em frequências mais baixas se utiliza VRR em jogos de alto desempenho.",
+              "Evite regras universais como 'use sempre o máximo'. A melhor configuração varia por monitor e equilibra arrasto e halos."
+            ],
+            "bullets": [
+              "Etapa 1: Definir perfil neutro e checar a taxa de atualização nativa no sistema operacional.",
+              "Etapa 2: Executar o [Teste de ghosting](/tests/ghosting-test) para observar rastros em fundos claros e escuros.",
+              "Etapa 3: Alternar as opções de Overdrive no OSD de Desligado até Extremo.",
+              "Etapa 4: Selecionar a configuração mais alta que não crie coroas brilhantes perceptíveis.",
+              "Etapa 5: Confirmar a estabilidade em taxas de quadros menores para cargas de trabalho em VRR."
+            ]
+          },
+          {
+            "title": "Guia de interpretação visual: o que seus olhos observam",
+            "content": [
+              "Consulte este guia para associar cada sintoma visual observado ao seu mecanismo físico correspondente:",
+              "Rastro escuro evidente atrás de objetos escuros: Indica transições mais lentas em tons escuros (típico de painéis VA). Experimente subir um nível de overdrive se não houver halos e assegure-se de que o monitor esteja aquecido.",
+              "Coroa brilhante ou escura contornando objetos móveis: Indica overshoot de overdrive (ghosting inverso) por excesso de voltagem. Reduza o overdrive do monitor em um nível no OSD.",
+              "Suavização uniforme em toda a cena móvel: Persistência retiniana em telas sample-and-hold (MPRT). Aumente a taxa de atualização ou avalie o uso de estroboscopia se disponível.",
+              "Comportamento instável em taxas de atualização diferentes: Calibração de overdrive fixa (falta de overdrive variável em VRR). Escolha um nível intermediário estável em baixos FPS.",
+              "Movimento aos trancos ou travamentos: Verifique a entrega de quadros pela GPU, frame pacing, V-Sync ou navegador antes de suspeitar do painel. Veja o [Guia de solução de problemas](/knowledge-base/troubleshooting)."
+            ],
+            "bullets": [
+              "Rastro escuro → Transições escuras lentas; testar overdrive moderado e checar temperatura.",
+              "Halos brilhantes → Overshoot de overdrive; reduzir o overdrive no OSD em um nível.",
+              "Desfoque uniforme → Persistência ocular (MPRT); elevar a taxa de atualização.",
+              "Overshoot só em baixos FPS → Overdrive fixo em VRR; escolher opção estável para baixos hertz.",
+              "Engasgos nos quadros → Falha de sincronização ou da GPU; ver o [Guia de solução de problemas](/knowledge-base/troubleshooting)."
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "Por que monitores VA exibem mais smearing escuro do que telas IPS ou TN?",
+            "answer": "Os pixels VA alinham os cristais verticalmente em repouso para bloquear a luz de fundo com eficiência, gerando alto contraste. No entanto, transições entre tons quase pretos envolvem variações de voltagem muito sutis, atrasando a rotação física. A intensidade depende da geração do painel, firmware, overdrive e temperatura."
+          },
+          {
+            "question": "O que causa as 'coroas' claras ou escuras (overshoot / ghosting inverso)?",
+            "answer": "O overshoot acontece quando o monitor aplica uma sobretensão agressiva para tentar acelerar o cristal líquido. Em vez de parar na luminância certa, o cristal ultrapassa a meta, gerando bordas luminosas ou invertidas ao redor dos objetos em movimento."
+          },
+          {
+            "question": "Devo manter o overdrive do meu monitor sempre no nível máximo?",
+            "answer": "Não. O ajuste máximo ou 'Extremo' quase sempre provoca overshoot severo (ghosting inverso). A melhor escolha depende de cada aparelho e consiste em equilibrar a diminuição do rastro sem criar halos perceptíveis."
+          },
+          {
+            "question": "Por que halos brilhantes surgem quando o FPS cai em jogos com VRR?",
+            "answer": "Em frequências menores (ex.: 60 Hz), cada quadro permanece exibido por mais tempo (16,7 ms contra 6 ms a 165 Hz). Sem overdrive variável, o pulso elétrico dimensionado para 165 Hz ultrapassa a meta de forma exagerada em 60 Hz."
+          },
+          {
+            "question": "Uma sala fria pode piorar o ghosting do monitor?",
+            "answer": "Sim. As moléculas de cristal líquido ficam em um fluido cuja viscosidade sobe em temperaturas baixas. Ao ligar em um ambiente frio, a resposta pode parecer mais lenta até que o calor da luz de fundo estabilize a tela."
+          },
+          {
+            "question": "O Screen Tester mede o tempo de resposta exato em milissegundos?",
+            "answer": "Não. Navegadores web não têm acesso a fotodiodos nem a osciloscópios. O Screen Tester permite avaliar visualmente rastros e sobreimpulsos, mas medições milimétricas certificadas requerem equipamentos laboratoriais."
+          }
+        ]
+      }
     }
   },
   "ViewingAngleTest": {
