@@ -95,6 +95,15 @@ const DIRECTORY_BADGES = [
     width: 188,
     height: 56,
   },
+  {
+    name: "Find Top Tools",
+    href: "https://findtop.tools/projects/screen-tester?utm_source=badge",
+    rel: "noopener noreferrer",
+    src: "https://findtop.tools/findtoptools/images/badges/featured-on-light.svg",
+    alt: "Featured on Find Top Tools",
+    width: 150,
+    height: 44,
+  },
 ];
 
 export function Footer() {
