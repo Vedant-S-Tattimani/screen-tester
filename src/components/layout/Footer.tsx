@@ -52,6 +52,7 @@ export function Footer() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="https://thedevtoolsindex.com/badge/screen-tester.svg" alt="Featured on TheDevToolsIndex" width="160" height="44" />
               </a>
+              <a href="https://tooldirs.com" target="_blank"><img src="https://tooldirs.com/badge/badge_transparent.svg" alt="Featured on ToolDirs" width="200" height="54" /></a>
             </div>
           </div>
 
