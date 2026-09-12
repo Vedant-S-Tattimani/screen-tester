@@ -73,7 +73,9 @@
       "ghostingMotion": "Ghosting & Bewegung",
       "backlightBleed": "Hintergrundlicht-Bleed",
       "viewingAngles": "Betrachtungswinkel",
-      "allGuides": "Alle Anzeige-Anleitungen"
+      "allGuides": "Alle Anzeige-Anleitungen",
+      "knowledgeBase": "Wissensdatenbank",
+      "troubleshooting": "Fehlerbehebung"
     },
     "searchPlaceholder": "Tests oder Anleitungen suchen..."
   },
@@ -124,7 +126,8 @@
       "terms": "Nutzungsbedingungen",
       "contact": "Kontakt",
       "contribute": "Mitwirken",
-      "reportIssue": "Problem melden"
+      "reportIssue": "Problem melden",
+      "troubleshooting": "Fehlerbehebung"
     },
     "copyright": "Monitor-Tester. Alle Rechte vorbehalten."
   },

@@ -18,6 +18,10 @@ export default async function OledGuidePage({ params }: { params: Promise<{ loca
     <DeviceGuide
       title={t("title")}
       description={t("description")}
+      workflowLink={{
+        href: "/monitor-inspection/oled",
+        title: "OLED Inspection Wizard"
+      }}
       quickTestSequence={[
         "/tests/burn-in-test",
         "/tests/black-level-test",

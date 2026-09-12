@@ -1,5 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
+import { Link } from "@/i18n/routing";
 import { WorkflowLauncher } from "@/components/layout/WorkflowLauncher";
 import { getWorkflowById } from "@/data/workflows";
 import { notFound } from "next/navigation";
@@ -42,11 +43,19 @@ export default async function TvDisplayInspectionPage({ params }: { params: Prom
 
         {/* Browser Limitations Alert */}
         {workflow.browserLimitations && (
-          <div className="p-4 bg-amber-50/70 border border-amber-200/80 rounded-xl text-xs sm:text-sm text-amber-950 leading-relaxed">
+          <div className="p-4 bg-amber-50/70 border border-amber-200/80 rounded-xl text-xs sm:text-sm text-amber-950 mb-4 leading-relaxed">
             <strong className="font-semibold block mb-1">Hardware / Physical Inspection Note:</strong>
             {workflow.browserLimitations}
           </div>
         )}
+
+        {/* Guide Cross-Link */}
+        <div className="p-4 bg-muted/30 border border-border/80 rounded-xl text-xs sm:text-sm text-muted-foreground flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <span>Looking for living room setup checklists and viewing distance advice?</span>
+          <Link href="/guides/tv-screen-test" className="font-semibold text-foreground hover:text-rose-600 transition-colors shrink-0">
+            Read TV Screen Test Guide →
+          </Link>
+        </div>
       </div>
 
       <WorkflowLauncher 

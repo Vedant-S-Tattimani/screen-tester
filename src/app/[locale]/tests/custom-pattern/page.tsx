@@ -3,11 +3,17 @@ import { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { CustomPatternClient } from "./CustomPatternClient";
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
   return generateSeoMetadata(
     "/tests/custom-pattern",
-    "Custom Test Pattern | Precision Screen Grid & Pattern Generator",
-    "Generate custom grid lines, checkerboard patterns, solid color fields, and crosshairs to test monitor alignment, geometry, and uniformity."
+    "Custom Pattern Generator",
+    "Generate custom grid lines, checkerboard patterns, solid color fields, and crosshairs to test monitor alignment, geometry, and uniformity.",
+    locale
   );
 }
 

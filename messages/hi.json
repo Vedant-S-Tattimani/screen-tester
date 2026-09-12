@@ -73,7 +73,9 @@
       "ghostingMotion": "घोस्टिंग और गति",
       "backlightBleed": "बैकलाइट ब्लीड",
       "viewingAngles": "देखने के कोण",
-      "allGuides": "सभी डिस्प्ले गाइड"
+      "allGuides": "सभी डिस्प्ले गाइड",
+      "knowledgeBase": "नॉलेज बेस",
+      "troubleshooting": "समस्या निवारण"
     },
     "searchPlaceholder": "परीक्षण या गाइड खोजें..."
   },
@@ -124,7 +126,8 @@
       "terms": "उपयोग की शर्तें",
       "contact": "संपर्क",
       "contribute": "योगदान दें",
-      "reportIssue": "समस्या की रिपोर्ट करें"
+      "reportIssue": "समस्या की रिपोर्ट करें",
+      "troubleshooting": "समस्या निवारण"
     },
     "copyright": "मॉनिटर टेस्टर। सर्वाधिकार सुरक्षित।"
   },

@@ -18,6 +18,10 @@ export default async function LaptopGuidePage({ params }: { params: Promise<{ lo
     <DeviceGuide
       title={t("title")}
       description={t("description")}
+      workflowLink={{
+        href: "/monitor-inspection/laptop",
+        title: "Laptop Inspection Wizard"
+      }}
       quickTestSequence={[
         "/tests/dead-pixel-test",
         "/tests/backlight-bleed-test",

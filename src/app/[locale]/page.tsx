@@ -31,6 +31,7 @@ export default async function Home({
   const tLib = await getTranslations({ locale, namespace: "TestLibrary" });
   const tTests = await getTranslations({ locale, namespace: "Tests" });
   const tPages = await getTranslations({ locale, namespace: "TestPages" });
+  const tFixer = await getTranslations({ locale, namespace: "StuckPixelFixerTest" });
 
   const libMap: Record<string, string> = {
     "dead-pixel-test": "deadPixel",
@@ -63,6 +64,13 @@ export default async function Home({
     "screen-flicker-test": "flicker",
     "touch-screen-test": "touchScreen",
     "sharpness-test": "sharpness",
+    "vrr-test": "vrrTest",
+    "hdr-test": "hdrVisualTest",
+    "near-black-test": "nearBlackTest",
+    "gradient-banding-test": "gradientBandingTest",
+    "text-clarity-test": "textClarityTest",
+    "tv-overscan-test": "tvOverscanTest",
+    "scaling-aspect-test": "scalingAspectTest",
     "multi-touch-test": "multiTouchTest",
     "accelerometer-test": "accelerometerTest",
     "gyroscope-test": "gyroscopeTest",
@@ -76,7 +84,14 @@ export default async function Home({
     let title = "";
     let description = "";
 
-    if (libMap[id]) {
+    if (id === "stuck-pixel-fixer") {
+      try {
+        title = tFixer("title");
+        description = tFixer("disclaimer");
+      } catch {}
+    }
+
+    if ((!title || !description) && libMap[id]) {
       try {
         title = tLib(`tests.${libMap[id]}.title`);
         description = tLib(`tests.${libMap[id]}.description`);
@@ -114,6 +129,7 @@ export default async function Home({
         getTestItem("dead-pixel-test", "colorPixels"),
         getTestItem("stuck-pixel-test", "colorPixels"),
         getTestItem("bright-pixel-test", "colorPixels"),
+        getTestItem("stuck-pixel-fixer", "colorPixels"),
         getTestItem("burn-in-test", "colorPixels"),
         getTestItem("color-test", "colorPixels"),
         getTestItem("color-gamut-test", "colorPixels"),
@@ -128,9 +144,11 @@ export default async function Home({
         getTestItem("contrast-test", "gradientContrast"),
         getTestItem("brightness-test", "gradientContrast"),
         getTestItem("black-level-test", "gradientContrast"),
+        getTestItem("near-black-test", "gradientContrast"),
         getTestItem("white-level-test", "gradientContrast"),
         getTestItem("gamma-test", "gradientContrast"),
         getTestItem("color-banding-test", "gradientContrast"),
+        getTestItem("gradient-banding-test", "gradientContrast"),
         getTestItem("grayscale-test", "gradientContrast")
       ]
     },
@@ -152,6 +170,7 @@ export default async function Home({
         getTestItem("ghosting-test", "motionPerformance"),
         getTestItem("motion-blur-test", "motionPerformance"),
         getTestItem("refresh-rate-test", "motionPerformance"),
+        getTestItem("vrr-test", "motionPerformance"),
         getTestItem("screen-tearing-test", "motionPerformance"),
         getTestItem("screen-flicker-test", "motionPerformance")
       ]
@@ -161,7 +180,11 @@ export default async function Home({
       title: t("allTestsCategories.sharpnessCapabilities"),
       tests: [
         getTestItem("sharpness-test", "sharpnessCapabilities"),
+        getTestItem("text-clarity-test", "sharpnessCapabilities"),
         getTestItem("hdr-capability-test", "sharpnessCapabilities"),
+        getTestItem("hdr-test", "sharpnessCapabilities"),
+        getTestItem("tv-overscan-test", "sharpnessCapabilities"),
+        getTestItem("scaling-aspect-test", "sharpnessCapabilities"),
         getTestItem("touch-screen-test", "sharpnessCapabilities")
       ]
     },

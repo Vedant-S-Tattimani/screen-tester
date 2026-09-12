@@ -18,6 +18,10 @@ export default async function MonitorGuidePage({ params }: { params: Promise<{ l
     <DeviceGuide
       title={t("title")}
       description={t("description")}
+      workflowLink={{
+        href: "/monitor-inspection/general",
+        title: "General Monitor Inspection"
+      }}
       quickTestSequence={[
         "/tests/dead-pixel-test",
         "/tests/backlight-bleed-test",

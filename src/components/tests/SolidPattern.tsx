@@ -104,7 +104,9 @@ export function SolidPattern({ colors, autoCycleInterval, testId }: SolidPattern
 
   // Guided Auto Test cycling across the 8 inspection colors (2.5 seconds per color)
   const currentIndexRef = useRef(currentIndex);
-  currentIndexRef.current = currentIndex;
+  useEffect(() => {
+    currentIndexRef.current = currentIndex;
+  }, [currentIndex]);
 
   useEffect(() => {
     if (!isAutoTest || isAutoTestPaused || autoCycleInterval) return;

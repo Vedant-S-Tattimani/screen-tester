@@ -136,20 +136,76 @@ const nextConfig: NextConfig = {
         destination: '/:locale/monitor-inspection',
         permanent: true,
       },
-      // Guide aliases
+      // P0: Calculators redirect
       {
-        source: '/:locale/guides/dead-pixels',
-        destination: '/:locale/guides/dead-pixel-vs-stuck-pixel',
+        source: '/:locale/tests/calculators',
+        destination: '/:locale/tests/compare-displays',
         permanent: true,
       },
       {
-        source: '/:locale/guides/ghosting',
-        destination: '/:locale/guides/how-to-check-monitor-ghosting',
+        source: '/tests/calculators',
+        destination: '/en/tests/compare-displays',
+        permanent: true,
+      },
+      // P1: Consolidated Concept Guides to Knowledge Base Articles (Direct, No Chains)
+      {
+        source: '/:locale/guides/dead-pixel-vs-stuck-pixel',
+        destination: '/:locale/knowledge-base/dead-pixel-vs-stuck-pixel',
+        permanent: true,
+      },
+      {
+        source: '/guides/dead-pixel-vs-stuck-pixel',
+        destination: '/en/knowledge-base/dead-pixel-vs-stuck-pixel',
+        permanent: true,
+      },
+      {
+        source: '/:locale/guides/dead-pixels',
+        destination: '/:locale/knowledge-base/dead-pixel-vs-stuck-pixel',
+        permanent: true,
+      },
+      {
+        source: '/guides/dead-pixels',
+        destination: '/en/knowledge-base/dead-pixel-vs-stuck-pixel',
+        permanent: true,
+      },
+      {
+        source: '/:locale/guides/how-to-check-backlight-bleed',
+        destination: '/:locale/knowledge-base/backlight-bleed-vs-ips-glow',
+        permanent: true,
+      },
+      {
+        source: '/guides/how-to-check-backlight-bleed',
+        destination: '/en/knowledge-base/backlight-bleed-vs-ips-glow',
         permanent: true,
       },
       {
         source: '/:locale/guides/backlight-bleed',
-        destination: '/:locale/guides/how-to-check-backlight-bleed',
+        destination: '/:locale/knowledge-base/backlight-bleed-vs-ips-glow',
+        permanent: true,
+      },
+      {
+        source: '/guides/backlight-bleed',
+        destination: '/en/knowledge-base/backlight-bleed-vs-ips-glow',
+        permanent: true,
+      },
+      {
+        source: '/:locale/guides/how-to-check-monitor-ghosting',
+        destination: '/:locale/knowledge-base/monitor-ghosting-and-motion-blur',
+        permanent: true,
+      },
+      {
+        source: '/guides/how-to-check-monitor-ghosting',
+        destination: '/en/knowledge-base/monitor-ghosting-and-motion-blur',
+        permanent: true,
+      },
+      {
+        source: '/:locale/guides/ghosting',
+        destination: '/:locale/knowledge-base/monitor-ghosting-and-motion-blur',
+        permanent: true,
+      },
+      {
+        source: '/guides/ghosting',
+        destination: '/en/knowledge-base/monitor-ghosting-and-motion-blur',
         permanent: true,
       },
     ];

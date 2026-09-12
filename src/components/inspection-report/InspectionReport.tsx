@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 import { 
   CheckCircle2, 
   XCircle, 
@@ -228,14 +229,14 @@ export function InspectionReport({
                     </div>
                   </div>
 
-                  <a
+                  <Link
                     href="/tests/dead-pixel-test"
                     className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-semibold shrink-0 transition-colors shadow-xs self-start sm:self-center"
                     title="Inspect Pixel Again"
                   >
                     <Wrench className="w-3.5 h-3.5" />
                     <span>Inspect Pixel Again</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             );
@@ -255,12 +256,12 @@ export function InspectionReport({
                     </p>
                   </div>
                 </div>
-                <a
+                <Link
                   href="/tests/dead-pixel-test"
                   className="text-[11px] font-semibold text-emerald-700 hover:text-emerald-900 underline shrink-0"
                 >
                   Re-test Pixels
-                </a>
+                </Link>
               </div>
             );
           }

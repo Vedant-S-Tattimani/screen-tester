@@ -46,25 +46,7 @@ export const monitorGuides: MonitorGuide[] = [
     relatedTestIds: ["touch-screen-test", "dead-pixel-test", "burn-in-test"]
   },
 
-  // CONCEPTS (To be created)
-  {
-    id: "dead-pixel-vs-stuck-pixel",
-    category: "concept",
-    primaryIntent: "dead pixel vs stuck pixel",
-    relatedTestIds: ["dead-pixel-test", "stuck-pixel-test"]
-  },
-  {
-    id: "how-to-check-monitor-ghosting",
-    category: "concept",
-    primaryIntent: "what is monitor ghosting",
-    relatedTestIds: ["ghosting-test", "motion-blur-test"]
-  },
-  {
-    id: "how-to-check-backlight-bleed",
-    category: "concept",
-    primaryIntent: "how to fix backlight bleed",
-    relatedTestIds: ["backlight-bleed-test", "uniformity-test"]
-  },
+  // CONCEPTS
   {
     id: "monitor-viewing-angles-explained",
     category: "concept",

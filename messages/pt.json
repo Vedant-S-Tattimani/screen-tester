@@ -73,7 +73,9 @@
       "ghostingMotion": "Ghosting e Movimento",
       "backlightBleed": "Sangramento de Retroiluminação",
       "viewingAngles": "Ângulos de Visão",
-      "allGuides": "Todos os Guias de Tela"
+      "allGuides": "Todos os Guias de Tela",
+      "knowledgeBase": "Base de conhecimento",
+      "troubleshooting": "Solução de problemas"
     },
     "searchPlaceholder": "Pesquisar testes ou guias..."
   },
@@ -124,7 +126,8 @@
       "terms": "Termos de uso",
       "contact": "Contato",
       "contribute": "Contribuir",
-      "reportIssue": "Relatar um problema"
+      "reportIssue": "Relatar um problema",
+      "troubleshooting": "Solução de problemas"
     },
     "copyright": "Testador de Monitor. Todos os direitos reservados."
   },

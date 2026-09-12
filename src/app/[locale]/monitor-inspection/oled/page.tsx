@@ -1,5 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
+import { Link } from "@/i18n/routing";
 import { WorkflowLauncher } from "@/components/layout/WorkflowLauncher";
 import { getWorkflowById } from "@/data/workflows";
 import { notFound } from "next/navigation";
@@ -42,11 +43,19 @@ export default async function OledInspectionPage({ params }: { params: Promise<{
 
         {/* Browser Limitations Alert */}
         {workflow.browserLimitations && (
-          <div className="p-4 bg-red-50/70 border border-red-200/80 rounded-xl text-xs sm:text-sm text-red-950 leading-relaxed">
+          <div className="p-4 bg-red-50/70 border border-red-200/80 rounded-xl text-xs sm:text-sm text-red-950 mb-4 leading-relaxed">
             <strong className="font-semibold block mb-1">OLED Hardware & Browser Limitations:</strong>
             {workflow.browserLimitations}
           </div>
         )}
+
+        {/* Guide Cross-Link */}
+        <div className="p-4 bg-muted/30 border border-border/80 rounded-xl text-xs sm:text-sm text-muted-foreground flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <span>Looking for OLED technology background and maintenance advice?</span>
+          <Link href="/guides/oled-screen-test" className="font-semibold text-foreground hover:text-amber-600 transition-colors shrink-0">
+            Read OLED Screen Test Guide →
+          </Link>
+        </div>
       </div>
 
       <WorkflowLauncher 

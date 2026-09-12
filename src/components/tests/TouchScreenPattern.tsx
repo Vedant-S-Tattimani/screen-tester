@@ -101,11 +101,15 @@ export function TouchScreenPattern({ testId = "touch-screen-test" }: TouchScreen
 
   useEffect(() => {
     if (!isFullscreen) {
-      setIsHudVisible(true);
+      queueMicrotask(() => {
+        setIsHudVisible(true);
+      });
       return;
     }
 
-    setIsHudVisible(true);
+    queueMicrotask(() => {
+      setIsHudVisible(true);
+    });
     scheduleHudHide(3000);
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -277,6 +281,7 @@ export function TouchScreenPattern({ testId = "touch-screen-test" }: TouchScreen
     }
 
     if (mode === "hold") {
+      // eslint-disable-next-line react-hooks/purity
       setHoldStartTime(Date.now());
       setHoldElapsed(0);
       setHoldSuccess(false);

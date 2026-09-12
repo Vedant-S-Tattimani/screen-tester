@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
+import { Link } from "@/i18n/routing";
 import { TestRow } from "@/components/layout/TestRow";
 import { getGuidesByCategory } from "@/data/guides";
 import { generateSeoMetadata } from "@/lib/seo";
@@ -83,6 +84,23 @@ export default async function GuidesPage({ params }: { params: Promise<{ locale:
                 />
               ))}
             </div>
+          </div>
+
+          {/* Knowledge Base Callout */}
+          <div className="p-6 bg-blue-50/50 border border-blue-200/80 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-sm">
+            <div>
+              <h3 className="font-bold text-blue-950 mb-1">Looking for Technical Display Deep Dives?</h3>
+              <p className="text-muted-foreground text-xs sm:text-sm">
+                Explore our Knowledge Base for in-depth explanations on pixel defects, backlight bleed vs. IPS glow, monitor ghosting, and VRR standards.
+              </p>
+            </div>
+            <Link
+              href="/knowledge-base"
+              className="inline-flex items-center gap-1.5 font-semibold text-blue-700 hover:text-blue-900 hover:underline shrink-0"
+            >
+              <span>Explore Knowledge Base</span>
+              <span aria-hidden="true">→</span>
+            </Link>
           </div>
         </div>
       </section>

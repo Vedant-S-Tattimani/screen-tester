@@ -8,6 +8,10 @@ import { normalizeWorkflowPath } from "@/lib/workflow";
 interface DeviceGuideProps {
   title: string;
   description: string;
+  workflowLink?: {
+    href: string;
+    title: string;
+  };
   quickTestSequence: string[];
   fullTestSequence: string[];
   troubleshooting: {
@@ -17,7 +21,7 @@ interface DeviceGuideProps {
   }[];
 }
 
-export function DeviceGuide({ title, description, quickTestSequence, fullTestSequence, troubleshooting }: DeviceGuideProps) {
+export function DeviceGuide({ title, description, workflowLink, quickTestSequence, fullTestSequence, troubleshooting }: DeviceGuideProps) {
   const { startWorkflow } = useWorkflowLauncher();
 
   // Create standardized /tests/ paths for the workflow
@@ -34,9 +38,25 @@ export function DeviceGuide({ title, description, quickTestSequence, fullTestSeq
       
       <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-6 text-foreground">{title}</h1>
       
-      <p className="text-muted-foreground text-lg leading-relaxed mb-12">
+      <p className="text-muted-foreground text-lg leading-relaxed mb-6">
         {description}
       </p>
+
+      {workflowLink && (
+        <div className="mb-10 p-4 bg-muted/40 border border-border/80 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-sm">
+          <div>
+            <span className="font-semibold text-foreground">Interactive Inspection Workflow: </span>
+            <span className="text-muted-foreground">Prefer a step-by-step interactive testing session with diagnostic logging?</span>
+          </div>
+          <Link
+            href={workflowLink.href}
+            className="inline-flex items-center gap-1.5 font-medium text-blue-600 hover:underline shrink-0"
+          >
+            <span>Launch {workflowLink.title}</span>
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
         {/* Quick Test Card */}

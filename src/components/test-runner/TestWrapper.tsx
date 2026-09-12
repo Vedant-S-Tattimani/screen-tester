@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, useEffect, useRef, ReactNode, useCallback } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Link, useRouter, usePathname } from "@/i18n/routing";
 import { TestContext, Observation } from "./TestContext";
 import { normalizeWorkflowPath } from "@/lib/workflow";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { RelatedTests } from "@/components/layout/RelatedTests";
+import { getBaseUrl } from "@/lib/seo";
 import { safeSessionGet, safeSessionSet, safeSessionRemove, safeStorageGet } from "@/lib/browserCapabilities";
 import { 
   getActiveInspectionSession, 
@@ -51,6 +52,25 @@ export function TestWrapper({ title, description, instructions, children, testId
   const tBreadcrumbs = useTranslations("Breadcrumbs");
   const router = useRouter();
   const pathname = usePathname();
+  const locale = useLocale();
+  const baseUrl = getBaseUrl();
+  const cleanPath = pathname.startsWith("/") ? pathname : `/${pathname}`;
+
+  const webAppSchema = testId ? {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": `${title} – Screen Tester`,
+    "url": `${baseUrl}/${locale}${cleanPath}`,
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires HTML5 Canvas and WebGL support",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": typeof description === "string" ? description : `${title} online browser-based display test.`
+  } : null;
   
   const isRunning = true; // Always running inline
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -275,7 +295,9 @@ export function TestWrapper({ title, description, instructions, children, testId
 
   // Guided Auto Test timer for tests other than dead-pixel-test and custom-pattern
   const autoTestSecondsLeftRef = useRef(autoTestSecondsLeft);
-  autoTestSecondsLeftRef.current = autoTestSecondsLeft;
+  useEffect(() => {
+    autoTestSecondsLeftRef.current = autoTestSecondsLeft;
+  }, [autoTestSecondsLeft]);
 
   useEffect(() => {
     if (!isAutoTest || isAutoTestPausedState) return;
@@ -480,6 +502,12 @@ export function TestWrapper({ title, description, instructions, children, testId
       activeColorName,
       setActiveColorName
     }}>
+      {webAppSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+        />
+      )}
       <div className={cn(
         "flex flex-col w-full transition-all duration-300",
         isFullscreen ? "h-screen w-screen overflow-hidden bg-black fixed inset-0 z-50" : "max-w-7xl mx-auto py-12 px-4 sm:px-6 flex-1 items-start"

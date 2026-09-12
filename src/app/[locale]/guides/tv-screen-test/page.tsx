@@ -18,6 +18,10 @@ export default async function TvGuidePage({ params }: { params: Promise<{ locale
     <DeviceGuide
       title={t("title")}
       description={t("description")}
+      workflowLink={{
+        href: "/monitor-inspection/tv",
+        title: "TV Inspection Wizard"
+      }}
       quickTestSequence={[
         "/tests/dead-pixel-test",
         "/tests/blooming-test",

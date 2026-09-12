@@ -73,7 +73,9 @@
       "ghostingMotion": "Ghosting et Mouvement",
       "backlightBleed": "Saignement de Rétroéclairage",
       "viewingAngles": "Angles de Visionnage",
-      "allGuides": "Tous les Guides d'Affichage"
+      "allGuides": "Tous les Guides d'Affichage",
+      "knowledgeBase": "Base de connaissances",
+      "troubleshooting": "Dépannage"
     },
     "searchPlaceholder": "Rechercher des tests ou guides..."
   },
@@ -124,7 +126,8 @@
       "terms": "Conditions d'utilisation",
       "contact": "Contact",
       "contribute": "Contribuer",
-      "reportIssue": "Signaler un problème"
+      "reportIssue": "Signaler un problème",
+      "troubleshooting": "Dépannage"
     },
     "copyright": "Testeur de Moniteur. Tous droits réservés."
   },

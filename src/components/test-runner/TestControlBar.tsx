@@ -90,12 +90,16 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
   // Auto-hide initialization and mouse tracking in fullscreen
   useEffect(() => {
     if (!isFullscreen) {
-      setIsControlsVisible(true);
+      queueMicrotask(() => {
+        setIsControlsVisible(true);
+      });
       return;
     }
 
     // On entering fullscreen, show controls briefly (3s) then auto-hide
-    setIsControlsVisible(true);
+    queueMicrotask(() => {
+      setIsControlsVisible(true);
+    });
     scheduleHide(3000);
 
     const handleMouseMove = (e: MouseEvent) => {

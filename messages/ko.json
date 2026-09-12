@@ -73,7 +73,9 @@
       "ghostingMotion": "고스팅 및 동작",
       "backlightBleed": "백라이트 번짐",
       "viewingAngles": "시야각",
-      "allGuides": "모든 디스플레이 가이드"
+      "allGuides": "모든 디스플레이 가이드",
+      "knowledgeBase": "지식 베이스",
+      "troubleshooting": "문제 해결"
     },
     "searchPlaceholder": "테스트 또는 가이드 검색..."
   },
@@ -124,7 +126,8 @@
       "terms": "이용약관",
       "contact": "문의",
       "contribute": "기여하기",
-      "reportIssue": "문제 신고"
+      "reportIssue": "문제 신고",
+      "troubleshooting": "문제 해결"
     },
     "copyright": "모니터 테스터. 모든 권리 보유."
   },

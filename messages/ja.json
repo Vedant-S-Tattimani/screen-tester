@@ -73,7 +73,9 @@
       "ghostingMotion": "ゴーストとモーション",
       "backlightBleed": "バックライトブリード",
       "viewingAngles": "視野角",
-      "allGuides": "すべてのディスプレイガイド"
+      "allGuides": "すべてのディスプレイガイド",
+      "knowledgeBase": "ナレッジベース",
+      "troubleshooting": "トラブルシューティング"
     },
     "searchPlaceholder": "テストやガイドを検索..."
   },
@@ -124,7 +126,8 @@
       "terms": "利用規約",
       "contact": "お問い合わせ",
       "contribute": "貢献する",
-      "reportIssue": "問題を報告"
+      "reportIssue": "問題を報告",
+      "troubleshooting": "トラブルシューティング"
     },
     "copyright": "モニターテスター。全著作権所有。"
   },

@@ -190,6 +190,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/knowledge-base/troubleshooting" className="hover:text-gray-950 transition-colors block py-0.5">
+                  {t("links.troubleshooting")}
+                </Link>
+              </li>
+              <li>
                 <Link href="/faq" className="hover:text-gray-950 transition-colors block py-0.5">
                   {t("links.faq")}
                 </Link>

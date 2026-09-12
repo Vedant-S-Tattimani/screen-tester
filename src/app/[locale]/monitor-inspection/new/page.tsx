@@ -1,5 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
+import { Link } from "@/i18n/routing";
 import { WorkflowLauncher } from "@/components/layout/WorkflowLauncher";
 import { getWorkflowById } from "@/data/workflows";
 import { notFound } from "next/navigation";
@@ -47,6 +48,14 @@ export default async function NewMonitorInspectionPage({ params }: { params: Pro
             {workflow.browserLimitations}
           </div>
         )}
+
+        {/* Guide Cross-Link */}
+        <div className="p-4 bg-muted/30 border border-border/80 rounded-xl text-xs sm:text-sm text-muted-foreground flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <span>Looking for unboxing guidelines and return policy inspection tips?</span>
+          <Link href="/guides/monitor-screen-test" className="font-semibold text-foreground hover:text-blue-600 transition-colors shrink-0">
+            Read Monitor Screen Test Guide →
+          </Link>
+        </div>
       </div>
 
       <WorkflowLauncher 

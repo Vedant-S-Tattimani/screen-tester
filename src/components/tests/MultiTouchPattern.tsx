@@ -60,11 +60,15 @@ export function MultiTouchPattern({ testId = "multi-touch-test" }: MultiTouchPat
 
   useEffect(() => {
     if (!isFullscreen) {
-      setIsHudVisible(true);
+      queueMicrotask(() => {
+        setIsHudVisible(true);
+      });
       return;
     }
 
-    setIsHudVisible(true);
+    queueMicrotask(() => {
+      setIsHudVisible(true);
+    });
     scheduleHudHide(3000);
 
     const handleMouseMove = (e: MouseEvent) => {

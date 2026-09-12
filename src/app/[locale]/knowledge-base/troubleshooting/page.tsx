@@ -3,6 +3,7 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import { generateSeoMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { TroubleshootingClient } from "./TroubleshootingClient";
+import { TROUBLESHOOTING_TOPICS } from "@/data/troubleshooting";
 import { Wrench } from "lucide-react";
 
 export async function generateMetadata({
@@ -36,8 +37,27 @@ export default async function TroubleshootingPage({
     { label: t("header.title"), href: "/knowledge-base/troubleshooting" }
   ];
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: TROUBLESHOOTING_TOPICS.map((topic) => ({
+      "@type": "Question",
+      name: topic.title,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: `${topic.symptom} Possible causes: ${topic.possibleCauses.slice(0, 3).join("; ")}. Recommended checks: ${topic.checks.slice(0, 2).join("; ")}.`
+      }
+    }))
+  };
+
   return (
     <div className="bg-slate-50/50 min-h-screen py-10 sm:py-16 text-slate-900 font-sans">
+      {/* Schema.org FAQPage Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
         {/* Breadcrumb Navigation */}

@@ -131,7 +131,9 @@ function CustomPatternRunner({
 
   // Guided Auto Test cycling across all 7 precision patterns (2.2s each)
   const activePresetRef = useRef(activePreset);
-  activePresetRef.current = activePreset;
+  useEffect(() => {
+    activePresetRef.current = activePreset;
+  }, [activePreset]);
 
   useEffect(() => {
     if (!isAutoTest || isAutoTestPaused) return;
