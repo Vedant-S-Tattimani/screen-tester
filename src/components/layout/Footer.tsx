@@ -86,6 +86,15 @@ const DIRECTORY_BADGES = [
     width: 250,
     height: 54,
   },
+  {
+    name: "EasyDoFollow",
+    href: "https://easydofollow.dev/dev-tools/screen-tester",
+    rel: "noopener",
+    src: "https://easydofollow.dev/badge/easydofollow-badge-light.svg",
+    alt: "Featured on EasyDoFollow",
+    width: 188,
+    height: 56,
+  },
 ];
 
 export function Footer() {
