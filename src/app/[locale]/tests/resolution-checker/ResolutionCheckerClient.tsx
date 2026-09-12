@@ -275,10 +275,18 @@ export function ResolutionCheckerClient({ educationalContent }: { educationalCon
         </button>
       </div>
 
+      {/* Technical Honesty Disclaimer */}
+      <div className="w-full mb-8 p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-amber-900 dark:text-amber-200 flex items-start gap-3">
+        <Info className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
+        <div>
+          <strong>Hardware Boundary Notice:</strong> Your browser cannot directly verify the panel&apos;s physical native resolution. The values below represent logical CSS coordinates, viewport size, and scaling factors reported by the operating system and browser window.
+        </div>
+      </div>
+
       {/* 1. LIVE DISPLAY INFO */}
       <div className="w-full mb-16">
         <div className="text-[11px] font-mono font-bold tracking-[0.2em] text-muted-foreground uppercase mb-4 border-b border-border/50 pb-2">
-          {t("infoTitle")}
+          1. BROWSER-REPORTED DIMENSIONS &amp; GEOMETRY
         </div>
         
         {liveInfo.w > 0 ? (
@@ -289,7 +297,7 @@ export function ResolutionCheckerClient({ educationalContent }: { educationalCon
             <InfoRow label={t("labels.aspectRatio")} value={aspect} />
             <InfoRow label={t("labels.colorDepth")} value={liveInfo.colorDepth} unit="-bit" />
             <InfoRow label={t("labels.orientation")} value={liveInfo.orientation} />
-            <InfoRow label={t("labels.refreshRate")} value={`~${liveInfo.refreshRate || "--"}`} unit="Hz" />
+            <InfoRow label={t("labels.refreshRate")} value={`~${liveInfo.refreshRate || "--"}`} unit="fps (rAF)" />
             <InfoRow label={t("labels.totalPixels")} value={`≈ ${millionPixels}`} unit="million" />
             <InfoRow label={t("labels.classification")} value={classifyResolution(liveInfo.w, liveInfo.h, t)} />
           </div>
@@ -306,7 +314,7 @@ export function ResolutionCheckerClient({ educationalContent }: { educationalCon
       {/* 2. MY DISPLAY (PPI CALCULATOR) */}
       <div className="w-full mb-16">
         <div className="text-[11px] font-mono font-bold tracking-[0.2em] text-muted-foreground uppercase mb-4 border-b border-border/50 pb-2">
-          {t("myDisplay.title")}
+          2. USER-ENTERED PANEL SPECIFICATIONS &amp; CALCULATED PPI
         </div>
         
         <p className="text-sm text-muted-foreground mb-6">{t("myDisplay.prompt")}</p>

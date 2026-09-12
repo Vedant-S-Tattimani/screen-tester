@@ -167,7 +167,7 @@ export function ScreenTearingPattern({ testId }: ScreenTearingPatternProps) {
         <div className="absolute top-4 left-4 flex items-center gap-3 bg-black/75 backdrop-blur-md border border-white/10 px-3.5 py-2 rounded-xl text-xs font-mono tabular-nums text-white/90 shadow-xl pointer-events-none">
           <div className="flex items-center gap-1.5 text-emerald-400">
             <Activity className="w-3.5 h-3.5" />
-            <span className="font-semibold">{fps > 0 ? fps : "--"} FPS</span>
+            <span className="font-semibold">{fps > 0 ? fps : "--"} FPS (rAF)</span>
           </div>
           <span className="text-white/20">|</span>
           <div className="text-white/70">
@@ -179,9 +179,14 @@ export function ScreenTearingPattern({ testId }: ScreenTearingPatternProps) {
             <span>{speed} px/f</span>
           </div>
         </div>
+
+        {/* Floating Technical Honesty Notice */}
+        <div className="absolute top-4 right-4 z-10 bg-black/80 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/15 text-[11px] text-white/80 font-mono text-right shadow-lg pointer-events-none max-w-sm hidden sm:block">
+          Visual tearing inspection • rAF timing does not verify hardware VRR state
+        </div>
       </div>
 
-      <TestControlBar testId={testId} title="Screen Tearing & V-Sync Sync">
+      <TestControlBar testId={testId} title="Screen Tearing & Frame-Pacing Test">
         <div className="flex items-center gap-3">
           <button
             onClick={() => setIsPaused(!isPaused)}
@@ -216,7 +221,7 @@ export function ScreenTearingPattern({ testId }: ScreenTearingPatternProps) {
           </div>
 
           <span className="text-xs text-amber-600 dark:text-amber-300 font-bold hidden sm:inline font-mono">
-            V-Sync Scanline Stress
+            Tearing &amp; Frame Delivery
           </span>
         </div>
       </TestControlBar>

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
 
-// Industry standard Macbeth ColorChecker approximation values (sRGB)
+// 24 visual color reference swatches (sRGB standard values)
 const COLOR_CHECKER = [
   { name: "Dark Skin", hex: "#735244" },
   { name: "Light Skin", hex: "#c29682" },
@@ -51,6 +51,11 @@ export function ColorAccuracyPattern({ testId }: ColorAccuracyPatternProps) {
   return (
     <>
       <div className="absolute inset-0 bg-[#222222] flex items-center justify-center p-2 sm:p-4 pb-14 sm:pb-16 text-white overflow-hidden">
+        {/* Floating Technical Honesty Notice */}
+        <div className="absolute top-3 left-1/2 -translate-x-1/2 z-10 bg-black/85 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 text-[11px] text-white/80 font-mono text-center shadow-lg pointer-events-none max-w-[90vw] truncate">
+          Visual observation only • Delta-E (ΔE) and objective calibration require a hardware colorimeter
+        </div>
+
         <div className="w-full h-full bg-[#141414] border-2 sm:border-4 border-[#141414] rounded-lg shadow-2xl grid grid-cols-6 grid-rows-4 gap-1.5 sm:gap-2.5 p-1.5 sm:p-2.5">
           {COLOR_CHECKER.map((color, i) => (
             <div 
@@ -69,7 +74,7 @@ export function ColorAccuracyPattern({ testId }: ColorAccuracyPatternProps) {
         </div>
       </div>
 
-      <TestControlBar testId={testId} title="Visual Color Check (Macbeth 24)">
+      <TestControlBar testId={testId} title="Visual Color Reference & Consistency Check">
         <div className="flex items-center gap-2">
           <button
             onClick={() => setShowLabels(v => !v)}
@@ -82,7 +87,7 @@ export function ColorAccuracyPattern({ testId }: ColorAccuracyPatternProps) {
             {showLabels ? "Hide Hex / Names" : "Show Hex / Names"}
           </button>
           <span className="text-xs text-amber-600 dark:text-amber-300 font-mono font-bold hidden sm:inline">
-            24 Standard Reference Patches
+            24 Visual Reference Patches
           </span>
         </div>
       </TestControlBar>

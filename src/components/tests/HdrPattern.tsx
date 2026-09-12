@@ -125,10 +125,10 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
               </div>
               <div>
                 <div className="text-xs uppercase tracking-widest text-white/50 font-semibold font-mono">
-                  Hardware Capability & Tone-Mapping
+                  Browser-Reported Pipeline &amp; Visual Check
                 </div>
                 <h2 className="text-lg sm:text-xl font-bold tracking-tight text-white mt-0.5">
-                  High Dynamic Range (HDR) Diagnostic
+                  HDR Capability &amp; Visual Check
                 </h2>
               </div>
             </div>
@@ -138,14 +138,14 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
                 <span className="text-xs text-white/50 font-mono">Probing Pipeline...</span>
               ) : hdrSupported ? (
                 <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                  <CheckCircle className="w-3.5 h-3.5" /> High Dynamic Range Active
+                  <CheckCircle className="w-3.5 h-3.5" /> CSS (dynamic-range: high) Detected
                 </span>
               ) : (
                 <span 
                   className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-500/20 text-slate-200 border border-slate-500/30"
                   title="SDR (Standard Dynamic Range) is normal for standard displays. For HDR-capable monitors, press Win + Alt + B in Windows to toggle HDR."
                 >
-                  <Monitor className="w-3.5 h-3.5 text-slate-400" /> SDR Pipeline (Standard Dynamic Range)
+                  <Monitor className="w-3.5 h-3.5 text-slate-400" /> CSS (dynamic-range: standard) Active
                 </span>
               )}
             </div>
@@ -162,7 +162,7 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
               }`}
             >
               <ShieldCheck className="w-3.5 h-3.5" />
-              <span>Pipeline Metrics</span>
+              <span>Browser Pipeline</span>
             </button>
             <button
               role="tab"
@@ -206,10 +206,10 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
             <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col justify-between">
                 <div>
-                  <div className="text-xs uppercase tracking-wider text-white/50 font-mono font-semibold mb-1">Display Dynamic Range</div>
+                  <div className="text-xs uppercase tracking-wider text-white/50 font-mono font-semibold mb-1">Browser-Reported Dynamic Range</div>
                   <div className="text-xl font-bold text-white mb-2">CSS dynamic-range</div>
                   <p className="text-xs text-white/60 leading-relaxed">
-                    Queries whether the operating system display compositor is outputting high-luminance extended range values.
+                    Queries whether the operating system compositor reports high dynamic range support to the browser media query.
                   </p>
                 </div>
                 <div className="mt-4 pt-4 border-t border-white/10 flex flex-col gap-2">
@@ -224,7 +224,7 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-white/50">Gamut:</span>
                     <span className="font-mono text-white/80">
-                      {rec2020Supported ? "Rec.2020 (HDR Wide)" : p3Supported ? "DCI-P3 (Wide Gamut)" : "sRGB (Standard)"}
+                      {rec2020Supported ? "Rec.2020 (HDR Wide)" : p3Supported ? "Display-P3 (Reported)" : "sRGB (Standard)"}
                     </span>
                   </div>
                 </div>
@@ -233,15 +233,15 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
               <div className="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col justify-between">
                 <div>
                   <div className="text-xs uppercase tracking-wider text-white/50 font-mono font-semibold mb-1">Color Depth</div>
-                  <div className="text-xl font-bold text-white mb-2">Hardware Buffer Depth</div>
+                  <div className="text-xl font-bold text-white mb-2">Reported Buffer Color Depth</div>
                   <p className="text-xs text-white/60 leading-relaxed">
-                    Standard SDR monitors render 24-bit (8-bit per channel). True HDR10 panels support 30-bit/32-bit (10-bit per channel, 1.07 billion colors).
+                    Queries <code className="font-mono">screen.colorDepth</code>. 24-bit indicates standard 8-bit SDR buffer depth; 30-bit/32-bit indicates a high-bitrate buffer pipeline.
                   </p>
                 </div>
                 <div className="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
                   <span className="text-xs text-white/50">Reported Depth:</span>
                   <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded-md bg-white/10 text-white/90">
-                    {colorDepth ? `${colorDepth}-bit (${colorDepth >= 30 ? "10-bit HDR" : "8-bit SDR"})` : "Probing..."}
+                    {colorDepth ? `${colorDepth}-bit (${colorDepth >= 30 ? "10-bit reported" : "8-bit standard"})` : "Probing..."}
                   </span>
                 </div>
               </div>
@@ -250,7 +250,7 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
               <div className="sm:col-span-2 bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 flex items-start gap-3 text-xs text-amber-200/90 leading-relaxed">
                 <ShieldCheck className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                 <div>
-                  <strong>Hardware Reality Check (Browser Signal ≠ True Panel Contrast):</strong> A browser reporting <code className="font-mono bg-black/40 px-1 rounded">dynamic-range: high</code> confirms that your OS/GPU pipeline is transmitting HDR metadata. However, actual HDR picture quality depends completely on physical panel hardware: true per-pixel OLED black levels, or high-zone Full Array Local Dimming (FALD / Mini-LED 1000+ nits). Standard edge-lit &quot;DisplayHDR 400&quot; LCD monitors accept the HDR signal, but global backlight illumination washes out dark scenes and cannot produce true HDR specular pop.
+                  <strong>Technical Notice (Browser Signals vs. Physical HDR Performance):</strong> A browser reporting <code className="font-mono bg-black/40 px-1 rounded">dynamic-range: high</code> confirms that the OS compositor exposes HDR capability to the browser. However, a browser cannot measure actual panel peak luminance (nits), sustained brightness, local dimming zones, or prove DisplayHDR certification. Physical peak luminance and HDR certification require laboratory luminance meters. Standard edge-lit displays may report HDR support without producing true high-contrast specular highlights.
                 </div>
               </div>
 
@@ -466,7 +466,7 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
       {/* ========================================================= */}
       {/* TEST CONTROL BAR (DOCKED OUTSIDE & BELOW VIEWPORT)       */}
       {/* ========================================================= */}
-      <TestControlBar testId={testId} title="HDR & Tone-Mapping Calibration">
+      <TestControlBar testId={testId} title="HDR Capability & Visual Check">
         <div className="flex flex-wrap items-center gap-2">
           {/* Mode Tabs Switcher */}
           <div className="flex items-center bg-slate-100 dark:bg-black/80 p-1 rounded-xl border border-slate-200 dark:border-white/20 text-xs">
@@ -478,7 +478,7 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
                   : "bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-50 border border-slate-200 dark:bg-white/10 dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/25 dark:border-white/15 font-semibold"
               }`}
             >
-              Pipeline Metrics
+              Browser Pipeline
             </button>
             <button
               onClick={() => setActiveTab("banding")}

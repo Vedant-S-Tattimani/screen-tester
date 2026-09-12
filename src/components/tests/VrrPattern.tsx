@@ -250,9 +250,9 @@ export function VrrPattern({ testId = "vrr-test" }: VrrPatternProps) {
 
         {/* Live In-Canvas Telemetry HUD */}
         <div className="absolute top-4 left-4 flex flex-wrap items-center gap-3 bg-slate-900/85 backdrop-blur-md px-4 py-2.5 rounded-xl border border-slate-700/60 text-xs font-mono shadow-lg text-slate-200">
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5" title="Browser requestAnimationFrame frame delivery timing (not physical monitor refresh rate)">
             <Gauge className="w-4 h-4 text-emerald-400" />
-            <span>FPS:</span>
+            <span>rAF FPS:</span>
             <strong className="text-emerald-400 text-sm">{fps || "--"}</strong>
           </div>
           <div className="h-3.5 w-px bg-slate-700" />

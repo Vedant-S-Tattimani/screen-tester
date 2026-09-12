@@ -395,7 +395,7 @@ export function SpeakerPattern({ testId = "speaker-test" }: SpeakerPatternProps)
         <div>
           <h2 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
             <Activity className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Test Tone Frequency</span>
+            <span>Test Tone Presets (Listening Check)</span>
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
             {[
@@ -538,7 +538,7 @@ export function SpeakerPattern({ testId = "speaker-test" }: SpeakerPatternProps)
         </div>
       </div>
 
-      <TestControlBar testId={testId} title="Speaker Test" />
+      <TestControlBar testId={testId} title="Speaker & Stereo Channel Test" />
     </div>
   );
 }

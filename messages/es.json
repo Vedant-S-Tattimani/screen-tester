@@ -329,8 +329,8 @@
         "description": "Ajusta el contraste de tu monitor para garantizar que los detalles brillantes no se recorten."
       },
       "gammaTest": {
-        "title": "Calibración Gamma",
-        "description": "Estima visualmente el seguimiento gamma de tu monitor (objetivo 2.2 para sRGB)."
+        "title": "Comprobación Visual de Gamma",
+        "description": "Evalúe visualmente el seguimiento gamma de su monitor (objetivo 2.2 para sRGB)."
       },
       "hdrCapabilityTest": {
         "title": "Capacidad HDR",
@@ -588,14 +588,14 @@
       "inst3": "Ajusta los ajustes de saturación/vibrancia de tu monitor si los colores parecen deslavados o demasiado neón."
     },
     "gamma-test": {
-      "metaTitle": "Test de Curva Gamma – Comprobador Visual de Gamma 2.2 y 2.4",
-      "metaDescription": "Verifica la curva gamma de tu pantalla frente a los valores estándar de referencia Gamma 2.2 y 2.4.",
-      "title": "Calibración Gamma",
-      "description_p1": "Esta herramienta te ayuda a estimar la curva gamma física de tu monitor. Un gamma de 2.2 es el estándar para sRGB.",
+      "metaTitle": "Comprobación Visual de Gamma",
+      "metaDescription": "Evalúe visualmente el seguimiento gamma de la pantalla con patrones de referencia Gamma 2.2 y 2.4. La medición objetiva requiere un colorímetro.",
+      "title": "Comprobación Visual de Gamma",
+      "description_p1": "Esta prueba visual le ayuda a evaluar el seguimiento gamma y los tonos medios frente a curvas estándar. Gamma 2.2 es el estándar sRGB; la calibración objetiva requiere hardware externo.",
       "inst1": "Entra en pantalla completa y aléjate del monitor, o entrecierra los ojos hasta que las líneas superiores se vuelvan borrosas.",
       "inst2": "Compara la parte superior borrosa con los tres bloques sólidos de abajo.",
       "inst3": "El bloque que coincide perfectamente con el brillo de la mitad superior borrosa indica el gamma aproximado de tu monitor.",
-      "inst4": "<strong>SOBRE ESTA PRUEBA:</strong> Esta herramienta se basa en la percepción visual y la representación de colores estándar del navegador."
+      "inst4": "<strong>ACERCA DE ESTA PRUEBA:</strong> Esta herramienta se basa en la percepción visual y la mezcla óptica. Proporciona una evaluación visual y no reemplaza un colorímetro de hardware."
     },
     "motion-blur-test": {
       "metaTitle": "Test de Desenfoque de Movimiento – Claridad en Movimiento y MPRT",
@@ -607,10 +607,10 @@
       "inst3": "Ajusta la velocidad y el contraste para probar bajo diferentes escenarios de sobreimpulso del panel."
     },
     "hdr-capability-test": {
-      "metaTitle": "Test de Compatibilidad HDR – Alto Rango Dinámico y Amplia Gama",
-      "metaDescription": "Detecta el soporte HDR en tu navegador, la luminancia máxima en nits y la cobertura de gama de color extendida (P3).",
-      "title": "Test de Capacidad HDR",
-      "description_p1": "Esta herramienta consulta las APIs de tu navegador para determinar si el Alto Rango Dinámico (HDR) y la Gama de Color Amplia son compatibles.",
+      "metaTitle": "Capacidad HDR y Comprobación Visual",
+      "metaDescription": "Compruebe la compatibilidad HDR informada por el navegador (dynamic-range: high). El brillo pico en nits y la certificación requieren hardware de laboratorio.",
+      "title": "Capacidad HDR y Comprobación Visual",
+      "description_p1": "Consulta media queries CSS del navegador para detectar si el sistema operativo informa soporte HDR (dynamic-range: high). Detecta el estado de la señal, pero no mide nits pico físicos ni certificaciones DisplayHDR.",
       "inst1": "Revisa las capacidades reportadas por el navegador.",
       "inst2": "Si dice 'No Compatible' pero tu monitor admite HDR, asegúrate de que HDR esté activado en Windows/macOS.",
       "inst3": "Asegúrate de usar un navegador moderno con la aceleración de hardware habilitada."
@@ -787,10 +787,10 @@
       ]
     },
     "speaker-test": {
-      "metaTitle": "Prueba de Altavoces – Sonido estéreo, canal izquierdo/derecho y tonos",
-      "metaDescription": "Pruebe altavoces de ordenador y monitor online. Compruebe separación de canales izquierdo/derecho, balance y tonos de prueba (100Hz–2500Hz).",
-      "title": "Prueba de Altavoces",
-      "description_p1": "Verifique salida de audio, separación estéreo y respuesta en frecuencia con tonos de prueba sintetizados. Evalúa el enrutamiento sin medir distorsión física acústica de la sala.",
+      "metaTitle": "Prueba de Altavoces y Canales Estéreo",
+      "metaDescription": "Pruebe altavoces y auriculares online. Evalúe la separación de canales izquierdo y derecho, balance de sonido, tonos de prueba (100Hz-2500Hz) y barridos.",
+      "title": "Prueba de Altavoces y Canales Estéreo",
+      "description_p1": "Verifique la salida de audio, la separación de canales estéreo y la claridad con tonos de prueba. Ayuda a escuchar el balance de canales o distorsiones, pero no mide respuestas de frecuencia acústica ni niveles de presión sonora.",
       "instructions": [
         "<strong>AVISO DE VOLUMEN:</strong> Comience con volumen bajo y auméntelo gradualmente. Evite tonos altos prolongados en auriculares.",
         "<strong>SEPARACIÓN ESTÉREO:</strong> Alterne entre Solo Izquierdo (pan -1.0), Centro Estéreo y Solo Derecho (pan +1.0) para verificar los cables.",
@@ -816,9 +816,9 @@
       "instructions": "Mira la pantalla desde ángulos extremos."
     },
     "screenTearing": {
-      "title": "Test de Screen Tearing – Verificación de V-Sync y VRR",
-      "description": "Detecta líneas horizontales de desgarro de imagen para verificar el funcionamiento de V-Sync, FreeSync y G-Sync.",
-      "instructions": "Observa la barra en movimiento en busca de desgarro horizontal."
+      "title": "Test de Screen Tearing y Frame-Pacing – Inspección Visual de Movimiento",
+      "description": "Observe barras en movimiento para detectar líneas de corte horizontal o irregularidades de fotogramas. El navegador no puede verificar directamente el estado VRR del hardware.",
+      "instructions": "Observe la barra en movimiento para detectar cortes visuales, tirones o pausas."
     },
     "burnIn": {
       "title": "Test de Retención de Imagen y Burn-In – Marcado de Pantalla OLED",
@@ -841,14 +841,14 @@
       "instructions": "Busca irregularidades."
     },
     "colorAccuracy": {
-      "title": "Test de Precisión de Color – Evaluación de sRGB y Tonos de Piel",
-      "description": "Verifica el equilibrio de color y la fidelidad de tonos de piel con muestras de referencia estándar sRGB.",
-      "instructions": "Verifica los tonos de piel y los colores naturales."
+      "title": "Comprobación Visual de Referencia y Consistencia de Color – Muestras sRGB",
+      "description": "Inspeccione visualmente tonos de piel, grises neutros y equilibrio de color con 24 muestras. La precisión objetiva y medición ΔE requieren un colorímetro.",
+      "instructions": "Inspeccione visualmente tonos de piel, tonos neutros y dominantes de color con las muestras."
     },
     "flicker": {
-      "title": "Test de Parpadeo de Pantalla – Detección de PWM y Fatiga Visual",
-      "description": "Inspecciona el parpadeo de retroiluminación por modulación PWM y fluctuaciones de luz causantes de cansancio ocular.",
-      "instructions": "Usa una cámara a alta velocidad de obturación."
+      "title": "Comprobación Visual de Parpadeo y PWM – Luz de Fondo y Fatiga Visual",
+      "description": "Inspeccione visualmente la luz de fondo para detectar parpadeos y artefactos. Los navegadores no pueden medir directamente la frecuencia PWM del hardware.",
+      "instructions": "Utilice la observación visual o la ayuda de cámara opcional (dependiente de la velocidad de obturación)."
     },
     "sharpness": {
       "title": "Test de Nitidez de Pantalla – Enfoque de Texto y Patrón de Líneas",
@@ -861,13 +861,13 @@
       "instructions": "Busca transiciones suaves."
     },
     "colorGamut": {
-      "title": "Test de Gama de Color – Cobertura sRGB, DCI-P3 y Adobe RGB",
-      "description": "Comprueba la riqueza tonal y la cobertura del espacio de color extendido de tu pantalla.",
-      "instructions": "Comprueba si los colores del centro coinciden o se fusionan con el anillo exterior."
+      "title": "Test Visual de Gama de Color y Wide-Gamut – Comprobación sRGB y Display-P3",
+      "description": "Compruebe la capacidad de gama de color reportada por el navegador y compare visualmente patrones sRGB y Display-P3 sin asumir medición física.",
+      "instructions": "Observe visualmente si el patrón de amplia gama se distingue del fondo circundante."
     },
     "resolution-checker": {
-      "title": "Comprobador de resolución de pantalla",
-      "description": "Compruebe la resolución informada por el navegador, las dimensiones del viewport, el Device Pixel Ratio (DPR) y la relación de aspecto en línea.",
+      "title": "Comprobador de Resolución de Pantalla y DPR",
+      "description": "Compruebe las dimensiones informadas por el navegador, viewport, DPR y PPI calculado. Los navegadores no pueden verificar directamente la resolución física nativa.",
       "infoTitle": "RESOLUCIÓN Y GEOMETRÍA DE PANTALLA",
       "labels": {
         "logicalRes": "Resolución Lógica",
@@ -894,7 +894,7 @@
         "unknown": "Desconocido",
         "custom": "Personalizado / Otro"
       },
-      "disclaimer": "La información reportada por el navegador describe lo que tu navegador puede ver. No reemplaza las especificaciones físicas del monitor.",
+      "disclaimer": "La información reportada por el navegador describe lo visible para la web. El navegador no puede verificar directamente la resolución física nativa del panel.",
       "myDisplay": {
         "title": "MI PANTALLA",
         "sizeLabel": "Tamaño de pantalla (pulgadas)",

@@ -171,17 +171,17 @@ export function GammaPattern({ testId = "gamma-test" }: GammaPatternProps) {
           <div className="bg-black/85 dark:bg-black/90 backdrop-blur-md px-4 py-2.5 rounded-xl border border-white/15 text-white shadow-xl max-w-2xl text-center space-y-1">
             <div className="flex items-center justify-center gap-2 text-xs font-semibold text-amber-400">
               <Eye className="w-3.5 h-3.5" />
-              <span>Gamma Calibration Target: {selectedGamma.toFixed(2)}</span>
+              <span>Gamma Visual Target: {selectedGamma.toFixed(2)}</span>
             </div>
             <p className="text-[11px] sm:text-xs text-white/90 leading-normal">
-              Step back or squint slightly. When gamma is correctly calibrated, the striped pattern and the solid patch should visually blend into one seamless gray tone.
+              Step back or squint slightly. When display gamma visually aligns, the striped pattern and the solid patch blend into one seamless gray tone.
             </p>
           </div>
         </div>
       </div>
 
       {/* Control Bar Dock */}
-      <TestControlBar testId={testId} title="Gamma Calibration">
+      <TestControlBar testId={testId} title="Gamma Visual Check">
         <div className="flex flex-wrap items-center gap-2 sm:gap-3">
           {/* Preset Buttons */}
           <div className="flex items-center gap-1.5 bg-slate-100 dark:bg-black/80 p-1 rounded-xl border border-slate-200 dark:border-white/20">
@@ -250,10 +250,10 @@ export function GammaGuidance() {
       <div className="p-4 bg-blue-50 border border-blue-200 dark:bg-blue-950/40 dark:border-blue-800 rounded-xl text-xs text-blue-950 dark:text-blue-100 leading-relaxed space-y-1">
         <div className="flex items-center gap-2 font-semibold">
           <ShieldAlert className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
-          <span>Visual Gamma Calibration Aid (Not Automated Measurement)</span>
+          <span>Visual Gamma Evaluation Aid (Not Hardware Calibration)</span>
         </div>
         <p className="text-blue-900 dark:text-blue-200">
-          Gamma curves describe the non-linear relationship between digital input voltage/signal and the physical photon luminance emitted by your display panel. Standard web browsers cannot automatically measure physical panel gamma without an external colorimeter or spectrophotometer sensor. This test creates an optical luminance balance pattern so your eyes can detect whether your monitor is tracking the sRGB Gamma 2.2 standard.
+          Gamma curves describe the non-linear relationship between digital signal values and physical photon luminance emitted by your display panel. Web browsers cannot directly measure physical panel gamma curves or luminance response without an external colorimeter or spectrophotometer sensor. This visual test creates an optical luminance balance pattern so your eyes can inspect whether your monitor visually matches the standard Gamma 2.2 curve or exhibits crushed/washed-out tones.
         </p>
       </div>
 
@@ -262,10 +262,10 @@ export function GammaGuidance() {
         <div className="p-3.5 rounded-xl bg-muted/30 border border-border/40 space-y-1.5">
           <div className="flex items-center gap-1.5 font-bold text-foreground">
             <Eye className="w-4 h-4 text-emerald-500 shrink-0" />
-            <span>1. What You Are Testing</span>
+            <span>1. What You Are Observing</span>
           </div>
           <p className="text-muted-foreground leading-relaxed">
-            Checks if your display accurately tracks the standard <strong>Gamma 2.2</strong> transfer function, ensuring shadow midtones are neither unnaturally darkened nor washed out.
+            Visually inspects whether shadow midtones and luminance steps appear balanced against the standard <strong>Gamma 2.2</strong> curve, ensuring midtones are neither crushed nor washed out.
           </p>
         </div>
 

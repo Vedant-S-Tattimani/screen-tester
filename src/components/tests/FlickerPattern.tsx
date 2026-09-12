@@ -243,22 +243,23 @@ export function FlickerPattern({ testId = "screen-flicker-test" }: FlickerPatter
             </div>
             <div className="mt-3 space-y-2.5 text-white/80 leading-relaxed">
               <div className="p-2.5 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-200">
-                <strong>Important Technical Disclosure:</strong> A web browser cannot measure or claim: <em>&quot;PWM frequency = X Hz&quot;</em>. Software frame rendering is locked to your display refresh rate (e.g. 60Hz or 144Hz) and cannot monitor internal LED driver switching (which typically operates between 240Hz and 25,000Hz+).
+                <strong>Important Technical Disclosure:</strong> A web browser cannot directly measure PWM frequency, exact flicker rates, or modulation depth. Software animation frames are tied to browser render cycles and cannot sample internal LED driver switching (which typically operates between 240Hz and 25,000Hz+).
               </div>
               <p>
                 <strong>What this test evaluates:</strong>
               </p>
               <ul className="list-disc pl-4 space-y-1">
-                <li><strong>Perceptual Flicker Sensitivity:</strong> Determines your personal eye comfort threshold for low-frequency brightness fluctuations.</li>
-                <li><strong>Dot & Column Inversion (Vcom Bias):</strong> Checks for liquid crystal voltage drift that can cause subtle crawling artifacts in fine patterns.</li>
-                <li><strong>Stroboscopic Hand Test:</strong> Uses the optical persistence of vision phenomenon to determine whether your backlight utilizes true continuous DC dimming or pulse-width modulation.</li>
+                <li><strong>Perceptual Flicker Sensitivity:</strong> Explores human visual comfort across different low-frequency alternating patterns.</li>
+                <li><strong>Dot &amp; Column Inversion (Vcom Bias):</strong> Visually checks for liquid crystal inversion voltage imbalance that causes subtle crawling or flickering patterns.</li>
+                <li><strong>Stroboscopic Hand / Pen Observation:</strong> Uses persistence of vision to visually observe whether backlight dimming shows stepped stroboscopic shadows (PWM) or continuous blur (DC dimming).</li>
+                <li><strong>Optional Camera Inspection Note:</strong> Using a smartphone camera or slow-motion video can sometimes reveal dark scanning bands, but results depend entirely on the camera&apos;s shutter speed, rolling shutter, frame rate, and image processing—it is not an instrumented PWM measurement.</li>
               </ul>
             </div>
           </div>
         )}
       </div>
 
-      <TestControlBar testId={testId} title="Visual Flicker & Inversion Sensitivity">
+      <TestControlBar testId={testId} title="Flicker & PWM Visual Check">
         <div className="flex flex-wrap items-center gap-3">
           {/* Mode Selector */}
           <div className="flex items-center bg-muted/60 p-0.5 rounded-lg border border-border/60 text-xs">

@@ -37,27 +37,27 @@ export function ColorGamutPattern({ testId }: ColorGamutPatternProps) {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 w-full bg-white/5 border border-white/10 rounded-2xl p-4 sm:px-6 backdrop-blur-md">
             <div>
               <div className="text-xs uppercase tracking-widest text-white/50 font-semibold font-mono">
-                Hardware & Pipeline Diagnostic
+                Browser-Reported & Visual Gamut Check
               </div>
               <h2 className="text-lg sm:text-xl font-bold tracking-tight text-white flex items-center gap-2 mt-0.5">
-                Wide Color Gamut (DCI-P3 / BT.2020)
+                Color Gamut &amp; Wide-Gamut Visual Test
               </h2>
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="text-xs text-white/60 font-medium">Display Gamut:</span>
+              <span className="text-xs text-white/60 font-medium">CSS Color Gamut:</span>
               {p3Supported ? (
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                  <Sparkles className="w-3 h-3" /> DCI-P3 Active
+                  <Sparkles className="w-3 h-3" /> (color-gamut: p3) Detected
                 </span>
               ) : (
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-white/70 border border-white/10">
-                  sRGB Baseline
+                  (color-gamut: sRGB)
                 </span>
               )}
               {rec2020Supported && (
                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-400 border border-blue-500/30">
-                  Rec.2020
+                  (color-gamut: rec2020)
                 </span>
               )}
             </div>
@@ -148,7 +148,7 @@ export function ColorGamutPattern({ testId }: ColorGamutPatternProps) {
                 >
                   <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-4 border-dashed border-white/40 flex flex-col items-center justify-center text-center p-3">
                     <span className="text-xs sm:text-sm font-black tracking-widest uppercase text-white drop-shadow-md">
-                      DCI-P3
+                      DISPLAY-P3
                     </span>
                     <span className="text-[10px] font-mono text-white/90 drop-shadow-sm mt-0.5">
                       TARGET
@@ -157,7 +157,7 @@ export function ColorGamutPattern({ testId }: ColorGamutPatternProps) {
                 </div>
 
                 <div className="absolute bottom-3 left-3 right-3 text-center bg-black/60 backdrop-blur-xs py-1.5 px-3 rounded-lg text-[11px] text-white/90 font-mono">
-                  {p3Supported ? "P3 Active: Target symbol is visibly distinguishable" : "sRGB: Symbol is invisible or clipped to background"}
+                  {p3Supported ? "Display-P3: Target symbol is visually distinguishable if wide-gamut rendering is active" : "sRGB: Symbol is clamped to background"}
                 </div>
               </div>
 
@@ -165,7 +165,7 @@ export function ColorGamutPattern({ testId }: ColorGamutPatternProps) {
               <div className="flex items-start gap-2.5 max-w-xl text-xs text-white/60 bg-white/5 border border-white/10 p-3.5 rounded-xl">
                 <Info className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
                 <p>
-                  <strong>How this test works:</strong> The outer background is maximum sRGB (100%). The circular emblem inside is rendered in wide-gamut Display P3. On standard sRGB displays, both colors clamp identically, making the emblem invisible. On a true wide-gamut display (Apple Retina, OLED, DCI-P3 95%+), the inner emblem clearly reveals itself.
+                  <strong>How this test works:</strong> The outer background is maximum sRGB (rgb(255, 0, 0)). The circular emblem inside is rendered in wide-gamut Display P3 (color(display-p3 1 0 0)). On standard sRGB displays, both colors clamp identically, making the emblem invisible. On a wide-gamut display pipeline supporting Display P3, the inner emblem can be visually distinguished. <em>Note: A browser media query reports CSS capabilities; it cannot measure physical panel gamut coverage percentages (such as 95% DCI-P3 or Adobe RGB coverage).</em>
                 </p>
               </div>
             </div>
@@ -197,7 +197,7 @@ export function ColorGamutPattern({ testId }: ColorGamutPatternProps) {
               <div className="bg-white/5 p-5 rounded-2xl border border-white/10 flex flex-col items-center">
                 <div className="flex items-center gap-2 mb-4">
                   <span className="text-xs font-semibold tracking-widest text-white/70 uppercase font-mono">Wide Display P3</span>
-                  <span className="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/30">+25% Volume</span>
+                  <span className="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/30">Display P3</span>
                 </div>
                 <div className="space-y-3 w-full">
                   <div className="h-20 w-full rounded-xl flex items-end p-2.5 shadow-inner" style={{ backgroundColor: 'color(display-p3 1 0 0)' }}>
@@ -238,13 +238,13 @@ export function ColorGamutPattern({ testId }: ColorGamutPatternProps) {
         </div>
       </div>
 
-      <TestControlBar testId={testId} title="Color Gamut (DCI-P3)">
+      <TestControlBar testId={testId} title="Color Gamut & Wide-Gamut Visual Test">
         <div className="flex items-center gap-2 text-xs">
           <span className="text-amber-300 font-bold font-mono uppercase tracking-wider">Status:</span>
           <span className={`font-mono px-3 py-1 rounded-lg text-xs font-bold ${
             p3Supported ? "bg-emerald-500/30 text-emerald-300 border border-emerald-400/50" : "bg-white/10 text-cyan-200 border border-white/20"
           }`}>
-            {p3Supported ? "Wide Gamut Detected (Display P3)" : "Standard Gamut (sRGB)"}
+            {p3Supported ? "CSS (color-gamut: p3) Supported" : "CSS Standard (sRGB)"}
           </span>
         </div>
       </TestControlBar>

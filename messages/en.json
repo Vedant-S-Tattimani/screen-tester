@@ -373,8 +373,8 @@
         "description": "Tune your monitor's contrast to ensure bright details aren't clipped."
       },
       "gammaTest": {
-        "title": "Gamma Calibration",
-        "description": "Visually estimate your monitor's gamma tracking (target 2.2 for sRGB)."
+        "title": "Gamma Visual Check",
+        "description": "Visually evaluate your monitor's gamma tracking (target 2.2 for sRGB)."
       },
       "hdrCapabilityTest": {
         "title": "HDR Capability",
@@ -621,14 +621,14 @@
       "inst3": "Adjust your monitor's saturation/vibrancy settings if colors look washed out or overly neon."
     },
     "gamma-test": {
-      "metaTitle": "Gamma Calibration Test",
-      "metaDescription": "Verify display gamma curve tracking against standard Gamma 2.2 and 2.4 reference luminance targets.",
-      "title": "Gamma Calibration",
-      "description_p1": "This tool helps you estimate your monitor's physical gamma curve. A gamma of 2.2 is the standard for sRGB and Windows PCs.",
+      "metaTitle": "Gamma Visual Check",
+      "metaDescription": "Visually evaluate display gamma tracking against standard Gamma 2.2 and 2.4 reference patterns. Objective gamma curve measurement requires a hardware colorimeter.",
+      "title": "Gamma Visual Check",
+      "description_p1": "This visual test helps you evaluate your monitor's gamma tracking and midtone balance against standard curves. A gamma of 2.2 is the standard for sRGB and Windows PCs; objective calibration requires external hardware.",
       "inst1": "Enter fullscreen and move away from the monitor, or squint your eyes until the top lines blur into a solid gray.",
       "inst2": "Compare the blurred top half to the three solid blocks below.",
       "inst3": "The block that perfectly matches the brightness of the blurred top half indicates your monitor's approximate gamma.",
-      "inst4": "<strong>ABOUT THIS TEST:</strong> This tool relies on visual perception and standard browser color rendering. It is not a replacement for a hardware colorimeter."
+      "inst4": "<strong>ABOUT THIS TEST:</strong> This tool relies on human visual perception and optical blending. It provides visual evaluation and is not a replacement for a hardware colorimeter or spectrophotometer."
     },
     "motion-blur-test": {
       "metaTitle": "Motion Blur Test",
@@ -640,10 +640,10 @@
       "inst3": "Adjust speed and contrast to test under different panel overdrive scenarios."
     },
     "hdr-capability-test": {
-      "metaTitle": "HDR Capability Test",
-      "metaDescription": "Detect browser HDR support, peak nit luminance capabilities, and wide color gamut reproduction (Display P3 / Rec.2020).",
-      "title": "HDR Capability Test",
-      "description_p1": "This tool queries your browser's APIs to determine if High Dynamic Range (HDR) and Wide Color Gamut (P3) are currently enabled and supported by your display chain.",
+      "metaTitle": "HDR Capability & Visual Check",
+      "metaDescription": "Check browser-reported HDR media query support (dynamic-range: high) and wide gamut capabilities. Peak brightness in nits and true HDR certification require laboratory hardware.",
+      "title": "HDR Capability & Visual Check",
+      "description_p1": "Queries browser CSS media queries to detect whether the operating system reports High Dynamic Range (dynamic-range: high) and wide color gamut support. Browser queries detect pipeline state, but do not measure physical peak nits or verify DisplayHDR certification.",
       "inst1": "Review the browser-reported capabilities.",
       "inst2": "If it says 'Not Supported' but your monitor is HDR-capable, ensure HDR is turned on in Windows/macOS display settings.",
       "inst3": "Ensure you are using a modern browser with hardware acceleration enabled."
@@ -819,10 +819,10 @@
       ]
     },
     "speaker-test": {
-      "metaTitle": "Speaker Test",
-      "metaDescription": "Test your computer and monitor speakers online. Verify left and right channel separation, audio balance, test tones (100Hz–2500Hz), and frequency sweeps.",
-      "title": "Speaker Test",
-      "description_p1": "Verify audio output functionality, stereo channel separation, and frequency response using synthesized test tones. Digital audio waveforms test channel routing and balance, but do not measure physical acoustic distortion or room sound pressure levels.",
+      "metaTitle": "Speaker & Stereo Channel Test",
+      "metaDescription": "Test your speakers and headphones online. Listen for left and right channel separation, audio balance, test tone clarity (100Hz–2500Hz), and frequency sweeps.",
+      "title": "Speaker & Stereo Channel Test",
+      "description_p1": "Verify audio output functionality, stereo channel separation, and audio clarity using synthesized test tones. Digital audio waveforms help users listen for channel balance, crackling, and dropouts, but do not measure physical acoustic frequency response or room sound pressure levels.",
       "instructions": [
         "<strong>SAFE VOLUME WARNING:</strong> Start at a low volume level and increase gradually. Avoid sustained high-volume tones through headphones or near-field monitors.",
         "<strong>STEREO CHANNEL SEPARATION:</strong> Switch between Left Only (pan -1.0), Stereo Center, and Right Only (pan +1.0) to confirm channels are wired correctly and not reversed.",
@@ -848,9 +848,9 @@
       "instructions": "View the screen from extreme angles."
     },
     "screenTearing": {
-      "title": "Screen Tearing Test – V-Sync & VRR Frame Pacing Verification",
-      "description": "Check for horizontal tear lines during motion to verify active V-Sync, G-Sync, FreeSync, or VRR support.",
-      "instructions": "Watch the moving bar for horizontal tearing."
+      "title": "Screen Tearing & Frame-Pacing Test – Visual Motion Inspection",
+      "description": "Observe moving bar patterns for horizontal tear lines and frame-pacing irregularities. Browser animation timing cannot directly verify hardware VRR or G-Sync state.",
+      "instructions": "Watch the moving bar for visual tearing, stutter, or pacing breaks."
     },
     "burnIn": {
       "title": "OLED Burn-In & Image Retention Test – Permanent Ghosting Check",
@@ -873,14 +873,14 @@
       "instructions": "Look for unevenness."
     },
     "colorAccuracy": {
-      "title": "Color Accuracy & Gamut Test – sRGB & Display P3 Evaluation",
-      "description": "Verify color balance and skin tone rendering against industry standard sRGB and wide gamut reference swatches.",
-      "instructions": "Verify skin tones and natural colors."
+      "title": "Visual Color Reference & Consistency Check – sRGB Reference Patches",
+      "description": "Visually inspect skin tones, neutral grays, and color balance using 24 reference patches. Objective color accuracy and ΔE calibration require a hardware colorimeter.",
+      "instructions": "Visually inspect skin tones, neutrals, and color casts against reference patches."
     },
     "flicker": {
-      "title": "Screen Flicker Test – PWM Backlight Pulse & Eye Strain Check",
-      "description": "Inspect display backlight for high-speed PWM flickering, strobe effects, and subtle luminance fluctuations.",
-      "instructions": "Use a camera at high shutter speed."
+      "title": "Flicker & PWM Visual Check – Backlight Strobe & Eye Comfort Test",
+      "description": "Visually inspect display backlight for perceptible strobe flicker and inversion artifacts. Browsers cannot directly measure hardware PWM frequency or modulation depth.",
+      "instructions": "Use visual observation or optional camera inspection (dependent on camera shutter and frame rate)."
     },
     "sharpness": {
       "title": "Display Sharpness Test – Text Anti-Aliasing & Moire Pattern",
@@ -893,8 +893,9 @@
       "instructions": "Look for smooth transitions."
     },
     "colorGamut": {
-      "title": "Color Gamut Test – sRGB, DCI-P3 & Adobe RGB Coverage Check",
-      "description": "Inspect wide color gamut support and verify rich saturation rendering without clipping."
+      "title": "Color Gamut & Wide-Gamut Visual Test – sRGB & Display-P3 Check",
+      "description": "Inspect browser-reported color-gamut capability and visually compare sRGB vs Display-P3 patterns without claiming physical coverage measurement.",
+      "instructions": "Visually observe whether the wide-gamut pattern is distinguishable from the surrounding background."
     },
     "ghostingTest": {
       "title": "Monitor Ghosting Test – Pixel Response Time & Trail Check",
@@ -905,8 +906,8 @@
       "description": "Analyze motion resolution, persistence blur, and MPRT tracking on fast-paced scenes and moving test objects."
     },
     "resolution-checker": {
-      "title": "Screen Resolution Checker",
-      "description": "Check browser-reported screen resolution, viewport dimensions, Device Pixel Ratio (DPR), and screen aspect ratio online.",
+      "title": "Screen Resolution & DPR Checker",
+      "description": "Check browser-reported screen dimensions, viewport size, Device Pixel Ratio (DPR), and calculated PPI. Browsers cannot directly verify physical panel native resolution.",
       "infoTitle": "RESOLUTION & DISPLAY GEOMETRY",
       "labels": {
         "logicalRes": "Logical Resolution",
@@ -933,7 +934,7 @@
         "unknown": "Unknown",
         "custom": "Custom / Other"
       },
-      "disclaimer": "Browser-reported information describes what your browser can see. It does not replace the monitor's manufacturer specifications or hardware measurement.",
+      "disclaimer": "Browser-reported information describes what your browser can see. Your browser cannot directly verify the panel's physical native resolution without user input.",
       "myDisplay": {
         "title": "MY DISPLAY",
         "sizeLabel": "Screen size (inches)",
