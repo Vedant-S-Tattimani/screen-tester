@@ -60,6 +60,15 @@ const DIRECTORY_BADGES = [
     width: 160,
     height: 44,
   },
+  {
+    name: "UnoDirectory",
+    href: "https://uno.directory",
+    rel: "noopener",
+    src: "https://uno.directory/uno-directory.svg",
+    alt: "Listed on Uno Directory",
+    width: 120,
+    height: 30,
+  },
 ];
 
 export function Footer() {
