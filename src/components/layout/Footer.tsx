@@ -69,6 +69,14 @@ const DIRECTORY_BADGES = [
     width: 120,
     height: 30,
   },
+  {
+    name: "ToolFame",
+    href: "https://toolfame.com/item/screen-tester",
+    rel: "noopener noreferrer",
+    src: "https://toolfame.com/badge-dark.svg",
+    alt: "Featured on toolfame.com",
+    height: 54,
+  },
 ];
 
 export function Footer() {
