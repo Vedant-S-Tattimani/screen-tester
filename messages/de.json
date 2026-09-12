@@ -4174,18 +4174,18 @@
           "Konsultieren Sie unseren interaktiven [Leitfaden zur Fehlerbehebung](/knowledge-base/troubleshooting), falls ein Bildschirm auf einer Standardfrequenz blockiert bleibt."
         ],
         "whatScreenTesterCanObserve": [
-          "Browser-seitige Animations-Zeitstempel über `requestAnimationFrame` auf dem aktuell aktiven Bildschirm",
-          "Statistische Standardabweichung der Frame-Pacing-Intervalle im Browser (Aufspüren von Mikrorucklern und ausgelassenen Callbacks)",
-          "Vom Browser gemeldetes Geräte-Pixel-Verhältnis (`window.devicePixelRatio`) und CSS-Viewport-Dimensionen je Display",
-          "Visuelle Vergleiche von Bewegungsflüssigkeit, Pendel-Gleichmäßigkeit und Scroll-Verhalten über Displays hinweg",
-          "Verfügbarkeit moderner Browser-APIs zur Platzierung von Fenstern auf mehreren Bildschirmen"
+          "Browserseitige Animations-Callback-Zeitstempel via `requestAnimationFrame` auf der aktiven Anzeige",
+          "Statistische Standardabweichung der Frame-Pacing-Intervalle im Browser (Erkennung von Mikrorucklern und Dropouts)",
+          "Vom Browser gemeldetes Device Pixel Ratio (`window.devicePixelRatio`) und logische CSS-Viewport-Geometrie",
+          "Visueller Vergleich von Bewegungsflüssigkeit, Pendelkadenz und Scrollverhalten zwischen Akku- und Netzbetrieb",
+          "Browser-API-Unterstützung für Multi-Screen-Fensterplatzierung und Display-Enumeration"
         ],
         "whatScreenTesterCannotDetermine": [
-          "Tatsächliches Hardware-Scanout-Timing des Panels oder Oszillator-Taktung über DisplayPort- oder HDMI-Kabel",
-          "Interne GPU-Präsentationswarteschlangen, Treiber-Flip-Queues oder V-Sync-Hardware-Interrupts",
-          "Interne Puffer-Tauschzyklen des Desktop-Fenster-Compositors (Windows DWM, Linux Wayland/X11, macOS Quartz)",
-          "Echte physische Monitordichte (DPI) unabhängig von den Angaben des Betriebssystems",
-          "Physikalische Signalintegrität, Kabelbandbreite oder Port-Leitungsbeschränkungen der Grafikkarte"
+          "Physisches Scanout-Timing des Monitorpanels oder Quarz-Taktsynchronisation über DisplayPort/HDMI-Kabel",
+          "Hardware-Spannungspegel interner Stromschienen, ACPI-Akkustatus oder thermische Drosselungsgrenzwerte",
+          "GPU-Taktebenen (P-States/D-States), interne MUX-Schalterstellungen oder PCIe-ASPM-Bus-Energiezustände",
+          "Interne Buffer-Swap-Zeitpläne des Betriebssystem-Compositors (Windows DWM, Linux Wayland oder macOS Quartz)",
+          "Tatsächliche physische Monitor-DPI oder Panel-Pixeldichte unabhängig von Betriebssystem-Skalierungswerten"
         ],
         "commonCauses": [
           "Desktop-Fenster-Manager des Betriebssystems synchronisiert unabhängige Bildwechselfrequenzen ungleichmäßig",
@@ -4342,22 +4342,80 @@
             ]
           },
           {
-            "title": "Praktische Lösungsansätze und nächste Schritte",
+            "title": "Laptop-Displayverhalten im Akku- vs. Netzbetrieb: Taktraten, Spannungen und Skalierung",
             "content": [
-              "Treten auf Ihrem Multi-Monitor-Setup Ruckler, Zeiger-Zittern oder unscharfe Skalierungen auf, können folgende praxiserprobte Schritte helfen, die Darstellung zu stabilisieren:",
-              "1. Bildwiederholraten in den Anzeige-Einstellungen prüfen: Kontrollieren Sie in den erweiterten Anzeige-Einstellungen Ihres Betriebssystems, ob jeder Monitor auf seine maximale native Bildrate eingestellt ist.",
-              "2. Skalierung anpassen oder ganzzahlige Frequenzteiler testen: Stellen Sie Displays bei Textunschärfe nach Möglichkeit auf einheitliche Skalierungsstufen. Bei 144Hz neben 60Hz kann das Einstellen von 120Hz auf dem Hauptmonitor (als ganzzahliges Vielfaches von 60Hz) das Compositor-Pacing spürbar verbessern.",
-              "3. VRR-Einstellungen im Treiber anpassen: Begrenzen Sie G-Sync oder FreeSync im Treiber auf den reinen Vollbildmodus, um Desktop-Synchronisationskonflikte zu vermeiden.",
-              "4. Hardwarebeschleunigung im Browser testen: Schalten Sie die Option 'Grafikbeschleunigung verwenden' in den Browser-Einstellungen versuchsweise um, um Compositor- von Treiberproblemen zu trennen.",
-              "5. Grafiktreiber-Neustart: Unter Windows können Sie den Grafiktreiber bei hängendem Desktop-Compositing mit der Tastenkombination Win + Strg + Umschalt + B im laufenden Betrieb neu initialisieren.",
-              "Ausführliche Anleitungen zu Hardware- und Verbindungsproblemen finden Sie in unserem interaktiven [Leitfaden zur Fehlerbehebung](/knowledge-base/troubleshooting)."
+              "Der Betrieb eines Laptops im Akkubetrieb verändert die thermischen und energetischen Rahmenbedingungen gegenüber dem Netzbetrieb grundlegend. Um die Akkulaufzeit zu maximieren, aktivieren Betriebssystem, Prozessor und Grafiktreiber dynamische Drosselungsmechanismen, die die Bildwiedergabe und Bewegungsflüssigkeit spürbar beeinflussen können.",
+              "Im Akkubetrieb reduzieren Betriebssysteme (wie Windows-Energiemodi: Beste Energieeffizienz, Ausbalanciert, Beste Leistung; macOS-Stromsparmodus; Linux-Energieprofile) Hintergrundaktivitäten. Grafikkarten drosseln Kern- und Speichertakte (P-States), während der PCIe-Bus in Stromsparmodi (ASPM L0s/L1) wechselt, wodurch die Übertragungsbandbreite zwischen GPU und Display-Controllern sinkt.",
+              "Gleichzeitig greifen moderne Panels auf dynamische Bildwiederholraten zurück. Unter Windows 11 Dynamic Refresh Rate (DRR) oder herstellerspezifischer Firmware schalten High-Refresh-Panels (120Hz, 144Hz, 240Hz) im Leerlauf oder bei Akkubetrieb oft auf 60Hz zurück oder nutzen Panel Self-Refresh (PSR). Technologien wie Content-Adaptive Brightness Control (CABC), Intel Display Power Saving Technology (DPST) oder AMD Vari-Bright modulieren zudem Helligkeit und Gamma dynamisch anhand der Bildinhalte.",
+              "Der Akkubetrieb führt jedoch nicht auf jedem Laptop zwingend zu reduzierten Bildwiederholraten. Leistungsstarke Gaming-Laptops mit MUX-Schaltern halten oft auch im Akkubetrieb die volle Bildwiederholrate auf Kosten rascher Entladung aufrecht, während Ultrabooks maximale Effizienz priorisieren. Ob ein beobachtetes Verhalten gewollt oder ein Problem ist, lässt sich durch systematische Tests ermitteln."
             ],
             "bullets": [
-              "Anzeige-Einstellungen kontrollieren: Sicherstellen, dass Displays mit voller nativer Frequenz arbeiten.",
-              "Ganzzahlige Frequenzen testen: Bei 60Hz-Zweitdisplays 120Hz auf dem Hauptschirm ausprobieren.",
-              "VRR auf Vollbild beschränken: Konflikte mit Fenstern auf Zweitmonitoren vermeiden.",
-              "Browser-Hardwarebeschleunigung umschalten: Rendering-Einflüsse gezielt isolieren.",
-              "Grafik-Pipeline neu starten: Mit Win + Strg + Umschalt + B den Grafiktreiber unter Windows zurücksetzen."
+              "Akkubetrieb aktiviert konservative CPU-, GPU- und PCIe-ASPM-Energiesparzustände.",
+              "Dynamic Refresh Rate (DRR) und Panel Self-Refresh (PSR) können die Bildwiederholrate auf 60Hz senken.",
+              "Adaptive Helligkeitsfunktionen (CABC, Intel DPST, AMD Vari-Bright) verändern Kontrast und Hintergrundlicht dynamisch.",
+              "Akkumodi drosseln Displays nicht universell; das Verhalten variiert je nach Hersteller- und OS-Konfiguration."
+            ]
+          },
+          {
+            "title": "Internes Laptop-Panel vs. externe Bildschirme im Akkubetrieb",
+            "content": [
+              "Moderne Notebooks nutzen Hybridgrafik-Architekturen (z. B. NVIDIA Optimus, AMD SmartAccess Graphics oder Apple Unified Memory), bei denen das interne Panel und externe Videoausgänge über getrennte Controller angesteuert werden.",
+              "In der Praxis ist das interne Notebook-Display meist über eine eDP-Schnittstelle (Embedded DisplayPort) direkt mit der energieeffizienten integrierten GPU (iGPU) verbunden. Im Akkubetrieb wird die dedizierte GPU (dGPU) oft vollständig schlafen gelegt. Berechnet eine rechenintensive Anwendung Bilder auf der dGPU, müssen die fertigen Frames über den PCIe-Bus zum iGPU-Display-Controller kopiert werden – ein zusätzlicher Kopiervorgang, der bei reduzierter Busbandbreite im Akkubetrieb zu Mikrorucklern führen kann.",
+              "Externe Bildschirme über HDMI, USB-C DisplayPort Alternate Mode oder Thunderbolt-Docks bringen weitere Faktoren ins Spiel. Diese Anschlüsse sind häufig direkt an die dGPU angebunden oder teilen sich Schnittstellenbandbreite in USB-Docks mit Daten und Netzwerk. Wird das Netzteil getrennt, können Docks die Power-Delivery-Profile neu aushandeln oder die dGPU stark drosseln, was zu spürbaren Rucklern auf dem externen Monitor führt, die am Stromnetz nicht auftreten."
+            ],
+            "bullets": [
+              "Interne Laptop-Panels sind über eDP mit der iGPU verbunden; dGPUs werden im Akkubetrieb oft schlafen gelegt.",
+              "Frame-Kopiervorgänge zwischen GPUs können bei reduzierter Busbandbreite im Akkubetrieb Ruckeln erzeugen.",
+              "Thunderbolt- und USB-C-Docks teilen Bandbreiten und können beim Trennen vom Netzteil Profile neu aushandeln.",
+              "Prüfungen am Stromnetz grenzen Docking-Leistungsgrenzen von grundlegenden Anzeigeproblemen ab."
+            ]
+          },
+          {
+            "title": "Gezielter Akku- vs. Netzbetrieb-Vergleich: Ein standardisiertes Prüfprotokoll",
+            "content": [
+              "Um festzustellen, ob Ruckler, Bildwiederholratensenkungen oder Helligkeitssprünge auf Energiesparrichtlinien oder Hardwarefehler zurückzuführen sind, empfiehlt sich dieser 5-stufige Ablauf:",
+              "Phase 1: Referenzmessung am Stromnetz. Schließen Sie das Originalnetzteil an. Setzen Sie den Energiemodus des Betriebssystems auf 'Ausbalanciert' oder 'Beste Leistung'. Öffnen Sie den [Bildwiederholfrequenz-Test](/tests/refresh-rate-test) und den [Motion-Blur-Test](/tests/motion-blur-test) in Screen Tester. Notieren Sie die Bildrate und Bewegungsflüssigkeit.",
+              "Phase 2: Ladekabel trennen. Ziehen Sie das Stromkabel bei geöffnetem Screen Tester ab. Beobachten Sie die Reaktionen: Dunkelt der Bildschirm ab? Zeigt die Betriebssystemanzeige oder der [Bildwiederholfrequenz-Test](/tests/refresh-rate-test) einen Abfall von 120Hz/144Hz auf 60Hz? Zeigt der [HDR-Test](/tests/hdr-test), dass HDR akkubedingt deaktiviert wurde?",
+              "Phase 3: Dynamische Interaktion prüfen. Bewegen Sie den Mauszeiger rasch und scrollen Sie durch Texte. Bei Windows Dynamic Refresh Rate (DRR) prüfen Sie, ob Bewegungen die Bildrate dynamisch anheben oder sie bei 60Hz verharrt. Nutzen Sie den [VRR-Test](/tests/vrr-test), falls Ihr Panel FreeSync/G-Sync unterstützt.",
+              "Phase 4: Externe Monitore bewerten. Prüfen Sie bei angeschlossenem Zweitbildschirm, ob Fensterverschiebungen im Akkubetrieb ruckeln. Prüfen Sie Anzeigeparameter über [Display-Informationen](/tests/display-info) und Schnittstellen über [Browser-Kompatibilität](/tools/browser-compatibility).",
+              "Phase 5: Stromnetz wiederherstellen. Schließen Sie das Netzteil wieder an. Prüfen Sie, ob Bildwiederholrate, Helligkeit und Compositor-Flüssigkeit unmittelbar zurückkehren oder ein Neustart der Anwendung nötig ist."
+            ],
+            "bullets": [
+              "Phase 1: Ausgangsbasis für Bewegungsflüssigkeit am Originalnetzteil im Leistungsmodus etablieren.",
+              "Phase 2: Ladekabel trennen und unmittelbare OS-Anpassungen bei Hz, Helligkeit und HDR erfassen.",
+              "Phase 3: Maus- und Scrollinteraktionen testen, um dynamische DRR- und Compositor-Anpassungen zu prüfen.",
+              "Phase 4: Externe Bildschirme im Akku- und Netzbetrieb vergleichen, um Docking-Engpässe zu isolieren.",
+              "Phase 5: Netzteil wieder anschließen und die saubere Wiederherstellung der Anzeigewerte überprüfen."
+            ]
+          },
+          {
+            "title": "Energiebedingtes Ruckeln diagnostizieren: Normales Verhalten vs. Fehler",
+            "content": [
+              "Die Unterscheidung zwischen beabsichtigten Energiesparmechanismen und echten Systemfehlern verhindert Fehlkonfigurationen:",
+              "Erwartetes Energiesparverhalten: (1) Reduzierung der Bildwiederholrate von 144Hz/165Hz auf 60Hz im Windows-Stromsparmodus; (2) Leichte Kontrast- und Helligkeitsverschiebungen bei dunklen Bildinhalten durch Intel DPST oder AMD Vari-Bright; (3) Automatische Deaktivierung von HDR im Akkubetrieb bei aktiver Option 'Für Akkulaufzeit optimieren'; (4) Geringfügige Absenkung der Spitzenhelligkeit im Akkumodus.",
+              "Fehler, die untersucht werden sollten: (1) Anhaltendes Ruckeln des Mauszeigers oder Frame-Drops am Stromnetz; (2) Starkes Flackern oder mehrmaliges Schwarzwerden des Bildschirms beim Ein- oder Ausstecken des Ladekabels; (3) Dauerhafte Blockierung auf 60Hz am Netzteil trotz High-Refresh-Panel; (4) Mikroruckler bei Anschluss externer Bildschirme am Stromnetz.",
+              "Konservative Abhilfeschritte: Überprüfen Sie die Bildwiederholrate in den erweiterten Windows-Anzeigeeinstellungen; kontrollieren Sie Hersteller-Tools (Lenovo Vantage, ASUS Armoury Crate, Dell Optimizer) auf erzwungene Akku-Profile; aktualisieren Sie die Grafiktreiber sauber und stellen Sie sicher, dass das Netzteil die spezifizierte Wattzahl liefert (unterdimensionierte USB-C-Netzteile lösen auch am Kabel Akku-Drosselungen aus). Konsultieren Sie unseren [Fehlerbehebungsleitfaden](/knowledge-base/troubleshooting)."
+            ],
+            "bullets": [
+              "Normal: 60Hz-Rückfall im Stromsparmodus, CABC-Kontrastanpassungen und HDR-Abschaltung zur Energieeinsparung.",
+              "Fehler: Anhaltendes Ruckeln am Stromnetz, Bildschirmflackern beim Einstecken oder Blockierung auf 60Hz am Netzteil.",
+              "Hersteller-Utilities (Armoury Crate, Vantage, Optimizer) auf erzwungene Bildwiederholraten-Sperren prüfen.",
+              "Ausreichende Netzteil-Wattleistung sicherstellen, um unbemerktes Akku-Throttling am Kabel zu verhindern."
+            ]
+          },
+          {
+            "title": "Laptop-Displayverhalten im Akku- vs. Netzbetrieb: Taktraten, Spannungen und Skalierung",
+            "content": [
+              "Der Betrieb eines Laptops im Akkubetrieb verändert die thermischen und energetischen Rahmenbedingungen gegenüber dem Netzbetrieb grundlegend. Um die Akkulaufzeit zu maximieren, aktivieren Betriebssystem, Prozessor und Grafiktreiber dynamische Drosselungsmechanismen, die die Bildwiedergabe und Bewegungsflüssigkeit spürbar beeinflussen können.",
+              "Im Akkubetrieb reduzieren Betriebssysteme (wie Windows-Energiemodi: Beste Energieeffizienz, Ausbalanciert, Beste Leistung; macOS-Stromsparmodus; Linux-Energieprofile) Hintergrundaktivitäten. Grafikkarten drosseln Kern- und Speichertakte (P-States), während der PCIe-Bus in Stromsparmodi (ASPM L0s/L1) wechselt, wodurch die Übertragungsbandbreite zwischen GPU und Display-Controllern sinkt.",
+              "Gleichzeitig greifen moderne Panels auf dynamische Bildwiederholraten zurück. Unter Windows 11 Dynamic Refresh Rate (DRR) oder herstellerspezifischer Firmware schalten High-Refresh-Panels (120Hz, 144Hz, 240Hz) im Leerlauf oder bei Akkubetrieb oft auf 60Hz zurück oder nutzen Panel Self-Refresh (PSR). Technologien wie Content-Adaptive Brightness Control (CABC), Intel Display Power Saving Technology (DPST) oder AMD Vari-Bright modulieren zudem Helligkeit und Gamma dynamisch anhand der Bildinhalte.",
+              "Der Akkubetrieb führt jedoch nicht auf jedem Laptop zwingend zu reduzierten Bildwiederholraten. Leistungsstarke Gaming-Laptops mit MUX-Schaltern halten oft auch im Akkubetrieb die volle Bildwiederholrate auf Kosten rascher Entladung aufrecht, während Ultrabooks maximale Effizienz priorisieren. Ob ein beobachtetes Verhalten gewollt oder ein Problem ist, lässt sich durch systematische Tests ermitteln."
+            ],
+            "bullets": [
+              "Akkubetrieb aktiviert konservative CPU-, GPU- und PCIe-ASPM-Energiesparzustände.",
+              "Dynamic Refresh Rate (DRR) und Panel Self-Refresh (PSR) können die Bildwiederholrate auf 60Hz senken.",
+              "Adaptive Helligkeitsfunktionen (CABC, Intel DPST, AMD Vari-Bright) verändern Kontrast und Hintergrundlicht dynamisch.",
+              "Akkumodi drosseln Displays nicht universell; das Verhalten variiert je nach Hersteller- und OS-Konfiguration."
             ]
           }
         ],
@@ -4385,6 +4443,18 @@
           {
             "question": "Kann Screen Tester mein GPU-Scanout-Timing messen oder Multi-Monitor-Ruckeln reparieren?",
             "answer": "Nein. Webbrowser laufen in einer geschützten Sandbox und haben keinen Zugriff auf interne GPU-Register oder Hardware-Scanout-Leitungen. Screen Tester bietet visuelle Prüfmuster zur Beobachtung; Anpassungen müssen im Betriebssystem oder Treiber vorgenommen werden."
+          },
+          {
+            "question": "Warum fällt mein Laptop-Display von 120Hz oder 144Hz auf 60Hz ab, sobald ich das Ladekabel trenne?",
+            "answer": "Dies ist meist eine beabsichtigte Energiesparfunktion von Windows Dynamic Refresh Rate (DRR), dem Grafiktreiber oder Herstellerprogrammen (wie Lenovo Vantage oder ASUS Armoury Crate). Da 120 oder 144 Aktualisierungen pro Sekunde deutlich mehr Strom verbrauchen, schalten Laptops im Akkubetrieb oft auf 60Hz herunter. Sie können dies in den erweiterten Windows-Anzeigeeinstellungen oder der Herstellersoftware anpassen, falls Sie auch unterwegs hohe Bildwiederholraten wünschen."
+          },
+          {
+            "question": "Warum verändern sich Helligkeit oder Kontrast beim Wechsel zwischen Akku- und Netzbetrieb?",
+            "answer": "Helligkeits- und Kontrastsprünge werden meist durch adaptive Stromspartechnologien wie Windows CABC, Intel Display Power Saving Technology (DPST) oder AMD Vari-Bright ausgelöst. Diese passen das Hintergrundlicht und Gammakurven dynamisch an helle oder dunkle Inhalte an, um Energie zu sparen. Bei störenden Farbverschiebungen können diese Funktionen im Intel Grafik-Kontrollraum oder in der AMD Software deaktiviert werden."
+          },
+          {
+            "question": "Kann Screen Tester erkennen, ob mein Laptop im Akkubetrieb läuft oder am Netzteil angeschlossen ist?",
+            "answer": "Nein. Webbrowser laufen in einer geschützten Sandbox und können ohne explizite Berechtigungen weder Hardwareschienen noch ACPI-Ladestatus oder Systemenergiepläne direkt abfragen. Screen Tester misst browserseitige Animationsintervalle und die Reaktionsfähigkeit der Testmuster, kann jedoch nicht erkennen, ob Drosselungen durch den Akkubetrieb, Temperatur- oder Treiberlimits verursacht werden."
           }
         ]
       },
@@ -4568,6 +4638,166 @@
           {
             "question": "Sollte ich mich zuerst an den Händler oder den Hersteller wenden?",
             "answer": "Prüfen Sie zuerst das Rückgaberecht des Händlers. Liegt der Kauf innerhalb der Händlerfrist, ist der Umtausch meist unkomplizierter. Außerhalb dieser Frist greifen die Garantiebestimmungen des Herstellers."
+          }
+        ]
+      },
+      "backlight-bleed-vs-ips-glow": {
+        "title": "Backlight Bleed vs. IPS Glow: Die Unterschiede erkennen",
+        "subtitle": "Rahmenspannung, gekrümmte Panel-Geometrie, Flüssigkristall-Doppelbrechung und Dunkelkammer-Diagnose.",
+        "description": "Erfahren Sie, wie Sie Backlight Bleed von IPS Glow unterscheiden, warum Betrachtungswinkel und Bildschirmkrümmung die Wahrnehmung verändern und wie Sie beides im Dunkelraum prüfen.",
+        "directAnswer": "Backlight Bleed ist physisches Licht, das am Displayrahmen austritt und unabhängig vom Blickwinkel an fester Stelle sichtbar bleibt, während IPS Glow und winkelabhängiges Leuchten optische Eigenschaften sind, deren Position und Intensität sich mit der Bewegung des Betrachters verändern.",
+        "whyItMatters": "Die Verwechslung von normalem winkelabhängigem Leuchten auf flachen oder gekrümmten Panels mit einem Herstellungsfehler führt oft zu unnötigen Rücksendungen, bei denen das Austauschgerät exakt dasselbe optische Verhalten aufweist. Echtes mechanisches Backlight Bleed durch Rahmenspannung beeinträchtigt den Dunkelraumkontrast hingegen dauerhaft. Zu verstehen, wie Bildschirmkrümmung, Betrachtungsabstand und Panel-Technologie die Randwahrnehmung beeinflussen, ermöglicht fundierte Entscheidungen.",
+        "whatToLookFor": [
+          "Backlight Bleed: Lokalisierte, intensive weiße oder gelbliche Lichthöfe entlang der Rahmenkanten, die unabhängig vom Blickwinkel ortsfest bleiben",
+          "IPS Glow: Ein diffuser silbriger, goldener oder violetter Schimmer über den äußeren Displayquadranten, der wandert oder verschwindet, wenn man senkrecht auf die Ecke blickt",
+          "Randleuchten bei Curved-Displays: Diffuse Helligkeit an den äußeren Flügeln, wenn man näher oder weiter als der definierte Krümmungsradius sitzt",
+          "VA-Gammashift bei Schrägsicht: Eine Aufhellung dunkler Schattentöne und Farbentsättigung bei schrägem Betrachtungswinkel auf Curved- oder Flat-VA-Panels",
+          "Punktuelle Druckstellen am Rahmen: Scharfe, taschenlampenartige Lichtkegel direkt an Gehäuseschrauben, Halteklammern oder Rahmennähten"
+        ],
+        "howToTest": [
+          "Führen Sie die Prüfung nachts in einem vollständig abgedunkelten Raum ohne störende Lampen oder Spiegelungen durch",
+          "Stellen Sie die Monitorhelligkeit auf einen normalen Arbeitswert ein (typischerweise 20% bis 40%, ca. 100–140 Nits; vermeiden Sie erzwungene 100%)",
+          "Starten Sie den [Backlight-Bleed-Test](/tests/backlight-bleed-test) in Screen Tester, um ein rein schwarzes Vollbild darzustellen",
+          "Nehmen Sie die Sitzposition im spezifizierten Krümmungsradius ein (z. B. ca. 1,0 m bei 1000R) und richten Sie die Augenhöhe auf die Panelmitte aus",
+          "Führen Sie den Parallaxen-Kopfbewegungstest durch: Bewegen Sie den Kopf seitlich und blicken Sie frontal auf Ecken; wandert der Schein, ist es optischer Glow",
+          "Treten Sie 2 bis 3 Meter zurück: Winkelabhängiger Glow nimmt mit dem Abstand deutlich ab, während mechanisches Bleed am Rahmen sichtbar bleibt"
+        ],
+        "whatScreenTesterCanObserve": [
+          "Darstellung einer rein digitalen schwarzen Testfläche (RGB 0, 0, 0) auf flachen und gekrümmten Bildschirmen",
+          "Visuelle Unterscheidung zwischen statischem Rahmenlichtaustritt und winkelabhängigem Glow bei Kopfbewegung",
+          "Optionales Fadenkreuz zur Überprüfung der senkrechten Blickachse im Krümmungsfokus",
+          "Abgestufte dunkelgraue Testfelder (1% bis 5%) zur Beurteilung der wahrgenommenen Schwarzwerteinheitlichkeit",
+          "Vom Nutzer erfasste optische Auffälligkeiten, Abstandsveränderungen und Dunkelkammer-Prüfnotizen"
+        ],
+        "whatScreenTesterCannotDetermine": [
+          "Physische Leuchtdichte in Candela pro Quadratmeter (cd/m² bzw. Nits) oder absolute statische Kontrastverhältnisse",
+          "Mechanische Drehmomente von Gehäuseschrauben, Rahmenklemmdrücke oder physikalische Krümmungstoleranzen",
+          "Mathematische optische Retardierung, Phasenverschiebungswinkel der Flüssigkristalle oder Polarisationsfiltereffizienz",
+          "Unterscheidung zwischen Panelglas-Spannungen und Polarisationsleckagen ohne physische Bewegung",
+          "Herstellergarantie-Grenzwerte, RMA-Freigaben oder Rücknahmebedingungen des Händlers bezüglich optischem Glow"
+        ],
+        "commonCauses": [
+          "Backlight Bleed: Übermäßiger Klemmdruck bei der Rahmenmontage im Werk quetscht das empfindliche Panelsandwich",
+          "Backlight Bleed: Thermische Ausdehnung verzieht die interne Lichtleiterplatte (LGP) bei längerem Betrieb",
+          "IPS Glow: Konstruktionsbedingte optische Doppelbrechung horizontal ausgerichteter Flüssigkristalle bei In-Plane Switching",
+          "Krümmungsgeometrie: Sitzen außerhalb des Krümmungsradius (z. B. 50 cm vor einem 1500R-Panel) führt zu extremen Randbetrachtungswinkeln",
+          "Curved VA Gammashift: Schräger Lichtdurchtritt durch vertikal ausgerichtete Flüssigkristalle hellt dunkle Schattentöne an Außenkanten auf"
+        ],
+        "whatToDoNext": [
+          "Passen Sie Ihren Sitzabstand dem Krümmungsradius Ihres Monitors an (typisch 1,0 m bei 1000R, 1,5 m bei 1500R), um schräge Randblickwinkel zu minimieren",
+          "Installieren Sie eine dezente 6500K-Bias-Beleuchtung hinter dem Display, um die Pupillenerweiterung im Dunkeln zu mindern und den Kontrasteindruck zu verbessern",
+          "Prüfen Sie die Bildhomogenität auf Graustufen mit dem [Uniformity-Test](/tests/uniformity-test) und nutzen Sie den [Blickwinkel-Leitfaden](/guides/monitor-viewing-angles-explained)",
+          "Wenn intensives, punktuelles Bleed auch bei frontaler Betrachtung aus 2 Metern Abstand unverändert sichtbar bleibt, reklamieren Sie das Gerät beim Händler"
+        ],
+        "sections": [
+          {
+            "title": "Die physikalischen Mechanismen: Rahmenspannung vs. optische Doppelbrechung",
+            "content": [
+              "Flüssigkristallanzeigen (LCDs) erzeugen kein eigenes Licht. Unabhängig davon, ob Rand-LEDs (Edge-Lit) oder vollflächige LED-Arrays (Direct-Lit) eingesetzt werden, muss das Licht einen komplexen optischen Schichtaufbau aus Reflektoren, Diffusorplatten, Prismenfolien, Polarisationsfiltern und der Flüssigkristallschicht durchqueren.",
+              "Backlight Bleed ist ein mechanischer Fertigungs- oder Montagemangel. Wenn der Gehäuserahmen, Halteklammern oder Schrauben ungleichmäßigen Druck auf den Außenbereich des Panels ausüben, wird das Schichtpaket gequetscht. Durch winzige Spaltmaße entweicht unmoduliertes Hintergrundlicht ungehindert nach vorne und erzeugt ortsfeste, taschenlampenartige Lichthöfe.",
+              "Im Gegensatz dazu ist IPS Glow eine inhärente physikalische Eigenschaft der In-Plane-Switching-Technologie. Bei IPS-Panels sind die Flüssigkristalle parallel zum Glassubstrat angeordnet. Bei senkrechtem Blick (90°) wird das Licht im Dunkelzustand effektiv blockiert. Fällt Licht jedoch in schrägen Winkeln durch die horizontalen Kristalle, tritt optische Phasenretardierung (Doppelbrechung) auf, die als diffuser, silbriger oder violetter Schimmer sichtbar wird."
+            ],
+            "bullets": [
+              "Backlight Bleed ist ein mechanischer Montagefehler; Licht entweicht unmoduliert am Panelrahmen.",
+              "IPS Glow ist eine optische Eigenschaft horizontal orientierter Flüssigkristalle bei Schrägsicht.",
+              "Bleed bleibt am Rahmen ortsfest; Glow wandert dynamisch über das Panel, wenn sich der Betrachter bewegt."
+            ]
+          },
+          {
+            "title": "Curved-Displays: Betrachtungsgeometrie und Einfallswinkel",
+            "content": [
+              "Gekrümmte Monitore besitzen einen definierten Krümmungsradius – etwa 1000R, 1500R oder 1800R. Der Wert gibt den Radius eines gedachten Kreises in Millimetern an (1000R entspricht 1,0 Meter Radius). Das ergonomische Ziel besteht darin, den Abstand von den Augen zu allen Bildschirmbereichen auf breiten Panelflächen möglichst konstant zu halten.",
+              "Die Krümmung verändert jedoch die optischen Einfallswinkel grundlegend. Sitzt der Nutzer exakt im Fokuszentrum (1,0 m bei 1000R), trifft die Blickachse sowohl im Zentrum als auch an den Außenflügeln nahezu senkrecht auf das Panel. Sitzt man jedoch zu nah (z. B. 50 cm vor einem 1800R-Panel) oder versetzt zur Mitte, treffen die Augen in extrem steilen Winkeln auf die Außenkanten.",
+              "Diese veränderte Geometrie beeinflusst die Homogenitätswahrnehmung stark. Auf gekrümmten IPS-Panels führt ein zu geringer Abstand zu sichtbarem Glow an den Rändern. Wichtig: Die Krümmung selbst verursacht kein Backlight Bleed; vielmehr verändert die Wölbung die Art und Weise, wie schräg austretendes Licht das menschliche Auge erreicht."
+            ],
+            "bullets": [
+              "Krümmungswerte (1000R, 1500R, 1800R) definieren den idealen Betrachtungsabstand in Millimetern.",
+              "Ein Sitzabstand außerhalb des Fokusradius zwingt die Bildschirmränder in steile Schrägwinkel.",
+              "Die Krümmung verändert Geometrie und Wahrnehmung, erzeugt jedoch nicht per se mechanisches Bleed."
+            ]
+          },
+          {
+            "title": "Backlight Bleed von winkelabhängigem Glow auf Curved-Panels unterscheiden",
+            "content": [
+              "Um zu beurteilen, ob eine helle Stelle auf einem Curved-Display einen Garantiefall darstellt oder normaler Glow ist, empfiehlt sich der Parallaxen-Kopfbewegungstest.",
+              "Schritt 1: Dunkeln Sie den Raum vollständig ab und stellen Sie über den [Backlight-Bleed-Test](/tests/backlight-bleed-test) ein rein schwarzes Vollbild dar. Nehmen Sie Ihre normale Sitzposition ein und lokalisieren Sie helle Stellen.",
+              "Schritt 2: Bewegen Sie Ihren Kopf langsam horizontal und vertikal. Wandert der helle Schimmer über das Panel, ändert er seine Farbe (z. B. von Silber zu Gold) oder wird er schwächer, handelt es sich um winkelabhängigen optischen Glow.",
+              "Schritt 3: Richten Sie Ihren Blick senkrecht (im 90°-Winkel) direkt auf die betroffene Ecke. Verschwindet die Aufhellung bei frontaler Draufsicht vollständig, arbeitet das Panel im Rahmen der optischen Toleranz. Bleibt ein scharfer, weiß-gelblicher Lichtaustritt direkt an der Gehäusekante auch aus 2 Metern Abstand unverändert sichtbar, liegt echtes Backlight Bleed vor."
+            ],
+            "bullets": [
+              "Kopfbewegungstest: Beobachten Sie, ob Aufhellungen mit der Kopfposition wandern oder fixiert bleiben.",
+              "Senkrechter Eckentest: Verschwindet das Licht bei geradem Blick, ist es optischer Glow.",
+              "Bleed-Identifikation: Ortsfeste, intensive Lichtkegel am Rahmen deuten auf physische Rahmenspannung hin."
+            ]
+          },
+          {
+            "title": "Panel-Technologien im Vergleich bei Krümmung: IPS, VA, TN und OLED",
+            "content": [
+              "Verschiedene Panel-Technologien verhalten sich bei gekrümmten Konstruktionen optisch sehr unterschiedlich. Beobachtungen sollten stets unter Berücksichtigung des Paneltyps bewertet werden:",
+              "In-Plane Switching (IPS): Bietet hervorragende Farbkonstanz für grafische Arbeiten. Da die Flüssigkristalle parallel zum Trägerglas liegen, zeigen gekrümmte IPS-Panels an den Rändern bauartbedingten Glow, wenn man außerhalb des Fokusradius sitzt. Spezielle A-TW-Polarisationsfilter können dies unterdrücken, kommen jedoch fast nur in teuren Profi-Bildschirmen vor.",
+              "Vertical Alignment (VA): Nutzt im Dunkelzustand senkrecht ausgerichtete Kristalle, was hohe Kontrastwerte (3.000:1 bis 5.000:1) und minimale Aufhellungen auf Schwarz ermöglicht. Allerdings weisen VA-Panels bei Schrägsicht einen Gammashift auf, durch den dunkle Farben verblassen. Hersteller krümmen große VA-Panels daher gezielt, um die Ränder senkrecht zum Betrachter auszurichten.",
+              "Twisted Nematic (TN): Schnelle Schaltzeiten, aber stark eingeschränkte Blickwinkel mit vertikaler Farbinvertierung; bei modernen Curved-Displays kaum anzutreffen.",
+              "Organic Light Emitting Diode (OLED): Selbstleuchtende Pixel ohne Hintergrundbeleuchtung erzeugen echtes 0,000-Nit-Schwarz ohne Bleed oder IPS Glow. Gekrümmte OLEDs bieten perfekten Dunkelraumkontrast, wenngleich Antireflexbeschichtungen bei extremen Winkeln minimale Farbtonabweichungen zeigen können."
+            ],
+            "bullets": [
+              "IPS: Sehr hohe Farbgenauigkeit mit charakteristischem Schrägblick-Glow auf tiefem Schwarz.",
+              "VA: Sehr hohes Kontrastverhältnis (3.000:1+); die Krümmung wirkt dem seitlichen Gammashift entgegen.",
+              "TN: Stark eingeschränkte Blickwinkel; in Curved-Bauweise im modernen Markt unüblich.",
+              "OLED: Selbstleuchtende Subpixel eliminieren Backlight Bleed und IPS Glow auf flachen wie gekrümmten Panels vollständig."
+            ]
+          },
+          {
+            "title": "Standardisierter Prüfablauf im Dunkelraum für Curved-Monitore",
+            "content": [
+              "Eine aussagekräftige Beurteilung gekrümmter Displays erfordert ein diszipliniertes Vorgehen, um Fehlschlüsse durch Raumlicht oder Fehlhaltungen auszuschließen:",
+              "1. Raumbeleuchtung: Schalten Sie alle Deckenleuchten und Schreibtischlampen aus. Gekrümmte Bildschirme bündeln Lichtquellen hinter dem Betrachter und reflektieren diese als verzerrte Streifen auf der Oberfläche.",
+              "2. Ausrichtung im Fokus: Positionieren Sie Ihren Stuhl im deklarierten Krümmungsradius (1000R = 1,0 m; 1500R = 1,5 m). Bringen Sie die Augenhöhe auf die vertikale Mitte des Bildschirms.",
+              "3. Helligkeit normalisieren: Stellen Sie die Helligkeit im Monitormenü auf praxistaugliche Werte ein (typisch 20% bis 40%, ca. 100 bis 140 Nits). Eine Prüfung bei 100% Maximalhelligkeit in völliger Dunkelheit verzerrt die Realität.",
+              "4. Screen Tester starten: Nutzen Sie den [Backlight-Bleed-Test](/tests/backlight-bleed-test) für schwarze Vollbilder und wechseln Sie zum [Uniformity-Test](/tests/uniformity-test) auf 5% und 20% Dunkelgrau. Prüfen Sie Farbveränderungen mit dem [Blickwinkel-Test](/tests/viewing-angle-test) und unserem [Blickwinkel-Leitfaden](/guides/monitor-viewing-angles-explained)."
+            ],
+            "bullets": [
+              "Raumlicht löschen, um streifenförmige Spiegelungen auf der konkaven Wölbung zu verhindern.",
+              "Betrachtungsabstand exakt auf den Krümmungsradius (1000R, 1500R oder 1800R) abstimmen.",
+              "Helligkeit auf 20%–40% (~120 Nits) einstellen, anstatt extreme Maximalwerte zu erzwingen.",
+              "Dunkelgraue Testflächen (5% und 20%) nutzen, um punktuelle Rahmenfehler von Panelverläufen zu trennen."
+            ]
+          },
+          {
+            "title": "Dokumentation für den Kundensupport und Reklamationsabwicklung",
+            "content": [
+              "Zeigt die Prüfung punktuelle Lichthöfe, die auf mechanisches Backlight Bleed hindeuten, ist eine saubere Dokumentation vor der Kontaktaufnahme mit Händler oder Hersteller entscheidend:",
+              "Manueller Belichtungsabgleich: Smartphone-Kameras aktivieren bei Dunkelheit automatisch einen Nachtmodus, der durch lange Belichtungszeiten selbst fehlerfreie Displays extrem überstrahlt darstellt. Nutzen Sie den 'Pro'-Modus Ihres Smartphones, wählen Sie ISO 100 oder 200 und justieren Sie die Verschlusszeit so, dass das Foto dem tatsächlichen Seheindruck entspricht.",
+              "Aufnahmen aus mehreren Winkeln: Erstellen Sie eine Gesamtaufnahme aus dem Fokuszentrum sowie eine Nahaufnahme senkrecht zur betroffenen Ecke. Ist der Lichtkegel auch bei senkrechtem Blickwinkel scharf sichtbar, belegt dies einen mechanischen Fehler.",
+              "Händler- vs. Herstellergarantie: Hersteller stufen optischen Glow häufig als bauartbedingte Eigenschaft ein. Bei störenden Mängeln ist das gesetzliche Widerrufsrecht oder Rückgaberecht des Händlers meist der schnellere und sicherere Weg. Konsultieren Sie unseren [Fehlerbehebungsleitfaden](/knowledge-base/troubleshooting)."
+            ],
+            "bullets": [
+              "Kamerabelichtung manuell fixieren, um übertriebene Nachtmodus-Überstrahlungen zu vermeiden.",
+              "Gesamtfotos aus dem Fokuszentrum und senkrechte Detailaufnahmen der Ecke anfertigen.",
+              "Rückgabefristen des Händlers sind oft unkomplizierter als langwierige RMA-Garantieprüfungen.",
+              "Nutzen Sie den [Fehlerbehebungsleitfaden](/knowledge-base/troubleshooting) von Screen Tester zur weiteren Eingrenzung."
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "Verursacht die Bildschirmkrümmung automatisch Backlight Bleed?",
+            "answer": "Nein. Die Krümmung selbst erzeugt kein Backlight Bleed. Backlight Bleed entsteht durch mechanische Rahmenspannungen oder fehlerhafte Verklebungen im Gehäuse. Die Krümmung verändert jedoch die Betrachtungswinkel zu den Rändern, wenn man nicht im Fokuszentrum sitzt, wodurch normaler optischer Glow vom Auge deutlicher wahrgenommen werden kann."
+          },
+          {
+            "question": "Warum scheinen die Ecken meines Curved-Monitors zu leuchten, wenn ich nah davor sitze?",
+            "answer": "Sitzt man näher am Bildschirm als der Krümmungsradius vorgibt (z. B. 50 cm vor einem 1800R-Monitor), treffen die Blicke auf die Außenkanten in extrem schrägen Winkeln von über 30° bis 45°. Bei IPS-Panels löst dies bauartbedingten Schrägblick-Glow aus. Wenn Sie auf den empfohlenen Abstand zurücktreten, blicken Sie wieder senkrecht auf die Ecken und der Schein geht deutlich zurück."
+          },
+          {
+            "question": "Warum setzen die meisten Curved-Gaming-Monitore auf VA- statt auf IPS-Panels?",
+            "answer": "VA-Panels bieten mit 3.000:1 bis 5.000:1 einen sehr hohen Kontrast und fast keinen Schimmer auf schwarzen Flächen im Dunkeln. Zudem neigen VA-Panels bei schrägem Blick zu Farbaufhellungen (Gammashift); durch die Krümmung bleiben die Ränder senkrecht zum Betrachter ausgerichtet, was diesen Effekt wirksam minimiert."
+          },
+          {
+            "question": "Wie fotografiere ich Backlight Bleed realistisch ohne Überbelichtung?",
+            "answer": "Verwenden Sie nicht die Automatik des Smartphones, da deren Nachtmodus das Bild künstlich aufhellt. Schalten Sie in den manuellen 'Pro'-Modus, wählen Sie ISO 100 oder 200 und regeln Sie die Belichtungszeit so herunter, dass das Vorschaubild exakt dem entspricht, was Sie mit bloßem Auge im dunklen Raum sehen."
+          },
+          {
+            "question": "Kann Screen Tester den physischen Kontrast oder die Nit-Werte meines Monitors messen?",
+            "answer": "Nein. Screen Tester läuft innerhalb der Webbrowser-Sandbox und rendert standardisierte Testflächen über das Betriebssystem. Browser haben keinen Zugriff auf physische Messgeräte wie Kolorimeter oder Fotosensoren und können weder Nits noch Kontrastverhältnisse messen. Das Tool dient der qualifizierten visuellen Nutzerbeobachtung."
           }
         ]
       }

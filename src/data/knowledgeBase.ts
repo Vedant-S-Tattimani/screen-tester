@@ -196,15 +196,15 @@ export const KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
       "Browser-level animation callback timestamps via `requestAnimationFrame` on the active display surface",
       "Statistical standard deviation of browser frame pacing intervals (detecting micro-jitter and dropped callbacks)",
       "Browser-reported Device Pixel Ratio (`window.devicePixelRatio`) and CSS logical viewport geometry per screen",
-      "Visual comparison of motion smoothness, pendulum cadence, and scrolling behavior across displays",
+      "Visual comparison of motion smoothness, pendulum cadence, and scrolling behavior across AC and battery states",
       "Browser API support for experimental multi-screen window placement and display enumeration"
 ],
     whatScreenTesterCannotDetermine: [
       "Physical display panel scanout line timing or crystal oscillator synchronization over DisplayPort/HDMI cables",
-      "Internal GPU hardware presentation queue states, driver flip queue depth, or V-Sync hardware interrupts",
+      "Hardware power rail voltage, ACPI battery charging telemetry, or system thermal throttling thresholds",
+      "GPU clock states (P-states/D-states), internal MUX switch positions, or PCIe ASPM bus link power management",
       "Operating system desktop window manager (DWM, Wayland, or Quartz) compositor internal buffer swap schedules",
-      "True physical monitor DPI or panel pixel density independent of operating system scaling reporting",
-      "Physical signal integrity, cable bandwidth saturation, or GPU display engine port lane bandwidth limits"
+      "True physical monitor DPI or panel pixel density independent of operating system scaling reporting"
 ],
     commonCauses: [
       "Operating system desktop window manager struggling to synchronize independent presentation intervals across mixed refresh rates",
@@ -361,22 +361,80 @@ export const KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
             ]
       },
       {
-            "title": "Practical Troubleshooting Adjustments & Next Steps",
+            "title": "Laptop Display Behavior on Battery vs. AC Power: Power Rails, Clocks & Dynamic Scaling",
             "content": [
-                  "If you experience stutter, cursor judder, or scaling blurriness on your multi-monitor setup, use these practical, non-destructive troubleshooting steps to restore desktop fluidity:",
-                  "1. Verify Refresh Rates in OS Settings: Open your operating system advanced display settings and confirm that each monitor is explicitly assigned its highest rated refresh rate. Windows updates or driver installations occasionally revert secondary monitors to default 60Hz.",
-                  "2. Align Scaling or Test Integer Divisors: If mixed scaling causes application blurriness, test setting both displays to 100% or 200% where practical. In mixed refresh setups (e.g., 144Hz + 60Hz), test setting the high-refresh monitor to 120Hz (an exact integer multiple of 60Hz) to evaluate if compositor frame pacing improves.",
-                  "3. Adjust GPU VRR Configuration: In the NVIDIA Control Panel or AMD Software, set G-Sync or FreeSync to 'Enable for full screen mode' rather than 'Enable for windowed and full screen mode'.",
-                  "4. Test Browser Hardware Acceleration: In your browser settings, toggle 'Use graphics acceleration when available'. If browser scrolling stutters on a secondary screen, toggling this setting isolates browser compositor issues from GPU driver bugs.",
-                  "5. Restart the Graphics Stack: In Windows, press Win + Ctrl + Shift + B to restart the graphics driver without rebooting your system if multi-display desktop compositing becomes unresponsive.",
-                  "For comprehensive diagnostics on specific hardware faults or display connection issues, consult the interactive [Troubleshooting Guide](/knowledge-base/troubleshooting)."
+                  "Operating a laptop on DC battery power fundamentally changes the system's thermal and power envelopes compared to AC mains power. To maximize battery endurance, the operating system, CPU, and GPU firmware engage dynamic power-capping mechanisms that can noticeably alter display rendering and motion behavior.",
+                  "Under battery power, operating systems (such as Windows Power Modes: Best Power Efficiency, Balanced, and Best Performance; macOS Low Power Mode; or Linux energy profiles) reduce background service activity and enforce conservative clock states. GPUs reduce core clock frequencies and downscale memory P-states, while PCIe buses enter Active State Power Management (ASPM L0s/L1) to conserve wattage, reducing bus bandwidth between the GPU and display controllers.",
+                  "Simultaneously, modern display panels frequently engage dynamic refresh mechanisms. Under Windows 11 Dynamic Refresh Rate (DRR) or manufacturer display firmware, high-refresh panels (120Hz, 144Hz, 240Hz) may automatically downclock to 60Hz or engage Panel Self-Refresh (PSR) when idle or running on battery. Content-Adaptive Brightness Control (CABC), Intel Display Power Saving Technology (DPST), or AMD Vari-Bright also dynamically modulate backlight luminance and gamma curves based on screen content.",
+                  "However, battery operation does NOT universally reduce refresh rate or disable display features across all laptops. High-performance gaming laptops with discrete GPU MUX switches may maintain full refresh rates on battery at the cost of rapid battery drain, while ultrabooks prioritize power efficiency. Understanding whether an observed behavior is an intentional power-saving adaptation or an unexpected bottleneck requires systematic testing."
             ],
             "bullets": [
-                  "Check OS Settings: Ensure all monitors are configured to their native rated refresh rates.",
-                  "Test Integer Refresh Ratios: In 60Hz + 144Hz setups, test 120Hz to evaluate integer frame divisor pacing.",
-                  "Configure VRR for Full Screen: Limit VRR to full-screen games to avoid desktop compositor contention.",
-                  "Toggle Browser Hardware Acceleration: Test browser rendering performance with acceleration toggled.",
-                  "Restart Graphics Pipeline: Use Win + Ctrl + Shift + B in Windows to recover stalled desktop compositing."
+                  "Battery operation engages conservative CPU, GPU, and PCIe ASPM link power states to conserve wattage.",
+                  "Dynamic Refresh Rate (DRR) and Panel Self-Refresh (PSR) may reduce panel refresh to 60Hz on DC power.",
+                  "Adaptive brightness features (CABC, Intel DPST, AMD Vari-Bright) dynamically alter contrast and backlight.",
+                  "Battery power profiles do not universally throttle displays; behavior depends on OEM and OS configurations."
+            ]
+      },
+      {
+            "title": "Internal Laptop Panel vs. External Display Routing Under Battery Power",
+            "content": [
+                  "Modern laptops utilize hybrid graphics architectures (such as NVIDIA Optimus, AMD SmartAccess Graphics, or Apple unified memory), where the internal panel and external video ports are routed across different physical controllers.",
+                  "In typical designs, the internal laptop panel is connected via an embedded DisplayPort (eDP) bus directly to the energy-efficient integrated GPU (iGPU). When running on battery, the high-performance discrete GPU (dGPU) is powered down entirely to conserve energy. If a hardware-accelerated application requests dGPU rendering, the completed frames must be copied across the PCIe bus to the iGPU display engine, introducing an extra compositing hop that can exhibit micro-stutter if PCIe bus bandwidth is restricted on battery.",
+                  "External monitors connected via HDMI, USB-C DisplayPort Alternate Mode, or Thunderbolt docks introduce further variables. External ports are often wired directly to the dGPU or pass through USB docking controllers that share interface bandwidth with USB data and network streams. Disconnecting AC power can cause docks to renegotiate USB Power Delivery (PD) profiles or force the dGPU into aggressive power throttling, creating visible frame drops on the external display that do not occur when plugged into mains power."
+            ],
+            "bullets": [
+                  "Internal laptop panels connect via eDP to the iGPU; dGPUs are frequently suspended on battery power.",
+                  "Hybrid graphics frame copying across the system bus can introduce compositor micro-stutter on DC power.",
+                  "Thunderbolt and USB-C docks share bandwidth and may renegotiate power delivery when unplugged from AC.",
+                  "Testing external monitor fluidity on AC power isolates docking power limits from display configuration issues."
+            ]
+      },
+      {
+            "title": "Controlled Laptop Battery-vs-AC Comparison Procedure: A Disciplined Protocol",
+            "content": [
+                  "To determine whether display stutter, refresh rate drops, or brightness changes stem from operating system power policies or hardware anomalies, follow this disciplined 5-phase comparison protocol:",
+                  "Phase 1: Baseline on AC Mains Power. Connect your laptop to its official manufacturer AC power adapter. Set your operating system power mode to 'Balanced' or 'Best Performance'. Open the [Refresh Rate Test](/tests/refresh-rate-test) and [Motion Blur Test](/tests/motion-blur-test) in Screen Tester. Record the browser-reported frame rate, standard deviation, and perceived motion smoothness.",
+                  "Phase 2: Disconnect AC Charger. Unplug the charging cable while keeping Screen Tester open. Note immediate operating system adaptations: Does the screen dim? Does Windows display settings or the [Refresh Rate Test](/tests/refresh-rate-test) report a drop from 120Hz/144Hz to 60Hz? Does the [HDR Test](/tests/hdr-test) indicate that HDR has been disabled by OS battery policies?",
+                  "Phase 3: Test Dynamic Interaction & Compositor Pacing. Sweep the mouse cursor rapidly across the screen and scroll through text. On systems with Windows Dynamic Refresh Rate (DRR), observe whether interaction temporarily boosts frame cadence or remains locked at 60Hz. Run the [VRR Test](/tests/vrr-test) if your internal panel supports G-Sync or FreeSync on battery.",
+                  "Phase 4: Evaluate External Displays. If connected to an external monitor, test whether dragging windows or playing animations stutters when running on battery compared to AC power. Check browser display parameters with [Display Information](/tests/display-info) and API status via [Browser Compatibility](/tools/browser-compatibility).",
+                  "Phase 5: Reconnect AC Power. Plug the AC adapter back in. Observe whether the display immediately restores its native refresh rate, brightness, and compositor pacing, or whether an application restart is required."
+            ],
+            "bullets": [
+                  "Phase 1: Establish baseline motion smoothness on official AC power under Balanced/Performance mode.",
+                  "Phase 2: Disconnect charger to observe immediate OS refresh rate, brightness, and HDR adaptations.",
+                  "Phase 3: Test dynamic mouse movement and scrolling to evaluate Windows DRR and compositor responsiveness.",
+                  "Phase 4: Compare external monitor frame delivery on battery vs. AC power to isolate docking bottlenecks.",
+                  "Phase 5: Reconnect mains power and verify whether high-refresh pacing and brightness recover cleanly."
+            ]
+      },
+      {
+            "title": "Diagnosing Power-Related Display Stutter: Expected Behavior vs. Faults",
+            "content": [
+                  "Distinguishing between normal, intentional battery-saving adaptations and genuine configuration faults prevents unnecessary troubleshooting and preserves system stability:",
+                  "Expected Power-Saving Behaviors: (1) Refresh rate dropping from 144Hz/165Hz to 60Hz when entering Windows Battery Saver mode; (2) Subtle dynamic brightness and contrast adjustments on dark backgrounds caused by Intel DPST or AMD Vari-Bright; (3) Operating system disabling HDR on battery when 'Optimize for battery life' is selected in Windows display settings; (4) Slight reduction in maximum panel nit brightness on DC power.",
+                  "Behaviors Worth Investigating: (1) Persistent mouse cursor stutter, severe frame pacing jitter, or dropped animation frames while connected to official AC mains power; (2) Violent screen flickering or prolonged black screens when plugging in or unplugging the power cable; (3) Display remaining locked at 60Hz on AC power despite a high-refresh panel rating; (4) Severe micro-stutter when an external display is connected while on AC power.",
+                  "Conservative Troubleshooting Steps: Verify display refresh settings in your operating system advanced display settings; inspect proprietary OEM utilities (such as Lenovo Vantage, ASUS Armoury Crate, or Dell Optimizer) to ensure battery eco-modes are not overriding Windows settings; update graphics drivers directly from the GPU vendor; and verify that your AC adapter provides the full manufacturer-specified wattage (undersized USB-C chargers can trigger battery-throttling states even when plugged in). For hardware fault diagnosis, consult the [Troubleshooting Guide](/knowledge-base/troubleshooting)."
+            ],
+            "bullets": [
+                  "Expected: 60Hz fallback in Battery Saver, CABC contrast shifts, and HDR disabling for energy conservation.",
+                  "Fault: Persistent motion stutter on AC power, screen flickering upon plugging in, or 60Hz lock on mains power.",
+                  "Verify OEM utilities (Armoury Crate, Vantage, Optimizer) for proprietary display refresh locks.",
+                  "Ensure AC adapter delivers full rated wattage to prevent power throttling while plugged in."
+            ]
+      },
+      {
+            "title": "Laptop Display Behavior on Battery vs. AC Power: Power Rails, Clocks & Dynamic Scaling",
+            "content": [
+                  "Operating a laptop on DC battery power fundamentally changes the system's thermal and power envelopes compared to AC mains power. To maximize battery endurance, the operating system, CPU, and GPU firmware engage dynamic power-capping mechanisms that can noticeably alter display rendering and motion behavior.",
+                  "Under battery power, operating systems (such as Windows Power Modes: Best Power Efficiency, Balanced, and Best Performance; macOS Low Power Mode; or Linux energy profiles) reduce background service activity and enforce conservative clock states. GPUs reduce core clock frequencies and downscale memory P-states, while PCIe buses enter Active State Power Management (ASPM L0s/L1) to conserve wattage, reducing bus bandwidth between the GPU and display controllers.",
+                  "Simultaneously, modern display panels frequently engage dynamic refresh mechanisms. Under Windows 11 Dynamic Refresh Rate (DRR) or manufacturer display firmware, high-refresh panels (120Hz, 144Hz, 240Hz) may automatically downclock to 60Hz or engage Panel Self-Refresh (PSR) when idle or running on battery. Content-Adaptive Brightness Control (CABC), Intel Display Power Saving Technology (DPST), or AMD Vari-Bright also dynamically modulate backlight luminance and gamma curves based on screen content.",
+                  "However, battery operation does NOT universally reduce refresh rate or disable display features across all laptops. High-performance gaming laptops with discrete GPU MUX switches may maintain full refresh rates on battery at the cost of rapid battery drain, while ultrabooks prioritize power efficiency. Understanding whether an observed behavior is an intentional power-saving adaptation or an unexpected bottleneck requires systematic testing."
+            ],
+            "bullets": [
+                  "Battery operation engages conservative CPU, GPU, and PCIe ASPM link power states to conserve wattage.",
+                  "Dynamic Refresh Rate (DRR) and Panel Self-Refresh (PSR) may reduce panel refresh to 60Hz on DC power.",
+                  "Adaptive brightness features (CABC, Intel DPST, AMD Vari-Bright) dynamically alter contrast and backlight.",
+                  "Battery power profiles do not universally throttle displays; behavior depends on OEM and OS configurations."
             ]
       }
 ],
@@ -404,13 +462,25 @@ export const KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
       {
             "question": "Can Screen Tester measure my GPU's hardware scanout timing or fix multi-monitor stutter?",
             "answer": "No. Web browsers operate within a sandboxed software environment and cannot access low-level GPU hardware registers, physical cable scanout intervals, or driver presentation queues. Screen Tester provides visual inspection patterns to help you observe frame pacing, but resolving multi-monitor issues requires adjusting operating system and driver settings."
+      },
+      {
+            "question": "Why does my laptop screen drop from 120Hz or 144Hz to 60Hz when I unplug the charger?",
+            "answer": "This is typically an intentional power-saving feature managed by Windows Dynamic Refresh Rate (DRR), your GPU driver, or manufacturer-specific laptop utilities (such as Lenovo Vantage or ASUS Armoury Crate). Because refreshing the panel 120 or 144 times per second consumes significantly more power across the display controller and GPU, laptops frequently drop to 60Hz on battery power. You can adjust this in Windows Advanced Display Settings or your OEM control software if you prefer high refresh rates on battery."
+      },
+      {
+            "question": "Why does screen brightness or contrast shift when switching between battery and AC power?",
+            "answer": "Shifting brightness and contrast is usually caused by display power-saving algorithms such as Windows Content-Adaptive Brightness Control (CABC), Intel Display Power Saving Technology (DPST), or AMD Vari-Bright. These technologies dynamically alter backlight levels and contrast curves based on whether content is dark or bright to conserve battery wattage. If these shifts are visually distracting, they can be disabled in the Intel Graphics Command Center or AMD Software."
+      },
+      {
+            "question": "Can Screen Tester detect whether my laptop is running on battery or plugged into AC power?",
+            "answer": "No. Web browsers operate inside a security sandbox that cannot directly inspect ACPI power rails, battery charging states, or hardware power plan registers without explicit permissions. Screen Tester observes browser-level animation timing and visual test pattern responsiveness, but cannot identify whether power-saving throttling originates from battery mode, thermal limits, or OS configurations."
       }
 ],
-    relatedTestIds: ["refresh-rate-test", "vrr-test", "text-clarity-test", "motion-blur-test", "ghosting-test", "display-info"],
+    relatedTestIds: ["refresh-rate-test", "vrr-test", "hdr-test", "text-clarity-test", "motion-blur-test", "ghosting-test", "display-info"],
     relatedTroubleshootingIds: ["wrong-refresh-rate", "screen-tearing", "flickering"],
-    relatedArticleSlugs: ["screen-tearing-and-v-sync", "monitor-ghosting-and-motion-blur"],
+    relatedArticleSlugs: ["screen-tearing-and-v-sync", "monitor-ghosting-and-motion-blur", "backlight-bleed-vs-ips-glow"],
     primarySearchIntent: "how to troubleshoot mixed refresh rate, DPI scaling, and stutter on multi-monitor setups",
-    readingTimeMinutes: 10
+    readingTimeMinutes: 12
   },
   {
     slug: "hdr-display-fundamentals",
@@ -880,67 +950,168 @@ export const KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     slug: "backlight-bleed-vs-ips-glow",
     category: "display-problems",
     title: "Backlight Bleed vs. IPS Glow: How to Tell the Difference",
-    subtitle: "Bezel pinch, reflector leakage, liquid crystal birefringence, and darkroom diagnosis.",
-    description: "Learn how to tell backlight bleed apart from IPS glow, why viewing angles change what you see, and how to verify both using darkroom visual inspection.",
-    directAnswer: "Backlight bleed is physical light leaking around the monitor bezel that remains in the exact same spot regardless of where you sit, while IPS glow is an inherent optical characteristic of IPS panels that changes intensity and shifts position as you move your head.",
-    whyItMatters: "Returning an IPS monitor because of 'IPS glow' will result in receiving a replacement with the exact same characteristic, as all IPS panels exhibit off-axis glow. Backlight bleed, however, is an assembly defect that warrants a replacement if severe.",
+    subtitle: "Bezel pinch, curved panel geometry, liquid crystal birefringence, and darkroom diagnosis.",
+    description: "Learn how to tell backlight bleed apart from IPS glow, why viewing angles and screen curvature change what you see, and how to verify both using darkroom visual inspection.",
+    directAnswer: "Backlight bleed is physical light escaping around the monitor bezel that remains in a fixed position regardless of viewing angle, whereas IPS glow and off-axis glow are angle-dependent optical characteristics that shift position and intensity as the viewer moves.",
+    whyItMatters: "Misidentifying normal angle-dependent glow on flat or curved panels as a defective light leak often leads to unnecessary product returns, only to receive a replacement with identical optical behavior. Conversely, genuine mechanical backlight bleed caused by severe bezel pinch degrades darkroom contrast permanently. Knowing how screen curvature, viewing distance, and panel technology alter edge perception ensures accurate defect documentation and informed purchase decisions.",
     whatToLookFor: [
-      "Backlight Bleed: Bright white or yellowish torch-like light patches radiating inward from bezel edges and corners that stay fixed in place",
-      "IPS Glow: A silvery, golden, or purplish sheen across the corners of the panel that brightens or disappears as you step backward or change viewing angles",
-      "Clouding / Flashlighting: Diffuse cloudy patches across the center of edge-lit panels in dark scenes"
-    ],
+      "Backlight Bleed: Localized, intense white or yellowish light patches radiating inward from bezel edges and corners that remain fixed in place regardless of viewing angle",
+      "IPS Glow: A diffuse silvery, amber, or purplish sheen across the outer quadrants of the display that shifts across the screen or disappears when viewed perpendicular to that corner",
+      "Curved Display Edge Glow: Diffuse luminance concentrated along the left and right peripheral wings when sitting closer or farther than the display's designed focal radius",
+      "VA Off-Axis Gamma Shift: A lightening of near-black shadow tones and subtle color desaturation when viewing curved or flat VA panels from steep oblique angles",
+      "Bezel Pinch Pressure Points: Sharp, torch-like light leaks concentrated directly at structural chassis seams, mounting screw points, or frame junctions"
+],
     howToTest: [
-      "Perform the test in a completely dark room at night with all room lights turned off",
-      "Set monitor brightness to your normal working level (typically 20% to 40%, ~120 nits; do not force 100% brightness)",
-      "Launch the Backlight Bleed Test in Screen Tester to display an all-black fullscreen canvas",
-      "Observe the corners, then step back 2 meters (6 feet): if the corner glow diminishes significantly, it is IPS glow; if it remains bright and localized, it is backlight bleed"
-    ],
+      "Perform the inspection in a completely dark room at night with all room lights, lamps, and direct ambient reflections eliminated",
+      "Adjust monitor OSD brightness to normal working luminance (typically 20% to 40%, ~100–140 nits; avoid forcing 100% brightness unless that is your standard working environment)",
+      "Launch the [Backlight Bleed Test](/tests/backlight-bleed-test) in Screen Tester to render a pure full-screen black canvas",
+      "Sit at the display's designed focal radius (e.g., ~1.0m for 1000R, ~1.5m for 1500R) and align eye height to the vertical center of the panel",
+      "Perform the parallax head-movement test: move your head horizontally and vertically, then view suspect corners head-on; if the glow fades or glides, it is angle-dependent glow",
+      "Step backward 2 to 3 meters (6 to 10 feet): angle-dependent glow diminishes significantly at distance, whereas true mechanical backlight bleed remains visible at the bezel edge"
+],
     whatScreenTesterCanObserve: [
-      "Display of a pure 100% digital black canvas (RGB 0, 0, 0) across the entire display surface",
-      "Optional center reticle crosshair to help keep your eyes focused perpendicular to the panel center",
-      "Stepped low-luminance dark backgrounds (1% to 5%) to contrast localized light leakage against panel black floors"
-    ],
+      "Display of a pure digital black canvas (RGB 0, 0, 0) across flat and curved desktop surfaces",
+      "Visual distinction between static localized light leakage and angle-dependent glow during user head repositioning",
+      "Optional center reticle crosshairs to verify perpendicular viewing alignment at the panel focal radius",
+      "Stepped low-luminance dark gray backgrounds (1% to 5%) to inspect perceived black level uniformity",
+      "User-reported visual anomalies, viewing distance variations, and darkroom observation notes"
+],
     whatScreenTesterCannotDetermine: [
-      "Photometric candela per square meter (nits) emitted by the light leak",
-      "Physical torque tension of the monitor bezel screws or chassis assembly clamps",
-      "Distinction between panel glass pressure warping and optical polarization sheet leakage without physical movement"
-    ],
+      "Physical luminance output in candelas per square meter (cd/m² or nits) or absolute contrast ratios",
+      "Mechanical bezel screw torque, chassis clamp pressure, or structural frame curvature tolerances",
+      "Mathematical optical retardance, liquid crystal phase shift angles, or internal polarizing film efficiency",
+      "Distinction between panel glass pressure variations and optical polarization leakage without physical movement",
+      "Manufacturer warranty defect thresholds, RMA eligibility, or retailer return criteria for optical glow"
+],
     commonCauses: [
-      "Backlight Bleed: Excessive physical clamping pressure during factory bezel assembly pinching the panel edge",
-      "Backlight Bleed: Thermal expansion warping the internal light guide plate (LGP) under prolonged high brightness",
-      "IPS Glow: Natural off-axis light leakage caused by the horizontal crystal orientation of In-Plane Switching technology",
-      "IPS Glow: Sitting too close to a large monitor (e.g., 27\" or 32\" at 50cm distance) where the corners exceed a 30° viewing angle"
-    ],
+      "Backlight Bleed: Excessive physical clamping pressure during factory bezel assembly pinching the outer layers of the panel sandwich",
+      "Backlight Bleed: Thermal expansion warping internal light guide plates (LGP) or chassis frames under prolonged operation",
+      "IPS Glow: Inherent off-axis birefringence of horizontally aligned liquid crystals under In-Plane Switching architectures",
+      "Curvature Geometry: Sitting outside the monitor's designed curvature radius (e.g. sitting 50cm from a 1500R screen), forcing peripheral edges into oblique viewing angles",
+      "Curved VA Gamma Shift: Off-angle light transmission through vertically aligned liquid crystals causing near-black brightening toward outer edges"
+],
     whatToDoNext: [
-      "Increase your viewing distance: sitting 70–80cm away significantly reduces perceived IPS glow on large panels",
-      "Add subtle bias lighting behind your monitor (a 6500K LED strip on the wall) to constrict your pupils and deepen perceived black levels",
-      "If severe yellow/white torching persists even from 2 meters away, contact your retailer for a replacement"
-    ],
+      "Align your viewing distance with your monitor's curvature rating (typically 1.0m for 1000R, 1.5m for 1500R) to minimize peripheral viewing angles",
+      "Introduce gentle 6500K neutral bias lighting behind the display to reduce darkroom pupil dilation and deepen perceived dark contrast without creating screen glare",
+      "Evaluate panel uniformity across dark gray fields using the [Uniformity Test](/tests/uniformity-test) and review the [Monitor Viewing Angles Guide](/guides/monitor-viewing-angles-explained)",
+      "If severe, localized yellow or white torching remains stationary even when viewed head-on from 2 meters away, document the issue for retailer exchange"
+],
     sections: [
       {
-        title: "The Physical Mechanics of Light Leakage",
-        content: [
-          "LCD monitors cannot generate their own light. Powerful LED arrays along the edge or back of the chassis shine light through a sandwich of diffuser plates, polarizing sheets, and liquid crystals.",
-          "Backlight bleed occurs when the mechanical frame pinches the sandwich unevenly, creating microscopic gaps where light escapes around the edges unmodulated by the liquid crystals.",
-          "IPS glow occurs because liquid crystal molecules in IPS panels are aligned horizontally parallel to the substrate. Light passing through crystals at sharp off-axis angles experiences slight phase retardation, emitting as visible diffuse glow to off-axis viewers."
-        ]
-      }
-    ],
-    faq: [
-      {
-        question: "Can backlight bleed be fixed at home?",
-        answer: "Generally no. Loosening chassis screws or flexing the frame can void your warranty and risks cracking the delicate LCD glass. Severe backlight bleed is an assembly defect covered under retailer return policies."
+            "title": "The Physical Mechanics of Light Leakage: Bezel Pinch vs. Optical Birefringence",
+            "content": [
+                  "Liquid crystal displays (LCDs) do not produce native illumination. Whether utilizing edge-lit LED strips or full-array backlights, light must travel through an intricate optical stack consisting of reflective films, diffuser plates, prism enhancement sheets, polarization filters, and a liquid crystal substrate.",
+                  "Backlight bleed is a mechanical defect. When monitor bezels, retaining brackets, or assembly screws apply non-uniform pressure to the panel perimeter, the optical stack pinches. This mechanical warping creates microscopic gaps along the edges where raw backlight bypasses the liquid crystal layer completely, escaping into the room as stationary, torch-like white or amber flares.",
+                  "In contrast, IPS glow is an inherent optical characteristic of In-Plane Switching technology. In an IPS panel, liquid crystal molecules are oriented horizontally in a parallel plane to the glass substrate. When viewed strictly perpendicular (90°), the liquid crystals effectively block backlight in dark states. However, when light rays pass through horizontally aligned crystals at oblique angles, slight optical phase retardation (birefringence) occurs, allowing unmodulated light to leak toward off-axis viewpoints as a diffuse silvery or golden sheen."
+            ],
+            "bullets": [
+                  "Backlight bleed is a mechanical assembly flaw; light physically bypasses liquid crystal modulation.",
+                  "IPS glow is an inherent optical property caused by off-axis liquid crystal birefringence.",
+                  "Bleed remains fixed along bezel pinch points; glow shifts dynamically across the screen surface as you move."
+            ]
       },
       {
-        question: "Do OLED monitors suffer from backlight bleed or IPS glow?",
-        answer: "No. OLED panels are self-emissive with no backlight and no diffuser sheets. Every subpixel turns off completely, producing 0.000 nits pure black with zero backlight bleed and zero IPS glow."
+            "title": "Curved Displays: Viewing Geometry & Optical Angle of Incidence",
+            "content": [
+                  "Curved monitors are engineered with a specific radius of curvature—such as 1000R, 1500R, or 1800R—where the number represents the radius of a theoretical circle in millimeters (e.g., 1000R equals a 1.0-meter radius). The primary ergonomic goal of a curved screen is to maintain an equidistant line of sight from the viewer's eye to all points across wide or ultrawide desktop panels.",
+                  "However, curvature fundamentally changes the optical angle of incidence. When a user sits at the exact focal center of the curve (1.0 meter away for a 1000R panel), the line of sight strikes the center and peripheral wings at near-perpendicular angles. But if the user sits closer than the focal distance (e.g., 50cm from an 1800R panel) or shifts off-center, the peripheral edges curve inward at exaggerated oblique angles relative to the viewer's eyes.",
+                  "This geometric shift alters the visual perception of uniformity. On curved IPS displays, sitting too close causes the peripheral wings to be viewed at severe off-axis angles, amplifying the appearance of corner glow. Crucially, monitor curvature does not inherently create backlight bleed; rather, the physical geometry alters how off-axis light interacts with the viewer's retina."
+            ],
+            "bullets": [
+                  "Curvature ratings (1000R, 1500R, 1800R) define the ideal focal viewing distance in millimeters.",
+                  "Sitting inside or outside the focal radius forces peripheral screen edges into steep off-axis angles.",
+                  "Curvature alters viewing geometry and optical perception, but does not inherently generate mechanical backlight bleed."
+            ]
+      },
+      {
+            "title": "Distinguishing Mechanical Backlight Bleed from Angle-Dependent Glow on Curved Panels",
+            "content": [
+                  "Determining whether a bright patch on a curved display warrants an RMA replacement requires isolating mechanical leakage from perspective-dependent glow using the Parallax Head-Movement Test.",
+                  "Step 1: Set up a darkroom environment with the monitor displaying an all-black screen via the [Backlight Bleed Test](/tests/backlight-bleed-test). Sit at your normal desk position and observe any luminous patches near the corners or edges.",
+                  "Step 2: Move your head slowly from side to side and tilt vertically. Observe the luminous patch carefully. If the patch glides across the panel face, changes color temperature (e.g., shifting from silver to amber), or fades as your head moves, it is angle-dependent glow.",
+                  "Step 3: Position your eye directly perpendicular (at a 90° angle) to the suspect corner or edge. If the glow vanishes entirely when viewed straight-on, the panel is performing within optical tolerances. If intense, torch-like white or yellow light remains locked directly against the bezel frame even when viewed head-on from 2 meters away, you have identified genuine mechanical backlight bleed."
+            ],
+            "bullets": [
+                  "Parallax Head-Movement Test: Move laterally to observe whether luminous patches shift or stay fixed.",
+                  "Perpendicular Corner Check: If light disappears when looking straight at the corner, the phenomenon is optical glow.",
+                  "Mechanical Bleed Check: Stationary torching that persists from 2 meters away indicates physical frame pinching."
+            ]
+      },
+      {
+            "title": "Panel Architecture Comparison Under Curvature: IPS, VA, TN, and OLED",
+            "content": [
+                  "Different display panel architectures exhibit distinct optical behaviors when manufactured in flat or curved form factors. Visual observations should always be contextualized by the underlying panel technology:",
+                  "In-Plane Switching (IPS): Provides superior color consistency and wide viewing angles across desktop applications. However, because liquid crystals remain parallel to the substrate, curved IPS monitors exhibit visible off-axis glow along the corners when viewed off-center. Specialized A-TW (Advanced True Wide) polarizers can suppress glow, but are typically reserved for high-end professional displays.",
+                  "Vertical Alignment (VA): Uses liquid crystals aligned perpendicular to the substrate in dark states, delivering deep native contrast ratios (typically 3,000:1 to 5,000:1) with minimal glow on black backgrounds. However, VA panels exhibit off-axis gamma shift, where dark shadow details appear washed out when viewed at an angle. For this reason, manufacturers frequently curve large VA panels specifically to maintain a perpendicular line of sight to the outer edges.",
+                  "Twisted Nematic (TN): Features rapid response times but narrow viewing angles with severe vertical gamma inversion; rarely utilized in modern curved displays.",
+                  "Organic Light Emitting Diode (OLED): Self-emissive architecture where each subpixel illuminates independently. OLED displays exhibit true 0.000 nit blacks, zero backlight bleed, and zero IPS glow on both flat and curved surfaces. Curved OLEDs maintain flawless darkroom contrast across all angles, though anti-reflective coatings can introduce subtle tint shifts at extreme grazing angles."
+            ],
+            "bullets": [
+                  "IPS: Wide color viewing angles with characteristic off-axis glow on deep black backgrounds.",
+                  "VA: Deep 3,000:1+ native contrast; curvature is commonly employed to counteract off-axis gamma shift.",
+                  "TN: Narrow viewing cones with severe vertical inversion; uncommon in curved form factors.",
+                  "OLED: Self-emissive pixels eliminate both backlight bleed and IPS glow entirely across flat and curved panels."
+            ]
+      },
+      {
+            "title": "Controlled Darkroom Inspection Protocol for Curved Displays",
+            "content": [
+                  "Evaluating curved display light distribution requires a disciplined, repeatable testing protocol to prevent false defect diagnoses:",
+                  "1. Room Illumination: Eliminate all direct ceiling lighting, desk lamps, and window glare. Curved screens act as acoustic and optical concentrators; ambient light sources behind the viewer will reflect across the concave surface as stretched, distorted glare streaks.",
+                  "2. Seating & Focal Alignment: Position your chair so that your eyes sit at the display's specified curvature radius (e.g., 1000R = 1.0m, 1500R = 1.5m). Align your vertical eye line with the horizontal center of the panel.",
+                  "3. Brightness Normalization: Adjust monitor OSD brightness to standard calibrated productivity levels (typically 20% to 40%, ~100 to 140 nits). Evaluating a screen at 100% brightness in pitch darkness exaggerates optical characteristics unrealistically.",
+                  "4. Launch Screen Tester: Run the [Backlight Bleed Test](/tests/backlight-bleed-test) for full-screen black inspection, and cycle through the [Uniformity Test](/tests/uniformity-test) on 5% and 20% dark gray fields to evaluate luminance distribution. Inspect viewing angle color stability using the [Viewing Angle Test](/tests/viewing-angle-test) and our [Monitor Viewing Angles Guide](/guides/monitor-viewing-angles-explained)."
+            ],
+            "bullets": [
+                  "Extinguish ambient room lights to prevent concave screen reflections from mimicking panel glow.",
+                  "Align eye position with the manufacturer's specified curvature radius (1000R, 1500R, or 1800R).",
+                  "Set brightness to 20%–40% (~120 nits) rather than forcing maximum backlight luminance.",
+                  "Use dark gray fields (5% and 20%) to distinguish localized bezel pinches from broad panel gradients."
+            ]
+      },
+      {
+            "title": "Documenting Observations & Navigating Manufacturer Policies",
+            "content": [
+                  "If your inspection reveals localized light leakage that appears to be mechanical backlight bleed rather than optical glow, structured documentation is critical before contacting your retailer or manufacturer:",
+                  "Camera Exposure Lock: Smartphone cameras utilize automated night modes that overexpose dark scenes, capturing long exposures that make even flawless panels look severely defective. To produce objective evidence, switch your smartphone camera to 'Pro' or manual mode, set ISO to 100 or 200, and set exposure time to match what your eyes actually perceive.",
+                  "Multi-Angle Documentation: Take two photographs: one wide shot from the focal center showing the full display frame, and a second photograph looking directly perpendicular at the suspect corner from a close distance. If the light leak remains visible in the perpendicular close-up, it provides strong evidence of mechanical bezel pinching.",
+                  "Manufacturer vs. Retailer Avenues: Standard manufacturer warranties often classify optical glow and minor corner leakage as within manufacturing tolerances. If you find the visual experience unacceptable, exercising your initial retailer return or exchange window is generally the fastest and most reliable remedy. Consult our [Troubleshooting Guide](/knowledge-base/troubleshooting) for additional steps."
+            ],
+            "bullets": [
+                  "Lock smartphone camera exposure manually to avoid night-mode overexposure of dark scenes.",
+                  "Capture wide focal shots alongside perpendicular close-up photos to verify whether leakage is stationary.",
+                  "Retailer return windows offer simpler resolution than warranty RMA claims for optical anomalies.",
+                  "Consult Screen Tester's [Troubleshooting Guide](/knowledge-base/troubleshooting) before opening a hardware claim."
+            ]
       }
-    ],
-    relatedTestIds: ["backlight-bleed-test", "uniformity-test", "black-level-test"],
+],
+    faq: [
+      {
+            "question": "Does monitor curvature inherently cause backlight bleed?",
+            "answer": "No. Curvature itself does not cause backlight bleed. Backlight bleed is caused by mechanical frame tension, uneven bezel clamping, or warping of internal diffuser plates. However, curvature alters viewing geometry, causing peripheral corners to be viewed at oblique angles if the user sits outside the focal radius, which can exaggerate the visual perception of normal optical glow."
+      },
+      {
+            "question": "Why does my curved monitor seem to have glowing corners when sitting close?",
+            "answer": "When sitting closer than the monitor's designed curvature radius (for example, sitting 50cm away from an 1800R screen), your line of sight hits the outer edges at steep angles exceeding 30° to 45°. On IPS panels, this triggers off-axis liquid crystal birefringence (IPS glow). Stepping back to the recommended focal distance restores a perpendicular angle of incidence and significantly reduces corner glow."
+      },
+      {
+            "question": "Why are most curved gaming monitors built with VA panels rather than IPS?",
+            "answer": "VA panels feature vertical liquid crystal alignment that produces 3,000:1 to 5,000:1 native static contrast with minimal glow on black backgrounds, making darkroom uniformity appear cleaner. Furthermore, VA panels naturally exhibit off-axis gamma shift at wide angles, so curving the panel keeps the edges perpendicular to the viewer's eyes, effectively mitigating edge color washout."
+      },
+      {
+            "question": "How can I photograph backlight bleed accurately without my phone overexposing it?",
+            "answer": "Avoid standard automatic smartphone camera mode, which automatically engages night mode and takes high-gain, long-exposure photos that exaggerate glow unrealistically. Switch to manual or 'Pro' mode, set ISO to 100 or 200, adjust the shutter speed until the on-screen preview matches what your eyes see in the dark room, and lock focus on the center of the display."
+      },
+      {
+            "question": "Can Screen Tester measure my monitor's optical contrast ratio or candela output?",
+            "answer": "No. Screen Tester operates within the web browser sandbox and renders digital color test canvases directly to your operating system window manager. Web browsers have no physical connection to external colorimeters, spectrometers, or photodiode sensors, and cannot measure physical candelas per square meter (nits) or hardware contrast ratios. Screen Tester provides standardized visual inspection patterns for human observation."
+      }
+],
+    relatedTestIds: ["backlight-bleed-test", "uniformity-test", "viewing-angle-test", "display-info", "black-level-test"],
     relatedTroubleshootingIds: ["backlight-bleed-ips-glow", "uneven-brightness"],
-    relatedArticleSlugs: ["black-levels-and-shadow-detail", "display-uniformity"],
+    relatedArticleSlugs: ["black-levels-and-shadow-detail", "display-uniformity", "refresh-rate-and-frame-rates"],
     primarySearchIntent: "backlight bleed vs ips glow difference test",
-    readingTimeMinutes: 6
+    readingTimeMinutes: 8
   },
     {
     slug: "monitor-ghosting-and-motion-blur",

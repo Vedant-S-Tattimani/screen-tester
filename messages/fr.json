@@ -4174,18 +4174,18 @@
           "Consultez notre [Guide de dépannage](/knowledge-base/troubleshooting) interactif si un écran reste bloqué sur une fréquence par défaut."
         ],
         "whatScreenTesterCanObserve": [
-          "Horodatage des rappels d'animation du navigateur via `requestAnimationFrame` sur la surface de l'écran actif",
-          "Écart-type statistique des intervalles de trames du navigateur (détection des micro-saccades et trames perdues)",
-          "Ratio de pixels de l'appareil (`window.devicePixelRatio`) et dimensions géométriques du viewport CSS par écran",
-          "Comparaison visuelle de la fluidité cinématique, de la cadence pendulaire et du défilement entre moniteurs",
-          "Prise en charge des API récentes du navigateur pour le positionnement de fenêtres multi-écrans"
+          "Horodatages des rappels d'animation du navigateur via `requestAnimationFrame` sur l'écran actif",
+          "Écart-type statistique des intervalles de trame du navigateur (détection des micro-saccades et pertes de fluidité)",
+          "Device Pixel Ratio (`window.devicePixelRatio`) et géométrie logique CSS de la zone d'affichage par écran",
+          "Comparaison visuelle de la fluidité, de la cadence de balancier et du défilement entre modes batterie et secteur",
+          "Prise en charge par le navigateur des API de placement de fenêtres multi-écrans et d'énumération des moniteurs"
         ],
         "whatScreenTesterCannotDetermine": [
-          "Synchronisation physique de balayage du panneau ou fréquence d'oscillation matérielle via DisplayPort ou HDMI",
-          "Files d'attente internes de présentation du processeur graphique (GPU) ou interruptions matérielles V-Sync",
-          "Calendrier d'échange de tampons internes du compositeur de bureau (Windows DWM, Linux Wayland/X11, macOS Quartz)",
-          "Densité physique réelle (DPI) de la dalle indépendamment des paramètres transmis par le système d'exploitation",
-          "Intégrité physique du signal vidéo, saturation de la bande passante du câble ou limites des lignes de ports GPU"
+          "Synchronisation matérielle du balayage de la dalle ou horloge de référence via câbles DisplayPort ou HDMI",
+          "Tension physique des rails d'alimentation internes, télémétrie de charge ACPI ou seuils de bridage thermique",
+          "États d'horloge du GPU (P-states/D-states), bascule matérielle du commutateur MUX ou états d'économie PCIe ASPM",
+          "Ordonnancement interne des tampons du compositeur du système d'exploitation (Windows DWM, Wayland ou Quartz)",
+          "Densité réelle en pixels (DPI) de la dalle indépendamment des facteurs d'échelle rapportés par l'OS"
         ],
         "commonCauses": [
           "Le gestionnaire de fenêtres du système d'exploitation peine à cadencer des intervalles de présentation indépendants entre fréquences inégales",
@@ -4342,22 +4342,80 @@
             ]
           },
           {
-            "title": "Ajustements pratiques et prochaines étapes recommandées",
+            "title": "Comportement de l'écran de PC portable sur batterie vs secteur : Fréquences, énergie et mise à l'échelle",
             "content": [
-              "Si vous constatez des saccades, des hésitations du curseur ou des textes flous sur votre ensemble multi-écrans, ces mesures simples et sans risque peuvent restaurer la fluidité :",
-              "1. Vérifier les fréquences dans les réglages du système : Consultez les paramètres d'affichage avancés de votre système d'exploitation et confirmez que chaque écran est réglé sur sa fréquence native maximale.",
-              "2. Harmoniser les échelles ou tester un multiple entier : Si le texte paraît flou, unifiez l'échelle des écrans lorsque possible. Pour un couple 144Hz et 60Hz, régler l'écran rapide sur 120Hz (multiple entier de 60Hz) peut grandement améliorer la fluidité du compositeur.",
-              "3. Restreindre le VRR au plein écran : Dans le panneau de configuration NVIDIA ou AMD, réglez G-Sync ou FreeSync sur 'Activer pour le mode plein écran uniquement'.",
-              "4. Tester l'accélération matérielle du navigateur : Basculez l'option 'Utiliser l'accélération graphique' dans les réglages du navigateur pour différencier un souci de compositeur d'une anomalie de pilote.",
-              "5. Réinitialiser la pile graphique : Sous Windows, utilisez le raccourci Win + Ctrl + Maj + B pour réinitialiser le pilote graphique à chaud si l'interface du bureau devient brusquement saccadée.",
-              "Pour approfondir l'analyse de pannes matérielles ou de liaisons vidéo, consultez notre [Guide de dépannage](/knowledge-base/troubleshooting) interactif."
+              "L'alimentation d'un ordinateur portable sur batterie modifie radicalement les enveloppes thermique et électrique par rapport au raccordement au secteur. Afin de préserver l'autonomie, le système d'exploitation, le processeur et les pilotes graphiques appliquent des mécanismes de bridage dynamique susceptibles d'affecter la fluidité d'affichage.",
+              "Sur batterie, les profils d'alimentation (comme Meilleure efficacité énergétique, Utilisation normale ou Performances optimales sous Windows ; mode économie d'énergie sous macOS ; profils énergétiques sous Linux) restreignent les processus d'arrière-plan. Les cartes graphiques abaissent leurs fréquences d'horloge (P-states), tandis que le bus PCIe passe en mode d'économie d'énergie (ASPM L0s/L1), ce qui réduit la bande passante vers les contrôleurs d'affichage.",
+              "Parallèlement, les dalles modernes exploitent des fréquences de rafraîchissement adaptatives. Avec la Fréquence de rafraîchissement dynamique (DRR) de Windows 11 ou le microprogramme constructeur, les écrans rapides (120Hz, 144Hz, 240Hz) basculent souvent à 60Hz ou activent l'autorafraîchissement de dalle (PSR) lorsqu'ils sont sur batterie. Des fonctions comme le CABC, l'Intel DPST ou l'AMD Vari-Bright modulent également le rétroéclairage et les courbes de gamma selon l'image affichée.",
+              "Néanmoins, le passage sur batterie ne bride pas systématiquement l'affichage sur tous les modèles. Certains PC portables de jeu dotés de commutateurs MUX maintiennent leur plein taux de rafraîchissement au détriment de l'autonomie, tandis que les ultraportables favorisent l'économie d'énergie. Distinguer un comportement intentionnel d'une anomalie requiert un protocole de test rigoureux."
             ],
             "bullets": [
-              "Contrôler les options du système : S'assurer que chaque moniteur est paramétré à sa fréquence native la plus haute.",
-              "Essayer des ratios entiers de fréquence : Avec un écran à 60Hz, tester 120Hz sur l'écran rapide.",
-              "Limiter le VRR au plein écran : Prévenir les conflits avec des fenêtres sur les écrans annexes.",
-              "Basculer l'accélération matérielle : Isoler précisément l'origine des saccades dans le navigateur.",
-              "Relancer le pilote graphique : Utiliser Win + Ctrl + Maj + B sous Windows pour réveiller le compositeur."
+              "Le mode batterie applique des profils d'économie d'énergie stricts au CPU, au GPU et au bus PCIe ASPM.",
+              "La fréquence dynamique (DRR) et l'autorafraîchissement (PSR) peuvent ramener l'écran à 60Hz sur batterie.",
+              "Les technologies adaptatives (CABC, Intel DPST, AMD Vari-Bright) modifient dynamiquement contraste et luminosité.",
+              "Les profils de batterie ne brident pas universellement les écrans ; le comportement varie selon les réglages OEM et OS."
+            ]
+          },
+          {
+            "title": "Écran interne du PC portable vs moniteurs externes sur batterie",
+            "content": [
+              "Les ordinateurs portables actuels adoptent des architectures graphiques hybrides (telles que NVIDIA Optimus, AMD SmartAccess Graphics ou la mémoire unifiée Apple), où la dalle interne et les sorties vidéo externes sont réparties entre différents contrôleurs.",
+              "Généralement, l'écran intégré est relié par un bus eDP (Embedded DisplayPort) directement à la carte graphique intégrée (iGPU). Sur batterie, la carte graphique dédiée (dGPU) est souvent mise en veille prolongée pour économiser l'énergie. Lorsqu'une application requiert la dGPU, les images calculées doivent être copiées via le bus système vers le contrôleur d'affichage de l'iGPU, créant une étape de composition supplémentaire qui peut générer des micro-saccades si le bus PCIe est bridé par l'économie d'énergie.",
+              "Les écrans externes raccordés en HDMI, USB-C DisplayPort Alt Mode ou stations d'accueil Thunderbolt ajoutent d'autres variables. Ces sorties sont souvent câblées directement à la dGPU ou partagent la bande passante d'un hub USB avec les flux de données et réseau. Débrancher l'alimentation secteur peut amener la station d'accueil à renégocier les profils d'alimentation (Power Delivery) ou forcer la dGPU dans un état d'économie d'énergie agressif, provoquant des saccades absentes sur secteur."
+            ],
+            "bullets": [
+              "L'écran interne est relié en eDP à l'iGPU ; la dGPU est fréquemment mise en veille sur batterie.",
+              "Le transfert d'images entre processeurs graphiques peut provoquer des micro-saccades sur batterie.",
+              "Les stations Thunderbolt et USB-C partagent la bande passante et peuvent renégocier l'alimentation au débranchement.",
+              "Tester un moniteur externe sur secteur permet d'isoler les limites du dock des soucis de paramétrage."
+            ]
+          },
+          {
+            "title": "Protocole d'évaluation comparative : Batterie vs Secteur sur ordinateur portable",
+            "content": [
+              "Pour déterminer si les saccades, les chutes de fréquence ou les variations de luminosité résultent de profils d'économie d'énergie ou d'une défaillance, suivez ce protocole en 5 phases :",
+              "Phase 1 : Mesure de référence sur secteur. Branchez votre PC portable à son adaptateur secteur officiel. Réglez le mode d'alimentation de l'OS sur 'Utilisation normale' ou 'Performances optimales'. Lancez le [Test de fréquence de rafraîchissement](/tests/refresh-rate-test) et le [Test de flou de mouvement](/tests/motion-blur-test) dans Screen Tester. Notez la cadence et la fluidité observées.",
+              "Phase 2 : Déconnexion de l'alimentation secteur. Débranchez le chargeur en gardant Screen Tester ouvert. Relevez les adaptations immédiates de l'OS : L'écran s'assombrit-il ? Les paramètres Windows ou le [Test de fréquence de rafraîchissement](/tests/refresh-rate-test) indiquent-ils une baisse de 120Hz/144Hz à 60Hz ? Le [Test HDR](/tests/hdr-test) indique-t-il la désactivation du HDR par mesure d'économie ?",
+              "Phase 3 : Évaluation dynamique et réactivité du compositeur. Déplacez rapidement le curseur de la souris et faites défiler du texte. Sous Windows DRR, vérifiez si l'interaction relance temporairement la fréquence ou reste calée à 60Hz. Testez le [Test VRR](/tests/vrr-test) si votre dalle supporte la synchronisation adaptative sur batterie.",
+              "Phase 4 : Évaluation des moniteurs externes. Si un écran externe est branché, vérifiez si le déplacement de fenêtres saccade sur batterie par rapport au secteur. Consultez les paramètres de l'écran avec [Informations d'affichage](/tests/display-info) et l'état des API via [Compatibilité du navigateur](/tools/browser-compatibility).",
+              "Phase 5 : Reconnexion au secteur. Rebranchez le chargeur. Vérifiez si la fréquence de rafraîchissement, la luminosité et la fluidité de composition se rétablissent immédiatement ou nécessitent un redémarrage de l'application."
+            ],
+            "bullets": [
+              "Phase 1 : Établir la fluidité de référence sur secteur officiel avec le mode Performances/Normal.",
+              "Phase 2 : Débrancher le chargeur et consigner les modifications de rafraîchissement, luminosité et HDR.",
+              "Phase 3 : Évaluer la réaction de l'affichage aux mouvements de souris et au défilement avec la technologie DRR.",
+              "Phase 4 : Comparer le comportement de l'écran externe sur batterie et secteur pour isoler les goulets du dock.",
+              "Phase 5 : Rebrancher le secteur et vérifier la reprise immédiate des paramètres d'affichage normaux."
+            ]
+          },
+          {
+            "title": "Diagnostic des saccades liées à l'alimentation : Comportement attendu vs Défaillances",
+            "content": [
+              "Distinguer les comportements normaux d'économie d'énergie des dysfonctionnements évite des manipulations inutiles :",
+              "Comportements normaux d'économie d'énergie : (1) Baisse de la fréquence de 144Hz/165Hz à 60Hz lors du passage en mode Économiseur de batterie sous Windows ; (2) Ajustements dynamiques du contraste et de la luminosité sur fond sombre dus à Intel DPST ou AMD Vari-Bright ; (3) Désactivation automatique du HDR sur batterie si l'option 'Optimiser pour l'autonomie' est active ; (4) Légère baisse de la luminosité maximale disponible.",
+              "Anomalies méritant investigation : (1) Saccades permanentes du curseur ou pertes massives d'images alors que le PC est relié au chargeur officiel ; (2) Clignotements violents ou écrans noirs prolongés au branchement/débranchement du câble d'alimentation ; (3) Écran restant bloqué à 60Hz sur secteur malgré une dalle certifiée haute fréquence ; (4) Micro-saccades prononcées lors de l'utilisation d'un écran externe sur secteur.",
+              "Démarche de dépannage préconisée : Vérifiez la fréquence d'affichage dans les paramètres avancés de Windows ; inspectez les utilitaires constructeurs (Lenovo Vantage, ASUS Armoury Crate, Dell Optimizer) pour vous assurer qu'un profil éco ne bloque pas l'écran ; mettez à jour proprement les pilotes graphiques ; et assurez-vous que votre chargeur fournit la puissance nominale en watts (les chargeurs USB-C sous-dimensionnés déclenchent des profils de bridage même branchés). Pour des pannes matérielles, consultez notre [Guide de dépannage](/knowledge-base/troubleshooting)."
+            ],
+            "bullets": [
+              "Normal : Chute à 60Hz en mode économiseur, ajustements de contraste CABC et coupure du HDR sur batterie.",
+              "Anomalie : Saccades permanentes sur secteur officiel, clignotements au branchement ou blocage à 60Hz.",
+              "Vérifier les utilitaires OEM (Armoury Crate, Vantage, Optimizer) pour écarter un verrouillage de fréquence.",
+              "Veiller à ce que le chargeur délivre la puissance requise afin d'éviter un bridage intempestif."
+            ]
+          },
+          {
+            "title": "Comportement de l'écran de PC portable sur batterie vs secteur : Fréquences, énergie et mise à l'échelle",
+            "content": [
+              "L'alimentation d'un ordinateur portable sur batterie modifie radicalement les enveloppes thermique et électrique par rapport au raccordement au secteur. Afin de préserver l'autonomie, le système d'exploitation, le processeur et les pilotes graphiques appliquent des mécanismes de bridage dynamique susceptibles d'affecter la fluidité d'affichage.",
+              "Sur batterie, les profils d'alimentation (comme Meilleure efficacité énergétique, Utilisation normale ou Performances optimales sous Windows ; mode économie d'énergie sous macOS ; profils énergétiques sous Linux) restreignent les processus d'arrière-plan. Les cartes graphiques abaissent leurs fréquences d'horloge (P-states), tandis que le bus PCIe passe en mode d'économie d'énergie (ASPM L0s/L1), ce qui réduit la bande passante vers les contrôleurs d'affichage.",
+              "Parallèlement, les dalles modernes exploitent des fréquences de rafraîchissement adaptatives. Avec la Fréquence de rafraîchissement dynamique (DRR) de Windows 11 ou le microprogramme constructeur, les écrans rapides (120Hz, 144Hz, 240Hz) basculent souvent à 60Hz ou activent l'autorafraîchissement de dalle (PSR) lorsqu'ils sont sur batterie. Des fonctions comme le CABC, l'Intel DPST ou l'AMD Vari-Bright modulent également le rétroéclairage et les courbes de gamma selon l'image affichée.",
+              "Néanmoins, le passage sur batterie ne bride pas systématiquement l'affichage sur tous les modèles. Certains PC portables de jeu dotés de commutateurs MUX maintiennent leur plein taux de rafraîchissement au détriment de l'autonomie, tandis que les ultraportables favorisent l'économie d'énergie. Distinguer un comportement intentionnel d'une anomalie requiert un protocole de test rigoureux."
+            ],
+            "bullets": [
+              "Le mode batterie applique des profils d'économie d'énergie stricts au CPU, au GPU et au bus PCIe ASPM.",
+              "La fréquence dynamique (DRR) et l'autorafraîchissement (PSR) peuvent ramener l'écran à 60Hz sur batterie.",
+              "Les technologies adaptatives (CABC, Intel DPST, AMD Vari-Bright) modifient dynamiquement contraste et luminosité.",
+              "Les profils de batterie ne brident pas universellement les écrans ; le comportement varie selon les réglages OEM et OS."
             ]
           }
         ],
@@ -4385,6 +4443,18 @@
           {
             "question": "Screen Tester peut-il mesurer les temps de balayage de mon GPU ou réparer les saccades multi-écrans ?",
             "answer": "Non. Les navigateurs web s'exécutent dans un environnement sécurisé et isolé qui ne permet pas d'accéder aux registres bas niveau du GPU ou aux lignes physiques du câble. Screen Tester offre des mires d'observation visuelle ; les correctifs doivent être appliqués dans le système d'exploitation ou le pilote."
+          },
+          {
+            "question": "Pourquoi mon écran de PC portable passe-t-il de 120Hz/144Hz à 60Hz dès que je débranche le chargeur ?",
+            "answer": "Il s'agit d'une fonction d'économie d'énergie volontaire gérée par la Fréquence de rafraîchissement dynamique (DRR) de Windows, votre pilote graphique ou les logiciels du constructeur (comme Lenovo Vantage ou ASUS Armoury Crate). Rafraîchir la dalle 120 ou 144 fois par seconde étant très énergivore, le système bascule automatiquement à 60Hz sur batterie. Vous pouvez modifier ce comportement dans les paramètres d'affichage avancés de Windows ou l'application de votre PC portable si vous souhaitez conserver une fluidité élevée sur batterie."
+          },
+          {
+            "question": "Pourquoi la luminosité ou le contraste changent-ils lors de la bascule entre batterie et secteur ?",
+            "answer": "Ces variations sont provoquées par des technologies d'économie d'énergie telles que le CABC de Windows, l'Intel Display Power Saving Technology (DPST) ou l'AMD Vari-Bright. Elles ajustent le rétroéclairage et les courbes de gamma en fonction du contenu afin de réduire la consommation électrique. Si ces variations vous gênent, elles peuvent être désactivées dans le Centre de configuration des graphiques Intel ou le logiciel AMD."
+          },
+          {
+            "question": "Screen Tester peut-il détecter si mon PC portable tourne sur batterie ou est branché au secteur ?",
+            "answer": "Non. Les navigateurs web s'exécutent dans un bac à sable sécurisé et ne peuvent pas interroger directement les rails d'alimentation matériels, les statuts de charge ACPI ou les profils d'alimentation sans autorisations explicites. Screen Tester observe la cadence d'animation du navigateur et la fluidité des mires visuelles, mais ne peut déterminer si un ralentissement découle du mode batterie, de contraintes thermiques ou de réglages logiciels."
           }
         ]
       },
@@ -4566,6 +4636,166 @@
           {
             "question": "Faut-il contacter d'abord le vendeur ou le fabricant en cas de défaut constaté ?",
             "answer": "Vérifiez d'abord le délai de retour du revendeur. Si vous êtes dans les délais, l'échange ou le remboursement via la boutique est généralement plus direct. Passé ce délai, contactez le constructeur en vous référant à sa charte de garantie."
+          }
+        ]
+      },
+      "backlight-bleed-vs-ips-glow": {
+        "title": "Fuites de rétroéclairage vs IPS Glow : comment faire la différence",
+        "subtitle": "Pincement du châssis, géométrie des écrans incurvés, biréfringence des cristaux liquides et diagnostic en chambre noire.",
+        "description": "Apprenez à distinguer les fuites de rétroéclairage du phénomène d'IPS glow, comprenez l'impact de la courbure et des angles de vision, et vérifiez votre écran en chambre noire.",
+        "directAnswer": "Les fuites de rétroéclairage proviennent d'une lumière s'échappant physiquement le long du cadre et restant statique quel que soit l'angle d'observation, tandis que l'IPS glow est une propriété optique dépendant de l'angle qui se déplace et change d'intensité avec les mouvements de la tête.",
+        "whyItMatters": "Confondre l'effet d'IPS glow ou la lueur angulaire naturelle avec un défaut matériel entraîne fréquemment des retours au SAV inutiles, le produit de remplacement présentant un comportement optique identique. En revanche, de véritables fuites de lumière mécaniques dues au pincement du cadre dégradent durablement le contraste en pièce sombre. Comprendre l'impact de la courbure et de la distance d'observation permet de poser un diagnostic fiable.",
+        "whatToLookFor": [
+          "Fuites de rétroéclairage (Backlight Bleed) : Halos lumineux localisés blancs ou jaunâtres le long du cadre, restant fixes quel que soit l'angle d'observation",
+          "IPS Glow : Lueur diffuse argentée, dorée ou violacée dans les coins de la dalle, qui se déplace ou disparaît lorsqu'on regarde perpendiculairement au coin",
+          "Lueur périphérique sur écran incurvé : Clarté diffuse sur les bords latéraux lorsque l'utilisateur se trouve en dehors du rayon focal prescrit",
+          "Dérive de gamma (Gamma Shift) sur dalle VA : Éclaircissement des zones sombres et désaturation des teintes lors d'un visionnage oblique sur écran VA plat ou incurvé",
+          "Points de pression du châssis : Jets de lumière très nets situés au niveau des vis de serrage, des pattes de fixation ou des jonctions du cadre"
+        ],
+        "howToTest": [
+          "Effectuez le contrôle de nuit dans une pièce plongée dans le noir complet, sans lampes ni reflets directs sur la dalle",
+          "Réglez la luminosité de l'écran à votre niveau de travail usuel (typiquement 20 % à 40 %, environ 100 à 140 nits ; ne forcez pas 100 %)",
+          "Lancez le [Test de fuite de rétroéclairage](/tests/backlight-bleed-test) sur Screen Tester pour afficher un fond noir numérique intégral",
+          "Placez-vous au rayon focal nominal de l'écran (par exemple environ 1,0 m pour un rayon 1000R) en alignant vos yeux au centre de la dalle",
+          "Testez l'effet de parallaxe : déplacez la tête et observez les coins de face ; si la lueur glisse ou faiblit, il s'agit d'un phénomène optique angulaire",
+          "Reculez de 2 à 3 mètres : la lueur optique angulaire diminue fortement avec la distance, tandis que les fuites de rétroéclairage restent visibles"
+        ],
+        "whatScreenTesterCanObserve": [
+          "Affichage de couleurs de test définies, incluant des fonds noirs numériques intégraux (RVB 0, 0, 0) sur écrans plats et incurvés",
+          "Distinction visuelle entre fuites localisées fixes et reflets angulaires lors des mouvements de tête de l'utilisateur",
+          "Mire de visée centrale facultative pour vérifier l'alignement perpendiculaire au point focal",
+          "Fonds gris foncé progressifs (1 % à 5 %) pour apprécier l'uniformité des niveaux de noir perçus",
+          "Anomalies visuelles signalées par l'utilisateur, écarts de distance et notes d'inspection en pièce sombre"
+        ],
+        "whatScreenTesterCannotDetermine": [
+          "Luminance physique en candelas par mètre carré (cd/m² ou nits) ou taux de contraste matériel absolu",
+          "Couple de serrage des vis du châssis, pression mécanique du cadre ou tolérances physiques de courbure",
+          "Retard optique mathématique, angle de déphasage des cristaux liquides ou efficacité des filtres polarisants",
+          "Distinction entre déformation du verre sous pression et fuite optique de polarisation sans mouvement physique",
+          "Seuils de prise en charge sous garantie constructeur, critères d'éligibilité RMA ou politiques de retour marchand"
+        ],
+        "commonCauses": [
+          "Fuite de rétroéclairage : Pincement excessif lors de l'assemblage du cadre en usine comprimant la structure de la dalle",
+          "Fuite de rétroéclairage : Dilatation thermique déformant la plaque guide de lumière (LGP) ou le châssis lors d'un usage prolongé",
+          "IPS Glow : Biréfringence optique inhérente à l'orientation horizontale des cristaux liquides de la technologie IPS",
+          "Géométrie de courbure : Positionnement en dehors du rayon focal (par exemple à 50 cm d'un écran 1800R), créant des angles de vision rasants",
+          "Dérive de gamma VA incurvé : Transmission lumineuse oblique à travers les cristaux verticaux éclaircissant les zones sombres périphériques"
+        ],
+        "whatToDoNext": [
+          "Ajustez votre distance d'assise selon le rayon de courbure de votre écran (généralement 1,0 m pour 1000R, 1,5 m pour 1500R) pour limiter les angles rasants",
+          "Ajoutez un rétroéclairage neutre (bias lighting 6500K) derrière l'écran pour atténuer la fatigue visuelle et rehausser le contraste perçu",
+          "Évaluez l'uniformité sur fond gris avec le [Test d'uniformité](/tests/uniformity-test) et consultez notre [Guide des angles de vision](/guides/monitor-viewing-angles-explained)",
+          "Si des halos jaunâtres ou blanchâtres très localisés persistent en vue perpendiculaire à 2 mètres de distance, sollicitez un échange auprès du vendeur"
+        ],
+        "sections": [
+          {
+            "title": "Mécanismes physiques d'échappement de la lumière : Pincement mécanique vs Biréfringence optique",
+            "content": [
+              "Les écrans à cristaux liquides (LCD) ne produisent pas leur propre lumière. Qu'il s'agisse d'un éclairage par les bords (Edge-LED) ou direct (Direct-LED), le faisceau doit traverser un empilement complexe de réflecteurs, diffuseurs, films prismatiques, filtres polarisants et cristaux liquides.",
+              "Les fuites de rétroéclairage relèvent d'une anomalie mécanique. Lorsque le cadre externe ou les fixations exercent une pression inégale sur la périphérie de la dalle, l'empilement optique est pincé. Cette contrainte génère des micro-interstices où la lumière brute contourne les cristaux liquides sans être atténuée, créant des halos blancs ou jaunes fixes.",
+              "À l'inverse, l'IPS Glow découle des propriétés physiques intrinsèques de la technologie In-Plane Switching. Les molécules y sont disposées parallèlement au substrat de verre. Vus perpendiculairement (à 90°), les cristaux bloquent efficacement la lumière. Cependant, lorsque les rayons traversent les cristaux de biais, un déphasage optique (biréfringence) se produit, laissant fuiter une lueur diffuse argentée ou dorée visible sous les angles obliques."
+            ],
+            "bullets": [
+              "Les fuites de rétroéclairage sont un défaut d'assemblage ; la lumière contourne la modulation des cristaux.",
+              "L'IPS glow est une propriété optique liée à la biréfringence des cristaux vus de biais.",
+              "Les fuites restent fixes le long du cadre ; le glow se déplace avec les mouvements de l'observateur."
+            ]
+          },
+          {
+            "title": "Écrans incurvés : Géométrie de visionnage et incidence optique",
+            "content": [
+              "Les écrans incurvés sont conçus selon un rayon de courbure spécifique (1000R, 1500R, 1800R), où le chiffre représente le rayon d'un cercle théorique en millimètres (1000R équivaut à 1,0 mètre). L'objectif ergonomique est d'offrir une distance constante entre les yeux et l'ensemble de la surface sur les dalles larges ou ultralarges.",
+              "Toutefois, la courbure modifie l'angle d'incidence de la lumière. Lorsque l'utilisateur est assis exactement au point focal (1,0 m pour du 1000R), son regard rencontre le centre et les côtés sous une incidence presque perpendiculaire. En revanche, s'il se place trop près (par exemple à 50 cm d'une dalle 1800R) ou de côté, les extrémités sont perçues sous des angles obliques prononcés.",
+              "Cette géométrie modifie l'uniformité perçue. Sur une dalle IPS incurvée, une distance trop courte accentue le halo lumineux perçu dans les angles. La courbure en elle-même ne génère pas de fuites mécaniques ; elle modifie simplement la façon dont les rayons obliques atteignent la rétine."
+            ],
+            "bullets": [
+              "L'indice de courbure (1000R, 1500R, 1800R) définit la distance focale idéale en millimètres.",
+              "Une position trop proche ou excentrée place les bords latéraux dans des angles d'observation rasants.",
+              "La courbure change la perception géométrique, mais ne crée pas de fuites de rétroéclairage mécaniques."
+            ]
+          },
+          {
+            "title": "Distinguer fuites de lumière et reflets angulaires sur écran incurvé",
+            "content": [
+              "Pour savoir si une tache lumineuse sur un moniteur incurvé justifie une prise en charge au SAV ou relève d'un glow normal, il convient de pratiquer le test de parallaxe.",
+              "Étape 1 : Éteignez l'éclairage de la pièce et affichez une image noire avec le [Test de fuite de rétroéclairage](/tests/backlight-bleed-test). Repérez les zones claires depuis votre position de travail habituelle.",
+              "Étape 2 : Déplacez lentement votre tête latéralement et verticalement. Si la zone éclairée glisse sur l'écran, vire du doré à l'argenté ou diminue d'intensité, il s'agit d'une lueur optique angulaire.",
+              "Étape 3 : Regardez directement l'angle suspect de manière perpendiculaire. Si l'éclaircissement s'estompe en vue directe, la dalle respecte les tolérances optiques. Si un faisceau lumineux franc et localisé reste rivé au bord du cadre même en vous plaçant à 2 mètres de face, vous êtes en présence d'une fuite mécanique réelle."
+            ],
+            "bullets": [
+              "Test de parallaxe : Vérifiez si la lumière se déplace sur la dalle ou reste figée sur le cadre.",
+              "Examen perpendiculaire : Si la tache disparaît vue de face, il s'agit d'un phénomène optique normal.",
+              "Identification de fuite : Les jets de lumière statiques le long du châssis indiquent un pincement mécanique."
+            ]
+          },
+          {
+            "title": "Comparatif des dalles incurvées : IPS, VA, TN et OLED",
+            "content": [
+              "Les différentes technologies de dalles réagissent de façon singulière lorsqu'elles sont profilées en forme incurvée. L'observation doit toujours tenir compte de la filière employée :",
+              "IPS : Offre une grande justesse des couleurs. En revanche, les cristaux horizontaux produisent une lueur angulaire caractéristique sur fond noir lorsque le regard n'est pas parfaitement aligné avec le centre focal. Des filtres polarisants A-TW peuvent atténuer cet effet, mais restent cantonnés aux modèles professionnels onéreux.",
+              "VA : Utilise des cristaux verticaux au repos, conférant un contraste natif élevé (de 3 000:1 à 5 000:1) et des noirs profonds sans lueur parasite. Cependant, les dalles VA subissent une dérive de gamma latérale qui décolore les teintes. C'est pourquoi les fabricants incurvent souvent les grandes dalles VA afin de maintenir les bords perpendiculaires au regard.",
+              "TN : Très rapide mais doté d'angles étroits avec inversion des couleurs à la verticale ; quasi absent des moniteurs incurvés actuels.",
+              "OLED : Éléments autoémissifs sans rétroéclairage produisant un noir absolu de 0,000 nit, exempt de fuites et d'IPS glow sur dalle plate ou incurvée. Le contraste demeure parfait sous tous les angles, bien que les revêtements antireflets puissent montrer de légères teintes colorées à incidence très rasante."
+            ],
+            "bullets": [
+              "IPS : Fidélité des couleurs reconnue, accompagnée d'un glow angulaire typique sur fond sombre.",
+              "VA : Contraste élevé (3 000:1+) ; la courbure compense la dérive de gamma sur les bords.",
+              "TN : Angles de vision limités avec inversion chromatique ; technologie obsolète sur le segment incurvé.",
+              "OLED : Les pixels autoémissifs suppriment totalement les fuites de rétroéclairage et l'IPS glow."
+            ]
+          },
+          {
+            "title": "Protocole de contrôle en chambre noire pour écrans incurvés",
+            "content": [
+              "Pour diagnostiquer la répartition lumineuse sur un écran incurvé sans être induit en erreur par l'environnement ambiant, appliquez cette méthode :",
+              "1. Gestion de la lumière ambiante : Éteignez lustres et lampes de bureau. Les dalles concaves concentrent les sources lumineuses situées derrière l'utilisateur et les reflètent sous forme de stries étirées.",
+              "2. Alignement au centre focal : Asseyez-vous à la distance prescrite par le rayon de courbure (1000R = 1,0 m ; 1500R = 1,5 m) et alignez la hauteur des yeux au milieu de l'écran.",
+              "3. Luminosité de référence : Ajustez la luminosité de l'OSD aux valeurs de travail réelles (20 % à 40 %, soit environ 100 à 140 nits). Observer un écran à 100 % dans l'obscurité totale fausse le diagnostic.",
+              "4. Exécution de Screen Tester : Démarrez le [Test de fuite de rétroéclairage](/tests/backlight-bleed-test), puis inspectez les niveaux de gris à 5 % et 20 % via le [Test d'uniformité](/tests/uniformity-test). Vérifiez la stabilité chromatique avec le [Test d'angles de vision](/tests/viewing-angle-test) et notre [Guide des angles de vision](/guides/monitor-viewing-angles-explained)."
+            ],
+            "bullets": [
+              "Éteindre l'éclairage ambiant pour ne pas confondre les reflets concaves avec un défaut d'écran.",
+              "Se placer rigoureusement à la distance focale de courbure (1000R, 1500R ou 1800R).",
+              "Régler la luminosité entre 20 % et 40 % (~120 nits) au lieu de forcer l'éclairage au maximum.",
+              "Recourir aux mires grises (5 % et 20 %) pour distinguer un pincement mécanique d'un dégradé général."
+            ]
+          },
+          {
+            "title": "Constitution d'un dossier de réclamation et démarches de garantie",
+            "content": [
+              "Si votre examen met en évidence des fuites de lumière mécaniques avérées, constituer un dossier probant facilitera le traitement de votre demande :",
+              "Verrouillage de l'exposition photo : Les smartphones enclenchent automatiquement un mode nuit qui surexpose les scènes sombres, faisant paraître n'importe quel écran défectueux. Basculez en mode manuel ou 'Pro', réglez la sensibilité sur 100 ou 200 ISO et ajustez le temps de pose afin que l'image reflète exactement ce que voient vos yeux.",
+              "Prises de vue complémentaires : Prenez un cliché d'ensemble depuis la distance focale et une photo rapprochée perpendiculaire à l'angle incriminé. Si le faisceau lumineux reste visible de face, vous disposez d'un élément probant attestant d'une contrainte mécanique sur la dalle.",
+              "Choix de la démarche commerciale : Les garanties constructeurs considèrent fréquemment les lueurs angulaires comme conformes aux tolérances de production. Pour un confort visuel insatisfaisant, exercer le droit de rétractation auprès du vendeur reste la voie la plus rapide. Consultez notre [Guide de dépannage](/knowledge-base/troubleshooting)."
+            ],
+            "bullets": [
+              "Régler l'exposition du smartphone manuellement pour éviter les artefacts trompeurs du mode nuit.",
+              "Combiner une vue générale au point focal et un plan rapproché perpendiculaire au coin concerné.",
+              "Le délai de rétractation auprès du revendeur est souvent plus efficace qu'un dossier RMA constructeur.",
+              "Consultez le [Guide de dépannage](/knowledge-base/troubleshooting) de Screen Tester pour affiner le constat."
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "La courbure d'un écran engendre-t-elle systématiquement des fuites de lumière ?",
+            "answer": "Non. La courbure en elle-même ne génère pas de fuites de rétroéclairage. Celles-ci proviennent de contraintes mécaniques ou d'un serrage asymétrique du châssis. Toutefois, la courbure accentue l'obliquité du regard vers les bords lorsqu'on ne se place pas au point focal, ce qui rend les lueurs optiques naturelles plus perceptibles."
+          },
+          {
+            "question": "Pourquoi les coins de mon écran incurvé semblent-ils briller quand je suis trop près ?",
+            "answer": "En vous plaçant plus près que le rayon de courbure prévu (par exemple à 50 cm d'un écran 1800R), vos yeux atteignent les angles selon une incidence oblique dépassant 30° à 45°. Sur une dalle IPS, cela entraîne un phénomène de biréfringence (IPS glow). Reculer à la distance focale conseillée rétablit une vision perpendiculaire et atténue nettement la lueur perçue."
+          },
+          {
+            "question": "Pourquoi la plupart des écrans incurvés utilisent-ils des dalles VA plutôt qu'IPS ?",
+            "answer": "Les dalles VA offrent un contraste élevé (3 000:1 à 5 000:1) avec des noirs profonds sans lueur parasite dans l'obscurité. De plus, les cristaux VA tendant à délaver les couleurs lorsqu'ils sont vus de biais (gamma shift), la courbure permet de maintenir les bords perpendiculaires au regard et de préserver la saturation sur toute la largeur."
+          },
+          {
+            "question": "Comment photographier des fuites de lumière sans que le smartphone ne surexpose ?",
+            "answer": "Bannissez le mode automatique de votre smartphone, qui active le mode nuit et effectue des poses longues trop lumineuses. Passez en mode 'Pro' ou manuel, fixez la sensibilité à 100 ou 200 ISO, puis réduisez le temps de pose jusqu'à ce que l'aperçu corresponde exactement à votre perception dans la pièce sombre."
+          },
+          {
+            "question": "Screen Tester peut-il quantifier le contraste ou la luminance en nits de mon écran ?",
+            "answer": "Non. Screen Tester opère au sein de l'environnement sécurisé du navigateur web et affiche des mires de test numériques via le gestionnaire de fenêtres du système d'exploitation. Les navigateurs ne disposent d'aucun capteur spectrophotométrique ou de sonde optique et ne peuvent mesurer les nits ni le taux de contraste matériel. L'outil sert de support d'observation visuelle."
           }
         ]
       }

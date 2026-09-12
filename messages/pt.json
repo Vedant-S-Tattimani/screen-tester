@@ -4174,18 +4174,18 @@
           "Acesse nosso [Guia de solução de problemas](/knowledge-base/troubleshooting) interativo caso um monitor permaneça bloqueado em uma frequência inferior."
         ],
         "whatScreenTesterCanObserve": [
-          "Carimbos de data/hora dos callbacks de animação do navegador via `requestAnimationFrame` na tela ativa",
-          "Desvio padrão estatístico dos intervalos de quadros do navegador (identificação de microengasgos e quadros perdidos)",
-          "Relação de pixels do dispositivo (`window.devicePixelRatio`) e geometria lógica do viewport CSS por monitor",
-          "Comparação visual da suavidade de movimento, regularidade pendular e rolagem de páginas entre telas",
-          "Compatibilidade com APIs recentes de navegadores voltadas para janelas e múltiplos monitores"
+          "Registos temporais de retorno de animação via `requestAnimationFrame` no ecrã ativo",
+          "Desvio-padrão estatístico dos intervalos de débito de fotogramas (deteção de micro-soluços e quebras de fluidez)",
+          "Device Pixel Ratio (`window.devicePixelRatio`) e geometria lógica CSS reportados pelo navegador",
+          "Comparação visual de fluidez de movimento, cadência pendular e deslocamento entre corrente e bateria",
+          "Suporte de APIs do navegador para posicionamento de janelas em múltiplos ecrãs e enumeração de monitores"
         ],
         "whatScreenTesterCannotDetermine": [
-          "Temporização física de varredura das linhas do painel ou frequência do oscilador via cabos DisplayPort ou HDMI",
-          "Filas internas de saída de quadros da GPU, profundidade de buffers de troca ou interrupções V-Sync de hardware",
-          "Cronograma de troca de buffers do compositor de janelas do SO (Windows DWM, Linux Wayland/X11, macOS Quartz)",
-          "Densidade real física (DPI) do painel de forma desvinculada dos parâmetros transmitidos pelo sistema operacional",
-          "Integridade física do sinal, saturação de largura de banda do cabo ou limitações das vias de saída da GPU"
+          "Sincronismo físico de varrimento do painel ou relógio de referência em cabos DisplayPort ou HDMI",
+          "Tensão física dos barramentos de alimentação internos, telemetria de carga ACPI ou limites térmicos",
+          "Estados de relógio da GPU (P-states/D-states), posição de comutadores MUX ou poupança de energia PCIe ASPM",
+          "Programação interna de permuta de memória do compositor do sistema operativo (DWM, Wayland ou Quartz)",
+          "Densidade física de píxeis (DPI) real do painel independentemente dos fatores de escala do SO"
         ],
         "commonCauses": [
           "O compositor de janelas do sistema operacional coordena com dificuldade intervalos de saída independentes entre taxas desiguais",
@@ -4342,22 +4342,80 @@
             ]
           },
           {
-            "title": "Ajustes práticos recomendados e próximos passos",
+            "title": "Comportamento do ecrã do portátil com bateria vs. corrente: Frequências, energia e dimensionamento",
             "content": [
-              "Se você constatar engasgos, atrasos no cursor ou tipografias borradas em seu setup multitelas, estas intervenções não destrutivas podem restaurar a suavidade do sistema:",
-              "1. Confirmar frequências nas configurações do SO: Acesse as opções avançadas de tela do sistema operacional e confirme se cada monitor está na frequência máxima suportada.",
-              "2. Unificar escalas ou testar divisores inteiros: Padronize a escala onde houver perda de nitidez. Em setups de 144Hz e 60Hz, experimente colocar a tela principal em 120Hz (múltiplo inteiro de 60Hz) para avaliar se o compositor opera com maior estabilidade.",
-              "3. Ajustar o escopo do VRR no driver: No software da NVIDIA ou AMD, configure o G-Sync ou FreeSync para funcionar unicamente no modo tela cheia.",
-              "4. Alternar a aceleração por hardware no navegador: Ligue ou desligue essa opção nas configurações do navegador para verificar se a rolagem instável decorre do navegador ou de falhas de driver.",
-              "5. Reiniciar o subsistema de vídeo: No Windows, pressione as teclas Win + Ctrl + Shift + B para reiniciar o driver de vídeo sem fechar seus programas caso a composição do desktop trave.",
-              "Para orientações aprofundadas sobre problemas de cabos ou falhas de hardware, consulte nosso [Guia de solução de problemas](/knowledge-base/troubleshooting) interativo."
+              "Utilizar um computador portátil alimentado por bateria (CC) altera profundamente os limites térmicos e energéticos face à ligação à rede elétrica (CA). Para maximizar a autonomia, o sistema operativo e os controladores da CPU e da GPU acionam mecanismos de poupança dinâmica que afetam de forma percetível a renderização do ecrã e a fluidez dos movimentos.",
+              "Em modo de bateria, os planos do sistema operativo (como Melhor eficiência energética, Equilibrado ou Melhor desempenho no Windows; modo de baixo consumo no macOS; perfis energéticos no Linux) limitam tarefas secundárias. As placas gráficas reduzem as frequências do núcleo e da memória (P-states), enquanto o barramento PCIe entra em modos de poupança ASPM (L0s/L1) para conter o consumo, o que diminui a largura de banda para os controladores de vídeo.",
+              "Paralelamente, os ecrãs modernos empregam taxas de atualização dinâmicas. Com a Taxa de Atualização Dinâmica (DRR) do Windows 11 ou o firmware do fabricante, painéis rápidos (120Hz, 144Hz, 240Hz) recuam frequentemente para 60Hz ou acionam o autorrefresco de painel (PSR) quando inativos na bateria. Soluções como CABC, Intel DPST ou AMD Vari-Bright modulam ainda a retroiluminação e a curva de gama com base no conteúdo exibido.",
+              "Contudo, a utilização da bateria NÃO restringe a taxa de atualização de forma obrigatória em todos os modelos. Computadores de jogos com comutadores MUX conseguem sustentar frequências elevadas com bateria à custa de um consumo acelerado, ao passo que os modelos ultraportáteis priorizam a duração da carga. Distinguir se uma quebra de desempenho é intencional ou um estrangulamento requer testes comparativos estruturados."
             ],
             "bullets": [
-              "Checar ajustes do sistema: Garantir que cada monitor funcione em sua frequência nativa máxima.",
-              "Experimentar divisores inteiros: Com telas de 60Hz, testar 120Hz no monitor de alta velocidade.",
-              "Limitar VRR à tela cheia: Prevenir conflitos com janelas ativas nos monitores adjacentes.",
-              "Testar aceleração de hardware: Ligar/desligar o recurso no navegador para isolar instabilidades.",
-              "Reinicializar o driver de vídeo: Usar Win + Ctrl + Shift + B no Windows para restaurar a composição."
+              "A bateria aciona estados de poupança na CPU, GPU e ligações PCIe ASPM para preservar energia.",
+              "A taxa dinâmica (DRR) e o autorrefresco (PSR) podem baixar o painel para 60Hz na bateria.",
+              "Tecnologias adaptativas (CABC, Intel DPST, AMD Vari-Bright) modulam contraste e brilho dinamicamente.",
+              "Os perfis de bateria não limitam os ecrãs de forma universal; depende das configurações OEM e do SO."
+            ]
+          },
+          {
+            "title": "Painel interno do portátil vs. monitores externos sob alimentação por bateria",
+            "content": [
+              "Os portáteis atuais recorrem a arquiteturas gráficas híbridas (como NVIDIA Optimus, AMD SmartAccess Graphics ou a memória unificada da Apple), nas quais o ecrã integrado e as saídas externas são alimentados por controladores distintos.",
+              "Geralmente, o ecrã interno está ligado por eDP (Embedded DisplayPort) diretamente à gráfica integrada (iGPU). Em modo de bateria, a gráfica dedicada (dGPU) é desativada para poupar energia. Se uma aplicação exigir a dGPU, as imagens geradas têm de ser transferidas pelo barramento do sistema até ao controlador da iGPU, constituindo uma etapa adicional que pode causar micro-soluços caso a largura de banda do barramento PCIe esteja limitada pela bateria.",
+              "Os monitores externos ligados via HDMI, USB-C DisplayPort Alt Mode ou estações Thunderbolt introduzem mais variáveis. Estas saídas comunicam frequentemente de forma direta com a dGPU ou partilham largura de banda com portas USB e ligação de rede. Desligar a alimentação de rede pode forçar a base a renegociar os perfis de alimentação (Power Delivery) ou fazer a dGPU abrandar acentuadamente, provocando quebras de fluidez que não ocorrem quando ligado à tomada."
+            ],
+            "bullets": [
+              "O ecrã interno liga-se por eDP à iGPU; a dGPU fica frequentemente em suspensão com bateria.",
+              "A cópia de fotogramas entre gráficas pode gerar micro-soluços se a largura de banda estiver contida.",
+              "Bases Thunderbolt e USB-C partilham largura de banda e podem renegociar energia ao desligar da tomada.",
+              "Testar monitores externos na tomada elétrica permite separar limitações da base de anomalias no ecrã."
+            ]
+          },
+          {
+            "title": "Procedimento controlado de comparação: Bateria vs. Corrente em portáteis",
+            "content": [
+              "Para aferir se a falta de fluidez, as quebras de frequência ou as oscilações de brilho se devem a políticas de poupança do sistema operativo ou a defeitos de hardware, aplique este protocolo de 5 fases:",
+              "Fase 1: Medição de referência na corrente elétrica. Ligue o portátil ao carregador oficial. Defina o perfil energético do sistema operativo para 'Equilibrado' ou 'Melhor desempenho'. Abra o [Teste de taxa de atualização](/tests/refresh-rate-test) e o [Teste de desfoque de movimento](/tests/motion-blur-test) no Screen Tester. Registe a taxa de fotogramas e a suavidade observada.",
+              "Fase 2: Desconexão do carregador. Desligue o cabo com o Screen Tester aberto. Observe as reações automáticas: O ecrã escurece? As definições do Windows ou o [Teste de taxa de atualização](/tests/refresh-rate-test) acusam uma quebra de 120Hz/144Hz para 60Hz? O [Teste HDR](/tests/hdr-test) indica a desativação do HDR por restrições de bateria?",
+              "Fase 3: Avaliação de resposta dinâmica e cadência. Mova o cursor do rato rapidamente e desloque páginas de texto. Em sistemas com Windows DRR, verifique se o movimento reativa temporariamente a frequência ou se permanece nos 60Hz. Avalie com o [Teste VRR](/tests/vrr-test) caso o painel suporte taxa variável.",
+              "Fase 4: Avaliação de monitores externos. Com um ecrã externo ligado, repare se arrastar janelas solavanca com a bateria em comparação com a corrente elétrica. Inspecione os parâmetros do monitor em [Informações do ecrã](/tests/display-info) e o estado de suporte em [Compatibilidade do navegador](/tools/browser-compatibility).",
+              "Fase 5: Reconexão à corrente elétrica. Volte a ligar o carregador. Comprove se a taxa de atualização, o brilho e a cadência de fotogramas se restabelecem de imediato ou se exigem o reinício do programa."
+            ],
+            "bullets": [
+              "Fase 1: Registar a fluidez de referência ligado ao carregador oficial nos modos de Desempenho/Equilibrado.",
+              "Fase 2: Desligar o carregador e verificar alterações imediatas nas frequências, brilho e HDR pelo SO.",
+              "Fase 3: Analisar a resposta dinâmica do cursor e do deslocamento sob a tecnologia Windows DRR.",
+              "Fase 4: Comparar o monitor externo na bateria e na corrente para isolar restrições da base de ligação.",
+              "Fase 5: Reconectar a corrente e certificar a recuperação integral e estável dos valores normais."
+            ]
+          },
+          {
+            "title": "Diagnosticar soluços de ecrã ligados à energia: Comportamento normal vs. Avarias",
+            "content": [
+              "Saber distinguir as funções de poupança legítimas de defeitos reais de configuração impede alterações desnecessárias nas definições:",
+              "Comportamentos de poupança normais: (1) Quebra da taxa de atualização de 144Hz/165Hz para 60Hz ao entrar no modo de Poupança de bateria do Windows; (2) Ligeiras variações dinâmicas de contraste e brilho em fundos escuros causadas pelo Intel DPST ou AMD Vari-Bright; (3) Desativação automática do HDR na bateria se a opção 'Otimizar para duração da bateria' estiver selecionada; (4) Redução ligeira do brilho máximo disponível.",
+              "Comportamentos anómalos a investigar: (1) Movimento do cursor permanentemente aos soluços ou quebra acentuada de fotogramas mesmo com o carregador oficial ligado; (2) Cintilações fortes ou ecrã negro demorado ao ligar ou desligar o cabo de corrente; (3) Ecrã bloqueado nos 60Hz mesmo com o carregador ligado num painel de alta velocidade; (4) Micro-soluços acentuados ao ligar monitores externos na tomada de corrente.",
+              "Passos seguros de resolução: Verifique a taxa de atualização nas definições avançadas de ecrã do Windows; consulte o software do fabricante (Lenovo Vantage, ASUS Armoury Crate, Dell Optimizer) para assegurar que os perfis ecológicos não bloqueiam o ecrã; instale de raiz os controladores gráficos; e confirme que o carregador entrega a potência nominal em watts (fontes USB-C fracas ativam reduções de desempenho mesmo ligadas à corrente). Para avarias físicas, consulte o [Guia de resolução de problemas](/knowledge-base/troubleshooting)."
+            ],
+            "bullets": [
+              "Normal: Queda para 60Hz na poupança de bateria, ajustes CABC e corte do HDR para poupar energia.",
+              "Anomalia: Soluços permanentes na corrente oficial, cintilação ao ligar o cabo ou bloqueio a 60Hz na tomada.",
+              "Inspecionar utilitários OEM (Armoury Crate, Vantage, Optimizer) para despistar bloqueios de frequência.",
+              "Garantir potência de carregamento suficiente para impedir reduções forçadas de desempenho na tomada."
+            ]
+          },
+          {
+            "title": "Comportamento do ecrã do portátil com bateria vs. corrente: Frequências, energia e dimensionamento",
+            "content": [
+              "Utilizar um computador portátil alimentado por bateria (CC) altera profundamente os limites térmicos e energéticos face à ligação à rede elétrica (CA). Para maximizar a autonomia, o sistema operativo e os controladores da CPU e da GPU acionam mecanismos de poupança dinâmica que afetam de forma percetível a renderização do ecrã e a fluidez dos movimentos.",
+              "Em modo de bateria, os planos do sistema operativo (como Melhor eficiência energética, Equilibrado ou Melhor desempenho no Windows; modo de baixo consumo no macOS; perfis energéticos no Linux) limitam tarefas secundárias. As placas gráficas reduzem as frequências do núcleo e da memória (P-states), enquanto o barramento PCIe entra em modos de poupança ASPM (L0s/L1) para conter o consumo, o que diminui a largura de banda para os controladores de vídeo.",
+              "Paralelamente, os ecrãs modernos empregam taxas de atualização dinâmicas. Com a Taxa de Atualização Dinâmica (DRR) do Windows 11 ou o firmware do fabricante, painéis rápidos (120Hz, 144Hz, 240Hz) recuam frequentemente para 60Hz ou acionam o autorrefresco de painel (PSR) quando inativos na bateria. Soluções como CABC, Intel DPST ou AMD Vari-Bright modulam ainda a retroiluminação e a curva de gama com base no conteúdo exibido.",
+              "Contudo, a utilização da bateria NÃO restringe a taxa de atualização de forma obrigatória em todos os modelos. Computadores de jogos com comutadores MUX conseguem sustentar frequências elevadas com bateria à custa de um consumo acelerado, ao passo que os modelos ultraportáteis priorizam a duração da carga. Distinguir se uma quebra de desempenho é intencional ou um estrangulamento requer testes comparativos estruturados."
+            ],
+            "bullets": [
+              "A bateria aciona estados de poupança na CPU, GPU e ligações PCIe ASPM para preservar energia.",
+              "A taxa dinâmica (DRR) e o autorrefresco (PSR) podem baixar o painel para 60Hz na bateria.",
+              "Tecnologias adaptativas (CABC, Intel DPST, AMD Vari-Bright) modulam contraste e brilho dinamicamente.",
+              "Os perfis de bateria não limitam os ecrãs de forma universal; depende das configurações OEM e do SO."
             ]
           }
         ],
@@ -4385,6 +4443,18 @@
           {
             "question": "O Screen Tester consegue aferir o escaneamento físico da minha GPU ou corrigir engasgos multimonitor?",
             "answer": "Não. Navegadores web rodam em um ambiente restrito de segurança e não têm acesso a registradores de baixo nível da GPU ou aos sinais físicos dos cabos. O Screen Tester disponibiliza padrões para verificação visual; as correções devem ser feitas no sistema operacional ou no driver."
+          },
+          {
+            "question": "Porque desce o ecrã do meu portátil de 120Hz/144Hz para 60Hz ao tirar o carregador?",
+            "answer": "Trata-se habitualmente de uma funcionalidade deliberada de poupança gerida pela Taxa de Atualização Dinâmica (DRR) do Windows, pelo controlador gráfico ou por utilitários da marca (como Lenovo Vantage ou ASUS Armoury Crate). Como atualizar o ecrã 120 ou 144 vezes por segundo consome muita energia, o portátil reduz para 60Hz na bateria. É possível alterar isto nas definições avançadas de ecrã do Windows ou no software do portátil se preferir fluidez contínua na bateria."
+          },
+          {
+            "question": "Porque mudam o brilho e o contraste ao alternar entre a bateria e a corrente elétrica?",
+            "answer": "Estas oscilações derivam de tecnologias de poupança como o CABC do Windows, o Intel Display Power Saving Technology (DPST) ou o AMD Vari-Bright. Modulam dinamicamente a retroiluminação e as curvas de gama consoante o conteúdo para prolongar a carga da bateria. Caso estas variações causem incómodo visual, podem ser desativadas no Centro de Comando de Gráficos Intel ou no software da AMD."
+          },
+          {
+            "question": "O Screen Tester consegue detetar se o meu portátil está a funcionar na bateria ou na tomada?",
+            "answer": "Não. Os navegadores web executam-se numa sandbox de segurança e não conseguem consultar diretamente os barramentos de alimentação física, o estado de carga ACPI nem os planos de energia sem autorizações explícitas. O Screen Tester analisa a cadência temporal do navegador e a resposta dos padrões de teste, mas não consegue discernir se a perda de fluidez decorre da bateria, de limites térmicos ou de configurações de software."
           }
         ]
       },
@@ -4566,6 +4636,166 @@
           {
             "question": "Devo contactar primeiro a loja ou o fabricante após detetar um defeito?",
             "answer": "Consulte primeiro o prazo de devolução da loja. Se estiver dentro do período, a resolução com o comerciante costuma ser mais rápida. Terminado esse prazo, recorra aos termos de garantia do fabricante."
+          }
+        ]
+      },
+      "backlight-bleed-vs-ips-glow": {
+        "title": "Fugas de luz (Backlight Bleed) vs. IPS Glow: Como distinguir a diferença",
+        "subtitle": "Tensão do aro, geometria de painéis curvos, birrefringência de cristais líquidos e diagnóstico em sala escura.",
+        "description": "Saiba distinguir fugas de luz de IPS glow, compreenda o impacto dos ângulos de visão e da curvatura na perceção visual e como verificar ambos em sala escura.",
+        "directAnswer": "A fuga de luz (backlight bleed) é um escape físico de iluminação junto ao aro do monitor que permanece fixo independentemente do ângulo de visualização, enquanto o IPS glow e o brilho angular são características óticas que mudam de posição e intensidade com o movimento do utilizador.",
+        "whyItMatters": "Confundir o brilho angular normal em ecrãs planos ou curvos com um defeito de fabrico resulta frequentemente em devoluções desnecessárias, obtendo-se um equipamento de substituição com comportamento ótico idêntico. Já as fugas mecânicas genuínas por aperto excessivo do aro degradam permanentemente o contraste em ambientes escuros. Compreender como a curvatura e a distância de visualização afetam as extremidades permite documentar anomalias com total rigor.",
+        "whatToLookFor": [
+          "Fuga de luz (Backlight Bleed): Áreas esbranquiçadas ou amareladas intensas junto ao aro que permanecem estáticas mesmo quando o utilizador se desloca",
+          "IPS Glow: Brilho difuso prateado, dourado ou arroxeado nos cantos que desliza ou desaparece ao olhar perpendicularmente para esse canto",
+          "Brilho perimétrico em ecrãs curvos: Claridade difusa concentrada nos extremos laterais ao sentar-se fora do raio focal nominal",
+          "Desvio de gama em painéis VA: Clareamento de tons escuros e desbotamento de cor ao observar painéis VA curvos ou planos a partir de ângulos oblíquos",
+          "Pontos de pressão no aro: Fugas nítidas em forma de tocha concentradas junto a parafusos, fixadores do chassis ou uniões do quadro"
+        ],
+        "howToTest": [
+          "Execute o teste de noite numa sala completamente às escuras, eliminando luzes e reflexos diretos",
+          "Ajuste o brilho no OSD para níveis de trabalho habituais (geralmente entre 20% e 40%, ~100–140 nits; evite forçar 100%)",
+          "Abra o [Teste de fuga de luz](/tests/backlight-bleed-test) no Screen Tester para exibir um fundo preto digital integral",
+          "Sente-se à distância do raio de curvatura especificado (ex.: ~1,0 m para 1000R) com os olhos alinhados ao centro do ecrã",
+          "Faça o teste de movimento de cabeça: incline-se e olhe diretamente para o canto; se o brilho desaparecer, é resplendor ótico",
+          "Afaste-se 2 a 3 metros: o brilho angular ótico dissipa-se substancialmente à distância, enquanto a fuga física permanece no aro"
+        ],
+        "whatScreenTesterCanObserve": [
+          "Apresentação de cores de teste definidas, incluindo fundos pretos digitais puros (RGB 0, 0, 0) em superfícies planas e curvas",
+          "Diferenciação visual entre fugas localizadas fixas e brilho angular mediante a deslocação da cabeça",
+          "Mira central opcional para validar o alinhamento perpendicular no raio focal do ecrã",
+          "Fundos cinzentos escuros escalonados (1% a 5%) para inspecionar a uniformidade do nível de preto percebido",
+          "Anomalias visuais assinaladas pelo utilizador, variações de distância e notas de inspeção em sala escura"
+        ],
+        "whatScreenTesterCannotDetermine": [
+          "Luminância física em candelas por metro quadrado (cd/m² ou nits) ou rácios de contraste absolutos",
+          "Binário de aperto dos parafusos do chassis, pressão do aro ou tolerâncias físicas de curvatura",
+          "Atraso ótico matemático, ângulos de desfasamento dos cristais líquidos ou eficiência dos filtros polarizadores",
+          "Distinção entre deformação física do vidro e fuga de polarização sem movimento físico do observador",
+          "Critérios de garantia do fabricante, elegibilidade de RMA ou políticas de devolução dos revendedores"
+        ],
+        "commonCauses": [
+          "Fuga de luz: Pressão de aperto excessiva durante a montagem em fábrica que comprime a periferia do painel",
+          "Fuga de luz: Dilatação térmica que deforma a placa guia de luz (LGP) ou a moldura durante uso contínuo",
+          "IPS Glow: Birrefringência ótica natural dos cristais líquidos com orientação horizontal sob tecnologia IPS",
+          "Geometria de curvatura: Sentar-se fora do raio focal (ex.: a 50 cm de um ecrã 1800R), forçando as extremidades a ângulos rasantes",
+          "Desvio de gama em VA curvo: Transmissão luminosa oblíqua através dos cristais verticais que aclara tons escuros nas extremidades"
+        ],
+        "whatToDoNext": [
+          "Ajuste a sua distância de visualização ao raio de curvatura do ecrã (1,0 m para 1000R, 1,5 m para 1500R) para minimizar ângulos rasantes",
+          "Instale iluminação suave de 6500K atrás do monitor para moderar a dilatação da pupila no escuro e aprofundar o contraste percebido",
+          "Verifique a uniformidade com o [Teste de uniformidade](/tests/uniformity-test) em cinzentos escuros e consulte o [Guia de ângulos de visão](/guides/monitor-viewing-angles-explained)",
+          "Se detetar tochas amareladas ou brancas intensas que permanecem fixas quando vistas de frente a 2 metros, solicite a troca ao revendedor"
+        ],
+        "sections": [
+          {
+            "title": "Mecânica física da fuga de luz: Compressão do aro vs. Birrefringência ótica",
+            "content": [
+              "Os ecrãs LCD não produzem luz própria. Seja através de iluminação periférica (Edge-LED) ou direta (Direct-LED), o feixe luminoso tem de percorrer um conjunto complexo de refletores, placas difusoras, prismas de ganho, filtros polarizadores e o substrato de cristais líquidos.",
+              "A fuga de luz (backlight bleed) é uma imperfeição mecânica. Quando o aro ou as fixações exercem pressão irregular sobre o bordo do painel, a estrutura é comprimida. Esta deformação abre microaberturas por onde a luz escapa sem qualquer modulação, projetando fachos estáticos esbranquiçados ou amarelados.",
+              "Em contrapartida, o IPS Glow é uma propriedade física decorrente da orientação horizontal dos cristais nos painéis In-Plane Switching. Em linha reta (90°), os cristais bloqueiam a luz com eficácia. No entanto, quando a luz incide em ângulos oblíquos, surge um ligeiro atraso de fase (birrefringência), deixando transparecer uma claridade difusa prateada ou dourada para observadores fora do eixo."
+            ],
+            "bullets": [
+              "A fuga de luz é um defeito de montagem; a luz escapa sem ser modulada pelos cristais.",
+              "O IPS glow é uma característica ótica natural em cristais com alinhamento horizontal.",
+              "As fugas ficam fixas no aro; o glow desloca-se pelo ecrã conforme a cabeça se move."
+            ]
+          },
+          {
+            "title": "Ecrãs curvos: Geometria de observação e ângulo ótico de incidência",
+            "content": [
+              "Os monitores curvos são fabricados com um raio de curvatura específico (1000R, 1500R, 1800R), onde o valor representa o raio de um círculo em milímetros (1000R = 1,0 metro). A sua finalidade ergonómica é manter uma distância equidistante dos olhos até aos vários pontos de um painel panorâmico.",
+              "Todavia, a curvatura altera os ângulos de incidência da luz. Se o utilizador se sentar exatamente no centro focal (a 1,0 m num painel 1000R), a linha de visão alcança o centro e as abas laterais quase perpendicularmente. Se se sentar demasiado perto (ex.: a 50 cm de um painel 1800R) ou fora do centro, as laterais ficam orientadas em ângulos acentuadamente oblíquos.",
+              "Esta alteração geométrica modifica a perceção da uniformidade. Em ecrãs IPS curvos, sentar-se demasiado perto acentua o brilho percebido nos cantos. Importa sublinhar que a curvatura em si não causa fugas mecânicas; apenas altera a geometria com que os raios oblíquos incidem na retina."
+            ],
+            "bullets": [
+              "O valor de curvatura (1000R, 1500R, 1800R) define a distância focal ideal em milímetros.",
+              "Sentar-se fora do raio focal sujeita as margens do ecrã a ângulos de visualização rasantes.",
+              "A curvatura altera a geometria visual, mas não produz fugas mecânicas por si própria."
+            ]
+          },
+          {
+            "title": "Distinguir fugas mecânicas de resplendor angular em ecrãs curvos",
+            "content": [
+              "Para identificar se uma zona clara num ecrã curvo constitui um defeito coberto por garantia ou mero brilho angular, utiliza-se o teste de paralaxe por deslocação da cabeça.",
+              "Passo 1: Apague as luzes da divisão e projete um fundo preto com o [Teste de fuga de luz](/tests/backlight-bleed-test). Observe as zonas claras a partir da sua posição habitual.",
+              "Passo 2: Mova a cabeça devagar para os lados e na vertical. Se a mancha luminosa deslizar sobre o painel, alterar a sua tonalidade ou atenuar-se, trata-se de brilho ótico angular.",
+              "Passo 3: Posicione o olhar de forma rigorosamente perpendicular (a 90°) face ao canto suspeito. Se a claridade se dissipar por completo ao olhar de frente, o painel cumpre as tolerâncias normais. Se um feixe branco ou amarelado persistir agarrado ao aro mesmo olhando de frente a 2 metros, trata-se de fuga mecânica genuína."
+            ],
+            "bullets": [
+              "Teste de paralaxe: Repare se o brilho se move ou se permanece fixo no bordo.",
+              "Verificação perpendicular: Se a claridade sumir ao olhar de frente, é resplendor ótico.",
+              "Identificação de fugas: Fachos estáticos concentrados junto ao chassis indicam compressão mecânica."
+            ]
+          },
+          {
+            "title": "Comparação de arquiteturas de painel em ecrãs curvos: IPS, VA, TN e OLED",
+            "content": [
+              "As várias tecnologias de ecrã exibem reações distintas quando encurvadas. A avaliação das anomalias deve considerar a tecnologia empregue:",
+              "IPS: Proporciona fidelidade de cor exemplar. Porém, como os cristais estão em repouso horizontal, os ecrãs IPS curvos revelam um brilho perimétrico quando não se observa do ponto focal exato. A inclusão de polarizadores A-TW atenua o efeito, mas restringe-se a monitores profissionais.",
+              "VA: O alinhamento vertical dos cristais confere contrastes nativos elevados (3.000:1 a 5.000:1) e pretos profundos com mínimo brilho parasita. Como os painéis VA sofrem de desvio de gama em ângulo, os fabricantes encurvam painéis grandes para manter as extremidades perpendiculares aos olhos, contendo a perda de saturação perimétrica.",
+              "TN: É veloz mas apresenta ângulos reduzidos com inversão cromática na vertical; praticamente não existe em monitores curvos modernos.",
+              "OLED: É autoemissivo e dispensa luz de fundo, alcançando 0,000 nits com ausência total de fugas ou de IPS glow em formatos planos ou curvos. O contraste mantém-se impecável sob todos os ângulos."
+            ],
+            "bullets": [
+              "IPS: Elevada precisão cromática com resplendor angular característico em fundos escuros.",
+              "VA: Contraste elevado (3.000:1+); a curvatura neutraliza o desvio de gama nas extremidades.",
+              "TN: Ângulos restritos com inversão de cor; tecnologia desfasada em ecrãs curvos.",
+              "OLED: Píxeis autoemissivos eliminam em definitivo tanto as fugas de luz como o IPS glow."
+            ]
+          },
+          {
+            "title": "Protocolo de inspeção em sala escura para monitores curvos",
+            "content": [
+              "Avaliar com rigor a distribuição de luz num ecrã curvo exige um método disciplinado para afastar enganos causados por iluminação imprópria:",
+              "1. Controlo da luz ambiente: Desligue luzes de teto e candeeiros. A concavidade do ecrã concentra as luzes situadas atrás do observador, refletindo-as como faixas alongadas de encandeamento.",
+              "2. Alinhamento no raio focal: Sente-se à distância definida pela curvatura (1000R = 1,0 m; 1500R = 1,5 m) e nivele os olhos pela linha média da tela.",
+              "3. Normalização do brilho: Ajuste o brilho do monitor para valores reais de trabalho (20% a 40%, ~100 a 140 nits). Avaliar o monitor a 100% num quarto escuro falseia a apreciação visual.",
+              "4. Utilização do Screen Tester: Use o [Teste de fuga de luz](/tests/backlight-bleed-test) para avaliar telas pretas e alterne com o [Teste de uniformidade](/tests/uniformity-test) em cinzentos a 5% e 20%. Examine os ângulos de visão com o [Teste de ângulos de visão](/tests/viewing-angle-test) e o nosso [Guia de ângulos de visão](/guides/monitor-viewing-angles-explained)."
+            ],
+            "bullets": [
+              "Elimine a iluminação ambiente para não confundir reflexos na concavidade com defeitos de tela.",
+              "Sente-se à distância focal exata correspondente à curvatura (1000R, 1500R ou 1800R).",
+              "Regule o brilho para 20%–40% (~120 nits) em vez de forçar valores extremos.",
+              "Recorra a telas cinzentas (5% e 20%) para distinguir apertos mecânicos de gradientes gerais."
+            ]
+          },
+          {
+            "title": "Documentação de anomalias e procedimentos de garantia",
+            "content": [
+              "Se a inspeção evidenciar anomalias consistentes com fugas mecânicas, reunir documentação objetiva acelerará o contacto com a loja ou marca:",
+              "Bloqueio manual de exposição: Os telemóveis ativam automaticamente o modo noturno com tempos de exposição longos, fazendo com que qualquer ecrã pareça gravemente danificado. Ative o modo 'Pro' ou manual, defina ISO 100 ou 200 e ajuste o tempo de obturação até a imagem coincidir com o que os seus olhos observam.",
+              "Registo em múltiplos ângulos: Tire uma fotografia geral a partir do ponto focal e uma fotografia próxima perpendicular ao canto suspeito. Se o feixe de luz se mantiver nítido de frente, terá um elemento de prova forte de compressão do aro.",
+              "Garantia vs. Período de devolução: As marcas costumam considerar o brilho angular dentro das tolerâncias aceitáveis. Caso o resultado cause desconforto, recorrer ao prazo inicial de devolução da loja é a solução mais célere. Consulte o nosso [Guia de resolução de problemas](/knowledge-base/troubleshooting)."
+            ],
+            "bullets": [
+              "Ajuste a exposição do telemóvel manualmente para não gerar claridade artificial exagerada.",
+              "Capte fotografias gerais no centro focal e planos de pormenor perpendiculares ao canto.",
+              "O direito de livre resolução na loja costuma ser mais expedito do que processos formais de RMA.",
+              "Consulte o [Guia de resolução de problemas](/knowledge-base/troubleshooting) do Screen Tester."
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "A curvatura do ecrã provoca fugas de luz por si própria?",
+            "answer": "Não. A curvatura em si não é causa de fugas de luz. Estas decorrem de tensões mecânicas ou aperto desajustado do aro. Contudo, a curvatura altera os ângulos de visualização periféricos quando o utilizador se senta fora do ponto focal, tornando o resplendor ótico natural mais percetível aos olhos."
+          },
+          {
+            "question": "Porque parecem os cantos do meu ecrã curvo brilhar quando me sento perto?",
+            "answer": "Ao sentar-se a uma distância inferior ao raio de curvatura especificado (por exemplo, a 50 cm de um ecrã 1800R), o olhar atinge as extremidades sob ângulos oblíquos superiores a 30° ou 45°. Em painéis IPS, isto gera birrefringência angular (IPS glow). Ao recuar para a distância focal recomendada, a visão volta a ser perpendicular e o brilho dissipa-se."
+          },
+          {
+            "question": "Porque usam os monitores de jogos curvos maioritariamente painéis VA em vez de IPS?",
+            "answer": "Os painéis VA têm contrastes nativos muito elevados (3.000:1 a 5.000:1) com pretos profundos e quase nulo resplendor no escuro. Adicionalmente, como os painéis VA sofrem de desvio de gama lateral, curvar o ecrã mantém as extremidades perpendiculares à vista, contendo a perda de saturação perimétrica."
+          },
+          {
+            "question": "Como fotografar fugas de luz sem que a câmara do telemóvel as sobre-exponha?",
+            "answer": "Evite o modo automático da câmara, pois aciona o modo noturno com longa exposição. Ative o modo manual ou 'Pro', selecione ISO 100 ou 200 e diminua o tempo de exposição até a imagem no ecrã do telemóvel corresponder fielmente ao que vê na sala escura."
+          },
+          {
+            "question": "O Screen Tester consegue medir o rácio de contraste físico ou nits do meu monitor?",
+            "answer": "Não. O Screen Tester funciona no navegador e projeta telas de teste digitais geridas pelo sistema operativo. Os navegadores não acedem a sensores óticos nem a colorímetros, sendo incapazes de quantificar nits ou rácios de contraste reais. O utilitário fornece padrões padronizados para inspeção visual humana."
           }
         ]
       }
