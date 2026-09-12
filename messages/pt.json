@@ -4387,6 +4387,187 @@
             "answer": "Não. Navegadores web rodam em um ambiente restrito de segurança e não têm acesso a registradores de baixo nível da GPU ou aos sinais físicos dos cabos. O Screen Tester disponibiliza padrões para verificação visual; as correções devem ser feitas no sistema operacional ou no driver."
           }
         ]
+      },
+      "dead-pixel-vs-stuck-pixel": {
+        "title": "Píxeis mortos vs. píxeis presos: Identificação, normas ISO e garantias",
+        "subtitle": "Classificação técnica de defeitos de ecrã, norma ISO 9241-307, critérios RMA do fabricante e políticas de devolução.",
+        "description": "Compreenda a diferença entre píxeis mortos e presos, as classes de defeitos ISO 9241-307 e como gerir garantias e prazos de devolução comercial.",
+        "directAnswer": "Um píxel morto é um subpíxel ou tríade permanentemente sem alimentação que surge como um ponto preto estático em fundos claros, enquanto um píxel preso permanece energizado como um ponto vermelho, verde ou azul fixo. A deteção de um defeito não garante automaticamente a substituição; a resolução depende das garantias, políticas comerciais e da legislação aplicável.",
+        "whyItMatters": "Saber se uma anomalia é um píxel morto, um subpíxel preso ou sujidade exterior permite documentar o defeito com rigor e escolher a via de resolução adequada. Como as garantias voluntárias, os prazos de devolução e as normas técnicas seguem regras distintas, uma inspeção oportuna evita o termo dos prazos legais.",
+        "whatToLookFor": [
+          "Píxel morto: Ponto preto minúsculo que se mantém escuro em fundos brancos, amarelos ou ciano",
+          "Subpíxel preso: Ponto brilhante persistente a vermelho, verde ou azul visível sobre fundos escuros",
+          "Píxel quente / brilhante: Tríade RGB completa fixa em estado ligado, brilhando a branco sobre preto",
+          "Grupo de defeitos: Múltiplos subpíxeis defeituosos concentrados numa área contígua reduzida",
+          "Variação com o ângulo de visão: Poeira exterior cuja posição relativa aos subpíxeis se move ao deslocar a cabeça",
+          "Distorção de cor mista: Subpíxel inativo que altera a precisão de tons compostos nessa área"
+        ],
+        "howToTest": [
+          "Limpe suavemente a superfície do monitor com um pano de microfibras limpo e seco",
+          "Abra o [Teste de píxeis mortos](/tests/dead-pixel-test) no Screen Tester e alterne ecrãs completos em vermelho, verde, azul, branco e preto",
+          "Examine o painel num padrão em grelha uniforme sob iluminação ambiente suave e sem reflexos",
+          "Execute o [Teste de píxeis presos](/tests/stuck-pixel-test) sobre fundo preto para localizar subpíxeis iluminados",
+          "Observe se a anomalia desaparece ou muda de aspeto ao alternar entre cores primárias",
+          "Anote as coordenadas precisas no ecrã (centro do painel vs. extremidades)",
+          "Se encontrar um ponto colorido preso, utilize o [Reparador de píxeis presos](/tests/stuck-pixel-fixer) para um ciclo de software",
+          "Registe as observações na [Inspeção de monitor novo](/monitor-inspection/new) ou [Inspeção de monitor usado](/monitor-inspection/used)"
+        ],
+        "whatScreenTesterCanObserve": [
+          "Apresentação em ecrã completo de campos cromáticos puros (RGB), branco puro e preto profundo",
+          "Anomalias visuais assinaladas pelo utilizador, mapeamento de coordenadas e notas de inspeção",
+          "Padrões de alternância cromática rápida processados pelo motor de renderização do navegador",
+          "Diferenciação visual entre pontos escuros em fundos claros e pontos brilhantes em fundos escuros",
+          "Comparação das anomalias visuais em múltiplas cores sólidas de teste e resoluções padrão"
+        ],
+        "whatScreenTesterCannotDetermine": [
+          "Continuidade física dos circuitos internos de transístores de película fina (TFT) ou avarias eletrónicas",
+          "Certificação formal de conformidade com as classes de tolerância da norma ISO 9241-307",
+          "Elegibilidade comercial para garantia do fabricante ou autorização de devolução (RMA)",
+          "Elegibilidade de devolução ou troca ao abrigo das políticas particulares do vendedor",
+          "Determinação jurídica de não conformidade ao abrigo da legislação de defesa do consumidor"
+        ],
+        "commonCauses": [
+          "Imperfeições de litografia durante o fabrico da matriz de transístores TFT em sala limpa",
+          "Partículas microscópicas retidas na camada de cristais líquidos durante o fabrico",
+          "Pressão mecânica localizada ou torção no chassis sofrida durante o transporte",
+          "Pistas condutoras de óxido de índio e estanho (ITO) partidas que impedem a alimentação elétrica",
+          "Moléculas de cristal líquido fisicamente bloqueadas numa orientação estática",
+          "Sobrecarga térmica ou eletrostática nos microcircuitos de controlo dos subpíxeis"
+        ],
+        "whatToDoNext": [
+          "Documente a localização e a cor do defeito através de fotografias macro e notas detalhadas",
+          "Verifique em primeiro lugar o prazo de devolução da loja, que costuma ser a opção mais rápida",
+          "Consulte a política de tolerância de píxeis do fabricante para o seu modelo de monitor",
+          "Se for um ponto de cor isolado, experimente o [Reparador de píxeis presos](/tests/stuck-pixel-fixer)",
+          "Consulte o [Guia de resolução de problemas](/knowledge-base/troubleshooting) para passos adicionais"
+        ],
+        "sections": [
+          {
+            "title": "Píxel morto vs. píxel preso: Estrutura técnica fundamental",
+            "content": [
+              "Os ecrãs planos modernos (painéis LCD IPS, VA, TN e matrizes OLED) são formados por milhões de elementos individuais. Nos painéis LCD, cada píxel contém três subpíxeis (vermelho, verde e azul) controlados por transístores de película fina (TFT) que regulam a passagem de luz dos cristais líquidos.",
+              "Um píxel morto ocorre quando o mecanismo de controlo fica sem energia elétrica. Em ecrãs tipicamente 'normally black', um subpíxel sem corrente bloqueia a luz, formando um ponto escuro permanente sobre fundos brancos ou claros.",
+              "Um píxel preso acontece quando um ou mais subpíxeis permanecem fixos em posição aberta, deixando passar luz continuamente através do filtro de cor. Isto manifesta-se como um ponto brilhante vermelho, verde ou azul sobre fundos escuros.",
+              "Os navegadores web permitem projetar telas coloridas para testar estes estados, mas operam apenas ao nível do software. Uma ferramenta web não consegue medir tensões internas de transístores nem determinar avarias elétricas microscópicas."
+            ],
+            "bullets": [
+              "Píxel morto: Subpíxel desenergizado; surge escuro em fundos claros.",
+              "Píxel preso: Subpíxel fixo na passagem de luz; brilha a vermelho, verde ou azul sobre preto.",
+              "Píxel quente (Hot pixel): Tríade RGB completa ligada em permanência, brilhando a branco.",
+              "Limite do teste web: Permite a inspeção visual, mas não a medição eletrónica de circuitos."
+            ]
+          },
+          {
+            "title": "O que é a norma ISO 9241-307: Um quadro técnico de classificação",
+            "content": [
+              "Para padronizar a terminologia de engenharia e os métodos de medição na indústria de ecrãs, a Organização Internacional de Normalização estabeleceu normas técnicas, nomeadamente a ISO 13406-2 e a sua sucessora ISO 9241-307.",
+              "A norma ISO 9241-307 classifica os defeitos em categorias técnicas: Tipo 1 (píxeis continuamente brilhantes), Tipo 2 (píxeis continuamente escuros) e Tipo 3 (subpíxeis defeituosos com comportamento anómalo).",
+              "Define classes teóricas de qualidade de painel (Classe 0, Classe I, Classe II, Classe III) que estabelecem limites de defeitos permitidos por milhão de píxeis físicos. A Classe 0 exige zero defeitos, enquanto as Classes I e II preveem margens de tolerância.",
+              "É essencial sublinhar que a norma ISO 9241-307 é uma referência técnica de engenharia para a indústria, e não um contrato de venda com o consumidor."
+            ]
+          },
+          {
+            "title": "Norma ISO ≠ Substituição ou reembolso automático",
+            "content": [
+              "Um equívoco comum consiste em assumir que a presença de um defeito de píxel confere automaticamente o direito legal à substituição imediata ou à devolução do dinheiro.",
+              "Uma norma técnica internacional não tem força regulamentar direta sobre contratos comerciais. A constatação de um defeito de píxel NÃO obriga automaticamente o fabricante a substituir o aparelho nem o vendedor a devolver o valor.",
+              "Os fabricantes podem indicar classes ISO nas fichas técnicas, mas as garantias regem-se pelas cláusulas da garantia comercial escrita. A resolução assenta em quatro vertentes: garantia do fabricante, política da loja, contrato de compra e legislação do consumidor."
+            ]
+          },
+          {
+            "title": "Garantia do fabricante e condições RMA",
+            "content": [
+              "As garantias voluntárias do fabricante representam compromissos assumidos pela marca quanto a reparação ou substituição durante um período definido.",
+              "As políticas de autorização de devolução de mercadoria (RMA) variam substancialmente consoante o fabricante, a gama do produto e a região geográfica. Determinados monitores profissionais ou de gaming incluem garantias de 'Zero Píxeis Brilhantes', ao passo que os modelos comuns admitem alguns subpíxeis defeituosos.",
+              "Antes de abrir um processo, confirme: modelo exato, número de série, fatura de compra e a tabela de tolerância de píxeis do fabricante (distinção entre pontos claros, escuros ou áreas centrais).",
+              "Consulte sempre a documentação oficial da marca válida para o seu país."
+            ]
+          },
+          {
+            "title": "Políticas de devolução e troca do vendedor",
+            "content": [
+              "Em muitos casos, o prazo de devolução ou livre resolução oferecido pela loja é a via mais simples e rápida para resolver insatisfações com o ecrã.",
+              "Os comerciantes costumam disponibilizar um período de devolução ou troca após a entrega. Durante este intervalo, é frequentemente possível devolver o monitor sem necessidade de demonstrar que o defeito atinge os limites da garantia do fabricante.",
+              "Verifique: datas limite exatas, condições da embalagem original, eventuais taxas de recondicionamento e inclusão de todos os acessórios.",
+              "Como estes prazos têm datas estritas, inspecione o monitor logo após a sua receção."
+            ]
+          },
+          {
+            "title": "Direitos do consumidor e legislação aplicável",
+            "content": [
+              "Além das garantias voluntárias do fabricante e das políticas da loja, as compras estão abrangidas pelas leis de proteção do consumidor de cada jurisdição.",
+              "Em vários países existem garantias legais de conformidade que obrigam o vendedor a fornecer bens conformes com o contrato. A consideração de um píxel defeituoso como falta de conformidade legal depende dos critérios jurídicos locais.",
+              "O Screen Tester é uma ferramenta informativa e não presta aconselhamento jurídico. Em caso de litígio, consulte as entidades oficiais de apoio ao consumidor da sua localidade."
+            ]
+          },
+          {
+            "title": "Como o Screen Tester ajuda a documentar defeitos",
+            "content": [
+              "O Screen Tester oferece um ambiente web acessível para identificar, classificar e documentar anomalias visuais em qualquer monitor.",
+              "Através do [Teste de píxeis mortos](/tests/dead-pixel-test) e do [Teste de píxeis presos](/tests/stuck-pixel-test), projeta cores puras em ecrã completo para apurar se a falha afeta um subpíxel individual ou o píxel completo.",
+              "Os fluxos de [Inspeção de monitor novo](/monitor-inspection/new) e [Inspeção de monitor usado](/monitor-inspection/used) facilitam o registo de coordenadas e notas. Para subpíxeis presos, o [Reparador de píxeis presos](/tests/stuck-pixel-fixer) proporciona uma rotina de alternância de cores rápida.",
+              "O Screen Tester demarca claramente a sua função: apoia na observação visual, mas não emite certificações ISO nem pareceres jurídicos."
+            ]
+          },
+          {
+            "title": "Lista de verificação para documentação e contacto",
+            "content": [
+              "Para facilitar qualquer contacto com o comerciante ou o apoio técnico, reúna as seguintes informações:",
+              "1. Dados do dispositivo: Modelo exato e número de série (guarde o número de série em privado, não o publique em fóruns abertos).",
+              "2. Comprovativos de compra: Fatura, número da encomenda e guia de remessa.",
+              "3. Prazos: Data limite de devolução da loja e duração da garantia do fabricante.",
+              "4. Condições do teste: Data, iluminação do espaço e resolução do ecrã.",
+              "5. Mapeamento de cores: Lista de cores onde o defeito se torna visível e daquelas onde passa despercebido.",
+              "6. Registo fotográfico: Fotografias macro focadas do defeito acompanhadas de uma foto geral do ecrã para localizar a posição."
+            ]
+          },
+          {
+            "title": "O que fazer após detetar um píxel com anomalia",
+            "content": [
+              "Avalie as suas observações de acordo com os seguintes critérios:",
+              "• Normal (Looks normal): Painel uniforme sem pontos escuros ou subpíxeis acesos em nenhuma das cores de teste.",
+              "• Requer atenção (Needs attention): Foi confirmado um defeito contínuo que deve ser documentado e confrontado com as políticas aplicáveis.",
+              "• Incerto (Unsure): Ponto duvidoso que muda de posição conforme o ângulo (suspeita de poeira exterior). Limpe suavemente e repita.",
+              "Passos recomendados: Verifique primeiro a política de devolução da loja. Se já tiver expirado, consulte os termos de RMA do fabricante."
+            ]
+          },
+          {
+            "title": "Mitos e erros frequentes sobre píxeis defeituosos",
+            "content": [
+              "Erro 1: 'Um único píxel morto dá sempre direito a troca.' Realidade: A maioria das garantias padrão exige um número mínimo de defeitos.",
+              "Erro 2: 'A norma ISO garante um reembolso automático.' Realidade: A ISO 9241-307 é um padrão técnico de medição, não uma lei de consumo.",
+              "Erro 3: 'Qualquer píxel preso pode ser reparado por software.' Realidade: O [Reparador de píxeis presos](/tests/stuck-pixel-fixer) pode ajudar, mas danos físicos no transístor não têm solução por software.",
+              "Erro 4: 'Uma captura de ecrã prova a anomalia.' Realidade: As capturas guardam a memória gráfica intacta; é necessária uma fotografia exterior com câmara.",
+              "Erro 5: 'A garantia do fabricante e a política da loja são idênticas.' Realidade: As lojas oferecem períodos de devolução próprios e independentes dos critérios técnicos da marca."
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "Ter um único píxel morto dá-me direito a substituição imediata?",
+            "answer": "Não necessariamente pela garantia do fabricante, a menos que o modelo inclua uma garantia explícita de 'Zero Píxeis Brilhantes'. No entanto, dentro do prazo de devolução ou livre resolução da loja, é normalmente possível efetuar a troca ou devolução."
+          },
+          {
+            "question": "Qual é a diferença entre um píxel preso e um píxel morto?",
+            "answer": "Um píxel morto não recebe alimentação elétrica e fica escuro sobre fundos claros. Um subpíxel preso permanece bloqueado na passagem de luz e brilha a vermelho, verde ou azul sobre fundos escuros."
+          },
+          {
+            "question": "Ferramentas como o Reparador de píxeis podem danificar o ecrã?",
+            "answer": "Não. O [Reparador de píxeis presos](/tests/stuck-pixel-fixer) apenas alterna sequências normais de cores sem alterar voltagens. Pessoas com sensibilidade a luzes intermitentes devem evitar olhar diretamente durante o processo."
+          },
+          {
+            "question": "Por que razão um píxel morto não surge numa captura de ecrã?",
+            "answer": "A captura de ecrã regista a imagem digital da placa gráfica, que está perfeita. O defeito no píxel é físico no painel, pelo que deve ser fotografado com um telemóvel ou câmara."
+          },
+          {
+            "question": "Qual é a diferença entre a norma ISO 9241-307 e uma garantia de fabricante?",
+            "answer": "A ISO 9241-307 é uma norma técnica que define metodologias de medição e classes teóricas. A garantia do fabricante é um acordo contratual comercial que estabelece as condições de reparação e troca."
+          },
+          {
+            "question": "Devo contactar primeiro a loja ou o fabricante após detetar um defeito?",
+            "answer": "Consulte primeiro o prazo de devolução da loja. Se estiver dentro do período, a resolução com o comerciante costuma ser mais rápida. Terminado esse prazo, recorra aos termos de garantia do fabricante."
+          }
+        ]
       }
     }
   },

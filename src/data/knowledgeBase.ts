@@ -688,75 +688,193 @@ export const KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
   {
     slug: "dead-pixel-vs-stuck-pixel",
     category: "display-problems",
-    title: "Dead Pixels vs. Stuck Pixels: Identification & Repair Limits",
-    subtitle: "Transistor failure, subpixel color stagnation, ISO 9241-307 standards, and flashing tools.",
-    description: "Learn the difference between a permanently dead pixel and a stuck subpixel, how to inspect your screen for defective pixels, and what software tools can realistically achieve.",
-    directAnswer: "A dead pixel is a permanently unpowered pixel that appears as a persistent black dot on light backgrounds, while a stuck pixel has one or more subpixels locked open, glowing brightly as a red, green, or blue dot on dark backgrounds.",
-    whyItMatters: "Display warranties classify pixel defects strictly according to international standards (ISO 9241-307). Knowing whether a flaw is a dead pixel or a stuck subpixel determines whether software cycling tools can revive it and whether your manufacturer will replace the unit.",
+    title: "Dead Pixels vs. Stuck Pixels: Identification, ISO Standards & Warranty Policies",
+    subtitle: "Understanding pixel defect classifications, ISO 9241-307 benchmarks, manufacturer warranty thresholds, and retailer return policies.",
+    description: "Learn the difference between dead and stuck pixels, understand ISO 9241-307 technical defect classes, and navigate manufacturer warranty RMA terms vs. retailer return windows.",
+    directAnswer: "A dead pixel is a permanently unpowered subpixel or triad appearing as a static black dot on light backgrounds, whereas a stuck pixel remains energized as a fixed red, green, or blue dot. Detecting a pixel defect does not automatically guarantee a replacement; warranty coverage depends on manufacturer defect thresholds, retailer return policies, and applicable consumer laws.",
+    whyItMatters: "Understanding whether an anomaly is a dead pixel, a stuck subpixel, or surface debris helps you document defects accurately and choose the appropriate course of action. Because voluntary manufacturer warranties, retailer return periods, and technical standards operate under fundamentally different rules, clear visual documentation prevents premature RMA claims and ensures you act before return deadlines expire.",
     whatToLookFor: [
-      "Dead pixel: A microscopic black square that remains black even on pure white, yellow, or cyan backgrounds",
-      "Stuck pixel: A tiny red, green, or blue dot that glows intensely against black and dark gray screens",
-      "Hot / Bright pixel: An entire pixel triad stuck in the fully energized white state on a black screen",
-      "Surface debris / dust: Specks that shift position relative to pixels when you change your viewing angle"
-    ],
+      "Dead pixel: A microscopic black dot that remains black across white, cyan, magenta, and yellow backgrounds",
+      "Stuck subpixel: A persistent bright red, green, or blue dot visible against black or contrasting dark screens",
+      "Hot / Bright pixel: An entire pixel triad locked in a fully energized state, glowing pure white on black backgrounds",
+      "Defect cluster: Multiple dead or stuck subpixels concentrated within a tight grouping of adjacent pixels",
+      "Viewing angle variation: Surface dust or lint that shifts position relative to subpixels when you move your head",
+      "Subpixel color tinting: A partially defective pixel where one subpixel is unpowered, altering mixed color accuracy"
+],
     howToTest: [
-      "Thoroughly clean your monitor surface with a clean microfiber cloth to eliminate dust specks",
-      "Launch the Dead Pixel Test in Screen Tester and toggle full-screen solid Red, Green, Blue, White, and Black backgrounds",
-      "Carefully scan the panel in a grid pattern to locate defective subpixels and mark their coordinates"
-    ],
+      "Gently clean the display surface with a clean, dry microfiber cloth to eliminate external dust specks",
+      "Launch the [Dead Pixel Test](/tests/dead-pixel-test) in Screen Tester and cycle through full-screen solid Red, Green, Blue, White, and Black backgrounds",
+      "Inspect the screen systematically in a steady grid pattern under moderate, glare-free ambient room lighting",
+      "Launch the [Stuck Pixel Test](/tests/stuck-pixel-test) against pure black and dark gray backgrounds to locate illuminated subpixels",
+      "Observe whether the anomaly vanishes or changes appearance when transitioning between primary color screens",
+      "Note the precise screen coordinates and check whether the defect sits centrally or along peripheral edges",
+      "For suspected stuck pixels, run the [Stuck Pixel Fixer](/tests/stuck-pixel-fixer) for a non-invasive color-cycling trial",
+      "Document your findings within the [New Monitor Inspection](/monitor-inspection/new) or [Used Monitor Inspection](/monitor-inspection/used) checklist"
+],
     whatScreenTesterCanObserve: [
-      "Rendering of pure full-screen chromatic fields (RGB), pure white, and pure black",
-      "User marking of observed defect coordinates and classification on the inspection grid",
-      "High-frequency color cycling routines via the Stuck Pixel Fixer tool"
-    ],
+      "Rendering of calibrated full-screen pure chromatic fields (Red, Green, Blue), solid white, and deep black",
+      "User-reported visual anomalies, coordinate mapping, and documented defect notes during testing sessions",
+      "Rapid RGB and high-contrast color cycling patterns delivered through the browser display canvas",
+      "Visual distinction between defects that appear dark on white fields versus those illuminated on dark fields",
+      "Comparative appearance of visual artifacts across standard solid test hues and desktop resolutions"
+],
     whatScreenTesterCannotDetermine: [
-      "Physical subpixel electrical circuit continuity (transistor gate burnout vs. trace fracture)",
-      "Microscopic optical inspection of color filter alignment without a magnifying loupe",
-      "Guaranteed mechanical or thermal revival of physically damaged subpixels"
-    ],
+      "Physical silicon Thin-Film Transistor (TFT) circuit continuity or internal gate dielectric breakdown",
+      "Formal compliance with ISO 9241-307 display defect classifications or laboratory optical tolerances",
+      "Commercial manufacturer warranty or RMA replacement eligibility for any specific display unit",
+      "Retailer return or exchange policy eligibility, return window status, or restocking fee determinations",
+      "Statutory consumer protection rights, legal merchantability defect thresholds, or warranty dispute outcomes"
+],
     commonCauses: [
-      "Thin-Film Transistor (TFT) manufacturing defects during cleanroom lithography",
-      "Liquid crystal material contamination or physical bonding failure at the subpixel well",
-      "Physical impact, localized pressure, or flex damage to the glass substrate during transit",
-      "Electrostatic discharge (ESD) during assembly or power supply surge"
-    ],
+      "Semiconductor lithography flaws during cleanroom Thin-Film Transistor (TFT) array fabrication",
+      "Microscopic particulate contamination within the liquid crystal layer during substrate bonding",
+      "Physical impact, localized mechanical pressure, or frame torsional stress sustained during shipping",
+      "Broken or open-circuit indium tin oxide (ITO) signal traces depriving subpixels of control voltage",
+      "Liquid crystal molecules physically trapped or anchored in a static orientation within the subpixel cell",
+      "Thermal or electrical overstress damaging microscopic driver circuits or subpixel electrode junctions"
+],
     whatToDoNext: [
-      "If you identify a stuck (colored) pixel, run the Stuck Pixel Fixer over the affected zone for 15–30 minutes",
-      "If the pixel is dead (black), software flashing cannot fix it; check your manufacturer's ISO 9241-307 warranty policy",
-      "If within the 14-to-30-day retailer return window, consider an exchange if the defect is centrally located"
-    ],
+      "Document the exact location and color appearance of the anomaly using macro camera photos and inspection notes",
+      "Check your retailer's initial return or exchange policy deadline, which often provides the most flexible remedy",
+      "Locate your display model's official manufacturer warranty document and review its specific pixel defect policy",
+      "If dealing with an isolated colored dot, run the [Stuck Pixel Fixer](/tests/stuck-pixel-fixer) for an initial software cycle",
+      "Consult the [Troubleshooting Guide](/knowledge-base/troubleshooting) for additional steps before contacting support"
+],
     sections: [
       {
-        title: "Dead vs. Stuck: The Technical Difference",
-        content: [
-          "In modern Active-Matrix LCDs (TFT), each pixel consists of three subpixels (Red, Green, Blue) driven by microscopic transistors.",
-          "When a transistor fails completely and delivers no voltage, the liquid crystal blocks light (or passes light, depending on whether it is normally black or normally white). On typical modern panels, a dead pixel receives no power and stays black.",
-          "A stuck pixel occurs when the liquid crystal remains locked in an energized state, allowing continuous light through one color filter. Because the transistor is still delivering charge, rapid color cycling can sometimes shock the liquid crystal back into normal mobility."
-        ]
+            "title": "Dead Pixel vs. Stuck Pixel: Quick Technical Recap",
+            "content": [
+                  "Modern flat-panel displays—whether IPS, VA, TN LCDs, or OLED matrices—are composed of millions of microscopic picture elements. In standard LCD panels, each pixel consists of three independent subpixels (Red, Green, and Blue) controlled by dedicated Thin-Film Transistors (TFTs) that modulate liquid crystal alignment to regulate light transmission from the backlight.",
+                  "A dead pixel occurs when the subpixel control mechanism loses electrical power entirely. In typical normally black liquid crystal configurations, an unpowered subpixel cannot pass light, rendering it as a permanent dark spot. If all three subpixels in a triad fail, the entire pixel appears as a persistent black dot against bright backgrounds like white, yellow, or cyan.",
+                  "A stuck pixel occurs when one or more subpixels remain locked in an energized state, allowing continuous illumination through its color filter. This produces a persistent red, green, or blue dot that glows conspicuously against dark or black backgrounds. In OLED displays, where each subpixel emits its own light, an unpowered organic diode remains completely dark, while an electrically shorted diode may glow continuously.",
+                  "Web browsers render color canvases to test these states, but a browser operates purely at the application rendering level. Browser tests cannot probe the underlying silicon or determine the exact internal electrical failure mode of a subpixel."
+            ],
+            "bullets": [
+                  "Dead pixel: Permanently unpowered subpixel or triad; appears dark on light test screens.",
+                  "Stuck pixel: Subpixel locked in open transmission or emission; glows red, green, or blue on dark screens.",
+                  "Bright / Hot pixel: Entire RGB triad locked fully on, appearing as a bright white dot on black backgrounds.",
+                  "Browser testing boundary: Web tools expose visual manifestations but cannot test transistor circuitry."
+            ]
       },
       {
-        title: "ISO 9241-307 Defect Classes",
-        content: [
-          "Most consumer monitors are sold under ISO 9241-307 Class II standards. Under Class II, manufacturers allow up to 2 permanently bright pixels, 2 permanently dark pixels, and up to 5 defective subpixels per million pixels before considering the panel defective.",
-          "On a 4K display (8.3 million pixels), manufacturer warranty policies may permit over 15 defective subpixels before approving a warranty return."
-        ]
+            "title": "What ISO 9241-307 Is: A Technical Classification Framework",
+            "content": [
+                  "To establish uniform engineering terminology and measurement criteria across the display manufacturing industry, the International Organization for Standardization developed standards for electronic visual displays, notably ISO 13406-2 and its updated successor ISO 9241-307 (part of the broader ergonomics of human-system interaction series).",
+                  "ISO 9241-307 establishes technical methods for measuring, categorizing, and quantifying visual display imperfections. Within the standard, pixel defects are categorized into distinct types: Type 1 (continuously bright pixels locked in maximum luminance), Type 2 (continuously dark pixels showing zero luminance), and Type 3 (defective subpixels showing fixed chromatic behavior or partial luminous states).",
+                  "The standard establishes theoretical panel classification levels (such as Class 0, Class I, Class II, and Class III), which define mathematical limits on allowable defect densities per million physical pixels. For instance, a Class 0 specification denotes a zero-defect standard across all types, whereas Class I and Class II specify tiered allowances for dark, bright, and subpixel defects across defined pixel counts.",
+                  "Crucially, ISO 9241-307 is an engineering and quality categorization benchmark. It provides a standardized technical language for measuring displays under laboratory conditions; it does not automatically constitute a retail consumer contract."
+            ]
+      },
+      {
+            "title": "ISO Standard ≠ Automatic Replacement or Refund",
+            "content": [
+                  "A widespread misconception among computer monitor buyers is that discovering a pixel defect that falls outside an ISO defect class automatically entitles the user to an immediate replacement or full cash refund.",
+                  "An international technical standard like ISO 9241-307 does not have independent regulatory force over commercial transactions. Finding a pixel anomaly does NOT automatically mean that a manufacturer is legally mandated to replace the display, that a retailer must issue a refund, or that the display is legally categorized as defective in your jurisdiction.",
+                  "Manufacturers may reference ISO defect classes in their technical specification sheets to benchmark expected production yields, but warranty eligibility is governed by the specific terms of the manufacturer's written warranty agreement. Unless an applicable consumer protection law or an express warranty clause explicitly binds the transaction to ISO thresholds, ISO numbers cannot be used to force an RMA approval.",
+                  "Commercial resolution depends entirely on the intersection of four separate mechanisms: manufacturer warranty terms, retailer exchange policies, purchase contracts, and applicable statutory consumer rights."
+            ]
+      },
+      {
+            "title": "Manufacturer Warranty & RMA Policies",
+            "content": [
+                  "Voluntary manufacturer warranties represent contractual promises made by the hardware vendor regarding repair, replacement, or service coverage during a specified post-purchase timeframe.",
+                  "When evaluating pixel defects under a manufacturer warranty, hardware vendors publish proprietary Return Merchandise Authorization (RMA) policies. These policies vary substantially across different manufacturers, product lines, and geographic regions. For example, gaming or professional graphic design monitors may include a 'Zero Bright Dot' (ZBD) warranty for an initial period, whereas standard consumer displays from the same brand may permit several dark or subpixel defects before qualifying for service.",
+                  "Before opening a warranty claim, users must verify their exact monitor model code, regional warranty terms, proof of purchase date, and the manufacturer's specific pixel criteria. These criteria frequently distinguish between bright dots (which are visually distracting on dark content) and dark dots, and often specify whether defects must occur within the central viewing area or within a defined millimeter cluster to qualify for replacement.",
+                  "Always consult your manufacturer's official customer support portal for the exact policy document applicable to your region and product tier."
+            ]
+      },
+      {
+            "title": "Retailer Return & Exchange Policies",
+            "content": [
+                  "In many consumer purchasing scenarios, the selling retailer's return or exchange policy offers a faster and more flexible resolution than navigating a manufacturer warranty RMA procedure.",
+                  "Retailers frequently provide a return or satisfaction exchange window following product delivery or purchase. During this initial timeframe, consumers can often return or exchange a monitor that does not meet visual expectations, regardless of whether the observed pixel defect meets the manufacturer's strict technical RMA threshold.",
+                  "However, retailer policies are established independently by each seller and differ widely. Users must verify: the exact return window deadline, whether opened-box hardware incurs restocking fees, whether original packaging and bundled accessories are required in pristine condition, and whether the seller applies specialized inspection rules for high-value displays.",
+                  "Because retailer return windows are strictly limited by calendar dates, inspecting your monitor immediately upon unboxing is critical to preserving your exchange options."
+            ]
+      },
+      {
+            "title": "Statutory Consumer Rights & Applicable Law",
+            "content": [
+                  "In addition to voluntary manufacturer warranties and discretionary retailer return policies, consumer transactions are subject to statutory consumer protection laws enacted by local, state, or national governments.",
+                  "In many jurisdictions, statutory guarantees establish legal baselines regarding product conformity, fitness for purpose, and merchantable quality. Under these legal frameworks, a buyer may hold statutory remedies against the seller or manufacturer if a product exhibits significant non-conformity, independent of what a voluntary warranty document states.",
+                  "However, consumer protection statutes vary dramatically across global jurisdictions. Specific legal outcomes depend on purchase contracts, commercial vs. individual consumer status, product price points, and judicial definitions of material defect.",
+                  "Screen Tester is an informational technical utility and does not provide legal counsel. If you face an unresolved dispute regarding a defective display, consult the official consumer protection agency, ombudsman, or qualified legal authority in your jurisdiction."
+            ]
+      },
+      {
+            "title": "How Screen Tester Helps Document Pixel Defects",
+            "content": [
+                  "Screen Tester provides a dedicated, accessible browser environment designed to help users detect, classify, and document visual pixel anomalies across all display types.",
+                  "Using the [Dead Pixel Test](/tests/dead-pixel-test) and [Stuck Pixel Test](/tests/stuck-pixel-test), you can cycle through pure red, green, blue, cyan, magenta, yellow, white, and black canvases. Inspecting alternating contrasting hues allows you to isolate whether an observed anomaly is an unpowered subpixel (dead), a locked subpixel (stuck), or an entire pixel triad defect.",
+                  "Furthermore, our structured [New Monitor Inspection](/monitor-inspection/new) and [Used Monitor Inspection](/monitor-inspection/used) workflows enable users to systematically record defect coordinates, compile visual notes, and assemble observation summaries during return evaluation windows. If a stuck subpixel is identified, the [Stuck Pixel Fixer](/tests/stuck-pixel-fixer) provides a non-destructive color-cycling pattern to test whether rapid state transitions can restore liquid crystal mobility.",
+                  "Screen Tester transparently delineates its role: the platform assists in observation and documentation, but does not certify ISO compliance, validate warranty eligibility, or issue legal determinations."
+            ]
+      },
+      {
+            "title": "Evidence & Documentation Checklist",
+            "content": [
+                  "If you detect a persistent pixel defect and intend to contact your retailer or manufacturer, having organized, objective documentation substantially accelerates claim review. Prepare the following documentation:",
+                  "1. Display Identifiers: Note the exact product model number, hardware revision, and serial number (record serial numbers privately for your claim; do not post serial numbers on public web forums).",
+                  "2. Purchase Verification: Preserve your retail purchase receipt, digital invoice, delivery tracking confirmation, and transaction date.",
+                  "3. Policy Tracking: Bookmark your retailer's return window deadline and your manufacturer's specific pixel defect policy document for your model and region.",
+                  "4. Inspection Log: Record the test date, room lighting conditions, display resolution, and whether the defect is located centrally or near the bezel.",
+                  "5. Color Mapping: Document exactly which solid color backgrounds reveal the defect and which colors render it invisible.",
+                  "6. Photographic Evidence: Take clear, focused macro photographs using a smartphone or digital camera showing the defect against solid backgrounds, complemented by a wider photograph showing the entire screen frame to establish the relative defect position."
+            ]
+      },
+      {
+            "title": "What To Do After Finding a Pixel Defect: Decision Model",
+            "content": [
+                  "When inspecting your display with Screen Tester, apply our standardized decision vocabulary to interpret your observations:",
+                  "• Looks normal: The panel demonstrates uniform color response across all solid RGB, white, and black test fields. No persistent dark dots or illuminated subpixels are observed.",
+                  "• Needs attention: A persistent dark spot, bright dot, or stuck subpixel is repeatedly visible across one or more test fields. The defect should be documented and evaluated against return or warranty policies.",
+                  "• Unsure: A faint speck or visual anomaly is visible, but shifts position when viewed from an angle or resembles external dust or glass smudge. Clean the screen surface carefully with a dry microfiber cloth and retest.",
+                  "If you confirm a persistent defect, proceed with this structured workflow: First, verify whether your purchase is within the retailer's return or exchange window, as this generally offers the simplest remedy. Second, if outside the return window, consult the manufacturer warranty terms to determine whether the defect count and placement meet RMA criteria. Third, submit your organized photographic documentation to the appropriate customer service channel."
+            ]
+      },
+      {
+            "title": "Common Misunderstandings About Pixel Defects",
+            "content": [
+                  "Addressing common misconceptions helps buyers avoid frustration and make realistic decisions when evaluating screen flaws:",
+                  "Misconception 1: 'A single dead pixel always guarantees an automatic replacement.' Reality: Unless the monitor was purchased with an explicit zero-defect policy or returned within an unconditional retailer return window, most standard manufacturer warranties require multiple defects before approving an RMA.",
+                  "Misconception 2: 'ISO standards grant an automatic legal right to a refund.' Reality: ISO 9241-307 is an international technical measurement framework, not an automatically enforceable consumer sales law.",
+                  "Misconception 3: 'Any stuck pixel can be permanently fixed with software tools.' Reality: Rapid color cycling tools like the [Stuck Pixel Fixer](/tests/stuck-pixel-fixer) can sometimes unstick liquid crystals, but physical transistor damage or open circuits cannot be repaired via software.",
+                  "Misconception 4: 'A software screenshot proves my pixel defect to customer support.' Reality: Operating system screenshots capture the internal graphics framebuffer, which contains clean data. Physical panel flaws can only be captured using an external physical camera.",
+                  "Misconception 5: 'Manufacturer warranty policies and retailer return rules are identical.' Reality: Retailers operate commercial return windows independent of manufacturer warranty terms. A monitor not eligible for warranty replacement may still be fully eligible for a retailer return if within the return window."
+            ]
       }
-    ],
+],
     faq: [
       {
-        question: "Can rubbing or applying pressure to a stuck pixel fix it?",
-        answer: "Applying physical pressure with a stylus or cloth is risky and strongly discouraged. It can crack the brittle indium tin oxide (ITO) electrodes or damage neighboring subpixels, turning a single stuck dot into permanent spiderweb damage."
+            "question": "Does having a single dead pixel entitle me to an immediate replacement?",
+            "answer": "Not necessarily under a manufacturer warranty. Most standard manufacturer warranties permit a small number of subpixel defects before qualifying for RMA service, unless the display carries an explicit 'Zero Bright Dot' guarantee. However, if you are within your retailer's initial return or exchange window, you may be eligible to exchange or return the display under their customer satisfaction policy."
       },
       {
-        question: "Can a dead pixel spread to other pixels?",
-        answer: "No. Individual pixels are electrically isolated in discrete transistor wells. A single dead pixel cannot 'infect' or spread to neighboring pixels unless the display suffers progressive liquid ingress or physical impact damage."
+            "question": "What is the difference between a stuck pixel and a dead pixel?",
+            "answer": "A dead pixel occurs when a subpixel receives no electrical power and remains permanently dark against bright backgrounds. A stuck pixel occurs when a subpixel remains locked in an energized state, continuously transmitting light and glowing red, green, or blue against dark backgrounds."
+      },
+      {
+            "question": "Can software tools like the Stuck Pixel Fixer damage my monitor?",
+            "answer": "No. The [Stuck Pixel Fixer](/tests/stuck-pixel-fixer) simply displays rapid fullscreen color cycling patterns using standard web graphics. It does not alter hardware voltages or overclock panel components. However, individuals sensitive to flashing lights or visual triggers should look away while the pattern is active."
+      },
+      {
+            "question": "Why doesn't a computer screenshot show my dead pixel?",
+            "answer": "A screenshot captures the digital image rendered in GPU memory before it is sent across the video cable to your monitor. Because the dead pixel is a physical defect in the panel hardware, it does not exist in the digital framebuffer and will not appear in a software screenshot. You must take a photograph with a smartphone or camera."
+      },
+      {
+            "question": "What is the difference between an ISO 9241-307 defect class and a manufacturer warranty?",
+            "answer": "ISO 9241-307 is an international engineering standard that defines measurement methodologies and theoretical defect categories for visual displays. A manufacturer warranty is a separate, legally binding commercial agreement between the hardware vendor and the buyer that defines specific warranty service terms and RMA eligibility criteria."
+      },
+      {
+            "question": "Should I contact the retailer or the manufacturer first after discovering a pixel defect?",
+            "answer": "Check your retailer return window first. If you are still within the retailer's initial return or exchange period, contacting the seller is typically the fastest and most flexible option. If the retailer return window has expired, review your manufacturer's warranty terms to see if your defect qualifies for an RMA claim."
       }
-    ],
-    relatedTestIds: ["dead-pixel-test", "stuck-pixel-test", "bright-pixel-test", "stuck-pixel-fixer"],
+],
+    relatedTestIds: ["dead-pixel-test", "stuck-pixel-test", "stuck-pixel-fixer"],
     relatedTroubleshootingIds: ["dead-stuck-bright-pixel"],
     relatedArticleSlugs: ["oled-burn-in-and-image-retention", "display-uniformity"],
-    primarySearchIntent: "dead pixel vs stuck pixel test and fix",
-    readingTimeMinutes: 6
+    primarySearchIntent: "dead pixel vs stuck pixel ISO warranty and return policy",
+    readingTimeMinutes: 10
   },
   {
     slug: "backlight-bleed-vs-ips-glow",

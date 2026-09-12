@@ -4387,6 +4387,187 @@
             "answer": "No. Los navegadores web funcionan en un entorno restringido que no permite leer registros internos de la tarjeta gráfica ni el barrido del cable. Screen Tester ofrece patrones visuales de comprobación; los ajustes deben aplicarse en el sistema operativo o en el controlador."
           }
         ]
+      },
+      "dead-pixel-vs-stuck-pixel": {
+        "title": "Píxeles muertos vs. atascados: Identificación, normas ISO y garantías",
+        "subtitle": "Clasificación técnica de defectos de píxeles, estándar ISO 9241-307, RMA del fabricante y políticas de devolución.",
+        "description": "Comprenda la diferencia entre píxeles muertos y atascados, las clases de defectos ISO 9241-307 y cómo gestionar garantías y devoluciones comerciales.",
+        "directAnswer": "Un píxel muerto es un subpíxel o tríada permanentemente sin energía que se muestra como un punto negro estático en fondos claros, mientras que un píxel atascado permanece encendido como un punto rojo, verde o azul fijo. Detectar un defecto no garantiza automáticamente un reemplazo; la resolución depende de las garantías, políticas comerciales y legislación aplicable.",
+        "whyItMatters": "Saber si una anomalía es un píxel muerto, un subpíxel atascado o suciedad superficial permite documentar el defecto con rigor y elegir la vía de solución adecuada. Dado que las garantías voluntarias, los plazos de devolución y las normas técnicas operan bajo criterios distintos, documentar el panel a tiempo evita reclamaciones fallidas.",
+        "whatToLookFor": [
+          "Píxel muerto: Diminuto punto negro que permanece oscuro en fondos blancos, amarillos o cian",
+          "Subpíxel atascado: Punto brillante persistente en color rojo, verde o azul visible sobre fondos oscuros",
+          "Píxel brillante / caliente: Tríada de píxeles completa bloqueada en estado encendido, brillando en blanco sobre negro",
+          "Grupo de defectos: Múltiples subpíxeles defectuosos concentrados en un área reducida de píxeles contiguos",
+          "Variación de ángulo de visión: Polvo o motas exteriores cuya posición se desplaza al mover la cabeza",
+          "Alteración de tonalidad: Subpíxel inactivo que altera la fidelidad de colores compuestos en esa zona"
+        ],
+        "howToTest": [
+          "Limpie suavemente la pantalla con un paño de microfibra limpio y seco para descartar motas de polvo",
+          "Abra el [Test de píxeles muertos](/tests/dead-pixel-test) en Screen Tester y alterne pantallas completas en rojo, verde, azul, blanco y negro",
+          "Examine el panel con un patrón en cuadrícula constante bajo luz ambiental suave y sin reflejos",
+          "Ejecute el [Test de píxeles atascados](/tests/stuck-pixel-test) sobre fondo negro para localizar subpíxeles iluminados",
+          "Observe si el defecto desaparece o cambia de aspecto al alternar entre colores primarios",
+          "Anote las coordenadas exactas en la pantalla (centro vs. bordes periféricos)",
+          "Si detecta un punto de color atascado, pruebe el [Reparador de píxeles atascados](/tests/stuck-pixel-fixer) por software",
+          "Registre los hallazgos en la [Inspección de monitor nuevo](/monitor-inspection/new) o [Inspección de monitor usado](/monitor-inspection/used)"
+        ],
+        "whatScreenTesterCanObserve": [
+          "Representación en pantalla completa de campos cromáticos puros (RGB), blanco puro y negro profundo",
+          "Anomalías visuales reportadas por el usuario, asignación de coordenadas y notas de inspección",
+          "Patrones de alternancia cromática rápida mediante el renderizado web del navegador",
+          "Diferenciación visual entre defectos oscuros en fondos claros y puntos brillantes en fondos oscuros",
+          "Comparación de anomalías visuales en resoluciones estándar y múltiples colores sólidos"
+        ],
+        "whatScreenTesterCannotDetermine": [
+          "Continuidad física del circuito de transistores de película fina (TFT) o averías internas de silicio",
+          "Certificación formal de conformidad con las clases de defectos de la norma ISO 9241-307",
+          "Elegibilidad comercial de garantía o autorización RMA ante el fabricante del monitor",
+          "Elegibilidad de devolución o cambio según las condiciones particulares del vendedor",
+          "Determinación legal de no conformidad bajo la normativa de protección al consumidor"
+        ],
+        "commonCauses": [
+          "Imperfecciones en la litografía de semiconductores durante la fabricación del panel TFT",
+          "Partículas microscópicas atrapadas en la capa de cristal líquido durante el sellado",
+          "Presión mecánica localizada o torsión del chasis sufrida durante el transporte",
+          "Pistas conductoras de óxido de indio y estaño (ITO) rotas que impiden la alimentación eléctrica",
+          "Moléculas de cristal líquido bloqueadas físicamente en una orientación fija",
+          "Sobrecarga térmica o electrostática en los circuitos de control de los subpíxeles"
+        ],
+        "whatToDoNext": [
+          "Documente la posición y el color del defecto mediante fotografías macro y notas detalladas",
+          "Revise en primer lugar el plazo de devolución de su vendedor, que suele ser la vía más rápida",
+          "Consulte la política de defectos de píxeles del fabricante para su modelo específico",
+          "Pruebe un ciclo no invasivo con el [Reparador de píxeles atascados](/tests/stuck-pixel-fixer) si es un punto de color",
+          "Consulte la [Guía de resolución de problemas](/knowledge-base/troubleshooting) antes de tramitar una reclamación"
+        ],
+        "sections": [
+          {
+            "title": "Píxel muerto vs. atascado: Fundamentos técnicos",
+            "content": [
+              "Las pantallas planas modernas (IPS, VA, TN LCD y matrices OLED) se componen de millones de elementos individuales. En paneles LCD, cada píxel cuenta con tres subpíxeles (rojo, verde, azul) gobernados por transistores de película fina (TFT) que regulan el paso de luz de la retroiluminación.",
+              "Un píxel muerto se produce cuando el mecanismo de control queda sin alimentación eléctrica. En paneles habitualmente negros (normally black), el subpíxel sin energía bloquea la luz y se manifiesta como un punto oscuro permanente, visible sobre fondos blancos o claros.",
+              "Un píxel atascado surge cuando uno o varios subpíxeles quedan fijos en posición abierta, dejando pasar luz de forma continua a través de su filtro de color. Esto genera un punto brillante rojo, verde o azul visible sobre fondos negros.",
+              "Los navegadores web permiten proyectar lienzos de color para inspeccionar estos estados, pero operan a nivel de software. Un test web no puede medir tensiones internas de transistores ni determinar el modo de fallo electrónico exacto."
+            ],
+            "bullets": [
+              "Píxel muerto: Subpíxel sin energía; se ve oscuro en fondos claros.",
+              "Píxel atascado: Subpíxel activo permanentemente; brilla en rojo, verde o azul sobre negro.",
+              "Píxel brillante (Hot pixel): Tríada RGB completa encendida, brillando en blanco.",
+              "Límite del test web: Permite observar el defecto visual, no analizar el circuito interno."
+            ]
+          },
+          {
+            "title": "Qué es la norma ISO 9241-307: Un marco técnico de clasificación",
+            "content": [
+              "Para unificar la terminología de ingeniería y los criterios de medición en la industria de pantallas, la Organización Internacional de Normalización estableció estándares como ISO 13406-2 y su sucesora ISO 9241-307.",
+              "La norma ISO 9241-307 clasifica los defectos en categorías técnicas: Tipo 1 (píxeles continuamente brillantes), Tipo 2 (píxeles continuamente oscuros) y Tipo 3 (subpíxeles defectuosos con comportamiento cromático anómalo).",
+              "Establece clases teóricas de calidad de panel (Clase 0, Clase I, Clase II, Clase III) que fijan límites de defectos permitidos por millón de píxeles físicos. La Clase 0 exige cero defectos, mientras que las Clases I y II contemplan márgenes tolerables.",
+              "Es fundamental comprender que la norma ISO 9241-307 es una guía técnica de ingeniería para la industria, no un contrato de venta vinculante para el consumidor."
+            ]
+          },
+          {
+            "title": "Norma ISO ≠ Sustitución o reembolso automático",
+            "content": [
+              "Existe la creencia errónea de que detectar un píxel anómalo otorga automáticamente el derecho legal a un reemplazo o a la devolución del dinero.",
+              "Un estándar técnico internacional carece de fuerza regulatoria directa en contratos comerciales. Constatar un defecto de píxel NO implica automáticamente que el fabricante esté obligado a cambiar el producto ni que el vendedor deba reembolsarlo.",
+              "Los fabricantes pueden citar clases ISO en sus fichas técnicas, pero la cobertura de garantía se rige por las condiciones de su garantía comercial escrita. La resolución de un caso depende de cuatro factores: garantía del fabricante, política del vendedor, contrato y legislación de consumo aplicable."
+            ]
+          },
+          {
+            "title": "Garantía del fabricante y condiciones RMA",
+            "content": [
+              "Las garantías voluntarias del fabricante son compromisos asumidos por la marca respecto al servicio técnico, reparación o sustitución durante un periodo determinado.",
+              "Las políticas de autorización de devolución de mercancía (RMA) varían según el fabricante, la gama del producto y la región geográfica. Determinados monitores profesionales o de gama alta incluyen garantías de 'Cero Píxeles Brillantes', mientras que las gamas estándar admiten un número determinado de defectos.",
+              "Antes de iniciar una solicitud de RMA, compruebe: modelo exacto, número de serie, factura de compra y la tabla de defectos de píxeles del fabricante, comprobando si distingue entre puntos brillantes, oscuros o zonas centrales.",
+              "Consulte la documentación oficial del fabricante específica para su país."
+            ]
+          },
+          {
+            "title": "Plazos de devolución y cambio del vendedor",
+            "content": [
+              "En muchas ocasiones, el plazo de devolución o desistimiento ofrecido por la tienda es la vía más rápida para resolver una disconformidad estética.",
+              "Los comercios suelen ofrecer periodos de devolución o desistimiento comercial tras la compra. Durante este intervalo, el cliente puede cambiar o devolver el monitor sin necesidad de justificar que el defecto supere los umbrales de garantía del fabricante.",
+              "Compruebe: fechas límite exactas, condiciones de embalaje original, posibles gastos de reacondicionamiento y accesorios incluidos.",
+              "Puesto que estos plazos vencen en fechas estrictas, inspeccione su monitor nada más recibirlo."
+            ]
+          },
+          {
+            "title": "Derechos del consumidor y legislación aplicable",
+            "content": [
+              "Al margen de las garantías comerciales del fabricante y las políticas de la tienda, las compras están amparadas por la legislación de consumo de cada jurisdicción.",
+              "En diversos países existen garantías legales de conformidad que obligan al vendedor a entregar productos conformes con el contrato. Si un defecto se considera falta de conformidad legal depende del marco normativo y de las especificaciones del producto.",
+              "Screen Tester es una herramienta técnica y no presta asesoramiento jurídico. En caso de discrepancia, acuda a los organismos de consumo u orientación legal de su localidad."
+            ]
+          },
+          {
+            "title": "Cómo ayuda Screen Tester a documentar defectos",
+            "content": [
+              "Screen Tester proporciona un entorno web accesible para detectar, categorizar y documentar anomalías de píxeles en cualquier pantalla.",
+              "Con el [Test de píxeles muertos](/tests/dead-pixel-test) y el [Test de píxeles atascados](/tests/stuck-pixel-test), puede alternar colores puros en pantalla completa para identificar si el fallo corresponde a un subpíxel aislado o al píxel entero.",
+              "Las guías de [Inspección de monitor nuevo](/monitor-inspection/new) y [Inspección de monitor usado](/monitor-inspection/used) facilitan anotar coordenadas y recopilar observaciones. Asimismo, el [Reparador de píxeles atascados](/tests/stuck-pixel-fixer) ofrece un patrón de cambio rápido de color para intentar reactivar subpíxeles atascados.",
+              "Screen Tester delimita con rigor su función: asiste en la comprobación visual, pero no emite certificaciones ISO ni dictámenes contractuales."
+            ]
+          },
+          {
+            "title": "Lista de comprobación de evidencias y documentación",
+            "content": [
+              "Para agilizar cualquier gestión con el vendedor o el servicio técnico, recopile la siguiente información:",
+              "1. Datos del dispositivo: Modelo exacto y número de serie (manténgalo en privado, no lo publique en foros abiertos).",
+              "2. Justificantes de compra: Factura, número de pedido y albarán de entrega.",
+              "3. Plazos: Fecha límite de devolución de la tienda y periodo de garantía del fabricante.",
+              "4. Condiciones de prueba: Fecha, iluminación ambiental y resolución del monitor.",
+              "5. Mapeo de color: Colores donde el defecto es visible y fondos donde no se aprecia.",
+              "6. Fotografías: Fotos macro enfocadas del defecto junto con una foto general de la pantalla completa para situar su posición relativa."
+            ]
+          },
+          {
+            "title": "Qué hacer tras detectar un píxel defectuoso",
+            "content": [
+              "Aplique los siguientes criterios de evaluación:",
+              "• Normal (Looks normal): Panel homogéneo sin puntos oscuros ni subpíxeles iluminados en ningún color.",
+              "• Requiere atención (Needs attention): Se confirma un defecto visible continuo que debe documentarse y contrastarse con las políticas aplicables.",
+              "• Inseguro (Unsure): Punto dudoso que cambia de aspecto con el ángulo (posible suciedad exterior). Limpie con microfibra y repita.",
+              "Pasos recomendados: Valore primero el plazo de devolución de la tienda. Si ha expirado, consulte las condiciones de RMA del fabricante y recopile sus fotos de prueba."
+            ]
+          },
+          {
+            "title": "Errores comunes sobre los defectos de píxeles",
+            "content": [
+              "Error 1: 'Un solo píxel muerto siempre da derecho a cambio.' Realidad: La mayoría de garantías estándar exigen un número mínimo de defectos.",
+              "Error 2: 'La norma ISO obliga a devolver el dinero.' Realidad: ISO 9241-307 es un estándar de medición industrial, no una ley mercantil.",
+              "Error 3: 'Cualquier píxel atascado se repara por software.' Realidad: Herramientas como el [Reparador de píxeles atascados](/tests/stuck-pixel-fixer) pueden ayudar en ocasiones, pero los fallos físicos de transistor no tienen solución por software.",
+              "Error 4: 'Una captura de pantalla demuestra el píxel roto.' Realidad: Las capturas registran la memoria gráfica intacta; se necesita una fotografía con cámara.",
+              "Error 5: 'La garantía del fabricante y la política de la tienda son lo mismo.' Realidad: Las tiendas ofrecen plazos de desistimiento independientes de las condiciones de garantía técnica de la marca."
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "¿Tener un solo píxel muerto me da derecho a un cambio inmediato?",
+            "answer": "No necesariamente bajo la garantía del fabricante, salvo que cuente con garantía explícita de cero píxeles brillantes. No obstante, dentro del periodo de devolución de la tienda suele ser posible cambiar o devolver el producto."
+          },
+          {
+            "question": "¿Cuál es la diferencia entre un píxel atascado y un píxel muerto?",
+            "answer": "Un píxel muerto no recibe alimentación y permanece oscuro sobre fondos claros. Un subpíxel atascado queda bloqueado en paso de luz continuo y brilla en rojo, verde o azul sobre fondos oscuros."
+          },
+          {
+            "question": "¿Puede una herramienta como el Reparador de píxeles dañar la pantalla?",
+            "answer": "No. El [Reparador de píxeles atascados](/tests/stuck-pixel-fixer) alterna secuencias de color estándar sin alterar voltajes. Las personas sensibles a destellos luminosos deben apartar la vista durante su funcionamiento."
+          },
+          {
+            "question": "¿Por qué no se ve un píxel muerto en una captura de pantalla?",
+            "answer": "La captura de pantalla registra la imagen digital de la tarjeta gráfica, que es correcta. El defecto de píxel es físico en el panel, por lo que debe fotografiarse con un teléfono o cámara."
+          },
+          {
+            "question": "¿Qué diferencia hay entre la norma ISO 9241-307 y una garantía de fabricante?",
+            "answer": "ISO 9241-307 es un estándar técnico de medición y clasificación industrial. La garantía del fabricante es un compromiso comercial contractual que define los términos de soporte y sustitución."
+          },
+          {
+            "question": "¿Debo acudir primero al vendedor o al fabricante al detectar un defecto?",
+            "answer": "Compruebe primero el plazo de devolución de su vendedor. Si está dentro de ese intervalo, la gestión con la tienda suele ser más directa. Transcurrido ese plazo, consulte la garantía del fabricante."
+          }
+        ]
       }
     }
   },

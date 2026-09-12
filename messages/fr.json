@@ -4387,6 +4387,187 @@
             "answer": "Non. Les navigateurs web s'exécutent dans un environnement sécurisé et isolé qui ne permet pas d'accéder aux registres bas niveau du GPU ou aux lignes physiques du câble. Screen Tester offre des mires d'observation visuelle ; les correctifs doivent être appliqués dans le système d'exploitation ou le pilote."
           }
         ]
+      },
+      "dead-pixel-vs-stuck-pixel": {
+        "title": "Pixels morts vs. pixels bloqués : Identification, normes ISO et garanties",
+        "subtitle": "Classification des défauts d'affichage, norme ISO 9241-307, critères RMA constructeur et politiques de retour revendeur.",
+        "description": "Comprenez la différence entre pixels morts et bloqués, les classes de défauts ISO 9241-307 et la gestion des garanties et retours revendeurs.",
+        "directAnswer": "Un pixel mort est un sous-pixel ou une triade définitivement privé d'alimentation apparaissant comme un point noir fixe sur fond clair, tandis qu'un pixel bloqué reste allumé sous la forme d'un point rouge, vert ou bleu permanent. La découverte d'un défaut ne confère pas de droit automatique au remplacement ; la solution dépend des garanties, des politiques commerciales et du droit applicable.",
+        "whyItMatters": "Savoir identifier un pixel mort, un sous-pixel bloqué ou une simple poussière permet de documenter le problème avec précision et d'opter pour la bonne démarche. Les garanties commerciales constructeur, les délais de rétractation revendeur et les normes industrielles répondant à des règles distinctes, une constatation précoce évite l'expiration des délais légaux.",
+        "whatToLookFor": [
+          "Pixel mort : Minuscule point noir qui reste sombre sur fonds blancs, jaunes ou cyan",
+          "Sous-pixel bloqué : Point lumineux persistant de couleur rouge, verte ou bleue sur fond noir ou sombre",
+          "Pixel chaud / blanc : Triade RVB complète bloquée à l'état allumé, brillant en blanc sur fond noir",
+          "Amas de défauts : Plusieurs sous-pixels défectueux concentrés dans une zone restreinte de pixels adjacents",
+          "Variation d'angle de vue : Poussière extérieure dont la position apparente se décale lors d'un mouvement de tête",
+          "Altération de teinte : Sous-pixel inopérant modifiant la fidélité des teintes composées dans la zone concernée"
+        ],
+        "howToTest": [
+          "Nettoyez délicatement la surface de l'écran avec un chiffon microfibre propre et sec",
+          "Ouvrez le [Test de pixels morts](/tests/dead-pixel-test) dans Screen Tester et faites défiler les fonds pleins rouge, vert, bleu, blanc et noir",
+          "Examinez l'écran méthodiquement par balayage en grille sous un éclairage ambiant doux et sans reflet",
+          "Lancez le [Test de pixels bloqués](/tests/stuck-pixel-test) sur fond noir pour localiser d'éventuels sous-pixels éclairés",
+          "Observez si l'anomalie disparaît ou change d'aspect lors du passage d'une couleur primaire à une autre",
+          "Relevez les coordonnées exactes sur l'écran (centre de la dalle vs. périphérie)",
+          "Pour un sous-pixel coloré, lancez le [Débloqueur de pixels](/tests/stuck-pixel-fixer) pour un cycle de rafraîchissement logiciel",
+          "Consignez vos observations dans l'[Inspection écran neuf](/monitor-inspection/new) ou l'[Inspection écran d'occasion](/monitor-inspection/used)"
+        ],
+        "whatScreenTesterCanObserve": [
+          "Affichage plein écran de plages chromatiques pures (RVB), de blanc pur et de noir profond",
+          "Anomalies visuelles signalées par l'utilisateur, relevés de coordonnées et notes d'inspection",
+          "Séquences d'alternance chromatique rapide générées par le moteur de rendu du navigateur",
+          "Différenciation visuelle entre points sombres sur fond clair et points lumineux sur fond sombre",
+          "Comparaison des anomalies d'affichage selon différentes teintes et résolutions d'écran"
+        ],
+        "whatScreenTesterCannotDetermine": [
+          "Continuité électrique des circuits internes de transistors en couches minces (TFT) ou pannes de silicium",
+          "Certification formelle de conformité aux classes de tolérance de la norme ISO 9241-307",
+          "Éligibilité commerciale à la garantie constructeur ou validation d'une autorisation de retour (RMA)",
+          "Conditions d'éligibilité au retour ou à l'échange propres aux politiques du vendeur",
+          "Qualification juridique d'un défaut de conformité au titre de la protection des consommateurs"
+        ],
+        "commonCauses": [
+          "Imperfections de lithographie lors de la gravure des matrices de transistors TFT en salle blanche",
+          "Inclusion de particules microscopiques dans la couche de cristaux liquides lors de l'assemblage",
+          "Contrainte mécanique, choc ou torsion du châssis survenus durant l'acheminement",
+          "Rupture de pistes conductrices en oxyde d'indium-étain (ITO) privant le sous-pixel de tension",
+          "Molécules de cristaux liquides mécaniquement bloquées dans une orientation figée",
+          "Surtension thermique ou électrostatique sur les microcircuits de commande"
+        ],
+        "whatToDoNext": [
+          "Documentez l'anomalie à l'aide de photographies macro nettes et de notes précises",
+          "Vérifiez en priorité le délai de retour ou de rétractation du vendeur, souvent le recours le plus rapide",
+          "Consultez la charte de tolérance des pixels du constructeur correspondant à votre modèle exact",
+          "Si un point de couleur subsiste, essayez un cycle avec le [Débloqueur de pixels](/tests/stuck-pixel-fixer)",
+          "Consultez le [Guide de dépannage](/knowledge-base/troubleshooting) pour compléter vos vérifications"
+        ],
+        "sections": [
+          {
+            "title": "Pixel mort vs. pixel bloqué : Fondements techniques",
+            "content": [
+              "Les dalles plates modernes (IPS, VA, TN LCD et matrices OLED) regroupent des millions d'éléments d'image. Sur un écran LCD, chaque pixel se compose de trois sous-pixels (rouge, vert, bleu) pilotés par des transistors en couches minces (TFT) qui modulent la polarisation des cristaux liquides pour doser le rétroéclairage.",
+              "Un pixel mort correspond à un sous-pixel dont le circuit de commande ne reçoit plus aucune tension électrique. Sur les dalles courantes 'normalement noires', un sous-pixel sans tension ne laisse passer aucune lumière ; il forme ainsi un point sombre permanent, particulièrement visible sur fond blanc ou clair.",
+              "Un pixel bloqué se manifeste lorsqu'un ou plusieurs sous-pixels restent figés en position ouverte, laissant filtrer la lumière en continu. Il apparaît sous la forme d'un point rouge, vert ou bleu très visible sur fond sombre ou noir.",
+              "Les navigateurs web permettent d'afficher des toiles de couleur pour observer ces phénomènes, mais interviennent uniquement au niveau applicatif. Un outil web ne peut mesurer de tensions internes ni diagnostiquer l'état microscopique des transistors."
+            ],
+            "bullets": [
+              "Pixel mort : Sous-pixel non alimenté ; apparaît noir sur les fonds clairs.",
+              "Pixel bloqué : Sous-pixel figé à l'état passant ; brille en rouge, vert ou bleu sur fond noir.",
+              "Pixel chaud (Hot pixel) : Triade RVB complète allumée en continu, brillant en blanc.",
+              "Limite du test web : Observation visuelle possible, diagnostic électronique exclu."
+            ]
+          },
+          {
+            "title": "Qu'est-ce que la norme ISO 9241-307 : Un cadre technique de classification",
+            "content": [
+              "Pour standardiser le vocabulaire d'ingénierie et harmoniser les méthodes de mesure dans l'industrie des écrans, l'Organisation internationale de normalisation a élaboré des référentiels, notamment l'ISO 13406-2 et son évolution, l'ISO 9241-307.",
+              "L'ISO 9241-307 établit des protocoles de mesure et classe les défauts en catégories : Type 1 (pixels constamment brillants), Type 2 (pixels constamment sombres) et Type 3 (sous-pixels défectueux ou anomalies chromatiques).",
+              "Cette norme définit des classes théoriques de panneaux (Classe 0, Classe I, Classe II, Classe III) fixant des tolérances maximales par million de pixels. La Classe 0 correspond au zéro défaut, tandis que les Classes I et II admettent des seuils tolérés.",
+              "L'ISO 9241-307 constitue un référentiel technique de fabrication pour l'industrie, et non un contrat d'achat directement opposable par le consommateur."
+            ]
+          },
+          {
+            "title": "Norme ISO ≠ Remplacement ou remboursement automatique",
+            "content": [
+              "Une idée fausse répandue consiste à penser que la constatation d'un pixel défectueux confère obligatoirement un droit immédiat à l'échange ou au remboursement.",
+              "Une norme internationale d'ingénierie ne dispose d'aucune autorité réglementaire automatique sur les ventes de détail. Constater un défaut de pixel ne signifie PAS automatiquement que le fabricant est contraint d'échanger l'écran ou que le revendeur doit le rembourser.",
+              "Les constructeurs peuvent citer des classes ISO dans leurs fiches techniques, mais la prise en charge sous garantie dépend exclusivement des clauses de leur garantie commerciale. L'issue d'une demande repose sur quatre facteurs : garantie constructeur, politique du vendeur, contrat de vente et droit de la consommation applicable."
+            ]
+          },
+          {
+            "title": "Garantie constructeur et critères d'autorisation RMA",
+            "content": [
+              "Les garanties commerciales constructeur sont des engagements volontaires pris par la marque concernant les réparations ou remplacements pendant une période donnée.",
+              "Les critères d'autorisation de retour (RMA) diffèrent sensiblement d'un constructeur à l'autre et selon la gamme de produits. Les moniteurs graphiques ou gaming haut de gamme bénéficient parfois d'une garantie 'Zéro pixel brillant', tandis que les modèles grand public admettent un certain nombre de sous-pixels défectueux.",
+              "Avant d'ouvrir un dossier, vérifiez : le modèle précis, le numéro de série, la facture et la grille de tolérance des pixels du constructeur, qui distingue souvent les points brillants, les points noirs et la localisation sur la dalle.",
+              "Consultez systématiquement la documentation officielle de la marque valable pour votre région."
+            ]
+          },
+          {
+            "title": "Politiques de retour et de rétractation revendeur",
+            "content": [
+              "Dans de nombreux cas, le droit de rétractation ou la politique de retour du revendeur offre une solution plus rapide et plus simple qu'une procédure de garantie constructeur.",
+              "Les commerçants proposent couramment un délai de retour ou d'échange après livraison. Durant cet intervalle, il est souvent possible de retourner l'écran sans avoir à prouver que le défaut dépasse les seuils techniques de garantie de la marque.",
+              "Vérifiez toutefois : la date limite exacte, les exigences relatives à l'emballage d'origine, les éventuels frais de reconditionnement et la présence de l'ensemble des accessoires.",
+              "Les délais de retour étant strictement calendaires, inspectez votre écran dès sa réception."
+            ]
+          },
+          {
+            "title": "Droits des consommateurs et garanties légales",
+            "content": [
+              "En sus des garanties commerciales et des politiques des boutiques, les achats sont encadrés par les dispositions légales de protection des consommateurs propres à chaque pays.",
+              "Dans plusieurs juridictions, la garantie légale de conformité impose au vendeur de livrer un bien conforme au contrat. La qualification d'un défaut de pixel comme non-conformité juridique dépend des critères légaux locaux et des caractéristiques annoncées du produit.",
+              "Screen Tester est un outil technique et ne dispense aucun conseil juridique. En cas de litige persistant, rapprochez-vous des organismes officiels de défense des consommateurs ou d'un conseil juridique compétent."
+            ]
+          },
+          {
+            "title": "Comment Screen Tester aide à documenter les défauts",
+            "content": [
+              "Screen Tester met à disposition des outils pour déceler, caractériser et documenter les anomalies d'affichage sur tout type d'écran.",
+              "À l'aide du [Test de pixels morts](/tests/dead-pixel-test) et du [Test de pixels bloqués](/tests/stuck-pixel-test), vous projetez des fonds de couleur purs afin d'isoler si l'anomalie concerne un sous-pixel isolé ou un pixel entier.",
+              "Les modules d'[Inspection écran neuf](/monitor-inspection/new) et d'[Inspection écran d'occasion](/monitor-inspection/used) permettent de noter les coordonnées du défaut et de compiler un rapport visuel. Pour les sous-pixels bloqués, le [Débloqueur de pixels](/tests/stuck-pixel-fixer) propose un cycle d'alternance chromatique rapide.",
+              "Screen Tester précise son périmètre : l'outil aide au constat visuel, mais ne délivre aucune certification ISO ni validation contractuelle."
+            ]
+          },
+          {
+            "title": "Checklist pour constituer son dossier de réclamation",
+            "content": [
+              "Pour faciliter les démarches auprès du revendeur ou du service après-vente, réunissez les éléments suivants :",
+              "1. Références de l'appareil : Modèle précis et numéro de série (conservez le numéro de série pour votre dossier, ne le diffusez pas publiquement).",
+              "2. Preuves d'achat : Facture acquittée, numéro de commande et bon de livraison.",
+              "3. Délais : Date d'expiration du retour boutique et durée de garantie constructeur.",
+              "4. Conditions d'observation : Date du test, éclairage de la pièce et résolution d'affichage.",
+              "5. Cartographie des couleurs : Liste des couleurs unies où le défaut apparaît distinctement et de celles où il est invisible.",
+              "6. Clichés photographiques : Photos macro nettes du défaut de près, accompagnées d'une photo globale de l'écran montrant l'emplacement du point."
+            ]
+          },
+          {
+            "title": "Que faire en cas de détection d'un pixel défectueux",
+            "content": [
+              "Interprétez vos observations selon les critères suivants :",
+              "• Normal (Looks normal) : Rendu homogène sans point sombre ni sous-pixel lumineux sur l'ensemble des couleurs de test.",
+              "• Attention requise (Needs attention) : Un point sombre ou lumineux persistant a été confirmé ; il convient de le documenter et de vérifier les politiques applicables.",
+              "• Incertain (Unsure) : Point ambigu qui change d'aspect selon l'angle (suspicion de poussière de surface). Nettoyez doucement et réessayez.",
+              "Démarche conseillée : Privilégiez d'abord la rétractation auprès du vendeur si le délai le permet. Si ce délai est dépassé, consultez les critères RMA du fabricant."
+            ]
+          },
+          {
+            "title": "Idées reçues fréquentes sur les défauts de pixels",
+            "content": [
+              "Idée reçue 1 : 'Un seul pixel mort donne automatiquement droit à un échange.' Réalité : La plupart des garanties constructeur exigent un seuil minimal de défauts.",
+              "Idée reçue 2 : 'La norme ISO oblige à rembourser l'acheteur.' Réalité : L'ISO 9241-307 est un standard de mesure industriel, non une loi commerciale.",
+              "Idée reçue 3 : 'Tout pixel bloqué peut être réparé par voie logicielle.' Réalité : Des outils comme le [Débloqueur de pixels](/tests/stuck-pixel-fixer) peuvent débloquer certains cristaux, mais ne réparent pas un transistor endommagé.",
+              "Idée reçue 4 : 'Une capture d'écran prouve le défaut matériel.' Réalité : Les captures reflètent la mémoire graphique qui est intacte ; une photo externe est indispensable.",
+              "Idée reçue 5 : 'La garantie constructeur et la politique du revendeur sont identiques.' Réalité : Les boutiques proposent des délais de retour indépendants des barèmes techniques des constructeurs."
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "Un seul pixel mort me donne-t-il droit à un remplacement immédiat ?",
+            "answer": "Pas obligatoirement au titre de la garantie constructeur, sauf si le moniteur bénéficie d'une garantie expresse 'Zéro pixel brillant'. En revanche, durant le délai de rétractation ou de retour du revendeur, un retour ou échange est généralement possible sans justification."
+          },
+          {
+            "question": "Quelle est la différence entre un pixel bloqué et un pixel mort ?",
+            "answer": "Un pixel mort n'est plus alimenté électriquement et reste noir sur fond clair. Un sous-pixel bloqué demeure figé à l'état passant et émet une lumière rouge, verte ou bleue constante sur fond sombre."
+          },
+          {
+            "question": "Des logiciels comme le Débloqueur de pixels peuvent-ils abîmer l'écran ?",
+            "answer": "Non. Le [Débloqueur de pixels](/tests/stuck-pixel-fixer) affiche de simples séquences de couleurs standard sans modifier les tensions électriques. Les personnes sensibles aux scintillements doivent détourner le regard durant l'opération."
+          },
+          {
+            "question": "Pourquoi un pixel mort n'apparaît-il pas sur une capture d'écran ?",
+            "answer": "La capture d'écran enregistre l'image numérique présente dans la mémoire de la carte graphique, qui est parfaitement nette. Le défaut de pixel étant matériel et situé sur la dalle, il doit être photographié avec un appareil photo ou un smartphone."
+          },
+          {
+            "question": "Quelle différence y a-t-il entre la norme ISO 9241-307 et une garantie constructeur ?",
+            "answer": "L'ISO 9241-307 est un référentiel technique de mesure et de tolérance industrielle. La garantie constructeur est un contrat commercial fixant les engagements de prise en charge et les critères d'échange."
+          },
+          {
+            "question": "Faut-il contacter d'abord le vendeur ou le fabricant en cas de défaut constaté ?",
+            "answer": "Vérifiez d'abord le délai de retour du revendeur. Si vous êtes dans les délais, l'échange ou le remboursement via la boutique est généralement plus direct. Passé ce délai, contactez le constructeur en vous référant à sa charte de garantie."
+          }
+        ]
       }
     }
   },
