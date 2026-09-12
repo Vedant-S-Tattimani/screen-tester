@@ -1226,6 +1226,256 @@
       "noticeTitle": "Aviso de transparencia técnica:",
       "browserCanDoTitle": "Capacidades del navegador",
       "browserCannotDoTitle": "Limitación de medición de hardware"
+    },
+    "usedMonitorInspectionChecklist": {
+      "metaTitle": "Guía y checklist para comprar monitores usados",
+      "metaDescription": "Guía paso a paso para inspeccionar monitores de segunda mano: píxeles muertos, arañazos, fugas de luz y puertos antes de comprar.",
+      "title": "Inspección de monitores de segunda mano",
+      "description": "Guía completa previa a la compra de pantallas y monitores usados."
+    },
+    "usedMonitor": {
+      "badge": "GUÍA DE COMPRA Y CHECKLIST DE HARDWARE",
+      "title": "Checklist para monitores de segunda mano: Qué probar antes de comprar",
+      "subtitle": "Guía práctica paso a paso para verificar monitores usados en busca de daños físicos, píxeles muertos, desgaste de luz de fondo y estabilidad de puertos.",
+      "metaTitle": "Checklist para monitores de segunda mano: Qué probar antes de comprar",
+      "metaDescription": "Checklist paso a paso para probar monitores usados: arañazos en panel, píxeles muertos, backlight bleed, puertos y menú OSD antes de pagar.",
+      "breadcrumbsGuides": "Guías",
+      "breadcrumbsUsedMonitor": "Checklist monitor usado",
+      "noticeTitle": "Transparencia técnica y límites de prueba",
+      "noticeDesc": "Screen Tester proporciona patrones visuales y lecturas de API de navegador. Un navegador web no puede determinar el estado de condensadores internos, vida útil de retroiluminación, resolución física del panel, precisión de color de laboratorio (Delta E) o soldaduras de puertos. Esta guía orienta su inspección visual y física.",
+      "beforeTitle": "1. Antes de reunirse con el vendedor: Preparación y equipo",
+      "beforeDesc": "Nunca acuda a una compra sin preparación. Una inspección rigurosa requiere entre 15 y 20 minutos y equipo adecuado:",
+      "beforeItems": [
+        {
+          "title": "Portátil con salidas de vídeo compatibles",
+          "desc": "Lleve un portátil cargado con HDMI, DisplayPort o USB-C (DP Alt Mode) capaz de alcanzar la resolución y frecuencia nativas del monitor."
+        },
+        {
+          "title": "Sus propios cables certificados y cargador",
+          "desc": "Lleve cables DisplayPort certificados VESA y HDMI de alta velocidad fiables. No dependa de que el vendedor tenga el cable adecuado para altas tasas de refresco."
+        },
+        {
+          "title": "Acceso a toma de corriente o batería portátil",
+          "desc": "Asegúrese de que el punto de encuentro tenga enchufes de pared. Si la entrega es en un aparcamiento, lleve un inversor para coche o estación de energía."
+        },
+        {
+          "title": "Kit esencial de comprobación",
+          "desc": "Un paño de microfibra limpio, linterna o luz de móvil para inspección con luz rasante, y una memoria USB para comprobar los puertos del monitor."
+        },
+        {
+          "title": "Reserve tiempo suficiente (15–20 minutos)",
+          "desc": "Avise al vendedor de que necesitará unos 15 minutos para probar el monitor. Descarte la compra si el vendedor se niega o le mete prisa."
+        }
+      ],
+      "physicalTitle": "2. Inspección física y mecánica (Monitor apagado)",
+      "physicalDesc": "Antes de conectar el monitor a la corriente, examine a fondo el exterior:",
+      "physicalItems": [
+        {
+          "title": "Arañazos en la superficie del panel (Luz rasante)",
+          "desc": "Apague la luz ambiental e ilumine el panel con la linterna en un ángulo rasante de 15° a 30°. Esto revela microarañazos, golpes en la capa antirreflejos y manchas de químicos de limpieza invisibles de frente."
+        },
+        {
+          "title": "Fisuras e impactos en esquinas y bordes",
+          "desc": "Examine las cuatro esquinas buscando microfracturas en el sustrato de vidrio. Los golpes estructurales se expanden con el tiempo."
+        },
+        {
+          "title": "Marcos, juntas y separación de carcasa",
+          "desc": "Busque marcas de palanca o bordes desencajados que indiquen desmontaje amateur previo o deformación térmica."
+        },
+        {
+          "title": "Peana y roscas VESA M4",
+          "desc": "Compruebe suavidad de altura, inclinación y giro. Revise los cuatro orificios traseros VESA M4; las roscas pasadas de rosca por brazos de monitor son habituales."
+        },
+        {
+          "title": "Firmeza de los puertos de vídeo y corriente",
+          "desc": "Mueva con mucha suavidad los conectores DisplayPort y HDMI enchufados. Si bailan, las soldaduras de la placa interna pueden estar fracturadas."
+        },
+        {
+          "title": "Restos de líquidos y olor a quemado",
+          "desc": "Mire en el borde inferior si hay marcas de agua seca. Huela las rejillas de ventilación superiores: un olor a plástico quemado u ozono indica condensadores degradados."
+        }
+      ],
+      "powerTitle": "3. Encendido y estabilidad de la retroiluminación",
+      "powerDesc": "Conecte el monitor a la red eléctrica y observe el encendido:",
+      "powerItems": [
+        {
+          "title": "Tiempo de arranque y chasquidos de relé",
+          "desc": "Los paneles de calidad muestran imagen en 2 a 5 segundos. Clics continuos de relés o parpadeos del LED indican condensadores de fuente agotados."
+        },
+        {
+          "title": "Cortes intermitentes (Prueba de movimiento de cable)",
+          "desc": "Con imagen en pantalla, mueva suavemente el cable cerca del conector. Si la pantalla se va a negro durante 1-2 segundos, hay falso contacto."
+        },
+        {
+          "title": "Estabilidad bajo carga térmica",
+          "desc": "Mantenga el monitor encendido al menos 10 minutos al 100% de brillo. Las fuentes en mal estado suelen fallar solo tras calentarse."
+        },
+        {
+          "title": "Regulación uniforme de brillo",
+          "desc": "Varíe el brillo del OSD del 0% al 100%. El cambio debe ser progresivo, sin zumbidos eléctricos agudos ni apagones."
+        }
+      ],
+      "pixelTitle": "4. Detección de píxeles muertos y atascados",
+      "pixelDesc": "Los defectos de píxel son el fallo más común en segunda mano. Abra Screen Tester a pantalla completa:",
+      "pixelItems": [
+        {
+          "title": "Píxeles muertos (Puntos oscuros en fondos claros)",
+          "desc": "Ponga fondos blanco, rojo, verde y azul en la prueba de píxeles muertos. Los subpíxeles sin corriente quedan negros sobre fondos brillantes."
+        },
+        {
+          "title": "Píxeles atascados (Puntos brillantes en fondo negro)",
+          "desc": "Ponga un fondo negro en la prueba de píxeles atascados. Los transistores bloqueados brillan fijos en rojo, verde, azul o blanco."
+        },
+        {
+          "title": "Prueba de paralaje (Polvo atrapado vs píxel muerto)",
+          "desc": "Mire el punto desde un lateral a 45°. Si el punto oscuro proyecta sombra sobre el panel encendido y se desplaza con su cabeza, es polvo en la lámina difusora. Si queda fijo en el plano del píxel, es un píxel muerto real."
+        }
+      ],
+      "pixelLinksTitle": "Pruebas de píxeles y guías recomendadas:",
+      "imageTitle": "5. Calidad de imagen, fugas de luz y uniformidad",
+      "imageDesc": "Inspeccione la uniformidad lumínica y la gradación de color:",
+      "imageItems": [
+        {
+          "title": "Fugas de luz (Backlight Bleed) vs IPS Glow",
+          "desc": "En penumbra, ponga un fondo negro con la prueba de Backlight Bleed. Mueva la cabeza 30°: si el brillo cambia de intensidad y color, es IPS glow normal. Si la luz brota fija de los bordes sin importar el ángulo, es fuga de luz mecánica."
+        },
+        {
+          "title": "Uniformidad y efecto pantalla sucia (DSE)",
+          "desc": "Muestre un fondo gris neutro al 50% con la prueba de uniformidad. Busque viñeteado, manchas oscuras o bandas verticales."
+        },
+        {
+          "title": "Banding de color y profundidad de bits",
+          "desc": "Examine degradados suaves con la prueba de gradientes. Escaloneado tosco indica que la señal o panel está operando a 6 bits en vez de 8 o 10 bits."
+        },
+        {
+          "title": "Claridad de texto y flecos de color",
+          "desc": "Abra la prueba de nitidez de texto. Halos rojos o azules en texto negro denotan disposiciones de subpíxeles BGR o escalado no nativo."
+        },
+        {
+          "title": "Ángulos de visión (Paneles VA y TN)",
+          "desc": "Compruebe lavado de sombras en paneles VA o inversión de contraste en paneles TN al mirar desde los lados o arriba."
+        }
+      ],
+      "imageLinksTitle": "Pruebas de calidad de imagen relacionadas:",
+      "motionTitle": "6. Claridad de movimiento y alta tasa de refresco",
+      "motionDesc": "Asegúrese de que el monitor rinde a la velocidad anunciada:",
+      "motionItems": [
+        {
+          "title": "Confirmar hercios reales en el sistema operativo",
+          "desc": "Verifique en Ajustes de pantalla y con la prueba de tasa de refresco que los 144Hz o 240Hz funcionan sin saltos de fotogramas (frame-skipping)."
+        },
+        {
+          "title": "Ghosting y estelas de transición",
+          "desc": "Ejecute la prueba de ghosting con bloques móviles de contraste. Compruebe la longitud de la estela tras objetos oscuros."
+        },
+        {
+          "title": "Inserción de fotograma negro / Strobing (BFI/ELMB)",
+          "desc": "Active el modo estroboscópico en el OSD y verifique con la prueba de motion blur la nitidez del movimiento."
+        },
+        {
+          "title": "Compatibilidad VRR / G-Sync / FreeSync",
+          "desc": "Active Adaptive Sync en su gráfica y descarte parpadeos de brillo con la prueba de VRR."
+        }
+      ],
+      "motionLinksTitle": "Pruebas de movimiento relacionadas:",
+      "osdTitle": "7. Menú OSD, firmware y restablecimiento de fábrica",
+      "osdDesc": "El menú en pantalla contiene datos esenciales de configuración:",
+      "osdItems": [
+        {
+          "title": "Restablezca siempre los valores de fábrica",
+          "desc": "Haga un 'Reset All' en el OSD antes de juzgar color o contraste. Los vendedores a veces alteran valores para ocultar defectos del panel."
+        },
+        {
+          "title": "Compruebe la resolución nativa en Información",
+          "desc": "En el menú Info del OSD, compruebe que la resolución de entrada reconocida coincide con las especificaciones del fabricante."
+        },
+        {
+          "title": "Ajuste el Overdrive",
+          "desc": "Pruebe los modos de tiempo de respuesta (Normal, Rápido, Extremo). El modo Extremo suele provocar ghosting inverso (halos blancos); confirme que el modo Normal o Rápido es limpio."
+        },
+        {
+          "title": "Botones y joystick direccional",
+          "desc": "Compruebe que el joystick de 5 direcciones responde con firmeza y no se queda atascado."
+        }
+      ],
+      "osdNote": "Nota: El navegador no puede consultar los registros internos del OSD ni el firmware. La comprobación del OSD debe hacerse visualmente en el menú del monitor.",
+      "portsTitle": "8. Comprobación de puertos y conexiones físicas",
+      "portsDesc": "Un conector roto devalúa por completo un monitor. Pruebe cada entrada:",
+      "portsItems": [
+        {
+          "title": "Pruebe cada entrada de vídeo por separado",
+          "desc": "Conecte HDMI 1, HDMI 2 y DisplayPort por turnos y cambie de fuente en el menú para comprobar que el escalador las reconoce."
+        },
+        {
+          "title": "Hub USB upstream y downstream",
+          "desc": "Conecte el cable USB de subida al portátil e inserte un ratón o pendrive en los puertos del monitor para comprobar el concentrador."
+        },
+        {
+          "title": "Salida de audio jack de 3,5 mm",
+          "desc": "Conecte auriculares a la salida de audio del monitor y use la prueba de altavoces para validar los canales estéreo."
+        },
+        {
+          "title": "USB-C con Power Delivery y señal de vídeo",
+          "desc": "En monitores USB-C modernos, verifique que un solo cable transmite imagen y carga el portátil simultáneamente."
+        }
+      ],
+      "wearTitle": "9. Señales de uso comercial intensivo o desgaste",
+      "wearDesc": "Monitores usados 24/7 en videovigilancia u oficinas envejecen prematuramente:",
+      "wearItems": [
+        {
+          "title": "Quemados de pantalla y retención de imagen",
+          "desc": "Ponga fondos grises en la prueba de burn-in buscando barras de tareas, hojas de cálculo o ventanas del navegador marcadas."
+        },
+        {
+          "title": "Horas de uso en el menú de servicio",
+          "desc": "Muchos monitores Dell, LG y BenQ registran las horas de encendido en el OSD o menú de servicio. Más de 15.000 horas suponen un desgaste notable."
+        },
+        {
+          "title": "Ruidos de ventilador en modelos de gama alta",
+          "desc": "Algunos monitores OLED o G-Sync Ultimate tienen ventiladores internos. Preste atención a zumbidos o rozamientos en las rejillas."
+        },
+        {
+          "title": "Amarilleamiento térmico",
+          "desc": "En fondos blancos, fíjese si el borde superior se ve amarillento o apagado debido al calor acumulado tras años de uso."
+        }
+      ],
+      "sellerTitle": "10. Comprobación del vendedor, modelo y garantía",
+      "sellerDesc": "Evite timos por cambio de modelo y conozca la realidad de la garantía:",
+      "sellerItems": [
+        {
+          "title": "Verifique el sufijo exacto en la etiqueta trasera",
+          "desc": "No confíe solo en el frontal. Mire la pegatina con código de barras en la trasera y confirme el modelo exacto (ej. 27GP850 vs 27GN800) para no pagar por una gama inferior."
+        },
+        {
+          "title": "Coincidencia de número de serie",
+          "desc": "Si entregan la caja original, compruebe que el número de serie de la caja coincide con la etiqueta del monitor."
+        },
+        {
+          "title": "Factura o recibo original de compra",
+          "desc": "Pida la factura para verificar fecha de compra original, edad real del producto y titularidad legítima."
+        },
+        {
+          "title": "La transferencia de garantía depende de cada marca",
+          "desc": "No asuma que la garantía restante le cubre. Dell transfiere la garantía por Service Tag en su web, mientras que marcas como ASUS o LG suelen exigir factura a nombre del comprador original."
+        }
+      ],
+      "checklistTitle": "11. Checklist final antes de pagar",
+      "checklistDesc": "Repase estos 9 puntos justo antes de cerrar la compra:",
+      "checklist": [
+        "Cristal exterior: Cero arañazos profundos, golpes o manchas en el tratamiento antirreflejo bajo luz rasante.",
+        "Carcasa y peana: Mecanismos de ajuste suaves, roscas VESA intactas, sin olor a quemado.",
+        "Alimentación estable: Enciende en menos de 5s, sin zumbidos de condensadores ni apagones al 100% de brillo.",
+        "Puertos: Conexiones HDMI, DP y USB-C firmes y sin cortes de señal al mover levemente el cable.",
+        "Píxeles: Matriz revisada con pruebas de píxeles muertos y atascados a pantalla completa sin defectos molestos.",
+        "Retroiluminación: Fugas de luz y uniformidad dentro de parámetros aceptables.",
+        "Movimiento y hercios: Tasa de refresco anunciada (ej. 144Hz) reconocida y estable en el sistema.",
+        "Etiqueta trasera: Modelo exacto verificado contra el modelo publicado en el anuncio.",
+        "Accesorios incluidos: Fuente de alimentación original, cables de vídeo de alta velocidad y tornillos de peana."
+      ],
+      "workflowCtaTitle": "¿Listo para probar un monitor usado en directo?",
+      "workflowCtaDesc": "Inicie nuestro flujo guiado de inspección de monitores usados para realizar una batería completa de pruebas en su portátil durante el encuentro.",
+      "workflowCtaButton": "Iniciar inspección de monitor usado",
+      "relatedTestsHeading": "Herramientas de diagnóstico recomendadas"
     }
   },
   "Inspection": {
@@ -1259,7 +1509,10 @@
       "checklistDesc": "La lista orienta las áreas de prueba recomendadas según el perfil de su pantalla y el motivo de la inspección.",
       "profileLabel": "Perfil de pantalla:",
       "unspecified": "Monitor no especificado",
-      "editProfile": "Editar especificaciones del perfil"
+      "editProfile": "Editar especificaciones del perfil",
+      "usedGuidePromoTitle": "¿Necesita una lista de comprobación antes de probar?",
+      "usedGuidePromoDesc": "Aprenda qué cables llevar, cómo inspeccionar los puertos y verificar los datos del vendedor.",
+      "usedGuidePromoBtn": "Leer guía del comprador"
     },
     "gaming": {
       "metaTitle": "Gaming Monitor Inspection",

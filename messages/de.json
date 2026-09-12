@@ -1226,6 +1226,256 @@
       "noticeTitle": "Technischer Transparenzhinweis:",
       "browserCanDoTitle": "Browser-Funktionen",
       "browserCannotDoTitle": "Einschränkung bei Hardwaremessungen"
+    },
+    "usedMonitorInspectionChecklist": {
+      "metaTitle": "Gebrauchtmonitor-Prüfung & Kauf-Checkliste",
+      "metaDescription": "Schritt-für-Schritt-Ratgeber für den Kauf von gebrauchten Monitoren: Pixelfehler, Kratzer, Hintergrundbeleuchtung und Port-Stabilität prüfen.",
+      "title": "Gebrauchtmonitor-Inspektion & Checkliste",
+      "description": "Umfassender Leitfaden für den Kauf und die Überprüfung von Second-Hand-Monitoren."
+    },
+    "usedMonitor": {
+      "badge": "KÄUFER-LEITFADEN & HARDWARE-CHECKLISTE",
+      "title": "Gebrauchtmonitor-Prüfcheckliste: Was Sie vor dem Kauf testen sollten",
+      "subtitle": "Ein praktischer Leitfaden zur Überprüfung gebrauchter Computerbildschirme auf physische Schäden, Pixelfehler, Backlight-Verschleiß und Port-Stabilität vor dem Kaufabschluss.",
+      "metaTitle": "Gebrauchtmonitor-Prüfcheckliste: Was Sie vor dem Kauf testen sollten",
+      "metaDescription": "Schritt-für-Schritt-Checkliste für gebrauchte Monitore: Kratzer, Pixelfehler, Backlight Bleed, Port-Wackler und OSD-Einstellungen vor Ort prüfen.",
+      "breadcrumbsGuides": "Anleitungen",
+      "breadcrumbsUsedMonitor": "Gebrauchtmonitor-Checkliste",
+      "noticeTitle": "Technische Ehrlichkeit & Prüfungsgrenzen",
+      "noticeDesc": "Screen Tester liefert visuelle Prüfmuster und Browser-API-Berichte. Ein Webbrowser kann den Zustand interner Kondensatoren, die verbleibende Lebensdauer der Hintergrundbeleuchtung, physikalische Panel-Auflösungen, Laborkalibrierungen (Delta E) oder Lötstellen an Anschlüssen nicht messen. Diese Checkliste leitet Ihre visuelle und physische Begutachtung an.",
+      "beforeTitle": "1. Vor dem Treffen mit dem Verkäufer: Vorbereitung & Ausrüstung",
+      "beforeDesc": "Gehen Sie niemals unvorbereitet zu einer Besichtigung. Eine gründliche Prüfung dauert 15 bis 20 Minuten und erfordert passendes Zubehör:",
+      "beforeItems": [
+        {
+          "title": "Laptop mit passenden Videoausgängen",
+          "desc": "Bringen Sie ein aufgeladenes Notebook mit HDMI, DisplayPort oder USB-C (DP-Alt-Mode) mit, das die native Auflösung und Bildwiederholrate des Monitors ansteuern kann."
+        },
+        {
+          "title": "Eigene, geprüfte Monitorkabel",
+          "desc": "Bringen Sie funktionierende, VESA-zertifizierte DisplayPort- und High-Speed-HDMI-Kabel mit. Verlassen Sie sich nicht darauf, dass der Verkäufer das richtige Kabel parat hat."
+        },
+        {
+          "title": "Stromanschluss sicherstellen",
+          "desc": "Klären Sie ab, ob am Treffpunkt Steckdosen vorhanden sind. Für Übergaben im Freien eignet sich ein 12V-Wechselrichter im Auto oder eine mobile Powerstation."
+        },
+        {
+          "title": "Prüfwerkzeuge einpacken",
+          "desc": "Ein sauberes Mikrofasertuch gegen Staub, eine kleine LED-Taschenlampe zur Streiflicht-Kratzerinspektion und ein USB-Stick zum Testen integrierter USB-Hubs."
+        },
+        {
+          "title": "Genügend Zeit einplanen (15–20 Minuten)",
+          "desc": "Informieren Sie den Verkäufer vorab über die Prüfzeit. Wenn der Verkäufer Sie hetzt oder einen Test verweigert, brechen Sie den Kauf ab."
+        }
+      ],
+      "physicalTitle": "2. Physische & mechanische Inspektion (Ausgeschaltetes Panel)",
+      "physicalDesc": "Untersuchen Sie das Gehäuse und die Panel-Oberfläche vor dem Einschalten gründlich:",
+      "physicalItems": [
+        {
+          "title": "Kratzer auf der Display-Oberfläche (Streiflicht-Test)",
+          "desc": "Leuchten Sie mit einer Taschenlampe in einem flachen Winkel von 15° bis 30° über das Panel. Streiflicht entlarvt feine Haarrisse, Kratzer in der Antireflex-Schicht und Putzmittelspuren, die frontal unsichtbar sind."
+        },
+        {
+          "title": "Glasabsplitterungen an Ecken & Kanten",
+          "desc": "Prüfen Sie alle vier Ecken sorgfältig auf Mikrorisse im Substratglas. Solche Stoßschäden breiten sich durch thermische Spannungen mit der Zeit weiter aus."
+        },
+        {
+          "title": "Rahmen, Gehäusespalten & Spaltmaße",
+          "desc": "Achten Sie auf Hebelspuren am Gehäuse, sich lösende Displayblenden oder Klebereste, die auf unprofessionelle Reparaturversuche hinweisen."
+        },
+        {
+          "title": "Standfuß-Mechanik & VESA-Gewinde",
+          "desc": "Testen Sie Höhenverstellung, Neigung und Pivot-Drehung. Prüfen Sie die vier VESA-M4-Schraublöcher auf der Rückseite auf überdrehte Gewinde von Monitorarmen."
+        },
+        {
+          "title": "Fester Sitz der Anschlüsse",
+          "desc": "Wackeln Sie bei eingestecktem Kabel ganz vorsichtig am DisplayPort- und HDMI-Stecker. Wackelige Buchsen deuten auf gebrochene Lötstellen auf der Hauptplatine hin."
+        },
+        {
+          "title": "Flüssigkeitsschäden & Brandgeruch",
+          "desc": "Achten Sie am unteren Rand auf getrocknete Flüssigkeitsränder. Riechen Sie an den oberen Lüftungsschlitzen: Ein stechender Geruch nach verbranntem Kunststoff oder Ozon deutet auf überhitzte Kondensatoren hin."
+        }
+      ],
+      "powerTitle": "3. Einschalten & Stabilität der Hintergrundbeleuchtung",
+      "powerDesc": "Schließen Sie das Gerät an den Strom an und beobachten Sie den Startvorgang:",
+      "powerItems": [
+        {
+          "title": "Startverzögerung & Relais-Klicken",
+          "desc": "Monitore sollten innerhalb von 2 bis 5 Sekunden ein Bild zeigen. Häufiges Klicken, blinkende Standby-LEDs oder langes Zögern deuten auf gealterte Kondensatoren im Netzteil hin."
+        },
+        {
+          "title": "Verbindungsabbrüche (Kabel-Wackeltest)",
+          "desc": "Bewegen Sie das Videokabel nahe der Buchse sanft. Wird der Bildschirm kurz schwarz, liegt ein Wackelkontakt an Stecker oder Buchse vor."
+        },
+        {
+          "title": "Thermische Belastbarkeit",
+          "desc": "Lassen Sie das Gerät mindestens 10 Minuten bei voller Helligkeit laufen. Angeschlagene Netzteile schalten oft erst nach Erreichen der Betriebstemperatur ab."
+        },
+        {
+          "title": "Gleichmäßige Helligkeitsregelung",
+          "desc": "Regeln Sie die Helligkeit im OSD von 0% auf 100%. Sie sollte stufenlos und ohne Flackern, Pfeifen oder spontanes Abschalten dimmen."
+        }
+      ],
+      "pixelTitle": "4. Pixelfehler- & Subpixelprüfung",
+      "pixelDesc": "Pixelfehler sind der häufigste Mangel bei Gebrauchtgeräten. Starten Sie Screen Tester im Vollbild:",
+      "pixelItems": [
+        {
+          "title": "Tote Pixel (Dunkle Punkte auf hellem Grund)",
+          "desc": "Öffnen Sie im Toten-Pixel-Test weiße, rote, grüne und blaue Vollbilder. Ausgefallene Subpixel bleiben als dunkle, nadelfeine Punkte auf hellem Grund sichtbar."
+        },
+        {
+          "title": "Festsitzende Pixel (Helle Punkte auf Schwarz)",
+          "desc": "Öffnen Sie im Festsitzenden-Pixel-Test ein schwarzes Vollbild. Permanent geöffnete Transistoren leuchten rot, grün, blau oder weiß."
+        },
+        {
+          "title": "Der Parallaxen-Staubtest (Staubkorn vs. toter Pixel)",
+          "desc": "Verwechseln Sie eingeschlossenen Staub nicht mit einem Pixelfehler. Betrachten Sie den Punkt schräg aus 45°: Wirft der dunkle Punkt einen Schatten auf das leuchtende Pixelgitter und wandert mit dem Blickwinkel mit, ist es Staub auf der Diffusorfolie. Bleibt er starr auf Pixelebene, ist es ein toter Pixel."
+        }
+      ],
+      "pixelLinksTitle": "Zugehörige Pixelfehler-Tests & Referenzen:",
+      "imageTitle": "5. Bildqualität, Lichthöfe & Ausleuchtung",
+      "imageDesc": "Beurteilen Sie Ausleuchtung, Farbtiefe und Bildhomogenität:",
+      "imageItems": [
+        {
+          "title": "Backlight Bleed vs. IPS Glow",
+          "desc": "Rufen Sie in abgedunkelter Umgebung den Backlight-Bleed-Test auf. Kopfbewegungs-Test: Ändert sich der Schimmer in den Ecken beim Bewegen des Kopfes, ist es normaler IPS Glow. Bleiben helle Lichtkegel an Kanten starr sichtbar, liegt mechanisches Backlight Bleed vor."
+        },
+        {
+          "title": "Ausleuchtungsgleichmäßigkeit & Dirty Screen Effect",
+          "desc": "Betrachten Sie im Uniformitäts-Test ein 50% neutralgraues Bild. Achten Sie auf dunkle Ränder (Vignettierung) oder wolkige Flecken."
+        },
+        {
+          "title": "Farbverläufe & Banding",
+          "desc": "Prüfen Sie im Gradienten-Test weiche Farbverläufe. Stufige Kanten deuten darauf hin, dass die Farbtiefe auf 6 Bit beschränkt ist statt echter 8 oder 10 Bit."
+        },
+        {
+          "title": "Textschärfe & Farbsäume",
+          "desc": "Öffnen Sie den Textschärfe-Test. Farbige Säume um schwarze Schriftzeichen deuten auf ungewöhnliche Subpixelanordnungen (z.B. BGR) hin."
+        },
+        {
+          "title": "Blickwinkelabhängigkeit (VA & TN)",
+          "desc": "Prüfen Sie seitliche Gamma-Verschiebungen bei VA-Panels (auswaschende Schatten) oder Farb-Invertierungen bei TN-Panels."
+        }
+      ],
+      "imageLinksTitle": "Zugehörige Bildqualitätstests:",
+      "motionTitle": "6. Bewegungsschärfe & Bildwiederholfrequenz",
+      "motionDesc": "Überprüfen Sie die beworbene Gaming- und Bewegungsleistung:",
+      "motionItems": [
+        {
+          "title": "Beworbene Hz-Zahl in Windows/macOS prüfen",
+          "desc": "Prüfen Sie in den Systemeinstellungen und mit dem Screen Tester Bildwiederholraten-Test, ob 144Hz, 165Hz oder 240Hz stabil und ohne Frame-Skipping laufen."
+        },
+        {
+          "title": "Ghosting & Reaktionszeitverhalten",
+          "desc": "Öffnen Sie den Ghosting-Test mit kontrastreichen bewegten Blöcken. Beobachten Sie Schlieren hinter bewegten Elementen."
+        },
+        {
+          "title": "Hintergrundbeleuchtungs-Strobing (BFI/ELMB)",
+          "desc": "Testen Sie vorhandenes Backlight Strobing im OSD mit dem Motion-Blur-Test auf Flimmern und Schärfegewinn."
+        },
+        {
+          "title": "VRR / G-Sync / FreeSync aktivieren",
+          "desc": "Aktivieren Sie Adaptive Sync im GPU-Treiber und prüfen Sie im VRR-Test auf Helligkeitsflackern."
+        }
+      ],
+      "motionLinksTitle": "Zugehörige Bewegungstests:",
+      "osdTitle": "7. OSD-Menü, Firmware & Werkseinstellungen",
+      "osdDesc": "Das Bildschirmmenü liefert wichtige Hardwareinformationen:",
+      "osdItems": [
+        {
+          "title": "Immer auf Werkseinstellungen zurücksetzen",
+          "desc": "Führen Sie im OSD-Menü sofort einen Reset durch (Werkseinstellung). Verkäufer manipulieren oft Schwarzwerte oder Schärfe, um Panel-Mängel zu kaschieren."
+        },
+        {
+          "title": "Native Auflösung im Info-Menü abgleichen",
+          "desc": "Kontrollieren Sie im OSD-Menü 'Information', ob die vom Signal anliegende Auflösung exakt den Werksangaben entspricht."
+        },
+        {
+          "title": "Overdrive-Profile testen",
+          "desc": "Testen Sie die Overdrive-Stufen (Normal, Fast, Extreme). Vermeiden Sie 'Extreme', wenn es helle Heiligenscheine (inverses Ghosting) verursacht."
+        },
+        {
+          "title": "Bedienelemente prüfen",
+          "desc": "Stellen Sie sicher, dass Joystick und Tasten sauber schalten und nicht klemmen."
+        }
+      ],
+      "osdNote": "Hinweis: Ein Webbrowser kann interne OSD-Register nicht direkt auslesen. Alle OSD-Einstellungen müssen direkt am Bildschirm geprüft werden.",
+      "portsTitle": "8. Anschlüsse & Schnittstellen prüfen",
+      "portsDesc": "Ein defekter Port macht teure Monitore unbrauchbar. Testen Sie jeden Anschluss:",
+      "portsItems": [
+        {
+          "title": "Jeden Videoeingang einzeln anschließen",
+          "desc": "Stecken Sie HDMI 1, HDMI 2 und DisplayPort nacheinander an und schalten Sie im OSD um."
+        },
+        {
+          "title": "USB-Hub und Upstream-Port",
+          "desc": "Verbinden Sie das USB-Upstream-Kabel und stecken Sie einen USB-Stick oder eine Maus in die Monitorbuchsen."
+        },
+        {
+          "title": "3,5-mm-Klinkenausgang testen",
+          "desc": "Schließen Sie Kopfhörer an und prüfen Sie mit dem Lautsprecher-Test die linke und rechte Tonspur."
+        },
+        {
+          "title": "USB-C Power Delivery & Bildübertragung",
+          "desc": "Prüfen Sie bei USB-C-Monitoren, ob gleichzeitiges Laden und Bildübertragung mit einem einzigen Kabel funktioniert."
+        }
+      ],
+      "wearTitle": "9. Anzeichen für intensive Dauer- oder Büronutzung",
+      "wearDesc": "Geräte aus 24/7-Überwachungszentralen oder Büros altern vorzeitig:",
+      "wearItems": [
+        {
+          "title": "Einbrennen & Geisterbilder",
+          "desc": "Prüfen Sie im Einbrenn-Test auf helle und graue Geisterbilder von Taskleisten, Excel-Tabellen oder Browserleisten."
+        },
+        {
+          "title": "Betriebsstundenzähler im Servicemenü",
+          "desc": "Viele Dell-, LG- und BenQ-Monitore zählen die Betriebsstunden der Hintergrundbeleuchtung im Menü. Über 15.000 Stunden deuten auf ein altes Panel hin."
+        },
+        {
+          "title": "Lüftergeräusche bei High-End-Modellen",
+          "desc": "G-Sync-Ultimate- und einige OLED-Monitore besitzen interne Minilüfter. Achten Sie auf Klappern oder Schleifgeräusche."
+        },
+        {
+          "title": "Thermische Vergilbung",
+          "desc": "Achten Sie auf weiße Hintergründe: Vergilbungen am oberen Rand deuten auf thermische Alterung hin."
+        }
+      ],
+      "sellerTitle": "10. Modell- & Garantieprüfung beim Verkäufer",
+      "sellerDesc": "Schützen Sie sich vor Etikettenschwindel und klären Sie Garantieansprüche:",
+      "sellerItems": [
+        {
+          "title": "Exakte Modellnummer auf dem Typenschild abgleichen",
+          "desc": "Schauen Sie auf den Barcode-Aufkleber auf der Rückseite. Prüfen Sie das Suffix (z.B. 27GP850 vs. 27GN800), um minderwertige Ausstattungsvarianten auszuschließen."
+        },
+        {
+          "title": "Seriennummer mit Originalverpackung abgleichen",
+          "desc": "Sofern die Box vorhanden ist, muss die Seriennummer auf dem Karton mit dem Aufkleber am Monitor übereinstimmen."
+        },
+        {
+          "title": "Originalrechnung vorlegen lassen",
+          "desc": "Bitten Sie um den Kaufbeleg. Das belegt das Kaufdatum, das Alter und die rechtmäßige Herkunft."
+        },
+        {
+          "title": "Garantieübertragbarkeit ist herstellerspezifisch",
+          "desc": "Gehen Sie nicht davon aus, dass Restgarantien automatisch übertragbar sind. Dell bindet Garantien an das Service-Tag, während ASUS oder LG oft die namentliche Erstkauf-Rechnung fordern."
+        }
+      ],
+      "checklistTitle": "11. Finale Kaufentscheidungs-Checkliste",
+      "checklistDesc": "Gehen Sie diese 9 Punkte vor der Bezahlung durch:",
+      "checklist": [
+        "Panelglas: Keine tiefen Kratzer, Risse oder Ablösungen der Beschichtung im Streiflicht.",
+        "Gehäuse & Standfuß: Alle Achsen leichtgängig, VESA-Gewinde intakt, kein Brandgeruch.",
+        "Stromstabilität: Startet innerhalb von 5s, kein Kondensator-Pfeifen, kein Abschalten bei 100% Helligkeit.",
+        "Anschlüsse: HDMI, DP und USB-C sitzen fest und verlieren bei sanftem Wackeln kein Bild.",
+        "Pixelfehler: Vollbildtest auf Pixelfehler (weiß/schwarz) ohne störende Defekte bestanden.",
+        "Ausleuchtung: Im Backlight-Bleed- und Uniformitätstest keine störenden Lichthöfe.",
+        "Bewegung & Hz: Beworbene Bildwiederholfrequenz (z.B. 144Hz) im System stabil erkannt.",
+        "Typenschild: Exakte Modellnummer auf der Rückseite stimmt mit Anzeige überein.",
+        "Zubehör komplett: Original-Netzteil, hochwertige Monitorkabel und Standfußschrauben vorhanden."
+      ],
+      "workflowCtaTitle": "Möchten Sie den Gebrauchtmonitor vor Ort testen?",
+      "workflowCtaDesc": "Starten Sie unsere interaktive Gebrauchtmonitor-Inspektion, um alle Diagnosetests Schritt für Schritt auf Ihrem Laptop durchzuführen.",
+      "workflowCtaButton": "Gebrauchtmonitor-Inspektion starten",
+      "relatedTestsHeading": "Empfohlene Prüf-Tools"
     }
   },
   "Inspection": {
@@ -1259,7 +1509,10 @@
       "checklistDesc": "Die Checkliste hebt empfohlene Testbereiche basierend auf dem Displayprofil und dem Inspektionszweck hervor.",
       "profileLabel": "Display-Profil:",
       "unspecified": "Nicht spezifizierter Monitor",
-      "editProfile": "Profil-Spezifikationen bearbeiten"
+      "editProfile": "Profil-Spezifikationen bearbeiten",
+      "usedGuidePromoTitle": "Benötigen Sie vor dem Testen eine Kauf-Checkliste?",
+      "usedGuidePromoDesc": "Erfahren Sie, welche Kabel Sie mitbringen sollten, wie Anschlüsse geprüft und Verkäuferangaben verifiziert werden.",
+      "usedGuidePromoBtn": "Gebraucht-Leitfaden lesen"
     },
     "gaming": {
       "metaTitle": "Gaming Monitor Inspection",

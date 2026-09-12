@@ -45,6 +45,21 @@ export const monitorGuides: MonitorGuide[] = [
     primaryIntent: "how to test phone screen",
     relatedTestIds: ["touch-screen-test", "dead-pixel-test", "burn-in-test"]
   },
+  {
+    id: "used-monitor-inspection-checklist",
+    category: "device",
+    primaryIntent: "how to test a used monitor before buying",
+    relatedTestIds: [
+      "dead-pixel-test",
+      "stuck-pixel-test",
+      "backlight-bleed-test",
+      "uniformity-test",
+      "ghosting-test",
+      "motion-blur-test",
+      "refresh-rate-test",
+      "resolution-checker"
+    ]
+  },
 
   // CONCEPTS
   {
