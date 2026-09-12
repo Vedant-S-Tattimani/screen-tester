@@ -33,6 +33,15 @@ const DIRECTORY_BADGES = [
     height: 54,
     loading: "lazy" as const,
   },
+  {
+    name: "DodoDirectory",
+    href: "https://dododirectory.com",
+    rel: "dofollow",
+    src: "https://dododirectory.com/badge-light.png",
+    alt: "Featured on DodoDirectory",
+    width: 200,
+    height: 54,
+  },
 ];
 
 export function Footer() {
