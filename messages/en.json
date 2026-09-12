@@ -1833,7 +1833,8 @@
       "workflowCtaTitle": "Ready for the interactive testing sequence?",
       "workflowCtaDesc": "Launch our guided New Monitor Inspection Workflow to step through dead pixel patterns, backlight checks, and uniformity sequences directly on your display.",
       "workflowCtaButton": "Launch New Monitor Workflow",
-      "relatedTestsHeading": "Recommended Testing Suite"
+      "relatedTestsHeading": "Recommended Testing Suite",
+      "osdLinksTitle": "OSD & Signal Verification Tests"
     }
   },
   "Inspection": {

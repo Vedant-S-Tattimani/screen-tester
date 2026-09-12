@@ -1794,7 +1794,8 @@
       "workflowCtaTitle": "Bereit für die interaktive Testsequenz?",
       "workflowCtaDesc": "Starten Sie unseren geführten Prüfungsablauf für neue Monitore, um Pixelfehlermuster, Ausleuchtung und Gleichmäßigkeit direkt auf Ihrem Display zu testen.",
       "workflowCtaButton": "Prüfungsablauf für neue Monitore starten",
-      "relatedTestsHeading": "Empfohlene Testsuite"
+      "relatedTestsHeading": "Empfohlene Testsuite",
+      "osdLinksTitle": "OSD- & Signal-Verifikationstests"
     }
   },
   "Inspection": {

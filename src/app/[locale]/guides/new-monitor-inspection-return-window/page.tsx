@@ -334,6 +334,13 @@ export default async function NewMonitorInspectionGuidePage({
               <ArrowRight className="w-3 h-3 text-muted-foreground" />
             </Link>
             <Link
+              href="/tests/hdr-test"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-background text-xs font-medium hover:border-primary transition-colors"
+            >
+              <span>HDR Test</span>
+              <ArrowRight className="w-3 h-3 text-muted-foreground" />
+            </Link>
+            <Link
               href="/knowledge-base/backlight-bleed-vs-ips-glow"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-background text-xs font-medium hover:border-primary transition-colors"
             >
@@ -422,6 +429,20 @@ export default async function NewMonitorInspectionGuidePage({
               </p>
             </div>
           ))}
+        </div>
+        <div className="p-4 rounded-xl border border-border/70 bg-card mb-4">
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
+            {t("osdLinksTitle")}
+          </p>
+          <div className="flex flex-wrap gap-2.5">
+            <Link
+              href="/tests/hdr-test"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-background text-xs font-medium hover:border-primary transition-colors"
+            >
+              <span>HDR Test</span>
+              <ArrowRight className="w-3 h-3 text-muted-foreground" />
+            </Link>
+          </div>
         </div>
         <p className="text-xs text-muted-foreground italic px-1">
           {t("osdNote")}
@@ -563,6 +584,16 @@ export default async function NewMonitorInspectionGuidePage({
             </li>
           ))}
         </ol>
+        <div className="mt-6 pt-4 border-t border-border/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-slate-600">
+          <span>Encountering unexpected display issues during initial setup?</span>
+          <Link
+            href="/knowledge-base/troubleshooting"
+            className="inline-flex items-center gap-1.5 font-semibold text-slate-900 hover:text-blue-600 transition-colors shrink-0"
+          >
+            <span>Display Troubleshooting Guide</span>
+            <ArrowRight className="w-3 h-3" />
+          </Link>
+        </div>
       </section>
 
       {/* Section 13: Quick 10-Point Unboxing Checklist */}

@@ -1794,7 +1794,8 @@
       "workflowCtaTitle": "実践的なテスト画面に進みますか？",
       "workflowCtaDesc": "画面上で直接ドット抜け、バックライト、均一性を順を追ってチェックできる、当サイトの「新品モニター点検ワークフロー」をご利用ください。",
       "workflowCtaButton": "新品モニター点検を開始",
-      "relatedTestsHeading": "おすすめのテストスイート"
+      "relatedTestsHeading": "おすすめのテストスイート",
+      "osdLinksTitle": "OSD・信号検証テスト"
     }
   },
   "Inspection": {

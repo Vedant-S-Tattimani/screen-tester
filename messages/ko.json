@@ -1794,7 +1794,8 @@
       "workflowCtaTitle": "실전 대화형 테스트로 이동하시겠습니까?",
       "workflowCtaDesc": "모니터 화면에서 직접 불량 화소, 빛샘, 균일도를 순서대로 확인해 볼 수 있는 '신품 모니터 점검 워크플로우'를 실행하세요.",
       "workflowCtaButton": "신품 모니터 워크플로우 시작",
-      "relatedTestsHeading": "추천 테스트 모음"
+      "relatedTestsHeading": "추천 테스트 모음",
+      "osdLinksTitle": "OSD 및 신호 검증 테스트"
     }
   },
   "Inspection": {

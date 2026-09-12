@@ -1794,7 +1794,8 @@
       "workflowCtaTitle": "¿Desea iniciar la secuencia de pruebas interactiva?",
       "workflowCtaDesc": "Inicie nuestro flujo guiado de inspección de monitores nuevos para revisar patrones de píxeles, fugas y uniformidad paso a paso en su pantalla.",
       "workflowCtaButton": "Iniciar flujo para monitores nuevos",
-      "relatedTestsHeading": "Conjunto de pruebas recomendado"
+      "relatedTestsHeading": "Conjunto de pruebas recomendado",
+      "osdLinksTitle": "Pruebas de verificación de señal y OSD"
     }
   },
   "Inspection": {

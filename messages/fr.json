@@ -1794,7 +1794,8 @@
       "workflowCtaTitle": "Prêt pour la séquence de test guidée ?",
       "workflowCtaDesc": "Lancez notre parcours guidé d'inspection d'écran neuf pour dérouler mires de pixels, contrôles d'éclairage et d'uniformité directement sur votre affichage.",
       "workflowCtaButton": "Lancer le parcours écran neuf",
-      "relatedTestsHeading": "Suite de tests conseillée"
+      "relatedTestsHeading": "Suite de tests conseillée",
+      "osdLinksTitle": "Tests de vérification du signal et de l'OSD"
     }
   },
   "Inspection": {
