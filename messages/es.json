@@ -2164,6 +2164,457 @@
       "linkTroubleshooting": "Guía de solución de problemas de pantalla",
       "determineLinksTitle": "VERIFICAR CAPACIDADES DE PANTALLA Y MAPEO DE SEÑAL",
       "linkResolutionKb": "Fundamentos de resolución y escalado"
+    },
+    "monitorOsdSettings": {
+      "metaTitle": "Ajustes del OSD del monitor explicados: Overdrive, HDR, VRR y más",
+      "metaDescription": "Guía práctica de los ajustes del menú OSD del monitor: descubra qué modifican realmente el overdrive, MBR, VRR, HDR, gamma, atenuación local y nitidez, y cómo verificarlos visualmente.",
+      "badge": "Guía de calibración de pantalla y configuración OSD",
+      "title": "Ajustes del OSD del monitor explicados",
+      "subtitle": "Guía técnica y práctica que explica qué modifican los controles del menú en pantalla, cómo equilibrar claridad de movimiento y color, y cómo verificar ajustes con pruebas visuales en navegador.",
+      "breadcrumbsGuides": "Guías",
+      "breadcrumbsOsd": "Ajustes del OSD del monitor",
+      "honestyTitle": "Honestidad técnica y alcance de verificación",
+      "honestyDesc": "Screen Tester funciona en un entorno aislado de navegador web. Las API web pueden consultar dimensiones del viewport, espacios de color canvas y cadencias de fotogramas, pero no pueden medir nits reales, Delta E con sensor, tiempos de respuesta en milisegundos ni rangos de frecuencia VRR del hardware. Distinguimos seis niveles clave de evaluación:",
+      "honestyItems": [
+        {
+          "badge": "Ajuste OSD",
+          "title": "Registros de hardware del firmware",
+          "desc": "Controles internos del escalador guardados en la memoria EEPROM/NVRAM del monitor, ajustados con botones físicos o joystick sin intervención del sistema operativo."
+        },
+        {
+          "badge": "Ajuste del SO",
+          "title": "Canal de visualización del sistema",
+          "desc": "Resolución, frecuencia de actualización, factor de escala del escritorio y perfil de color configurados en Windows, macOS o Linux."
+        },
+        {
+          "badge": "Ajuste del controlador GPU",
+          "title": "Panel de control gráfico",
+          "desc": "Rango dinámico de salida (RGB completo vs. limitado), formato de color (RGB vs. YCbCr), modos de escalado y sincronización en drivers Nvidia, AMD o Intel."
+        },
+        {
+          "badge": "Reportado por navegador",
+          "title": "Tiempos del contexto de renderizado",
+          "desc": "Dimensiones de ventana, relación de píxeles del dispositivo e intervalos requestAnimationFrame expuestos a la web. No certifican límites físicos del panel."
+        },
+        {
+          "badge": "Observación visual",
+          "title": "Evaluación perceptiva",
+          "desc": "Inspección visual directa de artefactos como estelas de ghosting, halos de overshoot, aberraciones en texto, bandas en gradientes y uniformidad de brillo."
+        },
+        {
+          "badge": "Especificación del fabricante",
+          "title": "Métricas de laboratorio publicitadas",
+          "desc": "Cifras de marketing (ej. '0,5 ms GtG', '1000 nits pico', '3000:1 contraste') obtenidas en pruebas de laboratorio extremas que rara vez reflejan el uso real predeterminado."
+        }
+      ],
+      "whatIsOsdTitle": "1. ¿Qué es el menú OSD de un monitor?",
+      "whatIsOsdDesc": "El On-Screen Display (OSD) es la interfaz de firmware integrada en el monitor, renderizada por su escalador interno y controlador de sincronización (T-Con). Permite gestionar funciones del panel a nivel de hardware independientemente del ordenador.",
+      "whatIsOsdItems": [
+        {
+          "title": "Ejecución independiente en el escalador",
+          "desc": "El OSD se genera directamente en el procesador escalador del monitor. Aparece en pantalla incluso si no hay cable de vídeo conectado o si el sistema operativo no responde."
+        },
+        {
+          "title": "Caos en la nomenclatura de fabricantes",
+          "desc": "Una misma función recibe nombres comerciales muy distintos: el Overdrive se llama 'Trace Free' en ASUS, 'AMA' en BenQ y 'Tiempo de respuesta' en LG o Samsung."
+        },
+        {
+          "title": "Bloqueos dependientes del contexto",
+          "desc": "Muchos controles se desactivan según el modo activo. Al activar un perfil sRGB o el modo HDR, suelen bloquearse brillo, contraste, temperatura de color y overdrive."
+        },
+        {
+          "title": "Ajustes no estandarizados",
+          "desc": "Un mismo nombre de ajuste se comporta de forma distinta entre pantallas. El modo 'Rápido' puede ser ideal en un monitor y causar halos insoportables en otro."
+        }
+      ],
+      "brightnessContrastTitle": "2. Brillo y contraste: qué controlan realmente",
+      "brightnessContrastDesc": "El brillo y el contraste son los controles más manipulados y peor comprendidos. Entender su comportamiento evita degradar severamente la calidad de imagen.",
+      "brightnessContrastItems": [
+        {
+          "title": "Brillo: luminancia de la retroiluminación",
+          "desc": "Regula la potencia de la retroiluminación LED (o la emisión de píxeles OLED). Controla la luz emitida sin recortar los valores numéricos RGB de la imagen. Ajuste el brillo a la iluminación ambiental (25–50 % en penumbra). JavaScript en el navegador no puede medir nits (cd/m²)."
+        },
+        {
+          "title": "Contraste: mapeo del punto blanco digital",
+          "desc": "El contraste ajusta la ganancia de la señal digital en el escalador; NO altera la relación de contraste físico del panel (IPS ~1000:1, VA ~3000:1, OLED infinito). Subirlo en exceso recorta las altas luces a blanco puro 255 (clipping); bajarlo demasiado vuelve la imagen gris y apagada."
+        },
+        {
+          "title": "Línea base y verificación",
+          "desc": "Mantenga el contraste en su valor predeterminado (suele ser 50 o 70). Verifique que no haya recorte de blancos ni pérdida de sombras con las pruebas de Escala de grises y Cerca del negro de Screen Tester."
+        }
+      ],
+      "overdriveTitle": "3. Overdrive / Tiempo de respuesta",
+      "overdriveDesc": "El overdrive (impulso de voltaje) es el ajuste más importante para la nitidez en movimiento en paneles LCD. Acelera el giro de los cristales líquidos para acortar las transiciones Gray-to-Gray (GtG).",
+      "overdriveItems": [
+        {
+          "title": "El dilema básico: Ghosting vs. Overshoot",
+          "desc": "Con poco overdrive, los cristales tardan en cambiar de estado y dejan estelas borrosas (ghosting). Con demasiado voltaje, sobrepasan el color objetivo y producen halos brillantes u oscuros (overshoot o ghosting inverso)."
+        },
+        {
+          "title": "La trampa de los '0,5 ms' y perfiles extremos",
+          "desc": "Las cifras de '1 ms' o '0,5 ms' anunciadas solo se alcanzan en el nivel de overdrive más agresivo ('Extremo' o 'Más rápido'), el cual genera severos halos que lo hacen inviable para jugar."
+        },
+        {
+          "title": "Interacción con VRR",
+          "desc": "Salvo que el monitor cuente con overdrive variable dinámico (habitual en módulos G-Sync por hardware), un overdrive fijado para 180 Hz causará mucho overshoot si los fotogramas bajan a 60–80 FPS."
+        },
+        {
+          "title": "Recomendación de prueba visual",
+          "desc": "Comience en el ajuste medio ('Fast', 'Normal' o Nivel 2). Use las pruebas de Ghosting y Desenfoque de movimiento a su frecuencia habitual para encontrar el punto óptimo sin halos."
+        }
+      ],
+      "mbrTitle": "4. Reducción de desenfoque de movimiento / MBR (Strobing)",
+      "mbrDesc": "La reducción de desenfoque de movimiento (MBR)—comercializada como ULMB, ELMB, DyAc, PureXP o 1ms MPRT—reduce la borrosidad parpadeando la retroiluminación al ritmo de los fotogramas.",
+      "mbrItems": [
+        {
+          "title": "Cómo combate la persistencia retiniana",
+          "desc": "Las pantallas planas modernas mantienen cada imagen encendida hasta el siguiente refresco (sample-and-hold). Al seguir objetos con los ojos, se genera borrosidad en la retina. El strobing apaga la luz durante el cambio de píxeles y solo destella cuando están estables."
+        },
+        {
+          "title": "Inconvenientes severos: brillo y parpadeo",
+          "desc": "Al permanecer apagada parte de cada ciclo, la luminancia global cae entre un 30 % y un 50 %. Además, el parpadeo constante provoca fatiga visual y dolor de cabeza en usuarios sensibles."
+        },
+        {
+          "title": "Conflictos con VRR y Strobe Crosstalk",
+          "desc": "En la mayoría de monitores, activar MBR deshabilita Adaptive Sync / VRR. Las diferencias de tiempo de respuesta a lo largo del panel pueden producir imágenes dobles (strobe crosstalk) en los bordes."
+        },
+        {
+          "title": "Recomendación de prueba",
+          "desc": "Compare elementos en movimiento en la Prueba de Desenfoque de Movimiento con MBR activado y desactivado. Desactívelo para escritorio, diseño y HDR; resérvelo para shooters competitivos."
+        }
+      ],
+      "vrrTitle": "5. Adaptive Sync / Frecuencia de actualización variable (VRR)",
+      "vrrDesc": "VRR (VESA Adaptive-Sync, AMD FreeSync, Nvidia G-Sync Compatible) sincroniza dinámicamente los ciclos de refresco del monitor con la tasa de entrega de fotogramas de la GPU.",
+      "vrrItems": [
+        {
+          "title": "Elimina el tearing sin los tirones de VSync",
+          "desc": "VRR evita el corte horizontal de pantalla (tearing) con VSync desactivado y elimina los tirones bruscos y el retardo de entrada asociados a VSync activado cuando caen los FPS."
+        },
+        {
+          "title": "La cadena completa de hardware y software",
+          "desc": "VRR requiere que todos los eslabones coincidan: panel de control de la GPU, cable DisplayPort o HDMI 2.1 con suficiente ancho de banda, interruptor en el SO y activación en el OSD."
+        },
+        {
+          "title": "LFC y parpadeo de brillo",
+          "desc": "Si los fotogramas caen por debajo del umbral mínimo de VRR (ej. 48 Hz), la compensación LFC duplica fotogramas. En ciertos paneles VA u OLED, esto puede inducir un parpadeo sutil de brillo en zonas oscuras."
+        },
+        {
+          "title": "Alcance de la prueba en navegador",
+          "desc": "La prueba VRR de Screen Tester ayuda a comprobar visualmente la ausencia de tearing y la suavidad, pero no puede certificar módulos G-Sync por hardware ni leer los límites exactos de Hz del panel."
+        }
+      ],
+      "hdrTitle": "6. Modo HDR en los menús OSD",
+      "hdrDesc": "El alto rango dinámico (HDR) expande el contraste y el volumen de color. Sin embargo, activar 'HDR' en el OSD de un monitor genera constantes malentendidos entre los usuarios.",
+      "hdrItems": [
+        {
+          "title": "Compatibilidad de señal vs. capacidad real del panel",
+          "desc": "Que el OSD permita activar HDR solo significa que el escalador procesa señales HDR10. No dota mágicamente al panel de 1000 nits ni de atenuación local real para mostrar HDR auténtico."
+        },
+        {
+          "title": "La trampa de los monitores 'HDR400' básicos",
+          "desc": "En monitores Edge-Lit convencionales de brillo modesto (~350 nits), activar HDR suele empeorar la imagen: eleva los negros a gris claro, apaga los colores del escritorio SDR y bloquea los ajustes del OSD."
+        },
+        {
+          "title": "Cuándo merece la pena el HDR",
+          "desc": "El HDR solo destaca en pantallas con control de luz por píxel (OLED) o atenuación local de cientos de zonas (Mini-LED), donde los brillos intensos conviven con negros puros."
+        },
+        {
+          "title": "Prueba visual en navegador",
+          "desc": "Use la Prueba HDR de Screen Tester para comprobar si su monitor resuelve transiciones de alta luminosidad o si quema los detalles brillantes convirtiéndolos en blancos planos."
+        }
+      ],
+      "gammaTitle": "7. Ajustes de Gamma: curvas y tonos medios",
+      "gammaDesc": "La gamma modula la curva que convierte los valores de color digital en luminancia percibida, afectando de manera primordial a los tonos medios de la imagen.",
+      "gammaItems": [
+        {
+          "title": "Estándares de referencia: Gamma 2.2 y sRGB",
+          "desc": "Para juegos de PC, navegación y vídeo digital, Gamma 2.2 es el estándar universal. Asegura que los tonos medios se muestren con el brillo previsto por los desarrolladores."
+        },
+        {
+          "title": "Consecuencias de una gamma incorrecta",
+          "desc": "Una gamma muy baja (ej. 1.8) aclara los tonos medios y da un aspecto lechoso y descolorido. Una gamma muy alta (ej. 2.6) oscurece los tonos y oculta los detalles en sombra ('Black Crush')."
+        },
+        {
+          "title": "Imprecisión de las etiquetas del fabricante",
+          "desc": "Un perfil de OSD marcado como '2.2' suele venir descalibrado de fábrica y medir en realidad 2.05 o 2.35. Compruebe los degradados en lugar de fiarse del nombre del menú."
+        },
+        {
+          "title": "Prueba con Screen Tester",
+          "desc": "Evalúe su gamma con las pruebas de Bandas de gradiente y Cerca del negro para garantizar transiciones suaves sin escalones bruscos."
+        }
+      ],
+      "colorTempTitle": "8. Temperatura de color y controles de ganancia RGB",
+      "colorTempDesc": "La temperatura de color fija el balance cromático del blanco, mientras que la ganancia RGB permite ajustar individualmente los canales rojo, verde y azul.",
+      "colorTempItems": [
+        {
+          "title": "Objetivo D65 / 6500K blanco neutro",
+          "desc": "El estándar internacional es D65 (~6500 Kelvin). Los perfiles 'Cálido' suelen acercarse más a este valor, mientras que 'Normal' o 'Frío' aumentan el canal azul (7500K–9000K) creando un blanco azulado artificial."
+        },
+        {
+          "title": "Deslizadores RGB: calibración de canales",
+          "desc": "El modo 'Usuario' desbloquea deslizadores de Rojo, Verde y Azul para corregir dominantes de color (por ejemplo, reducir Verde si la imagen se ve amarillenta o recortar Azul si es gélida)."
+        },
+        {
+          "title": "Riesgo de recorte digital",
+          "desc": "Sin un colorímetro, este ajuste es subjetivo. Subir un canal por encima del máximo produce saturación y tintado en blancos; bajar los tres canales en exceso disminuye el brillo máximo."
+        },
+        {
+          "title": "Verificación de uniformidad",
+          "desc": "Examine un fondo blanco completo en la Prueba de Uniformidad para asegurarse de que el blanco se perciba homogéneo y sin tintes indeseados."
+        }
+      ],
+      "sharpnessTitle": "9. Nitidez: realce de bordes vs. resolución nativa",
+      "sharpnessDesc": "El ajuste de nitidez es uno de los más malinterpretados. En pantallas digitales modernas, actúa como un filtro artificial de realce de bordes.",
+      "sharpnessItems": [
+        {
+          "title": "No aumenta la resolución física",
+          "desc": "El realce por software no puede añadir píxeles físicos. Una pantalla de 2560×1440 tiene exactamente los mismos píxeles esté la nitidez al 0 % o al 100 %."
+        },
+        {
+          "title": "Halos artificiales y distorsión",
+          "desc": "Subir la nitidez por encima del valor neutro genera halos blancos alrededor de letras y líneas finas. Esto deforma las fuentes y cansa la vista al leer texto."
+        },
+        {
+          "title": "La regla del valor neutro",
+          "desc": "Con una señal digital (DisplayPort o HDMI) a resolución nativa, el ajuste debe quedar en su punto neutro (suele ser 50 % o 0 según la marca). Solo señales analógicas o muy escaladas se benefician de nitidez extra."
+        },
+        {
+          "title": "Verificación con la Prueba de Claridad de Texto",
+          "desc": "Abra la Prueba de Claridad de Texto al 100 % de zoom y ajuste la nitidez hasta que las letras negras sobre blanco se lean perfectamente sin bordes blancos fantasma."
+        }
+      ],
+      "localDimmingTitle": "10. Atenuación local (pantallas Full-Array y Mini-LED)",
+      "localDimmingDesc": "En monitores LCD de gama alta con retroiluminación Full-Array (FALD) o Mini-LED, este ajuste gestiona la atenuación por zonas independientes.",
+      "localDimmingItems": [
+        {
+          "title": "Modulación de contraste por zonas",
+          "desc": "Divide la iluminación en decenas o cientos de zonas físicas. Apaga las zonas oscuras para lograr negros intensos mientras ilumina las zonas brillantes a máxima potencia."
+        },
+        {
+          "title": "El efecto halo o blooming",
+          "desc": "Cuando un elemento brillante pequeño (como el cursor o subtítulos) aparece sobre fondo negro, la luz se filtra a las zonas atenuadas contiguas creando un halo visible ('blooming')."
+        },
+        {
+          "title": "Uso en escritorio vs. videojuegos",
+          "desc": "Al trabajar y hacer scroll con texto, el parpadeo de zonas puede resultar molesto. Conviene fijar la atenuación en 'Bajo' o 'Apagado' para oficina y en 'Alto' para juegos HDR y películas."
+        },
+        {
+          "title": "Comprobación visual de zonas",
+          "desc": "Compruebe en las pruebas de Cerca del negro y Uniformidad cómo responden las zonas ante elementos contrastados en movimiento."
+        }
+      ],
+      "blackEqualizerTitle": "11. Black Equalizer / Shadow Boost / Dark Stabilizer",
+      "blackEqualizerDesc": "Muy popular en monitores gaming, el Black Equalizer modifica selectivamente la curva gamma en los niveles más oscuros.",
+      "blackEqualizerItems": [
+        {
+          "title": "Ventaja competitiva en e-sports",
+          "desc": "Al aclarar el 0–20 % inferior de luminancia sin tocar los tonos medios ni las luces altas, permite detectar al instante enemigos ocultos en esquinas oscuras en shooters como CS2 o Valorant."
+        },
+        {
+          "title": "Destrucción de la fidelidad visual",
+          "desc": "Arruina el contraste artístico: la oscuridad natural se convierte en un gris desvaído y los artefactos de compresión quedan a la vista. Debe dejarse en valor neutro para películas y juegos narrativos."
+        },
+        {
+          "title": "Calibración con la Prueba Cerca del negro",
+          "desc": "Use la Prueba Cerca del negro para comprobar que los parches oscuros se distingan sin convertir el negro puro en un gris turbio."
+        }
+      ],
+      "refreshRateTitle": "12. Selección de Hz y overclocking en el OSD",
+      "refreshRateDesc": "Ciertos monitores muestran selectores de tasa de refresco, perfiles de overclocking (ej. 144 Hz a 180 Hz) o contadores de Hz directamente en el OSD.",
+      "refreshRateItems": [
+        {
+          "title": "Diferenciar los cuatro niveles de frecuencia",
+          "desc": "Que el OSD indique '180 Hz' solo significa que el overclocking está habilitado. Si Windows está a 144 Hz, el sistema correrá estrictamente a 144 Hz. Además, los datos del navegador reflejan la cadencia del DOM, no límites físicos."
+        },
+        {
+          "title": "Estabilidad del overclock y pérdida de fotogramas",
+          "desc": "Forzar el refresco mediante overclock en el OSD puede causar pérdida intermitente de fotogramas (frame skipping) o artefactos térmicos con el tiempo."
+        },
+        {
+          "title": "Límites de ancho de banda del cable",
+          "desc": "Subir la frecuencia puede agotar el ancho de banda del cable, obligando a la GPU a recortar la profundidad de color (de 10 bits a 8 bits) o el submuestreo croma (a 4:2:2 o 4:2:0)."
+        },
+        {
+          "title": "Prueba con Screen Tester",
+          "desc": "Compruebe la tasa de refresco real con la Prueba de Tasa de Refresco y supervise la fluidez en la Prueba de Desenfoque de Movimiento."
+        }
+      ],
+      "aspectRatioTitle": "13. Relación de aspecto y modos de escalado en el OSD",
+      "aspectRatioDesc": "Determina cómo procesa el escalador del monitor las señales de vídeo que no coinciden con la relación de aspecto o la cuadrícula nativa de píxeles.",
+      "aspectRatioItems": [
+        {
+          "title": "Pantalla completa vs. Aspecto vs. Mapeo 1:1",
+          "desc": "'Pantalla completa' estira cualquier señal rellenando el panel. 'Aspecto' escala manteniendo las proporciones con barras negras laterales. '1:1' muestra la resolución entrante mapeando cada píxel de origen a un píxel físico sin escalar."
+        },
+        {
+          "title": "Escalador del monitor vs. escalador de la GPU",
+          "desc": "El escalado puede realizarse en el monitor o en la tarjeta gráfica (configurado en el panel de Nvidia o AMD). Las GPU modernas ofrecen algoritmos más avanzados (como escalado por enteros para pixel art) y menor retardo."
+        },
+        {
+          "title": "Verificación visual",
+          "desc": "Compruebe con la Prueba de Escalado y Relación de Aspecto y la herramienta Información de Pantalla que las resoluciones no nativas conserven proporciones geométricas correctas."
+        }
+      ],
+      "factoryResetTitle": "14. Restablecimiento de fábrica (Factory Reset)",
+      "factoryResetDesc": "La función 'Restablecer' o 'Reset' borra las modificaciones del usuario guardadas en la memoria del monitor y devuelve los valores calibrados de fábrica.",
+      "factoryResetItems": [
+        {
+          "title": "Qué hace realmente el restablecimiento",
+          "desc": "Tras meses de ajustes, la acumulación de perfiles de color, ganancias RGB y overdrives agresivos puede degradar la imagen de forma difícil de aislar. El reset devuelve el firmware a su estado inicial."
+        },
+        {
+          "title": "Lo que NO puede solucionar",
+          "desc": "No repara defectos físicos del panel, píxeles muertos o atascados, fugas mecánicas de luz, pantallas golpeadas ni cables de vídeo dañados."
+        },
+        {
+          "title": "Cuándo utilizarlo",
+          "desc": "Haga un restablecimiento al estrenar un monitor, al probar una pantalla de segunda mano o si experimenta dominantes de color extrañas y menús bloqueados."
+        }
+      ],
+      "baselineTitle": "15. Línea base recomendada: punto de partida óptimo",
+      "baselineDesc": "Cada monitor y entorno es distinto, pero seguir esta base conservadora asegura fidelidad de color y claridad de movimiento antes de realizar ajustes finos:",
+      "baselineSteps": [
+        "Restablecer a valores de fábrica: Realice un reset o seleccione el perfil 'Estándar' o 'Usuario' para eliminar procesados no lineales.",
+        "Ajustar resolución nativa y Hz objetivo: Confirme en los ajustes del sistema operativo y GPU la resolución nativa y la frecuencia máxima nativa estable.",
+        "Ajustar brillo al entorno: Fije el brillo entre el 25 % y 40 % en habitaciones oscuras o 50–70 % en espacios bien iluminados. Evite el 100 % innecesario.",
+        "Mantener contraste en su valor de fábrica: Deje el contraste en su nivel predeterminado (50 o 70) para evitar quemar los blancos o empastar sombras.",
+        "Configurar Overdrive en el nivel medio: Seleccione 'Fast', 'Normal' o Nivel 2–3. Evite los modos 'Extremo' para eliminar halos de ghosting inverso.",
+        "Dejar MBR / Strobing desactivado: Mantenga el parpadeo apagado en el uso diario; resérvelo solo para shooters muy competitivos si tolera la pérdida de brillo.",
+        "Activar VRR / Adaptive Sync: Encienda VRR tanto en el OSD del monitor como en el panel de control gráfico para eliminar el tearing con mínimo retardo.",
+        "Mantener la nitidez neutra: Compruebe que la nitidez esté en el valor neutro (suele ser 50 % o 0) para no deformar las fuentes con halos blancos.",
+        "Mantener Black Equalizer en valor neutro: Fije Shadow Boost en 0 o valor por defecto para preservar el contraste natural y la intención artística original.",
+        "Anotar los ajustes comprobados: Guarde los valores finales en un perfil de usuario del monitor o anótelos para recuperarlos fácilmente."
+      ],
+      "testingMatrixTitle": "16. Cómo probar los cambios metódicamente",
+      "testingMatrixDesc": "Calibrar es un proceso iterativo: modifique un único ajuste del OSD cada vez y ejecute de inmediato la prueba visual correspondiente para evaluar el cambio en tiempo real.",
+      "tableHeaderSetting": "Ajuste OSD modificado",
+      "tableHeaderTool": "Herramienta de Screen Tester",
+      "tableHeaderGoal": "Qué observar y evaluar",
+      "testingMatrixRows": [
+        {
+          "setting": "Overdrive / Tiempo de respuesta",
+          "toolName": "Prueba de Ghosting",
+          "toolHref": "/tests/ghosting-test",
+          "goal": "Comprobar estelas borrosas (muy bajo) frente a halos luminosos de overshoot (muy alto)."
+        },
+        {
+          "setting": "Reducción de desenfoque (MBR)",
+          "toolName": "Desenfoque de movimiento",
+          "toolHref": "/tests/motion-blur-test",
+          "goal": "Evaluar la nitidez retiniana en movimiento frente a la fatiga por parpadeo y la pérdida de luz."
+        },
+        {
+          "setting": "Adaptive Sync / VRR",
+          "toolName": "Prueba VRR",
+          "toolHref": "/tests/vrr-test",
+          "goal": "Verificar la fluidez de movimiento y la ausencia de cortes de pantalla horizontales."
+        },
+        {
+          "setting": "Interruptor de modo HDR",
+          "toolName": "Prueba HDR",
+          "toolHref": "/tests/hdr-test",
+          "goal": "Comprobar gradaciones en luces brillantes y verificar que el contraste en SDR no se degrade."
+        },
+        {
+          "setting": "Tasa de refresco / Overclock",
+          "toolName": "Prueba de Tasa de Refresco",
+          "toolHref": "/tests/refresh-rate-test",
+          "goal": "Verificar la cadencia de fotogramas y comprobar si se producen saltos o tirones."
+        },
+        {
+          "setting": "Ajuste de nitidez",
+          "toolName": "Prueba de Claridad de Texto",
+          "toolHref": "/tests/text-clarity-test",
+          "goal": "Asegurar bordes de texto nítidos sin halos blancos ni desenfoque indeseado."
+        },
+        {
+          "setting": "Gamma y contraste",
+          "toolName": "Bandas de gradiente",
+          "toolHref": "/tests/gradient-banding-test",
+          "goal": "Comprobar transiciones suaves en 256 niveles de gris sin líneas de bandas duras."
+        },
+        {
+          "setting": "Black Equalizer / Shadow Boost",
+          "toolName": "Prueba Cerca del negro",
+          "toolHref": "/tests/near-black-test",
+          "goal": "Distinguir tonos oscuros sutiles sin convertir el negro absoluto en grisáceo."
+        },
+        {
+          "setting": "Temperatura de color y ganancias RGB",
+          "toolName": "Prueba de Uniformidad",
+          "toolHref": "/tests/uniformity-test",
+          "goal": "Inspeccionar un fondo blanco completo en busca de un blanco neutro sin tintes de color."
+        },
+        {
+          "setting": "Relación de aspecto y escalado",
+          "toolName": "Escalado y Relación de Aspecto",
+          "toolHref": "/tests/scaling-aspect-test",
+          "goal": "Verificar que las resoluciones no nativas mantengan proporciones geométricas exactas."
+        }
+      ],
+      "mistakesTitle": "17. Errores habituales en el OSD",
+      "mistakesDesc": "Evite estos errores comunes de configuración que merman la calidad visual y la nitidez en movimiento:",
+      "mistakesItems": [
+        {
+          "title": "Elegir el Overdrive 'Más rápido' a ciegas",
+          "desc": "Los fabricantes etiquetan el modo más agresivo como 'Más rápido' o '1 ms' por marketing. En la práctica, inyecta voltajes desmesurados que crean halos intolerables. El ajuste medio suele ser el mejor."
+        },
+        {
+          "title": "Subir el contraste al 100 %",
+          "desc": "Con el afán de lograr imágenes más llamativas, muchos suben el contraste. Esto quema los blancos, eliminando texturas en nubes, cielo y superficies iluminadas."
+        },
+        {
+          "title": "Activar HDR en monitores Edge-Lit modestos",
+          "desc": "En pantallas DisplayHDR 400 sin atenuación local, el HDR apaga los colores del escritorio, clarea los negros y bloquea los menús del OSD sin aportar ventaja real de contraste."
+        },
+        {
+          "title": "Dejar la nitidez demasiado alta",
+          "desc": "La nitidez forzada no aporta detalles reales; crea halos blancos agresivos alrededor de las letras que provocan fatiga visual y bordes artificiales. Manténgala en el punto neutro."
+        },
+        {
+          "title": "Usar perfiles 'FPS' o 'Vívido' para todo",
+          "desc": "Los modos gaming alteran la saturación y la gamma para destacar enemigos en sombras. Aunque útiles en e-sports, destrozan la fidelidad para cine, diseño y oficina."
+        },
+        {
+          "title": "Ignorar los bloqueos de controles en el menú",
+          "desc": "Ciertos modos (como sRGB) bloquean el brillo o los colores. Si un ajuste aparece atenuado o bloqueado, revise si tiene activo un perfil restrictivo o el modo HDR."
+        }
+      ],
+      "limitationsTitle": "18. Limitaciones técnicas de la verificación en navegador",
+      "limitationsDesc": "Screen Tester proporciona patrones de inspección visual precisos, pero es fundamental comprender qué puede medir el navegador y qué queda fuera de su alcance:",
+      "limitationsItems": [
+        {
+          "title": "Sin sensor físico de luminancia (Nits)",
+          "desc": "Un navegador opera en software y carece de fotómetro óptico para medir las candelas por metro cuadrado (cd/m² o nits) emitidas físicamente por el panel."
+        },
+        {
+          "title": "Sin medición espectrofotométrica de Delta E",
+          "desc": "Medir desviaciones de color reales con precisión científica requiere un colorímetro o espectrofotómetro físico y software de perfilado dedicado."
+        },
+        {
+          "title": "Observación visual vs. tiempos de respuesta de laboratorio",
+          "desc": "Nuestras pruebas permiten identificar estelas y halos de overshoot con la vista humana, pero no generan gráficas de transición GtG en milisegundos basadas en osciloscopios."
+        },
+        {
+          "title": "Sin certificación de hardware VRR",
+          "desc": "La prueba comprueba la ausencia de tearing visual, pero no puede verificar la presencia de módulos G-Sync físicos ni leer los límites de frecuencia de la placa del monitor."
+        }
+      ],
+      "toolsHeading": "19. Herramientas relacionadas de Screen Tester",
+      "troubleshootHeading": "20. Solución de problemas y siguientes pasos",
+      "troubleshootDesc": "Si su pantalla presenta parpadeos persistentes, cortes de señal, dominantes de color o menús bloqueados tras los ajustes, consulte nuestra guía de solución de problemas de pantalla para seguir diagnósticos paso a paso.",
+      "linkTroubleshooting": "Guía de solución de problemas de pantalla",
+      "linkGhostingTest": "Prueba de Ghosting",
+      "linkMotionBlurTest": "Desenfoque de movimiento",
+      "linkVrrTest": "Prueba VRR",
+      "linkHdrTest": "Prueba HDR",
+      "linkRefreshRateTest": "Prueba de Tasa de Refresco",
+      "linkTextClarityTest": "Prueba de Claridad de Texto",
+      "linkGradientBandingTest": "Bandas de gradiente",
+      "linkNearBlackTest": "Prueba Cerca del negro",
+      "linkUniformityTest": "Prueba de Uniformidad",
+      "linkDisplayInfo": "Información de Pantalla",
+      "linkScalingAspect": "Escalado y Relación de Aspecto"
     }
   },
   "Inspection": {

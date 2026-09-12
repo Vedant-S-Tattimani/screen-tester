@@ -98,6 +98,22 @@ export const monitorGuides: MonitorGuide[] = [
       "text-clarity-test",
       "color-test"
     ]
+  },
+  {
+    id: "monitor-osd-settings-explained",
+    category: "concept",
+    primaryIntent: "Monitor OSD settings explained",
+    relatedTestIds: [
+      "ghosting-test",
+      "motion-blur-test",
+      "vrr-test",
+      "hdr-test",
+      "refresh-rate-test",
+      "text-clarity-test",
+      "gradient-banding-test",
+      "near-black-test",
+      "uniformity-test"
+    ]
   }
 ];
 
