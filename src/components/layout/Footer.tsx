@@ -7,6 +7,34 @@ import { useTranslations } from "next-intl";
 import { ArrowRight } from "lucide-react";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
+const DIRECTORY_BADGES = [
+  {
+    name: "TheDevToolsIndex",
+    href: "https://thedevtoolsindex.com/product/screen-tester?ref=badge",
+    rel: "dofollow",
+    src: "https://thedevtoolsindex.com/badge/screen-tester.svg",
+    alt: "Featured on TheDevToolsIndex",
+    width: 160,
+    height: 44,
+  },
+  {
+    name: "ToolDirs",
+    href: "https://tooldirs.com",
+    src: "https://tooldirs.com/badge/badge_transparent.svg",
+    alt: "Featured on ToolDirs",
+    width: 200,
+    height: 54,
+  },
+  {
+    name: "We Like Tools",
+    href: "https://weliketools.com/tool/screen-tester",
+    src: "https://weliketools.com/assets/images/badge.png",
+    alt: "We Like Tools",
+    height: 54,
+    loading: "lazy" as const,
+  },
+];
+
 export function Footer() {
   const t = useTranslations("Footer");
   const tHeader = useTranslations("Header");
@@ -46,14 +74,6 @@ export function Footer() {
             <p className="text-xs text-gray-500 leading-relaxed mt-3.5 max-w-sm">
               {t("description")}
             </p>
-
-            <div className="mt-4">
-              <a href="https://thedevtoolsindex.com/product/screen-tester?ref=badge" rel="dofollow">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://thedevtoolsindex.com/badge/screen-tester.svg" alt="Featured on TheDevToolsIndex" width="160" height="44" />
-              </a>
-              <a href="https://tooldirs.com" target="_blank"><img src="https://tooldirs.com/badge/badge_transparent.svg" alt="Featured on ToolDirs" width="200" height="54" /></a>
-            </div>
           </div>
 
           {/* Column 2: Tests (2 cols) */}
@@ -232,6 +252,60 @@ export function Footer() {
             </ul>
           </div>
 
+        </div>
+
+        {/* Directory Badges Train Animation */}
+        <div className="py-6 border-b border-gray-100 overflow-hidden">
+          <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
+            <div className="animate-train items-center">
+              {/* Track 1 */}
+              <div className="flex shrink-0 items-center gap-8 sm:gap-12 pr-8 sm:pr-12">
+                {[...DIRECTORY_BADGES, ...DIRECTORY_BADGES, ...DIRECTORY_BADGES].map((badge, idx) => (
+                  <a
+                    key={`train-1-${idx}`}
+                    href={badge.href}
+                    target="_blank"
+                    rel={badge.rel || "noopener noreferrer"}
+                    className="inline-flex items-center shrink-0 hover:opacity-75 transition-opacity"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={badge.src}
+                      alt={badge.alt}
+                      width={badge.width}
+                      height={badge.height}
+                      loading={badge.loading}
+                      className="h-9 sm:h-10 w-auto object-contain shrink-0"
+                    />
+                  </a>
+                ))}
+              </div>
+
+              {/* Track 2 (Duplicate for infinite seamless loop) */}
+              <div className="flex shrink-0 items-center gap-8 sm:gap-12 pr-8 sm:pr-12" aria-hidden="true">
+                {[...DIRECTORY_BADGES, ...DIRECTORY_BADGES, ...DIRECTORY_BADGES].map((badge, idx) => (
+                  <a
+                    key={`train-2-${idx}`}
+                    href={badge.href}
+                    target="_blank"
+                    rel={badge.rel || "noopener noreferrer"}
+                    tabIndex={-1}
+                    className="inline-flex items-center shrink-0 hover:opacity-75 transition-opacity"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={badge.src}
+                      alt={badge.alt}
+                      width={badge.width}
+                      height={badge.height}
+                      loading={badge.loading}
+                      className="h-9 sm:h-10 w-auto object-contain shrink-0"
+                    />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Bottom Bar: Copyright, GitHub, and Language Switcher */}

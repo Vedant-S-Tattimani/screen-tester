@@ -185,4 +185,25 @@
   scrollbar-width: none !important;  /* Firefox */
 }
 
+/* Directory Badges Train Animation */
+@keyframes trainMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-train {
+  display: flex;
+  width: max-content;
+  animation: trainMarquee 30s linear infinite;
+  will-change: transform;
+}
+
+.animate-train:hover {
+  animation-play-state: paused;
+}
+
 
