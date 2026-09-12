@@ -1281,7 +1281,7 @@
       "breadcrumbsGuides": "Guides",
       "breadcrumbsUsedMonitor": "Used Monitor Checklist",
       "noticeTitle": "Technical Honesty & Inspection Boundaries",
-      "noticeDesc": "Screen Tester provides visual test patterns and browser API reporting. A web browser cannot determine internal capacitor health, remaining backlight lifespan, physical panel resolution, laboratory color accuracy (Delta E), or physical port solder integrity. This checklist guides your physical, visual, and browser observations.",
+      "noticeDesc": "Screen Tester provides visual test patterns and browser API reporting. A web browser cannot determine true physical panel resolution, maximum physical refresh capability, true response time, actual brightness/nits, laboratory color accuracy (Delta E), panel health, remaining lifespan, internal electronics or capacitor health, physical port solder integrity, or guaranteed VRR hardware operation. This checklist guides your physical, visual, and browser observations.",
       "beforeTitle": "1. Before Meeting the Seller: Preparation & Gear",
       "beforeDesc": "Never meet a seller unprepared. A proper inspection requires 15 to 20 minutes and the right testing equipment:",
       "beforeItems": [
@@ -1326,24 +1326,24 @@
           "desc": "Test height adjustment, tilt, swivel, and 90° pivot smoothness. Inspect the four rear VESA M4 screw holes; stripped threads from overtightened monitor arms are common on second-hand displays."
         },
         {
-          "title": "Video & Power Port Firmness",
-          "desc": "Gently wiggle the DisplayPort, HDMI, and USB-C connectors while plugged in. Loose, wobbly ports indicate cracked solder joints on the monitor's internal scalar PCB."
+          "title": "Visual Port Condition & Secure Cable Seating",
+          "desc": "Visually inspect DisplayPort, HDMI, USB-C, and power inputs for bent pins, debris, or damaged housings before plugging in. Cables should seat cleanly and securely without requiring forced insertion or having visible mechanical looseness."
         },
         {
-          "title": "Liquid Ingress & Burnt Odor Check",
-          "desc": "Inspect the bottom bezel seams for sticky liquid residue or water tide marks behind the diffuser sheet. Smell the top ventilation grilles: a pungent burnt phenolic plastic or ozone smell indicates failing power delivery capacitors."
+          "title": "Liquid Ingress & Odor Check",
+          "desc": "Inspect the bottom bezel seams for sticky liquid residue or water tide marks behind the diffuser sheet. Smell the top ventilation grilles: a pungent burnt plastic or electrical smell can indicate past thermal stress or internal component overheating."
         }
       ],
       "powerTitle": "3. Power-On & Backlight Stability Checks",
       "powerDesc": "Connect the display to AC power and observe startup behavior:",
       "powerItems": [
         {
-          "title": "Startup Latency & Relay Clicking",
-          "desc": "Observe the power LED and screen illumination. High-end panels ignite within 2 to 5 seconds. Persistent clicking relays, flashing standby lights, or delayed startup suggest deteriorating internal capacitors."
+          "title": "Startup Latency & Power Indicator",
+          "desc": "Observe the power LED and screen illumination. High-end panels ignite within 2 to 5 seconds. Persistent clicking relays, flashing standby lights, or delayed startup suggest potential power supply or hardware instability."
         },
         {
-          "title": "Intermittent Blackouts (Cable Wiggle Test)",
-          "desc": "With the desktop active, gently move and flex the video cable near the monitor's input port. If the screen goes black for 1–2 seconds, the input port or cable is intermittent."
+          "title": "Check for Intermittent Signal Loss Without Stressing Connectors",
+          "desc": "Check for intermittent signal loss without physically stressing the port or cable. While observing an active desktop, watch for momentary blackouts, image blinking, or signal dropouts during stationary operation that could indicate cable degradation or port contact issues."
         },
         {
           "title": "Thermal Load Stability",
@@ -1383,8 +1383,8 @@
           "desc": "Display a 50% neutral gray field using the Uniformity Test. Look for vignetting, dark cloudy patches across the center, or vertical banding across the panel surface."
         },
         {
-          "title": "Color Banding & Bit-Depth Verification",
-          "desc": "Check smooth gradient ramps using the Gradient & Banding Test. Harsh stair-stepped contour lines indicate the monitor or GPU output is restricted to 6-bit color rather than true 8-bit or 10-bit."
+          "title": "Color Banding & Gradient Smoothness",
+          "desc": "Open the Gradient & Banding Test. Smooth grayscale gradients allow you to observe gradient transition quality and identify harsh staircase banding or visible stepping artifacts."
         },
         {
           "title": "Text Clarity & Subpixel Fringing",
@@ -1400,12 +1400,12 @@
       "motionDesc": "Ensure the monitor delivers its advertised gaming and motion performance:",
       "motionItems": [
         {
-          "title": "Verify Advertised Refresh Rate in OS",
-          "desc": "Do not assume a 144Hz or 240Hz monitor is running at full speed. Check OS Display Settings and confirm with Screen Tester's Refresh Rate Test. Test for frame-skipping."
+          "title": "Verify Configured Refresh Rate & Look for Motion Anomalies",
+          "desc": "Verify the configured refresh rate in your OS display settings and observe pattern movement in Screen Tester's Refresh Rate Test to check for obvious frame-skipping or motion stutter. (Note: Browser tests observe active frame cadence and OS display reporting, but cannot independently measure or certify the panel's physical hardware refresh capability)."
         },
         {
-          "title": "Ghosting & Liquid Crystal Transition Latency",
-          "desc": "Open the Ghosting Test with moving high-contrast blocks. Observe trailing behind dark objects to gauge real-world liquid crystal response times."
+          "title": "Visual Ghosting & Motion Trailing",
+          "desc": "Open the Ghosting Test with moving high-contrast blocks. Visually observe whether trailing or smearing occurs behind moving objects. (Note: Visual motion patterns provide subjective observation of motion clarity; browser tools cannot measure true millisecond pixel transition times or GtG response times)."
         },
         {
           "title": "Backlight Strobing / Motion Blur Reduction (BFI/ELMB)",
@@ -1413,7 +1413,7 @@
         },
         {
           "title": "VRR / Adaptive Sync Verification",
-          "desc": "Verify whether AMD FreeSync or NVIDIA G-Sync Compatible toggles in your GPU control panel and inspect for brightness flickering with the VRR Test."
+          "desc": "Verify whether AMD FreeSync or NVIDIA G-Sync Compatible is available in your GPU control panel, and observe whether brightness flickering occurs during variable frame rates in the VRR Test. (Note: Browser tests cannot guarantee hardware VRR compliance across all driver configurations and games)."
         }
       ],
       "motionLinksTitle": "Related Motion Tests:",
@@ -1421,12 +1421,12 @@
       "osdDesc": "The monitor's on-screen display menu holds critical configuration details:",
       "osdItems": [
         {
-          "title": "Always Perform a Factory Reset",
-          "desc": "Before evaluating color or brightness, navigate to the OSD System menu and execute a Factory Reset (Reset All). Sellers frequently tweak contrast, sharpness, or black equalizer to mask panel defects."
+          "title": "Perform a Factory Reset Before Final Evaluation, If Practical",
+          "desc": "If practical, navigate to the OSD System menu and execute a Factory Reset (Reset All) before final evaluation. This establishes a known baseline, clearing non-neutral picture modes, extreme contrast, sharpness processing, or custom color profiles from previous use. (Note: A factory reset sets a standard baseline for testing; it does not diagnose internal electronics or reveal hidden hardware defects)."
         },
         {
           "title": "Check Native Resolution in OSD Info",
-          "desc": "Open the OSD Information menu. Confirm that the input resolution reported by the monitor firmware matches the manufacturer's native hardware specifications."
+          "desc": "Open the monitor's built-in OSD Information screen to check the incoming signal resolution reported by the monitor firmware against the manufacturer's advertised specifications. (Note: Screen Tester and browser APIs report viewport and desktop resolution, not the physical panel's native matrix)."
         },
         {
           "title": "Inspect Overdrive Presets",
@@ -1466,8 +1466,8 @@
           "desc": "Open full-screen gray and white screens in the Burn-in Test. Look for permanent ghost outlines of Windows taskbars, Excel spreadsheets, security camera grids, or browser tabs."
         },
         {
-          "title": "Total Power-On Hours (Service Menu)",
-          "desc": "Many Dell, LG, ASUS, and BenQ monitors record total backlight operating hours in the OSD or service menu. A monitor with 15,000+ hours has depleted significant backlight lifespan."
+          "title": "Operating Hours & Backlight Usage",
+          "desc": "Some monitor models record total operating hours in the OSD or service menu. While high cumulative hours suggest substantial prior use, browser tests cannot measure remaining backlight lifespan or LED phosphor decay."
         },
         {
           "title": "Active Cooling Fan Bearing Noise",
@@ -1504,10 +1504,10 @@
         "Exterior glass: zero deep scratches, cracks, or anti-glare coating gouges under raking flashlight.",
         "Bezel & stand: all adjustment axes smooth, VESA screw threads intact, no chemical odor.",
         "Power stability: boots cleanly within 5s, zero capacitor buzzing, no thermal cutouts at 100% brightness.",
-        "Ports & connectors: HDMI, DP, and USB-C connectors fit snugly without video cutouts when jiggled.",
+        "Ports & connectors: HDMI, DP, and USB-C cables seat securely with stable video signal during normal operation.",
         "Pixel integrity: verified with Dead Pixel Test and Stuck Pixel Test in fullscreen mode.",
         "Backlight & uniformity: verified with Backlight Bleed Test (black field) and Uniformity Test (50% gray).",
-        "Motion & refresh rate: verified rated refresh rate (144Hz/240Hz) in OS and Refresh Rate Test.",
+        "Motion & refresh rate: confirmed configured refresh rate in OS display settings and checked for obvious frame-skipping or motion anomalies in Screen Tester.",
         "Rear barcode label: exact model number confirmed matching advertised specifications.",
         "Accessories present: OEM external power brick, certified video cables, and stand hardware included."
       ],

@@ -1242,7 +1242,7 @@
       "breadcrumbsGuides": "Anleitungen",
       "breadcrumbsUsedMonitor": "Gebrauchtmonitor-Checkliste",
       "noticeTitle": "Technische Ehrlichkeit & Prüfungsgrenzen",
-      "noticeDesc": "Screen Tester liefert visuelle Prüfmuster und Browser-API-Berichte. Ein Webbrowser kann den Zustand interner Kondensatoren, die verbleibende Lebensdauer der Hintergrundbeleuchtung, physikalische Panel-Auflösungen, Laborkalibrierungen (Delta E) oder Lötstellen an Anschlüssen nicht messen. Diese Checkliste leitet Ihre visuelle und physische Begutachtung an.",
+      "noticeDesc": "Screen Tester bietet visuelle Testmuster und Browser-API-Berichte. Ein Webbrowser kann weder die tatsächliche physische Panel-Auflösung, die maximale physische Bildwiederholfrequenz, echte Reaktionszeiten, tatsächliche Helligkeit/Nits, Labor-Farbgenauigkeit (Delta E), Panel-Gesundheit, Restlebensdauer, Zustand interner Elektronik oder Kondensatoren, die Lötstellen-Integrität physischer Anschlüsse noch den garantierten VRR-Hardwarebetrieb ermitteln. Diese Checkliste leitet Ihre physischen, visuellen und Browser-Beobachtungen an.",
       "beforeTitle": "1. Vor dem Treffen mit dem Verkäufer: Vorbereitung & Ausrüstung",
       "beforeDesc": "Gehen Sie niemals unvorbereitet zu einer Besichtigung. Eine gründliche Prüfung dauert 15 bis 20 Minuten und erfordert passendes Zubehör:",
       "beforeItems": [
@@ -1287,24 +1287,24 @@
           "desc": "Testen Sie Höhenverstellung, Neigung und Pivot-Drehung. Prüfen Sie die vier VESA-M4-Schraublöcher auf der Rückseite auf überdrehte Gewinde von Monitorarmen."
         },
         {
-          "title": "Fester Sitz der Anschlüsse",
-          "desc": "Wackeln Sie bei eingestecktem Kabel ganz vorsichtig am DisplayPort- und HDMI-Stecker. Wackelige Buchsen deuten auf gebrochene Lötstellen auf der Hauptplatine hin."
+          "title": "Physischer Portzustand & sicherer Kabelsitz",
+          "desc": "Prüfen Sie DisplayPort-, HDMI-, USB-C- und Stromanschlüsse vor dem Einstecken visuell auf verbogene Pins, Schmutz oder beschädigte Gehäuse. Kabel sollten sauber und fest sitzen, ohne übermäßigen Kraftaufwand oder auffälliges mechanisches Spiel."
         },
         {
-          "title": "Flüssigkeitsschäden & Brandgeruch",
-          "desc": "Achten Sie am unteren Rand auf getrocknete Flüssigkeitsränder. Riechen Sie an den oberen Lüftungsschlitzen: Ein stechender Geruch nach verbranntem Kunststoff oder Ozon deutet auf überhitzte Kondensatoren hin."
+          "title": "Flüssigkeitseintritt & Brandgeruch",
+          "desc": "Untersuchen Sie die unteren Rahmennähte auf klebrige Rückstände oder Ränder hinter der Diffusorfolie. Riechen Sie an den oberen Lüftungsgittern: Ein stechender Geruch nach verbranntem Kunststoff oder Elektrik kann auf frühere thermische Belastungen oder überhitzte interne Komponenten hinweisen."
         }
       ],
       "powerTitle": "3. Einschalten & Stabilität der Hintergrundbeleuchtung",
       "powerDesc": "Schließen Sie das Gerät an den Strom an und beobachten Sie den Startvorgang:",
       "powerItems": [
         {
-          "title": "Startverzögerung & Relais-Klicken",
-          "desc": "Monitore sollten innerhalb von 2 bis 5 Sekunden ein Bild zeigen. Häufiges Klicken, blinkende Standby-LEDs oder langes Zögern deuten auf gealterte Kondensatoren im Netzteil hin."
+          "title": "Startverzögerung & Betriebsanzeige",
+          "desc": "Beobachten Sie die Betriebs-LED und das Aufleuchten des Bildschirms. Hochwertige Panels schalten sich innerhalb von 2 bis 5 Sekunden ein. Dauerndes Relaisklicken, blinkende Standby-Leuchten oder stark verzögerter Start deuten auf potenzielle Instabilitäten der Stromversorgung oder Hardware hin."
         },
         {
-          "title": "Verbindungsabbrüche (Kabel-Wackeltest)",
-          "desc": "Bewegen Sie das Videokabel nahe der Buchse sanft. Wird der Bildschirm kurz schwarz, liegt ein Wackelkontakt an Stecker oder Buchse vor."
+          "title": "Prüfung auf zeitweiligen Signalverlust ohne Steckerbelastung",
+          "desc": "Prüfen Sie auf zeitweiligen Signalverlust, ohne den Anschluss oder das Kabel physisch zu belasten. Achten Sie bei stehendem Betrieb auf dem aktiven Desktop auf kurze Bildaussetzer, Flimmern oder Signalausfälle, die auf Kabelverschleiß oder Kontaktprobleme hinweisen könnten."
         },
         {
           "title": "Thermische Belastbarkeit",
@@ -1344,8 +1344,8 @@
           "desc": "Betrachten Sie im Uniformitäts-Test ein 50% neutralgraues Bild. Achten Sie auf dunkle Ränder (Vignettierung) oder wolkige Flecken."
         },
         {
-          "title": "Farbverläufe & Banding",
-          "desc": "Prüfen Sie im Gradienten-Test weiche Farbverläufe. Stufige Kanten deuten darauf hin, dass die Farbtiefe auf 6 Bit beschränkt ist statt echter 8 oder 10 Bit."
+          "title": "Farb-Banding & Gradientenübergänge",
+          "desc": "Öffnen Sie den Gradienten- & Banding-Test. Weiche Graustufenverläufe ermöglichen die visuelle Beurteilung von Farbübergängen und das Erkennen harter Tonwertabrisse oder sichtbarer Stufenbildung."
         },
         {
           "title": "Textschärfe & Farbsäume",
@@ -1361,20 +1361,20 @@
       "motionDesc": "Überprüfen Sie die beworbene Gaming- und Bewegungsleistung:",
       "motionItems": [
         {
-          "title": "Beworbene Hz-Zahl in Windows/macOS prüfen",
-          "desc": "Prüfen Sie in den Systemeinstellungen und mit dem Screen Tester Bildwiederholraten-Test, ob 144Hz, 165Hz oder 240Hz stabil und ohne Frame-Skipping laufen."
+          "title": "Konfigurierte Bildwiederholrate prüfen & auf Bewegungsanomalien achten",
+          "desc": "Überprüfen Sie die eingestellte Bildwiederholrate in den Betriebssystem-Einstellungen und beobachten Sie das Testmuster im Bildwiederholraten-Test von Screen Tester auf offensichtliches Frame-Skipping oder Bewegungsruckeln. (Hinweis: Browsertests erfassen die aktive Bildfrequenz und Systemmeldungen, können die physische Panel-Fähigkeit jedoch nicht unabhängig messen oder zertifizieren)."
         },
         {
-          "title": "Ghosting & Reaktionszeitverhalten",
-          "desc": "Öffnen Sie den Ghosting-Test mit kontrastreichen bewegten Blöcken. Beobachten Sie Schlieren hinter bewegten Elementen."
+          "title": "Visuelles Ghosting & Nachzieheffekte",
+          "desc": "Öffnen Sie den Ghosting-Test mit bewegten Kontrastblöcken. Beobachten Sie visuell, ob Nachzieheffekte oder Schlieren hinter bewegten Objekten auftreten. (Hinweis: Visuelle Muster dienen der subjektiven Beobachtung der Bewegungsschärfe; Browser-Tools können keine echten Millisekunden-Pixelübergänge oder GtG-Reaktionszeiten messen)."
         },
         {
           "title": "Hintergrundbeleuchtungs-Strobing (BFI/ELMB)",
           "desc": "Testen Sie vorhandenes Backlight Strobing im OSD mit dem Motion-Blur-Test auf Flimmern und Schärfegewinn."
         },
         {
-          "title": "VRR / G-Sync / FreeSync aktivieren",
-          "desc": "Aktivieren Sie Adaptive Sync im GPU-Treiber und prüfen Sie im VRR-Test auf Helligkeitsflackern."
+          "title": "VRR / Adaptive Sync Überprüfung",
+          "desc": "Prüfen Sie, ob AMD FreeSync oder NVIDIA G-Sync Compatible im GPU-Treiber verfügbar ist, und beobachten Sie im VRR-Test, ob bei variablen Bildraten Helligkeitsflackern auftritt. (Hinweis: Browsertests können keine hardwareseitige VRR-Kompatibilität über alle Treiberkonfigurationen und Spiele hinweg garantieren)."
         }
       ],
       "motionLinksTitle": "Zugehörige Bewegungstests:",
@@ -1382,12 +1382,12 @@
       "osdDesc": "Das Bildschirmmenü liefert wichtige Hardwareinformationen:",
       "osdItems": [
         {
-          "title": "Immer auf Werkseinstellungen zurücksetzen",
-          "desc": "Führen Sie im OSD-Menü sofort einen Reset durch (Werkseinstellung). Verkäufer manipulieren oft Schwarzwerte oder Schärfe, um Panel-Mängel zu kaschieren."
+          "title": "Vor der abschließenden Bewertung auf Werkseinstellungen zurücksetzen, sofern praktisch möglich",
+          "desc": "Sofern praktisch machbar, navigieren Sie vor der Endbewertung ins OSD-Systemmenü und führen Sie einen Werksreset (Reset All) durch. Dies stellt eine neutrale Ausgangsbasis her und setzt veränderte Bildmodi, extremen Kontrast, Schärfefilter oder Farbprofile früherer Nutzung zurück. (Hinweis: Ein Werksreset dient als neutrale Testbasis; er diagnostiziert keine interne Elektronik und deckt keine verdeckten Hardwaredefekte auf)."
         },
         {
-          "title": "Native Auflösung im Info-Menü abgleichen",
-          "desc": "Kontrollieren Sie im OSD-Menü 'Information', ob die vom Signal anliegende Auflösung exakt den Werksangaben entspricht."
+          "title": "Eingangssignalauflösung in OSD-Informationen prüfen",
+          "desc": "Öffnen Sie das OSD-Informationsmenü des Monitors, um die von der Monitor-Firmware erkannte Eingangssignalauflösung mit den Herstellerangaben abzugleichen. (Hinweis: Screen Tester und Browser-APIs melden Viewport- und Desktop-Auflösung, nicht die physische Pixelmatrix des Panels)."
         },
         {
           "title": "Overdrive-Profile testen",
@@ -1427,8 +1427,8 @@
           "desc": "Prüfen Sie im Einbrenn-Test auf helle und graue Geisterbilder von Taskleisten, Excel-Tabellen oder Browserleisten."
         },
         {
-          "title": "Betriebsstundenzähler im Servicemenü",
-          "desc": "Viele Dell-, LG- und BenQ-Monitore zählen die Betriebsstunden der Hintergrundbeleuchtung im Menü. Über 15.000 Stunden deuten auf ein altes Panel hin."
+          "title": "Betriebsstunden & Hintergrundbeleuchtungsnutzung",
+          "desc": "Einige Monitormodelle erfassen die Gesamtlaufzeit im OSD oder Servicemenü. Hohe Betriebsstunden weisen zwar auf intensive Nutzung hin, Browsertests können jedoch weder die verbleibende Lebensdauer der Hintergrundbeleuchtung noch den LED-Phosphorabbau messen."
         },
         {
           "title": "Lüftergeräusche bei High-End-Modellen",
@@ -1465,10 +1465,10 @@
         "Panelglas: Keine tiefen Kratzer, Risse oder Ablösungen der Beschichtung im Streiflicht.",
         "Gehäuse & Standfuß: Alle Achsen leichtgängig, VESA-Gewinde intakt, kein Brandgeruch.",
         "Stromstabilität: Startet innerhalb von 5s, kein Kondensator-Pfeifen, kein Abschalten bei 100% Helligkeit.",
-        "Anschlüsse: HDMI, DP und USB-C sitzen fest und verlieren bei sanftem Wackeln kein Bild.",
+        "Anschlüsse & Stecker: HDMI-, DP- und USB-C-Kabel sitzen sicher und liefern ein stabiles Videosignal im Normalbetrieb.",
         "Pixelfehler: Vollbildtest auf Pixelfehler (weiß/schwarz) ohne störende Defekte bestanden.",
         "Ausleuchtung: Im Backlight-Bleed- und Uniformitätstest keine störenden Lichthöfe.",
-        "Bewegung & Hz: Beworbene Bildwiederholfrequenz (z.B. 144Hz) im System stabil erkannt.",
+        "Bewegung & Bildwiederholfrequenz: Konfigurierte Bildwiederholfrequenz im Betriebssystem bestätigt und in Screen Tester auf offensichtliches Frame-Skipping oder Bewegungsanomalien geprüft.",
         "Typenschild: Exakte Modellnummer auf der Rückseite stimmt mit Anzeige überein.",
         "Zubehör komplett: Original-Netzteil, hochwertige Monitorkabel und Standfußschrauben vorhanden."
       ],

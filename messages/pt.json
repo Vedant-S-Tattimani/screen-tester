@@ -1242,7 +1242,7 @@
       "breadcrumbsGuides": "Guias",
       "breadcrumbsUsedMonitor": "Checklist monitor usado",
       "noticeTitle": "Transparência técnica & limites do navegador",
-      "noticeDesc": "O Screen Tester fornece padrões visuais e relatórios de APIs do navegador. Um navegador web não consegue avaliar o estado dos capacitores internos, vida útil da lâmpada/LED, resolução física, calibração laboratorial (Delta E) ou integridade das soldas das portas. Este checklist orienta sua avaliação física e visual.",
+      "noticeDesc": "O Screen Tester fornece padrões de teste visuais e relatórios da API do navegador. Um navegador web não pode determinar a resolução física real do painel, a taxa de atualização física máxima, o tempo de resposta real, o brilho real em nits, a precisão de cores de laboratório (Delta E), a saúde do painel, a vida útil restante, a integridade da eletrônica ou capacitores internos, a qualidade das soldas das portas físicas ou a operação garantida de hardware VRR. Este checklist orienta suas observações físicas, visuais e do navegador.",
       "beforeTitle": "1. Antes de se encontrar com o vendedor: preparativos & ferramentas",
       "beforeDesc": "Nunca vá a uma compra de usado despreparado. Uma inspeção completa leva de 15 a 20 minutos e exige o material certo:",
       "beforeItems": [
@@ -1287,24 +1287,24 @@
           "desc": "Teste inclinação, rotação e altura. Verifique as quatro roscas VESA traseiras; roscas espanadas por parafusos apertados em excesso são comuns."
         },
         {
-          "title": "Firmeza das portas de vídeo e energia",
-          "desc": "Com o cabo conectado, mova levemente as pontas DisplayPort e HDMI. Conectores frouxos indicam soldas trincadas na placa lógica."
+          "title": "Condição física das portas e encaixe seguro de cabos",
+          "desc": "Inspecione visualmente as entradas DisplayPort, HDMI, USB-C e de alimentação em busca de pinos tortos, detritos ou conectores danificados antes de ligar. Os cabos devem encaixar de forma limpa e segura, sem necessidade de força excessiva nem folga mecânica visível."
         },
         {
-          "title": "Marcas de umidade e cheiro de queimado",
-          "desc": "Olhe no aro inferior buscando manchas de líquido seco. Sinta o cheiro das saídas de ar superiores: odor de plástico queimado ou ozônio acusa capacitores estressados."
+          "title": "Infiltração de líquidos e cheiro de queimado",
+          "desc": "Verifique as junções inferiores da moldura para detectar resíduos pegajosos ou manchas de água atrás da folha difusora. Sinta o cheiro das saídas de ar superiores: um odor forte de plástico queimado ou eletricidade pode indicar sobreaquecimento prévio de componentes internos."
         }
       ],
       "powerTitle": "3. Inicialização e estabilidade do backlight",
       "powerDesc": "Ligue o monitor à energia e observe a inicialização:",
       "powerItems": [
         {
-          "title": "Tempo de resposta ao ligar e estalos de relé",
-          "desc": "Monitores sadios exibem imagem em 2 a 5 segundos. Estalos persistentes de relés ou LEDs piscando sem parar apontam para fonte falhando."
+          "title": "Tempo de inicialização e indicador de energia",
+          "desc": "Observe o LED de energia e o acendimento da tela. Telas de qualidade ligam entre 2 e 5 segundos. Cliques constantes de relés, luzes piscando ou demora excessiva sugerem potencial instabilidade na fonte de alimentação ou no hardware."
         },
         {
-          "title": "Apagões intermitentes (Teste do cabo)",
-          "desc": "Com a área de trabalho visível, balance suavemente o cabo perto da entrada. Se a tela apagar por 1 ou 2 segundos, há mau contato."
+          "title": "Verificar perda intermitente de sinal sem forçar o conector",
+          "desc": "Verifique se há perda intermitente de sinal sem forçar fisicamente a porta ou o cabo. Ao observar a área de trabalho ativa em posição estática, fique atento a apagões momentâneos, piscamentos ou quedas de sinal que possam indicar degradação do cabo ou mau contato."
         },
         {
           "title": "Estabilidade sob carga térmica",
@@ -1344,8 +1344,8 @@
           "desc": "Exiba um cinza neutro 50% no teste de uniformidade. Procure por cantos escurecidos ou faixas verticais manchadas."
         },
         {
-          "title": "Banding de cor e profundidade de bits",
-          "desc": "Observe gradientes suaves no teste de gradiente. Degraus grosseiros acusam sinal limitado em 6 bits em vez de 8 ou 10 bits."
+          "title": "Banding de cores e suavidade de gradientes",
+          "desc": "Abra o Teste de Gradiente e Banding. Gradientes suaves em escala de cinza permitem avaliar visualmente a qualidade de transição e identificar degraus bruscos ou artefatos visíveis."
         },
         {
           "title": "Nitidez de texto e halos coloridos",
@@ -1361,20 +1361,20 @@
       "motionDesc": "Assegure-se de que o monitor atinge o desempenho anunciado:",
       "motionItems": [
         {
-          "title": "Confirmar taxa de Hz no sistema operacional",
-          "desc": "Verifique nas configurações de vídeo e com o teste de taxa de atualização se os 144Hz ou 240Hz rodam estáveis e sem perda de quadros."
+          "title": "Verificar taxa de atualização configurada e observar anomalias de movimento",
+          "desc": "Confira a taxa de atualização configurada nas configurações de tela do sistema operacional e observe o movimento no Teste de Taxa de Atualização do Screen Tester para verificar se ocorrem saltos óbvios de quadros. (Nota: os testes no navegador detectam a cadência de quadros reportada pelo sistema, mas não podem medir nem certificar independentemente a capacidade física do painel)."
         },
         {
-          "title": "Ghosting e tempo de resposta dos cristais",
-          "desc": "Abra o teste de ghosting com blocos em movimento. Avalie o rastro deixado atrás de objetos escuros."
+          "title": "Ghosting visual e rastros de movimento",
+          "desc": "Abra o Teste de Ghosting com blocos em movimento de alto contraste. Observe visualmente se ocorrem rastros ou borrões atrás dos objetos. (Nota: padrões visuais fornecem observação subjetiva da nitidez; o navegador não consegue medir o tempo de resposta real em milissegundos ou transições GtG)."
         },
         {
           "title": "Modo estroboscópico de luz (BFI / ELMB)",
           "desc": "Ative o modo strobing no OSD e valide a nitidez no teste de desfoque de movimento."
         },
         {
-          "title": "Compatibilidade VRR / G-Sync / FreeSync",
-          "desc": "Habilite o Adaptive Sync no driver de vídeo e descarte oscilações de brilho com o teste VRR."
+          "title": "Verificação de VRR / Sincronização Adaptativa",
+          "desc": "Verifique se o AMD FreeSync ou NVIDIA G-Sync Compatible está disponível no painel de controle da GPU e observe se ocorre cintilação de brilho no Teste de VRR. (Nota: testes no navegador não garantem compatibilidade de hardware VRR em todos os drivers e jogos)."
         }
       ],
       "motionLinksTitle": "Testes de movimento relacionados:",
@@ -1382,12 +1382,12 @@
       "osdDesc": "O menu interno do monitor traz detalhes vitais de configuração:",
       "osdItems": [
         {
-          "title": "Faça sempre o reset de fábrica",
-          "desc": "Execute o 'Reset All' no OSD antes de avaliar cores. Vendedores costumam alterar contraste e saturação para disfarçar defeitos."
+          "title": "Executar restauração de fábrica antes da avaliação final, se for prático",
+          "desc": "Se for prático, navegue até o menu de Sistema do OSD e execute a Restauração de Fábrica (Reset All) antes da avaliação final. Isso estabelece uma linha de base neutra, eliminando modos de imagem alterados, contraste extremo, nitidez artificial ou perfis de cores anteriores. (Nota: a restauração de fábrica serve apenas como base de teste neutra; não diagnostica componentes internos nem revela defeitos ocultos de hardware)."
         },
         {
-          "title": "Confirme a resolução nativa em Informações",
-          "desc": "No menu Info do OSD, veja se a resolução e frequência detectadas batem exatamente com as especificações oficiais."
+          "title": "Verificar resolução do sinal de entrada nas informações do OSD",
+          "desc": "Abra o menu de informações do OSD do monitor para conferir a resolução do sinal de entrada reconhecida pelo firmware com as especificações do fabricante. (Nota: o Screen Tester e as APIs do navegador relatam a resolução da viewport e da área de trabalho, não a matriz física do painel)."
         },
         {
           "title": "Ajuste de Overdrive",
@@ -1427,8 +1427,8 @@
           "desc": "Exiba fundo cinza no teste de burn-in procurando silhuetas de barra de tarefas, planilhas ou janelas de navegador."
         },
         {
-          "title": "Horas de uso no menu de serviço",
-          "desc": "Vários monitores Dell, LG e BenQ registram as horas totais de backlight no OSD ou menu de serviço. Mais de 15.000 horas indicam painel muito rodado."
+          "title": "Horas de operação e uso da iluminação",
+          "desc": "Alguns modelos registram as horas totais de uso no OSD ou menu de serviço. Embora horas elevadas indiquem uso prévio intenso, os testes do navegador não medem a vida útil restante da iluminação traseira."
         },
         {
           "title": "Barulho de ventoinha em modelos topo de linha",
@@ -1465,10 +1465,10 @@
         "Tela frontal: sem riscos profundos, trincas ou manchas na película antirreflexo sob luz rasante.",
         "Carcaça e suporte: ajustes firmes, roscas VESA intactas, sem cheiro de plástico queimado.",
         "Alimentação estável: liga em menos de 5s, sem chiados em capacitores nem desligamentos a 100% de brilho.",
-        "Portas físicas: conectores HDMI, DP e USB-C firmes e sem corte de vídeo ao mexer suavemente no cabo.",
+        "Portas e conectores: cabos HDMI, DP e USB-C conectam firmemente com sinal de vídeo estável em operação normal.",
         "Pixels: painel verificado com testes de pixels mortos e travados em tela cheia sem defeitos incômodos.",
         "Backlight: vazamentos de luz e uniformidade em níveis normais e toleráveis.",
-        "Fluidez: taxa de atualização divulgada (ex: 144Hz) estável e reconhecida no sistema.",
+        "Movimento e taxa de atualização: taxa configurada confirmada no sistema e verificada no Screen Tester sem saltos de quadros evidentes.",
         "Etiqueta traseira: código exato de modelo bate com o que foi anunciado.",
         "Acessórios inclusos: fonte original, cabos de alta velocidade e parafusos da base presentes."
       ],

@@ -1242,7 +1242,7 @@
       "breadcrumbsGuides": "Guides",
       "breadcrumbsUsedMonitor": "Checklist écran d'occasion",
       "noticeTitle": "Transparence technique & limites du navigateur",
-      "noticeDesc": "Screen Tester propose des mires visuelles et des lectures d'API web. Un navigateur ne peut pas évaluer l'état des condensateurs internes, la durée de vie résiduelle du rétroéclairage, la précision colorimétrique de laboratoire (Delta E) ou la solidité des soudures des ports. Cette checklist guide votre inspection physique et visuelle.",
+      "noticeDesc": "Screen Tester fournit des mires de test visuelles et des données via l'API du navigateur. Un navigateur Web ne peut pas déterminer la résolution physique réelle de la dalle, la fréquence de rafraîchissement physique maximale, le temps de réponse réel, la luminosité réelle en nits, la précision colorimétrique de laboratoire (Delta E), la santé de la dalle, la durée de vie résiduelle, l'état des composants électroniques ou condensateurs internes, l'intégrité des soudures des connecteurs ni le fonctionnement matériel garanti du VRR. Cette liste guide vos observations physiques, visuelles et logicielles.",
       "beforeTitle": "1. Avant de rencontrer le vendeur : équipement & préparation",
       "beforeDesc": "Ne vous rendez jamais sur place sans préparation. Un contrôle minutieux dure 15 à 20 minutes et nécessite le matériel adapté :",
       "beforeItems": [
@@ -1287,24 +1287,24 @@
           "desc": "Testez l'inclinaison, la hauteur et la rotation. Inspectez les 4 pas de vis VESA M4 à l'arrière : ils sont fréquemment foirés par des bras d'écran trop serrés."
         },
         {
-          "title": "Tenue des connecteurs vidéo et alimentation",
-          "desc": "Faites bouger délicatement les prises DisplayPort et HDMI branchées. Tout jeu excessif signale des soudures cassées sur la carte interne."
+          "title": "État physique des connecteurs & tenue des câbles",
+          "desc": "Inspectez visuellement les entrées DisplayPort, HDMI, USB-C et d'alimentation afin de détecter d'éventuelles broches tordues, débris ou boîtiers endommagés avant de brancher. Les câbles doivent s'insérer proprement et fermement sans forcer ni présenter de jeu mécanique excessif."
         },
         {
-          "title": "Traces de liquides et odeurs anormales",
-          "desc": "Vérifiez le bas de la dalle pour repérer des coulures d'eau séchée. Sentez les aérations supérieures : une odeur de plastique brûlé ou d'ozone trahit des condensateurs d'alimentation en fin de vie."
+          "title": "Infiltration de liquide & odeur de brûlé",
+          "desc": "Vérifiez les joints du cadre inférieur pour déceler tout résidu collant ou trace d'eau derrière le diffuseur. Sentez les grilles d'aération supérieures : une forte odeur de plastique brûlé ou d'électricité peut signaler une surchauffe passée de composants internes."
         }
       ],
       "powerTitle": "3. Mise sous tension & stabilité du rétroéclairage",
       "powerDesc": "Branchez l'appareil et observez attentivement le démarrage :",
       "powerItems": [
         {
-          "title": "Délai d'allumage et cliquetis de relais",
-          "desc": "Un écran en bon état s'allume en 2 à 5 secondes. Des cliquetis de relais incessants ou un voyant clignotant indiquent une alimentation défaillante."
+          "title": "Délai d'allumage & témoin d'alimentation",
+          "desc": "Observez le voyant d'alimentation et l'allumage de l'écran. Les écrans de qualité s'allument en 2 à 5 secondes. Des cliquetis répétés de relais, des voyants clignotants ou un démarrage très lent suggèrent une instabilité potentielle de l'alimentation ou du matériel."
         },
         {
-          "title": "Coupures intermittentes (Test de mouvement de câble)",
-          "desc": "Avec le bureau affiché, bougez doucement le câble près du connecteur. Si l'écran devient noir 1 à 2 secondes, le port ou le câble est défectueux."
+          "title": "Vérifier l'absence de perte de signal intermittente sans forcer sur le connecteur",
+          "desc": "Vérifiez l'absence de perte de signal intermittente sans exercer de contrainte physique sur le port ou le câble. En observant le bureau actif en position fixe, guettez les coupures d'écran temporaires, clignotements ou pertes de signal pouvant indiquer un câble fatigué ou un faux contact."
         },
         {
           "title": "Stabilité thermique",
@@ -1344,8 +1344,8 @@
           "desc": "Affichez un gris neutre 50% avec le test d'uniformité. Cherchez d'éventuelles zones d'ombre ou bandes verticales."
         },
         {
-          "title": "Banding et profondeur de couleur",
-          "desc": "Vérifiez les dégradés progressifs avec le test de banding. Des paliers marqués indiquent un bridage à 6 bits au lieu de 8 ou 10 bits."
+          "title": "Banding de couleur & fluidité des dégradés",
+          "desc": "Ouvrez le Test de Dégradés et de Banding. Les dégradés de gris progressifs permettent d'évaluer visuellement la régularité des transitions et de repérer les paliers brusques ou artefacts de quantification."
         },
         {
           "title": "Netteté du texte et franges colorées",
@@ -1361,20 +1361,20 @@
       "motionDesc": "Assurez-vous que l'écran délivre les performances de jeu annoncées :",
       "motionItems": [
         {
-          "title": "Vérifier la fréquence réelle dans l'OS",
-          "desc": "Vérifiez dans les paramètres d'affichage et avec le test de fréquence que les 144Hz ou 240Hz sont bien actifs sans saut d'image (frame-skipping)."
+          "title": "Vérifier la fréquence configurée & guetter les anomalies de mouvement",
+          "desc": "Vérifiez la fréquence de rafraîchissement configurée dans les paramètres d'affichage du système d'exploitation et observez l'animation dans le Test de Fréquence de Screen Tester pour détecter d'éventuels sauts d'images évidents. (Remarque : les tests sur navigateur observent la cadence des trames rapportée par le système, mais ne peuvent pas mesurer ni certifier de façon indépendante les limites physiques de la dalle)."
         },
         {
-          "title": "Ghosting et réactivité des cristaux",
-          "desc": "Lancez le test de ghosting avec des blocs en mouvement. Mesurez visuellement la traînée derrière les objets sombres."
+          "title": "Ghosting visuel & traînées de mouvement",
+          "desc": "Lancez le Test de Ghosting avec des éléments contrastés en mouvement. Observez visuellement si des traînées ou bavures apparaissent derrière les objets mobiles. (Remarque : les mires visuelles offrent une observation subjective de la netteté ; le navigateur ne peut pas mesurer les temps de transition réels en millisecondes ou GtG)."
         },
         {
           "title": "Strobing du rétroéclairage (BFI / ELMB)",
           "desc": "Activez le mode d'insertion d'images noires dans l'OSD et vérifiez avec le test de flou de mouvement."
         },
         {
-          "title": "Activation VRR / G-Sync / FreeSync",
-          "desc": "Activez l'Adaptive Sync dans le panneau GPU et vérifiez l'absence de scintillement de luminosité avec le test VRR."
+          "title": "Vérification du VRR / Fréquence variable",
+          "desc": "Vérifiez si AMD FreeSync ou NVIDIA G-Sync Compatible est disponible dans le panneau de configuration GPU, et surveillez l'apparition de scintillements de luminosité dans le Test VRR. (Remarque : les tests sur navigateur ne garantissent pas la compatibilité matérielle VRR sur l'ensemble des pilotes et jeux)."
         }
       ],
       "motionLinksTitle": "Tests de mouvement associés :",
@@ -1382,12 +1382,12 @@
       "osdDesc": "Le menu intégré de l'écran révèle des réglages matériels clés :",
       "osdItems": [
         {
-          "title": "Réinitialisez toujours aux paramètres d'usine",
-          "desc": "Effectuez un 'Reset All' dans le menu OSD. Les vendeurs modifient souvent le contraste ou l'égaliseur de noirs pour dissimuler des défauts."
+          "title": "Réinitialiser aux paramètres d'usine avant l'évaluation finale, si pratique",
+          "desc": "Si cela est pratique, rendez-vous dans le menu Système de l'OSD et effectuez une réinitialisation d'usine avant l'évaluation finale. Cela établit une référence neutre, effaçant les modes d'image personnalisés, contrastes extrêmes, filtres de netteté ou profils de couleurs antérieurs. (Remarque : la réinitialisation établit une base d'évaluation neutre ; elle ne diagnostique pas l'électronique interne et ne révèle pas de pannes matérielles dissimulées)."
         },
         {
-          "title": "Vérifiez la définition native dans l'onglet Info",
-          "desc": "Contrôlez que la définition d'entrée affichée par le firmware correspond aux spécifications techniques officielles."
+          "title": "Vérifier la résolution du signal d'entrée dans les infos OSD",
+          "desc": "Consultez l'écran d'informations de l'OSD pour confronter la résolution du signal reçue par le micrologiciel de l'écran aux spécifications du fabricant. (Remarque : Screen Tester et les API du navigateur rapportent la définition d'affichage du bureau, et non la matrice physique de la dalle)."
         },
         {
           "title": "Contrôlez le profil d'overdrive",
@@ -1427,8 +1427,8 @@
           "desc": "Affichez un fond gris avec le test de burn-in pour traquer les silhouettes figées de barres de tâches ou de tableaux Excel."
         },
         {
-          "title": "Heures d'utilisation au menu de service",
-          "desc": "De nombreux écrans Dell, LG et BenQ consignent les heures de rétroéclairage. Au-delà de 15 000 heures, la dalle a déjà beaucoup vécu."
+          "title": "Heures de fonctionnement & rétroéclairage",
+          "desc": "Certains modèles enregistrent le temps d'utilisation total dans l'OSD ou le menu de maintenance. Si un nombre d'heures élevé indique un usage important, les tests du navigateur ne peuvent mesurer la durée de vie restante du rétroéclairage."
         },
         {
           "title": "Bruits de ventilateur sur les modèles haut de gamme",
@@ -1465,10 +1465,10 @@
         "Verre de la dalle : aucune rayure profonde, fêlure ou accroc au traitement antireflet en lumière rasante.",
         "Châssis et pied : réglages fluides, pas de vis VESA intacts, aucune odeur de brûlé.",
         "Alimentation stable : démarrage en moins de 5s, aucun sifflement, aucune coupure à 100% de luminosité.",
-        "Connectique : ports HDMI, DP et USB-C fermes sans coupure en bougeant le câble.",
+        "Connectique : câbles HDMI, DP et USB-C s'insèrent parfaitement avec un signal vidéo stable en fonctionnement normal.",
         "Pixels : dalle contrôlée avec les tests de pixels morts et bloqués en plein écran sans défaut gênant.",
         "Rétroéclairage : fuites de lumière et uniformité dans des limites acceptables.",
-        "Fluidité : fréquence annoncée (ex. 144Hz) reconnue et stable dans le système.",
+        "Mouvement et fréquence : fréquence configurée confirmée dans le système et vérifiée dans Screen Tester sans sauts d'images évidents.",
         "Étiquette arrière : référence exacte correspondant à celle annoncée par le vendeur.",
         "Accessoires présents : alimentation d'origine, câbles vidéo de qualité et vis de pied fournies."
       ],
