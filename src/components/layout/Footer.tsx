@@ -42,6 +42,15 @@ const DIRECTORY_BADGES = [
     width: 200,
     height: 54,
   },
+  {
+    name: "TheMicroSaaSDir",
+    href: "https://themicrosaasdir.com/product/screen-tester?ref=badge",
+    rel: "dofollow",
+    src: "https://themicrosaasdir.com/badge/screen-tester.svg",
+    alt: "Featured on TheMicroSaaSDir",
+    width: 160,
+    height: 44,
+  },
 ];
 
 export function Footer() {
