@@ -3896,6 +3896,258 @@
             "answer": "No. Los navegadores web no pueden conectarse a fotodiodos ni osciloscopios. Screen Tester permite observar visualmente estelas y sobreimpulsos, pero las mediciones en milisegundos certificadas requieren instrumental de laboratorio."
           }
         ]
+      },
+      "oled-burn-in-and-image-retention": {
+        "title": "OLED ABL, desplazamiento de píxeles y retención de imagen",
+        "subtitle": "Limitador automático de brillo, variaciones de luminancia según el tamaño de ventana, pixel orbiting y protección ante contenidos estáticos.",
+        "description": "Comprenda cómo actúa el limitador automático de brillo (ABL) en OLED según el tamaño de ventana, por qué ocurre el desplazamiento de píxeles y cómo inspeccionar su pantalla con seguridad.",
+        "directAnswer": "El limitador automático de brillo (ABL) en pantallas OLED es un mecanismo interno de protección que reduce la luminancia general del panel en función del nivel medio de imagen (Average Picture Level, APL) para controlar la potencia eléctrica y la temperatura. Paralelamente, el desplazamiento de píxeles (pixel orbiting) traslada la imagen periódicamente en pequeños incrementos para distribuir los bordes estáticos entre emisores contiguos.",
+        "whyItMatters": "Dado que los píxeles OLED son diodos orgánicos autoemisores, gestionar el calor acumulado y la corriente eléctrica resulta crucial para la longevidad del panel. Los usuarios no familiarizados con el ABL suelen confundir las variaciones de brillo al redimensionar ventanas con fallos del monitor, mientras que el leve movimiento de la imagen puede malinterpretarse como inestabilidad visual. Entender estos sistemas permite configurar mejor el OSD y distinguir la protección normal de averías reales.",
+        "whatToLookFor": [
+          "Atenuación perceptible al maximizar un documento o ventana de navegador blanca desde un tamaño reducido a pantalla completa (comportamiento estándar del ABL)",
+          "Destellos brillantes muy vivos en áreas pequeñas (luces, carteles de neón) que lucen mucho más intensos que los fondos blancos extensos",
+          "Desplazamiento sutil y periódico de toda la imagen de escritorio en unos pocos píxeles, dejando a veces un fino borde negro inactivo en un lateral (pixel shifting / orbiting)",
+          "Oscurecimiento gradual y progresivo de la pantalla cuando elementos fijos del escritorio, barras de tareas o vídeos en pausa permanecen estáticos varios minutos (ASBL / atenuación estática)",
+          "Sombras tenues de iconos o barras de interfaz que desaparecen progresivamente al reproducir vídeo dinámico a pantalla completa (retención temporal de imagen)",
+          "Siluetas oscuras permanentes o desviaciones de color que persisten en fondos lisos y grises a pesar de ejecutar ciclos de mantenimiento (quemado o degradación diferencial)"
+        ],
+        "howToTest": [
+          "Abra la [Prueba de brillo](/tests/brightness-test) en Screen Tester y observe las zonas de prueba mientras redimensiona la ventana del navegador de compacta a pantalla completa.",
+          "Inicie la [Prueba HDR](/tests/hdr-test) para observar visualmente cómo gestiona la pantalla los destellos pequeños frente a escenas amplias con alto APL en HDR.",
+          "Ejecute la [Prueba de uniformidad](/tests/uniformity-test) en patrones de gris al 5 %, 20 %, 50 % y 100 % para buscar sombras de retención o efecto de pantalla sucia (DSE).",
+          "Evalúe el detalle en sombras con la [Prueba de casi negros](/tests/near-black-test) para confirmar que los tonos oscuros (1–16) son perceptibles sin aplastamiento.",
+          "Inspeccione las transiciones tonales suaves y la profundidad de bits mediante la [Prueba de gradientes y banding](/tests/gradient-banding-test).",
+          "Compruebe la nitidez de texto en fondos claros y oscuros con la [Prueba de nitidez de texto](/tests/text-clarity-test).",
+          "Consulte la profundidad de color y capacidades HDR reportadas por el navegador con la herramienta de [Información de pantalla](/tests/display-info).",
+          "Revise nuestra [Guía de configuración OSD del monitor](/guides/monitor-osd-settings-explained) para averiguar si su pantalla ofrece un modo de brillo uniforme."
+        ],
+        "whatScreenTesterCanObserve": [
+          "Observación visual de las variaciones de brillo percibidas cuando las zonas claras se expanden por la pantalla",
+          "Inspección comparativa en fondos lisos al 5 %, 20 %, 50 % y 100 % de gris y colores primarios en busca de siluetas de retención",
+          "Representación de patrones de casi negro con gradientes sutiles (niveles 1 a 16) para verificar la visibilidad en sombras",
+          "Información comunicada por el navegador sobre gama de color, profundidad de bits y soporte HDR mediante APIs web",
+          "Comprobación visual de halos de color en fuentes tipográficas de alto contraste"
+        ],
+        "whatScreenTesterCannotDetermine": [
+          "Mediciones de luminancia absoluta calibradas con fotodiodos en candelas por metro cuadrado (cd/m² o nits)",
+          "Consumo eléctrico de la fuente interna en vatios, amperaje o telemetría térmica de los sensores del panel",
+          "Umbrales exactos de activación del ABL fijados por el fabricante, tablas LUT o curvas de limitación del firmware",
+          "Vida útil restante de los emisores orgánicos, porcentaje de desgaste o probabilidad futura de quemado",
+          "Historial interno de ciclos de compensación, contadores de diagnóstico de fábrica o coordenadas exactas de desplazamiento"
+        ],
+        "commonCauses": [
+          "Contenido con alto nivel medio de imagen (APL) que activa el limitador ABL para proteger la circuitería y controlar la temperatura",
+          "Funciones activas de desplazamiento de píxeles (Pixel Orbiting) que mueven levemente la imagen para mitigar el desgaste de bordes fijos",
+          "Atenuadores automáticos de contenido estático (ASBL / TPC) que se activan ante documentos o interfaces prolongadas sin movimiento",
+          "Uso de perfiles HDR agresivos orientados a picos extremos en lugar de modalidades de luminancia constante o moderada",
+          "Exhibición ininterrumpida de elementos de interfaz de alto contraste (barras de tareas, menús fijos) a brillo muy elevado",
+          "Desconexión del monitor mediante regletas con interruptor, lo que impide completar los ciclos de mantenimiento en espera"
+        ],
+        "whatToDoNext": [
+          "Compruebe en el OSD si existe la opción de 'Brillo uniforme' (Uniform Brightness) si los cambios de luz al mover ventanas le distraen al trabajar.",
+          "Mantenga activas las funciones de protección del fabricante: desplazamiento de píxeles, atenuación de logotipos y ciclos en espera.",
+          "Configure el sistema operativo para ocultar automáticamente la barra de tareas y fije un tiempo de suspensión razonable (un temporizador de reposo por inactividad).",
+          "Si percibe sombras tenues tras sesiones estáticas, reproduzca vídeo dinámico o permita que el monitor entre en reposo para ejecutar un ciclo de refresco.",
+          "Si los cambios de iluminación le parecen erráticos, consulte nuestra [Guía de configuración OSD del monitor](/guides/monitor-osd-settings-explained) y la [Guía de solución de problemas](/knowledge-base/troubleshooting)."
+        ],
+        "sections": [
+          {
+            "title": "Qué es el limitador automático de brillo (ABL) en OLED",
+            "content": [
+              "Las pantallas OLED (Organic Light-Emitting Diode) se diferencian de las pantallas LCD clásicas en que cada subpíxel genera su propia luz de forma autónoma. En este esquema autoemisor, iluminar pocos puntos apenas consume energía, pero encender toda la superficie a máxima potencia requeriría un amperaje desmesurado y generaría mucho calor en las capas orgánicas.",
+              "Para garantizar un funcionamiento seguro dentro de los límites térmicos y de potencia, los fabricantes integran el limitador automático de brillo (ABL). Se trata de un circuito de control que evalúa el nivel medio de imagen (APL, proporción e intensidad del área iluminada) y atenúa suavemente la luminancia general a medida que el blanco ocupa más espacio en pantalla.",
+              "El comportamiento del ABL no es idéntico en todos los paneles. El umbral en el que comienza a actuar, la inclinación de la curva de reducción y la luminancia máxima a pantalla completa cambian notablemente según la tecnología (WOLED, QD-OLED, AMOLED), la generación del panel, el firmware del escalador, la disipación térmica y el perfil de imagen configurado. No existe una curva de ABL universal."
+            ],
+            "bullets": [
+              "Los píxeles autoemisores consumen energía y desprenden calor en proporción a la cantidad de píxeles encendidos y su intensidad.",
+              "El ABL calcula continuamente el nivel medio de imagen (APL) y modula la luminosidad para mantener a salvo la circuitería.",
+              "La respuesta varía según la tecnología del panel (WOLED frente a QD-OLED), la refrigeración, el firmware y el perfil elegido.",
+              "El ABL es una medida de seguridad deliberada de hardware, no un defecto de la pantalla ni una avería de la fuente de alimentación."
+            ]
+          },
+          {
+            "title": "Por qué varía el brillo del OLED según el contenido y el tamaño de ventana",
+            "content": [
+              "Quienes estrenan un monitor OLED suelen notar oscilaciones de brillo durante tareas cotidianas en el escritorio. Cuando una ventana blanca es pequeña, el APL global se mantiene bajo, lo que permite que el panel emita con gran intensidad sin sobrecalentarse. Al maximizar esa misma ventana, el APL se dispara y el ABL reduce de inmediato la luminosidad de toda la superficie visible.",
+              "Esto produce diferencias perceptibles según el tipo de imagen: los pequeños destellos –como farolas, chispas o iconos– brillan de forma muy viva gracias a su reducido tamaño. Por contra, documentos a pantalla completa, navegadores o paisajes nevados demandan el máximo nivel de ABL, viéndose más contenidos de brillo.",
+              "Asimismo, el modo de imagen incide con fuerza. En HDR se toleran picos muy elevados para elementos reducidos pero con atenuaciones drásticas en escenas claras. En SDR, muchos monitores modernos incorporan un selector de 'Brillo uniforme' (Uniform Brightness) que fija un tope de luminancia constante en cualquier tamaño de ventana, evitando cambios molestos en tareas ofimáticas."
+            ],
+            "bullets": [
+              "Las ventanas claras pequeñas retienen mayor brillo porque su bajo APL mantiene el consumo y el calor al mínimo.",
+              "Maximizar una ventana a pantalla completa activa la atenuación del ABL, bajando la luminancia general.",
+              "Los perfiles HDR destacan destellos concretos a costa de reducir con mayor notoriedad las superficies claras amplias.",
+              "Muchos monitores OLED ofrecen en SDR la opción 'Uniform Brightness' para anular por completo estas oscilaciones."
+            ]
+          },
+          {
+            "title": "Cómo observar el ABL visualmente (Procedimiento seguro y límites del navegador)",
+            "content": [
+              "Es posible observar el ABL de su monitor sin recurrir a software complejo. Establezca un fondo de escritorio oscuro o neutro, abra una ventana con fondo blanco o la [Prueba de brillo](/tests/brightness-test) y cambie su tamaño gradualmente desde un cuarto de pantalla hasta maximizarla. Fíjese en si la superficie blanca conserva el mismo nivel de brillo o si se atenúa de forma progresiva conforme gana tamaño.",
+              "A continuación, inicie la [Prueba HDR](/tests/hdr-test) para comprobar cómo responde la pantalla ante patrones de alto contraste con diferentes cargas de APL, comparando cuadros pequeños con fondos completos. Repita las pruebas en SDR y HDR, y alternando la función 'Uniform Brightness' si su monitor la incluye.",
+              "Al realizar estas comprobaciones conviene tener claras las posibilidades del software web. Screen Tester genera patrones calibrados para facilitar comparaciones visuales, pero los navegadores carecen de conexión directa con fotodiodos o sondas de laboratorio. Las observaciones son visuales y de reporte de API, nunca mediciones certificadas en nits."
+            ],
+            "bullets": [
+              "Paso 1: Abrir la [Prueba de brillo](/tests/brightness-test) en ventana pequeña sobre fondo oscuro.",
+              "Paso 2: Agrandar la ventana hacia pantalla completa para apreciar visualmente cómo y cuándo se atenúa la imagen.",
+              "Paso 3: Probar los modos SDR y HDR con la [Prueba HDR](/tests/hdr-test) para comparar curvas de brillo.",
+              "Límites técnicos: Un navegador web no puede cuantificar candelas por metro cuadrado ni el gasto en vatios."
+            ]
+          },
+          {
+            "title": "Desplazamiento de píxeles (Pixel Orbiting): Movimiento geométrico intencionado",
+            "content": [
+              "El desplazamiento de píxeles (conocido en inglés como Pixel Shift, Screen Shift o Pixel Orbiting) es una medida preventiva esencial en monitores y televisores OLED. El procesador interno de la pantalla desplaza periódicamente toda la imagen visible unos pocos píxeles en dirección horizontal y vertical.",
+              "El objetivo de ingeniería de este sistema es evitar que los bordes estáticos de alto contraste –como el marco de una ventana fija, el borde de la barra de tareas o los marcadores de un videojuego– incidan de manera ininterrumpida sobre los mismos diodos. Al rotar levemente la imagen por subpíxeles contiguos, el desgaste luminoso se reparte en un área más amplia, retrasando el envejecimiento localizado.",
+              "Como el desplazamiento está concebido para no llamar la atención mientras se visualiza contenido, ocurre de forma paulatina. No obstante, en tareas de escritorio con texto puede apreciarse tras varias horas un ligerísimo cambio de posición o la presencia de un fino borde negro inactivo en un extremo del marco. Este movimiento es una protección normal de hardware y no debe confundirse con vibraciones ni fallos del cable."
+            ],
+            "bullets": [
+              "El pixel shifting mueve periódicamente la imagen activa unos pocos píxeles en horizontal y vertical.",
+              "Distribuir los bordes estáticos sobre subpíxeles vecinos reparte el esfuerzo luminoso y previene el agotamiento prematuro.",
+              "A veces puede quedar a la vista un estrecho margen negro en un lateral del marco, fruto del ciclo de rotación.",
+              "Estos leves desplazamientos son un mecanismo de protección deliberado y no un defecto de la señal."
+            ]
+          },
+          {
+            "title": "Protección contra contenido estático: Distinción de cuatro mecanismos",
+            "content": [
+              "Para preservar los emisores orgánicos coexisten diversos sistemas de protección que los usuarios suelen entremezclar. Para un análisis correcto conviene diferenciar cuatro técnicas:",
+              "1. Desplazamiento de píxeles (Pixel Orbiting): La traslación geométrica continua y suave de la imagen activa durante su uso habitual.",
+              "2. Atenuación estática (ASBL / TPC / Detección de logotipos): Algoritmos de firmware que analizan la señal de vídeo en busca de escenas fijas (logotipos de cadenas, barras de escritorio, pausas de vídeo). Al detectar inmovilidad continuada durante minutos, reducen la luminancia de todo el panel o de la zona fija para mitigar el calentamiento.",
+              "3. Suspensión y salvapantallas del sistema operativo: Funciones de ahorro de Windows o macOS que interrumpen la señal o muestran una pantalla negra tras periodos de inactividad de teclado y ratón.",
+              "4. Ciclos de compensación y mantenimiento del panel: Tareas automáticas que ejecuta la electrónica del monitor en modo de espera (standby). Tras varias horas de uso acumulado miden la resistencia de los subpíxeles y recalculan los voltajes, mientras que ciclos más profundos se programan tras cientos de horas para reajustar la uniformidad.",
+              "Los fabricantes calibran estos ajustes de distinta forma: los televisores suelen aplicar un ASBL estricto para cine, mientras que los monitores gaming acostumbran a ofrecer opciones de menor agresividad en su OSD para trabajar con comodidad."
+            ],
+            "bullets": [
+              "Pixel Orbiting: Movimiento geométrico continuo para atenuar el desgaste en bordes fijos.",
+              "Atenuación ASBL/TPC: Reducción automática de brillo ante imágenes o logotipos inmóviles.",
+              "Ahorro de energía del SO: Apagado de señal o salvapantallas ante la falta de interacción.",
+              "Ciclos en modo de espera: Mantenimiento esencial del firmware para calibrar voltajes tras el uso."
+            ]
+          },
+          {
+            "title": "Retención temporal de imagen frente a quemado permanente",
+            "content": [
+              "Una distinción técnica primordial en paneles OLED radica en diferenciar la retención temporal de imagen del quemado irreversible. La retención es un efecto óptico transitorio originado por acumulación de cargas residuales en los transistores (TFT) o en las capas orgánicas tras mantener un elemento muy contrastado en pantalla. Al pasar a un fondo gris neutro puede quedar una sombra tenue, pero esta desaparece de manera natural con el visionado de contenido dinámico o tras un ciclo de compensación.",
+              "El quemado permanente (o desgaste diferencial de subpíxeles), en cambio, supone una degradación física irreversible de los componentes electroluminiscentes orgánicos. Si un grupo concreto de píxeles permanece encendido a gran intensidad durante miles de horas mientras los colindantes varían, los subpíxeles castigados pierden rendimiento de emisión de forma permanente, proyectando una silueta oscura perpetua en fondos uniformes.",
+              "Los paneles OLED contemporáneos incorporan emisores multicapa avanzados, láminas disipadoras de grafeno o aluminio y sensores térmicos que reducen enormemente el riesgo de quemado en un uso habitual multimedia y ofimático. Cabe insistir en que ningún software web puede diagnosticar el desgaste químico interno de los subpíxeles; Screen Tester se enfoca en la inspección visual del estado real en pantalla."
+            ],
+            "bullets": [
+              "Retención temporal: Efecto de carga transitorio en la circuitería; completamente reversible con contenido variado.",
+              "Quemado permanente: Desgaste físico irreversible de subpíxeles tras miles de horas estáticas de alta luminancia.",
+              "Avances de protección: Disipadores y algoritmos actuales han reducido el riesgo de quemado sustancialmente.",
+              "Alcance de las pruebas: El software en navegador no puede medir la degradación química ni calcular la vida útil."
+            ]
+          },
+          {
+            "title": "Evaluación de características OLED con Screen Tester",
+            "content": [
+              "Screen Tester pone a su disposición herramientas web para explorar visualmente el comportamiento de su panel OLED. Conocer su alcance evita sacar conclusiones equivocadas:",
+              "[Prueba HDR](/tests/hdr-test): Inspecciona visualmente la interpretación del mapeo tonal HDR y el recorte de blancos en patrones específicos. No mide valores absolutos de nits ni valida la curva EOTF de laboratorio.",
+              "[Prueba de uniformidad](/tests/uniformity-test): Presenta fondos sólidos al 5 %, 20 %, 50 % y 100 % de gris y colores primarios, facilitando la detección de sombras de retención o efecto de pantalla sucia. No traza mapas colorimétricos delta-E.",
+              "[Prueba de casi negros](/tests/near-black-test): Recorre los niveles oscuros más sutiles (del 1 al 16 sobre el negro puro) para comprobar el detalle en sombras y descartar aplastamiento. No mide voltajes de polarización del panel.",
+              "[Prueba de gradientes y banding](/tests/gradient-banding-test): Revisa la continuidad en rampas de color en 8 y 10 bits para localizar saltos bruscos o artefactos de tramado. No inspecciona el procesamiento de bits interno del escalador.",
+              "[Prueba de brillo](/tests/brightness-test): Permite observar cómo varía el nivel de luz al agrandar o achicar la ventana para apreciar el ABL. No calcula candelas por metro cuadrado (cd/m²).",
+              "[Prueba de nitidez de texto](/tests/text-clarity-test): Despliega tipografías en fondos claros y oscuros para revisar halos de color asociados a distribuciones de subpíxeles poco habituales (como WOLED o QD-OLED). No modifica los motores de fuentes del SO.",
+              "[Información de pantalla](/tests/display-info): Consulta las APIs del navegador para detallar resolución, profundidad de color y capacidades HDR. No accede al firmware interno del controlador."
+            ],
+            "bullets": [
+              "[Prueba HDR](/tests/hdr-test): Evalúa el mapeo tonal visualmente; no mide nits pico absolutos.",
+              "[Prueba de uniformidad](/tests/uniformity-test): Destapa sombras en grises al 5 %–50 %; no genera mapas delta-E.",
+              "[Prueba de casi negros](/tests/near-black-test): Comprueba el detalle en sombras; no mide el voltaje de negro del panel.",
+              "[Prueba de gradientes y banding](/tests/gradient-banding-test): Confirma transiciones suaves de 10 bits sin escalonamientos.",
+              "[Prueba de brillo](/tests/brightness-test): Muestra la atenuación del ABL al variar el tamaño de ventana; no mide cd/m².",
+              "[Prueba de nitidez de texto](/tests/text-clarity-test): Revisa halos en fuentes según la estructura de subpíxeles.",
+              "[Información de pantalla](/tests/display-info): Recopila datos del navegador sin telemetría interna del fabricante."
+            ]
+          },
+          {
+            "title": "Interpretación de observaciones: Normal frente a anomalías",
+            "content": [
+              "A la hora de examinar una pantalla OLED, las observaciones visuales deben estructurarse con rigor técnico:",
+              "1. Parece normal: El brillo disminuye suavemente al maximizar una ventana blanca (actuación ordinaria del ABL). La imagen se traslada de forma sutil unos píxeles tras horas de uso, dejando a veces un milimétrico borde negro en un extremo (pixel orbiting estándar). Las sombras tenues tras mostrar elementos fijos desaparecen tras unos minutos de vídeo dinámico o un ciclo de mantenimiento en espera (retención temporal benigna).",
+              "2. Requiere atención: La pantalla se oscurece con brusquedad en tareas de oficina con contenido variado, dificultando la lectura (revise ajustes de ASBL excesivos, sensores de luz ambiental o desajustes de HDR en el escritorio). Quedan siluetas oscuras permanentes en todas las pantallas de gris y colores planos a pesar de ejecutar ciclos manuales (desgaste diferencial o quemado).",
+              "3. Incierto: Se aprecian oscilaciones erráticas de brillo durante juegos o vídeos. El origen puede deberse al mapeo tonal del propio juego, al Auto HDR de Windows o a la curva interna del monitor. Al no poder medir los límites eléctricos con el navegador, consulte el manual y el registro de cambios del firmware de su modelo."
+            ],
+            "bullets": [
+              "Parece normal: Atenuación por ABL en ventanas amplias, pixel orbiting sutil y sombras que desaparecen con vídeo.",
+              "Requiere atención: Oscurecimiento exagerado en tareas mixtas o sombras fijas en fondos planos tras varios ciclos.",
+              "Incierto: Variaciones impredecibles en videojuegos; pueden influir el mapeo tonal del juego o el HDR de Windows.",
+              "Límite de diagnóstico: Las herramientas web no pueden verificar si las curvas ABL cumplen las tolerancias de fábrica."
+            ]
+          },
+          {
+            "title": "Guía práctica de inspección y conservación OLED",
+            "content": [
+              "Para mantener su monitor en buenas condiciones y revisarlo periódicamente, siga este procedimiento de 10 puntos:",
+              "1. Elección entre SDR y HDR: Trabaje en SDR con un nivel de brillo moderado y reserve el modo HDR para juegos o películas compatibles, previniendo atenuaciones innecesarias del ABL durante el día a día.",
+              "2. Comprobación del tamaño de ventana: Observe en la [Prueba de brillo](/tests/brightness-test) la respuesta del monitor al ampliar fondos claros.",
+              "3. Evaluación del brillo uniforme: Si su OSD dispone de 'Uniform Brightness', verifique si le ofrece mayor estabilidad al trabajar.",
+              "4. Estado del desplazamiento de píxeles: Confirme en el menú de mantenimiento del monitor que la función de Pixel Shift está activa.",
+              "5. Configuración del atenuador de logotipos: Ajuste la atenuación de elementos estáticos en un nivel medio para proteger la pantalla.",
+              "6. Verificación de sombras: Ejecute la [Prueba de casi negros](/tests/near-black-test) para comprobar que los primeros escalones oscuros se distinguen bien.",
+              "7. Revisión de uniformidad: Examine periódicamente fondos grises al 5 % y 50 % en la [Prueba de uniformidad](/tests/uniformity-test) a oscuras.",
+              "8. Inspección de gradientes: Asegúrese con la [Prueba de gradientes y banding](/tests/gradient-banding-test) de que no hay saltos de color abruptos.",
+              "9. Claridad tipográfica: Compruebe en la [Prueba de nitidez de texto](/tests/text-clarity-test) la legibilidad en fondos claros y oscuros.",
+              "10. Cuidado del modo de espera: No corte la alimentación con una regleta nada más apagar el equipo para que los ciclos automáticos de compensación puedan ejecutarse por completo."
+            ],
+            "bullets": [
+              "Paso 1: Usar SDR para productividad de escritorio y reservar HDR para contenidos compatibles.",
+              "Paso 2: Valorar la reacción del ABL en la [Prueba de brillo](/tests/brightness-test).",
+              "Paso 3: Probar los ajustes de brillo constante en el OSD para evitar fluctuaciones.",
+              "Paso 4: Mantener activadas las funciones de desplazamiento de píxeles y atenuación de logos.",
+              "Paso 5: Revisar el detalle en zonas oscuras con la [Prueba de casi negros](/tests/near-black-test).",
+              "Paso 6: Comprobar la uniformidad de grises en la [Prueba de uniformidad](/tests/uniformity-test).",
+              "Paso 7: Confirmar transiciones tonales limpias en la [Prueba de gradientes y banding](/tests/gradient-banding-test).",
+              "Paso 8: Revisar fuentes con la [Prueba de nitidez de texto](/tests/text-clarity-test).",
+              "Paso 9: Contrastar los parámetros del monitor con [Información de pantalla](/tests/display-info).",
+              "Paso 10: Mantener el monitor conectado a la corriente en espera para no interrumpir el mantenimiento."
+            ]
+          },
+          {
+            "title": "Solución de problemas y pasos recomendados",
+            "content": [
+              "Si su monitor OLED presenta oscurecimientos inesperados o anomalías en la imagen, aplique este flujo de revisión:",
+              "Atenuación brusca mientras lee o escribe: Si la pantalla se apaga mientras consulta documentos fijos, probablemente ha intervenido el atenuador estático (ASBL). Mueva el ratón o active una ventana dinámica. Revise nuestra [Guía de configuración OSD del monitor](/guides/monitor-osd-settings-explained) por si permite calibrar la sensibilidad del ajuste.",
+              "Fluctuaciones molestas al mover ventanas: Busque la función 'Uniform Brightness' en su OSD o reduzca el brillo general en SDR para que el blanco no sobrepase el umbral de activación del ABL.",
+              "Imagen desplazada o margen negro asimétrico: Asegúrese de que el desplazamiento de píxeles está activado. Un desplazamiento leve es síntoma de que el sistema de protección funciona bien.",
+              "Siluetas tenues que no desaparecen: Si tras la reproducción continuada de vídeo dinámico persiste una marca, ponga el monitor en reposo para que complete un ciclo automático de refresco de píxeles.",
+              "Para problemas de conexión, perfiles de color o gestión energética, consulte la [Guía de solución de problemas](/knowledge-base/troubleshooting)."
+            ],
+            "bullets": [
+              "Oscurecimiento con texto → Activación del ASBL; mover el ratón o revisar ajustes de logotipos.",
+              "Cambios de brillo al escalar → Comportamiento habitual del ABL; probar 'Uniform Brightness' en el OSD.",
+              "Imagen ligeramente desplazada → Pixel Orbiting activo; la protección de hardware está operando bien.",
+              "Marcas estáticas persistentes → Poner la pantalla en reposo para que ejecute el ciclo de compensación.",
+              "Diagnóstico completo de hardware → Consultar la [Guía de solución de problemas](/knowledge-base/troubleshooting)."
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "¿Por qué mi monitor OLED se oscurece al maximizar una ventana de navegador blanca?",
+            "answer": "Se debe al limitador automático de brillo (ABL). Cuando una ventana clara cubre toda la pantalla, el nivel medio de imagen (APL) se incrementa de forma acusada. Para evitar un sobreconsumo eléctrico y controlar la temperatura del panel, la electrónica atenúa la luminosidad general."
+          },
+          {
+            "question": "¿Es normal que la imagen de mi escritorio OLED se mueva un poco hacia un lado?",
+            "answer": "Sí. Se trata del desplazamiento de píxeles (Pixel Orbiting), un mecanismo de protección deliberado. El monitor traslada la imagen periódicamente en pequeños incrementos de píxeles para evitar que los bordes estáticos castiguen de manera ininterrumpida a los mismos emisores."
+          },
+          {
+            "question": "¿Cómo evito que mi monitor OLED cambie de brillo constantemente mientras trabajo?",
+            "answer": "Trabaje en modo SDR con un brillo moderado o active la opción de 'Brillo uniforme' (Uniform Brightness) en el menú OSD si su modelo la incorpora. Esto limita el pico de luminosidad a un valor estable para cualquier tamaño de ventana."
+          },
+          {
+            "question": "¿Cuál es la diferencia entre retención temporal de imagen y quemado permanente?",
+            "answer": "La retención es una acumulación transitoria de cargas en los circuitos que desaparece con imágenes en movimiento o en ciclos en espera. El quemado es un desgaste físico irreversible de los subpíxeles orgánicos tras miles de horas de exposición estática."
+          },
+          {
+            "question": "¿Por qué no se debe desenchufar un monitor OLED inmediatamente tras apagarlo?",
+            "answer": "Los monitores OLED realizan ciclos de compensación automáticos en modo de espera tras varias horas de uso acumulado para recalibrar los voltajes de los subpíxeles. Cortar la corriente en el enchufe interrumpe este mantenimiento crucial."
+          },
+          {
+            "question": "¿Puede Screen Tester medir los nits exactos de mi OLED o predecir su vida útil?",
+            "answer": "No. Los navegadores web no pueden comunicarse con colorímetros, fotodiodos ni contadores internos de desgaste del panel. Screen Tester ofrece patrones de comprobación visual, pero las mediciones certificadas precisan instrumental de laboratorio."
+          }
+        ]
       }
     }
   },

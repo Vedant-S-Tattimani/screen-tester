@@ -3896,6 +3896,258 @@
             "answer": "Nein. Webbrowser haben keinen Zugriff auf Fotodioden oder Oszilloskope. Screen Tester ermöglicht die visuelle Beurteilung von Schlieren und Halos, aber zertifizierte Millisekundenwerte erfordern Laborinstrumente."
           }
         ]
+      },
+      "oled-burn-in-and-image-retention": {
+        "title": "OLED ABL, Pixel-Shifting & Image-Retention",
+        "subtitle": "Automatic Brightness Limiting, fenstergrößenabhängige Helligkeitsänderungen, Pixel-Orbiting und Schutz vor statischen Inhalten.",
+        "description": "Erfahren Sie, wie OLED Automatic Brightness Limiting (ABL) bei verschiedenen Fenstergrößen arbeitet, warum Pixel-Shifting auftritt und wie Sie Ihr Display sicher prüfen.",
+        "directAnswer": "OLED Automatic Brightness Limiting (ABL) ist ein interner Schutzmechanismus, der die Gesamthelligkeit des Panels abhängig vom durchschnittlichen Bildpegel (Average Picture Level, APL) drosselt, um Stromverbrauch und thermische Belastung zu regulieren. Parallel dazu verschiebt das Pixel-Shifting (Pixel-Orbiting) das Bild in regelmäßigen Abständen um minimale Pixelwerte, um statische Kanten auf benachbarte Emitter zu verteilen.",
+        "whyItMatters": "Da OLED-Pixel selbstleuchtende organische Dioden sind, ist das Management von Hitze und elektrischem Strom entscheidend für die Lebensdauer des Panels. Anwender, die mit ABL nicht vertraut sind, halten fenstergrößenabhängige Helligkeitssprünge oft fälschlicherweise für einen Hardwaredefekt, während gewollte Pixel-Shifting-Bewegungen als Bildzittern fehlinterpretiert werden können. Das Verständnis dieser Mechanismen hilft, OSD-Einstellungen zu optimieren und Schutzfunktionen von tatsächlichen Defekten zu unterscheiden.",
+        "whatToLookFor": [
+          "Spürbares Abdunkeln, wenn ein helles Dokument oder Browserfenster von kleiner Größe auf Vollbild maximiert wird (standardmäßiges Automatic Brightness Limiting)",
+          "Sehr helle, lebendige Glanzlichter in kleinen Bildbereichen (wie Lampen oder Neonschilder), die deutlich heller wirken als großflächiges Weiß",
+          "Subtile, periodische Verschiebung des gesamten Bildes um wenige Pixel, die gelegentlich einen schmalen schwarzen Rand an einer Displaykante sichtbar macht (Pixel-Shifting / Orbiting)",
+          "Schrittweises Abdunkeln des Bildschirms, wenn statische Desktop-Elemente, Taskleisten oder pausierte Videos minutenlang unverändert bleiben (ASBL / statisches Dimmen)",
+          "Schwache Schattenumrisse von statischen UI-Symbolen oder HUD-Elementen, die nach dem Wechsel zu dynamischen Videos langsam verblassen (temporäre Image-Retention)",
+          "Dauerhafte dunkle Silhouetten oder Farbverfälschungen, die auf einfarbigen und grauen Testflächen trotz manueller Panel-Wartungszyklen sichtbar bleiben (dauerhafter Burn-In)"
+        ],
+        "howToTest": [
+          "Öffnen Sie den [Helligkeitstest](/tests/brightness-test) in Screen Tester und beobachten Sie Testfelder beim Vergrößern des Browserfensters von klein auf Vollbild.",
+          "Starten Sie den [HDR-Test](/tests/hdr-test), um visuell zu prüfen, wie Ihr Bildschirm kleine Spitzlichter im Vergleich zu großflächigen hellen HDR-Szenen darstellt.",
+          "Führen Sie den [Homogenitätstest](/tests/uniformity-test) mit 5 %, 20 %, 50 % und 100 % Graubildern durch, um nach Schattenumrissen oder Inhomogenitäten zu suchen.",
+          "Überprüfen Sie dunkle Schattendetails mit dem [Near-Black-Test](/tests/near-black-test), um sicherzustellen, dass Helligkeitsstufen (1–16) oberhalb von Schwarz unterscheidbar bleiben.",
+          "Prüfen Sie weiche Tonwertübergänge und Bittiefe mit dem [Farbverlauf- & Banding-Test](/tests/gradient-banding-test).",
+          "Untersuchen Sie die Kantenschärfe von Schriftarten im Hellen und Dunklen mit dem [Textschärfe-Test](/tests/text-clarity-test).",
+          "Lesen Sie vom Browser gemeldete Farbtiefe und HDR-Fähigkeiten über [Display-Informationen](/tests/display-info) ab.",
+          "Konsultieren Sie unseren [Leitfaden für Monitor-OSD-Einstellungen](/guides/monitor-osd-settings-explained), um zu prüfen, ob Ihr Monitor einen Modus für gleichmäßige Helligkeit bietet."
+        ],
+        "whatScreenTesterCanObserve": [
+          "Visuelle Beobachtung wahrgenommener Helligkeitsunterschiede bei sich verändernden Weißflächen auf dem Bildschirm",
+          "Vergleichende Sichtprüfung auf vollflächigen 5 %-, 20 %-, 50 %- und 100 %-Grau- sowie Farbflächen auf Schattenkonturen",
+          "Darstellung fein abgestufter Near-Black-Farbkeile (Stufen 1 bis 16), um die Schattendifferenzierung zu prüfen",
+          "Vom Browser über Web-APIs gemeldete Farbräume, Farbtiefen und HDR-Unterstützung",
+          "Visuelle Prüfung auf Farbsäume an Textkanten bei kontrastreichen Schriftmustern"
+        ],
+        "whatScreenTesterCannotDetermine": [
+          "Mit Fotodioden kalibrierte absolute Leuchtdichtemessungen in Candela pro Quadratmeter (cd/m² oder Nits)",
+          "Leistungsaufnahme des internen Netzteils in Watt, Stromstärke oder Telemetriedaten der internen Hitzesensoren",
+          "Exakte werkseitige ABL-Schwellenwerte, Lookup-Tabellen (LUTs) oder Firmware-Begrenzungskurven",
+          "Verbleibende Lebensdauer organischer Emitter, Abnutzungsprozentsätze oder Burn-In-Wahrscheinlichkeiten",
+          "Interne Historie der Pixel-Auffrischungszyklen, Diagnosezähler oder exakte Pixel-Shift-Koordinaten"
+        ],
+        "commonCauses": [
+          "Inhalte mit hohem durchschnittlichen Bildpegel (APL), die das Automatic Brightness Limiting zum Schutz von Netzteil und Panel auslösen",
+          "Aktive 'Pixel-Shift'- bzw. 'Pixel-Orbiting'-Routinen, die das Bildgeometrie-Raster um minimale Offsets verschieben, um Kantenabnutzung zu mindern",
+          "Firmware-Funktionen zum automatischen statischen Dimmen (ASBL / TPC), die bei längerer Text- oder Desktop-Arbeit ansprechen",
+          "Betrieb in aggressiven HDR-Spitzenhelligkeitsprofilen statt in moderaten oder gekappten Helligkeitsmodi",
+          "Dauerhaftes Anzeigen statischer, kontrastreicher UI-Elemente (Taskleisten, Browserleisten, Ticker) bei hoher Helligkeitseinstellung",
+          "Ausschalten des Bildschirms über eine schaltbare Steckdosenleiste, was automatische Standby-Wartungszyklen verhindert"
+        ],
+        "whatToDoNext": [
+          "Prüfen Sie im Monitor-OSD, ob eine Option für 'Gleichmäßige Helligkeit' vorhanden ist, falls Helligkeitssprünge bei der Arbeit stören.",
+          "Lassen Sie herstellerseitige Schutzfunktionen wie Pixel-Shift, Logo-Helligkeitsbegrenzer und Standby-Wartung aktiv.",
+          "Stellen Sie im Betriebssystem ein automatisches Ausblenden der Taskleiste sowie einen kurzen Ruhezustand-Timer für den Bildschirm ein.",
+          "Falls nach statischer Arbeit leichte Geisterbilder verbleiben, spielen Sie abwechslungsreiche Videos ab oder lassen Sie den Monitor im Standby den Wartungszyklus ausführen.",
+          "Wenn Helligkeitsschwankungen erratisch wirken, konsultieren Sie unseren [Leitfaden für Monitor-OSD-Einstellungen](/guides/monitor-osd-settings-explained) und den [Leitfaden zur Fehlerbehebung](/knowledge-base/troubleshooting)."
+        ],
+        "sections": [
+          {
+            "title": "OLED Automatic Brightness Limiting (ABL) verstehen",
+            "content": [
+              "OLED-Bildschirme (Organic Light-Emitting Diode) unterscheiden sich grundlegend von herkömmlichen Flüssigkristallbildschirmen, da jedes einzelne Subpixel sein eigenes Licht erzeugt. In dieser selbstemittierenden Architektur benötigt das Aufleuchten weniger Bildpunkte nur minimale Energie; die gesamte Bildfläche gleichzeitig mit maximaler Helligkeit anzusteuern, erfordert jedoch eine enorme elektrische Stromstärke und erzeugt erhebliche Wärme in den dünnen organischen Schichten.",
+              "Um innerhalb sicherer elektrischer und thermischer Betriebsgrenzen zu bleiben, integrieren Hersteller das Automatic Brightness Limiting (ABL). ABL ist ein Regelkreis in Hardware und Firmware, der den durchschnittlichen Bildpegel (Average Picture Level, APL) überwacht und die Gesamthelligkeit des Panels kontinuierlich absenkt, sobald der Anteil heller Bildflächen zunimmt.",
+              "Dieses Verhalten ist keineswegs bei allen OLED-Geräten identisch. Die Schwellenwerte, ab denen die Drosselung einsetzt, die Steilheit der Kurve und die erreichbare Vollbildhelligkeit variieren erheblich zwischen Panel-Technologien (WOLED, QD-OLED, AMOLED), Modellgenerationen, Firmware-Versionen, Kühlkörperkonstruktionen und Bildmodi. Es gibt keine universelle ABL-Kurve."
+            ],
+            "bullets": [
+              "Selbstemittierende Pixel verbrauchen Strom und erzeugen Hitze proportional zur Anzahl aktiver Pixel und deren Helligkeit.",
+              "ABL berechnet permanent den durchschnittlichen Bildpegel (APL) und drosselt die Helligkeit bei großen Weißflächen.",
+              "Das Drosselungsverhalten variiert je nach Panel-Typ (WOLED vs. QD-OLED), Kühlung, Firmware und Bildmodus.",
+              "ABL ist eine gewollte Schutzfunktion der Hardware und kein Mangel der Hintergrundbeleuchtung oder Stromversorgung."
+            ]
+          },
+          {
+            "title": "Warum sich die OLED-Helligkeit je nach Inhalt und Fenstergröße ändert",
+            "content": [
+              "Anwender, die erstmals einen OLED-Monitor nutzen, bemerken im Desktop-Betrieb oft ungewohnte Helligkeitswechsel. Ist ein weißes Browser- oder Textfenster klein, bleibt der APL des Bildschirms gering. Das Panel kann diese Bildpunkte mit hoher Leuchtdichte betreiben, ohne thermische Grenzen zu überschreiten. Zieht man das Fenster jedoch auf die gesamte Bildschirmfläche auf, steigt der APL steil an, woraufhin ABL die Helligkeit über die gesamte Fläche sichtbar drosselt.",
+              "Dieses dynamische Verhalten führt zu sichtbaren Unterschieden je nach Inhalt: Kleine Glanzlichter – etwa Reflexionen, Straßenlaternen oder kleine UI-Icons – können extrem leuchtstark dargestellt werden. Großflächige weiße Dokumente oder Schneelandschaften fordern dagegen das maximale ABL-Eingreifen, was zu einer gedämpften Flächenhelligkeit führt.",
+              "Zudem beeinflusst der Betriebsmodus die ABL-Aggressivität maßgeblich. In HDR-Modi lassen Bildschirme oft sehr hohe Helligkeitsspitzen zu, greifen bei großen Flächen aber umso drastischer ein. Im SDR-Modus bieten viele moderne Monitore hingegen eine umschaltbare 'Gleichmäßige Helligkeit' (Uniform Brightness), die die Spitzenhelligkeit auf ein einheitliches Niveau deckelt und so Helligkeitssprünge im Arbeitsalltag eliminiert."
+            ],
+            "bullets": [
+              "Kleine weiße Fenster bleiben hell, da ein niedriger APL die Wärme- und Leistungsaufnahme gering hält.",
+              "Das Maximieren auf Vollbild löst das ABL aus, wodurch die Helligkeit sanft heruntergeregelt wird.",
+              "HDR-Profile betonen punktuelle Glanzlichter mit oft deutlicherer Drosselung bei großen Flächen.",
+              "SDR-Monitore bieten häufig eine 'Uniform Brightness'-Einstellung, um Helligkeitssprünge komplett abzustellen."
+            ]
+          },
+          {
+            "title": "So beobachten Sie ABL visuell (Sichere Methode & Grenzen des Browsers)",
+            "content": [
+              "Sie können das ABL-Verhalten Ihres Monitors mit ganz normalen Browserfenstern gefahrlos beobachten. Stellen Sie Ihren Desktop-Hintergrund auf einen neutralen dunklen Ton, öffnen Sie ein Browserfenster mit einer weißen Seite oder den [Helligkeitstest](/tests/brightness-test) und verändern Sie die Fenstergröße stufenweise von einem Viertelbildschirm bis zum Vollbild. Beobachten Sie, ob die weiße Fläche bei zunehmender Größe ihre Helligkeit beibehält oder sanft abdunkelt.",
+              "Öffnen Sie anschließend den [HDR-Test](/tests/hdr-test), um zu sehen, wie kontrastreiche HDR-Szenen unter wechselnder APL-Last reagieren. Vergleichen Sie dabei kleine Testflächen mit vollflächigen Mustern – sowohl im SDR- als auch im HDR-Modus sowie mit aktivierter und deaktivierter 'Uniform Brightness'-Einstellung.",
+              "Bei diesen visuellen Prüfungen ist es wichtig, die technischen Möglichkeiten von Websoftware realistisch einzuschätzen. Screen Tester stellt kalibrierte Muster dar, ein Webbrowser hat jedoch keinen Zugriff auf Fotodioden oder Kolorimeter. Ergebnisse stützen sich auf Nutzerbeobachtungen, vom Browser gemeldete API-Werte und Herstellerangaben – niemals auf zertifizierte Labormessungen."
+            ],
+            "bullets": [
+              "Schritt 1: Den [Helligkeitstest](/tests/brightness-test) in einem kleinen Fenster vor dunklem Hintergrund öffnen.",
+              "Schritt 2: Das Fenster langsam vergrößern und beobachten, wie und ab wann die Helligkeit abnimmt.",
+              "Schritt 3: Mit dem [HDR-Test](/tests/hdr-test) Unterschiede zwischen SDR- und HDR-Kurven visuell vergleichen.",
+              "Messgrenzen: Webbrowser können weder absolute Leuchtdichten in Nits noch elektrische Wattzahlen ermitteln."
+            ]
+          },
+          {
+            "title": "Pixel-Shifting & Pixel-Orbiting: Gewollte Geometrie-Verschiebungen",
+            "content": [
+              "Pixel-Shifting (auch Pixel-Orbiting oder Bildverschiebung genannt) ist eine fundamentale Schutzfunktion moderner OLED-Geräte. Der Monitor-Scaler verschiebt das dargestellte Gesamtbild in regelmäßigen Zeitabständen um minimale Versätze – typischerweise wenige Pixel horizontal und vertikal.",
+              "Zweck dieser Verschiebung ist es, scharfe, statische Kanten – wie Fensterrahmen, Taskleistenränder oder feste Spielanzeigen (HUDs) – nicht ununterbrochen auf dieselben Subpixel einwirken zu lassen. Durch die sanfte Wanderung des Bildes verteilt sich die Abnutzung auf benachbarte Emitter, was örtlicher Materialermüdung wirksam vorbeugt.",
+              "Da die Verschiebung während der Nutzung unauffällig bleiben soll, erfolgt sie sehr langsam. Aufmerksame Anwender können jedoch feststellen, dass Schrift über Stunden minimal wandert oder zeitweise ein winziger schwarzer Rand an einer Gehäusekante sichtbar wird. Dies ist ein Zeichen aktiver Schutzfunktionen und darf nicht mit Bildruckeln oder Kabelproblemen verwechselt werden."
+            ],
+            "bullets": [
+              "Pixel-Shifting verschiebt das Bild zyklisch um wenige Pixel in horizontaler und vertikaler Richtung.",
+              "Das Verteilen statischer Kanten schützt benachbarte organische Subpixel vor einseitiger Belastung.",
+              "Zeitweise sichtbare winzige schwarze Ränder an einer Displaykante sind bauartbedingt normal.",
+              "Minimale Positionsverschiebungen sind ein wichtiges Schutzmerkmal und kein Defekt des Monitors."
+            ]
+          },
+          {
+            "title": "Schutz vor statischen Inhalten: Vier Mechanismen unterscheiden",
+            "content": [
+              "Zum Schutz organischer Emitter greifen verschiedene Schutzmechanismen ineinander, die in der Praxis oft verwechselt werden. Für eine klare Einordnung unterscheidet man vier Systeme:",
+              "1. Pixel-Shifting / Orbiting: Die kontinuierliche, minimale geometrische Bildverschiebung während des laufenden Betriebs.",
+              "2. Statisches Dimmen (ASBL / TPC / Logo-Erkennung): Algorithmen in der Monitor-Firmware, die das Videosignal auf unbewegte Inhalte (Senderlogos, feste Taskleisten, pausierte Videos) überwachen. Bleibt das Bild über mehrere Minuten unverändert, regelt die Firmware die Helligkeit gezielt herunter, um Wärmestau zu vermeiden.",
+              "3. Ruhezustand & Bildschirmschoner des Betriebssystems: Energiesparfunktionen von Windows oder macOS, die nach Inaktivität das Signal abschalten oder ein schwarzes Bild einblenden.",
+              "4. Panel-Wartungszyklen (Pixel Refresh / Kompensation): Automatische Kalibrierungsroutinen, die im Standby nach mehreren Betriebsstunden ablaufen, um elektrische Widerstände der Subpixel zu messen und Spannungen anzugleichen.",
+              "Hersteller stimmen diese Funktionen unterschiedlich ab: Fernseher dimmen statische Bilder oft sehr aggressiv ab, während Gaming-Monitore Anpassungsoptionen im OSD bieten, um ungestörtes Arbeiten zu ermöglichen."
+            ],
+            "bullets": [
+              "Pixel-Orbiting: Sanfte Bildwanderung im Betrieb zur Vermeidung harter Kantenabnutzung.",
+              "Statisches Dimmen (ASBL/TPC): Automatische Helligkeitsreduktion bei unbewegten Bildschirminhalten.",
+              "Betriebssystem-Ruhezustand: Zeitgesteuertes Abschalten des Signals bei Inaktivität.",
+              "Standby-Kompensation: Wichtige automatische Firmware-Routinen zur Spannungskalibrierung im Ruhezustand."
+            ]
+          },
+          {
+            "title": "Temporäre Image-Retention vs. Dauerhafter Burn-In",
+            "content": [
+              "Eine entscheidende technische Unterscheidung bei OLED-Displays ist die zwischen temporärer Image-Retention und permanentem Burn-In. Image-Retention ist ein vorübergehender Nachleuchteffekt, der durch elektrische Ladungsstauungen in den Ansteuertransistoren (TFT) oder Emitterschichten nach längerer Anzeige kontrastreicher Elemente entsteht. Auf gleichmäßigem Grau kann ein schwacher Schatten verbleiben, der jedoch bei wechselndem Inhalt oder nach einem Standby-Wartungszyklus vollständig verschwindet.",
+              "Permanenter Burn-In (ungleichmäßige Subpixel-Alterung) ist dagegen ein irreversibler physikalischer Verschleiß der organischen Leuchtstoffe. Wenn bestimmte Bildpunkte – etwa durch ein helles rotes Symbol – über tausende Betriebsstunden ununterbrochen leuchten, während Nachbarpixel variieren, verlieren sie dauerhaft an Leuchtkraft. Auf einfarbigen Flächen bleibt dann ein dunkler Schatten zurück.",
+              "Moderne OLED-Panels nutzen mehrschichtige Emitter, Graphen-Kühlkörper, Hitzesensoren und präzise Schutzalgorithmen, wodurch permanenter Burn-In bei normaler gemischter Nutzung selten geworden ist. Wichtig: Kein Browsertest kann den chemischen Zustand von Subpixeln auslesen; Screen Tester dient der visuellen Begutachtung des aktuellen Ist-Zustands."
+            ],
+            "bullets": [
+              "Image-Retention: Vorübergehender Ladungseffekt; vollständig reversibel durch bewegte Bilder oder Standby-Zyklen.",
+              "Dauerhafter Burn-In: Irreversibler Leuchtkraftverlust durch tausende Stunden statischer Belastung.",
+              "Moderne Schutztechnik: Kühlkörper und Schutzalgorithmen haben das Burn-In-Risiko stark minimiert.",
+              "Testgrenzen: Websoftware kann keine subpixelgenaue Abnutzung messen oder die Lebensdauer vorhersagen."
+            ]
+          },
+          {
+            "title": "OLED-Eigenschaften mit Screen Tester beurteilen",
+            "content": [
+              "Screen Tester stellt spezialisierte Werkzeuge bereit, mit denen Sie OLED-Eigenschaften im Browser visuell begutachten können. Eine saubere Einordnung der Möglichkeiten verhindert Fehlinterpretationen:",
+              "[HDR-Test](/tests/hdr-test): Überprüft die visuelle Umsetzung von HDR-Tonemapping und Spitzlichtern. Er kann keine absolute Spitzenleuchtdichte in Nits messen.",
+              "[Homogenitätstest](/tests/uniformity-test): Stellt 5 %-, 20 %-, 50 %- und 100 %-Grau- sowie Grundfarbflächen dar, um temporäre Schatten oder Inhomogenitäten sichtbar zu machen. Er erstellt keine laborgenauen Delta-E-Farbkarten.",
+              "[Near-Black-Test](/tests/near-black-test): Prüft die feinsten Helligkeitsstufen (1 bis 16) knapp über absolutem Schwarz auf Durchzeichnung ohne Black-Crush. Er misst keine elektrische Schwarzpegelspannung.",
+              "[Farbverlauf- & Banding-Test](/tests/gradient-banding-test): Zeigt weiche Farbverläufe in 8-Bit und 10-Bit an, um Dithering- oder Banding-Effekte aufzudecken. Er analysiert keine interne Signalverarbeitung des Scalers.",
+              "[Helligkeitstest](/tests/brightness-test): Ermöglicht den visuellen Vergleich der wahrgenommenen Helligkeit bei variierender Fenstergröße zur ABL-Beobachtung. Er misst keine Candela pro Quadratmeter.",
+              "[Textschärfe-Test](/tests/text-clarity-test): Zeigt Typografiemuster auf hellem und dunklem Grund, um Farbsäume an Schriftkanten durch unkonventionelle Subpixel-Layouts (wie WOLED oder QD-OLED) zu beurteilen.",
+              "[Display-Informationen](/tests/display-info): Fragt Browser-APIs nach Auflösung, Farbtiefe und HDR-Parametern ab. Es hat keinen Zugriff auf interne Panel-Telemetrie."
+            ],
+            "bullets": [
+              "[HDR-Test](/tests/hdr-test): Prüft HDR-Tonemapping visuell; misst keine Spitzen-Nits.",
+              "[Homogenitätstest](/tests/uniformity-test): Macht Schattenkonturen auf 5 %–50 % Grau sichtbar; berechnet kein Delta-E.",
+              "[Near-Black-Test](/tests/near-black-test): Bewertet Schattendifferenzierung nahe Schwarz; misst keine Panelspannung.",
+              "[Farbverlauf- & Banding-Test](/tests/gradient-banding-test): Verifiziert weiche 10-Bit-Farbrampen ohne Stufenbildung.",
+              "[Helligkeitstest](/tests/brightness-test): Demonstriert ABL-Drosselung bei Fenstervergrößerung; misst kein cd/m².",
+              "[Textschärfe-Test](/tests/text-clarity-test): Prüft Farbsäume an Textkanten bei speziellen Subpixel-Layouts.",
+              "[Display-Informationen](/tests/display-info): Liest browserseitige Bildschirminformationen ohne interne Firmware-Daten aus."
+            ]
+          },
+          {
+            "title": "Beobachtungen richtig einordnen: Normal vs. Auffällig",
+            "content": [
+              "Bei der visuellen Inspektion sollten Befunde nach klaren technischen Kriterien eingestuft werden:",
+              "1. Sieht normal aus: Die Helligkeit sinkt gleichmäßig, wenn ein weißes Fenster maximiert wird (standardmäßiges ABL). Das Bild verschiebt sich über Stunden unmerklich um wenige Pixel, zeitweise mit feinem Rand an einer Seite (normales Pixel-Orbiting). Schwache Geisterbilder nach langen Standbildern verblassen nach Video-Wiedergabe oder im Standby vollständig (harmlose temporäre Retention).",
+              "2. Erfordert Aufmerksamkeit: Das Display dunkelt bei normaler Büroarbeit mit gemischten Inhalten so stark ab, dass Text kaum lesbar ist (prüfen Sie aggressive ASBL-Einstellungen, Lichtsensoren oder fehlerhafte HDR-Einstellungen). Feste Schatten oder Umrisse bleiben auf allen einfarbigen Testflächen trotz mehrerer Wartungszyklen dauerhaft sichtbar (dauerhafter Burn-In).",
+              "3. Unsicher: Helligkeitssprünge treten unregelmäßig beim Spielen oder Filmschauen auf. Ursache können dynamisches In-Game-Tonemapping, Windows Auto-HDR oder das ABL des Displays sein. Da Browsertools interne Betriebsgrenzen nicht auslesen können, konsultieren Sie das Handbuch und aktuelle Firmware-Hinweise Ihres Monitors."
+            ],
+            "bullets": [
+              "Sieht normal aus: ABL-Drosselung bei großen Fenstern, unaufälliges Pixel-Orbiting, verblassendes Nachleuchten.",
+              "Erfordert Aufmerksamkeit: Unleserliche Abdunklung im Desktop-Betrieb oder dauerhafte Schatten auf einfarbigen Flächen.",
+              "Unsicher: Unruhige Helligkeit beim Gaming; kann an Tone-Mapping, Auto-HDR oder Monitorkurven liegen.",
+              "Diagnosegrenze: Browser können nicht prüfen, ob ABL-Kurven innerhalb herstellerseitiger Toleranzen arbeiten."
+            ]
+          },
+          {
+            "title": "Praktische OLED-Inspektions- und Pflegeliste",
+            "content": [
+              "Mit dieser praxisnahen Prüfliste können Sie Ihren OLED-Bildschirm regelmäßig überprüfen und schonend betreiben:",
+              "1. SDR- vs. HDR-Betrieb: Nutzen Sie SDR mit moderater Helligkeit für Text- und Büroarbeiten; aktivieren Sie HDR gezielt für HDR-optimierte Spiele und Videos, um unnötige ABL-Drosselung im Alltag zu vermeiden.",
+              "2. Fenstergrößen-Prüfung: Beobachten Sie im [Helligkeitstest](/tests/brightness-test), wie Ihr Monitor auf wachsende Weißflächen reagiert.",
+              "3. Gleichmäßige Helligkeit testen: Falls Ihr OSD eine 'Uniform Brightness'-Option bietet, prüfen Sie, ob diese ein ruhigeres Arbeiten ermöglicht.",
+              "4. Pixel-Shift prüfen: Vergewissern Sie sich, dass Pixel-Orbiting im Wartungsmenü des OSDs eingeschaltet ist.",
+              "5. Logo-Erkennung einstellen: Aktivieren Sie Logo-Schutzfunktionen auf mittlerer Stufe, um statische Symbole abzusichern.",
+              "6. Schattendurchzeichnung prüfen: Kontrollieren Sie mit dem [Near-Black-Test](/tests/near-black-test), ob dunkle Nuancen sauber sichtbar bleiben.",
+              "7. Homogenitäts-Audit: Begutachten Sie im [Homogenitätstest](/tests/uniformity-test) 5 %- und 50 %-Grauflächen in abgedunkelter Umgebung.",
+              "8. Farbverläufe kontrollieren: Prüfen Sie mit dem [Farbverlauf- & Banding-Test](/tests/gradient-banding-test) auf stufenfreie Farbwiedergabe.",
+              "9. Textlesbarkeit evaluieren: Prüfen Sie mit dem [Textschärfe-Test](/tests/text-clarity-test) die Schriftdarstellung im Hell- und Dunkelmodus.",
+              "10. Stromversorgung im Standby belassen: Trennen Sie den Monitor nach der Nutzung nicht sofort vom Stromnetz, damit automatische Pixel-Wartungszyklen im Ruhezustand ablaufen können."
+            ],
+            "bullets": [
+              "Punkt 1: SDR für Desktop-Arbeiten wählen, HDR für passende Medien und Spiele reservieren.",
+              "Punkt 2: ABL-Reaktion im [Helligkeitstest](/tests/brightness-test) beim Vergrößern von Fenstern prüfen.",
+              "Punkt 3: OSD-Funktionen für konstante Helligkeit nutzen, um Schwankungen abzustellen.",
+              "Punkt 4: Pixel-Shift und Logo-Schutzfunktionen im Monitor-Menü aktiv halten.",
+              "Punkt 5: Schattendifferenzierung mit dem [Near-Black-Test](/tests/near-black-test) kontrollieren.",
+              "Punkt 6: Vollflächige Grau- und Farbhomogenität im [Homogenitätstest](/tests/uniformity-test) prüfen.",
+              "Punkt 7: Farbverläufe mit dem [Farbverlauf- & Banding-Test](/tests/gradient-banding-test) sichten.",
+              "Punkt 8: Textschärfe mit dem [Textschärfe-Test](/tests/text-clarity-test) im Hell- und Dunkelmodus prüfen.",
+              "Punkt 9: Bildschirmdaten mit [Display-Informationen](/tests/display-info) gegenprüfen.",
+              "Punkt 10: Den Monitor im Standby am Stromnetz belassen, um automatische Zyklen zu sichern."
+            ]
+          },
+          {
+            "title": "Fehlerbehebung & Empfohlene nächste Schritte",
+            "content": [
+              "Wenn Ihr OLED-Monitor unerwartete Helligkeitswechsel oder Bildeffekte zeigt, hilft dieser strukturierte Ablauf bei der Ursachenfindung:",
+              "Plötzliches Abdunkeln bei der Textarbeit: Wenn der Bildschirm beim Lesen längerer Artikel dunkel wird, hat wahrscheinlich das statische Dimmen (ASBL) gegriffen. Bewegen Sie die Maus oder wechseln Sie das Fenster. Prüfen Sie in unserem [Leitfaden für Monitor-OSD-Einstellungen](/guides/monitor-osd-settings-explained), ob sich die Empfindlichkeit regeln lässt.",
+              "Störende Helligkeitssprünge beim Fensterwechsel: Aktivieren Sie eine 'Uniform Brightness'-Option im OSD oder senken Sie die SDR-Grundhelligkeit leicht ab.",
+              "Sichtbare Bildverschiebung oder schwarzer Rand: Kontrollieren Sie, ob Pixel-Shift aktiv ist. Eine leichte Verschiebung ist ein Zeichen funktionierender Schutzmechanismen und kein Defekt.",
+              "Hartnäckige Schatten nach Standbildern: Verschwindet ein Geisterbild nach einigen Minuten Video nicht, versetzen Sie den Monitor in den Standby-Modus, um die automatische Pixel-Auffrischung zu starten.",
+              "Umfassende Schritte zur Diagnose von Signalen, Farbprofilen und Energieeinstellungen finden Sie im interaktiven [Leitfaden zur Fehlerbehebung](/knowledge-base/troubleshooting)."
+            ],
+            "bullets": [
+              "Abdunkeln bei Textarbeit → ASBL-Aktivierung; Maus bewegen oder OSD-Logo-Einstellungen prüfen.",
+              "Helligkeitssprünge beim Skalieren → Normales ABL; 'Uniform Brightness' im OSD testen.",
+              "Verschobenes Bild oder Kantenränder → Aktives Pixel-Orbiting; Schutzfunktion arbeitet ordnungsgemäß.",
+              "Verbleibende Schattenkonturen → Abwechslungsreiche Videos abspielen oder Standby-Wartungszyklus abwarten.",
+              "Detaillierte Hardwarediagnose → Den [Leitfaden zur Fehlerbehebung](/knowledge-base/troubleshooting) konsultieren."
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "Warum wird mein OLED-Monitor dunkler, wenn ich ein weißes Browserfenster maximiere?",
+            "answer": "Das ist das normale Automatic Brightness Limiting (ABL). Wenn ein weißes Fenster den gesamten Bildschirm einnimmt, steigt der durchschnittliche Bildpegel (APL). Um Stromverbrauch und Hitzeentwicklung zu begrenzen, drosselt die Monitorelektronik die Gesamthelligkeit."
+          },
+          {
+            "question": "Ist es normal, dass sich das Bild meines OLED-Monitors minimal zur Seite verschiebt?",
+            "answer": "Ja. Dabei handelt es sich um Pixel-Shifting (Pixel-Orbiting), eine bewusste Hardware-Schutzfunktion. Der Monitor verschiebt das Bild zyklisch um wenige Pixel, damit statische Kanten nicht dauerhaft auf dieselben Subpixel einwirken."
+          },
+          {
+            "question": "Wie kann ich verhindern, dass mein OLED-Monitor beim Arbeiten ständig die Helligkeit ändert?",
+            "answer": "Nutzen Sie den SDR-Modus mit moderater Helligkeit oder aktivieren Sie die OSD-Einstellung 'Uniform Brightness' (Gleichmäßige Helligkeit), falls Ihr Modell diese Funktion bietet. Dadurch wird die Spitzenhelligkeit auf ein Niveau begrenzt, das über alle Fenstergrößen stabil gehalten werden kann."
+          },
+          {
+            "question": "Was ist der Unterschied zwischen temporärer Image-Retention und dauerhaftem Burn-In?",
+            "answer": "Image-Retention ist eine vorübergehende Ladungsspeicherung in den Treiberschaltungen, die durch wechselnde Bilder oder im Standby verschwindet. Burn-In ist eine irreversible physikalische Abnutzung organischer Subpixel nach tausenden Stunden statischer Anzeige."
+          },
+          {
+            "question": "Warum sollte ich einen OLED-Monitor nach dem Ausschalten nicht sofort vom Strom trennen?",
+            "answer": "OLED-Monitore führen im Standby nach einigen Betriebsstunden automatische Kompensationszyklen durch, um Subpixelspannungen abzugleichen. Ein sofortiges Trennen vom Stromnetz unterbricht diese lebenswichtige Wartung."
+          },
+          {
+            "question": "Kann Screen Tester die exakte Spitzenhelligkeit in Nits oder die Burn-In-Gefahr messen?",
+            "answer": "Nein. Webbrowser können nicht auf physikalische Messsonden oder interne Alterungszähler des Panels zugreifen. Screen Tester liefert kalibrierte Sichtmuster, für exakte Leuchtdichten und Hardwarediagnosen sind jedoch Laborgeräte nötig."
+          }
+        ]
       }
     }
   },

@@ -3897,6 +3897,258 @@
             "answer": "No. Web browsers cannot interface with hardware photodiodes or oscilloscopes. Screen Tester enables visual observation of motion trailing and overshoot, but certified millisecond response-time measurements require specialized physical laboratory equipment."
           }
         ]
+      },
+      "oled-burn-in-and-image-retention": {
+        "title": "OLED ABL, Pixel Shifting & Image Retention",
+        "subtitle": "Automatic Brightness Limiting, window-size luminance variations, pixel orbiting, and static-content protection.",
+        "description": "Learn how OLED Automatic Brightness Limiting (ABL) operates across different window sizes, why pixel shifting occurs, and how to safely inspect display behavior.",
+        "directAnswer": "OLED Automatic Brightness Limiting (ABL) is an internal display protection mechanism that regulates overall panel luminance based on the average picture level (APL) to manage power and thermal loads, while pixel shifting (orbiting) periodically shifts static imagery by small increments to distribute subpixel luminance across neighboring emitters.",
+        "whyItMatters": "Because OLED pixels are self-emissive organic diodes, managing cumulative thermal and electrical stress is essential for panel longevity. Users unfamiliar with ABL often mistake normal window-size dimming for a hardware defect or failing power supply, while intentional pixel-shift movements can be misdiagnosed as display jitter. Understanding these mechanisms helps users optimize their OSD settings, choose appropriate HDR modes, and distinguish normal protection cycles from actual hardware defects.",
+        "whatToLookFor": [
+          "Noticeable dimming when expanding a bright document or browser window from a compact box to fullscreen (standard Automatic Brightness Limiting)",
+          "Bright, punchy highlights in small specular areas (like torches or neon signs) that appear significantly more vivid than large white expanses",
+          "Subtle, periodic movement of the entire active desktop image by a few pixels, occasionally revealing a narrow inactive border on one edge (pixel shifting / orbiting)",
+          "Gradual, progressive dimming of the display when static desktop elements, taskbars, or paused videos remain stationary for minutes (static-content dimming / ASBL)",
+          "Faint ghost outlines of static UI icons or HUD elements that slowly clear after switching to dynamic full-screen media (temporary image retention)",
+          "Permanent dark silhouettes or color shifts that persist across all solid-color and uniform gray test slides despite running panel refresh cycles (differential subpixel wear)"
+        ],
+        "howToTest": [
+          "Open the [Brightness Test](/tests/brightness-test) in Screen Tester and observe test patches while resizing the active browser window from compact to fullscreen.",
+          "Launch the [HDR Test](/tests/hdr-test) to visually observe how your display handles small highlight patterns versus broad high-APL test scenes in HDR.",
+          "Run the [Uniformity Test](/tests/uniformity-test) across 5%, 20%, 50%, and 100% full-screen grayscale slides to inspect for retention silhouettes or dirty screen effect (DSE).",
+          "Evaluate low-end shadow detail with the [Near-Black Test](/tests/near-black-test) to verify that dark steps (shades 1–16) remain discernible without black crushing.",
+          "Inspect smooth tone transitions and bit-depth performance using the [Gradient Banding Test](/tests/gradient-banding-test).",
+          "Examine text edge clarity across light and dark modes with the [Text Clarity Test](/tests/text-clarity-test) to observe subpixel rendering behavior.",
+          "Check your browser's reported display color depth and HDR capabilities using [Display Information](/tests/display-info).",
+          "Consult our [Monitor OSD Settings Guide](/guides/monitor-osd-settings-explained) to explore whether your monitor provides a 'Uniform Brightness' or 'Constant Brightness' mode."
+        ],
+        "whatScreenTesterCanObserve": [
+          "Visual observation of perceived brightness variations as bright test areas expand across the screen",
+          "Comparative inspection of solid full-screen 5%, 20%, 50%, and 100% grayscale fields for retention shadows",
+          "Rendering of low-luminance near-black step gradients (shades 1 to 16) to verify shadow visibility",
+          "Browser-reported color gamut, color depth, and HDR media query support via web APIs",
+          "Visual checks of subpixel text fringing across high-contrast typography patterns"
+        ],
+        "whatScreenTesterCannotDetermine": [
+          "Photodiode-calibrated absolute luminance measurements in candelas per square meter (cd/m² or nits)",
+          "Internal power supply wattage, electrical current draw, or panel controller thermal sensor telemetry",
+          "Exact factory ABL trigger thresholds, look-up tables (LUTs), or firmware limiter curves",
+          "Remaining organic emitter lifespan, wear-leveling percentage, or long-term burn-in probability",
+          "Internal pixel-compensation cycle history, factory diagnostic counters, or exact pixel-shift coordinate offsets"
+        ],
+        "commonCauses": [
+          "High Average Picture Level (APL) content triggering Automatic Brightness Limiting to protect power delivery and thermal components",
+          "Active 'Pixel Shift' / 'Pixel Orbiting' routines moving the picture geometry by small offsets to prevent edge burn-in",
+          "Firmware Auto Static Brightness Limiter (ASBL / TPC) engaging during prolonged static desktop or document work",
+          "Operating in an aggressive HDR peak picture preset rather than a clamped or uniform luminance mode",
+          "Displaying stationary high-contrast UI elements (taskbars, browser headers, streaming tickers) continuously at high brightness",
+          "Powering down the display via a switched wall outlet or power strip, preventing automatic standby pixel refresh cycles from completing"
+        ],
+        "whatToDoNext": [
+          "Check your monitor's OSD for a 'Uniform Brightness' or 'Constant Brightness' option if window-resizing brightness changes are distracting during productivity.",
+          "Keep manufacturer protection features enabled, including Pixel Shift, Logo Brightness Limiter, and automatic standby maintenance cycles.",
+          "Configure your operating system to auto-hide the taskbar and set a reasonable display sleep timer (such as an inactivity sleep timer).",
+          "If faint ghost outlines appear after extended static work, run varied full-screen video content or allow the monitor to enter standby to run a pixel refresh cycle.",
+          "If brightness swings feel jarring or erratic, consult our [Monitor OSD Settings Guide](/guides/monitor-osd-settings-explained) and [Troubleshooting Guide](/knowledge-base/troubleshooting)."
+        ],
+        "sections": [
+          {
+            "title": "Understanding OLED Automatic Brightness Limiting (ABL)",
+            "content": [
+              "Organic Light-Emitting Diode (OLED) displays differ fundamentally from conventional liquid crystal displays because every individual subpixel generates its own light. In this self-emissive architecture, illuminating a few pixels requires minimal electrical power, but driving the entire display surface at maximum luminance simultaneously demands immense power draw and creates substantial thermal buildup within the thin organic layers.",
+              "To operate safely within electrical and thermal envelopes, monitor and television manufacturers incorporate Automatic Brightness Limiting (ABL). ABL is an integrated hardware and firmware control loop that monitors the Average Picture Level (APL)—the proportion of the screen that is illuminated and the intensity of those pixels—and progressively reduces overall panel luminance as the illuminated area grows larger.",
+              "Crucially, ABL behavior is not uniform across the display industry. The threshold at which limiting begins, the steepness of the attenuation curve, and the maximum full-screen luminance vary significantly by OLED panel family (such as WOLED, QD-OLED, or AMOLED), display generation, scaler firmware, thermal dissipation design, and configured picture preset. There is no universal ABL curve, and behavior must always be evaluated relative to manufacturer specifications."
+            ],
+            "bullets": [
+              "Self-emissive pixels require power and generate heat proportionally to the number of lit pixels and their target brightness.",
+              "ABL continuously calculates Average Picture Level (APL) and dynamically throttles luminance to manage thermal and electrical loads.",
+              "Limiting behavior varies across panel types (WOLED vs QD-OLED), heatsink designs, scaler firmware, and picture presets.",
+              "ABL is an intentional hardware protective measure, not a backlight defect or power supply malfunction."
+            ]
+          },
+          {
+            "title": "Why OLED Brightness Changes Across Content & Window Sizes",
+            "content": [
+              "Users new to OLED displays frequently notice unexpected luminance fluctuations during ordinary computer tasks. When a bright white application window is small, the panel's overall APL remains low, allowing the display to drive those pixels with relatively high luminance without exceeding thermal thresholds. As the user drags the window border to expand it across the full screen, the APL surges, prompting ABL to gently lower the luminance across the entire visible surface.",
+              "This dynamic behavior creates noticeable differences between content types. Small specular highlights—such as glistening stars, streetlamps, or UI badges—can appear brilliantly vibrant because their tiny surface area imposes negligible power demand. Conversely, full-screen white documents, web browsers, or snowy gaming landscapes represent the highest possible APL, resulting in the most pronounced brightness reduction.",
+              "Furthermore, operating mode heavily dictates ABL aggression. In High Dynamic Range (HDR) modes, displays often allow elevated peak highlight brightness but enforce aggressive ABL dimming on large bright patches to protect the panel. In Standard Dynamic Range (SDR), many modern OLED monitors provide an optional 'Uniform Brightness' or 'Constant Brightness' setting that intentionally caps peak luminance at a lower, consistent ceiling across all window sizes, completely eliminating brightness shifting during desktop productivity."
+            ],
+            "bullets": [
+              "Small bright windows maintain higher luminance because low APL keeps total panel heat and power draw minimal.",
+              "Expanding windows to full-screen triggers ABL throttling, visibly attenuating perceived luminance.",
+              "HDR profiles prioritize dynamic punch on specular highlights with aggressive full-screen dimming.",
+              "Many desktop OLED monitors offer an SDR 'Uniform Brightness' toggle to lock luminance and eliminate shifts."
+            ]
+          },
+          {
+            "title": "How to Visually Observe ABL (Safe Procedure & Browser Boundaries)",
+            "content": [
+              "You can safely observe your monitor's ABL behavior using ordinary web browser windows without specialized software. Set your desktop background to a dark or neutral gray tone, open a browser window displaying an empty white page or the [Brightness Test](/tests/brightness-test), and resize the window from a compact quarter-screen box to maximized full-screen. Watch whether the perceived luminance of the white field stays constant or smoothly attenuates as the surface area expands.",
+              "Next, open the [HDR Test](/tests/hdr-test) to observe how high-contrast HDR test patches behave under varying APL loads, comparing small central test squares against broader illumination fields. Repeat these checks in both SDR and HDR modes, and with any 'Uniform Brightness' OSD setting toggled on and off.",
+              "When conducting these visual observations, it is critical to understand the measurement capabilities of web software. Screen Tester can render calibrated geometric patterns and display user-facing visual comparisons. However, web browsers have no direct physical connection to laboratory photodiodes or colorimeters. Screen Tester classifications are based on user observation, browser-reported API capabilities, and manufacturer specifications—never laboratory-certified nit measurements."
+            ],
+            "bullets": [
+              "Observation Step 1: Open the [Brightness Test](/tests/brightness-test) in a small window against a dark background.",
+              "Observation Step 2: Resize the window toward fullscreen to visually identify when and how smoothly luminance attenuates.",
+              "Observation Step 3: Test both SDR and HDR modes using the [HDR Test](/tests/hdr-test) to evaluate mode-specific curve differences.",
+              "Measurement Reality: Web browsers cannot measure absolute luminance in nits, electrical wattage, or exact ABL thresholds."
+            ]
+          },
+          {
+            "title": "Pixel Shifting & Pixel Orbiting: Intentional Geometry Movement",
+            "content": [
+              "Pixel shifting (frequently branded as Pixel Orbiting, Screen Shift, or Image Shift) is a foundational preventive feature engineered into modern OLED monitors and televisions. The display scaler periodically shifts the entire rendered image by a small offset—typically one or several pixels—in horizontal and vertical directions over time.",
+              "The engineering purpose of pixel shifting is to prevent high-contrast static boundaries—such as the edge of an application window, a taskbar border, or a persistent video game HUD—from continuously activating the exact same subpixels. By subtly cycling the image across neighboring organic diodes, the cumulative luminous workload is distributed over a broader cluster of emitters, significantly delaying localized differential wear.",
+              "Because pixel shifting is designed to be imperceptible during active media viewing, the transition occurs gradually. However, observant PC users in desktop environments may notice that text appears to shift position slightly over several hours, or that a narrow inactive black border occasionally appears along one edge of the panel. This subtle movement is an intentional hardware protection mechanism and must not be misinterpreted as display jitter, loose video cables, or scaler instability."
+            ],
+            "bullets": [
+              "Pixel shifting periodically displaces the entire active picture by a few pixels in horizontal and vertical directions.",
+              "Moving static edges across neighboring subpixels distributes luminous stress and prevents localized subpixel fatigue.",
+              "Users may observe a tiny inactive black margin shifting along screen edges as orbiting cycles progress.",
+              "Subtle positional shifts are an intentional protective feature, not hardware instability or signal jitter."
+            ]
+          },
+          {
+            "title": "Static-Content Protection: Disentangling Four Distinct Mechanisms",
+            "content": [
+              "To safeguard organic emitters, modern OLED displays implement multiple overlapping protective systems that users frequently conflate. Effective diagnosis requires distinguishing between four distinct mechanisms:",
+              "1. Pixel Shifting / Orbiting: The continuous, gradual geometric displacement of the active screen image described above, operating while the display is in full use.",
+              "2. Static-Content Dimming (ASBL / TPC / Logo Dimming): Firmware algorithms that continuously monitor the video feed for stationary content (such as television channel logos, static desktop taskbars, or paused videos). When static imagery is detected for several consecutive minutes, the firmware progressively dims the entire panel or the localized static zone to reduce thermal accumulation.",
+              "3. Operating System Sleep & Screen Savers: Software-level power management initiated by Windows, macOS, or Linux after input inactivity (e.g., turning off video output or engaging a black screen saver), completely removing drive signal to the monitor.",
+              "4. Panel Protection & Compensation Cycles: Internal maintenance routines run by the display's timing controller (T-Con). Short compensation cycles run automatically when the monitor enters standby after a few hours of cumulative use, measuring subpixel resistance and balancing drive voltages. Deeper refresh cycles run periodically after several hundred hours to rebalance overall panel uniformity.",
+              "Manufacturers implement these mechanisms differently: televisions often enforce aggressive static dimming suited for cinema, whereas dedicated gaming monitors often provide OSD toggles to moderate dimming sensitivity for uninterrupted desktop productivity."
+            ],
+            "bullets": [
+              "Pixel Orbiting: Gentle geometric image displacement during active use to distribute static border wear.",
+              "Static Dimming (ASBL/TPC): Automatic luminance throttling when stationary content or logos remain on screen.",
+              "OS Power Management: System-level inactivity timers that sleep the display or engage blank screen savers.",
+              "Standby Compensation Cycles: Essential automatic firmware routines that calibrate subpixel voltages in standby."
+            ]
+          },
+          {
+            "title": "Temporary Image Retention vs. Permanent Burn-In",
+            "content": [
+              "A vital distinction in OLED technology is the difference between temporary image retention and permanent burn-in. Image retention is a transient optical artifact caused by temporary electrical charge buildup in the thin-film transistor (TFT) backplane or organic emitter layers after displaying a high-contrast element for an extended period. When switching to a uniform gray background, a faint shadow of the previous image may linger temporarily, but it naturally dissipates as varied content is displayed or after a standard standby compensation cycle.",
+              "Permanent burn-in (also known as differential subpixel aging), by contrast, represents cumulative, irreversible physical degradation of the organic electroluminescent compounds. If specific subpixels—such as those displaying a bright red game health bar—are driven intensely for thousands of cumulative hours while adjacent pixels display varied video, the heavily worn subpixels permanently lose luminous efficiency. On uniform color slides, these worn clusters emit less light, producing a permanent dark silhouette.",
+              "Modern OLED panels incorporate advanced multilayer emitter materials, integrated graphene and aluminum heatsinks, real-time thermal monitoring, and intelligent wear-leveling that make permanent burn-in rare under typical mixed gaming, media, and general computer usage. Importantly, no browser-based test can inspect subpixel wear telemetry or predict future burn-in probability; Screen Tester provides visual inspection tools to help users observe their panel's current uniformity."
+            ],
+            "bullets": [
+              "Image Retention: Temporary charge stagnation in driver circuits; completely reversible with varied media or standby cycles.",
+              "Permanent Burn-In: Irreversible differential degradation of organic subpixels after thousands of hours of static exposure.",
+              "Modern Protection: Heatsinks, deuterium compounds, and wear-leveling algorithms have drastically reduced burn-in risks.",
+              "Browser Testing Limits: Web software cannot inspect subpixel chemical degradation or predict panel lifespan."
+            ]
+          },
+          {
+            "title": "Evaluating OLED Display Characteristics in Screen Tester",
+            "content": [
+              "Screen Tester provides a suite of specialized browser tools designed to help you visually evaluate various aspects of OLED display performance. Understanding what each tool can and cannot establish ensures disciplined, realistic testing:",
+              "[HDR Test](/tests/hdr-test): Visually verifies browser HDR metadata decoding, dynamic range presentation, and highlight clipping across calibrated test scenes. It cannot measure absolute peak nit values or certify calibrated EOTF tracking.",
+              "[Uniformity Test](/tests/uniformity-test): Renders full-screen solid 5%, 20%, 50%, and 100% grayscale and primary color slides, ideal for visually identifying retention shadows, dirty screen effect (DSE), or spatial tinting. It cannot generate laboratory colorimetric delta-E uniformity maps.",
+              "[Near-Black Test](/tests/near-black-test): Steps through low-luminance grayscale levels (shades 1 through 16 above zero black) to help verify shadow detail and check for near-black crushing or chrominance overshoot. It cannot measure physical subpixel black-floor voltage.",
+              "[Gradient Banding Test](/tests/gradient-banding-test): Visually checks for smooth, contour-free transitions across 8-bit and 10-bit color gradients to identify dithering or posterization artifacts. It cannot inspect internal scaler bit-depth pipeline processing.",
+              "[Brightness Test](/tests/brightness-test): Allows visual comparison of perceived brightness across different window dimensions, helping you observe how your display's ABL reacts to varying APL loads. It cannot measure physical candelas per square meter (cd/m²).",
+              "[Text Clarity Test](/tests/text-clarity-test): Displays typography patterns on dark and light backgrounds to visually inspect subpixel color fringing caused by non-standard OLED subpixel arrangements (such as WOLED R-W-G-B or QD-OLED triangular layouts). It cannot modify operating system font rasterization engines.",
+              "[Display Information](/tests/display-info): Queries browser APIs to report screen resolution, color depth, and media query capabilities. It cannot access proprietary internal panel controller firmware."
+            ],
+            "bullets": [
+              "[HDR Test](/tests/hdr-test): Inspects highlight tone mapping visually; cannot measure peak nits.",
+              "[Uniformity Test](/tests/uniformity-test): Exposes retention shadows across 5%–50% gray fields; cannot calculate delta-E maps.",
+              "[Near-Black Test](/tests/near-black-test): Evaluates shadow detail visibility; cannot measure subpixel black-floor voltage.",
+              "[Gradient Banding Test](/tests/gradient-banding-test): Verifies smooth 10-bit color transitions; cannot inspect scaler bit depth.",
+              "[Brightness Test](/tests/brightness-test): Shows relative ABL dimming across window sizes; cannot measure physical cd/m².",
+              "[Text Clarity Test](/tests/text-clarity-test): Observes subpixel font fringing; cannot alter OS font rendering engines.",
+              "[Display Information](/tests/display-info): Queries browser display capabilities; cannot read internal T-Con telemetry."
+            ]
+          },
+          {
+            "title": "Interpreting Your Observations: Normal vs. Attention Needed",
+            "content": [
+              "When evaluating an OLED display, visual observations should be categorized using disciplined technical criteria rather than arbitrary health scores. Screen Tester structures evaluations into three practical categories:",
+              "1. Looks Normal: Perceived brightness decreases smoothly when expanding a bright window to full-screen (standard ABL operation). The desktop image shifts subtly by several pixels over hours of use, occasionally revealing a tiny black margin along one bezel (standard pixel orbiting). Faint ghost outlines of static windows disappear after several minutes of dynamic video playback or an automatic standby compensation cycle (standard temporary image retention).",
+              "2. Needs Attention: The display dims aggressively during normal productivity tasks with mixed content, making text uncomfortably dark to read (check for overly sensitive ASBL / TPC settings, ambient light sensor interference, or HDR desktop configuration mismatches). Permanent dark silhouettes, icons, or letterbox borders remain visible across all uniform grayscale and solid color slides even after multiple manual panel refresh cycles (differential subpixel aging / burn-in).",
+              "3. Unsure: Sudden, erratic brightness fluctuations occur while gaming or watching video. These shifts may stem from in-game dynamic tone mapping, Windows Auto HDR, GPU driver settings, or the display's internal ABL. Because browser software cannot evaluate internal electrical limits or scaler compliance, consult your monitor's user manual and official firmware release notes to verify expected behavior."
+            ],
+            "bullets": [
+              "Looks Normal: Window-resizing ABL dimming, subtle pixel orbiting, and transient retention that clears with varied media.",
+              "Needs Attention: Aggressive dimming during mixed desktop tasks or permanent silhouettes visible across all solid color slides.",
+              "Unsure: Irregular brightness shifts during games; may involve GPU tone mapping, Windows Auto HDR, or display firmware.",
+              "Diagnostic Boundary: Browser tools cannot determine whether ABL behavior complies with manufacturer electrical tolerances."
+            ]
+          },
+          {
+            "title": "Practical OLED Inspection & Care Checklist",
+            "content": [
+              "To maintain optimal performance and visually inspect your OLED panel over time, follow this disciplined 10-point inspection routine:",
+              "1. SDR vs. HDR Mode Selection: Use SDR with a comfortable, moderate brightness level for standard productivity tasks; reserve HDR for HDR-mastered games and media to prevent unnecessary full-screen ABL throttling.",
+              "2. Window-Size Luminance Check: Observe how your display handles expanding bright windows in the [Brightness Test](/tests/brightness-test) to understand its ABL threshold.",
+              "3. Uniform Brightness Evaluation: If your monitor includes a 'Uniform Brightness' or 'Constant Brightness' OSD toggle, test whether enabling it delivers a more comfortable desktop experience.",
+              "4. Pixel Shifting Verification: Confirm that 'Pixel Shift' or 'Screen Move' is enabled in your monitor's OSD maintenance menu.",
+              "5. Static Logo Dimmer Configuration: Set the monitor's logo brightness limiter to low or medium to protect against broadcast and HUD elements without overly dimming games.",
+              "6. Shadow Detail Verification: Run the [Near-Black Test](/tests/near-black-test) to confirm that low-end dark steps remain visible and are not crushed into total black.",
+              "7. Full-Screen Uniformity Audit: Periodically inspect 5% gray and 50% gray fields in the [Uniformity Test](/tests/uniformity-test) in a darkened room to check for retention shadows.",
+              "8. Color Gradient Inspection: Use the [Gradient Banding Test](/tests/gradient-banding-test) to confirm smooth color ramps without severe digital banding.",
+              "9. Text Clarity Evaluation: Check font appearance in both dark and light modes with the [Text Clarity Test](/tests/text-clarity-test) to adapt OS font settings to your subpixel layout.",
+              "10. Standby Power Discipline: Never cut mains power via a smart plug or power strip switch immediately after use. Allow the display to enter standby mode so it can complete its automatic pixel compensation cycle."
+            ],
+            "bullets": [
+              "Step 1: Choose SDR for desktop productivity and HDR for HDR-mastered media and gaming.",
+              "Step 2: Inspect window-resizing ABL behavior in the [Brightness Test](/tests/brightness-test).",
+              "Step 3: Test OSD 'Uniform Brightness' modes to eliminate desktop luminance fluctuations.",
+              "Step 4: Ensure Pixel Shift and static logo protection routines remain enabled in the OSD.",
+              "Step 5: Verify shadow detail and low-end visibility in the [Near-Black Test](/tests/near-black-test).",
+              "Step 6: Audit full-screen grayscale uniformity in the [Uniformity Test](/tests/uniformity-test).",
+              "Step 7: Confirm smooth color transitions in the [Gradient Banding Test](/tests/gradient-banding-test).",
+              "Step 8: Check subpixel text fringing using the [Text Clarity Test](/tests/text-clarity-test).",
+              "Step 9: Review display configuration and API capabilities with [Display Information](/tests/display-info).",
+              "Step 10: Always leave the display connected to mains power in standby for automatic compensation cycles."
+            ]
+          },
+          {
+            "title": "Troubleshooting & Recommended Next Steps",
+            "content": [
+              "If your OLED display exhibits unexpected brightness changes or visual artifacts, use this structured troubleshooting workflow to identify the root cause:",
+              "Sudden Dimming During Desktop Use: If the screen dims while reading long articles or editing documents, the display's Auto Static Brightness Limiter (ASBL) may have engaged. Wiggle your mouse or open a dynamic window to see if brightness recovers. Consult our [Monitor OSD Settings Guide](/guides/monitor-osd-settings-explained) to explore whether your display allows adjusting static dimming sensitivity.",
+              "Distracting Brightness Fluctuations When Resizing Windows: Check your monitor's OSD for a 'Uniform Brightness' feature, or reduce overall SDR brightness so that full-screen APL remains below the ABL triggering threshold.",
+              "Apparent Image Shifting or Uneven Borders: Verify that Pixel Shift is enabled in your OSD. A slight positional offset or a few dark pixels along one edge is evidence of healthy pixel orbiting, not a defective scaler.",
+              "Persistent Ghost Outlines: If a faint UI silhouette does not clear after varied full-screen video playback, place the monitor into standby mode to let it execute an automatic pixel refresh cycle.",
+              "For comprehensive guidance on resolving display connectivity, color mismatch, or power state concerns, consult the interactive [Troubleshooting Guide](/knowledge-base/troubleshooting)."
+            ],
+            "bullets": [
+              "Static dimming while reading text → ASBL engagement; move mouse or check OSD logo protection settings.",
+              "Luminance jumping during window resizing → Normal ABL; test 'Uniform Brightness' OSD toggle.",
+              "Image shifting position or edge borders → Normal Pixel Orbiting; hardware protection is functioning correctly.",
+              "Faint lingering UI outlines → Run varied media or place monitor into standby for a compensation cycle.",
+              "Comprehensive hardware and connection diagnostics → Consult the [Troubleshooting Guide](/knowledge-base/troubleshooting)."
+            ]
+          }
+        ],
+        "faq": [
+          {
+            "question": "Why does my OLED monitor get dimmer when I maximize a white browser window?",
+            "answer": "This is standard Automatic Brightness Limiting (ABL). When a bright window expands to cover the entire screen, the Average Picture Level (APL) surges. To prevent excessive electrical current draw and manage internal panel heat, the monitor's control loop throttles overall luminance."
+          },
+          {
+            "question": "Is it normal for my OLED desktop image to shift slightly to one side?",
+            "answer": "Yes. This is pixel shifting (pixel orbiting), an intentional hardware protection feature. The monitor periodically moves the active image by a small pixel offset to prevent static high-contrast edges from wearing down the exact same subpixels continuously."
+          },
+          {
+            "question": "How can I prevent my OLED monitor from constantly changing brightness while working?",
+            "answer": "Operate in SDR mode with a moderate brightness setting, or enable your monitor's 'Uniform Brightness' / 'Constant Brightness' OSD setting if available. This caps peak luminance to a level the panel can sustain across all window sizes without triggering ABL."
+          },
+          {
+            "question": "What is the difference between temporary image retention and permanent burn-in?",
+            "answer": "Image retention is temporary charge buildup in the driver circuits that dissipates with varied video playback or a standby compensation cycle. Burn-in is irreversible physical wear of organic subpixels resulting from thousands of hours of static high-luminance exposure."
+          },
+          {
+            "question": "Why should I never unplug my OLED monitor immediately after turning it off?",
+            "answer": "OLED monitors perform automatic pixel compensation cycles while in standby after several hours of cumulative use. These cycles measure subpixel resistance and calibrate drive voltages to maintain uniformity. Cutting power at the wall interrupts these critical maintenance routines."
+          },
+          {
+            "question": "Can Screen Tester measure my OLED monitor's exact peak nits or burn-in lifespan?",
+            "answer": "No. Web browsers cannot interface with laboratory colorimeters, photodiodes, or internal panel wear-leveling telemetry. Screen Tester provides visual inspection test patterns, but certified luminance and hardware diagnostics require physical laboratory equipment."
+          }
+        ]
       }
     }
   },
