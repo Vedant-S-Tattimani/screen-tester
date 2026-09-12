@@ -2144,7 +2144,26 @@
           "why": "eARC के माध्यम से असंपीड़ित मल्टी-चैनल सराउंड ऑडियो (Dolby Atmos, DTS:X) ले जाने का सार्वभौमिक मानक।"
         }
       ],
-      "relatedTestsHeading": "अनुशंसित डिस्प्ले परीक्षण सूट"
+      "relatedTestsHeading": "अनुशंसित डिस्प्ले परीक्षण सूट",
+      "tableResolution": "रिज़ॉल्यूशन और रिफ्रेश दर",
+      "tablePayload": "अनुमानित प्रयोग करने योग्य पेलोड",
+      "tableLimits": "इंटरफ़ेस आवश्यकताएँ और सीमाएँ",
+      "decisionColScenario": "उपयोग परिदृश्य",
+      "decisionColRecommended": "अनुशंसित इंटरफ़ेस",
+      "decisionColRationale": "तकनीकी औचित्य",
+      "labelSymptom": "लक्षण:",
+      "labelCause": "संभावित कारण:",
+      "labelRemedy": "समाधान:",
+      "linkResolutionChecker": "रिज़ॉल्यूशन चेकर",
+      "linkRefreshRateTest": "रिफ्रेश रेट टेस्ट",
+      "linkTextClarityTest": "टेक्स्ट स्पष्टता टेस्ट",
+      "linkHdrTest": "HDR क्षमता टेस्ट",
+      "linkVrrTest": "VRR और G-Sync टेस्ट",
+      "linkDisplayInfo": "डिस्प्ले जानकारी जांचें",
+      "linkScalingAspect": "स्केलिंग और पहलू अनुपात टेस्ट",
+      "linkTroubleshooting": "डिस्प्ले समस्या निवारण गाइड",
+      "determineLinksTitle": "डिस्प्ले क्षमताएं और सिग्नल मैपिंग सत्यापित करें",
+      "linkResolutionKb": "रिज़ॉल्यूशन और स्केलिंग की मूल बातें"
     }
   },
   "Inspection": {

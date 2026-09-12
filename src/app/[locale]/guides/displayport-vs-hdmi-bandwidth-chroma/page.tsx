@@ -90,7 +90,7 @@ export default async function DisplayPortVsHdmiGuidePage({
   const decisionMatrix: Array<{ useCase: string; recommended: string; why: string }> = t.raw("decisionMatrix");
 
   return (
-    <article className="max-w-5xl mx-auto py-10 px-4 sm:px-6 lg:px-8 text-foreground">
+    <article className="w-full max-w-5xl mx-auto py-10 px-4 sm:px-6 lg:px-8 text-foreground min-w-0">
       {/* Structured Data */}
       <script
         type="application/ld+json"
@@ -273,13 +273,13 @@ export default async function DisplayPortVsHdmiGuidePage({
         <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
           {t("resRefreshDesc")}
         </p>
-        <div className="overflow-x-auto rounded-xl border border-border/80 bg-card mb-6">
-          <table className="w-full text-left text-xs sm:text-sm">
+        <div className="w-full overflow-x-auto rounded-xl border border-border/80 bg-card mb-6 min-w-0">
+          <table className="min-w-[640px] w-full text-left text-xs sm:text-sm">
             <thead className="bg-muted/50 border-b border-border/80 text-foreground font-semibold">
               <tr>
-                <th className="p-3.5">Resolution & Refresh</th>
-                <th className="p-3.5">Estimated Usable Payload</th>
-                <th className="p-3.5">Interface Requirements & Limits</th>
+                <th className="p-3.5">{t("tableResolution")}</th>
+                <th className="p-3.5">{t("tablePayload")}</th>
+                <th className="p-3.5">{t("tableLimits")}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border/60 text-muted-foreground">
@@ -302,14 +302,21 @@ export default async function DisplayPortVsHdmiGuidePage({
               href="/tests/resolution-checker"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-background text-xs font-medium hover:border-primary transition-colors"
             >
-              <span>Resolution Checker</span>
+              <span>{t("linkResolutionChecker")}</span>
               <ArrowRight className="w-3 h-3 text-muted-foreground" />
             </Link>
             <Link
               href="/tests/refresh-rate-test"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-background text-xs font-medium hover:border-primary transition-colors"
             >
-              <span>Refresh Rate Test</span>
+              <span>{t("linkRefreshRateTest")}</span>
+              <ArrowRight className="w-3 h-3 text-muted-foreground" />
+            </Link>
+            <Link
+              href="/tests/scaling-aspect-test"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-background text-xs font-medium hover:border-primary transition-colors"
+            >
+              <span>{t("linkScalingAspect")}</span>
               <ArrowRight className="w-3 h-3 text-muted-foreground" />
             </Link>
           </div>
@@ -346,14 +353,14 @@ export default async function DisplayPortVsHdmiGuidePage({
               href="/tests/text-clarity-test"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-background text-xs font-medium hover:border-primary transition-colors"
             >
-              <span>Text Clarity Test</span>
+              <span>{t("linkTextClarityTest")}</span>
               <ArrowRight className="w-3 h-3 text-muted-foreground" />
             </Link>
             <Link
               href="/tests/resolution-checker"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-background text-xs font-medium hover:border-primary transition-colors"
             >
-              <span>Resolution Checker</span>
+              <span>{t("linkResolutionChecker")}</span>
               <ArrowRight className="w-3 h-3 text-muted-foreground" />
             </Link>
           </div>
@@ -418,7 +425,7 @@ export default async function DisplayPortVsHdmiGuidePage({
               href="/tests/hdr-test"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-background text-xs font-medium hover:border-primary transition-colors"
             >
-              <span>HDR Test</span>
+              <span>{t("linkHdrTest")}</span>
               <ArrowRight className="w-3 h-3 text-muted-foreground" />
             </Link>
           </div>
@@ -478,14 +485,14 @@ export default async function DisplayPortVsHdmiGuidePage({
               href="/tests/vrr-test"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-background text-xs font-medium hover:border-primary transition-colors"
             >
-              <span>VRR Test</span>
+              <span>{t("linkVrrTest")}</span>
               <ArrowRight className="w-3 h-3 text-muted-foreground" />
             </Link>
             <Link
               href="/tests/refresh-rate-test"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-background text-xs font-medium hover:border-primary transition-colors"
             >
-              <span>Refresh Rate Test</span>
+              <span>{t("linkRefreshRateTest")}</span>
               <ArrowRight className="w-3 h-3 text-muted-foreground" />
             </Link>
           </div>
@@ -547,7 +554,7 @@ export default async function DisplayPortVsHdmiGuidePage({
         <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
           {t("determineDesc")}
         </p>
-        <ol className="space-y-3">
+        <ol className="space-y-3 mb-6">
           {determineSteps.map((step, idx) => (
             <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-foreground leading-relaxed">
               <span className="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
@@ -557,6 +564,34 @@ export default async function DisplayPortVsHdmiGuidePage({
             </li>
           ))}
         </ol>
+        <div className="p-4 rounded-xl border border-border/70 bg-card">
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
+            {t("determineLinksTitle")}
+          </p>
+          <div className="flex flex-wrap gap-2.5">
+            <Link
+              href="/tests/display-info"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-background text-xs font-medium hover:border-primary transition-colors"
+            >
+              <span>{t("linkDisplayInfo")}</span>
+              <ArrowRight className="w-3 h-3 text-muted-foreground" />
+            </Link>
+            <Link
+              href="/tests/scaling-aspect-test"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-background text-xs font-medium hover:border-primary transition-colors"
+            >
+              <span>{t("linkScalingAspect")}</span>
+              <ArrowRight className="w-3 h-3 text-muted-foreground" />
+            </Link>
+            <Link
+              href="/knowledge-base/resolution-and-scaling"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-background text-xs font-medium hover:border-primary transition-colors"
+            >
+              <span>{t("linkResolutionKb")}</span>
+              <ArrowRight className="w-3 h-3 text-muted-foreground" />
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* Section 15: Troubleshooting Bottlenecks */}
@@ -577,13 +612,13 @@ export default async function DisplayPortVsHdmiGuidePage({
                 </h3>
                 <div className="space-y-2 text-xs">
                   <p className="text-rose-600 dark:text-rose-400">
-                    <strong className="font-semibold">Symptom:</strong> {item.symptom}
+                    <strong className="font-semibold">{t("labelSymptom")}</strong> {item.symptom}
                   </p>
                   <p className="text-muted-foreground">
-                    <strong className="font-semibold text-foreground">Likely Cause:</strong> {item.cause}
+                    <strong className="font-semibold text-foreground">{t("labelCause")}</strong> {item.cause}
                   </p>
                   <p className="text-emerald-700 dark:text-emerald-400">
-                    <strong className="font-semibold">Remedy:</strong> {item.fix}
+                    <strong className="font-semibold">{t("labelRemedy")}</strong> {item.fix}
                   </p>
                 </div>
               </div>
@@ -599,7 +634,7 @@ export default async function DisplayPortVsHdmiGuidePage({
               href="/knowledge-base/troubleshooting"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-background text-xs font-medium hover:border-primary transition-colors"
             >
-              <span>Display Troubleshooting Guide</span>
+              <span>{t("linkTroubleshooting")}</span>
               <ArrowRight className="w-3 h-3 text-muted-foreground" />
             </Link>
           </div>
@@ -615,13 +650,13 @@ export default async function DisplayPortVsHdmiGuidePage({
         <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
           {t("decisionDesc")}
         </p>
-        <div className="overflow-x-auto rounded-xl border border-border/80">
-          <table className="w-full text-left text-xs sm:text-sm">
+        <div className="w-full overflow-x-auto rounded-xl border border-border/80 min-w-0">
+          <table className="min-w-[640px] w-full text-left text-xs sm:text-sm">
             <thead className="bg-muted/50 border-b border-border/80 text-foreground font-semibold">
               <tr>
-                <th className="p-3.5">Deployment Scenario</th>
-                <th className="p-3.5">Recommended Interface</th>
-                <th className="p-3.5">Engineering Rationale</th>
+                <th className="p-3.5">{t("decisionColScenario")}</th>
+                <th className="p-3.5">{t("decisionColRecommended")}</th>
+                <th className="p-3.5">{t("decisionColRationale")}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border/60 text-muted-foreground">

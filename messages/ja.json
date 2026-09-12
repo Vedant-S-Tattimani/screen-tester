@@ -2144,7 +2144,26 @@
           "why": "eARC経由でDolby AtmosやDTS:Xなどの非圧縮マルチチャンネル音声を伝送するための世界標準です。"
         }
       ],
-      "relatedTestsHeading": "おすすめの診断テストスイート"
+      "relatedTestsHeading": "おすすめの診断テストスイート",
+      "tableResolution": "解像度とリフレッシュレート",
+      "tablePayload": "推定有効ペイロード帯域幅",
+      "tableLimits": "インターフェース要件と制限",
+      "decisionColScenario": "利用シナリオ",
+      "decisionColRecommended": "推奨インターフェース",
+      "decisionColRationale": "技術的根拠",
+      "labelSymptom": "症状:",
+      "labelCause": "考えられる原因:",
+      "labelRemedy": "対処法:",
+      "linkResolutionChecker": "解像度チェッカー",
+      "linkRefreshRateTest": "リフレッシュレートテスト",
+      "linkTextClarityTest": "テキスト明瞭度テスト",
+      "linkHdrTest": "HDR機能テスト",
+      "linkVrrTest": "VRR / G-Sync テスト",
+      "linkDisplayInfo": "ディスプレイ情報確認",
+      "linkScalingAspect": "スケーリング・アスペクト比テスト",
+      "linkTroubleshooting": "ディスプレイ トラブルシューティング ガイド",
+      "determineLinksTitle": "ディスプレイ機能と信号マッピングの検証",
+      "linkResolutionKb": "解像度とスケーリングの基礎"
     }
   },
   "Inspection": {

@@ -2183,7 +2183,26 @@
           "why": "HDMI is the universal standard for carrying multi-channel uncompressed surround audio (Dolby Atmos, DTS:X) via enhanced Audio Return Channel."
         }
       ],
-      "relatedTestsHeading": "Recommended Diagnostic Testing Suite"
+      "relatedTestsHeading": "Recommended Diagnostic Testing Suite",
+      "tableResolution": "Resolution & Refresh",
+      "tablePayload": "Estimated Usable Payload",
+      "tableLimits": "Interface Requirements & Limits",
+      "decisionColScenario": "Deployment Scenario",
+      "decisionColRecommended": "Recommended Interface",
+      "decisionColRationale": "Engineering Rationale",
+      "labelSymptom": "Symptom:",
+      "labelCause": "Likely Cause:",
+      "labelRemedy": "Remedy:",
+      "linkResolutionChecker": "Resolution Checker",
+      "linkRefreshRateTest": "Refresh Rate Test",
+      "linkTextClarityTest": "Text Clarity Test",
+      "linkHdrTest": "HDR Capability Test",
+      "linkVrrTest": "VRR & G-Sync Test",
+      "linkDisplayInfo": "Display Information Query",
+      "linkScalingAspect": "Scaling & Aspect Ratio Test",
+      "linkTroubleshooting": "Display Troubleshooting Guide",
+      "determineLinksTitle": "VERIFY DISPLAY CAPABILITIES & SIGNAL MAPPING",
+      "linkResolutionKb": "Resolution & Scaling Fundamentals"
     }
   },
   "Inspection": {

@@ -2144,7 +2144,26 @@
           "why": "Estándar universal para transmitir audio envolvente multicanal sin comprimir (Dolby Atmos, DTS:X)."
         }
       ],
-      "relatedTestsHeading": "Suite recomendada de pruebas de pantalla"
+      "relatedTestsHeading": "Suite recomendada de pruebas de pantalla",
+      "tableResolution": "Resolución y frecuencia",
+      "tablePayload": "Ancho de banda útil estimado",
+      "tableLimits": "Requisitos y límites de interfaz",
+      "decisionColScenario": "Escenario de uso",
+      "decisionColRecommended": "Interfaz recomendada",
+      "decisionColRationale": "Justificación técnica",
+      "labelSymptom": "Síntoma:",
+      "labelCause": "Causa probable:",
+      "labelRemedy": "Solución:",
+      "linkResolutionChecker": "Comprobador de resolución",
+      "linkRefreshRateTest": "Prueba de frecuencia de actualización",
+      "linkTextClarityTest": "Prueba de claridad de texto",
+      "linkHdrTest": "Prueba de capacidad HDR",
+      "linkVrrTest": "Prueba de VRR y G-Sync",
+      "linkDisplayInfo": "Consulta de información de pantalla",
+      "linkScalingAspect": "Prueba de escalado y relación de aspecto",
+      "linkTroubleshooting": "Guía de solución de problemas de pantalla",
+      "determineLinksTitle": "VERIFICAR CAPACIDADES DE PANTALLA Y MAPEO DE SEÑAL",
+      "linkResolutionKb": "Fundamentos de resolución y escalado"
     }
   },
   "Inspection": {

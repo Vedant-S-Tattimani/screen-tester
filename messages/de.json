@@ -2144,7 +2144,26 @@
           "why": "Der universelle Standard zur Übertragung unkomprimierter Surround-Tonspuren (Dolby Atmos, DTS:X)."
         }
       ],
-      "relatedTestsHeading": "Empfohlene Display-Testsuite"
+      "relatedTestsHeading": "Empfohlene Display-Testsuite",
+      "tableResolution": "Auflösung & Bildwiederholrate",
+      "tablePayload": "Geschätzte Nutzbandbreite",
+      "tableLimits": "Schnittstellenanforderungen & Limits",
+      "decisionColScenario": "Einsatzszenario",
+      "decisionColRecommended": "Empfohlene Schnittstelle",
+      "decisionColRationale": "Technische Begründung",
+      "labelSymptom": "Symptom:",
+      "labelCause": "Wahrscheinliche Ursache:",
+      "labelRemedy": "Lösung:",
+      "linkResolutionChecker": "Auflösungs-Prüfung",
+      "linkRefreshRateTest": "Bildwiederholfrequenz-Test",
+      "linkTextClarityTest": "Textschärfe-Test",
+      "linkHdrTest": "HDR-Funktionstest",
+      "linkVrrTest": "VRR- & G-Sync-Test",
+      "linkDisplayInfo": "Bildschirm-Informationen abfragen",
+      "linkScalingAspect": "Skalierungs- & Seitenverhältnis-Test",
+      "linkTroubleshooting": "Fehlerbehebungs-Leitfaden",
+      "determineLinksTitle": "BILDSCHIRMFUNKTIONEN & SIGNALZUORDNUNG ÜBERPRÜFEN",
+      "linkResolutionKb": "Grundlagen zu Auflösung & Skalierung"
     }
   },
   "Inspection": {

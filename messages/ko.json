@@ -2144,7 +2144,26 @@
           "why": "eARC를 통해 Dolby Atmos, DTS:X 같은 비압축 다채널 서라운드 오디오를 온전히 전송하는 유일한 세계 표준 규격입니다."
         }
       ],
-      "relatedTestsHeading": "추천 디스플레이 진단 도구 모음"
+      "relatedTestsHeading": "추천 디스플레이 진단 도구 모음",
+      "tableResolution": "해상도 및 주사율",
+      "tablePayload": "예상 유효 페이로드 대역폭",
+      "tableLimits": "인터페이스 요구사항 및 한계",
+      "decisionColScenario": "사용 시나리오",
+      "decisionColRecommended": "권장 인터페이스",
+      "decisionColRationale": "기술적 근거",
+      "labelSymptom": "증상:",
+      "labelCause": "예상 원인:",
+      "labelRemedy": "해결책:",
+      "linkResolutionChecker": "해상도 체커",
+      "linkRefreshRateTest": "주사율 테스트",
+      "linkTextClarityTest": "텍스트 선명도 테스트",
+      "linkHdrTest": "HDR 기능 테스트",
+      "linkVrrTest": "VRR 및 G-Sync 테스트",
+      "linkDisplayInfo": "디스플레이 정보 확인",
+      "linkScalingAspect": "스케일링 및 화면비 테스트",
+      "linkTroubleshooting": "디스플레이 문제 해결 가이드",
+      "determineLinksTitle": "디스플레이 기능 및 신호 매핑 검증",
+      "linkResolutionKb": "해상도 및 스케일링 기본 원리"
     }
   },
   "Inspection": {

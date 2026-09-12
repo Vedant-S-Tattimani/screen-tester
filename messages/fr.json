@@ -2144,7 +2144,26 @@
           "why": "Standard universel pour transmettre les flux audio multicanaux non compressés (Dolby Atmos, DTS:X)."
         }
       ],
-      "relatedTestsHeading": "Suite recommandée de tests d'écran"
+      "relatedTestsHeading": "Suite recommandée de tests d'écran",
+      "tableResolution": "Résolution et fréquence",
+      "tablePayload": "Bande passante utile estimée",
+      "tableLimits": "Exigences et limites d'interface",
+      "decisionColScenario": "Scénario d'utilisation",
+      "decisionColRecommended": "Interface recommandée",
+      "decisionColRationale": "Justification technique",
+      "labelSymptom": "Symptôme :",
+      "labelCause": "Cause probable :",
+      "labelRemedy": "Solution :",
+      "linkResolutionChecker": "Vérificateur de résolution",
+      "linkRefreshRateTest": "Test de taux de rafraîchissement",
+      "linkTextClarityTest": "Test de clarté du texte",
+      "linkHdrTest": "Test de capacité HDR",
+      "linkVrrTest": "Test VRR et G-Sync",
+      "linkDisplayInfo": "Informations d'affichage",
+      "linkScalingAspect": "Test de mise à l'échelle et format",
+      "linkTroubleshooting": "Guide de dépannage de l'écran",
+      "determineLinksTitle": "VÉRIFIER LES CAPACITÉS D'AFFICHAGE ET LE MAPPAGE DU SIGNAL",
+      "linkResolutionKb": "Principes de résolution et mise à l'échelle"
     }
   },
   "Inspection": {

@@ -2144,7 +2144,26 @@
           "why": "Padrão universal para transportar áudio surround multicanal sem compressão (Dolby Atmos, DTS:X)."
         }
       ],
-      "relatedTestsHeading": "Conjunto recomendado de testes de diagnóstico"
+      "relatedTestsHeading": "Conjunto recomendado de testes de diagnóstico",
+      "tableResolution": "Resolução e taxa de atualização",
+      "tablePayload": "Largura de banda útil estimada",
+      "tableLimits": "Requisitos e limites de interface",
+      "decisionColScenario": "Cenário de implantação",
+      "decisionColRecommended": "Interface recomendada",
+      "decisionColRationale": "Justificativa técnica",
+      "labelSymptom": "Sintoma:",
+      "labelCause": "Causa provável:",
+      "labelRemedy": "Solução:",
+      "linkResolutionChecker": "Verificador de resolução",
+      "linkRefreshRateTest": "Teste de taxa de atualização",
+      "linkTextClarityTest": "Teste de nitidez de texto",
+      "linkHdrTest": "Teste de capacidade HDR",
+      "linkVrrTest": "Teste de VRR e G-Sync",
+      "linkDisplayInfo": "Informações do monitor",
+      "linkScalingAspect": "Teste de escala e proporção",
+      "linkTroubleshooting": "Guia de resolução de problemas de exibição",
+      "determineLinksTitle": "VERIFICAR CAPACIDADES DA TELA E MAPEAMENTO DE SINAL",
+      "linkResolutionKb": "Fundamentos de resolução e escala"
     }
   },
   "Inspection": {
