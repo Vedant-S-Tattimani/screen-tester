@@ -4459,185 +4459,254 @@
         ]
       },
       "dead-pixel-vs-stuck-pixel": {
-        "title": "Pixelfehler verstehen: Tote Pixel, festsitzende Pixel, ISO-Normen und Garantie",
-        "subtitle": "Klassifizierung von Display-Pixelfehlern, ISO 9241-307 Standards, Hersteller-RMA-Richtlinien und Händler-Rückgaberechte.",
-        "description": "Erfahren Sie den Unterschied zwischen toten und festsitzenden Pixeln, ISO 9241-307 Fehlerklassen sowie Hersteller-Garantiebedingungen gegenüber Händler-Rückgabefristen.",
-        "directAnswer": "Ein toter Pixel ist ein dauerhaft stromloser Subpixel oder Bildpunkt, der als statischer schwarzer Punkt auf hellen Flächen erscheint, während ein festsitzender Pixel als roter, grüner oder blauer Leuchtpunkt sichtbar bleibt. Ein festgestellter Pixelfehler begründet keinen automatischen Anspruch auf Austausch; Maßgeblich sind Hersteller-Garantiebestimmungen, Händler-Rückgaberechte und geltendes Verbraucherrecht.",
-        "whyItMatters": "Die Unterscheidung zwischen einem toten Pixel, einem festsitzenden Subpixel oder einfachem Oberflächenstaub ermöglicht eine präzise Dokumentation und die Wahl des richtigen Lösungswegs. Da freiwillige Herstellergarantien, Händler-Rückgabefristen und technische Normen völlig unterschiedlichen Regeln folgen, verhindert eine saubere Dokumentation Verzögerungen vor Ablauf von Rückgabefristen.",
+        "title": "Pixelfehler verstehen: Tote Pixel vs. Stuck Pixel, ISO-Normen & Garantie",
+        "subtitle": "Klassifizierung von Pixelfehlern, ISO 9241-307-Richtwerte, RMA-Garantiebedingungen der Hersteller und Rückgaberichtlinien der Händler.",
+        "description": "Erfahren Sie den Unterschied zwischen toten und festsitzenden Pixeln, verstehen Sie die technischen ISO 9241-307-Fehlerklassen und navigieren Sie sicher durch Garantie- und Rückgaberechte.",
+        "directAnswer": "Ein toter Pixel (Dead Pixel) ist ein dauerhaft stromloser, dunkler Subpixel oder Pixel, der auf hellen Hintergründen auffällt. Ein festsitzender Pixel (Stuck Pixel) leuchtet dauerhaft in einer Farbe (Rot, Grün oder Blau). ISO 9241-307 ist ein technischer Klassifizierungsrahmen und begründet keinen automatischen Anspruch auf Rückgabe oder Umtausch; dieser richtet sich nach Händlerrichtlinien, Herstellergarantie und gesetzlichen Verbraucherrechten.",
+        "whyItMatters": "Die Entdeckung eines Pixelfehlers wirft sofort Fragen zu Rückgabefristen, Garantieansprüchen und Reparaturmöglichkeiten auf. Die Beurteilung erfordert eine klare Unterscheidung zwischen ergonomischen Richtwerten (ISO 9241-307), freiwilliger Herstellergarantie (RMA), Händler-Rückgaberechten und gesetzlichen Gewährleistungsrechten.",
         "whatToLookFor": [
-          "Toter Pixel: Ein mikroskopischer schwarzer Punkt, der auf weißen, gelben oder cyanfarbenen Hintergründen dunkel bleibt",
-          "Festsitzender Subpixel: Ein dauerhaft rot, grün oder blau leuchtender Punkt auf schwarzen oder dunklen Flächen",
-          "Heißer / Heller Pixel: Eine vollständige RGB-Pixel-Triade, die dauerhaft weiß auf schwarzem Grund leuchtet",
-          "Pixelfehler-Cluster: Mehrere defekte oder festsitzende Subpixel in unmittelbarer räumlicher Nachbarschaft",
-          "Blickwinkel-Varianz: Oberflächenstaub oder Fussel, deren Position sich relativ zu den Subpixeln bei Kopfbewegung verschiebt",
-          "Farbverfälschung bei Mischfarben: Ein teilweise ausgefallener Subpixel, der Mischfarben im betroffenen Bereich verfälscht"
+          "Toter Pixel: Ein winziger dunkler Punkt, der auf weißen, cyan-, magenta- und gelben Hintergründen schwarz bleibt",
+          "Festsitzender Subpixel (Stuck Pixel): Ein dauerhaft rot, grün oder blau leuchtender Punkt auf schwarzem Hintergrund",
+          "Hot Pixel / Vollpixel-Fehler: Eine komplette Pixel-Triade, die dauerhaft voll leuchtet und als weißer Punkt auf Schwarz erscheint",
+          "Fehler-Cluster: Mehrere defekte oder festsitzende Pixel, die sich in einem engen Bereich konzentrieren",
+          "Blickwinkel-Varianz: Oberflächenstaub oder Fussel, deren Position sich bei Kopfbewegungen relativ zu den Subpixeln verschiebt",
+          "Subpixel-Farbverfälschung: Ein einzelner inaktiver Subpixel, der Farbmischungen subtil verfälscht"
         ],
         "howToTest": [
-          "Reinigen Sie die Displayoberfläche vorsichtig mit einem sauberen, trockenen Mikrofasertuch",
-          "Starten Sie den [Pixelfehlertest](/tests/dead-pixel-test) in Screen Tester und prüfen Sie Vollbildfarben in Rot, Grün, Blau, Weiß und Schwarz",
-          "Untersuchen Sie das Display rasterförmig bei gleichmäßiger, blendfreier Raumbeleuchtung",
-          "Nutzen Sie den [Test für festsitzende Pixel](/tests/stuck-pixel-test) auf schwarzem Grund zur Identifikation leuchtender Subpixel",
-          "Beobachten Sie, ob der Punkt bei Farbwechseln zwischen den Primärfarben verschwindet oder sein Verhalten ändert",
-          "Dokumentieren Sie die genauen Bildschirmkoordinaten (Bildschirmmitte vs. Randbereich)",
-          "Starten Sie bei festsitzenden Farb-Subpixeln den [Stuck Pixel Fixer](/tests/stuck-pixel-fixer) für einen Software-Farbzyklus",
-          "Halten Sie die Beobachtungen in der [Neuer-Monitor-Inspektion](/monitor-inspection/new) oder [Gebrauchter-Monitor-Inspektion](/monitor-inspection/used) fest"
+          "Reinigen Sie die Bildschirmoberfläche vorsichtig mit einem trockenen Mikrofasertuch, um Staubkörner auszuschließen",
+          "Starten Sie den [Dead Pixel Test](/tests/dead-pixel-test) in Screen Tester und prüfen Sie Vollbildflächen in Rot, Grün, Blau, Weiß und Schwarz",
+          "Untersuchen Sie das Display systematisch im Rastermuster bei blendfreier, moderater Raumbeleuchtung",
+          "Starten Sie den [Stuck Pixel Test](/tests/stuck-pixel-test) auf rein schwarzem und dunkelgrauem Hintergrund, um leuchtende Subpixel zu finden",
+          "Beobachten Sie, ob die Auffälligkeit beim Wechsel der Grundfarben verschwindet oder die Farbe ändert",
+          "Notieren Sie die genauen Bildschirmkoordinaten und prüfen Sie, ob der Fehler im Zentrum oder am Rand liegt",
+          "Nutzen Sie bei festsitzenden Pixeln den [Stuck Pixel Fixer](/tests/stuck-pixel-fixer) für einen Farbwechsel-Lösungsversuch",
+          "Dokumentieren Sie die Befunde mit unserem [Leitfaden zur Neugeräte-Inspektion](/guides/new-monitor-inspection-return-window) oder der [Checkliste für Gebrauchtmonitore](/guides/used-monitor-inspection-checklist)"
         ],
         "whatScreenTesterCanObserve": [
-          "Darstellung definierter Testfarben, einschließlich RGB-Feldern, reinem Weiß und reinem Schwarz",
-          "Vom Nutzer erfasste optische Auffälligkeiten, Koordinatenzuordnungen und Prüfnotizen",
-          "Schnelle RGB- und Hochkontrast-Farbwechselsequenzen über die Browser-Rendering-Engine",
-          "Visuelle Unterscheidung zwischen dauerhaft dunklen Punkten auf Weiß und Leuchtpunkten auf Schwarz",
-          "Vergleichende Erscheinung visueller Auffälligkeiten über verschiedene Standardfarben"
+          "Anzeige definierter Testfarben einschließlich RGB-Farbfeldern, reinem Weiß und reinem Schwarz",
+          "Vom Nutzer gemeldete optische Anomalien, Koordinatenerfassung und dokumentierte Prüfnotizen",
+          "Schnelle RGB- und kontrastreiche Farbwechselmuster über die Browser-Rendering-Engine",
+          "Visuelle Unterscheidung zwischen dunklen Defekten auf hellen Flächen und leuchtenden Defekten auf dunklen Flächen",
+          "Vergleichende Darstellung visueller Artefakte über standardisierte Volltonfarben und Bildschirmauflösungen"
         ],
         "whatScreenTesterCannotDetermine": [
-          "Elektrischer Durchgang mikroskopischer TFT-Halbleiterschaltungen oder interne Transistordefekte",
-          "Formelle Zertifizierung der Konformität mit ISO 9241-307 Fehlerklassen unter Laborbedingungen",
-          "Kommerzielle Garantieberechtigung oder RMA-Genehmigung durch den jeweiligen Monitorhersteller",
-          "Widerrufs- oder Rückgabeberechtigung im Rahmen der spezifischen Händlerbedingungen",
-          "Gesetzliche Gewährleistungsansprüche oder Rechtsbewertungen im Streitfall"
+          "Physikalische Durchgängigkeit von Dünnschichttransistoren (TFT) oder interne Gate-Dielektrikum-Durchbrüche",
+          "Formelle Zertifizierung der ISO 9241-307-Konformität oder optischer Labortoleranzen",
+          "Garantie- oder RMA-Berechtigung eines konkreten Monitors im Rahmen der Herstellergarantie",
+          "Rücknahmeberechtigung, Friststatus oder Wiedereinlagerungsgebühren bei einzelnen Händlern",
+          "Gesetzliche Gewährleistungsansprüche, rechtliche Sachmangel-Schwellenwerte oder rechtliche Streitfall-Entscheidungen"
         ],
         "commonCauses": [
-          "Lithografische Fertigungsabweichungen im Reinraum bei der Dünnschichttransistor-Herstellung (TFT)",
-          "Mikroskopische Partikeleinschlüsse in der Flüssigkristallschicht beim Substrat-Bonding",
-          "Mechanische Druckeinwirkung oder Verwindungsbelastungen während des Transports",
-          "Unterbrochene Leiterbahnen (Indiumzinnoxid), wodurch die Steuerspannung am Subpixel fehlt",
-          "Physikalisch arretierte Flüssigkristallmoleküle in der Subpixelzelle",
-          "Thermische oder elektrostatische Belastung einzelner Treiberschaltungen"
+          "Lithografische Halbleiter-Fertigungsfehler bei der Herstellung der TFT-Transistormatrix im Reinraum",
+          "Mikroskopische Partikeleinschlüsse in der Flüssigkristallschicht während des Substrat-Bondings",
+          "Mechanische Stoßeinwirkungen, punktueller Druck oder Rahmentorsion während Transport und Handhabung",
+          "Unterbrochene Leiterbahnen aus Indiumzinnoxid (ITO), wodurch die Steuerspannung am Subpixel fehlt",
+          "Mechanisch blockierte oder in einer festen Ausrichtung verharrende Flüssigkristallmoleküle",
+          "Thermische oder elektrische Überlastung, die mikroskopische Treiberschaltungen beschädigt"
         ],
         "whatToDoNext": [
-          "Dokumentieren Sie Position und Farberscheinung mit Makrofotos und Notizen",
-          "Prüfen Sie vorrangig das Rückgaberecht Ihres Händlers, da dies oft die unkomplizierteste Lösung darstellt",
+          "Dokumentieren Sie Lage und Erscheinungsbild des Fehlers mit Makrofotos und Notizen",
+          "Prüfen Sie die Rückgabefrist Ihres Händlers, da diese meist die unkomplizierteste Abwicklung bietet",
           "Konsultieren Sie die herstellerspezifische Pixelfehler-Richtlinie für Ihr genaues Monitormodell",
-          "Führen Sie bei isolierten Farbpunkten einen Testlauf mit dem [Stuck Pixel Fixer](/tests/stuck-pixel-fixer) durch",
-          "Ziehen Sie den [Fehlerbehebungs-Leitfaden](/knowledge-base/troubleshooting) für weitere Prüfschritte heran"
+          "Führen Sie bei einem einzelnen farbigen Punkt den [Stuck Pixel Fixer](/tests/stuck-pixel-fixer) aus",
+          "Nutzen Sie die [Fehlerbehebung](/knowledge-base/troubleshooting) für weitere Schritte vor der Support-Kontaktaufnahme"
         ],
         "sections": [
           {
-            "title": "Tote vs. festsitzende Pixel: Technische Grundlagen",
+            "title": "Dead Pixel vs. Stuck Pixel: Technische Zusammenfassung",
             "content": [
-              "Moderne Flachbildschirme—ob IPS-, VA- oder TN-LCDs sowie OLED-Matrizen—bestehen aus Millionen winziger Bildelemente. Bei LCDs setzt sich jeder Pixel aus drei Subpixeln (Rot, Grün, Blau) zusammen, die über Dünnschichttransistoren (TFT) angesteuert werden, um die Lichtdurchlässigkeit der Flüssigkristalle zu regeln.",
-              "Ein toter Pixel entsteht, wenn die Ansteuerung des Subpixels vollständig stromlos bleibt. In typischen 'Normally Black'-Panels kann ein unbestromter Subpixel kein Licht durchlassen; er bleibt als permanenter dunkler Punkt sichtbar. Fallen alle drei Subpixel aus, erscheint der Pixel auf hellen Testbildern (Weiß, Cyan, Gelb) komplett schwarz.",
-              "Ein festsitzender Pixel (Stuck Pixel) liegt vor, wenn ein oder mehrere Subpixel dauerhaft im lichtdurchlässigen Zustand verharren. Dies führt zu einem auffälligen roten, grünen oder blauen Leuchtpunkt auf dunklem Grund. Bei OLED-Panels leuchtet eine kurzgeschlossene organische Diode dauerhaft, während eine stromlose Diode schwarz bleibt.",
-              "Webbrowser können Vollbild-Farbflächen darstellen, operieren jedoch rein auf Software-Ebene. Browsertests können keine internen Halbleiterspannungen messen oder die genaue elektrische Ausfallursache bestimmen."
+              "Moderne Flachbildschirme – ob IPS-, VA-, TN-LCDs oder OLED-Matrizen – bestehen aus Millionen mikroskopischer Bildelemente. Bei LCD-Panels setzt sich jeder Pixel aus drei eigenständigen Subpixeln (Rot, Grün, Blau) zusammen, die über Dünnschichttransistoren (TFT) angesteuert werden, um den Lichtdurchtritt der Hintergrundbeleuchtung zu modulieren.",
+              "Ein toter Pixel (Dead Pixel) entsteht, wenn die Ansteuerung des Subpixels dauerhaft ausfällt. In üblichen 'Normally Black'-Flüssigkristallanordnungen bleibt ein unbestromter Subpixel dunkel und erscheint als permanenter schwarzer Punkt auf hellen Flächen wie Weiß, Gelb oder Cyan.",
+              "Ein festsitzender Pixel (Stuck Pixel) tritt auf, wenn ein Subpixel im bestromten Zustand verharrt und dauerhaft Licht durch seinen Farbfilter leitet. Dadurch entsteht ein permanenter roter, grüner oder blauer Punkt, der auf dunklem Grund auffällt. Bei OLED-Panels bleibt ein inaktives organisches Element komplett schwarz, während ein Kurzschluss dauerhaft leuchten kann.",
+              "Die Sichtbarkeit eines Fehlers variiert je nach angezeigtem Farbmuster: Ein defekter grüner Subpixel ist auf reinem Blau unsichtbar, tritt aber auf Weiß oder Magenta sofort hervor. Browsertests operieren auf der Rendering-Ebene, um optische Auffälligkeiten sichtbar zu machen – sie können jedoch keine mikroskopischen Halbleiterschaltungen diagnostizieren."
             ],
             "bullets": [
-              "Toter Pixel: Dauerhaft stromloser Subpixel/Triade; dunkel auf hellem Grund.",
-              "Festsitzender Pixel: Subpixel dauerhaft aktiv; leuchtet rot, grün oder blau auf Schwarz.",
-              "Heller Pixel (Hot Pixel): Alle drei RGB-Subpixel dauerhaft voll eingeschaltet.",
-              "Grenze webbasierter Tests: Visuelle Beobachtung ja, elektronische Messung nein."
+              "Tote Pixel: Dauerhaft stromlose Subpixel, die als schwarze Punkte auf hellem Grund erscheinen.",
+              "Festsitzende Pixel: Dauerhaft aktivierte Subpixel, die auf dunklem Hintergrund rot, grün oder blau leuchten.",
+              "Vollpixel vs. Subpixel: Vollpixel-Defekte fallen bei allen Farben aus; Subpixel-Defekte verfälschen Farbmischungen.",
+              "Systemgrenze: Webbrowser rendern kontrastreiche Farbfelder zur visuellen Prüfung, analysieren aber keine Hardwareelektronik."
             ]
           },
           {
-            "title": "Was ISO 9241-307 ist: Ein technischer Klassifizierungsrahmen",
+            "title": "Was ISO 9241-307 wirklich ist: Ein technischer Klassifizierungsrahmen",
             "content": [
-              "Um einheitliche ingenieurtechnische Begriffe und Messmethoden in der Displayherstellung zu etablieren, hat die Internationale Organisation für Normung Richtlinien definiert, insbesondere ISO 13406-2 und deren Nachfolgenorm ISO 9241-307.",
-              "ISO 9241-307 definiert Messverfahren und Fehlertypen: Typ 1 (dauerhaft helle Pixel), Typ 2 (dauerhaft schwarze Pixel) und Typ 3 (defekte Subpixel mit Farbanomalien).",
-              "Die Norm teilt Bildschirme in theoretische Fehlerklassen ein (wie Klasse 0, Klasse I, Klasse II, Klasse III), die Grenzwerte für zulässige Defektdichten pro Million Pixel festlegen. Klasse 0 steht für absolute Fehlerfreiheit, während Klasse I und II abgestufte Fehlertoleranzen definieren.",
-              "Wichtig ist: ISO 9241-307 ist ein technischer Qualitätsmaßstab für die Industrie und kein automatischer Kaufvertrag für Endverbraucher."
+              "Um einheitliche Qualitätsmaßstäbe und Messverfahren in der Displayfertigung zu etablieren, hat die Internationale Organisation für Normung (ISO) Richtlinien für elektronische optische Anzeigen geschaffen – insbesondere die ISO 13406-2 und deren Nachfolgerin ISO 9241-307 (Teil der Ergonomie der Mensch-System-Interaktion).",
+              "Die ISO 9241-307 definiert standardisierte Prüf- und Messmethoden zur Quantifizierung von Anzeigefehlern. Dabei werden Pixelfehler in Typen unterteilt: Typ 1 (dauerhaft maximal leuchtende Pixel), Typ 2 (dauerhaft dunkle Pixel) und Typ 3 (Subpixelfehler mit abnormalem Farb- oder Helligkeitsverhalten).",
+              "Die Norm definiert theoretische Fehlerklassen (Klasse 0, Klasse I, Klasse II und Klasse III), die maximale Fehlertoleranzen pro einer Million Pixel festlegen. Klasse 0 steht für völlige Fehlerfreiheit, während Klasse I und II abgestufte Toleranzen für helle, dunkle und Subpixelfehler umfassen.",
+              "Die ISO 9241-307 ist ein rein technischer Qualitäts- und Bewertungsmaßstab für Laborprüfungen; sie stellt keinen automatischen Kaufvertragsinhalt oder Verbraucherschutzanspruch dar."
+            ],
+            "bullets": [
+              "Technischer Standard: Definiert Messmethoden und Fehlerkategorien für Displays.",
+              "Fehlertypen: Standardisiert Typ 1 (helle Pixel), Typ 2 (dunkle Pixel) und Typ 3 (Subpixelfehler).",
+              "Klassen-Toleranzen: Gestaffelte Richtwerte pro Million Pixel von Klasse 0 (null Fehler) bis Klasse III.",
+              "Qualitativer Maßstab: Dient der fertigungstechnischen Einstufung, begründet aber keine automatischen Rückgaberechte."
             ]
           },
           {
-            "title": "ISO-Norm ≠ Automatischer Austausch oder Rückerstattung",
+            "title": "ISO-Norm begründet keinen automatischen Umtausch oder Rückerstattung",
             "content": [
-              "Ein weit verbreiteter Irrtum besteht in der Annahme, dass das Auftreten eines Pixelfehlers automatisch einen Rechtsanspruch auf Austausch oder Kaufpreiserstattung begründet.",
-              "Eine internationale Industrienorm wie ISO 9241-307 besitzt keine unmittelbare gesetzliche Regelungskraft für Handelsgeschäfte. Das Auffinden eines Pixelfehlers bedeutet NICHT automatisch, dass der Hersteller das Gerät tauschen muss oder der Händler den Betrag erstatten muss.",
-              "Hersteller verweisen häufig in Produktdatenblättern auf ISO-Klassen, doch Garantieansprüche richten sich ausschließlich nach den schriftlichen Garantiebedingungen. Sofern nicht gesetzliche Gewährleistungsregeln oder ausdrückliche Zusagen greifen, können ISO-Kennzahlen allein keinen Garantieanspruch erzwingen.",
-              "Die tatsächliche Abwicklung stützt sich stets auf vier Säulen: Herstellergarantie, Händler-Rückgaberechte, Kaufvertrag und gesetzliches Verbraucherrecht."
+              "Unter Käufern hält sich hartnäckig der Glaube, dass das Auffinden von Pixelfehlern oberhalb einer ISO-Klasse automatisch ein Recht auf sofortigen Umtausch oder Geld-zurück begründet.",
+              "Die ISO 9241-307 ist ein technischer Klassifizierungsrahmen und begründet selbst keine universelle Verpflichtung zu Umtausch oder Rückerstattung. Ein internationaler technischer Standard hat keine unmittelbare rechtliche Bindungswirkung für private Kaufverträge.",
+              "Hersteller beziehen sich in Datenblättern oft auf ISO-Klassen, um erwartbare Fertigungsausbeuten anzugeben; die tatsächliche Garantieabwicklung richtet sich jedoch nach den Garantiebestimmungen des Herstellers. Sofern ein Kaufvertrag oder anwendbare Gesetze die ISO-Werte nicht ausdrücklich verbindlich vorschreiben, kann eine RMA nicht allein über ISO-Begriffe erzwungen werden.",
+              "Eine Lösung ergibt sich stets aus dem Zusammenspiel von vier getrennten Ebenen: technischer Standard (ISO 9241-307), Herstellergarantie (RMA), Händler-Rückgaberecht und gesetzliche Verbraucherrechte."
+            ],
+            "bullets": [
+              "Kein Automatismus: Eine ISO-Einstufung gewährt kein automatisches Recht auf Kaufpreiserstattung oder Neugerät.",
+              "Vertragsvorrang: Garantieansprüche richten sich nach den Bestimmungen des Herstellers, nicht nach ISO-Texten.",
+              "Vier getrennte Ebenen: ISO-Norm, Herstellergarantie, Händler-Rückgaberecht und gesetzliche Gewährleistung strikt trennen.",
+              "Herstellerangaben: Marken nutzen ISO-Klassen als Richtwert, binden ihre Garantie aber an eigene Kriterien."
             ]
           },
           {
-            "title": "Herstellergarantie und RMA-Bedingungen",
+            "title": "Herstellergarantie & RMA-Richtlinien",
             "content": [
-              "Freiwillige Herstellergarantien sind Leistungsversprechen des Geräteherstellers für Reparatur oder Austausch innerhalb eines definierten Zeitraums.",
-              "Die sogenannten RMA-Richtlinien (Return Merchandise Authorization) variieren je nach Marke, Modellreihe und Verkaufsregion erheblich. Hochwertige Grafik- oder Gaming-Monitore bieten mitunter eine 'Zero-Bright-Dot'-Garantie, während Standardmodelle derselben Marke mehrere Subpixelfehler tolerieren.",
-              "Prüfen Sie vor einer Reklamation: genaue Modellbezeichnung, Seriennummer, Kaufbeleg und die herstellerspezifische Pixelfehlertabelle. Diese unterscheidet meist zwischen hellen und dunklen Punkten sowie zwischen zentralen und peripheren Bildschirmbereichen.",
-              "Prüfen Sie die offiziellen Garantieunterlagen Ihres Herstellers für die für Ihr Land gültigen Bestimmungen."
+              "Freiwillige Herstellergarantien sind vertragliche Zusagen des Herstellers bezüglich Reparatur, Ersatz oder Service innerhalb eines festgelegten Garantiezeitraums.",
+              "Zur Beurteilung von Pixelfehlern veröffentlichen Hersteller eigene RMA-Richtlinien (Return Merchandise Authorization). Diese unterscheiden sich je nach Hersteller, Modellreihe und Region erheblich. Premium-Monitore für Gaming oder Grafikdesign bieten mitunter eine 'Zero Bright Dot'-Garantie (ZBD), während Standardmonitore derselben Marke mehrere dunkle oder Subpixelfehler tolerieren.",
+              "Die Kriterien unterscheiden typischerweise zwischen hellen Pixelfehlern (die auf dunklen Hintergründen stark stören) und dunklen Fehlern sowie der Fehlerposition (z. B. im zentralen Sichtbereich oder als Cluster eng beieinander liegender Fehler).",
+              "Für einen RMA-Antrag sind in der Regel Nachweise wie Fotos und die Seriennummer erforderlich. Maßgeblich sind stets die offiziellen Garantieunterlagen des jeweiligen Herstellers."
+            ],
+            "bullets": [
+              "Eigene Kriterien: Jeder Hersteller definiert Fehlergrenzen, Fristen und Servicebedingungen individuell.",
+              "Fehlergewichtung: Helle Subpixel werden meist strenger reglementiert als dunkle Subpixel.",
+              "Zoneneinteilung: Viele Richtlinien werten Fehler im Bildschirmzentrum strenger als an den Rändern.",
+              "Verbindliche Quelle: Maßgeblich sind ausschließlich die Supportdokumente des konkreten Herstellers."
             ]
           },
           {
-            "title": "Händler-Rückgabe und Umtauschfristen",
+            "title": "Händler-Rückgaberecht & Umtausch",
             "content": [
-              "In vielen Fällen ist das Rückgabe- oder Widerrufsrecht des Händlers die schnellste und flexibelste Option zur Beilegung von Beanstandungen.",
-              "Viele Händler bieten ein zeitlich befristetes Rückgaberecht oder ein gesetzliches Widerrufsrecht (z. B. im Fernabsatz) an. Innerhalb dieser Frist kann ein Monitor oft ohne Angabe von Gründen retourniert werden—unabhängig davon, ob der Fehler die RMA-Schwelle des Herstellers erreicht.",
-              "Beachten Sie dabei: genaue Fristen, Bedingungen für geöffnete Verpackungen, eventuelle Wiedereinlagerungsgebühren und Vollständigkeit des Originalzubehörs.",
-              "Da Rückgabefristen an feste Kalendertage gebunden sind, empfiehlt sich die Bildschirmprüfung unmittelbar nach Erhalt des Geräts."
+              "In vielen Fällen bietet das Rückgabe- oder Umtauschrecht des Verkäufers eine schnellere und flexiblere Lösung als ein formeller RMA-Garantieantrag beim Hersteller.",
+              "Händler gewähren nach dem Kauf häufig eine freiwillige oder gesetzliche Rückgabefrist. Innerhalb dieser Frist können Käufer ein Gerät oft problemlos umtauschen oder zurückgeben, wenn es ihren visuellen Erwartungen nicht entspricht – unabhängig von den RMA-Bedingungen des Herstellers.",
+              "Allerdings variieren die Bedingungen je nach Händler, Produktkategorie und Vertriebskanal (Onlinekauf vs. stationärer Handel). Es gibt keine universelle Anzahl von Tagen. Zudem gelten teils Regeln zum Öffnen der Verpackung, zu Rücksendegebühren oder dem Originalzubehör.",
+              "Da Rückgabefristen an feste Kalendertage gebunden sind, sollte ein neuer Monitor direkt nach dem Auspacken eingehend geprüft werden, um alle Optionen zu wahren."
+            ],
+            "bullets": [
+              "Flexibler Weg: Rückgaberechte beim Händler greifen oft auch ohne Nachweis eines Herstellerdefekts.",
+              "Keine universelle Frist: Rückgabefristen unterscheiden sich je nach Händler und Land; Frist genau prüfen.",
+              "Zustand beachten: Vollständige Originalverpackung und Zubehör sind meist Voraussetzung für die Rückgabe.",
+              "Direkt prüfen: Eine sofortige Prüfung nach Lieferung sichert die unkomplizierte Händlerabwicklung."
             ]
           },
           {
-            "title": "Gesetzliche Verbraucherrechte und Sachmängelhaftung",
+            "title": "Gesetzliche Verbraucherrechte & Gewährleistung",
             "content": [
-              "Unabhängig von Herstellergarantie und Händlerkulanz gelten die jeweiligen gesetzlichen Verbraucherschutzgesetze und Gewährleistungsregelungen.",
-              "In vielen Ländern verpflichtet die gesetzliche Sachmängelhaftung den Verkäufer, eine mangelfreie Ware zu liefern. Ob ein einzelner Pixelfehler rechtlich einen Sachmangel darstellt, hängt von der jeweiligen Rechtsprechung, den Produktbeschreibungen und der Vereinbarung ab.",
-              "Rechtsvorschriften unterscheiden sich international erheblich. Screen Tester bietet rein technische Hilfsmittel und leistet keine Rechtsberatung.",
-              "Bei anhaltenden Streitigkeiten sollten zuständige Verbraucherzentralen oder juristische Beratungsstellen vor Ort konsultiert werden."
+              "Neben freiwilligen Herstellergarantien und Händler-Rücknahmerechten greifen gesetzliche Verbraucherschutzvorschriften (wie die gesetzliche Gewährleistung bei Sachmängeln).",
+              "In vielen Rechtsordnungen sichern gesetzliche Vorschriften zu, dass Waren frei von wesentlichen Sachmängeln sein und dem vertraglich vereinbarten Zustand entsprechen müssen. Weicht ein Gerät erheblich davon ab, können gesetzliche Ansprüche gegen den Verkäufer bestehen – unabhängig von Herstellergarantien.",
+              "Der genaue Umfang und die Durchsetzung dieser Rechte hängen jedoch stark von der jeweiligen Rechtsordnung, der Art des Geschäfts (Verbraucher vs. Gewerbe) und der rechtlichen Bewertung der Wesentlichkeit des Mangels ab.",
+              "Screen Tester bietet technische Hilfestellung und stellt keine Rechtsberatung dar. Bei Streitigkeiten sollten Verbraucherzentralen, Schlichtungsstellen oder juristische Fachberatung konsultiert werden."
+            ],
+            "bullets": [
+              "Gesetzliche Basis: Gesetzliche Gewährleistungsrechte gelten unabhängig von freiwilligen Herstellergarantien.",
+              "Sachmangelprüfung: Nationale Gesetze regeln Rechte bei vertragswidrigen oder mangelhaften Waren.",
+              "Rechtsordnungsabhängig: Rechte und Fristen unterscheiden sich von Land zu Land erheblich.",
+              "Keine Rechtsberatung: Screen Tester liefert technische Daten; rechtliche Fragen klären zuständige Stellen."
             ]
           },
           {
-            "title": "Wie Screen Tester bei der Dokumentation hilft",
+            "title": "Was Screen Tester leisten kann (und was nicht)",
             "content": [
-              "Screen Tester bietet Werkzeuge, um Pixelfehler zuverlässig sichtbar zu machen, einzuordnen und festzuhalten.",
-              "Mit dem [Pixelfehlertest](/tests/dead-pixel-test) und dem [Test für festsitzende Pixel](/tests/stuck-pixel-test) prüfen Sie Vollbilder in allen Grund- und Komplementärfarben, um Subpixeldefekte exakt zu isolieren.",
-              "Über die strukturierte [Neuer-Monitor-Inspektion](/monitor-inspection/new) und [Gebrauchter-Monitor-Inspektion](/monitor-inspection/used) können Sie Koordinaten erfassen, Notizen anlegen und die Historie dokumentieren. Bei festsitzenden Subpixeln bietet der [Stuck Pixel Fixer](/tests/stuck-pixel-fixer) ein unschädliches Farbwechselmuster.",
-              "Screen Tester grenzt seine Rolle klar ab: Die Plattform unterstützt die optische Erfassung, ersetzt jedoch keine Herstellerentscheidung oder Rechtsprüfung."
+              "Screen Tester bietet eine barrierefreie Webumgebung, um Anzeigefehler auf Displays systematisch zu identifizieren, optisch zu bewerten und zu dokumentieren.",
+              "Screen Tester unterstützt Sie dabei: (1) definierte Testfarben über den [Dead Pixel Test](/tests/dead-pixel-test) und den [Stuck Pixel Test](/tests/stuck-pixel-test) anzuzeigen; (2) sichtbare Auffälligkeiten auf kontrastierenden Hintergründen zu erkennen; (3) tote, festsitzende und gehäufte Pixel optisch zu unterscheiden; (4) Beobachtungen zu notieren; (5) Prüfungen strukturiert mit dem [Leitfaden zur Neugeräte-Inspektion](/guides/new-monitor-inspection-return-window), der [Checkliste für Gebrauchtmonitore](/guides/used-monitor-inspection-checklist) und der [Monitor-Inspektionssuite](/monitor-inspection) durchzuführen; und (6) mit dem [Stuck Pixel Fixer](/tests/stuck-pixel-fixer) schnelle Farbwechsel zu testen.",
+              "Screen Tester KANN NICHT: (1) eine ISO 9241-307-Konformität zertifizieren; (2) mikroskopische Halbleiter- oder TFT-Spannungen messen; (3) garantieren, dass ein Monitor Garantie-Grenzwerte erfüllt; (4) einen rechtlichen Sachmangel feststellen; oder (5) RMA-Freigaben oder Erstattungen zusichern.",
+              "Wir trennen klar zwischen visuellen Nutzerbeobachtungen, browsergerenderten Mustern und herstellerseitigen Spezifikationen."
+            ],
+            "bullets": [
+              "Möglichkeiten: Vollbild-Farbfelder anzeigen, Auffälligkeiten optisch prüfen, Notizen erfassen.",
+              "Keine Zertifizierung: Keine Halbleitermessung, keine ISO-Zertifikate, keine Garantieentscheidungen.",
+              "Keine Rechtskraft: Keine rechtliche Mangelbewertung und keine Garantie für RMA-Bewilligungen.",
+              "Klare Terminologie: Strikte Unterscheidung zwischen Browser-Mustern, Hardwarewerten und Rechtsnormen."
             ]
           },
           {
-            "title": "Checkliste für Nachweise und Dokumentation",
+            "title": "Checkliste für Nachweise & Dokumentation",
             "content": [
-              "Zur Vorbereitung einer Reklamation bei Händler oder Hersteller empfiehlt sich eine lückenlose Dokumentation:",
-              "1. Gerätedaten: Genaue Modellbezeichnung und Seriennummer notieren (Seriennummern vertraulich behandeln, nicht öffentlich posten).",
-              "2. Kaufnachweise: Rechnung, Bestelldatum, Händlerbeleg und Lieferschein bereithalten.",
-              "3. Fristen: Händler-Rückgabefrist und Garantiezeitraum festhalten.",
-              "4. Prüfumgebung: Datum, Raumbeleuchtung und Bildschirmauflösung vermerken.",
-              "5. Farbzuordnung: Notieren, bei welchen Vollbildfarben der Fehler sichtbar bzw. unsichtbar ist.",
-              "6. Fotonachweise: Scharfe Makroaufnahmen der betroffenen Stelle sowie eine Übersichtsaufnahme des gesamten Bildschirms zur Lagebestimmung anfertigen."
+              "Wenn Sie einen dauerhaften Pixelfehler feststellen und den Händler oder Hersteller kontaktieren möchten, beschleunigt eine sachliche Dokumentation die Abwicklung:",
+              "1. Gerätedaten: Notieren Sie Modellnummer, Hardware-Revision und Seriennummer (Seriennummern vertraulich für den Support aufbewahren, nicht öffentlich posten).",
+              "2. Kaufnachweis: Bewahren Sie Rechnung, Lieferschein und Bestelldatum sorgfältig auf.",
+              "3. Richtlinien prüfen: Händler-Rückgabefristen und herstellerspezifische Pixelfehler-Bedingungen bereithalten.",
+              "4. Prüfnotizen: Erfassen Sie Datum, Raumlicht, Bildschirmauflösung und die ungefähre Lage des Fehlers (Bildmitte vs. Randbereich).",
+              "5. Farbabgleich: Notieren Sie, auf welchen Volltonfarben der Fehler sichtbar ist und auf welchen er unsichtbar bleibt.",
+              "6. Fotodokumentation: Erstellen Sie scharfe Nahaufnahmen des Fehlers auf einfarbigem Grund sowie ein Übersichtsübersichtsfoto des gesamten Monitors zur Lagebestimmung.",
+              "WICHTIGER DATENSCHUTZHINWEIS: Schwärzen Sie vor der Weitergabe von Dokumenten oder Bildern stets sensible persönliche Angaben wie Privatadresse, Telefonnummer, Zahlungsdaten und Bankverbindungen."
+            ],
+            "bullets": [
+              "Gerätedaten: Modell und Seriennummer vertraulich für offizielle Supportkanäle erfassen.",
+              "Belege: Kaufrechnung, Bestelldaten und Händlerfristen griffbereit halten.",
+              "Fotobeweise: Nahaufnahme des Pixels kombiniert mit einem Übersichtsfoto des Bildschirms aufnehmen.",
+              "Datenschutz: Personenbezogene Daten, Adressen und Zahlungsinformationen vorab unkenntlich machen."
             ]
           },
           {
-            "title": "Vorgehen bei festgestellten Pixelfehlern",
+            "title": "Vorgehensweise bei Pixelfehlern: Das Entscheidungsmodell",
             "content": [
-              "Verwenden Sie bei der Bewertung folgende Kriterien:",
-              "• Unauffällig (Looks normal): Saubere Farbwiedergabe ohne dauerhafte Fehlstellen über alle Prüfbilder.",
-              "• Auffällig (Needs attention): Dauerhaft dunkle Punkte oder leuchtende Subpixel wurden verifiziert und sollten dokumentiert werden.",
-              "• Unsicher (Unsure): Fehlerbild unklar oder blickwinkelabhängig (Verdacht auf Oberflächenschmutz). Nach sanfter Reinigung erneut prüfen.",
-              "Empfohlener Ablauf: Zuerst Händler-Rückgabeoptionen prüfen. Falls abgelaufen, Hersteller-RMA-Kriterien heranziehen. Bei Uneinigkeit gegebenenfalls Verbraucherrechte prüfen."
+              "Nutzen Sie diesen strukturierten, nicht-juristischen Ablauf, um das beste Vorgehen bei einem Pixelfehler festzulegen:",
+              "BEOBACHTUNG → Auffälligkeit mit mehreren Testfarben bestätigen → DOKUMENTIEREN → Händler-Rückgabefrist prüfen → Hersteller-Garantie/RMA prüfen → Gesetzliche Verbraucherrechte prüfen → Passenden Support- oder Rückgabeweg wählen.",
+              "Kategorisieren Sie den Befund mit unserer Standardterminologie:",
+              "• Sieht normal aus: Das Panel zeigt gleichmäßige Farben auf allen RGB-, Weiß- und Schwarzfeldern ohne dunkle oder dauerhaft leuchtende Punkte.",
+              "• Aufmerksamkeitsbedarf: Ein dunkler Fleck oder farbiger Subpixel bleibt auf einem oder mehreren Testfeldern sichtbar. Der Befund sollte dokumentiert und mit Richtlinien abgeglichen werden.",
+              "• Unsicher: Ein kleiner Punkt ist sichtbar, verändert aber bei Blickwinkeländerung die Lage oder ähnelt Staub. Reinigen Sie das Display mit einem Mikrofasertuch und testen Sie erneut.",
+              "Falls der Befund 'Aufmerksamkeitsbedarf' ergibt, prüfen Sie zuerst die Rückgabefrist des Händlers. Ist diese abgelaufen, prüfen Sie die RMA-Kriterien des Herstellers. Bei offenen Fragen informieren Sie sich über lokale Verbraucherrechte."
+            ],
+            "bullets": [
+              "Ablauf: Beobachtung → Farbabgleich → Dokumentation → Händlerfrist → RMA-Prüfung → Vorgehen wählen.",
+              "Sieht normal aus: Gleichmäßige Darstellung auf allen RGB- und Monochromfeldern.",
+              "Aufmerksamkeitsbedarf: Dauerhafte Fehlpixel auf mehreren Farbfeldern bestätigt.",
+              "Unsicher: Verdacht auf Staub oder Verschmutzung; vorsichtig reinigen und Blickwinkel prüfen."
             ]
           },
           {
-            "title": "Häufige Missverständnisse bei Pixelfehlern",
+            "title": "Häufige Missverständnisse über Pixelfehler",
             "content": [
-              "Missverständnis 1: 'Ein einzelner toter Pixel führt immer zum Garantieaustausch.' Realität: Die meisten Standardgarantien verlangen eine Mindestanzahl an Fehlern.",
-              "Missverständnis 2: 'ISO-Normen garantieren ein Rückgaberecht.' Realität: ISO 9241-307 ist eine technische Industrienorm, kein Kaufrecht.",
-              "Missverständnis 3: 'Jeder festsitzende Pixel lässt sich reparieren.' Realität: Softwaretools wie der [Stuck Pixel Fixer](/tests/stuck-pixel-fixer) können helfen, bei physischen Schäden jedoch keine Wunder bewirken.",
-              "Missverständnis 4: 'Ein Bildschirm-Screenshot belegt den Pixelfehler.' Realität: Screenshots erfassen den intakten Bildspeicher. Ein Fotobeweis mit einer Kamera ist erforderlich.",
-              "Missverständnis 5: 'Herstellergarantie und Händler-Rückgabe sind identisch.' Realität: Händlerfristen greifen oft unabhängig von den strengen Kriterien der Herstellergarantie."
+              "Die Aufklärung verbreiteter Irrtümer hilft, Enttäuschungen zu vermeiden:",
+              "Irrtum 1: 'Ein einzelner toter Pixel berechtigt immer zum Umtausch.' Realität: Außer bei expliziter Zero-Defect-Garantie oder fristgerechter Händlerrückgabe verlangen die meisten Standardgarantien mehrere Fehler für eine RMA.",
+              "Irrtum 2: 'Die ISO-Norm garantiert ein völlig fehlerfreies Panel.' Realität: Die ISO 9241-307 klassifiziert zulässige Fehlertoleranzen je nach Klasse; sie verspricht keine absolute Fehlerfreiheit.",
+              "Irrtum 3: 'Herstellergarantie und Händlerrückgaberecht sind dasselbe.' Realität: Das Händlerrückgaberecht ist eine vertragliche oder gesetzliche Frist des Verkäufers; die Garantie ist eine freiwillige Vereinbarung mit dem Hersteller.",
+              "Irrtum 4: 'Rückgabefristen betragen immer 14 Tage.' Realität: Rückgabefristen variieren je nach Händler, Land, Produktart und Kaufkanal (online vs. Ladengeschäft) erheblich; es gibt keine weltweite Standarddauer.",
+              "Irrtum 5: 'Screen Tester kann eine ISO-Verletzung beweisen.' Realität: Screen Tester stellt Browser-Farbfelder zur visuellen Begutachtung bereit, führt aber keine zertifizierten Labormessungen durch.",
+              "Irrtum 6: 'Ein Foto allein beweist die Garantieberechtigung.' Realität: Fotos sind ein wichtiges Indiz, aber Hersteller prüfen Ansprüche nach eigenen internen Kriterien und Fehleranzahlen.",
+              "Irrtum 7: 'Jeder festsitzende Pixel lässt sich per Software reparieren.' Realität: Schnelle Farbwechsel können träge Flüssigkristalle manchmal reaktivieren, hardwarebedingte Transistordefekte jedoch nicht beheben."
+            ],
+            "bullets": [
+              "Einzelfehler: Ein toter Pixel reicht bei Standardgarantien selten für einen Austausch aus.",
+              "ISO-Toleranzen: Die Norm definiert erlaubte Abweichungen, keine zwingende Fehlerfreiheit.",
+              "Rechtsebenen: Händler-Rückgaberecht und Herstellergarantie folgen völlig unterschiedlichen Regeln.",
+              "Keine Pauschalfristen: Rückgabefristen unterscheiden sich je nach Händler und Verkaufsart.",
+              "Software-Grenzen: Farbwechsel helfen bei mechanisch trägen Kristallen, nicht bei zerstörten Leitern."
             ]
           }
         ],
         "faq": [
           {
-            "question": "Berechtigt mich ein einzelner toter Pixel zum sofortigen Austausch?",
-            "answer": "Nicht zwingend im Rahmen der Herstellergarantie, es sei denn, das Modell besitzt eine ausdrückliche 'Zero-Bright-Dot'-Zusage. Innerhalb der Widerrufs- oder Rückgabefrist des Händlers ist eine Rückgabe jedoch häufig möglich."
+            "question": "Berechtigt mich ein einzelner toter Pixel sofort zum Umtausch?",
+            "answer": "Im Rahmen der Herstellergarantie meist nicht. Die meisten Standardgarantien erlauben eine gewisse Anzahl von Subpixelfehlern, es sei denn, das Modell besitzt eine 'Zero Bright Dot'-Garantie. Innerhalb der Rückgabefrist des Händlers ist ein Umtausch oder eine Rückgabe hingegen oft unkompliziert möglich."
           },
           {
-            "question": "Was unterscheidet einen toten Pixel von einem festsitzenden Pixel?",
-            "answer": "Ein toter Pixel ist stromlos und bleibt auf hellen Flächen dunkel. Ein festsitzender Subpixel verharrt im geöffneten Zustand und leuchtet dauerhaft rot, grün oder blau auf dunklem Grund."
+            "question": "Was unterscheidet einen festsitzenden Pixel von einem toten Pixel?",
+            "answer": "Ein toter Pixel erhält keinen Strom und bleibt auf hellen Hintergründen dauerhaft schwarz. Ein festsitzender Pixel (Stuck Pixel) bleibt im bestromten Zustand hängen und leuchtet dauerhaft rot, grün oder blau auf dunklem Grund."
           },
           {
-            "question": "Können Softwaretools wie der Stuck Pixel Fixer das Display beschädigen?",
-            "answer": "Nein. Der [Stuck Pixel Fixer](/tests/stuck-pixel-fixer) nutzt gewöhnliche Bildfolgen und ändert keine Spannungen. Personen mit Empfindlichkeit gegenüber Flackerlicht sollten den Blick abwenden."
+            "question": "Können Software-Tools wie der Stuck Pixel Fixer den Monitor beschädigen?",
+            "answer": "Nein. Der [Stuck Pixel Fixer](/tests/stuck-pixel-fixer) zeigt lediglich schnelle Farbwechsel über Standard-Webgrafik an. Er verändert keine Hardware-Spannungen. Personen mit Lichtempfindlichkeit sollten jedoch während der Ausführung nicht direkt auf den Bildschirm blicken."
           },
           {
-            "question": "Warum ist ein toter Pixel auf einem Screenshot nicht sichtbar?",
-            "answer": "Ein Screenshot bildet den digitalen Bildinhalt der Grafikkarte ab. Da der Pixelfehler eine physische Eigenschaft des Bildschirmpanels ist, muss er mit einer Fotokamera fotografiert werden."
+            "question": "Warum zeigt ein Screenshot auf dem Computer den toten Pixel nicht?",
+            "answer": "Ein Screenshot erfasst das im Grafikspeicher berechnete digitale Bild vor der Ausgabe an das Display. Da der Pixelfehler ein physikalischer Defekt im Monitorpanel ist, existiert er nicht im digitalen Speicherbild. Er kann nur mit einer echten Kamera fotografiert werden."
           },
           {
-            "question": "Was unterscheidet eine ISO 9241-307 Fehlerklasse von einer Herstellergarantie?",
-            "answer": "ISO 9241-307 ist eine technische Richtlinie zur Vereinheitlichung von Messungen. Die Herstellergarantie ist eine separate, rechtlich bindende Zusage über Kundendienstleistungen und Austauschkriterien."
+            "question": "Worin liegt der Unterschied zwischen einer ISO 9241-307-Fehlerklasse und einer Herstellergarantie?",
+            "answer": "Die ISO 9241-307 ist eine technische Industrienorm mit Richtwerten und Fehlerdefinitionen für Displays. Eine Herstellergarantie ist ein eigenständiger, privatrechtlicher Vertrag zwischen Hersteller und Käufer mit konkreten RMA-Bedingungen."
           },
           {
-            "question": "Sollte ich mich zuerst an den Händler oder den Hersteller wenden?",
-            "answer": "Prüfen Sie zuerst das Rückgaberecht des Händlers. Liegt der Kauf innerhalb der Händlerfrist, ist der Umtausch meist unkomplizierter. Außerhalb dieser Frist greifen die Garantiebestimmungen des Herstellers."
+            "question": "Sollte ich bei einem Pixelfehler zuerst den Händler oder den Hersteller kontaktieren?",
+            "answer": "Prüfen Sie zuerst die Händler-Rückgabefrist. Befinden Sie sich noch innerhalb dieser Frist, bietet der Verkäufer meist die schnellste Lösung. Ist die Frist abgelaufen, prüfen Sie die RMA-Kriterien der Herstellergarantie."
+          },
+          {
+            "question": "Begründet die ISO 9241-307 einen automatischen Rechtsanspruch auf Umtausch?",
+            "answer": "Nein. Die ISO 9241-307 ist ein technischer Klassifizierungs- und Bewertungsrahmen für Anzeigegeräte. Sie begründet keinen automatischen Rechtsanspruch auf Umtausch oder Rückerstattung. Ansprüche richten sich nach Händlerbedingungen, Herstellergarantie und geltendem Recht."
+          },
+          {
+            "question": "Gibt es eine universelle Rückgabefrist (wie 14 oder 30 Tage) für Monitore?",
+            "answer": "Nein. Rückgabefristen variieren je nach Händler, Vertriebskanal, Produktkategorie und Land erheblich. Es gibt keine weltweite Standardfrist. Prüfen Sie die Frist auf Ihrer Rechnung oder im Kundenportal des Händlers."
           }
         ]
       },
