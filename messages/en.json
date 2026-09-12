@@ -4658,7 +4658,7 @@
         ],
         "howToTest": [
           "Perform the inspection in a completely dark room at night with all room lights, lamps, and direct ambient reflections eliminated",
-          "Adjust monitor OSD brightness to normal working luminance (typically 20% to 40%, ~100–140 nits; avoid forcing 100% brightness unless that is your standard working environment)",
+          "Adjust monitor OSD brightness to a comfortable, typical SDR brightness rather than an extreme brightness setting (avoid forcing maximum brightness unless that represents your standard working environment).",
           "Launch the [Backlight Bleed Test](/tests/backlight-bleed-test) in Screen Tester to render a pure full-screen black canvas",
           "Sit at the display's designed focal radius (e.g., ~1.0m for 1000R, ~1.5m for 1500R) and align eye height to the vertical center of the panel",
           "Perform the parallax head-movement test: move your head horizontally and vertically, then view suspect corners head-on; if the glow fades or glides, it is angle-dependent glow",
@@ -4682,12 +4682,12 @@
           "Backlight Bleed: Excessive physical clamping pressure during factory bezel assembly pinching the outer layers of the panel sandwich",
           "Backlight Bleed: Thermal expansion warping internal light guide plates (LGP) or chassis frames under prolonged operation",
           "IPS Glow: Inherent off-axis birefringence of horizontally aligned liquid crystals under In-Plane Switching architectures",
-          "Curvature Geometry: Sitting outside the monitor's designed curvature radius (e.g. sitting 50cm from a 1500R screen), forcing peripheral edges into oblique viewing angles",
+          "Curvature Geometry: Sitting substantially closer than the monitor's designed curvature radius, forcing peripheral edges into steep off-axis viewing angles.",
           "Curved VA Gamma Shift: Off-angle light transmission through vertically aligned liquid crystals causing near-black brightening toward outer edges"
         ],
         "whatToDoNext": [
-          "Align your viewing distance with your monitor's curvature rating (typically 1.0m for 1000R, 1.5m for 1500R) to minimize peripheral viewing angles",
-          "Introduce gentle 6500K neutral bias lighting behind the display to reduce darkroom pupil dilation and deepen perceived dark contrast without creating screen glare",
+          "Position your viewing distance near your monitor's rated focal radius to minimize peripheral off-axis angles.",
+          "Introduce gentle, neutral ambient or bias lighting behind the display to reduce darkroom pupil dilation and deepen perceived dark contrast without creating direct screen glare.",
           "Evaluate panel uniformity across dark gray fields using the [Uniformity Test](/tests/uniformity-test) and review the [Monitor Viewing Angles Guide](/guides/monitor-viewing-angles-explained)",
           "If severe, localized yellow or white torching remains stationary even when viewed head-on from 2 meters away, document the issue for retailer exchange"
         ],
@@ -4739,7 +4739,7 @@
               "In-Plane Switching (IPS): Provides superior color consistency and wide viewing angles across desktop applications. However, because liquid crystals remain parallel to the substrate, curved IPS monitors exhibit visible off-axis glow along the corners when viewed off-center. Specialized A-TW (Advanced True Wide) polarizers can suppress glow, but are typically reserved for high-end professional displays.",
               "Vertical Alignment (VA): Uses liquid crystals aligned perpendicular to the substrate in dark states, delivering deep native contrast ratios (typically 3,000:1 to 5,000:1) with minimal glow on black backgrounds. However, VA panels exhibit off-axis gamma shift, where dark shadow details appear washed out when viewed at an angle. For this reason, manufacturers frequently curve large VA panels specifically to maintain a perpendicular line of sight to the outer edges.",
               "Twisted Nematic (TN): Features rapid response times but narrow viewing angles with severe vertical gamma inversion; rarely utilized in modern curved displays.",
-              "Organic Light Emitting Diode (OLED): Self-emissive architecture where each subpixel illuminates independently. OLED displays exhibit true 0.000 nit blacks, zero backlight bleed, and zero IPS glow on both flat and curved surfaces. Curved OLEDs maintain flawless darkroom contrast across all angles, though anti-reflective coatings can introduce subtle tint shifts at extreme grazing angles."
+              "Organic Light Emitting Diode (OLED): Self-emissive architecture where each subpixel illuminates independently. OLED displays exhibit true deep blacks with individual subpixel shutoff, zero backlight bleed, and zero IPS glow on both flat and curved surfaces. Curved OLEDs maintain darkroom contrast across wide angles, though anti-reflective coatings can introduce subtle tint shifts at extreme grazing angles."
             ],
             "bullets": [
               "IPS: Wide color viewing angles with characteristic off-axis glow on deep black backgrounds.",
@@ -4754,21 +4754,21 @@
               "Evaluating curved display light distribution requires a disciplined, repeatable testing protocol to prevent false defect diagnoses:",
               "1. Room Illumination: Eliminate all direct ceiling lighting, desk lamps, and window glare. Curved screens act as acoustic and optical concentrators; ambient light sources behind the viewer will reflect across the concave surface as stretched, distorted glare streaks.",
               "2. Seating & Focal Alignment: Position your chair so that your eyes sit at the display's specified curvature radius (e.g., 1000R = 1.0m, 1500R = 1.5m). Align your vertical eye line with the horizontal center of the panel.",
-              "3. Brightness Normalization: Adjust monitor OSD brightness to standard calibrated productivity levels (typically 20% to 40%, ~100 to 140 nits). Evaluating a screen at 100% brightness in pitch darkness exaggerates optical characteristics unrealistically.",
-              "4. Launch Screen Tester: Run the [Backlight Bleed Test](/tests/backlight-bleed-test) for full-screen black inspection, and cycle through the [Uniformity Test](/tests/uniformity-test) on 5% and 20% dark gray fields to evaluate luminance distribution. Inspect viewing angle color stability using the [Viewing Angle Test](/tests/viewing-angle-test) and our [Monitor Viewing Angles Guide](/guides/monitor-viewing-angles-explained)."
+              "3. Brightness Normalization: Adjust monitor OSD brightness to a comfortable, typical SDR brightness level suited to your room. Evaluating a screen at maximum brightness in pitch darkness unrealistically exaggerates visible light leakage and optical glow.",
+              "4. Launch Screen Tester: Run the [Backlight Bleed Test](/tests/backlight-bleed-test) for full-screen black inspection, and cycle through the [Uniformity Test](/tests/uniformity-test) on dark gray fields to evaluate luminance distribution. Inspect viewing angle color stability using the [Viewing Angle Test](/tests/viewing-angle-test) and our [Monitor Viewing Angles Guide](/guides/monitor-viewing-angles-explained)."
             ],
             "bullets": [
               "Extinguish ambient room lights to prevent concave screen reflections from mimicking panel glow.",
               "Align eye position with the manufacturer's specified curvature radius (1000R, 1500R, or 1800R).",
-              "Set brightness to 20%–40% (~120 nits) rather than forcing maximum backlight luminance.",
-              "Use dark gray fields (5% and 20%) to distinguish localized bezel pinches from broad panel gradients."
+              "Set brightness to a comfortable, typical SDR level rather than forcing maximum backlight luminance.",
+              "Use dark gray fields to distinguish localized bezel pinches from broad panel gradients."
             ]
           },
           {
             "title": "Documenting Observations & Navigating Manufacturer Policies",
             "content": [
               "If your inspection reveals localized light leakage that appears to be mechanical backlight bleed rather than optical glow, structured documentation is critical before contacting your retailer or manufacturer:",
-              "Camera Exposure Lock: Smartphone cameras utilize automated night modes that overexpose dark scenes, capturing long exposures that make even flawless panels look severely defective. To produce objective evidence, switch your smartphone camera to 'Pro' or manual mode, set ISO to 100 or 200, and set exposure time to match what your eyes actually perceive.",
+              "Optional Camera Documentation: Direct visual observation is the primary standard for display evaluation, as camera images are not a substitute for human vision—sensor dynamic range, automatic tone mapping, white balance, and computational image processing can significantly alter the visual appearance. If capturing photos for support or comparison, keeping exposure settings consistent between shots can improve photo comparisons. Switch to manual camera controls if available to avoid aggressive automated night-mode overexposure, adjusting the preview to reasonably approximate your direct visual observation.",
               "Multi-Angle Documentation: Take two photographs: one wide shot from the focal center showing the full display frame, and a second photograph looking directly perpendicular at the suspect corner from a close distance. If the light leak remains visible in the perpendicular close-up, it provides strong evidence of mechanical bezel pinching.",
               "Manufacturer vs. Retailer Avenues: Standard manufacturer warranties often classify optical glow and minor corner leakage as within manufacturing tolerances. If you find the visual experience unacceptable, exercising your initial retailer return or exchange window is generally the fastest and most reliable remedy. Consult our [Troubleshooting Guide](/knowledge-base/troubleshooting) for additional steps."
             ],
@@ -4787,7 +4787,7 @@
           },
           {
             "question": "Why does my curved monitor seem to have glowing corners when sitting close?",
-            "answer": "When sitting closer than the monitor's designed curvature radius (for example, sitting 50cm away from an 1800R screen), your line of sight hits the outer edges at steep angles exceeding 30° to 45°. On IPS panels, this triggers off-axis liquid crystal birefringence (IPS glow). Stepping back to the recommended focal distance restores a perpendicular angle of incidence and significantly reduces corner glow."
+            "answer": "When sitting substantially closer than the monitor's designed curvature radius, your line of sight hits the outer edges at steep off-axis angles. On IPS panels, this triggers off-axis liquid crystal birefringence (IPS glow). Stepping back toward the recommended focal distance restores a more perpendicular viewing angle and noticeably reduces corner glow."
           },
           {
             "question": "Why are most curved gaming monitors built with VA panels rather than IPS?",
@@ -4795,7 +4795,7 @@
           },
           {
             "question": "How can I photograph backlight bleed accurately without my phone overexposing it?",
-            "answer": "Avoid standard automatic smartphone camera mode, which automatically engages night mode and takes high-gain, long-exposure photos that exaggerate glow unrealistically. Switch to manual or 'Pro' mode, set ISO to 100 or 200, adjust the shutter speed until the on-screen preview matches what your eyes see in the dark room, and lock focus on the center of the display."
+            "answer": "Photographic records are optional and cannot replace direct visual inspection, because camera sensors, exposure curves, and post-processing algorithms distort perceived luminance. If documenting the display, avoid automated night modes that take overexposed, high-gain photos. If your camera supports manual controls, use consistent exposure settings and adjust the preview so it reasonably resembles what you visually observe in the room."
           },
           {
             "question": "Can Screen Tester measure my monitor's optical contrast ratio or candela output?",

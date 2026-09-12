@@ -4656,7 +4656,7 @@
         ],
         "howToTest": [
           "Führen Sie die Prüfung nachts in einem vollständig abgedunkelten Raum ohne störende Lampen oder Spiegelungen durch",
-          "Stellen Sie die Monitorhelligkeit auf einen normalen Arbeitswert ein (typischerweise 20% bis 40%, ca. 100–140 Nits; vermeiden Sie erzwungene 100%)",
+          "Stellen Sie die OSD-Helligkeit des Monitors auf eine angenehme, typische SDR-Helligkeit ein statt auf Extremwerte (vermeiden Sie maximale Helligkeit, sofern dies nicht Ihrer normalen Arbeitsumgebung entspricht).",
           "Starten Sie den [Backlight-Bleed-Test](/tests/backlight-bleed-test) in Screen Tester, um ein rein schwarzes Vollbild darzustellen",
           "Nehmen Sie die Sitzposition im spezifizierten Krümmungsradius ein (z. B. ca. 1,0 m bei 1000R) und richten Sie die Augenhöhe auf die Panelmitte aus",
           "Führen Sie den Parallaxen-Kopfbewegungstest durch: Bewegen Sie den Kopf seitlich und blicken Sie frontal auf Ecken; wandert der Schein, ist es optischer Glow",
@@ -4680,12 +4680,12 @@
           "Backlight Bleed: Übermäßiger Klemmdruck bei der Rahmenmontage im Werk quetscht das empfindliche Panelsandwich",
           "Backlight Bleed: Thermische Ausdehnung verzieht die interne Lichtleiterplatte (LGP) bei längerem Betrieb",
           "IPS Glow: Konstruktionsbedingte optische Doppelbrechung horizontal ausgerichteter Flüssigkristalle bei In-Plane Switching",
-          "Krümmungsgeometrie: Sitzen außerhalb des Krümmungsradius (z. B. 50 cm vor einem 1500R-Panel) führt zu extremen Randbetrachtungswinkeln",
+          "Krümmungsgeometrie: Ein Sitzabstand, der deutlich unter dem Krümmungsradius des Monitors liegt, wodurch die Ränder in steilen Winkeln betrachtet werden.",
           "Curved VA Gammashift: Schräger Lichtdurchtritt durch vertikal ausgerichtete Flüssigkristalle hellt dunkle Schattentöne an Außenkanten auf"
         ],
         "whatToDoNext": [
-          "Passen Sie Ihren Sitzabstand dem Krümmungsradius Ihres Monitors an (typisch 1,0 m bei 1000R, 1,5 m bei 1500R), um schräge Randblickwinkel zu minimieren",
-          "Installieren Sie eine dezente 6500K-Bias-Beleuchtung hinter dem Display, um die Pupillenerweiterung im Dunkeln zu mindern und den Kontrasteindruck zu verbessern",
+          "Wählen Sie einen Betrachtungsabstand nahe dem Krümmungsradius Ihres Monitors, um schräge Blickwinkel an den Rändern zu minimieren.",
+          "Nutzen Sie eine dezente, neutrale Umgebungs- oder Hintergrundbeleuchtung (Bias Lighting) hinter dem Bildschirm, um die Pupillenerweiterung im Dunkeln zu verringern und den wahrgenommenen Schwarzwert ohne störende Reflexionen zu verbessern.",
           "Prüfen Sie die Bildhomogenität auf Graustufen mit dem [Uniformity-Test](/tests/uniformity-test) und nutzen Sie den [Blickwinkel-Leitfaden](/guides/monitor-viewing-angles-explained)",
           "Wenn intensives, punktuelles Bleed auch bei frontaler Betrachtung aus 2 Metern Abstand unverändert sichtbar bleibt, reklamieren Sie das Gerät beim Händler"
         ],
@@ -4737,7 +4737,7 @@
               "In-Plane Switching (IPS): Bietet hervorragende Farbkonstanz für grafische Arbeiten. Da die Flüssigkristalle parallel zum Trägerglas liegen, zeigen gekrümmte IPS-Panels an den Rändern bauartbedingten Glow, wenn man außerhalb des Fokusradius sitzt. Spezielle A-TW-Polarisationsfilter können dies unterdrücken, kommen jedoch fast nur in teuren Profi-Bildschirmen vor.",
               "Vertical Alignment (VA): Nutzt im Dunkelzustand senkrecht ausgerichtete Kristalle, was hohe Kontrastwerte (3.000:1 bis 5.000:1) und minimale Aufhellungen auf Schwarz ermöglicht. Allerdings weisen VA-Panels bei Schrägsicht einen Gammashift auf, durch den dunkle Farben verblassen. Hersteller krümmen große VA-Panels daher gezielt, um die Ränder senkrecht zum Betrachter auszurichten.",
               "Twisted Nematic (TN): Schnelle Schaltzeiten, aber stark eingeschränkte Blickwinkel mit vertikaler Farbinvertierung; bei modernen Curved-Displays kaum anzutreffen.",
-              "Organic Light Emitting Diode (OLED): Selbstleuchtende Pixel ohne Hintergrundbeleuchtung erzeugen echtes 0,000-Nit-Schwarz ohne Bleed oder IPS Glow. Gekrümmte OLEDs bieten perfekten Dunkelraumkontrast, wenngleich Antireflexbeschichtungen bei extremen Winkeln minimale Farbtonabweichungen zeigen können."
+              "Organic Light Emitting Diode (OLED): Selbstemittierende Architektur, bei der jedes Subpixel eigenständig leuchtet. OLED-Panels bieten echtes Tiefschwarz durch vollständiges Abschalten einzelner Subpixel, ganz ohne Backlight Bleed oder IPS Glow – sowohl auf flachen als auch auf gekrümmten Flächen. Gekrümmte OLEDs behalten ihren Kontrast auch bei weiten Winkeln bei, wenngleich Antireflexbeschichtungen bei extremen Blickwinkeln leichte Farbverschiebungen zeigen können."
             ],
             "bullets": [
               "IPS: Sehr hohe Farbgenauigkeit mit charakteristischem Schrägblick-Glow auf tiefem Schwarz.",
@@ -4752,21 +4752,21 @@
               "Eine aussagekräftige Beurteilung gekrümmter Displays erfordert ein diszipliniertes Vorgehen, um Fehlschlüsse durch Raumlicht oder Fehlhaltungen auszuschließen:",
               "1. Raumbeleuchtung: Schalten Sie alle Deckenleuchten und Schreibtischlampen aus. Gekrümmte Bildschirme bündeln Lichtquellen hinter dem Betrachter und reflektieren diese als verzerrte Streifen auf der Oberfläche.",
               "2. Ausrichtung im Fokus: Positionieren Sie Ihren Stuhl im deklarierten Krümmungsradius (1000R = 1,0 m; 1500R = 1,5 m). Bringen Sie die Augenhöhe auf die vertikale Mitte des Bildschirms.",
-              "3. Helligkeit normalisieren: Stellen Sie die Helligkeit im Monitormenü auf praxistaugliche Werte ein (typisch 20% bis 40%, ca. 100 bis 140 Nits). Eine Prüfung bei 100% Maximalhelligkeit in völliger Dunkelheit verzerrt die Realität.",
-              "4. Screen Tester starten: Nutzen Sie den [Backlight-Bleed-Test](/tests/backlight-bleed-test) für schwarze Vollbilder und wechseln Sie zum [Uniformity-Test](/tests/uniformity-test) auf 5% und 20% Dunkelgrau. Prüfen Sie Farbveränderungen mit dem [Blickwinkel-Test](/tests/viewing-angle-test) und unserem [Blickwinkel-Leitfaden](/guides/monitor-viewing-angles-explained)."
+              "3. Helligkeitsanpassung: Stellen Sie die OSD-Helligkeit auf ein angenehmes, typisches SDR-Niveau ein, das zu Ihrer Raumumgebung passt. Ein Test bei maximaler Helligkeit in völliger Dunkelheit überzeichnet sichtbare Lichtlecks und optisches Glühen unrealistisch.",
+              "4. Screen Tester starten: Führen Sie den [Backlight Bleed Test](/tests/backlight-bleed-test) zur Vollbild-Schwarzprüfung aus und wechseln Sie im [Uniformity Test](/tests/uniformity-test) durch dunkelgraue Testfelder, um die Helligkeitsverteilung zu beurteilen. Prüfen Sie die Blickwinkelstabilität mit dem [Viewing Angle Test](/tests/viewing-angle-test) und unserem [Leitfaden zu Monitor-Blickwinkeln](/guides/monitor-viewing-angles-explained)."
             ],
             "bullets": [
               "Raumlicht löschen, um streifenförmige Spiegelungen auf der konkaven Wölbung zu verhindern.",
               "Betrachtungsabstand exakt auf den Krümmungsradius (1000R, 1500R oder 1800R) abstimmen.",
-              "Helligkeit auf 20%–40% (~120 Nits) einstellen, anstatt extreme Maximalwerte zu erzwingen.",
-              "Dunkelgraue Testflächen (5% und 20%) nutzen, um punktuelle Rahmenfehler von Panelverläufen zu trennen."
+              "Wählen Sie eine angenehme, typische SDR-Helligkeit statt der maximalen Hintergrundbeleuchtung.",
+              "Nutzen Sie dunkelgraue Flächen, um punktuelle Rahmenklemmungen von großflächigen Panel-Farbverläufen zu unterscheiden."
             ]
           },
           {
             "title": "Dokumentation für den Kundensupport und Reklamationsabwicklung",
             "content": [
               "Zeigt die Prüfung punktuelle Lichthöfe, die auf mechanisches Backlight Bleed hindeuten, ist eine saubere Dokumentation vor der Kontaktaufnahme mit Händler oder Hersteller entscheidend:",
-              "Manueller Belichtungsabgleich: Smartphone-Kameras aktivieren bei Dunkelheit automatisch einen Nachtmodus, der durch lange Belichtungszeiten selbst fehlerfreie Displays extrem überstrahlt darstellt. Nutzen Sie den 'Pro'-Modus Ihres Smartphones, wählen Sie ISO 100 oder 200 und justieren Sie die Verschlusszeit so, dass das Foto dem tatsächlichen Seheindruck entspricht.",
+              "Optionale Kameradokumentation: Die direkte visuelle Beobachtung bleibt der maßgebliche Standard für die Displayprüfung. Kameraaufnahmen sind kein Ersatz für das menschliche Auge, da Dynamikumfang des Sensors, automatisches Tonemapping, Weißabgleich und Nachbearbeitungsalgorithmen das Erscheinungsbild erheblich verfälschen können. Falls Sie Vergleichsfotos anfertigen, sorgen einheitliche Belichtungseinstellungen für aussagekräftigere Vergleiche. Nutzen Sie manuelle Kameraeinstellungen, um überbelichtete Nachtmodi zu vermeiden, und stimmen Sie die Bildvorschau so ab, dass sie Ihrem visuellen Eindruck im Raum möglichst nahekommt.",
               "Aufnahmen aus mehreren Winkeln: Erstellen Sie eine Gesamtaufnahme aus dem Fokuszentrum sowie eine Nahaufnahme senkrecht zur betroffenen Ecke. Ist der Lichtkegel auch bei senkrechtem Blickwinkel scharf sichtbar, belegt dies einen mechanischen Fehler.",
               "Händler- vs. Herstellergarantie: Hersteller stufen optischen Glow häufig als bauartbedingte Eigenschaft ein. Bei störenden Mängeln ist das gesetzliche Widerrufsrecht oder Rückgaberecht des Händlers meist der schnellere und sicherere Weg. Konsultieren Sie unseren [Fehlerbehebungsleitfaden](/knowledge-base/troubleshooting)."
             ],
@@ -4785,7 +4785,7 @@
           },
           {
             "question": "Warum scheinen die Ecken meines Curved-Monitors zu leuchten, wenn ich nah davor sitze?",
-            "answer": "Sitzt man näher am Bildschirm als der Krümmungsradius vorgibt (z. B. 50 cm vor einem 1800R-Monitor), treffen die Blicke auf die Außenkanten in extrem schrägen Winkeln von über 30° bis 45°. Bei IPS-Panels löst dies bauartbedingten Schrägblick-Glow aus. Wenn Sie auf den empfohlenen Abstand zurücktreten, blicken Sie wieder senkrecht auf die Ecken und der Schein geht deutlich zurück."
+            "answer": "Wenn Sie deutlich näher sitzen, als es der Krümmungsradius vorsieht, treffen Ihre Blicke in steilen Winkeln auf die Außenränder. Bei IPS-Panels führt dies zu optischer Doppelbrechung (IPS Glow). Ein Vergrößern des Abstands hin zum optimalen Fokusbereich sorgt für einen senkrechteren Einfallswinkel und mindert das Leuchten in den Ecken spürbar."
           },
           {
             "question": "Warum setzen die meisten Curved-Gaming-Monitore auf VA- statt auf IPS-Panels?",
@@ -4793,7 +4793,7 @@
           },
           {
             "question": "Wie fotografiere ich Backlight Bleed realistisch ohne Überbelichtung?",
-            "answer": "Verwenden Sie nicht die Automatik des Smartphones, da deren Nachtmodus das Bild künstlich aufhellt. Schalten Sie in den manuellen 'Pro'-Modus, wählen Sie ISO 100 oder 200 und regeln Sie die Belichtungszeit so herunter, dass das Vorschaubild exakt dem entspricht, was Sie mit bloßem Auge im dunklen Raum sehen."
+            "answer": "Fotografische Nachweise sind optional und können die direkte Betrachtung mit dem Auge nicht ersetzen, da Kamerasensoren, Belichtungskurven und Bildverarbeitungsalgorithmen die Helligkeit verzerren. Vermeiden Sie automatische Nachtmodi, die zu überbelichteten Aufnahmen führen. Wenn Ihre Kamera manuelle Einstellungen bietet, halten Sie die Belichtung konstant und passen Sie das Vorschaubild so an, dass es Ihrer tatsächlichen Wahrnehmung im Raum nahekommt."
           },
           {
             "question": "Kann Screen Tester den physischen Kontrast oder die Nit-Werte meines Monitors messen?",

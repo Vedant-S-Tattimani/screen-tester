@@ -4654,7 +4654,7 @@
         ],
         "howToTest": [
           "Realice la prueba de noche en una habitación a oscuras sin lámparas ni reflejos directos en la pantalla",
-          "Ajuste el brillo en el menú OSD a un nivel de trabajo habitual (típicamente del 20% al 40%, ~100–140 nits; evite forzar el 100%)",
+          "Ajuste el brillo OSD del monitor a un nivel SDR cómodo y habitual en lugar de un ajuste extremo (evite forzar el brillo al máximo a menos que ese sea su entorno de trabajo estándar).",
           "Inicie la [Prueba de fugas de luz](/tests/backlight-bleed-test) en Screen Tester para proyectar un lienzo negro puro a pantalla completa",
           "Siéntese en el radio focal diseñado para su monitor (por ejemplo, ~1,0 m para 1000R) y alinee los ojos con el centro de la pantalla",
           "Realice la prueba de movimiento de cabeza: mueva la cabeza y mire la esquina de frente; si el brillo se desplaza o disminuye, es resplandor angular",
@@ -4678,12 +4678,12 @@
           "Fuga de luz: Presión excesiva de ensamblaje en fábrica que comprime el perímetro del panel",
           "Fuga de luz: Dilatación térmica que deforma la placa guía de luz (LGP) o el chasis durante un uso prolongado",
           "IPS Glow: Birrefringencia óptica natural de los cristales líquidos alineados horizontalmente en tecnología IPS",
-          "Geometría de curvatura: Sentarse fuera del radio de curvatura (ej. a 50 cm de una pantalla 1800R), forzando los bordes a ángulos oblicuos",
+          "Geometría de curvatura: Sentarse sustancialmente más cerca del radio de curvatura diseñado, obligando a mirar los bordes periféricos desde ángulos muy oblicuos.",
           "Cambio de gamma en VA curvo: Paso de luz angular a través de cristales verticales que aclara los tonos oscuros perimetrales"
         ],
         "whatToDoNext": [
-          "Ajuste su distancia de visualización al radio de curvatura del monitor (típicamente 1,0 m para 1000R, 1,5 m para 1500R) para reducir ángulos oblicuos",
-          "Instale una suave iluminación de fondo neutra (6500K) tras el monitor para mitigar la dilatación pupilar y mejorar el contraste percibido",
+          "Sitúe su distancia de visualización cerca del radio focal de curvatura de su monitor para minimizar los ángulos periféricos oblicuos.",
+          "Incorpore una iluminación ambiental suave y neutra detrás de la pantalla (luz de sesgo) para reducir la dilatación pupilar en la oscuridad y profundizar el contraste percibido sin generar reflejos directos.",
           "Examine la uniformidad del panel en tonos grises con la [Prueba de uniformidad](/tests/uniformity-test) y consulte la [Guía de ángulos de visión](/guides/monitor-viewing-angles-explained)",
           "Si detecta fugas amarillas o blancas intensas y localizadas que persisten al mirar de frente a 2 metros, solicite el reemplazo al vendedor"
         ],
@@ -4735,7 +4735,7 @@
               "IPS: Ofrece una gran fidelidad cromática. Sin embargo, debido a la alineación horizontal de sus cristales, las pantallas IPS curvas manifiestan un resplandor perimetral característico si no se observa desde el centro focal exacto. Los filtros polarizadores A-TW mitigan este efecto, pero se reservan a pantallas profesionales.",
               "VA: Sus cristales verticales ofrecen un excelente contraste nativo (de 3.000:1 a 5.000:1) y un negro profundo casi sin resplandor. No obstante, acusan variaciones de gamma en ángulos laterales. Por ello, los fabricantes curvan paneles VA grandes para que los extremos miren de frente al usuario y evitar la decoloración perimetral.",
               "TN: Proporciona gran rapidez de respuesta pero ángulos muy reducidos con inversión vertical de color; apenas se emplea en monitores curvos modernos.",
-              "OLED: Al ser autoemisivo sin luz de fondo, ofrece negros puros de 0,000 nits sin fugas ni IPS glow, tanto en formato plano como curvo. El contraste es perfecto a cualquier ángulo, aunque los tratamientos antirreflejos pueden mostrar leves tintes cromáticos en ángulos muy extremos."
+              "Organic Light Emitting Diode (OLED): Arquitectura autoemisiva donde cada subpíxel se ilumina de forma independiente. Las pantallas OLED ofrecen negros puros y profundos mediante el apagado individual de subpíxeles, sin fugas de luz ni brillo IPS tanto en paneles planos como curvos. Los paneles OLED curvos mantienen un contraste impecable en ángulos amplios, aunque los tratamientos antirreflejos pueden inducir leves cambios de tono en ángulos extremadamente rasantes."
             ],
             "bullets": [
               "IPS: Excelente colorimetría con brillo angular característico en fondos oscuros.",
@@ -4750,21 +4750,21 @@
               "Una evaluación rigurosa requiere un procedimiento sistemático para evitar falsos diagnósticos provocados por iluminación ambiental inadecuada:",
               "1. Iluminación ambiental: Apague todas las luces del techo y lámparas. La superficie cóncava de las pantallas curvas concentra la luz situada tras el usuario, reflejándola como franjas estiradas de destello.",
               "2. Posición en el radio focal: Siéntese a la distancia que marca la curvatura del monitor (1000R = 1,0 m; 1500R = 1,5 m) y centre la altura de sus ojos con la pantalla.",
-              "3. Calibración de brillo: Establezca el brillo OSD en valores reales de trabajo (20% al 40%, unos 100 a 140 nits). Evaluar el monitor al 100% en oscuridad absoluta genera expectativas irreales.",
-              "4. Ejecutar Screen Tester: Use la [Prueba de fugas de luz](/tests/backlight-bleed-test) y alterne con la [Prueba de uniformidad](/tests/uniformity-test) en grises del 5% y 20%. Valore los ángulos de visión con la [Prueba de ángulos de visión](/tests/viewing-angle-test) y nuestra [Guía de ángulos de visión](/guides/monitor-viewing-angles-explained)."
+              "3. Normalización del brillo: Configure el brillo OSD del monitor en un nivel SDR cómodo y habitual adaptado a su habitación. Evaluar una pantalla al brillo máximo en completa oscuridad exagera de forma poco realista las fugas de luz y el resplandor óptico.",
+              "4. Iniciar Screen Tester: Ejecute el [Test de Fugas de Luz](/tests/backlight-bleed-test) para una inspección en negro completo y examine campos gris oscuro en el [Test de Uniformidad](/tests/uniformity-test) para evaluar la distribución de luminancia. Compruebe la estabilidad de color en ángulos con el [Test de Ángulo de Visión](/tests/viewing-angle-test) y nuestra [Guía de Ángulos de Visión](/guides/monitor-viewing-angles-explained)."
             ],
             "bullets": [
               "Apague las luces para evitar que los reflejos en la concavidad se confundan con defectos del panel.",
               "Alinee su asiento con el radio focal exacto especificado (1000R, 1500R o 1800R).",
-              "Ajuste el brillo al 20%–40% (~120 nits) en lugar de forzar la luminancia máxima.",
-              "Emplee fondos gris oscuro (5% y 20%) para aislar pinzamientos de borde de gradientes generales."
+              "Ajuste el brillo a un nivel SDR cómodo y típico en lugar de forzar la luminancia máxima del panel.",
+              "Utilice patrones gris oscuro para distinguir puntos de presión del marco de gradientes generales del panel."
             ]
           },
           {
             "title": "Documentación para soporte técnico y gestión de garantías",
             "content": [
               "Si la inspección revela escapes de luz compatibles con fugas mecánicas, recopilar pruebas objetivas facilitará la gestión con la tienda o el fabricante:",
-              "Bloqueo manual de la cámara: El modo noche automático de los teléfonos móviles sobreexpone las escenas oscuras, haciendo que paneles correctos parezcan defectuosos. Utilice el modo manual o 'Pro', seleccione ISO 100 o 200 y reduzca el tiempo de exposición hasta que la imagen coincida con lo que ven sus ojos.",
+              "Documentación fotográfica opcional: La observación visual directa es el criterio primordial para evaluar una pantalla, ya que las fotografías no sustituyen la visión humana; el rango dinámico del sensor, el mapeo de tonos automático, el balance de blancos y el procesado digital alteran significativamente el resultado visual. Si toma fotografías con fines comparativos, mantener ajustes de exposición consistentes entre tomas mejora la comparación. Emplee controles manuales para evitar la sobreexposición del modo nocturno automático y ajuste la vista previa para que refleje de forma verosímil lo que observa directamente.",
               "Fotografías desde varios ángulos: Tome una foto general desde el centro focal y otra de cerca perpendicular a la esquina afectada. Si el haz de luz continúa visible de frente, constituye una prueba sólida de pinzamiento del chasis.",
               "Canales comerciales: Muchos fabricantes consideran el brillo angular dentro de los márgenes de tolerancia técnica. Si el comportamiento le resulta molesto, el plazo de devolución inicial de la tienda suele ser el cauce más rápido. Consulte nuestra [Guía de resolución de problemas](/knowledge-base/troubleshooting)."
             ],
@@ -4783,7 +4783,7 @@
           },
           {
             "question": "¿Por qué las esquinas de mi monitor curvo parecen brillar cuando me siento cerca?",
-            "answer": "Al colocarse más cerca del radio focal diseñado (por ejemplo, a 50 cm de una pantalla 1800R), la vista alcanza las esquinas con ángulos oblicuos superiores a 30° o 45°. En paneles IPS, esto provoca birrefringencia angular (IPS glow). Al alejarse a la distancia adecuada, la mirada vuelve a ser perpendicular y el resplandor se reduce drásticamente."
+            "answer": "Al sentarse sustancialmente más cerca del radio de curvatura previsto, la línea de visión incide sobre los bordes laterales en ángulos oblicuos pronunciados. En paneles IPS, esto desencadena birrefringencia óptica (IPS glow). Alejarse hacia la distancia focal recomendada restablece un ángulo de visión más perpendicular y reduce sensiblemente el resplandor en las esquinas."
           },
           {
             "question": "¿Por qué la mayoría de monitores curvos emplean paneles VA en lugar de IPS?",
@@ -4791,7 +4791,7 @@
           },
           {
             "question": "¿Cómo puedo fotografiar las fugas de luz sin que el móvil las sobreexponga?",
-            "answer": "Evite el modo automático del teléfono, ya que activa el modo nocturno y captura exposiciones largas con excesiva ganancia. Seleccione el modo 'Pro' o manual, fije un valor ISO bajo (100 o 200) y ajuste el tiempo de exposición hasta que la pantalla del móvil refleje fielmente lo que observa en la habitación a oscuras."
+            "answer": "Las fotografías son opcionales y no sustituyen la inspección visual directa, ya que los sensores de cámara, curvas de exposición y algoritmos de procesado distorsionan la luminancia percibida. Evite los modos nocturnos automáticos que generan fotos sobreexpuestas con ruido. Si su cámara dispone de controles manuales, mantenga una exposición consistente y ajuste la imagen hasta que se asemeje a lo que sus ojos observan en la habitación."
           },
           {
             "question": "¿Puede Screen Tester medir la relación de contraste física o los nits de mi monitor?",
