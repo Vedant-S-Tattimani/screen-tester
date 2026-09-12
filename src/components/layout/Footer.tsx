@@ -51,6 +51,15 @@ const DIRECTORY_BADGES = [
     width: 160,
     height: 44,
   },
+  {
+    name: "SaaSLineup",
+    href: "https://saaslineup.com/product/screen-tester?ref=badge",
+    rel: "dofollow",
+    src: "https://saaslineup.com/badge/screen-tester.svg",
+    alt: "Featured on SaaSLineup",
+    width: 160,
+    height: 44,
+  },
 ];
 
 export function Footer() {
