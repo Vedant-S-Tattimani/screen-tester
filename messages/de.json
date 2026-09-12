@@ -3725,7 +3725,7 @@
           "Schalten Sie die verfügbaren Overdrive-Stufen schrittweise durch (z. B. Aus, Normal, Schnell, Extrem); ermitteln Sie die Stufe, die Nachziehen reduziert, ohne helle Halos zu erzeugen.",
           "Starten Sie den [Bewegungsunschärfe-Test](/tests/motion-blur-test), um die Trägheit des Auges (Sample-and-Hold) von physikalischen Schaltzeitverzögerungen zu unterscheiden.",
           "Falls Sie G-Sync oder FreeSync nutzen, prüfen Sie das Verhalten bei schwankenden Bildraten mit dem [VRR-Test](/tests/vrr-test), um Overshoot bei niedrigeren Hz aufzudecken.",
-          "Wiederholen Sie die Beobachtungen bei Ihrer normalen Arbeits-Bildwiederholrate und nachdem das Display seine Betriebstemperatur erreicht hat."
+          "Wiederholen Sie die Beobachtungen bei Ihrer normalen Arbeits-Bildwiederholrate und nachdem das Display thermisch stabilisiert ist."
         ],
         "whatScreenTesterCanObserve": [
           "Visuelle Beobachtung von dunklen Nachziehstreifen, Farbsilhouetten und leuchtenden Overshoot-Koronen hinter bewegten Testmustern",
@@ -3761,7 +3761,7 @@
           {
             "title": "VA-Dark-Level-Smearing: Warum Fast-Schwarz-Übergänge verzögern",
             "content": [
-              "Vertical-Alignment-Panels (VA) richten Flüssigkristallmoleküle im stromlosen Ruhezustand senkrecht zum Glassubstrat aus. Dadurch blockieren sie das Hintergrundlicht sehr effektiv, was hervorragende Schwarzwerte und statische Kontrastverhältnisse von 3000:1 bis 5000:1 ermöglicht.",
+              "Vertical-Alignment-Panels (VA) richten Flüssigkristallmoleküle im stromlosen Ruhezustand senkrecht zum Glassubstrat aus. In dieser Position blockieren sie das Hintergrundlicht sehr effektiv; VA-Displays bieten üblicherweise einen höheren nativen statischen Kontrast als viele IPS-Displays, die genauen Eigenschaften variieren jedoch je nach Panel und Modell.",
               "Der Übergang von tiefem Schwarz (RGB 0,0,0) zu dunklem Grau erfordert jedoch nur minimale elektrische Spannungsdifferenzen. Die Neuausrichtung der Moleküle bei geringer Spannung benötigt deutlich mehr Zeit als Übergänge mit vollem Spannungshub (wie Schwarz zu reinem Weiß). Bewegen sich dunkle Grafiken über dunkle Hintergründe, erzeugen die verzögerten Schaltzeiten lange schwarze oder violette Schlieren – bekannt als Dark-Level-Smearing.",
               "Dieses Verhalten variiert stark nach Panel-Generation, Monitormodell, Firmware, Overdrive-Tuning und Temperatur. Moderne 'Fast VA'-Panels haben den Rückstand gegenüber älteren Generationen deutlich verringert. Herstellerangaben wie '1 ms GtG' basieren auf handverlesenen Best-Case-Messungen und spiegeln nicht das Verhalten bei dunklen Bildwechseln wider."
             ],
@@ -3793,7 +3793,7 @@
               "1. Dark-Level-Smearing: Dunkle, violett-schwarze Nachziehspuren hinter dunklen Objekten auf dunklem Grund, verursacht durch langsame Kristallübergänge bei geringer Helligkeit (typisch für VA).",
               "2. Konventionelles Ghosting / Trailing: Schwache Silhouetten in der Originalfarbe des Objekts, verursacht durch Schaltzeiten, die länger als das Frame-Intervall sind.",
               "3. Overdrive-Overshoot / Inverses Ghosting: Helle, leuchtende Koronen um bewegte Kanten, verursacht durch übertriebene Spannungsbeschleunigung.",
-              "4. Retinale Bewegungspersistenz (Sample-and-Hold / MPRT): Ganzflächige Bewegungsunschärfe durch das Verfolgen statisch gehaltener Bilder mit dem menschlichen Auge. Tritt auf allen LCDs und OLEDs auf und wird durch höhere Bildwiederholraten oder Backlight-Strobing verringert.",
+              "4. Retinale Bewegungspersistenz (Sample-and-Hold / MPRT): Ganzflächige Bewegungsunschärfe durch das Verfolgen statisch gehaltener Bilder mit dem menschlichen Auge. Dies betrifft alle Sample-and-Hold-Displays (einschließlich OLED-Displays mit nahezu verzögerungsfreiem Pixelwechsel) und wird durch höhere Bildwiederholraten oder Backlight-Strobing verringert.",
               "5. Frame-Pacing-Probleme & Ruckeln: Ruckartige Sprünge durch unregelmäßige GPU-Bildausgabe oder V-Sync-Aussetzer, unabhängig von der Panel-Reaktionszeit."
             ],
             "bullets": [
@@ -3822,12 +3822,12 @@
             "title": "Temperatur, Betriebsbedingungen & Serienstreuung",
             "content": [
               "Flüssigkristalle befinden sich in einer Trägerflüssigkeit, deren Viskosität stark von der Temperatur abhängt. Wird ein Monitor in einem kühlen Raum eingeschaltet, ist die Flüssigkeit zäher, was die Schaltzeiten spürbar verlängert.",
-              "Direkt nach dem Kaltstart beobachtetes Nachziehen nimmt meist nach 15 bis 30 Minuten ab, sobald die Abwärme der Hintergrundbeleuchtung das Panel auf normale Betriebstemperatur bringt. Beurteilen Sie Schaltzeiten daher erst im aufgewärmten Zustand.",
+              "Direkt nach dem Kaltstart beobachtetes Nachziehen nimmt meist ab, sobald die Abwärme der Hintergrundbeleuchtung das Panel auf normale Betriebstemperatur bringt. Das Schaltzeitverhalten kann je nach Betriebsbedingungen einschließlich Temperatur variieren; eine pauschale Aufwärmdauer sollte nicht vorgegeben werden. Beurteilen Sie Schaltzeiten daher erst im thermisch stabilisierten Zustand.",
               "Zudem können zwei Monitore mit derselben Panel-Familie völlig unterschiedliche Bewegungseigenschaften zeigen. Scaler-Hardware, Firmware-Algorithmen, Werkskalibrierung und Bauteiltoleranzen beeinflussen das Ergebnis maßgeblich."
             ],
             "bullets": [
               "Kühle Raumtemperaturen erhöhen die Viskosität der Kristalle und verstärken vorübergehend das Nachziehen.",
-              "Bewerten Sie die Bewegungsschärfe erst nach 15 bis 30 Minuten Dauerbetrieb.",
+              "Bewerten Sie die Bewegungsschärfe erst, nachdem das Display in Ihrer Umgebung eine stabile Betriebstemperatur erreicht hat; gehen Sie nicht von einer festen Aufwärmdauer aus.",
               "Gleiche Panel-Typen verhalten sich bei verschiedenen Herstellern durch unterschiedliche Firmware anders.",
               "Kaltstart-Schlieren sollten nicht vorschnell als dauerhafter Hardware-Defekt eingestuft werden."
             ]

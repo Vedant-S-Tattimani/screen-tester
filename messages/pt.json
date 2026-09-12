@@ -3725,7 +3725,7 @@
           "Passe sistematicamente por cada nível de overdrive (ex.: Desligado, Normal, Rápido, Extremo); identifique a opção que atenua o rastro sem gerar halos brilhantes.",
           "Inicie o [Teste de desfoque de movimento](/tests/motion-blur-test) para distinguir a persistência ocular (sample-and-hold) dos atrasos físicos dos cristais líquidos.",
           "Se utilizar G-Sync ou FreeSync, avalie o comportamento com o [Teste de VRR](/tests/vrr-test) para verificar se ocorre overshoot em taxas de quadros mais baixas.",
-          "Repita a verificação na sua taxa de atualização habitual e após o monitor atingir a temperatura operacional ideal."
+          "Repita a verificação na sua taxa de atualização habitual e após o monitor atingir a temperatura operacional ideal estável."
         ],
         "whatScreenTesterCanObserve": [
           "Observação visual de rastros escuros, silhuetas de cor e coroas brilhantes de overshoot atrás dos padrões em movimento",
@@ -3761,7 +3761,7 @@
           {
             "title": "Smearing em tons escuros no VA: por que transições escuras demoram",
             "content": [
-              "Os painéis de alinhamento vertical (VA) posicionam as moléculas de cristal líquido de maneira perpendicular ao substrato de vidro em repouso. Nessa posição, bloqueiam a luz de fundo com extrema eficiência, alcançando pretos profundos e relações de contraste estático entre 3000:1 e 5000:1.",
+              "Os painéis de alinhamento vertical (VA) posicionam as moléculas de cristal líquido de maneira perpendicular ao substrato de vidro em repouso. Nessa posição, bloqueiam a luz de fundo com extrema eficiência; as telas VA comumente oferecem contraste estático nativo mais elevado do que muitos painéis IPS, mas as características exatas variam conforme o painel e o modelo.",
               "Entretanto, a transição do preto puro (RGB 0,0,0) para o cinza-escuro envolve diferenças mínimas de potencial elétrico. Reorientar as moléculas com baixa voltagem exige muito mais tempo físico do que transições completas (como do preto para o branco puro). Quando elementos escuros se movem sobre fundos escuros, esse atraso gera riscos pretos ou roxos — fenômeno conhecido como dark-level smearing.",
               "Esse comportamento varia conforme a geração do painel, o modelo do monitor, o firmware, o overdrive e a temperatura. Painéis modernos 'Fast VA' com acionamento de alta voltagem reduziram significativamente essa diferença. O tempo de resposta anunciado de '1 ms GtG' reflete apenas transições isoladas em condições ideais e não representa o comportamento geral em transições escuras."
             ],
@@ -3793,7 +3793,7 @@
               "1. Dark-Level Smearing: Rastros escuros ou roxos atrás de elementos escuros sobre fundos escuros, decorrentes da lentidão em transições de tons quase pretos (comum em painéis VA).",
               "2. Ghosting convencional: Silhuetas tênues com a cor original do objeto, causadas por tempos de transição GtG maiores que o ciclo do quadro.",
               "3. Overshoot de overdrive / Ghosting inverso: Halos brilhantes ou com cores invertidas contornando as bordas móveis, provocados por excesso de voltagem de overdrive.",
-              "4. Persistência retiniana (Sample-and-Hold / MPRT): Suavização geral em toda a cena decorrente do rastreamento ocular sobre quadros estáticos exibidos continuamente. Ocorre em qualquer tela LCD e OLED e é atenuada por taxas de atualização maiores ou estroboscopia.",
+              "4. Persistência retiniana (Sample-and-Hold / MPRT): Suavização geral em toda a cena decorrente do rastreamento ocular sobre quadros estáticos exibidos continuamente. Ocorre em qualquer tela sample-and-hold (incluindo telas OLED com transições de pixels quase instantâneas) e é atenuada por taxas de atualização maiores ou estroboscopia.",
               "5. Instabilidade de frame pacing e engasgos: Saltos espasmódicos e travamentos decorrentes da placa gráfica ou sincronização de quadros, independentes da velocidade do painel."
             ],
             "bullets": [
@@ -3822,12 +3822,12 @@
             "title": "Temperatura, condições operacionais e variabilidade de fabricação",
             "content": [
               "As moléculas de cristal líquido estão imersas em um fluido cuja viscosidade varia conforme a temperatura ambiente. Ao ligar o monitor em um ambiente frio, o líquido é mais denso, tornando a rotação molecular momentaneamente mais lenta.",
-              "O arrasto visual acentuado ao ligar o monitor a frio costuma diminuir gradualmente ao longo de 15 a 30 minutos, conforme o calor do backlight estabiliza o painel na sua temperatura de funcionamento normal. Avalie sempre o monitor após esse aquecimento.",
+              "O arrasto visual acentuado ao ligar o monitor a frio costuma diminuir gradualmente conforme o calor do backlight estabiliza o painel na sua temperatura de funcionamento normal. O comportamento de transição dos pixels pode variar com as condições de operação, incluindo a temperatura; não prescreva uma duração universal de aquecimento. Avalie o monitor após o equilíbrio térmico.",
               "Além disso, dois monitores que compartilham o mesmo modelo de painel podem exibir clareza de movimento bastante diferente devido a circuitos do scaler, algoritmos de firmware, calibrações de fábrica e tolerâncias dos componentes."
             ],
             "bullets": [
               "Ambientes frios aumentam a viscosidade do cristal líquido, acentuando temporariamente o rastro.",
-              "Avalie a nitidez em movimento apenas após 15 a 30 minutos de funcionamento contínuo.",
+              "Avalie a nitidez em movimento depois que a tela atingir uma temperatura operacional estável em seu ambiente; não presuma um tempo fixo de aquecimento.",
               "Painéis idênticos comportam-se de forma diferente entre fabricantes devido ao firmware do scaler.",
               "Não classifique o arrasto inicial em dias frios como um defeito definitivo de hardware."
             ]

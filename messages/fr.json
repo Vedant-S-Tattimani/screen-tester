@@ -3725,7 +3725,7 @@
           "Passez en revue chaque niveau d'overdrive disponible (ex. Désactivé, Normal, Rapide, Extrême) ; retenez celui qui atténue la traînée sans générer de halos brillants.",
           "Lancez le [Test de flou de mouvement](/tests/motion-blur-test) pour distinguer la persistance oculaire (sample-and-hold) des limites physiques des cristaux liquides.",
           "Si vous utilisez G-Sync ou FreeSync, évaluez le comportement à fréquence variable avec le [Test VRR](/tests/vrr-test) pour vérifier l'apparition d'overshoot à bas FPS.",
-          "Répétez vos observations à votre fréquence d'utilisation courante et après avoir laissé l'écran atteindre sa température de croisière."
+          "Répétez vos observations à votre fréquence d'utilisation courante et après avoir laissé l'écran atteindre la stabilité thermique."
         ],
         "whatScreenTesterCanObserve": [
           "Observation visuelle des traînées sombres, silhouettes de couleur et couronnes lumineuses d'overshoot derrière les motifs en mouvement",
@@ -3761,7 +3761,7 @@
           {
             "title": "VA Dark-Level Smearing : pourquoi les transitions sombres sont ralenties",
             "content": [
-              "Les dalles à alignement vertical (VA) disposent leurs molécules de cristaux liquides perpendiculairement au substrat de verre au repos. Dans cette position, elles bloquent le rétroéclairage avec une grande efficacité, offrant des noirs profonds et des taux de contraste statique oscillant souvent entre 3000:1 et 5000:1.",
+              "Les dalles à alignement vertical (VA) disposent leurs molécules de cristaux liquides perpendiculairement au substrat de verre au repos. Dans cette position, elles bloquent le rétroéclairage avec une grande efficacité ; les écrans VA offrent couramment un contraste statique natif supérieur à celui de nombreuses dalles IPS, mais les caractéristiques exactes varient selon la dalle et le modèle.",
               "Cependant, basculer d'un noir profond (RVB 0,0,0) à un gris très sombre ne nécessite que d'infimes variations de tension électrique. Faire pivoter les molécules sous une faible tension demande nettement plus de temps physique qu'une transition franche (comme du noir au blanc pur). Lorsque des éléments sombres défilent sur fond sombre, ce retard produit des traînées noires ou violettes étirées, appelées dark-level smearing.",
               "Ce comportement varie grandement selon la génération de la dalle, le modèle de moniteur, le micrologiciel, le calibrage de l'overdrive et la température. Les dalles 'Fast VA' récentes réduisent considérablement cet écart. Les chiffres constructeurs de '1 ms GtG' reflètent des scénarios idéaux isolés et ne décrivent pas l'ensemble des transitions sombres réelles."
             ],
@@ -3793,7 +3793,7 @@
               "1. Dark-Level Smearing : Traînées noires ou violettes étirées derrière des motifs sombres sur fond sombre, causées par la lenteur des transitions proches du noir (caractéristique des dalles VA).",
               "2. Ghosting conventionnel : Silhouettes diffuses reprenant la couleur d'origine de l'objet, dues à des temps de transition GtG supérieurs à la durée d'une trame.",
               "3. Overshoot d'overdrive / Ghosting inverse : Halos lumineux ou aux couleurs inversées (couronnes) entourant les arêtes mobiles, causés par une surtension excessive.",
-              "4. Persistance rétinienne (Sample-and-Hold / MPRT) : Flou de mouvement uniforme perçu par l'œil qui suit une image maintenue statique sur l'écran. Ce phénomène touche tous les écrans LCD et OLED et s'atténue avec de plus hautes fréquences ou l'insertion d'images noires.",
+              "4. Persistance rétinienne (Sample-and-Hold / MPRT) : Flou de mouvement uniforme perçu par l'œil qui suit une image maintenue statique sur l'écran. Ce phénomène touche tous les écrans sample-and-hold (y compris les écrans OLED aux transitions de pixels quasi instantanées) et s'atténue avec de plus hautes fréquences ou l'insertion d'images noires.",
               "5. Saccades et irrégularités de frame pacing : Sauts de position intermittents causés par la carte graphique ou une mauvaise synchronisation V-Sync, totalement indépendants du temps de réponse de la dalle."
             ],
             "bullets": [
@@ -3822,12 +3822,12 @@
             "title": "Température, conditions d'usage et variabilité de fabrication",
             "content": [
               "Les cristaux liquides baignent dans un fluide porteur dont la viscosité dépend directement de la température. À l'allumage dans une pièce fraîche, ce liquide est plus visqueux, ce qui ralentit la rotation moléculaire.",
-              "Les traînées observées lors d'un démarrage à froid s'estompent couramment au bout de 15 à 30 minutes, à mesure que la chaleur émise par le rétroéclairage amène la dalle à sa température optimale. Il convient donc d'évaluer la réactivité thermique stabilisée.",
+              "Les traînées observées lors d'un démarrage à froid s'estompent couramment à mesure que la chaleur émise par le rétroéclairage amène la dalle à sa température optimale. Le comportement de transition des pixels varie selon les conditions de fonctionnement, notamment la température ; il ne faut pas prescrire de durée universelle de préchauffage. Évaluez toujours la réactivité une fois l'équilibre thermique atteint.",
               "De plus, deux moniteurs partageant la même référence de dalle peuvent se comporter différemment en raison des composants du scaler, du micrologiciel, des tables d'overdrive d'usine et des tolérances de production."
             ],
             "bullets": [
               "Une température ambiante basse accroît la viscosité des cristaux liquides et intensifie temporairement le traînage.",
-              "N'évaluez la réactivité qu'après 15 à 30 minutes d'utilisation continue de l'écran.",
+              "N'évaluez la réactivité qu'une fois l'écran stabilisé à sa température de fonctionnement normale ; ne présumez pas d'une durée de préchauffage fixe.",
               "Des dalles identiques offrent des résultats différents selon les fabricants en raison du micrologiciel du scaler.",
               "Ne qualifiez pas trop vite de panne matérielle un traînage temporaire lié au démarrage à froid."
             ]

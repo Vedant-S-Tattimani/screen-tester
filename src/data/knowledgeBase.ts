@@ -710,7 +710,7 @@ export const KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
         {
                 "title": "VA Dark-Level Smearing: Why Near-Black Transitions Lag",
                 "content": [
-                        "Vertical Alignment (VA) panels orient liquid crystal molecules perpendicular to the glass substrate in their uncharged resting state. In this position, they block backlight illumination exceptionally well, yielding deep black levels and static contrast ratios often ranging between 3000:1 and 5000:1.",
+                        "Vertical Alignment (VA) panels orient liquid crystal molecules perpendicular to the glass substrate in their uncharged resting state. In this position, they block backlight illumination exceptionally well; VA displays commonly provide higher native static contrast than many IPS displays, but exact characteristics vary by panel and model.",
                         "However, transitioning liquid crystals between deep black (RGB 0,0,0) and dark gray involves very small electric potential differences. Reorienting molecules under low voltage differentials requires significantly more physical time than larger transitions, such as switching from black to pure white. When dark graphics move across dark or mid-gray backgrounds, the delayed liquid crystal transitions produce elongated black or purple streaks—a phenomenon known as dark-level smearing.",
                         "Crucially, dark-level transition behavior varies substantially across panel generations, specific monitor models, scaler firmware, overdrive tuning, refresh rate, and operating temperature. Modern 'Fast VA' panels with high-voltage driving have markedly reduced this gap compared to legacy designs. Quoted manufacturer response times (e.g., '1ms GtG') reflect cherry-picked best-case transitions and do not describe all pixel transitions equally."
                 ],
@@ -742,7 +742,7 @@ export const KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
                         "1. Dark-Level Smearing: Elongated dark or purple streaks trailing dark objects across dark backgrounds, caused specifically by slow near-black liquid crystal transitions (prevalent on VA panels).",
                         "2. Conventional Ghosting / Trailing: Soft silhouettes matching the moving object's original color, caused by liquid crystal transition times that exceed the refresh frame interval across standard color pairs.",
                         "3. Overdrive Overshoot / Inverse Ghosting: Bright glowing or inverted color halos (coronas) outlining moving edges, caused by excessive overdrive voltage boosting pixels past their target luminance.",
-                        "4. Eye Tracking Persistence (Sample-and-Hold / MPRT): Full-scene uniform motion softness caused by the human eye smoothly tracking moving imagery while each frame is held statically on screen. This affects all sample-and-hold displays (including 0.03ms OLEDs) and is mitigated primarily by higher refresh rates or backlight strobing.",
+                        "4. Eye Tracking Persistence (Sample-and-Hold / MPRT): Full-scene uniform motion softness caused by the human eye smoothly tracking moving imagery while each frame is held statically on screen. This affects all sample-and-hold displays (including OLED displays with near-instantaneous pixel transitions) and is mitigated primarily by higher refresh rates or backlight strobing.",
                         "5. Low Frame Rate & Frame Pacing Issues: Discrete positional stutter, hitching, or judder caused by irregular GPU frame delivery or V-Sync mismatch, entirely independent of display panel pixel response."
                 ],
                 "bullets": [
@@ -771,12 +771,12 @@ export const KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
                 "title": "Temperature, Operating Conditions & Panel Variations",
                 "content": [
                         "Liquid crystals are suspended in a fluid matrix whose physical viscosity changes with ambient operating temperature. When a monitor is first turned on in a cold room, the fluid is denser, temporarily slowing down molecular rotation.",
-                        "Users may observe pronounced dark smearing or trailing upon a cold boot that gradually diminishes over 15 to 30 minutes as internal backlight warmth raises the panel to normal operating temperature. For accurate evaluation, always test motion performance after the display has reached thermal equilibrium.",
+                        "Users may observe pronounced dark smearing or trailing upon a cold boot that gradually diminishes as internal backlight warmth raises the panel to normal operating temperature. Pixel-transition behavior can vary with operating conditions including temperature; do not prescribe a universal warm-up duration. For accurate evaluation, test motion performance after the display has reached thermal equilibrium.",
                         "Furthermore, two monitors utilizing the identical panel family can exhibit noticeably different motion characteristics. Differences in scaler hardware, firmware algorithms, factory overdrive look-up tables (LUTs), and manufacturing tolerances mean that motion clarity cannot be judged solely by panel type or datasheet specifications."
                 ],
                 "bullets": [
                         "Cold ambient temperatures increase liquid crystal fluid viscosity, temporarily slowing transitions until the display warms up.",
-                        "Evaluate motion clarity only after the monitor has operated continuously for 15 to 30 minutes in normal ambient conditions.",
+                        "Evaluate motion clarity after the display has reached stable operating temperature in your ambient environment; do not assume a fixed warm-up duration.",
                         "Identical panel families behave differently across monitor models due to proprietary scaler firmware and overdrive tuning.",
                         "Avoid categorizing temporary cold-start trailing as a permanent hardware defect."
                 ]

@@ -3725,7 +3725,7 @@
           "Alterne sistemáticamente entre los niveles de overdrive (p. ej., Desactivado, Normal, Rápido, Extremo); identifique el nivel que reduce el rastro sin generar halos brillantes.",
           "Inicie la [Prueba de desenfoque de movimiento](/tests/motion-blur-test) para distinguir la persistencia ocular (sample-and-hold) de las limitaciones de respuesta física del píxel.",
           "Si utiliza G-Sync o FreeSync, evalúe el comportamiento con la [Prueba de VRR](/tests/vrr-test) para comprobar si aparece overshoot a frecuencias más bajas.",
-          "Repita las observaciones a su frecuencia de actualización de trabajo habitual y tras permitir que la pantalla alcance su temperatura normal."
+          "Repita las observaciones a su frecuencia de actualización de trabajo habitual y tras permitir que la pantalla alcance la estabilidad térmica."
         ],
         "whatScreenTesterCanObserve": [
           "Observación visual de rastros oscuros, siluetas de color y coronas brillantes de overshoot tras patrones móviles",
@@ -3761,7 +3761,7 @@
           {
             "title": "Dark-Level Smearing en paneles VA: por qué tardan las transiciones oscuras",
             "content": [
-              "Los paneles de alineación vertical (VA) orientan las moléculas de cristal líquido de forma perpendicular al sustrato de vidrio en su estado de reposo. En esta posición bloquean la luz de fondo con gran eficacia, logrando negros profundos y contrastes estáticos de entre 3000:1 y 5000:1.",
+              "Los paneles de alineación vertical (VA) orientan las moléculas de cristal líquido de forma perpendicular al sustrato de vidrio en su estado de reposo. En esta posición bloquean la luz de fondo con gran eficacia; las pantallas VA suelen ofrecer un contraste estático nativo superior al de muchas pantallas IPS, aunque las características exactas varían según el panel y el modelo.",
               "Sin embargo, la transición entre negro profundo (RGB 0,0,0) y gris oscuro implica diferencias de potencial eléctrico muy reducidas. Reorientar las moléculas con voltajes pequeños requiere mucho más tiempo físico que transiciones con voltaje completo (como de negro a blanco puro). Cuando objetos oscuros se mueven sobre fondos oscuros, la demora produce estelas negras o púrpuras: el dark-level smearing.",
               "Este comportamiento varía según la generación del panel, el modelo de monitor, el firmware, el ajuste de overdrive y la temperatura. Los paneles 'Fast VA' modernos han reducido notablemente esta brecha. Las cifras comerciales de '1 ms GtG' representan casos ideales seleccionados y no reflejan el promedio en transiciones oscuras."
             ],
@@ -3793,7 +3793,7 @@
               "1. Dark-Level Smearing: Estelas oscuras o púrpuras tras gráficos oscuros sobre fondos oscuros, provocadas por transiciones lentas cerca del negro (común en VA).",
               "2. Ghosting / Trailing convencional: Siluetas tenues del mismo color que el objeto, causadas por tiempos de transición física superiores al intervalo del fotograma.",
               "3. Overshoot de overdrive / Ghosting inverso: Halos brillantes o invertidos (coronas) que bordean los objetos, provocados por voltaje excesivo de overdrive.",
-              "4. Persistencia retiniana (Sample-and-Hold / MPRT): Desenfoque uniforme en toda la escena producido por el seguimiento ocular sobre fotogramas estáticos en pantalla. Afecta a paneles LCD y OLED y se mitiga con mayores hercios o parpadeo de retroiluminación.",
+              "4. Persistencia retiniana (Sample-and-Hold / MPRT): Desenfoque uniforme en toda la escena producido por el seguimiento ocular sobre fotogramas estáticos en pantalla. Afecta a todas las pantallas sample-and-hold (incluidas las pantallas OLED con transiciones de píxel prácticamente instantáneas) y se mitiga con mayores hercios o parpadeo de retroiluminación.",
               "5. Problemas de frame pacing y tirones: Saltos discontinuos de posición debidos a una entrega irregular de fotogramas por la GPU o desajustes de V-Sync, ajenos al tiempo de respuesta del panel."
             ],
             "bullets": [
@@ -3822,12 +3822,12 @@
             "title": "Temperatura, condiciones ambientales y variación de fabricación",
             "content": [
               "Los cristales líquidos están suspendidos en un fluido cuya viscosidad física varía con la temperatura ambiente. Al encender un monitor en una habitación fría, el fluido es más denso, ralentizando la rotación molecular.",
-              "Es habitual notar mayor arrastre oscuro al encender en frío, el cual remite tras 15 a 30 minutos cuando el calor interno eleva el panel a su temperatura de funcionamiento. Evalúe siempre la pantalla una vez estabilizada térmicamente.",
+              "Es habitual notar mayor arrastre oscuro al encender en frío, el cual remite a medida que el calor interno eleva el panel a su temperatura de funcionamiento. El comportamiento de transición de los píxeles puede variar con las condiciones de uso, incluida la temperatura; no prescriba una duración fija de calentamiento. Evalúe siempre la pantalla una vez estabilizada térmicamente.",
               "Asimismo, dos monitores con la misma familia de panel pueden rendir de forma distinta debido a algoritmos de firmware, circuitería del escalador, tablas de calibración de fábrica y tolerancias de ensamblaje."
             ],
             "bullets": [
               "Las temperaturas bajas aumentan la viscosidad del cristal líquido, incrementando temporalmente el arrastre.",
-              "Evalúe la nitidez de movimiento únicamente tras 15 a 30 minutos de funcionamiento continuo.",
+              "Evalúe la nitidez de movimiento una vez que la pantalla haya alcanzado una temperatura operativa estable en su entorno; no asuma una duración fija de calentamiento.",
               "Paneles idénticos rinden de forma diferente según el fabricante debido al firmware y ajuste del escalador.",
               "No catalogue el arrastre temporal en frío como un fallo permanente de hardware."
             ]
