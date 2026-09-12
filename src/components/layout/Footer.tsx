@@ -77,6 +77,15 @@ const DIRECTORY_BADGES = [
     alt: "Featured on toolfame.com",
     height: 54,
   },
+  {
+    name: "NextBigProduct",
+    href: "https://nextbigproduct.com/product/screen-tester",
+    rel: "noopener noreferrer",
+    src: "https://nextbigproduct.com/assets/badge/screen-tester.svg?theme=light",
+    alt: "Featured on NextBigProduct",
+    width: 250,
+    height: 54,
+  },
 ];
 
 export function Footer() {
