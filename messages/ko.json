@@ -1798,7 +1798,7 @@
       "osdLinksTitle": "OSD 및 신호 검증 테스트"
     },
     "displayportVsHdmi": {
-      "metaTitle": "DisplayPort vs HDMI: 대역폭, 리비전 규격 및 크로마 서브샘플링 비교 | Screen Tester",
+      "metaTitle": "DisplayPort vs HDMI: 대역폭, 리비전 규격 및 크로마 서브샘플링 비교",
       "metaDescription": "DisplayPort와 HDMI의 대역폭(총 링크 vs 유효 페이로드), 리비전 규격(DP 1.4/2.1, HDMI 2.0/2.1), 크로마 서브샘플링(RGB vs 4:2:0), 디스플레이 병목 해결 가이드.",
       "badge": "기술 프로토콜 가이드",
       "title": "DisplayPort vs HDMI: 대역폭, 리비전 규격 및 크로마 서브샘플링 비교",

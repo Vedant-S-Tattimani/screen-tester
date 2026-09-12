@@ -1837,7 +1837,7 @@
       "osdLinksTitle": "OSD & Signal Verification Tests"
     },
     "displayportVsHdmi": {
-      "metaTitle": "DisplayPort vs HDMI: Bandwidth, Revisions & Chroma Subsampling | Screen Tester",
+      "metaTitle": "DisplayPort vs HDMI: Bandwidth, Revisions & Chroma Subsampling",
       "metaDescription": "In-depth guide to DisplayPort vs HDMI bandwidth, raw vs usable payload rates, protocol revisions (DP 1.4/2.1, HDMI 2.0/2.1), chroma subsampling (RGB vs 4:2:0), and resolving display bottlenecks.",
       "badge": "Technical Protocol Guide",
       "title": "DisplayPort vs HDMI: Bandwidth, Revisions & Chroma Subsampling",

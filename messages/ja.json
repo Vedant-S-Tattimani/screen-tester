@@ -1798,7 +1798,7 @@
       "osdLinksTitle": "OSD・信号検証テスト"
     },
     "displayportVsHdmi": {
-      "metaTitle": "DisplayPort vs HDMI: 帯域幅・規格リビジョン・クロマサブサンプリング徹底解説 | Screen Tester",
+      "metaTitle": "DisplayPort vs HDMI: 帯域幅・規格リビジョン・クロマサブサンプリング徹底解説",
       "metaDescription": "DisplayPortとHDMIの帯域幅（総リンク vs 有効ペイロード）、規格リビジョン（DP 1.4/2.1、HDMI 2.0/2.1）、クロマサブサンプリング（RGB vs 4:2:0）、ボトルネック解消の技術解説。",
       "badge": "プロトコル技術解説ガイド",
       "title": "DisplayPort vs HDMI: 帯域幅・規格リビジョン・クロマサブサンプリング解説",

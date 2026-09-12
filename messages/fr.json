@@ -1798,7 +1798,7 @@
       "osdLinksTitle": "Tests de vérification du signal et de l'OSD"
     },
     "displayportVsHdmi": {
-      "metaTitle": "DisplayPort vs HDMI : Bande passante, révisions et sous-échantillonnage | Screen Tester",
+      "metaTitle": "DisplayPort vs HDMI : Bande passante, révisions et sous-échantillonnage",
       "metaDescription": "Guide technique complet sur DisplayPort vs HDMI : bande passante brute vs utile, révisions (DP 1.4/2.1, HDMI 2.0/2.1), sous-échantillonnage chromatique (RGB vs 4:2:0) et goulots d'étranglement.",
       "badge": "Guide technique de protocoles",
       "title": "DisplayPort vs HDMI : Bande passante, révisions et sous-échantillonnage chromatique",

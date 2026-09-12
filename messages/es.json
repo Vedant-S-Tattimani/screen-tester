@@ -1798,7 +1798,7 @@
       "osdLinksTitle": "Pruebas de verificación de señal y OSD"
     },
     "displayportVsHdmi": {
-      "metaTitle": "DisplayPort vs HDMI: Ancho de banda, revisiones y submuestreo de croma | Screen Tester",
+      "metaTitle": "DisplayPort vs HDMI: Ancho de banda, revisiones y submuestreo de croma",
       "metaDescription": "Guía técnica completa sobre DisplayPort vs HDMI: ancho de banda bruto vs útil, revisiones (DP 1.4/2.1, HDMI 2.0/2.1), submuestreo de croma (RGB vs 4:2:0) y resolución de cuellos de botella.",
       "badge": "Guía técnica de protocolos",
       "title": "DisplayPort vs HDMI: Ancho de banda, revisiones y submuestreo de croma",
