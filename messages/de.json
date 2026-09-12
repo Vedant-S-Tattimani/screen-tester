@@ -1476,6 +1476,325 @@
       "workflowCtaDesc": "Starten Sie unsere interaktive Gebrauchtmonitor-Inspektion, um alle Diagnosetests Schritt für Schritt auf Ihrem Laptop durchzuführen.",
       "workflowCtaButton": "Gebrauchtmonitor-Inspektion starten",
       "relatedTestsHeading": "Empfohlene Prüf-Tools"
+    },
+    "newMonitor": {
+      "metaTitle": "Prüf- und Rückgabe-Checkliste für neue Monitore",
+      "metaDescription": "Schritt-für-Schritt-Checkliste zum Auspacken und Prüfen neuer Monitore vor Ablauf der Rückgabefrist. Pixelfehler, Backlight-Bleed und Rückgabebedingungen testen.",
+      "badge": "KAUFBERATUNG & RÜCKGABE-CHECKLISTE",
+      "title": "Prüf- und Rückgabe-Checkliste für neue Monitore",
+      "subtitle": "Praktischer Leitfaden zur Überprüfung eines neu gelieferten Monitors auf Transportschäden, Pixelfehler, Panel-Gleichmäßigkeit und Bewegungsdarstellung vor Ablauf des Händler-Rückgabefensters.",
+      "breadcrumbsGuides": "Anleitungen",
+      "breadcrumbsNewMonitor": "Checkliste für neue Monitore",
+      "noticeTitle": "Technische Ehrlichkeit & Prüfungsgrenzen",
+      "noticeDesc": "Screen Tester bietet visuelle Prüfmuster und Browser-API-Beobachtungen. Ein Webbrowser kann weder die tatsächliche physische Panel-Auflösung, die maximale physische Bildwiederholfrequenz, echte Nits-Helligkeit, das tatsächliche Kontrastverhältnis, Labor-Farbgenauigkeit (Delta E), echte Pixelreaktionszeiten, MPRT, Eingabeverzögerung, Panel-Gesundheit, Restlebensdauer, den Zustand interner Elektronik oder Kondensatoren, die Lötstellen-Integrität physischer Anschlüsse, garantierte VRR-Hardware-Kompatibilität, garantierte HDR-Leistung noch einen Rechtsanspruch auf Rückgabe oder Erstattung ermitteln. Dieser Leitfaden strukturiert Ihre physischen, visuellen und browserbasierten Beobachtungen.",
+      "policyNoticeTitle": "Ihre Rechte verstehen: Händler-Rückgabe vs. Garantie vs. ISO-Normen",
+      "policyNoticeDesc": "Vier verschiedene Rahmenbedingungen regeln den Monitorkauf. Sie sind nicht austauschbar:",
+      "policyItems": [
+        {
+          "term": "Händler-Rückgabe- / Umtauschfenster",
+          "desc": "Die vom Verkäufer gewährte kommerzielle Rückgabefrist (z. B. 14 oder 30 Tage je nach Händler, Verkäufer und Kaufbedingungen). Dies ist in der Regel das unkomplizierteste Fenster, um einen Monitor bei Mängeln oder Nichtgefallen zurückzugeben, ohne ein herstellerseitiges Garantieverfahren durchlaufen zu müssen."
+        },
+        {
+          "term": "Herstellergarantie / RMA",
+          "desc": "Eine separate freiwillige Herstellergarantie der Monitormarke (z. B. 1–3 Jahre). Sie deckt qualifizierte Hardwaredefekte nach strengen Herstellerkriterien ab und beinhaltet meist Reparatur oder Austausch gegen ein generalüberholtes Gerät statt sofortiger Kaufpreiserstattung."
+        },
+        {
+          "term": "Gesetzliche Verbraucherrechte",
+          "desc": "Gesetzliche Schutzrechte nach regionalem Recht (wie EU-Fernabsatz-Widerrufsrecht, gesetzliche Gewährleistung). Diese hängen streng von Ihrem Land, Ihrer Rechtsordnung und dem Vertriebsweg ab."
+        },
+        {
+          "term": "ISO 9241-307 Technische Norm",
+          "desc": "Ein technischer Klassifizierungs- und Benchmark-Rahmen für Pixelfehler (typischerweise Fehlerklasse I oder II). ISO-Normen definieren Fertigungstoleranzen; sie stellen kein Verbraucherrecht dar und garantieren nicht automatisch einen Austausch oder eine Erstattung."
+        }
+      ],
+      "policyDisclaimer": "Rechtlicher Hinweis: Screen Tester erbringt keine Rechtsberatung. Rückgabefristen variieren je nach Händler, Land, Verkäufer und Kaufmethode erheblich. Prüfen Sie stets die auf Ihrer Rechnung oder Vereinbarung angegebenen Bedingungen.",
+      "unboxingTitle": "1. Vor dem Öffnen & Auspacken: Optionen sichern",
+      "unboxingDesc": "Der Umgang mit der Originalverpackung entscheidet über Ihre Rückgabeberechtigung bei Transportschäden:",
+      "unboxingItems": [
+        {
+          "title": "Zustand des Versandkartons dokumentieren",
+          "desc": "Fotografieren Sie alle Seiten des Versandkartons vor dem Öffnen. Achten Sie auf eingedrückte Ecken, Einstiche, Risse, Wasserflecken oder nachgeklebtes Klebeband, die auf Transportschäden oder eine Kundenretoure hinweisen könnten."
+        },
+        {
+          "title": "Verpackung, Styropor & Schutzfolien aufbewahren",
+          "desc": "Entsorgen Sie Außenkarton, Formpolster, Antistatikbeutel und Abziehfolien erst, wenn die gesamte Inspektion abgeschlossen ist und Sie den Monitor definitiv behalten. Viele Händler verweigern Rücknahmen oder berechnen Gebühren bei unvollständiger Originalverpackung."
+        },
+        {
+          "title": "Modellnummer & SKU auf Kartonaufkleber abgleichen",
+          "desc": "Prüfen Sie den Barcode-Aufkleber auf genaue Modellbezeichnung, Panel-Variante und SKU. Händler versenden gelegentlich versehentlich ähnlich klingende Basismodelle (z. B. ohne Höhenverstellung oder USB-C)."
+        },
+        {
+          "title": "Zubehör & Dokumentation prüfen",
+          "desc": "Gleichen Sie den Inhalt mit dem Handbuch ab: Original-Netzteil, Stromkabel, DisplayPort-Kabel, HDMI-Kabel, USB-C-Kabel, Standfuß, Schrauben und ggf. Werkskalibrierungsbericht."
+        },
+        {
+          "title": "Rechnung sichern & Rückgabefrist kalendieren",
+          "desc": "Prüfen Sie Ihre digitale Rechnung oder Bestellbestätigung. Ermitteln Sie das genaue Rückgabefenster des Händlers und setzen Sie eine Erinnerung 3 bis 4 Tage vor Fristablauf."
+        }
+      ],
+      "physicalTitle": "2. Physische & mechanische Inspektion (Stromlos)",
+      "physicalDesc": "Führen Sie vor dem Einstecken ins Stromnetz eine gründliche Sichtprüfung durch:",
+      "physicalItems": [
+        {
+          "title": "Panel-Oberfläche & Beschichtung prüfen",
+          "desc": "Leuchten Sie mit einer Taschenlampe in flachem Winkel von 20° bis 30° über das ausgeschaltete Panel. Achten Sie auf Mikrokratzer, Schrammen oder Ablösungen der Antireflexionsbeschichtung."
+        },
+        {
+          "title": "Rahmen, Kanten & Gehäusenähte prüfen",
+          "desc": "Untersuchen Sie alle vier Ecken auf Spannungsrisse im Glas. Überprüfen Sie, ob die Gehäusenähte bündig schließen und keine Spalten, lose Clips oder Verzug aufweisen."
+        },
+        {
+          "title": "Standfußmontage & Ergonomie",
+          "desc": "Bauen Sie den Standfuß zusammen und testen Sie Höhenverstellung, Neigung, Schwenk- und Pivotfunktion. Die Bewegungen sollten geschmeidig und ausreichend straff sein. Bei VESA-Montage prüfen Sie die M4-Gewinde auf Unversehrtheit."
+        },
+        {
+          "title": "Sichtprüfung der Anschlüsse & Passgenauigkeit",
+          "desc": "Prüfen Sie HDMI-, DisplayPort-, USB-C- und Stromanschlüsse visuell auf verbogene Pins oder Fremdkörper. Kabel sollten sauber und ohne übermäßigen Kraftaufwand einrasten."
+        },
+        {
+          "title": "Klappern, lose Innenteile & Gerüche",
+          "desc": "Neigen Sie den Monitor vorsichtig im stromlosen Zustand; achten Sie auf klappernde lose Schrauben oder Kunststoffteile im Inneren. Prüfen Sie, ob strenge Verbrennungsgerüche austreten. (Wichtig: Gehäuse niemals öffnen)."
+        }
+      ],
+      "powerTitle": "3. Erstes Einschalten & anfängliche Stabilität",
+      "powerDesc": "Verbinden Sie den Monitor mit dem Stromnetz und beobachten Sie das Startverhalten:",
+      "powerItems": [
+        {
+          "title": "Startverzögerung & Betriebsanzeige",
+          "desc": "Beobachten Sie die Betriebs-LED und das Aufleuchten des Panels. Ein neuer Monitor sollte innerhalb von 2 bis 5 Sekunden starten. Dauerhaftes Relaisklicken oder unregelmäßiges Standby-Blinken deutet auf Instabilitäten hin."
+        },
+        {
+          "title": "Sofortige Signalerkennung & Bildstabilität",
+          "desc": "Schließen Sie Ihren PC an und prüfen Sie, ob der Desktop stabil angezeigt wird, ohne Bildflimmern, Bildrollen, Synchronisationsstreifen oder kurze Bildaussetzer im normalen Betrieb."
+        },
+        {
+          "title": "OSD-Joystick & Tastenreaktion",
+          "desc": "Drücken Sie den OSD-Navigationsstick oder die Bedientasten. Das Menü sollte unmittelbar erscheinen und präzise reagieren, ohne Verzögerungen oder Fehlregistrierungen."
+        },
+        {
+          "title": "Helligkeitsregelung & Inverterstabilität",
+          "desc": "Regeln Sie die Helligkeit im OSD von 0 % bis 100 % durch. Die Abdunklung sollte stufenlos erfolgen, ohne hochfrequentes Spulenfiepen, Surren oder plötzliches Abschalten der Beleuchtung."
+        }
+      ],
+      "pixelTitle": "4. Pixelfehler-Inspektion: Tote, hängende & leuchtende Pixel",
+      "pixelDesc": "Pixelfehler gehören zu den häufigsten Gründen für frühe Retouren. Öffnen Sie Screen Tester im Vollbildmodus:",
+      "pixelItems": [
+        {
+          "title": "Tote Pixel (Dunkle Punkte auf hellem Grund)",
+          "desc": "Schalten Sie im Dead Pixel Test durch Vollbilder in Weiß, Rot, Grün und Blau. Tote Subpixel bleiben unbeleuchtet und heben sich als dunkle Punkte auf bunten Hintergründen ab."
+        },
+        {
+          "title": "Hängende & leuchtende Pixel (Helle Punkte auf Schwarz)",
+          "desc": "Öffnen Sie im Stuck Pixel Test ein rein schwarzes Bild. Permanent angesteuerte Transistoren leuchten als rote, grüne, blaue oder weiße Punkte hervor."
+        },
+        {
+          "title": "Staubpartikel vs. echter Pixelfehler",
+          "desc": "Betrachten Sie Auffälligkeiten schräg im 45°-Winkel. Wandert der Punkt optisch vor dem beleuchteten Subpixelgitter mit und wirft einen Schatten, handelt es sich um eingeschlossenen Fertigungsstaub auf der Diffusorfolie."
+        },
+        {
+          "title": "Reklamationsanspruch & Realität der Garantie",
+          "desc": "Ein einzelner Pixelfehler begründet herstellerseitig nicht automatisch einen Garantieanspruch, da RMA-Bedingungen oft mehrere Fehler nach ISO-Klassen fordern. Im Händler-Rückgabefenster können Sie das Gerät jedoch in der Regel unkompliziert retournieren."
+        }
+      ],
+      "pixelLinksTitle": "Empfohlene Pixel-Testwerkzeuge:",
+      "imageTitle": "5. Hintergrundbeleuchtung, Gleichmäßigkeit & Bildqualität",
+      "imageDesc": "Beurteilen Sie den Panel-Zustand bei Helligkeitsverteilung, Verläufen und Textschärfe:",
+      "imageItems": [
+        {
+          "title": "Backlight-Bleed vs. IPS-Glow",
+          "desc": "Führen Sie den Backlight-Bleed-Test in abgedunkelter Umgebung auf schwarzem Hintergrund durch. Bleed zeigt sich als feste helle Einstrahlung an Kanten; IPS-Glow schimmert diffus aus Ecken und verändert sich mit dem Blickwinkel."
+        },
+        {
+          "title": "Graustufen- & Farb-Gleichmäßigkeit",
+          "desc": "Prüfen Sie im Uniformity-Test 50 % Grau- und Weißflächen auf Dirty-Screen-Effekte, ungleichmäßige Wolkenbildung, Randeintrübungen oder Farbtemperaturabfälle (z. B. Magenta-Cyan-Teilung)."
+        },
+        {
+          "title": "Gradientenverläufe & Banding",
+          "desc": "Öffnen Sie den Gradienten- & Banding-Test. Weiche Graustufenverläufe ermöglichen die visuelle Beurteilung von Farbübergängen und das Erkennen harter Tonwertabrisse oder sichtbarer Stufenbildung."
+        },
+        {
+          "title": "Textschärfe & Subpixel-Layout",
+          "desc": "Prüfen Sie im Text-Clarity-Test die Randschärfe schwarzer Buchstaben. Standard-RGB-Layouts rendern unter Betriebssystem-Glättung gestochen scharf; BGR-Panels erfordern ggf. Softwareanpassungen."
+        },
+        {
+          "title": "Blickwinkelabhängigkeit (IPS vs. VA vs. TN)",
+          "desc": "Betrachten Sie das Display seitlich um 30° bis 45°. IPS-Panels behalten weitgehend Farbstabilität; VA-Panels zeigen leichte Kontrastaufhellung im Zentrum, TN-Panels starke Farbverfälschung von unten."
+        }
+      ],
+      "imageLinksTitle": "Zugehörige Bildqualitätstests:",
+      "motionTitle": "6. Bewegungsschärfe, Bildwiederholrate & Gaming-Checks",
+      "motionDesc": "Prüfen Sie, ob Monitore mit hoher Bildwiederholrate die erwartete Bewegungsleistung erbringen:",
+      "motionItems": [
+        {
+          "title": "Konfigurierte Bildwiederholfrequenz im Betriebssystem prüfen",
+          "desc": "Neue Gaming-Monitore starten oft standardmäßig mit 60 Hz. Stellen Sie in den Anzeigeeinstellungen die maximale Nennfrequenz ein (z. B. 144 Hz, 240 Hz) und kontrollieren Sie im Refresh Rate Test auf offensichtliches Frame-Skipping."
+        },
+        {
+          "title": "Ghosting & Pixel-Schlieren",
+          "desc": "Starten Sie den Ghosting-Test mit kontrastreichen Bewegungsmustern. Prüfen Sie visuell, ob störende Schlieren hinter bewegten Kanten entstehen. (Hinweis: Visuelle Muster dienen der subjektiven Beobachtung; Millisekunden-Werte können im Browser nicht gemessen werden)."
+        },
+        {
+          "title": "Overdrive-Einstellung & Inverses Ghosting (Overshoot)",
+          "desc": "Schalten Sie im OSD durch die Overdrive-Stufen. Zu aggressive Modi erzeugen helle, leuchtende Heiligenscheine (Koronen) hinter Kanten. Wählen Sie die schnellste Stufe ohne störende Artefakte."
+        },
+        {
+          "title": "VRR / Adaptive Sync & Helligkeitsflackern",
+          "desc": "Aktivieren Sie G-Sync Compatible oder FreeSync im Grafikkartentreiber und prüfen Sie im VRR-Test auf Helligkeitsflackern bei variablen Bildraten, insbesondere in dunklen Bildbereichen."
+        }
+      ],
+      "motionLinksTitle": "Zugehörige Bewegungstests:",
+      "osdTitle": "7. OSD-Konfiguration & Ausgangsbasis",
+      "osdDesc": "Stellen Sie eine neutrale Ausgangsbasis im Bildschirmmenü des Monitors her:",
+      "osdItems": [
+        {
+          "title": "Eingangssignal & Auflösung in OSD-Informationen prüfen",
+          "desc": "Öffnen Sie das OSD-Informationsmenü des Monitors. Kontrollieren Sie, ob die anliegende Auflösung und Frequenz mit den Nennspezifikationen übereinstimmen."
+        },
+        {
+          "title": "Standard- / Werksvoreinstellung aktivieren",
+          "desc": "Beginnen Sie Ihre Beurteilung im neutralen Bildmodus (Standard oder sRGB). Schalten Sie dynamischen Kontrast, künstliche Nachschärfung und extreme Schwarz-Equalizer-Werte ab."
+        },
+        {
+          "title": "Farbprofil- & Farbraummodi überprüfen",
+          "desc": "Falls der Monitor über feste Farbraum-Emulationen (sRGB, DCI-P3) verfügt, prüfen Sie, ob diese Farbraumbegrenzungen greifen, ohne die Helligkeit unbrauchbar zu sperren."
+        },
+        {
+          "title": "HDR-Einstellung überprüfen (falls unterstützt)",
+          "desc": "Aktivieren Sie bei HDR-Monitoren HDR im Betriebssystem und testen Sie Bildmuster im HDR-Test. Hinweis: Einfache HDR400-Displays ohne Local Dimming wirken auf dem Desktop bei dauerhaftem HDR oft ausgewaschen."
+        }
+      ],
+      "osdNote": "Hinweis: Ein Webbrowser kann interne OSD-Register oder Firmware-Einstellungen nicht direkt auslesen. Alle OSD-Prüfungen müssen auf dem physischen Monitormenü abgelesen werden.",
+      "portsTitle": "8. Physische Anschlüsse, USB-Hubs & Kabelfunktionen",
+      "portsDesc": "Prüfen Sie vor Ablauf der Rückgabefrist alle benötigten Anschlüsse manuell:",
+      "portsItems": [
+        {
+          "title": "Jeden Videoeingang einzeln testen",
+          "desc": "Verbinden Sie Ihren Computer nacheinander mit jedem HDMI- und DisplayPort-Eingang und schalten Sie im OSD um, um sicherzustellen, dass jeder Eingang Signale sauber verarbeitet."
+        },
+        {
+          "title": "USB-C-Funktionen: Bild vs. Laden vs. Daten",
+          "desc": "USB-C-Ports unterscheiden sich stark. Prüfen Sie, ob Ihr Monitormodell DisplayPort Alt Mode (Bildausgabe) und USB Power Delivery (Laden, z. B. 65W/90W) unterstützt, und testen Sie mit einem geeigneten Vollfunktionskabel."
+        },
+        {
+          "title": "USB-Upstream & Hub-Anschlüsse",
+          "desc": "Verbinden Sie das Upstream-Kabel mit dem Rechner. Schließen Sie an den Downstream-Buchsen Maus oder USB-Stick an, um den Hub-Controller auf unterbrechungsfreie Funktion zu testen."
+        },
+        {
+          "title": "Audio-Ausgang & Kopfhörerbuchse",
+          "desc": "Falls vorhanden, wählen Sie den Monitor als Audioausgabegerät und führen Sie den Speaker Test durch, um die Stereokanäle über Klinkenbuchse oder Lautsprecher zu prüfen."
+        }
+      ],
+      "specialTitle": "9. Panel-Spezifika: OLED vs. LCD Überlegungen",
+      "specialDesc": "Unterschiedliche Display-Technologien erfordern spezifische Beobachtungen:",
+      "specialItems": [
+        {
+          "title": "OLED: Nah-Schwarz-Differenzierung & Grauschattierungen",
+          "desc": "Öffnen Sie den Near-Black-Test und prüfen Sie dunkle Szenen auf vertikales Banding oder Farbkippen. OLED liefert perfektes Schwarz; eine saubere Graustufenabstufung in dunklen Tönen sollte früh geprüft werden."
+        },
+        {
+          "title": "OLED: Panel-Pflege & automatische Wartungszyklen",
+          "desc": "Machen Sie sich mit den OLED-Schutzfunktionen vertraut (Pixel-Shift, Logo-Dimmer, Pixel-Refresh). Regelmäßige kurze Reinigungsläufe im Standby sind normal und kein Defekt."
+        },
+        {
+          "title": "LCD (IPS / VA / TN): Gleichmäßigkeit & Ausleuchtung",
+          "desc": "Bei LCD-Monitoren liegt das Augenmerk auf homogener Ausleuchtung, Verteilung von Ecken-Glow und dem Fehlen von Druckstellen durch den Gehäuserahmen."
+        },
+        {
+          "title": "Oberflächenbeschichtung & Entspiegelung",
+          "desc": "Prüfen Sie matte Oberflächen auf störendes Glitzern (Kristall-Effekt) bei reinem Weiß, und glänzende Beschichtungen auf feine Mikrokratzer oder ungleichmäßige Reflexionen."
+        }
+      ],
+      "evidenceTitle": "10. Beweise vor Ablauf der Rückgabefrist sichern",
+      "evidenceDesc": "Sollten Sie einen Mangel feststellen, beschleunigt eine sorgfältige Dokumentation die Abwicklung:",
+      "evidenceItems": [
+        {
+          "title": "Aussagekräftige Fotos sichtbarer Mängel",
+          "desc": "Fotografieren Sie Transportschäden, Pixelfehler oder starkes Backlight-Bleed. Bei Pixelfehlern sind sowohl eine Gesamtaufnahme zur Positionsbestimmung als auch eine Nahaufnahme hilfreich."
+        },
+        {
+          "title": "Kurzes Video bei intermittierenden Fehlern",
+          "desc": "Bei sporadischem Flackern oder Signalausfällen nehmen Sie ein 10-sekündiges Video mit dem Smartphone auf, das Bildschirm, Status-LED und Kabelanschluss gleichzeitig zeigt."
+        },
+        {
+          "title": "Screenshot der Anzeigeeinstellungen",
+          "desc": "Sichern Sie einen Screenshot der erweiterten Anzeigeeinstellungen mit aktiver Auflösung, Bildwiederholrate und Farbformat als Beleg korrekter Konfiguration."
+        },
+        {
+          "title": "Seriennummer auf Gehäuse & Karton festhalten",
+          "desc": "Fotografieren Sie den Aufkleber auf der Monitorrückseite und den Barcode auf der Originalverpackung leserlich ab."
+        }
+      ],
+      "evidenceDisclaimer": "Wichtig: Eine Dokumentation garantiert keine automatische Anerkennung durch Verkäufer oder Hersteller. Führen Sie stets unmanipulierte Aufzeichnungen.",
+      "decisionTitle": "11. Entscheidungsrahmen für Rückgabe / Umtausch",
+      "decisionDesc": "Nutzen Sie diese strukturierte Einordnung zur Beurteilung vor Ihrer Rückgabefrist:",
+      "decisionCategories": [
+        {
+          "category": "Physischer Zustand",
+          "normal": "Makelloses Glas, bündige Blenden, leichtgängiger Standfuß, saubere Anschlüsse.",
+          "attention": "Haarriss an Zierleiste, schwergängiges Drehgelenk, leicht hakende VESA-Schraube.",
+          "unsure": "Riss im Deckglas, verbogener Anschluss-Pin, klapperndes Teil im Inneren."
+        },
+        {
+          "category": "Pixelzustand",
+          "normal": "Keinerlei tote, hängende oder dauerleuchtende Pixel auf allen Grundfarben.",
+          "attention": "Ein einzelner hängender Subpixel am äußersten Bildrand; minimaler Staubeinschluss.",
+          "unsure": "Mehrere Pixelfehler nah beieinander im Sichtzentrum; grell leuchtendes Pixel im Hauptfokus."
+        },
+        {
+          "category": "Ausleuchtung & Gleichmäßigkeit",
+          "normal": "Gleichmäßige Helligkeitsverteilung auf Grau; moderates, symmetrisches Ecken-Glow.",
+          "attention": "Mäßiger Lichthof an einer Kante, der nur im völlig dunklen Raum auf 100 % Schwarz auffällt.",
+          "unsure": "Starke helle Lichtkegel im normalen Desktop-Betrieb; auffälliger Farbtemperatur-Knick."
+        },
+        {
+          "category": "Bewegung & Bildwiederholrate",
+          "normal": "Flüssige Darstellung bei Nennfrequenz; saubere Reaktionszeit ohne störende Halos.",
+          "attention": "Leichtes Überschwingen auf höchster Overdrive-Stufe (durch Reduzierung behebbar).",
+          "unsure": "Ständiges Auslassen von Bildern (Frame-Skipping); extremes Helligkeitsflackern bei VRR."
+        },
+        {
+          "category": "Anschlüsse & Stromversorgung",
+          "normal": "Alle Eingänge schalten zügig um; stabile Stromversorgung ohne Surren oder Aussetzer.",
+          "attention": "USB-Buchse sitzt sehr stramm; externes Netzteil wird im Betrieb gut warm.",
+          "unsure": "Sporadische Bildausfälle bei ruhendem Monitor; lautes Spulenfiepen; USB-C ohne Videosignal."
+        },
+        {
+          "category": "Dokumentation & Fristen",
+          "normal": "Rechnung gesichert, Verpackung komplett erhalten, mehr als 7 Tage Rückgabefrist.",
+          "attention": "Händler-Rückgabefrist läuft in weniger als 48 Stunden ab; zügige Entscheidung nötig.",
+          "unsure": "Rückgabefrist abgelaufen; Reklamation muss über die Herstellergarantie (RMA) laufen."
+        }
+      ],
+      "actionTitle": "12. Was tun, wenn Sie ein Problem feststellen?",
+      "actionDesc": "Befolgen Sie diesen logischen Ablauf, bevor Sie eine Retoure oder Reklamation einleiten:",
+      "actionSteps": [
+        "Schritt 1: Halten Sie den Mangel fotografisch oder per Video fest.",
+        "Schritt 2: Prüfen Sie, ob der Fehler an anderen Kabeln, Eingängen oder PCs reproduzierbar ist.",
+        "Schritt 3: Kontrollieren Sie Auflösung, Bildwiederholrate und HDR im Betriebssystem.",
+        "Schritt 4: Vergleichen Sie das Verhalten mit den Herstellerangaben im Handbuch.",
+        "Schritt 5: Prüfen Sie die Rückgabebedingungen und Fristen Ihres Händlers.",
+        "Schritt 6: Innerhalb der Händler-Rückgabefrist ist ein Umtausch oder Rücktritt meist schneller als eine Herstellerreparatur.",
+        "Schritt 7: Nach Fristablauf greifen die Herstellergarantie (RMA) und deren Fehlerkriterien.",
+        "Schritt 8: Kontaktieren Sie Händler oder Hersteller mit Rechnung und Dokumentation."
+      ],
+      "quickChecklistTitle": "13. Schnelle 10-Punkte-Auspack-Checkliste",
+      "quickChecklistDesc": "Eine übersichtliche Checkliste für die schnelle Überprüfung:",
+      "quickChecklist": [
+        "Karton & Verpackung: Alle Kartons, Schaumstoffteile und Beutel unbeschädigt aufbewahrt.",
+        "Modell-SKU verifiziert: Aufkleber auf Monitorrückseite stimmt mit der Bestellung überein.",
+        "Glas & Beschichtung: Oberfläche im Streiflicht geprüft; frei von Kratzern und Scheuerstellen.",
+        "Gehäuse & Standfuß: Spaltmaße gleichmäßig; Verstellachsen arbeiten geschmeidig und stabil.",
+        "Erstes Einschalten: Monitor startet binnen 2–5 Sekunden mit stabiler Beleuchtung.",
+        "Pixel-Prüfung: Dead Pixel Test und Stuck Pixel Test auf allen Vollfarben durchlaufen.",
+        "Ausleuchtung: Backlight Bleed Test (Schwarz) und Uniformity Test (Grau) kontrolliert.",
+        "Bewegung & Frequenz: Maximale Nennfrequenz im System gewählt und im Test geprüft.",
+        "Anschlüsse: Alle benötigten Videoeingänge, USB-C-Funktionen und Hubs verifiziert.",
+        "Rückgabefrist: Kalendererinnerung vor Ablauf der Händler-Rückgabefrist gesetzt."
+      ],
+      "workflowCtaTitle": "Bereit für die interaktive Testsequenz?",
+      "workflowCtaDesc": "Starten Sie unseren geführten Prüfungsablauf für neue Monitore, um Pixelfehlermuster, Ausleuchtung und Gleichmäßigkeit direkt auf Ihrem Display zu testen.",
+      "workflowCtaButton": "Prüfungsablauf für neue Monitore starten",
+      "relatedTestsHeading": "Empfohlene Testsuite"
     }
   },
   "Inspection": {

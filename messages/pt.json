@@ -1476,6 +1476,325 @@
       "workflowCtaDesc": "Abra nosso fluxo guiado de inspeção para monitor usado e execute todos os testes de diagnóstico no seu notebook durante o encontro.",
       "workflowCtaButton": "Abrir inspeção para monitor usado",
       "relatedTestsHeading": "Ferramentas recomendadas de teste"
+    },
+    "newMonitor": {
+      "metaTitle": "Checklist de Inspeção de Monitor Novo e Prazo de Devolução",
+      "metaDescription": "Guia passo a passo para desembalar e testar monitor novo antes do fim do prazo de devolução. Teste pixels mortos, vazamento de luz e termos de garantia.",
+      "badge": "GUIA DE COMPRA & PRAZO DE DEVOLUÇÃO",
+      "title": "Checklist de Inspeção de Monitor Novo e Prazo de Devolução",
+      "subtitle": "Guia prático passo a passo para testar danos físicos, defeitos de pixel, uniformidade e desempenho de movimento em um monitor recém-entregue antes do encerramento do prazo de devolução da loja.",
+      "breadcrumbsGuides": "Guias",
+      "breadcrumbsNewMonitor": "Checklist de Monitor Novo",
+      "noticeTitle": "Honestidade Técnica e Limites da Avaliação",
+      "noticeDesc": "O Screen Tester fornece padrões de teste visuais e observações via API do navegador. Um navegador web não pode determinar a resolução física real do painel, a taxa de atualização máxima, o brilho real em nits, a taxa de contraste real, a precisão de cores de laboratório (Delta E), o tempo de resposta real, o MPRT, a latência de entrada, a saúde do painel, a vida útil restante, o estado dos circuitos ou capacitores internos, a solda das portas, a conformidade garantida de hardware VRR, o desempenho HDR certificado nem o direito legal a reembolso. Este guia organiza suas observações físicas, visuais e do navegador.",
+      "policyNoticeTitle": "Entenda seus Direitos: Devolução Comercial vs. Garantia vs. Padrões ISO",
+      "policyNoticeDesc": "Quatro estruturas distintas regulam a compra de monitores. Elas não são intercambiáveis:",
+      "policyItems": [
+        {
+          "term": "Prazo de Devolução / Troca do Vendedor",
+          "desc": "O período comercial oferecido pela loja ou marketplace (por exemplo, 7 dias pelo direito de arrependimento no Brasil, 14 ou 30 dias na UE). É a forma mais rápida de devolver ou trocar um monitor por qualquer insatisfação ou defeito sem passar pela assistência técnica do fabricante."
+        },
+        {
+          "term": "Garantia do Fabricante / RMA",
+          "desc": "Garantia limitada oferecida pela marca (ex.: 1 a 3 anos). Cobre defeitos comprovados de hardware sob regras rigorosas e geralmente envolve conserto ou substituição por unidade recondicionada, e não reembolso imediato."
+        },
+        {
+          "term": "Direitos Legais do Consumidor",
+          "desc": "Proteções estabelecidas pelo Código de Defesa do Consumidor ou leis locais (como garantia legal para vícios aparentes ou ocultos). Dependem do país e canal de compra."
+        },
+        {
+          "term": "Padrão Técnico ISO 9241-307",
+          "desc": "Norma técnica que classifica tolerâncias aceitáveis de pixels defeituosos na fabricação (Classe I ou II). Normas ISO definem parâmetros industriais; não constituem lei de consumo e não garantem troca automática."
+        }
+      ],
+      "policyDisclaimer": "Aviso legal: O Screen Tester não oferece aconselhamento jurídico. Os prazos de devolução variam conforme a loja, o país e a forma de compra. Consulte sempre os termos impressos em sua nota fiscal.",
+      "unboxingTitle": "1. Antes de Abrir e Desembalar: Garanta suas Opções",
+      "unboxingDesc": "O cuidado com a embalagem original é fundamental para a aceitação de uma devolução:",
+      "unboxingItems": [
+        {
+          "title": "Fotografar o Estado Externo da Caixa",
+          "desc": "Fotografe todos os lados da embalagem antes de abri-la. Verifique cantos amassados, furos, rasgos ou fitas adesivas sobrepostas que indiquem danos de transporte ou devolução anterior."
+        },
+        {
+          "title": "Guardar Todas as Caixas, Isopores e Proteções",
+          "desc": "Não descarte a caixa exterior, moldes de espuma, sacos plásticos ou películas protetoras até concluir todos os testes e decidir ficar com o produto. Muitas lojas recusam devoluções sem embalagem completa."
+        },
+        {
+          "title": "Conferir o Modelo Exato e SKU na Etiqueta",
+          "desc": "Verifique na etiqueta com código de barras se o sufixo do modelo e as especificações batem com o pedido. Ocasionalmente são enviadas variantes inferiores com nomes muito parecidos."
+        },
+        {
+          "title": "Inventariar Cabos e Acessórios Inclusos",
+          "desc": "Confira o conteúdo com o manual: fonte de alimentação original, cabo de força, cabos DisplayPort, HDMI, USB-C, base do suporte, parafusos e relatório de calibração de fábrica."
+        },
+        {
+          "title": "Guardar a Nota Fiscal e Marcar a Data Limite",
+          "desc": "Localize a nota fiscal eletrônica e calcule a data final do prazo de devolução da loja. Crie um lembrete com 3 a 4 dias de antecedência."
+        }
+      ],
+      "physicalTitle": "2. Inspeção Física e Mecânica (Sem Ligar)",
+      "physicalDesc": "Realize uma verificação visual completa antes de conectar o aparelho à tomada:",
+      "physicalItems": [
+        {
+          "title": "Superfície do Painel e Revestimento",
+          "desc": "Com a tela desligada, aponte a lanterna do celular em um ângulo rasante de 20° a 30°. Procure riscos, marcas ou descascamento na película antirreflexo fosca de fábrica."
+        },
+        {
+          "title": "Integridade das Bordas, Cantos e Moldura",
+          "desc": "Verifique os quatro cantos para identificar trincas no vidro. Confira se as emendas da moldura plástica estão encaixadas sem folgas ou descolamentos."
+        },
+        {
+          "title": "Montagem da Base e Ajustes Ergonômicos",
+          "desc": "Monte o suporte e teste altura, inclinação, rotação e pivô. Os movimentos devem ser suaves e firmes. Se for usar suporte articulado, examine as roscas VESA M4."
+        },
+        {
+          "title": "Inspeção dos Conectores e Encaixe de Cabos",
+          "desc": "Examine as entradas HDMI, DisplayPort, USB-C e de energia em busca de pinos tortos ou detritos. Os cabos devem encaixar de forma limpa sem forçar."
+        },
+        {
+          "title": "Barulhos Internos, Peças Soltas e Odores",
+          "desc": "Incline o monitor desligado e ouça se há parafusos soltos rolando no chassi. Sinta se há cheiro de queimado nas saídas de ar. (Importante: Nunca abra a carcaça)."
+        }
+      ],
+      "powerTitle": "3. Primeira Inicialização e Estabilidade",
+      "powerDesc": "Conecte o monitor à energia e observe o comportamento de inicialização:",
+      "powerItems": [
+        {
+          "title": "Tempo de Inicialização e LED de Energia",
+          "desc": "Observe o LED indicador e o acendimento da tela. Monitores novos ligam em 2 a 5 segundos. Estalos contínuos de relé ou luzes piscando indicam instabilidade elétrica."
+        },
+        {
+          "title": "Reconhecimento de Sinal e Estabilidade da Imagem",
+          "desc": "Conecte o PC e verifique se a área de trabalho surge de forma estável, sem oscilações, barras horizontais de sincronismo ou apagões repentinos."
+        },
+        {
+          "title": "Resposta do Joystick e Botões do OSD",
+          "desc": "Pressione o joystick ou botões do menu. O OSD deve abrir de imediato e responder com precisão sem travamentos."
+        },
+        {
+          "title": "Ajuste de Brilho e Ruído Elétrico",
+          "desc": "Varie o brilho de 0% a 100% no OSD. A transição deve ser contínua, sem zumbidos agudos de bobina (coil whine) nem desligamentos repentinos da iluminação."
+        }
+      ],
+      "pixelTitle": "4. Inspeção de Defeitos de Pixel: Mortos, Presos e Quentes",
+      "pixelDesc": "Falhas em pixels são um dos principais motivos de devolução inicial. Use o Screen Tester em tela cheia:",
+      "pixelItems": [
+        {
+          "title": "Pixels Mortos (Pontos Escuros em Telas Claras)",
+          "desc": "Alterne entre fundos branco, vermelho, verde e azul no Dead Pixel Test. Subpixels inativos não acendem e aparecem como pontos pretos em cores vivas."
+        },
+        {
+          "title": "Pixels Presos e Quentes (Pontos Acesos em Tela Preta)",
+          "desc": "Abra um fundo totalmente preto no Stuck Pixel Test. Transistores travados acesos brilham como pontos vermelhos, verdes, azuis ou brancos (hot pixel)."
+        },
+        {
+          "title": "Partícula de Poeira vs. Defeito Real de Pixel",
+          "desc": "Olhe o ponto em um ângulo lateral de 45°. Se ele se mover em relação à grade iluminada e projetar uma sombra, é poeira presa na película difusora."
+        },
+        {
+          "title": "Garantia da Marca vs. Facilidade da Devolução",
+          "desc": "Um único pixel defeituoso pode ser considerado tolerável pelas normas da garantia do fabricante. Porém, dentro do prazo de devolução da loja, você geralmente pode solicitar a troca sem burocracia."
+        }
+      ],
+      "pixelLinksTitle": "Ferramentas recomendadas para testar pixels:",
+      "imageTitle": "5. Luz de Fundo, Uniformidade e Qualidade de Imagem",
+      "imageDesc": "Avalie a distribuição de luz, transições de cinza e nitidez de texto:",
+      "imageItems": [
+        {
+          "title": "Vazamento de Luz (Bleed) vs. Brilho IPS (Glow)",
+          "desc": "Avalie em quarto escuro com fundo preto. O vazamento de luz vem das bordas da moldura e fica fixo; o brilho IPS é um reflexo difuso nos cantos que muda conforme seu ângulo de visão."
+        },
+        {
+          "title": "Uniformidade de Cinza e Desvios de Cor",
+          "desc": "Abra telas cinza 50% e branca no Uniformity Test. Procure manchas escuras irregulares, efeito de tela suja (DSE) ou divisões de temperatura de cor (um lado mais avermelhado e o outro esverdeado)."
+        },
+        {
+          "title": "Gradientes e Banding",
+          "desc": "Abra o teste de gradiente e banding. Gradientes suaves em tons de cinza permitem avaliar a qualidade de transição e identificar degraus bruscos ou contornos marcados."
+        },
+        {
+          "title": "Nitidez de Texto e Estrutura de Subpixels",
+          "desc": "Examine fontes pretas finas no teste de nitidez. Padrões RGB oferecem contornos nítidos com a suavização do sistema; padrões BGR podem demandar ajuste de software."
+        },
+        {
+          "title": "Desvio por Ângulo de Visão",
+          "desc": "Afaste-se 30° a 45° para o lado. Telas IPS preservam as cores; telas VA clareiam levemente sombras e telas TN invertem contrastes ao olhar de baixo."
+        }
+      ],
+      "imageLinksTitle": "Testes de imagem associados:",
+      "motionTitle": "6. Fluidez de Movimento, Taxa de Atualização e Jogos",
+      "motionDesc": "Confirme se o monitor de alta frequência entrega o desempenho esperado:",
+      "motionItems": [
+        {
+          "title": "Confirmar Taxa de Atualização Ativa no Sistema",
+          "desc": "Monitores novos costumam vir configurados em 60 Hz por padrão. Acesse as configurações de vídeo do sistema e escolha a frequência máxima (144 Hz, 240 Hz), conferindo no Refresh Rate Test se não há pulo de quadros."
+        },
+        {
+          "title": "Ghosting e Rastros de Movimento",
+          "desc": "Abra o teste de ghosting com blocos em movimento de alto contraste. Observe visualmente se ocorrem borrões excessivos atrás dos objetos. (Nota: O teste é visual e subjetivo; o navegador não mede tempos reais em milissegundos)."
+        },
+        {
+          "title": "Ajuste de Overdrive e Ghosting Inverso (Overshoot)",
+          "desc": "Alterne os perfis de tempo de resposta no OSD. Níveis agressivos criam halos claros brilhantes atrás de objetos móveis. Use o perfil mais rápido que não cause artefatos evidentes."
+        },
+        {
+          "title": "VRR / Sincronização Adaptativa e Cintilação",
+          "desc": "Ative o G-Sync Compatible ou FreeSync no driver da placa de vídeo e avalie no VRR Test se ocorrem variações incômodas de brilho em cenas escuras com taxa de quadros oscilante."
+        }
+      ],
+      "motionLinksTitle": "Testes de movimento associados:",
+      "osdTitle": "7. Configuração do OSD e Linha de Base",
+      "osdDesc": "Parta de uma configuração neutra no menu interno do monitor:",
+      "osdItems": [
+        {
+          "title": "Conferir Resolução de Entrada nas Informações do OSD",
+          "desc": "Abra o menu de informações do OSD para checar se a resolução e taxa de atualização detectadas pelo firmware coincidem com as especificações do fabricante."
+        },
+        {
+          "title": "Definir Modo Padrão ou de Fábrica",
+          "desc": "Inicie a avaliação no modo de imagem Padrão ou sRGB. Desative contrastes dinâmicos exagerados, filtros de nitidez artificial e ajustes extremos de equalizador de pretos."
+        },
+        {
+          "title": "Verificar Modos de Espaço de Cor (sRGB / DCI-P3)",
+          "desc": "Se o monitor tiver perfis sRGB ou DCI-P3 dedicados, teste para verificar se limitam a gama corretamente sem travar o brilho em valores baixos demais."
+        },
+        {
+          "title": "Verificação de Configuração HDR (se compatível)",
+          "desc": "Em telas compatíveis, ative o HDR no sistema e analise os padrões do HDR Test. Telas básicas HDR400 sem local dimming costumam ficar opacas na área de trabalho."
+        }
+      ],
+      "osdNote": "Nota: O navegador web não lê diretamente o firmware do monitor. Toda verificação do OSD deve ser observada no menu físico do aparelho.",
+      "portsTitle": "8. Portas Físicas, Hubs USB e Conexões",
+      "portsDesc": "Teste manualmente todas as portas que pretende usar antes do prazo acabar:",
+      "portsItems": [
+        {
+          "title": "Testar Cada Entrada de Vídeo Separadamente",
+          "desc": "Conecte o computador a cada entrada HDMI e DisplayPort e alterne pelo OSD para certificar que todos os circuitos recebem sinal adequadamente."
+        },
+        {
+          "title": "Funções USB-C: Vídeo vs. Carregamento vs. Dados",
+          "desc": "Nem toda porta USB-C é igual. Verifique se o seu modelo suporta DisplayPort Alt Mode (saída de vídeo) e Power Delivery (recarga de notebook, ex.: 65W/90W) com cabo full-featured."
+        },
+        {
+          "title": "Porta Upstream e Conexões do Hub USB",
+          "desc": "Ligue o cabo upstream ao PC e teste pendrives ou mouse nas portas USB do monitor para garantir que o hub funcione de forma contínua sem desconexões."
+        },
+        {
+          "title": "Saída de Áudio e Entrada para Fones",
+          "desc": "Se o monitor tiver saída P2 (3,5 mm) ou alto-falantes, selecione o monitor como saída de som do sistema e rode o Speaker Test para checar os canais estéreo."
+        }
+      ],
+      "specialTitle": "9. Particularidades por Tecnologia: OLED vs. LCD",
+      "specialDesc": "Cada tecnologia de painel exige observações próprias:",
+      "specialItems": [
+        {
+          "title": "OLED: Tons Quase Pretos e Uniformidade",
+          "desc": "Abra o teste de quase-preto e procure faixas verticais ou desvios de cor em cenas escuras. O preto é perfeito, mas tons de cinza muito escuros exigem verificação."
+        },
+        {
+          "title": "OLED: Cuidados e Ciclos de Manutenção",
+          "desc": "Conheça os recursos de proteção OLED (pixel shift, limite de brilho de logos). Ciclos automáticos de limpeza em modo de espera são normais e essenciais."
+        },
+        {
+          "title": "LCD (IPS / VA / TN): Uniformidade e Marcas de Pressão",
+          "desc": "Em telas LCD, preste atenção na uniformidade da iluminação de borda e certifique-se de que a pressão da moldura durante o transporte não causou marcas luminosas."
+        },
+        {
+          "title": "Acabamento de Superfície e Antirreflexo",
+          "desc": "Em telas foscas, observe se não há granulado excessivo sobre fundo branco; em telas brilhantes, verifique ausência de riscos ou reflexos manchados."
+        }
+      ],
+      "evidenceTitle": "10. Registrar Evidências Antes do Fim do Prazo",
+      "evidenceDesc": "Caso encontre um defeito e precise acionar o suporte, uma boa documentação acelera o atendimento:",
+      "evidenceItems": [
+        {
+          "title": "Fotos Nítidas das Falhas",
+          "desc": "Tire fotos claras de danos físicos, vazamentos de luz ou pixels defeituosos. Para pixels, registre uma foto aberta mostrando a posição na tela e outra bem aproximada."
+        },
+        {
+          "title": "Vídeo Curto de Falhas Intermitentes",
+          "desc": "Em caso de piscamentos ou telas pretas esporádicas, grave um vídeo de 10 a 15 segundos mostrando a tela, o LED de energia e o cabo conectado simultaneamente."
+        },
+        {
+          "title": "Captura de Tela das Configurações de Vídeo",
+          "desc": "Guarde um print das configurações avançadas de vídeo exibindo a resolução, taxa de atualização e formato de cor para comprovar configuração correta."
+        },
+        {
+          "title": "Foto do Número de Série e Código de Barras",
+          "desc": "Fotografe com nitidez a etiqueta traseira com o número de série e o código de barras da caixa original."
+        }
+      ],
+      "evidenceDisclaimer": "Importante: Reunir registros não garante deferimento automático por parte do lojista ou fabricante. Mantenha arquivos fidedignos e sem edição.",
+      "decisionTitle": "11. Critérios de Decisão: Ficar ou Devolver",
+      "decisionDesc": "Consulte este quadro para organizar suas constatações antes do prazo limite:",
+      "decisionCategories": [
+        {
+          "category": "Estado Físico",
+          "normal": "Vidro impecável, carcaça sem frestas, articulações firmes e portas limpas.",
+          "attention": "Microarranhão imperceptível na moldura, articulação rígida, parafuso VESA justo.",
+          "unsure": "Trinca no canto do vidro, pino de porta torto, peça solta chocalhando por dentro."
+        },
+        {
+          "category": "Condição dos Pixels",
+          "normal": "Zero pixel morto, preso ou quente em todas as cores primárias.",
+          "attention": "Um subpixel preso em canto periférico distante; poeira quase invisível.",
+          "unsure": "Vários pixels mortos agrupados perto do centro; pixel brilhante na visão principal."
+        },
+        {
+          "category": "Iluminação e Uniformidade",
+          "normal": "Iluminação equilibrada em tons de cinza; brilho IPS moderado e simétrico nos cantos.",
+          "attention": "Vazamento moderado em uma borda percebido apenas no breu com fundo 100% preto.",
+          "unsure": "Vazamento gritante visível sob iluminação ambiente comum; desvio forte de cores."
+        },
+        {
+          "category": "Movimento e Taxa de Atualização",
+          "normal": "Fluidez perfeita na frequência máxima; resposta rápida sem halos exagerados.",
+          "attention": "Leve overshoot no modo de overdrive mais agressivo (resolvido baixando um nível).",
+          "unsure": "Pulos constantes de quadros (frame skipping); oscilação severa de brilho com VRR."
+        },
+        {
+          "category": "Conexões e Energia",
+          "normal": "Reconhecimento ágil em todas as entradas; alimentação estável sem ruídos.",
+          "attention": "Porta USB entra um pouco justa; fonte de alimentação aquece normalmente.",
+          "unsure": "Apagões intermitentes na tela; zumbido elétrico alto; USB-C sem vídeo."
+        },
+        {
+          "category": "Documentação e Prazo",
+          "normal": "Nota fiscal salva, embalagem completa e mais de 7 dias de prazo com a loja.",
+          "attention": "Menos de 48 horas restantes no prazo comercial da loja; decisão urgente.",
+          "unsure": "Prazo da loja expirado; qualquer pedido agora depende da garantia do fabricante (RMA)."
+        }
+      ],
+      "actionTitle": "12. O que Fazer se Identificar um Problema?",
+      "actionDesc": "Adote uma postura organizada antes de abrir um chamado ou devolução:",
+      "actionSteps": [
+        "Passo 1: Fotografe ou filme o defeito de forma nítida e contextualizada.",
+        "Passo 2: Teste com outro cabo, outra entrada ou outro computador para isolar o problema.",
+        "Passo 3: Verifique resolução, taxa de atualização e HDR nas configurações do sistema.",
+        "Passo 4: Consulte o manual oficial para conferir os parâmetros nominais de fábrica.",
+        "Passo 5: Verifique a política de devolução e o prazo exato da loja onde comprou.",
+        "Passo 6: Dentro do prazo da loja, a devolução ou troca pelo vendedor costuma ser bem mais ágil que o conserto em garantia.",
+        "Passo 7: Se o prazo da loja expirou, consulte as regras e limites de defeitos da garantia da marca (RMA).",
+        "Passo 8: Contate o suporte da loja ou fabricante com a nota fiscal e as evidências em mãos."
+      ],
+      "quickChecklistTitle": "13. Checklist Rápido de 10 Pontos no Desembalar",
+      "quickChecklistDesc": "Roteiro resumido para uma avaliação ágil do monitor novo:",
+      "quickChecklist": [
+        "Caixa e embalagem: caixas, isopores e plásticos guardados em ótimo estado.",
+        "Modelo e SKU: etiqueta traseira coincide perfeitamente com o pedido.",
+        "Vidro e acabamento: painel iluminado de lado livre de riscos ou lascas.",
+        "Chassi e suporte: bordas sem frestas e movimentos de ajuste suaves.",
+        "Primeiro arranque: tela liga em 2 a 5 segundos com iluminação estável.",
+        "Varredura de pixels: testes de pixels mortos e presos feitos em todas as cores.",
+        "Iluminação: teste de vazamento no preto e uniformidade no cinza conferidos.",
+        "Fluidez: frequência máxima ajustada no sistema e verificada no teste.",
+        "Conexões: entradas de vídeo, funções do USB-C e portas do hub testadas.",
+        "Prazo de devolução: lembrete registrado antes do encerramento do prazo da loja."
+      ],
+      "workflowCtaTitle": "Deseja realizar a sequência de testes interativa?",
+      "workflowCtaDesc": "Inicie nosso fluxo guiado de inspeção para novos monitores e execute padrões de pixels, luz e uniformidade diretamente na sua tela.",
+      "workflowCtaButton": "Iniciar fluxo para monitor novo",
+      "relatedTestsHeading": "Conjunto de testes recomendado"
     }
   },
   "Inspection": {

@@ -51,9 +51,9 @@ export default async function NewMonitorInspectionPage({ params }: { params: Pro
 
         {/* Guide Cross-Link */}
         <div className="p-4 bg-muted/30 border border-border/80 rounded-xl text-xs sm:text-sm text-muted-foreground flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <span>Looking for unboxing guidelines and return policy inspection tips?</span>
-          <Link href="/guides/monitor-screen-test" className="font-semibold text-foreground hover:text-blue-600 transition-colors shrink-0">
-            Read Monitor Screen Test Guide →
+          <span>Looking for unboxing guidelines and return-window inspection tips?</span>
+          <Link href="/guides/new-monitor-inspection-return-window" className="font-semibold text-foreground hover:text-blue-600 transition-colors shrink-0">
+            Read New Monitor Return-Window Checklist →
           </Link>
         </div>
       </div>

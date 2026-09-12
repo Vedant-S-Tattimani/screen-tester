@@ -60,6 +60,24 @@ export const monitorGuides: MonitorGuide[] = [
       "resolution-checker"
     ]
   },
+  {
+    id: "new-monitor-inspection-return-window",
+    category: "device",
+    primaryIntent: "new monitor inspection checklist",
+    relatedTestIds: [
+      "dead-pixel-test",
+      "stuck-pixel-test",
+      "backlight-bleed-test",
+      "uniformity-test",
+      "gradient-banding-test",
+      "text-clarity-test",
+      "refresh-rate-test",
+      "ghosting-test",
+      "motion-blur-test",
+      "vrr-test",
+      "hdr-test"
+    ]
+  },
 
   // CONCEPTS
   {

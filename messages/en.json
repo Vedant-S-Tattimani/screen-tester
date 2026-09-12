@@ -1515,6 +1515,325 @@
       "workflowCtaDesc": "Launch our guided multi-step Used Monitor Inspection Workflow to run automated visual test sequences on your laptop during the meetup.",
       "workflowCtaButton": "Launch Used Monitor Workflow",
       "relatedTestsHeading": "Recommended Testing Suite"
+    },
+    "newMonitor": {
+      "metaTitle": "New Monitor Inspection & Return Window Checklist",
+      "metaDescription": "Step-by-step unboxing and return-window inspection checklist for new monitors. Test dead pixels, backlight bleed, refresh rate, and verify return terms.",
+      "badge": "BUYER'S GUIDE & RETURN-WINDOW CHECKLIST",
+      "title": "New Monitor Inspection & Return-Window Checklist",
+      "subtitle": "A step-by-step practical guide to testing a newly delivered computer monitor for physical damage, pixel defects, panel uniformity, and motion performance before your retailer return window closes.",
+      "breadcrumbsGuides": "Guides",
+      "breadcrumbsNewMonitor": "New Monitor Return-Window Checklist",
+      "noticeTitle": "Technical Honesty & Evaluation Boundaries",
+      "noticeDesc": "Screen Tester provides visual inspection patterns and browser API observations. A web browser cannot determine true physical panel resolution, maximum physical refresh capability, actual nits brightness, actual contrast ratio, laboratory color accuracy (Delta E), true pixel response time, MPRT, input latency, panel health, remaining lifespan, internal electronics or capacitor condition, physical port solder integrity, guaranteed VRR hardware compliance, guaranteed HDR performance, or legal entitlement to a return or refund. This guide organizes your physical, visual, and browser-based observations.",
+      "policyNoticeTitle": "Understanding Your Rights: Return Policy vs. Warranty vs. ISO Standards",
+      "policyNoticeDesc": "Four distinct frameworks govern display purchases. They are not interchangeable:",
+      "policyItems": [
+        {
+          "term": "Retailer Return / Exchange Window",
+          "desc": "The commercial return period offered by the seller (e.g. 14, 30 days depending on the retailer, seller, and purchase terms). This is typically the easiest window to return or exchange a monitor for any defect or dissatisfaction without undergoing complex manufacturer warranty procedures."
+        },
+        {
+          "term": "Manufacturer Warranty / RMA",
+          "desc": "A separate limited warranty provided by the display brand (e.g. 1–3 years). It covers qualifying hardware defects under strict manufacturer criteria and usually involves repair or refurbishment rather than an immediate refund or brand-new exchange."
+        },
+        {
+          "term": "Statutory Consumer Rights",
+          "desc": "Legal protections established by regional laws (such as EU distance-selling consumer rights, UK Consumer Rights Act, or national commercial codes). These depend strictly on your country, jurisdiction, and purchase channel."
+        },
+        {
+          "term": "ISO 9241-307 Technical Standard",
+          "desc": "A technical benchmarking and classification framework for display pixel defects (typically Class I or Class II). ISO standards define manufacturing tolerances; they do NOT constitute consumer law and do NOT automatically guarantee a replacement or refund."
+        }
+      ],
+      "policyDisclaimer": "Legal Disclaimer: Screen Tester does not provide legal advice. Return policies vary significantly by retailer, country, seller, and purchase method. Always verify the exact return window and warranty terms printed on your invoice or purchase agreement.",
+      "unboxingTitle": "1. Before Opening & Unboxing: Preserving Your Options",
+      "unboxingDesc": "How you handle the initial package determines your return eligibility if damage occurred during shipping:",
+      "unboxingItems": [
+        {
+          "title": "Document Exterior Box Condition",
+          "desc": "Photograph all sides of the shipping carton before opening. Look for crushed corners, punctures, box tears, water stains, or resealed tape that could indicate transit damage or a refurbished/open-box return."
+        },
+        {
+          "title": "Keep All Packaging, Inserts & Wraps",
+          "desc": "Never discard the outer carton, molded foam inserts, anti-static foam wraps, plastic cable bags, or protective peel-off films until your full inspection is complete and you have decided to keep the display. Many retailers reject returns or assess restocking fees for missing packaging."
+        },
+        {
+          "title": "Verify Exact Model Number & SKU on Box Label",
+          "desc": "Check the exterior barcode sticker to verify the exact model suffix, panel type, and regional SKU. Retailers occasionally ship similar-sounding lower-tier variants (e.g., non-P or non-Ergo models) by mistake."
+        },
+        {
+          "title": "Check Included Accessories & Documentation",
+          "desc": "Inventory the contents against the user manual: OEM external power adapter, power cord, DisplayPort cable, HDMI cable, USB-C upstream cable, stand base, screws, and factory calibration report (if applicable)."
+        },
+        {
+          "title": "Record Invoice & Determine Exact Return Deadline",
+          "desc": "Locate your digital order invoice or receipt. Identify the retailer's stated return/exchange window and calculate the exact calendar deadline. Set a reminder 3 to 4 days before this window closes."
+        }
+      ],
+      "physicalTitle": "2. Physical & Mechanical Inspection (Unpowered)",
+      "physicalDesc": "Perform a thorough visual inspection before plugging the monitor into electrical power:",
+      "physicalItems": [
+        {
+          "title": "Panel Surface & Coating Inspection",
+          "desc": "Shine a smartphone light at a shallow 20° to 30° raking angle across the powered-off panel surface. Inspect for scratches, scuffs, gouges, or peeling anti-glare matte coating that can occur during factory assembly."
+        },
+        {
+          "title": "Edge, Corner & Bezel Integrity",
+          "desc": "Inspect all four display corners and edges for micro-cracks or stress fractures in the glass substrate. Check that plastic bezel seams are evenly seated without loose snaps, bulging seams, or adhesive separation."
+        },
+        {
+          "title": "Stand Assembly & Ergonomic Adjustment",
+          "desc": "Assemble the stand and test height, tilt, swivel, and pivot adjustments. Movements should be smooth with sufficient tension to hold position. If mounting to a monitor arm, check that VESA M4 screw threads are clean and unstripped."
+        },
+        {
+          "title": "Visual Port Inspection & Cable Fit",
+          "desc": "Visually inspect HDMI, DisplayPort, USB-C, and power inputs for bent pins, debris, or damaged sockets before plugging in. Cables should insert cleanly without requiring excessive force."
+        },
+        {
+          "title": "Rattles, Loose Internal Parts & Odors",
+          "desc": "Gently rotate the monitor upright; listen for loose screws or plastic clips rattling inside the housing. Check for severe chemical or burning odors from the rear vents. (Important: Never attempt disassembly or internal examination; inspect the exterior only)."
+        }
+      ],
+      "powerTitle": "3. First Power-On & Initial Stability",
+      "powerDesc": "Connect the display to AC power and observe initial startup behavior:",
+      "powerItems": [
+        {
+          "title": "Startup Latency & Power Indicator",
+          "desc": "Observe the power LED and display ignition. A new monitor should illuminate within 2 to 5 seconds. Persistent relay clicking, flickering standby LEDs, or failure to wake promptly indicates early power delivery instability."
+        },
+        {
+          "title": "Immediate Signal Recognition & Image Stability",
+          "desc": "Connect your PC and verify that the screen displays a stable desktop image without unexpected flickering, image rolling, horizontal sync bars, or momentary blackouts during normal stationary operation."
+        },
+        {
+          "title": "OSD Joystick & Button Responsiveness",
+          "desc": "Press the directional OSD joystick or chassis buttons. The on-screen display menu should open instantly and respond crisply to navigation inputs without sluggishness or ghost clicks."
+        },
+        {
+          "title": "Brightness Adjustment & Inverter Stability",
+          "desc": "Cycle the monitor brightness slider in the OSD from 0% to 100%. Verify that dimming is smooth and continuous without high-pitched coil whine, buzzing, or sudden backlight shutdown."
+        }
+      ],
+      "pixelTitle": "4. Pixel Defect Inspection: Dead, Stuck & Hot Pixels",
+      "pixelDesc": "Pixel anomalies are among the most common reasons for early returns. Open Screen Tester in fullscreen to thoroughly examine the matrix:",
+      "pixelItems": [
+        {
+          "title": "Dead Pixels (Dark on Bright Fields)",
+          "desc": "Cycle through pure white, red, green, and blue backgrounds in the Dead Pixel Test. Dead subpixels remain permanently unpowered and appear as persistent dark specks against bright colors."
+        },
+        {
+          "title": "Stuck & Hot Pixels (Bright on Dark Fields)",
+          "desc": "Open a solid black field in the Stuck Pixel Test. Transistors stuck in an energized state glow as persistent red, green, blue, or pure white (hot pixel) dots against black."
+        },
+        {
+          "title": "Dust Particle vs. True Pixel Defect",
+          "desc": "Examine any pinpoint anomaly from a 45° side angle. If the dot shifts position relative to the illuminated pixel grid behind it and casts a shadow, it is trapped factory dust on the diffuser. If it sits squarely on the subpixel matrix, it is an electronic pixel defect."
+        },
+        {
+          "title": "Defect Eligibility & Warranty Reality",
+          "desc": "Finding a single pixel defect does not automatically guarantee a manufacturer warranty replacement. Manufacturer RMA policies often require multiple dead or stuck pixels depending on cluster distance and ISO class. However, during your retailer return window, you can typically return or exchange the unit without satisfying manufacturer defect minimums."
+        }
+      ],
+      "pixelLinksTitle": "Recommended Pixel Testing Tools:",
+      "imageTitle": "5. Backlight, Panel Uniformity & Image Quality",
+      "imageDesc": "Evaluate panel condition across uniform brightness, gradient reproduction, and text sharpness:",
+      "imageItems": [
+        {
+          "title": "Backlight Bleed vs. IPS Glow",
+          "desc": "Open the Backlight Bleed Test in a dimly lit room with a pure black background. Backlight bleed appears as localized yellow or white light pooling along bezel edges that stays fixed as you move your head. IPS glow appears as diffuse corner sheen that shifts in intensity and angle as your viewing position changes."
+        },
+        {
+          "title": "Grayscale & Color Uniformity",
+          "desc": "Open the Uniformity Test with 50% neutral gray and pure white fields. Inspect for dirty screen effect (DSE), cloudy dark patches, vignetting at edges, or severe temperature splits (e.g. pink on the left, greenish on the right)."
+        },
+        {
+          "title": "Gradient Smoothness & Banding",
+          "desc": "Open the Gradient & Banding Test. Smooth grayscale gradients allow you to observe gradient transition quality and identify harsh staircase banding or visible stepping artifacts."
+        },
+        {
+          "title": "Text Clarity & Subpixel Structure",
+          "desc": "Open the Text Clarity Test. Check for colored fringing on black text. Standard RGB layouts provide crisp rendering under standard OS ClearType/subpixel smoothing, while BGR or non-standard subpixel layouts may require software adjustments."
+        },
+        {
+          "title": "Off-Axis Viewing Angle Shifts",
+          "desc": "Step 30° to 45° to the side and above the panel. IPS panels should maintain color consistency with minimal gamma shift. VA panels exhibit moderate shadow washout off-center, while TN panels show dramatic contrast inversion from below."
+        }
+      ],
+      "imageLinksTitle": "Related Image Quality Tests:",
+      "motionTitle": "6. Motion Clarity, High-Refresh & Gaming Checks",
+      "motionDesc": "Verify that high-refresh gaming monitors deliver expected visual motion performance:",
+      "motionItems": [
+        {
+          "title": "Confirm Configured Refresh Rate in OS",
+          "desc": "New high-refresh monitors frequently default to 60Hz out of the box. Open your OS Advanced Display Settings and select the maximum rated refresh rate (e.g., 144Hz, 240Hz). Use Screen Tester's Refresh Rate Test to observe active frame cadence and detect obvious frame skipping."
+        },
+        {
+          "title": "Ghosting & Pixel Response Trails",
+          "desc": "Open the Ghosting Test with moving high-contrast blocks. Visually observe whether trailing or smearing occurs behind moving objects. (Note: Visual motion patterns provide subjective observation of motion clarity; browser tools cannot measure true millisecond GtG transition times)."
+        },
+        {
+          "title": "Overdrive Tuning & Inverse Ghosting (Overshoot)",
+          "desc": "Cycle through your monitor's Overdrive/Response Time modes in the OSD (e.g. Off, Normal, Fast, Extreme). Extreme presets often create bright, glowing coronas (inverse ghosting/overshoot) behind moving objects; select the fastest setting that avoids noticeable coronas."
+        },
+        {
+          "title": "VRR / Adaptive Sync & Brightness Flicker",
+          "desc": "Enable G-Sync Compatible or FreeSync in your GPU driver and test variable frame rate motion with the VRR Test. Watch for brightness flickering or micro-stuttering, particularly in near-black and fluctuating frame rate conditions."
+        }
+      ],
+      "motionLinksTitle": "Related Motion Tests:",
+      "osdTitle": "7. OSD Configuration & Factory Baseline",
+      "osdDesc": "Establish a clean baseline in the monitor's on-screen display menu:",
+      "osdItems": [
+        {
+          "title": "Confirm Input Signal & Resolution in OSD Info",
+          "desc": "Open the monitor's built-in OSD Information menu. Confirm that the incoming signal matches the panel's native resolution and intended refresh rate."
+        },
+        {
+          "title": "Establish Default / Factory Preset Baseline",
+          "desc": "Start your testing from factory default settings or the Standard/sRGB picture preset. Disable aggressive dynamic contrast, non-standard sharpening filters, and extreme black equalizer levels before evaluating picture quality."
+        },
+        {
+          "title": "Verify Color Profile & Color Space Modes",
+          "desc": "If your monitor features dedicated sRGB or DCI-P3 clamping modes, toggle them to confirm the OSD correctly locks or unlocks gamut controls without locking brightness to unusable levels."
+        },
+        {
+          "title": "HDR Setting Verification (Where Supported)",
+          "desc": "If testing an HDR-capable monitor, toggle Windows/macOS HDR settings and inspect test patterns in the HDR Test. Note: Budget HDR400 displays without local dimming often produce washed-out SDR desktop images when HDR remains enabled."
+        }
+      ],
+      "osdNote": "Note: A web browser cannot read internal monitor OSD registers or firmware settings directly. All OSD verification must be observed on the physical monitor menu.",
+      "portsTitle": "8. Physical Ports, USB Hubs & Cable Capabilities",
+      "portsDesc": "Verify all physical connectors you intend to use before your return window closes:",
+      "portsItems": [
+        {
+          "title": "Test Every Video Input Independently",
+          "desc": "Connect your computer to each HDMI and DisplayPort socket on the rear panel. Switch inputs via the OSD to ensure every input scalar detects video cleanly."
+        },
+        {
+          "title": "USB-C Features: Video vs. Charging vs. Data",
+          "desc": "Not all USB-C ports are identical. Verify whether your specific monitor model advertises DisplayPort Alt Mode (video transmission) and USB Power Delivery (laptop charging, e.g. 65W/90W). Test with a compatible, rated full-featured USB-C cable."
+        },
+        {
+          "title": "USB Upstream & Downstream Hub Ports",
+          "desc": "Connect the monitor's USB upstream cable to your PC. Plug a flash drive or mouse into each downstream USB port to verify the hub controller operates without disconnection."
+        },
+        {
+          "title": "Audio Passthrough & Headphone Jack",
+          "desc": "If your display includes a 3.5mm audio output or built-in speakers, select the monitor as your OS audio output and run Screen Tester's Speaker Test to verify left/right audio channels."
+        }
+      ],
+      "specialTitle": "9. Panel-Specific Checks: OLED vs. LCD Considerations",
+      "specialDesc": "Different display panel technologies require specific quality observations:",
+      "specialItems": [
+        {
+          "title": "OLED: Near-Black Gradation & Gray Tinting",
+          "desc": "Open the Near-Black Test and inspect dark scenes for vertical banding, chrominance tint shifts, or crushed shadow details. OLED panels offer perfect blacks, but early near-black gray uniformity warrants verification."
+        },
+        {
+          "title": "OLED: Panel Care & Automatic Maintenance Cycles",
+          "desc": "Familiarize yourself with your monitor's OLED care features (pixel shift, logo brightness limiter, and automatic pixel refresh). Understanding that short pixel-cleaning cycles run automatically upon standby prevents mistaking normal maintenance for a malfunction."
+        },
+        {
+          "title": "LCD (IPS / VA / TN): Uniformity & Viewing Behavior",
+          "desc": "For LCD monitors, focus on edge-lit backlight uniformity, corner IPS glow distribution, and absence of vertical pressure marks caused by transit impacts on the bezel."
+        },
+        {
+          "title": "Coating & Anti-Reflective Clarity",
+          "desc": "Inspect matte anti-glare coatings for excessive graininess ('sparkle') on pure white backgrounds, or glossy coatings for micro-scratches or uneven anti-reflective purple/blue reflections."
+        }
+      ],
+      "evidenceTitle": "10. Documenting Defects Before the Return Window Closes",
+      "evidenceDesc": "If you discover an issue and need to contact the seller or manufacturer, clear documentation speeds up resolution:",
+      "evidenceItems": [
+        {
+          "title": "High-Quality Photos of Visible Defects",
+          "desc": "Take clear photos of physical damage, pixel defects, or severe backlight bleed. For pixel defects, capture both a wide shot showing the defect's location on the screen and a close-up photo."
+        },
+        {
+          "title": "Short Video Demonstrating Intermittent Issues",
+          "desc": "If you experience flickering, blackouts, or strange OSD behavior, record a 10–15 second video on your smartphone clearly capturing the monitor screen, power LED, and cable connection simultaneously."
+        },
+        {
+          "title": "Screenshot of OS Display Settings",
+          "desc": "Capture a screenshot of your OS Advanced Display Settings showing the active resolution, configured refresh rate, bit depth, and color format to confirm correct configuration."
+        },
+        {
+          "title": "Save Barcode & Serial Number Details",
+          "desc": "Take a legible photo of the serial number sticker on the back of the monitor chassis and the matching barcode on the retail box."
+        }
+      ],
+      "evidenceDisclaimer": "Important: Documenting an issue does not guarantee return approval or manufacturer warranty coverage. Always maintain genuine, unedited records.",
+      "decisionTitle": "11. Return / Exchange Decision Framework",
+      "decisionDesc": "Use this structured evaluation to categorize your findings before your return deadline:",
+      "decisionCategories": [
+        {
+          "category": "Physical Condition",
+          "normal": "Flawless glass, intact bezels, smooth stand movement, clean ports.",
+          "attention": "Hairline scratch on frame, stiff pivot hinge, tight VESA screw.",
+          "unsure": "Crack in glass corner, bent port pin, rattling internal part."
+        },
+        {
+          "category": "Pixel Integrity",
+          "normal": "Zero dead, stuck, or hot pixels across all primary colors.",
+          "attention": "Single stuck pixel in far peripheral corner; faint trapped dust speck.",
+          "unsure": "Multiple dead pixels clustered near screen center; bright hot pixel in primary view area."
+        },
+        {
+          "category": "Backlight & Uniformity",
+          "normal": "Even illumination across gray fields; mild, symmetric IPS glow in corners.",
+          "attention": "Moderate backlight pinch on one bezel edge noticeable only on 100% black in pitch dark.",
+          "unsure": "Severe flashlighting visible in daylight desktop use; heavy pink/cyan tint split across panel."
+        },
+        {
+          "category": "Motion & Refresh",
+          "normal": "Smooth motion at rated refresh rate; clean overdrive without severe halos.",
+          "attention": "Minor overshoot on aggressive overdrive preset (resolved by stepping down to Normal).",
+          "unsure": "Frequent frame skipping; aggressive black-smearing; VRR brightness flicker in desktop apps."
+        },
+        {
+          "category": "Ports & Power",
+          "normal": "All inputs detect video quickly; stable power without buzzing or blackouts.",
+          "attention": "USB downstream port requires firm insertion; external power brick runs warm.",
+          "unsure": "Intermittent blackouts during stationary use; loud coil whine; USB-C fails to transmit video."
+        },
+        {
+          "category": "Documentation & Deadline",
+          "normal": "Invoice saved, packaging preserved, 7+ days remaining in retailer return window.",
+          "attention": "Retailer return window closes within 48 hours; decision required promptly.",
+          "unsure": "Return window already expired; issue must now proceed through manufacturer warranty/RMA."
+        }
+      ],
+      "actionTitle": "12. What to Do If You Find a Problem",
+      "actionDesc": "Follow this logical sequence before initiating a return or warranty claim:",
+      "actionSteps": [
+        "Step 1: Record and photograph the exact issue (photo or video showing context).",
+        "Step 2: Confirm the issue is reproducible across different cables, ports, or computers.",
+        "Step 3: Check OS display settings (resolution, refresh rate, scaling, HDR mode).",
+        "Step 4: Consult the monitor user manual to confirm expected hardware specifications.",
+        "Step 5: Check your retailer's applicable return/exchange policy and determine the exact return cutoff date.",
+        "Step 6: If within the retailer return window, initiating a seller exchange or return is typically faster than manufacturer warranty repair.",
+        "Step 7: If the retailer window has closed, check the manufacturer's warranty terms (RMA) and specific defect thresholds.",
+        "Step 8: Contact the appropriate seller or manufacturer customer support with your invoice and documentation ready."
+      ],
+      "quickChecklistTitle": "13. Quick 10-Point Unboxing Checklist",
+      "quickChecklistDesc": "A scannable pre-decision checklist for fast evaluation:",
+      "quickChecklist": [
+        "Outer carton & packaging: all boxes, foam blocks, and wrappers kept in pristine condition.",
+        "Model SKU verified: barcode sticker on chassis matches the ordered model specifications.",
+        "Glass & coating: panel surface checked under raking light; zero scratches or coating abrasions.",
+        "Chassis & stand: bezels seated evenly; all stand adjustment axes smooth and stable.",
+        "First power-on: display boots cleanly within 2–5 seconds with stable backlight and power LED.",
+        "Pixel audit: Dead Pixel Test and Stuck Pixel Test completed across all solid background colors.",
+        "Backlight & uniformity: Backlight Bleed Test (black) and Uniformity Test (50% gray) inspected.",
+        "Motion & cadence: configured to maximum rated refresh rate in OS; tested in Refresh Rate Test.",
+        "Ports & connectivity: all required video inputs, USB-C capabilities, and hubs verified.",
+        "Return deadline: calendar reminder set before the retailer return/exchange window closes."
+      ],
+      "workflowCtaTitle": "Ready for the interactive testing sequence?",
+      "workflowCtaDesc": "Launch our guided New Monitor Inspection Workflow to step through dead pixel patterns, backlight checks, and uniformity sequences directly on your display.",
+      "workflowCtaButton": "Launch New Monitor Workflow",
+      "relatedTestsHeading": "Recommended Testing Suite"
     }
   },
   "Inspection": {

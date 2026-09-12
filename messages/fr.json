@@ -1476,6 +1476,325 @@
       "workflowCtaDesc": "Lancez notre séquence guidée d'inspection pour écran d'occasion pour dérouler tous les tests sur votre ordinateur portable lors du rendez-vous.",
       "workflowCtaButton": "Lancer l'inspection d'écran d'occasion",
       "relatedTestsHeading": "Outils de diagnostic recommandés"
+    },
+    "newMonitor": {
+      "metaTitle": "Guide d'Inspection d'un Nouvel Écran et Délai de Rétractation",
+      "metaDescription": "Checklist pas à pas pour déballer et tester un écran neuf avant la fin du délai de retour. Testez pixels morts, fuites de lumière et vérifiez les garanties.",
+      "badge": "GUIDE D'ACHAT & DÉLAI DE RETOUR",
+      "title": "Guide d'Inspection d'un Nouvel Écran et Délai de Rétractation",
+      "subtitle": "Un guide pratique pas à pas pour inspecter un moniteur neuf à sa réception : dommages physiques, pixels défectueux, uniformité et netteté en mouvement avant la fin du délai de retour.",
+      "breadcrumbsGuides": "Guides",
+      "breadcrumbsNewMonitor": "Inspection Écran Neuf",
+      "noticeTitle": "Honnêteté Technique et Limites de l'Évaluation",
+      "noticeDesc": "Screen Tester fournit des mires visuelles et des données issues des API du navigateur. Un navigateur Web ne peut pas déterminer la définition physique réelle de la dalle, la fréquence physique maximale, la luminance réelle en nits, le contraste réel, la justesse colorimétrique de laboratoire (Delta E), le temps de réponse réel des pixels, le MPRT, la latence d'entrée, l'état de santé de la dalle, la durée de vie résiduelle, l'état des composants ou condensateurs internes, la solidité des soudures des connecteurs, le support garanti du VRR matériel, les performances HDR certifiées ni le droit juridique à un remboursement. Ce guide organise vos constatations physiques, visuelles et logicielles.",
+      "policyNoticeTitle": "Comprendre vos Droits : Délai de Retour vs Garantie vs Norme ISO",
+      "policyNoticeDesc": "Quatre cadres distincts encadrent l'achat d'un écran. Ils ne sont pas interchangeables :",
+      "policyItems": [
+        {
+          "term": "Délai de Retour / Rétractation du Vendeur",
+          "desc": "La période commerciale offerte par le commerçant (par exemple 14 ou 30 jours selon le vendeur et les conditions d'achat). C'est généralement la voie la plus simple pour échanger ou retourner un écran insatisfaisant sans passer par une procédure lourde auprès du constructeur."
+        },
+        {
+          "term": "Garantie Constructeur / SAV (RMA)",
+          "desc": "Garantie commerciale spécifique accordée par la marque de l'écran (ex. 1 à 3 ans). Elle couvre les pannes matérielles avérées selon des critères stricts et implique souvent une réparation ou un appareil reconditionné plutôt qu'un remboursement immédiat."
+        },
+        {
+          "term": "Droits Légaux de la Consommation",
+          "desc": "Dispositions légales impératives prévues par la loi (comme le droit de rétractation de 14 jours en vente à distance dans l'UE ou la garantie légale de conformité). Elles dépendent strictement de votre pays et du mode d'achat."
+        },
+        {
+          "term": "Norme Technique ISO 9241-307",
+          "desc": "Référentiel technique définissant les seuils de tolérance pour les défauts de pixels (Classe I ou II). Les normes ISO fixent des tolérances de production ; elles ne constituent pas une loi de consommation et ne garantissent pas automatiquement un échange."
+        }
+      ],
+      "policyDisclaimer": "Avertissement juridique : Screen Tester ne dispense pas de conseil juridique. Les délais de retour varient selon les marchands, les pays et les modalités d'achat. Vérifiez toujours les conditions figurant sur votre facture d'achat.",
+      "unboxingTitle": "1. Avant d'Ouvrir le Carton : Préservez vos Droits",
+      "unboxingDesc": "Le soin apporté au colis d'origine conditionne la validité d'une éventuelle rétractation :",
+      "unboxingItems": [
+        {
+          "title": "Photographier l'État Extérieur du Colis",
+          "desc": "Prenez des photos de toutes les faces du carton d'expédition avant ouverture. Repérez les angles écrasés, déchirures, perforations ou scotchs superposés signalant un choc de transport ou un colis reconditionné."
+        },
+        {
+          "title": "Conserver Emballages, Mousses et Protections",
+          "desc": "Ne jetez ni le carton principal, ni les cales en mousse, ni les sachets de câbles, ni les films protecteurs tant que l'inspection n'est pas achevée. De nombreux commerçants refusent les retours si le conditionnement est incomplet."
+        },
+        {
+          "title": "Vérifier la Référence Exacte et le SKU",
+          "desc": "Contrôlez l'étiquette code-barres sur le carton pour vérifier le suffixe exact du modèle, le type de dalle et le SKU régional. Des variantes d'entrée de gamme au nom proche sont parfois envoyées par erreur."
+        },
+        {
+          "title": "Faire l'Inventaire des Câbles et Accessoires",
+          "desc": "Pointez le contenu avec la notice : bloc d'alimentation externe, cordon secteur, câbles DisplayPort, HDMI, USB-C, pied de support, vis et rapport de calibration d'usine le cas échéant."
+        },
+        {
+          "title": "Repérer la Facture et Noter la Date Butoir",
+          "desc": "Enregistrez votre facture électronique et identifiez le délai de rétractation applicable. Placez un rappel sur votre calendrier 3 à 4 jours avant l'échéance."
+        }
+      ],
+      "physicalTitle": "2. Examen Physique et Mécanique (Hors Tension)",
+      "physicalDesc": "Effectuez une inspection visuelle complète avant le moindre branchement électrique :",
+      "physicalItems": [
+        {
+          "title": "État de la Dalle et du Revêtement",
+          "desc": "Éclairez l'écran éteint avec une lampe selon un angle rasant de 20° à 30°. Vérifiez l'absence de micro-rayures, d'éraflures ou d'altération du filtre mat antireflet survenue lors de l'assemblage."
+        },
+        {
+          "title": "Intégrité du Cadre, des Coins et des Bords",
+          "desc": "Inspectez les quatre coins pour repérer toute micro-fissure dans le verre. Vérifiez que les jonctions du châssis en plastique sont bien emboîtées, sans fentes anormales ni décollement."
+        },
+        {
+          "title": "Montage du Pied et Réglages Ergonomiques",
+          "desc": "Assemblez le socle et testez la hauteur, l'inclinaison, la rotation et le pivotement. Les mécanismes doivent coulisser avec une résistance régulière. En cas de montage VESA, vérifiez l'état des pas de vis M4."
+        },
+        {
+          "title": "Connecteurs Physiques et Ajustement des Câbles",
+          "desc": "Examinez les prises HDMI, DisplayPort, USB-C et d'alimentation afin de vérifier qu'aucune broche n'est tordue. Les câbles doivent s'insérer proprement sans forcer."
+        },
+        {
+          "title": "Bruits Suspects, Éléments Libres et Odeurs",
+          "desc": "Inclinez délicatement l'écran hors tension pour déceler une vis ou pièce détachée mobile à l'intérieur. Vérifiez l'absence d'odeur de chaud ou de brûlé. (Important : Ne tentez jamais d'ouvrir le boîtier)."
+        }
+      ],
+      "powerTitle": "3. Première Mise sous Tension et Stabilité",
+      "powerDesc": "Branchez l'écran sur le secteur et observez son démarrage initial :",
+      "powerItems": [
+        {
+          "title": "Délai de Démarrage et Voyant Témoin",
+          "desc": "Surveillez le voyant de veille et l'allumage de la dalle. Un écran neuf s'illumine normalement en 2 à 5 secondes. Des claquements répétés ou un clignotement persistant signalent une instabilité d'alimentation."
+        },
+        {
+          "title": "Reconnaissance du Signal et Stabilité de l'Image",
+          "desc": "Raccordez votre ordinateur et assurez-vous que le bureau s'affiche de manière stable sans scintillement brutal, balayage parasite ni extinction intempestive en fonctionnement fixe."
+        },
+        {
+          "title": "Réactivité du Joystick et des Boutons OSD",
+          "desc": "Manipulez le joystick directionnel de l'écran. Le menu OSD doit s'ouvrir instantanément et obéir aux commandes sans saccade ni faux contact."
+        },
+        {
+          "title": "Plage de Luminosité et Stabilité Électrique",
+          "desc": "Faites varier la luminosité dans l'OSD de 0 % à 100 %. La variation doit être fluide, sans sifflement aigu de bobine (coil whine) ni extinction subite du rétroéclairage."
+        }
+      ],
+      "pixelTitle": "4. Détection des Pixels : Morts, Bloqués et Brillants",
+      "pixelDesc": "Les défauts de pixels constituent un motif fréquent de retour précoce. Ouvrez Screen Tester en plein écran :",
+      "pixelItems": [
+        {
+          "title": "Pixels Morts (Points Sombres sur Fond Clair)",
+          "desc": "Parcourez les mires unies blanche, rouge, verte et bleue dans le Dead Pixel Test. Les sous-pixels inactifs restent éteints et forment de minuscules points noirs visibles sur fond coloré."
+        },
+        {
+          "title": "Pixels Bloqués et Brillants (Points Allumés sur Fond Noir)",
+          "desc": "Affichez un fond totalement noir dans le Stuck Pixel Test. Les transistors figés en position passante luisent en permanence en rouge, vert, bleu ou blanc sur l'obscurité."
+        },
+        {
+          "title": "Poussière Interne vs Vrai Pixel Défectueux",
+          "desc": "Observez le point litigieux sous un angle latéral de 45°. Si la tache semble flotter au-dessus des sous-pixels et projette une ombre, il s'agit d'une impureté sur le diffuseur optique."
+        },
+        {
+          "title": "Conditions de Garantie vs Rétractation Simple",
+          "desc": "Un unique pixel défectueux n'est souvent pas couvert par le SAV constructeur (norme ISO tolérant plusieurs défauts). En revanche, dans le délai de retour du vendeur, vous pouvez généralement retourner l'écran sans justification."
+        }
+      ],
+      "pixelLinksTitle": "Outils recommandés pour tester les pixels :",
+      "imageTitle": "5. Rétroéclairage, Uniformité et Qualité d'Image",
+      "imageDesc": "Examinez l'homogénéité de l'éclairage, la gradation des gris et la précision des textes :",
+      "imageItems": [
+        {
+          "title": "Fuite de Rétroéclairage (Bleed) vs Lueur IPS (Glow)",
+          "desc": "Réalisez l'observation dans une pièce sombre sur fond noir. La fuite de lumière est localisée près du cadre et reste fixe quand vous bougez ; le glow IPS est un voile dans les angles qui varie selon votre point de vue."
+        },
+        {
+          "title": "Uniformité des Gris et Homogénéité des Teintes",
+          "desc": "Testez des mires grises à 50 % et blanches dans l'Uniformity Test. Cherchez d'éventuelles taches sombres (effet d'écran sale), du vignettage ou des dérives de température de couleur entre la gauche et la droite."
+        },
+        {
+          "title": "Continuité des Dégradés et Banding",
+          "desc": "Ouvrez le Test de Dégradés et Banding. Des dégradés progressifs permettent de juger la finesse de transition et de déceler d'éventuels décrochages brutaux ou effet d'escalier."
+        },
+        {
+          "title": "Netteté du Texte et Agencement des Sous-Pixels",
+          "desc": "Examinez des lignes de texte noir fin. La disposition classique RGB assure des caractères nets avec l'anticrénelage du système d'exploitation ; une disposition BGR peut nécessiter un réglage logiciel."
+        },
+        {
+          "title": "Stabilité selon l'Angle de Vision",
+          "desc": "Déplacez-vous de 30° à 45° sur le côté. Les dalles IPS préservent les couleurs ; les dalles VA éclaircissent légèrement les zones d'ombres au centre, tandis que les dalles TN virent fortement par le bas."
+        }
+      ],
+      "imageLinksTitle": "Tests d'image associés :",
+      "motionTitle": "6. Fluidité, Fréquence Élevée et Jeux",
+      "motionDesc": "Contrôlez que les caractéristiques de réactivité annoncées sont bien au rendez-vous :",
+      "motionItems": [
+        {
+          "title": "Vérifier la Fréquence Active dans le Système",
+          "desc": "Les écrans rapides sont souvent paramétrés à 60 Hz par défaut. Activez la fréquence nominale (144 Hz, 240 Hz) dans les réglages d'affichage et surveillez l'absence de sauts d'images dans le Refresh Rate Test."
+        },
+        {
+          "title": "Ghosting et Traînées de Mouvement",
+          "desc": "Lancez le test de ghosting avec des motifs contrastés en mouvement. Observez visuellement si des bavures excessives subsistent. (Note : L'observation est visuelle et subjective ; le navigateur ne mesure pas de millisecondes GtG)."
+        },
+        {
+          "title": "Réglage de l'Overdrive et Ghosting Inverse (Overshoot)",
+          "desc": "Naviguez entre les profils de temps de réponse de l'OSD. Les réglages extrêmes créent des halos clairs lumineux derrière les formes. Sélectionnez le palier le plus véloce sans artefacts gênants."
+        },
+        {
+          "title": "VRR / Fréquence Variable et Scintillement",
+          "desc": "Activez G-Sync Compatible ou FreeSync dans votre pilote graphique et surveillez dans le test VRR si des variations de luminosité surviennent lors de changements de cadence sur scènes sombres."
+        }
+      ],
+      "motionLinksTitle": "Tests de mouvement associés :",
+      "osdTitle": "7. Paramétrage de l'OSD et Base Neutre",
+      "osdDesc": "Repartez de réglages neutres dans le menu propre au moniteur :",
+      "osdItems": [
+        {
+          "title": "Contrôler la Résolution Reçue dans les Infos OSD",
+          "desc": "Ouvrez l'écran d'informations de l'OSD pour vérifier que la définition et la fréquence reçues par l'écran correspondent bien aux caractéristiques natives de la dalle."
+        },
+        {
+          "title": "Repartir du Profil Standard ou Usine",
+          "desc": "Commencez l'évaluation sur le profil d'image Standard ou sRGB. Désactivez le contraste dynamique agressif, les filtres de netteté logicielle poussés et l'égaliseur de noirs excessif."
+        },
+        {
+          "title": "Vérifier les Modes d'Espace Colorimétrique",
+          "desc": "Si votre écran dispose d'émulations sRGB ou DCI-P3 dédiées, basculez dessus pour confirmer qu'elles brident bien le gamut sans bloquer la luminosité à des valeurs inexploitables."
+        },
+        {
+          "title": "Vérification des Réglages HDR (si applicable)",
+          "desc": "Sur les écrans compatibles, activez le HDR dans votre système et examinez les mires du HDR Test. Les écrans d'entrée de gamme HDR400 sans gradation locale paraissent souvent ternes sur le bureau."
+        }
+      ],
+      "osdNote": "Remarque : Un navigateur web ne peut pas lire directement la mémoire ou le micrologiciel de l'écran. Toutes les vérifications de l'OSD s'effectuent sur le menu physique du moniteur.",
+      "portsTitle": "8. Prises Physiques, Hub USB et Connectique",
+      "portsDesc": "Vérifiez manuellement tous les ports dont vous aurez besoin avant l'expiration du retour :",
+      "portsItems": [
+        {
+          "title": "Tester Chaque Entrée Vidéo Séparément",
+          "desc": "Connectez tour à tour votre PC sur chaque port HDMI et DisplayPort et basculez d'une source à l'autre dans l'OSD pour attester que chaque scaler d'entrée transmet une image saine."
+        },
+        {
+          "title": "Capacités USB-C : Vidéo vs Charge vs Données",
+          "desc": "Toutes les prises USB-C ne se valent pas. Vérifiez si votre référence prend en charge le DisplayPort Alt Mode (flux vidéo) et le Power Delivery (charge d'ordinateur, ex. 65W/90W) avec un câble complet adapté."
+        },
+        {
+          "title": "Hub USB Upstream et Prises Déportées",
+          "desc": "Branchez le câble upstream à votre ordinateur. Connectez souris ou clé USB sur les prises aval du moniteur pour vérifier la détection stable sans déconnexion intempestive."
+        },
+        {
+          "title": "Prise Casque et Sortie Audio",
+          "desc": "Si le moniteur intègre une sortie jack ou des haut-parleurs, sélectionnez-le comme sortie audio du système et lancez le Speaker Test pour valider les canaux gauche et droit."
+        }
+      ],
+      "specialTitle": "9. Spécificités des Dalles : OLED vs LCD",
+      "specialDesc": "Chaque technologie d'affichage appelle des vérifications adaptées :",
+      "specialItems": [
+        {
+          "title": "OLED : Nuances Proches du Noir et Uniformité",
+          "desc": "Consultez le test proche du noir et observez les scènes sombres à la recherche de bandes verticales ou de dérives colorées. Les noirs sont parfaits, mais la régularité des gris très sombres mérite attention."
+        },
+        {
+          "title": "OLED : Maintenance et Cycles de Nettoyage",
+          "desc": "Familiarisez-vous avec les fonctionnalités de protection (décalage de pixels, atténuation des logos). Les cycles de rafraîchissement automatiques en veille sont normaux et indispensables."
+        },
+        {
+          "title": "LCD (IPS / VA / TN) : Éclairage et Absence de Contrainte",
+          "desc": "Pour les dalles LCD, portez votre attention sur l'homogénéité du rétroéclairage latéral et vérifiez qu'aucune contrainte mécanique du cadre n'a marqué la dalle durant le voyage."
+        },
+        {
+          "title": "Traitement de Surface et Antireflet",
+          "desc": "Vérifiez que le traitement mat ne présente pas de scintillement granuleux gênant sur fond blanc uni, et que les écrans brillants ne portent pas de micro-rayures ou de reflets dégradés."
+        }
+      ],
+      "evidenceTitle": "10. Constituer des Preuves Avant la Fin du Délai",
+      "evidenceDesc": "Si vous décelez une anomalie, une documentation rigoureuse facilite les échanges avec le support :",
+      "evidenceItems": [
+        {
+          "title": "Photos Nettes des Défauts Constatés",
+          "desc": "Prenez des clichés clairs d'éventuels dégâts physiques, de fuites de lumière ou de défauts de pixels. Pour un pixel, prenez une vue d'ensemble pour le situer et un gros plan net."
+        },
+        {
+          "title": "Courte Vidéo des Phénomènes Intermittents",
+          "desc": "En cas de scintillement ou de décrochage ponctuel, filmez une séquence de 10 à 15 secondes avec votre smartphone montrant l'écran, le voyant de veille et le câble raccordé."
+        },
+        {
+          "title": "Capture d'Écran des Réglages d'Affichage",
+          "desc": "Conservez une capture d'écran des paramètres d'affichage avancés du système indiquant la définition, la fréquence et le format de couleur sélectionnés pour justifier d'un réglage conforme."
+        },
+        {
+          "title": "Conserver Étiquette de Série et Code-Barres",
+          "desc": "Prenez en photo lisible l'étiquette comportant le numéro de série au dos du châssis et le code-barres correspondant sur le carton."
+        }
+      ],
+      "evidenceDisclaimer": "Important : La constitution d'un dossier ne préjuge pas de l'accord du vendeur ou de la prise en charge SAV. Conservez des éléments fidèles et non retouchés.",
+      "decisionTitle": "11. Grille d'Aide à la Décision : Garder ou Renvoyer",
+      "decisionDesc": "Consultez cette synthèse pour qualifier vos observations avant la fin de votre délai :",
+      "decisionCategories": [
+        {
+          "category": "État Physique",
+          "normal": "Dalle impeccable, cadre bien jointif, pied articulé fluide, connectique saine.",
+          "attention": "Légère éraflure superficielle sur le plastique, articulation ferme, vis VESA serrée.",
+          "unsure": "Fissure dans l'angle du verre, broche tordue, cliquetis d'objet libre à l'intérieur."
+        },
+        {
+          "category": "Pixels",
+          "normal": "Zéro pixel mort, bloqué ou allumé sur l'ensemble des couleurs de base.",
+          "attention": "Un sous-pixel bloqué en toute bordure périphérique ; infime poussière interne.",
+          "unsure": "Plusieurs pixels morts regroupés vers le centre ; pixel éclatant en plein axe de vision."
+        },
+        {
+          "category": "Rétroéclairage et Uniformité",
+          "normal": "Luminosité homogène sur les gris ; lueur IPS discrète et équilibrée dans les coins.",
+          "attention": "Fuite localisée sur un bord perceptible seulement dans le noir absolu sur fond 100 % noir.",
+          "unsure": "Faisceaux lumineux gênants en plein jour sur le bureau ; forte dissymétrie de teinte."
+        },
+        {
+          "category": "Mouvement et Fréquence",
+          "normal": "Fluidité conforme à la fréquence maximale ; réactivité nette sans halos exagérés.",
+          "attention": "Léger overshoot sur le profil d'overdrive extrême (résolu en revenant au niveau standard).",
+          "unsure": "Sauts répétés d'images (frame skipping) ; scintillement prononcé de la lumière en VRR."
+        },
+        {
+          "category": "Connectique et Alimentation",
+          "normal": "Détection rapide de toutes les entrées ; alimentation silencieuse et continue.",
+          "attention": "Port USB un peu dur à l'insertion ; transformateur externe chaud en usage prolongé.",
+          "unsure": "Coupures d'écran inopinées ; grésillement électrique sonore ; USB-C sans signal vidéo."
+        },
+        {
+          "category": "Documents et Échéance",
+          "normal": "Facture archivée, emballages au complet, plus de 7 jours restants auprès du marchand.",
+          "attention": "Moins de 48 heures restantes sur le délai de retour marchand ; arbitrage urgent.",
+          "unsure": "Délai de retour marchand dépassé ; toute réclamation relève désormais du SAV constructeur."
+        }
+      ],
+      "actionTitle": "12. Que Faire en Cas de Problème Avéré ?",
+      "actionDesc": "Adoptez une démarche méthodique avant d'engager un retour ou un recours en garantie :",
+      "actionSteps": [
+        "Étape 1 : Documentez précisément le défaut par photo ou vidéo contextualisée.",
+        "Étape 2 : Vérifiez si le dysfonctionnement persiste avec un autre câble, port ou PC.",
+        "Étape 3 : Contrôlez résolution, fréquence et profil d'image dans les réglages système.",
+        "Étape 4 : Consultez la notice officielle pour confronter les spécifications annoncées.",
+        "Étape 5 : Relisez les conditions et la date butoir de retour de l'enseigne d'achat.",
+        "Étape 6 : Si le délai du vendeur court encore, la rétractation ou l'échange est souvent plus rapide qu'un SAV constructeur.",
+        "Étape 7 : Si le délai est forclos, examinez les conditions de la garantie constructeur (RMA) et ses seuils de prise en charge.",
+        "Étape 8 : Prenez contact avec le service client approprié muni de votre facture et de vos justificatifs."
+      ],
+      "quickChecklistTitle": "13. Checklist Rapide en 10 Points au Déballage",
+      "quickChecklistDesc": "Un récapitulatif pour une vérification express de votre nouvel écran :",
+      "quickChecklist": [
+        "Colis et emballage : carton d'origine, cales en mousse et sachets soigneusement préservés.",
+        "Référence produit : étiquette code-barres conforme à la commande passée.",
+        "Dalle et surface : verre examiné en lumière rasante ; zéro rayure ni accroc de filtre.",
+        "Châssis et pied : ajustement régulier du cadre et fluidité des axes du support.",
+        "Mise en route : allumage propre en 2 à 5 secondes avec voyant et rétroéclairage stables.",
+        "Examen des pixels : tests de pixels morts et bloqués complétés sur toutes les teintes.",
+        "Rétroéclairage : fuites sur fond noir et régularité sur mire grise 50 % contrôlées.",
+        "Fluidité : fréquence maximale sélectionnée dans le système et validée au test.",
+        "Connectique : entrées vidéo utiles, fonctionnalités USB-C et concentrateurs vérifiés.",
+        "Délai de rétractation : alerte calendaire positionnée avant l'expiration du retour marchand."
+      ],
+      "workflowCtaTitle": "Prêt pour la séquence de test guidée ?",
+      "workflowCtaDesc": "Lancez notre parcours guidé d'inspection d'écran neuf pour dérouler mires de pixels, contrôles d'éclairage et d'uniformité directement sur votre affichage.",
+      "workflowCtaButton": "Lancer le parcours écran neuf",
+      "relatedTestsHeading": "Suite de tests conseillée"
     }
   },
   "Inspection": {
