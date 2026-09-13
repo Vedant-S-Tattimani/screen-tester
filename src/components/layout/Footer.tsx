@@ -122,6 +122,15 @@ const DIRECTORY_BADGES = [
     width: 200,
     height: 52,
   },
+  {
+    name: "Wired Business",
+    href: "https://wired.business",
+    rel: "noopener noreferrer",
+    src: "https://wired.business/badge1-dark.svg",
+    alt: "Featured on Wired Business",
+    width: 200,
+    height: 54,
+  },
 ];
 
 export function Footer() {
