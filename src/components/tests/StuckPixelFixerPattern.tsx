@@ -9,7 +9,6 @@ import {
   Pause, 
   Square, 
   RotateCcw, 
-  Crosshair, 
   ShieldAlert,
   Clock,
   CheckCircle2,
@@ -45,6 +44,20 @@ const ALTERNATING_PAIRS = [
   ["#FFFFFF", "#000000"]  // White & Black
 ];
 
+function clampPosition(
+  pos: { x: number; y: number },
+  boxSizePx: number,
+  containerW: number,
+  containerH: number
+): { x: number; y: number } {
+  const maxX = Math.max(0, containerW - boxSizePx);
+  const maxY = Math.max(0, containerH - boxSizePx);
+  return {
+    x: Math.min(Math.max(0, pos.x), maxX),
+    y: Math.min(Math.max(0, pos.y), maxY)
+  };
+}
+
 export function StuckPixelFixerPattern({ testId = "stuck-pixel-fixer" }: StuckPixelFixerPatternProps) {
   const t = useTranslations("StuckPixelFixerTest");
   const { registerNavigation } = useTestContext();
@@ -58,10 +71,15 @@ export function StuckPixelFixerPattern({ testId = "stuck-pixel-fixer" }: StuckPi
   const [sizeKey, setSizeKey] = useState<BoxSize>("medium");
   const [timerPresetMinutes, setTimerPresetMinutes] = useState<number>(10); // 10, 30, 60
   
-  // Position State (Coordinates of the top-left of the stimulation box)
-  const [position, setPosition] = useState<{ x: number; y: number }>({ x: 200, y: 200 });
-  const isDraggingRef = useRef(false);
-  const dragOffsetRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+  // Position State (Coordinates of the top-left of the stimulation box relative to test surface)
+  const [position, setPosition] = useState<{ x: number; y: number } | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const hasUserMovedRef = useRef(false);
+  const dragStartRef = useRef<{
+    pointerId: number;
+    grabOffsetX: number;
+    grabOffsetY: number;
+  } | null>(null);
 
   // Running & Timing State
   const [isRunning, setIsRunning] = useState(false);
@@ -80,19 +98,51 @@ export function StuckPixelFixerPattern({ testId = "stuck-pixel-fixer" }: StuckPi
   const frameCountRef = useRef<number>(0);
   const timerIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Center the box initially when mounted
+  // Center initially and clamp on test surface resize / sizeKey change
   useEffect(() => {
-    queueMicrotask(() => {
-      if (typeof window !== "undefined") {
-        const initialW = window.innerWidth;
-        const initialH = window.innerHeight;
-        setPosition({
-          x: Math.max(20, Math.round(initialW / 2 - 50)),
-          y: Math.max(20, Math.round(initialH / 2 - 50))
-        });
-      }
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleResize = () => {
+      const rect = container.getBoundingClientRect();
+      if (rect.width <= 0 || rect.height <= 0) return;
+      const currentBoxSize = SIZE_MAP[sizeKey];
+      if (currentBoxSize <= 0) return; // fullscreen handled via inset-0
+
+      setPosition((prev) => {
+        if (!hasUserMovedRef.current || !prev) {
+          return {
+            x: Math.max(0, Math.round((rect.width - currentBoxSize) / 2)),
+            y: Math.max(0, Math.round((rect.height - currentBoxSize) / 2))
+          };
+        }
+        return clampPosition(prev, currentBoxSize, rect.width, rect.height);
+      });
+    };
+
+    handleResize();
+
+    const ro = new ResizeObserver(() => {
+      handleResize();
     });
-  }, []);
+    ro.observe(container);
+
+    return () => ro.disconnect();
+  }, [sizeKey]);
+
+  // Render neutral dark state on canvas when stopped or size changes
+  useEffect(() => {
+    if (!isRunning) {
+      const cvs = canvasRef.current;
+      if (cvs) {
+        const ctx = cvs.getContext("2d");
+        if (ctx) {
+          ctx.fillStyle = "#1e293b";
+          ctx.fillRect(0, 0, cvs.width, cvs.height);
+        }
+      }
+    }
+  }, [isRunning, sizeKey]);
 
   // Clean animation loops and timers on unmount / route change
   const stopStimulationLoop = useCallback(() => {
@@ -118,22 +168,12 @@ export function StuckPixelFixerPattern({ testId = "stuck-pixel-fixer" }: StuckPi
     setIsPaused(false);
     stopStimulationLoop();
 
-    // Render clear neutral state on canvas with crosshair
     const cvs = canvasRef.current;
     if (cvs) {
       const ctx = cvs.getContext("2d");
       if (ctx) {
         ctx.fillStyle = "#1e293b";
         ctx.fillRect(0, 0, cvs.width, cvs.height);
-        // Draw centering crosshair for precision alignment
-        ctx.strokeStyle = "#38bdf8";
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(cvs.width / 2, 0);
-        ctx.lineTo(cvs.width / 2, cvs.height);
-        ctx.moveTo(0, cvs.height / 2);
-        ctx.lineTo(cvs.width, cvs.height / 2);
-        ctx.stroke();
       }
     }
   }, [stopStimulationLoop]);
@@ -146,18 +186,28 @@ export function StuckPixelFixerPattern({ testId = "stuck-pixel-fixer" }: StuckPi
       }
 
       const step = e.shiftKey ? 10 : 1;
+      const container = containerRef.current;
+      const rect = container?.getBoundingClientRect();
+      const currentBoxSize = SIZE_MAP[sizeKey];
+      const maxX = rect && currentBoxSize > 0 ? Math.max(0, rect.width - currentBoxSize) : 2000;
+      const maxY = rect && currentBoxSize > 0 ? Math.max(0, rect.height - currentBoxSize) : 2000;
+
       if (e.key === "ArrowUp") {
         e.preventDefault();
-        setPosition((p) => ({ ...p, y: Math.max(0, p.y - step) }));
+        hasUserMovedRef.current = true;
+        setPosition((p) => p ? { ...p, y: Math.max(0, p.y - step) } : p);
       } else if (e.key === "ArrowDown") {
         e.preventDefault();
-        setPosition((p) => ({ ...p, y: p.y + step }));
+        hasUserMovedRef.current = true;
+        setPosition((p) => p ? { ...p, y: Math.min(maxY, p.y + step) } : p);
       } else if (e.key === "ArrowLeft") {
         e.preventDefault();
-        setPosition((p) => ({ ...p, x: Math.max(0, p.x - step) }));
+        hasUserMovedRef.current = true;
+        setPosition((p) => p ? { ...p, x: Math.max(0, p.x - step) } : p);
       } else if (e.key === "ArrowRight") {
         e.preventDefault();
-        setPosition((p) => ({ ...p, x: p.x + step }));
+        hasUserMovedRef.current = true;
+        setPosition((p) => p ? { ...p, x: Math.min(maxX, p.x + step) } : p);
       } else if (e.key === "Escape" && isRunning) {
         handleStop();
       }
@@ -165,7 +215,7 @@ export function StuckPixelFixerPattern({ testId = "stuck-pixel-fixer" }: StuckPi
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isRunning, handleStop]);
+  }, [isRunning, handleStop, sizeKey]);
 
   // ANIMATION ENGINE: Render loop executing directly on Canvas
   const renderLoopRef = useRef<() => void>(() => {});
@@ -280,30 +330,68 @@ export function StuckPixelFixerPattern({ testId = "stuck-pixel-fixer" }: StuckPi
   // Pointer drag handling for target repositioning
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     if (sizeKey === "fullscreen") return;
-    const target = e.currentTarget;
+    if (e.button !== 0) return;
+
+    const container = containerRef.current;
+    if (!container) return;
+
+    const containerRect = container.getBoundingClientRect();
+    const currentBoxSize = SIZE_MAP[sizeKey];
+
+    const currentPos = position ?? {
+      x: Math.max(0, Math.round((containerRect.width - currentBoxSize) / 2)),
+      y: Math.max(0, Math.round((containerRect.height - currentBoxSize) / 2))
+    };
+
+    const pointerInsideContainerX = e.clientX - containerRect.left;
+    const pointerInsideContainerY = e.clientY - containerRect.top;
+
+    dragStartRef.current = {
+      pointerId: e.pointerId,
+      grabOffsetX: pointerInsideContainerX - currentPos.x,
+      grabOffsetY: pointerInsideContainerY - currentPos.y
+    };
+
     try {
-      target.setPointerCapture(e.pointerId);
+      e.currentTarget.setPointerCapture(e.pointerId);
     } catch {}
 
-    isDraggingRef.current = true;
-    dragOffsetRef.current = {
-      x: e.clientX - position.x,
-      y: e.clientY - position.y
-    };
+    setIsDragging(true);
   };
 
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (!isDraggingRef.current) return;
-    const newX = Math.max(0, e.clientX - dragOffsetRef.current.x);
-    const newY = Math.max(0, e.clientY - dragOffsetRef.current.y);
-    setPosition({ x: newX, y: newY });
+    if (!dragStartRef.current || dragStartRef.current.pointerId !== e.pointerId) return;
+
+    const container = containerRef.current;
+    if (!container) return;
+
+    const containerRect = container.getBoundingClientRect();
+    const currentBoxSize = SIZE_MAP[sizeKey];
+
+    const pointerInsideContainerX = e.clientX - containerRect.left;
+    const pointerInsideContainerY = e.clientY - containerRect.top;
+
+    const targetX = pointerInsideContainerX - dragStartRef.current.grabOffsetX;
+    const targetY = pointerInsideContainerY - dragStartRef.current.grabOffsetY;
+
+    const maxX = Math.max(0, containerRect.width - currentBoxSize);
+    const maxY = Math.max(0, containerRect.height - currentBoxSize);
+
+    const clampedX = Math.min(Math.max(0, targetX), maxX);
+    const clampedY = Math.min(Math.max(0, targetY), maxY);
+
+    hasUserMovedRef.current = true;
+    setPosition({ x: clampedX, y: clampedY });
   };
 
   const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
-    isDraggingRef.current = false;
-    try {
-      e.currentTarget.releasePointerCapture(e.pointerId);
-    } catch {}
+    if (dragStartRef.current && dragStartRef.current.pointerId === e.pointerId) {
+      dragStartRef.current = null;
+      try {
+        e.currentTarget.releasePointerCapture(e.pointerId);
+      } catch {}
+      setIsDragging(false);
+    }
   };
 
   const handleSaveObservation = (obs: "PASS" | "ISSUE" | "UNSURE") => {
@@ -373,7 +461,7 @@ export function StuckPixelFixerPattern({ testId = "stuck-pixel-fixer" }: StuckPi
             inset: 0,
             zIndex: 10,
             touchAction: "none"
-          } : {
+          } : position ? {
             position: "absolute",
             left: position.x,
             top: position.y,
@@ -381,11 +469,23 @@ export function StuckPixelFixerPattern({ testId = "stuck-pixel-fixer" }: StuckPi
             height: boxDim.h,
             zIndex: 10,
             touchAction: "none"
+          } : {
+            position: "absolute",
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%, -50%)",
+            width: boxDim.w,
+            height: boxDim.h,
+            zIndex: 10,
+            touchAction: "none"
           }}
-          className={`cursor-grab active:cursor-grabbing transition-shadow ${
-            sizeKey !== "fullscreen" ? "border-2 border-white/80 rounded-lg shadow-2xl overflow-hidden" : ""
+          className={`select-none ${
+            sizeKey === "fullscreen"
+              ? "cursor-default"
+              : isDragging
+              ? "cursor-grabbing border-2 border-white rounded-lg shadow-2xl overflow-hidden"
+              : "cursor-grab border-2 border-white/80 rounded-lg shadow-2xl overflow-hidden"
           }`}
-          title={t("controls.dragPrompt")}
         >
           <canvas
             ref={canvasRef}
@@ -393,25 +493,7 @@ export function StuckPixelFixerPattern({ testId = "stuck-pixel-fixer" }: StuckPi
             height={boxDim.h}
             className="w-full h-full block bg-slate-900"
           />
-
-          {!isRunning && sizeKey !== "fullscreen" && (
-            <div className="absolute -top-7 left-0 px-2 py-0.5 rounded bg-black/90 border border-white/30 text-[10px] font-mono text-white whitespace-nowrap pointer-events-none shadow-md">
-              X: {position.x} Y: {position.y}
-            </div>
-          )}
         </div>
-
-        {/* RETICLE OVERLAY HELPER */}
-        {!isRunning && sizeKey !== "fullscreen" && (
-          <div className="absolute bottom-20 left-4 right-4 pointer-events-none flex justify-center z-10">
-            <div className="px-4 py-2 rounded-xl bg-black/70 backdrop-blur-sm border border-white/10 text-white/70 text-xs font-mono flex items-center gap-3 shadow-lg">
-              <Crosshair className="w-4 h-4 text-blue-400" />
-              <span>{t("controls.dragPrompt")}</span>
-              <span className="text-white/30">•</span>
-              <span>{t("controls.arrowPrompt")}</span>
-            </div>
-          </div>
-        )}
 
         {/* POST-STIMULATION EVALUATION DIALOG */}
         {!isRunning && elapsedSeconds > 5 && (
