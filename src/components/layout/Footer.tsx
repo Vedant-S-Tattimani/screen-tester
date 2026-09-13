@@ -104,6 +104,15 @@ const DIRECTORY_BADGES = [
     width: 150,
     height: 44,
   },
+  {
+    name: "IndexOfAI",
+    href: "https://indexof.ai/tool/screen-tester?ref=screen-tester",
+    rel: "noopener",
+    src: "https://indexof.ai/badge-light.svg",
+    alt: "Featured on IndexOf.AI",
+    width: 200,
+    height: 40,
+  },
 ];
 
 export function Footer() {

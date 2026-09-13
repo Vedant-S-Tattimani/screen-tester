@@ -198,7 +198,7 @@
 .animate-train {
   display: flex;
   width: max-content;
-  animation: trainMarquee 30s linear infinite;
+  animation: trainMarquee 65s linear infinite;
   will-change: transform;
 }
 
