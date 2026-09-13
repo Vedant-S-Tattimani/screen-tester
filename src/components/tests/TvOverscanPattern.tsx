@@ -3,18 +3,24 @@
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
 import { Tv, ShieldAlert, Info, Maximize } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface TvOverscanPatternProps {
   testId?: string;
 }
 
 export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPatternProps) {
-  const { toggleFullscreen } = useTestContext();
+  const { toggleFullscreen, isFullscreen } = useTestContext();
 
   return (
-    <div className="relative w-full flex flex-col items-center">
+    <div className={cn("relative w-full flex flex-col items-center", isFullscreen && "h-full")}>
       {/* Pattern Viewport */}
-      <div className="relative w-full aspect-video min-h-[460px] max-h-[75vh] bg-slate-950 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl flex items-center justify-center select-none">
+      <div className={cn(
+        "relative w-full bg-slate-950 overflow-hidden flex items-center justify-center select-none",
+        isFullscreen 
+          ? "h-full rounded-none border-none"
+          : "aspect-video min-h-[460px] max-h-[75vh] rounded-2xl border border-slate-800 shadow-2xl"
+      )}>
         
         {/* Outer 1px Cyan Edge Border (0% boundary - absolute extreme edge) */}
         <div className="absolute inset-0 border border-cyan-400 pointer-events-none" />
@@ -64,7 +70,7 @@ export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPat
             backgroundSize: "4px 4px"
           }}
         >
-          <div className="absolute -bottom-4 left-0 text-[8px] font-mono text-slate-400">Fine Detail Patch</div>
+          <div className="absolute -bottom-4 left-0 text-[8px] font-mono text-slate-400 whitespace-nowrap">Fine Detail Patch</div>
         </div>
 
         <div
@@ -74,7 +80,7 @@ export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPat
             backgroundSize: "4px 4px"
           }}
         >
-          <div className="absolute -bottom-4 right-0 text-[8px] font-mono text-slate-400">Fine Detail Patch</div>
+          <div className="absolute -bottom-4 right-0 text-[8px] font-mono text-slate-400 whitespace-nowrap">Fine Detail Patch</div>
         </div>
 
         <div
@@ -84,7 +90,7 @@ export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPat
             backgroundSize: "4px 4px"
           }}
         >
-          <div className="absolute -top-4 left-0 text-[8px] font-mono text-slate-400">Fine Detail Patch</div>
+          <div className="absolute -top-4 left-0 text-[8px] font-mono text-slate-400 whitespace-nowrap">Fine Detail Patch</div>
         </div>
 
         <div
@@ -94,7 +100,7 @@ export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPat
             backgroundSize: "4px 4px"
           }}
         >
-          <div className="absolute -top-4 right-0 text-[8px] font-mono text-slate-400">Fine Detail Patch</div>
+          <div className="absolute -top-4 right-0 text-[8px] font-mono text-slate-400 whitespace-nowrap">Fine Detail Patch</div>
         </div>
 
         {/* Centered Precision Target Crosshairs & Calibration Reticle */}
@@ -127,6 +133,7 @@ export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPat
       </div>
 
       {/* Control Strip */}
+      {!isFullscreen && (
       <div className="mt-6 w-full max-w-4xl bg-card border border-border/70 rounded-2xl p-5 shadow-sm space-y-5">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2">
@@ -190,8 +197,9 @@ export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPat
           </div>
         </div>
       </div>
+      )}
 
-      <TestControlBar testId={testId} title="TV Overscan & Pixel Mapping Visual Test" />
+      {!isFullscreen && <TestControlBar testId={testId} title="TV Overscan & Pixel Mapping Visual Test" />}
     </div>
   );
 }
