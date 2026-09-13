@@ -26,6 +26,10 @@ export interface AudioAnalyzer {
   getAnalysis: () => AudioAnalyzerResult;
   getWaveform: (outputArray: Uint8Array<ArrayBuffer>) => void;
   cleanup: () => void;
+  audioContext: AudioContext;
+  sourceNode: MediaStreamAudioSourceNode;
+  analyserNode: AnalyserNode;
+  resume: () => Promise<void>;
 }
 
 export interface SupportedRecordingFormat {
@@ -43,12 +47,31 @@ export async function getMicrophoneStream(deviceId?: string): Promise<MediaStrea
     throw new Error("MEDIA_DEVICES_UNSUPPORTED");
   }
 
+  const audioConstraints: MediaTrackConstraints = deviceId 
+    ? { deviceId: { ideal: deviceId } } 
+    : {};
+
   const constraints: MediaStreamConstraints = {
-    audio: deviceId ? { deviceId: { exact: deviceId } } : true,
+    audio: {
+      ...audioConstraints,
+      echoCancellation: true,
+      noiseSuppression: true,
+      autoGainControl: true
+    },
     video: false
   };
 
-  return await navigator.mediaDevices.getUserMedia(constraints);
+  const stream = await navigator.mediaDevices.getUserMedia(constraints);
+
+  const tracks = stream.getAudioTracks();
+  if (tracks.length === 0) {
+    throw new Error("NO_AUDIO_TRACK");
+  }
+  tracks.forEach(track => {
+    track.enabled = true;
+  });
+
+  return stream;
 }
 
 /**
@@ -59,6 +82,7 @@ export function stopMediaStream(stream: MediaStream | null): void {
   try {
     stream.getTracks().forEach(track => {
       try {
+        track.enabled = false;
         track.stop();
       } catch {
         // ignore track stop error
@@ -122,6 +146,10 @@ export function createAudioAnalyzer(
     let peakHoldDecayTimer = 0;
 
     const getAnalysis = (): AudioAnalyzerResult => {
+      if (ctx.state === "suspended") {
+        ctx.resume().catch(() => {});
+      }
+
       analyser.getByteTimeDomainData(timeDomainData);
 
       // Compute Root Mean Square (RMS) of PCM buffer
@@ -165,6 +193,12 @@ export function createAudioAnalyzer(
       analyser.getByteTimeDomainData(outputArray);
     };
 
+    const resume = async (): Promise<void> => {
+      if (ctx.state === "suspended") {
+        await ctx.resume().catch(() => {});
+      }
+    };
+
     const cleanup = () => {
       try {
         source.disconnect();
@@ -182,7 +216,11 @@ export function createAudioAnalyzer(
     return {
       getAnalysis,
       getWaveform,
-      cleanup
+      cleanup,
+      audioContext: ctx,
+      sourceNode: source,
+      analyserNode: analyser,
+      resume
     };
   } catch {
     return null;

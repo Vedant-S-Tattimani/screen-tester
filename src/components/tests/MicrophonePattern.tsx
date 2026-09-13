@@ -10,6 +10,7 @@ import {
   stopMediaStream, 
   enumerateAudioInputDevices, 
   createAudioAnalyzer, 
+  getSupportedRecordingMimeTypes,
   AudioInputDevice, 
   AudioAnalyzer
 } from "@/lib/audioUtils";
@@ -65,6 +66,7 @@ export function MicrophonePattern({ testId = "microphone-test" }: MicrophonePatt
 
   const [devices, setDevices] = useState<AudioInputDevice[]>([]);
   const [selectedDeviceId, setSelectedDeviceId] = useState<string>("");
+  const [activeStreamId, setActiveStreamId] = useState<string | null>(null);
 
   // Live Analysis Telemetry
   const [audioLevel, setAudioLevel] = useState<number>(0);
@@ -116,6 +118,29 @@ export function MicrophonePattern({ testId = "microphone-test" }: MicrophonePatt
       streamRef.current = null;
     }
 
+    // Stop loopback recording if in progress
+    if (loopbackTimerRef.current) {
+      clearInterval(loopbackTimerRef.current);
+      loopbackTimerRef.current = null;
+    }
+    if (loopbackRecorderRef.current && loopbackRecorderRef.current.state === "recording") {
+      try {
+        loopbackRecorderRef.current.stop();
+      } catch {}
+    }
+    setIsLoopbackRecording(false);
+
+    // Stop loopback playback if active
+    if (loopbackAudioRef.current) {
+      try {
+        loopbackAudioRef.current.pause();
+        loopbackAudioRef.current.currentTime = 0;
+      } catch {}
+      loopbackAudioRef.current = null;
+    }
+    setIsLoopbackPlaying(false);
+
+    setActiveStreamId(null);
     setMicState("IDLE");
     setAudioLevel(0);
     setPeakLevel(0);
@@ -132,7 +157,7 @@ export function MicrophonePattern({ testId = "microphone-test" }: MicrophonePatt
     }
   }, [selectedDeviceId]);
 
-  // Initial enumeration on mount
+  // Initial enumeration on mount and cleanup
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -149,80 +174,103 @@ export function MicrophonePattern({ testId = "microphone-test" }: MicrophonePatt
       if (navigator.mediaDevices?.removeEventListener) {
         navigator.mediaDevices.removeEventListener("devicechange", handleDeviceChange);
       }
+    };
+  }, [refreshDevices, stopMicrophone]);
+
+  // Clean up loopback audio URL on change or unmount
+  useEffect(() => {
+    return () => {
       if (loopbackAudioUrl) {
         URL.revokeObjectURL(loopbackAudioUrl);
       }
-      if (loopbackTimerRef.current) {
-        clearInterval(loopbackTimerRef.current);
-      }
     };
-  }, [refreshDevices, stopMicrophone, loopbackAudioUrl]);
+  }, [loopbackAudioUrl]);
 
-  // Waveform oscilloscope drawing loop
-  const startVisualizerLoop = useCallback(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+  // Dedicated visualizer and analysis loop driven by active micState and stream
+  useEffect(() => {
+    if (micState !== "ACTIVE" || !analyzerRef.current) {
+      return;
+    }
 
+    const analyzer = analyzerRef.current;
+    // Ensure AudioContext is resumed
+    analyzer.resume().catch(() => {});
+
+    let isMounted = true;
     const waveformData = new Uint8Array(128);
 
     const draw = () => {
-      if (!analyzerRef.current) return;
+      if (!isMounted || !analyzerRef.current) return;
 
-      const analysis = analyzerRef.current.getAnalysis();
+      // 1. Live audio analysis telemetry
+      const analysis = analyzer.getAnalysis();
       setAudioLevel(analysis.level);
       setPeakLevel(analysis.peak);
       setIsSilence(analysis.isSilence);
       setIsClipping(analysis.isClipping);
 
-      analyzerRef.current.getWaveform(waveformData);
+      // 2. Oscilloscope waveform rendering on canvas
+      const canvas = canvasRef.current;
+      if (canvas) {
+        const ctx = canvas.getContext("2d");
+        if (ctx) {
+          analyzer.getWaveform(waveformData);
 
-      const width = canvas.width;
-      const height = canvas.height;
+          const width = canvas.width;
+          const height = canvas.height;
 
-      ctx.clearRect(0, 0, width, height);
+          ctx.clearRect(0, 0, width, height);
 
-      // Background subtle grid
-      ctx.strokeStyle = "rgba(51, 65, 85, 0.3)";
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(0, height / 2);
-      ctx.lineTo(width, height / 2);
-      ctx.stroke();
+          // Background subtle center line
+          ctx.strokeStyle = "rgba(51, 65, 85, 0.4)";
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(0, height / 2);
+          ctx.lineTo(width, height / 2);
+          ctx.stroke();
 
-      // Waveform line
-      ctx.lineWidth = 2;
-      ctx.strokeStyle = analysis.isClipping 
-        ? "#ef4444" 
-        : analysis.level > 60 
-          ? "#f59e0b" 
-          : "#10b981";
+          // Live oscilloscope line
+          ctx.lineWidth = 2;
+          ctx.strokeStyle = analysis.isClipping 
+            ? "#ef4444" 
+            : analysis.level > 60 
+              ? "#f59e0b" 
+              : "#10b981";
 
-      ctx.beginPath();
-      const sliceWidth = width / (waveformData.length - 1);
-      let x = 0;
+          ctx.beginPath();
+          const sliceWidth = width / (waveformData.length - 1);
+          let x = 0;
 
-      for (let i = 0; i < waveformData.length; i++) {
-        const v = waveformData[i] / 128.0; // 0..2, mid is 1.0
-        const y = (v * height) / 2;
+          for (let i = 0; i < waveformData.length; i++) {
+            const v = waveformData[i] / 128.0; // 0..2, mid is 1.0
+            const y = (v * height) / 2;
 
-        if (i === 0) {
-          ctx.moveTo(x, y);
-        } else {
-          ctx.lineTo(x, y);
+            if (i === 0) {
+              ctx.moveTo(x, y);
+            } else {
+              ctx.lineTo(x, y);
+            }
+
+            x += sliceWidth;
+          }
+
+          ctx.stroke();
         }
-
-        x += sliceWidth;
       }
-
-      ctx.stroke();
 
       animFrameRef.current = requestAnimationFrame(draw);
     };
 
     animFrameRef.current = requestAnimationFrame(draw);
-  }, []);
+
+    return () => {
+      isMounted = false;
+      if (animFrameRef.current) {
+        cancelAnimationFrame(animFrameRef.current);
+        animFrameRef.current = null;
+      }
+    };
+  }, [micState, activeStreamId]);
 
   // Start microphone stream
   const startMicrophone = async (targetDeviceId?: string) => {
@@ -255,10 +303,13 @@ export function MicrophonePattern({ testId = "microphone-test" }: MicrophonePatt
       // Initialize Web Audio API analyzer
       const analyzer = createAudioAnalyzer(stream);
       if (analyzer) {
+        await analyzer.resume().catch(() => {});
         analyzerRef.current = analyzer;
-        startVisualizerLoop();
+      } else {
+        throw new Error("AUDIO_ANALYZER_FAILED");
       }
 
+      setActiveStreamId(stream.id);
       setMicState("ACTIVE");
 
       // Re-enumerate to get human readable labels now that permission is granted
@@ -294,13 +345,29 @@ export function MicrophonePattern({ testId = "microphone-test" }: MicrophonePatt
       setLoopbackAudioUrl(null);
     }
 
+    if (loopbackAudioRef.current) {
+      try {
+        loopbackAudioRef.current.pause();
+      } catch {}
+      loopbackAudioRef.current = null;
+    }
+    setIsLoopbackPlaying(false);
+
     loopbackChunksRef.current = [];
     let recorder: MediaRecorder;
 
     try {
-      recorder = new MediaRecorder(streamRef.current);
+      const supportedFormats = getSupportedRecordingMimeTypes();
+      const mimeType = supportedFormats.length > 0 ? supportedFormats[0].mimeType : "";
+      recorder = mimeType 
+        ? new MediaRecorder(streamRef.current, { mimeType }) 
+        : new MediaRecorder(streamRef.current);
     } catch {
-      return;
+      try {
+        recorder = new MediaRecorder(streamRef.current);
+      } catch {
+        return;
+      }
     }
 
     loopbackRecorderRef.current = recorder;
@@ -312,13 +379,17 @@ export function MicrophonePattern({ testId = "microphone-test" }: MicrophonePatt
     };
 
     recorder.onstop = () => {
-      const blob = new Blob(loopbackChunksRef.current, { type: recorder.mimeType || "audio/webm" });
-      const url = URL.createObjectURL(blob);
-      setLoopbackAudioUrl(url);
+      if (loopbackChunksRef.current.length > 0) {
+        const mimeType = recorder.mimeType || "audio/webm";
+        const blob = new Blob(loopbackChunksRef.current, { type: mimeType });
+        const url = URL.createObjectURL(blob);
+        setLoopbackAudioUrl(url);
+      }
       setIsLoopbackRecording(false);
     };
 
-    recorder.start();
+    // Collect data every 500ms for reliable chunks
+    recorder.start(500);
     setIsLoopbackRecording(true);
     setLoopbackCountdown(5);
 
@@ -327,7 +398,10 @@ export function MicrophonePattern({ testId = "microphone-test" }: MicrophonePatt
       remaining -= 1;
       setLoopbackCountdown(remaining);
       if (remaining <= 0) {
-        if (loopbackTimerRef.current) clearInterval(loopbackTimerRef.current);
+        if (loopbackTimerRef.current) {
+          clearInterval(loopbackTimerRef.current);
+          loopbackTimerRef.current = null;
+        }
         if (recorder.state === "recording") {
           recorder.stop();
         }
@@ -340,9 +414,11 @@ export function MicrophonePattern({ testId = "microphone-test" }: MicrophonePatt
     if (!loopbackAudioUrl) return;
 
     if (!loopbackAudioRef.current) {
-      loopbackAudioRef.current = new Audio(loopbackAudioUrl);
-      loopbackAudioRef.current.volume = 0.5; // Safe conservative volume
-      loopbackAudioRef.current.onended = () => setIsLoopbackPlaying(false);
+      const audio = new Audio(loopbackAudioUrl);
+      audio.volume = 0.5; // Safe conservative volume
+      audio.onended = () => setIsLoopbackPlaying(false);
+      audio.onerror = () => setIsLoopbackPlaying(false);
+      loopbackAudioRef.current = audio;
     }
 
     if (isLoopbackPlaying) {
@@ -351,6 +427,7 @@ export function MicrophonePattern({ testId = "microphone-test" }: MicrophonePatt
       setIsLoopbackPlaying(false);
     } else {
       loopbackAudioRef.current.src = loopbackAudioUrl;
+      loopbackAudioRef.current.currentTime = 0;
       loopbackAudioRef.current.play().then(() => {
         setIsLoopbackPlaying(true);
       }).catch(() => {
