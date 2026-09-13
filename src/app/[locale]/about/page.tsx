@@ -177,7 +177,7 @@ export default async function AboutPage({
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-950 hover:underline"
               >
-                <span>View project on GitHub</span>
+                <span>{t("viewOnGithub")}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </a>
             </div>
@@ -188,10 +188,10 @@ export default async function AboutPage({
         <div className="pt-8 border-t border-gray-200/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium text-gray-600">
           <Link href="/faq" className="hover:text-gray-950 flex items-center gap-1.5 transition-colors">
             <HelpCircle className="w-4 h-4" />
-            <span>Frequently Asked Questions</span>
+            <span>{t("faqLink")}</span>
           </Link>
           <Link href="/tests" className="hover:text-gray-950 flex items-center gap-1.5 transition-colors">
-            <span>Browse Full Test Suite</span>
+            <span>{t("browseTestsLink")}</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>

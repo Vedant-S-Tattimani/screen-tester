@@ -410,9 +410,9 @@
     "addNote": "+ Note",
     "noteAdded": "Note Added",
     "noteTitle": "Add written observation note",
-    "prev": "Prev",
+    "prev": "❮ Prev",
     "prevAria": "Previous test in sequence",
-    "skip": "Skip",
+    "skip": "Skip ❯",
     "skipAria": "Skip test",
     "skipTitle": "Skip to next test without recording an issue",
     "continue": "Continue →",
@@ -468,7 +468,19 @@
       "listTitle": "User-Observed Pixel Defects",
       "emptyList": "No pixel defects marked on this screen.",
       "closeBtn": "Close"
-    }
+    },
+    "guidedAutoTest": "Guided Auto Test",
+    "testProgress": "• Test {current} of {total}",
+    "resume": "▶ Resume",
+    "pause": "⏸ Pause ({seconds}s)",
+    "exitAutoTest": "Exit Guided Auto Test",
+    "autoTestInspect": "Your screen is now being checked with this visual pattern. Inspect the screen and select your observation below.",
+    "deadPixelInspect": "Look carefully across the entire screen for any pixel that remains a different color.",
+    "colorPrefix": "COLOR",
+    "kbCalloutPrefix": "Learn more in the Knowledge Base •",
+    "kbCalloutAction": "Read Technical Guide",
+    "troubleshootingPrefix": "Having trouble with this test? •",
+    "troubleshootingAction": "Troubleshooting Guide"
   },
   "TestPages": {
     "dead-pixel-test": {
@@ -1065,37 +1077,221 @@
       "metaTitle": "Monitor Screen Inspection Guide",
       "metaDescription": "Step-by-step guide to testing new or used computer monitors for dead pixels, backlight bleed, color banding, and ghosting.",
       "title": "Monitor Screen Inspection Guide",
-      "description": "Comprehensive testing for desktop monitors."
+      "description": "Comprehensive testing for desktop monitors.",
+      "workflowTitle": "General Monitor Inspection",
+      "troubleshooting": [
+        {
+          "symptom": "Screen Tearing in Games",
+          "description": "Horizontal lines splitting the image when moving the camera.",
+          "tests": [
+            {
+              "name": "Screen Tearing",
+              "url": "/tests/screen-tearing-test"
+            },
+            {
+              "name": "Refresh Rate",
+              "url": "/tests/refresh-rate-test"
+            }
+          ]
+        },
+        {
+          "symptom": "Uneven Colors or Shadows",
+          "description": "Dark scenes look blotchy or colors shift across the screen.",
+          "tests": [
+            {
+              "name": "Uniformity",
+              "url": "/tests/uniformity-test"
+            },
+            {
+              "name": "Backlight Bleed",
+              "url": "/tests/backlight-bleed-test"
+            },
+            {
+              "name": "Viewing Angle",
+              "url": "/tests/viewing-angle-test"
+            }
+          ]
+        }
+      ]
     },
     "oled": {
       "metaTitle": "OLED Screen Inspection Guide",
       "metaDescription": "Learn how to inspect OLED monitors and TVs for image retention, near-black tinting, and pixel degradation.",
       "title": "OLED Screen Inspection Guide",
-      "description": "Specialized tests for OLED image retention and black levels."
+      "description": "Specialized tests for OLED image retention and black levels.",
+      "workflowTitle": "OLED Inspection Wizard",
+      "troubleshooting": [
+        {
+          "symptom": "Image Retention",
+          "description": "Faint outlines of static UI elements remaining on screen.",
+          "tests": [
+            {
+              "name": "Burn-in Test",
+              "url": "/tests/burn-in-test"
+            },
+            {
+              "name": "Solid Colors",
+              "url": "/tests/solid-color-test"
+            }
+          ]
+        },
+        {
+          "symptom": "Near-Black Banding",
+          "description": "Dark gray scenes appear noisy, banded, or blocky.",
+          "tests": [
+            {
+              "name": "Black Level",
+              "url": "/tests/black-level-test"
+            },
+            {
+              "name": "Color Banding",
+              "url": "/tests/color-banding-test"
+            }
+          ]
+        }
+      ]
     },
     "laptop": {
       "metaTitle": "Laptop Screen Inspection Guide",
       "metaDescription": "Comprehensive inspection checklist for laptop displays: check for dead pixels, hinge pressure bleed, and scaling.",
       "title": "Laptop Screen Inspection Guide",
-      "description": "Tests for typical laptop LCD panels."
+      "description": "Tests for typical laptop LCD panels.",
+      "workflowTitle": "Laptop Inspection Wizard",
+      "troubleshooting": [
+        {
+          "symptom": "Colors wash out when moving head",
+          "description": "The contrast drops and colors invert when you adjust the screen tilt.",
+          "tests": [
+            {
+              "name": "Viewing Angle",
+              "url": "/tests/viewing-angle-test"
+            },
+            {
+              "name": "Contrast",
+              "url": "/tests/contrast-test"
+            }
+          ]
+        },
+        {
+          "symptom": "Text is blurry or soft",
+          "description": "Fonts don't look crisp despite a high resolution display.",
+          "tests": [
+            {
+              "name": "Sharpness",
+              "url": "/tests/sharpness-test"
+            },
+            {
+              "name": "Display Info",
+              "url": "/tests/resolution-checker"
+            }
+          ]
+        }
+      ]
     },
     "lcd": {
       "metaTitle": "LCD Screen Inspection Guide",
       "metaDescription": "Guide to evaluating LCD panel technologies: distinguish IPS glow from backlight bleed and test response times.",
       "title": "LCD Screen Inspection Guide",
-      "description": "Tests for LCD backlight bleed and uniformity."
+      "description": "Tests for LCD backlight bleed and uniformity.",
+      "troubleshooting": [
+        {
+          "symptom": "Corners glow in the dark",
+          "description": "Yellowish or white light leaking from corners at wide viewing angles.",
+          "tests": [
+            {
+              "name": "Backlight Bleed",
+              "url": "/tests/backlight-bleed-test"
+            },
+            {
+              "name": "Viewing Angle",
+              "url": "/tests/viewing-angle-test"
+            }
+          ]
+        },
+        {
+          "symptom": "Fast motion looks smeared",
+          "description": "Moving objects leave a trail or ghosting behind them.",
+          "tests": [
+            {
+              "name": "Ghosting",
+              "url": "/tests/ghosting-test"
+            },
+            {
+              "name": "Refresh Rate",
+              "url": "/tests/refresh-rate-test"
+            }
+          ]
+        }
+      ]
     },
     "tv": {
       "metaTitle": "TV Screen Inspection Guide",
       "metaDescription": "How to test a 4K/OLED TV screen via browser: inspect motion smoothing, color banding, local dimming, and uniformity.",
       "title": "TV Screen Inspection Guide",
-      "description": "Tests for TV motion processing and blooming."
+      "description": "Tests for TV motion processing and blooming.",
+      "workflowTitle": "TV Inspection Wizard",
+      "troubleshooting": [
+        {
+          "symptom": "Halos around subtitles",
+          "description": "Bright objects on a dark background have a glowing aura.",
+          "tests": [
+            {
+              "name": "Blooming",
+              "url": "/tests/blooming-test"
+            },
+            {
+              "name": "Black Level",
+              "url": "/tests/black-level-test"
+            }
+          ]
+        },
+        {
+          "symptom": "Soap Opera Effect",
+          "description": "Movies look unnaturally smooth or artificial.",
+          "tests": [
+            {
+              "name": "Motion Blur",
+              "url": "/tests/motion-blur-test"
+            },
+            {
+              "name": "Refresh Rate",
+              "url": "/tests/refresh-rate-test"
+            }
+          ]
+        }
+      ]
     },
     "mobile": {
       "metaTitle": "Mobile Screen Inspection Guide",
       "metaDescription": "Test your smartphone or tablet touchscreen, OLED burn-in, color accuracy, and multi-touch response.",
       "title": "Mobile Screen Inspection Guide",
-      "description": "Tests for mobile touch screens and OLED panels."
+      "description": "Tests for mobile touch screens and OLED panels.",
+      "troubleshooting": [
+        {
+          "symptom": "Dead spots on screen",
+          "description": "Taps or swipes aren't registering in specific areas.",
+          "tests": [
+            {
+              "name": "Touch Screen",
+              "url": "/tests/touch-screen-test"
+            }
+          ]
+        },
+        {
+          "symptom": "Shadows of old apps",
+          "description": "Keyboard or status bar faintly visible on solid colors.",
+          "tests": [
+            {
+              "name": "Burn-in",
+              "url": "/tests/burn-in-test"
+            },
+            {
+              "name": "Solid Colors",
+              "url": "/tests/solid-color-test"
+            }
+          ]
+        }
+      ]
     },
     "ghostingConcept": {
       "metaTitle": "How to Check Monitor Ghosting – Pixel Response Time & Overdrive Guide",
@@ -2658,6 +2854,25 @@
       "linkUniformityTest": "Uniformity Test",
       "linkDisplayInfo": "Display Info",
       "linkScalingAspect": "Scaling & Aspect Ratio Test"
+    },
+    "deviceGuide": {
+      "inspectionGuide": "Inspection Guide",
+      "workflowPrompt": "Interactive Inspection Workflow:",
+      "workflowPref": "Prefer a step-by-step interactive testing session with diagnostic logging?",
+      "launchWorkflow": "Launch",
+      "quickCheckTitle": "5-Minute Quick Check",
+      "quickCheckDesc": "The essential tests to verify {count} core metrics immediately after purchase.",
+      "startQuickCheck": "Start Quick Check",
+      "fullSuiteTitle": "Full Diagnostic Suite",
+      "fullSuiteDesc": "A comprehensive {count}-step sequence covering every aspect of the display.",
+      "startFullSuite": "Start Full Suite",
+      "commonIssuesTitle": "Common Issues",
+      "testsLabel": "Tests:"
+    },
+    "kbCallout": {
+      "title": "Looking for Technical Display Deep Dives?",
+      "description": "Explore our Knowledge Base for in-depth explanations on pixel defects, backlight bleed vs. IPS glow, monitor ghosting, and VRR standards.",
+      "action": "Browse Knowledge Base"
     }
   },
   "Inspection": {
@@ -2795,6 +3010,13 @@
         "title": "Resolution & Display Info",
         "what": "Check if resolution, color depth, and HDR support match the manufacturer specs."
       }
+    },
+    "workflowUi": {
+      "workflowEyebrow": "INSPECTION WORKFLOW",
+      "tipLabel": "Inspection Tip:",
+      "hardwareBoundaryLabel": "Hardware / Technical Boundary Note:",
+      "guideLinkText": "Read Monitor Screen Test Guide →",
+      "guideLinkPrompt": "Looking for comprehensive display inspection criteria and setup guidance?"
     }
   },
   "Privacy": {
@@ -2814,7 +3036,12 @@
     "cookiesTitle": "No Advertising or Tracking Cookies",
     "cookiesText": "Monitor Tester does not use third-party advertising cookies, behavioral trackers, or marketing pixels. The site does not sell, rent, or monetize your browsing activity.",
     "permissionsTitle": "Browser Permissions",
-    "permissionsText": "Monitor Tester requests only the standard Fullscreen API permission when you choose to enter full-screen testing mode. Fullscreen requires an explicit user gesture (such as clicking the Fullscreen button or pressing 'F') as enforced by your browser. We never request camera, microphone, notification, or geographic location permissions."
+    "permissionsText": "Monitor Tester requests only the standard Fullscreen API permission when you choose to enter full-screen testing mode. Fullscreen requires an explicit user gesture (such as clicking the Fullscreen button or pressing 'F') as enforced by your browser. We never request camera, microphone, notification, or geographic location permissions.",
+    "workflowStorageTitle": "Workflow Sequence (sessionStorage)",
+    "workflowStorageDesc": "Temporarily tracks your current test index during multi-step inspection workflows. This is purged automatically when you close the tab.",
+    "questionsTitle": "Questions About Privacy?",
+    "questionsDesc": "Contact our open-source maintainers or review the source code directly.",
+    "contactMaintainer": "Contact Maintainer"
   },
   "About": {
     "metaTitle": "About Screen Tester",
@@ -2838,7 +3065,10 @@
     "toolsCategory": "Hardware Diagnostics & Calculators",
     "toolsDesc": "Inspect detected screen metrics (DPR, color depth), calculate PPI and optimal viewing distances, compare displays, and test multi-touch.",
     "openSourceTitle": "Open & Community-Driven",
-    "openSourceText": "Monitor Tester is an open-source project. You can inspect the source code, report rendering bugs, suggest new test patterns, or contribute directly on GitHub."
+    "openSourceText": "Monitor Tester is an open-source project. You can inspect the source code, report rendering bugs, suggest new test patterns, or contribute directly on GitHub.",
+    "viewOnGithub": "View project on GitHub",
+    "faqLink": "Frequently Asked Questions",
+    "browseTestsLink": "Browse Full Test Suite"
   },
   "Tools": {
     "metaTitle": "Display Tools & Calculators | Monitor Tester",
@@ -3610,7 +3840,9 @@
     "parameter": "Parameter",
     "deviation": "Deviation: {val}",
     "benchmarks": "Mathematical Benchmarks",
-    "hardwareComparison": "Display Hardware & Geometry Comparison"
+    "hardwareComparison": "Display Hardware & Geometry Comparison",
+    "metaTitle": "Compare Displays & Size Calculator",
+    "metaDescription": "Compare physical dimensions, pixel density (PPI), aspect ratios, and retina viewing distance between any monitor, TV, or laptop display."
   },
   "Faq": {
     "metaTitle": "Frequently Asked Questions | Monitor Tester",
@@ -5377,5 +5609,16 @@
       "deviceNotFound": "No microphone device was detected.",
       "startFailed": "Failed to start recording."
     }
+  },
+  "TestControlBar": {
+    "revealHint": "Move cursor to bottom to reveal",
+    "tapToReveal": "Tap to show controls",
+    "hideControls": "Hide Controls"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "The test or page you are looking for does not exist or has been moved.",
+    "viewAllTests": "View all tests",
+    "backToHome": "Back to home"
   }
 }

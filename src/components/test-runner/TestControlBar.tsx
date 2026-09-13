@@ -52,6 +52,7 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
   const isInputFocusedRef = useRef(false);
   const hideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const t = useTranslations("TestWrapper");
+  const tBar = useTranslations("TestControlBar");
 
   // Keep refs in sync for event listeners
   useEffect(() => {
@@ -180,7 +181,7 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
       {isFullscreen && !isControlsVisible && (
         <div
           role="button"
-          aria-label="Tap to show controls"
+          aria-label={tBar("tapToReveal")}
           tabIndex={-1}
           onTouchStart={(e) => {
             e.stopPropagation();
@@ -494,13 +495,13 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
         {/* Shortcut and control hints in fullscreen */}
         {isFullscreen && isControlsVisible && (
           <div className="text-slate-200 text-[11px] font-mono font-medium tracking-wide mt-1 text-center select-none flex items-center justify-center flex-wrap gap-2.5 px-3 py-1 bg-black/70 rounded-full border border-white/15 w-fit mx-auto shadow-lg">
-            <span>[H] Hide Controls</span>
+            <span>[H] {tBar("hideControls")}</span>
             <span className="text-white/40">•</span>
-            <span>Move cursor to bottom to reveal</span>
+            <span>{tBar("revealHint")}</span>
             <span className="text-white/40">•</span>
-            <span>[F] Fullscreen</span>
+            <span>[F] {t("fullscreen")}</span>
             <span className="text-white/40">•</span>
-            <span>[Esc] Exit</span>
+            <span>[Esc] {t("exit")}</span>
           </div>
         )}
       </div>

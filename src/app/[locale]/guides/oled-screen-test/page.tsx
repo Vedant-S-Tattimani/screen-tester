@@ -20,7 +20,7 @@ export default async function OledGuidePage({ params }: { params: Promise<{ loca
       description={t("description")}
       workflowLink={{
         href: "/monitor-inspection/oled",
-        title: "OLED Inspection Wizard"
+        title: t("workflowTitle")
       }}
       quickTestSequence={[
         "/tests/burn-in-test",
@@ -40,24 +40,7 @@ export default async function OledGuidePage({ params }: { params: Promise<{ loca
         "/tests/hdr-capability-test",
         "/tests/refresh-rate-test"
       ]}
-      troubleshooting={[
-        {
-          symptom: "Image Retention",
-          description: "Faint outlines of static UI elements remaining on screen.",
-          tests: [
-            { name: "Burn-in Test", url: "/tests/burn-in-test" },
-            { name: "Solid Colors", url: "/tests/solid-color-test" }
-          ]
-        },
-        {
-          symptom: "Near-Black Banding",
-          description: "Dark gray scenes appear noisy, banded, or blocky.",
-          tests: [
-            { name: "Black Level", url: "/tests/black-level-test" },
-            { name: "Color Banding", url: "/tests/color-banding-test" }
-          ]
-        }
-      ]}
+      troubleshooting={t.raw("troubleshooting")}
     />
   );
 }

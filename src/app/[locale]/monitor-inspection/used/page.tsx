@@ -3,13 +3,15 @@ import { Metadata } from "next";
 import { Link } from "@/i18n/routing";
 import { WorkflowLauncher } from "@/components/layout/WorkflowLauncher";
 import { getWorkflowById } from "@/data/workflows";
+import { notFound } from "next/navigation";
 import { generateSeoMetadata } from "@/lib/seo";
 import { ArrowRight, BookOpen } from "lucide-react";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "Inspection.hub" });
-  return generateSeoMetadata("/monitor-inspection/used", t("usedMonitor"), t("usedMonitorDesc"), locale);
+export async function generateMetadata({ params }: { params?: Promise<{ locale: string }> }): Promise<Metadata> {
+  const locale = params ? (await params).locale : undefined;
+  const workflow = getWorkflowById("used", locale);
+  if (!workflow) return {};
+  return generateSeoMetadata("/monitor-inspection/used", workflow.title, workflow.shortDescription, locale);
 }
 
 export default async function UsedMonitorInspectionPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -17,19 +19,21 @@ export default async function UsedMonitorInspectionPage({ params }: { params: Pr
   setRequestLocale(locale);
   
   const tHub = await getTranslations({ locale, namespace: "Inspection.hub" });
-  const wf = getWorkflowById("used")!;
+  const tUi = await getTranslations({ locale, namespace: "Inspection.workflowUi" });
+  const wf = getWorkflowById("used", locale);
+  if (!wf) notFound();
 
   return (
     <div className="max-w-4xl mx-auto py-24 px-4 sm:px-6 w-full flex-1">
       <div className="mb-16">
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground mb-6">
-          {tHub("usedMonitor")}
+          {wf.title}
         </h1>
         <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mb-6">
-          {wf.longDescription || tHub("usedMonitorDesc")}
+          {wf.longDescription}
         </p>
         <div className="p-4 bg-muted/30 border border-border/50 rounded-lg text-sm text-muted-foreground mb-6">
-          Inspection tip: {wf.inspectionTip}
+          <strong className="font-semibold text-foreground">{tUi("tipLabel")}</strong> {wf.inspectionTip}
         </div>
 
         <div className="p-5 rounded-xl border border-blue-200/80 bg-blue-50/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">

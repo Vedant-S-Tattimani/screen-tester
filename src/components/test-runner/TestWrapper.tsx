@@ -609,10 +609,10 @@ export function TestWrapper({ title, description, instructions, children, testId
                   <div className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping" />
                     <span className="text-xs font-mono font-bold tracking-wider text-amber-300 uppercase">
-                      Guided Auto Test
+                      {t("guidedAutoTest")}
                     </span>
                     <span className="text-xs font-mono text-gray-300">
-                      • Test {workflowIndex !== -1 ? workflowIndex + 1 : 1} of {workflowSequence.length || 9}
+                      {t("testProgress", { current: workflowIndex !== -1 ? workflowIndex + 1 : 1, total: workflowSequence.length || 9 })}
                     </span>
                   </div>
 
@@ -626,33 +626,33 @@ export function TestWrapper({ title, description, instructions, children, testId
                           ? "bg-emerald-600 hover:bg-emerald-500 text-white shadow-xs"
                           : "bg-white/15 hover:bg-white/25 text-white border border-white/20"
                       )}
-                      title={isAutoTestPausedState ? "Resume auto test" : "Pause auto test"}
+                      title={isAutoTestPausedState ? t("resume") : t("pause", { seconds: autoTestSecondsLeft })}
                     >
-                      {isAutoTestPausedState ? "▶ Resume" : `⏸ Pause (${autoTestSecondsLeft}s)`}
+                      {isAutoTestPausedState ? t("resume") : t("pause", { seconds: autoTestSecondsLeft })}
                     </button>
                     {hasPrevInWorkflow && (
                       <button
                         type="button"
                         onClick={goPrevInWorkflow}
                         className="px-2 py-1 rounded-lg text-xs font-mono text-gray-300 hover:text-white hover:bg-white/15 transition-colors cursor-pointer"
-                        title="Previous test"
+                        title={t("prev")}
                       >
-                        ❮ Prev
+                        {t("prev")}
                       </button>
                     )}
                     <button
                       type="button"
                       onClick={goNextInWorkflow}
                       className="px-2 py-1 rounded-lg text-xs font-mono text-gray-300 hover:text-white hover:bg-white/15 transition-colors cursor-pointer"
-                      title="Skip to next test"
+                      title={t("skip")}
                     >
-                      Skip ❯
+                      {t("skip")}
                     </button>
                     <button
                       type="button"
                       onClick={stopGuidedAutoTest}
                       className="text-gray-400 hover:text-red-400 text-xs px-1.5 py-1 transition-colors cursor-pointer ml-1"
-                      title="Exit Guided Auto Test"
+                      title={t("exitAutoTest")}
                     >
                       ✕
                     </button>
@@ -662,12 +662,12 @@ export function TestWrapper({ title, description, instructions, children, testId
                 <div className="text-xs text-gray-200 leading-snug border-t border-white/10 pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <span>
                     {testId === "dead-pixel-test"
-                      ? "Look carefully across the entire screen for any pixel that remains a different color."
-                      : "Your screen is now being checked with this visual pattern. Inspect the screen and select your observation below."}
+                      ? t("deadPixelInspect")
+                      : t("autoTestInspect")}
                   </span>
                   {testId === "dead-pixel-test" && activeColorName && (
                     <span className="font-mono text-[11px] font-bold px-2 py-0.5 rounded bg-white/15 text-amber-300 shrink-0 self-start sm:self-auto">
-                      COLOR: {activeColorName}
+                      {t("colorPrefix")}: {activeColorName}
                     </span>
                   )}
                 </div>
@@ -719,21 +719,21 @@ export function TestWrapper({ title, description, instructions, children, testId
         {/* Knowledge Base Link for Relevant Test */}
         {!isFullscreen && testId && (
           (() => {
-            const kbArticle = getArticleByTestId(testId);
+            const kbArticle = getArticleByTestId(testId, locale);
             if (!kbArticle) return null;
             return (
               <div className="mt-12 w-full max-w-4xl p-4 bg-blue-50/50 border border-blue-200/80 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs shadow-2xs">
                 <div className="flex items-center gap-2.5 text-blue-950">
                   <BookOpen className="w-4 h-4 text-blue-600 shrink-0" />
                   <span>
-                    Learn more in the Knowledge Base &bull; <strong>{kbArticle.title}</strong>
+                    {t("kbCalloutPrefix")} <strong>{kbArticle.title}</strong>
                   </span>
                 </div>
                 <Link
                   href={`/knowledge-base/${kbArticle.slug}`}
                   className="inline-flex items-center gap-1.5 font-semibold text-blue-700 hover:text-blue-900 hover:underline shrink-0"
                 >
-                  <span>Read Technical Guide</span>
+                  <span>{t("kbCalloutAction")}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
@@ -744,21 +744,21 @@ export function TestWrapper({ title, description, instructions, children, testId
         {/* Troubleshooting Link for Relevant Test */}
         {!isFullscreen && testId && (
           (() => {
-            const topic = getTroubleshootingByTestId(testId);
+            const topic = getTroubleshootingByTestId(testId, locale);
             if (!topic) return null;
             return (
               <div className="mt-3 w-full max-w-4xl p-4 bg-slate-50 border border-slate-200/80 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs shadow-2xs">
                 <div className="flex items-center gap-2.5 text-slate-700">
                   <Wrench className="w-4 h-4 text-purple-600 shrink-0" />
                   <span>
-                    Having trouble with this test? &bull; <strong>{topic.title}</strong>
+                    {t("troubleshootingPrefix")} <strong>{topic.title}</strong>
                   </span>
                 </div>
                 <Link
                   href={`/knowledge-base/troubleshooting#${topic.id}`}
                   className="inline-flex items-center gap-1.5 font-semibold text-purple-700 hover:text-purple-900 hover:underline shrink-0"
                 >
-                  <span>Troubleshooting Guide</span>
+                  <span>{t("troubleshootingAction")}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>

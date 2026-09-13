@@ -1,4 +1,4 @@
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Metadata } from "next";
 import { Link } from "@/i18n/routing";
 import { WorkflowLauncher } from "@/components/layout/WorkflowLauncher";
@@ -6,27 +6,27 @@ import { getWorkflowById } from "@/data/workflows";
 import { notFound } from "next/navigation";
 import { generateSeoMetadata } from "@/lib/seo";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  const { locale } = await params;
-  const workflow = getWorkflowById("laptop");
+export async function generateMetadata({ params }: { params?: Promise<{ locale: string }> }): Promise<Metadata> {
+  const locale = params ? (await params).locale : undefined;
+  const workflow = getWorkflowById("laptop", locale);
   if (!workflow) return {};
   
-return generateSeoMetadata("/monitor-inspection/laptop", workflow.title, workflow.shortDescription, locale);
-
+  return generateSeoMetadata("/monitor-inspection/laptop", workflow.title, workflow.shortDescription, locale);
 }
 
 export default async function LaptopDisplayInspectionPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const workflow = getWorkflowById("laptop");
+  const tUi = await getTranslations({ locale, namespace: "Inspection.workflowUi" });
+  const workflow = getWorkflowById("laptop", locale);
   if (!workflow) notFound();
 
   return (
     <div className="max-w-4xl mx-auto py-16 sm:py-24 px-4 sm:px-6 w-full flex-1">
       <div className="mb-12">
         <div className="text-xs font-mono font-semibold uppercase tracking-[0.2em] text-cyan-600 mb-3">
-          INSPECTION WORKFLOW
+          {tUi("workflowEyebrow")}
         </div>
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-4">
           {workflow.title}
@@ -37,23 +37,23 @@ export default async function LaptopDisplayInspectionPage({ params }: { params: 
         
         {/* Inspection Tip Alert */}
         <div className="p-4 bg-cyan-50/70 border border-cyan-200/80 rounded-xl text-xs sm:text-sm text-cyan-950 mb-4 leading-relaxed">
-          <strong className="font-semibold block mb-1">Inspection Tip:</strong>
+          <strong className="font-semibold block mb-1">{tUi("tipLabel")}</strong>
           {workflow.inspectionTip}
         </div>
 
         {/* Browser Limitations Alert */}
         {workflow.browserLimitations && (
           <div className="p-4 bg-amber-50/70 border border-amber-200/80 rounded-xl text-xs sm:text-sm text-amber-950 mb-4 leading-relaxed">
-            <strong className="font-semibold block mb-1">Hardware / Physical Inspection Note:</strong>
+            <strong className="font-semibold block mb-1">{tUi("hardwareBoundaryLabel")}</strong>
             {workflow.browserLimitations}
           </div>
         )}
 
         {/* Guide Cross-Link */}
         <div className="p-4 bg-muted/30 border border-border/80 rounded-xl text-xs sm:text-sm text-muted-foreground flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <span>Looking for background evaluation criteria and display guidelines?</span>
+          <span>{tUi("guideLinkPrompt")}</span>
           <Link href="/guides/laptop-screen-test" className="font-semibold text-foreground hover:text-cyan-600 transition-colors shrink-0">
-            Read Laptop Screen Test Guide →
+            {tUi("guideLinkText")}
           </Link>
         </div>
       </div>
@@ -61,7 +61,6 @@ export default async function LaptopDisplayInspectionPage({ params }: { params: 
       <WorkflowLauncher 
         sequence={workflow.sequence} 
         steps={workflow.steps} 
-        buttonLabel="Start Laptop Inspection"
         workflowTitle={workflow.title}
         workflowId={workflow.id}
       />

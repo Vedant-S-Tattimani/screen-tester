@@ -241,7 +241,9 @@
     "aboutLimitationsDesc": "제공되는 모든 검사는 적절한 조명 환경에서 사용자의 시각적 관찰을 돕도록 제작되었습니다. Screen Tester는 하드웨어 캘리브레이터(색측계)나 광학 오실로스코프를 대체하지 않으며 운영체제의 ICC 프로파일을 직접 생성·수정하지 않습니다. 가장 정확한 진단을 위해 화면 표면을 닦고, F11 키로 전체화면 모드로 전환한 뒤 디스플레이 배율을 100%로 맞추어 점검하세요.",
     "badgeBrowser": "100% 웹 브라우저 실행",
     "badgeNoInstall": "소프트웨어 설치 불필요",
-    "badgePrivacy": "개인정보 수집 없는 로컬 검사"
+    "badgePrivacy": "개인정보 수집 없는 로컬 검사",
+    "h1": "Screen Tester – 온라인 화면 및 모니터 테스트",
+    "aboutHeading": "Screen Tester 소개"
   },
   "TestLibrary": {
     "categories": {
@@ -370,9 +372,9 @@
     "addNote": "+ 메모",
     "noteAdded": "메모 입력됨",
     "noteTitle": "서면 관찰 메모 추가",
-    "prev": "이전",
+    "prev": "❮ 이전",
     "prevAria": "순서상 이전 테스트로 이동",
-    "skip": "건너뛰기",
+    "skip": "건너뛰기 ❯",
     "skipAria": "테스트 건너뛰기",
     "skipTitle": "결과를 기록하지 않고 다음 테스트로 진행",
     "continue": "계속 진행 →",
@@ -428,7 +430,19 @@
       "listTitle": "기록된 픽셀 결함 목록",
       "emptyList": "이 화면에 표시된 픽셀 결함이 없습니다.",
       "closeBtn": "닫기"
-    }
+    },
+    "guidedAutoTest": "가이드 자동 테스트",
+    "testProgress": "• 테스트 {current} / {total}",
+    "resume": "▶ 계속하기",
+    "pause": "⏸ 일시정지 ({seconds}초)",
+    "exitAutoTest": "자동 테스트 종료",
+    "autoTestInspect": "현재 화면이 이 시각적 패턴으로 점검 중입니다. 화면을 관찰하고 아래에서 결과를 선택하세요.",
+    "deadPixelInspect": "전체 화면을 꼼꼼히 살펴 다른 색으로 남아 있는 픽셀이 있는지 확인하세요.",
+    "colorPrefix": "색상",
+    "kbCalloutPrefix": "지식 베이스에서 자세히 알아보기 •",
+    "kbCalloutAction": "기술 가이드 읽기",
+    "troubleshootingPrefix": "이 테스트에 문제가 발생했나요? •",
+    "troubleshootingAction": "문제 해결 가이드"
   },
   "TestPages": {
     "dead-pixel-test": {
@@ -1016,6 +1030,14 @@
     "microphoneTest": {
       "title": "마이크 테스트",
       "description": "마이크 입력 기능, 실시간 레벨 측정, 파형 반응 및 디지털 클리핑을 테스트합니다."
+    },
+    "ghostingTest": {
+      "title": "모니터 고스팅 테스트 – 픽셀 응답 속도 및 잔상 점검",
+      "description": "고속 이동 패턴을 통해 픽셀 응답 시간, 잔상(고스팅) 현상 및 오버드라이브 역잔상(코로나)을 평가합니다."
+    },
+    "motionBlurTest": {
+      "title": "모션 블러 테스트 – 동적 선명도 및 MPRT 점검",
+      "description": "빠르게 움직이는 장면과 이동 객체에서 동적 해상도, 홀드 블러 및 MPRT 추적을 정밀 분석합니다."
     }
   },
   "Guides": {
@@ -1025,37 +1047,221 @@
       "metaTitle": "PC 모니터 테스트 방법 – 구입 후 화면 점검 완벽 가이드",
       "metaDescription": "새 모니터나 중고 모니터를 구매했을 때 필수적인 불량화소, 빛샘, 고스팅 점검 절차를 안내합니다.",
       "title": "모니터 화면 테스트",
-      "description": "데스크탑 모니터를 위한 포괄적인 테스트."
+      "description": "데스크탑 모니터를 위한 포괄적인 테스트.",
+      "workflowTitle": "모니터 종합 점검",
+      "troubleshooting": [
+        {
+          "symptom": "게임 중 화면 찢김(티어링)",
+          "description": "시점을 회전할 때 가로줄이 생기며 화면이 분할됩니다.",
+          "tests": [
+            {
+              "name": "화면 찢김",
+              "url": "/tests/screen-tearing-test"
+            },
+            {
+              "name": "화면 주사율",
+              "url": "/tests/refresh-rate-test"
+            }
+          ]
+        },
+        {
+          "symptom": "불균일한 색상 및 음영",
+          "description": "어두운 장면이 얼룩져 보이거나 화면 전체에 걸쳐 색감이 달라집니다.",
+          "tests": [
+            {
+              "name": "균일도",
+              "url": "/tests/uniformity-test"
+            },
+            {
+              "name": "빛샘 현상",
+              "url": "/tests/backlight-bleed-test"
+            },
+            {
+              "name": "시야각",
+              "url": "/tests/viewing-angle-test"
+            }
+          ]
+        }
+      ]
     },
     "oled": {
       "metaTitle": "OLED 모니터 점검법 – 번인, 균일도 및 퍼펙트 블랙 테스트",
       "metaDescription": "OLED 화면 및 TV의 번인(영구 잔상), 저조도 얼룩, 패널 노화 상태를 점검하는 전문 가이드.",
       "title": "OLED 화면 테스트",
-      "description": "OLED 이미지 잔상 및 블랙 레벨을 위한 특수 테스트."
+      "description": "OLED 이미지 잔상 및 블랙 레벨을 위한 특수 테스트.",
+      "workflowTitle": "OLED 점검 마법사",
+      "troubleshooting": [
+        {
+          "symptom": "화면 잔상 (이미지 리텐션)",
+          "description": "정적인 UI 요소의 희미한 윤곽선이 화면에 지속적으로 남아 있습니다.",
+          "tests": [
+            {
+              "name": "번인 테스트",
+              "url": "/tests/burn-in-test"
+            },
+            {
+              "name": "단색 화면",
+              "url": "/tests/solid-color-test"
+            }
+          ]
+        },
+        {
+          "symptom": "암부 계조 밴딩 현상",
+          "description": "어두운 회색 장면에서 노이즈, 줄무늬 또는 깍두기 현상이 나타납니다.",
+          "tests": [
+            {
+              "name": "블랙 레벨",
+              "url": "/tests/black-level-test"
+            },
+            {
+              "name": "컬러 밴딩",
+              "url": "/tests/color-banding-test"
+            }
+          ]
+        }
+      ]
     },
     "laptop": {
       "metaTitle": "노트북 액정 테스트 방법 – 불량화소, 빛샘, 해상도 점검",
       "metaDescription": "노트북 패널 구매 및 인수 시 체크리스트: 결함 화소, 힌지 압박 빛샘, 폰트 가독성 확인.",
       "title": "노트북 화면 테스트",
-      "description": "일반적인 노트북 LCD 패널 테스트."
+      "description": "일반적인 노트북 LCD 패널 테스트.",
+      "workflowTitle": "노트북 화면 점검 마법사",
+      "troubleshooting": [
+        {
+          "symptom": "고개를 움직이면 색이 바램",
+          "description": "화면 각도를 조절할 때 명암비가 급격히 떨어지고 색상이 반전됩니다.",
+          "tests": [
+            {
+              "name": "시야각",
+              "url": "/tests/viewing-angle-test"
+            },
+            {
+              "name": "명암비",
+              "url": "/tests/contrast-test"
+            }
+          ]
+        },
+        {
+          "symptom": "글자가 흐릿하거나 선명하지 않음",
+          "description": "고해상도 디스플레이임에도 폰트 윤곽선이 또렷하지 않습니다.",
+          "tests": [
+            {
+              "name": "선명도",
+              "url": "/tests/sharpness-test"
+            },
+            {
+              "name": "디스플레이 정보",
+              "url": "/tests/resolution-checker"
+            }
+          ]
+        }
+      ]
     },
     "lcd": {
       "metaTitle": "LCD 화면 테스트 – IPS, VA, TN 패널 비교 및 특성 가이드",
       "metaDescription": "IPS 고유의 글로우 현상과 불량 빛샘의 차이점을 파악하고 LCD 패널 성능을 정확히 평가하세요.",
       "title": "LCD 화면 테스트",
-      "description": "LCD 백라이트 번짐 및 균일성 테스트."
+      "description": "LCD 백라이트 번짐 및 균일성 테스트.",
+      "troubleshooting": [
+        {
+          "symptom": "어두운 곳에서 모서리가 빛남",
+          "description": "넓은 시야각에서 볼 때 모서리 부분에서 노란빛이나 흰빛이 샙니다.",
+          "tests": [
+            {
+              "name": "빛샘 현상",
+              "url": "/tests/backlight-bleed-test"
+            },
+            {
+              "name": "시야각",
+              "url": "/tests/viewing-angle-test"
+            }
+          ]
+        },
+        {
+          "symptom": "빠른 움직임에 끌림 현상 발생",
+          "description": "움직이는 물체 뒤로 긴 잔상이나 고스팅 자국이 남습니다.",
+          "tests": [
+            {
+              "name": "고스팅",
+              "url": "/tests/ghosting-test"
+            },
+            {
+              "name": "화면 주사율",
+              "url": "/tests/refresh-rate-test"
+            }
+          ]
+        }
+      ]
     },
     "tv": {
       "metaTitle": "TV 화면 테스트 방법 – 4K TV 및 스마트 TV 화질 점검",
       "metaDescription": "웹 브라우저로 4K TV 화면을 테스트하세요: 모션 부드러움, 그라데이션 표현, 로컬 디밍 품질 점검.",
       "title": "TV 화면 테스트",
-      "description": "TV 모션 처리 및 블루밍 테스트."
+      "description": "TV 모션 처리 및 블루밍 테스트.",
+      "workflowTitle": "TV 점검 마법사",
+      "troubleshooting": [
+        {
+          "symptom": "자막 주변 후광 현상 (블루밍)",
+          "description": "어두운 배경 위의 밝은 자막 주변으로 뿌연 빛 번짐이 발생합니다.",
+          "tests": [
+            {
+              "name": "블루밍",
+              "url": "/tests/blooming-test"
+            },
+            {
+              "name": "블랙 레벨",
+              "url": "/tests/black-level-test"
+            }
+          ]
+        },
+        {
+          "symptom": "연속극 효과 (소프 오페라)",
+          "description": "영화가 지나치게 매끄러워져 인위적이고 부자연스럽게 보입니다.",
+          "tests": [
+            {
+              "name": "모션 블러",
+              "url": "/tests/motion-blur-test"
+            },
+            {
+              "name": "화면 주사율",
+              "url": "/tests/refresh-rate-test"
+            }
+          ]
+        }
+      ]
     },
     "mobile": {
       "metaTitle": "스마트폰 액정 테스트 – 터치 반응 및 OLED 번인 진단",
       "metaDescription": "휴대폰 및 태블릿 터치스크린의 반응 속도, 멀티터치 오류, OLED 잔상을 온라인에서 점검하세요.",
       "title": "모바일 화면 테스트",
-      "description": "모바일 터치 스크린 및 OLED 패널 테스트."
+      "description": "모바일 터치 스크린 및 OLED 패널 테스트.",
+      "troubleshooting": [
+        {
+          "symptom": "터치가 인식되지 않는 부위 발생",
+          "description": "화면의 특정 영역에서 탭이나 스와이프 제스처가 반응하지 않습니다.",
+          "tests": [
+            {
+              "name": "터치스크린",
+              "url": "/tests/touch-screen-test"
+            }
+          ]
+        },
+        {
+          "symptom": "이전 앱의 잔상이 희미하게 남음",
+          "description": "단색 화면에서 키보드나 상단 상태 표시줄의 흔적이 보입니다.",
+          "tests": [
+            {
+              "name": "번인 점검",
+              "url": "/tests/burn-in-test"
+            },
+            {
+              "name": "단색 화면",
+              "url": "/tests/solid-color-test"
+            }
+          ]
+        }
+      ]
     },
     "ghostingConcept": {
       "metaTitle": "모니터 잔상(고스팅) 점검법 – 응답 속도 및 오버드라이브 설정",
@@ -2618,6 +2824,25 @@
       "linkUniformityTest": "균일도 테스트",
       "linkDisplayInfo": "디스플레이 정보",
       "linkScalingAspect": "스케일링 및 화면비"
+    },
+    "deviceGuide": {
+      "inspectionGuide": "점검 가이드",
+      "workflowPrompt": "대화형 점검 워크플로우:",
+      "workflowPref": "진단 기록과 함께 단계별 대화형 테스트 세션을 진행하시겠습니까?",
+      "launchWorkflow": "시작하기",
+      "quickCheckTitle": "5분 빠른 점검",
+      "quickCheckDesc": "구매 직후 {count}가지 핵심 지표를 즉시 확인하기 위한 필수 테스트 세트.",
+      "startQuickCheck": "빠른 점검 시작",
+      "fullSuiteTitle": "정밀 진단 스위트",
+      "fullSuiteDesc": "디스플레이의 모든 특성을 철저히 확인하는 {count}단계 종합 점검 순서.",
+      "startFullSuite": "정밀 진단 시작",
+      "commonIssuesTitle": "자주 발생하는 문제",
+      "testsLabel": "관련 테스트:"
+    },
+    "kbCallout": {
+      "title": "기술적 디스플레이 분석 정보가 필요하신가요?",
+      "description": "불량 화소, 빛샘과 IPS 글로우 차이, 잔상, VRR 표준에 대한 심층 기술 문서는 지식 베이스를 확인하세요.",
+      "action": "지식 베이스 둘러보기"
     }
   },
   "Inspection": {
@@ -2755,6 +2980,13 @@
         "title": "해상도 및 디스플레이 정보",
         "what": "해상도, 색상 깊이 및 HDR 지원이 제조업체 사양과 일치하는지 확인합니다."
       }
+    },
+    "workflowUi": {
+      "workflowEyebrow": "점검 워크플로우",
+      "tipLabel": "점검 팁:",
+      "hardwareBoundaryLabel": "하드웨어 및 기술적 한계 참고:",
+      "guideLinkText": "모니터 화면 테스트 가이드 읽기 →",
+      "guideLinkPrompt": "포괄적인 디스플레이 점검 기준과 설정 가이드가 필요하신가요?"
     }
   },
   "Privacy": {
@@ -2774,7 +3006,12 @@
     "cookiesTitle": "광고 또는 추적 쿠키 없음",
     "cookiesText": "모니터 테스터는 타사 광고 쿠키, 행동 추적기 또는 마케팅 픽셀을 사용하지 않습니다. 사이트는 귀하의 브라우징 활동을 판매, 임대 또는 수익화하지 않습니다.",
     "permissionsTitle": "브라우저 권한",
-    "permissionsText": "모니터 테스터는 전체 화면 테스트 모드로 진입하도록 선택할 때만 표준 Fullscreen API 권한을 요청합니다. 카메라, 마이크, 알림 또는 지리적 위치 권한을 요청하지 않습니다."
+    "permissionsText": "모니터 테스터는 전체 화면 테스트 모드로 진입하도록 선택할 때만 표준 Fullscreen API 권한을 요청합니다. 카메라, 마이크, 알림 또는 지리적 위치 권한을 요청하지 않습니다.",
+    "workflowStorageTitle": "워크플로우 시퀀스 (sessionStorage)",
+    "workflowStorageDesc": "다단계 점검 워크플로우 진행 중 현재 테스트 번호를 임시로 추적합니다. 탭을 닫으면 자동으로 삭제됩니다.",
+    "questionsTitle": "개인정보 관련 문의사항이 있으신가요?",
+    "questionsDesc": "오픈소스 유지관리자에게 문의하거나 소스코드를 직접 검토하세요.",
+    "contactMaintainer": "유지관리자 문의"
   },
   "About": {
     "metaTitle": "About Monitor Tester — Display Diagnostic & Evaluation Utility",
@@ -2798,7 +3035,10 @@
     "toolsCategory": "하드웨어 진단 및 계산기",
     "toolsDesc": "감지된 화면 메트릭(DPR, 색 깊이)을 검사하고, PPI 및 최적 시청 거리를 계산합니다.",
     "openSourceTitle": "개방적이고 커뮤니티 중심",
-    "openSourceText": "모니터 테스터는 오픈 소스 프로젝트입니다. GitHub에서 소스 코드를 검사하거나 렌더링 버그를 보고하거나 새로운 테스트 패턴을 제안하거나 직접 기여할 수 있습니다."
+    "openSourceText": "모니터 테스터는 오픈 소스 프로젝트입니다. GitHub에서 소스 코드를 검사하거나 렌더링 버그를 보고하거나 새로운 테스트 패턴을 제안하거나 직접 기여할 수 있습니다.",
+    "viewOnGithub": "GitHub에서 프로젝트 보기",
+    "faqLink": "자주 묻는 질문(FAQ)",
+    "browseTestsLink": "전체 테스트 도구 둘러보기"
   },
   "Terms": {
     "metaTitle": "Terms of Use — Monitor Tester",
@@ -3608,7 +3848,9 @@
     "parameter": "매개변수",
     "deviation": "편차: {val}",
     "benchmarks": "수학적 벤치마크",
-    "hardwareComparison": "화면 사양 및 기하 구조 비교"
+    "hardwareComparison": "화면 사양 및 기하 구조 비교",
+    "metaTitle": "디스플레이 비교 및 화면 크기 계산기",
+    "metaDescription": "모든 모니터, TV, 노트북 디스플레이의 실제 크기, 픽셀 밀도(PPI), 화면비, 최적 시청 거리를 비교합니다."
   },
   "Faq": {
     "metaTitle": "자주 묻는 질문 (FAQ) | Monitor Tester",
@@ -5375,5 +5617,16 @@
       "deviceNotFound": "마이크가 감지되지 않았습니다.",
       "startFailed": "녹음을 시작하지 못했습니다."
     }
+  },
+  "TestControlBar": {
+    "revealHint": "커서를 하단으로 이동하여 표시",
+    "tapToReveal": "탭하여 컨트롤 표시",
+    "hideControls": "컨트롤 숨기기"
+  },
+  "NotFound": {
+    "title": "페이지를 찾을 수 없습니다",
+    "description": "찾으시는 테스트 또는 페이지가 존재하지 않거나 이동되었습니다.",
+    "viewAllTests": "모든 테스트 보기",
+    "backToHome": "홈으로 돌아가기"
   }
 }

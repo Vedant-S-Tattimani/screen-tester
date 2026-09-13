@@ -89,17 +89,11 @@ export default async function PrivacyPage({
 
           <div className="space-y-3 sm:pl-14">
             <div className="p-4 rounded-xl bg-gray-50 border border-gray-100 text-xs sm:text-[13px] text-gray-700 leading-relaxed">
-              <span className="font-semibold text-gray-950 block mb-1">
-                Active Inspection & Observation Data (localStorage)
-              </span>
-              Stores your self-reported ratings (Pass, Check, Issue), notes, and placed pixel defect pin coordinates so your checklist remains accessible across refreshes.
+              {t("localStorageItem1")}
             </div>
 
             <div className="p-4 rounded-xl bg-gray-50 border border-gray-100 text-xs sm:text-[13px] text-gray-700 leading-relaxed">
-              <span className="font-semibold text-gray-950 block mb-1">
-                Workflow Sequence (sessionStorage)
-              </span>
-              Temporarily tracks your current test index during multi-step inspection workflows. This is purged automatically when you close the tab.
+              {t("localStorageItem2")}
             </div>
 
             <p className="text-xs text-gray-500 pt-2 leading-relaxed">
@@ -146,10 +140,10 @@ export default async function PrivacyPage({
         <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200/90 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <h3 className="text-sm font-bold text-gray-950">
-              Questions About Privacy?
+              {t("questionsTitle")}
             </h3>
             <p className="text-xs text-gray-600 mt-0.5">
-              Contact our open-source maintainers or review the source code directly.
+              {t("questionsDesc")}
             </p>
           </div>
           <Link
@@ -157,7 +151,7 @@ export default async function PrivacyPage({
             className="inline-flex items-center gap-1.5 text-xs font-semibold bg-gray-950 hover:bg-black text-white px-4 py-2 rounded-lg transition-colors shrink-0"
           >
             <Mail className="w-3.5 h-3.5" />
-            <span>Contact Maintainer</span>
+            <span>{t("contactMaintainer")}</span>
           </Link>
         </div>
 

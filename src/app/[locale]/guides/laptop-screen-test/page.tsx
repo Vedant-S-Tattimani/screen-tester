@@ -20,7 +20,7 @@ export default async function LaptopGuidePage({ params }: { params: Promise<{ lo
       description={t("description")}
       workflowLink={{
         href: "/monitor-inspection/laptop",
-        title: "Laptop Inspection Wizard"
+        title: t("workflowTitle")
       }}
       quickTestSequence={[
         "/tests/dead-pixel-test",
@@ -38,24 +38,7 @@ export default async function LaptopGuidePage({ params }: { params: Promise<{ lo
         "/tests/gamma-test",
         "/tests/sharpness-test"
       ]}
-      troubleshooting={[
-        {
-          symptom: "Colors wash out when moving head",
-          description: "The contrast drops and colors invert when you adjust the screen tilt.",
-          tests: [
-            { name: "Viewing Angle", url: "/tests/viewing-angle-test" },
-            { name: "Contrast", url: "/tests/contrast-test" }
-          ]
-        },
-        {
-          symptom: "Text is blurry or soft",
-          description: "Fonts don't look crisp despite a high resolution display.",
-          tests: [
-            { name: "Sharpness", url: "/tests/sharpness-test" },
-            { name: "Display Info", url: "/tests/resolution-checker" }
-          ]
-        }
-      ]}
+      troubleshooting={t.raw("troubleshooting")}
     />
   );
 }

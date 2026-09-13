@@ -3,7 +3,7 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import { generateSeoMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { TroubleshootingClient } from "./TroubleshootingClient";
-import { TROUBLESHOOTING_TOPICS } from "@/data/troubleshooting";
+import { getTroubleshootingTopics } from "@/data/troubleshooting";
 import { Wrench } from "lucide-react";
 
 export async function generateMetadata({
@@ -16,7 +16,8 @@ export async function generateMetadata({
   return generateSeoMetadata(
     "/knowledge-base/troubleshooting",
     t("metaTitle"),
-    t("metaDescription")
+    t("metaDescription"),
+    locale
   );
 }
 
@@ -30,6 +31,7 @@ export default async function TroubleshootingPage({
 
   const t = await getTranslations({ locale, namespace: "Troubleshooting" });
   const tBreadcrumbs = await getTranslations({ locale, namespace: "Breadcrumbs" });
+  const topics = getTroubleshootingTopics(locale);
 
   const breadcrumbs = [
     { label: tBreadcrumbs("home"), href: "/" },
@@ -40,7 +42,7 @@ export default async function TroubleshootingPage({
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: TROUBLESHOOTING_TOPICS.map((topic) => ({
+    mainEntity: topics.map((topic) => ({
       "@type": "Question",
       name: topic.title,
       acceptedAnswer: {
@@ -78,7 +80,7 @@ export default async function TroubleshootingPage({
         </div>
 
         {/* Client Interactive Troubleshooting Guide */}
-        <TroubleshootingClient />
+        <TroubleshootingClient topics={topics} />
 
       </div>
     </div>

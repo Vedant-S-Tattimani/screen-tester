@@ -2,10 +2,11 @@
 
 import { useState, useRef, useEffect, useMemo } from "react";
 import { useRouter } from "@/i18n/routing";
+import { useLocale, useTranslations } from "next-intl";
 import { Search, Monitor, BookOpen, Layers, HelpCircle, ChevronRight } from "lucide-react";
 import { monitorTests } from "@/data/tests";
 import { monitorGuides } from "@/data/guides";
-import { inspectionWorkflows } from "@/data/workflows";
+import { getInspectionWorkflows } from "@/data/workflows";
 
 interface SearchResultItem {
   type: "test" | "workflow" | "guide" | "resource";
@@ -14,30 +15,6 @@ interface SearchResultItem {
   subtitle: string;
   href: string;
 }
-
-const STATIC_RESOURCES: SearchResultItem[] = [
-  {
-    type: "resource",
-    id: "knowledge-base",
-    title: "Display Knowledge Base",
-    subtitle: "KNOWLEDGE BASE",
-    href: "/knowledge-base"
-  },
-  {
-    type: "resource",
-    id: "faq",
-    title: "Frequently Asked Questions",
-    subtitle: "FAQ",
-    href: "/faq"
-  },
-  {
-    type: "resource",
-    id: "resolution-checker",
-    title: "Display Information & Capabilities",
-    subtitle: "DISPLAY INFO",
-    href: "/tests/resolution-checker"
-  }
-];
 
 interface SearchInputProps {
   onSelect?: () => void;
@@ -48,11 +25,18 @@ interface SearchInputProps {
 
 export function SearchInput({ 
   onSelect, 
-  placeholder = "Search tests or guides...",
+  placeholder,
   id = "header-search-input",
   name = "q"
 }: SearchInputProps = {}) {
   const router = useRouter();
+  const locale = useLocale();
+  const tHeader = useTranslations("Header");
+  const tTestPages = useTranslations("TestPages");
+  const tInspection = useTranslations("Inspection.workflowUi");
+
+  const effectivePlaceholder = placeholder || (tHeader.has("searchPlaceholder") ? tHeader("searchPlaceholder") : "Search tests or guides...");
+
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -75,21 +59,31 @@ export function SearchInput({
     if (!q) return [];
 
     const matchedTests: SearchResultItem[] = monitorTests
-      .filter(t => 
-        t.id.toLowerCase().includes(q) || 
-        t.primaryIntent.toLowerCase().includes(q) ||
-        t.category.toLowerCase().includes(q)
-      )
+      .filter(t => {
+        const title = tTestPages.has(`${t.id}.title`) ? tTestPages(`${t.id}.title`) : "";
+        return (
+          t.id.toLowerCase().includes(q) || 
+          title.toLowerCase().includes(q) ||
+          t.primaryIntent.toLowerCase().includes(q) ||
+          t.category.toLowerCase().includes(q)
+        );
+      })
       .slice(0, 5)
-      .map(t => ({
-        type: "test" as const,
-        id: t.id,
-        title: t.id.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" "),
-        subtitle: `${t.category.toUpperCase()} TEST`,
-        href: `/tests/${t.id}`
-      }));
+      .map(t => {
+        const title = tTestPages.has(`${t.id}.title`) ? tTestPages(`${t.id}.title`) : t.id.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+        return {
+          type: "test" as const,
+          id: t.id,
+          title,
+          subtitle: `${t.category.toUpperCase()} TEST`,
+          href: `/tests/${t.id}`
+        };
+      });
 
-    const matchedWorkflows: SearchResultItem[] = inspectionWorkflows
+    const workflows = getInspectionWorkflows(locale);
+    const workflowSubtitle = tInspection.has("workflowEyebrow") ? tInspection("workflowEyebrow") : "INSPECTION WORKFLOW";
+
+    const matchedWorkflows: SearchResultItem[] = workflows
       .filter(w =>
         w.title.toLowerCase().includes(q) ||
         w.shortDescription.toLowerCase().includes(q) ||
@@ -101,7 +95,7 @@ export function SearchInput({
         type: "workflow" as const,
         id: w.id,
         title: w.title,
-        subtitle: "INSPECTION WORKFLOW",
+        subtitle: workflowSubtitle,
         href: w.route
       }));
 
@@ -120,19 +114,44 @@ export function SearchInput({
         href: `/guides/${g.id}`
       }));
 
-    const matchedResources: SearchResultItem[] = STATIC_RESOURCES
+    const staticResources: SearchResultItem[] = [
+      {
+        type: "resource",
+        id: "knowledge-base",
+        title: tHeader.has("dropdown.knowledgeBase") ? tHeader("dropdown.knowledgeBase") : "Display Knowledge Base",
+        subtitle: "KNOWLEDGE BASE",
+        href: "/knowledge-base"
+      },
+      {
+        type: "resource",
+        id: "troubleshooting",
+        title: tHeader.has("dropdown.troubleshooting") ? tHeader("dropdown.troubleshooting") : "Troubleshooting Guide",
+        subtitle: "TROUBLESHOOTING",
+        href: "/knowledge-base/troubleshooting"
+      },
+      {
+        type: "resource",
+        id: "resolution-checker",
+        title: tHeader.has("dropdown.displayInfo") ? tHeader("dropdown.displayInfo") : "Display Information & Capabilities",
+        subtitle: "DISPLAY INFO",
+        href: "/tests/resolution-checker"
+      }
+    ];
+
+    const matchedResources: SearchResultItem[] = staticResources
       .filter(r => 
         r.title.toLowerCase().includes(q) || 
         r.id.toLowerCase().includes(q) ||
-        (q.includes("faq") && r.id === "faq") ||
-        (q.includes("question") && r.id === "faq") ||
+        (q.includes("trouble") && r.id === "troubleshooting") ||
+        (q.includes("hilfe") && r.id === "troubleshooting") ||
+        (q.includes("ayuda") && r.id === "troubleshooting") ||
         (q.includes("know") && r.id === "knowledge-base") ||
         (q.includes("info") && r.id === "resolution-checker") ||
         (q.includes("dpr") && r.id === "resolution-checker")
       );
 
     return [...matchedTests, ...matchedWorkflows, ...matchedGuides, ...matchedResources];
-  }, [query]);
+  }, [query, locale, tTestPages, tInspection, tHeader]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (!isOpen || results.length === 0) return;
@@ -192,8 +211,8 @@ export function SearchInput({
             if (query.trim()) setIsOpen(true);
           }}
           onKeyDown={handleKeyDown}
-          placeholder={placeholder}
-          aria-label={placeholder}
+          placeholder={effectivePlaceholder}
+          aria-label={effectivePlaceholder}
           className="w-full bg-transparent text-gray-900 placeholder:text-gray-500 text-xs focus:outline-none"
         />
         {query && (

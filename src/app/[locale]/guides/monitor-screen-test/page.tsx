@@ -20,7 +20,7 @@ export default async function MonitorGuidePage({ params }: { params: Promise<{ l
       description={t("description")}
       workflowLink={{
         href: "/monitor-inspection/general",
-        title: "General Monitor Inspection"
+        title: t("workflowTitle")
       }}
       quickTestSequence={[
         "/tests/dead-pixel-test",
@@ -42,25 +42,7 @@ export default async function MonitorGuidePage({ params }: { params: Promise<{ l
         "/tests/refresh-rate-test",
         "/tests/hdr-capability-test"
       ]}
-      troubleshooting={[
-        {
-          symptom: "Screen Tearing in Games",
-          description: "Horizontal lines splitting the image when moving the camera.",
-          tests: [
-            { name: "Screen Tearing", url: "/tests/screen-tearing-test" },
-            { name: "Refresh Rate", url: "/tests/refresh-rate-test" }
-          ]
-        },
-        {
-          symptom: "Uneven Colors or Shadows",
-          description: "Dark scenes look blotchy or colors shift across the screen.",
-          tests: [
-            { name: "Uniformity", url: "/tests/uniformity-test" },
-            { name: "Backlight Bleed", url: "/tests/backlight-bleed-test" },
-            { name: "Viewing Angle", url: "/tests/viewing-angle-test" }
-          ]
-        }
-      ]}
+      troubleshooting={t.raw("troubleshooting")}
     />
   );
 }

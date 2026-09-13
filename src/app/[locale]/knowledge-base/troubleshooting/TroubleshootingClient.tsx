@@ -2,11 +2,12 @@
 
 import { useState, useEffect, useMemo } from "react";
 import { Link } from "@/i18n/routing";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { 
-  TROUBLESHOOTING_TOPICS, 
   TROUBLESHOOTING_CATEGORIES, 
-  TroubleshootingCategory
+  TroubleshootingCategory,
+  TroubleshootingTopic,
+  getTroubleshootingTopics
 } from "@/data/troubleshooting";
 import { 
   Search, 
@@ -25,8 +26,16 @@ import {
 import { cn } from "@/lib/utils";
 import { getArticleByTroubleshootingId } from "@/data/knowledgeBase";
 
-export function TroubleshootingClient() {
+interface TroubleshootingClientProps {
+  topics?: TroubleshootingTopic[];
+}
+
+export function TroubleshootingClient({ topics: propTopics }: TroubleshootingClientProps = {}) {
   const t = useTranslations("Troubleshooting");
+  const tKbUi = useTranslations("KnowledgeBase.articleUi");
+  const tKbIndex = useTranslations("KnowledgeBase.index");
+  const locale = useLocale();
+  const topics = propTopics || getTroubleshootingTopics(locale);
   const [selectedCategory, setSelectedCategory] = useState<TroubleshootingCategory | "all">("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [expandedTopics, setExpandedTopics] = useState<Record<string, boolean>>({});
@@ -49,7 +58,7 @@ export function TroubleshootingClient() {
   }, []);
 
   const filteredTopics = useMemo(() => {
-    return TROUBLESHOOTING_TOPICS.filter(topic => {
+    return topics.filter(topic => {
       const matchesCategory = selectedCategory === "all" || topic.category === selectedCategory;
       if (!matchesCategory) return false;
 
@@ -63,7 +72,7 @@ export function TroubleshootingClient() {
         topic.actions.some(a => a.toLowerCase().includes(q))
       );
     });
-  }, [selectedCategory, searchQuery]);
+  }, [selectedCategory, searchQuery, topics]);
 
   return (
     <div className="space-y-8">
@@ -92,7 +101,7 @@ export function TroubleshootingClient() {
           </div>
 
           <div className="text-xs text-slate-500 font-mono">
-            {t("showingCount", { count: filteredTopics.length, total: TROUBLESHOOTING_TOPICS.length })}
+            {t("showingCount", { count: filteredTopics.length, total: topics.length })}
           </div>
         </div>
 
@@ -108,10 +117,10 @@ export function TroubleshootingClient() {
                 : "bg-slate-100 text-slate-600 hover:bg-slate-200/80"
             )}
           >
-            {t("allCategories")} ({TROUBLESHOOTING_TOPICS.length})
+            {t("allCategories")} ({topics.length})
           </button>
           {TROUBLESHOOTING_CATEGORIES.map(cat => {
-            const count = TROUBLESHOOTING_TOPICS.filter(t => t.category === cat.id).length;
+            const count = topics.filter(t => t.category === cat.id).length;
             const isSelected = selectedCategory === cat.id;
             return (
               <button
@@ -305,19 +314,19 @@ export function TroubleshootingClient() {
 
                   {/* Section 6: Knowledge Base Background Reference */}
                   {(() => {
-                    const kbArticle = getArticleByTroubleshootingId(topic.id);
+                    const kbArticle = getArticleByTroubleshootingId(topic.id, locale);
                     if (!kbArticle) return null;
                     return (
                       <div className="p-3.5 bg-blue-50/60 border border-blue-200/80 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs">
                         <div className="flex items-center gap-2 text-blue-950 font-medium">
                           <BookOpen className="w-4 h-4 text-blue-600 shrink-0" />
-                          <span>Technical Reference: <strong>{kbArticle.title}</strong></span>
+                          <span>{tKbUi("technicalReference")}: <strong>{kbArticle.title}</strong></span>
                         </div>
                         <Link
                           href={`/knowledge-base/${kbArticle.slug}`}
                           className="inline-flex items-center gap-1 font-semibold text-blue-700 hover:text-blue-900 hover:underline shrink-0"
                         >
-                          <span>Read Knowledge Article</span>
+                          <span>{tKbIndex("readArticle")}</span>
                           <ArrowRight className="w-3 h-3" />
                         </Link>
                       </div>

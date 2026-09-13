@@ -2,11 +2,13 @@
 
 import { useState, useMemo } from "react";
 import { Link } from "@/i18n/routing";
+import { useLocale } from "next-intl";
 import { 
-  KNOWLEDGE_CATEGORIES, 
-  KNOWLEDGE_ARTICLES, 
   KnowledgeBaseCategory, 
-  KnowledgeArticle 
+  KnowledgeCategoryInfo,
+  KnowledgeArticle,
+  getLocalizedKnowledgeArticles,
+  getLocalizedKnowledgeCategories
 } from "@/data/knowledgeBase";
 import { 
   Search, 
@@ -23,6 +25,8 @@ import {
 
 interface KnowledgeBaseIndexClientProps {
   initialCategory?: string;
+  articles?: KnowledgeArticle[];
+  categories?: KnowledgeCategoryInfo[];
   translations?: {
     searchPlaceholder?: string;
     filterAll?: string;
@@ -42,13 +46,22 @@ const CATEGORY_ICONS: Record<string, React.ComponentType<{ className?: string }>
 };
 
 export function KnowledgeBaseIndexClient({ 
+  initialCategory,
+  articles,
+  categories,
   translations 
 }: KnowledgeBaseIndexClientProps) {
+  const locale = useLocale();
+  const allArticles = articles || getLocalizedKnowledgeArticles(locale);
+  const allCategories = categories || getLocalizedKnowledgeCategories(locale);
+
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState<KnowledgeBaseCategory | "all">("all");
+  const [activeCategory, setActiveCategory] = useState<KnowledgeBaseCategory | "all">(
+    (initialCategory as KnowledgeBaseCategory) || "all"
+  );
 
   const filteredArticles = useMemo(() => {
-    return KNOWLEDGE_ARTICLES.filter((article: KnowledgeArticle) => {
+    return allArticles.filter((article: KnowledgeArticle) => {
       const matchesCategory = activeCategory === "all" || article.category === activeCategory;
       if (!matchesCategory) return false;
 
@@ -61,15 +74,15 @@ export function KnowledgeBaseIndexClient({
         article.directAnswer.toLowerCase().includes(query)
       );
     });
-  }, [searchQuery, activeCategory]);
+  }, [allArticles, searchQuery, activeCategory]);
 
   const articlesByCategory = useMemo(() => {
     const grouped: Record<string, KnowledgeArticle[]> = {};
-    for (const cat of KNOWLEDGE_CATEGORIES) {
+    for (const cat of allCategories) {
       grouped[cat.id] = filteredArticles.filter(a => a.category === cat.id);
     }
     return grouped;
-  }, [filteredArticles]);
+  }, [allCategories, filteredArticles]);
 
   return (
     <div className="space-y-10">
@@ -109,11 +122,11 @@ export function KnowledgeBaseIndexClient({
             }`}
           >
             <span>{translations?.filterAll || "All Articles"}</span>
-            <span className="text-[10px] opacity-70 font-mono">({KNOWLEDGE_ARTICLES.length})</span>
+            <span className="text-[10px] opacity-70 font-mono">({allArticles.length})</span>
           </button>
 
-          {KNOWLEDGE_CATEGORIES.map((cat) => {
-            const count = KNOWLEDGE_ARTICLES.filter(a => a.category === cat.id).length;
+          {allCategories.map((cat) => {
+            const count = allArticles.filter(a => a.category === cat.id).length;
             const IconComponent = CATEGORY_ICONS[cat.iconName] || Layers;
             return (
               <button
@@ -160,7 +173,7 @@ export function KnowledgeBaseIndexClient({
 
       {/* Article Groups by Category */}
       <div className="space-y-16">
-        {KNOWLEDGE_CATEGORIES.map((cat) => {
+        {allCategories.map((cat) => {
           const articles = articlesByCategory[cat.id] || [];
           if (articles.length === 0) return null;
           const IconComponent = CATEGORY_ICONS[cat.iconName] || Layers;

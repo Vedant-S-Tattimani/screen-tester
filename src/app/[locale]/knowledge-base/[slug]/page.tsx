@@ -5,12 +5,12 @@ import { Link } from "@/i18n/routing";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { generateSeoMetadata, getBaseUrl } from "@/lib/seo";
 import { 
-  getArticleBySlug, 
+  getLocalizedKnowledgeArticle, 
   getAllArticles, 
-  getCategoryInfo 
+  getLocalizedCategoryInfo 
 } from "@/data/knowledgeBase";
 import { monitorTests } from "@/data/tests";
-import { TROUBLESHOOTING_TOPICS } from "@/data/troubleshooting";
+import { getTroubleshootingById } from "@/data/troubleshooting";
 import { 
   ArrowRight, 
   CheckCircle2, 
@@ -36,7 +36,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const article = getArticleBySlug(slug);
+  const article = getLocalizedKnowledgeArticle(slug, locale);
 
   if (!article) {
     return {};
@@ -103,7 +103,7 @@ export default async function KnowledgeArticlePage({
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  const article = getArticleBySlug(slug);
+  const article = getLocalizedKnowledgeArticle(slug, locale);
   if (!article) {
     notFound();
   }
@@ -111,7 +111,7 @@ export default async function KnowledgeArticlePage({
   const t = await getTranslations({ locale, namespace: "KnowledgeBase" });
   const tTestPages = await getTranslations({ locale, namespace: "TestPages" });
   const baseUrl = getBaseUrl();
-  const categoryInfo = getCategoryInfo(article.category);
+  const categoryInfo = getLocalizedCategoryInfo(article.category, locale);
 
   // UI labels with translation lookup and English fallback
   const ui = {
@@ -167,12 +167,12 @@ export default async function KnowledgeArticlePage({
 
   // Resolve related troubleshooting topics
   const relatedTroubleshooting = article.relatedTroubleshootingIds
-    .map(id => TROUBLESHOOTING_TOPICS.find(tp => tp.id === id))
+    .map(id => getTroubleshootingById(id, locale))
     .filter((tp): tp is NonNullable<typeof tp> => tp !== undefined);
 
   // Resolve related knowledge articles
   const relatedArticles = article.relatedArticleSlugs
-    .map(s => getArticleBySlug(s))
+    .map(s => getLocalizedKnowledgeArticle(s, locale))
     .filter((a): a is NonNullable<typeof a> => a !== undefined);
 
   // Schema.org Structured Data: Article + BreadcrumbList + FAQPage

@@ -37,7 +37,9 @@ export function LanguageSwitcher({ dropUp = false }: LanguageSwitcherProps = {})
 
   const handleSelect = (nextLocale: string) => {
     setLanguagePreference(nextLocale);
-    router.replace(pathname, { locale: nextLocale });
+    const search = typeof window !== "undefined" ? window.location.search : "";
+    const hash = typeof window !== "undefined" ? window.location.hash : "";
+    router.replace(`${pathname}${search}${hash}`, { locale: nextLocale });
     setIsOpen(false);
   };
 

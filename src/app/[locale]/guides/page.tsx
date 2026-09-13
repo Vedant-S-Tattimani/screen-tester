@@ -46,12 +46,16 @@ export default async function GuidesPage({ params }: { params: Promise<{ locale:
             </div>
             <div className="flex flex-col">
               {deviceGuides.map(guide => {
-                const camelId = guide.id.replace("-screen-test", "").replace(/-([a-z])/g, g => g[1].toUpperCase());
+                const keyMap: Record<string, string> = {
+                  "used-monitor-inspection-checklist": "usedMonitor",
+                  "new-monitor-inspection-return-window": "newMonitor",
+                };
+                const camelId = keyMap[guide.id] || guide.id.replace("-screen-test", "").replace(/-([a-z])/g, g => g[1].toUpperCase());
                 let title = guide.primaryIntent;
                 let description = "";
                 try {
                   title = tGuides(`${camelId}.title`) || title;
-                  description = tGuides(`${camelId}.description`) || description;
+                  description = tGuides(`${camelId}.description`) || tGuides(`${camelId}.metaDescription`) || tGuides(`${camelId}.subtitle`) || description;
                 } catch {}
 
                 return (
@@ -75,30 +79,45 @@ export default async function GuidesPage({ params }: { params: Promise<{ locale:
               <div className="h-px w-full bg-border/60"></div>
             </div>
             <div className="flex flex-col">
-              {conceptGuides.map(guide => (
-                <TestRow 
-                  key={guide.id}
-                  href={`/guides/${guide.id}`}
-                  title={guide.primaryIntent.replace(/\b\w/g, l => l.toUpperCase())}
-                  description={tGuides("learnAbout", { topic: guide.primaryIntent })}
-                />
-              ))}
+              {conceptGuides.map(guide => {
+                let title = guide.primaryIntent.replace(/\b\w/g, l => l.toUpperCase());
+                let description = tGuides("learnAbout", { topic: guide.primaryIntent });
+                if (guide.id === "monitor-viewing-angles-explained") {
+                  title = tGuides("viewingAngles.title");
+                  description = tGuides("viewingAngles.metaDescription");
+                } else if (guide.id === "displayport-vs-hdmi-bandwidth-chroma") {
+                  title = tGuides("displayportVsHdmi.title");
+                  description = tGuides("displayportVsHdmi.metaDescription");
+                } else if (guide.id === "monitor-osd-settings-explained") {
+                  title = tGuides("monitorOsdSettings.title");
+                  description = tGuides("monitorOsdSettings.metaDescription");
+                }
+
+                return (
+                  <TestRow 
+                    key={guide.id}
+                    href={`/guides/${guide.id}`}
+                    title={title}
+                    description={description}
+                  />
+                );
+              })}
             </div>
           </div>
 
           {/* Knowledge Base Callout */}
           <div className="p-6 bg-blue-50/50 border border-blue-200/80 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-sm">
             <div>
-              <h3 className="font-bold text-blue-950 mb-1">Looking for Technical Display Deep Dives?</h3>
+              <h3 className="font-bold text-blue-950 mb-1">{tGuides("kbCallout.title")}</h3>
               <p className="text-muted-foreground text-xs sm:text-sm">
-                Explore our Knowledge Base for in-depth explanations on pixel defects, backlight bleed vs. IPS glow, monitor ghosting, and VRR standards.
+                {tGuides("kbCallout.description")}
               </p>
             </div>
             <Link
               href="/knowledge-base"
               className="inline-flex items-center gap-1.5 font-semibold text-blue-700 hover:text-blue-900 hover:underline shrink-0"
             >
-              <span>Explore Knowledge Base</span>
+              <span>{tGuides("kbCallout.action")}</span>
               <span aria-hidden="true">→</span>
             </Link>
           </div>

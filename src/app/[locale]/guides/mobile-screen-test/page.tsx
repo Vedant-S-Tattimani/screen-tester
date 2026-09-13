@@ -34,23 +34,7 @@ export default async function MobileGuidePage({ params }: { params: Promise<{ lo
         "/tests/refresh-rate-test",
         "/tests/sharpness-test"
       ]}
-      troubleshooting={[
-        {
-          symptom: "Dead spots on screen",
-          description: "Taps or swipes aren't registering in specific areas.",
-          tests: [
-            { name: "Touch Screen", url: "/tests/touch-screen-test" }
-          ]
-        },
-        {
-          symptom: "Shadows of old apps",
-          description: "Keyboard or status bar faintly visible on solid colors.",
-          tests: [
-            { name: "Burn-in", url: "/tests/burn-in-test" },
-            { name: "Solid Colors", url: "/tests/solid-color-test" }
-          ]
-        }
-      ]}
+      troubleshooting={t.raw("troubleshooting")}
     />
   );
 }

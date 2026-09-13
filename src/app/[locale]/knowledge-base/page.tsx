@@ -4,7 +4,7 @@ import { Link } from "@/i18n/routing";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { generateSeoMetadata, getBaseUrl } from "@/lib/seo";
 import { KnowledgeBaseIndexClient } from "@/components/knowledge-base/KnowledgeBaseIndexClient";
-import { KNOWLEDGE_ARTICLES } from "@/data/knowledgeBase";
+import { getLocalizedKnowledgeArticles, getLocalizedKnowledgeCategories } from "@/data/knowledgeBase";
 import { Wrench, ShieldCheck, CheckCircle2, ArrowRight } from "lucide-react";
 
 export async function generateMetadata({
@@ -33,6 +33,8 @@ export default async function KnowledgeBasePage({
 
   const t = await getTranslations({ locale, namespace: "KnowledgeBase" });
   const baseUrl = getBaseUrl();
+  const articles = getLocalizedKnowledgeArticles(locale);
+  const categories = getLocalizedKnowledgeCategories(locale);
 
   const breadcrumbs = [
     { label: t("header.title"), href: "/knowledge-base" }
@@ -44,7 +46,7 @@ export default async function KnowledgeBasePage({
     name: t("header.title"),
     description: t("header.subtitle"),
     url: `${baseUrl}/${locale}/knowledge-base`,
-    hasPart: KNOWLEDGE_ARTICLES.map((article) => ({
+    hasPart: articles.map((article) => ({
       "@type": "Article",
       name: article.title,
       description: article.description,
@@ -145,6 +147,8 @@ export default async function KnowledgeBasePage({
 
         {/* Interactive Search & Filterable Articles */}
         <KnowledgeBaseIndexClient
+          articles={articles}
+          categories={categories}
           translations={{
             searchPlaceholder: t("index.searchPlaceholder"),
             filterAll: t("index.filterAll"),

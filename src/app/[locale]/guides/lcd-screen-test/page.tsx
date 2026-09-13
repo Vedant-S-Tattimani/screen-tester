@@ -35,24 +35,7 @@ export default async function LcdGuidePage({ params }: { params: Promise<{ local
         "/tests/viewing-angle-test",
         "/tests/color-test"
       ]}
-      troubleshooting={[
-        {
-          symptom: "White halos on edges",
-          description: "Light leaking from the corners of the screen when viewing dark content.",
-          tests: [
-            { name: "Backlight Bleed", url: "/tests/backlight-bleed-test" },
-            { name: "Uniformity", url: "/tests/uniformity-test" }
-          ]
-        },
-        {
-          symptom: "Smearing or trailing in motion",
-          description: "Moving objects leave a trail or appear blurry.",
-          tests: [
-            { name: "Ghosting", url: "/tests/ghosting-test" },
-            { name: "Motion Blur", url: "/tests/motion-blur-test" }
-          ]
-        }
-      ]}
+      troubleshooting={t.raw("troubleshooting")}
     />
   );
 }

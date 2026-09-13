@@ -241,7 +241,9 @@
     "aboutLimitationsDesc": "本サイトのテストパターンは、適切な室内環境下で人間の目による視覚的検査を支援するものです。Screen Tester は測色計（キャリブレーター）や光学センサーなどの専用測定ハードウェアの代わりとなるものではなく、OSのカラープロファイル（ICC）を書き換える機能はありません。正確な診断のため、画面の埃を拭き取り、F11キーで全画面表示にし、拡大縮小率を100%にしてご利用ください。",
     "badgeBrowser": "ブラウザで100%完結",
     "badgeNoInstall": "アプリのインストール不要",
-    "badgePrivacy": "完全ローカル・安心のプライバシー"
+    "badgePrivacy": "完全ローカル・安心のプライバシー",
+    "h1": "Screen Tester – オンライン画面＆モニターテスト",
+    "aboutHeading": "Screen Testerについて"
   },
   "TestLibrary": {
     "categories": {
@@ -370,9 +372,9 @@
     "addNote": "+ メモ",
     "noteAdded": "メモ追加済",
     "noteTitle": "目視メモを追記する",
-    "prev": "前へ",
+    "prev": "❮ 前へ",
     "prevAria": "シーケンスの前のテストへ戻る",
-    "skip": "スキップ",
+    "skip": "スキップ ❯",
     "skipAria": "テストをスキップ",
     "skipTitle": "問題を記録せずに次のテストへ進む",
     "continue": "次へ進む →",
@@ -428,7 +430,19 @@
       "listTitle": "記録されたピクセル欠陥一覧",
       "emptyList": "この画面で記録されたピクセル欠陥はありません。",
       "closeBtn": "閉じる"
-    }
+    },
+    "guidedAutoTest": "ガイド付き自動テスト",
+    "testProgress": "• テスト {current} / {total}",
+    "resume": "▶ 再開",
+    "pause": "⏸ 一時停止 ({seconds}秒)",
+    "exitAutoTest": "自動テストを終了",
+    "autoTestInspect": "現在このテストパターンで画面を点検しています。画面を確認し、下部から結果を選択してください。",
+    "deadPixelInspect": "画面全体を注意深く観察し、異なる色で点灯または消灯しているピクセルがないか確認してください。",
+    "colorPrefix": "カラー",
+    "kbCalloutPrefix": "ナレッジベースで詳しく学ぶ •",
+    "kbCalloutAction": "技術ガイドを読む",
+    "troubleshootingPrefix": "このテストでお困りですか？ •",
+    "troubleshootingAction": "トラブルシューティングガイド"
   },
   "TestPages": {
     "dead-pixel-test": {
@@ -1016,6 +1030,14 @@
     "microphoneTest": {
       "title": "マイクテスト",
       "description": "マイクの入力機能、リアルタイムレベルメーター、波形表示、デジタルクリッピングをテストします。"
+    },
+    "ghostingTest": {
+      "title": "モニターゴーストテスト – ピクセル応答速度と残像チェック",
+      "description": "高速移動パターンを使用して、ピクセルの応答時間、残像（ゴースト）、オーバードライブのコロナ現象を評価します。"
+    },
+    "motionBlurTest": {
+      "title": "モーションブラーテスト – 動画応答性とMPRTチェック",
+      "description": "高速で動くシーンやテストオブジェクトにおける動画解像度、ホールドボケ、MPRTトラッキングを分析します。"
     }
   },
   "Guides": {
@@ -1025,37 +1047,221 @@
       "metaTitle": "PCモニターのテスト方法 – 画面の購入後チェック完全ガイド",
       "metaDescription": "新品や中古のモニターを購入した際に行うべきドット抜け、光漏れ、残像チェックの手順を解説。",
       "title": "モニタースクリーンテスト",
-      "description": "デスクトップモニターの包括的なテスト。"
+      "description": "デスクトップモニターの包括的なテスト。",
+      "workflowTitle": "モニター総合点検",
+      "troubleshooting": [
+        {
+          "symptom": "ゲーム中の画面のズレ（テアリング）",
+          "description": "視点を動かした際に横方向の線が入って画像が上下にズレます。",
+          "tests": [
+            {
+              "name": "画面テアリング",
+              "url": "/tests/screen-tearing-test"
+            },
+            {
+              "name": "リフレッシュレート",
+              "url": "/tests/refresh-rate-test"
+            }
+          ]
+        },
+        {
+          "symptom": "色ムラや影が気になる",
+          "description": "暗い場面が斑点状に見えたり、画面全体で色が均一でありません。",
+          "tests": [
+            {
+              "name": "均一性",
+              "url": "/tests/uniformity-test"
+            },
+            {
+              "name": "バックライト漏れ",
+              "url": "/tests/backlight-bleed-test"
+            },
+            {
+              "name": "視野角",
+              "url": "/tests/viewing-angle-test"
+            }
+          ]
+        }
+      ]
     },
     "oled": {
       "metaTitle": "OLED（有機EL）のテスト方法 – 焼き付き・ムラ・純黒確認ガイド",
       "metaDescription": "有機ELモニターやテレビの焼き付き（残像）、低輝度時のムラ、パネル劣化の確認方法を解説。",
       "title": "OLEDスクリーンテスト",
-      "description": "OLEDの残像と黒レベルの特殊テスト。"
+      "description": "OLEDの残像と黒レベルの特殊テスト。",
+      "workflowTitle": "OLED点検ウィザード",
+      "troubleshooting": [
+        {
+          "symptom": "残像・焼き付き（イメージリテンション）",
+          "description": "固定表示されていたUIの輪郭が薄く画面に残ります。",
+          "tests": [
+            {
+              "name": "焼き付きテスト",
+              "url": "/tests/burn-in-test"
+            },
+            {
+              "name": "単色表示",
+              "url": "/tests/solid-color-test"
+            }
+          ]
+        },
+        {
+          "symptom": "暗所グラデーションの階調割れ（バンディング）",
+          "description": "暗いグレーのシーンでノイズや縞模様、ブロック状の歪みが見られます。",
+          "tests": [
+            {
+              "name": "黒レベル",
+              "url": "/tests/black-level-test"
+            },
+            {
+              "name": "カラーバンディング",
+              "url": "/tests/color-banding-test"
+            }
+          ]
+        }
+      ]
     },
     "laptop": {
       "metaTitle": "ノートパソコンの画面テスト – ドット抜け・光漏れ・解像感チェック",
       "metaDescription": "ノートPCディスプレイの購入時チェックリスト：画素欠け、ヒンジ圧迫による光漏れ、スケーリング確認。",
       "title": "ラップトップスクリーンテスト",
-      "description": "一般的なラップトップLCDパネルのテスト。"
+      "description": "一般的なラップトップLCDパネルのテスト。",
+      "workflowTitle": "ノートPC点検ウィザード",
+      "troubleshooting": [
+        {
+          "symptom": "頭を動かすと色が褪せる",
+          "description": "画面の傾きを変えるとコントラストが低下し、色が反転します。",
+          "tests": [
+            {
+              "name": "視野角",
+              "url": "/tests/viewing-angle-test"
+            },
+            {
+              "name": "コントラスト",
+              "url": "/tests/contrast-test"
+            }
+          ]
+        },
+        {
+          "symptom": "文字がぼやける・にじむ",
+          "description": "高解像度ディスプレイであるにもかかわらず文字がくっきり見えません。",
+          "tests": [
+            {
+              "name": "鮮鋭度",
+              "url": "/tests/sharpness-test"
+            },
+            {
+              "name": "ディスプレイ情報",
+              "url": "/tests/resolution-checker"
+            }
+          ]
+        }
+      ]
     },
     "lcd": {
       "metaTitle": "液晶ディスプレイのテスト方法 – IPS・VA・TNパネルの比較と特徴",
       "metaDescription": "IPSグローとバックライト光漏れの違いを理解し、お使いの液晶パネルの特性に応じた最適な診断を実施。",
       "title": "LCDスクリーンテスト",
-      "description": "LCDバックライトブリードと均一性のテスト。"
+      "description": "LCDバックライトブリードと均一性のテスト。",
+      "troubleshooting": [
+        {
+          "symptom": "暗所で四隅が白く光る",
+          "description": "斜めから見たときに四隅から黄色または白色の光が漏れます。",
+          "tests": [
+            {
+              "name": "バックライト漏れ",
+              "url": "/tests/backlight-bleed-test"
+            },
+            {
+              "name": "視野角",
+              "url": "/tests/viewing-angle-test"
+            }
+          ]
+        },
+        {
+          "symptom": "素早い動きがにじむ",
+          "description": "動く物体の背後に残像やゴーストが長く尾を引きます。",
+          "tests": [
+            {
+              "name": "ゴースト",
+              "url": "/tests/ghosting-test"
+            },
+            {
+              "name": "リフレッシュレート",
+              "url": "/tests/refresh-rate-test"
+            }
+          ]
+        }
+      ]
     },
     "tv": {
       "metaTitle": "テレビ画面のテスト方法 – 4Kテレビ・スマートTVの画質チェック",
       "metaDescription": "ブラウザを通じてテレビ画面の画質、倍速駆動の残像感、ローカルディミング、階調表現をチェック。",
       "title": "テレビスクリーンテスト",
-      "description": "TVのモーション処理とブルーミングのテスト。"
+      "description": "TVのモーション処理とブルーミングのテスト。",
+      "workflowTitle": "テレビ点検ウィザード",
+      "troubleshooting": [
+        {
+          "symptom": "字幕の周囲が光る（ブルーミング）",
+          "description": "暗い背景に明るい字幕が表示されると周囲に光の輪が広がります。",
+          "tests": [
+            {
+              "name": "ブルーミング",
+              "url": "/tests/blooming-test"
+            },
+            {
+              "name": "黒レベル",
+              "url": "/tests/black-level-test"
+            }
+          ]
+        },
+        {
+          "symptom": "映画が不自然に滑らか（ソープオペラ効果）",
+          "description": "映画が人工的に滑らかになりすぎてドラマや生放送のように見えます。",
+          "tests": [
+            {
+              "name": "モーションブラー",
+              "url": "/tests/motion-blur-test"
+            },
+            {
+              "name": "リフレッシュレート",
+              "url": "/tests/refresh-rate-test"
+            }
+          ]
+        }
+      ]
     },
     "mobile": {
       "metaTitle": "スマホ画面のテスト方法 – タッチ反応・有機EL焼き付き診断",
       "metaDescription": "スマートフォンのタッチパネルの感度、マルチタッチ、有機ELの画面焼け、発色をブラウザでテスト。",
       "title": "モバイルスクリーンテスト",
-      "description": "モバイルタッチスクリーンとOLEDパネルのテスト。"
+      "description": "モバイルタッチスクリーンとOLEDパネルのテスト。",
+      "troubleshooting": [
+        {
+          "symptom": "タッチが無反応な箇所がある",
+          "description": "画面の特定の部分でタップやスワイプが反応しません。",
+          "tests": [
+            {
+              "name": "タッチスクリーン",
+              "url": "/tests/touch-screen-test"
+            }
+          ]
+        },
+        {
+          "symptom": "前のアプリアイコンが薄く残る",
+          "description": "単色画面でキーボードやステータスバーがうっすらと見えます。",
+          "tests": [
+            {
+              "name": "焼き付き",
+              "url": "/tests/burn-in-test"
+            },
+            {
+              "name": "単色表示",
+              "url": "/tests/solid-color-test"
+            }
+          ]
+        }
+      ]
     },
     "ghostingConcept": {
       "metaTitle": "モニターのゴースト確認方法 – 応答速度とオーバードライブ設定",
@@ -2618,6 +2824,25 @@
       "linkUniformityTest": "均一性テスト",
       "linkDisplayInfo": "ディスプレイ情報",
       "linkScalingAspect": "スケーリング＆アスペクト比"
+    },
+    "deviceGuide": {
+      "inspectionGuide": "点検ガイド",
+      "workflowPrompt": "インタラクティブ点検ワークフロー:",
+      "workflowPref": "診断ログ付きのステップバイステップなインタラクティブテストをご希望ですか？",
+      "launchWorkflow": "起動",
+      "quickCheckTitle": "5分クイックチェック",
+      "quickCheckDesc": "購入直後に{count}つの主要項目を素早くチェックするための基本テスト群。",
+      "startQuickCheck": "クイックチェック開始",
+      "fullSuiteTitle": "完全診断スイート",
+      "fullSuiteDesc": "ディスプレイのあらゆる側面を網羅する{count}ステップの詳細な診断シーケンス。",
+      "startFullSuite": "完全診断を開始",
+      "commonIssuesTitle": "よくある問題",
+      "testsLabel": "テスト:"
+    },
+    "kbCallout": {
+      "title": "技術的な詳細解説をお探しですか？",
+      "description": "ドット抜け、バックライト漏れとIPSグローの違い、ゴースト、VRR規格などの詳細解説はナレッジベースをご覧ください。",
+      "action": "ナレッジベースを見る"
     }
   },
   "Inspection": {
@@ -2755,6 +2980,13 @@
         "title": "解像度とディスプレイ情報",
         "what": "解像度、色深度、HDR対応がメーカーの仕様と一致しているか確認します。"
       }
+    },
+    "workflowUi": {
+      "workflowEyebrow": "点検ワークフロー",
+      "tipLabel": "点検のヒント:",
+      "hardwareBoundaryLabel": "ハードウェアおよび技術的制限:",
+      "guideLinkText": "モニタースクリーンテストガイドを読む →",
+      "guideLinkPrompt": "包括的なディスプレイ点検基準と設定ガイドをお探しですか？"
     }
   },
   "Privacy": {
@@ -2774,7 +3006,12 @@
     "cookiesTitle": "広告またはトラッキングCookieなし",
     "cookiesText": "モニターテスターはサードパーティの広告Cookie、行動トラッカー、またはマーケティングピクセルを使用しません。サイトはあなたのブラウジング活動を売ったり、賃貸したり、収益化したりしません。",
     "permissionsTitle": "ブラウザの権限",
-    "permissionsText": "モニターテスターは、フルスクリーンテストモードに入ることを選択したときにのみ、標準のFullscreen API権限を要求します。カメラ、マイク、通知、または地理的位置の権限を要求することはありません。"
+    "permissionsText": "モニターテスターは、フルスクリーンテストモードに入ることを選択したときにのみ、標準のFullscreen API権限を要求します。カメラ、マイク、通知、または地理的位置の権限を要求することはありません。",
+    "workflowStorageTitle": "ワークフロー順序 (sessionStorage)",
+    "workflowStorageDesc": "複数ステップの点検ワークフロー中に現在のテスト番号を一時的に保持します。タブを閉じると自動的に消去されます。",
+    "questionsTitle": "プライバシーに関するご質問ですか？",
+    "questionsDesc": "オープンソース開発者にお問い合わせいただくか、ソースコードを直接ご確認ください。",
+    "contactMaintainer": "開発者に連絡"
   },
   "About": {
     "metaTitle": "About Monitor Tester — Display Diagnostic & Evaluation Utility",
@@ -2798,7 +3035,10 @@
     "toolsCategory": "ハードウェア診断とカルキュレーター",
     "toolsDesc": "検出された画面メトリクス（DPR、色深度）を確認し、PPIと最適な視聴距離を計算します。",
     "openSourceTitle": "オープンでコミュニティ主導",
-    "openSourceText": "モニターテスターはオープンソースプロジェクトです。GitHubでソースコードを確認したり、レンダリングバグを報告したり、新しいテストパターンを提案したり、直接貢献したりできます。"
+    "openSourceText": "モニターテスターはオープンソースプロジェクトです。GitHubでソースコードを確認したり、レンダリングバグを報告したり、新しいテストパターンを提案したり、直接貢献したりできます。",
+    "viewOnGithub": "GitHubでプロジェクトを表示",
+    "faqLink": "よくある質問（FAQ）",
+    "browseTestsLink": "すべてのテストを見る"
   },
   "Terms": {
     "metaTitle": "Terms of Use — Monitor Tester",
@@ -3608,7 +3848,9 @@
     "parameter": "パラメーター",
     "deviation": "誤差: {val}",
     "benchmarks": "幾何数学ベンチマーク",
-    "hardwareComparison": "画面仕様・幾何比較"
+    "hardwareComparison": "画面仕様・幾何比較",
+    "metaTitle": "ディスプレイ比較 & 画面サイズ計算機",
+    "metaDescription": "モニター、テレビ、ノートPCディスプレイの物理サイズ、画素密度 (PPI)、アスペクト比、最適な視聴距離を比較します。"
   },
   "Faq": {
     "metaTitle": "よくある質問 (FAQ) | Monitor Tester",
@@ -5375,5 +5617,16 @@
       "deviceNotFound": "マイクが見つかりませんでした。",
       "startFailed": "録音の開始に失敗しました。"
     }
+  },
+  "TestControlBar": {
+    "revealHint": "カーソルを画面下部に移動して表示",
+    "tapToReveal": "タップして操作パネルを表示",
+    "hideControls": "操作パネルを非表示"
+  },
+  "NotFound": {
+    "title": "ページが見つかりません",
+    "description": "お探しのテストまたはページは存在しないか、移動された可能性があります。",
+    "viewAllTests": "すべてのテストを見る",
+    "backToHome": "トップページへ戻る"
   }
 }

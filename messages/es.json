@@ -241,7 +241,9 @@
     "aboutLimitationsDesc": "Todas las herramientas están diseñadas para la inspección visual directa por parte del usuario bajo condiciones de luz controladas. Screen Tester no sustituye a instrumentos ópticos de laboratorio (como colorímetros físicos o fotodiodos) ni modifica los perfiles ICC del sistema operativo. Para una evaluación óptima, limpie su pantalla, active la pantalla completa (F11) y configure el escalado al 100%.",
     "badgeBrowser": "100% en el Navegador",
     "badgeNoInstall": "Sin Instalación de Software",
-    "badgePrivacy": "Diagnóstico Local y Privado"
+    "badgePrivacy": "Diagnóstico Local y Privado",
+    "h1": "Screen Tester – Test de Pantalla y Monitor Online",
+    "aboutHeading": "Acerca de Screen Tester"
   },
   "TestLibrary": {
     "categories": {
@@ -370,9 +372,9 @@
     "addNote": "+ Nota",
     "noteAdded": "Nota guardada",
     "noteTitle": "Añadir nota de observación escrita",
-    "prev": "Ant",
+    "prev": "❮ Anterior",
     "prevAria": "Prueba anterior en la secuencia",
-    "skip": "Omitir",
+    "skip": "Saltar ❯",
     "skipAria": "Omitir prueba",
     "skipTitle": "Pasar a la siguiente prueba sin registrar problemas",
     "continue": "Continuar →",
@@ -428,7 +430,19 @@
       "listTitle": "Defectos de píxeles observados",
       "emptyList": "No se han marcado defectos de píxeles en esta pantalla.",
       "closeBtn": "Cerrar"
-    }
+    },
+    "guidedAutoTest": "Test Automático Guiado",
+    "testProgress": "• Test {current} de {total}",
+    "resume": "▶ Reanudar",
+    "pause": "⏸ Pausa ({seconds}s)",
+    "exitAutoTest": "Salir del Test Automático",
+    "autoTestInspect": "Tu pantalla se está evaluando con este patrón visual. Inspecciona el panel y selecciona tu observación abajo.",
+    "deadPixelInspect": "Examina con atención toda la pantalla en busca de cualquier píxel que permanezca de un color diferente.",
+    "colorPrefix": "COLOR",
+    "kbCalloutPrefix": "Aprende más en la Base de Conocimiento •",
+    "kbCalloutAction": "Leer Guía Técnica",
+    "troubleshootingPrefix": "¿Tienes problemas con este test? •",
+    "troubleshootingAction": "Guía de Solución de Problemas"
   },
   "TestPages": {
     "dead-pixel-test": {
@@ -1016,6 +1030,14 @@
     "microphoneTest": {
       "title": "Prueba de Micrófono",
       "description": "Verifica la entrada del micrófono, medidor de nivel en vivo, onda de audio y saturación digital."
+    },
+    "ghostingTest": {
+      "title": "Test de Ghosting de Monitor – Tiempo de Respuesta y Estelas",
+      "description": "Evalúa el tiempo de respuesta de píxeles, estelas de movimiento y coronas de overdrive con patrones de alta velocidad."
+    },
+    "motionBlurTest": {
+      "title": "Test de Desenfoque de Movimiento – Claridad y MPRT",
+      "description": "Analiza la resolución en movimiento, el desenfoque de persistencia y el seguimiento MPRT en objetos móviles."
     }
   },
   "Guides": {
@@ -1025,37 +1047,221 @@
       "metaTitle": "Cómo Probar un Monitor de PC – Guía de Inspección de Pantalla",
       "metaDescription": "Guía práctica para inspeccionar monitores nuevos o de segunda mano: detecta píxeles muertos, fugas de luz y ghosting.",
       "title": "Test de Pantalla de Monitor",
-      "description": "Pruebas exhaustivas para monitores de escritorio."
+      "description": "Pruebas exhaustivas para monitores de escritorio.",
+      "workflowTitle": "Inspección General de Monitor",
+      "troubleshooting": [
+        {
+          "symptom": "Screen Tearing en Juegos",
+          "description": "Líneas horizontales cortan la imagen al girar la cámara.",
+          "tests": [
+            {
+              "name": "Screen Tearing",
+              "url": "/tests/screen-tearing-test"
+            },
+            {
+              "name": "Tasa de Refresco",
+              "url": "/tests/refresh-rate-test"
+            }
+          ]
+        },
+        {
+          "symptom": "Colores Desiguales o Sombras",
+          "description": "Las escenas oscuras se ven manchadas o los colores cambian a través del panel.",
+          "tests": [
+            {
+              "name": "Uniformidad",
+              "url": "/tests/uniformity-test"
+            },
+            {
+              "name": "Fuga de Luz",
+              "url": "/tests/backlight-bleed-test"
+            },
+            {
+              "name": "Ángulo de Visión",
+              "url": "/tests/viewing-angle-test"
+            }
+          ]
+        }
+      ]
     },
     "oled": {
       "metaTitle": "Cómo Probar una Pantalla OLED – Guía de Quemados, Uniformidad y Negros",
       "metaDescription": "Aprende a revisar pantallas y televisores OLED para evitar retenciones de imagen, tintes extraños y degradación de píxeles.",
       "title": "Test de Pantalla OLED",
-      "description": "Pruebas especializadas para retención de imagen OLED y niveles de negro."
+      "description": "Pruebas especializadas para retención de imagen OLED y niveles de negro.",
+      "workflowTitle": "Asistente de Inspección OLED",
+      "troubleshooting": [
+        {
+          "symptom": "Retención de Imagen",
+          "description": "Contornos tenues de elementos estáticos permanecen en pantalla.",
+          "tests": [
+            {
+              "name": "Test de Quemado",
+              "url": "/tests/burn-in-test"
+            },
+            {
+              "name": "Colores Sólidos",
+              "url": "/tests/solid-color-test"
+            }
+          ]
+        },
+        {
+          "symptom": "Banding en Casi-Negro",
+          "description": "Las escenas gris oscuro aparecen ruidosas, con bandas o pixeladas.",
+          "tests": [
+            {
+              "name": "Nivel de Negro",
+              "url": "/tests/black-level-test"
+            },
+            {
+              "name": "Banding de Color",
+              "url": "/tests/color-banding-test"
+            }
+          ]
+        }
+      ]
     },
     "laptop": {
       "metaTitle": "Cómo Probar la Pantalla de un Portátil – Píxeles Muertos y Fugas de Luz",
       "metaDescription": "Lista de comprobación completa para pantallas de portátiles: revisa píxeles defectuosos, presión de bisagras y escalado.",
       "title": "Test de Pantalla de Portátil",
-      "description": "Pruebas para paneles LCD de portátiles típicos."
+      "description": "Pruebas para paneles LCD de portátiles típicos.",
+      "workflowTitle": "Asistente de Inspección de Laptop",
+      "troubleshooting": [
+        {
+          "symptom": "Los colores se lavan al mover la cabeza",
+          "description": "El contraste cae y los colores se invierten al ajustar la inclinación de la pantalla.",
+          "tests": [
+            {
+              "name": "Ángulo de Visión",
+              "url": "/tests/viewing-angle-test"
+            },
+            {
+              "name": "Contraste",
+              "url": "/tests/contrast-test"
+            }
+          ]
+        },
+        {
+          "symptom": "El texto se ve borroso o suave",
+          "description": "Las fuentes no se ven nítidas a pesar de tener una pantalla de alta resolución.",
+          "tests": [
+            {
+              "name": "Nitidez",
+              "url": "/tests/sharpness-test"
+            },
+            {
+              "name": "Info de Pantalla",
+              "url": "/tests/resolution-checker"
+            }
+          ]
+        }
+      ]
     },
     "lcd": {
       "metaTitle": "Cómo Probar una Pantalla LCD – Guía de Paneles IPS, VA y TN",
       "metaDescription": "Diferencia el brillo IPS de las fugas de luz reales y conoce las características de cada tipo de panel LCD.",
       "title": "Test de Pantalla LCD",
-      "description": "Pruebas para sangrado de retroiluminación LCD y uniformidad."
+      "description": "Pruebas para sangrado de retroiluminación LCD y uniformidad.",
+      "troubleshooting": [
+        {
+          "symptom": "Las esquinas brillan en la oscuridad",
+          "description": "Luz amarillenta o blanca que se filtra desde las esquinas en ángulos amplios.",
+          "tests": [
+            {
+              "name": "Fuga de Luz",
+              "url": "/tests/backlight-bleed-test"
+            },
+            {
+              "name": "Ángulo de Visión",
+              "url": "/tests/viewing-angle-test"
+            }
+          ]
+        },
+        {
+          "symptom": "El movimiento rápido se ve manchado",
+          "description": "Los objetos en movimiento dejan un rastro o ghosting detrás de ellos.",
+          "tests": [
+            {
+              "name": "Ghosting",
+              "url": "/tests/ghosting-test"
+            },
+            {
+              "name": "Tasa de Refresco",
+              "url": "/tests/refresh-rate-test"
+            }
+          ]
+        }
+      ]
     },
     "tv": {
       "metaTitle": "Cómo Probar una Smart TV – Guía de Pantallas 4K y Televisores",
       "metaDescription": "Comprueba la calidad de imagen de tu televisor 4K o Smart TV: fluidez de movimiento, gradientes y zonas de luz.",
       "title": "Test de Pantalla de TV",
-      "description": "Pruebas para el procesamiento de movimiento de TV y blooming."
+      "description": "Pruebas para el procesamiento de movimiento de TV y blooming.",
+      "workflowTitle": "Asistente de Inspección de TV",
+      "troubleshooting": [
+        {
+          "symptom": "Halos alrededor de subtítulos",
+          "description": "Los objetos brillantes sobre fondo oscuro presentan un aura brillante (blooming).",
+          "tests": [
+            {
+              "name": "Blooming",
+              "url": "/tests/blooming-test"
+            },
+            {
+              "name": "Nivel de Negro",
+              "url": "/tests/black-level-test"
+            }
+          ]
+        },
+        {
+          "symptom": "Efecto Telenovela",
+          "description": "Las películas se ven con una fluidez artificial y poco natural.",
+          "tests": [
+            {
+              "name": "Desenfoque de Movimiento",
+              "url": "/tests/motion-blur-test"
+            },
+            {
+              "name": "Tasa de Refresco",
+              "url": "/tests/refresh-rate-test"
+            }
+          ]
+        }
+      ]
     },
     "mobile": {
       "metaTitle": "Cómo Probar la Pantalla de un Móvil – Diagnóstico para Smartphones y Tablets",
       "metaDescription": "Prueba la respuesta táctil, quemados en OLED y fidelidad de color de tu teléfono móvil o tablet en el navegador.",
       "title": "Test de Pantalla Móvil",
-      "description": "Pruebas para pantallas táctiles móviles y paneles OLED."
+      "description": "Pruebas para pantallas táctiles móviles y paneles OLED.",
+      "troubleshooting": [
+        {
+          "symptom": "Zonas muertas en la pantalla",
+          "description": "Los toques o deslizamientos no se registran en áreas específicas.",
+          "tests": [
+            {
+              "name": "Pantalla Táctil",
+              "url": "/tests/touch-screen-test"
+            }
+          ]
+        },
+        {
+          "symptom": "Sombras de aplicaciones anteriores",
+          "description": "El teclado o la barra de estado se aprecian tenuemente en fondos sólidos.",
+          "tests": [
+            {
+              "name": "Quemado",
+              "url": "/tests/burn-in-test"
+            },
+            {
+              "name": "Colores Sólidos",
+              "url": "/tests/solid-color-test"
+            }
+          ]
+        }
+      ]
     },
     "ghostingConcept": {
       "metaTitle": "Cómo comprobar el ghosting del monitor – Tiempo de respuesta y overdrive",
@@ -2618,6 +2824,25 @@
       "linkUniformityTest": "Prueba de Uniformidad",
       "linkDisplayInfo": "Información de Pantalla",
       "linkScalingAspect": "Escalado y Relación de Aspecto"
+    },
+    "deviceGuide": {
+      "inspectionGuide": "Guía de Inspección",
+      "workflowPrompt": "Flujo de Inspección Interactivo:",
+      "workflowPref": "¿Prefieres una sesión de prueba interactiva paso a paso con registro de diagnóstico?",
+      "launchWorkflow": "Iniciar",
+      "quickCheckTitle": "Comprobación Rápida de 5 Minutos",
+      "quickCheckDesc": "Las pruebas esenciales para verificar {count} métricas clave inmediatamente tras la compra.",
+      "startQuickCheck": "Iniciar Comprobación Rápida",
+      "fullSuiteTitle": "Suite de Diagnóstico Completa",
+      "fullSuiteDesc": "Una secuencia integral de {count} pasos que cubre cada aspecto de la pantalla.",
+      "startFullSuite": "Iniciar Suite Completa",
+      "commonIssuesTitle": "Problemas Frecuentes",
+      "testsLabel": "Tests:"
+    },
+    "kbCallout": {
+      "title": "¿Buscas análisis técnicos en profundidad?",
+      "description": "Explora nuestra Base de Conocimiento para explicaciones detalladas sobre defectos de píxeles, fugas de luz, ghosting y estándares VRR.",
+      "action": "Explorar Base de Conocimiento"
     }
   },
   "Inspection": {
@@ -2755,6 +2980,13 @@
         "title": "Resolución e Información de Pantalla",
         "what": "Comprueba si la resolución, profundidad de color y HDR coinciden con las especificaciones."
       }
+    },
+    "workflowUi": {
+      "workflowEyebrow": "FLUJO DE INSPECCIÓN",
+      "tipLabel": "Consejo de Inspección:",
+      "hardwareBoundaryLabel": "Límites Técnicos y de Hardware:",
+      "guideLinkText": "Leer Guía de Test de Pantalla →",
+      "guideLinkPrompt": "¿Buscas criterios completos de inspección y configuración de pantalla?"
     }
   },
   "Privacy": {
@@ -2774,7 +3006,12 @@
     "cookiesTitle": "Sin Cookies de Publicidad ni Seguimiento",
     "cookiesText": "Monitor Tester no utiliza cookies de publicidad de terceros, rastreadores de comportamiento ni píxeles de marketing. El sitio no vende, alquila ni monetiza tu actividad de navegación.",
     "permissionsTitle": "Permisos del Navegador",
-    "permissionsText": "Monitor Tester solicita únicamente el permiso estándar de la API de pantalla completa cuando eliges entrar en modo de prueba a pantalla completa. Nunca solicitamos permisos de cámara, micrófono, notificación o ubicación geográfica."
+    "permissionsText": "Monitor Tester solicita únicamente el permiso estándar de la API de pantalla completa cuando eliges entrar en modo de prueba a pantalla completa. Nunca solicitamos permisos de cámara, micrófono, notificación o ubicación geográfica.",
+    "workflowStorageTitle": "Secuencia de Flujo (sessionStorage)",
+    "workflowStorageDesc": "Rastrea temporalmente el índice de prueba actual durante los flujos de inspección. Se elimina automáticamente al cerrar la pestaña.",
+    "questionsTitle": "¿Preguntas sobre Privacidad?",
+    "questionsDesc": "Contacta a los mantenedores de código abierto o revisa el código fuente directamente.",
+    "contactMaintainer": "Contactar al Mantenedor"
   },
   "About": {
     "metaTitle": "About Monitor Tester — Display Diagnostic & Evaluation Utility",
@@ -2798,7 +3035,10 @@
     "toolsCategory": "Diagnósticos de Hardware y Calculadoras",
     "toolsDesc": "Inspecciona las métricas de pantalla detectadas (DPR, profundidad de color), calcula PPI y distancias de visualización óptimas.",
     "openSourceTitle": "Abierto y Orientado a la Comunidad",
-    "openSourceText": "Monitor Tester es un proyecto de código abierto. Puedes inspeccionar el código fuente, reportar errores de renderizado, sugerir nuevos patrones de prueba o contribuir directamente en GitHub."
+    "openSourceText": "Monitor Tester es un proyecto de código abierto. Puedes inspeccionar el código fuente, reportar errores de renderizado, sugerir nuevos patrones de prueba o contribuir directamente en GitHub.",
+    "viewOnGithub": "Ver proyecto en GitHub",
+    "faqLink": "Preguntas Frecuentes",
+    "browseTestsLink": "Explorar Suite Completa de Tests"
   },
   "Terms": {
     "metaTitle": "Terms of Use — Monitor Tester",
@@ -3608,7 +3848,9 @@
     "parameter": "Parámetro",
     "deviation": "Desviación: {val}",
     "benchmarks": "Parámetros Matemáticos",
-    "hardwareComparison": "Comparación de Hardware y Geometría"
+    "hardwareComparison": "Comparación de Hardware y Geometría",
+    "metaTitle": "Comparador de Pantallas y Calculadora de Tamaño",
+    "metaDescription": "Compara dimensiones físicas, densidad de píxeles (PPI), relación de aspecto y distancia de visión retina de cualquier monitor o TV."
   },
   "Faq": {
     "metaTitle": "Preguntas frecuentes | Monitor Tester",
@@ -5375,5 +5617,16 @@
       "deviceNotFound": "No se detectó ningún micrófono.",
       "startFailed": "No se pudo iniciar la grabación."
     }
+  },
+  "TestControlBar": {
+    "revealHint": "Mueve el cursor hacia abajo para mostrar",
+    "tapToReveal": "Toca para mostrar los controles",
+    "hideControls": "Ocultar controles"
+  },
+  "NotFound": {
+    "title": "Página no encontrada",
+    "description": "El test o la página que buscas no existe o ha sido movida.",
+    "viewAllTests": "Ver todos los tests",
+    "backToHome": "Volver al inicio"
   }
 }

@@ -20,7 +20,7 @@ export default async function TvGuidePage({ params }: { params: Promise<{ locale
       description={t("description")}
       workflowLink={{
         href: "/monitor-inspection/tv",
-        title: "TV Inspection Wizard"
+        title: t("workflowTitle")
       }}
       quickTestSequence={[
         "/tests/dead-pixel-test",
@@ -40,24 +40,7 @@ export default async function TvGuidePage({ params }: { params: Promise<{ locale
         "/tests/screen-tearing-test",
         "/tests/viewing-angle-test"
       ]}
-      troubleshooting={[
-        {
-          symptom: "Halos around subtitles",
-          description: "Bright objects on a dark background have a glowing aura.",
-          tests: [
-            { name: "Blooming", url: "/tests/blooming-test" },
-            { name: "Black Level", url: "/tests/black-level-test" }
-          ]
-        },
-        {
-          symptom: "Soap Opera Effect",
-          description: "Movies look unnaturally smooth or artificial.",
-          tests: [
-            { name: "Motion Blur", url: "/tests/motion-blur-test" },
-            { name: "Refresh Rate", url: "/tests/refresh-rate-test" }
-          ]
-        }
-      ]}
+      troubleshooting={t.raw("troubleshooting")}
     />
   );
 }
