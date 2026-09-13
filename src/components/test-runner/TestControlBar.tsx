@@ -41,7 +41,8 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
   
   const activeTestId = testId || contextTestId;
   const isPixelTest = activeTestId === "dead-pixel-test";
-  const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
+  const [inlineTarget, setInlineTarget] = useState<HTMLElement | null>(null);
+  const [overlayTarget, setOverlayTarget] = useState<HTMLElement | null>(null);
   
   // Controls visibility & auto-hide state
   const [isControlsVisible, setIsControlsVisible] = useState(true);
@@ -145,14 +146,21 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
   }, [isInputFocused]);
 
   // Mount into the dedicated controls container below the test viewport (inline mode)
+  // And the overlay container (fullscreen mode)
   useEffect(() => {
-    const target = document.getElementById("test-controls-container");
-    if (target) {
+    const targetInline = document.getElementById("test-controls-container");
+    const targetOverlay = document.getElementById("test-fullscreen-overlay-container");
+    if (targetInline) {
       queueMicrotask(() => {
-        setPortalTarget(target);
+        setInlineTarget(targetInline);
       });
     }
-  }, []);
+    if (targetOverlay) {
+      queueMicrotask(() => {
+        setOverlayTarget(targetOverlay);
+      });
+    }
+  }, [isFullscreen]);
 
   // Schedule auto-hide after inactivity (approx 2.5s)
   const scheduleHide = useCallback((delay = 2500) => {
@@ -615,15 +623,15 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
 
   // In fullscreen mode, portal to container or render fixed overlay
   if (isFullscreen) {
-    if (portalTarget) {
-      return createPortal(barContent, portalTarget);
+    if (overlayTarget) {
+      return createPortal(barContent, overlayTarget);
     }
     return barContent;
   }
 
   // In inline mode, strictly portal to the controls container below the test viewport
-  if (portalTarget) {
-    return createPortal(barContent, portalTarget);
+  if (inlineTarget) {
+    return createPortal(barContent, inlineTarget);
   }
 
   // Prevent rendering inside the test viewport to avoid hanging in the middle

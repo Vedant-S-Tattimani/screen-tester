@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
+import { TestInlineControls } from "../test-runner/TestInlineControls";
 import { ShieldAlert, Info, Maximize } from "lucide-react";
 
 interface GradientBandingPatternProps {
@@ -126,81 +127,83 @@ export function GradientBandingPattern({ testId = "gradient-banding-test" }: Gra
       </div>
 
       {/* Control Strip */}
-      <div className="mt-6 w-full max-w-4xl bg-card border border-border/70 rounded-2xl p-5 shadow-sm space-y-5">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div className="flex flex-wrap items-center gap-2">
-            {[
-              { id: "gray-horizontal", label: "Horizontal Grayscale" },
-              { id: "gray-vertical", label: "Vertical Grayscale" },
-              { id: "rgb-horizontal", label: "RGB Primaries" },
-              { id: "dark-shadow", label: "Dark Range (0%–25%)" },
-              { id: "dither-compare", label: "Stepping Comparison" }
-            ].map((btn) => (
-              <button
-                key={btn.id}
-                onClick={() => {
-                  setMode(btn.id as GradientMode);
-                  setQuantizeSteps(null);
-                }}
-                className={`px-3.5 py-2 text-xs font-medium rounded-xl transition-all ${
-                  mode === btn.id && quantizeSteps === null
-                    ? "bg-foreground text-background shadow-xs"
-                    : "bg-muted text-muted-foreground hover:text-foreground hover:bg-muted/80"
-                }`}
-              >
-                {btn.label}
-              </button>
-            ))}
+      <TestInlineControls>
+        <div className="mt-6 w-full max-w-4xl bg-card border border-border/70 rounded-2xl p-5 shadow-sm space-y-5">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="flex flex-wrap items-center gap-2">
+              {[
+                { id: "gray-horizontal", label: "Horizontal Grayscale" },
+                { id: "gray-vertical", label: "Vertical Grayscale" },
+                { id: "rgb-horizontal", label: "RGB Primaries" },
+                { id: "dark-shadow", label: "Dark Range (0%–25%)" },
+                { id: "dither-compare", label: "Stepping Comparison" }
+              ].map((btn) => (
+                <button
+                  key={btn.id}
+                  onClick={() => {
+                    setMode(btn.id as GradientMode);
+                    setQuantizeSteps(null);
+                  }}
+                  className={`px-3.5 py-2 text-xs font-medium rounded-xl transition-all ${
+                    mode === btn.id && quantizeSteps === null
+                      ? "bg-foreground text-background shadow-xs"
+                      : "bg-muted text-muted-foreground hover:text-foreground hover:bg-muted/80"
+                  }`}
+                >
+                  {btn.label}
+                </button>
+              ))}
+            </div>
+
+            <button
+              onClick={toggleFullscreen}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-muted hover:bg-muted/80 text-foreground text-xs font-medium rounded-xl transition-colors"
+            >
+              <Maximize className="w-3.5 h-3.5" />
+              Fullscreen
+            </button>
           </div>
 
-          <button
-            onClick={toggleFullscreen}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-muted hover:bg-muted/80 text-foreground text-xs font-medium rounded-xl transition-colors"
-          >
-            <Maximize className="w-3.5 h-3.5" />
-            Fullscreen
-          </button>
-        </div>
+          {/* Technical Honesty Disclaimer Banner */}
+          <div className="p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-amber-900 dark:text-amber-200 leading-relaxed space-y-1">
+            <div className="flex items-center gap-2 font-semibold">
+              <ShieldAlert className="w-4 h-4 text-amber-500 shrink-0" />
+              <span>Hardware Boundary Notice</span>
+            </div>
+            <p>
+              A web browser canvas <strong>cannot verify the physical bit depth (6-bit + FRC, true 8-bit, or true 10-bit) of your display panel</strong>. Browser rasterizers apply internal dithering and GPU compositing. If you observe distinct vertical bands, they may stem from OS display color depth settings, GPU limited RGB range, or monitor picture mode, rather than physical panel limitations.
+            </p>
+          </div>
 
-        {/* Technical Honesty Disclaimer Banner */}
-        <div className="p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-amber-900 dark:text-amber-200 leading-relaxed space-y-1">
-          <div className="flex items-center gap-2 font-semibold">
-            <ShieldAlert className="w-4 h-4 text-amber-500 shrink-0" />
-            <span>Hardware Boundary Notice</span>
-          </div>
-          <p>
-            A web browser canvas <strong>cannot verify the physical bit depth (6-bit + FRC, true 8-bit, or true 10-bit) of your display panel</strong>. Browser rasterizers apply internal dithering and GPU compositing. If you observe distinct vertical bands, they may stem from OS display color depth settings, GPU limited RGB range, or monitor picture mode, rather than physical panel limitations.
-          </p>
-        </div>
-
-        {/* Diagnostic Guidance */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs text-muted-foreground">
-          <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
-            <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
-            <div>
-              <strong className="text-foreground">1. Check Dark Gradients:</strong> Switch to the &apos;Dark Range (0%–25%)&apos; pattern. Shadow transitions should roll off smoothly without abrupt stair-stepping.
+          {/* Diagnostic Guidance */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs text-muted-foreground">
+            <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
+              <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
+              <div>
+                <strong className="text-foreground">1. Check Dark Gradients:</strong> Switch to the &apos;Dark Range (0%–25%)&apos; pattern. Shadow transitions should roll off smoothly without abrupt stair-stepping.
+              </div>
             </div>
-          </div>
-          <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
-            <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
-            <div>
-              <strong className="text-foreground">2. RGB Dynamic Range:</strong> In your graphics control panel, confirm your monitor is set to <strong>Output Dynamic Range: Full (0–255)</strong>. Limited (16–235) causes severe banding.
+            <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
+              <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
+              <div>
+                <strong className="text-foreground">2. RGB Dynamic Range:</strong> In your graphics control panel, confirm your monitor is set to <strong>Output Dynamic Range: Full (0–255)</strong>. Limited (16–235) causes severe banding.
+              </div>
             </div>
-          </div>
-          <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
-            <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
-            <div>
-              <strong className="text-foreground">3. Monitor Picture Modes:</strong> Avoid aggressive dynamic contrast presets or &quot;FPS / Game&quot; modes that manipulate gamma curves and introduce artificial posterization.
+            <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
+              <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
+              <div>
+                <strong className="text-foreground">3. Monitor Picture Modes:</strong> Avoid aggressive dynamic contrast presets or &quot;FPS / Game&quot; modes that manipulate gamma curves and introduce artificial posterization.
+              </div>
             </div>
-          </div>
-          <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
-            <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
-            <div>
-              <strong className="text-foreground">4. FRC & Dithering:</strong> Many affordable monitors use 6-bit + FRC (Frame Rate Control). Subtle microscopic noise is normal and prevents macro banding.
+            <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
+              <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
+              <div>
+                <strong className="text-foreground">4. FRC & Dithering:</strong> Many affordable monitors use 6-bit + FRC (Frame Rate Control). Subtle microscopic noise is normal and prevents macro banding.
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </TestInlineControls>
 
       <TestControlBar testId={testId} title="Gradient & Banding Test" />
     </div>

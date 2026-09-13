@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
+import { TestInlineControls } from "../test-runner/TestInlineControls";
 import { Gauge, Info, ShieldAlert, Play, Pause } from "lucide-react";
 
 interface VrrPatternProps {
@@ -275,6 +276,7 @@ export function VrrPattern({ testId = "vrr-test" }: VrrPatternProps) {
         </div>
       </div>
 
+      <TestInlineControls>
       {/* Control Strip */}
       <div className="mt-6 w-full max-w-4xl bg-card border border-border/70 rounded-2xl p-5 shadow-sm space-y-5">
         <div className="flex flex-wrap items-center justify-between gap-4">
@@ -356,6 +358,7 @@ export function VrrPattern({ testId = "vrr-test" }: VrrPatternProps) {
           </div>
         </div>
       </div>
+      </TestInlineControls>
 
       <TestControlBar testId={testId} title="VRR / Adaptive Sync Visual Inspection" />
     </div>

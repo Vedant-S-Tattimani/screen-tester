@@ -3,6 +3,7 @@
 import { useState, useSyncExternalStore } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
+import { TestInlineControls } from "../test-runner/TestInlineControls";
 import { SunMedium, Layers, Sliders, Info, ShieldAlert, Eye, Moon, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -296,7 +297,7 @@ export function HdrVisualPattern({ testId = "hdr-test" }: HdrVisualPatternProps)
       </div>
 
       {/* Control Strip */}
-      {!isFullscreen && (
+      <TestInlineControls>
       <div className="mt-6 w-full max-w-4xl bg-card border border-border/70 rounded-2xl p-5 shadow-sm space-y-5">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2">
@@ -365,9 +366,9 @@ export function HdrVisualPattern({ testId = "hdr-test" }: HdrVisualPatternProps)
           </div>
         </div>
       </div>
-      )}
+      </TestInlineControls>
 
-      {!isFullscreen && <TestControlBar testId={testId} title="HDR Visual Inspection" />}
+      <TestControlBar testId={testId} title="HDR Visual Inspection" />
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
+import { TestInlineControls } from "../test-runner/TestInlineControls";
 import { ShieldAlert, Info, Maximize, ZoomIn } from "lucide-react";
 
 interface TextClarityPatternProps {
@@ -163,6 +164,7 @@ export function TextClarityPattern({ testId = "text-clarity-test" }: TextClarity
         </div>
       </div>
 
+      <TestInlineControls>
       {/* Control Strip */}
       <div className="mt-6 w-full max-w-4xl bg-card border border-border/70 rounded-2xl p-5 shadow-sm space-y-5">
         <div className="flex flex-wrap items-center justify-between gap-3">
@@ -243,6 +245,7 @@ export function TextClarityPattern({ testId = "text-clarity-test" }: TextClarity
           </div>
         </div>
       </div>
+      </TestInlineControls>
 
       <TestControlBar testId={testId} title="Text Clarity & Subpixel Test" />
     </div>

@@ -2,6 +2,7 @@
 
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
+import { TestInlineControls } from "../test-runner/TestInlineControls";
 import { Tv, ShieldAlert, Info, Maximize } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -133,7 +134,7 @@ export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPat
       </div>
 
       {/* Control Strip */}
-      {!isFullscreen && (
+      <TestInlineControls>
       <div className="mt-6 w-full max-w-4xl bg-card border border-border/70 rounded-2xl p-5 shadow-sm space-y-5">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2">
@@ -197,9 +198,9 @@ export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPat
           </div>
         </div>
       </div>
-      )}
+      </TestInlineControls>
 
-      {!isFullscreen && <TestControlBar testId={testId} title="TV Overscan & Pixel Mapping Visual Test" />}
+      <TestControlBar testId={testId} title="TV Overscan & Pixel Mapping Visual Test" />
     </div>
   );
 }

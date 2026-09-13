@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
+import { TestInlineControls } from "../test-runner/TestInlineControls";
 import { Maximize, ShieldAlert, Info } from "lucide-react";
 
 interface ScalingAspectPatternProps {
@@ -115,6 +116,7 @@ export function ScalingAspectPattern({ testId = "scaling-aspect-test" }: Scaling
         )}
       </div>
 
+      <TestInlineControls>
       {/* Control Strip */}
       <div className="mt-6 w-full max-w-4xl bg-card border border-border/70 rounded-2xl p-5 shadow-sm space-y-5">
         <div className="flex flex-wrap items-center justify-between gap-3">
@@ -190,6 +192,7 @@ export function ScalingAspectPattern({ testId = "scaling-aspect-test" }: Scaling
           </div>
         </div>
       </div>
+      </TestInlineControls>
 
       <TestControlBar testId={testId} title="Scaling & Aspect Ratio Inspection" />
     </div>

@@ -258,8 +258,8 @@ export function TestWrapper({ title, description, instructions, children, testId
       const isCurrentlyFs = isFullscreen || (typeof document !== "undefined" && document.fullscreenElement !== null);
       if (isCurrentlyFs) {
         safeSessionSet(STORAGE_KEY_FULLSCREEN, true);
-        if (!document.fullscreenElement && document.documentElement?.requestFullscreen) {
-          document.documentElement.requestFullscreen().catch(() => {});
+        if (!document.fullscreenElement && viewportRef.current?.requestFullscreen) {
+          viewportRef.current.requestFullscreen().catch(() => {});
         }
       }
       const nextPath = workflowSequence[workflowIndex + 1];
@@ -284,8 +284,8 @@ export function TestWrapper({ title, description, instructions, children, testId
       const isCurrentlyFs = isFullscreen || (typeof document !== "undefined" && document.fullscreenElement !== null);
       if (isCurrentlyFs) {
         safeSessionSet(STORAGE_KEY_FULLSCREEN, true);
-        if (!document.fullscreenElement && document.documentElement?.requestFullscreen) {
-          document.documentElement.requestFullscreen().catch(() => {});
+        if (!document.fullscreenElement && viewportRef.current?.requestFullscreen) {
+          viewportRef.current.requestFullscreen().catch(() => {});
         }
       }
       const prevPath = workflowSequence[workflowIndex - 1];
@@ -324,8 +324,8 @@ export function TestWrapper({ title, description, instructions, children, testId
       const isCurrentlyFs = isFullscreen || (typeof document !== "undefined" && document.fullscreenElement !== null);
       if (isCurrentlyFs) {
         safeSessionSet(STORAGE_KEY_FULLSCREEN, true);
-        if (!document.fullscreenElement && document.documentElement?.requestFullscreen) {
-          document.documentElement.requestFullscreen().catch(() => {});
+        if (!document.fullscreenElement && viewportRef.current?.requestFullscreen) {
+          viewportRef.current.requestFullscreen().catch(() => {});
         }
       }
       const nextPath = workflowSequence[workflowIndex + 1];
@@ -375,12 +375,12 @@ export function TestWrapper({ title, description, instructions, children, testId
   const toggleFullscreen = useCallback(() => {
     if (!document.fullscreenElement) {
       const root = document.documentElement;
-      const req = root.requestFullscreen ? root.requestFullscreen() : containerRef.current?.requestFullscreen();
+      const req = root.requestFullscreen ? root.requestFullscreen() : viewportRef.current?.requestFullscreen();
       req?.then(() => {
         setIsFullscreen(true);
         safeSessionSet(STORAGE_KEY_FULLSCREEN, true);
       }).catch(() => {
-        containerRef.current?.requestFullscreen?.().then(() => {
+        viewportRef.current?.requestFullscreen?.().then(() => {
           setIsFullscreen(true);
           safeSessionSet(STORAGE_KEY_FULLSCREEN, true);
         }).catch(() => {});
@@ -407,8 +407,8 @@ export function TestWrapper({ title, description, instructions, children, testId
     } else if (shouldBeFs && workflowIndex !== -1) {
       queueMicrotask(() => {
         setIsFullscreen(true);
-        if (document.documentElement?.requestFullscreen) {
-          document.documentElement.requestFullscreen().catch(() => {});
+        if (viewportRef.current?.requestFullscreen) {
+          viewportRef.current.requestFullscreen().catch(() => {});
         }
       });
     }
@@ -675,19 +675,23 @@ export function TestWrapper({ title, description, instructions, children, testId
             )}
 
             {children}
+            {/* New container inside viewport for fullscreen overlays (e.g. TestControlBar) */}
+            <div id="test-fullscreen-overlay-container" className="pointer-events-none absolute inset-0 z-50"></div>
             {testId && (
               <PixelDefectOverlay
                 testId={testId}
                 isActive={isPixelToolActive}
-                onToggleActive={() => setIsPixelToolActive(prev => !prev)}
+                onToggleActive={() => setIsPixelToolActive(!isPixelToolActive)}
                 viewportRef={viewportRef}
                 isFullscreen={isFullscreen}
               />
             )}
           </div>
 
-          {/* Controls Target Container for portal */}
-          <div id="test-controls-container" className={isFullscreen ? "contents" : "w-full mt-4 sm:mt-5"} />
+          {/* Dedicated container for controls (always outside fullscreen viewport) */}
+          {!isFullscreen && (
+            <div id="test-controls-container" className="flex flex-col items-center w-full z-10 px-2 sm:px-4 mt-2 sm:mt-4 mb-8 sm:mb-12 empty:hidden" />
+          )}
 
           {/* Optional Extended Tool / Generator Controls (only when inline) */}
           {!isFullscreen && extraControls && (

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
+import { TestInlineControls } from "../test-runner/TestInlineControls";
 import { Eye, EyeOff, Info, ShieldAlert, Maximize } from "lucide-react";
 
 interface NearBlackPatternProps {
@@ -115,6 +116,7 @@ export function NearBlackPattern({ testId = "near-black-test" }: NearBlackPatter
         )}
       </div>
 
+      <TestInlineControls>
       {/* Control Strip */}
       <div className="mt-6 w-full max-w-4xl bg-card border border-border/70 rounded-2xl p-5 shadow-sm space-y-5">
         <div className="flex flex-wrap items-center justify-between gap-3">
@@ -179,6 +181,7 @@ export function NearBlackPattern({ testId = "near-black-test" }: NearBlackPatter
           </div>
         </div>
       </div>
+      </TestInlineControls>
 
       <TestControlBar testId={testId} title="Near-Black & Shadow Detail" />
     </div>
