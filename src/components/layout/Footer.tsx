@@ -149,6 +149,14 @@ const DIRECTORY_BADGES = [
     height: 390,
     loading: "lazy" as const,
   },
+  {
+    name: "Appa List",
+    href: "https://appalist.com/ai/screen-tester",
+    src: "https://appalist.com/assets/images/badge.png",
+    alt: "Appa List",
+    height: 54,
+    loading: "lazy" as const,
+  },
 ];
 
 export function Footer() {
