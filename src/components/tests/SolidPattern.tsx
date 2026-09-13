@@ -143,7 +143,7 @@ export function SolidPattern({ colors, autoCycleInterval, testId }: SolidPattern
         className="absolute inset-0 transition-colors duration-0 select-none cursor-pointer"
         style={{ backgroundColor: currentColor.hex }}
         onClick={handleCanvasClick}
-        title="Click to cycle to the next solid color"
+        title="Click anywhere to cycle to the next solid color"
       />
 
       {/* Floating Guidance Banner when User Reports Pixel Issue */}
@@ -164,7 +164,7 @@ export function SolidPattern({ colors, autoCycleInterval, testId }: SolidPattern
         testId={testId} 
         title={testId === "bright-pixel-test" ? "Bright Pixel Test" : autoCycleInterval ? "Stuck Pixel Fixer" : "Dead & Stuck Pixel Inspection"}
       >
-        <div className="flex items-center flex-nowrap shrink-0 gap-1.5 sm:gap-2">
+        <div className="flex items-center flex-nowrap shrink-0 gap-1 sm:gap-2">
           <button 
             type="button"
             onClick={prevColor}
@@ -187,21 +187,21 @@ export function SolidPattern({ colors, autoCycleInterval, testId }: SolidPattern
           )}
 
           {/* Color Indicator Badge - Fixed width prevents horizontal shifting when cycling colors */}
-          <div className="flex items-center justify-between gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 w-[160px] sm:w-[172px] rounded-xl bg-black/70 text-white border border-white/25 text-xs font-mono shrink-0 shadow-sm select-none">
+          <div className="flex items-center justify-between gap-1 sm:gap-2 px-2 sm:px-3 py-1 w-[142px] sm:w-[172px] rounded-xl bg-black/70 text-white border border-white/25 text-[11px] sm:text-xs font-mono shrink-0 shadow-sm select-none">
             <span 
-              className="w-3.5 h-3.5 rounded-full border border-white/60 inline-block shrink-0 shadow-xs" 
+              className="w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full border border-white/60 inline-block shrink-0 shadow-xs" 
               style={{ backgroundColor: currentColor.hex }}
             />
-            <span className="font-extrabold tracking-wider text-amber-300 w-[68px] sm:w-[74px] text-center inline-block truncate">
+            <span className="font-extrabold tracking-wider text-amber-300 w-[58px] sm:w-[74px] text-center inline-block truncate">
               {currentColor.name}
             </span>
-            <span className="text-cyan-200 text-xs font-semibold shrink-0 text-right w-[34px] sm:w-[38px] tabular-nums">
+            <span className="text-cyan-200 text-[10px] sm:text-xs font-semibold shrink-0 text-right w-[32px] sm:w-[38px] tabular-nums">
               ({currentIndex + 1}/{colorList.length})
             </span>
           </div>
 
           {/* Compact 8 color dots - clean shrink-0 flex without overflow scrollbar */}
-          <div className="flex gap-1.5 items-center px-1 shrink-0">
+          <div className="flex gap-1 sm:gap-1.5 items-center px-0.5 sm:px-1 shrink-0">
             {colorList.map((c, i) => (
               <button
                 type="button"
@@ -209,7 +209,7 @@ export function SolidPattern({ colors, autoCycleInterval, testId }: SolidPattern
                 onClick={() => setCurrentIndex(i)}
                 aria-label={`Switch to test color ${c.name}`}
                 title={`Switch to ${c.name} (${c.hex})`}
-                className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full transition-all border border-white/40 cursor-pointer focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-amber-400 shrink-0 ${
+                className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all border border-white/40 cursor-pointer focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-amber-400 shrink-0 ${
                   i === currentIndex ? "scale-125 ring-2 ring-amber-400 opacity-100 shadow-md" : "opacity-50 hover:opacity-100 hover:scale-110"
                 }`}
                 style={{ backgroundColor: c.hex }}

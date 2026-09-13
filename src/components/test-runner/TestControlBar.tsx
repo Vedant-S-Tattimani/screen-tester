@@ -54,6 +54,91 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
   const t = useTranslations("TestWrapper");
   const tBar = useTranslations("TestControlBar");
 
+  // Context-aware click/tap hint for interactive tests
+  const getClickHint = () => {
+    // Tests explicitly excluded from screen click/tap interaction:
+    // 1. Gamma Calibration (gamma-test) - per user requirement
+    // 2. Refresh Rate (refresh-rate-test - last test of basic screen test) - per user requirement
+    // 3. Other non-clickable tests
+    const excludedTests = [
+      "gamma-test",
+      "refresh-rate-test",
+      "ghosting-test",
+      "viewing-angle-test",
+      "contrast-test",
+      "brightness-test",
+      "screen-tearing-test",
+      "flicker-test",
+      "backlight-bleed-test",
+      "touch-screen-test",
+      "multi-touch-test",
+      "microphone-test",
+      "speaker-test",
+      "webcam-test",
+      "accelerometer-test",
+      "gyroscope-test",
+      "vibration-test"
+    ];
+
+    if (!activeTestId || excludedTests.includes(activeTestId)) {
+      return null;
+    }
+
+    if (
+      activeTestId === "dead-pixel-test" ||
+      activeTestId === "bright-pixel-test" ||
+      activeTestId === "stuck-pixel-test" ||
+      activeTestId === "color-test"
+    ) {
+      return {
+        label: "Click or tap screen to change color",
+        shortcuts: "[Space] / [← →] Next"
+      };
+    }
+
+    if (activeTestId === "uniformity-test") {
+      return {
+        label: "Click or tap screen to change field",
+        shortcuts: "[Space] / [← →] Next"
+      };
+    }
+
+    if (activeTestId === "color-banding-test") {
+      return {
+        label: "Click or tap screen to change gradient",
+        shortcuts: "[Space] / [← →] Next"
+      };
+    }
+
+    if (activeTestId === "saturation-test") {
+      return {
+        label: "Click or tap screen to cycle mode",
+        shortcuts: "[Space] Next"
+      };
+    }
+
+    if (activeTestId === "sharpness-test") {
+      return {
+        label: "Click or tap screen to toggle background",
+        shortcuts: "[Space] / [← →] Next"
+      };
+    }
+
+    if (activeTestId === "custom-pattern") {
+      return {
+        label: "Click or tap screen to change pattern",
+        shortcuts: "[Space] / [← →] Next"
+      };
+    }
+
+    return {
+      label: "Click or tap screen to change pattern",
+      shortcuts: "[Space] / [← →] Next"
+    };
+  };
+
+  const clickHint = getClickHint();
+
   // Keep refs in sync for event listeners
   useEffect(() => {
     isInputFocusedRef.current = isInputFocused;
@@ -211,6 +296,26 @@ export function TestControlBar({ children, testId, title }: TestControlBarProps)
           }}
           className="fixed inset-0 z-40 bg-transparent pointer-events-auto"
         />
+      )}
+
+      {/* Top Guidance Pill: Shown at the TOP of the screen in Fullscreen whenever controls are visible */}
+      {isFullscreen && isControlsVisible && clickHint && (
+        <div className="fixed top-3 sm:top-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none select-none max-w-[92vw] transition-all duration-300 ease-out">
+          <div className="flex items-center justify-center gap-2 sm:gap-2.5 px-3.5 py-1.5 sm:px-5 sm:py-2 rounded-full bg-black/85 backdrop-blur-md text-white border border-amber-400/40 shadow-2xl">
+            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-amber-400 animate-pulse shrink-0" />
+            <span className="text-[11.5px] sm:text-[13px] font-bold text-amber-300 tracking-wide font-sans truncate">
+              {clickHint.label}
+            </span>
+            {clickHint.shortcuts && (
+              <span className="hidden sm:inline-flex items-center gap-2 text-white/40">
+                <span>•</span>
+                <span className="text-[11px] text-slate-300 font-mono">
+                  {clickHint.shortcuts}
+                </span>
+              </span>
+            )}
+          </div>
+        </div>
       )}
 
       {/* Main Control Panel Dock */}
