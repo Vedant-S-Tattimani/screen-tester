@@ -577,11 +577,11 @@
     "white-level-test": {
       "metaTitle": "Test de Nivel de Blanco – Calibración de Altas Luces y Recorte Blanco",
       "metaDescription": "Examina los pasos de luminancia entre el 95% y el 100% para asegurar que los blancos brillantes no se quemen ni pierdan textura.",
-      "title": "Test de Nivel de Blanco",
-      "description_p1": "Esta prueba te ayuda a configurar el ajuste de nivel de blanco (contraste) de tu monitor. Muestra bloques de gris extremadamente brillantes.",
-      "inst1": "Ajusta el ajuste de 'Contraste' de tu monitor hasta que puedas distinguir el bloque 254 del fondo blanco puro.",
-      "inst2": "Si los bloques 250-254 parecen idénticos al fondo, tus blancos están siendo recortados.",
-      "inst3": "No establezcas el contraste tan alto que se pierdan los detalles brillantes."
+      "title": "Prueba de Nivel de Blanco",
+      "description_p1": "Use este patrón para ajustar el control de Contraste de su monitor y comprobar si hay recorte cerca del blanco. La prueba muestra tonos progresivamente más oscuros cerca del blanco puro para que pueda verificar que los detalles brillantes permanecen visibles.",
+      "inst1": "Abra la visualización en pantalla (OSD) de su monitor y localice el control físico de Contraste.",
+      "inst2": "Ajuste el Contraste mientras observa los cuadrados casi blancos (252-254) sobre el fondo blanco puro (255).",
+      "inst3": "Reduzca el contraste excesivo para evitar el recorte de luces, asegurando que los detalles casi blancos sigan siendo distinguibles del blanco puro donde sea posible."
     },
     "grayscale-test": {
       "metaTitle": "Test de Escala de Grises – Gradiente de 256 Pasos y Temperatura de Color",

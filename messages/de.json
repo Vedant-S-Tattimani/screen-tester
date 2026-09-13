@@ -578,10 +578,10 @@
       "metaTitle": "Weißwert-Test – Spitzlichter & Weiß-Clipping Optimierung",
       "metaDescription": "Überprüfen Sie Helligkeitsstufen von 95% bis 100%, damit helle Bildbereiche und Wolkenstrukturen klar durchgezeichnet bleiben.",
       "title": "Weißwert-Test",
-      "description_p1": "Dieser Test hilft Ihnen, die Weißwert-(Kontrast-)Einstellung Ihres Monitors zu konfigurieren. Er zeigt extrem helle Grau-Blöcke an.",
-      "inst1": "Stellen Sie die 'Kontrast'-Einstellung Ihres Monitors ein, bis Sie Block 254 vom reinen weißen Hintergrund unterscheiden können.",
-      "inst2": "Wenn die Blöcke 250-254 identisch mit dem Hintergrund aussehen, werden Ihre Weiß-Töne abgeschnitten.",
-      "inst3": "Stellen Sie den Kontrast nicht so hoch ein, dass helle Details verloren gehen."
+      "description_p1": "Verwenden Sie dieses Muster, um den Kontrastregler Ihres Monitors einzustellen und auf Clipping nahe Weiß zu prüfen. Der Test zeigt schrittweise dunklere Töne nahe reinem Weiß, damit Sie überprüfen können, ob Details in den hellen Bereichen sichtbar bleiben.",
+      "inst1": "Öffnen Sie das On-Screen-Display (OSD) Ihres Monitors und suchen Sie den physischen Kontrastregler.",
+      "inst2": "Passen Sie den Kontrast an, während Sie die Quadrate nahe Weiß (252-254) vor dem reinweißen (255) Hintergrund betrachten.",
+      "inst3": "Reduzieren Sie einen zu hohen Kontrast, um das Überstrahlen heller Töne (Clipping) zu verhindern und sicherzustellen, dass sich helle Details nach Möglichkeit vom reinen Weiß abheben."
     },
     "grayscale-test": {
       "metaTitle": "Graustufen-Test – 256-Stufen-Verlauf & Farbstich-Prüfung",

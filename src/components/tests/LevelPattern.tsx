@@ -16,6 +16,7 @@ export function LevelPattern({ type, testId }: LevelPatternProps) {
   const { registerNavigation } = useTestContext();
   const [showOutlines, setShowOutlines] = useState(true);
   const [showLabels, setShowLabels] = useState(true);
+  const [observation, setObservation] = useState<string>("");
   
   const steps = type === "black" ? BLACK_STEPS : WHITE_STEPS;
   const bg = type === "black" ? "#000000" : "#FFFFFF";
@@ -47,7 +48,7 @@ export function LevelPattern({ type, testId }: LevelPatternProps) {
         }`}>
           {type === "black"
             ? "Black Level Target: Adjust monitor brightness until squares 1–3 are barely discernible from the black surround."
-            : "White Level Target: Adjust monitor contrast until squares 252–254 are discernible from pure white without clipping."}
+            : "White-Level / Near-White Clipping Visual Inspection: The background is Pure White (RGB 255)."}
         </div>
 
         <div className="grid grid-cols-5 grid-rows-5 gap-1.5 sm:gap-2.5 w-full h-full flex-1 min-h-0">
@@ -72,6 +73,34 @@ export function LevelPattern({ type, testId }: LevelPatternProps) {
             );
           })}
         </div>
+
+        {type === "white" && (
+          <div className="absolute bottom-[70px] sm:bottom-[80px] left-0 right-0 flex justify-center z-10 pointer-events-none">
+            <div className="bg-white/95 backdrop-blur-md px-4 py-3 rounded-2xl border border-black/10 shadow-xl flex flex-col items-center gap-2 max-w-[320px] w-full mx-4 pointer-events-auto">
+              <span className="text-[11px] font-bold text-black uppercase tracking-wider">Visual Observation</span>
+              <div className="flex flex-col gap-1.5 w-full">
+                <button 
+                  onClick={(e) => { e.stopPropagation(); setObservation("all"); }} 
+                  className={`text-xs px-3 py-1.5 rounded-lg border transition-colors cursor-pointer ${observation === "all" ? "bg-blue-600 text-white border-blue-600 font-semibold" : "bg-white text-black border-black/20 hover:bg-black/5"}`}
+                >
+                  I can distinguish 252–254
+                </button>
+                <button 
+                  onClick={(e) => { e.stopPropagation(); setObservation("some"); }} 
+                  className={`text-xs px-3 py-1.5 rounded-lg border transition-colors cursor-pointer ${observation === "some" ? "bg-amber-500 text-white border-amber-500 font-semibold" : "bg-white text-black border-black/20 hover:bg-black/5"}`}
+                >
+                  Some shades merge
+                </button>
+                <button 
+                  onClick={(e) => { e.stopPropagation(); setObservation("clipped"); }} 
+                  className={`text-xs px-3 py-1.5 rounded-lg border transition-colors cursor-pointer ${observation === "clipped" ? "bg-red-500 text-white border-red-500 font-semibold" : "bg-white text-black border-black/20 hover:bg-black/5"}`}
+                >
+                  Everything above 250 looks white
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
       <TestControlBar 

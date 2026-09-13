@@ -577,11 +577,11 @@
     "white-level-test": {
       "metaTitle": "Test du Niveau de Blanc – Étalonnage des Hautes Lumières et Écrêtage",
       "metaDescription": "Contrôlez les nuances de blanc entre 95% et 100% pour éviter les zones brûlées et préserver les textures lumineuses.",
-      "title": "Test de Niveau de Blanc",
-      "description_p1": "Ce test vous aide à configurer le réglage du niveau de blanc (contraste) de votre moniteur. Il affiche des blocs de gris extrêmement lumineux.",
-      "inst1": "Ajustez le réglage 'Contraste' de votre moniteur jusqu'à ce que vous puissiez distinguer le bloc 254 du fond blanc pur.",
-      "inst2": "Si les blocs 250-254 semblent identiques au fond, vos blancs sont en train d'être recoupés.",
-      "inst3": "Ne réglez pas le contraste si haut que les détails lumineux soient perdus."
+      "title": "Test du Niveau de Blanc",
+      "description_p1": "Utilisez ce motif pour ajuster le contrôle de Contraste de votre moniteur et vérifier l'écrêtage près du blanc. Le test affiche des teintes progressivement plus sombres près du blanc pur pour que vous puissiez vérifier que les détails des hautes lumières restent visibles.",
+      "inst1": "Ouvrez le menu à l'écran (OSD) de votre moniteur et localisez le contrôle physique de Contraste.",
+      "inst2": "Ajustez le Contraste tout en regardant les carrés proches du blanc (252-254) sur le fond blanc pur (255).",
+      "inst3": "Réduisez un contraste excessif pour éviter l'écrêtage des hautes lumières, en vous assurant que les détails proches du blanc restent distincts du blanc pur là où c'est possible."
     },
     "grayscale-test": {
       "metaTitle": "Test de Nuances de Gris – Rampe de 256 Paliers et Dérive Colorimétrique",

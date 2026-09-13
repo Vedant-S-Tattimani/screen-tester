@@ -609,10 +609,10 @@
       "metaTitle": "White Level Test",
       "metaDescription": "Examine near-white luminance steps (95% to 100%) to ensure bright highlights are not clipped into solid white.",
       "title": "White Level Test",
-      "description_p1": "This test helps you configure your monitor's white level (contrast) setting. It displays extremely bright shades near pure white.",
-      "inst1": "Adjust your monitor's 'Contrast' setting until you can distinguish block 254 from the pure white background.",
-      "inst2": "If blocks 250-254 look identical to the background, your whites are clipping.",
-      "inst3": "Do not set contrast so high that bright details are lost."
+      "description_p1": "Use this pattern to adjust your monitor's Contrast control and check for near-white clipping. The test displays progressively darker shades near pure white so you can verify that highlight detail remains visible.",
+      "inst1": "Open your monitor's on-screen display (OSD) and locate the physical Contrast control.",
+      "inst2": "Adjust Contrast while viewing the near-white squares (252–254) against the pure white (255) background.",
+      "inst3": "Reduce excessive contrast to prevent highlight clipping, ensuring near-white detail remains distinguishable from pure white where possible."
     },
     "grayscale-test": {
       "metaTitle": "Grayscale Test",
