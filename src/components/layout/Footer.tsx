@@ -113,6 +113,15 @@ const DIRECTORY_BADGES = [
     width: 200,
     height: 40,
   },
+  {
+    name: "Launch Llama",
+    href: "https://tools.launchllama.co?utm_source=badge&utm_medium=referral",
+    rel: "noopener noreferrer",
+    src: "https://tools.launchllama.co/featured-badge.png?v=2",
+    alt: "As seen on Launch Llama Newsletter",
+    width: 200,
+    height: 52,
+  },
 ];
 
 export function Footer() {
