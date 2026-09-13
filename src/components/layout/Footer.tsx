@@ -131,6 +131,14 @@ const DIRECTORY_BADGES = [
     width: 200,
     height: 54,
   },
+  {
+    name: "SaaS Field",
+    href: "https://saasfield.com/ai/screen-tester",
+    src: "https://saasfield.com/assets/images/badge.png",
+    alt: "SaaS Field",
+    height: 54,
+    loading: "lazy" as const,
+  },
 ];
 
 export function Footer() {
