@@ -905,7 +905,7 @@
       "instructions": "Look for smooth transitions."
     },
     "colorGamut": {
-      "title": "Color Gamut & Wide-Gamut Visual Test – sRGB & Display-P3 Check",
+      "title": "Color Gamut Test – sRGB & Display-P3 Visual Check",
       "description": "Inspect browser-reported color-gamut capability and visually compare sRGB vs Display-P3 patterns without claiming physical coverage measurement.",
       "instructions": "Visually observe whether the wide-gamut pattern is distinguishable from the surrounding background."
     },

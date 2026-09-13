@@ -23,11 +23,15 @@ export default async function ColorGamutTestPage({
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "Tests" });
   
+  const instructions = t.has("colorGamut.instructions")
+    ? t("colorGamut.instructions")
+    : "Visually observe whether the wide-gamut pattern is distinguishable from the surrounding background.";
+  
   return (
     <TestWrapper
       title={t("colorGamut.title")}
       description={t("colorGamut.description")}
-      instructions={t("colorGamut.instructions")}
+      instructions={instructions}
       testId="color-gamut-test"
     >
       <ColorGamutPattern />
