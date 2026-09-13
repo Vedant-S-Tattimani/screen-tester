@@ -139,6 +139,16 @@ const DIRECTORY_BADGES = [
     height: 54,
     loading: "lazy" as const,
   },
+  {
+    name: "Founder.best",
+    href: "https://www.founder.best",
+    rel: "noopener noreferrer",
+    src: "https://www.founder.best/api/badge/featured/screen-tester",
+    alt: "Screen Tester - Featured on Founder.best",
+    width: 1195,
+    height: 390,
+    loading: "lazy" as const,
+  },
 ];
 
 export function Footer() {
