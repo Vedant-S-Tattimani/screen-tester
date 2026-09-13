@@ -180,7 +180,7 @@ export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPat
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">STEP 3 — If they are cropped, check the TV/display's picture-size/overscan/scaling settings.</strong>
+              <strong className="text-foreground">STEP 3 — If they are cropped, check the TV/display&apos;s picture-size/overscan/scaling settings.</strong>
             </div>
           </div>
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">

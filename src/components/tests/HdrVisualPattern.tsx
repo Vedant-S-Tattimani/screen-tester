@@ -4,6 +4,7 @@ import { useState, useSyncExternalStore } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
 import { SunMedium, Layers, Sliders, Info, ShieldAlert, Eye, Moon, Sparkles } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface HdrVisualPatternProps {
   testId?: string;
@@ -60,7 +61,7 @@ function useColorDepth(): number {
 }
 
 export function HdrVisualPattern({ testId = "hdr-test" }: HdrVisualPatternProps) {
-  useTestContext();
+  const { isFullscreen } = useTestContext();
   const [activeTab, setActiveTab] = useState<HdrViewMode>("specular");
 
   // Dynamic Browser Capabilities Detection via useSyncExternalStore
@@ -70,9 +71,14 @@ export function HdrVisualPattern({ testId = "hdr-test" }: HdrVisualPatternProps)
   const colorDepth = useColorDepth();
 
   return (
-    <div className="relative w-full flex flex-col items-center">
+    <div className={cn("relative w-full flex flex-col items-center", isFullscreen && "h-full")}>
       {/* Pattern Viewport */}
-      <div className="relative w-full aspect-video min-h-[440px] max-h-[75vh] bg-black rounded-2xl overflow-hidden border border-slate-800 shadow-2xl flex flex-col items-center justify-center p-6 select-none">
+      <div className={cn(
+        "relative w-full bg-black overflow-hidden flex flex-col items-center justify-center p-6 select-none",
+        isFullscreen
+          ? "h-full rounded-none border-none"
+          : "aspect-video min-h-[440px] max-h-[75vh] rounded-2xl border border-slate-800 shadow-2xl"
+      )}>
         
         {/* Tab 1: Specular Highlight Clipping */}
         {activeTab === "specular" && (
@@ -290,6 +296,7 @@ export function HdrVisualPattern({ testId = "hdr-test" }: HdrVisualPatternProps)
       </div>
 
       {/* Control Strip */}
+      {!isFullscreen && (
       <div className="mt-6 w-full max-w-4xl bg-card border border-border/70 rounded-2xl p-5 shadow-sm space-y-5">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2">
@@ -358,8 +365,9 @@ export function HdrVisualPattern({ testId = "hdr-test" }: HdrVisualPatternProps)
           </div>
         </div>
       </div>
+      )}
 
-      <TestControlBar testId={testId} title="HDR Visual Inspection" />
+      {!isFullscreen && <TestControlBar testId={testId} title="HDR Visual Inspection" />}
     </div>
   );
 }
