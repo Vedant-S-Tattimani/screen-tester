@@ -10,7 +10,7 @@ interface ContrastPatternProps {
   testId?: string;
 }
 
-type ContrastMode = "fullRange" | "blackLevel" | "whiteLevel" | "gradientRamp";
+type ContrastMode = "fullRange" | "blackLevel" | "whiteLevel" | "gradientRamp" | "colorContrast";
 
 interface ModeInfo {
   id: ContrastMode;
@@ -21,8 +21,8 @@ interface ModeInfo {
 const CONTRAST_MODES: ModeInfo[] = [
   {
     id: "fullRange",
-    label: "Full Range Scale",
-    description: "Inspect tonal steps from absolute black (0) to absolute white (255) simultaneously."
+    label: "Grayscale Step / Tone Ramp",
+    description: "Inspect tonal steps from absolute black (0) to absolute white (255) simultaneously. Verify all steps are distinct."
   },
   {
     id: "blackLevel",
@@ -38,6 +38,11 @@ const CONTRAST_MODES: ModeInfo[] = [
     id: "gradientRamp",
     label: "Smooth Gradient Ramp",
     description: "Inspect continuous tonal gradation for banding lines or posterization."
+  },
+  {
+    id: "colorContrast",
+    label: "Colour Contrast Separation",
+    description: "Check if primary and contrasting colors remain visually distinct without unexpected merging or clipping."
   }
 ];
 
@@ -126,7 +131,7 @@ export function ContrastPattern({ testId = "contrast-test" }: ContrastPatternPro
               </span>
             </div>
             <p className="text-[11px] sm:text-xs text-white/90 leading-normal">
-              Look closely at the darkest and brightest patches. You should be able to distinguish near-black from black and near-white from white.
+              {currentMode.description}
             </p>
           </div>
         </div>
@@ -382,6 +387,72 @@ export function ContrastPattern({ testId = "contrast-test" }: ContrastPatternPro
                   );
                 })}
               </div>
+            </div>
+          </div>
+        )}
+
+        {/* ========================================================= */}
+        {/* MODE 5: COLOUR CONTRAST SEPARATION                        */}
+        {/* ========================================================= */}
+        {currentMode.id === "colorContrast" && (
+          <div className="w-full max-w-5xl px-4 sm:px-8 py-16 flex flex-col items-center justify-center gap-6">
+            <div className="text-center space-y-1">
+              <span className="text-xs sm:text-sm font-semibold text-white block">
+                Chromatic Colour Contrast Inspection
+              </span>
+              <span className="text-[11px] text-white/60 font-mono block">
+                Verify that distinct colors do not unexpectedly merge, and saturated colors retain detail without clipping.
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+              {/* Primary Channel Separation */}
+              <div className="p-4 rounded-2xl bg-black border border-white/20 shadow-xl space-y-3">
+                <span className="text-xs font-bold text-white font-mono block">Primary Channel Separation</span>
+                <div className="grid grid-cols-3 gap-2 h-24">
+                  <div className="bg-[#FF0000] rounded-lg flex items-center justify-center border border-white/10"><span className="text-[10px] font-mono font-bold text-white mix-blend-difference">Pure Red</span></div>
+                  <div className="bg-[#00FF00] rounded-lg flex items-center justify-center border border-white/10"><span className="text-[10px] font-mono font-bold text-black mix-blend-difference">Pure Green</span></div>
+                  <div className="bg-[#0000FF] rounded-lg flex items-center justify-center border border-white/10"><span className="text-[10px] font-mono font-bold text-white mix-blend-difference">Pure Blue</span></div>
+                </div>
+              </div>
+
+              {/* Contrasting Pairs */}
+              <div className="p-4 rounded-2xl bg-black border border-white/20 shadow-xl space-y-3">
+                <span className="text-xs font-bold text-white font-mono block">Contrasting Pairs & Clipping Check</span>
+                <div className="grid grid-cols-2 gap-2 h-24">
+                  {/* Pair 1 */}
+                  <div className="rounded-lg flex overflow-hidden border border-white/10 relative">
+                    <div className="w-1/2 bg-[#FF0000]"></div>
+                    <div className="w-1/2 bg-[#00FFFF]"></div>
+                    <span className="absolute inset-0 flex items-center justify-center text-[10px] font-mono font-bold text-white mix-blend-difference pointer-events-none">Red vs Cyan</span>
+                  </div>
+                  {/* Pair 2 */}
+                  <div className="rounded-lg flex overflow-hidden border border-white/10 relative">
+                    <div className="w-1/2 bg-[#0000FF]"></div>
+                    <div className="w-1/2 bg-[#FFFF00]"></div>
+                    <span className="absolute inset-0 flex items-center justify-center text-[10px] font-mono font-bold text-white mix-blend-difference pointer-events-none">Blue vs Yellow</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Embedded Detail Check */}
+            <div className="p-4 w-full rounded-2xl bg-[#7F7F7F] border border-black/20 shadow-xl space-y-3">
+              <span className="text-xs font-bold text-black font-mono block">Saturated Detail vs Neutral Gray</span>
+              <div className="flex flex-col sm:flex-row gap-2 h-24">
+                <div className="flex-1 bg-[#FF0000] rounded-lg flex items-center justify-center border border-black/10 relative">
+                  <div className="w-12 h-12 bg-[#E60000] rounded-md shadow-inner flex items-center justify-center"><span className="text-[9px] font-bold text-white opacity-50">-10%</span></div>
+                </div>
+                <div className="flex-1 bg-[#00FF00] rounded-lg flex items-center justify-center border border-black/10 relative">
+                  <div className="w-12 h-12 bg-[#00E600] rounded-md shadow-inner flex items-center justify-center"><span className="text-[9px] font-bold text-black opacity-50">-10%</span></div>
+                </div>
+                <div className="flex-1 bg-[#0000FF] rounded-lg flex items-center justify-center border border-black/10 relative">
+                  <div className="w-12 h-12 bg-[#0000E6] rounded-md shadow-inner flex items-center justify-center"><span className="text-[9px] font-bold text-white opacity-50">-10%</span></div>
+                </div>
+              </div>
+              <p className="text-[11px] font-mono text-black/70 mt-2 text-center">
+                You should be able to clearly see the slightly darker inner squares. If they merge, the color channel is clipped.
+              </p>
             </div>
           </div>
         )}
