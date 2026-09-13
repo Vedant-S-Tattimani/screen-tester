@@ -724,10 +724,10 @@
       ]
     },
     "tv-overscan-test": {
-      "metaTitle": "Prueba de Overscan en TV y Mapeo 1:1 – Recorte de Bordes y Aspecto",
-      "metaDescription": "Compruebe si su televisor o pantalla externa recorta los bordes del escritorio o distorsiona píxeles. Verifica el mapeo de píxeles 1:1.",
-      "title": "Prueba de Overscan en TV y Mapeo 1:1",
-      "description_p1": "Determine si su televisor recorta los bordes del escritorio debido a la función de sobreexploración (overscan). Líneas perimetrales exactas de 1 píxel y patrones de damero verifican el mapeo 1:1 real.",
+      "metaTitle": "Prueba visual de Overscan de TV y Mapeo de Píxeles",
+      "metaDescription": "Compruebe si su televisor o monitor externo está recortando los bordes del escritorio o si el escalado está afectando a la representación de detalles finos.",
+      "title": "Prueba visual de Overscan de TV y Mapeo de Píxeles",
+      "description_p1": "Inspeccione visualmente si su televisor o pantalla externa está recortando los bordes exteriores del escritorio (overscan) o aplicando un escalado. Los bordes exteriores, las marcas de las esquinas y los parches de alta frecuencia ayudan a identificar el escalado, el recorte o la interpolación.",
       "instructions": [
         "<strong>AJUSTES DEL TELEVISOR:</strong> En el mando de la TV, configure el formato de imagen en 'Solo Escaneo' (Just Scan), 'Ajuste de Pantalla' o '1:1' (evite '16:9' o 'Zoom').",
         "<strong>LÍNEAS PERIMETRALES:</strong> Entre en Pantalla Completa. Verifique que las cuatro líneas de borde de 1px, 2px y 5px sean visibles en los cuatro extremos.",
@@ -994,7 +994,7 @@
       "instructions": "Lea muestras de texto y compruebe rejillas de 1 píxel para evaluar nitidez y halos."
     },
     "tvOverscanTest": {
-      "title": "TV Overscan y Mapeo 1:1 – Recorte de Bordes y Relación de Aspecto",
+      "title": "Prueba visual de Overscan de TV y Mapeo de Píxeles",
       "description": "Detecte recorte de bordes y distorsión de escala al conectar ordenadores a televisores.",
       "instructions": "Verifique la visibilidad de todas las líneas exteriores y revise el damero 1:1."
     },

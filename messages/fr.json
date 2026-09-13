@@ -724,10 +724,10 @@
       ]
     },
     "tv-overscan-test": {
-      "metaTitle": "Test Overscan TV & Mappage 1:1 – Rognage des Bords & Format",
-      "metaDescription": "Vérifiez si votre téléviseur ou écran externe rogne les bords du bureau ou déforme les pixels. Contrôle du mappage 1:1 des pixels.",
-      "title": "Test Overscan TV & Mappage 1:1",
-      "description_p1": "Déterminez si votre téléviseur rogne les bords extérieurs du bureau à cause du surbalayage (overscan). Des bordures de 1 pixel et des mires en damier vérifient le mappage 1:1 exact.",
+      "metaTitle": "Test visuel de surbalayage TV et de mappage des pixels",
+      "metaDescription": "Vérifiez si votre téléviseur ou moniteur externe rogne les bords du bureau ou si la mise à l'échelle affecte le rendu des détails fins.",
+      "title": "Test visuel de surbalayage TV et de mappage des pixels",
+      "description_p1": "Inspectez visuellement si votre téléviseur ou écran externe rogne les bords extérieurs du bureau (surbalayage) ou applique une mise à l'échelle. Les bordures extérieures, les marqueurs d'angle et les patchs haute fréquence aident à identifier la mise à l'échelle, le rognage ou l'interpolation.",
       "instructions": [
         "<strong>RÉGLAGES TV:</strong> Sur la télécommande, réglez le format d'image sur 'Signal original' (Just Scan), 'Adapter à l'écran' ou '1:1' (évitez '16:9' ou 'Zoom').",
         "<strong>BORDURES EXTÉRIEURES:</strong> Passez en Plein écran. Vérifiez que les 4 lignes colorées extérieures de 1px, 2px et 5px sont intégralement visibles.",
@@ -994,7 +994,7 @@
       "instructions": "Lisez les échantillons de texte et inspectez les trames 1px pour contrôler la clarté."
     },
     "tvOverscanTest": {
-      "title": "TV Overscan & Mappage 1:1 – Rognage d'Image & Format",
+      "title": "Test visuel de surbalayage TV et de mappage des pixels",
       "description": "Détectez le rognage des bords et la mauvaise mise à l'échelle lors du raccordement à un téléviseur.",
       "instructions": "Vérifiez que toutes les bordures extérieures sont visibles et contrôlez le damier."
     },

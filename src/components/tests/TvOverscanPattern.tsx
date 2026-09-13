@@ -64,7 +64,7 @@ export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPat
             backgroundSize: "4px 4px"
           }}
         >
-          <div className="absolute -bottom-4 left-0 text-[8px] font-mono text-slate-400">1:1 Patch</div>
+          <div className="absolute -bottom-4 left-0 text-[8px] font-mono text-slate-400">Fine Detail Patch</div>
         </div>
 
         <div
@@ -74,7 +74,7 @@ export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPat
             backgroundSize: "4px 4px"
           }}
         >
-          <div className="absolute -bottom-4 right-0 text-[8px] font-mono text-slate-400">1:1 Patch</div>
+          <div className="absolute -bottom-4 right-0 text-[8px] font-mono text-slate-400">Fine Detail Patch</div>
         </div>
 
         <div
@@ -84,7 +84,7 @@ export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPat
             backgroundSize: "4px 4px"
           }}
         >
-          <div className="absolute -top-4 left-0 text-[8px] font-mono text-slate-400">1:1 Patch</div>
+          <div className="absolute -top-4 left-0 text-[8px] font-mono text-slate-400">Fine Detail Patch</div>
         </div>
 
         <div
@@ -94,7 +94,7 @@ export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPat
             backgroundSize: "4px 4px"
           }}
         >
-          <div className="absolute -top-4 right-0 text-[8px] font-mono text-slate-400">1:1 Patch</div>
+          <div className="absolute -top-4 right-0 text-[8px] font-mono text-slate-400">Fine Detail Patch</div>
         </div>
 
         {/* Centered Precision Target Crosshairs & Calibration Reticle */}
@@ -117,10 +117,10 @@ export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPat
 
           <div className="mt-3 text-center bg-slate-900/90 backdrop-blur-md px-4 py-2 rounded-xl border border-slate-700/80 shadow-lg">
             <span className="text-xs font-mono font-bold text-white uppercase tracking-wider block">
-              1:1 Pixel Mapping & Overscan Target
+              TV Overscan & Pixel Mapping Visual Test
             </span>
-            <span className="text-[10px] font-mono text-slate-400 block mt-0.5">
-              If outer cyan (1px) line is cropped, TV overscan is active
+            <span className="text-[10px] font-mono text-slate-400 block mt-0.5 max-w-[300px]">
+              If the outer cyan boundary or corner markers are cropped, the display/video path may be applying overscan or scaling.
             </span>
           </div>
         </div>
@@ -157,35 +157,41 @@ export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPat
         </div>
 
         {/* Step-by-Step TV Setup Instructions */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs text-muted-foreground">
+        <div className="grid grid-cols-1 gap-3 pt-2 text-xs text-muted-foreground">
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">1. Samsung Televisions:</strong> In Picture Settings → Picture Size Settings → set to <strong>16:9 Standard</strong> and turn <strong>Fit to Screen: ON</strong> (or rename HDMI source to &apos;PC&apos;).
+              <strong className="text-foreground">STEP 1 — Use Fullscreen.</strong>
             </div>
           </div>
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">2. LG Televisions:</strong> In Picture → Aspect Ratio → select <strong>Just Scan: ON</strong>. In Home Dashboard, edit HDMI input icon to &apos;PC&apos; for uncompressed 4:4:4 color.
+              <strong className="text-foreground">STEP 2 — Check whether the outer cyan boundary and corner markers remain fully visible.</strong>
             </div>
           </div>
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">3. Sony Televisions:</strong> In Picture & Display → Screen → set Wide Mode to <strong>Full</strong> and Auto Display Area to <strong>Off</strong>, with Display Area set to <strong>+1 or Full Pixel</strong>.
+              <strong className="text-foreground">STEP 3 — If they are cropped, check the TV/display's picture-size/overscan/scaling settings.</strong>
             </div>
           </div>
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">4. 1:1 Pixel Checkerboard:</strong> Inspect the corner checkerboard patches. If they appear as a solid blurry gray block or show wavy moiré patterns, scaling interpolation is occurring.
+              <strong className="text-foreground">STEP 4 — Inspect the high-frequency patches for sharp, clean fine detail.</strong>
+            </div>
+          </div>
+          <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
+            <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
+            <div>
+              <strong className="text-foreground">STEP 5 — If the fine pattern appears blurred, scaled, or altered, investigate display scaling/output resolution settings.</strong>
             </div>
           </div>
         </div>
       </div>
 
-      <TestControlBar testId={testId} title="TV Overscan & 1:1 Pixel Mapping" />
+      <TestControlBar testId={testId} title="TV Overscan & Pixel Mapping Visual Test" />
     </div>
   );
 }

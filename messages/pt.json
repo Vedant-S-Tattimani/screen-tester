@@ -724,10 +724,10 @@
       ]
     },
     "tv-overscan-test": {
-      "metaTitle": "Teste de Overscan na TV e Mapeamento 1:1 – Corte de Bordas e Aspecto",
-      "metaDescription": "Verifique se a sua TV ou monitor externo está cortando as bordas da área de trabalho ou distorcendo pixels. Valida o mapeamento 1:1.",
-      "title": "Teste de Overscan na TV e Mapeamento 1:1",
-      "description_p1": "Descubra se a sua televisão está cortando as bordas externas da imagem devido ao zoom de overscan. Linhas perimétricas de 1 pixel e padrões xadrez verificam o mapeamento 1:1 real.",
+      "metaTitle": "Teste Visual de Overscan de TV e Mapeamento de Pixels",
+      "metaDescription": "Verifique se sua televisão ou monitor externo está cortando as bordas da área de trabalho ou se o dimensionamento está afetando a renderização de detalhes finos.",
+      "title": "Teste Visual de Overscan de TV e Mapeamento de Pixels",
+      "description_p1": "Inspecione visualmente se sua televisão ou tela externa está cortando as bordas externas da área de trabalho (overscan) ou aplicando dimensionamento. Bordas externas, marcadores de canto e manchas de alta frequência ajudam a identificar o dimensionamento, o corte ou a interpolação.",
       "instructions": [
         "<strong>AJUSTES NA TV:</strong> No controle da TV, configure o formato de tela para 'Ajuste de Tela' (Just Scan, Dot by Dot ou 1:1); evite '16:9' ou 'Zoom'.",
         "<strong>BORDAS EXTERNAS:</strong> Entre em Tela Cheia. Verifique se todas as 4 linhas coloridas de 1px, 2px e 5px estão visíveis nos 4 lados da tela.",
@@ -994,7 +994,7 @@
       "instructions": "Leia amostras de texto e examine grades de 1px para verificar nitidez e franjas."
     },
     "tvOverscanTest": {
-      "title": "TV Overscan e Mapeamento 1:1 – Corte de Bordas e Proporção",
+      "title": "Teste Visual de Overscan de TV e Mapeamento de Pixels",
       "description": "Detecte corte de bordas e distorções de escala ao conectar computadores a televisores.",
       "instructions": "Verifique se todas as bordas externas são visíveis e inspecione o padrão xadrez."
     },

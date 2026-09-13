@@ -724,10 +724,10 @@
       ]
     },
     "tv-overscan-test": {
-      "metaTitle": "TV-Overscan & 1:1 Pixel-Mapping-Test – Bildrand-Beschnitt & Skalierung",
-      "metaDescription": "Prüfen Sie, ob Ihr Fernseher Bildränder abschneidet oder Pixel verzerrt. Testet 1:1 Pixel-Mapping und TV-Overscan-Einstellungen.",
-      "title": "TV-Overscan & 1:1 Pixel-Mapping-Test",
-      "description_p1": "Stellen Sie fest, ob Ihr Fernseher Bildränder durch veraltetes Overscan beschneidet. Exakte 1-Pixel-Randlinien, Eckmarkierungen und Schachbrettmuster sichern echtes 1:1 Pixel-Mapping.",
+      "metaTitle": "TV Overscan & Pixel Mapping visueller Test",
+      "metaDescription": "Prüfen Sie, ob Ihr Fernseher oder externer Monitor die Desktop-Ränder abschneidet oder ob die Skalierung die Darstellung feiner Details beeinträchtigt.",
+      "title": "TV Overscan & Pixel Mapping visueller Test",
+      "description_p1": "Prüfen Sie visuell, ob Ihr Fernseher oder externes Display äußere Desktop-Ränder abschneidet (Overscan) oder skaliert. Äußere Ränder, Eckmarkierungen und Hochfrequenzmuster helfen bei der Identifizierung von Skalierung, Beschnitt oder Interpolation.",
       "instructions": [
         "<strong>TV-BILDEINSTELLUNGEN:</strong> Stellen Sie das Bildformat am Fernseher auf 'Just Scan', 'Bildanpassung', 'Dot by Dot' oder '1:1' (nicht '16:9' oder 'Zoom').",
         "<strong>RANDLINIEN:</strong> Aktivieren Sie den Vollbildmodus. Prüfen Sie, ob alle farbigen 1px-, 2px- und 5px-Außenlinien an allen vier Kanten vollständig sichtbar sind.",
@@ -994,7 +994,7 @@
       "instructions": "Feine Schriftmuster und 1px Linienraster auf Randschärfe und Farbsäume prüfen."
     },
     "tvOverscanTest": {
-      "title": "TV-Overscan & 1:1 Pixel-Mapping – Bildbeschnitt & Formatprüfung",
+      "title": "TV Overscan & Pixel Mapping visueller Test",
       "description": "Erkennen Sie Bildkantenbeschnitt und Skalierungsfehler beim Anschluss an Fernsehgeräte.",
       "instructions": "Äußere Randlinien auf Vollständigkeit prüfen und Schachbrett auf Moiré kontrollieren."
     },

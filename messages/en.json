@@ -754,10 +754,10 @@
       ]
     },
     "tv-overscan-test": {
-      "metaTitle": "TV Overscan & Pixel Mapping Test",
-      "metaDescription": "Check if your television or external monitor is cropping desktop edges or distorting pixels. Verifies 1:1 pixel mapping and overscan settings.",
-      "title": "TV Overscan & 1:1 Pixel Mapping Test",
-      "description_p1": "Determine whether your television or external display is cropping outer desktop edges due to legacy overscan zooming. Precise 1-pixel outer borders, corner markers, and high-frequency checkerboard patterns verify true 1:1 pixel mapping.",
+      "metaTitle": "TV Overscan & Pixel Mapping Visual Test",
+      "metaDescription": "Check if your television or external monitor is cropping desktop edges or if scaling is affecting fine-detail rendering.",
+      "title": "TV Overscan & Pixel Mapping Visual Test",
+      "description_p1": "Visually inspect whether your television or external display is cropping outer desktop edges (overscan) or applying scaling. Outer borders, corner markers, and high-frequency patches help identify scaling, cropping, or interpolation.",
       "instructions": [
         "<strong>TV PICTURE SETTINGS:</strong> On your television remote, open Picture Settings and set Aspect Ratio to 'Just Scan', 'Screen Fit', 'Dot by Dot', or '1:1' (do NOT use '16:9' or 'Zoom').",
         "<strong>BORDER REGISTRATION:</strong> Enter Fullscreen. Check if all four outer 1px, 2px, and 5px colored border lines are fully visible around all screen edges.",
@@ -1032,7 +1032,7 @@
       "instructions": "Read fine text samples and inspect 1px line gratings for edge clarity and fringing."
     },
     "tvOverscanTest": {
-      "title": "TV Overscan & 1:1 Pixel Mapping – Edge Cropping & Aspect Check",
+      "title": "TV Overscan & Pixel Mapping Visual Test",
       "description": "Detect edge cropping and scaling distortion when connecting PCs or laptops to televisions.",
       "instructions": "Verify all outer colored border lines are visible and check 1:1 checkerboard for moiré."
     },
