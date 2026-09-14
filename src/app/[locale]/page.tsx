@@ -84,13 +84,32 @@ export default async function Home({
     "vrr-flicker-test": "vrrFlickerTest",
     "pursuit-camera-test": "pursuitCameraTest",
     "audio-sync-test": "audioSyncTest",
-    "gamepad-test": "gamepadTest"
+    "gamepad-test": "gamepadTest",
+    "battery-test": "batteryTest",
+    "network-speed-test": "networkSpeedTest",
+    "color-blindness-test": "colorBlindnessTest",
+    "screen-recorder": "screenRecorder",
+    "dark-mode-test": "darkModeTest",
+    "input-lag-test": "inputLagTest",
+    "ambient-light-test": "ambientLightTest",
+    "dpi-calculator": "dpiCalculator",
+    "subpixel-layout-test": "subpixelLayoutTest",
+    "pwm-flicker-test": "pwmFlickerTest",
+    "gtg-response-time-test": "gtgResponseTimeTest",
+    "mouse-polling-test": "mousePollingTest",
+    "gpu-benchmark-test": "gpuBenchmarkTest"
   };
 
   const toolsMap: Record<string, string> = {
     "display-bandwidth-calculator": "displayBandwidthCalculator",
     "viewing-distance-calculator": "viewingDistanceCalculator",
-    "dual-monitor-matcher": "dualMonitorMatcher"
+    "dual-monitor-matcher": "dualMonitorMatcher",
+    "screen-recorder": "screenRecorder",
+    "dpi-calculator": "dpiCalculator",
+    "dead-pixel-mapper": "deadPixelMapper",
+    "oled-burn-in-calculator": "oledBurnInCalculator",
+    "display-certificate": "displayCertificate",
+    "osd-calibration-guide": "osdCalibrationGuide"
   };
 
   const getTestItem = (id: string, category: string): ScreenTestItem => {
@@ -158,7 +177,8 @@ export default async function Home({
         getTestItem("color-test", "colorPixels"),
         getTestItem("color-gamut-test", "colorPixels"),
         getTestItem("color-accuracy-test", "colorPixels"),
-        getTestItem("saturation-test", "colorPixels")
+        getTestItem("saturation-test", "colorPixels"),
+        getTestItem("color-blindness-test", "colorPixels")
       ]
     },
     {
@@ -173,8 +193,7 @@ export default async function Home({
         getTestItem("gamma-test", "gradientContrast"),
         getTestItem("color-banding-test", "gradientContrast"),
         getTestItem("gradient-banding-test", "gradientContrast"),
-        getTestItem("grayscale-test", "gradientContrast"),
-        getTestItem("dual-monitor-matcher", "gradientContrast")
+        getTestItem("grayscale-test", "gradientContrast")
       ]
     },
     {
@@ -200,7 +219,10 @@ export default async function Home({
         getTestItem("strobe-crosstalk-test", "motionPerformance"),
         getTestItem("pursuit-camera-test", "motionPerformance"),
         getTestItem("screen-tearing-test", "motionPerformance"),
-        getTestItem("screen-flicker-test", "motionPerformance")
+        getTestItem("screen-flicker-test", "motionPerformance"),
+        getTestItem("input-lag-test", "motionPerformance"),
+        getTestItem("pwm-flicker-test", "motionPerformance"),
+        getTestItem("gtg-response-time-test", "motionPerformance")
       ]
     },
     {
@@ -209,13 +231,14 @@ export default async function Home({
       tests: [
         getTestItem("sharpness-test", "sharpnessCapabilities"),
         getTestItem("text-clarity-test", "sharpnessCapabilities"),
-        getTestItem("display-bandwidth-calculator", "sharpnessCapabilities"),
-        getTestItem("viewing-distance-calculator", "sharpnessCapabilities"),
         getTestItem("hdr-capability-test", "sharpnessCapabilities"),
         getTestItem("hdr-test", "sharpnessCapabilities"),
         getTestItem("tv-overscan-test", "sharpnessCapabilities"),
         getTestItem("scaling-aspect-test", "sharpnessCapabilities"),
-        getTestItem("touch-screen-test", "sharpnessCapabilities")
+        getTestItem("touch-screen-test", "sharpnessCapabilities"),
+        getTestItem("dark-mode-test", "sharpnessCapabilities"),
+        getTestItem("subpixel-layout-test", "sharpnessCapabilities"),
+        getTestItem("gpu-benchmark-test", "sharpnessCapabilities")
       ]
     },
     {
@@ -231,7 +254,26 @@ export default async function Home({
         getTestItem("microphone-test", "deviceInput"),
         getTestItem("audio-sync-test", "deviceInput"),
         getTestItem("gamepad-test", "deviceInput"),
-        getTestItem("reaction-time-test", "deviceInput")
+        getTestItem("reaction-time-test", "deviceInput"),
+        getTestItem("battery-test", "deviceInput"),
+        getTestItem("network-speed-test", "deviceInput"),
+        getTestItem("ambient-light-test", "deviceInput"),
+        getTestItem("mouse-polling-test", "deviceInput")
+      ]
+    },
+    {
+      id: "utilitiesTools",
+      title: t("allTestsCategories.utilitiesTools"),
+      tests: [
+        getTestItem("screen-recorder", "utilitiesTools"),
+        getTestItem("dpi-calculator", "utilitiesTools"),
+        getTestItem("display-bandwidth-calculator", "utilitiesTools"),
+        getTestItem("viewing-distance-calculator", "utilitiesTools"),
+        getTestItem("dual-monitor-matcher", "utilitiesTools"),
+        getTestItem("dead-pixel-mapper", "utilitiesTools"),
+        getTestItem("oled-burn-in-calculator", "utilitiesTools"),
+        getTestItem("display-certificate", "utilitiesTools"),
+        getTestItem("osd-calibration-guide", "utilitiesTools")
       ]
     }
   ];

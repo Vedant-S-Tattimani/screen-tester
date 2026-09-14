@@ -51,8 +51,17 @@ export default async function TestsPage({ params }: { params: Promise<{ locale: 
           }
         }
 
+        const toolIds = [
+          "screen-recorder",
+          "dpi-calculator",
+          "dead-pixel-mapper",
+          "oled-burn-in-calculator",
+          "display-certificate",
+          "osd-calibration-guide"
+        ];
+        const isTool = toolIds.includes(test.id);
         return {
-          href: `/tests/${test.id}`,
+          href: isTool ? `/tools/${test.id}` : `/tests/${test.id}`,
           title,
           description
         };

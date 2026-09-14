@@ -467,536 +467,84 @@ export const EN_EXPLAINERS: Record<string, ExplainerData> = {
     }
   },
 
-  "hdr-test": {
-    overview: "High Dynamic Range (HDR) displays provide wider peak brightness ranges and expanded color volumes. This test checks browser HDR support via CSS media queries and renders specular highlight gradients and shadow swatches to visually inspect tone mapping and highlight clipping.",
-    whatToLookFor: [
-      {
-        label: "Browser HDR Active Detection",
-        description: "Verify that the browser reports '(dynamic-range: high)' as active. If not, HDR is disabled in Windows or browser flags."
-      },
-      {
-        label: "Highlight Detail Retention",
-        description: "Inspect the 90%, 94%, 97%, 99%, and 100% white highlight cards. Reticle symbols inside near-peak cards should remain visible."
-      },
-      {
-        label: "Peak Highlight Clipping",
-        description: "If 94% through 100% white blend into an identical blown-out white patch, your monitor is clipping highlights rather than tone-mapping."
-      },
-      {
-        label: "Color Gamut Expansion",
-        description: "Observe whether vibrant saturated swatches appear richer when viewing wide color gamut (Display P3) content."
-      }
-    ],
-    canObserve: [
-      "Browser environment reporting for high dynamic range and screen color depth APIs",
-      "Visual highlight detail separation and tone mapping behavior up to peak white",
-      "Shadow detail visibility across low-luminance HDR test swatches"
-    ],
-    cannotMeasure: [
-      "Peak panel luminance in cd/m² (nits) without a hardware light meter",
-      "VESA DisplayHDR tier compliance (e.g. DisplayHDR 400 vs 600 vs 1000)",
-      "Strict PQ (ST 2084) electro-optical transfer function tracking accuracy"
-    ],
-    interpretation: "Budget monitors advertised as 'HDR400' often lack local dimming and cannot exceed standard SDR brightness, resulting in washed-out images or blown-out highlights when HDR is toggled on.",
-    nextSteps: {
-      text: "HDR looks washed out, dim, or blown out? Review our guide on proper OS and display HDR configuration.",
-      actionLabel: "Read HDR Troubleshooting",
-      actionHref: "/knowledge-base/troubleshooting#hdr-not-working"
-    }
-  },
-
-  "resolution-checker": {
-    overview: "Modern operating systems use display scaling to keep UI elements legible on high-density screens. This creates a difference between logical CSS viewport pixels and physical panel pixels. This tool reports browser-accessible screen dimensions, device pixel ratio (DPR), and orientation.",
-    whatToLookFor: [
-      {
-        label: "Native vs Logical Resolution",
-        description: "A 4K monitor at 150% scaling reports a logical viewport of 2560×1440 with a DPR of 1.5, totaling 3840×2160 physical pixels."
-      },
-      {
-        label: "Device Pixel Ratio (DPR)",
-        description: "DPR indicates the scaling multiplier between CSS pixels and hardware screen dots (e.g. 1.0 = 100%, 1.25 = 125%, 2.0 = 200%)."
-      },
-      {
-        label: "Available Desktop Area",
-        description: "Screen.availWidth and availHeight reveal the usable desktop workspace after subtracting OS taskbars and dock bars."
-      },
-      {
-        label: "Viewport vs Screen Size",
-        description: "Window.innerWidth/innerHeight shows current browser window dimensions, distinct from your full monitor screen size."
-      }
-    ],
-    canObserve: [
-      "Browser-reported screen.width, screen.height, and screen.availWidth/Height",
-      "window.devicePixelRatio (DPR) and calculated physical render resolution",
-      "CSS layout viewport dimensions and orientation metadata"
-    ],
-    cannotMeasure: [
-      "Physical panel matrix dimensions if the GPU or external scaler downsamples the signal",
-      "External video capture card or TV downscaling overrides",
-      "Physical panel aspect ratio when non-square pixel modes are forced by hardware"
-    ],
-    interpretation: "If your reported resolution does not match your monitor's advertised spec, check Windows Display Settings > Scale and Layout. Changing scaling from 125% or 150% back to 100% will restore 1:1 logical-to-physical reporting.",
-    nextSteps: {
-      text: "Compare multiple monitor resolutions, diagonal sizes, and PPI side-by-side in our Display Comparison tool.",
-      actionLabel: "Compare Displays & Calculate PPI",
-      actionHref: "/tests/compare-displays"
-    }
-  },
-
-  "display-info": {
-    overview: "Your web browser exposes environment telemetry about your active display, window boundaries, color depth, pixel density, and input capabilities. This diagnostic panel aggregates all browser-accessible hardware and display parameters into a single view.",
-    whatToLookFor: [
-      {
-        label: "Color Depth Reporting",
-        description: "Screen.colorDepth indicates bit-plane depth (typically 24-bit for 8-bit RGB, or 30-bit for 10-bit wide color pipelines)."
-      },
-      {
-        label: "Touch Support Indicators",
-        description: "Navigator.maxTouchPoints reveals whether the browser detects an active touch digitizer on your device."
-      },
-      {
-        label: "Multi-Monitor Detection",
-        description: "Browser sandbox restrictions prevent web apps from enumerating physical display model names without explicit Window Management permissions."
-      },
-      {
-        label: "High Refresh Frame Pacing",
-        description: "Live animation clock telemetry provides an active estimate of browser frame delivery synchronization."
-      }
-    ],
-    canObserve: [
-      "All standard DOM Screen, Window, Navigator, and Media Query parameters",
-      "Device pixel ratio, color depth, pixel depth, and orientation",
-      "Touch contact support and pointer media capabilities"
-    ],
-    cannotMeasure: [
-      "Monitor manufacturer EDID serial numbers or model strings without experimental permissions",
-      "Physical HDMI or DisplayPort connection bandwidth and cable revision",
-      "Native physical panel refresh rate independent of OS compositor limitations"
-    ],
-    interpretation: "Web browsers run in a secure sandbox that deliberately abstracts low-level hardware details. Parameters shown reflect what your operating system and browser compositor expose to web applications.",
-    nextSteps: {
-      text: "Want to inspect physical pixel geometry and aspect ratio distortion? Run our Scaling & Aspect Ratio test.",
-      actionLabel: "Test Aspect Ratio & Scaling",
-      actionHref: "/tests/scaling-aspect-test"
-    }
-  },
-
-  "scaling-aspect-test": {
-    overview: "Incorrect display scaling or GPU aspect ratio settings can stretch or compress images, distorting circles into ovals and causing blurry text. This test displays reference geometry (circles, squares, and crosshairs) alongside aspect ratio guides (16:9, 16:10, 21:9, 4:3) to verify 1:1 square pixel rendering.",
-    whatToLookFor: [
-      {
-        label: "Geometric Circularity",
-        description: "Verify that the center reference circle is perfectly round. If it appears oblong or oval, your display aspect is distorted."
-      },
-      {
-        label: "Square Pixel Ratio (1:1)",
-        description: "Check the grid checkerboard. Each grid square should measure equally in width and height without horizontal stretching."
-      },
-      {
-        label: "Aspect Ratio Guide Match",
-        description: "Confirm whether your screen content aligns with standard 16:9 (widescreen), 16:10, or 21:9 (ultrawide) bounding frames."
-      },
-      {
-        label: "GPU Scaling Mode",
-        description: "If letterbox bars (black bars) appear on native resolution content, inspect GPU control panel scaling settings."
-      }
-    ],
-    canObserve: [
-      "Visual circularity and square pixel grid geometry within the browser viewport",
-      "Bounding box alignment with standard 16:9, 16:10, 21:9, and 4:3 aspect ratios",
-      "Browser window viewport aspect ratio calculation"
-    ],
-    cannotMeasure: [
-      "Physical panel bezel millimeter dimensions using a tape measure",
-      "Anamorphic lens distortion on projected optical displays",
-      "External video scaler hardware aspect ratio override modes"
-    ],
-    interpretation: "Geometric distortion usually happens when non-native resolutions are selected without enabling 'Preserve Aspect Ratio' in NVIDIA Control Panel, AMD Radeon Software, or Intel Graphics Command Center.",
-    nextSteps: {
-      text: "Connecting a PC to a television? Check for overscan cropping along screen edges with our TV Overscan test.",
-      actionLabel: "Test TV Overscan",
-      actionHref: "/tests/tv-overscan-test"
-    }
-  },
-
-  "compare-displays": {
-    overview: "Monitor diagonal size, resolution, and pixel density (Pixels Per Inch - PPI) determine visual workspace and sharpness. This tool calculates exact physical display dimensions, total pixel counts, and pixel densities, providing a visual side-by-side comparison between any two display configurations.",
-    whatToLookFor: [
-      {
-        label: "Pixel Density (PPI)",
-        description: "Higher PPI produces sharper text and graphics. ~110 PPI is standard for desktop monitors, while ~220 PPI represents Retina-grade sharpness."
-      },
-      {
-        label: "Physical Width & Height",
-        description: "Compare total screen real estate. A 27-inch 16:9 display has significantly more vertical height than a 29-inch ultrawide (21:9)."
-      },
-      {
-        label: "Total Pixel Count",
-        description: "A 4K display (8.29 megapixels) packs four times as many pixels as standard 1080p Full HD (2.07 megapixels)."
-      },
-      {
-        label: "Viewing Distance Sweet Spot",
-        description: "Higher PPI allows you to sit closer without distinguishing individual pixel grids (the screen-door effect)."
-      }
-    ],
-    canObserve: [
-      "Mathematical calculation of PPI, aspect ratios, and surface areas based on user specifications",
-      "Side-by-side proportional visual layout scaling between two display models",
-      "Dot pitch (pixel size in millimeters) comparison"
-    ],
-    cannotMeasure: [
-      "Physical measurement of an unknown monitor connected without user input of diagonal size",
-      "Automatic optical panel dimension detection via browser APIs",
-      "Physical panel bezel thickness or stand footprint dimensions"
-    ],
-    interpretation: "Pixel density is calculated using the Pythagorean theorem dividing diagonal pixel resolution by physical diagonal inches. Because browser APIs cannot read physical diagonal screen size from EDID, user input is required.",
-    nextSteps: {
-      text: "Find out how pixel density directly impacts text clarity and subpixel rendering across operating systems.",
-      actionLabel: "Read Text Clarity Guide",
-      actionHref: "/knowledge-base/text-clarity-and-subpixel-rendering"
-    }
-  },
-
-  "tv-overscan-test": {
-    overview: "Overscan is a legacy television standard where the outer 2% to 5% of the video frame is cropped off and zoomed in. When connecting a PC, Mac, or game console to a TV, overscan cuts off the taskbar, hides window edges, and severely blurs text by ruining 1:1 pixel mapping.",
-    whatToLookFor: [
-      {
-        label: "0% Boundary Box Visibility",
-        description: "If you cannot see the outermost white border and arrows labeled '0%', your TV is cropping the image with active overscan."
-      },
-      {
-        label: "Overscan Percentage Markers",
-        description: "Check which boundary box aligns with your TV frame (2.5% or 5%) to determine how much of your desktop is being discarded."
-      },
-      {
-        label: "Corner Crosshair Alignment",
-        description: "The corner crosshairs should terminate precisely at the physical edge of your television screen panel."
-      },
-      {
-        label: "1:1 Pixel Mapping Sharpness",
-        description: "Look at the fine alternating 1-pixel checkerboard ruler. If it flickers or looks blurry, your TV is interpolating pixels."
-      }
-    ],
-    canObserve: [
-      "Visual edge visibility and percentage cutoff markers (0%, 2.5%, 5%) around the screen perimeter",
-      "1:1 pixel mapping ruler integrity to detect scaler interpolation blur",
-      "Visual verification before and after adjusting television picture size settings"
-    ],
-    cannotMeasure: [
-      "Direct software control over television internal OSD firmware settings",
-      "Automatic detection of television picture mode presets via HDMI CEC",
-      "Physical television bezel overlap versus electronic image cropping"
-    ],
-    interpretation: "To achieve crystal-clear text and restore your full desktop, navigate to your TV's Picture Size or Aspect Ratio settings and change it from '16:9' or 'Standard' to 'Just Scan', '1:1 Pixel', 'Screen Fit', 'Full', or 'Dot-by-Dot'.",
-    nextSteps: {
-      text: "Need help finding the 1:1 mapping setting on Samsung, LG, Sony, or TCL TVs? Follow our overscan guide.",
-      actionLabel: "Read TV Overscan & 1:1 Mapping Guide",
-      actionHref: "/knowledge-base/tv-overscan-and-pixel-mapping"
-    }
-  },
-
-  "multi-touch-test": {
-    overview: "This test tracks simultaneous touch contacts on touchscreens, tablets, and interactive whiteboards. It visualizes touch contact coordinates, tracks active point counts, and verifies that multi-finger gestures are correctly received by your browser engine.",
-    whatToLookFor: [
-      {
-        label: "Simultaneous Contact Count",
-        description: "Place multiple fingers on the screen simultaneously. Verify that the counter accurately tracks 2, 5, or 10 active contacts."
-      },
-      {
-        label: "Contact Tracking Smoothness",
-        description: "Drag multiple fingers across the surface to verify that touch paths remain uninterrupted without dropped contacts."
-      },
-      {
-        label: "OS Gesture Interception",
-        description: "Notice if placing 3 or 4 fingers triggers operating system gestures (such as app switching) instead of browser touch points."
-      },
-      {
-        label: "Palm Rejection Behavior",
-        description: "Rest the heel of your hand on the screen while touching with fingers to inspect how the digitizer handles large contact areas."
-      }
-    ],
-    canObserve: [
-      "Active pointer and touch events dispatched to the browser window in real time",
-      "Simultaneous active touch point coordinates, IDs, and aggregate contact count",
-      "Browser-reported navigator.maxTouchPoints capability indicator"
-    ],
-    cannotMeasure: [
-      "Physical digitizer report rate in Hertz (e.g. 120Hz vs 240Hz touch sampling rate)",
-      "Touch sensor capacitive pressure levels without specialized hardware APIs",
-      "Physical digitizer grid mesh defects beneath glass that do not register in the OS driver"
-    ],
-    interpretation: "The number of simultaneous points recognized depends on your screen's digitizer hardware, OS driver limits, and whether system-level multi-touch gestures intercept contacts before passing them to the browser.",
-    nextSteps: {
-      text: "Want to test touch digitizer dead zones and draw continuity across your entire screen surface?",
-      actionLabel: "Try Touch Screen Surface Test",
-      actionHref: "/tests/touch-screen-test"
-    }
-  },
-
-  "webcam-test": {
-    overview: "This tool connects directly to your camera via the browser's WebRTC media stream API (getUserMedia). It lets you inspect real-time video feed quality, verify supported camera stream resolutions (720p, 1080p, 4K), monitor stream framerates, and troubleshoot permission issues locally.",
-    whatToLookFor: [
-      {
-        label: "Video Stream Resolution",
-        description: "Verify that the reported stream resolution matches your camera's advertised capability (e.g. 1920×1080 Full HD)."
-      },
-      {
-        label: "Framerate Stability",
-        description: "Monitor the live stream FPS counter. Low lighting often causes camera sensors to drop to 15-20 FPS to compensate for exposure."
-      },
-      {
-        label: "Color Balance & Exposure",
-        description: "Check for blown-out highlights on faces, color balance accuracy under room lighting, and shadow digital noise."
-      },
-      {
-        label: "Camera Permission Prompts",
-        description: "Verify that your browser correctly triggers and retains camera access permissions without system conflicts."
-      }
-    ],
-    canObserve: [
-      "Real-time video feed playback processed entirely locally within your browser tab",
-      "Browser-negotiated video stream track dimensions (width, height) and frame rate",
-      "MediaDeviceInfo labels and device enumeration capabilities"
-    ],
-    cannotMeasure: [
-      "Physical optical sensor resolution independent of OS camera driver limits",
-      "Lens distortion coefficients, optical chromatic aberration, or optical zoom state",
-      "Lux-calibrated optical sensitivity in varying ambient lighting environments"
-    ],
-    interpretation: "Webcam video streams are negotiated through your operating system camera driver. If high resolutions are unavailable, check whether USB hub bandwidth, privacy switches, or third-party camera software are restricting output.",
-    nextSteps: {
-      text: "Camera not detected or permissions blocked? Follow our webcam troubleshooting guide.",
-      actionLabel: "Read Webcam Troubleshooting",
-      actionHref: "/knowledge-base/troubleshooting#webcam-access-denied"
-    }
-  },
-
-  "speaker-test": {
-    overview: "This tool utilizes the Web Audio API to test computer speakers, headphones, and external sound systems. It verifies stereo channel separation (Left, Right, Both), performs frequency sweeps (20Hz to 20,000Hz) to inspect acoustic range, and identifies audio distortion or channel imbalance.",
-    whatToLookFor: [
-      {
-        label: "Stereo Channel Separation",
-        description: "When playing the Left Channel tone, sound should emerge exclusively from your left speaker or headphone driver."
-      },
-      {
-        label: "Low-Frequency Bass Extension (20Hz–100Hz)",
-        description: "Listen for sub-bass tones. Small laptop speakers typically cut off completely below 80Hz–100Hz."
-      },
-      {
-        label: "High-Frequency Treble Limit (10kHz–20kHz)",
-        description: "Notice where high-frequency sweeps become inaudible due to speaker driver limits or natural human hearing attenuation."
-      },
-      {
-        label: "Chassis Vibration & Rattling",
-        description: "Mid-bass sweeps (100Hz–300Hz) often reveal loose desk objects or vibrating monitor speaker enclosures."
-      }
-    ],
-    canObserve: [
-      "Synthesized audio playback and stereo panning across Left, Right, and Center channels",
-      "Continuous frequency sweeps across the human audible spectrum (20Hz to 20,000Hz)",
-      "AudioContext sample rate and Web Audio API output capability"
-    ],
-    cannotMeasure: [
-      "Physical acoustic sound pressure level (SPL in decibels, dB) without a calibrated microphone",
-      "Physical speaker total harmonic distortion (THD) or driver electrical impedance",
-      "Acoustic room frequency response curves or speaker frequency response charts"
-    ],
-    interpretation: "Stereo testing confirms that your OS audio output device is properly mapped and not downmixing to mono. Frequency sweeps help detect speaker driver clipping or loose enclosure vibration.",
-    nextSteps: {
-      text: "Audio silent or playing from the wrong speaker? Check our speaker troubleshooting guide.",
-      actionLabel: "Read Speaker Troubleshooting",
-      actionHref: "/knowledge-base/troubleshooting#speaker-no-sound"
-    }
-  },
-
-  "accelerometer-test": {
-    overview: "The Accelerometer Test measures linear acceleration and gravitational forces along three physical axes (X, Y, and Z) using the DeviceMotionEvent and Generic Sensor APIs. It visualizes tilt, dynamic movement, and Earth's 1g gravitational pull in real time.",
-    whatToLookFor: [
-      {
-        label: "Gravitational Force Distribution (1g)",
-        description: "When lying flat on a table, the Z-axis should read approximately ~9.8 m/s² (1g), while X and Y stay near 0 m/s²."
-      },
-      {
-        label: "Axis Response on Tilt",
-        description: "Tilting the device left/right changes X-axis values, while tilting forward/backward changes Y-axis values smoothly."
-      },
-      {
-        label: "Rapid Movement Spikes",
-        description: "Quickly shaking or moving the device produces transient acceleration spikes on the interactive real-time graph."
-      },
-      {
-        label: "Sensor Permission State",
-        description: "iOS Safari requires an explicit user permission prompt (DeviceMotionEvent.requestPermission) before transmitting motion data."
-      }
-    ],
-    canObserve: [
-      "Raw acceleration with and without gravity across X, Y, and Z axes in m/s²",
-      "Sensor reporting frequency (interval in milliseconds) supported by the browser",
-      "Visual orientation target reticle responsive to gravitational alignment"
-    ],
-    cannotMeasure: [
-      "Factory-calibrated sensor bias or laboratory-grade zero-point drift",
-      "Physical MEMS silicon accelerometer micro-defects or internal solder joint cracks",
-      "Absolute geographical position or GPS coordinates"
-    ],
-    interpretation: "A functioning accelerometer shows stable ~9.8 m/s² gravitational acceleration on the axis pointing downward. Significant jitter or frozen values when rotating suggest sensor calibration issues or OS permission restrictions.",
-    nextSteps: {
-      text: "Sensor values not changing or stuck at zero? Consult our sensor troubleshooting guide.",
-      actionLabel: "Read Sensor Troubleshooting",
-      actionHref: "/knowledge-base/troubleshooting"
-    }
-  },
-
-  "gyroscope-test": {
-    overview: "The Gyroscope Test measures angular velocity and rotational orientation along Alpha (Yaw/Z), Beta (Pitch/X), and Gamma (Roll/Y) axes using the DeviceOrientationEvent API. It provides a real-time artificial horizon and 3D orientation sphere to verify rotational tracking.",
-    whatToLookFor: [
-      {
-        label: "Artificial Horizon Alignment",
-        description: "The artificial horizon line should tilt smoothly when tilting the device left or right, and elevate when tilting up or down."
-      },
-      {
-        label: "Pitch (Beta: -180° to 180°)",
-        description: "Tilting your device forward and backward should produce smooth, proportional changes in pitch degrees."
-      },
-      {
-        label: "Roll (Gamma: -90° to 90°)",
-        description: "Tilting your device sideways from left to right updates roll angle accurately without lag or inversion."
-      },
-      {
-        label: "Compass Heading (Alpha: 0° to 360°)",
-        description: "Rotating the device flat on a table tracks compass azimuth when absolute device orientation is supported."
-      }
-    ],
-    canObserve: [
-      "Angular orientation angles (Alpha, Beta, Gamma) in degrees dispatched by the browser",
-      "Visual artificial horizon attitude indicator and 3D rotational preview",
-      "Identification of absolute compass orientation vs relative motion tracking"
-    ],
-    cannotMeasure: [
-      "MEMS gyroscope thermal drift rate (degrees per hour) without controlled continuous observation",
-      "Internal sensor sampling rate beyond browser event loop throttling (typically 60Hz)",
-      "Hardware magnetic interference compensation on devices lacking a magnetometer"
-    ],
-    interpretation: "The gyroscope tracks orientation by integrating angular velocity. If the artificial horizon drifts slowly while motionless, subtle gyro drift is normal, but jumping or frozen values indicate a stuck sensor or blocked OS permission.",
-    nextSteps: {
-      text: "Experiencing inverted tilt or no response? Review our mobile sensor permissions checklist.",
-      actionLabel: "Read Sensor Troubleshooting",
-      actionHref: "/knowledge-base/troubleshooting"
-    }
-  },
-
-  "vibration-test": {
-    overview: "The Vibration Test triggers your device's built-in haptic vibration motor via the HTML5 Vibration API (navigator.vibrate). It validates haptic response across single pulses, rhythmic patterns, and continuous vibration sequences.",
-    whatToLookFor: [
-      {
-        label: "Single Pulse Response",
-        description: "A 200ms or 500ms test pulse should produce an immediate, distinct mechanical buzzing sensation in the device body."
-      },
-      {
-        label: "Pattern Cadence & Pauses",
-        description: "During rhythmic patterns (e.g. SOS or heartbeat), verify that pauses between vibrations are clean without motor lag."
-      },
-      {
-        label: "Motor Strength Consistency",
-        description: "Ensure vibration feedback remains consistent and does not produce unexpected rattling, buzzing, or grinding sounds."
-      },
-      {
-        label: "Browser & OS Support",
-        description: "The Vibration API is supported on Android Chrome/Firefox, but intentionally restricted by Apple iOS Safari for security reasons."
-      }
-    ],
-    canObserve: [
-      "Direct execution of Vibration API commands (single pulses and array patterns) in milliseconds",
-      "Detection of navigator.vibrate browser capability and user-activation requirement",
-      "Interactive visual animation synchronized with haptic vibration sequences"
-    ],
-    cannotMeasure: [
-      "Physical haptic actuator frequency (Hz) or motor RPM",
-      "Mechanical acceleration force (G-force / milli-G) without an external accelerometer probe",
-      "Hardware ERM (eccentric rotating mass) vs LRA (linear resonant actuator) motor distinction"
-    ],
-    interpretation: "If vibration triggers on Android but remains silent, verify that system vibration is enabled in OS Sound & Haptics settings and that battery saver mode is disabled. On iOS, vibration cannot be triggered by web browsers.",
-    nextSteps: {
-      text: "Vibration motor silent despite tapping the test buttons? Check our vibration troubleshooting guide.",
-      actionLabel: "Read Vibration Troubleshooting",
-      actionHref: "/knowledge-base/troubleshooting"
-    }
-  },
-
-  "microphone-test": {
-    overview: "The Microphone Test captures live audio through your microphone using the WebRTC getUserMedia API and Web Audio API. It renders a real-time oscilloscope waveform, frequency spectrum, input volume meter, and loopback recording playback to inspect audio clarity.",
-    whatToLookFor: [
-      {
-        label: "Real-Time Input Level & Metering",
-        description: "Speaking into the microphone should raise the green VU meter smoothly. Normal speech should hover between 40% and 75%."
-      },
-      {
-        label: "Clipping & Distortion Detection",
-        description: "Loud sounds should not push the volume meter into the red distortion zone, which causes harsh digital clipping."
-      },
-      {
-        label: "Waveform & Spectrum Oscillation",
-        description: "Watch the oscilloscope waveform and frequency bar visualizer respond dynamically to your voice pitch and volume."
-      },
-      {
-        label: "Loopback Playback Clarity",
-        description: "Record a short 5-second test clip and play it back to listen for background hiss, static, echo, or robotic voice artifacts."
-      }
-    ],
-    canObserve: [
-      "Real-time audio waveform and frequency spectrum via Web Audio AnalyserNode",
-      "RMS volume level and peak decibel headroom calculated entirely locally in your browser",
-      "Local audio recording and loopback playback without uploading data to any external server"
-    ],
-    cannotMeasure: [
-      "Calibrated acoustic sound pressure level (dB SPL) without a laboratory reference microphone",
-      "Microphone capsule physical polar pattern (cardioid, omnidirectional, figure-8)",
-      "Hardware analog preamp noise floor (EIN) independent of digital audio processing"
-    ],
-    interpretation: "A healthy microphone produces crisp loopback playback with low background noise. Low volume indicates incorrect system input gain, while heavy static usually indicates a loose 3.5mm jack or driver sample rate mismatch.",
-    nextSteps: {
-      text: "Microphone not picking up sound or audio distorted? Review our microphone troubleshooting guide.",
-      actionLabel: "Read Microphone Troubleshooting",
-      actionHref: "/knowledge-base/troubleshooting#mic-not-working"
-    }
-  },
-  "pixel-inversion-test": {
-    "overview": "Pixel inversion (also known as VCOM balance or pixel walk) is the technique LCD panels use to prevent liquid crystal degradation. To avoid permanent electrolytic damage from constant DC voltage bias, panels invert the electrical polarity of subpixels every refresh frame (+V then -V). If the common electrode reference voltage (VCOM) is slightly off-balance, positive and negative polarities produce unequal brightness, causing subtle high-frequency flicker or crawling shimmer across fine patterns.",
+    "hdr-capability-test": {
+    "overview": "The HDR Hardware & Signal Detector audits whether your operating system window compositor, display driver, and browser pipeline are communicating high dynamic range signals. It probes CSS Media Queries Level 4 (dynamic-range: high), Wide Color Gamut (Rec.2020 / Display-P3), Canvas P3 color buffers, WebGL floating-point render targets, and hardware-accelerated 10-bit HDR video codecs.",
     "whatToLookFor": [
-      {
-        "label": "Shimmering or Crawling Patterns",
-        "description": "Observe the 1x1 dot, 2x2 check, and stripe patterns from your normal viewing distance. A well-calibrated VCOM will appear as calm, steady neutral gray with no visible vibration."
-      },
-      {
-        "label": "High-Frequency Flicker",
-        "description": "If the screen seems to vibrate or flicker rapidly at 30Hz or 60Hz when viewing dot inversion or subpixel grids, your panel's VCOM balance is asymmetric."
-      },
-      {
-        "label": "Subpixel Inversion Balance",
-        "description": "Check the RGB micro-mesh pattern. Mismatched subpixel inversion can produce subtle green/magenta color tint shifts across checkerboards."
-      },
-      {
-        "label": "Reading Jitter (Text-Phase)",
-        "description": "The text-phase grid simulates black text on white backgrounds. Inversion flaws here appear as slight edge vibrations around fine text."
-      }
+        {
+            "label": "Compositor HDR Signal State",
+            "description": "Confirms whether the operating system window compositor outputs an HDR signal to the browser. If inactive, HDR is disabled in Windows or macOS settings."
+        },
+        {
+            "label": "Buffer Bit-Depth & Pipeline",
+            "description": "Detects reported screen colorDepth (24-bit SDR vs 30-bit+ HDR) and checks whether HTML5 Canvas and WebGL2 can allocate float and P3 color buffers."
+        },
+        {
+            "label": "Wide Color Gamut (Rec.2020 & P3)",
+            "description": "Evaluates whether your monitor reports extended color volume beyond standard sRGB, unlocking vivid crimson reds and deep emerald greens."
+        },
+        {
+            "label": "HDR Video Codec Acceleration",
+            "description": "Probes hardware decoding support for HDR10 (HEVC Main 10), AV1 10-bit (YouTube HDR), and VP9 Profile 2."
+        }
     ],
     "canObserve": [
-      "Visual detection of VCOM asymmetry and polarity balancing errors",
-      "Identification of inversion architecture (dot inversion, column inversion, row inversion)",
-      "High-frequency pixel walk flicker across calibrated test grids"
+        "Real-time operating system compositor HDR output state",
+        "Hardware and browser support for Display-P3 and Rec.2020 color gamuts",
+        "Browser-accessible screen buffer color depth and floating-point buffer support",
+        "Hardware-accelerated 10-bit video codec playback capability"
     ],
     "cannotMeasure": [
-      "Exact millivolt hardware VCOM bias potentiometer setting",
-      "Direct liquid crystal physical response times or decay curves",
-      "Subpixel physical voltage waveforms without an oscilloscope"
+        "Physical panel peak luminance (nits) without a hardware colorimeter",
+        "VESA DisplayHDR certification compliance (e.g. DisplayHDR 400 vs 600 vs 1000)",
+        "Physical local dimming zone count on Mini-LED backlights"
     ],
-    "interpretation": "Slight pixel walk is normal on many high-refresh gaming panels due to fast overdrive tuning. Severe flicker indicates a factory calibration flaw or aging power circuitry.",
+    "interpretation": "If dynamic-range reports standard (inactive), press Win + Alt + B on Windows or enable HDR in System Settings on macOS. If 10-bit video codecs report software decoding, verify that Hardware Acceleration is turned ON in your browser.",
     "nextSteps": {
-      "text": "Notice excessive flicker? Inspect overall panel uniformity and refresh rate stability.",
-      "actionLabel": "Run Uniformity Test",
-      "actionHref": "/tests/uniformity-test"
+        "text": "Want to inspect physical highlight clipping, tone curves, and peak nits? Run our companion optical test.",
+        "actionLabel": "Launch HDR Visual Inspection",
+        "actionHref": "/tests/hdr-test"
     }
-  },
+},
+
+  "hdr-test": {
+    "overview": "The HDR Visual Calibration & Highlight Inspection test provides controlled optical patterns to evaluate how your display panel physically responds to HDR content. It tests specular highlight clipping points, tone-mapping roll-off, 10% APL peak luminance burst capability, PQ/EOTF tone curve ramps, and near-black shadow detail.",
+    "whatToLookFor": [
+        {
+            "label": "Specular Highlight Roll-Off & Clipping",
+            "description": "Inspect the 90% through 100% Peak White highlight swatches. Concentric circular reticle targets should remain distinguishable without blending into blown-out white."
+        },
+        {
+            "label": "10% APL Peak Luminance Burst",
+            "description": "A standard 10% window against a pitch-black background tests your display's peak nit headroom, local dimming aggressiveness, and halo blooming."
+        },
+        {
+            "label": "PQ / EOTF Tone Curve Gradation",
+            "description": "Compares smooth 10-bit gradients against 8-bit quantized ramps to expose banding artifacts and aggressive tone-mapping compression."
+        },
+        {
+            "label": "Near-Black Shadow Detail (Black Crush)",
+            "description": "Verifies whether low-luminance dark steps (0.5% through 5%) remain distinct from true 0% black without muddy elevated black floors."
+        }
+    ],
+    "canObserve": [
+        "Point of specular highlight clipping across stepped white luminance levels",
+        "Local dimming blooming and peak brightness headroom in the 10% APL window",
+        "Smoothness of 10-bit tonal transitions vs 8-bit quantization banding",
+        "Near-black shadow detail separation and black crush behavior"
+    ],
+    "cannotMeasure": [
+        "Exact photometric peak luminance in nits (cd/m²) without laboratory sensors",
+        "Color temperature (Kelvin) accuracy without a spectrophotometer",
+        "Panel response time or pixel overshoot"
+    ],
+    "interpretation": "Displays with poor HDR tone mapping will clip highlights prematurely above 94% or crush near-black shadow details into solid black. Premium OLED and Mini-LED panels maintain highlight reticles up to 99% and preserve subtle shadow steps.",
+    "nextSteps": {
+        "text": "Need to verify if your operating system compositor and video codecs support HDR? Check the hardware detector.",
+        "actionLabel": "Check HDR Hardware & Signal",
+        "actionHref": "/tests/hdr-capability-test"
+    }
+},
+
   "strobe-crosstalk-test": {
     "overview": "Backlight strobing (ULMB, DyAc, ELMB, LightBoost) eliminates eye-tracking motion blur by pulsing the backlight on only when liquid crystals have finished transitioning. However, because displays scan pixels from top to bottom while backlights flash globally across the entire screen, pixel transitions at the very top or bottom may be incomplete when the pulse fires. This timing mismatch creates duplicate phantom images known as strobe crosstalk.",
     "whatToLookFor": [
@@ -1166,5 +714,660 @@ export const EN_EXPLAINERS: Record<string, ExplainerData> = {
       "actionHref": "/tests/reaction-time-test"
     }
   }
+  ,
+  "battery-test": {
+    "overview": "The Battery Health & Power Status inspector reads battery metrics using the W3C Battery Status API. It provides real-time visibility into your device's battery charge level, charging state, estimated charging time, and discharging endurance.",
+    "whatToLookFor": [
+        {
+            "label": "Real-time Charge Level",
+            "description": "Monitors the current battery percentage reported by the operating system power subsystem."
+        },
+        {
+            "label": "AC Adapter Connection State",
+            "description": "Identifies whether your device is actively drawing AC wall power or running on internal DC battery reserves."
+        },
+        {
+            "label": "Charging & Discharging Time",
+            "description": "Calculates the estimated duration required to reach 100% capacity or time remaining until system depletion."
+        },
+        {
+            "label": "Discharge Slope History",
+            "description": "Tracks power drain across active screen workloads to identify heavy battery consumption."
+        }
+    ],
+    "canObserve": [
+        "Real-time battery percentage reported by OS power management",
+        "Charging vs discharging state transitions via levelchange and chargingchange events",
+        "Estimated seconds remaining until full charge or complete discharge",
+        "Historical charging level trends over the active session"
+    ],
+    "cannotMeasure": [
+        "Physical milliamp-hour (mAh) chemical capacity degradation without root diagnostic tools",
+        "Internal battery temperature, impedance, or cycle count",
+        "Battery health metrics on browsers that restrict Battery API for privacy (e.g. Firefox/Safari)"
+    ],
+    "interpretation": "If your browser reports battery metrics as unsupported, your browser vendor has restricted the API for fingerprinting mitigation. When supported, a rapid drop in percentage under light display testing indicates battery aging.",
+    "nextSteps": {
+        "text": "Want to check your system's network throughput and connection performance?",
+        "actionLabel": "Launch Network Speed Test",
+        "actionHref": "/tests/network-speed-test"
+    }
+},
+
+  "network-speed-test": {
+    "overview": "The Network Speed & Latency Test evaluates your internet connection's ping latency, jitter, connection type, and download throughput directly through your browser pipeline using timing APIs and the Network Information API.",
+    "whatToLookFor": [
+        {
+            "label": "Ping Latency (RTT)",
+            "description": "Measures round-trip time in milliseconds for packets traveling from your browser to the testing server."
+        },
+        {
+            "label": "Download Throughput (Mbps)",
+            "description": "Calculates maximum sustained bandwidth when streaming high-resolution payload packets."
+        },
+        {
+            "label": "Connection Profile & Type",
+            "description": "Detects reported effective connection type (4g, wifi, ethernet) and downlink ceiling."
+        },
+        {
+            "label": "Connection Stability & Jitter",
+            "description": "Observes variance between successive ping bursts to identify packet queueing or bufferbloat."
+        }
+    ],
+    "canObserve": [
+        "HTTP/HTTPS request-response round-trip round trip time (RTT) in milliseconds",
+        "Effective connection speed class via navigator.connection",
+        "Download throughput calculated via fetch stream bytes divided by transfer time",
+        "Data Saver flag status reported by user agent"
+    ],
+    "cannotMeasure": [
+        "Direct raw TCP socket synchronization without browser HTTP stack overhead",
+        "ISP physical line attenuation, SNR margins, or optical fiber power levels",
+        "Local Wi-Fi radio frequency channel interference"
+    ],
+    "interpretation": "Latencies under 30ms are ideal for competitive online gaming and cloud display streaming. Speeds above 50 Mbps ensure buffer-free 4K HDR streaming.",
+    "nextSteps": {
+        "text": "Test whether your display and graphics pipeline introduce click-to-photon latency.",
+        "actionLabel": "Launch Input Lag Test",
+        "actionHref": "/tests/input-lag-test"
+    }
+},
+
+  "color-blindness-test": {
+    "overview": "The Color Blindness Simulator applies mathematically calibrated SVG color-matrix filters to emulate 8 distinct types of Color Vision Deficiency (CVD). It enables developers and designers to evaluate UI readability, contrast ratios, and color-coded information accessibility.",
+    "whatToLookFor": [
+        {
+            "label": "Protanopia & Protanomaly (Red-Weak)",
+            "description": "L-cone deficiency makes pure reds appear dark brown or charcoal; red-green distinctions diminish."
+        },
+        {
+            "label": "Deuteranopia & Deuteranomaly (Green-Weak)",
+            "description": "M-cone deficiency blurs greens and reds into yellowish hues; the most prevalent form of CVD."
+        },
+        {
+            "label": "Tritanopia & Tritanomaly (Blue-Weak)",
+            "description": "S-cone deficiency makes blues appear greenish and yellows appear light violet or gray."
+        },
+        {
+            "label": "Achromatopsia (Total Monochromacy)",
+            "description": "Complete absence of functional cone photoreceptors, perceiving the display in pure shades of gray."
+        }
+    ],
+    "canObserve": [
+        "Real-time optical transformation of text, icons, charts, and swatches across 8 CVD matrices",
+        "Side-by-side comparison of normal trichromatic vision vs simulated color deficiency",
+        "Contrast degradation between key UI status indicators (success green vs error red)",
+        "Text legibility against background tones under each color vision variant"
+    ],
+    "cannotMeasure": [
+        "Clinical diagnosis of human user genetic color vision capability (e.g. Farnsworth-Munsell 100-Hue test)",
+        "Exact individual rod/cone retinal sensitivity variations",
+        "Physical display spectral emission peaks without a spectroradiometer"
+    ],
+    "interpretation": "If your critical UI indicators (such as error alerts, charts, or primary action buttons) become indistinguishable under Deuteranopia or Protanopia, supplement color cues with icons, bold typography, and distinct shape outlines to comply with WCAG 2.2 guidelines.",
+    "nextSteps": {
+        "text": "Inspect your monitor's physical color gamut coverage across sRGB and DCI-P3.",
+        "actionLabel": "Check Color Gamut",
+        "actionHref": "/tests/color-gamut-test"
+    }
+},
+
+  "screen-recorder": {
+    "overview": "The Screen Recorder & Screenshot utility utilizes the Screen Capture API and MediaRecorder API to record desktop screens, application windows, or browser tabs, and capture pixel-accurate PNG snapshots directly without software installation.",
+    "whatToLookFor": [
+        {
+            "label": "Display Stream Resolution",
+            "description": "Verifies whether the captured video track matches your monitor's native canvas pixel dimensions."
+        },
+        {
+            "label": "Capture Frame Rate",
+            "description": "Monitors frame rate smoothness and recording duration in real-time."
+        },
+        {
+            "label": "Audio Track Integration",
+            "description": "Captures optional system audio or tab audio alongside the display stream."
+        },
+        {
+            "label": "Lossless PNG Snapshot Quality",
+            "description": "Captures instant single-frame bitmap buffers rendered directly to a download-ready PNG image."
+        }
+    ],
+    "canObserve": [
+        "Stream track video dimensions, aspect ratio, and frame rate settings",
+        "Recording elapsed time, pause/resume states, and generated WebM video blob size",
+        "Instant freeze-frame rendering to an HTML5 Canvas for PNG export",
+        "Browser permission grants for display media capture"
+    ],
+    "cannotMeasure": [
+        "Hardware GPU encoding latency inside operating system video encoders",
+        "Capture of protected DRM media content (Netflix, Disney+, etc. which output black screens)",
+        "Physical monitor refresh synchronization without capture buffer scaling"
+    ],
+    "interpretation": "Screen recordings are generated locally in your browser memory and never uploaded to any remote server, preserving absolute privacy for sensitive application testing.",
+    "nextSteps": {
+        "text": "Want to test your webcam and front-facing camera resolution?",
+        "actionLabel": "Launch Webcam Test",
+        "actionHref": "/tests/webcam-test"
+    }
+},
+
+  "dark-mode-test": {
+    "overview": "The Dark Mode & Theme Compatibility inspector evaluates your system's prefers-color-scheme media query, CSS color-scheme rendering properties, theme-color meta headers, and component contrast ratios across dark and light palettes.",
+    "whatToLookFor": [
+        {
+            "label": "OS Preference Synchronization",
+            "description": "Tests whether your browser automatically detects dark or light mode toggles in Windows, macOS, Android, or iOS."
+        },
+        {
+            "label": "CSS color-scheme Support",
+            "description": "Inspects native browser scrollbars, form controls, and selection highlights in dark mode."
+        },
+        {
+            "label": "Component Contrast Legibility",
+            "description": "Evaluates contrast ratios for text, cards, buttons, and badges across both color modes."
+        },
+        {
+            "label": "Pure Black OLED Efficiency",
+            "description": "Assesses whether dark mode surfaces use true #000000 black to maximize battery savings on OLED panels."
+        }
+    ],
+    "canObserve": [
+        "Real-time status of window.matchMedia('(prefers-color-scheme: dark)')",
+        "Browser support for native CSS color-scheme property and system form controls",
+        "Interactive theme switching (System, Light, Dark) for instant visual comparison",
+        "Contrast and legibility of typography across light and dark surface tokens"
+    ],
+    "cannotMeasure": [
+        "Hardware OLED subpixel milliamp power savings without physical measurement",
+        "Ambient room light adaptation without an active ambient light sensor",
+        "Night Light or f.lux blue-light reduction color shifts"
+    ],
+    "interpretation": "Modern displays with OLED or Mini-LED backlights save substantial power when rendering true dark backgrounds, while reducing blue-light exposure in dim ambient environments.",
+    "nextSteps": {
+        "text": "Evaluate your display brightness in relation to room lighting conditions.",
+        "actionLabel": "Launch Ambient Light Test",
+        "actionHref": "/tests/ambient-light-test"
+    }
+},
+
+  "input-lag-test": {
+    "overview": "The Input Lag Visualizer provides a statistical 10-trial reaction and pipeline latency benchmark. It measures the delta between a randomized visual stimulus and the registration of your mouse click or keyboard actuation, graphing average, standard deviation, and a response distribution histogram.",
+    "whatToLookFor": [
+        {
+            "label": "Visual Stimulus Reaction Time",
+            "description": "Measures elapsed milliseconds from the exact frame of color shift to your pointer click."
+        },
+        {
+            "label": "Statistical Consistency (Std Dev)",
+            "description": "Low standard deviation (< 25ms) indicates consistent perceptual and hardware pipeline timing."
+        },
+        {
+            "label": "Outlier Spikes & False Starts",
+            "description": "Detects preemptive clicks made before the green visual trigger appears."
+        },
+        {
+            "label": "Distribution Histogram",
+            "description": "Visualizes latency clustering to distinguish biological reaction from system queuing delays."
+        }
+    ],
+    "canObserve": [
+        "High-resolution millisecond timestamps via performance.now() from stimulus render to event dispatch",
+        "Statistical metrics: Average, Best (fastest), Worst (slowest), and Standard Deviation across 10 trials",
+        "Real-time visual state machine preventing false clicks",
+        "Response time histogram mapping latency buckets"
+    ],
+    "cannotMeasure": [
+        "Isolated optical photodiode click-to-photon latency without external hardware probes (e.g., LDAT)",
+        "Internal USB polling micro-intervals separate from OS interrupt scheduling",
+        "Physical monitor overdrive response time"
+    ],
+    "interpretation": "A combined human reaction plus display pipeline score of 180ms to 240ms is typical for high-refresh gaming setups. Scores above 300ms suggest display post-processing lag (Game Mode disabled) or higher input latency.",
+    "nextSteps": {
+        "text": "Check your display's actual hardware refresh rate and frame delivery pacing.",
+        "actionLabel": "Launch Refresh Rate Test",
+        "actionHref": "/tests/refresh-rate-test"
+    }
+},
+
+  "ambient-light-test": {
+    "overview": "The Ambient Light Sensor Inspector reads illuminance levels in lux (lx) using the AmbientLightSensor API. It evaluates room lighting conditions, provides ergonomic display brightness recommendations, and graphs light fluctuations over time.",
+    "whatToLookFor": [
+        {
+            "label": "Real-time Lux Illuminance",
+            "description": "Monitors ambient light intensity in lux captured by integrated device photodetectors."
+        },
+        {
+            "label": "Ergonomic Brightness Advice",
+            "description": "Recommends optimal monitor nit / brightness slider levels for your current room conditions."
+        },
+        {
+            "label": "Glare Risk Warning",
+            "description": "Identifies whether intense ambient lighting (> 1000 lx) requires anti-glare shading or peak brightness."
+        },
+        {
+            "label": "Ambient Lighting Stability",
+            "description": "Tracks room lighting changes over time to identify flickering bulbs or shifting daylight."
+        }
+    ],
+    "canObserve": [
+        "Real-time ambient illuminance values in lux from hardware photodetectors",
+        "Lighting zone categorization (Pitch Dark, Dim Room, Office, Bright Indoors, Daylight)",
+        "Recommended display brightness percentage based on ISO ergonomics guidelines",
+        "Historical light level chart over the active session"
+    ],
+    "cannotMeasure": [
+        "Ambient light readings on browsers or operating systems lacking Generic Sensor API support",
+        "Color temperature (Kelvin) or CRI rating of room lighting without an RGB ambient sensor",
+        "Directional glare vector angles hitting the panel surface"
+    ],
+    "interpretation": "For comfortable reading without eye strain, an office environment should range between 300 lx and 500 lx with display brightness set to approximately 120-150 nits. Values below 50 lx require lowering display brightness to minimize fatigue.",
+    "nextSteps": {
+        "text": "Calibrate your screen's brightness and black-level threshold.",
+        "actionLabel": "Launch Brightness Test",
+        "actionHref": "/tests/brightness-test"
+    }
+},
+
+  "dpi-calculator": {
+    "overview": "The DPI & PPI Calculator computes pixel density, subpixel pitch, total megapixels, and Apple-defined Retina visual threshold distances based on physical screen diagonal and pixel resolution specifications.",
+    "whatToLookFor": [
+        {
+            "label": "Pixels Per Inch (PPI)",
+            "description": "Measures spatial pixel density across the diagonal of your display panel."
+        },
+        {
+            "label": "Dot Pitch (Pixel Spacing)",
+            "description": "Calculates the physical distance between adjacent subpixel centers in millimeters."
+        },
+        {
+            "label": "Retina Viewing Distance",
+            "description": "Determines the exact distance where human 20/20 visual acuity can no longer distinguish individual pixels (60 PPD)."
+        },
+        {
+            "label": "Aspect Ratio & Megapixels",
+            "description": "Calculates panel surface area, aspect ratio proportions, and total million pixels rendered."
+        }
+    ],
+    "canObserve": [
+        "Calculated PPI, dot pitch in millimeters, and total megapixel count",
+        "Optimal ergonomic and Retina visual threshold viewing distances in inches and centimeters",
+        "Instant preset selection for standard monitors (24\" 1080p, 27\" 1440p, 32\" 4K, 16\" MacBook Pro)",
+        "Interactive resolution and diagonal slider inputs"
+    ],
+    "cannotMeasure": [
+        "Physical tape measurement of your monitor's outer plastic bezel without user input",
+        "Optical subpixel rendering sharpness affected by matte anti-glare coatings",
+        "Non-standard aspect ratio anamorphic distortion without exact dimensions"
+    ],
+    "interpretation": "A pixel density above 110 PPI provides comfortable desktop text clarity without aggressive scaling, while densities exceeding 220 PPI achieve true Retina clarity at typical desk distances (50–60 cm).",
+    "nextSteps": {
+        "text": "Verify font sharpness and subpixel rendering across different text sizes.",
+        "actionLabel": "Launch Text Clarity Test",
+        "actionHref": "/tests/text-clarity-test"
+    }
+},
+
+  "subpixel-layout-test": {
+    "overview": "Subpixel layout testing analyzes the microscopic physical geometry of red, green, and blue emitter strips within each pixel. Variations between standard RGB, inverted BGR, triangular QD-OLED, and WOLED layouts directly determine whether operating system text antialiasing (such as Windows ClearType) appears crisp or suffers from magenta/green color halos.",
+    "whatToLookFor": [
+        {
+            "label": "Subpixel Geometry Structure",
+            "description": "Identifies whether your panel uses standard RGB vertical stripes, BGR stripes, or non-standard triangular subpixels."
+        },
+        {
+            "label": "High-Contrast Text Fringing",
+            "description": "Inspects black-on-white and white-on-black text for colored halos (green on top, magenta below)."
+        },
+        {
+            "label": "1px Grid Alignment",
+            "description": "Verifies whether 1-pixel alternating lines render as completely neutral grey without color artifacts."
+        },
+        {
+            "label": "ClearType Antialiasing Calibration",
+            "description": "Evaluates whether running Windows cttune or font smoothing eliminates edge discoloration."
+        }
+    ],
+    "canObserve": [
+        "Color fringing artifacts rendered across high-contrast serif, sans-serif, and monospace fonts",
+        "Subpixel alignment against calibrated 1-pixel alternating vertical and horizontal line gratings",
+        "Visual simulation of subpixel emission structures across 6 major panel architectures"
+    ],
+    "cannotMeasure": [
+        "Physical microscope optical verification of sub-millimeter silicon emitter geometry",
+        "Direct registry settings of the host operating system's font rasterizer",
+        "Hardware scaler subpixel interpolation inside external video capture cards"
+    ],
+    "interpretation": "If text shows faint green or magenta borders on a 1440p or 4K screen, your display likely features a BGR or QD-OLED subpixel layout. Running the Windows ClearType Tuner or switching to grayscale antialiasing will resolve the fringing.",
+    "nextSteps": {
+        "text": "Want to inspect overall display sharpness and resolution scaling?",
+        "actionLabel": "Launch Text Clarity Test",
+        "actionHref": "/tests/text-clarity-test"
+    }
+},
+
+  "pwm-flicker-test": {
+    "overview": "Pulse-Width Modulation (PWM) is a dimming technique used by certain LCD backlights and OLED panels that rapidly strobes the light source on and off to achieve lower brightness. While invisible to the naked eye at high frequencies, low-frequency PWM (120Hz–480Hz) causes severe eye strain, dry eyes, headaches, and migraines.",
+    "whatToLookFor": [
+        {
+            "label": "Stroboscopic Phantom Beads",
+            "description": "Moving your eyes or waving an object in front of the screen breaks moving lines into distinct phantom beads if PWM is present."
+        },
+        {
+            "label": "Smartphone Shutter Scanlines",
+            "description": "Using a phone camera at 1/1000s or faster reveals dark scrolling horizontal bands caused by duty-cycle modulation."
+        },
+        {
+            "label": "Flicker-Free Brightness Threshold",
+            "description": "Identifies at what monitor OSD brightness percentage the display switches from DC dimming to PWM."
+        },
+        {
+            "label": "Duty Cycle Luminescence",
+            "description": "Measures the optical ratio between ON duration and OFF duration during each dimming cycle."
+        }
+    ],
+    "canObserve": [
+        "Visual stroboscopic interference patterns generated by high-velocity scrolling gratings",
+        "Optical interaction between user saccadic eye movements and panel refresh cycles",
+        "Guidelines for smartphone camera verification of PWM frequency"
+    ],
+    "cannotMeasure": [
+        "Exact physical pulse frequency in Hertz without an external photodiode oscilloscope probe",
+        "Harmonic distortion index of the LED driver circuit",
+        "Micro-voltage ripple on the backlight power rail"
+    ],
+    "interpretation": "Displays certified as 'Flicker-Free' or 'TÜV Eye Comfort' utilize continuous Direct Current (DC) dimming down to 0% brightness. If you see beaded ghosting trails, your panel uses PWM dimming at low brightness settings.",
+    "nextSteps": {
+        "text": "Want to test for high-frequency VRR luminance fluctuations?",
+        "actionLabel": "Launch VRR Flicker Test",
+        "actionHref": "/tests/vrr-flicker-test"
+    }
+},
+
+  "dead-pixel-mapper": {
+    "overview": "The Dead Pixel RMA Coordinate Mapper is an interactive inspection tool designed for documenting defective panel pixels. It allows buyers to pinpoint defective pixel coordinates, classify defects by type, calculate ISO 9241-307 warranty eligibility, and export formal RMA inspection logs for manufacturer replacement claims.",
+    "whatToLookFor": [
+        {
+            "label": "Dead (Dark) Pixels",
+            "description": "Permanently unpowered subpixel triads that remain pitch black against white, cyan, and yellow screens."
+        },
+        {
+            "label": "Stuck (Bright) Subpixels",
+            "description": "Subpixels locked in an open state, glowing red, green, blue, or white against pure black backgrounds."
+        },
+        {
+            "label": "Defect Coordinates (X, Y)",
+            "description": "Precise pixel address from the top-left origin to prove defect location to service technicians."
+        },
+        {
+            "label": "ISO 9241-307 Class Thresholds",
+            "description": "Automatic comparison against Class 1 (Zero-Defect) and Class 2 (Consumer Allowance) replacement limits."
+        }
+    ],
+    "canObserve": [
+        "Exact screen coordinates (X, Y) of logged defective points across 9 solid test backgrounds",
+        "Calculation of central zone vs. peripheral zone defect clustering",
+        "ISO 9241-307 Class 1 and Class 2 warranty return compliance"
+    ],
+    "cannotMeasure": [
+        "Automatic algorithmic defect detection without manual user visual inspection",
+        "Sub-surface glass dust vs. true TFT transistor failure without optical magnification",
+        "Internal electrical continuity of the panel driver IC"
+    ],
+    "interpretation": "Most major monitor manufacturers (Dell, LG, ASUS, Samsung) adhere to ISO 9241-307 Class 2, which allows up to 2 full dead pixels or 5 stuck subpixels per million. Premium gaming and professional displays often feature Zero Bright Dot (Class 1) coverage.",
+    "nextSteps": {
+        "text": "Have stuck subpixels that remain lit? Try reviving them with our high-speed exerciser.",
+        "actionLabel": "Launch Stuck Pixel Fixer",
+        "actionHref": "/tests/stuck-pixel-fixer"
+    }
+},
+
+  "gtg-response-time-test": {
+    "overview": "Grey-to-Grey (GtG) response time measures the time required for a liquid crystal pixel to transition from one arbitrary intermediate grey level to another. While manufacturers advertise 1ms or 0.5ms GtG, real-world transitions vary significantly, and aggressive overdrive settings often cause severe inverse ghosting (overshoot).",
+    "whatToLookFor": [
+        {
+            "label": "VA Panel Black Smearing",
+            "description": "Inspects transitions from 0% pure black to 20% dark grey, where VA liquid crystals are slowest."
+        },
+        {
+            "label": "Overdrive Overshoot (Coronas)",
+            "description": "Checks for bright white or dark inverted halos trailing moving objects caused by excessive overdrive voltage."
+        },
+        {
+            "label": "Leading vs Trailing Blur",
+            "description": "Compares rise time (dark to light) against fall time (light to dark) across high-speed moving targets."
+        },
+        {
+            "label": "Overdrive Mode Balancing",
+            "description": "Guides selection of the optimal OSD overdrive tier (Off, Normal, Fast, Extreme)."
+        }
+    ],
+    "canObserve": [
+        "Visual ghosting trails across customizable start and end grey luminance values",
+        "Simulation of overdrive corona overshoot across standard liquid crystal overdrive tiers",
+        "Edge sharpness and clarity of moving objects across calibrated velocity levels"
+    ],
+    "cannotMeasure": [
+        "Sub-millisecond photodiode oscilloscope transition curves (10% to 90% rise time)",
+        "Internal overdrive voltage table lookup values inside the monitor scaler ASIC",
+        "Temperature-dependent liquid crystal viscosity changes"
+    ],
+    "interpretation": "If moving objects show a bright halo or inverse silhouette, your monitor's OSD Overdrive is set too high ('Extreme'). Dialing back to 'Fast' or 'Normal' will deliver cleaner motion clarity without corona artifacts.",
+    "nextSteps": {
+        "text": "Want to benchmark moving UFO sharpness and persistence blur?",
+        "actionLabel": "Launch Ghosting Test",
+        "actionHref": "/tests/ghosting-test"
+    }
+},
+
+  "oled-burn-in-calculator": {
+    "overview": "The OLED Burn-in Risk & Longevity Calculator models organic light-emitting diode subpixel degradation based on panel technology generation, daily operating hours, static interface content ratios, and typical SDR/HDR luminance levels. It provides an actuarial forecast of panel lifespan and static HUD hazard hotspots.",
+    "whatToLookFor": [
+        {
+            "label": "Panel Generation Resilience",
+            "description": "Accounts for differences between first-gen QD-OLED, modern Gen 3 QD-OLED, and WOLED MLA micro-lens arrays."
+        },
+        {
+            "label": "Static Content Ratio",
+            "description": "Calculates cumulative static stress from Windows taskbars, browser headers, and gaming HUDs."
+        },
+        {
+            "label": "Luminance Stress Multiplier",
+            "description": "Models the exponential acceleration of organic material aging at high sustained nits."
+        },
+        {
+            "label": "Mitigation Habits Impact",
+            "description": "Evaluates the protective value of pixel shift, auto-hide taskbar, logo dimmers, and screen timeouts."
+        }
+    ],
+    "canObserve": [
+        "Actuarial estimation of cumulative static hours before uneven subpixel aging occurs",
+        "Projected burn-in probability percentages across 1-year, 3-year, and 5-year ownership horizons",
+        "Hazard heatmap visualization of high-risk static interface regions"
+    ],
+    "cannotMeasure": [
+        "Real-time physical subpixel voltage degradation on your specific physical panel",
+        "Ambient room operating temperature and chassis heatsink thermal dissipation efficiency",
+        "Internal factory compensation cycle log data stored in panel EEPROM"
+    ],
+    "interpretation": "Modern OLED monitors with active pixel shift, thermal heatsinks, and auto-hide taskbars typically achieve 5+ years of daily mixed productivity and gaming without visible retention. High sustained SDR brightness on static white backgrounds accelerates aging.",
+    "nextSteps": {
+        "text": "Want to inspect your current panel for existing static image retention?",
+        "actionLabel": "Launch Burn-In Test",
+        "actionHref": "/tests/burn-in-test"
+    }
+},
+
+  "mouse-polling-test": {
+    "overview": "The Mouse Polling Rate & Sensor Precision test captures USB hardware event timestamps via high-precision browser timers. It measures real-time and peak polling frequency in Hertz (up to 8000Hz), checks packet interval stability (jitter), tests button actuation, and diagnoses mechanical switch double-click bouncing.",
+    "whatToLookFor": [
+        {
+            "label": "Real-Time Polling Rate (Hz)",
+            "description": "Measures actual USB event report frequency (125Hz, 500Hz, 1000Hz, 4000Hz, 8000Hz)."
+        },
+        {
+            "label": "Interval Jitter & Stability",
+            "description": "Checks consistency of delta times between movement packets (e.g. 1.0ms for 1000Hz, 0.25ms for 4000Hz)."
+        },
+        {
+            "label": "Mechanical Double-Click Chatter",
+            "description": "Detects switch bounce intervals under 60ms indicating worn mechanical microswitches."
+        },
+        {
+            "label": "DPI Sensor Calibration",
+            "description": "Verifies physical drag distance in inches against registered screen pixel movement."
+        }
+    ],
+    "canObserve": [
+        "USB mouse movement event frequency reported via performance.now() high-resolution timestamps",
+        "Peak, average, and real-time polling rates across continuous motion sessions",
+        "Multi-button click actuation counts and millisecond inter-click intervals"
+    ],
+    "cannotMeasure": [
+        "Hardware USB bus polling rate when the mouse is stationary (optical sensors only report on movement)",
+        "Sensor lift-off distance (LOD) in physical millimeters",
+        "Direct MCU firmware polling rate when browser event loops are throttled by heavy background tasks"
+    ],
+    "interpretation": "A gaming mouse set to 1000Hz should sustain 950Hz–1000Hz during rapid movement with ~1.0ms interval deltas. If click intervals under 50ms register from single physical depressions, your mouse switch suffers from contact chatter.",
+    "nextSteps": {
+        "text": "Want to test your visual reaction speed and click latency?",
+        "actionLabel": "Launch Reaction Time Test",
+        "actionHref": "/tests/reaction-time-test"
+    }
+},
+
+  "gpu-benchmark-test": {
+    "overview": "The GPU WebGL 3D Stress & Performance Benchmark renders complex real-time 3D particle systems and rotating geometries directly in your browser. It measures sustained frame rate, 1% low FPS, frame time variance, and hardware capabilities to identify GPU bottlenecks and thermal throttling under load.",
+    "whatToLookFor": [
+        {
+            "label": "Sustained FPS vs Display Hz",
+            "description": "Evaluates whether your GPU can consistently match your monitor's native refresh rate."
+        },
+        {
+            "label": "1% Low FPS Stutter",
+            "description": "Tracks the bottom 1% of frame times to detect micro-stutters and background asset hitches."
+        },
+        {
+            "label": "Frame Time Variance (ms)",
+            "description": "Monitors frame pacing consistency (16.6ms for 60Hz, 6.9ms for 144Hz, 4.1ms for 240Hz)."
+        },
+        {
+            "label": "Thermal Throttling Drop",
+            "description": "Identifies whether frame rates degrade over the course of a 30-second sustained benchmark."
+        }
+    ],
+    "canObserve": [
+        "Client-side WebGL 3D rendering throughput across 10,000 to 200,000 active particles",
+        "Real-time frame rate, average FPS, 1% low frame rates, and millisecond frame pacing",
+        "Detected WebGL graphics renderer string, GPU vendor, and maximum texture dimensions"
+    ],
+    "cannotMeasure": [
+        "Physical GPU core temperature (°C) or fan RPM without native operating system telemetry utilities",
+        "GPU board power draw in Watts (TDP)",
+        "VRAM memory clock frequency or memory junction temperatures"
+    ],
+    "interpretation": "High average FPS with low 1% low FPS indicates frame pacing stutter or background CPU thread contention. Smooth frame pacing ensures responsive, tear-free motion on high-refresh gaming displays.",
+    "nextSteps": {
+        "text": "Want to inspect your monitor's real-time refresh rate pacing?",
+        "actionLabel": "Launch Refresh Rate Test",
+        "actionHref": "/tests/refresh-rate-test"
+    }
+},
+
+  "display-certificate": {
+    "overview": "The Display Inspection Certificate is a formal quality documentation tool. It aggregates automatically detected hardware parameters (native resolution, color depth, wide gamut, pixel density) with manual visual inspection ratings to generate a printable, certified inspection report for resale grading or manufacturer RMA warranty claims.",
+    "whatToLookFor": [
+        {
+            "label": "Hardware Specification Log",
+            "description": "Certifies native panel resolution, color bit-depth, device pixel ratio, and wide color gamut support."
+        },
+        {
+            "label": "Defect Audit Summary",
+            "description": "Records exact counts of dead pixels, stuck subpixels, and backlight bleed severity."
+        },
+        {
+            "label": "ISO 9241-307 Compliance",
+            "description": "Documents whether the panel meets Class 1 (Zero Bright Dot) or Class 2 consumer replacement criteria."
+        },
+        {
+            "label": "Print-Ready Verification Layout",
+            "description": "Formats all data into a clean, watermark-certified certificate optimized for PDF export and printing."
+        }
+    ],
+    "canObserve": [
+        "Compilation of system-reported display parameters and user-verified quality grades",
+        "Generation of unique cryptographic verification IDs and inspection timestamps",
+        "Print-optimized document layout hiding navigation and interactive UI controls"
+    ],
+    "cannotMeasure": [
+        "Automated physical panel serial number readout from internal EDID firmware (requires manual entry)",
+        "Legal underwriting of manufacturer warranty claims outside official manufacturer service centers",
+        "Spectroradiometer color accuracy Delta E verification without external hardware colorimeters"
+    ],
+    "interpretation": "Display inspection certificates provide trusted documentation when buying or selling used monitors or submitting RMA return claims during manufacturer return windows.",
+    "nextSteps": {
+        "text": "Need to pinpoint defective pixel coordinates before generating your certificate?",
+        "actionLabel": "Launch Dead Pixel Mapper",
+        "actionHref": "/tools/dead-pixel-mapper"
+    }
+},
+
+  "osd-calibration-guide": {
+    "overview": "The Interactive OSD Monitor Calibration Assistant is a visual guide for calibrating your display's physical On-Screen Display (OSD) hardware buttons. It walks users through 6 essential steps—Brightness, Contrast, Gamma 2.2, 6500K Color Temperature, Sharpness, and Overdrive—without requiring expensive hardware colorimeters.",
+    "whatToLookFor": [
+        {
+            "label": "Brightness (Black Clipping)",
+            "description": "Tunes OSD Brightness so patch #16 is faintly visible while patch #0 remains inky black."
+        },
+        {
+            "label": "Contrast (White Saturation)",
+            "description": "Adjusts OSD Contrast so near-white patch #253 remains distinguishable from pure white #255."
+        },
+        {
+            "label": "Gamma 2.2 Optical Blend",
+            "description": "Aligns midtone luminance using an optical pattern where the center disc blends at 2.2."
+        },
+        {
+            "label": "Color Temperature (6500K D65)",
+            "description": "Balances Red, Green, and Blue gain sliders to achieve clean, neutral white and grey tones."
+        }
+    ],
+    "canObserve": [
+        "Visual feedback targets designed specifically for standard monitor OSD adjustment ranges",
+        "Optical blend checkerboards verifying sRGB Gamma 2.2 alignment without calibration probes",
+        "High-contrast text and moving block targets for tuning sharpness and overdrive tiers"
+    ],
+    "cannotMeasure": [
+        "Direct software control over physical monitor OSD buttons via DDC/CI protocol",
+        "Exact color temperature in Kelvin without a spectrophotometer or colorimeter hardware probe",
+        "Hardware LUT (Look-Up Table) internal calibration inside professional color-grading monitors"
+    ],
+    "interpretation": "Factory default monitor settings are almost always oversaturated, overly bright (100%), and too cool (8000K+). Following this 6-step OSD tuning guide brings your display significantly closer to international sRGB/Rec.709 mastering standards.",
+    "nextSteps": {
+        "text": "Want to verify color gamut coverage and ColorChecker accuracy?",
+        "actionLabel": "Launch Color Accuracy Test",
+        "actionHref": "/tests/color-accuracy-test"
+    }
+},
+
 };
 

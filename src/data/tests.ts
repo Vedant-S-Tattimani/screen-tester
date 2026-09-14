@@ -228,9 +228,10 @@ export const monitorTests: MonitorTest[] = [
   {
     id: "hdr-capability-test",
     category: "capabilities",
-    primaryIntent: "hdr test",
-    relatedTestIds: ["color-gamut-test", "resolution-checker"]
+    primaryIntent: "hdr hardware and signal detector",
+    relatedTestIds: ["hdr-test", "color-gamut-test", "resolution-checker"]
   },
+
   {
     id: "touch-screen-test",
     category: "capabilities",
@@ -260,12 +261,6 @@ export const monitorTests: MonitorTest[] = [
     category: "capabilities",
     primaryIntent: "custom test pattern generator",
     relatedTestIds: ["sharpness-test", "uniformity-test", "compare-displays"]
-  },
-  {
-    id: "reaction-time-test",
-    category: "capabilities",
-    primaryIntent: "human reaction time test",
-    relatedTestIds: ["refresh-rate-test"]
   },
 
   // DEVICE & INPUT
@@ -352,6 +347,108 @@ export const monitorTests: MonitorTest[] = [
     category: "deviceInput",
     primaryIntent: "gamepad controller stick drift deadzone and button tester",
     relatedTestIds: ["reaction-time-test", "touch-screen-test"]
+  },
+  {
+    id: "battery-test",
+    category: "deviceInput",
+    primaryIntent: "battery health power info status test",
+    relatedTestIds: ["display-info", "network-speed-test"]
+  },
+  {
+    id: "network-speed-test",
+    category: "deviceInput",
+    primaryIntent: "network speed internet latency ping test",
+    relatedTestIds: ["battery-test", "display-info"]
+  },
+  {
+    id: "color-blindness-test",
+    category: "color",
+    primaryIntent: "color blindness color vision deficiency simulator",
+    relatedTestIds: ["color-test", "color-accuracy-test", "color-gamut-test"]
+  },
+  {
+    id: "screen-recorder",
+    category: "capabilities",
+    primaryIntent: "screen recorder screenshot capture tool",
+    relatedTestIds: ["display-info", "webcam-test"]
+  },
+  {
+    id: "dark-mode-test",
+    category: "advanced",
+    primaryIntent: "dark mode light mode theme detection test",
+    relatedTestIds: ["display-info", "color-test", "brightness-test"]
+  },
+  {
+    id: "input-lag-test",
+    category: "motion",
+    primaryIntent: "input lag click to photon visual latency test",
+    relatedTestIds: ["reaction-time-test", "refresh-rate-test", "ghosting-test"]
+  },
+  {
+    id: "ambient-light-test",
+    category: "deviceInput",
+    primaryIntent: "ambient light sensor lux brightness environment test",
+    relatedTestIds: ["brightness-test", "display-info", "battery-test"]
+  },
+  {
+    id: "dpi-calculator",
+    category: "capabilities",
+    primaryIntent: "dpi ppi pixel density calculator retina threshold",
+    relatedTestIds: ["resolution-checker", "display-info", "viewing-distance-calculator"]
+  },
+  {
+    id: "subpixel-layout-test",
+    category: "capabilities",
+    primaryIntent: "subpixel layout text fringing qd-oled woled bgr test",
+    relatedTestIds: ["text-clarity-test", "sharpness-test"]
+  },
+  {
+    id: "pwm-flicker-test",
+    category: "motion",
+    primaryIntent: "pwm flicker backlight eye strain test",
+    relatedTestIds: ["screen-flicker-test", "vrr-flicker-test"]
+  },
+  {
+    id: "dead-pixel-mapper",
+    category: "capabilities",
+    primaryIntent: "dead pixel rma coordinate mapper warranty test",
+    relatedTestIds: ["dead-pixel-test", "stuck-pixel-fixer"]
+  },
+  {
+    id: "gtg-response-time-test",
+    category: "motion",
+    primaryIntent: "gtg grey to grey pixel response time overdrive test",
+    relatedTestIds: ["ghosting-test", "motion-blur-test"]
+  },
+  {
+    id: "oled-burn-in-calculator",
+    category: "capabilities",
+    primaryIntent: "oled burn in risk panel longevity calculator",
+    relatedTestIds: ["burn-in-test", "display-info"]
+  },
+  {
+    id: "mouse-polling-test",
+    category: "deviceInput",
+    primaryIntent: "mouse polling rate hz jitter precision test",
+    relatedTestIds: ["gamepad-test", "reaction-time-test"]
+  },
+  {
+    id: "gpu-benchmark-test",
+    category: "capabilities",
+    primaryIntent: "gpu benchmark webgl 3d stress performance test",
+    relatedTestIds: ["display-info", "refresh-rate-test"]
+  },
+  {
+    id: "display-certificate",
+    category: "capabilities",
+    primaryIntent: "display inspection certificate rma report generator",
+    relatedTestIds: ["display-info", "dead-pixel-mapper"]
+  },
+  {
+    id: "osd-calibration-guide",
+    category: "capabilities",
+    primaryIntent: "osd monitor calibration hardware buttons guide",
+    relatedTestIds: ["brightness-test", "contrast-test", "gamma-test"]
   }
 ];
 
@@ -423,6 +520,24 @@ export const TEST_KEY_MAP: Record<string, { ns: "lib" | "tests" | "tools", key: 
   "vrr-flicker-test": { ns: "tests", key: "vrrFlickerTest" },
   "pursuit-camera-test": { ns: "tests", key: "pursuitCameraTest" },
   "audio-sync-test": { ns: "tests", key: "audioSyncTest" },
-  "gamepad-test": { ns: "tests", key: "gamepadTest" }
+  "gamepad-test": { ns: "tests", key: "gamepadTest" },
+  "battery-test": { ns: "tests", key: "batteryTest" },
+  "network-speed-test": { ns: "tests", key: "networkSpeedTest" },
+  "color-blindness-test": { ns: "tests", key: "colorBlindnessTest" },
+  "screen-recorder": { ns: "tests", key: "screenRecorder" },
+  "dark-mode-test": { ns: "tests", key: "darkModeTest" },
+  "input-lag-test": { ns: "tests", key: "inputLagTest" },
+  "ambient-light-test": { ns: "tests", key: "ambientLightTest" },
+  "dpi-calculator": { ns: "tests", key: "dpiCalculator" },
+  "subpixel-layout-test": { ns: "tests", key: "subpixelLayoutTest" },
+  "pwm-flicker-test": { ns: "tests", key: "pwmFlickerTest" },
+  "dead-pixel-mapper": { ns: "tools", key: "deadPixelMapper" },
+  "gtg-response-time-test": { ns: "tests", key: "gtgResponseTimeTest" },
+  "oled-burn-in-calculator": { ns: "tools", key: "oledBurnInCalculator" },
+  "mouse-polling-test": { ns: "tests", key: "mousePollingTest" },
+  "gpu-benchmark-test": { ns: "tests", key: "gpuBenchmarkTest" },
+  "display-certificate": { ns: "tools", key: "displayCertificate" },
+  "osd-calibration-guide": { ns: "tools", key: "osdCalibrationGuide" }
 };
+
 

@@ -225,7 +225,8 @@
       "uniformityPanel": "화면 균일도 및 백라이트 테스트",
       "motionPerformance": "모션 및 주사율 테스트",
       "sharpnessCapabilities": "선명도 및 디스플레이 기능 테스트",
-      "deviceInput": "기기 및 입력"
+      "deviceInput": "기기 및 입력",
+      "utilitiesTools": "유틸리티 및 도구"
     },
     "allTestsNoResults": "검색 결과가 없습니다:",
     "moreFreeTestingToolsTitle": "추가 무료 테스트 도구",
@@ -335,8 +336,8 @@
         "description": "모니터의 감마 추종 상태를 시각적으로 평가합니다(sRGB 기준 목표 2.2)."
       },
       "hdrCapabilityTest": {
-        "title": "HDR 기능",
-        "description": "브라우저와 OS가 HDR 및 와이드 컬러 게멋을 올바르게 감지하는지 확인합니다."
+        "title": "HDR 신호 및 하드웨어 감지기",
+        "description": "OS HDR 컴포지팅, 10비트 버퍼 심도, BT.2020 / DCI-P3 광색역, Canvas P3 및 HDR10 비디오 재생 코덱을 진단합니다."
       },
       "contrastTest": {
         "title": "명암비 보정",
@@ -349,7 +350,8 @@
     },
     "searchPlaceholder": "테스트 검색...",
     "subtitle": "디스플레이 진단 툴 전체 라이브러리를 둘러보세요. 모든 테스트는 브라우저에서 로컬로 안전하게 실행됩니다.",
-    "relatedTitle": "관련 테스트"
+    "relatedTitle": "관련 테스트",
+    "noResults": "\"{query}\"와 일치하는 테스트를 찾을 수 없습니다"
   },
   "TestWrapper": {
     "howToTest": "테스트 방법",
@@ -621,13 +623,13 @@
       "inst3": "다양한 패널 오버드라이브 시나리오에서 테스트하려면 속도와 대비를 조정하세요."
     },
     "hdr-capability-test": {
-      "metaTitle": "HDR 지원 및 시각 점검",
-      "metaDescription": "브라우저가 보고하는 HDR 미디어 쿼리 지원(dynamic-range: high)을 점검합니다. nits 단위의 실제 최대 밝기와 인증 여부는 실험실 측정 장비가 필요합니다.",
-      "title": "HDR 지원 및 시각 점검",
-      "description_p1": "운영체제가 HDR(dynamic-range: high) 신호를 출력하는지 브라우저 CSS 미디어 쿼리로 감지합니다. 파이프라인 신호 상태를 확인할 뿐, 물리적 최대 밝기(nits)나 DisplayHDR 인증을 측정 및 증명하지는 않습니다.",
-      "inst1": "브라우저가 보고하는 기능을 검토하세요.",
-      "inst2": "'지원되지 않음'이라고 표시되지만 모니터가 HDR 지원인 경우, Windows/macOS에서 HDR이 켜져 있는지 확인하세요.",
-      "inst3": "하드웨어 가속이 활성화된 최신 브라우저를 사용하고 있는지 확인하세요."
+      "metaTitle": "HDR 하드웨어 및 신호 감지기 – OS 및 브라우저 기능",
+      "metaDescription": "모니터, OS 컴포지터 및 브라우저가 HDR, 10비트 컬러 버퍼, 광색역(DCI-P3/Rec.2020) 및 비디오 코덱을 지원하는지 진단합니다.",
+      "title": "HDR 하드웨어 및 신호 감지기",
+      "description_p1": "하드웨어, OS 컴포지터 및 브라우저 파이프라인 종합 진단 도구. CSS dynamic-range, 광색역(Rec.2020 / DCI-P3), 버퍼 비트 심도, Canvas P3, WebGL float 버퍼 및 HDR 비디오 디코딩을 진단합니다.",
+      "inst1": "실시간으로 감지된 컴포지터 상태 및 버퍼 지표를 검토합니다.",
+      "inst2": "HDR이 비활성화 상태인 경우 Windows에서 Win + Alt + B를 누르거나 macOS 디스플레이 설정에서 활성화하십시오.",
+      "inst3": "하드웨어 가속 HDR 재생 지원 여부를 확인하기 위해 비디오 코덱 표를 확인합니다."
     },
     "display-info": {
       "metaTitle": "디스플레이 정보 및 GPU 진단 – 해상도, DPR 및 그래픽카드 스펙",
@@ -680,14 +682,14 @@
       ]
     },
     "hdr-test": {
-      "metaTitle": "HDR 시각 검사 – 하이라이트 클리핑 및 톤 매핑 확인",
-      "metaDescription": "하이라이트 계조 보존, 톤 커브 롤오프, 암부 디테일, 광색역 컬러 렌더링을 점검하는 제어된 시각적 HDR 테스트 패턴.",
-      "title": "HDR 시각 검사",
-      "description_p1": "하이라이트 클리핑, 톤 커브 롤오프, 암부 계조 구분을 평가하는 제어된 시각적 HDR 검사입니다. 니트(nit) 단위의 피크 밝기 측정은 전문 광학 장비가 필요하며, 이 검사는 브라우저 내 상대적 계조 표현을 점검합니다.",
+      "metaTitle": "HDR 시각적 캘리브레이션 및 하이라이트 검사",
+      "metaDescription": "디스플레이 반사 하이라이트 롤오프, 톤 매핑 클리핑, 10% APL 피크 휘도 버스트 및 암부 디테일을 정밀 검사합니다.",
+      "title": "HDR 시각적 캘리브레이션 및 하이라이트 검사",
+      "description_p1": "HDR 신호에 대한 디스플레이 패널의 시각적 반응을 검사하는 광학 시각 테스트 스위트. 하이라이트 클리핑, 10% APL 피크 화이트 윈도우, PQ/EOTF 톤 커브 및 암부 디테일을 정밀하게 검사합니다.",
       "instructions": [
-        "<strong>시스템 설정:</strong> Windows/macOS 디스플레이 설정에서 HDR이 켜져 있고 모니터의 HDR 영상 모드가 활성화되어 있는지 확인하세요.",
-        "<strong>하이라이트 클리핑:</strong> 90%~100% 밝기 단계를 관찰하여 밝은 블록들이 단색 흰색으로 뭉개지는 한계점을 확인합니다.",
-        "<strong>암부 및 광색역:</strong> 0%~10% 암부 블록에서 블랙 크러시가 없는지 확인하고, SDR 기준과 Display P3 광색역 패치를 비교합니다."
+        "<strong>시청 환경:</strong> 하이라이트 타겟과 암부 단계를 명확히 구별할 수 있도록 실내 조명을 어둡게 하십시오.",
+        "<strong>하이라이트 클리핑:</strong> 90%부터 100% 피크 화이트 패치를 관찰하십시오. 원형 레티클 타겟이 단색 흰색으로 뭉개지지 않고 보여야 합니다.",
+        "<strong>10% APL 피크 휘도:</strong> 로컬 디밍, 피크 니트 및 순수 검은색 배경에서의 헤일로 현상을 평가하려면 10% APL 윈도우로 전환하십시오."
       ]
     },
     "near-black-test": {
@@ -908,6 +910,201 @@
         "Rotate both analog sticks to test circularity error and check resting drift values against the deadzone threshold.",
         "Squeeze analog triggers and press all buttons to verify actuation and responsiveness."
       ]
+    },
+    "battery-test": {
+      "title": "배터리 상태 및 전원 정보",
+      "metaTitle": "배터리 상태 테스트 | Screen Tester",
+      "description": "Battery Status API를 사용하여 기기의 배터리 수준, 충전 상태, 예상 남은 시간 및 전원 소스를 확인합니다.",
+      "metaDescription": "온라인 배터리 상태 확인기. 배터리 수준, 충전 상태 및 전원 소스 정보를 실시간으로 확인하세요.",
+      "instructions": [
+        "배터리가 있는 노트북, 태블릿 또는 모바일 기기에서 테스트를 엽니다.",
+        "현재 배터리 비율과 충전 상태를 확인합니다.",
+        "완전 충전까지의 예상 시간 또는 남은 시간을 모니터링합니다.",
+        "히스토리 차트에서 배터리 수준 변화를 추적합니다."
+      ]
+    },
+    "network-speed-test": {
+      "title": "네트워크 속도 테스트",
+      "metaTitle": "인터넷 속도 테스트 | Screen Tester",
+      "description": "브라우저 API를 사용하여 다운로드 처리량, 레이턴시 핑 및 네트워크 유형을 포함한 인터넷 연결 속도를 테스트합니다.",
+      "metaDescription": "무료 온라인 인터넷 속도 테스트. 다운로드 속도, 레이턴시 및 연결 유형을 측정하세요.",
+      "instructions": [
+        "Wi-Fi 또는 이더넷을 통해 인터넷에 연결되어 있는지 확인합니다.",
+        "'테스트 시작'을 클릭하여 레이턴시와 다운로드 속도를 측정합니다.",
+        "결과는 밀리초 단위의 레이턴시와 Mbps 단위의 다운로드 속도를 보여줍니다.",
+        "일관된 평균을 얻기 위해 여러 테스트를 실행합니다."
+      ]
+    },
+    "color-blindness-test": {
+      "title": "색맹 시뮬레이터",
+      "metaTitle": "색각 이상 시뮬레이터 | Screen Tester",
+      "description": "SVG 컬러 매트릭스 필터를 사용하여 적색맹, 녹색맹, 청색맹, 전색맹을 포함한 8가지 유형의 색각 이상을 시뮬레이션합니다.",
+      "metaDescription": "무료 색맹 시뮬레이터. 색각 이상이 있는 사람들에게 디자인이 어떻게 보이는지 미리 봅니다.",
+      "instructions": [
+        "옵션에서 색각 유형을 선택합니다.",
+        "각 시뮬레이션에서 색상, 그라데이션 및 UI 요소가 어떻게 변하는지 관찰합니다.",
+        "비교 모드를 사용하여 정상 시각과 시뮬레이션을 나란히 봅니다.",
+        "모든 시각 유형에서 디자인의 대비와 가독성이 유지되는지 확인합니다."
+      ]
+    },
+    "screen-recorder": {
+      "title": "화면 녹화 및 스크린샷",
+      "metaTitle": "온라인 화면 녹화기 | Screen Tester",
+      "description": "Screen Capture API를 사용하여 브라우저에서 직접 화면을 녹화하거나 스크린샷을 캡처합니다.",
+      "metaDescription": "무료 온라인 화면 녹화기. 브라우저에서 직접 비디오 또는 스크린샷으로 화면을 캡처하세요.",
+      "instructions": [
+        "'녹화 시작'을 클릭하고 캡처할 화면, 창 또는 탭을 선택합니다.",
+        "일시정지/재개로 녹화 세션을 제어합니다.",
+        "'중지'를 클릭하여 녹화를 완료하고 비디오를 미리 봅니다.",
+        "'스크린샷'으로 PNG 이미지로 한 프레임을 캡처합니다."
+      ]
+    },
+    "dark-mode-test": {
+      "title": "다크 모드 / 라이트 모드 테스트",
+      "metaTitle": "다크 모드 감지 테스트 | Screen Tester",
+      "description": "운영체제의 다크 모드 기본 설정을 감지하고, CSS color-scheme 지원을 테스트하며, 라이트 및 다크 테마에서 UI 구성 요소를 미리 봅니다.",
+      "metaDescription": "다크 모드 감지 및 테마 전환을 테스트합니다. OS 기본 설정과 CSS color-scheme 지원을 확인합니다.",
+      "instructions": [
+        "테스트가 자동으로 OS의 다크 모드 기본 설정을 감지합니다.",
+        "시스템, 라이트, 다크 모드 미리보기를 전환합니다.",
+        "각 테마의 샘플 UI 요소를 검사합니다.",
+        "브라우저가 CSS color-scheme 속성을 지원하는지 확인합니다."
+      ]
+    },
+    "input-lag-test": {
+      "title": "입력 지연 시각화기",
+      "metaTitle": "입력 지연 테스트 | Screen Tester",
+      "description": "10회 반응 테스트로 시각-클릭 입력 지연을 측정합니다.",
+      "metaDescription": "입력 지연과 클릭-투-포톤 레이턴시를 측정합니다. 히스토그램과 통계 분석이 포함된 10회 테스트.",
+      "instructions": [
+        "회색 상자를 클릭하여 테스트를 시작합니다.",
+        "상자가 녹색으로 변할 때까지 기다리세요 — 빨간 단계에서는 클릭하지 마세요.",
+        "녹색이 보이면 가능한 빨리 클릭합니다.",
+        "전체 통계 결과를 보려면 10회 시험을 모두 완료합니다."
+      ]
+    },
+    "ambient-light-test": {
+      "title": "주변광 센서 테스트",
+      "metaTitle": "주변광 센서 및 럭스 미터 | Screen Tester",
+      "description": "AmbientLightSensor API를 사용하여 럭스 단위의 실시간 주변광 수준을 읽습니다.",
+      "metaDescription": "온라인 주변광 센서 테스트. 럭스 단위로 방 밝기를 측정하고 권장 사항을 받으세요.",
+      "instructions": [
+        "브라우저에서 요청하면 센서 권한을 허용합니다.",
+        "주변광이 변하면 럭스 판독값이 실시간으로 업데이트됩니다.",
+        "변화를 보려면 기기를 광원에 가깝게 또는 멀리 이동합니다.",
+        "주변광에 기반한 최적의 디스플레이 밝기 권장 사항을 확인합니다."
+      ]
+    },
+    "dpi-calculator": {
+      "title": "DPI / PPI 계산기",
+      "metaTitle": "DPI PPI 픽셀 밀도 계산기 | Screen Tester",
+      "description": "모니터의 DPI, PPI, 도트 피치를 계산하고 시청 거리에서 레티나 임계값을 충족하는지 확인합니다.",
+      "metaDescription": "무료 DPI PPI 계산기. 화면 크기와 해상도를 입력하여 픽셀 밀도와 레티나 임계값을 확인하세요.",
+      "instructions": [
+        "프리셋을 선택하거나 화면의 대각선 크기와 해상도를 수동으로 입력합니다.",
+        "레티나 임계값 계산을 위한 일반적인 시청 거리를 입력합니다.",
+        "계산된 PPI, 도트 피치, 종횡비 및 서브픽셀 수를 확인합니다.",
+        "시청 거리에서 디스플레이가 레티나 임계값을 충족하는지 확인합니다."
+      ]
+    },
+    "subpixel-layout-test": {
+      "title": "서브픽셀 배열 및 텍스트 번짐 테스트",
+      "description": "RGB, BGR, QD-OLED, WOLED 배열 구조를 검사하고 텍스트 윤곽의 색 번짐을 진단합니다.",
+      "metaTitle": "서브픽셀 배열 및 텍스트 선명도 테스트 - ClearType & OLED",
+      "metaDescription": "디스플레이의 서브픽셀 배열을 확인하고 텍스트 가독성을 최적화하세요.",
+      "instructions": [
+        "패널 구조를 선택하거나 1픽셀 격자선을 사용하여 서브픽셀 배열 방향을 확인하세요.",
+        "밝은 배경과 어두운 배경에서 고대비 텍스트의 녹색/마젠타 번짐을 관찰합니다.",
+        "ClearType 튜닝 가이드에 따라 폰트 안티앨리어싱을 적절히 조정하세요."
+      ]
+    },
+    "pwm-flicker-test": {
+      "title": "PWM 백라이트 플리커 및 눈 피로 테스트",
+      "description": "펄스 폭 변조(PWM) 백라이트 깜빡임과 스트로보스코픽 눈 피로를 감지합니다.",
+      "metaTitle": "PWM 플리커 테스트 - 시각적 편안함 및 스마트폰 카메라 검사",
+      "metaDescription": "눈에 보이지 않는 PWM 백라이트 깜빡임과 스트로보 잔상을 감지합니다.",
+      "instructions": [
+        "화면을 가로질러 빠르게 시선을 움직이며 고속 이동 막대를 관찰하세요.",
+        "연속적으로 흐려지지 않고 구슬 모양으로 분절되어 보인다면 PWM 디밍이 사용 중입니다.",
+        "스마트폰 카메라 프로 모드(1/1000초 이상)로 숨겨진 PWM 스캔 라인을 확인하세요."
+      ]
+    },
+    "dead-pixel-mapper": {
+      "title": "불량화소 RMA 좌표 매퍼 및 보증 계산기",
+      "description": "불량 화소의 정확한 좌표를 기록하고 ISO 9241-307 규격에 따른 보증 교체 기준을 평가합니다.",
+      "metaTitle": "불량화소 RMA 좌표 매퍼 - ISO 9241-307 보증 판정 도구",
+      "metaDescription": "불량화소 좌표를 기록하고 제조사 AS 기준에 맞는지 확인하여 RMA 로그를 생성하세요.",
+      "instructions": [
+        "단색 배경을 전환하면서 결함이 있는 픽셀을 클릭하여 정확한 위치를 기록합니다.",
+        "암점, 휘점, 표면 먼지 등 결함 유형을 분류하세요.",
+        "ISO 9241-307 규격 충족 여부를 확인하고 AS 접수용 결함 내역을 복사하세요."
+      ]
+    },
+    "gtg-response-time-test": {
+      "title": "그레이 투 그레이 (GtG) 응답속도 시각화 도구",
+      "description": "회색 단계 간 픽셀 전환 속도를 측정하고 오버드라이브 역잔상(오버슈트)을 진단합니다.",
+      "metaTitle": "GtG 응답속도 테스트 - 오버드라이브 잔상 진단 도구",
+      "metaDescription": "픽셀 응답속도를 벤치마크하고 최적의 모니터 오버드라이브 설정을 찾으세요.",
+      "instructions": [
+        "표준 프리셋(VA 잔상 확인용 0%→20% 또는 중간톤 25%→75%)을 선택하세요.",
+        "이동하는 블록의 경계선을 눈으로 따라가며 잔상 발생 여부를 확인합니다.",
+        "밝은 역상 테두리가 생기지 않는 범위 내에서 모니터 오버드라이브를 조정하세요."
+      ]
+    },
+    "oled-burn-in-calculator": {
+      "title": "OLED 번인 위험 및 수명 계산기",
+      "description": "OLED 및 QD-OLED 패널의 번인 발생 확률, 예상 수명, 정적 UI 위험 구역을 계산합니다.",
+      "metaTitle": "OLED & QD-OLED 번인 계산기 - 패널 수명 예측 도구",
+      "metaDescription": "사용 시간, 고정 화면 비율, 밝기를 기반으로 OLED 번인 위험과 수명을 예측합니다.",
+      "instructions": [
+        "OLED 패널 세대(WOLED MLA, QD-OLED 3세대, AMOLED)를 선택하세요.",
+        "일일 사용 시간, 작업표시줄 등 고정 UI 비율, 평소 밝기를 입력합니다.",
+        "1년, 3년, 5년 후 번인 확률과 패널 수명 연장을 위한 팁을 확인하세요."
+      ]
+    },
+    "mouse-polling-test": {
+      "title": "마우스 폴링레이트(Hz) 및 정밀도 테스트",
+      "description": "실시간 마우스 USB 폴링 주파수(Hz), 지터 안정성, 클릭 지연, 센서 DPI를 측정합니다.",
+      "metaTitle": "마우스 폴링레이트(Hz) 및 정밀도 테스트 - 더블클릭 불량 감지",
+      "metaDescription": "최대 8000Hz까지 마우스 폴링률을 측정하고 스위치 채터링(더블클릭 현상)을 진단합니다.",
+      "instructions": [
+        "테스트 영역 안에서 마우스를 빠르게 원형으로 회전시켜 최대 및 평균 Hz를 측정하세요.",
+        "지터 그래프에서 패킷 시간 간격의 규칙성을 확인합니다.",
+        "각 버튼을 클릭하여 기계식 스위치의 의도치 않은 더블클릭 바운스를 점검하세요."
+      ]
+    },
+    "gpu-benchmark-test": {
+      "title": "GPU WebGL 3D 스트레스 테스트 및 벤치마크",
+      "description": "실시간 3D 파티클 렌더링으로 프레임 유지력, 1% Low FPS, 쓰로틀링을 평가합니다.",
+      "metaTitle": "GPU WebGL 3D 벤치마크 - FPS, 1% Lows & 하드웨어 정보",
+      "metaDescription": "1만~20만 개의 3D 파티클로 그래픽카드 성능과 프레임 안정성을 30초 동안 테스트합니다.",
+      "instructions": [
+        "가벼움(1만 개)부터 극한(20만 개)까지 파티클 부하를 선택하세요.",
+        "실시간 FPS와 1% Low 수치의 프레임 드랍 발생 여부를 관찰합니다.",
+        "30초 벤치마크를 실행하여 종합 그래픽 안정성 점수를 확인하세요."
+      ]
+    },
+    "display-certificate": {
+      "title": "디스플레이 검사 인증서 및 RMA 리포트",
+      "description": "중고 거래 검증이나 제조사 AS 보증 신청에 활용할 수 있는 공식 품질 인증서를 생성합니다.",
+      "metaTitle": "디스플레이 검사 인증서 - 인쇄 및 PDF 저장 지원",
+      "metaDescription": "해상도, 색역, 불량화소 개수를 포함한 공식 디스플레이 검사 보고서를 출력하세요.",
+      "instructions": [
+        "자동 감지된 해상도, 색상 깊이, 색역 정보를 확인하세요.",
+        "모니터 모델명, 시리얼 번호, 육안 검사 결과를 입력합니다.",
+        "'인쇄 / PDF로 저장'을 클릭하여 공식 인증서를 발행하세요."
+      ]
+    },
+    "osd-calibration-guide": {
+      "title": "인터랙티브 OSD 모니터 캘리브레이션 도우미",
+      "description": "모니터의 물리 버튼(OSD 메뉴)을 최적의 상태로 설정하기 위한 단계별 가이드입니다.",
+      "metaTitle": "OSD 모니터 캘리브레이션 가이드 - 단계별 하드웨어 설정 도우미",
+      "metaDescription": "밝기, 대비, 감마 2.2, 6500K 색온도, 오버드라이브를 OSD 버튼으로 보정하세요.",
+      "instructions": [
+        "모니터 본체의 OSD 버튼을 누르고 화면에 표시된 6단계를 따르세요.",
+        "암부와 명부의 디테일이 뭉개지지 않도록 밝기와 명암을 조절합니다.",
+        "감마를 2.2로 맞추고 색온도를 6500K 표준 화이트로 설정하세요."
+      ]
     }
   },
   "Tests": {
@@ -1089,8 +1286,8 @@
       "instructions": "부하를 변경하며 움직이는 수직 막대의 찢김과 버벅거림을 관찰합니다."
     },
     "hdrVisualTest": {
-      "title": "HDR 시각 검사 – 하이라이트 클리핑 및 톤 커브 점검",
-      "description": "하이라이트 클리핑, 톤 매핑 계조, 광색역 렌더링을 점검하는 제어된 시각 검사.",
+      "title": "HDR 시각 검사 – 하이라이트 클리핑 및 톤 매핑",
+      "description": "반사 하이라이트 클리핑 포인트, 톤 커브 롤오프, 10% 피크 화이트 윈도우 및 암부 디테일을 정밀 검사하는 광학 시각 테스트.",
       "instructions": "밝은 하이라이트 바의 뭉개짐을 점검하고 암부 디테일을 확인합니다."
     },
     "nearBlackTest": {
@@ -1616,14 +1813,81 @@
       "standard2DeltaTitle": "Standard ~2% delta",
       "subtle1DeltaTitle": "Subtle ~1% delta",
       "ultraFine05Title": "Ultra-Fine ~0.5% delta",
-      "momentarilyBlinkReticlesSoTitle": "Momentarily blink reticles so you can spot their exact location"
+      "momentarilyBlinkReticlesSoTitle": "Momentarily blink reticles so you can spot their exact location",
+      "dismiss": "닫기",
+      "pipelineDetectorBadge": "하드웨어 및 신호 감사 도구",
+      "realTimeHardwareAudit": "실시간 하드웨어 및 컴포지터 감사",
+      "hdrHardwareSignalDetectorTitle": "HDR 하드웨어 및 신호 감지기",
+      "hdrHardwareSignalDetectorSubtitle": "OS 컴포지터 HDR 출력, 10비트 색 심도, 광색역, WebGL float 버퍼 및 HDR 비디오 디코더 직접 쿼리.",
+      "probingStatus": "파이프라인 진단 중...",
+      "hdrActiveCompositor": "OS 컴포지터에서 HDR 활성",
+      "sdrFallbackCompositor": "SDR 폴백 (HDR 비활성)",
+      "reProbeTooltip": "하드웨어 및 컴포지터 기능 다시 진단",
+      "reProbe": "다시 진단",
+      "metricDynamicRange": "동적 범위",
+      "metricColorGamut": "색 영역",
+      "metricBufferDepth": "버퍼 비트 심도",
+      "metricCanvasP3": "Canvas 2D P3",
+      "supported": "지원됨",
+      "fallbackSrgb": "폴백 (sRGB)",
+      "notSupported": "미지원",
+      "tabListLabel": "HDR 감지 탭",
+      "tabSignalDashboard": "신호 대시보드",
+      "tabVideoCodecs": "비디오 코덱",
+      "tabOsSetupGuide": "OS 설정 가이드",
+      "mediaQueryQueriesTitle": "CSS 미디어 쿼리 신호",
+      "activeTrue": "활성 (True)",
+      "inactiveFalse": "비활성 (False)",
+      "mediaQueryExplanation": "브라우저는 CSS Media Queries Level 4를 통해 OS 윈도우 컴포지터에 직접 쿼리합니다. Windows나 macOS에서 HDR을 켜면 dynamic-range가 high로 전환됩니다.",
+      "graphicsPipelineTitle": "그래픽 및 버퍼 파이프라인",
+      "bufferExplanation": "HTML5 Canvas, WebGL2 float 렌더 타겟 및 디스플레이 버퍼에서 액세스 가능한 비트 심도와 색 공간을 보고합니다.",
+      "gamutSandboxTitle": "광색역 시각 샌드박스 (sRGB vs Display-P3)",
+      "gamutSandboxSubtitle": "광색역 모니터에서는 Display-P3 패치가 표준 sRGB 패치보다 확연히 더 진하고 생생하게 보입니다.",
+      "colorRed": "기본 빨강",
+      "colorGreen": "기본 초록",
+      "colorBlue": "기본 파랑",
+      "redNotice": "Display-P3 빨강은 더 깊은 진홍색까지 표현합니다.",
+      "greenNotice": "Display-P3 초록은 sRGB를 넘어서는 선명한 에메랄드 색조를 제공합니다.",
+      "blueNotice": "Display-P3 파랑은 짙은 로열 블루 채도를 선사합니다.",
+      "hardwareBoundaryTitle": "브라우저 쿼리 vs 광학 휘도 (중요한 구분)",
+      "hardwareBoundaryBody": "브라우저 미디어 쿼리는 OS가 브라우저로 HDR 신호를 출력하고 있음을 확인합니다. 그러나 브라우저가 실제 패널 피크 밝기(nits)나 로컬 디밍 존을 직접 측정할 수는 없습니다. 시각적 검증은 'HDR 시각 검사' 테스트를 이용하십시오.",
+      "codecCapabilitiesTitle": "하드웨어 가속 HDR 비디오 디코더",
+      "codecCapabilitiesSubtitle": "4K 60fps HDR 고비트레이트 재생 능력을 Web MediaCapabilities API로 진단했습니다.",
+      "codecsHdr10Desc": "PQ (ST 2084) 커브 및 BT.2020 색 공간을 사용하는 표준 HDR10 규격.",
+      "codecsAv1Desc": "최신 YouTube 4K HDR 스트리밍에 사용되는 차세대 10비트 코덱.",
+      "codecsVp9Desc": "이전 기기 및 브라우저에서 YouTube HDR에 사용되는 Google 10비트 프로필.",
+      "codecsHlgDesc": "방송용 Hybrid Log-Gamma 규격.",
+      "hardwareAccelerated": "하드웨어 가속 지원",
+      "softwareDecoded": "소프트웨어 디코딩",
+      "codecNoteTitle": "GPU 하드웨어 가속 안내:",
+      "codecNoteBody": "10비트 코덱이 미지원으로 표시되면 브라우저 설정에서 하드웨어 가속을 켜고 그래픽 드라이버를 최신으로 업데이트하십시오.",
+      "windowsGuideTitle": "Windows 10 / 11 HDR 구성",
+      "windowsShortcut": "간편 단축키",
+      "windowsShortcutDesc": "를 누르면 즉시 전환됩니다:",
+      "windowsSettings": "Windows 설정 경로",
+      "windowsSettingsDesc": "설정 > 시스템 > 디스플레이 > 모니터 선택 > 'HDR 사용'을 켬으로 전환합니다.",
+      "sdrSlider": "SDR 콘텐츠 밝기 슬라이더",
+      "sdrSliderDesc": "SDR 앱의 흰색 창이 실내 조명에 맞게 눈부시지 않고 자연스럽도록 조절합니다.",
+      "macOsGuideTitle": "macOS Liquid Retina XDR 및 디스플레이",
+      "macXdr": "내장 Liquid Retina XDR",
+      "macXdrDesc": "MacBook Pro의 미니 LED 디스플레이는 최대 1,600 nits의 HDR 피크 밝기를 자동으로 지원합니다.",
+      "macPresets": "디스플레이 프리셋",
+      "macPresetsDesc": "시스템 설정에서 'Apple XDR Display (P3-1600 nits)'가 선택되어 있는지 확인하십시오.",
+      "cableGuideTitle": "디스플레이 케이블 및 대역폭 요구사항",
+      "hdmiLimits": "HDMI 2.0 vs HDMI 2.1",
+      "hdmiLimitsDesc": "HDMI 2.0은 HDR 4K 60Hz 시 8비트 4:2:0으로 제한됩니다. 진정한 10비트 RGB HDR에는 DisplayPort 1.4 또는 HDMI 2.1이 필요합니다.",
+      "gpuColorDepth": "GPU 출력 색 심도",
+      "gpuColorDepthDesc": "NVIDIA 또는 AMD 제어판에서 출력 색 심도를 10 bpc로, 동적 범위를 전체(Full)로 설정하십시오.",
+      "refreshAudit": "다시 감사",
+      "signalNotificationHdrActive": "⚡ 신호 변경 감지: OS HDR 컴포지터가 【활성화】되었습니다!",
+      "signalNotificationHdrInactive": "ℹ️ 신호 변경 감지: OS HDR 컴포지터가 【SDR 폴백】으로 전환되었습니다."
     },
     "HdrVisualPattern": {
-      "highlightClippingPeakWhite": "Highlight Clipping & Peak White Separation",
-      "inspectWhetherSubtleCircular": "Inspect whether subtle circular target reticles remain distinguishable inside near-peak highlights.",
+      "highlightClippingPeakWhite": "반사 하이라이트 롤오프 및 클리핑 단계",
+      "inspectWhetherSubtleCircular": "100% 흰색까지의 고휘도 하이라이트 내에서 원형 레티클이 식별되는지 검사합니다.",
       "rgb": "RGB",
-      "nearBlackShadowDetail": "Near-Black Shadow Detail & Dark Clipping",
-      "inADimmedRoom": "In a dimmed room, check how low in the dark spectrum you can distinguish subtle squares from true 0% black.",
+      "nearBlackShadowDetail": "암부 디테일 및 블랙 분리도",
+      "inADimmedRoom": "어두운 방에서 0% 순수 블랙과 미세한 저휘도 블록이 어디까지 분리되는지 확인하십시오.",
       "sideBySideSdr": "Side-by-Side SDR Reference vs High Dynamic Range",
       "standardSrgb": "Standard sRGB",
       "standardWhite100120": "Standard White (100-120 nits SDR)",
@@ -1631,11 +1895,11 @@
       "highDynamicRangeP3": "High Dynamic Range / P3",
       "peakWhiteHeadroom": "Peak White Headroom",
       "extendedDynamicRange": "Extended dynamic range",
-      "wideColorGamutPrimaries": "Wide Color Gamut Primaries (sRGB vs Display P3)",
-      "displaysSupportingDciP3": "Displays supporting DCI-P3 / HDR render deeper reds and more vivid emerald greens beyond conventional sRGB.",
-      "p3DeepRed": "P3 Deep Red",
-      "p3EmeraldGreen": "P3 Emerald Green",
-      "p3RoyalBlue": "P3 Royal Blue",
+      "wideColorGamutPrimaries": "광색역 원색 비교 (sRGB vs Display-P3)",
+      "displaysSupportingDciP3": "DCI-P3 및 Rec.2020 디스플레이는 더욱 깊은 진홍색과 생생한 에메랄드 초록을 렌더링합니다.",
+      "p3DeepRed": "Display-P3 딥 레드",
+      "p3EmeraldGreen": "Display-P3 에메랄드 그린",
+      "p3RoyalBlue": "Display-P3 로열 블루",
       "fullSpectrum16Step": "Full Spectrum 16-Step Grayscale",
       "cssHdr": "CSS HDR:",
       "displayP3": "Display-P3:",
@@ -1657,7 +1921,37 @@
       "inTheHighlightClipping": "In the Highlight Clipping pattern, reticles in the 94% and 97% swatches should remain visible without blown-out white blooming.",
       "4CheckForCrushed": "4. Check for Crushed Darks:",
       "inTheShadowDetail": "In the Shadow Detail pattern, dark blocks (2% to 5%) should remain distinct from pure black.",
-      "hdrVisualInspectionTitle": "HDR Visual Inspection"
+      "hdrVisualInspectionTitle": "HDR Visual Inspection",
+      "fullscreenHudVisualCalibration": "HDR 시각적 캘리브레이션",
+      "fullscreenHudInstructions": "모드 전환: [1-5] • 레티클 깜빡임: [B] • 전체화면: [F]",
+      "modeSpecularHighlight": "반사 하이라이트 클리핑",
+      "modeAplWindow": "10% APL 피크 화이트",
+      "modeToneCurveRamps": "PQ 톤 커브 램프",
+      "modeNearBlackShadows": "암부 디테일 (Near-Black)",
+      "modeWideGamutPrimaries": "광색역 원색",
+      "allReticlesVisibleTitle": "6개 레티클 모두 식별 가능",
+      "allReticlesVisibleDesc": "탁월한 톤 매핑입니다. 피크 흰색 부근의 질감이 조기 클리핑 없이 유지됩니다.",
+      "nearPeakBlownOutTitle": "레티클 5와 6이 날아감 (클리핑)",
+      "nearPeakBlownOutDesc": "일반적인 표준 클리핑입니다. 98% 이상의 흰색이 단색 흰색으로 합쳐집니다.",
+      "aplBurstWindowTitle": "10% APL 피크 휘도 윈도우",
+      "aplBurstWindowSubtitle": "OLED 및 Mini-LED의 최대 니트, 로컬 디밍 반응성 및 헤일로 번짐을 측정하는 업계 표준 윈도우.",
+      "aplSizeLabel": "윈도우 크기",
+      "toneCurveGradationTitle": "PQ EOTF 톤 커브 및 양자화 램프",
+      "toneCurveGradationSubtitle": "톤 커브 전반에서 거친 색 띠(밴딩)나 과도한 압축이 발생하는지 검사합니다.",
+      "continuous10BitRamp": "매끄러운 10비트 연속 그라데이션 (밴딩 없음)",
+      "stepped8BitQuantizedRamp": "8비트 양자화 참조 램프 (32단계)",
+      "toneCurveInspectionTip": "진정한 10비트 패널에서는 연속 램프가 줄무늬 없이 완벽하게 부드럽게 나타나야 합니다.",
+      "shadowInspectionTip": "0.5%에서 2% 단계가 완전히 검게 보인다면 디스플레이가 암부를 뭉개고 있는 것입니다(블랙 크러시).",
+      "flashReticlesTitle": "레티클 위치를 찾기 위해 잠시 깜빡이게 합니다",
+      "flashReticles": "레티클 깜빡임",
+      "fullscreenF": "전체화면 [F]",
+      "exitFullscreen": "전체화면 종료",
+      "bgLuminanceLabel": "배경 휘도",
+      "bgBlack0": "0% 블랙",
+      "bgDark5": "5% 다크",
+      "bgMid18": "18% 그레이",
+      "reticleDeltaOffset": "레티클 민감도 델타",
+      "hdrVisualCalibrationBarTitle": "HDR 시각적 캘리브레이션 및 하이라이트 검사"
     },
     "LevelPattern": {
       "visualObservation": "Visual Observation",
@@ -2329,6 +2623,288 @@
       "testRumble": "진동 테스트",
       "trigger": "아날로그 트리거",
       "buttonsMatrix": "버튼 입력 매트릭스"
+    },
+    "batteryTest": {
+      "title": "배터리 상태 및 전원 정보",
+      "description": "배터리 수준, 충전 상태, 남은 시간 및 전원 소스를 실시간으로 확인합니다."
+    },
+    "networkSpeedTest": {
+      "title": "네트워크 속도 테스트",
+      "description": "브라우저에서 직접 다운로드 속도, 레이턴시 핑 및 연결 유형을 측정합니다."
+    },
+    "colorBlindnessTest": {
+      "title": "색맹 시뮬레이터",
+      "description": "실시간 SVG 필터와 나란히 비교로 8가지 유형의 색각 이상을 시뮬레이션합니다."
+    },
+    "screenRecorder": {
+      "title": "화면 녹화 및 스크린샷",
+      "description": "화면을 WebM 비디오로 녹화하거나 브라우저에서 직접 PNG 스크린샷을 캡처합니다."
+    },
+    "darkModeTest": {
+      "title": "다크/라이트 모드 테스트",
+      "description": "OS 다크 모드 기본 설정을 감지하고 두 테마에서 UI를 미리 봅니다."
+    },
+    "inputLagTest": {
+      "title": "입력 지연 시각화기",
+      "description": "10회 시각 반응 테스트, 히스토그램 및 통계 분석으로 클릭-투-포톤 입력 지연을 측정합니다."
+    },
+    "ambientLightTest": {
+      "title": "주변광 센서 테스트",
+      "description": "밝기 게이지, 히스토리 차트 및 권장 사항과 함께 럭스 단위의 실시간 주변광 수준을 읽습니다."
+    },
+    "dpiCalculator": {
+      "title": "DPI / PPI 계산기",
+      "description": "모든 화면 크기와 해상도의 픽셀 밀도, 도트 피치 및 레티나 임계값을 계산합니다."
+    },
+    "BatteryPattern": {
+      "notSupported": "배터리 API 미지원",
+      "notSupportedHint": "브라우저가 Battery Status API를 지원하지 않습니다. Chrome, Edge 또는 Opera를 사용해 보세요.",
+      "loading": "배터리 상태 읽는 중...",
+      "charging": "충전 중",
+      "onBattery": "배터리 사용 중",
+      "batteryLevel": "배터리 수준",
+      "timeToFull": "완충까지",
+      "timeRemaining": "남은 시간",
+      "powerSource": "전원 소스",
+      "acPower": "AC 전원",
+      "batteryPower": "배터리",
+      "levelHistory": "수준 기록",
+      "browserNote": "Battery Status API (navigator.getBattery) 를 사용합니다. Chromium 기반 브라우저에서 지원됩니다."
+    },
+    "NetworkSpeedPattern": {
+      "startTest": "속도 테스트 시작",
+      "stop": "중지",
+      "testing": "측정 중...",
+      "testAgain": "다시 테스트",
+      "latency": "지연 시간 / 핑",
+      "download": "다운로드 속도",
+      "connectionInfo": "연결 프로필",
+      "connectionType": "연결 유형",
+      "effectiveType": "유효 등급",
+      "estimatedDownlink": "다운링크 한도",
+      "estimatedRtt": "예상 RTT",
+      "dataSaverOn": "데이터 세이버: 켜짐",
+      "testHistory": "측정 기록",
+      "browserNote": "지연 시간과 대역폭은 브라우저 fetch API 및 Network Information API로 측정됩니다.",
+      "excellent": "매우 우수",
+      "veryGood": "우수",
+      "good": "양호",
+      "fair": "보통",
+      "slow": "느림",
+      "poor": "불량",
+      "offline": "오프라인",
+      "offlineHint": "인터넷 연결이 감지되지 않습니다."
+    },
+    "ColorBlindnessPattern": {
+      "selectVision": "색각 유형 선택",
+      "compare": "정상 시각과 비교",
+      "normalVision": "정상 3색형 색각",
+      "viewing": "현재 보기",
+      "aboutTitle": "색각 시뮬레이션 안내",
+      "aboutText": "이 시뮬레이터는 SVG 컬러 매트릭스 변환을 사용하여 원추세포 이상에 따른 시각적 인지를 근사 재현합니다.",
+      "normal": "정상",
+      "caution": "주의",
+      "warning": "경고",
+      "error": "오류",
+      "success": "성공",
+      "info": "정보",
+      "special": "특수",
+      "critical": "위험",
+      "visionTypes": {
+        "normal": "정상 시각",
+        "protanopia": "제1색각이상 (적색맹)",
+        "deuteranopia": "제2색각이상 (녹색맹)",
+        "tritanopia": "제3색각이상 (청색맹)",
+        "protanomaly": "제1색각약 (적색약)",
+        "deuteranomaly": "제2색각약 (녹색약)",
+        "tritanomaly": "제3색각약 (청색약)",
+        "achromatopsia": "전색맹 (완전 색맹)"
+      }
+    },
+    "ScreenRecorderPattern": {
+      "notSupported": "화면 캡처 미지원",
+      "notSupportedHint": "사용 중인 브라우저 또는 운영체제에서 Screen Capture API를 지원하지 않습니다.",
+      "startRecording": "녹화 시작",
+      "screenshot": "스크린샷 캡처",
+      "pause": "일시정지",
+      "resume": "재개",
+      "stopRecording": "녹화 종료",
+      "preview": "녹화 미리보기",
+      "downloadVideo": "WebM 동영상 저장",
+      "screenshotPreview": "스크린샷 미리보기",
+      "downloadScreenshot": "PNG 이미지 저장",
+      "browserNote": "모든 녹화 및 스크린샷은 브라우저 로컬 메모리에서 생성되며 외부 서버로 절대 업로드되지 않습니다."
+    },
+    "DarkModePattern": {
+      "systemDetection": "OS 기본 설정 감지",
+      "osPreference": "감지된 OS 테마",
+      "dark": "다크 모드",
+      "light": "라이트 모드",
+      "colorSchemeCSS": "CSS color-scheme 지원",
+      "supported": "지원됨",
+      "notSupported": "미지원",
+      "contrastPref": "대비 설정",
+      "previewTheme": "미리보기 테마 모드",
+      "previewTitle": "테마 미리보기 쇼케이스",
+      "darkMode": "다크 테마",
+      "lightMode": "라이트 테마",
+      "previewText": "라이트 및 다크 팔레트에서 색상, 카드, 타이포그래피가 렌더링되는 방식을 확인하세요.",
+      "primaryBtn": "기본 액션",
+      "secondaryBtn": "보조 액션",
+      "successMsg": "선택한 테마가 성공적으로 적용되었습니다.",
+      "toggleLabel": "토글 스위치",
+      "browserNote": "CSS prefers-color-scheme을 통해 시스템 설정을 감지하고 렌더링을 분석합니다.",
+      "sampleCard1Title": "성능 지표",
+      "sampleCard1Desc": "렌더링 패스 전반의 시스템 처리량 및 지연 시간 지표.",
+      "sampleCard2Title": "디스플레이 진단",
+      "sampleCard2Desc": "하드웨어 기능 감지 및 컬러 파이프라인 유효성 검사.",
+      "sampleCard3Title": "전원 관리",
+      "sampleCard3Desc": "배터리 충전량, 충전 상태 전환 및 전력 소모 원격 측정.",
+      "high": "높음",
+      "more": "더보기",
+      "less": "접기",
+      "themes": {
+        "system": "시스템",
+        "light": "라이트",
+        "dark": "다크"
+      },
+      "normal": "표준"
+    },
+    "InputLagPattern": {
+      "clickToStart": "시작하려면 여기를 클릭하세요",
+      "clickToStartHint": "준비가 되면 클릭하세요. 화면이 녹색으로 바뀔 때까지 기다립니다.",
+      "waitForGreen": "녹색 신호 대기 중...",
+      "clickNow": "지금 클릭하세요!",
+      "tooEarly": "너무 빠릅니다!",
+      "tooEarlyHint": "녹색 신호가 나타나기 전에 클릭했습니다. 다시 시도하려면 클릭하세요.",
+      "trial": "회차",
+      "avgTime": "평균 지연 시간",
+      "bestTime": "최고 기록",
+      "worstTime": "최저 기록",
+      "stdDev": "표준편차",
+      "histogram": "반응 시간 분포 히스토그램",
+      "reset": "테스트 다시 시작",
+      "browserNote": "10회 시도 동안 시각적 신호부터 클릭 이벤트 등록까지의 시간을 정밀 측정합니다.",
+      "excellent": "매우 우수",
+      "good": "우수",
+      "average": "보통",
+      "slow": "느림"
+    },
+    "AmbientLightPattern": {
+      "veryDark": "완전 암실 (< 10 lx)",
+      "recDark": "심한 눈 피로를 방지하기 위해 밝기를 최소(~50-80 nits)로 낮추세요.",
+      "dim": "어두운 실내 (10-100 lx)",
+      "recDim": "편안한 가독성을 위해 밝기를 25-40%(~100 nits)로 유지하세요.",
+      "normal": "사무 환경 최적 (100-500 lx)",
+      "recNormal": "가장 이상적인 작업 환경입니다. 밝기를 40-60%(~120-150 nits)로 설정하세요.",
+      "bright": "밝은 실내 / 흐린 주광 (500-1000 lx)",
+      "recBright": "선명한 대비를 위해 밝기를 70-85%(~250-300 nits)로 높이세요.",
+      "veryBright": "직사광선 / 야외 (> 1000 lx)",
+      "recVeryBright": "반사를 극복하기 위해 최대 밝기(100% / 400+ nits)가 필요합니다.",
+      "notSupported": "센서 API 미지원",
+      "notSupportedHint": "현재 브라우저 또는 기기에서 AmbientLightSensor API를 지원하지 않습니다.",
+      "enableGuide": "Chrome/Edge에서 주변광 센서 활성화 방법",
+      "enableStep1": "1. 주소창에 chrome://flags (또는 edge://flags)를 입력합니다.",
+      "enableStep2": "2. 'Generic Sensor Extra Classes'를 검색하여 Enabled로 설정합니다.",
+      "enableStep3": "3. 브라우저를 재시작하고 권한 요청 시 허용을 누릅니다.",
+      "permissionNeeded": "센서 권한 필요",
+      "permissionHint": "주변 밝기를 측정하려면 브라우저 센서 권한을 허용해 주세요.",
+      "waiting": "센서 데이터 수신 대기 중...",
+      "brightnessGauge": "실내 조도 게이지",
+      "current": "현재 조도 (Lux)",
+      "min": "세션 최저치",
+      "max": "세션 최고치",
+      "recommendation": "인체공학 권장 사항",
+      "readingHistory": "조도 변화 이력",
+      "luxReference": "주요 환경별 조도 기준",
+      "refMoonlight": "달빛",
+      "refDimRoom": "어두운 거실",
+      "refOffice": "사무실 책상",
+      "refOvercast": "흐린 날 주광",
+      "refSunlight": "맑은 날 주광",
+      "refDirectSun": "직사광선",
+      "browserNote": "AmbientLightSensor API를 활용하여 럭스(lx) 단위의 실시간 조도를 측정합니다."
+    },
+    "DpiCalculatorPattern": {
+      "quickPresets": "빠른 프리셋",
+      "enterSpecs": "디스플레이 사양 입력",
+      "diagonal": "화면 대각선 크기",
+      "inches": "인치",
+      "width": "가로 픽셀 (너비)",
+      "height": "세로 픽셀 (높이)",
+      "viewingDistance": "레티나 최적 시청 거리",
+      "dotPitch": "도트 피치 (화소 간격)",
+      "aspectRatioLabel": "화면 비율",
+      "totalPixels": "총 화소 수",
+      "subpixels": "RGB 서브픽셀 수",
+      "physicalSize": "화면 실제 크기",
+      "angularRes": "각도당 픽셀 수 (PPD)",
+      "retinaYes": "레티나 기준 충족",
+      "retinaNo": "레티나 기준 미달",
+      "retinaThreshold": "Apple 지정 레티나 기준 (60 PPD / 1분각).",
+      "yourDisplay": "현재 디스플레이",
+      "browserNote": "픽셀 밀도(PPI), 도트 피치 및 시각 식별 한계 거리를 산출합니다.",
+      "excellent": "초고밀도 (레티나)",
+      "sharp": "선명한 데스크톱",
+      "adequate": "표준",
+      "low": "낮은 밀도"
+    },
+    "subpixelLayoutTest": {
+      "title": "서브픽셀 배열 & 텍스트 번짐",
+      "description": "RGB, BGR, OLED 서브픽셀 배열 및 폰트 색 번짐 진단.",
+      "metaDescription": "서브픽셀 배열 및 텍스트 선명도 진단."
+    },
+    "pwmFlickerTest": {
+      "title": "PWM 플리커 테스트",
+      "description": "백라이트 깜빡임과 스트로보로 인한 눈 피로도 감지.",
+      "metaDescription": "PWM 깜빡임 및 시각적 피로도 측정."
+    },
+    "gtgResponseTimeTest": {
+      "title": "GtG 응답속도 테스트",
+      "description": "회색 단계별 픽셀 전환 속도와 오버드라이브 역잔상 측정.",
+      "metaDescription": "픽셀 응답속도 및 오버슈트 평가."
+    },
+    "mousePollingTest": {
+      "title": "마우스 폴링레이트 & 정밀도",
+      "description": "실시간 마우스 Hz, 지터 안정성 및 더블클릭 불량 측정.",
+      "metaDescription": "정밀 마우스 폴링레이트 및 센서 테스터."
+    },
+    "gpuBenchmarkTest": {
+      "title": "GPU WebGL 3D 벤치마크",
+      "description": "3D 파티클 부하 테스트 및 프레임 안정성 측정.",
+      "metaDescription": "WebGL 3D 파티클 부하 및 GPU 안정성 벤치마크."
+    },
+    "MotionBlurPattern": {
+      "clickAnywhereToCycleTitle": "속도를 전환하려면 아무 곳이나 클릭하세요",
+      "pxS": "px/s",
+      "mode": "모드",
+      "clickToCycleSpeed": "캔버스나 배지를 클릭하여 속도를 전환하세요",
+      "motionBlurPersistenceMprt": "모션 블러 및 잔상 지속성 (MPRT) 가이드",
+      "close": "닫기",
+      "persistenceBlurVsGhosting": "잔상 지속 블러 vs 응답 시간 고스팅:",
+      "ghostingIsCausedBy": "고스팅은 느린 픽셀 응답 속도(GtG)로 인해 발생하여 색상 잔상을 남깁니다. ",
+      "motionBlurPersistenceBlur": "잔상 지속 블러 (MPRT)",
+      "isCausedBy": " 는 디스플레이에서 움직이는 물체를 눈으로 부드럽게 추적할 때 발생합니다 ",
+      "sampleAndHoldDisplay": "샘플 앤 홀드 디스플레이",
+      "combinedWithSmoothPursuit": ", 망막에서 이미지가 번지게 됩니다.",
+      "why0msDisplaysStill": "0ms 디스플레이에서도 여전히 블러가 발생하는 이유: ",
+      "evenOnOledDisplays": "즉각적인 응답 속도를 가진 OLED 디스플레이에서도 샘플 앤 홀드 디스플레이는 프레임 지속 시간 1ms당 1ms의 블러를 보입니다.",
+      "linePairsMotionResolution": "라인 쌍 (모션 해상도): ",
+      "the1pxAnd2px": "1px 및 2px 라인 쌍은 공간 해상도를 테스트합니다. 잔상 지속성이 높은 디스플레이는 미세한 선을 평평한 단색 회색 바로 흐리게 만듭니다.",
+      "howToReducePersistence": "블러를 줄이는 방법: ",
+      "increaseYourDisplayApos": "재생률을 높이거나(240Hz 이상), 블랙 프레임 삽입(BFI) / 백라이트 스트로빙을 사용하거나, ULMB를 활성화하세요.",
+      "trackingTip": "시선 추적 팁: ",
+      "keepYourEyesLocked": "동적 시선 추적을 테스트하려면 흰색 수직 정렬 가이드에 시선을 고정하세요.",
+      "motionBlurPersistenceMprtTitle": "모션 블러 및 잔상 지속성 (MPRT) 테스트",
+      "linePairsGrating": "라인 쌍 격자",
+      "textClarity": "텍스트 선명도",
+      "multiSpeed": "다중 속도",
+      "speed": "속도",
+      "toggleEyePursuitTrackingTitle": "시선 추적 가이드 토글",
+      "pursuitGuide": "추적 가이드",
+      "reverseMotionDirectionTitle": "이동 방향 반전",
+      "readAboutMotionBlurTitle": "모션 블러 및 MPRT 알아보기",
+      "guide": "가이드"
     }
   },
   "Guides": {
@@ -4431,6 +5007,32 @@
         "title": "듀얼 모니터 화이트 포인트 매칭",
         "description": "다중 모니터 환경에서 색온도, RGB 게인, 밝기를 균일하게 맞추기 위한 좌우 분할 캔버스 도구입니다.",
         "badge": "캘리브레이션"
+      },
+      "screenRecorder": {
+        "title": "화면 녹화 및 스크린샷",
+        "description": "화면이나 창을 WebM 동영상으로 녹화하거나 무손실 PNG 스크린샷을 캡처합니다.",
+        "badge": "화면 캡처"
+      },
+      "dpiCalculator": {
+        "title": "DPI / PPI 계산기",
+        "description": "화면의 픽셀 밀도, 도트 피치 및 레티나 최적 시청 거리를 계산합니다.",
+        "badge": "계산기"
+      },
+      "deadPixelMapper": {
+        "title": "불량화소 RMA 매퍼",
+        "description": "결함 화소 좌표를 기록하고 ISO 9241-307 보증 기준을 판정합니다."
+      },
+      "oledBurnInCalculator": {
+        "title": "OLED 번인 계산기",
+        "description": "OLED 화면의 번인 발생 확률과 패널 수명을 예측합니다."
+      },
+      "displayCertificate": {
+        "title": "디스플레이 검사 인증서",
+        "description": "중고 거래 및 AS 신청에 사용하는 공식 품질 증명서를 발행합니다."
+      },
+      "osdCalibrationGuide": {
+        "title": "OSD 캘리브레이션 가이드",
+        "description": "모니터 물리 버튼을 조작하여 화면을 단계별로 보정합니다."
       }
     },
     "DisplayBandwidthCalculator": {
@@ -6566,7 +7168,30 @@
     "notesLabel": "점검 메모:",
     "notesPlaceholder": "예: 좌측에서 볼 때 살짝 누런 기운이 돎, 우측 하단에 일반적인 IPS 글로우 관찰...",
     "resultBadge": "시각 관찰 결과",
-    "backToGuide": "시야각 가이드 읽기"
+    "backToGuide": "시야각 가이드 읽기",
+    "50NeutralGrayField": "50% 중립 그레이 필드",
+    "observeWhetherTheEdges": "중앙에 비해 가장자리가 어둡거나 색조가 변하는지 관찰하십시오.",
+    "redRgb2550": "빨간색 (RGB 255, 0, 0)",
+    "greenRgb0255": "녹색 (RGB 0, 255, 0)",
+    "blueRgb00": "파란색 (RGB 0, 0, 255)",
+    "yellowRG": "노란색 (R+G)",
+    "cyanGB": "청록색 (G+B)",
+    "magentaRB": "마젠타 (R+B)",
+    "rgb": "RGB: ",
+    "skinTonesAreSensitive": "피부 톤과 기억 색상은 시야각에 따른 색조 및 채도 변화에 특히 민감합니다.",
+    "0Black0": "0% 검정 (0)",
+    "50Midtone128": "50% 중간톤 (128)",
+    "100White255": "100% 흰색 (255)",
+    "lowKeyShadowDetail": "어두운 그림자 세부 단계 (거의 검은색 1%–10%)",
+    "onVaPanelsNear": "VA 패널에서는 거의 검은색 세부 사항이 수직 방향에서 뭉개지고 각도를 기울여야 나타나는 경우가 많습니다(감마 시프트).",
+    "highKeyHighlightDetail": "밝은 하이라이트 세부 단계 (거의 흰색 90%–99%)",
+    "highlightsShouldRemainDiscernible": "하이라이트는 넓은 각도에서도 번짐 없이 순수한 흰색과 구별될 수 있어야 합니다.",
+    "fullBlackField0": "완전한 검은색 필드 (0% 휘도)",
+    "lookDiagonallyAtThe": "화면을 대각선으로 보아 IPS 글로우나 각도에 따른 백라이트 누출을 확인하십시오.",
+    "fullWhiteField100": "완전한 흰색 필드 (100% 휘도)",
+    "inspectWhitePointUniformity": "화이트 포인트 균일성 및 시야각에 따른 색조(예: OLED/VA의 핑크/녹색 색조 왜곡)를 점검하십시오.",
+    "previousPatternTitle": "이전 패턴",
+    "nextPatternTitle": "다음 패턴"
   },
   "BrightnessTest": {
     "metaTitle": "모니터 밝기 및 휘도 시각적 점검",
@@ -6732,7 +7357,15 @@
     "obsNormal": "끊김 없이 매끄럽게 터치가 인식됨",
     "obsIssues": "입력 누락이나 데드존이 관찰됨",
     "obsUnsure": "판단 불확실 / 비터치 기기",
-    "notesPlaceholder": "예: 좌측 상단 모서리 반응이 약간 둔함, 5손가락 멀티터치는 정상 인식..."
+    "notesPlaceholder": "예: 좌측 상단 모서리 반응이 약간 둔함, 5손가락 멀티터치는 정상 인식...",
+    "active": "활성:",
+    "peak": "최고:",
+    "currentActive": "현재 활성",
+    "peakDetected": "최고 감지됨",
+    "eventState": "이벤트 상태:",
+    "id": "ID: ",
+    "resetTestTitle": "테스트 재설정",
+    "touch": "터치:"
   },
   "Breadcrumbs": {
     "home": "홈",
@@ -6993,7 +7626,8 @@
     },
     "troubleshooting": {
       "viewGuide": "문제 해결 가이드"
-    }
+    },
+    "5SecondAudioCheck": "5초 오디오 검사"
   },
   "VoiceRecorder": {
     "metaTitle": "보이스 레코더 – 무료 온라인 오디오 및 마이크 녹음 도구",

@@ -38,8 +38,21 @@ import {
   Vibrate,
   Webcam,
   Volume2,
-  Mic
+  Mic,
+  Cpu,
+  BatteryMedium,
+  Wifi,
+  EyeOff as EyeOffIcon,
+  Video,
+  Timer,
+  SunDim,
+  Calculator,
+  MousePointer,
+  Flame,
+  Award,
+  ZoomIn
 } from "lucide-react";
+
 
 export interface ScreenTestItem {
   id: string;
@@ -126,8 +139,11 @@ function getTestIcon(id: string) {
     case "saturation-test":
       return <Droplet className="w-3.5 h-3.5 stroke-[1.8]" />;
     case "hdr-capability-test":
-      return <Sparkles className="w-3.5 h-3.5 stroke-[1.8]" />;
+      return <Cpu className="w-3.5 h-3.5 stroke-[1.8]" />;
+    case "hdr-test":
+      return <SunMedium className="w-3.5 h-3.5 stroke-[1.8]" />;
     case "touch-screen-test":
+
       return <Hand className="w-3.5 h-3.5 stroke-[1.8]" />;
     case "multi-touch-test":
       return <Fingerprint className="w-3.5 h-3.5 stroke-[1.8]" />;
@@ -143,6 +159,40 @@ function getTestIcon(id: string) {
       return <Volume2 className="w-3.5 h-3.5 stroke-[1.8]" />;
     case "microphone-test":
       return <Mic className="w-3.5 h-3.5 stroke-[1.8]" />;
+    case "battery-test":
+      return <BatteryMedium className="w-3.5 h-3.5 stroke-[1.8]" />;
+    case "network-speed-test":
+      return <Wifi className="w-3.5 h-3.5 stroke-[1.8]" />;
+    case "color-blindness-test":
+      return <Eye className="w-3.5 h-3.5 stroke-[1.8]" />;
+    case "screen-recorder":
+      return <Video className="w-3.5 h-3.5 stroke-[1.8]" />;
+    case "dark-mode-test":
+      return <Moon className="w-3.5 h-3.5 stroke-[1.8]" />;
+    case "input-lag-test":
+      return <Timer className="w-3.5 h-3.5 stroke-[1.8]" />;
+    case "ambient-light-test":
+      return <SunDim className="w-3.5 h-3.5 stroke-[1.8]" />;
+    case "dpi-calculator":
+      return <Calculator className="w-3.5 h-3.5 stroke-[1.8]" />;
+    case "subpixel-layout-test":
+      return <ZoomIn className="w-3.5 h-3.5 stroke-[1.8]" />;
+    case "pwm-flicker-test":
+      return <EyeOff className="w-3.5 h-3.5 stroke-[1.8]" />;
+    case "dead-pixel-mapper":
+      return <Crosshair className="w-3.5 h-3.5 stroke-[1.8]" />;
+    case "gtg-response-time-test":
+      return <Activity className="w-3.5 h-3.5 stroke-[1.8]" />;
+    case "oled-burn-in-calculator":
+      return <Flame className="w-3.5 h-3.5 stroke-[1.8]" />;
+    case "mouse-polling-test":
+      return <MousePointer className="w-3.5 h-3.5 stroke-[1.8]" />;
+    case "gpu-benchmark-test":
+      return <Cpu className="w-3.5 h-3.5 stroke-[1.8]" />;
+    case "display-certificate":
+      return <Award className="w-3.5 h-3.5 stroke-[1.8]" />;
+    case "osd-calibration-guide":
+      return <Sliders className="w-3.5 h-3.5 stroke-[1.8]" />;
     default:
       return <Monitor className="w-3.5 h-3.5 stroke-[1.8]" />;
   }

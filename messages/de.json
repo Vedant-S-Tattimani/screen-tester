@@ -225,7 +225,8 @@
       "uniformityPanel": "HOMOGENITÄTS- UND HINTERGRUNDBELEUCHTUNGSTESTS",
       "motionPerformance": "BEWEGUNGSSCHÄRFE & BILDWIEDERHOLRATE",
       "sharpnessCapabilities": "SCHÄRFE- UND FUNKTIONSTESTS",
-      "deviceInput": "GERÄTE & EINGABE"
+      "deviceInput": "GERÄTE & EINGABE",
+      "utilitiesTools": "HILFSMITTEL & WERKZEUGE"
     },
     "allTestsNoResults": "Keine Tests gefunden für",
     "moreFreeTestingToolsTitle": "Weitere Kostenlose Test-Werkzeuge",
@@ -335,8 +336,8 @@
         "description": "Beurteilen Sie das Gamma-Tracking Ihres Monitors visuell (Ziel 2.2 für sRGB)."
       },
       "hdrCapabilityTest": {
-        "title": "HDR-Fähigkeit",
-        "description": "Überprüfen Sie, ob Ihr Browser und das OS HDR und Wide Color Gamut korrekt erkennen."
+        "title": "HDR-Signal & Hardware-Detektor",
+        "description": "Überprüfen Sie OS-HDR-Compositing, 10-Bit-Farbtiefe, BT.2020/DCI-P3-Farbraum, Canvas-P3 und HDR10-Video-Codecs."
       },
       "contrastTest": {
         "title": "Kontrastkalibrierung",
@@ -349,7 +350,8 @@
     },
     "searchPlaceholder": "Tests durchsuchen...",
     "subtitle": "Erkunden Sie unsere vollständige Bibliothek von Monitor-Testtools. Alle Tests laufen lokal in Ihrem Browser.",
-    "relatedTitle": "Ähnliche Tests"
+    "relatedTitle": "Ähnliche Tests",
+    "noResults": "Keine Tests für „{query}“ gefunden"
   },
   "TestWrapper": {
     "howToTest": "Wie man testet",
@@ -621,13 +623,13 @@
       "inst3": "Passen Sie Geschwindigkeit und Kontrast an, um unter verschiedenen Panel-Overdrive-Szenarien zu testen."
     },
     "hdr-capability-test": {
-      "metaTitle": "HDR-Fähigkeit & Visuelle Prüfung",
-      "metaDescription": "Prüfen Sie vom Browser gemeldete HDR-Unterstützung (dynamic-range: high). Spitzenhelligkeit in Nits und DisplayHDR-Zertifizierungen erfordern Labormessgeräte.",
-      "title": "HDR-Fähigkeit & Visuelle Prüfung",
-      "description_p1": "Fragt Browser-CSS-Media-Queries ab, ob das Betriebssystem HDR (dynamic-range: high) meldet. Der Browser erkennt den Signalstatus, misst jedoch keine physischen Peak-Nits und verifiziert keine DisplayHDR-Zertifizierung.",
-      "inst1": "Überprüfen Sie die vom Browser gemeldeten Fähigkeiten.",
-      "inst2": "Wenn 'Nicht unterstützt' angezeigt wird, Ihr Monitor aber HDR-fähig ist, stellen Sie sicher, dass HDR in Windows/macOS aktiviert ist.",
-      "inst3": "Stellen Sie sicher, dass Sie einen modernen Browser mit aktivierter Hardware-Beschleunigung verwenden."
+      "metaTitle": "HDR-Hardware & Signal-Detektor – OS- & Browser-Funktionen",
+      "metaDescription": "Prüfen Sie, ob Monitor, OS-Compositor und Browser HDR, 10-Bit-Farbpuffer, Farbräume (DCI-P3/Rec.2020) und HDR-Codecs unterstützen.",
+      "title": "HDR-Hardware & Signal-Detektor",
+      "description_p1": "Umfassendes Diagnosewerkzeug für Hardware-, OS-Compositor- und Browser-Pipeline. Prüft CSS dynamic-range, Wide Color Gamut (Rec.2020 / DCI-P3), Puffer-Farbtiefe, Canvas P3, WebGL-Float-Puffer und HDR-Videodekodierung.",
+      "inst1": "Überprüfen Sie die in Echtzeit ermittelten Compositor- und Puffermetriken.",
+      "inst2": "Falls HDR inaktiv ist, drücken Sie Win + Alt + B unter Windows oder aktivieren Sie HDR in den macOS-Einstellungen.",
+      "inst3": "Überprüfen Sie die Video-Codec-Matrix auf hardwarebeschleunigte HDR-Wiedergabe."
     },
     "display-info": {
       "metaTitle": "Display-Informationen & GPU-Analyse – Auflösung, DPR & Grafikkarte",
@@ -680,14 +682,14 @@
       ]
     },
     "hdr-test": {
-      "metaTitle": "Visuelle HDR-Inspektion – Highlight-Clipping & Tone-Mapping-Test",
-      "metaDescription": "Kontrolliertes visuelles HDR-Testmuster zur Überprüfung von Glanzlicht-Clipping, Tonwertkurven, Schattendetails und Wide-Color-Gamut.",
-      "title": "Visuelle HDR-Inspektion",
-      "description_p1": "Bietet einen kontrollierten visuellen Workflow zur Überprüfung von Highlight-Clipping, Tonwertkurven und Schattendetails. Die Spitzenhelligkeit in Nits erfordert optische Laborgeräte; dieser Test bewertet die relative Tonwertabstufung im Browser.",
+      "metaTitle": "HDR Visuelle Kalibrierung & Highlight-Inspektion",
+      "metaDescription": "Überprüfen Sie Glanzlicht-Clipping, Tone-Mapping-Rolloff, 10%-APL-Spitzenweiß-Fenster und Schattendetails.",
+      "title": "HDR Visuelle Kalibrierung & Highlight-Inspektion",
+      "description_p1": "Kontrollierte optische Testsuite zur visuellen Überprüfung der Displayreaktion auf HDR-Signale. Bewerten Sie Glanzlicht-Clipping, 10%-APL-Spitzenhelligkeit, PQ/EOTF-Tonkurven und Schattendetails.",
       "instructions": [
-        "<strong>SYSTEM-EINRICHTUNG:</strong> Stellen Sie sicher, dass HDR in den Windows-/macOS-Anzeigeeinstellungen aktiviert ist und der HDR-Bildmodus des Monitors aktiv ist.",
-        "<strong>HIGHLIGHT-CLIPPING:</strong> Untersuchen Sie die Glanzlichtstufen (90 % bis 100 %). Achten Sie darauf, ab welcher Stufe helle Felder zu Weiß verschmelzen.",
-        "<strong>SCHATTEN & FARBRAUM:</strong> Überprüfen Sie dunkle Blöcke (0 % bis 10 %) auf Detailverlust und vergleichen Sie die SDR-Referenz mit dem Display-P3-Farbraum."
+        "<strong>BETRACHTUNGSBEDINGUNGEN:</strong> Dunkeln Sie den Raum ab, damit Ihre Augen feine Glanzlicht-Ziele und Schattendetails optimal unterscheiden können.",
+        "<strong>GLANZLICHT-CLIPPING:</strong> Untersuchen Sie die Testfelder von 90% bis 100% Spitzenweiß. Zielkreuze sollten sichtbar bleiben, ohne in reines Weiß abzusaufen.",
+        "<strong>10%-APL-SPITZENHELLIGKEIT:</strong> Schalten Sie auf das 10%-APL-Fenster um, um Local Dimming, Spitzen-Nits und Halos vor echtem Schwarz zu prüfen."
       ]
     },
     "near-black-test": {
@@ -908,6 +910,201 @@
         "Bewegen Sie beide Analogsticks, um Zentrierung, Kreisfehler und Ruhezustands-Drift zu prüfen.",
         "Betätigen Sie analoge Trigger und Tasten zur Funktionsüberprüfung."
       ]
+    },
+    "battery-test": {
+      "title": "Akkuzustand & Energieinformationen",
+      "metaTitle": "Akkuzustand & Energiestatus-Test | Screen Tester",
+      "description": "Überprüfen Sie den Akkustand, Ladestatus, verbleibende Zeit und Energiequelle Ihres Geräts mit der Battery Status API.",
+      "metaDescription": "Online-Akkuzustandsprüfer. Akkustand, Ladestatus, Ladezeit und Energiequelleninformationen in Echtzeit anzeigen.",
+      "instructions": [
+        "Öffnen Sie den Test auf einem Laptop, Tablet oder Mobilgerät mit Akku.",
+        "Sehen Sie den aktuellen Akkuprozentsatz und Ladestatus.",
+        "Überwachen Sie die geschätzte Ladezeit oder verbleibende Akkuzeit.",
+        "Verfolgen Sie Änderungen des Akkustands im Verlaufsdiagramm."
+      ]
+    },
+    "network-speed-test": {
+      "title": "Netzwerk-Geschwindigkeitstest",
+      "metaTitle": "Internet-Geschwindigkeitstest | Screen Tester",
+      "description": "Testen Sie Ihre Internetverbindungsgeschwindigkeit einschließlich Download-Durchsatz, Latenz-Ping und Netzwerktyp.",
+      "metaDescription": "Kostenloser Online-Internet-Geschwindigkeitstest. Messen Sie Download-Geschwindigkeit, Latenz und Verbindungstyp.",
+      "instructions": [
+        "Stellen Sie sicher, dass Sie über WLAN oder Ethernet mit dem Internet verbunden sind.",
+        "Klicken Sie auf 'Test starten', um Latenz und Download-Geschwindigkeit zu messen.",
+        "Ergebnisse zeigen Latenz in Millisekunden und Download-Geschwindigkeit in Mbps.",
+        "Führen Sie mehrere Tests für konsistente Durchschnittswerte durch."
+      ]
+    },
+    "color-blindness-test": {
+      "title": "Farbenblindheit-Simulator",
+      "metaTitle": "Farbsehschwäche-Simulator | Screen Tester",
+      "description": "Simulieren Sie 8 Arten von Farbsehschwäche einschließlich Protanopie, Deuteranopie, Tritanopie und Achromatopsie.",
+      "metaDescription": "Kostenloser Farbenblindheit-Simulator. Vorschau, wie Ihre UI und Designs für Menschen mit Farbsehschwäche aussehen.",
+      "instructions": [
+        "Wählen Sie einen Farbsehtyp aus den Optionen.",
+        "Beobachten Sie, wie sich Farben, Verläufe und UI-Elemente unter jeder Simulation ändern.",
+        "Verwenden Sie den Vergleichsmodus für eine Seite-an-Seite-Ansicht.",
+        "Prüfen Sie, ob Ihre Designs bei allen Sehtypen Kontrast und Lesbarkeit beibehalten."
+      ]
+    },
+    "screen-recorder": {
+      "title": "Bildschirmrekorder & Screenshot",
+      "metaTitle": "Online-Bildschirmrekorder | Screen Tester",
+      "description": "Nehmen Sie Ihren Bildschirm auf oder erstellen Sie Screenshots direkt im Browser. Download als WebM-Video oder PNG-Bild.",
+      "metaDescription": "Kostenloser Online-Bildschirmrekorder. Erfassen Sie Ihren Bildschirm als Video oder Screenshot direkt im Browser.",
+      "instructions": [
+        "Klicken Sie auf 'Aufnahme starten' und wählen Sie den Bildschirm, das Fenster oder den Tab.",
+        "Verwenden Sie Pause/Fortsetzen zur Steuerung der Aufnahme.",
+        "Klicken Sie auf 'Stopp', um die Aufnahme zu beenden und das Video anzuzeigen.",
+        "Verwenden Sie 'Screenshot' für ein einzelnes Standbild als PNG."
+      ]
+    },
+    "dark-mode-test": {
+      "title": "Dunkel-/Hellmodus-Test",
+      "metaTitle": "Dunkelmodus-Erkennung & Theme-Test | Screen Tester",
+      "description": "Erkennen Sie die Dunkelmodus-Einstellung Ihres Betriebssystems, testen Sie CSS-Farbschema-Unterstützung und Vorschau von UI-Komponenten.",
+      "metaDescription": "Testen Sie Dunkelmodus-Erkennung und Theme-Umschaltung. Überprüfen Sie OS-Einstellungen und CSS-Farbschema-Unterstützung.",
+      "instructions": [
+        "Der Test erkennt automatisch Ihre OS-Dunkelmodus-Einstellung.",
+        "Wechseln Sie zwischen System-, Hell- und Dunkelmodus-Vorschau.",
+        "Inspizieren Sie UI-Beispielelemente in jedem Theme.",
+        "Prüfen Sie, ob Ihr Browser die CSS color-scheme Eigenschaft unterstützt."
+      ]
+    },
+    "input-lag-test": {
+      "title": "Eingabeverzögerung-Visualisierer",
+      "metaTitle": "Eingabeverzögerung & Click-to-Photon-Test | Screen Tester",
+      "description": "Messen Sie Ihre visuell-zu-Klick-Eingabeverzögerung mit einem 10-Versuchs-Reaktionstest.",
+      "metaDescription": "Messen Sie die Eingabeverzögerung und Click-to-Photon-Latenz. 10-Versuchs-Reaktionstest mit Histogramm und Statistik.",
+      "instructions": [
+        "Klicken Sie auf das graue Feld, um den Test zu starten.",
+        "Warten Sie, bis das Feld grün wird — klicken Sie NICHT während der roten Phase.",
+        "Klicken Sie so schnell wie möglich, wenn Sie Grün sehen.",
+        "Absolvieren Sie alle 10 Versuche für vollständige statistische Ergebnisse."
+      ]
+    },
+    "ambient-light-test": {
+      "title": "Umgebungslicht-Sensor-Test",
+      "metaTitle": "Umgebungslicht-Sensor & Lux-Meter | Screen Tester",
+      "description": "Lesen Sie Umgebungslichtpegel in Echtzeit in Lux mit der AmbientLightSensor API ab.",
+      "metaDescription": "Online Umgebungslicht-Sensor-Test. Messen Sie die Raumhelligkeit in Lux und erhalten Sie Empfehlungen.",
+      "instructions": [
+        "Erlauben Sie die Sensorberechtigung, wenn der Browser Sie auffordert.",
+        "Der Lux-Wert aktualisiert sich in Echtzeit bei Lichtänderungen.",
+        "Bewegen Sie Ihr Gerät näher an Lichtquellen oder davon weg.",
+        "Prüfen Sie die Empfehlung für optimale Bildschirmhelligkeit."
+      ]
+    },
+    "dpi-calculator": {
+      "title": "DPI / PPI Rechner",
+      "metaTitle": "DPI PPI Pixeldichte-Rechner | Screen Tester",
+      "description": "Berechnen Sie DPI, PPI, Punktabstand Ihres Monitors und prüfen Sie die Retina-Schwelle für Ihren Betrachtungsabstand.",
+      "metaDescription": "Kostenloser DPI-PPI-Rechner. Geben Sie Bildschirmgröße und Auflösung ein für Pixeldichte und Retina-Schwelle.",
+      "instructions": [
+        "Wählen Sie ein Preset oder geben Sie Diagonale und Auflösung manuell ein.",
+        "Geben Sie Ihren typischen Betrachtungsabstand für die Retina-Schwellenberechnung ein.",
+        "Sehen Sie die berechneten PPI, Punktabstand, Seitenverhältnis und Subpixelzahl.",
+        "Prüfen Sie, ob Ihr Display die Retina-Schwelle bei Ihrem Betrachtungsabstand erreicht."
+      ]
+    },
+    "subpixel-layout-test": {
+      "title": "Subpixel-Layout & Textfarbsäume-Test",
+      "description": "Überprüfen Sie RGB-, BGR-, QD-OLED- und WOLED-Subpixel-Strukturen und erkennen Sie Farbsäume an Schriftkanten.",
+      "metaTitle": "Subpixel-Layout & Textfarbsäume-Test - ClearType & OLED-Geometrie",
+      "metaDescription": "Testen Sie das Display-Subpixel-Layout und optimieren Sie die ClearType-Schriftglättung.",
+      "instructions": [
+        "Wählen Sie Ihre Panel-Architektur oder nutzen Sie die 1-Pixel-Gitterlinien zur Orientierung.",
+        "Untersuchen Sie kontrastreichen Text auf hellen und dunklen Hintergründen auf Farbsäume.",
+        "Folgen Sie der ClearType-Anleitung zur Feinabstimmung der Schriftglättung."
+      ]
+    },
+    "pwm-flicker-test": {
+      "title": "PWM-Hintergrundbeleuchtung-Flackertest",
+      "description": "Erkennen Sie Pulsweitenmodulation (PWM) und stroboskopische Flimmerursachen für Augenbelastung.",
+      "metaTitle": "PWM-Flackertest - Stroboskopischer Augenkomfort & Kamera-Check",
+      "metaDescription": "Testen Sie auf unsichtbares PWM-Flackern und stroboskopische Nachzieheffekte bei verschiedenen Helligkeitsstufen.",
+      "instructions": [
+        "Beobachten Sie sich schnell bewegende Balken bei rascher Augenbewegung.",
+        "Achten Sie auf stroboskopische Phantomstreifen, die auf PWM-Dimmung hinweisen.",
+        "Nutzen Sie die Smartphone-Kamera im Pro-Modus (1/1000s+), um PWM-Streifen sichtbar zu machen."
+      ]
+    },
+    "dead-pixel-mapper": {
+      "title": "Pixelfehler-RMA-Mapper & Garantie-Rechner",
+      "description": "Interaktive Vollbild-Leinwand zur Erfassung von Pixelfehler-Koordinaten und Prüfung nach ISO 9241-307.",
+      "metaTitle": "Pixelfehler-RMA-Mapper - ISO 9241-307 Garantie-Prüfung",
+      "metaDescription": "Erfassen Sie Koordinaten defekter Pixel und prüfen Sie Hersteller-Garantieansprüche.",
+      "instructions": [
+        "Wechseln Sie die Hintergrundfarben und klicken Sie auf defekte Pixel, um die Position zu speichern.",
+        "Klassifizieren Sie den Defekt (toter Pixel, leuchtender Subpixel oder Staub).",
+        "Überprüfen Sie die ISO 9241-307 Konformität und kopieren Sie den RMA-Bericht."
+      ]
+    },
+    "gtg-response-time-test": {
+      "title": "Grau-zu-Grau (GtG) Reaktionszeit-Visualisierer",
+      "description": "Messen Sie Pixelübergänge zwischen Graustufen und identifizieren Sie Overdrive-Geisterbilder.",
+      "metaTitle": "GtG-Reaktionszeit-Test - Overdrive & Ghosting Visualisierer",
+      "metaDescription": "Testen Sie Pixelreaktionszeiten und optimieren Sie die Overdrive-Einstellung Ihres Monitors.",
+      "instructions": [
+        "Wählen Sie Standard-Übergänge (z. B. 0% zu 20% VA-Schmier-Test oder 25% zu 75%).",
+        "Verfolgen Sie den bewegten Block mit den Augen, um Kantenklarheit zu prüfen.",
+        "Passen Sie den Monitor-Overdrive an, um Schlieren ohne helle Geisterränder zu beseitigen."
+      ]
+    },
+    "oled-burn-in-calculator": {
+      "title": "OLED-Einbrennrisiko- & Lebensdauer-Rechner",
+      "description": "Berechnen Sie die Wahrscheinlichkeit von Einbrenneffekten und statische Gefahrenzonen bei OLED & QD-OLED.",
+      "metaTitle": "OLED & QD-OLED Einbrennrisiko-Rechner - Lebensdauer-Schätzung",
+      "metaDescription": "Schätzen Sie die Lebensdauer und das Einbrennrisiko von OLED- und QD-OLED-Monitoren.",
+      "instructions": [
+        "Wählen Sie Ihre OLED-Generation (WOLED MLA, QD-OLED Gen 3, AMOLED).",
+        "Geben Sie tägliche Nutzungsstunden, statischen UI-Anteil und Helligkeit ein.",
+        "Prüfen Sie den Risikoverlauf und Empfehlungen zur Verlängerung der Lebensdauer."
+      ]
+    },
+    "mouse-polling-test": {
+      "title": "Maus-Polling-Rate (Hz) & Präzisionstest",
+      "description": "Messen Sie Echtzeit-Mausabfragerate in Hz, Jitter-Stabilität, Klicklatenz und Sensor-DPI.",
+      "metaTitle": "Maus-Polling-Rate (Hz) & Präzisionstest - Jitter & Doppelklick-Prüfung",
+      "metaDescription": "Testen Sie Maus-Polling-Raten bis zu 8000Hz, Jitter und Schalter-Prellen.",
+      "instructions": [
+        "Bewegen Sie die Maus zügig im Kreis auf dem Testfeld, um Spitzen- und Durchschnitts-Hz zu messen.",
+        "Überprüfen Sie die zeitliche Gleichmäßigkeit der Abtastintervalle.",
+        "Testen Sie Maustasten auf Prellen und ungewollte Doppelklicks."
+      ]
+    },
+    "gpu-benchmark-test": {
+      "title": "GPU WebGL 3D-Stresstest & Benchmark",
+      "description": "Echtzeit-3D-Partikelszene zur Messung von FPS, 1%-Low-Stabilität und thermischem Throttling.",
+      "metaTitle": "GPU WebGL 3D Benchmark - FPS, 1% Lows & Hardware-Telemetrie",
+      "metaDescription": "GPU-Benchmark mit 10.000 bis 200.000 3D-Partikeln und 30s-Stabilitätstest.",
+      "instructions": [
+        "Wählen Sie eine Belastungsstufe von Leicht (10K) bis Extrem (200K Partikel).",
+        "Beobachten Sie Bildrate, 1%-Low-Werte und Frametime-Stabilität.",
+        "Starten Sie den 30-Sekunden-Benchmark für einen Gesamt-Stabilitätswert."
+      ]
+    },
+    "display-certificate": {
+      "title": "Display-Prüfzertifikat & RMA-Bericht",
+      "description": "Erstellen Sie ein druckfertiges Zertifikat über Displayqualität für Wiederverkauf oder Garantieansprüche.",
+      "metaTitle": "Display-Prüfzertifikat & RMA-Bericht - Druckfertiges PDF",
+      "metaDescription": "Erstellen Sie einen offiziellen Display-Prüfbericht mit Hardwaredaten und Pixelfehler-Zählung.",
+      "instructions": [
+        "Überprüfen Sie automatisch erkannte Spezifikationen wie Auflösung und Farbraum.",
+        "Tragen Sie Monitormodell, Seriennummer und manuelle Prüfergebnisse ein.",
+        "Klicken Sie auf 'Drucken / Als PDF speichern', um das Zertifikat zu exportieren."
+      ]
+    },
+    "osd-calibration-guide": {
+      "title": "Interaktiver OSD-Monitor-Kalibrierungsassistent",
+      "description": "Schritt-für-Schritt-Anleitung zur optimalen Einstellung der Hardware-Tasten (OSD-Menü) Ihres Monitors.",
+      "metaTitle": "OSD-Monitor-Kalibrierung - Schritt-für-Schritt Hardware-Anleitung",
+      "metaDescription": "Kalibrieren Sie Helligkeit, Kontrast, Gamma 2.2, 6500K Farbtemperatur und Overdrive über das Monitor-OSD.",
+      "instructions": [
+        "Befolgen Sie die 6 Schritte direkt an den Tasten Ihres Monitors (OSD-Menü).",
+        "Passen Sie Helligkeit und Kontrast an, um Detailverlust in Schatten und Lichtern zu vermeiden.",
+        "Stellen Sie Gamma auf 2.2, Farbtemperatur auf 6500K neutrales Weiß und optimieren Sie Overdrive."
+      ]
     }
   },
   "Tests": {
@@ -1089,8 +1286,8 @@
       "instructions": "Vertikale Bewegungsbalken bei unterschiedlichen Lasten auf Tearing und Ruckler beobachten."
     },
     "hdrVisualTest": {
-      "title": "Visuelle HDR-Inspektion – Highlight-Clipping & Tonwertkurve",
-      "description": "Kontrollierter Test für Glanzlicht-Clipping, Tone-Mapping und Wide-Gamut-Darstellung.",
+      "title": "HDR Visuelle Inspektion – Highlight-Clipping & Tone-Mapping",
+      "description": "Kontrollierter optischer Sehtest für Glanzlicht-Clipping, Tonkurven-Rolloff, 10%-Peak-Weiß-Fenster und Schattendetails.",
       "instructions": "Glanzlichtbalken auf Clipping prüfen und Schattendetails nahe Schwarz kontrollieren."
     },
     "nearBlackTest": {
@@ -1616,14 +1813,81 @@
       "standard2DeltaTitle": "Standard ~2% delta",
       "subtle1DeltaTitle": "Subtle ~1% delta",
       "ultraFine05Title": "Ultra-Fine ~0.5% delta",
-      "momentarilyBlinkReticlesSoTitle": "Momentarily blink reticles so you can spot their exact location"
+      "momentarilyBlinkReticlesSoTitle": "Momentarily blink reticles so you can spot their exact location",
+      "dismiss": "Schließen",
+      "pipelineDetectorBadge": "Hardware- & Signal-Auditor",
+      "realTimeHardwareAudit": "Echtzeit-Hardware- & Compositor-Audit",
+      "hdrHardwareSignalDetectorTitle": "HDR-Hardware & Signal-Detektor",
+      "hdrHardwareSignalDetectorSubtitle": "Direkte Abfrage von OS-Compositor-HDR, 10-Bit-Farbtiefe, Farbräumen, WebGL-Float-Puffern und HDR-Videodecodern.",
+      "probingStatus": "Prüfe Pipeline...",
+      "hdrActiveCompositor": "HDR im OS-Compositor Aktiv",
+      "sdrFallbackCompositor": "SDR-Fallback (HDR Inaktiv)",
+      "reProbeTooltip": "Hardware- und Compositor-Prüfung erneut ausführen",
+      "reProbe": "Neu prüfen",
+      "metricDynamicRange": "Dynamikbereich",
+      "metricColorGamut": "Farbraum",
+      "metricBufferDepth": "Puffer-Farbtiefe",
+      "metricCanvasP3": "Canvas 2D P3",
+      "supported": "Unterstützt",
+      "fallbackSrgb": "Fallback (sRGB)",
+      "notSupported": "Nicht unterstützt",
+      "tabListLabel": "HDR-Erkennungs-Tabs",
+      "tabSignalDashboard": "Signal-Dashboard",
+      "tabVideoCodecs": "Video-Codecs",
+      "tabOsSetupGuide": "OS-Einrichtung",
+      "mediaQueryQueriesTitle": "CSS Media Query Signale",
+      "activeTrue": "AKTIV (Wahr)",
+      "inactiveFalse": "INAKTIV (Falsch)",
+      "mediaQueryExplanation": "Der Browser fragt den Betriebssystem-Compositor direkt über CSS Media Queries Level 4 ab. Wenn HDR in Windows oder macOS aktiviert wird, wechselt dynamic-range auf high.",
+      "graphicsPipelineTitle": "Grafik- & Puffer-Pipeline",
+      "bufferExplanation": "Zeigt die Bit-Tiefe und Farbräume an, auf die HTML5 Canvas, WebGL2-Float-Renderziele und der Displaypuffer zugreifen können.",
+      "gamutSandboxTitle": "Farbraum-Sandbox (sRGB vs Display-P3)",
+      "gamutSandboxSubtitle": "Auf Wide-Gamut-Monitoren wirken Display-P3-Felder deutlich satter und lebendiger als Standard-sRGB-Felder.",
+      "colorRed": "Primärrot",
+      "colorGreen": "Primärgrün",
+      "colorBlue": "Primärblau",
+      "redNotice": "Display-P3-Rot reicht tiefer in sattes Karmesinrot.",
+      "greenNotice": "Display-P3-Grün liefert lebendige Smaragdtöne jenseits von sRGB.",
+      "blueNotice": "Display-P3-Blau bietet intensive königsblaue Sättigung.",
+      "hardwareBoundaryTitle": "Browser-Abfrage vs. Optische Helligkeit (Wichtiger Hinweis)",
+      "hardwareBoundaryBody": "Browser-Media-Queries bestätigen, dass das Betriebssystem ein HDR-Signal ausgibt. Ein Browser kann jedoch keine physische Spitzenhelligkeit (Nits) oder Local-Dimming-Zonen messen. Nutzen Sie für die visuelle Beurteilung den Test 'HDR Visuelle Inspektion'.",
+      "codecCapabilitiesTitle": "Hardwarebeschleunigte HDR-Videodecoder",
+      "codecCapabilitiesSubtitle": "Geprüft mit der Web MediaCapabilities API für hochauflösende 4K 60fps HDR-Wiedergabe.",
+      "codecsHdr10Desc": "Standard-HDR10 mit PQ (ST 2084) Kurve und BT.2020-Farbraum.",
+      "codecsAv1Desc": "Modernster 10-Bit-Codec für YouTube 4K HDR-Streaming.",
+      "codecsVp9Desc": "Google 10-Bit-Profil für YouTube HDR auf älteren Geräten.",
+      "codecsHlgDesc": "Hybrid Log-Gamma Übertragungsstandard für Broadcast.",
+      "hardwareAccelerated": "Hardwarebeschleunigt",
+      "softwareDecoded": "Software-dekodiert",
+      "codecNoteTitle": "GPU-Hardwarebeschleunigung:",
+      "codecNoteBody": "Wenn 10-Bit-Codecs nicht unterstützt werden, prüfen Sie die Hardwarebeschleunigung in den Browsereinstellungen und aktualisieren Sie Ihren Grafiktreiber.",
+      "windowsGuideTitle": "Windows 10 / 11 HDR-Konfiguration",
+      "windowsShortcut": "Tastaturkürzel",
+      "windowsShortcutDesc": "Drücken Sie",
+      "windowsSettings": "Windows-Einstellungen",
+      "windowsSettingsDesc": "Gehen Sie zu Einstellungen > System > Bildschirm > wählen Sie den Monitor > aktivieren Sie 'HDR verwenden'.",
+      "sdrSlider": "SDR-Inhaltshelligkeitsregler",
+      "sdrSliderDesc": "Passen Sie den Regler an, damit weiße Flächen in SDR-Apps an das Umgebungslicht angepasst sind.",
+      "macOsGuideTitle": "macOS Liquid Retina XDR & Monitore",
+      "macXdr": "Integriertes Liquid Retina XDR",
+      "macXdrDesc": "MacBook Pro 14\" & 16\" bieten Mini-LEDs mit bis zu 1.600 Nits Spitzenhelligkeit.",
+      "macPresets": "Display-Voreinstellungen",
+      "macPresetsDesc": "Stellen Sie sicher, dass 'Apple XDR Display (P3-1600 nits)' ausgewählt ist.",
+      "cableGuideTitle": "Kabel- & Port-Bandbreitenanforderungen",
+      "hdmiLimits": "HDMI 2.0 vs HDMI 2.1",
+      "hdmiLimitsDesc": "HDMI 2.0 limitiert 4K bei 60Hz HDR oft auf 8-Bit 4:2:0. Echtes 10-Bit-RGB-HDR erfordert DisplayPort 1.4 oder HDMI 2.1.",
+      "gpuColorDepth": "GPU-Farbtiefe",
+      "gpuColorDepthDesc": "Im NVIDIA/AMD-Treiber sollte die Ausgabefarbtiefe auf 10 bpc und der Dynamikbereich auf Voll stehen.",
+      "refreshAudit": "Erneut prüfen",
+      "signalNotificationHdrActive": "⚡ Live-Signal geändert: OS-HDR-Compositor ist jetzt AKTIV!",
+      "signalNotificationHdrInactive": "ℹ️ Live-Signal geändert: OS-HDR-Compositor auf SDR-Fallback gewechselt."
     },
     "HdrVisualPattern": {
-      "highlightClippingPeakWhite": "Highlight Clipping & Peak White Separation",
-      "inspectWhetherSubtleCircular": "Inspect whether subtle circular target reticles remain distinguishable inside near-peak highlights.",
+      "highlightClippingPeakWhite": "Glanzlicht-Rolloff & Clipping-Stufen",
+      "inspectWhetherSubtleCircular": "Prüfen Sie, ob kreisförmige Zielpunkte in Glanzlichtern bis 100% Spitzenweiß erkennbar bleiben.",
       "rgb": "RGB",
-      "nearBlackShadowDetail": "Near-Black Shadow Detail & Dark Clipping",
-      "inADimmedRoom": "In a dimmed room, check how low in the dark spectrum you can distinguish subtle squares from true 0% black.",
+      "nearBlackShadowDetail": "Schattendetails & Schwarzpegel (Near-Black)",
+      "inADimmedRoom": "Prüfen Sie im abgedunkelten Raum, wie nah an echtem 0%-Schwarz Sie feine Graustufen noch trennen können.",
       "sideBySideSdr": "Side-by-Side SDR Reference vs High Dynamic Range",
       "standardSrgb": "Standard sRGB",
       "standardWhite100120": "Standard White (100-120 nits SDR)",
@@ -1631,11 +1895,11 @@
       "highDynamicRangeP3": "High Dynamic Range / P3",
       "peakWhiteHeadroom": "Peak White Headroom",
       "extendedDynamicRange": "Extended dynamic range",
-      "wideColorGamutPrimaries": "Wide Color Gamut Primaries (sRGB vs Display P3)",
-      "displaysSupportingDciP3": "Displays supporting DCI-P3 / HDR render deeper reds and more vivid emerald greens beyond conventional sRGB.",
-      "p3DeepRed": "P3 Deep Red",
-      "p3EmeraldGreen": "P3 Emerald Green",
-      "p3RoyalBlue": "P3 Royal Blue",
+      "wideColorGamutPrimaries": "Wide-Color-Gamut-Grundfarben (sRGB vs Display-P3)",
+      "displaysSupportingDciP3": "Displays mit DCI-P3 und Rec.2020 zeigen tiefere Rottöne, sattere Grüntöne und intensives Königsblau.",
+      "p3DeepRed": "Display-P3 Tiefrot",
+      "p3EmeraldGreen": "Display-P3 Smaragdgrün",
+      "p3RoyalBlue": "Display-P3 Königsblau",
       "fullSpectrum16Step": "Full Spectrum 16-Step Grayscale",
       "cssHdr": "CSS HDR:",
       "displayP3": "Display-P3:",
@@ -1657,7 +1921,37 @@
       "inTheHighlightClipping": "In the Highlight Clipping pattern, reticles in the 94% and 97% swatches should remain visible without blown-out white blooming.",
       "4CheckForCrushed": "4. Check for Crushed Darks:",
       "inTheShadowDetail": "In the Shadow Detail pattern, dark blocks (2% to 5%) should remain distinct from pure black.",
-      "hdrVisualInspectionTitle": "HDR Visual Inspection"
+      "hdrVisualInspectionTitle": "HDR Visual Inspection",
+      "fullscreenHudVisualCalibration": "HDR Visuelle Kalibrierung",
+      "fullscreenHudInstructions": "Drücken Sie [1-5] für Modi • [B] für Fadenkreuz-Blinken • [F] für Vollbild",
+      "modeSpecularHighlight": "Glanzlicht-Clipping",
+      "modeAplWindow": "10% APL Spitzenweiß",
+      "modeToneCurveRamps": "PQ-Tonkurven-Rampen",
+      "modeNearBlackShadows": "Schattendetails (Near-Black)",
+      "modeWideGamutPrimaries": "Wide-Gamut-Farben",
+      "allReticlesVisibleTitle": "Alle 6 Zielkreuze erkennbar",
+      "allReticlesVisibleDesc": "Hervorragendes Tone-Mapping; Glanzlichter werden sauber abgestuft ohne vorzeitiges Clipping.",
+      "nearPeakBlownOutTitle": "Fadenkreuze 5 & 6 überstrahlt",
+      "nearPeakBlownOutDesc": "Typisches Clipping; Spitzenweiß über 98% wird zu reinem Weiß abgeschnitten.",
+      "aplBurstWindowTitle": "10% APL Spitzenhelligkeits-Fenster",
+      "aplBurstWindowSubtitle": "Der Industriestandard zur Messung von Spitzen-Nits, Local-Dimming-Verhalten und Blooming bei OLED & Mini-LED.",
+      "aplSizeLabel": "Fenstergröße",
+      "toneCurveGradationTitle": "PQ-EOTF-Tonkurve & Quantisierungs-Rampen",
+      "toneCurveGradationSubtitle": "Prüfen Sie auf störende Farbstufen, Banding und Kompression über den gesamten Dynamikbereich.",
+      "continuous10BitRamp": "Stufenloser 10-Bit-Farbverlauf (Ohne Banding)",
+      "stepped8BitQuantizedRamp": "Gestufter 8-Bit-Referenzverlauf (32 diskrete Stufen)",
+      "toneCurveInspectionTip": "Auf echten 10-Bit-Panels sollte der kontinuierliche Verlauf vollkommen nahtlos ohne sichtbare Streifen wirken.",
+      "shadowInspectionTip": "Wenn Stufen 0,5% bis 2% komplett schwarz bleiben, verschluckt das Display Schattendetails (Black Crush).",
+      "flashReticlesTitle": "Fadenkreuze kurz aufblinken lassen, um Positionen leichter zu finden",
+      "flashReticles": "Zielkreuze blinken",
+      "fullscreenF": "Vollbild [F]",
+      "exitFullscreen": "Vollbild beenden",
+      "bgLuminanceLabel": "Hintergrundhelligkeit",
+      "bgBlack0": "0% Schwarz",
+      "bgDark5": "5% Dunkel",
+      "bgMid18": "18% Grau",
+      "reticleDeltaOffset": "Ziel-Empfindlichkeits-Delta",
+      "hdrVisualCalibrationBarTitle": "HDR Visuelle Kalibrierung & Highlight-Inspektion"
     },
     "LevelPattern": {
       "visualObservation": "Visual Observation",
@@ -2329,6 +2623,288 @@
       "testRumble": "Vibration / Rumble testen",
       "trigger": "Analoger Trigger",
       "buttonsMatrix": "Tastenmatrix"
+    },
+    "batteryTest": {
+      "title": "Akkuzustand & Energieinfo",
+      "description": "Überprüfen Sie Akkustand, Ladestatus, verbleibende Zeit und Energiequelle in Echtzeit."
+    },
+    "networkSpeedTest": {
+      "title": "Netzwerk-Geschwindigkeitstest",
+      "description": "Messen Sie Download-Geschwindigkeit, Latenz und Verbindungstyp direkt im Browser."
+    },
+    "colorBlindnessTest": {
+      "title": "Farbenblindheit-Simulator",
+      "description": "Simulieren Sie 8 Arten von Farbsehschwäche mit Echtzeit-SVG-Filtern und Seite-an-Seite-Vergleich."
+    },
+    "screenRecorder": {
+      "title": "Bildschirmrekorder & Screenshot",
+      "description": "Nehmen Sie Ihren Bildschirm als WebM-Video auf oder erstellen Sie PNG-Screenshots direkt im Browser."
+    },
+    "darkModeTest": {
+      "title": "Dunkel-/Hellmodus-Test",
+      "description": "Erkennen Sie die OS-Dunkelmodus-Einstellung und Vorschau von UI in beiden Themes."
+    },
+    "inputLagTest": {
+      "title": "Eingabeverzögerung-Visualisierer",
+      "description": "Messen Sie Click-to-Photon-Eingabeverzögerung mit 10 Versuchen, Histogramm und Statistik."
+    },
+    "ambientLightTest": {
+      "title": "Umgebungslicht-Sensor-Test",
+      "description": "Lesen Sie Umgebungslichtpegel in Echtzeit in Lux mit Helligkeitsanzeige und Empfehlungen."
+    },
+    "dpiCalculator": {
+      "title": "DPI / PPI Rechner",
+      "description": "Berechnen Sie Pixeldichte, Punktabstand und Retina-Schwelle für jede Bildschirmgröße."
+    },
+    "BatteryPattern": {
+      "notSupported": "Batterie-API nicht unterstützt",
+      "notSupportedHint": "Ihr Browser unterstützt die Battery Status API nicht. Versuchen Sie Chrome, Edge oder Opera.",
+      "loading": "Batteristatus wird gelesen...",
+      "charging": "Wird geladen",
+      "onBattery": "Akkubetrieb",
+      "batteryLevel": "Akkustand",
+      "timeToFull": "Zeit bis voll",
+      "timeRemaining": "Verbleibende Zeit",
+      "powerSource": "Stromquelle",
+      "acPower": "Netzbetrieb",
+      "batteryPower": "Akku",
+      "levelHistory": "Verlauf",
+      "browserNote": "Verwendet die Battery Status API (navigator.getBattery). Unterstützt in Chromium-basierten Browsern."
+    },
+    "NetworkSpeedPattern": {
+      "startTest": "Geschwindigkeitstest starten",
+      "stop": "Stopp",
+      "testing": "Wird getestet...",
+      "testAgain": "Erneut testen",
+      "latency": "Latenz / Ping",
+      "download": "Download-Geschwindigkeit",
+      "connectionInfo": "Verbindungsprofil",
+      "connectionType": "Verbindungstyp",
+      "effectiveType": "Effektive Klasse",
+      "estimatedDownlink": "Bandbreitenlimit",
+      "estimatedRtt": "Geschätzte RTT",
+      "dataSaverOn": "Datensparmodus: Aktiv",
+      "testHistory": "Testverlauf",
+      "browserNote": "Latenz und Bandbreite werden über Browser-Fetch-APIs und Network Information API gemessen.",
+      "excellent": "Exzellent",
+      "veryGood": "Sehr gut",
+      "good": "Gut",
+      "fair": "Mäßig",
+      "slow": "Langsam",
+      "poor": "Schlecht",
+      "offline": "Offline",
+      "offlineHint": "Keine Internetverbindung erkannt."
+    },
+    "ColorBlindnessPattern": {
+      "selectVision": "Farbsehtyp auswählen",
+      "compare": "Mit Normal vergleichen",
+      "normalVision": "Normales Trichromasie-Sehen",
+      "viewing": "Aktuelle Ansicht",
+      "aboutTitle": "Über die Farbsehschwäche-Simulation",
+      "aboutText": "Dieser Simulator verwendet SVG-Farbmatrizen zur Annäherung der Wahrnehmung bei veränderten Netzhautzapfen.",
+      "normal": "Normal",
+      "caution": "Vorsicht",
+      "warning": "Warnung",
+      "error": "Fehler",
+      "success": "Erfolg",
+      "info": "Info",
+      "special": "Spezial",
+      "critical": "Kritisch",
+      "visionTypes": {
+        "normal": "Normales Sehen",
+        "protanopia": "Protanopie (Rotblindheit)",
+        "deuteranopia": "Deuteranopie (Grünblindheit)",
+        "tritanopia": "Tritanopie (Blaublindheit)",
+        "protanomaly": "Protanomalie (Rotschwäche)",
+        "deuteranomaly": "Deuteranomalie (Grünschwäche)",
+        "tritanomaly": "Tritanomalie (Blauschwäche)",
+        "achromatopsia": "Achromatopsie (Vollfarbenblind)"
+      }
+    },
+    "ScreenRecorderPattern": {
+      "notSupported": "Bildschirmaufnahme nicht unterstützt",
+      "notSupportedHint": "Ihr Browser oder Gerät unterstützt die Screen Capture API nicht.",
+      "startRecording": "Aufnahme starten",
+      "screenshot": "Screenshot erstellen",
+      "pause": "Pause",
+      "resume": "Fortsetzen",
+      "stopRecording": "Aufnahme stoppen",
+      "preview": "Aufnahme-Vorschau",
+      "downloadVideo": "WebM-Video herunterladen",
+      "screenshotPreview": "Screenshot-Vorschau",
+      "downloadScreenshot": "PNG-Screenshot herunterladen",
+      "browserNote": "Alle Aufnahmen und Screenshots werden lokal im Browserspeicher erzeugt und niemals an externe Server übertragen."
+    },
+    "DarkModePattern": {
+      "systemDetection": "OS-Präferenzerkennung",
+      "osPreference": "Gemeldetes OS-Theme",
+      "dark": "Dunkelmodus",
+      "light": "Hellmodus",
+      "colorSchemeCSS": "CSS color-scheme Unterstützung",
+      "supported": "Unterstützt",
+      "notSupported": "Nicht unterstützt",
+      "contrastPref": "Kontrast-Präferenz",
+      "previewTheme": "Vorschau-Modus",
+      "previewTitle": "Theme-Vorschau-Showcase",
+      "darkMode": "Dunkles Theme",
+      "lightMode": "Helles Theme",
+      "previewText": "Prüfen Sie, wie Farben, Karten und Typografie in beiden Themes dargestellt werden.",
+      "primaryBtn": "Hauptaktion",
+      "secondaryBtn": "Sekundär",
+      "successMsg": "Aktives Theme erfolgreich angewendet.",
+      "toggleLabel": "Umschalter",
+      "browserNote": "Erkennt Systemeinstellungen über CSS prefers-color-scheme und testet Theme-Rendering.",
+      "sampleCard1Title": "Leistungskennzahlen",
+      "sampleCard1Desc": "Systemdurchsatz und Latenzindikatoren über Renderzyklen.",
+      "sampleCard2Title": "Display-Diagnose",
+      "sampleCard2Desc": "Hardware-Fähigkeitserkennung und Farb-Pipeline-Prüfung.",
+      "sampleCard3Title": "Energiemanagement",
+      "sampleCard3Desc": "Akkustand, Ladezustände und Stromverbrauchs-Telemetrie.",
+      "high": "Hoch",
+      "more": "Mehr",
+      "less": "Weniger",
+      "themes": {
+        "system": "System",
+        "light": "Hell",
+        "dark": "Dunkel"
+      },
+      "normal": "Standard"
+    },
+    "InputLagPattern": {
+      "clickToStart": "Hier klicken zum Starten",
+      "clickToStartHint": "Klicken Sie auf das Feld. Warten Sie auf das grüne Signal.",
+      "waitForGreen": "Warten auf Grün...",
+      "clickNow": "JETZT KLICKEN!",
+      "tooEarly": "Zu früh!",
+      "tooEarlyHint": "Sie haben vor dem grünen Signal geklickt. Erneut klicken zum Wiederholen.",
+      "trial": "Versuch",
+      "avgTime": "Durchschnittliche Latenz",
+      "bestTime": "Schnellste (Bestwert)",
+      "worstTime": "Langsamste",
+      "stdDev": "Standardabweichung",
+      "histogram": "Reaktionszeit-Verteilung",
+      "reset": "Test neustarten",
+      "browserNote": "Misst die Zeitspanne vom optischen Signal bis zum Klick-Event über 10 Versuche.",
+      "excellent": "Exzellent",
+      "good": "Gut",
+      "average": "Mittel",
+      "slow": "Langsam"
+    },
+    "AmbientLightPattern": {
+      "veryDark": "Völlige Dunkelheit (< 10 lx)",
+      "recDark": "Display auf Minimum (~50-80 Nits) abdunkeln, um Augenbelastung zu vermeiden.",
+      "dim": "Dämmriges Wohnzimmer (10-100 lx)",
+      "recDim": "Helligkeit bei 25-40 % (~100 Nits) für angenehmes Lesen halten.",
+      "normal": "Büro-Ergonomie (100-500 lx)",
+      "recNormal": "Optimale Arbeitsumgebung. Helligkeit auf 40-60 % (~120-150 Nits) stellen.",
+      "bright": "Heller Raum / Bewölkt (500-1000 lx)",
+      "recBright": "Helligkeit auf 70-85 % (~250-300 Nits) erhöhen für klaren Kontrast.",
+      "veryBright": "Tageslicht / Direkte Sonne (> 1000 lx)",
+      "recVeryBright": "Maximale Helligkeit (100 % / 400+ Nits) nötig gegen Blendung.",
+      "notSupported": "Sensor-API nicht unterstützt",
+      "notSupportedHint": "Ihr Browser oder Gerät unterstützt die AmbientLightSensor-API nicht.",
+      "enableGuide": "Umgebungslichtsensor in Chrome/Edge aktivieren",
+      "enableStep1": "1. Öffnen Sie chrome://flags (oder edge://flags).",
+      "enableStep2": "2. Suchen Sie nach 'Generic Sensor Extra Classes' und aktivieren Sie es.",
+      "enableStep3": "3. Browser neu starten und Berechtigung erteilen.",
+      "permissionNeeded": "Sensor-Berechtigung erforderlich",
+      "permissionHint": "Bitte erlauben Sie den Sensorzugriff im Browser-Dialog.",
+      "waiting": "Warte auf Sensordaten...",
+      "brightnessGauge": "Beleuchtungsstärke-Anzeige",
+      "current": "Aktueller Lux-Wert",
+      "min": "Sitzungs-Minimum",
+      "max": "Sitzungs-Maximum",
+      "recommendation": "Ergonomische Empfehlung",
+      "readingHistory": "Verlauf der Raumhelligkeit",
+      "luxReference": "Typische Lux-Referenzwerte",
+      "refMoonlight": "Mondlicht",
+      "refDimRoom": "Gedimmtes Zimmer",
+      "refOffice": "Büroarbeitsplatz",
+      "refOvercast": "Bewölkter Tag",
+      "refSunlight": "Heller Tag",
+      "refDirectSun": "Direktes Sonnenlicht",
+      "browserNote": "Liest die Raumhelligkeit in Lux (lx) über die AmbientLightSensor-API aus."
+    },
+    "DpiCalculatorPattern": {
+      "quickPresets": "Schnell-Voreinstellungen",
+      "enterSpecs": "Display-Spezifikationen",
+      "diagonal": "Bildschirmdiagonale",
+      "inches": "Zoll",
+      "width": "Horizontale Pixel (Breite)",
+      "height": "Vertikale Pixel (Höhe)",
+      "viewingDistance": "Retina-Betrachtungsabstand",
+      "dotPitch": "Pixelabstand (Dot Pitch)",
+      "aspectRatioLabel": "Seitenverhältnis",
+      "totalPixels": "Gesamtzahl der Pixel",
+      "subpixels": "RGB-Subpixel",
+      "physicalSize": "Physikalische Abmessungen",
+      "angularRes": "Pixel pro Grad (PPD)",
+      "retinaYes": "Retina-Kriterium erfüllt",
+      "retinaNo": "Unterhalb der Retina-Schwelle",
+      "retinaThreshold": "Apple-definierte Retina-Schwelle (60 PPD / 1 Bogenminute).",
+      "yourDisplay": "Ihr aktueller Bildschirm",
+      "browserNote": "Berechnet Pixeldichte (PPI), Pixelabstand und Sehschärfe-Grenzwerte.",
+      "excellent": "Ultrahoch (Retina)",
+      "sharp": "Scharfer Desktop",
+      "adequate": "Standard",
+      "low": "Geringe Dichte"
+    },
+    "subpixelLayoutTest": {
+      "title": "Subpixel-Layout & Textfarbsäume",
+      "description": "Überprüfen Sie RGB-, BGR- und OLED-Subpixel-Strukturen und Kantenfarbsäume.",
+      "metaDescription": "Subpixel-Struktur und Schriftfarbsäume diagnostizieren."
+    },
+    "pwmFlickerTest": {
+      "title": "PWM-Flackertest",
+      "description": "Erkennen Sie PWM-Hintergrundflackern und stroboskopische Augenbelastung.",
+      "metaDescription": "Messung von stroboskopischem Hintergrundflackern."
+    },
+    "gtgResponseTimeTest": {
+      "title": "GtG-Reaktionszeit",
+      "description": "Reaktionszeiten zwischen Graustufen messen und Overdrive-Artefakte erkennen.",
+      "metaDescription": "Pixel-Reaktionszeiten und Overdrive-Überschwinger bewerten."
+    },
+    "mousePollingTest": {
+      "title": "Maus-Polling-Rate & Präzision",
+      "description": "Messen Sie Mausabfragerate in Hz, Jitter und Schalterprellen.",
+      "metaDescription": "Präziser Maus-Polling- und Sensor-Tester."
+    },
+    "gpuBenchmarkTest": {
+      "title": "GPU WebGL 3D-Benchmark",
+      "description": "Stresstest für 3D-Rendering mit FPS- und Frametime-Telemetrie.",
+      "metaDescription": "WebGL 3D-Partikel-Stresstest und Stabilitäts-Benchmark."
+    },
+    "MotionBlurPattern": {
+      "clickAnywhereToCycleTitle": "Klicken Sie an eine beliebige Stelle, um die Geschwindigkeit umzuschalten",
+      "pxS": "px/s",
+      "mode": "Modus",
+      "clickToCycleSpeed": "Klicken Sie auf Leinwand oder Abzeichen, um die Geschwindigkeit umzuschalten",
+      "motionBlurPersistenceMprt": "Leitfaden für Bewegungsunschärfe und Nachleuchten (MPRT)",
+      "close": "Schließen",
+      "persistenceBlurVsGhosting": "Nachleuchtunschärfe vs. Reaktionszeit-Ghosting:",
+      "ghostingIsCausedBy": "Ghosting wird durch langsame Pixelreaktionszeiten (GtG) verursacht, die Farbspuren hinterlassen. ",
+      "motionBlurPersistenceBlur": "Nachleuchtunschärfe (MPRT)",
+      "isCausedBy": " entsteht, wenn Ihre Augen einem sich bewegenden Objekt auf einem ",
+      "sampleAndHoldDisplay": "Sample-and-Hold-Display",
+      "combinedWithSmoothPursuit": " folgen und das Bild auf der Netzhaut verschwimmt.",
+      "why0msDisplaysStill": "Warum 0-ms-Displays immer noch unscharf wirken: ",
+      "evenOnOledDisplays": "Selbst bei OLED-Displays mit sofortiger Reaktionszeit zeigen Sample-and-Hold-Displays 1 ms Unschärfe pro 1 ms Frame-Dauer.",
+      "linePairsMotionResolution": "Linienpaare (Bewegungsauflösung): ",
+      "the1pxAnd2px": "Die 1px- und 2px-Linienpaare testen die räumliche Auflösung. Displays mit hoher Persistenz verwischen feine Linien zu einem durchgehend grauen Balken.",
+      "howToReducePersistence": "So reduzieren Sie Unschärfe: ",
+      "increaseYourDisplayApos": "Erhöhen Sie die Bildwiederholfrequenz (240Hz+), verwenden Sie Black Frame Insertion (BFI) / Hintergrundbeleuchtungs-Strobing oder aktivieren Sie ULMB.",
+      "trackingTip": "Tipp zur Augenverfolgung: ",
+      "keepYourEyesLocked": "Halten Sie den Blick auf die weiße vertikale Hilfslinie gerichtet, um die dynamische Blickfolgebewegung zu testen.",
+      "motionBlurPersistenceMprtTitle": "Bewegungsunschärfe & Nachleucht-Test (MPRT)",
+      "linePairsGrating": "Linienpaare Gitter",
+      "textClarity": "Textklarheit",
+      "multiSpeed": "Mehrere Geschwindigkeiten",
+      "speed": "Geschwindigkeit",
+      "toggleEyePursuitTrackingTitle": "Hilfslinie für Augenverfolgung ein-/ausschalten",
+      "pursuitGuide": "Verfolgungshilfe",
+      "reverseMotionDirectionTitle": "Bewegungsrichtung umkehren",
+      "readAboutMotionBlurTitle": "Über Bewegungsunschärfe & MPRT lesen",
+      "guide": "Leitfaden"
     }
   },
   "Guides": {
@@ -4431,6 +5007,32 @@
         "title": "Dual-Monitor-Weißpunkt-Abgleich",
         "description": "Geteilte Bildschirmanzeige zum Abgleichen von Farbtemperatur, RGB-Verstärkung und Helligkeit zwischen Monitoren.",
         "badge": "Kalibrierung"
+      },
+      "screenRecorder": {
+        "title": "Bildschirmrekorder & Screenshot",
+        "description": "Nehmen Sie Bildschirme oder Fenster als WebM-Video auf oder erfassen Sie PNG-Screenshots.",
+        "badge": "Capture"
+      },
+      "dpiCalculator": {
+        "title": "DPI / PPI Rechner",
+        "description": "Berechnen Sie Pixeldichte, Pixelabstand und Retina-Betrachtungsabstände für jeden Bildschirm.",
+        "badge": "Rechner"
+      },
+      "deadPixelMapper": {
+        "title": "Pixelfehler-RMA-Mapper",
+        "description": "Defekte Pixel erfassen und Garantieansprüche nach ISO 9241-307 prüfen."
+      },
+      "oledBurnInCalculator": {
+        "title": "OLED-Einbrennrisiko-Rechner",
+        "description": "Einbrennwahrscheinlichkeit und Gefahrenzonen für OLED-Displays berechnen."
+      },
+      "displayCertificate": {
+        "title": "Display-Prüfzertifikat",
+        "description": "Offiziellen Prüfbericht für Wiederverkauf oder Reklamation generieren."
+      },
+      "osdCalibrationGuide": {
+        "title": "OSD-Kalibrierungsassistent",
+        "description": "Schritt-für-Schritt-Anleitung für die Hardware-Tasten Ihres Monitors."
       }
     },
     "DisplayBandwidthCalculator": {
@@ -6566,7 +7168,30 @@
     "notesLabel": "Prüfnotizen:",
     "notesPlaceholder": "z. B. leichte Gelbverschiebung von links, dezenter IPS-Glow unten rechts...",
     "resultBadge": "VISUELLE BEOBACHTUNG",
-    "backToGuide": "Blickwinkel-Leitfaden lesen"
+    "backToGuide": "Blickwinkel-Leitfaden lesen",
+    "50NeutralGrayField": "50% Neutralgraues Feld",
+    "observeWhetherTheEdges": "Beobachten Sie, ob die Kanten im Vergleich zur Mitte dunkler oder farblich verschoben wirken.",
+    "redRgb2550": "Rot (RGB 255, 0, 0)",
+    "greenRgb0255": "Grün (RGB 0, 255, 0)",
+    "blueRgb00": "Blau (RGB 0, 0, 255)",
+    "yellowRG": "Gelb (R+G)",
+    "cyanGB": "Cyan (G+B)",
+    "magentaRB": "Magenta (R+B)",
+    "rgb": "RGB: ",
+    "skinTonesAreSensitive": "Hauttöne und Erinnerungsfarben reagieren besonders empfindlich auf winkelabhängige Farbton- und Sättigungsverschiebungen.",
+    "0Black0": "0% Schwarz (0)",
+    "50Midtone128": "50% Mittelton (128)",
+    "100White255": "100% Weiß (255)",
+    "lowKeyShadowDetail": "Tiefschatten-Detailstufen (Schwarznahe 1%–10%)",
+    "onVaPanelsNear": "Bei VA-Panels werden tiefschwarze Details frontal oft verschluckt und erst im Winkel sichtbar (Gamma-Shift).",
+    "highKeyHighlightDetail": "Spitzlicht-Detailstufen (Weißnahe 90%–99%)",
+    "highlightsShouldRemainDiscernible": "Spitzlichter sollten auch bei weiten Blickwinkeln von reinem Weiß unterscheidbar bleiben, ohne auszubrennen.",
+    "fullBlackField0": "Vollständiges Schwarzfeld (0% Luminanz)",
+    "lookDiagonallyAtThe": "Blicken Sie diagonal auf den Bildschirm, um IPS-Glow oder seitliches Durchleuchten der Hintergrundbeleuchtung zu erkennen.",
+    "fullWhiteField100": "Vollständiges Weißfeld (100% Luminanz)",
+    "inspectWhitePointUniformity": "Überprüfen Sie die Weißpunkt-Gleichmäßigkeit und seitliche Verfärbungen (z. B. Rosa-/Grünstich bei OLED/VA).",
+    "previousPatternTitle": "Vorheriges Muster",
+    "nextPatternTitle": "Nächstes Muster"
   },
   "BrightnessTest": {
     "metaTitle": "Monitor-Helligkeit & Leuchtdichte Sichtprüfung",
@@ -6732,7 +7357,15 @@
     "obsNormal": "Eingaben sauber und verzögerungsfrei erkannt",
     "obsIssues": "Aussetzer oder tote Zonen festgestellt",
     "obsUnsure": "Unsicher / Kein Touch-Gerät",
-    "notesPlaceholder": "z. B. obere linke Ecke reagiert träge, 5-Finger-Multi-Touch einwandfrei erkannt..."
+    "notesPlaceholder": "z. B. obere linke Ecke reagiert träge, 5-Finger-Multi-Touch einwandfrei erkannt...",
+    "active": "Aktiv:",
+    "peak": "Spitze:",
+    "currentActive": "Aktuell Aktiv",
+    "peakDetected": "Spitze Erkannt",
+    "eventState": "Ereignisstatus:",
+    "id": "ID: ",
+    "resetTestTitle": "Test zurücksetzen",
+    "touch": "Touch:"
   },
   "Breadcrumbs": {
     "home": "Startseite",
@@ -6993,7 +7626,8 @@
     },
     "troubleshooting": {
       "viewGuide": "Fehlerbehebungs-Leitfaden"
-    }
+    },
+    "5SecondAudioCheck": "5-Sekunden-Audiotest"
   },
   "VoiceRecorder": {
     "metaTitle": "Sprachrekorder – Kostenloses Online-Audio- & Mikrofon-Aufnahmetool",

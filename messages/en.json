@@ -264,7 +264,8 @@
       "uniformityPanel": "UNIFORMITY & BACKLIGHT TESTS",
       "motionPerformance": "MOTION & REFRESH RATE",
       "sharpnessCapabilities": "SHARPNESS & CAPABILITIES",
-      "deviceInput": "DEVICE & INPUT"
+      "deviceInput": "DEVICE & INPUT",
+      "utilitiesTools": "UTILITIES & TOOLS"
     },
     "allTestsNoResults": "No tests found matching",
     "moreFreeTestingToolsTitle": "More Free Testing Tools",
@@ -377,8 +378,8 @@
         "description": "Visually evaluate your monitor's gamma tracking (target 2.2 for sRGB)."
       },
       "hdrCapabilityTest": {
-        "title": "HDR Capability",
-        "description": "Verify your browser and OS correctly detect HDR and Wide Color Gamut."
+        "title": "HDR Signal & Hardware Detector",
+        "description": "Audit OS HDR compositing, 10-bit buffer depth, BT.2020 / DCI-P3 wide gamut, Canvas P3, and HDR10 video playback codecs."
       },
       "contrastTest": {
         "title": "Contrast Calibration",
@@ -387,7 +388,8 @@
     },
     "searchPlaceholder": "Search tests...",
     "subtitle": "Explore our complete library of monitor testing utilities. All tests run locally in your browser.",
-    "relatedTitle": "Related Tests"
+    "relatedTitle": "Related Tests",
+    "noResults": "No tests found matching \"{query}\""
   },
   "TestWrapper": {
     "howToTest": "How to test",
@@ -652,13 +654,13 @@
       "inst3": "Adjust speed and contrast to test under different panel overdrive scenarios."
     },
     "hdr-capability-test": {
-      "metaTitle": "HDR Capability & Visual Check",
-      "metaDescription": "Check browser-reported HDR media query support (dynamic-range: high) and wide gamut capabilities. Peak brightness in nits and true HDR certification require laboratory hardware.",
-      "title": "HDR Capability & Visual Check",
-      "description_p1": "Queries browser CSS media queries to detect whether the operating system reports High Dynamic Range (dynamic-range: high) and wide color gamut support. Browser queries detect pipeline state, but do not measure physical peak nits or verify DisplayHDR certification.",
-      "inst1": "Review the browser-reported capabilities.",
-      "inst2": "If it says 'Not Supported' but your monitor is HDR-capable, ensure HDR is turned on in Windows/macOS display settings.",
-      "inst3": "Ensure you are using a modern browser with hardware acceleration enabled."
+      "metaTitle": "HDR Hardware & Signal Detector – OS & Browser Capabilities",
+      "metaDescription": "Audit whether your monitor, OS compositor, and browser support HDR, 10-bit color buffers, Wide Gamut (DCI-P3/Rec.2020), Canvas P3, and video codecs.",
+      "title": "HDR Hardware & Signal Detector",
+      "description_p1": "Comprehensive hardware, OS compositor, and browser pipeline diagnostic tool. Probes CSS dynamic-range, Wide Color Gamut (Rec.2020 / DCI-P3), buffer bit depth, Canvas P3 support, WebGL float buffers, and HDR video decoding capabilities.",
+      "inst1": "Review the real-time probed compositor state and buffer metrics.",
+      "inst2": "If HDR is reported Inactive, press Win + Alt + B on Windows or enable HDR in macOS Display Settings.",
+      "inst3": "Check the video codec compatibility matrix to verify hardware-accelerated HDR playback."
     },
     "display-info": {
       "metaTitle": "Display Information & GPU Probe",
@@ -710,14 +712,14 @@
       ]
     },
     "hdr-test": {
-      "metaTitle": "HDR Visual Inspection",
-      "metaDescription": "Controlled visual HDR inspection pattern to check specular highlight preservation, tone curve rolloff, shadow detail, and wide gamut color rendering.",
-      "title": "HDR Visual Inspection",
-      "description_p1": "Provides a controlled visual HDR inspection workflow to evaluate highlight clipping, tone curve rolloff, and near-black separation. Peak luminance in nits requires physical laboratory equipment; this visual test evaluates relative tone reproduction in your browser.",
+      "metaTitle": "HDR Visual Calibration & Highlight Inspection",
+      "metaDescription": "Inspect display specular highlight roll-off, tone mapping clipping, 10% APL peak luminance burst, and near-black shadow detail.",
+      "title": "HDR Visual Calibration & Highlight Inspection",
+      "description_p1": "Controlled optical visual test suite for inspecting the physical display panel's response to HDR signals. Evaluate specular highlight clipping points, 10% APL peak white burst luminance, PQ / EOTF tone curve gradation, and near-black shadow detail.",
       "instructions": [
-        "<strong>OS & DISPLAY SETUP:</strong> Verify that HDR is toggled ON in Windows Display Settings or macOS System Settings, and that your monitor's HDR picture mode is active.",
-        "<strong>HIGHLIGHT CLIPPING:</strong> Inspect the specular highlight steps (90% to 100%). Look for the point where bright segments blend together or clip into solid white.",
-        "<strong>SHADOW & WIDE GAMUT:</strong> Check near-black blocks (0% to 10%) for shadow crush, and compare the standard SDR reference against wide gamut Display P3 primary color patches."
+        "<strong>VIEWING CONDITIONS:</strong> Dim ambient room lighting so your eyes can distinguish subtle specular highlight targets and near-black shadow steps.",
+        "<strong>SPECULAR HIGHLIGHT CLIPPING:</strong> Inspect the 90% through 100% Peak White swatches. Target reticles should remain discernible without blending into solid clipped white.",
+        "<strong>10% APL PEAK LUMINANCE:</strong> Switch to the 10% APL window to evaluate local dimming, peak nit boost headroom, and halo blooming against a pure black background."
       ]
     },
     "near-black-test": {
@@ -937,6 +939,201 @@
         "Rotate both analog sticks to test circularity error and check resting drift values against the deadzone threshold.",
         "Squeeze analog triggers and press all buttons to verify actuation and responsiveness."
       ]
+    },
+    "battery-test": {
+      "title": "Battery Health & Power Info",
+      "metaTitle": "Battery Health & Power Status Test | Screen Tester",
+      "description": "Check your device's battery level, charging status, estimated time remaining, and power source using the Battery Status API.",
+      "metaDescription": "Online battery health checker. View battery level, charging status, time to full, and power source information in real-time.",
+      "instructions": [
+        "Open the test on a laptop, tablet, or mobile device with a battery.",
+        "View the current battery percentage and charging status.",
+        "Monitor the estimated time to full charge or time remaining on battery.",
+        "Watch the history chart to track battery level changes over time."
+      ]
+    },
+    "network-speed-test": {
+      "title": "Network Speed Test",
+      "metaTitle": "Internet Speed Test - Latency & Download | Screen Tester",
+      "description": "Test your internet connection speed including download throughput, latency ping, and network type using browser APIs.",
+      "metaDescription": "Free online internet speed test. Measure download speed, latency, ping, and connection type directly in your browser.",
+      "instructions": [
+        "Ensure you are connected to the internet via Wi-Fi or Ethernet.",
+        "Click 'Start Test' to begin measuring latency and download speed.",
+        "Results show latency in milliseconds and download speed in Mbps.",
+        "Run multiple tests to get consistent averages."
+      ]
+    },
+    "color-blindness-test": {
+      "title": "Color Blindness Simulator",
+      "metaTitle": "Color Vision Deficiency Simulator | Screen Tester",
+      "description": "Simulate 8 types of color vision deficiency including Protanopia, Deuteranopia, Tritanopia, and Achromatopsia using real-time SVG color matrix filters.",
+      "metaDescription": "Free color blindness simulator. Preview how your UI, images, and designs appear to people with different types of color vision deficiency.",
+      "instructions": [
+        "Select a color vision type from the options above.",
+        "Observe how colors, gradients, and UI elements change under each simulation.",
+        "Use the Compare mode to see normal vision side-by-side with the simulated view.",
+        "Check if your designs maintain contrast and readability across all vision types."
+      ]
+    },
+    "screen-recorder": {
+      "title": "Screen Recorder & Screenshot",
+      "metaTitle": "Online Screen Recorder & Screenshot Tool | Screen Tester",
+      "description": "Record your screen or capture screenshots directly in the browser using the Screen Capture API. Download as WebM video or PNG image.",
+      "metaDescription": "Free online screen recorder. Capture your screen as video (WebM) or screenshot (PNG) directly in the browser. No installation required.",
+      "instructions": [
+        "Click 'Start Recording' and select the screen, window, or tab to capture.",
+        "Use Pause/Resume to control the recording session.",
+        "Click 'Stop' to finish recording and preview the video.",
+        "Use 'Screenshot' to capture a single frame as a PNG image."
+      ]
+    },
+    "dark-mode-test": {
+      "title": "Dark Mode / Light Mode Test",
+      "metaTitle": "Dark Mode Detection & Theme Test | Screen Tester",
+      "description": "Detect your operating system's dark mode preference, test CSS color-scheme support, and preview UI components in both light and dark themes.",
+      "metaDescription": "Test dark mode detection and theme switching. Check OS preference, CSS color-scheme support, and preview UI in light and dark modes.",
+      "instructions": [
+        "The test automatically detects your OS dark mode preference.",
+        "Switch between System, Light, and Dark mode previews.",
+        "Inspect sample UI elements—buttons, cards, toggles—in each theme.",
+        "Check if your browser supports the CSS color-scheme property."
+      ]
+    },
+    "input-lag-test": {
+      "title": "Input Lag Visualizer",
+      "metaTitle": "Input Lag & Click-to-Photon Latency Test | Screen Tester",
+      "description": "Measure your visual-to-click input lag with a 10-trial reaction test. Tracks average, best, worst times and standard deviation with a histogram.",
+      "metaDescription": "Measure input lag and click-to-photon latency. 10-trial visual reaction test with histogram, average, and statistical analysis.",
+      "instructions": [
+        "Click the gray box to begin the test.",
+        "Wait for the box to turn green — do NOT click during the red phase.",
+        "Click as fast as possible when you see green.",
+        "Complete all 10 trials to see your full statistical results."
+      ]
+    },
+    "ambient-light-test": {
+      "title": "Ambient Light Sensor Test",
+      "metaTitle": "Ambient Light Sensor & Lux Meter | Screen Tester",
+      "description": "Read real-time ambient light levels in lux using the AmbientLightSensor API. Includes a brightness gauge, historical chart, and display brightness recommendations.",
+      "metaDescription": "Online ambient light sensor test. Measure room brightness in lux, get display brightness recommendations, and track light level history.",
+      "instructions": [
+        "Allow sensor permission when prompted by the browser.",
+        "The lux reading updates in real-time as ambient light changes.",
+        "Move your device closer to or away from light sources to see changes.",
+        "Check the recommendation for optimal display brightness based on ambient light."
+      ]
+    },
+    "dpi-calculator": {
+      "title": "DPI / PPI Calculator",
+      "metaTitle": "DPI PPI Pixel Density Calculator | Screen Tester",
+      "description": "Calculate your monitor's DPI, PPI, dot pitch, and check if it meets the retina threshold for your viewing distance. Includes presets for common displays.",
+      "metaDescription": "Free DPI PPI calculator. Enter screen size and resolution to get pixel density, dot pitch, retina threshold, and angular resolution.",
+      "instructions": [
+        "Select a preset or enter your screen's diagonal size and resolution manually.",
+        "Enter your typical viewing distance for retina threshold calculation.",
+        "View the calculated PPI, dot pitch, aspect ratio, and subpixel count.",
+        "Check whether your display meets the retina threshold at your viewing distance."
+      ]
+    },
+    "subpixel-layout-test": {
+      "title": "Subpixel Layout & Text Fringing Test",
+      "description": "Inspect RGB, BGR, QD-OLED, WOLED, and PenTile subpixel structures and diagnose text color halos.",
+      "metaTitle": "Subpixel Layout & Text Fringing Test - ClearType & OLED Geometry",
+      "metaDescription": "Test display subpixel layout (RGB vs BGR vs QD-OLED vs WOLED) and diagnose text fringing and ClearType antialiasing.",
+      "instructions": [
+        "Select your display panel architecture or use the 1px line gratings to determine subpixel orientation.",
+        "Inspect high-contrast text samples across light and dark backgrounds for colored edge fringing.",
+        "Follow the ClearType tuning guide to adjust font smoothing for non-standard subpixel layouts."
+      ]
+    },
+    "pwm-flicker-test": {
+      "title": "PWM Backlight Flicker & Eye Strain Test",
+      "description": "Detect pulse-width modulation (PWM) backlight flicker and stroboscopic eye strain thresholds.",
+      "metaTitle": "PWM Backlight Flicker Test - Stroboscopic Eye Comfort & Shutter Check",
+      "metaDescription": "Test for invisible PWM backlight flicker and stroboscopic trails across different brightness levels.",
+      "instructions": [
+        "Observe high-speed moving bars while tracking with your eyes or moving a pen across the screen.",
+        "Check for discrete stroboscopic phantom beads indicating PWM backlight modulation.",
+        "Use your smartphone camera in Pro mode (shutter 1/1000s+) to expose hidden PWM scanlines."
+      ]
+    },
+    "dead-pixel-mapper": {
+      "title": "Dead Pixel RMA Coordinate & Warranty Mapper",
+      "description": "Interactive full-screen canvas to pinpoint defective pixel coordinates and evaluate ISO 9241-307 warranty eligibility.",
+      "metaTitle": "Dead Pixel RMA Coordinate Mapper - ISO 9241-307 Warranty Checker",
+      "metaDescription": "Pinpoint dead and stuck pixel coordinates, evaluate manufacturer warranty thresholds, and export inspection logs.",
+      "instructions": [
+        "Cycle through solid background colors and click directly on defective pixels to mark their coordinates.",
+        "Classify each defect as dead dark, stuck subpixel, or surface dust.",
+        "Review ISO 9241-307 warranty compliance and export your defect log for manufacturer RMA claims."
+      ]
+    },
+    "gtg-response-time-test": {
+      "title": "Grey-to-Grey (GtG) Response Time Visualizer",
+      "description": "Benchmark pixel transition response times across grey levels and identify overdrive overshoot.",
+      "metaTitle": "Grey-to-Grey (GtG) Response Time Test - Overdrive & Ghosting Visualizer",
+      "metaDescription": "Benchmark panel pixel response times across dark and light grey transitions to tune monitor overdrive.",
+      "instructions": [
+        "Select standard transition presets (e.g. 0% to 20% VA smear test, or 25% to 75% midtones).",
+        "Track the moving block with your eyes to inspect leading and trailing edge clarity.",
+        "Adjust monitor OSD Overdrive to eliminate ghost trails without causing bright inverted coronas."
+      ]
+    },
+    "oled-burn-in-calculator": {
+      "title": "OLED Burn-in Risk & Longevity Calculator",
+      "description": "Calculate OLED and QD-OLED panel degradation probability, lifespan in years, and static HUD hazard hotspots.",
+      "metaTitle": "OLED & QD-OLED Burn-in Risk Calculator - Panel Longevity Estimator",
+      "metaDescription": "Estimate OLED and QD-OLED panel lifespan, burn-in risk percentage, and static UI degradation hotspots.",
+      "instructions": [
+        "Select your OLED panel generation (WOLED MLA, QD-OLED Gen 3, AMOLED).",
+        "Input your daily usage hours, static UI percentage, and average SDR/HDR brightness.",
+        "Review your projected burn-in risk timeline, expected lifespan, and mitigation recommendations."
+      ]
+    },
+    "mouse-polling-test": {
+      "title": "Mouse Polling Rate & Cursor Precision Test",
+      "description": "Measure real-time mouse USB polling frequency in Hz, tracking jitter, button actuation, and sensor DPI.",
+      "metaTitle": "Mouse Polling Rate (Hz) & Precision Test - Sensor Jitter & Click Checker",
+      "metaDescription": "Test mouse polling rate up to 8000Hz, check interval jitter, diagnose double-click chatter, and measure DPI.",
+      "instructions": [
+        "Move your mouse rapidly in continuous circles inside the test pad to measure peak and average Hz.",
+        "Inspect interval timing consistency and jitter graphs to ensure smooth frame pacing.",
+        "Test mouse buttons for actuation latency and mechanical switch double-click bouncing."
+      ]
+    },
+    "gpu-benchmark-test": {
+      "title": "GPU WebGL 3D Stress & Performance Benchmark",
+      "description": "Real-time 3D particle canvas evaluating sustained frame rate, 1% low FPS, and GPU thermal throttling.",
+      "metaTitle": "GPU WebGL 3D Benchmark & Stress Test - FPS, 1% Lows & Hardware Telemetry",
+      "metaDescription": "Benchmark GPU WebGL performance with 10K–200K rotating 3D particles, 1% low FPS telemetry, and 30s stress test.",
+      "instructions": [
+        "Select a particle stress preset ranging from Light (10K) to Extreme Stress (200K particles).",
+        "Observe real-time frame rate, 1% low FPS stability, and frame time variance.",
+        "Run the 30-second benchmark to calculate your sustained GPU stability score."
+      ]
+    },
+    "display-certificate": {
+      "title": "Display Inspection Certificate & RMA Report",
+      "description": "Generate a formal, print-ready display health and inspection certificate for resale verification or warranty claims.",
+      "metaTitle": "Display Inspection Certificate & RMA Report Generator - Print-Ready PDF",
+      "metaDescription": "Generate a certified display inspection report with hardware specs, pixel defect counts, and grading.",
+      "instructions": [
+        "Verify auto-detected display specifications including native resolution, color depth, and gamut.",
+        "Fill in monitor model, serial number, and manual inspection grading results.",
+        "Click 'Print / Save as PDF' to generate an official verification certificate."
+      ]
+    },
+    "osd-calibration-guide": {
+      "title": "Interactive OSD Monitor Calibration Assistant",
+      "description": "Step-by-step visual calibration wizard for tuning physical monitor hardware buttons (OSD Menu).",
+      "metaTitle": "OSD Monitor Calibration Guide - Step-by-Step Hardware Tuning Assistant",
+      "metaDescription": "Calibrate your monitor physical OSD buttons for Brightness, Contrast, Gamma 2.2, 6500K Color, and Overdrive.",
+      "instructions": [
+        "Follow the 6 visual steps using your physical monitor buttons (OSD Menu).",
+        "Tune Brightness and Contrast to avoid shadow crushing and highlight clipping.",
+        "Calibrate Gamma to 2.2, Color Temperature to 6500K neutral white, and optimize Overdrive."
+      ]
     }
   },
   "Tests": {
@@ -1126,8 +1323,8 @@
       "instructions": "Watch moving vertical bars under different workloads for tearing and stutter."
     },
     "hdrVisualTest": {
-      "title": "HDR Visual Inspection – Highlight Clipping & Tone Curve Check",
-      "description": "Controlled visual test for specular highlight clipping, tone mapping rolloff, and wide gamut rendering.",
+      "title": "HDR Visual Inspection – Highlight Clipping & Tone Mapping",
+      "description": "Controlled optical visual test for specular highlight clipping point, tone curve rolloff, 10% peak white window, and shadow detail.",
       "instructions": "Inspect specular highlight bars for clipping and verify near-black shadow detail."
     },
     "nearBlackTest": {
@@ -1645,14 +1842,81 @@
       "standard2DeltaTitle": "Standard ~2% delta",
       "subtle1DeltaTitle": "Subtle ~1% delta",
       "ultraFine05Title": "Ultra-Fine ~0.5% delta",
-      "momentarilyBlinkReticlesSoTitle": "Momentarily blink reticles so you can spot their exact location"
+      "momentarilyBlinkReticlesSoTitle": "Momentarily blink reticles so you can spot their exact location",
+      "dismiss": "Dismiss",
+      "pipelineDetectorBadge": "Hardware & Signal Auditor",
+      "realTimeHardwareAudit": "Real-Time Hardware & Compositor Audit",
+      "hdrHardwareSignalDetectorTitle": "HDR Hardware & Signal Detector",
+      "hdrHardwareSignalDetectorSubtitle": "Direct query of OS compositor HDR output, 10-bit color depth, wide gamut color spaces, WebGL float buffers, and HDR video decoders.",
+      "probingStatus": "Probing Pipeline...",
+      "hdrActiveCompositor": "HDR Active in OS Compositor",
+      "sdrFallbackCompositor": "SDR Fallback (HDR Inactive)",
+      "reProbeTooltip": "Re-run hardware and compositor capability probe",
+      "reProbe": "Re-Probe",
+      "metricDynamicRange": "Dynamic Range",
+      "metricColorGamut": "Color Gamut",
+      "metricBufferDepth": "Buffer Bit Depth",
+      "metricCanvasP3": "Canvas 2D P3",
+      "supported": "Supported",
+      "fallbackSrgb": "Fallback (sRGB)",
+      "notSupported": "Not Supported",
+      "tabListLabel": "HDR Detection Tabs",
+      "tabSignalDashboard": "Signal Dashboard",
+      "tabVideoCodecs": "Video Codecs",
+      "tabOsSetupGuide": "OS Setup Guide",
+      "mediaQueryQueriesTitle": "CSS Media Query Signals",
+      "activeTrue": "ACTIVE (True)",
+      "inactiveFalse": "INACTIVE (False)",
+      "mediaQueryExplanation": "The browser queries the OS window compositor directly via CSS Media Queries Level 4. When HDR is toggled on in Windows or macOS, dynamic-range flips to high.",
+      "graphicsPipelineTitle": "Graphics & Buffer Pipeline",
+      "bufferExplanation": "Reports the bit depth and color spaces accessible by HTML5 Canvas, WebGL2 float render targets, and the display buffer.",
+      "gamutSandboxTitle": "Wide Gamut Visual Sandbox (sRGB vs Display-P3)",
+      "gamutSandboxSubtitle": "On wide-gamut displays, the Display-P3 swatches will appear distinctly more saturated and vibrant than standard sRGB swatches.",
+      "colorRed": "Primary Red",
+      "colorGreen": "Primary Green",
+      "colorBlue": "Primary Blue",
+      "redNotice": "Display-P3 red extends deeper into crimson.",
+      "greenNotice": "Display-P3 green delivers vivid emerald hues beyond sRGB.",
+      "blueNotice": "Display-P3 blue offers intense royal blue saturation.",
+      "hardwareBoundaryTitle": "Browser Query vs Optical Luminance (Important Distinction)",
+      "hardwareBoundaryBody": "Browser media queries confirm that your operating system compositor is outputting an HDR signal. However, a browser cannot measure physical panel peak luminance (nits), sustained full-field brightness, or local dimming zone performance. For visual tone-mapping evaluation, use the companion 'HDR Visual Inspection' test.",
+      "codecCapabilitiesTitle": "Hardware-Accelerated HDR Video Decoders",
+      "codecCapabilitiesSubtitle": "Probed using the Web MediaCapabilities API for 4K 60fps high-bitrate HDR playback capability.",
+      "codecsHdr10Desc": "Standard HDR10 with PQ (ST 2084) transfer curve and BT.2020 color volume.",
+      "codecsAv1Desc": "Next-generation royalty-free 10-bit codec used by modern YouTube 4K HDR streams.",
+      "codecsVp9Desc": "Google 10-bit profile used for YouTube HDR on older browsers and devices.",
+      "codecsHlgDesc": "Hybrid Log-Gamma broadcast standard compatible with traditional SDR displays.",
+      "hardwareAccelerated": "Hardware Accelerated",
+      "softwareDecoded": "Software Decoded",
+      "codecNoteTitle": "GPU Hardware Acceleration Note:",
+      "codecNoteBody": "If 10-bit codecs report Not Supported, verify that Hardware Acceleration is enabled in your browser settings and your GPU graphics driver is up to date.",
+      "windowsGuideTitle": "Windows 10 / 11 HDR Configuration",
+      "windowsShortcut": "Instant Keyboard Shortcut",
+      "windowsShortcutDesc": "Press",
+      "windowsSettings": "Windows Settings Navigation",
+      "windowsSettingsDesc": "Go to Settings > System > Display > select your monitor > toggle 'Use HDR' to ON.",
+      "sdrSlider": "SDR Content Brightness Slider",
+      "sdrSliderDesc": "Calibrate the SDR content brightness slider so white backgrounds in SDR apps match your room's ambient light level without looking gray or blinding.",
+      "macOsGuideTitle": "macOS Liquid Retina XDR & External Displays",
+      "macXdr": "Built-in Liquid Retina XDR",
+      "macXdrDesc": "MacBook Pro 14\" & 16\" (M-series) feature mini-LED displays with 1,000 nits sustained and 1,600 nits peak HDR brightness enabled automatically.",
+      "macPresets": "Display Presets",
+      "macPresetsDesc": "In System Settings > Displays > Preset, ensure 'Apple XDR Display (P3-1600 nits)' or 'Apple Studio Display (P3-500 nits)' is selected.",
+      "cableGuideTitle": "Display Cable & Port Bandwidth Requirements",
+      "hdmiLimits": "HDMI 2.0 vs HDMI 2.1",
+      "hdmiLimitsDesc": "HDMI 2.0 caps 4K at 60Hz 8-bit YCbCr 4:2:0 when HDR is enabled. True 4K 10-bit RGB HDR requires DisplayPort 1.4 or HDMI 2.1.",
+      "gpuColorDepth": "GPU Control Panel Bit Depth",
+      "gpuColorDepthDesc": "In NVIDIA Control Panel or AMD Software, ensure Output Color Depth is set to 10 bpc (bits per channel) and Output Dynamic Range is set to Full.",
+      "refreshAudit": "Re-Audit",
+      "signalNotificationHdrActive": "⚡ Live Signal Change Detected: OS HDR Compositor is now ACTIVE!",
+      "signalNotificationHdrInactive": "ℹ️ Live Signal Change Detected: OS HDR Compositor switched to SDR Fallback."
     },
     "HdrVisualPattern": {
-      "highlightClippingPeakWhite": "Highlight Clipping & Peak White Separation",
-      "inspectWhetherSubtleCircular": "Inspect whether subtle circular target reticles remain distinguishable inside near-peak highlights.",
+      "highlightClippingPeakWhite": "Specular Highlight Roll-Off & Clipping Steps",
+      "inspectWhetherSubtleCircular": "Inspect whether circular reticle targets remain distinguishable across near-peak highlights up to 100% white.",
       "rgb": "RGB",
-      "nearBlackShadowDetail": "Near-Black Shadow Detail & Dark Clipping",
-      "inADimmedRoom": "In a dimmed room, check how low in the dark spectrum you can distinguish subtle squares from true 0% black.",
+      "nearBlackShadowDetail": "Near-Black Shadow Detail & Dark Separation",
+      "inADimmedRoom": "In a darkened room, check how low in the near-black spectrum you can distinguish subtle target blocks from true 0% black.",
       "sideBySideSdr": "Side-by-Side SDR Reference vs High Dynamic Range",
       "standardSrgb": "Standard sRGB",
       "standardWhite100120": "Standard White (100-120 nits SDR)",
@@ -1660,11 +1924,11 @@
       "highDynamicRangeP3": "High Dynamic Range / P3",
       "peakWhiteHeadroom": "Peak White Headroom",
       "extendedDynamicRange": "Extended dynamic range",
-      "wideColorGamutPrimaries": "Wide Color Gamut Primaries (sRGB vs Display P3)",
-      "displaysSupportingDciP3": "Displays supporting DCI-P3 / HDR render deeper reds and more vivid emerald greens beyond conventional sRGB.",
-      "p3DeepRed": "P3 Deep Red",
-      "p3EmeraldGreen": "P3 Emerald Green",
-      "p3RoyalBlue": "P3 Royal Blue",
+      "wideColorGamutPrimaries": "Wide Color Gamut Primaries (sRGB vs Display-P3)",
+      "displaysSupportingDciP3": "Displays supporting DCI-P3 and Rec.2020 render deeper crimson reds, richer emerald greens, and vibrant royal blues.",
+      "p3DeepRed": "Display-P3 Deep Red",
+      "p3EmeraldGreen": "Display-P3 Emerald Green",
+      "p3RoyalBlue": "Display-P3 Royal Blue",
       "fullSpectrum16Step": "Full Spectrum 16-Step Grayscale",
       "cssHdr": "CSS HDR:",
       "displayP3": "Display-P3:",
@@ -1686,7 +1950,37 @@
       "inTheHighlightClipping": "In the Highlight Clipping pattern, reticles in the 94% and 97% swatches should remain visible without blown-out white blooming.",
       "4CheckForCrushed": "4. Check for Crushed Darks:",
       "inTheShadowDetail": "In the Shadow Detail pattern, dark blocks (2% to 5%) should remain distinct from pure black.",
-      "hdrVisualInspectionTitle": "HDR Visual Inspection"
+      "hdrVisualInspectionTitle": "HDR Visual Inspection",
+      "fullscreenHudVisualCalibration": "HDR Visual Calibration",
+      "fullscreenHudInstructions": "Press [1-5] for Modes • [B] to Blink Reticle • [F] for Fullscreen",
+      "modeSpecularHighlight": "Specular Highlight Clipping",
+      "modeAplWindow": "10% APL Peak Window",
+      "modeToneCurveRamps": "PQ Tone Curve Ramps",
+      "modeNearBlackShadows": "Near-Black Shadow Detail",
+      "modeWideGamutPrimaries": "Wide Gamut Primaries",
+      "allReticlesVisibleTitle": "All 6 Reticles Distinguishable",
+      "allReticlesVisibleDesc": "Excellent highlight preservation; display tone-maps near-peak whites smoothly without premature clipping.",
+      "nearPeakBlownOutTitle": "Reticles 5 & 6 Blown Out",
+      "nearPeakBlownOutDesc": "Typical standard tone clipping; highlights above 98% merge into solid clipped white.",
+      "aplBurstWindowTitle": "10% APL Peak Luminance Burst Window",
+      "aplBurstWindowSubtitle": "The industry-standard measurement window for OLED & Mini-LED peak nits, local dimming aggressiveness, and blooming halos.",
+      "aplSizeLabel": "Window Size",
+      "toneCurveGradationTitle": "PQ EOTF Tone Curve & Quantization Ramps",
+      "toneCurveGradationSubtitle": "Inspect for harsh quantization stepping, color banding, and tone-curve compression across luminance ranges.",
+      "continuous10BitRamp": "Smooth 10-Bit Continuous Ramp (No Banding)",
+      "stepped8BitQuantizedRamp": "Stepped 8-Bit Quantized Reference (32 Discrete Levels)",
+      "toneCurveInspectionTip": "On high-fidelity 10-bit panels, the continuous ramp should appear completely seamless without vertical quantization bars.",
+      "shadowInspectionTip": "If steps 0.5% through 2% appear completely black, your display is crushing shadow details (black crush).",
+      "flashReticlesTitle": "Momentarily flash reticle targets to locate subtle near-peak positions",
+      "flashReticles": "Flash Reticles",
+      "fullscreenF": "Fullscreen [F]",
+      "exitFullscreen": "Exit Fullscreen",
+      "bgLuminanceLabel": "Background Luminance",
+      "bgBlack0": "0% Black",
+      "bgDark5": "5% Dark",
+      "bgMid18": "18% Gray",
+      "reticleDeltaOffset": "Target Sensitivity Delta",
+      "hdrVisualCalibrationBarTitle": "HDR Visual Calibration & Highlight Inspection"
     },
     "LevelPattern": {
       "visualObservation": "Visual Observation",
@@ -2358,6 +2652,288 @@
       "testRumble": "Test Vibration / Rumble",
       "trigger": "Analog Trigger",
       "buttonsMatrix": "Button Actuation Matrix"
+    },
+    "batteryTest": {
+      "title": "Battery Health & Power Info",
+      "description": "Check battery level, charging status, time remaining, and power source in real-time."
+    },
+    "networkSpeedTest": {
+      "title": "Network Speed Test",
+      "description": "Measure internet download speed, latency ping, and connection type directly in your browser."
+    },
+    "colorBlindnessTest": {
+      "title": "Color Blindness Simulator",
+      "description": "Simulate 8 types of color vision deficiency with real-time SVG filters and side-by-side comparison."
+    },
+    "screenRecorder": {
+      "title": "Screen Recorder & Screenshot",
+      "description": "Record your screen as WebM video or capture PNG screenshots directly in the browser. No install needed."
+    },
+    "darkModeTest": {
+      "title": "Dark Mode / Light Mode Test",
+      "description": "Detect OS dark mode preference, test CSS color-scheme support, and preview UI in both themes."
+    },
+    "inputLagTest": {
+      "title": "Input Lag Visualizer",
+      "description": "Measure click-to-photon input lag with a 10-trial visual reaction test, histogram, and statistical analysis."
+    },
+    "ambientLightTest": {
+      "title": "Ambient Light Sensor Test",
+      "description": "Read real-time ambient light levels in lux with a brightness gauge, history chart, and recommendations."
+    },
+    "dpiCalculator": {
+      "title": "DPI / PPI Calculator",
+      "description": "Calculate pixel density, dot pitch, and retina threshold for any screen size and resolution."
+    },
+    "BatteryPattern": {
+      "notSupported": "Battery API Not Supported",
+      "notSupportedHint": "Your browser does not support the Battery Status API. Try using Chrome, Edge, or Opera on a device with a battery.",
+      "loading": "Reading battery status...",
+      "charging": "Charging",
+      "onBattery": "On Battery",
+      "batteryLevel": "Battery Level",
+      "timeToFull": "Time to Full",
+      "timeRemaining": "Time Remaining",
+      "powerSource": "Power Source",
+      "acPower": "AC Power",
+      "batteryPower": "Battery",
+      "levelHistory": "Level History",
+      "browserNote": "Uses the Battery Status API (navigator.getBattery). Supported in Chromium-based browsers."
+    },
+    "NetworkSpeedPattern": {
+      "startTest": "Start Speed Test",
+      "stop": "Stop",
+      "testing": "Testing...",
+      "testAgain": "Test Again",
+      "latency": "Latency / Ping",
+      "download": "Download Speed",
+      "connectionInfo": "Connection Profile",
+      "connectionType": "Connection Type",
+      "effectiveType": "Effective Class",
+      "estimatedDownlink": "Downlink Ceiling",
+      "estimatedRtt": "Estimated RTT",
+      "dataSaverOn": "Data Saver: Enabled",
+      "testHistory": "Recent Test History",
+      "browserNote": "Latency and bandwidth are measured using standard browser fetch APIs and Network Information API.",
+      "excellent": "Excellent",
+      "veryGood": "Very Good",
+      "good": "Good",
+      "fair": "Fair",
+      "slow": "Slow",
+      "poor": "Poor",
+      "offline": "Offline",
+      "offlineHint": "No internet connection detected."
+    },
+    "ColorBlindnessPattern": {
+      "selectVision": "Select Vision Type",
+      "compare": "Compare with Normal",
+      "normalVision": "Normal Trichromacy",
+      "viewing": "Viewing",
+      "aboutTitle": "About Color Vision Simulation",
+      "aboutText": "This simulator uses SVG color matrix transformations to approximate how human eyes with defective cone photoreceptors perceive digital screens.",
+      "normal": "Normal",
+      "caution": "Caution",
+      "warning": "Warning",
+      "error": "Error",
+      "success": "Success",
+      "info": "Info",
+      "special": "Special",
+      "critical": "Critical",
+      "visionTypes": {
+        "normal": "Normal Vision",
+        "protanopia": "Protanopia (Red-Blind)",
+        "deuteranopia": "Deuteranopia (Green-Blind)",
+        "tritanopia": "Tritanopia (Blue-Blind)",
+        "protanomaly": "Protanomaly (Red-Weak)",
+        "deuteranomaly": "Deuteranomaly (Green-Weak)",
+        "tritanomaly": "Tritanomaly (Blue-Weak)",
+        "achromatopsia": "Achromatopsia (Monochrome)"
+      }
+    },
+    "ScreenRecorderPattern": {
+      "notSupported": "Screen Capture Unsupported",
+      "notSupportedHint": "Your browser or platform does not support the Screen Capture API.",
+      "startRecording": "Start Recording",
+      "screenshot": "Take Screenshot",
+      "pause": "Pause",
+      "resume": "Resume",
+      "stopRecording": "Stop Recording",
+      "preview": "Recording Preview",
+      "downloadVideo": "Download WebM Video",
+      "screenshotPreview": "Screenshot Preview",
+      "downloadScreenshot": "Download PNG Screenshot",
+      "browserNote": "All screen recordings and screenshots are generated locally in your browser memory and never uploaded to any remote server."
+    },
+    "DarkModePattern": {
+      "systemDetection": "OS Preference Detection",
+      "osPreference": "Reported OS Theme",
+      "dark": "Dark Mode",
+      "light": "Light Mode",
+      "colorSchemeCSS": "CSS color-scheme Support",
+      "supported": "Supported",
+      "notSupported": "Not Supported",
+      "contrastPref": "Contrast Preference",
+      "previewTheme": "Preview Theme Mode",
+      "previewTitle": "Theme Preview Showcase",
+      "darkMode": "Dark Theme",
+      "lightMode": "Light Theme",
+      "previewText": "Inspect how colors, cards, and typography render in light and dark palettes.",
+      "primaryBtn": "Primary Action",
+      "secondaryBtn": "Secondary",
+      "successMsg": "Active theme applied successfully.",
+      "toggleLabel": "Toggle Switch",
+      "browserNote": "Detects system preferences using CSS prefers-color-scheme and evaluates theme rendering properties.",
+      "sampleCard1Title": "Performance Metrics",
+      "sampleCard1Desc": "System throughput and latency indicators across render passes.",
+      "sampleCard2Title": "Display Diagnostics",
+      "sampleCard2Desc": "Hardware capability detection and color pipeline validation.",
+      "sampleCard3Title": "Energy Management",
+      "sampleCard3Desc": "Battery level, charging transitions, and power draw telemetry.",
+      "high": "High",
+      "more": "More",
+      "less": "Less",
+      "themes": {
+        "system": "System",
+        "light": "Light",
+        "dark": "Dark"
+      },
+      "normal": "Standard"
+    },
+    "InputLagPattern": {
+      "clickToStart": "Click Here to Start",
+      "clickToStartHint": "Click the box when ready. Wait for the green color trigger.",
+      "waitForGreen": "Wait for Green...",
+      "clickNow": "CLICK NOW!",
+      "tooEarly": "Too Early!",
+      "tooEarlyHint": "You clicked before the green stimulus appeared. Click to try again.",
+      "trial": "Trial",
+      "avgTime": "Average Latency",
+      "bestTime": "Fastest (Best)",
+      "worstTime": "Slowest (Worst)",
+      "stdDev": "Standard Deviation",
+      "histogram": "Response Time Distribution",
+      "reset": "Restart Test",
+      "browserNote": "Measures elapsed time from visual stimulus render to event dispatch across 10 trials.",
+      "excellent": "Excellent",
+      "good": "Good",
+      "average": "Average",
+      "slow": "Slow"
+    },
+    "AmbientLightPattern": {
+      "veryDark": "Pitch Dark (< 10 lx)",
+      "recDark": "Dim display to minimum (~50-80 nits) to reduce severe eye strain.",
+      "dim": "Dim Living Room (10-100 lx)",
+      "recDim": "Keep display brightness at 25-40% (~100 nits) for comfortable reading.",
+      "normal": "Office Ergonomic (100-500 lx)",
+      "recNormal": "Optimal working conditions. Set brightness to 40-60% (~120-150 nits).",
+      "bright": "Bright Indoor / Overcast (500-1000 lx)",
+      "recBright": "Increase brightness to 70-85% (~250-300 nits) to maintain contrast.",
+      "veryBright": "Daylight / Direct Sun (> 1000 lx)",
+      "recVeryBright": "Maximum brightness required (100% / 400+ nits) to combat glare.",
+      "notSupported": "Sensor API Unsupported",
+      "notSupportedHint": "Your browser or device does not support the Generic Sensor / AmbientLightSensor API.",
+      "enableGuide": "How to Enable Ambient Light Sensor in Chrome/Edge",
+      "enableStep1": "1. Open chrome://flags (or edge://flags) in your address bar.",
+      "enableStep2": "2. Search for 'Generic Sensor Extra Classes' and set to Enabled.",
+      "enableStep3": "3. Relaunch your browser and grant sensor permission when prompted.",
+      "permissionNeeded": "Sensor Permission Required",
+      "permissionHint": "Please allow sensor access when prompted by the browser to read ambient light levels.",
+      "waiting": "Waiting for sensor readings...",
+      "brightnessGauge": "Ambient Illuminance Gauge",
+      "current": "Current Lux",
+      "min": "Session Min",
+      "max": "Session Max",
+      "recommendation": "Ergonomic Recommendation",
+      "readingHistory": "Illuminance History",
+      "luxReference": "Common Lux Benchmarks",
+      "refMoonlight": "Moonlight",
+      "refDimRoom": "Dim Living Room",
+      "refOffice": "Office Workstation",
+      "refOvercast": "Overcast Daylight",
+      "refSunlight": "Full Daylight",
+      "refDirectSun": "Direct Sunlight",
+      "browserNote": "Reads ambient room illuminance in lux (lx) using the AmbientLightSensor API."
+    },
+    "DpiCalculatorPattern": {
+      "quickPresets": "Quick Presets",
+      "enterSpecs": "Display Specifications",
+      "diagonal": "Screen Diagonal",
+      "inches": "inches",
+      "width": "Horizontal Pixels (Width)",
+      "height": "Vertical Pixels (Height)",
+      "viewingDistance": "Retina Viewing Distance",
+      "dotPitch": "Dot Pitch (Pixel Spacing)",
+      "aspectRatioLabel": "Aspect Ratio",
+      "totalPixels": "Total Pixels",
+      "subpixels": "RGB Subpixels",
+      "physicalSize": "Physical Dimensions",
+      "angularRes": "Pixels Per Degree (PPD)",
+      "retinaYes": "Retina Standard Met",
+      "retinaNo": "Below Retina Threshold",
+      "retinaThreshold": "Apple-defined Retina threshold (60 PPD / 1 arcminute).",
+      "yourDisplay": "Your Current Display",
+      "browserNote": "Calculates spatial pixel density (PPI), dot pitch, and visual acuity thresholds.",
+      "excellent": "Ultra High (Retina)",
+      "sharp": "Sharp Desktop",
+      "adequate": "Standard",
+      "low": "Low Density"
+    },
+    "subpixelLayoutTest": {
+      "title": "Subpixel Layout & Text Fringing",
+      "description": "Inspect RGB, BGR, QD-OLED, and WOLED subpixel geometries and text edge fringing.",
+      "metaDescription": "Diagnose subpixel rendering structure and font color halos."
+    },
+    "pwmFlickerTest": {
+      "title": "PWM Backlight Flicker Test",
+      "description": "Detect pulse-width modulation (PWM) backlight flicker and stroboscopic eye strain.",
+      "metaDescription": "Measure stroboscopic backlight flicker and eye strain thresholds."
+    },
+    "gtgResponseTimeTest": {
+      "title": "Grey-to-Grey (GtG) Response Time",
+      "description": "Benchmark pixel transition speeds and identify monitor overdrive inverse coronas.",
+      "metaDescription": "Evaluate GtG pixel rise/fall times and overdrive overshoot."
+    },
+    "mousePollingTest": {
+      "title": "Mouse Polling Rate & Precision",
+      "description": "Measure real-time mouse polling frequency in Hz, jitter, and double-click chatter.",
+      "metaDescription": "High-precision mouse polling rate and sensor precision tester."
+    },
+    "gpuBenchmarkTest": {
+      "title": "GPU WebGL 3D Benchmark",
+      "description": "Stress test GPU 3D rendering with real-time FPS, 1% lows, and frame stability telemetry.",
+      "metaDescription": "WebGL 3D particle stress test and frame stability benchmark."
+    },
+    "MotionBlurPattern": {
+      "clickAnywhereToCycleTitle": "Click anywhere to cycle speed",
+      "pxS": "px/s",
+      "mode": "Mode",
+      "clickToCycleSpeed": "Click canvas or badge to cycle speed",
+      "motionBlurPersistenceMprt": "Motion Blur & Persistence (MPRT) Guide",
+      "close": "Close",
+      "persistenceBlurVsGhosting": "Persistence Blur vs. Response Time Ghosting:",
+      "ghostingIsCausedBy": "Ghosting is caused by slow pixel response (GtG), leaving color trails. ",
+      "motionBlurPersistenceBlur": "Persistence blur (MPRT)",
+      "isCausedBy": " is caused by your eyes smoothly tracking a moving object on a ",
+      "sampleAndHoldDisplay": "sample-and-hold display",
+      "combinedWithSmoothPursuit": ", blurring the image across your retina.",
+      "why0msDisplaysStill": "Why 0ms displays still blur: ",
+      "evenOnOledDisplays": "Even on OLED displays with instant response times, sample-and-hold displays show 1ms of blur per 1ms of frame persistence.",
+      "linePairsMotionResolution": "Line Pairs (Motion Resolution): ",
+      "the1pxAnd2px": "The 1px and 2px line pairs test spatial resolution. High-persistence displays blur fine lines into a solid flat gray bar.",
+      "howToReducePersistence": "How to reduce blur: ",
+      "increaseYourDisplayApos": "Increase refresh rate (240Hz+), use Black Frame Insertion (BFI) / backlight strobing, or enable ULMB.",
+      "trackingTip": "Eye Tracking Tip: ",
+      "keepYourEyesLocked": "Keep your eyes locked onto the white vertical alignment guide to test dynamic eye pursuit.",
+      "motionBlurPersistenceMprtTitle": "Motion Blur & Persistence (MPRT) Test",
+      "linePairsGrating": "Line Pairs Grating",
+      "textClarity": "Text Clarity",
+      "multiSpeed": "Multi-Speed",
+      "speed": "Speed",
+      "toggleEyePursuitTrackingTitle": "Toggle eye pursuit tracking guide",
+      "pursuitGuide": "Pursuit Guide",
+      "reverseMotionDirectionTitle": "Reverse motion direction",
+      "readAboutMotionBlurTitle": "Read about motion blur & MPRT",
+      "guide": "Guide"
     }
   },
   "Guides": {
@@ -4422,6 +4998,32 @@
         "title": "Dual-Monitor White Point Matcher",
         "description": "Side-by-side split screen canvas to align color temperature, RGB gain, and luminance across multi-monitor setups.",
         "badge": "Calibration"
+      },
+      "screenRecorder": {
+        "title": "Screen Recorder & Screenshot",
+        "description": "Record desktop, windows, or tabs in WebM video or capture full-resolution PNG screenshots.",
+        "badge": "Screen Capture"
+      },
+      "dpiCalculator": {
+        "title": "DPI / PPI Calculator",
+        "description": "Calculate pixel density, dot pitch, and Retina viewing distance thresholds for any display.",
+        "badge": "Calculator"
+      },
+      "deadPixelMapper": {
+        "title": "Dead Pixel RMA Mapper",
+        "description": "Pinpoint dead pixel coordinates and evaluate ISO 9241-307 warranty eligibility."
+      },
+      "oledBurnInCalculator": {
+        "title": "OLED Burn-in Risk Calculator",
+        "description": "Calculate OLED panel degradation probability and static HUD hazard hotspots."
+      },
+      "displayCertificate": {
+        "title": "Display Inspection Certificate",
+        "description": "Generate a print-ready display health certificate for resale or RMA claims."
+      },
+      "osdCalibrationGuide": {
+        "title": "OSD Calibration Guide",
+        "description": "Step-by-step visual calibration wizard for tuning physical monitor OSD buttons."
       }
     },
     "DisplayBandwidthCalculator": {
@@ -6557,7 +7159,30 @@
     "notesLabel": "Inspection Notes:",
     "notesPlaceholder": "e.g., slight yellow tint shift from the left, mild IPS glow in bottom-right corner...",
     "resultBadge": "VISUAL OBSERVATION",
-    "backToGuide": "Read Viewing Angles Guide"
+    "backToGuide": "Read Viewing Angles Guide",
+    "50NeutralGrayField": "50% Neutral Gray Field",
+    "observeWhetherTheEdges": "Observe whether the edges appear darker or shifted in hue compared to the center.",
+    "redRgb2550": "Red (RGB 255, 0, 0)",
+    "greenRgb0255": "Green (RGB 0, 255, 0)",
+    "blueRgb00": "Blue (RGB 0, 0, 255)",
+    "yellowRG": "Yellow (R+G)",
+    "cyanGB": "Cyan (G+B)",
+    "magentaRB": "Magenta (R+B)",
+    "rgb": "RGB: ",
+    "skinTonesAreSensitive": "Skin tones and memory colors are particularly sensitive to off-axis hue and saturation shifts.",
+    "0Black0": "0% Black (0)",
+    "50Midtone128": "50% Midtone (128)",
+    "100White255": "100% White (255)",
+    "lowKeyShadowDetail": "Low-Key Shadow Detail Steps (Near-Black 1%–10%)",
+    "onVaPanelsNear": "On VA panels, near-black details often crush perpendicularly and reveal themselves only off-angle (gamma shift).",
+    "highKeyHighlightDetail": "High-Key Highlight Detail Steps (Near-White 90%–99%)",
+    "highlightsShouldRemainDiscernible": "Highlights should remain discernible from pure white without blowing out at wide angles.",
+    "fullBlackField0": "Full Black Field (0% Luminance)",
+    "lookDiagonallyAtThe": "Look diagonally at the screen to detect IPS glow or off-angle backlight leakage.",
+    "fullWhiteField100": "Full White Field (100% Luminance)",
+    "inspectWhitePointUniformity": "Inspect white point uniformity and off-axis tinting (e.g., pink/green color cast on OLED/VA).",
+    "previousPatternTitle": "Previous Pattern",
+    "nextPatternTitle": "Next Pattern"
   },
   "BrightnessTest": {
     "metaTitle": "Monitor Brightness & Luminance Visual Inspection",
@@ -6723,7 +7348,15 @@
     "obsNormal": "Touch inputs registered cleanly",
     "obsIssues": "Dead zones or missed touches observed",
     "obsUnsure": "Unsure / Non-touch device",
-    "notesPlaceholder": "e.g., top-left corner was slightly unresponsive, 5-finger multi-touch verified smoothly..."
+    "notesPlaceholder": "e.g., top-left corner was slightly unresponsive, 5-finger multi-touch verified smoothly...",
+    "active": "Active:",
+    "peak": "Peak:",
+    "currentActive": "Current Active",
+    "peakDetected": "Peak Detected",
+    "eventState": "Event State:",
+    "id": "ID: ",
+    "resetTestTitle": "Reset Test",
+    "touch": "Touch:"
   },
   "Breadcrumbs": {
     "home": "Home",
@@ -6984,7 +7617,8 @@
     },
     "troubleshooting": {
       "viewGuide": "Troubleshooting Guide"
-    }
+    },
+    "5SecondAudioCheck": "5-Second Audio Check"
   },
   "VoiceRecorder": {
     "metaTitle": "Voice Recorder – Free Online Audio & Microphone Recording Tool",

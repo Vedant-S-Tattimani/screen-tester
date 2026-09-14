@@ -225,7 +225,8 @@
       "uniformityPanel": "画面均一性・バックライト診断",
       "motionPerformance": "残像（モーション）・リフレッシュレート",
       "sharpnessCapabilities": "鮮鋭度（シャープネス）・機能テスト",
-      "deviceInput": "デバイスと入力"
+      "deviceInput": "デバイスと入力",
+      "utilitiesTools": "ユーティリティとツール"
     },
     "allTestsNoResults": "一致するテストが見つかりません:",
     "moreFreeTestingToolsTitle": "その他の無料テストツール",
@@ -335,8 +336,8 @@
         "description": "モニターのガンマ特性を目視で評価（sRGB標準目標2.2）。"
       },
       "hdrCapabilityTest": {
-        "title": "HDR能力",
-        "description": "ブラウザとOSがHDRとワイドカラーガモットを正しく検出するか確認します。"
+        "title": "HDR信号＆ハードウェア検出器",
+        "description": "OS HDR合成、10ビットバッファ深度、BT.2020 / DCI-P3広色域、Canvas P3、およびHDR10動画デコード機能を検出します。"
       },
       "contrastTest": {
         "title": "コントラスト調整",
@@ -349,7 +350,8 @@
     },
     "searchPlaceholder": "テストを検索...",
     "subtitle": "豊富なモニター診断ツール一覧。すべてのテストはお使いのブラウザ上でローカルに実行されます。",
-    "relatedTitle": "関連テスト"
+    "relatedTitle": "関連テスト",
+    "noResults": "「{query}」に一致するテストは見つかりませんでした"
   },
   "TestWrapper": {
     "howToTest": "テスト方法",
@@ -621,13 +623,13 @@
       "inst3": "さまざまなパネルオーバードライブシナリオでテストするために速度とコントラストを調整します。"
     },
     "hdr-capability-test": {
-      "metaTitle": "HDR対応・視覚チェック",
-      "metaDescription": "ブラウザが報告するHDRメディアクエリ対応（dynamic-range: high）を確認。ピーク輝度（nits）や規格認証には専用の測定機器が必要です。",
-      "title": "HDR対応・視覚チェック",
-      "description_p1": "OSがHDR（dynamic-range: high）および広色域を出力しているかをブラウザのCSSメディアクエリで検出します。パイプラインの状態を確認するもので、物理的な最大輝度（nits）やHDR認証を証明するものではありません。",
-      "inst1": "ブラウザが報告する機能を確認します。",
-      "inst2": "「サポートされていません」と表示されるがモニターがHDR対応の場合、Windows/macOSでHDRが有効になっていることを確認してください。",
-      "inst3": "ハードウェアアクセラレーションが有効な最新のブラウザを使用していることを確認してください。"
+      "metaTitle": "HDRハードウェア＆信号検出器 – OS＆ブラウザ機能診断",
+      "metaDescription": "モニター、OSコンポジター、ブラウザがHDR、10ビットバッファ、広色域（DCI-P3/Rec.2020）、HDR動画コーデックに対応しているか監査します。",
+      "title": "HDRハードウェア＆信号検出器",
+      "description_p1": "ハードウェア、OSコンポジター、ブラウザの包括的な診断ツール。CSS dynamic-range、広色域（Rec.2020 / DCI-P3）、バッファ色深度、Canvas P3、WebGL floatバッファ、HDR動画デコードを診断します。",
+      "inst1": "リアルタイムに取得されたコンポジター状態とバッファ情報を確認します。",
+      "inst2": "HDRが無効の場合、Windowsでは Win + Alt + B を押すか、macOSのディスプレイ設定でHDRを有効にしてください。",
+      "inst3": "ハードウェアアクセラレーションによるHDR再生に対応しているかビデオコーデック表を確認します。"
     },
     "display-info": {
       "metaTitle": "ディスプレイ情報 & GPU診断 – 解像度・DPR・グラフィック情報",
@@ -680,14 +682,14 @@
       ]
     },
     "hdr-test": {
-      "metaTitle": "HDR視覚検査 – ハイライト白飛び＆トーンマッピング検証",
-      "metaDescription": "ハイライトの階調保持、トーンカーブ、シャドウディテール、広色域レンダリングを確認する制御された視覚的HDR検査パターン。",
-      "title": "HDR 視覚検査",
-      "description_p1": "ハイライトの白飛び、トーンカーブの減衰、暗部階調を評価する制御された視覚的HDR検査です。ピーク輝度（nit）の計測には専用機器が必要ですが、本テストでは相対的な階調表現を検査できます。",
+      "metaTitle": "HDR視覚キャリブレーション＆ハイライト検査",
+      "metaDescription": "鏡面ハイライトのロールオフ、トーンマッピングのクリッピング、10% APLピーク輝度ウィンドウ、および暗部ディテールを検査します。",
+      "title": "HDR視覚キャリブレーション＆ハイライト検査",
+      "description_p1": "ディスプレイのHDR応答性を評価するための制御された光学視覚テストスイート。ハイライトの白飛び点、10% APLピーク輝度、PQ/EOTFトーンカーブ、シャドウ階調を精査します。",
       "instructions": [
-        "<strong>システム設定:</strong> Windows/macOSのディスプレイ設定でHDRがオンになっており、モニターのHDRモードが有効であることを確認してください。",
-        "<strong>ハイライトの確認:</strong> 90%〜100%の高輝度ステップを観察し、白飛びして単一の白に潰れるポイントを確認します。",
-        "<strong>暗部と広色域:</strong> 0%〜10%の暗部ステップで黒つぶれがないか確認し、標準SDRとDisplay P3広色域パッチを比較します。"
+        "<strong>視認環境:</strong> ハイライトや暗部階調の微細なターゲットを見分けやすくするため、部屋の照明を暗くしてください。",
+        "<strong>ハイライトクリッピング:</strong> 90%から100%ピーク白のパターンを観察します。ターゲットの円形レティクルがベタ白に潰れず見えるか確認してください。",
+        "<strong>10% APLピーク輝度:</strong> ローカルディミング、最大輝度（nits）、純黒背景でのハロー（光漏れ）を評価するために10% APLウィンドウに切り替えます。"
       ]
     },
     "near-black-test": {
@@ -908,6 +910,201 @@
         "Rotate both analog sticks to test circularity error and check resting drift values against the deadzone threshold.",
         "Squeeze analog triggers and press all buttons to verify actuation and responsiveness."
       ]
+    },
+    "battery-test": {
+      "title": "バッテリー健全性と電源情報",
+      "metaTitle": "バッテリー健全性テスト | Screen Tester",
+      "description": "Battery Status APIを使用して、デバイスのバッテリーレベル、充電状態、推定残り時間、電源を確認します。",
+      "metaDescription": "オンラインバッテリー健全性チェッカー。バッテリーレベル、充電状態、電源情報をリアルタイムで表示。",
+      "instructions": [
+        "バッテリー搭載のノートPC、タブレット、モバイルデバイスでテストを開きます。",
+        "現在のバッテリー残量と充電状態を確認します。",
+        "フル充電までの推定時間またはバッテリー残り時間を監視します。",
+        "履歴チャートでバッテリーレベルの変化を追跡します。"
+      ]
+    },
+    "network-speed-test": {
+      "title": "ネットワーク速度テスト",
+      "metaTitle": "インターネット速度テスト | Screen Tester",
+      "description": "ブラウザAPIを使用して、ダウンロードスループット、レイテンシーping、ネットワークタイプを含むインターネット接続速度をテストします。",
+      "metaDescription": "無料オンラインインターネット速度テスト。ダウンロード速度、レイテンシー、接続タイプを測定します。",
+      "instructions": [
+        "Wi-Fiまたはイーサネット経由でインターネットに接続されていることを確認します。",
+        "「テスト開始」をクリックしてレイテンシーとダウンロード速度を測定します。",
+        "結果はミリ秒単位のレイテンシーとMbps単位のダウンロード速度を表示します。",
+        "一貫した平均を得るために複数のテストを実行します。"
+      ]
+    },
+    "color-blindness-test": {
+      "title": "色覚異常シミュレーター",
+      "metaTitle": "色覚異常シミュレーター | Screen Tester",
+      "description": "第一色覚異常、第二色覚異常、第三色覚異常、全色盲を含む8種類の色覚異常をSVGカラーマトリクスフィルターでシミュレートします。",
+      "metaDescription": "無料の色覚異常シミュレーター。色覚異常のある人にデザインがどのように見えるかプレビューできます。",
+      "instructions": [
+        "オプションから色覚タイプを選択します。",
+        "各シミュレーションで色、グラデーション、UI要素がどのように変化するか観察します。",
+        "比較モードを使用して通常の視覚とシミュレーションを並べて表示します。",
+        "すべての視覚タイプでデザインのコントラストと可読性が維持されているか確認します。"
+      ]
+    },
+    "screen-recorder": {
+      "title": "スクリーンレコーダー＆スクリーンショット",
+      "metaTitle": "オンラインスクリーンレコーダー | Screen Tester",
+      "description": "Screen Capture APIを使用してブラウザで直接画面を録画またはスクリーンショットをキャプチャします。",
+      "metaDescription": "無料のオンラインスクリーンレコーダー。ブラウザで直接ビデオまたはスクリーンショットとして画面をキャプチャします。",
+      "instructions": [
+        "「録画開始」をクリックし、キャプチャする画面、ウィンドウまたはタブを選択します。",
+        "一時停止/再開で録画セッションを制御します。",
+        "「停止」をクリックして録画を終了し、ビデオをプレビューします。",
+        "「スクリーンショット」でPNG画像として1フレームをキャプチャします。"
+      ]
+    },
+    "dark-mode-test": {
+      "title": "ダークモード/ライトモードテスト",
+      "metaTitle": "ダークモード検出テスト | Screen Tester",
+      "description": "OSのダークモード設定を検出し、CSS color-schemeのサポートをテストし、ライトとダークの両テーマでUIコンポーネントをプレビューします。",
+      "metaDescription": "ダークモード検出とテーマ切替をテスト。OS設定とCSS color-schemeサポートを確認します。",
+      "instructions": [
+        "テストは自動的にOSのダークモード設定を検出します。",
+        "システム、ライト、ダークモードのプレビューを切り替えます。",
+        "各テーマのサンプルUI要素を確認します。",
+        "ブラウザがCSS color-schemeプロパティをサポートしているか確認します。"
+      ]
+    },
+    "input-lag-test": {
+      "title": "入力遅延ビジュアライザー",
+      "metaTitle": "入力遅延テスト | Screen Tester",
+      "description": "10回の反応テストで視覚からクリックまでの入力遅延を測定します。",
+      "metaDescription": "入力遅延とクリックからフォトンまでのレイテンシーを測定。ヒストグラムと統計分析付きの10回テスト。",
+      "instructions": [
+        "グレーのボックスをクリックしてテストを開始します。",
+        "ボックスが緑色になるまで待ちます—赤い段階ではクリックしないでください。",
+        "緑色が見えたらできるだけ速くクリックします。",
+        "完全な統計結果を見るために10回すべてのトライアルを完了します。"
+      ]
+    },
+    "ambient-light-test": {
+      "title": "環境光センサーテスト",
+      "metaTitle": "環境光センサー＆ルクスメーター | Screen Tester",
+      "description": "AmbientLightSensor APIを使用してリアルタイムの環境光レベルをルクスで読み取ります。",
+      "metaDescription": "オンライン環境光センサーテスト。ルクス単位で室内の明るさを測定し、推奨事項を取得します。",
+      "instructions": [
+        "ブラウザからプロンプトが表示されたらセンサーの許可を与えます。",
+        "環境光が変化するとルクス値がリアルタイムで更新されます。",
+        "デバイスを光源に近づけたり離したりして変化を確認します。",
+        "環境光に基づく最適なディスプレイ輝度の推奨を確認します。"
+      ]
+    },
+    "dpi-calculator": {
+      "title": "DPI / PPIカリキュレーター",
+      "metaTitle": "DPI PPIピクセル密度計算機 | Screen Tester",
+      "description": "モニターのDPI、PPI、ドットピッチを計算し、視聴距離でのRetinaしきい値を確認します。",
+      "metaDescription": "無料のDPI PPI計算機。画面サイズと解像度を入力してピクセル密度とRetinaしきい値を取得します。",
+      "instructions": [
+        "プリセットを選択するか、画面の対角サイズと解像度を手動で入力します。",
+        "Retinaしきい値計算のために通常の視聴距離を入力します。",
+        "計算されたPPI、ドットピッチ、アスペクト比、サブピクセル数を確認します。",
+        "ディスプレイが視聴距離でRetinaしきい値を満たしているか確認します。"
+      ]
+    },
+    "subpixel-layout-test": {
+      "title": "サブピクセル配列＆文字色にじみテスト",
+      "description": "RGB、BGR、QD-OLED、WOLEDの配列を確認し、フォント輪郭の色にじみ（カラーフリンジ）を診断します。",
+      "metaTitle": "サブピクセル配列＆文字色にじみテスト - ClearType＆OLED構造",
+      "metaDescription": "ディスプレイのサブピクセル構造を診断し、文字のフリンジを解消するためのClearType調整を行います。",
+      "instructions": [
+        "パネル構造を選択するか、1ピクセル格子線を用いてサブピクセルの並び順を確認してください。",
+        "白地および黒地のテキストサンプルで、文字の輪郭に緑やマゼンタの色にじみがないか観察します。",
+        "ClearType調整ガイドに従って、非標準配列に合わせたフォント描画設定を行ってください。"
+      ]
+    },
+    "pwm-flicker-test": {
+      "title": "PWMバックライトちらつき＆眼精疲労テスト",
+      "description": "パルス幅変調（PWM）によるバックライトのちらつきやストロボ効果を検出します。",
+      "metaTitle": "PWMちらつきテスト - 視覚的疲労＆スマホカメラ検査",
+      "metaDescription": "目に見えないPWMちらつきとストロボ残像を検出し、眼精疲労を防ぐ適切な輝度を測定します。",
+      "instructions": [
+        "高速で移動するバーを見つめながら視線を左右に素早く動かしてください。",
+        "滑らかにぼやけず、ビーズ状の点滅ストロボが見える場合はPWM調光が使用されています。",
+        "スマートフォンのカメラ（プロモード・シャッター1/1000秒以上）で黒い走査線を確認できます。"
+      ]
+    },
+    "dead-pixel-mapper": {
+      "title": "ドット抜けRMA座標マッパー＆保証チェッカー",
+      "description": "全画面キャンバス上でドット抜けの座標を記録し、ISO 9241-307規格に基づく交換基準を判定します。",
+      "metaTitle": "ドット抜けRMA座標マッパー - ISO 9241-307保証判定ツール",
+      "metaDescription": "ドット抜けの座標を記録し、メーカー保証基準に合致するか判定してRMA申請用ログを作成します。",
+      "instructions": [
+        "単色背景を切り替えながら欠陥のあるピクセルをクリックして座標を記録します。",
+        "黒点・輝点・付着したホコリなど欠陥の種類を分類します。",
+        "ISO 9241-307規格判定結果を確認し、RMA申請用の欠陥ログをコピーしてください。"
+      ]
+    },
+    "gtg-response-time-test": {
+      "title": "中間調応答速度（GtG）ビジュアライザー",
+      "description": "グレー間のピクセル遷移速度を計測し、オーバードライブによる逆残像（オーバーシュート）を診断します。",
+      "metaTitle": "中間調応答速度（GtG）テスト - オーバードライブ残像確認ツール",
+      "metaDescription": "暗いグレーから明るいグレーへの応答速度を測定し、最適なオーバードライブ設定を見極めます。",
+      "instructions": [
+        "プリセット（VAパネルの黒滲み確認用0%→20%や中間調25%→75%）を選択します。",
+        "移動する矩形の前端と後端の輪郭を目で追って、残像の有無を確認してください。",
+        "明るい反転輪郭が出ない範囲で、モニターのオーバードライブを調整します。"
+      ]
+    },
+    "oled-burn-in-calculator": {
+      "title": "OLED焼き付きリスク＆寿命計算ツール",
+      "description": "OLEDおよびQD-OLEDパネルの焼き付き確率、推定耐用年数、固定UIの危険度を算出します。",
+      "metaTitle": "OLED・QD-OLED焼き付きリスク計算ツール - パネル寿命予測",
+      "metaDescription": "使用時間、静止要素の割合、輝度からOLEDパネルの焼き付きリスクと寿命を予測します。",
+      "instructions": [
+        "パネル世代（WOLED MLA、QD-OLED第3世代、AMOLED）を選択します。",
+        "1日の使用時間、タスクバー等の固定表示割合、通常時の輝度を入力してください。",
+        "1年・3年・5年後のリスク予測と、パネル寿命を延ばす対策を確認します。"
+      ]
+    },
+    "mouse-polling-test": {
+      "title": "マウスポーリングレート（Hz）＆精度テスト",
+      "description": "リアルタイムのUSBポーリング周波数（Hz）、ジッター安定性、クリック遅延、センサーDPIを計測します。",
+      "metaTitle": "マウスポーリングレート（Hz）＆精度テスト - チャタリング検出",
+      "metaDescription": "最大8000Hzまでのポーリングレート計測、ジッター分析、チャタリング（意図しないダブルクリック）を診断します。",
+      "instructions": [
+        "テスト枠内でマウスを素早く円を描くように動かして最高・平均Hzを測定します。",
+        "ジッターグラフで時間間隔の均一性とフレームペーシングを確認してください。",
+        "各ボタンをクリックして意図しないチャタリング（スイッチの跳ね返り）をチェックします。"
+      ]
+    },
+    "gpu-benchmark-test": {
+      "title": "GPU WebGL 3D負荷テスト＆ベンチマーク",
+      "description": "リアルタイム3Dパーティクル描画により、安定フレームレート、1% Low FPS、発熱による制限を評価します。",
+      "metaTitle": "GPU WebGL 3Dベンチマーク - FPS・1% Low・ハードウェア情報",
+      "metaDescription": "1万〜20万個の3Dパーティクルを用いてGPU性能とフレーム安定性を30秒間テストします。",
+      "instructions": [
+        "軽負荷（1万個）から超高負荷（20万個）まで負荷プリセットを選択します。",
+        "リアルタイムFPS、1% Low FPSの落ち込み、フレームタイムのブレを監視します。",
+        "30秒ベンチマークを実行して持続的なグラフィックス安定度スコアを算出してください。"
+      ]
+    },
+    "display-certificate": {
+      "title": "ディスプレイ品質証明書＆RMAレポート発行",
+      "description": "中古売買の品質証明やメーカー保証申請（RMA）に使える印刷対応の検査証明書を作成します。",
+      "metaTitle": "ディスプレイ品質証明書＆RMAレポート - 印刷・PDF保存対応",
+      "metaDescription": "画面解像度、色域、ドット抜け数を記載した公式検査証明書を発行します。",
+      "instructions": [
+        "自動検出された解像度や色深度などのハードウェア仕様を確認します。",
+        "モニター型番、シリアル番号、目視による検査結果を入力してください。",
+        "「印刷 / PDFとして保存」をクリックして公式証明書を発行します。"
+      ]
+    },
+    "osd-calibration-guide": {
+      "title": "インタラクティブOSDモニター調整アシスタント",
+      "description": "モニターの物理ボタン（OSDメニュー）を最適な状態に設定するための段階的ガイドです。",
+      "metaTitle": "OSDモニター調整ガイド - 物理ボタンによる段階的キャリブレーション",
+      "metaDescription": "明るさ、コントラスト、ガンマ2.2、6500K白色温度、オーバードライブを画面を見ながら調整します。",
+      "instructions": [
+        "モニター本体のボタンを操作し、画面の指示に従って6つのステップを進めます。",
+        "黒つぶれや白飛びを防ぐように明るさとコントラストを調整してください。",
+        "ガンマを2.2、色温度を6500K（自然な白）に合わせ、最適なオーバードライブを設定します。"
+      ]
     }
   },
   "Tests": {
@@ -1089,8 +1286,8 @@
       "instructions": "負荷を切り替えながら移動バーを注視し、画面の裂け目やカクつきを確認します。"
     },
     "hdrVisualTest": {
-      "title": "HDR視覚検査 – ハイライト白飛び＆トーンカーブ検証",
-      "description": "ハイライトの白飛び、トーンマッピング、広色域表現を評価する視覚検査。",
+      "title": "HDR視覚検査 – ハイライト白飛び＆トーンマッピング",
+      "description": "鏡面ハイライトのクリッピング点、トーンカーブロールオフ、10%ピーク白ウィンドウ、シャドウ階調の光学視覚検査。",
       "instructions": "ハイライトバーの潰れを確認し、暗部の黒つぶれや色域の広がりを観察します。"
     },
     "nearBlackTest": {
@@ -1616,14 +1813,81 @@
       "standard2DeltaTitle": "Standard ~2% delta",
       "subtle1DeltaTitle": "Subtle ~1% delta",
       "ultraFine05Title": "Ultra-Fine ~0.5% delta",
-      "momentarilyBlinkReticlesSoTitle": "Momentarily blink reticles so you can spot their exact location"
+      "momentarilyBlinkReticlesSoTitle": "Momentarily blink reticles so you can spot their exact location",
+      "dismiss": "閉じる",
+      "pipelineDetectorBadge": "ハードウェア＆信号監査",
+      "realTimeHardwareAudit": "リアルタイム・ハードウェア＆コンポジター監査",
+      "hdrHardwareSignalDetectorTitle": "HDRハードウェア＆信号検出器",
+      "hdrHardwareSignalDetectorSubtitle": "OSコンポジターのHDR出力、10ビット色深度、広色域、WebGL floatバッファ、HDRデコーダーの直接クエリ。",
+      "probingStatus": "パイプラインを調査中...",
+      "hdrActiveCompositor": "OSコンポジターでHDRが有効",
+      "sdrFallbackCompositor": "SDRフォールバック（HDR無効）",
+      "reProbeTooltip": "ハードウェアおよびコンポジター機能を再調査",
+      "reProbe": "再調査",
+      "metricDynamicRange": "ダイナミックレンジ",
+      "metricColorGamut": "色域",
+      "metricBufferDepth": "バッファ色深度",
+      "metricCanvasP3": "Canvas 2D P3",
+      "supported": "対応",
+      "fallbackSrgb": "フォールバック (sRGB)",
+      "notSupported": "非対応",
+      "tabListLabel": "HDR検出タブ",
+      "tabSignalDashboard": "信号ダッシュボード",
+      "tabVideoCodecs": "ビデオコーデック",
+      "tabOsSetupGuide": "OS設定ガイド",
+      "mediaQueryQueriesTitle": "CSSメディアクエリ信号",
+      "activeTrue": "有効 (True)",
+      "inactiveFalse": "無効 (False)",
+      "mediaQueryExplanation": "ブラウザはCSS Media Queries Level 4を介してOSコンポジターに直接問い合わせます。WindowsやmacOSでHDRをオンにすると、dynamic-rangeがhighに切り替わります。",
+      "graphicsPipelineTitle": "グラフィックス＆バッファパイプライン",
+      "bufferExplanation": "HTML5 Canvas、WebGL2 floatレンダーターゲット、およびディスプレイバッファが利用可能なビット深度と色空間を表示します。",
+      "gamutSandboxTitle": "広色域ビジュアルサンドボックス (sRGB vs Display-P3)",
+      "gamutSandboxSubtitle": "広色域対応ディスプレイでは、Display-P3パッチが標準sRGBパッチよりも明らかに鮮やかで深く発色します。",
+      "colorRed": "プライマリ赤",
+      "colorGreen": "プライマリ緑",
+      "colorBlue": "プライマリ青",
+      "redNotice": "Display-P3の赤はより深い真紅まで発色します。",
+      "greenNotice": "Display-P3の緑はsRGBを超える鮮やかなエメラルドグリーンを再現します。",
+      "blueNotice": "Display-P3の青は濃厚なロイヤルブルーの彩度をもたらします。",
+      "hardwareBoundaryTitle": "ブラウザ検出と光学輝度の違い（重要な注意事項）",
+      "hardwareBoundaryBody": "ブラウザのメディアクエリは、OSがブラウザにHDR信号を出力していることのみを確認します。ブラウザは実際のパネル最大輝度（nits）や分割駆動ゾーン数を測定することはできません。視覚的な検証には『HDR視覚検査』をご利用ください。",
+      "codecCapabilitiesTitle": "ハードウェアアクセラレーション対応HDRビデオデコーダー",
+      "codecCapabilitiesSubtitle": "4K 60fps HDR再生能力をWeb MediaCapabilities APIで調査しました。",
+      "codecsHdr10Desc": "PQ (ST 2084) カーブおよびBT.2020色域の標準HDR10規格。",
+      "codecsAv1Desc": "最新のYouTube 4K HDR配信で採用されている次世代10ビットコーデック。",
+      "codecsVp9Desc": "従来のブラウザやデバイスでYouTube HDRに使用されるGoogle 10ビット規格。",
+      "codecsHlgDesc": "放送用のHybrid Log-Gamma規格。",
+      "hardwareAccelerated": "ハードウェアアクセラレーション対応",
+      "softwareDecoded": "ソフトウェアデコード",
+      "codecNoteTitle": "GPUハードウェアアクセラレーションの注意点:",
+      "codecNoteBody": "10ビットコーデックが非対応と表示される場合は、ブラウザ設定でハードウェアアクセラレーションを有効にし、GPUドライバを最新に更新してください。",
+      "windowsGuideTitle": "Windows 10 / 11 HDR設定",
+      "windowsShortcut": "ショートカットキー",
+      "windowsShortcutDesc": "を押すと即座に切り替わります:",
+      "windowsSettings": "Windows設定手順",
+      "windowsSettingsDesc": "設定 > システム > ディスプレイ > モニターを選択 > 「HDRを使用する」をオンにします。",
+      "sdrSlider": "SDRコンテンツの明るさスライダー",
+      "sdrSliderDesc": "SDRアプリの白いウィンドウが部屋の照明に適した自然な明るさになるよう調整します。",
+      "macOsGuideTitle": "macOS Liquid Retina XDR＆ディスプレイ",
+      "macXdr": "内蔵Liquid Retina XDR",
+      "macXdrDesc": "MacBook ProのミニLEDディスプレイは最大1,600 nitsのHDRピーク輝度を自動発揮します。",
+      "macPresets": "ディスプレイプリセット",
+      "macPresetsDesc": "システム設定で「Apple XDR Display (P3-1600 nits)」が選ばれていることを確認してください。",
+      "cableGuideTitle": "ディスプレイケーブル＆端子の帯域幅",
+      "hdmiLimits": "HDMI 2.0 vs HDMI 2.1",
+      "hdmiLimitsDesc": "HDMI 2.0はHDR有効時に4K 60Hz 8ビット 4:2:0に制限されます。真の10ビットRGB HDRにはDisplayPort 1.4またはHDMI 2.1が必要です。",
+      "gpuColorDepth": "GPU色深度設定",
+      "gpuColorDepthDesc": "NVIDIAまたはAMD設定で、出力色深度を「10 bpc」、ダイナミックレンジを「フル」に設定してください。",
+      "refreshAudit": "再監査",
+      "signalNotificationHdrActive": "⚡ 信号変更を検知: OS HDRコンポジターが【有効】になりました！",
+      "signalNotificationHdrInactive": "ℹ️ 信号変更を検知: OS HDRコンポジターが【SDR】に切り替わりました。"
     },
     "HdrVisualPattern": {
-      "highlightClippingPeakWhite": "Highlight Clipping & Peak White Separation",
-      "inspectWhetherSubtleCircular": "Inspect whether subtle circular target reticles remain distinguishable inside near-peak highlights.",
+      "highlightClippingPeakWhite": "鏡面ハイライトのロールオフ＆クリッピング検査",
+      "inspectWhetherSubtleCircular": "100%白までの高輝度ハイライト内で、円形レティクルが識別できるか検査します。",
       "rgb": "RGB",
-      "nearBlackShadowDetail": "Near-Black Shadow Detail & Dark Clipping",
-      "inADimmedRoom": "In a dimmed room, check how low in the dark spectrum you can distinguish subtle squares from true 0% black.",
+      "nearBlackShadowDetail": "暗部階調＆黒潰れ検査 (Near-Black)",
+      "inADimmedRoom": "暗い部屋で、0%純黒からどこまで極低輝度のブロックを識別できるか確認します。",
       "sideBySideSdr": "Side-by-Side SDR Reference vs High Dynamic Range",
       "standardSrgb": "Standard sRGB",
       "standardWhite100120": "Standard White (100-120 nits SDR)",
@@ -1631,11 +1895,11 @@
       "highDynamicRangeP3": "High Dynamic Range / P3",
       "peakWhiteHeadroom": "Peak White Headroom",
       "extendedDynamicRange": "Extended dynamic range",
-      "wideColorGamutPrimaries": "Wide Color Gamut Primaries (sRGB vs Display P3)",
-      "displaysSupportingDciP3": "Displays supporting DCI-P3 / HDR render deeper reds and more vivid emerald greens beyond conventional sRGB.",
-      "p3DeepRed": "P3 Deep Red",
-      "p3EmeraldGreen": "P3 Emerald Green",
-      "p3RoyalBlue": "P3 Royal Blue",
+      "wideColorGamutPrimaries": "広色域原色の発色比較 (sRGB vs Display-P3)",
+      "displaysSupportingDciP3": "DCI-P3およびRec.2020対応ディスプレイでは、より深い深紅やエメラルドグリーンが鮮明に描写されます。",
+      "p3DeepRed": "Display-P3 ディープレッド",
+      "p3EmeraldGreen": "Display-P3 エメラルドグリーン",
+      "p3RoyalBlue": "Display-P3 ロイヤルブルー",
       "fullSpectrum16Step": "Full Spectrum 16-Step Grayscale",
       "cssHdr": "CSS HDR:",
       "displayP3": "Display-P3:",
@@ -1657,7 +1921,37 @@
       "inTheHighlightClipping": "In the Highlight Clipping pattern, reticles in the 94% and 97% swatches should remain visible without blown-out white blooming.",
       "4CheckForCrushed": "4. Check for Crushed Darks:",
       "inTheShadowDetail": "In the Shadow Detail pattern, dark blocks (2% to 5%) should remain distinct from pure black.",
-      "hdrVisualInspectionTitle": "HDR Visual Inspection"
+      "hdrVisualInspectionTitle": "HDR Visual Inspection",
+      "fullscreenHudVisualCalibration": "HDR視覚キャリブレーション",
+      "fullscreenHudInstructions": "モード切替: [1-5] • レティクル点滅: [B] • フルスクリーン: [F]",
+      "modeSpecularHighlight": "ハイライトクリッピング",
+      "modeAplWindow": "10% APLピーク白",
+      "modeToneCurveRamps": "PQトーンカーブ階調",
+      "modeNearBlackShadows": "暗部ディテール (Near-Black)",
+      "modeWideGamutPrimaries": "広色域原色",
+      "allReticlesVisibleTitle": "全6個のレティクルが識別可能",
+      "allReticlesVisibleDesc": "優れたトーンマッピングです。ピーク白付近の微細なテクスチャが白飛びせず保持されています。",
+      "nearPeakBlownOutTitle": "レティクル5と6が白飛び",
+      "nearPeakBlownOutDesc": "一般的な標準クリッピングです。98%以上の白が均一なベタ白に飽和しています。",
+      "aplBurstWindowTitle": "10% APL ピーク輝度ウィンドウ",
+      "aplBurstWindowSubtitle": "OLEDやMini-LEDの最大輝度（nits）、分割バックライトの制御、ハロー現象を検証する業界標準ウィンドウ。",
+      "aplSizeLabel": "ウィンドウサイズ",
+      "toneCurveGradationTitle": "PQ EOTFトーンカーブ＆階調リファレンス",
+      "toneCurveGradationSubtitle": "階調のバンディング（横縞）、トーンカーブの急激な圧縮がないかを観察します。",
+      "continuous10BitRamp": "滑らかな10ビット連続グラデーション（バンディングなし）",
+      "stepped8BitQuantizedRamp": "8ビット段階リファレンス（32分割ステップ）",
+      "toneCurveInspectionTip": "真の10ビットパネルでは、連続グラデーションが縞模様なく完全になめらかに表示されます。",
+      "shadowInspectionTip": "0.5%〜2%のステップが完全な真っ黒に見える場合、ディスプレイが黒潰れ（Black Crush）を起こしています。",
+      "flashReticlesTitle": "レティクルの位置を確認するために一瞬点滅させます",
+      "flashReticles": "レティクル点滅",
+      "fullscreenF": "フルスクリーン [F]",
+      "exitFullscreen": "フルスクリーン解除",
+      "bgLuminanceLabel": "背景の明るさ",
+      "bgBlack0": "0% 黒",
+      "bgDark5": "5% 暗いグレー",
+      "bgMid18": "18% グレー",
+      "reticleDeltaOffset": "レティクル感度差分",
+      "hdrVisualCalibrationBarTitle": "HDR視覚キャリブレーション＆ハイライト検査"
     },
     "LevelPattern": {
       "visualObservation": "Visual Observation",
@@ -2329,6 +2623,288 @@
       "testRumble": "振動テスト",
       "trigger": "アナログトリガー",
       "buttonsMatrix": "ボタン入力マトリクス"
+    },
+    "batteryTest": {
+      "title": "バッテリー健全性と電源情報",
+      "description": "バッテリーレベル、充電状態、残り時間、電源をリアルタイムで確認します。"
+    },
+    "networkSpeedTest": {
+      "title": "ネットワーク速度テスト",
+      "description": "ブラウザで直接ダウンロード速度、レイテンシーping、接続タイプを測定します。"
+    },
+    "colorBlindnessTest": {
+      "title": "色覚異常シミュレーター",
+      "description": "リアルタイムSVGフィルターと並列比較で8種類の色覚異常をシミュレートします。"
+    },
+    "screenRecorder": {
+      "title": "スクリーンレコーダー＆スクリーンショット",
+      "description": "画面をWebMビデオとして録画するか、ブラウザで直接PNGスクリーンショットをキャプチャします。"
+    },
+    "darkModeTest": {
+      "title": "ダーク/ライトモードテスト",
+      "description": "OSのダークモード設定を検出し、両テーマでUIをプレビューします。"
+    },
+    "inputLagTest": {
+      "title": "入力遅延ビジュアライザー",
+      "description": "10回のビジュアル反応テスト、ヒストグラム、統計分析でクリックからフォトンまでの入力遅延を測定します。"
+    },
+    "ambientLightTest": {
+      "title": "環境光センサーテスト",
+      "description": "輝度ゲージ、履歴チャート、推奨事項付きでルクス単位のリアルタイム環境光レベルを読み取ります。"
+    },
+    "dpiCalculator": {
+      "title": "DPI / PPIカリキュレーター",
+      "description": "任意の画面サイズと解像度のピクセル密度、ドットピッチ、Retinaしきい値を計算します。"
+    },
+    "BatteryPattern": {
+      "notSupported": "バッテリーAPI未対応",
+      "notSupportedHint": "お使いのブラウザはBattery Status APIに対応していません。Chrome、Edge、Operaをお試しください。",
+      "loading": "バッテリー状態を読み取り中...",
+      "charging": "充電中",
+      "onBattery": "バッテリー駆動",
+      "batteryLevel": "バッテリーレベル",
+      "timeToFull": "満充電まで",
+      "timeRemaining": "残り時間",
+      "powerSource": "電源",
+      "acPower": "AC電源",
+      "batteryPower": "バッテリー",
+      "levelHistory": "レベル履歴",
+      "browserNote": "Battery Status API (navigator.getBattery) を使用。Chromiumベースのブラウザで対応。"
+    },
+    "NetworkSpeedPattern": {
+      "startTest": "速度テスト開始",
+      "stop": "停止",
+      "testing": "測定中...",
+      "testAgain": "再テスト",
+      "latency": "レイテンシー / Ping",
+      "download": "ダウンロード速度",
+      "connectionInfo": "接続プロファイル",
+      "connectionType": "接続タイプ",
+      "effectiveType": "実効クラス",
+      "estimatedDownlink": "下り帯域上限",
+      "estimatedRtt": "推定RTT",
+      "dataSaverOn": "データセーバー: 有効",
+      "testHistory": "測定履歴",
+      "browserNote": "レイテンシーと帯域幅はブラウザのfetch APIおよびNetwork Information APIで測定されます。",
+      "excellent": "極めて良好",
+      "veryGood": "非常に良好",
+      "good": "良好",
+      "fair": "普通",
+      "slow": "低速",
+      "poor": "不良",
+      "offline": "オフライン",
+      "offlineHint": "インターネット接続が検出されません。"
+    },
+    "ColorBlindnessPattern": {
+      "selectVision": "色覚タイプの選択",
+      "compare": "通常色覚と比較",
+      "normalVision": "3色型標準色覚",
+      "viewing": "表示中",
+      "aboutTitle": "色覚シミュレーションについて",
+      "aboutText": "このシミュレーターはSVGカラーマトリクス変換を用い、錐体細胞の特性による見え方の違いを近似再現します。",
+      "normal": "正常",
+      "caution": "注意",
+      "warning": "警告",
+      "error": "エラー",
+      "success": "成功",
+      "info": "情報",
+      "special": "特別",
+      "critical": "重大",
+      "visionTypes": {
+        "normal": "通常色覚",
+        "protanopia": "1型2色覚（赤色盲）",
+        "deuteranopia": "2型2色覚（緑色盲）",
+        "tritanopia": "3型2色覚（青色盲）",
+        "protanomaly": "1型3色覚（赤色弱）",
+        "deuteranomaly": "2型3色覚（緑色弱）",
+        "tritanomaly": "3型3色覚（青色弱）",
+        "achromatopsia": "1色覚（全色盲）"
+      }
+    },
+    "ScreenRecorderPattern": {
+      "notSupported": "画面キャプチャ非対応",
+      "notSupportedHint": "お使いのブラウザまたはOSはScreen Capture APIをサポートしていません。",
+      "startRecording": "録画開始",
+      "screenshot": "スクリーンショット撮影",
+      "pause": "一時停止",
+      "resume": "再開",
+      "stopRecording": "録画停止",
+      "preview": "録画プレビュー",
+      "downloadVideo": "WebM動画を保存",
+      "screenshotPreview": "静止画プレビュー",
+      "downloadScreenshot": "PNG画像を保存",
+      "browserNote": "すべての画面録画とスクリーンショットはブラウザ内部メモリで完結し、外部サーバーへ送信されることはありません。"
+    },
+    "DarkModePattern": {
+      "systemDetection": "OSテーマ設定の検出",
+      "osPreference": "OSの検出設定",
+      "dark": "ダークモード",
+      "light": "ライトモード",
+      "colorSchemeCSS": "CSS color-scheme 対応",
+      "supported": "対応",
+      "notSupported": "非対応",
+      "contrastPref": "コントラスト設定",
+      "previewTheme": "プレビューテーマ切替",
+      "previewTitle": "テーマ表示サンプル",
+      "darkMode": "ダークテーマ",
+      "lightMode": "ライトテーマ",
+      "previewText": "ライトとダーク両方のパレットで色彩、カード、文字の描画を確認します。",
+      "primaryBtn": "主要アクション",
+      "secondaryBtn": "サブアクション",
+      "successMsg": "テーマが正常に適用されました。",
+      "toggleLabel": "トグルスイッチ",
+      "browserNote": "CSS prefers-color-schemeを用いてOS設定を検出し、テーマ描画を評価します。",
+      "sampleCard1Title": "パフォーマンス指標",
+      "sampleCard1Desc": "描画パス全体のシステムスループットと遅延指標。",
+      "sampleCard2Title": "画面診断",
+      "sampleCard2Desc": "ハードウェア機能検出とカラーパイプラインの検証。",
+      "sampleCard3Title": "電力マネジメント",
+      "sampleCard3Desc": "バッテリー残量、充電遷移、消費電力テレメトリ。",
+      "high": "高",
+      "more": "詳細",
+      "less": "簡易",
+      "themes": {
+        "system": "システム",
+        "light": "ライト",
+        "dark": "ダーク"
+      },
+      "normal": "標準"
+    },
+    "InputLagPattern": {
+      "clickToStart": "ここをクリックして開始",
+      "clickToStartHint": "準備ができたらクリック。画面が緑色になるまで待ちます。",
+      "waitForGreen": "緑色になるまで待機...",
+      "clickNow": "今すぐクリック！",
+      "tooEarly": "フライング！",
+      "tooEarlyHint": "緑に変わる前にクリックしました。もう一度やり直してください。",
+      "trial": "試行",
+      "avgTime": "平均遅延時間",
+      "bestTime": "最速記録",
+      "worstTime": "最遅記録",
+      "stdDev": "標準偏差",
+      "histogram": "反応時間分布ヒストグラム",
+      "reset": "テストをやり直す",
+      "browserNote": "10回の試行で画面色の変化からイベント検出までの時間を計測します。",
+      "excellent": "極めて優秀",
+      "good": "優秀",
+      "average": "標準",
+      "slow": "遅い"
+    },
+    "AmbientLightPattern": {
+      "veryDark": "完全な暗室 (< 10 lx)",
+      "recDark": "目の負担を減らすため、輝度を最小（~50-80 nits）まで落としてください。",
+      "dim": "薄暗いリビング (10-100 lx)",
+      "recDim": "快適な読書のため、輝度を25〜40%（~100 nits）に設定します。",
+      "normal": "オフィス標準 (100-500 lx)",
+      "recNormal": "最適な作業環境です。輝度を40〜60%（~120-150 nits）に設定します。",
+      "bright": "明るい室内・曇天 (500-1000 lx)",
+      "recBright": "視認性を保つため、輝度を70〜85%（~250-300 nits）に引き上げます。",
+      "veryBright": "直射日光・屋外 (> 1000 lx)",
+      "recVeryBright": "外光の映り込みを防ぐため、最大輝度（100% / 400+ nits）が必要です。",
+      "notSupported": "照度センサー非対応",
+      "notSupportedHint": "お使いのブラウザまたはデバイスはAmbientLightSensor APIに対応していません。",
+      "enableGuide": "Chrome/Edgeで照度センサーを有効にする方法",
+      "enableStep1": "1. アドレスバーに chrome://flags（または edge://flags）を入力します。",
+      "enableStep2": "2. 'Generic Sensor Extra Classes' を検索し 'Enabled' に変更します。",
+      "enableStep3": "3. ブラウザを再起動し、プロンプトでセンサーアクセスを許可します。",
+      "permissionNeeded": "センサー許可が必要です",
+      "permissionHint": "照度を測定するため、ブラウザの許可ダイアログでアクセスを許可してください。",
+      "waiting": "センサーデータを取得中...",
+      "brightnessGauge": "環境照度ゲージ",
+      "current": "現在の照度（lx）",
+      "min": "セッション最小値",
+      "max": "セッション最大値",
+      "recommendation": "推奨輝度アドバイス",
+      "readingHistory": "照度推移グラフ",
+      "luxReference": "一般的な照度基準（ルクス）",
+      "refMoonlight": "月明かり",
+      "refDimRoom": "間接照明の部屋",
+      "refOffice": "オフィスのデスク",
+      "refOvercast": "曇りの日の昼間",
+      "refSunlight": "晴天の昼間",
+      "refDirectSun": "直射日光",
+      "browserNote": "AmbientLightSensor APIを用いて室内の照度（lx）を計測します。"
+    },
+    "DpiCalculatorPattern": {
+      "quickPresets": "クイックプリセット",
+      "enterSpecs": "ディスプレイ仕様入力",
+      "diagonal": "画面対角サイズ",
+      "inches": "インチ",
+      "width": "水平ピクセル（幅）",
+      "height": "垂直ピクセル（高さ）",
+      "viewingDistance": "Retina視認限界距離",
+      "dotPitch": "ドットピッチ（画素間隔）",
+      "aspectRatioLabel": "アスペクト比",
+      "totalPixels": "総ピクセル数",
+      "subpixels": "RGBサブピクセル数",
+      "physicalSize": "画面実寸法",
+      "angularRes": "視野角1度あたり画素数 (PPD)",
+      "retinaYes": "Retina基準クリア",
+      "retinaNo": "Retina基準未満",
+      "retinaThreshold": "Apple提唱のRetina基準（60 PPD / 1分角）。",
+      "yourDisplay": "現在のディスプレイ",
+      "browserNote": "画素密度（PPI）、ドットピッチ、視覚解像度限界を計算します。",
+      "excellent": "超高密度 (Retina)",
+      "sharp": "高精細デスクトップ",
+      "adequate": "標準",
+      "low": "低密度"
+    },
+    "subpixelLayoutTest": {
+      "title": "サブピクセル配列＆文字色にじみ",
+      "description": "RGB、BGR、OLEDの配列を確認し、文字のカラーフリンジを診断。",
+      "metaDescription": "サブピクセル構造と文字の視認性テスト。"
+    },
+    "pwmFlickerTest": {
+      "title": "PWMちらつきテスト",
+      "description": "バックライトのちらつきやストロボによる目の疲れを検出。",
+      "metaDescription": "PWM調光のちらつきと眼精疲労の測定。"
+    },
+    "gtgResponseTimeTest": {
+      "title": "GtG応答速度テスト",
+      "description": "中間調の遷移速度を計測し、オーバードライブの逆残像を診断。",
+      "metaDescription": "ピクセル応答速度とオーバーシュートの評価。"
+    },
+    "mousePollingTest": {
+      "title": "マウスポーリングレート＆精度",
+      "description": "マウスのHzレート、ジッター、チャタリングをリアルタイム計測。",
+      "metaDescription": "高精度マウスポーリングレートおよびセンサーテスト。"
+    },
+    "gpuBenchmarkTest": {
+      "title": "GPU WebGL 3Dベンチマーク",
+      "description": "3Dパーティクルによる描画負荷テストとフレーム安定性計測。",
+      "metaDescription": "WebGL 3D負荷テストおよびGPU安定性ベンチマーク。"
+    },
+    "MotionBlurPattern": {
+      "clickAnywhereToCycleTitle": "任意の場所をクリックして速度を切り替えます",
+      "pxS": "px/s",
+      "mode": "モード",
+      "clickToCycleSpeed": "キャンバスまたはバッジをクリックして速度を切り替えます",
+      "motionBlurPersistenceMprt": "モーションブラーと残像感 (MPRT) ガイド",
+      "close": "閉じる",
+      "persistenceBlurVsGhosting": "残像ブラー vs 応答速度ゴースト:",
+      "ghostingIsCausedBy": "ゴーストはピクセル応答速度 (GtG) の遅さによって引き起こされ、色の尾を引きます。 ",
+      "motionBlurPersistenceBlur": "残像ブラー (MPRT)",
+      "isCausedBy": " は、ディスプレイ上で動く物体を目で滑らかに追従することで発生します ",
+      "sampleAndHoldDisplay": "サンプル＆ホールド ディスプレイ",
+      "combinedWithSmoothPursuit": "、網膜上で像がぼやけます。",
+      "why0msDisplaysStill": "0ms ディスプレイでも残像が見える理由: ",
+      "evenOnOledDisplays": "応答速度が瞬時のOLEDでも、サンプル＆ホールド方式ではフレーム表示時間1msにつき1msのブラーが生じます。",
+      "linePairsMotionResolution": "ラインペア (動画解像度): ",
+      "the1pxAnd2px": "1pxおよび2pxのラインペアは空間解像度をテストします。残像感の高いディスプレイでは、細い線が単色の均一なグレーバーにぼやけます。",
+      "howToReducePersistence": "ブラーを低減する方法: ",
+      "increaseYourDisplayApos": "リフレッシュレートを上げる (240Hz以上)、黒挿入 (BFI) / バックライトストロボを使用する、またはULMBを有効にします。",
+      "trackingTip": "アイトラッキングのコツ: ",
+      "keepYourEyesLocked": "動的な目の追従をテストするには、白い垂直アライメントガイドに視線を固定してください。",
+      "motionBlurPersistenceMprtTitle": "モーションブラー＆残像感 (MPRT) テスト",
+      "linePairsGrating": "ラインペア格子",
+      "textClarity": "テキストの鮮明さ",
+      "multiSpeed": "マルチスピード",
+      "speed": "速度",
+      "toggleEyePursuitTrackingTitle": "視線追従ガイドの表示切り替え",
+      "pursuitGuide": "追従ガイド",
+      "reverseMotionDirectionTitle": "移動方向を反転",
+      "readAboutMotionBlurTitle": "モーションブラーとMPRTについて読む",
+      "guide": "ガイド"
     }
   },
   "Guides": {
@@ -4431,6 +5007,32 @@
         "title": "デュアルモニターホワイトポイント調整",
         "description": "マルチモニター環境で色温度、RGBゲイン、輝度を正確に揃えるための分割比較キャンバス。",
         "badge": "キャリブレーション"
+      },
+      "screenRecorder": {
+        "title": "スクリーンレコーダー＆スクリーンショット",
+        "description": "デスクトップやウィンドウをWebM動画で録画、または高画質PNG静止画を撮影します。",
+        "badge": "キャプチャ"
+      },
+      "dpiCalculator": {
+        "title": "DPI / PPI 計算機",
+        "description": "画面の画素密度、ドットピッチ、Retina視認限界距離を計算します。",
+        "badge": "計算機"
+      },
+      "deadPixelMapper": {
+        "title": "ドット抜けRMAマッパー",
+        "description": "欠陥ピクセルの座標を記録し、ISO 9241-307保証基準を判定。"
+      },
+      "oledBurnInCalculator": {
+        "title": "OLED焼き付き計算ツール",
+        "description": "OLEDパネルの焼き付きリスクと寿命を予測。"
+      },
+      "displayCertificate": {
+        "title": "ディスプレイ品質証明書",
+        "description": "売買や保証申請に使える公式検査証明書を発行。"
+      },
+      "osdCalibrationGuide": {
+        "title": "OSD調整アシスタント",
+        "description": "モニター本体のボタンを使った段階的キャリブレーション。"
       }
     },
     "DisplayBandwidthCalculator": {
@@ -6566,7 +7168,30 @@
     "notesLabel": "点検メモ：",
     "notesPlaceholder": "例：左斜めから見るとわずかに黄色味がかる、右下に標準的なIPSグローあり...",
     "resultBadge": "目視点検結果",
-    "backToGuide": "視野角解説ガイドを読む"
+    "backToGuide": "視野角解説ガイドを読む",
+    "50NeutralGrayField": "50% ニュートラルグレーフィールド",
+    "observeWhetherTheEdges": "中心部と比較して端が暗く見えるか、色合いが変わって見えるか観察してください。",
+    "redRgb2550": "赤 (RGB 255, 0, 0)",
+    "greenRgb0255": "緑 (RGB 0, 255, 0)",
+    "blueRgb00": "青 (RGB 0, 0, 255)",
+    "yellowRG": "黄 (R+G)",
+    "cyanGB": "シアン (G+B)",
+    "magentaRB": "マゼンタ (R+B)",
+    "rgb": "RGB: ",
+    "skinTonesAreSensitive": "肌のトーンや記憶色は、視野角による色相や彩度の変化に特に敏感です。",
+    "0Black0": "0% 黒 (0)",
+    "50Midtone128": "50% 中間調 (128)",
+    "100White255": "100% 白 (255)",
+    "lowKeyShadowDetail": "シャドウ詳細ステップ (ニアブラック 1%〜10%)",
+    "onVaPanelsNear": "VAパネルでは、黒に近いディテールが正面から見ると潰れ、斜めから見たときにのみ現れることがあります（ガンマシフト）。",
+    "highKeyHighlightDetail": "ハイライト詳細ステップ (ニアホワイト 90%〜99%)",
+    "highlightsShouldRemainDiscernible": "ハイライトは、広い角度でも白飛びすることなく、純粋な白と識別できる必要があります。",
+    "fullBlackField0": "完全な黒フィールド (0% 輝度)",
+    "lookDiagonallyAtThe": "画面を斜めから見て、IPSグローや視野角によるバックライト漏れを確認してください。",
+    "fullWhiteField100": "完全な白フィールド (100% 輝度)",
+    "inspectWhitePointUniformity": "ホワイトポイントの均一性と視野角による色付き（例：OLEDやVAでのピンク／緑の変色）を確認します。",
+    "previousPatternTitle": "前のパターン",
+    "nextPatternTitle": "次のパターン"
   },
   "BrightnessTest": {
     "metaTitle": "モニター輝度・黒レベル目視点検テスト",
@@ -6732,7 +7357,15 @@
     "obsNormal": "途切れなくスムーズに入力が反応する",
     "obsIssues": "反応しない箇所や途切れが見られる",
     "obsUnsure": "判断が難しい / 非タッチ環境",
-    "notesPlaceholder": "例：左上の隅がわずかに反応しづらい、5点マルチタッチは問題なく追従..."
+    "notesPlaceholder": "例：左上の隅がわずかに反応しづらい、5点マルチタッチは問題なく追従...",
+    "active": "アクティブ:",
+    "peak": "ピーク:",
+    "currentActive": "現在アクティブ",
+    "peakDetected": "ピーク検出",
+    "eventState": "イベント状態:",
+    "id": "ID: ",
+    "resetTestTitle": "テストをリセット",
+    "touch": "タッチ:"
   },
   "Breadcrumbs": {
     "home": "ホーム",
@@ -6993,7 +7626,8 @@
     },
     "troubleshooting": {
       "viewGuide": "トラブルシューティングガイド"
-    }
+    },
+    "5SecondAudioCheck": "5秒間オーディオチェック"
   },
   "VoiceRecorder": {
     "metaTitle": "ボイスレコーダー – 無料オンライン音声＆マイク録音ツール",

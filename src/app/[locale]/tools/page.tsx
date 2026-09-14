@@ -12,7 +12,12 @@ import {
   ArrowRight,
   Cpu,
   Mic,
-  Eye
+  Eye,
+  Video,
+  Calculator,
+  Crosshair,
+  Flame,
+  Award
 } from "lucide-react";
 
 export async function generateMetadata({
@@ -106,6 +111,48 @@ const TOOLS_CONFIG = [
     href: "/tools/dual-monitor-matcher",
     icon: Sliders,
     iconColor: "text-cyan-600"
+  },
+  {
+    id: "screen-recorder",
+    key: "screenRecorder",
+    href: "/tools/screen-recorder",
+    icon: Video,
+    iconColor: "text-emerald-600"
+  },
+  {
+    id: "dpi-calculator",
+    key: "dpiCalculator",
+    href: "/tools/dpi-calculator",
+    icon: Calculator,
+    iconColor: "text-blue-600"
+  },
+  {
+    id: "dead-pixel-mapper",
+    key: "deadPixelMapper",
+    href: "/tools/dead-pixel-mapper",
+    icon: Crosshair,
+    iconColor: "text-rose-600"
+  },
+  {
+    id: "oled-burn-in-calculator",
+    key: "oledBurnInCalculator",
+    href: "/tools/oled-burn-in-calculator",
+    icon: Flame,
+    iconColor: "text-orange-600"
+  },
+  {
+    id: "display-certificate",
+    key: "displayCertificate",
+    href: "/tools/display-certificate",
+    icon: Award,
+    iconColor: "text-purple-600"
+  },
+  {
+    id: "osd-calibration-guide",
+    key: "osdCalibrationGuide",
+    href: "/tools/osd-calibration-guide",
+    icon: Sliders,
+    iconColor: "text-blue-600"
   }
 ];
 

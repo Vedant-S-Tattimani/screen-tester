@@ -59,10 +59,25 @@ export function RelatedTests({ testId }: { testId: string }) {
             }
           }
 
+          const toolIds = [
+            "screen-recorder",
+            "dpi-calculator",
+            "display-bandwidth-calculator",
+            "viewing-distance-calculator",
+            "dual-monitor-matcher",
+            "browser-compatibility",
+            "voice-recorder",
+            "dead-pixel-mapper",
+            "oled-burn-in-calculator",
+            "display-certificate",
+            "osd-calibration-guide"
+          ];
+          const href = toolIds.includes(test.id) ? `/tools/${test.id}` : `/tests/${test.id}`;
+
           return (
             <TestRow 
               key={test.id}
-              href={`/tests/${test.id}`}
+              href={href}
               title={title}
               description={description}
             />
