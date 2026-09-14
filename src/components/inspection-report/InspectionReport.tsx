@@ -17,7 +17,8 @@ import {
   Layers,
   Sparkles,
   Wrench,
-  ArrowRight
+  ArrowRight,
+  Printer
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { InspectionReportData } from "./types";
@@ -87,17 +88,28 @@ export function InspectionReport({
             </div>
           </div>
 
-          {/* Classification Distinction Badges */}
-          <div className="flex flex-wrap gap-1.5 self-start print:mt-1">
-            <span className="px-2 py-1 bg-sky-50 border border-sky-200 text-sky-700 rounded text-[10px] font-mono font-semibold uppercase tracking-wider print:bg-white print:border-slate-400 print:text-black">
-              {t("badges.browserDetected")}
-            </span>
-            <span className="px-2 py-1 bg-purple-50 border border-purple-200 text-purple-700 rounded text-[10px] font-mono font-semibold uppercase tracking-wider print:bg-white print:border-slate-400 print:text-black">
-              {t("badges.userProvided")}
-            </span>
-            <span className="px-2 py-1 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded text-[10px] font-mono font-semibold uppercase tracking-wider print:bg-white print:border-slate-400 print:text-black">
-              {t("badges.userObserved")}
-            </span>
+          {/* Classification Distinction Badges & Print / Export Action */}
+          <div className="flex flex-col sm:items-end gap-2 self-start print:mt-1">
+            <div className="flex flex-wrap gap-1.5">
+              <span className="px-2 py-1 bg-sky-50 border border-sky-200 text-sky-700 rounded text-[10px] font-mono font-semibold uppercase tracking-wider print:bg-white print:border-slate-400 print:text-black">
+                {t("badges.browserDetected")}
+              </span>
+              <span className="px-2 py-1 bg-purple-50 border border-purple-200 text-purple-700 rounded text-[10px] font-mono font-semibold uppercase tracking-wider print:bg-white print:border-slate-400 print:text-black">
+                {t("badges.userProvided")}
+              </span>
+              <span className="px-2 py-1 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded text-[10px] font-mono font-semibold uppercase tracking-wider print:bg-white print:border-slate-400 print:text-black">
+                {t("badges.userObserved")}
+              </span>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => window.print()}
+              className="print:hidden inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer"
+            >
+              <Printer className="w-3.5 h-3.5" />
+              <span>{t("exportCertificate")}</span>
+            </button>
           </div>
         </div>
 

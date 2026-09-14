@@ -24,17 +24,35 @@ export function RelatedTests({ testId }: { testId: string }) {
           if (mapping) {
             try {
               if (mapping.ns === "lib") {
-                title = tLib(`${mapping.key}.title`) || title;
-                description = tLib(`${mapping.key}.description`) || description;
+                if (tLib.has(`${mapping.key}.title`)) {
+                  title = tLib(`${mapping.key}.title`) || title;
+                }
+                if (tLib.has(`${mapping.key}.description`)) {
+                  description = tLib(`${mapping.key}.description`) || description;
+                }
               } else if (mapping.ns === "tools") {
-                title = tTools(`items.${mapping.key}.title`) || title;
-                description = tTools(`items.${mapping.key}.description`) || description;
+                if (tTools.has(`items.${mapping.key}.title`)) {
+                  title = tTools(`items.${mapping.key}.title`) || title;
+                }
+                if (tTools.has(`items.${mapping.key}.description`)) {
+                  description = tTools(`items.${mapping.key}.description`) || description;
+                }
               } else {
-                title = tTests(`${mapping.key}.title`) || title;
-                description = 
-                  (tTests.has(`${mapping.key}.description`) ? tTests(`${mapping.key}.description`) : "") ||
-                  (tTests.has(`${mapping.key}.metaDescription`) ? tTests(`${mapping.key}.metaDescription`) : "") ||
-                  description;
+                if (tTests.has(`${mapping.key}.title`)) {
+                  title = tTests(`${mapping.key}.title`) || title;
+                } else if (tTests.has(mapping.key)) {
+                  try {
+                    const directVal = tTests(mapping.key);
+                    if (typeof directVal === "string") {
+                      title = directVal || title;
+                    }
+                  } catch {}
+                }
+                if (tTests.has(`${mapping.key}.description`)) {
+                  description = tTests(`${mapping.key}.description`) || description;
+                } else if (tTests.has(`${mapping.key}.metaDescription`)) {
+                  description = tTests(`${mapping.key}.metaDescription`) || description;
+                }
               }
             } catch {
               // fallback

@@ -316,6 +316,42 @@ export const monitorTests: MonitorTest[] = [
     category: "deviceInput",
     primaryIntent: "response time and input latency test",
     relatedTestIds: ["refresh-rate-test", "screen-flicker-test", "motion-blur-test"]
+  },
+  {
+    id: "pixel-inversion-test",
+    category: "pixels",
+    primaryIntent: "pixel inversion and VCOM flicker test",
+    relatedTestIds: ["screen-flicker-test", "uniformity-test", "stuck-pixel-test"]
+  },
+  {
+    id: "strobe-crosstalk-test",
+    category: "motion",
+    primaryIntent: "strobe crosstalk backlight strobing and BFI inspection",
+    relatedTestIds: ["motion-blur-test", "ghosting-test", "pursuit-camera-test"]
+  },
+  {
+    id: "vrr-flicker-test",
+    category: "motion",
+    primaryIntent: "VRR brightness flicker and gamma shift test",
+    relatedTestIds: ["vrr-test", "screen-flicker-test", "refresh-rate-test"]
+  },
+  {
+    id: "pursuit-camera-test",
+    category: "motion",
+    primaryIntent: "pursuit camera motion tracking and MPRT sync test",
+    relatedTestIds: ["ghosting-test", "motion-blur-test", "refresh-rate-test"]
+  },
+  {
+    id: "audio-sync-test",
+    category: "deviceInput",
+    primaryIntent: "audio video sync lip sync and latency calibration",
+    relatedTestIds: ["speaker-test", "reaction-time-test"]
+  },
+  {
+    id: "gamepad-test",
+    category: "deviceInput",
+    primaryIntent: "gamepad controller stick drift deadzone and button tester",
+    relatedTestIds: ["reaction-time-test", "touch-screen-test"]
   }
 ];
 
@@ -381,6 +417,12 @@ export const TEST_KEY_MAP: Record<string, { ns: "lib" | "tests" | "tools", key: 
   "webcam-test": { ns: "tests", key: "webcamTest" },
   "speaker-test": { ns: "tests", key: "speakerTest" },
   "microphone-test": { ns: "tests", key: "microphoneTest" },
-  "reaction-time-test": { ns: "tests", key: "reactionTimeTest" }
+  "reaction-time-test": { ns: "tests", key: "reactionTimeTest" },
+  "pixel-inversion-test": { ns: "tests", key: "pixelInversionTest" },
+  "strobe-crosstalk-test": { ns: "tests", key: "strobeCrosstalkTest" },
+  "vrr-flicker-test": { ns: "tests", key: "vrrFlickerTest" },
+  "pursuit-camera-test": { ns: "tests", key: "pursuitCameraTest" },
+  "audio-sync-test": { ns: "tests", key: "audioSyncTest" },
+  "gamepad-test": { ns: "tests", key: "gamepadTest" }
 };
 

@@ -959,6 +959,212 @@ export const DE_EXPLAINERS: Record<string, ExplainerData> = {
       actionLabel: "Mikrofon-Troubleshooting aufrufen",
       actionHref: "/knowledge-base/troubleshooting#mic-not-working"
     }
+  },
+  "pixel-inversion-test": {
+    "overview": "Die Pixel-Inversion (VCOM-Abgleich / Pixel Walk) verhindert eine elektrolytische Zersetzung der Flüssigkristalle durch alternierende Polaritätsumkehr (+V / -V). Bei ungenauem VCOM-Abgleich entstehen Helligkeitsunterschiede und sichtbares Flimmern.",
+    "whatToLookFor": [
+      {
+        "label": "Schimmernde oder kriechende Muster",
+        "description": "Betrachten Sie 1x1- und 2x2-Schachbrettmuster. Ein gut kalibriertes Panel bleibt ruhig neutralgrau."
+      },
+      {
+        "label": "Hochfrequentes Flimmern",
+        "description": "Vibriert das Raster bei 30Hz/60Hz, ist die VCOM-Referenzspannung asymmetrisch."
+      },
+      {
+        "label": "Subpixel-Inversionsbalance",
+        "description": "Prüfen Sie das RGB-Mikrogitter auf ungleiche Farbverschiebungen."
+      },
+      {
+        "label": "Leseflimmern (Text-Phase)",
+        "description": "Das Textphasengitter deckt Kantenflimmern um feinen Text auf."
+      }
+    ],
+    "canObserve": [
+      "Visuelle Erkennung von VCOM-Asymmetrien",
+      "Identifikation der Inversionsarchitektur (Dot, Column, Row)",
+      "Pixel-Walk-Flimmern auf Testgittern"
+    ],
+    "cannotMeasure": [
+      "Hardware-VCOM-Spannung in Millivolt",
+      "Physikalische Flüssigkristall-Schaltkurven",
+      "Subpixel-Spannungswellenformen ohne Oszilloskop"
+    ],
+    "interpretation": "Leichter Pixel Walk ist bei Gaming-Panels mit aggressivem Overdrive normal. Starkes Flimmern deutet auf fehlerhafte Werkskalibrierung hin.",
+    "nextSteps": {
+      "text": "Starkes Flimmern festgestellt? Prüfen Sie die Panelausleuchtung.",
+      "actionLabel": "Ausleuchtungstest starten",
+      "actionHref": "/tests/uniformity-test"
+    }
+  },
+  "strobe-crosstalk-test": {
+    "overview": "Backlight Strobing (ULMB, DyAc, ELMB) reduziert Bewegungsunschärfe durch kurzes Aufblitzen der Hintergrundbeleuchtung. Da Zeilen von oben nach unten abgetastet werden, entstehen an den Rändern Doppelbilder (Strobe Crosstalk).",
+    "whatToLookFor": [
+      {
+        "label": "Doppelbild-Silhouetten",
+        "description": "Achten Sie auf Geisterbilder hinter den bewegten Balken in oberer, mittlerer und unterer Spur."
+      },
+      {
+        "label": "Schärfe nach Bildschirmzonen",
+        "description": "Die Bildmitte ist meist optimal abgestimmt, während oben und unten Crosstalk auftreten kann."
+      },
+      {
+        "label": "Pulsbreite & Helligkeit",
+        "description": "Kürzere Strobes erhöhen die Bewegungsschärfe, verringern jedoch die Gesamthelligkeit."
+      }
+    ],
+    "canObserve": [
+      "Sichtbarkeit von Strobe Crosstalk in verschiedenen Bildschirmzonen",
+      "Erkennung der optimalen Strobe-Phase Ihres Monitors",
+      "Vergleich der Unschärfereduktion bei verschiedenen Geschwindigkeiten"
+    ],
+    "cannotMeasure": [
+      "Genaue Strobe-Pulsdauer in Mikrosekunden",
+      "Spitzenleuchtdichte in Nits ohne Messsonde",
+      "Timing-Controller-Scanout-Verzögerung"
+    ],
+    "interpretation": "Geringer Crosstalk an den Außenkanten ist normal. Ausgeprägter Crosstalk in der Bildschirmmitte deutet auf falsche Phasenabstimmung hin.",
+    "nextSteps": {
+      "text": "Vergleichen Sie gestrobtes Bild mit nativer Bewegungsunschärfe.",
+      "actionLabel": "Bewegungsunschärfetest starten",
+      "actionHref": "/tests/motion-blur-test"
+    }
+  },
+  "vrr-flicker-test": {
+    "overview": "Variable Refresh Rate (G-Sync, FreeSync) passt die Bildwiederholrate an die GPU an. Bei starken FPS-Sprüngen verschieben sich die Leuchtdichtekurven, was zu Helligkeitsflimmern in dunklen Bereichen führt.",
+    "whatToLookFor": [
+      {
+        "label": "Helligkeitspumpen im Fast-Schwarz-Bereich",
+        "description": "Beobachten Sie 10%- und 25%-Graufelder während des automatischen Framerate-Sweeps."
+      },
+      {
+        "label": "LFC-Übergangssprung",
+        "description": "Fällt die Bildrate unter die VRR-Grenze, verdoppelt der Treiber Frames, was einen Helligkeitsruck erzeugt."
+      },
+      {
+        "label": "OLED-Gammashift",
+        "description": "OLEDs reagieren wegen spannungsabhängiger Subpixelkapazitäten besonders empfindlich auf VRR-Flimmern."
+      }
+    ],
+    "canObserve": [
+      "Visuelle Erkennung von Gammakurvenverschiebungen",
+      "Erkennung von Helligkeitspumpen bei Frequenzschwankungen",
+      "Vergleich der Flimmeranfälligkeit von Mitteltönen zu Fast-Schwarz"
+    ],
+    "cannotMeasure": [
+      "Hardware-GPU-Adaptive-Sync-Paketdaten",
+      "Subpixel-Spannungsschwankungen in Millivolt",
+      "Automatische Erkennung ohne menschliche Beurteilung"
+    ],
+    "interpretation": "Bei starkem Helligkeitspumpen begrenzen Sie die maximale Bildrate 3 FPS unterhalb der Monitorgrenze oder deaktivieren Sie VRR bei instabilen Titeln.",
+    "nextSteps": {
+      "text": "Überprüfen Sie den variablen Bildwiederholratenbereich.",
+      "actionLabel": "VRR-Test starten",
+      "actionHref": "/tests/vrr-test"
+    }
+  },
+  "pursuit-camera-test": {
+    "overview": "Menschliche Augen verfolgen bewegte Objekte mit flüssiger Bewegung. Eine Pursuit-Kamera bewegt sich synchron mit dem Testmuster, um die tatsächliche Bewegungsunschärfe (MPRT) fotografisch zu erfassen.",
+    "whatToLookFor": [
+      {
+        "label": "Ausrichtung der Zeitskalierung",
+        "description": "Die vertikalen Teilstriche müssen im Foto zu einer einzigen scharfen Linie verschmelzen."
+      },
+      {
+        "label": "Ghosting & Nachzieheffekte",
+        "description": "Untersuchen Sie die Hinterkante des Objekts auf Pixel-Schaltverzögerungen oder Farbfahnen."
+      },
+      {
+        "label": "Overdrive-Overshoot (Koronas)",
+        "description": "Helle leuchtende Ränder hinter dem Objekt deuten auf zu aggressiven Monitor-Overdrive hin."
+      }
+    ],
+    "canObserve": [
+      "Kamera-Panning-Synchronisation anhand der Skalierungsmarken",
+      "Visuelle Schweifbreite proportional zum tatsächlichen MPRT",
+      "Unterscheidung zwischen GtG-Schaltzeit und Sample-and-Hold-Haltezeit"
+    ],
+    "cannotMeasure": [
+      "Automatische MPRT-Berechnung ohne Auswertung eines Fotos",
+      "Sub-Millisekunden-Fotodioden-Messkurven",
+      "Schienengeschwindigkeit ohne Spezialhardware"
+    ],
+    "interpretation": "Wenn die Skalierungsmarken im Foto eine scharfe Linie bilden, war die Nachführung synchron. Die Schweifbreite entspricht dem wahren MPRT.",
+    "nextSteps": {
+      "text": "Testen Sie verschiedene Overdrive-Stufen Ihres Monitors.",
+      "actionLabel": "Ghosting-Test starten",
+      "actionHref": "/tests/ghosting-test"
+    }
+  },
+  "audio-sync-test": {
+    "overview": "Bildverarbeitung (HDR, Upscaling) erzeugt Videoverzögerung; Soundbars und Bluetooth erzeugen Audiopuffer. Weichen Ton und Bild zu stark ab, leidet die Lippensynchronisation.",
+    "whatToLookFor": [
+      {
+        "label": "Gleichzeitiger Blitz und Ton",
+        "description": "Beim Durchgang der Nadel durch die 12-Uhr-Marke müssen Blitz und 1-kHz-Ton synchron wahrgenommen werden."
+      },
+      {
+        "label": "Ton vor Bild (negativer Offset)",
+        "description": "Hören Sie den Ton vor dem Blitz, hinkt die Videoanzeige hinterher."
+      },
+      {
+        "label": "Bild vor Ton (positiver Offset)",
+        "description": "Sehen Sie den Blitz vor dem Ton, verzögert das Audiosystem (z.B. Bluetooth) die Wiedergabe."
+      }
+    ],
+    "canObserve": [
+      "Menschliche Wahrnehmungssynchronisation zwischen Lichtblitz und Tonpuls",
+      "Bestimmung des erforderlichen Korrektur-Offsets in Millisekunden",
+      "Präzise 1-kHz-Audioausgabe über die Web Audio API"
+    ],
+    "cannotMeasure": [
+      "Elektrische Laufzeiten auf HDMI-Kabeln im Mikrosekundenbereich",
+      "Akustische Schallausbreitung im Raum",
+      "Interne Betriebssystem-Bluetooth-Puffer"
+    ],
+    "interpretation": "Ein Offset innerhalb von +/- 20ms gilt als hervorragend und ist nicht wahrnehmbar. Abweichungen über 50ms sollten im Audiosystem korrigiert werden.",
+    "nextSteps": {
+      "text": "Testen Sie Ihre Lautsprecher auf Stereotrennung.",
+      "actionLabel": "Lautsprechertest starten",
+      "actionHref": "/tests/speaker-test"
+    }
+  },
+  "gamepad-test": {
+    "overview": "Game-Controller nutzen Potentiometer oder Hall-Effekt-Sensoren. Mit der Zeit verschleißen Schleifkontakte, was zu Stick-Drift führt – der Controller sendet Bewegungssignale im Ruhezustand.",
+    "whatToLookFor": [
+      {
+        "label": "Ruhedrift",
+        "description": "Lassen Sie beide Sticks los. Weicht das Fadenkreuz vom Nullpunkt ab, liegt Stick-Drift vor."
+      },
+      {
+        "label": "Zirkularitätsfehler",
+        "description": "Kreisen Sie den Stick am Anschlag. Ein sauberer Kreis ohne Eckabschneidungen ist optimal."
+      },
+      {
+        "label": "Deadzone-Verhalten",
+        "description": "Prüfen Sie, wie weit der Stick bewegt werden muss, bevor eine Reaktion registriert wird."
+      },
+      {
+        "label": "Trigger-Gleichmäßigkeit",
+        "description": "Drücken Sie LT/RT langsam durch: Der Wert sollte gleichmäßig von 0% auf 100% steigen."
+      }
+    ],
+    "canObserve": [
+      "Echtzeit-Koordinaten der Analogsticks und Ruhedriftwerte",
+      "Vollständige 16-Tasten-Betätigungsmatrix und analoge Triggerdrücke",
+      "Controller-Verbindungsstatus und Modellname über HTML5 Gamepad API"
+    ],
+    "cannotMeasure": [
+      "Widerstand der Potentiometerbahn in Ohm",
+      "Akkustand ohne herstellerspezifische Erweiterungen",
+      "Funkstörungen oder Bluetooth-Paketverluste"
+    ],
+    "interpretation": "Werte unter 5% (0.05) werden von normalen Spiel-Deadzones absorbiert. Werte über 10% führen zu sichtbaren Drehungen und erfordern Neukalibrierung.",
+    "nextSteps": {
+      "text": "Testen Sie Ihre Reaktionszeit am Controller.",
+      "actionLabel": "Reaktionstest starten",
+      "actionHref": "/tests/reaction-time-test"
+    }
   }
 };
 

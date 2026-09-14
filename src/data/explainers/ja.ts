@@ -959,6 +959,212 @@ export const JA_EXPLAINERS: Record<string, ExplainerData> = {
       actionLabel: "マイクトラブルシューティング",
       actionHref: "/knowledge-base/troubleshooting#mic-not-working"
     }
+  },
+  "pixel-inversion-test": {
+    "overview": "Pixel inversion (also known as VCOM balance or pixel walk) is the technique LCD panels use to prevent liquid crystal degradation. To avoid permanent electrolytic damage from constant DC voltage bias, panels invert the electrical polarity of subpixels every refresh frame (+V then -V). If the common electrode reference voltage (VCOM) is slightly off-balance, positive and negative polarities produce unequal brightness, causing subtle high-frequency flicker or crawling shimmer across fine patterns.",
+    "whatToLookFor": [
+      {
+        "label": "Shimmering or Crawling Patterns",
+        "description": "Observe the 1x1 dot, 2x2 check, and stripe patterns from your normal viewing distance. A well-calibrated VCOM will appear as calm, steady neutral gray with no visible vibration."
+      },
+      {
+        "label": "High-Frequency Flicker",
+        "description": "If the screen seems to vibrate or flicker rapidly at 30Hz or 60Hz when viewing dot inversion or subpixel grids, your panel's VCOM balance is asymmetric."
+      },
+      {
+        "label": "Subpixel Inversion Balance",
+        "description": "Check the RGB micro-mesh pattern. Mismatched subpixel inversion can produce subtle green/magenta color tint shifts across checkerboards."
+      },
+      {
+        "label": "Reading Jitter (Text-Phase)",
+        "description": "The text-phase grid simulates black text on white backgrounds. Inversion flaws here appear as slight edge vibrations around fine text."
+      }
+    ],
+    "canObserve": [
+      "Visual detection of VCOM asymmetry and polarity balancing errors",
+      "Identification of inversion architecture (dot inversion, column inversion, row inversion)",
+      "High-frequency pixel walk flicker across calibrated test grids"
+    ],
+    "cannotMeasure": [
+      "Exact millivolt hardware VCOM bias potentiometer setting",
+      "Direct liquid crystal physical response times or decay curves",
+      "Subpixel physical voltage waveforms without an oscilloscope"
+    ],
+    "interpretation": "Slight pixel walk is normal on many high-refresh gaming panels due to fast overdrive tuning. Severe flicker indicates a factory calibration flaw or aging power circuitry.",
+    "nextSteps": {
+      "text": "Notice excessive flicker? Inspect overall panel uniformity and refresh rate stability.",
+      "actionLabel": "Run Uniformity Test",
+      "actionHref": "/tests/uniformity-test"
+    }
+  },
+  "strobe-crosstalk-test": {
+    "overview": "Backlight strobing (ULMB, DyAc, ELMB, LightBoost) eliminates eye-tracking motion blur by pulsing the backlight on only when liquid crystals have finished transitioning. However, because displays scan pixels from top to bottom while backlights flash globally across the entire screen, pixel transitions at the very top or bottom may be incomplete when the pulse fires. This timing mismatch creates duplicate phantom images known as strobe crosstalk.",
+    "whatToLookFor": [
+      {
+        "label": "Double-Image Silhouettes",
+        "description": "Watch the moving bars in the top, center, and bottom tracks. Notice whether you see a single sharp bar or a faint duplicate ghost trailing or leading it."
+      },
+      {
+        "label": "Top vs Center vs Bottom Clarity",
+        "description": "Most monitors optimize strobe phase for the screen center. The center zone should show crisp, single-image motion, while top and bottom zones typically show varying degrees of crosstalk."
+      },
+      {
+        "label": "Strobe Pulse Width & Brightness",
+        "description": "Shorter strobe pulses yield sharper motion but lower overall display brightness. Adjust your monitor's strobe duty cycle in its OSD to balance clarity vs luminance."
+      }
+    ],
+    "canObserve": [
+      "Relative strobe crosstalk visibility across vertical screen zones",
+      "Identification of optimal strobe phase calibration point on your panel",
+      "Comparison of motion blur reduction at various panning velocities"
+    ],
+    "cannotMeasure": [
+      "Exact backlight strobe flash duration in microseconds",
+      "Photometric strobe luminance peak in nits without a photodiode",
+      "Hardware panel scan-out velocity and VSYNC timing interval"
+    ],
+    "interpretation": "A small amount of strobe crosstalk at the extreme top and bottom edges is normal on LCD monitors. Severe crosstalk across the center zone indicates mismatched strobe phase or refresh rate desync.",
+    "nextSteps": {
+      "text": "Compare strobed motion against native sample-and-hold motion blur.",
+      "actionLabel": "Run Motion Blur Test",
+      "actionHref": "/tests/motion-blur-test"
+    }
+  },
+  "vrr-flicker-test": {
+    "overview": "Variable Refresh Rate (VRR / G-Sync / FreeSync) dynamically matches screen refresh rate to GPU rendering output. However, liquid crystal relaxation and OLED pixel luminance curves vary depending on the duration of the refresh cycle. When framerates swing rapidly—especially between high FPS and lower boundary thresholds—luminance curves shift dynamically, producing noticeable brightness flicker in dark and near-black areas.",
+    "whatToLookFor": [
+      {
+        "label": "Near-Black Brightness Pumping",
+        "description": "Observe the 10% near-black and 25% dark gray patches as the automated framerate sweep cycles. Look for subtle rhythmic pulsations in overall darkness."
+      },
+      {
+        "label": "LFC (Low Framerate Compensation) Transition Jolt",
+        "description": "When framerates dip below the minimum VRR threshold (e.g., below 48Hz), graphics drivers double frame presentation (LFC). This rapid Hz shift can cause a momentary luminance flicker."
+      },
+      {
+        "label": "OLED Gamma Shift",
+        "description": "OLED displays are particularly prone to VRR gamma flicker because subpixel charge times depend heavily on frame length. Dark scene textures may pulse visibly during framerate drops."
+      }
+    ],
+    "canObserve": [
+      "Visual identification of gamma curve shifts across dark gray luminance levels",
+      "Detection of brightness pumping during simulated framerate oscillation",
+      "Comparison between subtle midtone gray vs near-black flicker sensitivity"
+    ],
+    "cannotMeasure": [
+      "Hardware GPU-to-display Adaptive-Sync timing packets",
+      "Exact millivolt OLED subpixel voltage fluctuations",
+      "Automatic detection without user visual evaluation"
+    ],
+    "interpretation": "If you observe strong brightness pulsing, your display has sensitive VRR gamma curves. Cap your framerate slightly below max refresh rate or disable VRR in games with unstable frame times to prevent flicker.",
+    "nextSteps": {
+      "text": "Verify your display's variable refresh rate support and range.",
+      "actionLabel": "Run VRR Capability Test",
+      "actionHref": "/tests/vrr-test"
+    }
+  },
+  "pursuit-camera-test": {
+    "overview": "Human eyes track moving on-screen objects with continuous smooth pursuit motion. Standard stationary camera photographs cannot capture true display motion blur because they don't move with the eye. A pursuit camera tracks the moving pattern at exact matched speed, allowing photographic capture of true perceived Motion Picture Response Time (MPRT) and ghosting smear.",
+    "whatToLookFor": [
+      {
+        "label": "Temporal Graduation Alignment",
+        "description": "The top track contains vertical white graduation ticks. When tracking smoothly with your camera or phone, these ticks will merge into a single sharp vertical line in your photo."
+      },
+      {
+        "label": "Ghosting & Trailing Artifacts",
+        "description": "Once tracking sync is verified by crisp vertical ticks, examine the trailing edge of the moving object to see phosphor decay, overdrive coronas, or ghost trails."
+      },
+      {
+        "label": "Overdrive Overshoot (Coronas)",
+        "description": "A bright glowing outline trailing behind the moving object indicates excessive monitor pixel overdrive (inverse ghosting)."
+      }
+    ],
+    "canObserve": [
+      "Camera panning synchronization via temporal graduation track verification",
+      "Visual smear width directly proportional to perceived MPRT",
+      "Distinction between pixel transition blur (GtG) and sample-and-hold eye-tracking blur (MPRT)"
+    ],
+    "cannotMeasure": [
+      "Automatic MPRT calculation without taking and measuring a tracking photograph",
+      "Sub-millisecond photodiode optical response curves",
+      "Optical tracking rail velocity without calibrated hardware"
+    ],
+    "interpretation": "When temporal graduation marks form a clean vertical line in your exposure, tracking was synchronized. The width of trailing smear on the object reflects the display's true MPRT motion blur.",
+    "nextSteps": {
+      "text": "Compare motion performance across different overdrive settings in your monitor OSD.",
+      "actionLabel": "Run Ghosting Test",
+      "actionHref": "/tests/ghosting-test"
+    }
+  },
+  "audio-sync-test": {
+    "overview": "Modern visual processing (frame scaling, HDR dynamic tone mapping, and motion smoothing) introduces video latency. Meanwhile, soundbars, AV receivers, and Bluetooth audio devices (A2DP codec buffers) introduce audio latency. If video and audio diverge by more than ITU-R perceptual thresholds (+45ms to -125ms), speech lip-sync becomes noticeably disjointed.",
+    "whatToLookFor": [
+      {
+        "label": "Simultaneous Flash and Beep",
+        "description": "Watch the rotating needle pass the top 12 o'clock zero mark. The instant visual white/green flash should align perfectly with the audible 1 kHz pulse."
+      },
+      {
+        "label": "Audio Leading Video (Negative Offset)",
+        "description": "If you hear the beep before you see the visual flash, the display is lagging behind the audio. Audio needs to be delayed."
+      },
+      {
+        "label": "Video Leading Audio (Positive Offset)",
+        "description": "If you see the flash before you hear the beep, audio processing (e.g., Bluetooth lag or soundbar processing) is delayed relative to the display."
+      }
+    ],
+    "canObserve": [
+      "Human perceptual synchronization between optical visual flashes and acoustic pulses",
+      "Measurement of required millisecond compensation offset (+/- 200ms)",
+      "Audio output channel verification via Web Audio API 1 kHz synthesized pulses"
+    ],
+    "cannotMeasure": [
+      "Hardware electrical acoustic sound wave arrival times with microsecond laboratory precision",
+      "Microphone acoustic feedback loop without audio input authorization",
+      "Bluetooth packet retransmission delays at the operating system driver level"
+    ],
+    "interpretation": "Perceptual lip-sync alignment within +/- 20ms is considered excellent and imperceptible to human audiences. Latencies greater than 50ms should be corrected using audio delay settings in your soundbar or media player.",
+    "nextSteps": {
+      "text": "Test your speakers for stereo channel separation and frequency range.",
+      "actionLabel": "Run Speaker Test",
+      "actionHref": "/tests/speaker-test"
+    }
+  },
+  "gamepad-test": {
+    "overview": "Game controllers use analog potentiometers or Hall-effect magnetic sensors to translate thumbstick movement into directional coordinates. Over time, internal carbon wiper wear, spring degradation, and dust contamination cause the stick to register off-center coordinates when resting untouched—a defect known as stick drift.",
+    "whatToLookFor": [
+      {
+        "label": "Resting Stick Drift",
+        "description": "Release both thumbsticks completely. If the crosshair indicator sits outside the central zero point or drifts continuously, stick drift is present."
+      },
+      {
+        "label": "Circularity Error",
+        "description": "Rotate the sticks along their outer boundaries. Quality gamepads produce a clean, smooth circle without clipping flat at the diagonal corners."
+      },
+      {
+        "label": "Deadzone Thresholding",
+        "description": "Check how far you must nudge the stick before the coordinate responds. Excessive deadzones make aiming sluggish, while too-small deadzones cause drift."
+      },
+      {
+        "label": "Analog Trigger Smoothness",
+        "description": "Gradually squeeze LT and RT triggers. The percentage readout should climb smoothly from 0% to 100% without jumping or sticking."
+      }
+    ],
+    "canObserve": [
+      "Real-time analog stick X/Y coordinate readouts and resting drift values",
+      "Full 16-button digital actuation matrix and analog trigger pressure percentages",
+      "Controller connection status, device ID name, and polling rate via HTML5 Gamepad API"
+    ],
+    "cannotMeasure": [
+      "Physical potentiometer wiper resistance in ohms",
+      "Internal battery voltage level (unless supported by proprietary browser extensions)",
+      "Wireless Bluetooth radio interference or packet drop rates"
+    ],
+    "interpretation": "A resting coordinate value below 0.05 (5%) is typically absorbed by standard game deadzones. Values exceeding 0.10 (10%) will cause visible in-game camera drift and suggest recalibration or cleaning.",
+    "nextSteps": {
+      "text": "Test your display's input latency and your personal reaction time.",
+      "actionLabel": "Run Reaction Time Test",
+      "actionHref": "/tests/reaction-time-test"
+    }
   }
 };
 

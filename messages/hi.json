@@ -836,6 +836,78 @@
         "Click as fast as you can once it turns green.",
         "Your reaction time will be recorded in milliseconds."
       ]
+    },
+    "pixel-inversion-test": {
+      "title": "Pixel Inversion & VCOM Flicker Test",
+      "metaTitle": "Pixel Inversion & VCOM Test | Screen Tester",
+      "description": "Inspect pixel inversion patterns, VCOM voltage calibration, and pixel walk artifacts across LCD and OLED panels.",
+      "metaDescription": "Test your monitor for pixel inversion artifacts, VCOM voltage balance, and pixel walk flicker using high-frequency checkerboard patterns.",
+      "instructions": [
+        "Switch through 1x1 dot, 2x2 checkerboard, vertical stripe, and subpixel patterns.",
+        "Observe the screen from your normal working distance with the monitor at native resolution.",
+        "Notice whether any pattern vibrates, shimmers, or displays faint moving wave bands.",
+        "A properly calibrated VCOM voltage will render all gray checkerboards as steady, non-flickering neutral gray."
+      ]
+    },
+    "strobe-crosstalk-test": {
+      "title": "Strobe Crosstalk & BFI Inspection Test",
+      "metaTitle": "Strobe Crosstalk & BFI Test | Screen Tester",
+      "description": "Inspect backlight strobing blur reduction, strobe phase alignment, and double-image crosstalk across vertical screen zones.",
+      "metaDescription": "Test monitor backlight strobing (ULMB, DyAc, ELMB) and Black Frame Insertion for strobe crosstalk and duplicate silhouette ghosting.",
+      "instructions": [
+        "Enable backlight strobing or BFI in your monitor's hardware OSD menu.",
+        "Watch the moving target bars across the top, center, and bottom screen tracks.",
+        "Check for double-image silhouettes behind the moving bars in each zone.",
+        "Inspect which zone has the clearest motion and whether top or bottom shows strobe phase ghosting."
+      ]
+    },
+    "vrr-flicker-test": {
+      "title": "VRR Brightness Flicker Stress Test",
+      "metaTitle": "VRR Brightness Flicker Test | Screen Tester",
+      "description": "Stress-test adaptive sync (G-Sync, FreeSync) displays for brightness flicker and gamma shift during rapid framerate fluctuation.",
+      "metaDescription": "Stress test your monitor for VRR brightness flicker and gamma fluctuation during dynamic refresh rate swings.",
+      "instructions": [
+        "Ensure G-Sync, FreeSync, or Adaptive-Sync is enabled in your graphics driver and monitor OSD.",
+        "Run the automated framerate sweep between low and high refresh bounds.",
+        "Carefully observe the dark gray background and midtone patches for subtle brightness pumping or flicker.",
+        "OLED and VA panels are most susceptible to near-black VRR gamma flicker during framerate fluctuations."
+      ]
+    },
+    "pursuit-camera-test": {
+      "title": "Pursuit Camera Sync & MPRT Calibration Track",
+      "metaTitle": "Pursuit Camera Sync Track | Screen Tester",
+      "description": "Calibrate tracking cameras and smartphones to photograph moving objects for scientific MPRT and ghosting measurement.",
+      "metaDescription": "Pursuit camera temporal sync track for photographic measurement of monitor motion blur, ghosting, and MPRT.",
+      "instructions": [
+        "Set your camera or smartphone to manual exposure mode with a shutter speed of 1/4 to 1/2 of your panning time.",
+        "Track the moving pattern smoothly from left to right as it glides across the display.",
+        "Review your captured photo: verify the white vertical graduation ticks form a single crisp vertical line.",
+        "When temporal graduation lines are un-smeared, your camera tracking was synchronized, allowing accurate MPRT measurement."
+      ]
+    },
+    "audio-sync-test": {
+      "title": "Audio / Video Lip-Sync Calibration Test",
+      "metaTitle": "Audio Video Sync Test | Screen Tester",
+      "description": "Calibrate audio-video delay, soundbar latency, and Bluetooth audio lag with millisecond visual and acoustic sweep pulses.",
+      "metaDescription": "Test and calibrate audio-to-video lip-sync delay with visual sweep bars and synchronized 1kHz millisecond beeps.",
+      "instructions": [
+        "Ensure audio output is enabled and unmuted in your browser.",
+        "Watch the sweeping radar dial as it crosses the center alignment notch.",
+        "Listen for the instantaneous 1 kHz audio beep.",
+        "Adjust the millisecond offset slider until the visual alignment and sound occur simultaneously."
+      ]
+    },
+    "gamepad-test": {
+      "title": "Gamepad & Controller Input Test",
+      "metaTitle": "Gamepad & Controller Drift Test | Screen Tester",
+      "description": "Test gamepad controllers, analog stick drift, deadzones, trigger axes, and button actuation using the HTML5 Gamepad API.",
+      "metaDescription": "Online gamepad and controller tester. Check analog stick drift, deadzone precision, triggers, and buttons in real-time.",
+      "instructions": [
+        "Connect an Xbox, PlayStation, Switch, or generic controller via USB or Bluetooth.",
+        "Press any button on the controller to wake the Gamepad API.",
+        "Rotate both analog sticks to test circularity error and check resting drift values against the deadzone threshold.",
+        "Squeeze analog triggers and press all buttons to verify actuation and responsiveness."
+      ]
     }
   },
   "Tests": {
@@ -1054,7 +1126,10 @@
       "title": "मोशन ब्लर टेस्ट – डिस्प्ले मोशन क्लैरिटी और MPRT चेक",
       "description": "तेज गति वाले दृश्यों और गतिशील परीक्षण वस्तुओं पर मोशन रिज़ॉल्यूशन, पर्सिस्टेंस ब्लर और MPRT ट्रैकिंग का विश्लेषण करें।"
     },
-    "reactionTimeTest": "Reaction Time Test",
+    "reactionTimeTest": {
+      "title": "प्रतिक्रिया समय परीक्षण",
+      "description": "मिलीसेकंड में अपनी दृश्य प्रतिक्रिया समय और डिस्प्ले इनपुट लेटेंसी मापें।"
+    },
     "AccelerometerPattern": {
       "status": "Status:",
       "active": "Active (",
@@ -2092,6 +2167,168 @@
         "status": "Status",
         "average": "Average"
       }
+    },
+    "pixelInversionTest": {
+      "title": "पिक्सेल इनवर्जन (VCOM / पिक्सेल वॉक)",
+      "description": "एलसीडी और ओएलईडी स्क्रीन पर पिक्सेल इनवर्जन और VCOM फ़्लिकर की जांच करें।"
+    },
+    "strobeCrosstalkTest": {
+      "title": "स्ट्रोब क्रॉसटॉक और BFI निरीक्षण",
+      "description": "स्क्रीन के ऊपरी, मध्य और निचले क्षेत्रों में बैकलाइट स्ट्रोबिंग और डबल इमेज की जांच करें।"
+    },
+    "vrrFlickerTest": {
+      "title": "VRR चमक फ़्लिकर स्ट्रेस टेस्ट",
+      "description": "परिवर्तनीय रीफ्रेश दर (G-Sync / FreeSync) पर चमक फ़्लिकर और गामा बदलाव का परीक्षण करें।"
+    },
+    "pursuitCameraTest": {
+      "title": "पर्स्यूट कैमरा सिंक और MPRT ट्रैक",
+      "description": "मोशन ब्लर और MPRT मापने के लिए मूविंग कैमरा ट्रैकिंग को कैलिब्रेट करें।"
+    },
+    "audioSyncTest": {
+      "title": "ऑडियो/वीडियो लिप-सिंक कैलिब्रेशन",
+      "description": "मिलीसेकंड ऑडियो स्वीप के साथ ऑडियो-वीडियो लेटेंसी और लिप-सिंक सिंक्रोनाइज़ेशन को कैलिब्रेट करें।"
+    },
+    "gamepadTest": {
+      "title": "गेमपैड और कंट्रोलर टेस्ट",
+      "description": "स्टिक ड्रिफ्ट, डेडज़ोन, ट्रिगर और बटनों की रीयल-टाइम में जांच करें।"
+    },
+    "PixelInversionPattern": {
+      "title": "पिक्सेल इनवर्जन पैटर्न",
+      "description": "LCD panels rapidly invert subpixel electrical polarities each frame to prevent liquid crystal polarization degradation. Imperfect VCOM balance creates subtle flicker or crawling patterns on these test grids.",
+      "mode": "Pattern Mode",
+      "dot1x1": "1x1 Checkerboard (Dot Inversion)",
+      "dot1x1Desc": "Tests single-pixel alternating polarity balance.",
+      "check2x2": "2x2 Checkerboard",
+      "check2x2Desc": "Tests dual-pixel inversion architectures.",
+      "vstripes": "Vertical 1-Pixel Stripes (Column Inversion)",
+      "vstripesDesc": "Tests source driver column polarity transitions.",
+      "hstripes": "Horizontal 1-Pixel Stripes (Row Inversion)",
+      "hstripesDesc": "Tests gate line row inversion transitions.",
+      "subpixel": "Subpixel RGB Micro-Mesh",
+      "subpixelDesc": "Stress-tests individual subpixel driving balance.",
+      "textPhase": "Fine Text-Phase High-Frequency Grid",
+      "textPhaseDesc": "Reveals pixel walk jitter when reading fine text.",
+      "contrastHigh": "उच्च कंट्रास्ट",
+      "contrastSubtle": "सूक्ष्म (VCOM संवेदनशील)",
+      "flickerWarning": "If the pattern flickers, shimmers, or displays a crawling grid, your display's VCOM calibration voltage is slightly unbalanced.",
+      "notice": "Observe from your normal viewing distance. The gray background should appear calm and non-vibrating.",
+      "patternIndex": "पैटर्न {current} / {total}",
+      "previousPattern": "पिछला पैटर्न",
+      "nextPattern": "अगला पैटर्न",
+      "modes": {
+        "dot1x1": "1x1 डॉट (चेकरबोर्ड)",
+        "dot1x1Desc": "एकल पिक्सेल ध्रुवीयता संतुलन का परीक्षण करता है।",
+        "check2x2": "2x2 चेकरबोर्ड",
+        "check2x2Desc": "2x2 दोहरे पिक्सेल इनवर्जन का परीक्षण करता है।",
+        "vstripes": "लंबवत 1-पिक्सेल पट्टियां",
+        "vstripesDesc": "कॉलम ड्राइवर पोलारिटी ट्रांज़िशन की जांच करता है।",
+        "hstripes": "क्षैतिज 1-पिक्सेल पट्टियां",
+        "hstripesDesc": "गेट लाइन रो इनवर्जन की जांच करता है।",
+        "subpixel": "सबपिक्सेल RGB माइक्रो-मेश",
+        "subpixelDesc": "व्यक्तिगत सबपिक्सेल ड्राइविंग का परीक्षण करता है।",
+        "textPhase": "टेक्स्ट-फेज हाई-फ़्रीक्वेंसी ग्रिड",
+        "textPhaseDesc": "महीन टेक्स्ट पढ़ते समय पिक्सेल वॉक कंपन को प्रकट करता है।"
+      }
+    },
+    "AudioSyncPattern": {
+      "title": "ऑडियो/वीडियो लिप-सिंक कैलिब्रेशन",
+      "description": "Synchronize display output and audio hardware. When the visual sweep bar crosses the center alignment notch, an instantaneous 1 kHz audio pulse is emitted.",
+      "calibration": "Audio / Video Calibration",
+      "syncStatus": "Sync Status",
+      "syncPerfect": "In Sync (0 ms)",
+      "videoLeading": "Video Leads (+{val} ms)",
+      "audioLeading": "Audio Leads (-{val} ms)",
+      "audioOffset": "Manual Audio Offset (ms)",
+      "tempo": "Sweep Frequency",
+      "sweepRate": "Sweeps / Minute",
+      "bpm": "BPM",
+      "mute": "Mute Audio",
+      "unmute": "ध्वनि चालू करें",
+      "start": "Start Sweep",
+      "stop": "Pause",
+      "reset": "Reset Offset",
+      "howToCalibrate": "How to Calibrate",
+      "calibrationTip": "Adjust the offset slider until the audible beep and the visual flashing notch occur at the exact same perceptual instant. Positive values delay audio; negative values advance audio.",
+      "pause": "रोकें",
+      "play": "शुरू करें",
+      "soundOn": "ध्वनि म्यूट करें",
+      "offset": "ऑडियो ऑफ़सेट",
+      "resetOffset": "रीसेट (0ms)",
+      "speed": "स्वीप गति"
+    },
+    "PursuitCameraPattern": {
+      "title": "पर्स्यूट कैमरा सिंक और MPRT ट्रैक",
+      "description": "Pursuit camera tracking simulates the smooth-pursuit motion of human eyes tracking on-screen objects. Capture the moving UFO with a tracking camera to photograph MPRT and ghosting.",
+      "speed": "गति",
+      "pxPerSec": "Pixels / Sec",
+      "syncTrackTitle": "Temporal Graduation Track",
+      "trackingInstructions": "Align your tracking camera so the white temporal tick marks in the upper track stay vertically stationary during your pan. When the ticks form a vertical line in your exposure, tracking sync is achieved.",
+      "mprtFormula": "Motion Picture Response Time (MPRT) is directly proportional to visual smear width divided by panning velocity.",
+      "cameraGuide": "कैमरा संरेखण",
+      "cameraInstructions": "कैमरे को स्क्रीन पर ऑब्जेक्ट की गति के साथ घुमाएं। लंबवत रेखाएं स्पष्ट होने पर ट्रैकिंग सिंक्रनाइज़ होती है।",
+      "pause": "रोकें",
+      "resume": "पुनः आरंभ करें",
+      "invertDirection": "दिशा बदलें",
+      "leftToRight": "बाएं से दाएं",
+      "rightToLeft": "दाएं से बाएं"
+    },
+    "StrobeCrosstalkPattern": {
+      "title": "स्ट्रोब क्रॉसटॉक और BFI निरीक्षण",
+      "description": "Backlight strobing (ULMB, DyAc, ELMB) turns off the backlight during liquid crystal transitions. Strobe crosstalk causes double images when the flash phase does not align with the panel refresh scan.",
+      "topZone": "ऊपरी स्क्रीन क्षेत्र",
+      "centerZone": "Center Screen Zone",
+      "bottomZone": "निचला स्क्रीन क्षेत्र",
+      "crosstalkNotice": "Crosstalk Inspection",
+      "crosstalkDesc": "Compare ghost trails in the top, center, and bottom tracks. Fast monitors optimize strobe phase for the center zone, but top and bottom zones often show faint twin silhouettes.",
+      "topZoneSub": "प्रारंभिक स्कैन चरण",
+      "middleZone": "मध्य स्क्रीन क्षेत्र",
+      "middleZoneSub": "इष्टतम स्ट्रोब सिंक",
+      "bottomZoneSub": "विलंबित स्कैन चरण",
+      "pause": "रोकें",
+      "play": "शुरू करें",
+      "speed": "गति",
+      "width": "बार की चौड़ाई"
+    },
+    "VrrFlickerPattern": {
+      "title": "VRR चमक फ़्लिकर स्ट्रेस टेस्ट",
+      "description": "Adaptive sync alters panel refresh rate in real-time. Because LCD and OLED voltage response varies with refresh cycle duration, rapid framerate swings can induce noticeable luminance flicker.",
+      "lowHz": "Lower Frequency (Hz)",
+      "highHz": "Upper Frequency (Hz)",
+      "gammaFlickerNotice": "Evaluating VRR Flicker",
+      "gammaFlickerDesc": "Observe the 20% to 50% dark gray test patches. If brightness pulsates noticeably during refresh transitions, your display exhibits VRR gamma shift.",
+      "highWorkload": "अधिकतम फ्रेम दर चरण",
+      "lowWorkload": "न्यूनतम फ्रेम दर चरण",
+      "pause": "रोकें",
+      "play": "शुरू करें",
+      "patchLuminance": "पृष्ठभूमि ग्रे",
+      "cycleRate": "दोलन दर",
+      "levels": {
+        "nearBlack": "लगभग काला (~10%)",
+        "darkGrey": "गहरा ग्रे (~25%)",
+        "midGrey": "मध्यम ग्रे (~50%)"
+      }
+    },
+    "GamepadPattern": {
+      "title": "गेमपैड और कंट्रोलर टेस्टर",
+      "description": "Connect any USB or Bluetooth gamepad. Test joystick centering, stick drift, deadzones, trigger pressure, and button responsiveness.",
+      "noGamepadDetected": "कोई गेमपैड नहीं मिला",
+      "connectGamepadHint": "Connect a gamepad via USB or Bluetooth and press any button to begin testing.",
+      "controller": "Gamepad Connected",
+      "leftStick": "बायां एनालॉग स्टिक",
+      "rightStick": "दायां एनालॉग स्टिक",
+      "leftTrigger": "Left Trigger (LT/L2)",
+      "rightTrigger": "Right Trigger (RT/R2)",
+      "deadzone": "Deadzone Threshold",
+      "stickDriftDetected": "Stick Drift Detected (Non-zero at rest)",
+      "stickCentered": "Stick Centered (Within deadzone)",
+      "buttons": "Controller Buttons",
+      "connectPrompt": "USB या ब्लूटूथ द्वारा कंट्रोलर कनेक्ट करें और कोई भी बटन दबाएं।",
+      "browserSupportNote": "HTML5 गेमपैड API द्वारा संचालित। Xbox, PlayStation, Switch और मानक कंट्रोलर समर्थित हैं।",
+      "gamepadConnected": "गेमपैड सक्रिय",
+      "pollingRate": "पोलिंग दर",
+      "testRumble": "वाइब्रेशन टेस्ट",
+      "trigger": "एनालॉग ट्रिगर",
+      "buttonsMatrix": "बटन मैट्रिक्स"
     }
   },
   "Guides": {
@@ -4179,7 +4416,125 @@
         "title": "वॉइस रिकॉर्डर",
         "description": "ब्राउज़र मेमोरी में वॉइस नोट्स रिकॉर्ड करें, रोकें, फिर से शुरू करें, सुनें और स्थानीय रूप से डाउनलोड करें।",
         "badge": "लोकल ऑडियो"
+      },
+      "displayBandwidthCalculator": {
+        "title": "डिस्प्ले बैंडविड्थ कैलकुलेटर",
+        "description": "वीडियो डेटा दर, असंपीड़ित Gbps, VESA DSC संपीड़न, और HDMI व DisplayPort केबल संगतता की गणना करें।",
+        "badge": "कैलकुलेटर"
+      },
+      "viewingDistanceCalculator": {
+        "title": "देखने की दूरी और PPD कैलकुलेटर",
+        "description": "आदर्श एर्गोनोमिक देखने की दूरी, पिक्सेल प्रति डिग्री (PPD), और मानव आंख की रेटिना सीमा निर्धारित करें।",
+        "badge": "कैलकुलेटर"
+      },
+      "dualMonitorMatcher": {
+        "title": "दोहरे मॉनिटर व्हाइट पॉइंट मैचर",
+        "description": "मल्टी-मॉनिटर सेटअप में रंग तापमान, आरजीबी गेन और चमक को मिलाने के लिए स्प्लिट-स्क्रीन कैनवास।",
+        "badge": "कैलिब्रेशन"
       }
+    },
+    "DisplayBandwidthCalculator": {
+      "eyebrow": "डिस्प्ले इंजीनियरिंग टूल",
+      "title": "डिस्प्ले बैंडविड्थ और केबल कैलकुलेटर",
+      "description": "अपने मॉनिटर सेटअप के लिए आवश्यक वीडियो बैंडविड्थ की गणना करें और HDMI, DisplayPort व Thunderbolt मानकों की जांच करें।",
+      "resolution": "रिज़ॉल्यूशन प्रीसेट",
+      "resolutionCustom": "कस्टम",
+      "width": "चौड़ाई (px)",
+      "height": "ऊंचाई (px)",
+      "refreshRate": "रिफ्रेश दर (Hz)",
+      "colorDepth": "रंग गहराई (bpc)",
+      "chromaSubsampling": "क्रोमा सबसेंपलिंग",
+      "bandwidthResults": "आवश्यक बैंडविड्थ परिणाम",
+      "uncompressedBandwidth": "असंपीड़ित डेटा दर",
+      "dscBandwidth": "VESA DSC (3:1) के साथ",
+      "dscExplanation": "Display Stream Compression (DSC 1.2a) बिना किसी दृश्य हानि के बैंडविड्थ को एक-तिहाई तक कम करता है।",
+      "cableCompatibility": "केबल और इंटरफ़ेस संगतता",
+      "maxBandwidth": "अधिकतम बैंडविड्थ",
+      "supported": "समर्थित (मूल)",
+      "requiresDsc": "समर्थित (DSC आवश्यक)",
+      "notSupported": "इंटरफ़ेस सीमा से अधिक",
+      "specsNotes": "तकनीकी नोट्स",
+      "specsNote1": "गणना में VESA CVT-RB2 टाइमिंग ओवरहेड (~15%) शामिल है।",
+      "specsNote2": "डेटा दरें एन्कोडिंग ओवरहेड (DP 1.4 पर 8b/10b, DP 2.1 पर 128b/132b) को दर्शाती हैं।",
+      "resolutionLabel": "रिज़ॉल्यूशन प्रीसेट",
+      "refreshRateLabel": "रिफ्रेश दर (Hz)",
+      "colorDepthLabel": "रंग गहराई (bpc)",
+      "chromaLabel": "क्रोमा सबसेंपलिंग",
+      "requiredDataRate": "आवश्यक बैंडविड्थ परिणाम",
+      "uncompressedRateNote": "VESA CVT-RB2 ओवरहेड के साथ असंपीड़ित डेटा दर।",
+      "withDsc3to1": "VESA DSC (3:1 संपीड़न) के साथ",
+      "supportedNative": "समर्थित (मूल)",
+      "supportedDsc": "समर्थित (DSC आवश्यक)",
+      "insufficientBandwidth": "इंटरफ़ेस सीमा से अधिक"
+    },
+    "ViewingDistanceCalculator": {
+      "eyebrow": "ऑप्टिक्स और एर्गोनॉमिक्स टूल",
+      "title": "देखने की दूरी और रेटिना PPD कैलकुलेटर",
+      "description": "पिक्सेल घनत्व (PPI), पिक्सेल प्रति डिग्री (PPD), और वह दूरी जहां पिक्सेल सामान्य 20/20 दृष्टि में विलीन हो जाते हैं, की गणना करें।",
+      "screenSize": "स्क्रीन विकर्ण आकार",
+      "diagonalSize": "विकर्ण आकार",
+      "resolution": "रिज़ॉल्यूशन प्रीसेट",
+      "viewingDistance": "वर्तमान देखने की दूरी",
+      "unitInches": "इंच (in)",
+      "unitCm": "सेंटीमीटर (cm)",
+      "pixelDensity": "पिक्सेल घनत्व",
+      "ppiUnit": "पिक्सेल / इंच",
+      "visualAcuityPpd": "दृश्य तीक्ष्णता",
+      "ppdUnit": "पिक्सेल / डिग्री",
+      "retinaDistance": "20/20 रेटिना सीमा",
+      "retinaDistanceDesc": "इस दूरी या उससे अधिक पर, सामान्य 20/20 दृष्टि द्वारा अलग-अलग पिक्सेल नहीं देखे जा सकते।",
+      "currentStatus": "रेटिना स्थिति",
+      "retinaAchieved": "रेटिना रिज़ॉल्यूशन प्राप्त हुआ",
+      "retinaNotAchieved": "पिक्सेल अलग से दिखाई दे सकते हैं",
+      "retinaAchievedDesc": "आपकी वर्तमान {dist} की दूरी पर, आंख {ppd} PPD प्राप्त करती है (60 PPD की सीमा से अधिक)। स्क्रीन अत्यंत स्पष्ट दिखाई देती है।",
+      "retinaNotAchievedDesc": "वर्तमान {dist} पर, PPD {ppd} है (60 PPD से कम)। रेटिना अनुभव पाने के लिए {threshold} पर जाएं।",
+      "visualExplainerTitle": "PPD और रेटिना गणना कैसे काम करती है",
+      "visualExplainerP1": "पिक्सेल प्रति डिग्री (PPD) आपके दृष्टि क्षेत्र के प्रत्येक डिग्री में पिक्सेल की संख्या मापता है। 60 PPD सामान्य मानव दृष्टि के लिए मानक सीमा है।",
+      "visualExplainerP2": "Apple ने 'रेटिना डिस्प्ले' शब्द इसी मानक पर आधारित किया है: कोई भी स्क्रीन जहां सामान्य दूरी पर PPD 60 या अधिक हो।",
+      "units": "माप की इकाइयाँ",
+      "in": "इंच",
+      "inches": "इंच (in)",
+      "cm": "सेमी",
+      "centimeters": "सेंटीमीटर (cm)",
+      "visualAcuity": "दृश्य तीक्ष्णता",
+      "pixelsVisible": "पिक्सेल अलग से दिखाई दे सकते हैं",
+      "retinaPpdDescription": "आपकी वर्तमान दूरी पर आंख {ppd} PPD प्राप्त करती है (60 PPD से अधिक)। स्क्रीन अत्यंत स्पष्ट दिखाई देती है।",
+      "subRetinaPpdDescription": "वर्तमान दूरी पर PPD {ppd} है (60 PPD से कम)। पिक्सेल-मुक्त अनुभव पाने के लिए अनुशंसित दूरी पर जाएं।",
+      "retinaThreshold": "20/20 रेटिना दूरी",
+      "howItWorksTitle": "PPD और रेटिना गणना कैसे काम करती है",
+      "howItWorksText": "पिक्सेल प्रति डिग्री (PPD) आपके दृष्टि क्षेत्र के प्रत्येक डिग्री में पिक्सेल की संख्या मापता है। 60 PPD सामान्य मानव दृष्टि के लिए मानक सीमा है।"
+    },
+    "DualMonitorMatcher": {
+      "eyebrow": "मल्टी-मॉनिटर कैलिब्रेशन",
+      "title": "दोहरे मॉनिटर व्हाइट पॉइंट और रंग मिलान",
+      "description": "इस स्प्लिट कैनवास को दोनों मॉनिटरों के जोड़ पर रखें। आरजीबी गेन और चमक को तब तक समायोजित करें जब तक दोनों पैनल समान न दिखें।",
+      "canvasHint": "मॉनिटर बेज़ेल के साथ संरेखित करने के लिए विभाजन रेखा को खींचें या दोनों मॉनिटर पर फ़ुलस्क्रीन करें।",
+      "exitFullscreen": "फ़ुलस्क्रीन से बाहर निकलें",
+      "fullscreenAcross": "दोनों डिस्प्ले पर फ़ुलस्क्रीन फैलाएं",
+      "monitorA": "डिस्प्ले 1 (संदर्भ)",
+      "monitorB": "डिस्प्ले 2 (समायोजन)",
+      "calibrationTarget": "परीक्षण पैटर्न चुनें",
+      "resetAll": "सभी रीसेट करें",
+      "presetD65": "D65 सफ़ेद (6500K)",
+      "presetGray75": "75% हल्का ग्रे",
+      "presetGray50": "50% मध्य ग्रे",
+      "presetGray18": "18% न्यूट्रल ग्रे",
+      "presetWarm": "गर्म (5000K)",
+      "presetCool": "ठंडा (7500K)",
+      "presetRed": "प्राथमिक लाल",
+      "presetGreen": "प्राथमिक हरा",
+      "presetBlue": "प्राथमिक नीला",
+      "monitorAControls": "डिस्प्ले 1 आरजीबी गेन",
+      "monitorBControls": "डिस्प्ले 2 आरजीबी गेन",
+      "reset": "रीसेट",
+      "redGain": "लाल गेन",
+      "greenGain": "हरा गेन",
+      "blueGain": "नीला गेन",
+      "brightnessOffset": "चमक ऑफसेट",
+      "guideTitle": "दो मॉनिटरों को कैसे मिलाएं",
+      "guideStep1": "1. दोनों मॉनिटरों को उनके OSD मेनू में एक ही रंग मोड (जैसे sRGB या 6500K) पर सेट करें।",
+      "guideStep2": "2. इस विंडो को दोनों स्क्रीन के जोड़ पर फैलाएं और 'D65 सफ़ेद' या '18% न्यूट्रल ग्रे' चुनें।",
+      "guideStep3": "3. अलग दिखने वाले मॉनिटर पर आरजीबी चैनलों को तब तक समायोजित करें जब तक कि दोनों का अंतर गायब न हो जाए।"
     }
   },
   "Diagnostic": {
@@ -4667,7 +5022,8 @@
     },
     "recommendedChecksNote": "आपकी डिस्प्ले विशिष्टताओं और पैनल तकनीक के आधार पर लक्षित परीक्षण सिफारिशें।",
     "troubleshootingNote": "इस सत्र के दौरान देखे गए मुद्दों के आधार पर व्यावहारिक समस्या निवारण गाइड के सीधे लिंक।",
-    "viewTroubleshootingAction": "समस्या निवारण गाइड देखें"
+    "viewTroubleshootingAction": "समस्या निवारण गाइड देखें",
+    "exportCertificate": "प्रमाणपत्र निर्यात / प्रिंट करें"
   },
   "CustomPattern": {
     "breadcrumbAll": "सभी परीक्षण",
@@ -6434,7 +6790,13 @@
       "notesPlaceholder": "पिक्सेल व्यवहार पर कोई नोट जोड़ें...",
       "saveObservation": "अवलोकन सहेजें",
       "observationSaved": "अवलोकन सत्र में सहेजा गया।"
-    }
+    },
+    "m": "मि",
+    "mRunCompleted": "मि सत्र पूर्ण",
+    "visualObservation": "दृश्य अवलोकन",
+    "importantNotice": "महत्वपूर्ण सूचना:",
+    "cancel": "रद्द करें",
+    "iUnderstandStart": "मैं समझता हूँ, उत्तेजना शुरू करें"
   },
   "Troubleshooting": {
     "metaTitle": "डिस्प्ले समस्या निवारण गाइड – सामान्य मॉनिटर समस्याएं और समाधान",

@@ -2416,5 +2416,828 @@ export const DE_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     ],
     "primarySearchIntent": "browser kompatibilität web apis chromium webkit gecko hardware zugriff",
     "readingTimeMinutes": 5
+  },
+  // New Feature Guide: Pixel Inversion, VCOM Calibration & Pixel Walk
+  {
+    "slug": "pixel-inversion-and-vcom",
+    "category": "display-problems",
+    "title": "Pixel-Inversion, VCOM-Kalibrierung & Pixel Walk",
+    "subtitle": "Flüssigkristall-Polaritätsumkehr, VCOM-Spannungsabgleich und Pixel-Walk-Flimmern verstehen.",
+    "description": "Erfahren Sie, wie LCD-Pixelinversion elektrolytische Schäden verhindert, warum asymmetrisches VCOM zu Schachbrett-Flimmern führt und wie Sie Spannungsfehler prüfen.",
+    "directAnswer": "Pixel-Inversion ist ein Hardwareverfahren, bei dem LCD-Panels die elektrische Polarität (+V / -V) der Subpixel in jedem Frame umkehren, um Flüssigkristall-Alterung zu verhindern.",
+    "whyItMatters": "Wenn die VCOM-Referenzspannung ab Werk ungenau kalibriert ist, erzeugen positive und negative Polaritäten ungleiche Helligkeiten, was zu 30Hz/60Hz-Flimmern und Augenermüdung führt.",
+    "whatToLookFor": [
+      "Shimmering or vibrating 1x1 dot or 2x2 checkerboard grids",
+      "Faint vertical or horizontal crawling wave bands across uniform gray backgrounds",
+      "Micro-jitter along edges of fine black text on white backgrounds",
+      "Subtle green or magenta tint shifts across high-frequency pixel mesh patterns"
+    ],
+    "howToTest": [
+      "Open the Pixel Inversion & VCOM Test in Screen Tester at native resolution with 100% display scaling",
+      "Step through 1x1 dot inversion, 2x2 check, vertical stripe, and subpixel mesh patterns",
+      "Observe the pattern from your standard operating distance without leaning in too close",
+      "Note whether the gray pattern appears steady and calm or vibrates aggressively"
+    ],
+    "whatScreenTesterCanObserve": [
+      "Precise 1-to-1 pixel-mapped alternating checkerboards and subpixel stripe rasters",
+      "Visual presence of polarity asymmetry across calibrated gray midtone levels",
+      "Response across different inversion architectures (dot, column, row, and subpixel)"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "Internal analog potentiometer or digital VCOM register voltage value in millivolts",
+      "Physical liquid crystal molecular alignment angle under TFT electric field",
+      "Automated defect classification without human visual evaluation"
+    ],
+    "commonCauses": [
+      "Factory VCOM potentiometer calibration drift during panel manufacturing or assembly",
+      "Aging power supply filter capacitors causing ripple on the analog TFT reference rails",
+      "Aggressive panel response time overdrive voltages pushing subpixels past target levels",
+      "Non-native display resolution or fractional OS scaling blurring the alternating dot pattern"
+    ],
+    "whatToDoNext": [
+      "Ensure the display is running at native resolution and 100% integer scaling",
+      "Allow the monitor to warm up for 15-30 minutes, as cold LCD panels exhibit more VCOM asymmetry",
+      "If severe flicker occurs during normal productivity work, contact the manufacturer for warranty replacement under panel defect policies"
+    ],
+    "sections": [
+      {
+        "title": "The Physics of Liquid Crystal DC Polarization",
+        "content": [
+          "Nematic liquid crystals are dipole molecules suspended between transparent glass substrates. When an electric field is applied, the molecules twist or tilt to modulate backlight transmission.",
+          "If a continuous direct current (DC) voltage is maintained across the liquid crystal layer, mobile ions within the fluid migrate toward the electrodes, causing chemical plating, permanent polarization, and severe image retention. To prevent this electrolytic destruction, displays alternate the drive voltage polarity (+V and -V relative to a common reference voltage called VCOM) on every single refresh frame."
+        ]
+      },
+      {
+        "title": "Inversion Architectures: Dot, Column, and Row",
+        "content": [
+          "To prevent the entire display from flickering simultaneously during polarity reversal, panels spatial-multiplex polarities across neighboring pixels.",
+          "Dot Inversion: Neighboring adjacent pixels alternate polarities (+, -, +, -) in a checkerboard. This cancels optical flicker most effectively and is used in premium monitors.",
+          "Column Inversion: Entire vertical columns share polarity. Economical to drive but susceptible to vertical striping and pixel walk artifacts.",
+          "Row Inversion: Horizontal lines share polarity. Prone to horizontal line crawl when displaying horizontal UI dividers."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Does an OLED panel have pixel inversion?",
+        "answer": "No. OLED panels use organic light-emitting diodes that emit light directly via current injection (DC) rather than liquid crystal shuttering, so they do not require AC polarity inversion or VCOM calibration."
+      },
+      {
+        "question": "Can pixel walk damage my monitor?",
+        "answer": "No. Pixel walk and VCOM asymmetry are optical artifacts, not destructive flaws. They simply indicate that positive and negative polarities produce slightly unequal luminance."
+      }
+    ],
+    "relatedTestIds": [
+      "pixel-inversion-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "screen-flickering"
+    ],
+    "relatedArticleSlugs": [
+      "refresh-rate-and-frame-rates",
+      "text-clarity-and-subpixel-rendering"
+    ],
+    "primarySearchIntent": "pixel inversion test vcom pixel walk explained",
+    "readingTimeMinutes": 6
+  },
+  // New Feature Guide: Backlight Strobing, BFI & Strobe Crosstalk
+  {
+    "slug": "backlight-strobing-and-strobe-crosstalk",
+    "category": "display-basics",
+    "title": "Backlight Strobing, BFI & Strobe Crosstalk",
+    "subtitle": "Bewegungsunschärfereduktion (ULMB, DyAc, ELMB), Strobe-Phasen und Doppelbild-Geisterbilder verstehen.",
+    "description": "Erfahren Sie, wie Backlight Strobing und BFI Bewegungsunschärfe eliminieren, was Strobe Crosstalk an Bildschirmrändern verursacht und wie die Phase optimiert wird.",
+    "directAnswer": "Backlight Strobing pulsiert die Hintergrundbeleuchtung einmal pro Frame erst dann, wenn die Flüssigkristalle ihre Farbumschaltung abgeschlossen haben, wodurch Sample-and-Hold-Unschärfe beseitigt wird.",
+    "whyItMatters": "Flachbildschirme leiden unter trägheitsbedingter Unschärfe bei Augenverfolgung. Strobing erreicht CRT-Klarheit, erzeugt bei Phasenversatz jedoch Strobe Crosstalk.",
+    "whatToLookFor": [
+      "Sharp single-image moving objects in the screen center zone",
+      "Faint ghost silhouette trailing or leading moving bars at the top or bottom edges",
+      "Dimming of overall display brightness when backlight strobing is engaged",
+      "Red or blue color fringing caused by mismatched phosphor decay times"
+    ],
+    "howToTest": [
+      "Enable blur reduction (ULMB, DyAc, ELMB, PureXP) in your monitor OSD",
+      "Launch the Strobe Crosstalk & BFI Inspection Test in Screen Tester",
+      "Observe moving vertical bars at 960 px/s across the top, center, and bottom tracks",
+      "Determine which vertical third of the screen exhibits the cleanest single image"
+    ],
+    "whatScreenTesterCanObserve": [
+      "Controlled velocity moving targets across multiple vertical screen tracks",
+      "Visual comparison between native motion blur and strobed phantom silhouettes",
+      "Observation of crosstalk intensity changes at various panning speeds"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "Hardware strobe pulse width in microseconds (requires a photodiode oscilloscope)",
+      "Peak instantaneous flash brightness in nits",
+      "Internal display timing controller (TCON) scan-out delay"
+    ],
+    "commonCauses": [
+      "Global backlight flash timing conflicting with progressive top-to-bottom pixel scan-out",
+      "Strobe phase centered at screen midpoint, leaving top and bottom pixels mid-transition",
+      "Slow liquid crystal transition times (GtG) exceeding the available dark interval",
+      "Framerate not locked to the monitor's exact refresh rate"
+    ],
+    "whatToDoNext": [
+      "Adjust Strobe Phase in your monitor OSD or utility software to shift the clean zone to where your crosshair or task sits",
+      "Adjust Strobe Length or Duty Cycle to trade between peak brightness and blur reduction",
+      "Ensure GPU framerate is capped cleanly at the exact strobed refresh rate to prevent severe stutter"
+    ],
+    "sections": [
+      {
+        "title": "Sample-and-Hold Blur vs. Impulse Blur",
+        "content": [
+          "Modern flat-panel monitors are sample-and-hold displays: pixels remain continuously illuminated for the full duration of each frame (16.7ms at 60Hz, 6.9ms at 144Hz).",
+          "When your eyes track a moving object across the screen, your gaze sweeps continuously while the screen holds each frame static. Your retina smears the static frame across your photoreceptors, creating eye-tracking motion blur regardless of how fast individual pixels transition."
+        ]
+      },
+      {
+        "title": "The Mechanics of Strobe Crosstalk",
+        "content": [
+          "Displays draw frames progressively from top to bottom (vertical scan-out). By the time the bottom line is being refreshed, the top line was refreshed milliseconds earlier.",
+          "Because the backlight flashes globally across all zones simultaneously, it is impossible for all lines to be in a completed, settled state at the exact moment of the flash. Lines that are still transitioning appear as dual or ghosted silhouettes, known as strobe crosstalk."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can I use G-Sync / FreeSync and Backlight Strobing at the same time?",
+        "answer": "Most monitors require a fixed refresh rate for strobing. However, specialized technologies like ASUS ELMB-Sync and ViewSonic PureXP with VRR allow strobing across variable refresh rates within specific ranges."
+      },
+      {
+        "question": "Why does my screen look dimmer with strobing turned on?",
+        "answer": "Because the backlight is turned off for the majority of each frame cycle (often 70% to 85% of the time), average light output drops significantly compared to continuous illumination."
+      }
+    ],
+    "relatedTestIds": [
+      "strobe-crosstalk-test",
+      "motion-blur-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "blurry-motion"
+    ],
+    "relatedArticleSlugs": [
+      "monitor-ghosting-and-motion-blur",
+      "refresh-rate-and-frame-rates"
+    ],
+    "primarySearchIntent": "strobe crosstalk backlight strobing blur reduction explained",
+    "readingTimeMinutes": 7
+  },
+  // New Feature Guide: VRR Brightness Flicker, Gamma Shifts & LFC Fluctuation
+  {
+    "slug": "vrr-brightness-flicker-and-gamma",
+    "category": "display-problems",
+    "title": "VRR-Helligkeitsflimmern, Gamma-Shifts & LFC-Schwankungen",
+    "subtitle": "Warum OLED-, VA- und IPS-Monitore bei Framerate-Sprüngen unter G-Sync und FreeSync flimmern.",
+    "description": "Verstehen Sie die Ursachen von VRR-Helligkeitsflimmern auf OLED- und VA-Displays, wie Bildratenschwankungen Flimmern auslösen und wie Sie Ihr Display stabilisieren.",
+    "directAnswer": "VRR-Helligkeitsflimmern entsteht, weil sich Subpixel-Leuchtdichte- und Gammakurven abhängig von der Frame-Dauer verschieben, wenn Bildraten stark schwanken.",
+    "whyItMatters": "Starke Bildrateneinbrüche in Ladebildschirmen oder Zwischensequenzen führen zu ruckartigem Helligkeitspumpen in dunklen Bildbereichen, was die Augen stark anstrengt.",
+    "whatToLookFor": [
+      "Rhythmic brightness pulsation in dark gray textures and shadow areas",
+      "Momentary brightness jolts during framerate spikes or dips below the VRR range",
+      "Increased flicker on OLED and VA panels compared to standard IPS monitors",
+      "Flicker triggered during game loading screens or menu navigation"
+    ],
+    "howToTest": [
+      "Enable G-Sync or FreeSync in your graphics driver and monitor OSD",
+      "Launch the VRR Brightness Flicker Stress Test in Screen Tester",
+      "Observe 10% and 25% gray test patches as the framerate sweeps between 45Hz and 144Hz",
+      "Check if the darkness level stays uniform or pumps visibly during the sweep"
+    ],
+    "whatScreenTesterCanObserve": [
+      "Visual display reaction to simulated framerate swings and dynamic frame presentation intervals",
+      "Sensitivity of near-black vs midtone gray levels to refresh-dependent gamma changes",
+      "Detection of visual luminance pumping across calibrated test fields"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "Hardware GPU Adaptive-Sync VESA timing packet metadata",
+      "Direct microvolt OLED subpixel driving voltage changes",
+      "Whether your specific monitor model has hardware G-Sync module gamma compensation"
+    ],
+    "commonCauses": [
+      "OLED subpixel charging voltage decay during long frame times at low refresh rates",
+      "VA panel gamma shifts between low and high refresh frequencies",
+      "Low Framerate Compensation (LFC) multiplying frames rapidly near the 48Hz boundary",
+      "Uncapped GPU framerate bouncing violently against the maximum refresh ceiling"
+    ],
+    "whatToDoNext": [
+      "Cap your framerate 3 FPS below your monitor's maximum refresh rate using your graphics driver",
+      "Adjust graphics settings to eliminate severe framerate drops below the minimum VRR threshold",
+      "Enable 'VRR Flicker Mitigation' in your monitor OSD if available",
+      "Disable VRR for static or poorly optimized titles with unstable frame pacing"
+    ],
+    "sections": [
+      {
+        "title": "The Physics of Refresh-Rate Dependent Gamma",
+        "content": [
+          "Liquid crystal molecules and OLED emissive capacitors lose charge gradually over the duration of a frame (leakage current). At 144Hz (6.9ms), pixels are refreshed frequently and hold steady voltage. At 48Hz (20.8ms), the voltage decays longer between refreshes.",
+          "Panel manufacturers program factory gamma curves optimized for a specific refresh rate. When VRR varies the frame duration dynamically, the panel's actual gamma curve shifts, making near-black shades appear lighter or darker on every alternating frame."
+        ]
+      },
+      {
+        "title": "Low Framerate Compensation (LFC) Jolt",
+        "content": [
+          "When framerate dips below the hardware VRR threshold (e.g. 48Hz), the driver instantly doubles or triples frames (e.g. displaying 45 FPS at 90Hz).",
+          "This sudden jump from 48Hz timing to 90Hz timing creates an instant step change in panel gamma, perceived by the human eye as an obvious flash or brightness jolt."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Why are OLED monitors more prone to VRR flicker than IPS?",
+        "answer": "OLED pixels are driven by thin-film transistors with voltage-dependent subpixel capacitors. Because OLED produces true zero black, the human eye is exceptionally sensitive to tiny luminance percentage swings in the 1% to 10% dark gray range."
+      },
+      {
+        "question": "Does using an HDMI 2.1 or DisplayPort cable make a difference for VRR flicker?",
+        "answer": "A high-quality cable prevents signal dropouts, but VRR gamma flicker is an inherent panel characteristic driven by TFT charging physics, not cable bandwidth."
+      }
+    ],
+    "relatedTestIds": [
+      "vrr-flicker-test",
+      "vrr-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "screen-flickering"
+    ],
+    "relatedArticleSlugs": [
+      "refresh-rate-and-frame-rates",
+      "black-levels-and-shadow-detail"
+    ],
+    "primarySearchIntent": "vrr brightness flicker g-sync freesync gamma shift explained",
+    "readingTimeMinutes": 6
+  },
+  // New Feature Guide: Pursuit Camera Tracking & Photographic MPRT Measurement
+  {
+    "slug": "pursuit-camera-and-mprt-measurement",
+    "category": "display-basics",
+    "title": "Pursuit-Kamera-Tracking & Fotografische MPRT-Messung",
+    "subtitle": "Moving Patterns mit synchronisierten Pursuit-Kameras fotografieren, um die wahrgenommene Bewegungsunschärfe exakt zu erfassen.",
+    "description": "Lernen Sie die Grundlagen der Pursuit-Kamera-Fotografie kennen, warum stationäre Kameras Bewegungsunschärfe nicht messen können und wie MPRT dokumentiert wird.",
+    "directAnswer": "Eine Pursuit-Kamera bewegt sich während der Belichtung mit der exakten Geschwindigkeit des Bildschirminhalts und ahmt so die menschliche Augenfolgebewegung nach.",
+    "whyItMatters": "Stationäre Kamerafotos zeigen nur Frame-Überlagerungen. Erst synchronisierte Pursuit-Fotografie macht GtG-Schaltzeiten und MPRT-Bewegungsunschärfe wissenschaftlich messbar.",
+    "whatToLookFor": [
+      "Crisp, single-line alignment of temporal graduation tick marks in captured photos",
+      "True width of trailing motion blur directly proportional to pixel hold time",
+      "Overdrive coronas (inverse ghosting halo trails) behind moving targets",
+      "Phosphor or LED decay trails behind moving high-contrast bars"
+    ],
+    "howToTest": [
+      "Open the Pursuit Camera Sync Track in Screen Tester",
+      "Set your smartphone or camera to manual exposure mode with a shutter speed between 1/15s and 1/30s",
+      "Pan your camera smoothly alongside the moving pattern from left to right",
+      "Inspect your photo: if the vertical tick marks form a clean, straight line, your pan was synchronized"
+    ],
+    "whatScreenTesterCanObserve": [
+      "Precision temporal graduation tracks designed specifically for camera tracking calibration",
+      "Constant velocity horizontal moving targets across multiple background contrast levels",
+      "Visual reference lines for quantifying motion smear width"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "Camera panning velocity or shutter synchronization automatically",
+      "Microsecond photodiode GtG transition curves without laboratory optical probes",
+      "Camera lens optical distortion or motion blur introduced by handshake"
+    ],
+    "commonCauses": [
+      "Camera panning speed too fast or too slow relative to the target on-screen velocity",
+      "Camera shutter speed too short (freezing a single static frame instead of tracking)",
+      "Inconsistent camera tracking acceleration across the display horizontal axis",
+      "Display framerate drops or browser stutter during photographic capture"
+    ],
+    "whatToDoNext": [
+      "Use a smooth tracking surface or slider rail for consistent camera movement",
+      "Examine the trailing edge of captured targets to compare monitor overdrive modes (Off, Normal, Extreme)",
+      "Calculate MPRT in milliseconds by measuring the smear pixel width divided by velocity in pixels per millisecond"
+    ],
+    "sections": [
+      {
+        "title": "Why Stationary Cameras Fail for Motion Blur",
+        "content": [
+          "When you photograph a moving on-screen target with a stationary camera, the sensor accumulates multiple successive static display refreshes in place, producing stepped ghost duplicates.",
+          "Human eyes do not sit still; they track moving objects with continuous smooth pursuit. A pursuit camera reproduces this biological mechanism by panning synchronously across the screen during the camera exposure."
+        ]
+      },
+      {
+        "title": "The Temporal Graduation Sync Track",
+        "content": [
+          "Screen Tester incorporates a temporal graduation track—a series of white vertical ticks offset across successive refresh frames.",
+          "When a pursuit camera is perfectly synchronized in speed and angle, the staggered ticks overlap into a single, razor-sharp vertical line in the final photograph, verifying the validity of the measurement."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can I use a modern smartphone for pursuit camera testing?",
+        "answer": "Yes! Modern smartphones with 'Pro' or 'Manual' camera modes allow manual shutter speed control (set to 1/15s to 1/30s). Panning smoothly by hand along a desk surface can produce excellent synchronized pursuit photos."
+      },
+      {
+        "question": "What is the difference between GtG and MPRT?",
+        "answer": "GtG (Gray-to-Gray) measures how fast liquid crystals physically rotate from one color to another. MPRT (Motion Picture Response Time) measures the total duration a pixel is seen by the eye, dominated by the frame hold duration on sample-and-hold displays."
+      }
+    ],
+    "relatedTestIds": [
+      "pursuit-camera-test",
+      "ghosting-test",
+      "motion-blur-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "blurry-motion"
+    ],
+    "relatedArticleSlugs": [
+      "monitor-ghosting-and-motion-blur",
+      "backlight-strobing-and-strobe-crosstalk"
+    ],
+    "primarySearchIntent": "pursuit camera test mprt ghosting photography explained",
+    "readingTimeMinutes": 7
+  },
+  // New Feature Guide: Audio-Video Lip-Sync Calibration & Latency Alignment
+  {
+    "slug": "audio-video-sync-and-latency",
+    "category": "device-and-input",
+    "title": "Audio-Video-Lippensynchronisation & Latenzabgleich",
+    "subtitle": "Videoverzögerung, Soundbar-Delay und Bluetooth-Codec-Latenz für bildgenaue Synchronität diagnostizieren.",
+    "description": "Erfahren Sie, warum Bild und Ton auseinanderdriften, wie Sie Soundbar- und Kopfhörer-Latenz messen und Millisekunden-Delays präzise kalibrieren.",
+    "directAnswer": "Die Audio-Video-Synchronisation gleicht Anzeigeframes und akustische Impulse ab, um Bildverarbeitungs- und Audiopuffer-Verzögerungen auszugleichen.",
+    "whyItMatters": "HDR-Tone-Mapping und MEMC verursachen Bildverzögerungen, während Soundbars und Bluetooth Audiopuffer aufbauen. Asynchronität stört die Lippensynchronisation massiv.",
+    "whatToLookFor": [
+      "Simultaneous occurrence of the visual flash and acoustic 1 kHz beep",
+      "Audio arriving before the visual flash (display lag exceeds audio delay)",
+      "Video flash arriving before the audio beep (audio processing or Bluetooth lag)",
+      "Consistency of sync across multiple browser tabs and media playback apps"
+    ],
+    "howToTest": [
+      "Open the Audio / Video Lip-Sync Calibration Test in Screen Tester",
+      "Ensure your system speakers or headphones are active and unmuted",
+      "Watch the rotating dial as it crosses the top zero marker and listen for the tone",
+      "Adjust the millisecond offset slider until the flash and sound perceive as perfectly instantaneous"
+    ],
+    "whatScreenTesterCanObserve": [
+      "Human perceptual synchronization between optical visual flashes and acoustic pulses",
+      "Calibration offset values in milliseconds (+/- 250ms range)",
+      "Acoustic pulse delivery via precise Web Audio API synthesized oscillators"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "Hardware electrical transit latency across physical HDMI or optical cables",
+      "Microsecond acoustic propagation delay through room air",
+      "Operating system Bluetooth audio stack internal buffer configurations"
+    ],
+    "commonCauses": [
+      "Heavy TV video processing modes ('Cinema' or 'Vivid' with frame smoothing enabled)",
+      "Bluetooth audio compression codec buffers (SBC and AAC have 100ms-200ms latency)",
+      "HDMI eARC audio format transcoding delay (e.g. PCM to Dolby Digital bitstream conversion)",
+      "Display scaler lag when feeding non-native video resolutions"
+    ],
+    "whatToDoNext": [
+      "Enable 'Game Mode' on your TV or monitor to bypass image processing latency",
+      "Use low-latency Bluetooth codecs (aptX Low Latency, LC3) or wired 3.5mm / USB connections",
+      "Adjust audio delay settings in your TV, soundbar, or media player (e.g. VLC or Kodi) by the measured offset"
+    ],
+    "sections": [
+      {
+        "title": "ITU-R Perceptual Thresholds for Lip-Sync",
+        "content": [
+          "According to international broadcasting standard ITU-R BT.1359-1, the human brain perceives audio-video misalignment asymmetrically.",
+          "Audio can lead video by no more than +45ms before becoming objectionable, while audio can lag behind video by up to -125ms because humans are accustomed to light traveling faster than sound over physical distances."
+        ]
+      },
+      {
+        "title": "Bluetooth Audio Latency vs. HDMI eARC",
+        "content": [
+          "Standard Bluetooth audio profiles (A2DP with SBC or AAC codecs) buffer audio packets to prevent wireless dropouts, typically introducing 120ms to 250ms of delay.",
+          "Direct HDMI eARC connections offer near-zero delay when passing uncompressed LPCM, but enabling on-the-fly Dolby Atmos transcoding inside a television can re-introduce 50ms to 100ms of lag."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What is an acceptable lip-sync delay for watching movies?",
+        "answer": "A delay within +/- 20ms is virtually undetectable by human viewers. A delay exceeding 50ms is noticeable on close-up dialogue, and over 100ms becomes distracting."
+      },
+      {
+        "question": "Why does audio sync drift over time during long videos?",
+        "answer": "Clock drift between the display refresh rate (e.g. 59.94Hz vs 60.00Hz) and the audio hardware sample clock (44.1kHz vs 48kHz) can accumulate gradual desync unless re-clocked by the media player."
+      }
+    ],
+    "relatedTestIds": [
+      "audio-sync-test",
+      "speaker-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "audio-out-of-sync"
+    ],
+    "relatedArticleSlugs": [
+      "audio-channel-testing-and-stereo-separation"
+    ],
+    "primarySearchIntent": "audio video lip sync calibration test soundbar delay explained",
+    "readingTimeMinutes": 6
+  },
+  // New Feature Guide: Gamepad Diagnostics: Analog Stick Drift, Circularity & Deadzones
+  {
+    "slug": "gamepad-diagnostics-and-stick-drift",
+    "category": "device-and-input",
+    "title": "Gamepad-Diagnose: Analog-Stick-Drift, Zirkularität & Deadzones",
+    "subtitle": "Potentiometer-Verschleiß, Hall-Effekt-Magnetsensoren, Ruhedrift und Totzonen-Kalibrierung verstehen.",
+    "description": "Erfahren Sie, was Analog-Stick-Drift verursacht, wie Sie Sticks und Trigger über die Gamepad-API testen und Deadzones optimal konfigurieren.",
+    "directAnswer": "Analog-Stick-Drift entsteht, wenn interne Potentiometerkontakte verschleißen oder verstauben und Fehlsignale senden, obwohl der Stick unberührt ruht.",
+    "whyItMatters": "Stick-Drift stört präzises Zielen, führt zu Kameradrehungen und erschwert die Menüsteuerung. Frühzeitige Diagnose hilft bei Reklamation oder Nachjustierung.",
+    "whatToLookFor": [
+      "Resting coordinate position shifting away from true center (0.00, 0.00)",
+      "Asymmetrical circularity plots showing flat edges or corner clipping",
+      "Jittery or erratic axis coordinates when moving thumbsticks smoothly",
+      "Analog trigger values failing to reach 100% or registering phantom squeeze input"
+    ],
+    "howToTest": [
+      "Connect your controller via USB cable or Bluetooth",
+      "Press any button on the gamepad to wake the HTML5 Gamepad API in Screen Tester",
+      "Observe the resting crosshair position with hands completely off both sticks",
+      "Rotate the sticks along their outer boundaries to inspect the circular boundary track"
+    ],
+    "whatScreenTesterCanObserve": [
+      "Real-time X and Y axis values normalized between -1.000 and +1.000",
+      "All 16 standard digital and pressure-sensitive button actuations",
+      "Gamepad device vendor identification and hardware model names"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "Physical resistance values of potentiometer carbon tracks in ohms",
+      "Internal battery charge level (not exposed by standard web APIs)",
+      "Hardware internal firmware calibration settings stored on controller EEPROM"
+    ],
+    "commonCauses": [
+      "Frictional wear of the conductive carbon wiper track inside the thumbstick module",
+      "Accumulated dust, lint, and plastic particulate inside the sensor housing",
+      "Weakened centering springs failing to return the stick to physical neutral",
+      "Operating system deadzone configured too low for the controller's physical tolerances"
+    ],
+    "whatToDoNext": [
+      "Clean around the thumbstick ball with compressed air or electronic contact cleaner",
+      "Increase in-game inner deadzones to accommodate small resting drift (<5%)",
+      "Recalibrate the controller in Windows Game Controllers or Steam settings",
+      "Upgrade to controllers equipped with contactless Hall-effect magnetic sensors"
+    ],
+    "sections": [
+      {
+        "title": "Potentiometer Thumbsticks vs. Hall-Effect Sensors",
+        "content": [
+          "Traditional game controllers (Xbox, DualSense, Switch Pro) use analog potentiometers where a physical metal wiper rubs against a carbon resistive track. Over millions of cycles, the carbon rubs away, changing resistance and causing drift.",
+          "Modern Hall-effect thumbsticks use permanent magnets and semiconductor sensors that measure magnetic field strength without physical contact, making them immune to mechanical wiper wear and permanent stick drift."
+        ]
+      },
+      {
+        "title": "Circularity Error and Deadzones",
+        "content": [
+          "Circularity error measures how accurately an analog stick travels through a true geometric circle. Excessive outer deadzones clip coordinates into a rounded square, causing sudden diagonal speed boosts.",
+          "Inner deadzones define the center resting dead-band. A properly calibrated inner deadzone allows tiny manufacturing tolerances without sending unwanted character movement."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "How much stick drift is considered normal?",
+        "answer": "A resting drift value under 0.05 (5%) is normal mechanical play and is easily absorbed by default game deadzones. Drift exceeding 0.10 (10%) causes noticeable character movement and indicates a worn sensor."
+      },
+      {
+        "question": "Can stick drift be fixed by software updates?",
+        "answer": "Firmware updates can recalibrate the software center point or increase default deadzones, but physical carbon track wear cannot be repaired by software."
+      }
+    ],
+    "relatedTestIds": [
+      "gamepad-test",
+      "reaction-time-test"
+    ],
+    "relatedTroubleshootingIds": [],
+    "relatedArticleSlugs": [
+      "what-browser-display-tests-can-and-cannot-measure"
+    ],
+    "primarySearchIntent": "gamepad tester stick drift controller circularity deadzone test",
+    "readingTimeMinutes": 6
+  },
+  // New Feature Guide: Display Bandwidth, Video Timings & Cable Standards
+  {
+    "slug": "display-bandwidth-and-cable-standards",
+    "category": "tv-and-display-setup",
+    "title": "Display-Bandbreite, Video-Timings & Kabelstandards",
+    "subtitle": "Unkomprimierte Datenraten, VESA DSC visuell verlustfreie Kompression und HDMI/DisplayPort-Limits berechnen.",
+    "description": "Verstehen Sie Videobandbreitenberechnungen, VESA CVT-RB-Overheads, Schnittstellengrenzen und wann VESA DSC-Kompression erforderlich ist.",
+    "directAnswer": "Display-Bandbreite bezeichnet die Übertragungsrate in Gbps, die durch Auflösung, Bildwiederholrate, Farbtiefe und Farbunterabtastung bestimmt wird.",
+    "whyItMatters": "Moderne 4K-240Hz-Monitore überschreiten ältere HDMI- und DisplayPort-Limits, was zu Bildausfällen, Signalabbrüchen oder reduzierter Farbtiefe führt.",
+    "whatToLookFor": [
+      "Black screen blinking or signal loss during high-framerate gaming",
+      "Automatic downsampling to 4:2:2 or 4:2:0 chroma subsampling causing fringed text",
+      "Color depth being clamped to 8-bit instead of 10-bit HDR",
+      "Warning messages in GPU control panels regarding bandwidth limits"
+    ],
+    "howToTest": [
+      "Open the Display Bandwidth Calculator in Screen Tester Tools",
+      "Select your monitor's resolution, refresh rate, color depth, and chroma subsampling",
+      "Review calculated uncompressed and DSC data rates against HDMI and DisplayPort interface standards",
+      "Verify whether your existing cable meets the necessary transmission standard"
+    ],
+    "whatScreenTesterCanObserve": [
+      "Mathematical bandwidth calculation incorporating VESA CVT-RB2 blanking intervals",
+      "Comparison across HDMI 2.0/2.1, DisplayPort 1.2/1.4/2.1, and Thunderbolt specifications",
+      "Verification of whether VESA DSC 1.2a allows transmission over specific interfaces"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "Physical cable electrical attenuation or signal integrity in decibels",
+      "Whether a specific third-party cable is counterfeit or substandard",
+      "GPU hardware display pipeline stream count limits"
+    ],
+    "commonCauses": [
+      "Using an older HDMI 2.0 cable (18 Gbps) on a 4K 120Hz/144Hz monitor requiring HDMI 2.1 (48 Gbps)",
+      "DisplayPort 1.4 connection bottlenecked at 4K 240Hz without VESA DSC support",
+      "Low-quality long cable runs (>3 meters) causing packet loss and display blinks",
+      "Monitors sharing bandwidth across multiple MST daisy-chained displays"
+    ],
+    "whatToDoNext": [
+      "Upgrade to certified 'Ultra High Speed HDMI' (48 Gbps) or 'DP80' DisplayPort cables",
+      "Enable VESA DSC (Display Stream Compression) in your monitor OSD and GPU driver",
+      "Lower color depth from 10-bit to 8-bit or adjust refresh rate if cable bandwidth is constrained"
+    ],
+    "sections": [
+      {
+        "title": "The Mathematical Bandwidth Formula",
+        "content": [
+          "Raw video data rate is calculated as: Total Horizontal Pixels × Total Vertical Pixels × Refresh Rate × Color Depth × Chroma Factor.",
+          "However, video transmission also requires blanking intervals (front porch, sync pulse, back porch) defined by standards such as VESA CVT-RB2 (Reduced Blanking v2), adding approximately 15% to 20% overhead above active pixel dimensions."
+        ]
+      },
+      {
+        "title": "Understanding VESA DSC 1.2a",
+        "content": [
+          "Display Stream Compression (DSC 1.2a) is an industry-standard, visually lossless compression algorithm that compresses video data rates by up to 3:1.",
+          "DSC operates with sub-millisecond line-buffered latency, allowing ultra-high-resolution gaming (like 4K 240Hz or 8K 60Hz) over DisplayPort 1.4 and HDMI 2.1 interfaces without humanly perceptible visual degradation."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Does DSC compression add noticeable input lag?",
+        "answer": "No. VESA DSC processes pixels on a scanline-by-scanline basis with a delay of less than a few scanlines—a fraction of a microsecond—which is imperceptible to gamers."
+      },
+      {
+        "question": "What is the difference between DisplayPort 1.4 and DisplayPort 2.1?",
+        "answer": "DisplayPort 1.4 supports a maximum data rate of 25.92 Gbps (HBR3). DisplayPort 2.1 introduces UHBR transmission modes, reaching up to 77.37 Gbps (UHBR20), allowing uncompressed 4K 240Hz HDR."
+      }
+    ],
+    "relatedTestIds": [
+      "display-bandwidth-calculator"
+    ],
+    "relatedTroubleshootingIds": [],
+    "relatedArticleSlugs": [
+      "hdr-display-fundamentals",
+      "color-depth-and-banding"
+    ],
+    "primarySearchIntent": "display bandwidth calculator hdmi displayport dsc cable standards",
+    "readingTimeMinutes": 7
+  },
+  // New Feature Guide: Ergonomic Viewing Distance, Visual Acuity & Retina PPD
+  {
+    "slug": "viewing-distance-and-retina-resolution",
+    "category": "tv-and-display-setup",
+    "title": "Ergonomischer Betrachtungsabstand, Sehschärfe & Retina-PPD",
+    "subtitle": "Pixel pro Grad (PPD), 20/20-Visusgrenzen und THX/SMPTE-Sichtfeldempfehlungen berechnen.",
+    "description": "Ermitteln Sie den idealen ergonomischen Abstand für Ihren Monitor oder TV, verstehen Sie PPD und finden Sie die Retina-Schwelle Ihres Bildschirms.",
+    "directAnswer": "Der optimale Betrachtungsabstand balanciert menschliche Sehschärfe (60 PPD bei 20/20-Visus) mit ergonomischem Sichtfeld aus, um Pixelraster und Nackenschmerzen zu vermeiden.",
+    "whyItMatters": "Zu geringer Abstand offenbart Pixelstrukturen und strengt die Augen an, während zu großer Abstand Immersion und Textlesbarkeit beeinträchtigt.",
+    "whatToLookFor": [
+      "Individual pixel grid or screen-door effect visible at your sitting distance",
+      "Eye strain or excessive head movement needed to view screen corners",
+      "Text clarity and readability without straining or leaning forward",
+      "Immersion level matching recommendations from THX (40°) and SMPTE (30°)"
+    ],
+    "howToTest": [
+      "Open the Viewing Distance & Retina PPD Calculator in Screen Tester Tools",
+      "Enter your screen diagonal size (inches), resolution, and current viewing distance",
+      "Check your calculated Pixels Per Degree (PPD) against the 60 PPD Retina limit",
+      "Review recommended distances for desktop productivity, gaming, and home theater"
+    ],
+    "whatScreenTesterCanObserve": [
+      "Trigonometric calculation of visual angle and Pixels Per Degree (PPD)",
+      "Determination of the exact distance where individual pixels become indistinguishable",
+      "Field of view calculations matching THX and SMPTE theatrical recommendations"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "Physical sitting distance from user to screen without user input",
+      "Individual user ophthalmic refractive errors (astigmatism, myopia)",
+      "Ambient illumination levels impacting pupil dilation and visual acuity"
+    ],
+    "commonCauses": [
+      "Deep desk setups placing small 24-inch 1080p screens too far for comfortable reading",
+      "Shallow desks placing 32-inch or 42-inch monitors too close, causing neck fatigue",
+      "4K television viewed from standard couch distances (3+ meters) where resolution advantage is lost to the human eye",
+      "Incorrect font scaling forcing unnatural forward head posture"
+    ],
+    "whatToDoNext": [
+      "Position desktop monitors approximately an arm's length away (50cm to 75cm / 20in to 30in)",
+      "Align the top third of the monitor at or slightly below eye level to prevent neck strain",
+      "Increase OS text scaling rather than leaning closer if text feels difficult to read"
+    ],
+    "sections": [
+      {
+        "title": "The Science of 20/20 Vision and 60 PPD",
+        "content": [
+          "Standard 20/20 Snellen visual acuity corresponds to the ability to resolve two points separated by 1 arcminute (1/60th of a degree) of visual angle.",
+          "When a display delivers 60 Pixels Per Degree (PPD) at your viewing distance, each pixel subtends exactly 1 arcminute or less. At this threshold—popularized as 'Retina' resolution—the human retina can no longer distinguish individual pixels, and images appear continuous."
+        ]
+      },
+      {
+        "title": "Cinematic Field of View: SMPTE vs. THX",
+        "content": [
+          "SMPTE (Society of Motion Picture and Television Engineers) recommends a 30-degree field of view for general entertainment, providing comfortable viewing without eye strain.",
+          "THX recommends a 40-degree field of view for home theaters and cinematic gaming, delivering an immersive experience where the screen fills your primary visual field."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can the human eye see higher resolution than 60 PPD?",
+        "answer": "Individuals with exceptional 20/15 or 20/10 vision can resolve up to 80 or 85 PPD. However, for the vast majority of people, 60 PPD represents the practical limit where increasing pixel density yields diminishing visual returns."
+      },
+      {
+        "question": "What is the ideal viewing distance for a 27-inch 1440p monitor?",
+        "answer": "For a 27-inch 1440p display (109 PPI), the Retina threshold is approximately 80 cm (31 inches). A typical ergonomic desktop distance of 65 cm to 75 cm provides an ideal balance of sharpness and field of view."
+      }
+    ],
+    "relatedTestIds": [
+      "viewing-distance-calculator",
+      "resolution-checker"
+    ],
+    "relatedTroubleshootingIds": [
+      "blurry-text"
+    ],
+    "relatedArticleSlugs": [
+      "resolution-and-scaling",
+      "text-clarity-and-subpixel-rendering"
+    ],
+    "primarySearchIntent": "monitor viewing distance calculator retina ppd pixel density",
+    "readingTimeMinutes": 6
+  },
+  // New Feature Guide: Dual-Monitor White Point Matching & Multi-Display Calibration
+  {
+    "slug": "dual-monitor-color-and-white-point-matching",
+    "category": "tv-and-display-setup",
+    "title": "Dual-Monitor-Weißpunktabgleich & Multi-Display-Farbabstimmung",
+    "subtitle": "Farbtemperatur, RGB-Gain und metamerischen Abgleich über unterschiedliche Paneltechnologien hinweg angleichen.",
+    "description": "Erfahren Sie, warum Monitore trotz identischer Einstellungen verschiedene Weißtöne zeigen, wie Metameriefehler wirken und wie Sie Bildschirme kalibrieren.",
+    "directAnswer": "Der Dual-Monitor-Weißpunktabgleich nutzt Referenzweißflächen und RGB-Gain-Regler, um Farbtemperatur und Farbstiche zweier Nachbarmonitore visuell anzugleichen.",
+    "whyItMatters": "Wenn ein Monitor gelblich-warm und der andere bläulich-kühl wirkt, stört dies den Workflow und verfälscht farbkritische Bild- und Videobearbeitung.",
+    "whatToLookFor": [
+      "One screen appearing reddish/warm while the other looks cyan/cool",
+      "Brightness disparities across adjacent white web pages or documents",
+      "Color shifts across different panel technologies (IPS vs OLED vs VA)",
+      "Differing anti-glare matte coatings altering perceived contrast"
+    ],
+    "howToTest": [
+      "Open the Dual-Monitor White Point Matcher in Screen Tester across both screens",
+      "Span the window across both displays or open matching browser windows on each monitor",
+      "Select your primary calibrated display as the reference standard",
+      "Adjust the secondary monitor's physical OSD RGB Gain (Red, Green, Blue) controls until the white fields match"
+    ],
+    "whatScreenTesterCanObserve": [
+      "Split-canvas pure reference white and gray fields for side-by-side visual comparison",
+      "Interactive RGB gain offsets and correlated color temperature sliders",
+      "Color temperature presets from warm 5000K to cool 9300K"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "Absolute CIE 1931 xy chromaticity coordinates without an optical colorimeter or spectrophotometer",
+      "Backlight spectral emission power distribution (SPD)",
+      "Automatic adjustment of physical monitor hardware OSD sliders"
+    ],
+    "commonCauses": [
+      "Different backlight technologies (e.g. standard White-LED vs Quantum Dot WCG vs OLED)",
+      "Metameric failure: screens with different light spectrums matching on a colorimeter but looking different to the human eye",
+      "Factory calibration differences between different display brands and models",
+      "Night Light, f.lux, or True Tone enabled on only one display"
+    ],
+    "whatToDoNext": [
+      "Disable software color filters (Night Light, True Tone) across all operating system displays",
+      "Set both monitors to their 'Custom' or 'User' Color Temperature OSD mode",
+      "Use the human eye as a null detector: look back and forth rapidly between the screens while fine-tuning RGB Gain"
+    ],
+    "sections": [
+      {
+        "title": "The Phenomenon of Metameric Failure",
+        "content": [
+          "Two light sources with completely different spectral power distributions can stimulate human cone photoreceptors in ways that look identical under certain conditions—a phenomenon called metamerism.",
+          "However, modern wide-gamut monitors (such as QD-OLED or Nano-IPS) produce narrow spectral peaks. Even if a hardware colorimeter reports both screens are calibrated to exact D65 (x=0.3127, y=0.3290), the human eye may still perceive one screen as noticeably greener or pinker due to individual observer metameric failure."
+        ]
+      },
+      {
+        "title": "Step-by-Step Visual Alignment Technique",
+        "content": [
+          "1. Designate your highest-quality display as the primary reference and set it to D65 / Standard.",
+          "2. Match overall luminance first: adjust the secondary monitor's Brightness control so white pages appear equally luminous.",
+          "3. Match tint: if the secondary monitor appears slightly green, reduce the Green gain in its OSD. If it looks cool/blue, reduce Blue or slightly boost Red and Green."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can two completely different monitor models ever match 100% perfectly?",
+        "answer": "They can be matched closely enough that the difference is unobtrusive for daily productivity. However, differences in panel coatings (matte vs glossy) and viewing angle gamma shifts mean slight optical differences will always remain."
+      },
+      {
+        "question": "Should I calibrate white point with software profiles or monitor OSD?",
+        "answer": "Always adjust the monitor's physical hardware OSD RGB gain controls first. Software GPU LUT adjustments can introduce color banding and reduce dynamic range."
+      }
+    ],
+    "relatedTestIds": [
+      "dual-monitor-matcher",
+      "color-test",
+      "white-level-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "color-tint"
+    ],
+    "relatedArticleSlugs": [
+      "color-depth-and-banding",
+      "display-uniformity"
+    ],
+    "primarySearchIntent": "dual monitor color match white point calibration different screens",
+    "readingTimeMinutes": 7
+  },
+  // New Feature Guide: Display Inspection Reports, Defect Logging & Warranty Evidence
+  {
+    "slug": "display-inspection-reporting-and-certification",
+    "category": "browser-and-testing",
+    "title": "Display-Prüfberichte, Fehlerprotokollierung & Garantienachweise",
+    "subtitle": "Pixelfehler, Ausleuchtungsmängel und Hardwareparameter in strukturierte Prüfzertifikate für Reklamationen exportieren.",
+    "description": "Erfahren Sie, wie Sie Displayfehler innerhalb von Rückgabefristen dokumentieren, ISO 9241-307 Fehlerklassen verstehen und Zertifikate erstellen.",
+    "directAnswer": "Das Display-Prüfprotokoll fasst gefundene Pixelfehler, Ausleuchtungsnotizen und Hardwareparameter in einem druckbaren Prüfzertifikat zusammen.",
+    "whyItMatters": "Hersteller und Händler fordern während der Rückgabefrist klare Nachweise von Pixelfehlern. Ein strukturiertes Fehlerprotokoll beschleunigt RMA-Genehmigungen erheblich.",
+    "whatToLookFor": [
+      "Dead, stuck, and bright subpixel coordinates plotted across screen zones",
+      "Backlight bleed severity and corner IPS glow notes",
+      "Hardware GPU, browser user agent, and screen resolution parameters",
+      "Timestamped inspection session records"
+    ],
+    "howToTest": [
+      "Run the standard diagnostic sequence (Dead Pixels, Uniformity, Backlight Bleed) in Screen Tester",
+      "Click directly on any observed defect to place a tagged marker (Dead, Stuck, or Bright)",
+      "Open the Inspection Reports & Defect Log tool",
+      "Review recorded observations and click 'Export Report' or 'Print Certificate' for your records"
+    ],
+    "whatScreenTesterCanObserve": [
+      "Interactive coordinate logging of marked pixel defects across the display canvas",
+      "Compilation of user observations across all test categories",
+      "System hardware diagnostics (screen resolution, pixel ratio, color depth, browser engine)"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "Physical manufacturer serial numbers etched on the rear monitor chassis label",
+      "Retailer warranty policy return window eligibility",
+      "Proof of physical shipping impact or drop damage"
+    ],
+    "commonCauses": [
+      "Subpixel transistor failure during panel glass fabrication",
+      "Uneven bezel clamp pressure causing localized backlight bleed",
+      "Inadequate return window documentation leading to rejected merchant claims",
+      "Unrecorded intermittent defects dismissed by technical support"
+    ],
+    "whatToDoNext": [
+      "Save or print the generated inspection certificate as a PDF file",
+      "Photograph the defect on the screen alongside the coordinate marker using a smartphone",
+      "Submit the documentation to your retailer or monitor manufacturer within the return period"
+    ],
+    "sections": [
+      {
+        "title": "Understanding ISO 9241-307 Pixel Defect Classes",
+        "content": [
+          "Display manufacturers classify panel warranty coverage using ISO standard 9241-307, which defines four defect classes per million pixels:",
+          "Class 0: Zero defect tolerance (premium professional medical or mastering monitors).",
+          "Class 1: Up to 1 continuously bright pixel, 1 dead pixel, and 2-5 stuck subpixels per million pixels.",
+          "Class 2: The standard consumer monitor tier, allowing up to 2 bright pixels, 2 dark pixels, and 5-10 stuck subpixels per million pixels."
+        ]
+      },
+      {
+        "title": "How to Build an Unassailable RMA Warranty Claim",
+        "content": [
+          "When claiming a return on a defective monitor, provide three pieces of documentation:",
+          "1. The structured Screen Tester Inspection Certificate showing coordinates and defect classification.",
+          "2. A close-up macro photograph showing the subpixel under test (e.g. black subpixel on pure white).",
+          "3. A wide-angle photograph showing the full display with the defect visible in context."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Will one dead pixel qualify my monitor for a warranty replacement?",
+        "answer": "Most consumer monitors fall under ISO Class 2, which requires 3 to 5 dead subpixels before qualifying for replacement. However, many reputable brands offer a 'Zero Bright Dot' guarantee covering any stuck pixel that shines permanently bright."
+      },
+      {
+        "question": "Are inspection reports saved on your servers?",
+        "answer": "No. All Screen Tester inspection observations, defect coordinates, and hardware diagnostic profiles are stored strictly locally in your browser's private session memory for maximum privacy."
+      }
+    ],
+    "relatedTestIds": [
+      "summary"
+    ],
+    "relatedTroubleshootingIds": [
+      "dead-pixels",
+      "stuck-pixels"
+    ],
+    "relatedArticleSlugs": [
+      "dead-pixel-vs-stuck-pixel",
+      "what-browser-display-tests-can-and-cannot-measure"
+    ],
+    "primarySearchIntent": "display inspection report monitor warranty defect documentation",
+    "readingTimeMinutes": 6
   }
 ];

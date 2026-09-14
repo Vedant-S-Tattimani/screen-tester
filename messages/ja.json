@@ -836,6 +836,78 @@
         "Click as fast as you can once it turns green.",
         "Your reaction time will be recorded in milliseconds."
       ]
+    },
+    "pixel-inversion-test": {
+      "title": "Pixel Inversion & VCOM Flicker Test",
+      "metaTitle": "Pixel Inversion & VCOM Test | Screen Tester",
+      "description": "Inspect pixel inversion patterns, VCOM voltage calibration, and pixel walk artifacts across LCD and OLED panels.",
+      "metaDescription": "Test your monitor for pixel inversion artifacts, VCOM voltage balance, and pixel walk flicker using high-frequency checkerboard patterns.",
+      "instructions": [
+        "Switch through 1x1 dot, 2x2 checkerboard, vertical stripe, and subpixel patterns.",
+        "Observe the screen from your normal working distance with the monitor at native resolution.",
+        "Notice whether any pattern vibrates, shimmers, or displays faint moving wave bands.",
+        "A properly calibrated VCOM voltage will render all gray checkerboards as steady, non-flickering neutral gray."
+      ]
+    },
+    "strobe-crosstalk-test": {
+      "title": "Strobe Crosstalk & BFI Inspection Test",
+      "metaTitle": "Strobe Crosstalk & BFI Test | Screen Tester",
+      "description": "Inspect backlight strobing blur reduction, strobe phase alignment, and double-image crosstalk across vertical screen zones.",
+      "metaDescription": "Test monitor backlight strobing (ULMB, DyAc, ELMB) and Black Frame Insertion for strobe crosstalk and duplicate silhouette ghosting.",
+      "instructions": [
+        "Enable backlight strobing or BFI in your monitor's hardware OSD menu.",
+        "Watch the moving target bars across the top, center, and bottom screen tracks.",
+        "Check for double-image silhouettes behind the moving bars in each zone.",
+        "Inspect which zone has the clearest motion and whether top or bottom shows strobe phase ghosting."
+      ]
+    },
+    "vrr-flicker-test": {
+      "title": "VRR Brightness Flicker Stress Test",
+      "metaTitle": "VRR Brightness Flicker Test | Screen Tester",
+      "description": "Stress-test adaptive sync (G-Sync, FreeSync) displays for brightness flicker and gamma shift during rapid framerate fluctuation.",
+      "metaDescription": "Stress test your monitor for VRR brightness flicker and gamma fluctuation during dynamic refresh rate swings.",
+      "instructions": [
+        "Ensure G-Sync, FreeSync, or Adaptive-Sync is enabled in your graphics driver and monitor OSD.",
+        "Run the automated framerate sweep between low and high refresh bounds.",
+        "Carefully observe the dark gray background and midtone patches for subtle brightness pumping or flicker.",
+        "OLED and VA panels are most susceptible to near-black VRR gamma flicker during framerate fluctuations."
+      ]
+    },
+    "pursuit-camera-test": {
+      "title": "Pursuit Camera Sync & MPRT Calibration Track",
+      "metaTitle": "Pursuit Camera Sync Track | Screen Tester",
+      "description": "Calibrate tracking cameras and smartphones to photograph moving objects for scientific MPRT and ghosting measurement.",
+      "metaDescription": "Pursuit camera temporal sync track for photographic measurement of monitor motion blur, ghosting, and MPRT.",
+      "instructions": [
+        "Set your camera or smartphone to manual exposure mode with a shutter speed of 1/4 to 1/2 of your panning time.",
+        "Track the moving pattern smoothly from left to right as it glides across the display.",
+        "Review your captured photo: verify the white vertical graduation ticks form a single crisp vertical line.",
+        "When temporal graduation lines are un-smeared, your camera tracking was synchronized, allowing accurate MPRT measurement."
+      ]
+    },
+    "audio-sync-test": {
+      "title": "Audio / Video Lip-Sync Calibration Test",
+      "metaTitle": "Audio Video Sync Test | Screen Tester",
+      "description": "Calibrate audio-video delay, soundbar latency, and Bluetooth audio lag with millisecond visual and acoustic sweep pulses.",
+      "metaDescription": "Test and calibrate audio-to-video lip-sync delay with visual sweep bars and synchronized 1kHz millisecond beeps.",
+      "instructions": [
+        "Ensure audio output is enabled and unmuted in your browser.",
+        "Watch the sweeping radar dial as it crosses the center alignment notch.",
+        "Listen for the instantaneous 1 kHz audio beep.",
+        "Adjust the millisecond offset slider until the visual alignment and sound occur simultaneously."
+      ]
+    },
+    "gamepad-test": {
+      "title": "Gamepad & Controller Input Test",
+      "metaTitle": "Gamepad & Controller Drift Test | Screen Tester",
+      "description": "Test gamepad controllers, analog stick drift, deadzones, trigger axes, and button actuation using the HTML5 Gamepad API.",
+      "metaDescription": "Online gamepad and controller tester. Check analog stick drift, deadzone precision, triggers, and buttons in real-time.",
+      "instructions": [
+        "Connect an Xbox, PlayStation, Switch, or generic controller via USB or Bluetooth.",
+        "Press any button on the controller to wake the Gamepad API.",
+        "Rotate both analog sticks to test circularity error and check resting drift values against the deadzone threshold.",
+        "Squeeze analog triggers and press all buttons to verify actuation and responsiveness."
+      ]
     }
   },
   "Tests": {
@@ -1054,7 +1126,10 @@
       "title": "モーションブラーテスト – 動画応答性とMPRTチェック",
       "description": "高速で動くシーンやテストオブジェクトにおける動画解像度、ホールドボケ、MPRTトラッキングを分析します。"
     },
-    "reactionTimeTest": "Reaction Time Test",
+    "reactionTimeTest": {
+      "title": "反応速度テスト",
+      "description": "視覚的な反応速度と入力レイテンシをミリ秒単位で測定します。"
+    },
     "AccelerometerPattern": {
       "status": "Status:",
       "active": "Active (",
@@ -2092,6 +2167,168 @@
         "status": "Status",
         "average": "Average"
       }
+    },
+    "pixelInversionTest": {
+      "title": "画素反転テスト (VCOM / Pixel Walk)",
+      "description": "液晶およびOLEDパネルにおける画素反転アーティファクト、電圧バランス、VCOMフリッカーを検証します。"
+    },
+    "strobeCrosstalkTest": {
+      "title": "ストロボクロストーク＆BFI検証",
+      "description": "黒挿入やバックライトストロボ時の画面上下・中央での二重像やストロボ位相を検査します。"
+    },
+    "vrrFlickerTest": {
+      "title": "VRR輝度フリッカーストレステスト",
+      "description": "可変リフレッシュレート（G-Sync / FreeSync）動作時のガンマ変動や低周波の明暗チラつきを負荷テストします。"
+    },
+    "pursuitCameraTest": {
+      "title": "追従カメラスライド＆MPRT測定トラック",
+      "description": "ディスプレイの残像感やMPRTを撮影・検証するための追従カメラ同期トラックです。"
+    },
+    "audioSyncTest": {
+      "title": "音声・映像同期 (リップシンク) テスト",
+      "description": "ミリ秒精度のビープ音とスイープバーでオーディオ遅延とリップシンクを精密キャリブレーションします。"
+    },
+    "gamepadTest": {
+      "title": "ゲームパッド＆コントローラーテスト",
+      "description": "アナログスティックのドリフト、デッドゾーン、トリガー軸、ボタン入力をリアルタイムで診断します。"
+    },
+    "PixelInversionPattern": {
+      "title": "画素反転テスト (VCOM / Pixel Walk)",
+      "description": "LCD panels rapidly invert subpixel electrical polarities each frame to prevent liquid crystal polarization degradation. Imperfect VCOM balance creates subtle flicker or crawling patterns on these test grids.",
+      "mode": "Pattern Mode",
+      "dot1x1": "1x1 Checkerboard (Dot Inversion)",
+      "dot1x1Desc": "Tests single-pixel alternating polarity balance.",
+      "check2x2": "2x2 Checkerboard",
+      "check2x2Desc": "Tests dual-pixel inversion architectures.",
+      "vstripes": "Vertical 1-Pixel Stripes (Column Inversion)",
+      "vstripesDesc": "Tests source driver column polarity transitions.",
+      "hstripes": "Horizontal 1-Pixel Stripes (Row Inversion)",
+      "hstripesDesc": "Tests gate line row inversion transitions.",
+      "subpixel": "Subpixel RGB Micro-Mesh",
+      "subpixelDesc": "Stress-tests individual subpixel driving balance.",
+      "textPhase": "Fine Text-Phase High-Frequency Grid",
+      "textPhaseDesc": "Reveals pixel walk jitter when reading fine text.",
+      "contrastHigh": "高コントラスト",
+      "contrastSubtle": "微細 (VCOM高感度)",
+      "flickerWarning": "If the pattern flickers, shimmers, or displays a crawling grid, your display's VCOM calibration voltage is slightly unbalanced.",
+      "notice": "Observe from your normal viewing distance. The gray background should appear calm and non-vibrating.",
+      "patternIndex": "パターン {current} / {total}",
+      "previousPattern": "前のパターン",
+      "nextPattern": "次のパターン",
+      "modes": {
+        "dot1x1": "1x1 ドット反転 (チェッカー)",
+        "dot1x1Desc": "1画素ごとの極性反転バランスを検証します。",
+        "check2x2": "2x2 市松模様反転",
+        "check2x2Desc": "2x2ブロック単位の画素反転を検証します。",
+        "vstripes": "垂直1画素ストライプ",
+        "vstripesDesc": "ソースドライバ列ごとの極性移行を検証します。",
+        "hstripes": "水平1画素ストライプ",
+        "hstripesDesc": "ゲートライン行ごとの反転移行を検証します。",
+        "subpixel": "サブピクセルRGBマイクロメッシュ",
+        "subpixelDesc": "サブピクセル単位の駆動バランスをストレステストします。",
+        "textPhase": "テキスト表示用高周波グリッド",
+        "textPhaseDesc": "微細なテキスト閲覧時のピクセルウォーク揺れを可視化します。"
+      }
+    },
+    "AudioSyncPattern": {
+      "title": "音声・映像同期 (リップシンク) テスト",
+      "description": "Synchronize display output and audio hardware. When the visual sweep bar crosses the center alignment notch, an instantaneous 1 kHz audio pulse is emitted.",
+      "calibration": "Audio / Video Calibration",
+      "syncStatus": "Sync Status",
+      "syncPerfect": "In Sync (0 ms)",
+      "videoLeading": "Video Leads (+{val} ms)",
+      "audioLeading": "Audio Leads (-{val} ms)",
+      "audioOffset": "Manual Audio Offset (ms)",
+      "tempo": "Sweep Frequency",
+      "sweepRate": "Sweeps / Minute",
+      "bpm": "BPM",
+      "mute": "Mute Audio",
+      "unmute": "音声ミュート解除",
+      "start": "Start Sweep",
+      "stop": "Pause",
+      "reset": "Reset Offset",
+      "howToCalibrate": "How to Calibrate",
+      "calibrationTip": "Adjust the offset slider until the audible beep and the visual flashing notch occur at the exact same perceptual instant. Positive values delay audio; negative values advance audio.",
+      "pause": "一時停止",
+      "play": "再生",
+      "soundOn": "音声をミュート",
+      "offset": "オーディオオフセット",
+      "resetOffset": "オフセットリセット (0ms)",
+      "speed": "スイープ速度"
+    },
+    "PursuitCameraPattern": {
+      "title": "追従カメラスライド＆MPRT測定トラック",
+      "description": "Pursuit camera tracking simulates the smooth-pursuit motion of human eyes tracking on-screen objects. Capture the moving UFO with a tracking camera to photograph MPRT and ghosting.",
+      "speed": "移動速度",
+      "pxPerSec": "Pixels / Sec",
+      "syncTrackTitle": "Temporal Graduation Track",
+      "trackingInstructions": "Align your tracking camera so the white temporal tick marks in the upper track stay vertically stationary during your pan. When the ticks form a vertical line in your exposure, tracking sync is achieved.",
+      "mprtFormula": "Motion Picture Response Time (MPRT) is directly proportional to visual smear width divided by panning velocity.",
+      "cameraGuide": "カメラ追従ガイド",
+      "cameraInstructions": "動くテストパターンと同じ速度でカメラを振って撮影します。目盛りが縦1本の鮮明な直線になれば追従成功です。",
+      "pause": "一時停止",
+      "resume": "再開",
+      "invertDirection": "方向反転",
+      "leftToRight": "左から右へ",
+      "rightToLeft": "右から左へ"
+    },
+    "StrobeCrosstalkPattern": {
+      "title": "ストロボクロストーク＆BFI検証",
+      "description": "Backlight strobing (ULMB, DyAc, ELMB) turns off the backlight during liquid crystal transitions. Strobe crosstalk causes double images when the flash phase does not align with the panel refresh scan.",
+      "topZone": "画面上部領域",
+      "centerZone": "Center Screen Zone",
+      "bottomZone": "画面下部領域",
+      "crosstalkNotice": "Crosstalk Inspection",
+      "crosstalkDesc": "Compare ghost trails in the top, center, and bottom tracks. Fast monitors optimize strobe phase for the center zone, but top and bottom zones often show faint twin silhouettes.",
+      "topZoneSub": "スキャン初期フェーズ",
+      "middleZone": "画面中央領域",
+      "middleZoneSub": "最適ストロボ同期",
+      "bottomZoneSub": "スキャン後期フェーズ",
+      "pause": "一時停止",
+      "play": "再生",
+      "speed": "速度",
+      "width": "バー幅"
+    },
+    "VrrFlickerPattern": {
+      "title": "VRR輝度フリッカーストレステスト",
+      "description": "Adaptive sync alters panel refresh rate in real-time. Because LCD and OLED voltage response varies with refresh cycle duration, rapid framerate swings can induce noticeable luminance flicker.",
+      "lowHz": "Lower Frequency (Hz)",
+      "highHz": "Upper Frequency (Hz)",
+      "gammaFlickerNotice": "Evaluating VRR Flicker",
+      "gammaFlickerDesc": "Observe the 20% to 50% dark gray test patches. If brightness pulsates noticeably during refresh transitions, your display exhibits VRR gamma shift.",
+      "highWorkload": "最大フレームレート期",
+      "lowWorkload": "最低フレームレート期",
+      "pause": "一時停止",
+      "play": "再生",
+      "patchLuminance": "背景グレー濃度",
+      "cycleRate": "変動サイクル周期",
+      "levels": {
+        "nearBlack": "ニアブラック (~10%)",
+        "darkGrey": "ダークグレー (~25%)",
+        "midGrey": "中間グレー (~50%)"
+      }
+    },
+    "GamepadPattern": {
+      "title": "ゲームパッド＆コントローラーテスト",
+      "description": "Connect any USB or Bluetooth gamepad. Test joystick centering, stick drift, deadzones, trigger pressure, and button responsiveness.",
+      "noGamepadDetected": "コントローラーが検出されません",
+      "connectGamepadHint": "Connect a gamepad via USB or Bluetooth and press any button to begin testing.",
+      "controller": "Gamepad Connected",
+      "leftStick": "左アナログスティック",
+      "rightStick": "右アナログスティック",
+      "leftTrigger": "Left Trigger (LT/L2)",
+      "rightTrigger": "Right Trigger (RT/R2)",
+      "deadzone": "Deadzone Threshold",
+      "stickDriftDetected": "Stick Drift Detected (Non-zero at rest)",
+      "stickCentered": "Stick Centered (Within deadzone)",
+      "buttons": "Controller Buttons",
+      "connectPrompt": "USBまたはBluetoothでゲームパッドを接続し、いずれかのボタンを押してください。",
+      "browserSupportNote": "HTML5 Gamepad API準拠。Xbox、PlayStation、Nintendo Switch等のコントローラーに対応。",
+      "gamepadConnected": "コントローラー接続中",
+      "pollingRate": "ポーリングレート",
+      "testRumble": "振動テスト",
+      "trigger": "アナログトリガー",
+      "buttonsMatrix": "ボタン入力マトリクス"
     }
   },
   "Guides": {
@@ -4179,7 +4416,125 @@
         "title": "ボイスレコーダー",
         "description": "ブラウザメモリ内で音声メモを録音。一時停止、再開、即時再生、ローカル保存に対応。",
         "badge": "ローカル録音"
+      },
+      "displayBandwidthCalculator": {
+        "title": "ディスプレイ帯域幅計算ツール",
+        "description": "映像データレート、非圧縮Gbps、VESA DSC圧縮、HDMIおよびDisplayPortケーブル規格の適合性を算出します。",
+        "badge": "計算ツール"
+      },
+      "viewingDistanceCalculator": {
+        "title": "最適視距離＆Retina PPD計算ツール",
+        "description": "理想的な視聴距離、視覚解像度PPD（画素/度）、人間の目が画素を認識できなくなるRetinaしきい値を計算します。",
+        "badge": "計算ツール"
+      },
+      "dualMonitorMatcher": {
+        "title": "デュアルモニターホワイトポイント調整",
+        "description": "マルチモニター環境で色温度、RGBゲイン、輝度を正確に揃えるための分割比較キャンバス。",
+        "badge": "キャリブレーション"
       }
+    },
+    "DisplayBandwidthCalculator": {
+      "eyebrow": "ディスプレイ設計ツール",
+      "title": "ディスプレイ帯域幅＆ケーブル規格計算ツール",
+      "description": "モニター構成に必要な映像帯域幅（非圧縮およびDSC）を計算し、HDMI、DisplayPort、Thunderbolt規格との互換性を検証します。",
+      "resolution": "解像度プリセット",
+      "resolutionCustom": "カスタム",
+      "width": "幅 (px)",
+      "height": "高さ (px)",
+      "refreshRate": "リフレッシュレート (Hz)",
+      "colorDepth": "色深度 (bpc)",
+      "chromaSubsampling": "クロマサブサンプリング",
+      "bandwidthResults": "計算された必要帯域幅",
+      "uncompressedBandwidth": "非圧縮データレート",
+      "dscBandwidth": "VESA DSC (3:1) 適用時",
+      "dscExplanation": "Display Stream Compression (DSC 1.2a) により、視覚的損失なく帯域幅を約3分の1に圧縮できます。",
+      "cableCompatibility": "ケーブル規格およびインターフェース適合性",
+      "maxBandwidth": "最大帯域幅",
+      "supported": "対応 (ネイティブ)",
+      "requiresDsc": "対応 (DSC必須)",
+      "notSupported": "規格の上限超過",
+      "specsNotes": "技術解説",
+      "specsNote1": "計算にはVESA CVT-RB2（低ブランキングv2）のオーバーヘッド（約15%）が含まれています。",
+      "specsNote2": "実効データレートはエンコード規格（DP 1.4の8b/10b、DP 2.1の128b/132b、HDMI 2.1 FRLの16b/18b）を反映しています。",
+      "resolutionLabel": "解像度プリセット",
+      "refreshRateLabel": "リフレッシュレート (Hz)",
+      "colorDepthLabel": "色深度 (bpc)",
+      "chromaLabel": "クロマサブサンプリング",
+      "requiredDataRate": "計算された必要帯域幅",
+      "uncompressedRateNote": "VESA CVT-RB2オーバーヘッドを含む非圧縮データレート。",
+      "withDsc3to1": "VESA DSC (3:1圧縮) 適用時",
+      "supportedNative": "対応 (ネイティブ)",
+      "supportedDsc": "対応 (DSC必須)",
+      "insufficientBandwidth": "規格の上限超過"
+    },
+    "ViewingDistanceCalculator": {
+      "eyebrow": "光学＆エルゴノミクスツール",
+      "title": "最適視距離＆Retina PPD計算ツール",
+      "description": "画素密度（PPI）、視覚解像度PPD（画素/度）、そして標準視力（20/20）で画素の粒感が消失するRetina境界距離を算出します。",
+      "screenSize": "画面対角サイズ",
+      "diagonalSize": "対角線サイズ",
+      "resolution": "解像度プリセット",
+      "viewingDistance": "現在の視距離",
+      "unitInches": "インチ (in)",
+      "unitCm": "センチメートル (cm)",
+      "pixelDensity": "画素密度",
+      "ppiUnit": "ピクセル / インチ",
+      "visualAcuityPpd": "視覚解像度",
+      "ppdUnit": "ピクセル / 度",
+      "retinaDistance": "Retinaしきい値距離 (20/20視力)",
+      "retinaDistanceDesc": "この距離以上離れると、標準的な視力（1.0/20/20）では個々の画素を識別できなくなります。",
+      "currentStatus": "Retina判定ステータス",
+      "retinaAchieved": "Retina基準を達成",
+      "retinaNotAchieved": "画素が視認可能な距離",
+      "retinaAchievedDesc": "現在の視距離 {dist} では、目に入る解像度は {ppd} PPD（基準値60 PPDを超過）です。画素感のない滑らかで鮮明な映像が得られます。",
+      "retinaNotAchievedDesc": "現在の視距離 {dist} では {ppd} PPD（基準値60 PPD未満）です。{threshold} 以上離れると完全にドット感のないRetina体験になります。",
+      "visualExplainerTitle": "PPDとRetina計算の仕組み",
+      "visualExplainerP1": "PPD（Pixels Per Degree）は、視野角1度あたりに含まれる画素数を表します。一般に60 PPDが人間の標準視力（1.0）の解像限界とされています。",
+      "visualExplainerP2": "Appleの「Retinaディスプレイ」は、通常の視聴距離でPPDが60以上に達する画面設計に基づいています。",
+      "units": "単位",
+      "in": "インチ",
+      "inches": "インチ (in)",
+      "cm": "cm",
+      "centimeters": "センチメートル (cm)",
+      "visualAcuity": "視覚解像度",
+      "pixelsVisible": "画素が視認可能な距離",
+      "retinaPpdDescription": "現在の視距離では、目に入る解像度は {ppd} PPD（基準値60 PPDを超過）です。画素の粒感のない滑らかな表示が得られます。",
+      "subRetinaPpdDescription": "現在の視距離では {ppd} PPD（基準値60 PPD未満）です。推奨距離まで離れると完全にドット感のないRetina体験になります。",
+      "retinaThreshold": "Retina基準距離 (20/20)",
+      "howItWorksTitle": "PPDとRetina計算の仕組み",
+      "howItWorksText": "PPD（Pixels Per Degree）は、視野角1度あたりに含まれる画素数を表します。一般に60 PPDが人間の標準視力（1.0/20/20）の解像限界とされています。"
+    },
+    "DualMonitorMatcher": {
+      "eyebrow": "マルチモニター調整",
+      "title": "デュアルモニターホワイトポイント＆色合い調整",
+      "description": "2台のモニターの境界（ベゼル）をまたぐようにこの分割画面を配置し、RGBゲインと輝度を調整して両画面の色合いを完全に一致させます。",
+      "canvasHint": "境界線をドラッグしてモニターの継ぎ目に合わせるか、全画面表示にして両モニターに跨がせてください。",
+      "exitFullscreen": "全画面を終了",
+      "fullscreenAcross": "両モニターにまたがる全画面表示",
+      "monitorA": "モニター 1 (基準)",
+      "monitorB": "モニター 2 (調整対象)",
+      "calibrationTarget": "テストパターン選択",
+      "resetAll": "すべてリセット",
+      "presetD65": "D65標準白色 (6500K)",
+      "presetGray75": "75% 明るいグレー",
+      "presetGray50": "50% 中間グレー",
+      "presetGray18": "18% 標準ニュートラルグレー",
+      "presetWarm": "暖色 (5000K)",
+      "presetCool": "寒色 (7500K)",
+      "presetRed": "プライマリレッド",
+      "presetGreen": "プライマリグリーン",
+      "presetBlue": "プライマリブルー",
+      "monitorAControls": "モニター1 RGBゲイン",
+      "monitorBControls": "モニター2 RGBゲイン",
+      "reset": "リセット",
+      "redGain": "赤ゲイン",
+      "greenGain": "緑ゲイン",
+      "blueGain": "青ゲイン",
+      "brightnessOffset": "輝度オフセット",
+      "guideTitle": "2画面を一致させる手順",
+      "guideStep1": "1. 両モニターのOSDハードウェア設定で同じカラーモード（sRGBまたはカスタム6500K）を選択します。",
+      "guideStep2": "2. このブラウザウィンドウを2画面のベゼルをまたぐように配置し、「D65白色」または「18%ニュートラルグレー」を表示します。",
+      "guideStep3": "3. 色味がずれているモニターのRGBゲインを調整し、画面の境界線での色の違いが消えるように合わせます。"
     }
   },
   "Diagnostic": {
@@ -4667,7 +5022,8 @@
     },
     "recommendedChecksNote": "ディスプレイ仕様とパネルテクノロジーに基づいた対象テストの推奨項目。",
     "troubleshootingNote": "このセクションで確認された問題に基づいた実用的なトラブルシューティングガイドへの直接リンク。",
-    "viewTroubleshootingAction": "トラブルシューティングガイドを見る"
+    "viewTroubleshootingAction": "トラブルシューティングガイドを見る",
+    "exportCertificate": "証明書のエクスポート / 印刷"
   },
   "CustomPattern": {
     "breadcrumbAll": "すべてのテスト",
@@ -6434,7 +6790,13 @@
       "notesPlaceholder": "ピクセルの挙動に関するメモを入力...",
       "saveObservation": "観察結果を保存",
       "observationSaved": "検査セッションに記録されました。"
-    }
+    },
+    "m": "分",
+    "mRunCompleted": "分間の実行完了",
+    "visualObservation": "視覚的確認結果",
+    "importantNotice": "重要な注意事項:",
+    "cancel": "キャンセル",
+    "iUnderstandStart": "同意して刺激を開始"
   },
   "Troubleshooting": {
     "metaTitle": "ディスプレイ トラブルシューティング ガイド – よくある問題と解決法",

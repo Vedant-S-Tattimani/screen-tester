@@ -11,7 +11,8 @@ import {
   ClipboardCheck, 
   ArrowRight,
   Cpu,
-  Mic
+  Mic,
+  Eye
 } from "lucide-react";
 
 export async function generateMetadata({
@@ -84,6 +85,27 @@ const TOOLS_CONFIG = [
     href: "/monitor-inspection/summary",
     icon: ClipboardCheck,
     iconColor: "text-purple-600"
+  },
+  {
+    id: "display-bandwidth-calculator",
+    key: "displayBandwidthCalculator",
+    href: "/tools/display-bandwidth-calculator",
+    icon: Cpu,
+    iconColor: "text-indigo-600"
+  },
+  {
+    id: "viewing-distance-calculator",
+    key: "viewingDistanceCalculator",
+    href: "/tools/viewing-distance-calculator",
+    icon: Eye,
+    iconColor: "text-purple-600"
+  },
+  {
+    id: "dual-monitor-matcher",
+    key: "dualMonitorMatcher",
+    href: "/tools/dual-monitor-matcher",
+    icon: Sliders,
+    iconColor: "text-cyan-600"
   }
 ];
 

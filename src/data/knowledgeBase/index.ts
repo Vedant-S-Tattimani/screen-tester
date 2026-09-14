@@ -42,12 +42,12 @@ export function getLocalizedCategoryInfo(category: KnowledgeBaseCategory, locale
 
 export function getArticleByTestId(testId: string, locale: string = "en"): KnowledgeArticle | undefined {
   const articles = getLocalizedKnowledgeArticles(locale);
-  return articles.find(article => article.relatedTestIds.includes(testId));
+  return articles.find(article => article.relatedTestIds.includes(testId)) || ARTICLES_BY_LOCALE.en.find(article => article.relatedTestIds.includes(testId));
 }
 
 export function getArticleByTroubleshootingId(topicId: string, locale: string = "en"): KnowledgeArticle | undefined {
   const articles = getLocalizedKnowledgeArticles(locale);
-  return articles.find(article => article.relatedTroubleshootingIds.includes(topicId));
+  return articles.find(article => article.relatedTroubleshootingIds.includes(topicId)) || ARTICLES_BY_LOCALE.en.find(article => article.relatedTroubleshootingIds.includes(topicId));
 }
 
 // Backward-compatible legacy exports

@@ -32,6 +32,7 @@ export default async function Home({
   const tTests = await getTranslations({ locale, namespace: "Tests" });
   const tPages = await getTranslations({ locale, namespace: "TestPages" });
   const tFixer = await getTranslations({ locale, namespace: "StuckPixelFixerTest" });
+  const tTools = await getTranslations({ locale, namespace: "Tools" });
 
   const libMap: Record<string, string> = {
     "dead-pixel-test": "deadPixel",
@@ -77,7 +78,19 @@ export default async function Home({
     "vibration-test": "vibrationTest",
     "webcam-test": "webcamTest",
     "speaker-test": "speakerTest",
-    "microphone-test": "microphoneTest"
+    "microphone-test": "microphoneTest",
+    "pixel-inversion-test": "pixelInversionTest",
+    "strobe-crosstalk-test": "strobeCrosstalkTest",
+    "vrr-flicker-test": "vrrFlickerTest",
+    "pursuit-camera-test": "pursuitCameraTest",
+    "audio-sync-test": "audioSyncTest",
+    "gamepad-test": "gamepadTest"
+  };
+
+  const toolsMap: Record<string, string> = {
+    "display-bandwidth-calculator": "displayBandwidthCalculator",
+    "viewing-distance-calculator": "viewingDistanceCalculator",
+    "dual-monitor-matcher": "dualMonitorMatcher"
   };
 
   const getTestItem = (id: string, category: string): ScreenTestItem => {
@@ -88,6 +101,13 @@ export default async function Home({
       try {
         title = tFixer("title");
         description = tFixer("disclaimer");
+      } catch {}
+    }
+
+    if ((!title || !description) && toolsMap[id]) {
+      try {
+        if (!title) title = tTools(`items.${toolsMap[id]}.title`);
+        if (!description) description = tTools(`items.${toolsMap[id]}.description`);
       } catch {}
     }
 
@@ -112,9 +132,12 @@ export default async function Home({
       } catch {}
     }
 
+    const isTool = !!toolsMap[id];
+    const href = isTool ? `/tools/${id}` : `/tests/${id}`;
+
     return {
       id,
-      href: `/tests/${id}`,
+      href,
       title: title || id,
       description: description || "",
       category
@@ -131,6 +154,7 @@ export default async function Home({
         getTestItem("bright-pixel-test", "colorPixels"),
         getTestItem("stuck-pixel-fixer", "colorPixels"),
         getTestItem("burn-in-test", "colorPixels"),
+        getTestItem("pixel-inversion-test", "colorPixels"),
         getTestItem("color-test", "colorPixels"),
         getTestItem("color-gamut-test", "colorPixels"),
         getTestItem("color-accuracy-test", "colorPixels"),
@@ -149,7 +173,8 @@ export default async function Home({
         getTestItem("gamma-test", "gradientContrast"),
         getTestItem("color-banding-test", "gradientContrast"),
         getTestItem("gradient-banding-test", "gradientContrast"),
-        getTestItem("grayscale-test", "gradientContrast")
+        getTestItem("grayscale-test", "gradientContrast"),
+        getTestItem("dual-monitor-matcher", "gradientContrast")
       ]
     },
     {
@@ -171,6 +196,9 @@ export default async function Home({
         getTestItem("motion-blur-test", "motionPerformance"),
         getTestItem("refresh-rate-test", "motionPerformance"),
         getTestItem("vrr-test", "motionPerformance"),
+        getTestItem("vrr-flicker-test", "motionPerformance"),
+        getTestItem("strobe-crosstalk-test", "motionPerformance"),
+        getTestItem("pursuit-camera-test", "motionPerformance"),
         getTestItem("screen-tearing-test", "motionPerformance"),
         getTestItem("screen-flicker-test", "motionPerformance")
       ]
@@ -181,6 +209,8 @@ export default async function Home({
       tests: [
         getTestItem("sharpness-test", "sharpnessCapabilities"),
         getTestItem("text-clarity-test", "sharpnessCapabilities"),
+        getTestItem("display-bandwidth-calculator", "sharpnessCapabilities"),
+        getTestItem("viewing-distance-calculator", "sharpnessCapabilities"),
         getTestItem("hdr-capability-test", "sharpnessCapabilities"),
         getTestItem("hdr-test", "sharpnessCapabilities"),
         getTestItem("tv-overscan-test", "sharpnessCapabilities"),
@@ -199,6 +229,8 @@ export default async function Home({
         getTestItem("webcam-test", "deviceInput"),
         getTestItem("speaker-test", "deviceInput"),
         getTestItem("microphone-test", "deviceInput"),
+        getTestItem("audio-sync-test", "deviceInput"),
+        getTestItem("gamepad-test", "deviceInput"),
         getTestItem("reaction-time-test", "deviceInput")
       ]
     }

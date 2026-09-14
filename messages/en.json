@@ -865,6 +865,78 @@
         "Click as fast as you can once it turns green.",
         "Your reaction time will be recorded in milliseconds."
       ]
+    },
+    "pixel-inversion-test": {
+      "title": "Pixel Inversion & VCOM Flicker Test",
+      "metaTitle": "Pixel Inversion & VCOM Test | Screen Tester",
+      "description": "Inspect pixel inversion patterns, VCOM voltage calibration, and pixel walk artifacts across LCD and OLED panels.",
+      "metaDescription": "Test your monitor for pixel inversion artifacts, VCOM voltage balance, and pixel walk flicker using high-frequency checkerboard patterns.",
+      "instructions": [
+        "Switch through 1x1 dot, 2x2 checkerboard, vertical stripe, and subpixel patterns.",
+        "Observe the screen from your normal working distance with the monitor at native resolution.",
+        "Notice whether any pattern vibrates, shimmers, or displays faint moving wave bands.",
+        "A properly calibrated VCOM voltage will render all gray checkerboards as steady, non-flickering neutral gray."
+      ]
+    },
+    "strobe-crosstalk-test": {
+      "title": "Strobe Crosstalk & BFI Inspection Test",
+      "metaTitle": "Strobe Crosstalk & BFI Test | Screen Tester",
+      "description": "Inspect backlight strobing blur reduction, strobe phase alignment, and double-image crosstalk across vertical screen zones.",
+      "metaDescription": "Test monitor backlight strobing (ULMB, DyAc, ELMB) and Black Frame Insertion for strobe crosstalk and duplicate silhouette ghosting.",
+      "instructions": [
+        "Enable backlight strobing or BFI in your monitor's hardware OSD menu.",
+        "Watch the moving target bars across the top, center, and bottom screen tracks.",
+        "Check for double-image silhouettes behind the moving bars in each zone.",
+        "Inspect which zone has the clearest motion and whether top or bottom shows strobe phase ghosting."
+      ]
+    },
+    "vrr-flicker-test": {
+      "title": "VRR Brightness Flicker Stress Test",
+      "metaTitle": "VRR Brightness Flicker Test | Screen Tester",
+      "description": "Stress-test adaptive sync (G-Sync, FreeSync) displays for brightness flicker and gamma shift during rapid framerate fluctuation.",
+      "metaDescription": "Stress test your monitor for VRR brightness flicker and gamma fluctuation during dynamic refresh rate swings.",
+      "instructions": [
+        "Ensure G-Sync, FreeSync, or Adaptive-Sync is enabled in your graphics driver and monitor OSD.",
+        "Run the automated framerate sweep between low and high refresh bounds.",
+        "Carefully observe the dark gray background and midtone patches for subtle brightness pumping or flicker.",
+        "OLED and VA panels are most susceptible to near-black VRR gamma flicker during framerate fluctuations."
+      ]
+    },
+    "pursuit-camera-test": {
+      "title": "Pursuit Camera Sync & MPRT Calibration Track",
+      "metaTitle": "Pursuit Camera Sync Track | Screen Tester",
+      "description": "Calibrate tracking cameras and smartphones to photograph moving objects for scientific MPRT and ghosting measurement.",
+      "metaDescription": "Pursuit camera temporal sync track for photographic measurement of monitor motion blur, ghosting, and MPRT.",
+      "instructions": [
+        "Set your camera or smartphone to manual exposure mode with a shutter speed of 1/4 to 1/2 of your panning time.",
+        "Track the moving pattern smoothly from left to right as it glides across the display.",
+        "Review your captured photo: verify the white vertical graduation ticks form a single crisp vertical line.",
+        "When temporal graduation lines are un-smeared, your camera tracking was synchronized, allowing accurate MPRT measurement."
+      ]
+    },
+    "audio-sync-test": {
+      "title": "Audio / Video Lip-Sync Calibration Test",
+      "metaTitle": "Audio Video Sync Test | Screen Tester",
+      "description": "Calibrate audio-video delay, soundbar latency, and Bluetooth audio lag with millisecond visual and acoustic sweep pulses.",
+      "metaDescription": "Test and calibrate audio-to-video lip-sync delay with visual sweep bars and synchronized 1kHz millisecond beeps.",
+      "instructions": [
+        "Ensure audio output is enabled and unmuted in your browser.",
+        "Watch the sweeping radar dial as it crosses the center alignment notch.",
+        "Listen for the instantaneous 1 kHz audio beep.",
+        "Adjust the millisecond offset slider until the visual alignment and sound occur simultaneously."
+      ]
+    },
+    "gamepad-test": {
+      "title": "Gamepad & Controller Input Test",
+      "metaTitle": "Gamepad & Controller Drift Test | Screen Tester",
+      "description": "Test gamepad controllers, analog stick drift, deadzones, trigger axes, and button actuation using the HTML5 Gamepad API.",
+      "metaDescription": "Online gamepad and controller tester. Check analog stick drift, deadzone precision, triggers, and buttons in real-time.",
+      "instructions": [
+        "Connect an Xbox, PlayStation, Switch, or generic controller via USB or Bluetooth.",
+        "Press any button on the controller to wake the Gamepad API.",
+        "Rotate both analog sticks to test circularity error and check resting drift values against the deadzone threshold.",
+        "Squeeze analog triggers and press all buttons to verify actuation and responsiveness."
+      ]
     }
   },
   "Tests": {
@@ -1083,7 +1155,10 @@
       "description": "Detect non-uniform stretching, egg-shaped circles, and aspect ratio mismatches.",
       "instructions": "Check concentric circles for true roundness and verify square grid alignment."
     },
-    "reactionTimeTest": "Reaction Time Test",
+    "reactionTimeTest": {
+      "title": "Reaction Time Test",
+      "description": "Test human visual reaction time and display response latency in milliseconds."
+    },
     "AccelerometerPattern": {
       "status": "Status:",
       "active": "Active (",
@@ -2121,6 +2196,168 @@
         "status": "Status",
         "average": "Average"
       }
+    },
+    "pixelInversionTest": {
+      "title": "Pixel Inversion (VCOM / Pixel Walk)",
+      "description": "Inspect pixel inversion artifacts, voltage balancing, and VCOM flicker across LCD and OLED panels."
+    },
+    "strobeCrosstalkTest": {
+      "title": "Strobe Crosstalk & BFI Inspection",
+      "description": "Evaluate backlight strobing and Black Frame Insertion (BFI) phase across top, center, and bottom screen zones."
+    },
+    "vrrFlickerTest": {
+      "title": "VRR Brightness Flicker Stress Test",
+      "description": "Stress-test adaptive sync (G-Sync / FreeSync) displays for low-frequency gamma shifts and brightness flicker."
+    },
+    "pursuitCameraTest": {
+      "title": "Pursuit Camera Sync & MPRT Calibration",
+      "description": "Calibrate smartphone or DSLR tracking cameras for scientific motion blur and MPRT photography."
+    },
+    "audioSyncTest": {
+      "title": "Audio / Video Sync (Lip-Sync)",
+      "description": "Calibrate audio-video latency and lip-sync synchronization with precision millisecond audio sweep blips."
+    },
+    "gamepadTest": {
+      "title": "Gamepad & Controller Input Test",
+      "description": "Test game controllers, analog stick drift, circularity error, deadzones, and trigger axes in real-time."
+    },
+    "PixelInversionPattern": {
+      "title": "Pixel Inversion Patterns",
+      "description": "LCD panels rapidly invert subpixel electrical polarities each frame to prevent liquid crystal polarization degradation. Imperfect VCOM balance creates subtle flicker or crawling patterns on these test grids.",
+      "mode": "Pattern Mode",
+      "dot1x1": "1x1 Checkerboard (Dot Inversion)",
+      "dot1x1Desc": "Tests single-pixel alternating polarity balance.",
+      "check2x2": "2x2 Checkerboard",
+      "check2x2Desc": "Tests dual-pixel inversion architectures.",
+      "vstripes": "Vertical 1-Pixel Stripes (Column Inversion)",
+      "vstripesDesc": "Tests source driver column polarity transitions.",
+      "hstripes": "Horizontal 1-Pixel Stripes (Row Inversion)",
+      "hstripesDesc": "Tests gate line row inversion transitions.",
+      "subpixel": "Subpixel RGB Micro-Mesh",
+      "subpixelDesc": "Stress-tests individual subpixel driving balance.",
+      "textPhase": "Fine Text-Phase High-Frequency Grid",
+      "textPhaseDesc": "Reveals pixel walk jitter when reading fine text.",
+      "contrastHigh": "High Contrast",
+      "contrastSubtle": "Subtle (VCOM Sensitive)",
+      "flickerWarning": "If the pattern flickers, shimmers, or displays a crawling grid, your display's VCOM calibration voltage is slightly unbalanced.",
+      "notice": "Observe from your normal viewing distance. The gray background should appear calm and non-vibrating.",
+      "patternIndex": "Pattern {current} of {total}",
+      "previousPattern": "Previous Pattern",
+      "nextPattern": "Next Pattern",
+      "modes": {
+        "dot1x1": "1x1 Dot (Checkerboard)",
+        "dot1x1Desc": "Tests alternating single-pixel polarity balance.",
+        "check2x2": "2x2 Checkerboard",
+        "check2x2Desc": "Tests 2x2 dual-pixel inversion architectures.",
+        "vstripes": "Vertical 1-Pixel Stripes",
+        "vstripesDesc": "Tests source driver column polarity transitions.",
+        "hstripes": "Horizontal 1-Pixel Stripes",
+        "hstripesDesc": "Tests gate line row inversion transitions.",
+        "subpixel": "Subpixel RGB Micro-Mesh",
+        "subpixelDesc": "Stress-tests individual subpixel driving balance.",
+        "textPhase": "Text-Phase High-Frequency Grid",
+        "textPhaseDesc": "Reveals pixel walk jitter when reading fine text."
+      }
+    },
+    "AudioSyncPattern": {
+      "title": "A/V Lip-Sync Calibration",
+      "description": "Synchronize display output and audio hardware. When the visual sweep bar crosses the center alignment notch, an instantaneous 1 kHz audio pulse is emitted.",
+      "calibration": "Audio / Video Calibration",
+      "syncStatus": "Sync Status",
+      "syncPerfect": "In Sync (0 ms)",
+      "videoLeading": "Video Leads (+{val} ms)",
+      "audioLeading": "Audio Leads (-{val} ms)",
+      "audioOffset": "Manual Audio Offset (ms)",
+      "tempo": "Sweep Frequency",
+      "sweepRate": "Sweeps / Minute",
+      "bpm": "BPM",
+      "mute": "Mute Audio",
+      "unmute": "Unmute Audio",
+      "start": "Start Sweep",
+      "stop": "Pause",
+      "reset": "Reset Offset",
+      "howToCalibrate": "How to Calibrate",
+      "calibrationTip": "Adjust the offset slider until the audible beep and the visual flashing notch occur at the exact same perceptual instant. Positive values delay audio; negative values advance audio.",
+      "pause": "Pause",
+      "play": "Play",
+      "soundOn": "Mute Audio",
+      "offset": "Audio Offset",
+      "resetOffset": "Reset Offset (0ms)",
+      "speed": "Sweep Rate"
+    },
+    "PursuitCameraPattern": {
+      "title": "Pursuit Camera Synchronization Track",
+      "description": "Pursuit camera tracking simulates the smooth-pursuit motion of human eyes tracking on-screen objects. Capture the moving UFO with a tracking camera to photograph MPRT and ghosting.",
+      "speed": "Panning Velocity",
+      "pxPerSec": "Pixels / Sec",
+      "syncTrackTitle": "Temporal Graduation Track",
+      "trackingInstructions": "Align your tracking camera so the white temporal tick marks in the upper track stay vertically stationary during your pan. When the ticks form a vertical line in your exposure, tracking sync is achieved.",
+      "mprtFormula": "Motion Picture Response Time (MPRT) is directly proportional to visual smear width divided by panning velocity.",
+      "cameraGuide": "Tracking Camera Alignment",
+      "cameraInstructions": "Pan your camera across the screen at matched speed. When vertical graduation lines align crisply, tracking is synchronized.",
+      "pause": "Pause",
+      "resume": "Resume",
+      "invertDirection": "Reverse Direction",
+      "leftToRight": "Left to Right",
+      "rightToLeft": "Right to Left"
+    },
+    "StrobeCrosstalkPattern": {
+      "title": "Strobe Crosstalk & BFI Inspection",
+      "description": "Backlight strobing (ULMB, DyAc, ELMB) turns off the backlight during liquid crystal transitions. Strobe crosstalk causes double images when the flash phase does not align with the panel refresh scan.",
+      "topZone": "Top Screen Zone",
+      "centerZone": "Center Screen Zone",
+      "bottomZone": "Bottom Screen Zone",
+      "crosstalkNotice": "Crosstalk Inspection",
+      "crosstalkDesc": "Compare ghost trails in the top, center, and bottom tracks. Fast monitors optimize strobe phase for the center zone, but top and bottom zones often show faint twin silhouettes.",
+      "topZoneSub": "Early scan phase",
+      "middleZone": "Center Screen Zone",
+      "middleZoneSub": "Optimal strobe sync",
+      "bottomZoneSub": "Late scan phase",
+      "pause": "Pause",
+      "play": "Play",
+      "speed": "Motion Speed",
+      "width": "Bar Width"
+    },
+    "VrrFlickerPattern": {
+      "title": "VRR Gamma Flicker Stress Test",
+      "description": "Adaptive sync alters panel refresh rate in real-time. Because LCD and OLED voltage response varies with refresh cycle duration, rapid framerate swings can induce noticeable luminance flicker.",
+      "lowHz": "Lower Frequency (Hz)",
+      "highHz": "Upper Frequency (Hz)",
+      "gammaFlickerNotice": "Evaluating VRR Flicker",
+      "gammaFlickerDesc": "Observe the 20% to 50% dark gray test patches. If brightness pulsates noticeably during refresh transitions, your display exhibits VRR gamma shift.",
+      "highWorkload": "Peak Frame Rate Phase",
+      "lowWorkload": "Trough Frame Rate Phase",
+      "pause": "Pause",
+      "play": "Play",
+      "patchLuminance": "Background Gray",
+      "cycleRate": "Oscillation Rate",
+      "levels": {
+        "nearBlack": "Near-Black (~10%)",
+        "darkGrey": "Dark Gray (~25%)",
+        "midGrey": "Mid Gray (~50%)"
+      }
+    },
+    "GamepadPattern": {
+      "title": "Gamepad & Controller Tester",
+      "description": "Connect any USB or Bluetooth gamepad. Test joystick centering, stick drift, deadzones, trigger pressure, and button responsiveness.",
+      "noGamepadDetected": "No Gamepad Detected",
+      "connectGamepadHint": "Connect a gamepad via USB or Bluetooth and press any button to begin testing.",
+      "controller": "Gamepad Connected",
+      "leftStick": "Left Analog Stick",
+      "rightStick": "Right Analog Stick",
+      "leftTrigger": "Left Trigger (LT/L2)",
+      "rightTrigger": "Right Trigger (RT/R2)",
+      "deadzone": "Deadzone Threshold",
+      "stickDriftDetected": "Stick Drift Detected (Non-zero at rest)",
+      "stickCentered": "Stick Centered (Within deadzone)",
+      "buttons": "Controller Buttons",
+      "connectPrompt": "Connect a USB or Bluetooth controller and press any button to begin testing.",
+      "browserSupportNote": "Powered by HTML5 Gamepad API. Supports Xbox, PlayStation, Switch, and standard HID controllers.",
+      "gamepadConnected": "Gamepad Active",
+      "pollingRate": "Polling Rate",
+      "testRumble": "Test Vibration / Rumble",
+      "trigger": "Analog Trigger",
+      "buttonsMatrix": "Button Actuation Matrix"
     }
   },
   "Guides": {
@@ -4170,7 +4407,125 @@
         "title": "Voice Recorder",
         "description": "Record voice notes and audio clips in browser memory with pause, resume, instant playback, and local download.",
         "badge": "LOCAL AUDIO"
+      },
+      "displayBandwidthCalculator": {
+        "title": "Display Bandwidth Calculator",
+        "description": "Calculate video data rate, uncompressed Gbps, VESA DSC compression, and cable compatibility for HDMI & DisplayPort.",
+        "badge": "Calculator"
+      },
+      "viewingDistanceCalculator": {
+        "title": "Viewing Distance & PPD Calculator",
+        "description": "Determine the ideal ergonomic viewing distance, Pixels Per Degree (PPD), and 20/20 human eye Retina threshold.",
+        "badge": "Calculator"
+      },
+      "dualMonitorMatcher": {
+        "title": "Dual-Monitor White Point Matcher",
+        "description": "Side-by-side split screen canvas to align color temperature, RGB gain, and luminance across multi-monitor setups.",
+        "badge": "Calibration"
       }
+    },
+    "DisplayBandwidthCalculator": {
+      "eyebrow": "Display Engineering Tool",
+      "title": "Display Bandwidth & Cable Calculator",
+      "description": "Calculate the required uncompressed and DSC video bandwidth for your monitor setup, and verify compatibility across HDMI, DisplayPort, and Thunderbolt standards.",
+      "resolution": "Resolution Preset",
+      "resolutionCustom": "Custom",
+      "width": "Width (px)",
+      "height": "Height (px)",
+      "refreshRate": "Refresh Rate (Hz)",
+      "colorDepth": "Color Depth (bpc)",
+      "chromaSubsampling": "Chroma Subsampling",
+      "bandwidthResults": "Calculated Bandwidth Requirements",
+      "uncompressedBandwidth": "Uncompressed Data Rate",
+      "dscBandwidth": "With VESA DSC (3:1)",
+      "dscExplanation": "Display Stream Compression (DSC 1.2a) allows visually lossless transmission at 1/3 of the raw bandwidth requirement.",
+      "cableCompatibility": "Cable & Interface Compatibility",
+      "maxBandwidth": "Max Bandwidth",
+      "supported": "Supported (Native)",
+      "requiresDsc": "Supported (Requires DSC)",
+      "notSupported": "Exceeds Interface Limit",
+      "specsNotes": "Technical Notes",
+      "specsNote1": "Calculations incorporate VESA CVT-RB2 (Reduced Blanking v2) timing overhead (~15%).",
+      "specsNote2": "Usable data rates reflect encoding overhead (8b/10b on DP 1.2/1.4, 16b/18b or 128b/132b on DP 2.1, 16b/18b on HDMI 2.1 FRL).",
+      "resolutionLabel": "Resolution Preset",
+      "refreshRateLabel": "Refresh Rate (Hz)",
+      "colorDepthLabel": "Color Depth (bpc)",
+      "chromaLabel": "Chroma Subsampling",
+      "requiredDataRate": "Calculated Bandwidth Requirements",
+      "uncompressedRateNote": "Uncompressed raw data rate with VESA CVT-RB2 timing overhead.",
+      "withDsc3to1": "With VESA DSC (3:1 Compression)",
+      "supportedNative": "Supported (Native)",
+      "supportedDsc": "Supported (Requires DSC)",
+      "insufficientBandwidth": "Exceeds Interface Limit"
+    },
+    "ViewingDistanceCalculator": {
+      "eyebrow": "Optics & Ergonomics Tool",
+      "title": "Viewing Distance & Retina PPD Calculator",
+      "description": "Calculate pixel density (PPI), angular resolution in Pixels Per Degree (PPD), and the exact threshold distance where pixels disappear to 20/20 human vision.",
+      "screenSize": "Screen Diagonal Size",
+      "diagonalSize": "Diagonal Size",
+      "resolution": "Resolution Preset",
+      "viewingDistance": "Current Viewing Distance",
+      "unitInches": "Inches (in)",
+      "unitCm": "Centimeters (cm)",
+      "pixelDensity": "Pixel Density",
+      "ppiUnit": "Pixels / Inch",
+      "visualAcuityPpd": "Visual Acuity",
+      "ppdUnit": "Pixels / Degree",
+      "retinaDistance": "20/20 Retina Threshold",
+      "retinaDistanceDesc": "At or beyond this distance, individual pixels cannot be resolved by standard 20/20 vision.",
+      "currentStatus": "Retina Acuity Status",
+      "retinaAchieved": "Retina Resolution Achieved",
+      "retinaNotAchieved": "Individual Pixels Resolvable",
+      "retinaAchievedDesc": "At your current distance of {dist}, your eye resolves {ppd} PPD (exceeds the 60 PPD 20/20 visual limit). The display appears perfectly sharp and pixel-free.",
+      "retinaNotAchievedDesc": "At your current distance of {dist}, your eye resolves {ppd} PPD (under 60 PPD limit). Move to {threshold} to achieve an indistinguishable 'Retina' experience.",
+      "visualExplainerTitle": "How PPD & Retina Calculations Work",
+      "visualExplainerP1": "Pixels Per Degree (PPD) measures the number of display pixels packed into each degree of your field of view. 60 PPD is the medical consensus limit for normal 20/20 human visual acuity.",
+      "visualExplainerP2": "Apple coined 'Retina Display' based on this standard: any display where PPD equals or exceeds 60 at normal operating distance.",
+      "units": "Measurement Units",
+      "in": "in",
+      "inches": "Inches (in)",
+      "cm": "cm",
+      "centimeters": "Centimeters (cm)",
+      "visualAcuity": "Visual Acuity",
+      "pixelsVisible": "Individual Pixels Resolvable",
+      "retinaPpdDescription": "At your current distance, your eye resolves {ppd} PPD (exceeds the 60 PPD 20/20 threshold). The display appears perfectly sharp and pixel-free.",
+      "subRetinaPpdDescription": "At your current distance, your eye resolves {ppd} PPD (below the 60 PPD threshold). Move to the recommended threshold for a pixel-free Retina experience.",
+      "retinaThreshold": "20/20 Retina Distance",
+      "howItWorksTitle": "How PPD & Retina Calculations Work",
+      "howItWorksText": "Pixels Per Degree (PPD) measures the number of display pixels packed into each degree of your field of view. 60 PPD is the medical consensus limit for normal 20/20 human visual acuity. At or beyond the Retina distance, individual pixels cannot be distinguished."
+    },
+    "DualMonitorMatcher": {
+      "eyebrow": "Multi-Monitor Calibration",
+      "title": "Dual-Monitor White Point & Color Matcher",
+      "description": "Position this split canvas across your dual-monitor bezel seam. Adjust RGB channel gain and luminance until both panels show identical color temperature and neutral grays.",
+      "canvasHint": "Drag the split line to align with your monitor bezel, or press Fullscreen and stretch across both monitors.",
+      "exitFullscreen": "Exit Fullscreen",
+      "fullscreenAcross": "Span Fullscreen Across Displays",
+      "monitorA": "Display 1 (Reference)",
+      "monitorB": "Display 2 (Adjustment)",
+      "calibrationTarget": "Target Test Pattern",
+      "resetAll": "Reset All",
+      "presetD65": "D65 White (6500K)",
+      "presetGray75": "75% Light Gray",
+      "presetGray50": "50% Mid Gray",
+      "presetGray18": "18% Neutral Gray",
+      "presetWarm": "Warm (5000K)",
+      "presetCool": "Cool (7500K)",
+      "presetRed": "Primary Red",
+      "presetGreen": "Primary Green",
+      "presetBlue": "Primary Blue",
+      "monitorAControls": "Display 1 RGB Gain / Bias",
+      "monitorBControls": "Display 2 RGB Gain / Bias",
+      "reset": "Reset",
+      "redGain": "Red Gain",
+      "greenGain": "Green Gain",
+      "blueGain": "Blue Gain",
+      "brightnessOffset": "Brightness Offset",
+      "guideTitle": "How to Match Dual Displays",
+      "guideStep1": "1. Set both monitors to identical factory color modes (e.g. sRGB or Custom 6500K) in their hardware OSD menus.",
+      "guideStep2": "2. Stretch this browser window across the bezel separating the two screens, selecting 'D65 White' or '18% Neutral Gray'.",
+      "guideStep3": "3. Adjust the hardware RGB channels on your mismatched monitor until the seam between the two screens appears completely seamless."
     }
   },
   "Diagnostic": {
@@ -4658,7 +5013,8 @@
     },
     "recommendedChecksNote": "Targeted test recommendations derived from your display specifications and panel technology.",
     "troubleshootingNote": "Direct links to practical troubleshooting guides based on issues observed during this inspection session.",
-    "viewTroubleshootingAction": "View Troubleshooting Guide"
+    "viewTroubleshootingAction": "View Troubleshooting Guide",
+    "exportCertificate": "Export / Print Certificate"
   },
   "CustomPattern": {
     "breadcrumbAll": "ALL TESTS",
@@ -6425,7 +6781,13 @@
       "notesPlaceholder": "Add any notes on pixel behavior (sub-pixel color, location, screen response)...",
       "saveObservation": "Save Observation",
       "observationSaved": "Observation recorded to inspection session."
-    }
+    },
+    "m": "m",
+    "mRunCompleted": "m Run Completed",
+    "visualObservation": "Visual Observation",
+    "importantNotice": "Important Notice:",
+    "cancel": "Cancel",
+    "iUnderstandStart": "I Understand, Start Stimulation"
   },
   "Troubleshooting": {
     "metaTitle": "Display Troubleshooting Guide",
