@@ -57,8 +57,19 @@ export default function middleware(request: NextRequest) {
     return NextResponse.redirect(url, 301);
   }
 
+  // 4. Ensure any non-localized path automatically 301 redirects to /en/...
+  const pathnameHasLocale = routing.locales.some(
+    (loc) => url.pathname === `/${loc}` || url.pathname.startsWith(`/${loc}/`)
+  );
+
+  if (!pathnameHasLocale && !url.pathname.startsWith('/api') && !url.pathname.includes('.')) {
+    url.pathname = `/en${url.pathname === '/' ? '' : url.pathname}`;
+    return NextResponse.redirect(url, 301);
+  }
+
   return intlMiddleware(request);
 }
+
 
 export const config = {
   // Match only internationalized pathnames and non-asset routes
