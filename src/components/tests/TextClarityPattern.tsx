@@ -13,16 +13,7 @@ interface TextClarityPatternProps {
 type TextContrastTheme = "dark-on-light" | "light-on-dark" | "colored-fringing";
 
 const FONT_SCALES = [8, 10, 12, 14, 16, 20, 24, 32];
-import { TestInlineControls } from "../test-runner/TestInlineControls";
-import { ShieldAlert, Info, Maximize, ZoomIn } from "lucide-react";
 
-interface TextClarityPatternProps {
-  testId?: string;
-}
-
-type TextContrastTheme = "dark-on-light" | "light-on-dark" | "colored-fringing";
-
-const FONT_SCALES = [8, 10, 12, 14, 16, 20, 24, 32];
 
 export function TextClarityPattern({ testId = "text-clarity-test" }: TextClarityPatternProps) {
   const { toggleFullscreen } = useTestContext();
