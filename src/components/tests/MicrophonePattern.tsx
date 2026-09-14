@@ -713,7 +713,7 @@ export function MicrophonePattern({ testId = "microphone-test" }: MicrophonePatt
                   <Volume2 className="w-4 h-4 text-blue-400" />
                   <span className="text-xs font-bold text-slate-200">{t("loopback.title")}</span>
                 </div>
-                <span className="text-[10px] font-mono text-slate-400">5-Second Audio Check</span>
+                <span className="text-[10px] font-mono text-slate-400">{t("5SecondAudioCheck")}</span>
               </div>
               <p className="text-xs text-slate-400 leading-relaxed">
                 {t("loopback.description")}

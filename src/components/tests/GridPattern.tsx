@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
+import { useTranslations } from "next-intl";
 
 interface GridPatternProps {
   type: "brightness" | "contrast";
@@ -57,6 +58,7 @@ const NEAR_WHITE_STEPS = [
 ];
 
 export function GridPattern({ type, testId }: GridPatternProps) {
+    const t = useTranslations("Tests.GridPattern");
   const { registerNavigation } = useTestContext();
   const [mode, setMode] = useState<CalibrationMode>(type === "brightness" ? "uniform" : "uniform");
   const [showLabels, setShowLabels] = useState(true);
@@ -131,8 +133,7 @@ export function GridPattern({ type, testId }: GridPatternProps) {
         {mode === "near-black" && (
           <div className="flex flex-col items-center justify-center w-full max-w-3xl h-full max-h-[82%] min-h-0 space-y-3">
             <div className="text-xs text-neutral-300 font-medium">
-              Near-Black Shadow Calibration (Low Range 0% â€“ 25%)
-            </div>
+              {t("nearBlackShadowCalibration")}</div>
             <div className="grid grid-cols-5 grid-rows-3 gap-2 sm:gap-3 w-full h-full min-h-0">
               {NEAR_BLACK_STEPS.map((step, index) => {
                 const color = `rgb(${step.rgb}, ${step.rgb}, ${step.rgb})`;
@@ -146,7 +147,7 @@ export function GridPattern({ type, testId }: GridPatternProps) {
                       {step.percent}%
                     </span>
                     <span className="text-[9px] font-mono text-white/50">
-                      RGB {step.rgb}
+                      {t("rgb")}{step.rgb}
                     </span>
                   </div>
                 );
@@ -159,8 +160,7 @@ export function GridPattern({ type, testId }: GridPatternProps) {
         {mode === "near-white" && (
           <div className="flex flex-col items-center justify-center w-full max-w-3xl h-full max-h-[82%] min-h-0 space-y-3">
             <div className="text-xs text-neutral-300 font-medium">
-              Near-White Highlight Calibration (High Range 75% â€“ 100%)
-            </div>
+              {t("nearWhiteHighlightCalibration")}</div>
             <div className="grid grid-cols-5 grid-rows-3 gap-2 sm:gap-3 w-full h-full min-h-0">
               {NEAR_WHITE_STEPS.map((step, index) => {
                 const color = `rgb(${step.rgb}, ${step.rgb}, ${step.rgb})`;
@@ -174,7 +174,7 @@ export function GridPattern({ type, testId }: GridPatternProps) {
                       {step.percent}%
                     </span>
                     <span className="text-[9px] font-mono text-black/50">
-                      RGB {step.rgb}
+                      {t("rgb")}{step.rgb}
                     </span>
                   </div>
                 );
@@ -187,7 +187,7 @@ export function GridPattern({ type, testId }: GridPatternProps) {
         {mode === "gradient" && (
           <div className="flex flex-col justify-center w-full max-w-3xl h-full max-h-[82%] min-h-0 space-y-4 px-2">
             <div>
-              <div className="text-xs text-neutral-400 mb-1 font-mono">16-Step Quantized Grayscale Wedge:</div>
+              <div className="text-xs text-neutral-400 mb-1 font-mono">{t("16StepQuantizedGrayscale")}</div>
               <div className="flex h-14 sm:h-20 w-full rounded-md overflow-hidden border border-neutral-700">
                 {Array.from({ length: 16 }, (_, i) => {
                   const val = Math.round((i / 15) * 255);
@@ -209,7 +209,7 @@ export function GridPattern({ type, testId }: GridPatternProps) {
             </div>
 
             <div>
-              <div className="text-xs text-neutral-400 mb-1 font-mono">Continuous 8-bit Gradient (Check for Banding):</div>
+              <div className="text-xs text-neutral-400 mb-1 font-mono">{t("continuous8BitGradient")}</div>
               <div 
                 className="h-14 sm:h-20 w-full rounded-md border border-neutral-700 relative"
                 style={{ background: "linear-gradient(to right, rgb(0,0,0), rgb(255,255,255))" }}
@@ -241,8 +241,7 @@ export function GridPattern({ type, testId }: GridPatternProps) {
                   : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
-              25 Steps
-            </button>
+              {t("25Steps")}</button>
             <button
               onClick={() => setMode("near-black")}
               className={`px-2.5 py-1 rounded-md transition-all font-medium ${
@@ -251,8 +250,7 @@ export function GridPattern({ type, testId }: GridPatternProps) {
                   : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
-              Near-Black
-            </button>
+              {t("nearBlack")}</button>
             <button
               onClick={() => setMode("near-white")}
               className={`px-2.5 py-1 rounded-md transition-all font-medium ${
@@ -261,8 +259,7 @@ export function GridPattern({ type, testId }: GridPatternProps) {
                   : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
-              Near-White
-            </button>
+              {t("nearWhite")}</button>
             <button
               onClick={() => setMode("gradient")}
               className={`px-2.5 py-1 rounded-md transition-all font-medium ${
@@ -271,8 +268,7 @@ export function GridPattern({ type, testId }: GridPatternProps) {
                   : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
-              Ramp
-            </button>
+              {t("ramp")}</button>
           </div>
 
           {/* Label toggles (for 25 Steps mode) */}

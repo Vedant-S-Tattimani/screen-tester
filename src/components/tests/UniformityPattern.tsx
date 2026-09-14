@@ -5,6 +5,7 @@ import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
 import { Grid, ShieldAlert, Info, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface UniformityPatternProps {
   testId?: string;
@@ -27,6 +28,7 @@ export const UNIFORMITY_FIELDS: UniformityField[] = [
 ];
 
 export function UniformityPattern({ testId = "uniformity-test" }: UniformityPatternProps) {
+    const t = useTranslations("Tests.UniformityPattern");
   const { registerNavigation } = useTestContext();
   const [activeIndex, setActiveIndex] = useState(3); // Mid-gray 50% default
   const [showGrid, setShowGrid] = useState(false);
@@ -84,7 +86,7 @@ export function UniformityPattern({ testId = "uniformity-test" }: UniformityPatt
                     className="text-[9px] font-mono opacity-40 font-bold select-none"
                     style={{ color: activeField.textColor }}
                   >
-                    R{row}C{col} {isCenter ? "(CENTER)" : ""}
+                    {t("r")}{row}{t("c")}{col} {isCenter ? "(CENTER)" : ""}
                   </span>
                 </div>
               );
@@ -101,13 +103,12 @@ export function UniformityPattern({ testId = "uniformity-test" }: UniformityPatt
             {activeField.label}
           </span>
           <span className="text-[10px] font-mono opacity-80 block">
-            Click anywhere to change color • Arrow keys to navigate
-          </span>
+            {t("clickAnywhereToChange")}</span>
         </div>
       </div>
 
       {/* Control Bar Controls (Integrated neatly into TestControlBar without overlapping) */}
-      <TestControlBar testId={testId} title="Screen Uniformity Test">
+      <TestControlBar testId={testId} title={t("screenUniformityTestTitle")}>
         <div className="flex flex-wrap items-center gap-2 sm:gap-3">
           {/* Color Switcher Strip */}
           <div className="flex items-center gap-1 bg-muted/60 dark:bg-white/10 p-1 rounded-lg border border-border/50">
@@ -118,8 +119,8 @@ export function UniformityPattern({ testId = "uniformity-test" }: UniformityPatt
                 prevField();
               }}
               className="p-1.5 hover:bg-white/20 rounded transition-colors text-amber-300 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-amber-400 cursor-pointer"
-              title="Previous field (Left arrow)"
-              aria-label="Previous field"
+              title={t("previousFieldLeftArrowTitle")}
+              aria-label={t("previousFieldTitle")}
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -156,8 +157,8 @@ export function UniformityPattern({ testId = "uniformity-test" }: UniformityPatt
                 nextField();
               }}
               className="p-1.5 hover:bg-white/20 rounded transition-colors text-amber-300 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-amber-400 cursor-pointer"
-              title="Next field (Right arrow / Left click)"
-              aria-label="Next field"
+              title={t("nextFieldRightArrowTitle")}
+              aria-label={t("nextFieldTitle")}
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -197,7 +198,7 @@ export function UniformityPattern({ testId = "uniformity-test" }: UniformityPatt
                   setGridSize((prev) => (prev === 3 ? 5 : 3));
                 }}
                 className="px-2.5 py-1.5 bg-slate-100 dark:bg-black/60 hover:bg-slate-200 dark:hover:bg-black/80 text-amber-600 dark:text-amber-300 text-xs font-mono font-bold rounded-lg border border-slate-200 dark:border-white/25 transition-all focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-amber-400 cursor-pointer"
-                title="Switch Grid Resolution (3x3 / 5x5)"
+                title={t("switchGridResolution3x3Title")}
               >
                 {gridSize === 3 ? "5x5" : "3x3"}
               </button>
@@ -214,17 +215,17 @@ export function UniformityPattern({ testId = "uniformity-test" }: UniformityPatt
  * Rendered below the test viewport via extraControls in TestWrapper
  */
 export function UniformityGuidance() {
+    const t = useTranslations("Tests.UniformityPattern");
   return (
     <div className="w-full max-w-4xl mx-auto bg-card border border-border/70 rounded-2xl p-5 shadow-xs space-y-4">
       {/* Technical Disclaimer Banner */}
       <div className="p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-amber-900 dark:text-amber-200 leading-relaxed space-y-1">
         <div className="flex items-center gap-2 font-semibold">
           <ShieldAlert className="w-4 h-4 text-amber-500 shrink-0" />
-          <span>Hardware Boundary Notice</span>
+          <span>{t("hardwareBoundaryNotice")}</span>
         </div>
         <p>
-          Screen Tester <strong>does not calculate a synthetic &quot;uniformity percentage&quot; or use webcam exposure measurements</strong>. Webcams and phone cameras suffer from severe lens vignetting, sensor gain artifacts, and automatic ISO compensation that misrepresent true screen luminance. Reliable Delta E or luminance uniformity profiling requires laboratory spot-photometer or colorimeter grid measurements.
-        </p>
+          {t("screenTester")}<strong>{t("doesNotCalculateA")}</strong>{t("webcamsAndPhoneCameras")}</p>
       </div>
 
       {/* Inspection Guidance Cards */}
@@ -232,26 +233,22 @@ export function UniformityGuidance() {
         <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
           <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
           <div>
-            <strong className="text-foreground">1. Mid-Gray (50%) Inspection:</strong> The 50% neutral gray field is best for detecting dirty screen effect (DSE), diffuser clouding, and center-to-edge vignetting.
-          </div>
+            <strong className="text-foreground">{t("1MidGray50")}</strong> {t("the50NeutralGray")}</div>
         </div>
         <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
           <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
           <div>
-            <strong className="text-foreground">2. Dark Gray (5% & 20%) on OLED:</strong> On OLED and QD-OLED displays, inspect the 5% near-black field in a dark room to evaluate low-luminance vertical banding.
-          </div>
+            <strong className="text-foreground">{t("2DarkGray5")}</strong> {t("onOledAndQd")}</div>
         </div>
         <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
           <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
           <div>
-            <strong className="text-foreground">3. White Field (100%):</strong> Check the full white field for color temperature consistency (e.g., pink or greenish tint variations across left vs right sides).
-          </div>
+            <strong className="text-foreground">{t("3WhiteField100")}</strong> {t("checkTheFullWhite")}</div>
         </div>
         <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
           <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
           <div>
-            <strong className="text-foreground">4. Light Gray (80%) & Edges:</strong> Observe the perimeter and corners for bezel pinch marks, backlight diffusion drop-off, and edge shadows.
-          </div>
+            <strong className="text-foreground">{t("4LightGray80")}</strong> {t("observeThePerimeterAnd")}</div>
         </div>
       </div>
     </div>

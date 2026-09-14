@@ -2,6 +2,32 @@
 
 // Execute immediately during client module evaluation — before React hydration begins!
 if (typeof window !== "undefined") {
+  const isExtensionNoise = (val: unknown): boolean => {
+    if (!val) return false;
+    let text = "";
+    if (val instanceof Error) {
+      text = `${val.name} ${val.message} ${val.stack || ""}`;
+    } else if (typeof val === "object") {
+      try {
+        text = JSON.stringify(val);
+      } catch {
+        text = String(val);
+      }
+    } else {
+      text = String(val);
+    }
+    return (
+      text.includes("chrome-extension://") ||
+      text.includes("moz-extension://") ||
+      text.includes("safari-extension://") ||
+      text.includes("eppiocemhmnlbhjplcgkofciiegomcon") ||
+      text.includes("M_ID") ||
+      text.includes("bis_skin_checked") ||
+      text.includes("bis_register") ||
+      text.includes("__processed_")
+    );
+  };
+
   // 1. Intercept console.error using defineProperty to filter extension hydration noise before Next.js Dev Overlay captures it
   try {
     let originalConsoleError = console.error;
@@ -10,9 +36,16 @@ if (typeof window !== "undefined") {
       enumerable: true,
       get: function () {
         return function (...args: unknown[]) {
+          if (args.some(isExtensionNoise)) {
+            return;
+          }
+
           const message = args
             .map((a) => {
               try {
+                if (a instanceof Error) {
+                  return `${a.name}: ${a.message}\n${a.stack || ""}`;
+                }
                 return typeof a === "object" && a !== null ? JSON.stringify(a) : String(a);
               } catch {
                 return String(a);
@@ -20,13 +53,10 @@ if (typeof window !== "undefined") {
             })
             .join(" ");
 
-          if (
-            message.includes("bis_skin_checked") ||
-            message.includes("bis_register") ||
-            message.includes("__processed_")
-          ) {
+          if (isExtensionNoise(message)) {
             return;
           }
+
           return originalConsoleError.apply(console, args);
         };
       },
@@ -34,6 +64,35 @@ if (typeof window !== "undefined") {
         originalConsoleError = newErrorFn;
       },
     });
+  } catch {}
+
+  // 1b. Intercept window 'error' and 'unhandledrejection' at capture phase to stop third-party extension crashes from triggering Next.js Dev Overlay
+  try {
+    window.addEventListener(
+      "error",
+      (event) => {
+        if (
+          isExtensionNoise(event.filename) ||
+          isExtensionNoise(event.message) ||
+          isExtensionNoise(event.error)
+        ) {
+          event.stopImmediatePropagation();
+          event.preventDefault();
+        }
+      },
+      true
+    );
+
+    window.addEventListener(
+      "unhandledrejection",
+      (event) => {
+        if (isExtensionNoise(event.reason)) {
+          event.stopImmediatePropagation();
+          event.preventDefault();
+        }
+      },
+      true
+    );
   } catch {}
 
   // 2. Strip already-injected extension attributes from the DOM before and during hydration

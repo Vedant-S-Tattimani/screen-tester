@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
+import { useTranslations } from "next-intl";
 
 interface SaturationPatternProps {
   testId?: string;
@@ -11,6 +12,7 @@ interface SaturationPatternProps {
 type Mode = "all" | "hue" | "rgb";
 
 export function SaturationPattern({ testId }: SaturationPatternProps) {
+    const t = useTranslations("Tests.SaturationPattern");
   const { registerNavigation } = useTestContext();
   const [mode, setMode] = useState<Mode>("all");
 
@@ -31,7 +33,7 @@ export function SaturationPattern({ testId }: SaturationPatternProps) {
       <div 
         className="absolute inset-0 flex flex-col bg-black overflow-hidden cursor-pointer select-none"
         onClick={cycleMode}
-        title="Click anywhere to cycle mode: Combined → Rainbow (Hue) → RGB Steps"
+        title={t("clickAnywhereToCycleTitle")}
       >
         {/* Floating Mode Cue */}
         <div className="absolute top-3 left-3 pointer-events-none flex items-center gap-2 bg-black/75 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/20 text-white text-xs font-mono shadow-md z-10">
@@ -39,7 +41,7 @@ export function SaturationPattern({ testId }: SaturationPatternProps) {
             {mode === "all" ? "Combined" : mode === "hue" ? "Rainbow (Hue)" : "RGB Steps"}
           </span>
           <span className="text-white/40">•</span>
-          <span className="text-white/70 text-[11px]">Click screen to cycle</span>
+          <span className="text-white/70 text-[11px]">{t("clickScreenToCycle")}</span>
         </div>
 
         {/* Hue Spectrum */}
@@ -88,9 +90,9 @@ export function SaturationPattern({ testId }: SaturationPatternProps) {
         )}
       </div>
 
-      <TestControlBar testId={testId} title="Color Saturation & Transitions">
+      <TestControlBar testId={testId} title={t("colorSaturationTransitionsTitle")}>
         <div className="flex items-center gap-2">
-          <span className="text-xs font-bold text-amber-600 dark:text-amber-300 uppercase tracking-wider font-mono hidden md:inline">Mode:</span>
+          <span className="text-xs font-bold text-amber-600 dark:text-amber-300 uppercase tracking-wider font-mono hidden md:inline">{t("mode")}</span>
           <div className="flex gap-1.5 bg-slate-100 dark:bg-black/80 p-1 rounded-xl border border-slate-200 dark:border-white/20">
             {(["all", "hue", "rgb"] as Mode[]).map(m => (
               <button

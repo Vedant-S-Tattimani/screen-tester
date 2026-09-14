@@ -5,6 +5,7 @@ import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
 import { ChevronLeft, ChevronRight, Eye, Info, ShieldAlert, CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface ContrastPatternProps {
   testId?: string;
@@ -81,6 +82,7 @@ const FULL_RANGE_STEPS = Array.from({ length: 16 }, (_, i) => {
 });
 
 export function ContrastPattern({ testId = "contrast-test" }: ContrastPatternProps) {
+    const t = useTranslations("Tests.ContrastPattern");
   const { registerNavigation } = useTestContext();
   const [activeModeIndex, setActiveModeIndex] = useState(0);
 
@@ -127,7 +129,7 @@ export function ContrastPattern({ testId = "contrast-test" }: ContrastPatternPro
               <span>{currentMode.label}</span>
               <span className="text-white/40">•</span>
               <span className="text-white/60 font-mono text-[11px]">
-                Stage {activeModeIndex + 1} of {CONTRAST_MODES.length}
+                {t("stage")}{activeModeIndex + 1} {t("of")}{CONTRAST_MODES.length}
               </span>
             </div>
             <p className="text-[11px] sm:text-xs text-white/90 leading-normal">
@@ -144,9 +146,9 @@ export function ContrastPattern({ testId = "contrast-test" }: ContrastPatternPro
             {/* 16-step discrete tonal ramp */}
             <div className="w-full space-y-2">
               <div className="flex items-center justify-between text-[11px] font-mono text-white/70 px-1">
-                <span>0% Pure Black (RGB 0)</span>
-                <span className="hidden sm:inline">50% Midtone (RGB 128)</span>
-                <span>100% Pure White (RGB 255)</span>
+                <span>{t("0PureBlackRgb")}</span>
+                <span className="hidden sm:inline">{t("50MidtoneRgb128")}</span>
+                <span>{t("100PureWhiteRgb")}</span>
               </div>
               <div className="grid grid-cols-8 sm:grid-cols-16 gap-1 w-full p-2 bg-black/60 rounded-2xl border border-white/15 shadow-2xl">
                 {FULL_RANGE_STEPS.map((step, idx) => (
@@ -177,8 +179,8 @@ export function ContrastPattern({ testId = "contrast-test" }: ContrastPatternPro
               {/* Near-Black Reference Zone */}
               <div className="p-4 rounded-2xl bg-black border border-white/20 shadow-xl space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-white font-mono">Shadow Discrimination</span>
-                  <span className="text-[10px] font-mono text-emerald-400">Target: Step 2 distinct from 0</span>
+                  <span className="text-xs font-bold text-white font-mono">{t("shadowDiscrimination")}</span>
+                  <span className="text-[10px] font-mono text-emerald-400">{t("targetStep2Distinct")}</span>
                 </div>
                 <div className="grid grid-cols-5 gap-1.5">
                   {NEAR_BLACK_STEPS.slice(0, 5).map((step, i) => (
@@ -200,8 +202,8 @@ export function ContrastPattern({ testId = "contrast-test" }: ContrastPatternPro
               {/* Near-White Reference Zone */}
               <div className="p-4 rounded-2xl bg-white text-black border border-black/20 shadow-xl space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold font-mono">Highlight Discrimination</span>
-                  <span className="text-[10px] font-mono text-blue-600 font-bold">Target: 253 distinct from 255</span>
+                  <span className="text-xs font-bold font-mono">{t("highlightDiscrimination")}</span>
+                  <span className="text-[10px] font-mono text-blue-600 font-bold">{t("target253DistinctFrom")}</span>
                 </div>
                 <div className="grid grid-cols-5 gap-1.5">
                   {NEAR_WHITE_STEPS.slice(4).map((step, i) => (
@@ -230,11 +232,9 @@ export function ContrastPattern({ testId = "contrast-test" }: ContrastPatternPro
           <div className="w-full max-w-5xl px-4 sm:px-8 py-16 flex flex-col items-center justify-center gap-6">
             <div className="text-center space-y-1">
               <span className="text-xs sm:text-sm font-semibold text-white block">
-                Black Level & Shadow Detail Calibration
-              </span>
+                {t("blackLevelShadowDetail")}</span>
               <span className="text-xs text-amber-300 font-mono font-semibold block">
-                Each block is slightly brighter than pure black. Can you distinguish the steps from the black surround?
-              </span>
+                {t("eachBlockIsSlightly")}</span>
             </div>
 
             {/* Stepped shadow patches with embedded inner squares */}
@@ -253,11 +253,10 @@ export function ContrastPattern({ testId = "contrast-test" }: ContrastPatternPro
                   style={{ backgroundColor: `rgb(${step.rgb}, ${step.rgb}, ${step.rgb})` }}
                 >
                   <div className="flex items-center justify-between w-full">
-                    <span className="text-[10px] font-mono font-bold text-white/90">RGB {step.rgb}</span>
+                    <span className="text-[10px] font-mono font-bold text-white/90">{t("rgb")}{step.rgb}</span>
                     {i === 2 && (
                       <span className="text-[8px] uppercase tracking-wider font-bold bg-emerald-600 text-white px-1 py-0.5 rounded">
-                        Key Step
-                      </span>
+                        {t("keyStep")}</span>
                     )}
                   </div>
 
@@ -275,8 +274,7 @@ export function ContrastPattern({ testId = "contrast-test" }: ContrastPatternPro
             </div>
 
             <div className="text-xs font-mono text-amber-200 text-center max-w-xl font-semibold bg-black/70 px-4 py-2 rounded-xl border border-white/20">
-              If steps 1 through 3 blend completely into the background, your display has <strong>crushed blacks</strong> (contrast too high or gamma too steep).
-            </div>
+              {t("ifSteps1Through")}<strong>{t("crushedBlacks")}</strong> {t("contrastTooHighOr")}</div>
           </div>
         )}
 
@@ -287,11 +285,9 @@ export function ContrastPattern({ testId = "contrast-test" }: ContrastPatternPro
           <div className="w-full max-w-5xl px-4 sm:px-8 py-16 flex flex-col items-center justify-center gap-6">
             <div className="text-center space-y-1">
               <span className="text-xs sm:text-sm font-semibold text-black block">
-                White Level & Highlight Clipping Calibration
-              </span>
+                {t("whiteLevelHighlightClipping")}</span>
               <span className="text-[11px] text-black/60 font-mono block">
-                Each block is slightly darker than pure white. Can you distinguish the steps from the white surround?
-              </span>
+                {t("eachBlockIsSlightly_1")}</span>
             </div>
 
             {/* Stepped highlight patches with embedded inner squares */}
@@ -312,11 +308,10 @@ export function ContrastPattern({ testId = "contrast-test" }: ContrastPatternPro
                     style={{ backgroundColor: `rgb(${step.rgb}, ${step.rgb}, ${step.rgb})` }}
                   >
                     <div className="flex items-center justify-between w-full">
-                      <span className="text-[10px] font-mono font-bold text-black/90">RGB {step.rgb}</span>
+                      <span className="text-[10px] font-mono font-bold text-black/90">{t("rgb")}{step.rgb}</span>
                       {isKey && (
                         <span className="text-[8px] uppercase tracking-wider font-bold bg-blue-600 text-white px-1 py-0.5 rounded">
-                          Key Step
-                        </span>
+                          {t("keyStep")}</span>
                       )}
                     </div>
 
@@ -335,8 +330,7 @@ export function ContrastPattern({ testId = "contrast-test" }: ContrastPatternPro
             </div>
 
             <div className="text-[11px] font-mono text-black/60 text-center max-w-xl">
-              If steps 252, 253, and 254 look identical to pure white 255, your display has <strong>clipped whites</strong> (monitor contrast or brightness is set too high).
-            </div>
+              {t("ifSteps252253")}<strong>{t("clippedWhites")}</strong> {t("monitorContrastOrBrightness")}</div>
           </div>
         )}
 
@@ -347,11 +341,9 @@ export function ContrastPattern({ testId = "contrast-test" }: ContrastPatternPro
           <div className="w-full max-w-4xl px-4 sm:px-8 py-16 flex flex-col items-center justify-center gap-6 text-white">
             <div className="text-center space-y-1">
               <span className="text-xs sm:text-sm font-semibold text-white block">
-                Continuous 0–255 Grayscale Dynamic Range
-              </span>
+                {t("continuous0255Grayscale")}</span>
               <span className="text-[11px] text-white/60 font-mono block">
-                Inspect for smooth, seamless transitions. Check for abrupt vertical banding lines or uneven tints.
-              </span>
+                {t("inspectForSmoothSeamless")}</span>
             </div>
 
             {/* Continuous Smooth Gradient Bar */}
@@ -361,19 +353,18 @@ export function ContrastPattern({ testId = "contrast-test" }: ContrastPatternPro
                 style={{ background: "linear-gradient(to right, rgb(0,0,0), rgb(128,128,128), rgb(255,255,255))" }}
               />
               <div className="flex justify-between text-[10px] sm:text-xs font-mono text-white/60 px-1">
-                <span>0 (Pure Black)</span>
-                <span>64 (Dark)</span>
-                <span>128 (Midtone)</span>
-                <span>192 (Light)</span>
-                <span>255 (Pure White)</span>
+                <span>{t("0PureBlack")}</span>
+                <span>{t("64Dark")}</span>
+                <span>{t("128Midtone")}</span>
+                <span>{t("192Light")}</span>
+                <span>{t("255PureWhite")}</span>
               </div>
             </div>
 
             {/* 32-step stepped wedge directly below for quantization comparison */}
             <div className="w-full space-y-1.5 mt-4">
               <span className="text-[11px] font-mono text-white/70 block">
-                32-Step Quantized Luminance Steps:
-              </span>
+                {t("32StepQuantizedLuminance")}</span>
               <div className="grid grid-cols-16 sm:grid-cols-32 gap-0.5 w-full h-12 rounded-xl overflow-hidden border border-white/20">
                 {Array.from({ length: 32 }, (_, i) => {
                   const val = Math.round((i / 31) * 255);
@@ -398,39 +389,37 @@ export function ContrastPattern({ testId = "contrast-test" }: ContrastPatternPro
           <div className="w-full max-w-5xl px-4 sm:px-8 py-16 flex flex-col items-center justify-center gap-6">
             <div className="text-center space-y-1">
               <span className="text-xs sm:text-sm font-semibold text-white block">
-                Chromatic Colour Contrast Inspection
-              </span>
+                {t("chromaticColourContrastInspection")}</span>
               <span className="text-[11px] text-white/60 font-mono block">
-                Verify that distinct colors do not unexpectedly merge, and saturated colors retain detail without clipping.
-              </span>
+                {t("verifyThatDistinctColors")}</span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
               {/* Primary Channel Separation */}
               <div className="p-4 rounded-2xl bg-black border border-white/20 shadow-xl space-y-3">
-                <span className="text-xs font-bold text-white font-mono block">Primary Channel Separation</span>
+                <span className="text-xs font-bold text-white font-mono block">{t("primaryChannelSeparation")}</span>
                 <div className="grid grid-cols-3 gap-2 h-24">
-                  <div className="bg-[#FF0000] rounded-lg flex items-center justify-center border border-white/10"><span className="text-[10px] font-mono font-bold text-white mix-blend-difference">Pure Red</span></div>
-                  <div className="bg-[#00FF00] rounded-lg flex items-center justify-center border border-white/10"><span className="text-[10px] font-mono font-bold text-black mix-blend-difference">Pure Green</span></div>
-                  <div className="bg-[#0000FF] rounded-lg flex items-center justify-center border border-white/10"><span className="text-[10px] font-mono font-bold text-white mix-blend-difference">Pure Blue</span></div>
+                  <div className="bg-[#FF0000] rounded-lg flex items-center justify-center border border-white/10"><span className="text-[10px] font-mono font-bold text-white mix-blend-difference">{t("pureRed")}</span></div>
+                  <div className="bg-[#00FF00] rounded-lg flex items-center justify-center border border-white/10"><span className="text-[10px] font-mono font-bold text-black mix-blend-difference">{t("pureGreen")}</span></div>
+                  <div className="bg-[#0000FF] rounded-lg flex items-center justify-center border border-white/10"><span className="text-[10px] font-mono font-bold text-white mix-blend-difference">{t("pureBlue")}</span></div>
                 </div>
               </div>
 
               {/* Contrasting Pairs */}
               <div className="p-4 rounded-2xl bg-black border border-white/20 shadow-xl space-y-3">
-                <span className="text-xs font-bold text-white font-mono block">Contrasting Pairs & Clipping Check</span>
+                <span className="text-xs font-bold text-white font-mono block">{t("contrastingPairsClippingCheck")}</span>
                 <div className="grid grid-cols-2 gap-2 h-24">
                   {/* Pair 1 */}
                   <div className="rounded-lg flex overflow-hidden border border-white/10 relative">
                     <div className="w-1/2 bg-[#FF0000]"></div>
                     <div className="w-1/2 bg-[#00FFFF]"></div>
-                    <span className="absolute inset-0 flex items-center justify-center text-[10px] font-mono font-bold text-white mix-blend-difference pointer-events-none">Red vs Cyan</span>
+                    <span className="absolute inset-0 flex items-center justify-center text-[10px] font-mono font-bold text-white mix-blend-difference pointer-events-none">{t("redVsCyan")}</span>
                   </div>
                   {/* Pair 2 */}
                   <div className="rounded-lg flex overflow-hidden border border-white/10 relative">
                     <div className="w-1/2 bg-[#0000FF]"></div>
                     <div className="w-1/2 bg-[#FFFF00]"></div>
-                    <span className="absolute inset-0 flex items-center justify-center text-[10px] font-mono font-bold text-white mix-blend-difference pointer-events-none">Blue vs Yellow</span>
+                    <span className="absolute inset-0 flex items-center justify-center text-[10px] font-mono font-bold text-white mix-blend-difference pointer-events-none">{t("blueVsYellow")}</span>
                   </div>
                 </div>
               </div>
@@ -438,7 +427,7 @@ export function ContrastPattern({ testId = "contrast-test" }: ContrastPatternPro
             
             {/* Embedded Detail Check */}
             <div className="p-4 w-full rounded-2xl bg-[#7F7F7F] border border-black/20 shadow-xl space-y-3">
-              <span className="text-xs font-bold text-black font-mono block">Saturated Detail vs Neutral Gray</span>
+              <span className="text-xs font-bold text-black font-mono block">{t("saturatedDetailVsNeutral")}</span>
               <div className="flex flex-col sm:flex-row gap-2 h-24">
                 <div className="flex-1 bg-[#FF0000] rounded-lg flex items-center justify-center border border-black/10 relative">
                   <div className="w-12 h-12 bg-[#E60000] rounded-md shadow-inner flex items-center justify-center"><span className="text-[9px] font-bold text-white opacity-50">-10%</span></div>
@@ -451,15 +440,14 @@ export function ContrastPattern({ testId = "contrast-test" }: ContrastPatternPro
                 </div>
               </div>
               <p className="text-[11px] font-mono text-black/70 mt-2 text-center">
-                You should be able to clearly see the slightly darker inner squares. If they merge, the color channel is clipped.
-              </p>
+                {t("youShouldBeAble")}</p>
             </div>
           </div>
         )}
       </div>
 
       {/* Control Bar Dock */}
-      <TestControlBar testId={testId} title="Color Contrast & Range Inspection">
+      <TestControlBar testId={testId} title={t("colorContrastRangeInspectionTitle")}>
         <div className="flex flex-wrap items-center gap-2">
           {/* Mode Switcher Buttons */}
           <div className="flex items-center gap-1 bg-slate-100 dark:bg-white/10 p-1 rounded-lg border border-slate-200 dark:border-border/50">
@@ -470,8 +458,8 @@ export function ContrastPattern({ testId = "contrast-test" }: ContrastPatternPro
                 prevMode();
               }}
               className="p-1.5 hover:bg-slate-200 dark:hover:bg-white/20 rounded transition-colors text-amber-600 dark:text-amber-300 cursor-pointer"
-              title="Previous mode (Left Arrow)"
-              aria-label="Previous mode"
+              title={t("previousModeLeftArrowTitle")}
+              aria-label={t("previousModeTitle")}
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -504,8 +492,8 @@ export function ContrastPattern({ testId = "contrast-test" }: ContrastPatternPro
                 nextMode();
               }}
               className="p-1.5 hover:bg-slate-200 dark:hover:bg-white/20 rounded transition-colors text-amber-600 dark:text-amber-300 cursor-pointer"
-              title="Next mode (Right Arrow / Click)"
-              aria-label="Next mode"
+              title={t("nextModeRightArrowTitle")}
+              aria-label={t("nextModeTitle")}
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -521,17 +509,17 @@ export function ContrastPattern({ testId = "contrast-test" }: ContrastPatternPro
  * Rendered cleanly below the viewport via extraControls in TestWrapper
  */
 export function ContrastGuidance() {
+    const t = useTranslations("Tests.ContrastPattern");
   return (
     <div className="w-full max-w-4xl mx-auto bg-card border border-border/70 rounded-2xl p-5 shadow-xs space-y-4">
       {/* Honesty Banner */}
       <div className="p-4 bg-blue-50 border border-blue-200 dark:bg-blue-950/40 dark:border-blue-800 rounded-xl text-xs text-blue-950 dark:text-blue-100 leading-relaxed space-y-1">
         <div className="flex items-center gap-2 font-semibold">
           <ShieldAlert className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
-          <span>Visual Inspection Aid (Not a Physical Hardware Light Meter)</span>
+          <span>{t("visualInspectionAidNot")}</span>
         </div>
         <p className="text-blue-900 dark:text-blue-200">
-          Standard web browsers render RGB pixel patterns directly to your operating system pipeline. Browsers cannot physically measure native contrast ratios (e.g. 1000:1 or 1,000,000:1) without external hardware photometer sensors. This test provides calibrated visual steps to evaluate shadow detail, white clipping, and gradation smoothness.
-        </p>
+          {t("standardWebBrowsersRender")}</p>
       </div>
 
       {/* 3 Clear Inspection Directives */}
@@ -539,31 +527,28 @@ export function ContrastGuidance() {
         <div className="p-3.5 rounded-xl bg-muted/30 border border-border/40 space-y-1.5">
           <div className="flex items-center gap-1.5 font-bold text-foreground">
             <Eye className="w-4 h-4 text-emerald-500 shrink-0" />
-            <span>1. What You Are Testing</span>
+            <span>{t("1WhatYouAre")}</span>
           </div>
           <p className="text-muted-foreground leading-relaxed">
-            Checks whether near-black shadow tones and near-white highlight steps remain distinguishable from pure black and pure white without washing out or clipping.
-          </p>
+            {t("checksWhetherNearBlack")}</p>
         </div>
 
         <div className="p-3.5 rounded-xl bg-muted/30 border border-border/40 space-y-1.5">
           <div className="flex items-center gap-1.5 font-bold text-foreground">
             <CheckCircle2 className="w-4 h-4 text-blue-500 shrink-0" />
-            <span>2. What To Do</span>
+            <span>{t("2WhatToDo")}</span>
           </div>
           <p className="text-muted-foreground leading-relaxed">
-            View the display perpendicular to your eyes at normal distance. In the Black Level test, check if steps 2 and 3 are visible. In White Level, check if steps 253 and 254 remain distinct.
-          </p>
+            {t("viewTheDisplayPerpendicular")}</p>
         </div>
 
         <div className="p-3.5 rounded-xl bg-muted/30 border border-border/40 space-y-1.5">
           <div className="flex items-center gap-1.5 font-bold text-foreground">
             <Info className="w-4 h-4 text-amber-500 shrink-0" />
-            <span>3. What Indicates a Problem</span>
+            <span>{t("3WhatIndicatesA")}</span>
           </div>
           <p className="text-muted-foreground leading-relaxed">
-            <strong>Crushed blacks:</strong> Dark patches merge into black (raise brightness or adjust gamma). <strong>Clipped whites:</strong> Bright patches blend into white (lower monitor contrast).
-          </p>
+            <strong>{t("crushedBlacks_1")}</strong> {t("darkPatchesMergeInto")}<strong>{t("clippedWhites_1")}</strong> {t("brightPatchesBlendInto")}</p>
         </div>
       </div>
     </div>

@@ -6,6 +6,7 @@ import { TestControlBar } from "../test-runner/TestControlBar";
 import { TestInlineControls } from "../test-runner/TestInlineControls";
 import { Maximize, ShieldAlert, Info } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface ScalingAspectPatternProps {
   testId?: string;
@@ -14,6 +15,7 @@ interface ScalingAspectPatternProps {
 type AspectFrameMode = "all" | "16-9" | "16-10" | "4-3" | "21-9";
 
 export function ScalingAspectPattern({ testId = "scaling-aspect-test" }: ScalingAspectPatternProps) {
+    const t = useTranslations("Tests.ScalingAspectPattern");
   const { toggleFullscreen, isFullscreen } = useTestContext();
   const [activeFrame, setActiveFrame] = useState<AspectFrameMode>("all");
 
@@ -32,20 +34,17 @@ export function ScalingAspectPattern({ testId = "scaling-aspect-test" }: Scaling
           {/* Circle 1 - Outer */}
           <div className="w-[320px] h-[320px] rounded-full border-2 border-sky-400/60 flex items-center justify-center relative">
             <span className="absolute top-2 text-[9px] font-mono text-sky-400 bg-slate-950/80 px-1.5 rounded-xs">
-              320px True Circle
-            </span>
+              {t("320pxTrueCircle")}</span>
 
             {/* Circle 2 - Mid */}
             <div className="w-[220px] h-[220px] rounded-full border border-emerald-400/70 flex items-center justify-center relative">
               <span className="absolute top-2 text-[9px] font-mono text-emerald-400 bg-slate-950/80 px-1.5 rounded-xs">
-                220px True Circle
-              </span>
+                {t("220pxTrueCircle")}</span>
 
               {/* Circle 3 - Inner */}
               <div className="w-[120px] h-[120px] rounded-full border-2 border-amber-400/80 flex items-center justify-center relative">
                 <span className="absolute top-2 text-[8px] font-mono text-amber-400 bg-slate-950/80 px-1 rounded-xs">
-                  120px
-                </span>
+                  {t("120px")}</span>
 
                 {/* Center Reticle */}
                 <div className="w-2 h-2 rounded-full bg-white" />
@@ -55,14 +54,14 @@ export function ScalingAspectPattern({ testId = "scaling-aspect-test" }: Scaling
 
           {/* Cross Axes with Pixel Inch Rulers */}
           <div className="absolute w-[440px] h-px bg-slate-600/60 flex justify-between px-2 text-[9px] font-mono text-slate-400">
-            <span>-220px</span>
-            <span className="font-bold text-sky-400">Horizontal Axis</span>
-            <span>+220px</span>
+            <span>{t("220px")}</span>
+            <span className="font-bold text-sky-400">{t("horizontalAxis")}</span>
+            <span>{t("220px_1")}</span>
           </div>
           <div className="absolute h-[380px] w-px bg-slate-600/60 flex flex-col justify-between py-2 text-[9px] font-mono text-slate-400 items-center">
-            <span>-190px</span>
-            <span className="font-bold text-sky-400 -rotate-90">Vertical Axis</span>
-            <span>+190px</span>
+            <span>{t("190px")}</span>
+            <span className="font-bold text-sky-400 -rotate-90">{t("verticalAxis")}</span>
+            <span>{t("190px_1")}</span>
           </div>
         </div>
 
@@ -83,8 +82,7 @@ export function ScalingAspectPattern({ testId = "scaling-aspect-test" }: Scaling
             style={{ width: "min(90%, 540px)", aspectRatio: "4/3" }}
           >
             <span className="text-[9px] font-mono font-bold text-rose-400 bg-slate-900/90 px-1 rounded-xs">
-              4:3 Legacy Standard
-            </span>
+              {t("43LegacyStandard")}</span>
           </div>
         )}
 
@@ -94,8 +92,7 @@ export function ScalingAspectPattern({ testId = "scaling-aspect-test" }: Scaling
             style={{ width: "min(92%, 640px)", aspectRatio: "16/10" }}
           >
             <span className="text-[9px] font-mono font-bold text-amber-400 bg-slate-900/90 px-1 rounded-xs">
-              16:10 Laptop & Productivity
-            </span>
+              {t("1610LaptopProductivity")}</span>
           </div>
         )}
 
@@ -105,8 +102,7 @@ export function ScalingAspectPattern({ testId = "scaling-aspect-test" }: Scaling
             style={{ width: "min(95%, 720px)", aspectRatio: "16/9" }}
           >
             <span className="text-[9px] font-mono font-bold text-emerald-400 bg-slate-900/90 px-1 rounded-xs">
-              16:9 Widescreen Standard
-            </span>
+              {t("169WidescreenStandard")}</span>
           </div>
         )}
 
@@ -116,8 +112,7 @@ export function ScalingAspectPattern({ testId = "scaling-aspect-test" }: Scaling
             style={{ width: "min(98%, 820px)", aspectRatio: "21/9" }}
           >
             <span className="text-[9px] font-mono font-bold text-sky-400 bg-slate-900/90 px-1 rounded-xs">
-              21:9 Ultrawide Panoramic
-            </span>
+              {t("219UltrawidePanoramic")}</span>
           </div>
         )}
       </div>
@@ -128,7 +123,7 @@ export function ScalingAspectPattern({ testId = "scaling-aspect-test" }: Scaling
         <div className="flex flex-wrap items-center justify-between gap-3">
           {/* Frame Filter */}
           <div className="flex flex-wrap items-center gap-1.5 bg-muted/60 dark:bg-white/10 p-1.5 rounded-xl border border-border/60">
-            <span className="text-[11px] font-mono px-2 text-amber-500 dark:text-amber-300 font-bold uppercase tracking-wider">Guides:</span>
+            <span className="text-[11px] font-mono px-2 text-amber-500 dark:text-amber-300 font-bold uppercase tracking-wider">{t("guides")}</span>
             {[
               { id: "all", label: "All Frames" },
               { id: "16-9", label: "16:9 Widescreen" },
@@ -155,19 +150,17 @@ export function ScalingAspectPattern({ testId = "scaling-aspect-test" }: Scaling
             className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-muted hover:bg-muted/80 text-foreground text-xs font-medium rounded-xl transition-colors"
           >
             <Maximize className="w-3.5 h-3.5" />
-            Fullscreen
-          </button>
+            {t("fullscreen")}</button>
         </div>
 
         {/* Technical Honesty Disclaimer Banner */}
         <div className="p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-amber-900 dark:text-amber-200 leading-relaxed space-y-1">
           <div className="flex items-center gap-2 font-semibold">
             <ShieldAlert className="w-4 h-4 text-amber-500 shrink-0" />
-            <span>Hardware Boundary Notice</span>
+            <span>{t("hardwareBoundaryNotice")}</span>
           </div>
           <p>
-            The browser viewport renders CSS geometric primitives with mathematically equal horizontal and vertical pixel units. However, <strong>if the physical panel has an unusual non-square pixel aspect ratio, or if GPU scaling is set to &apos;Stretch&apos; instead of &apos;Maintain Aspect Ratio&apos;, circles will appear distorted into ovals</strong>. Inspect the circles physically or with an external ruler to confirm true geometry.
-          </p>
+            {t("theBrowserViewportRenders")}<strong>{t("ifThePhysicalPanel")}</strong>{t("inspectTheCirclesPhysically")}</p>
         </div>
 
         {/* Diagnostic Guidance */}
@@ -175,32 +168,28 @@ export function ScalingAspectPattern({ testId = "scaling-aspect-test" }: Scaling
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">1. Circle Geometry Check:</strong> If the central circles look elongated into horizontal or vertical ellipses, your graphics driver or display OSD is stretching a mismatched resolution.
-            </div>
+              <strong className="text-foreground">{t("1CircleGeometryCheck")}</strong> {t("ifTheCentralCircles")}</div>
           </div>
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">2. Ultrawide Monitors (21:9 / 32:9):</strong> When running 16:9 content on an ultrawide monitor, ensure your monitor OSD is set to &apos;Aspect&apos; or &apos;1:1&apos; so pillarbox black bars appear on the sides rather than stretching.
-            </div>
+              <strong className="text-foreground">{t("2UltrawideMonitors21")}</strong> {t("whenRunning169")}</div>
           </div>
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">3. GPU Aspect Ratio Scaling:</strong> In NVIDIA Control Panel or AMD Software, set &apos;Perform scaling on&apos; to GPU or Display with <strong>Aspect ratio</strong> selected.
-            </div>
+              <strong className="text-foreground">{t("3GpuAspectRatio")}</strong> {t("inNvidiaControlPanel")}<strong>{t("aspectRatio")}</strong> {t("selected")}</div>
           </div>
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">4. Physical Ruler Test:</strong> Hold a physical ruler up to the screen. The width of the 320px outer circle should match its height within 1mm.
-            </div>
+              <strong className="text-foreground">{t("4PhysicalRulerTest")}</strong> {t("holdAPhysicalRuler")}</div>
           </div>
         </div>
       </div>
       </TestInlineControls>
 
-      <TestControlBar testId={testId} title="Scaling & Aspect Ratio Inspection" />
+      <TestControlBar testId={testId} title={t("scalingAspectRatioInspectionTitle")} />
     </div>
   );
 }

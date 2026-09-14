@@ -5,6 +5,7 @@ import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
 import { TestInlineControls } from "../test-runner/TestInlineControls";
 import { Eye, EyeOff, Info, ShieldAlert, Maximize } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface NearBlackPatternProps {
   testId?: string;
@@ -32,6 +33,7 @@ const NEAR_BLACK_STEPS: StepItem[] = [
 ];
 
 export function NearBlackPattern({ testId = "near-black-test" }: NearBlackPatternProps) {
+    const t = useTranslations("Tests.NearBlackPattern");
   const { toggleFullscreen } = useTestContext();
   const [showLabels, setShowLabels] = useState(true);
   const [selectedStep, setSelectedStep] = useState<StepItem | null>(null);
@@ -50,24 +52,21 @@ export function NearBlackPattern({ testId = "near-black-test" }: NearBlackPatter
           >
             {/* Center Reference Swatch */}
             <div className="w-32 h-32 rounded-2xl border border-slate-700/50 bg-black flex flex-col items-center justify-center text-center p-2 shadow-2xl">
-              <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">0% Reference</span>
-              <span className="text-xs font-mono text-slate-400 font-bold mt-1">True Black</span>
+              <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">{t("0Reference")}</span>
+              <span className="text-xs font-mono text-slate-400 font-bold mt-1">{t("trueBlack")}</span>
             </div>
 
             <div className="absolute top-4 right-4 bg-black/70 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/10 text-xs font-mono text-white">
-              Inspecting: <strong>{selectedStep.percent} Field</strong> (Click anywhere to return)
-            </div>
+              {t("inspecting")}<strong>{selectedStep.percent} {t("field")}</strong> {t("clickAnywhereToReturn")}</div>
           </div>
         ) : (
           /* Grid of Near-Black Steps */
           <div className="w-full max-w-4xl flex flex-col items-center space-y-6">
             <div className="text-center space-y-1">
               <span className="text-xs font-mono uppercase tracking-widest text-slate-400">
-                Low-Luminance Step Discrimination
-              </span>
+                {t("lowLuminanceStepDiscrimination")}</span>
               <p className="text-xs text-slate-500 max-w-lg">
-                Darken room lighting. Observe where subtle dark patches separate from the pitch-black surrounding field.
-              </p>
+                {t("darkenRoomLightingObserve")}</p>
             </div>
 
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3 w-full">
@@ -99,13 +98,12 @@ export function NearBlackPattern({ testId = "near-black-test" }: NearBlackPatter
                             {step.percent}
                           </span>
                           <span className="text-[9px] font-mono text-slate-500">
-                            RGB {lum}
+                            {t("rgb")}{lum}
                           </span>
                         </>
                       ) : (
                         <span className="text-[10px] font-mono text-slate-600 italic">
-                          Click to test
-                        </span>
+                          {t("clickToTest")}</span>
                       )}
                     </div>
                   </button>
@@ -133,8 +131,7 @@ export function NearBlackPattern({ testId = "near-black-test" }: NearBlackPatter
               className="inline-flex items-center gap-2 px-3.5 py-2 bg-muted hover:bg-muted/80 text-foreground text-xs font-medium rounded-xl transition-colors"
             >
               <Maximize className="w-3.5 h-3.5" />
-              Toggle Fullscreen
-            </button>
+              {t("toggleFullscreen")}</button>
           </div>
 
           <span className="text-xs text-muted-foreground font-mono">
@@ -146,11 +143,10 @@ export function NearBlackPattern({ testId = "near-black-test" }: NearBlackPatter
         <div className="p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-amber-900 dark:text-amber-200 leading-relaxed space-y-1">
           <div className="flex items-center gap-2 font-semibold">
             <ShieldAlert className="w-4 h-4 text-amber-500 shrink-0" />
-            <span>Hardware Boundary Notice</span>
+            <span>{t("hardwareBoundaryNotice")}</span>
           </div>
           <p>
-            Web browsers can output mathematically accurate sRGB dark code values (such as RGB 1, 2, 3), but <strong>cannot measure the physical luminance (nits) or black level output by your display panel</strong>. Inability to discern steps below 1% or 2% is normal in ambient room light or on displays without professional gamma calibration. Do not assume your panel is defective based on visual inspection alone.
-          </p>
+            {t("webBrowsersCanOutput")}<strong>{t("cannotMeasureThePhysical")}</strong>{t("inabilityToDiscernSteps")}</p>
         </div>
 
         {/* Inspection Guidance */}
@@ -158,32 +154,28 @@ export function NearBlackPattern({ testId = "near-black-test" }: NearBlackPatter
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">1. Ambient Lighting:</strong> Turn off room lights and close blinds. In bright rooms, ambient reflections overpower near-black steps.
-            </div>
+              <strong className="text-foreground">{t("1AmbientLighting")}</strong> {t("turnOffRoomLights")}</div>
           </div>
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">2. Gamma Settings:</strong> If steps below 3% are invisible, check your monitor OSD Gamma preset (standard 2.2 vs sRGB curve) or HDMI Black Level (Full vs Limited).
-            </div>
+              <strong className="text-foreground">{t("2GammaSettings")}</strong> {t("ifStepsBelow3")}</div>
           </div>
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">3. OLED Near-Black Behavior:</strong> Self-emissive OLED subpixels turn off completely at 0%. Click the 1% to 5% tiles to inspect for subtle vertical banding.
-            </div>
+              <strong className="text-foreground">{t("3OledNearBlack")}</strong> {t("selfEmissiveOledSubpixels")}</div>
           </div>
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">4. Viewing Angle:</strong> On VA and TN panels, near-black detail may shift or wash out off-axis. Keep your gaze perpendicular to the center.
-            </div>
+              <strong className="text-foreground">{t("4ViewingAngle")}</strong> {t("onVaAndTn")}</div>
           </div>
         </div>
       </div>
       </TestInlineControls>
 
-      <TestControlBar testId={testId} title="Near-Black & Shadow Detail" />
+      <TestControlBar testId={testId} title={t("nearBlackShadowDetailTitle")} />
     </div>
   );
 }

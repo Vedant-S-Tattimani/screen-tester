@@ -198,10 +198,9 @@ export function ViewingAnglePattern({ testId = "viewing-angle-test" }: ViewingAn
         {currentMode === "neutralGray" && (
           <div className="w-full h-full bg-[#808080] flex flex-col items-center justify-center relative">
             <div className="max-w-md px-4 py-3 rounded-2xl bg-black/75 backdrop-blur-md text-white text-center border border-white/20 shadow-2xl">
-              <span className="text-xs font-mono font-bold block mb-1">50% Neutral Gray Field (RGB 128)</span>
+              <span className="text-xs font-mono font-bold block mb-1">{t("50NeutralGrayField")}</span>
               <span className="text-[11px] text-white/80 leading-relaxed block">
-                Observe whether the edges or corners wash out into lighter silver (IPS glow) or shift color tone as you move your head.
-              </span>
+                {t("observeWhetherTheEdges")}</span>
             </div>
           </div>
         )}
@@ -212,22 +211,22 @@ export function ViewingAnglePattern({ testId = "viewing-angle-test" }: ViewingAn
         {currentMode === "colorBlocks" && (
           <div className="w-full max-w-5xl h-[75%] grid grid-cols-3 grid-rows-2 gap-3 p-2">
             <div className="bg-[#FF0000] rounded-2xl flex items-center justify-center shadow-lg border border-white/20">
-              <span className="px-3 py-1 rounded-lg bg-black/60 font-mono font-bold text-white text-xs">Red (RGB 255,0,0)</span>
+              <span className="px-3 py-1 rounded-lg bg-black/60 font-mono font-bold text-white text-xs">{t("redRgb2550")}</span>
             </div>
             <div className="bg-[#00FF00] rounded-2xl flex items-center justify-center shadow-lg border border-white/20">
-              <span className="px-3 py-1 rounded-lg bg-black/60 font-mono font-bold text-white text-xs">Green (RGB 0,255,0)</span>
+              <span className="px-3 py-1 rounded-lg bg-black/60 font-mono font-bold text-white text-xs">{t("greenRgb0255")}</span>
             </div>
             <div className="bg-[#0000FF] rounded-2xl flex items-center justify-center shadow-lg border border-white/20">
-              <span className="px-3 py-1 rounded-lg bg-black/60 font-mono font-bold text-white text-xs">Blue (RGB 0,0,255)</span>
+              <span className="px-3 py-1 rounded-lg bg-black/60 font-mono font-bold text-white text-xs">{t("blueRgb00")}</span>
             </div>
             <div className="bg-[#FFFF00] rounded-2xl flex items-center justify-center shadow-lg border border-white/20">
-              <span className="px-3 py-1 rounded-lg bg-black/60 font-mono font-bold text-white text-xs">Yellow (R+G)</span>
+              <span className="px-3 py-1 rounded-lg bg-black/60 font-mono font-bold text-white text-xs">{t("yellowRG")}</span>
             </div>
             <div className="bg-[#00FFFF] rounded-2xl flex items-center justify-center shadow-lg border border-white/20">
-              <span className="px-3 py-1 rounded-lg bg-black/60 font-mono font-bold text-white text-xs">Cyan (G+B)</span>
+              <span className="px-3 py-1 rounded-lg bg-black/60 font-mono font-bold text-white text-xs">{t("cyanGB")}</span>
             </div>
             <div className="bg-[#FF00FF] rounded-2xl flex items-center justify-center shadow-lg border border-white/20">
-              <span className="px-3 py-1 rounded-lg bg-black/60 font-mono font-bold text-white text-xs">Magenta (R+B)</span>
+              <span className="px-3 py-1 rounded-lg bg-black/60 font-mono font-bold text-white text-xs">{t("magentaRB")}</span>
             </div>
           </div>
         )}
@@ -248,14 +247,13 @@ export function ViewingAnglePattern({ testId = "viewing-angle-test" }: ViewingAn
                     {swatch.name}
                   </span>
                   <span className="px-2 py-0.5 rounded bg-black/70 text-white/80 font-mono text-[10px] w-fit">
-                    RGB {swatch.rgb}
+                    {t("rgb")}{swatch.rgb}
                   </span>
                 </div>
               ))}
             </div>
             <span className="text-xs text-white/70 bg-black/60 px-4 py-1.5 rounded-full border border-white/10 font-mono text-center">
-              Skin tones are sensitive to subtle off-axis chromatic shift.
-            </span>
+              {t("skinTonesAreSensitive")}</span>
           </div>
         )}
 
@@ -290,9 +288,9 @@ export function ViewingAnglePattern({ testId = "viewing-angle-test" }: ViewingAn
                 style={{ background: "linear-gradient(to right, rgb(0,0,0), rgb(128,128,128), rgb(255,255,255))" }}
               />
               <div className="flex justify-between text-[11px] font-mono text-white/60 mt-1.5 px-2">
-                <span>0% Black (0)</span>
-                <span>50% Midtone (128)</span>
-                <span>100% White (255)</span>
+                <span>{t("0Black0")}</span>
+                <span>{t("50Midtone128")}</span>
+                <span>{t("100White255")}</span>
               </div>
             </div>
           </div>
@@ -306,8 +304,7 @@ export function ViewingAnglePattern({ testId = "viewing-angle-test" }: ViewingAn
             {/* Dark Low-Key Box */}
             <div className="bg-black rounded-2xl border border-white/20 p-6 flex flex-col items-center justify-between shadow-2xl">
               <span className="text-xs font-mono text-white/70 font-semibold uppercase tracking-wider">
-                Low-Key Shadow Detail
-              </span>
+                {t("lowKeyShadowDetail")}</span>
               <div className="flex items-center gap-3">
                 <div className="w-16 h-16 rounded-xl bg-black border border-white/10 flex items-center justify-center">
                   <div className="w-8 h-8 rounded bg-[#080808]" />
@@ -320,15 +317,13 @@ export function ViewingAnglePattern({ testId = "viewing-angle-test" }: ViewingAn
                 </div>
               </div>
               <span className="text-[10px] font-mono text-white/50 text-center">
-                On VA panels, near-black targets will noticeably brighten off-axis.
-              </span>
+                {t("onVaPanelsNear")}</span>
             </div>
 
             {/* Bright High-Key Box */}
             <div className="bg-white rounded-2xl border border-white/20 p-6 flex flex-col items-center justify-between shadow-2xl text-black">
               <span className="text-xs font-mono text-black/70 font-semibold uppercase tracking-wider">
-                High-Key Highlight Detail
-              </span>
+                {t("highKeyHighlightDetail")}</span>
               <div className="flex items-center gap-3">
                 <div className="w-16 h-16 rounded-xl bg-white border border-black/10 flex items-center justify-center">
                   <div className="w-8 h-8 rounded bg-[#f7f7f7]" />
@@ -341,8 +336,7 @@ export function ViewingAnglePattern({ testId = "viewing-angle-test" }: ViewingAn
                 </div>
               </div>
               <span className="text-[10px] font-mono text-black/60 text-center">
-                Highlights should remain discernible without clipping into pure white.
-              </span>
+                {t("highlightsShouldRemainDiscernible")}</span>
             </div>
           </div>
         )}
@@ -353,10 +347,9 @@ export function ViewingAnglePattern({ testId = "viewing-angle-test" }: ViewingAn
         {currentMode === "blackField" && (
           <div className="w-full h-full bg-black flex flex-col items-center justify-center relative">
             <div className="max-w-md px-4 py-3 rounded-2xl bg-white/10 backdrop-blur-md text-white text-center border border-white/15 shadow-2xl">
-              <span className="text-xs font-mono font-bold block mb-1">Full Black Field (0% Black)</span>
+              <span className="text-xs font-mono font-bold block mb-1">{t("fullBlackField0")}</span>
               <span className="text-[11px] text-white/80 leading-relaxed block">
-                Look diagonally at the corners. IPS displays show a soft silver sheen (IPS glow) that shifts as you move. VA panels show moderate contrast drop. OLED remains pitch black.
-              </span>
+                {t("lookDiagonallyAtThe")}</span>
             </div>
           </div>
         )}
@@ -367,10 +360,9 @@ export function ViewingAnglePattern({ testId = "viewing-angle-test" }: ViewingAn
         {currentMode === "whiteField" && (
           <div className="w-full h-full bg-white flex flex-col items-center justify-center relative text-black">
             <div className="max-w-md px-4 py-3 rounded-2xl bg-black/75 backdrop-blur-md text-white text-center border border-white/20 shadow-2xl">
-              <span className="text-xs font-mono font-bold block mb-1">Full White Field (100% White)</span>
+              <span className="text-xs font-mono font-bold block mb-1">{t("fullWhiteField100")}</span>
               <span className="text-[11px] text-white/80 leading-relaxed block">
-                Inspect white point uniformity across wide angles. Look for pinkish, yellowish, or bluish tint shifts toward the edges.
-              </span>
+                {t("inspectWhitePointUniformity")}</span>
             </div>
           </div>
         )}
@@ -386,7 +378,7 @@ export function ViewingAnglePattern({ testId = "viewing-angle-test" }: ViewingAn
               type="button"
               onClick={prevPattern}
               className="px-2.5 py-1 text-slate-700 dark:text-slate-200 hover:text-black dark:hover:text-white font-mono cursor-pointer"
-              title="Previous pattern"
+              title={t("previousPatternTitle")}
             >
               ◂
             </button>
@@ -397,7 +389,7 @@ export function ViewingAnglePattern({ testId = "viewing-angle-test" }: ViewingAn
               type="button"
               onClick={nextPattern}
               className="px-2.5 py-1 text-slate-700 dark:text-slate-200 hover:text-black dark:hover:text-white font-mono cursor-pointer"
-              title="Next pattern"
+              title={t("nextPatternTitle")}
             >
               ▸
             </button>

@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
 import { clsx } from "clsx";
+import { useTranslations } from "next-intl";
 
 interface BloomingPatternProps {
   testId?: string;
@@ -18,6 +19,7 @@ const SIZES = [
 ];
 
 export function BloomingPattern({ testId }: BloomingPatternProps) {
+    const t = useTranslations("Tests.BloomingPattern");
   const { registerNavigation, isFullscreen } = useTestContext();
   const [sizeIndex, setSizeIndex] = useState(1);
   const [position, setPosition] = useState({ x: 50, y: 50 });
@@ -66,17 +68,16 @@ export function BloomingPattern({ testId }: BloomingPatternProps) {
         >
           {currentSize.class === "text" ? (
             <div className="text-white font-serif italic text-3xl sm:text-4xl whitespace-nowrap drop-shadow-md">
-              Blooming Test
-            </div>
+              {t("bloomingTest")}</div>
           ) : (
             <div className={clsx("bg-white rounded-full shadow-[0_0_1px_rgba(255,255,255,1)]", currentSize.class)} />
           )}
         </div>
       </div>
 
-      <TestControlBar testId={testId} title="Local Dimming & Blooming">
+      <TestControlBar testId={testId} title={t("localDimmingBloomingTitle")}>
         <div className="flex items-center gap-2">
-          <span className="text-xs font-bold text-amber-600 dark:text-amber-300 uppercase tracking-wider font-mono hidden md:inline">Object Size:</span>
+          <span className="text-xs font-bold text-amber-600 dark:text-amber-300 uppercase tracking-wider font-mono hidden md:inline">{t("objectSize")}</span>
           <div className="flex gap-1.5 bg-slate-100 dark:bg-black/80 p-1 rounded-xl border border-slate-200 dark:border-white/20">
             {SIZES.map((s, idx) => (
               <button

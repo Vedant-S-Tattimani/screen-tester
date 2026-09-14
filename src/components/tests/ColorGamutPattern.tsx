@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
 import { Sparkles, Eye, Layers, Palette, Info, AlertTriangle } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface ColorGamutPatternProps {
   testId?: string;
@@ -25,6 +26,7 @@ const P3_COLORS: Record<PrimaryChannel, string> = {
 };
 
 export function ColorGamutPattern({ testId }: ColorGamutPatternProps) {
+    const t = useTranslations("Tests.ColorGamutPattern");
   const { registerNavigation } = useTestContext();
   const [cssP3Supported, setCssP3Supported] = useState<boolean>(false);
   const [mediaP3Match, setMediaP3Match] = useState<boolean>(false);
@@ -72,45 +74,38 @@ export function ColorGamutPattern({ testId }: ColorGamutPatternProps) {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 w-full bg-white/5 border border-white/10 rounded-2xl p-4 sm:px-6 backdrop-blur-md">
             <div>
               <div className="text-xs uppercase tracking-widest text-white/50 font-semibold font-mono">
-                Browser-Reported &amp; Visual Gamut Check
-              </div>
+                {t("browserReportedAmpVisual")}</div>
               <h2 className="text-lg sm:text-xl font-bold tracking-tight text-white flex items-center gap-2 mt-0.5">
-                Color Gamut Test – sRGB &amp; Display-P3 Visual Check
-              </h2>
+                {t("colorGamutTestSrgb")}</h2>
             </div>
 
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-xs text-white/60 font-medium">Browser Detection:</span>
+              <span className="text-xs text-white/60 font-medium">{t("browserDetection")}</span>
               {cssP3Supported ? (
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30" title="Browser supports CSS Color Module 4 color(display-p3 ...)">
-                  <Sparkles className="w-3 h-3" /> CSS color(display-p3)
-                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30" title={t("browserSupportsCssColorTitle")}>
+                  <Sparkles className="w-3 h-3" /> {t("cssColorDisplayP3")}</span>
               ) : (
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-amber-500/20 text-amber-300 border border-amber-500/30">
-                  <AlertTriangle className="w-3 h-3" /> CSS P3 Unsupported
-                </span>
+                  <AlertTriangle className="w-3 h-3" /> {t("cssP3Unsupported")}</span>
               )}
 
               {mediaP3Match ? (
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30" title="Media query reports P3 wide-gamut environment">
-                  (color-gamut: p3)
-                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30" title={t("mediaQueryReportsP3Title")}>
+                  {t("colorGamutP3")}</span>
               ) : (
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-white/70 border border-white/10" title="Media query reports standard sRGB gamut">
-                  (color-gamut: sRGB)
-                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-white/70 border border-white/10" title={t("mediaQueryReportsStandardTitle")}>
+                  {t("colorGamutSrgb")}</span>
               )}
 
               {mediaRec2020Match && (
                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-400 border border-blue-500/30">
-                  (color-gamut: rec2020)
-                </span>
+                  {t("colorGamutRec2020")}</span>
               )}
             </div>
           </div>
 
           {/* Mode Switcher */}
-          <div role="tablist" aria-label="Color Gamut View Modes" className="flex items-center gap-1 bg-white/5 p-1 rounded-xl border border-white/10 text-xs">
+          <div role="tablist" aria-label={t("colorGamutViewModesTitle")} className="flex items-center gap-1 bg-white/5 p-1 rounded-xl border border-white/10 text-xs">
             <button
               role="tab"
               aria-selected={activeTab === "target"}
@@ -120,7 +115,7 @@ export function ColorGamutPattern({ testId }: ColorGamutPatternProps) {
               }`}
             >
               <Eye className="w-3.5 h-3.5" />
-              <span>Optical Detection Target</span>
+              <span>{t("opticalDetectionTarget")}</span>
             </button>
             <button
               role="tab"
@@ -131,7 +126,7 @@ export function ColorGamutPattern({ testId }: ColorGamutPatternProps) {
               }`}
             >
               <Layers className="w-3.5 h-3.5" />
-              <span>sRGB vs P3 Swatches</span>
+              <span>{t("srgbVsP3Swatches")}</span>
             </button>
             <button
               role="tab"
@@ -142,7 +137,7 @@ export function ColorGamutPattern({ testId }: ColorGamutPatternProps) {
               }`}
             >
               <Palette className="w-3.5 h-3.5" />
-              <span>Spectral Ramp</span>
+              <span>{t("spectralRamp")}</span>
             </button>
           </div>
 
@@ -152,7 +147,7 @@ export function ColorGamutPattern({ testId }: ColorGamutPatternProps) {
               {/* Channel Selector & Alignment Guide Toggle */}
               <div className="flex flex-wrap items-center justify-between gap-3 w-full max-w-lg text-xs">
                 <div className="flex items-center gap-2">
-                  <span className="text-white/50">Primary Channel:</span>
+                  <span className="text-white/50">{t("primaryChannel")}</span>
                   {(["red", "green", "blue"] as const).map(ch => (
                     <button
                       key={ch}
@@ -177,7 +172,7 @@ export function ColorGamutPattern({ testId }: ColorGamutPatternProps) {
                       ? "bg-amber-500/20 text-amber-300 border-amber-500/40 font-semibold"
                       : "border-white/10 text-white/40 hover:text-white/70"
                   }`}
-                  title="Toggle dashed alignment outline to show target placement"
+                  title={t("toggleDashedAlignmentOutlineTitle")}
                 >
                   {showAlignmentGuide ? "Guide: ON" : "Guide: OFF"}
                 </button>
@@ -187,10 +182,9 @@ export function ColorGamutPattern({ testId }: ColorGamutPatternProps) {
               {!cssP3Supported ? (
                 <div className="relative w-full max-w-lg aspect-4/3 rounded-2xl overflow-hidden shadow-2xl border border-white/10 flex flex-col items-center justify-center p-6 text-center bg-white/5">
                   <AlertTriangle className="w-10 h-10 text-amber-400 mb-3" />
-                  <h3 className="text-sm font-bold text-white mb-1.5">CSS color(display-p3) Unsupported</h3>
+                  <h3 className="text-sm font-bold text-white mb-1.5">{t("cssColorDisplayP3_1")}</h3>
                   <p className="text-xs text-white/60 max-w-md leading-relaxed">
-                    Your current browser engine does not support CSS Color Module 4 Display-P3 syntax. A genuine wide-gamut optical comparison cannot be rendered.
-                  </p>
+                    {t("yourCurrentBrowserEngine")}</p>
                 </div>
               ) : (
                 <div className="relative w-full max-w-lg aspect-4/3 rounded-2xl overflow-hidden shadow-2xl border border-white/10 flex items-center justify-center">
@@ -213,15 +207,13 @@ export function ColorGamutPattern({ testId }: ColorGamutPatternProps) {
                           showAlignmentGuide ? "text-white/80 drop-shadow-sm" : "text-transparent"
                         }`}
                       >
-                        DISPLAY-P3
-                      </span>
+                        {t("displayP3")}</span>
                       <span 
                         className={`text-[10px] font-mono transition-opacity mt-0.5 ${
                           showAlignmentGuide ? "text-white/70" : "text-transparent"
                         }`}
                       >
-                        TARGET
-                      </span>
+                        {t("target")}</span>
                     </div>
                   </div>
 
@@ -238,15 +230,13 @@ export function ColorGamutPattern({ testId }: ColorGamutPatternProps) {
                 <Info className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
                 <div className="space-y-1.5 text-left">
                   <p>
-                    <strong>Optical detection principle:</strong> The outer background is maximum standard sRGB (<code>{SRGB_COLORS[targetChannel]}</code>). The center disk is requested in wide-gamut Display-P3 (<code>{P3_COLORS[targetChannel]}</code>). On standard sRGB displays, both colors clamp identically, making the disk invisible. On a wide-gamut display pipeline supporting Display-P3, the inner disk visibly emerges as more vibrant and saturated.
-                  </p>
+                    <strong>{t("opticalDetectionPrinciple")}</strong> {t("theOuterBackgroundIs")}<code>{SRGB_COLORS[targetChannel]}</code>{t("theCenterDiskIs")}<code>{P3_COLORS[targetChannel]}</code>{t("onStandardSrgbDisplays")}</p>
                   {targetChannel === "blue" && (
                     <p className="text-amber-300/90">
-                      <strong>Blue channel note:</strong> The DCI-P3 color space shares identical blue chromaticity coordinates (x=0.150, y=0.060) with sRGB. Visible gamut differences are concentrated in the red and green channels.
-                    </p>
+                      <strong>{t("blueChannelNote")}</strong> {t("theDciP3Color")}</p>
                   )}
                   <p className="text-white/40 text-[11px]">
-                    <em>Boundary Note: Browser media queries and CSS tests evaluate browser support and compositor signals. Measuring physical panel gamut volume (e.g. 99% DCI-P3 or Adobe RGB coverage) requires external hardware colorimeter measurement.</em>
+                    <em>{t("boundaryNoteBrowserMedia")}</em>
                   </p>
                 </div>
               </div>
@@ -260,18 +250,18 @@ export function ColorGamutPattern({ testId }: ColorGamutPatternProps) {
                 {/* sRGB Column */}
                 <div className="bg-white/5 p-5 rounded-2xl border border-white/10 flex flex-col items-center">
                   <div className="flex items-center gap-2 mb-4">
-                    <span className="text-xs font-semibold tracking-widest text-white/70 uppercase font-mono">Requested sRGB</span>
-                    <span className="text-[10px] bg-white/10 text-white/60 px-2 py-0.5 rounded">Rec.709 Standard</span>
+                    <span className="text-xs font-semibold tracking-widest text-white/70 uppercase font-mono">{t("requestedSrgb")}</span>
+                    <span className="text-[10px] bg-white/10 text-white/60 px-2 py-0.5 rounded">{t("rec709Standard")}</span>
                   </div>
                   <div className="space-y-3 w-full">
                     <div className="h-20 w-full rounded-xl flex items-end p-2.5 shadow-inner" style={{ backgroundColor: 'rgb(255, 0, 0)' }}>
-                      <span className="text-[10px] font-mono text-white/90 bg-black/50 px-2 py-0.5 rounded">sRGB Red · rgb(255, 0, 0)</span>
+                      <span className="text-[10px] font-mono text-white/90 bg-black/50 px-2 py-0.5 rounded">{t("srgbRedRgb255")}</span>
                     </div>
                     <div className="h-20 w-full rounded-xl flex items-end p-2.5 shadow-inner" style={{ backgroundColor: 'rgb(0, 255, 0)' }}>
-                      <span className="text-[10px] font-mono text-black/90 bg-white/60 px-2 py-0.5 rounded">sRGB Green · rgb(0, 255, 0)</span>
+                      <span className="text-[10px] font-mono text-black/90 bg-white/60 px-2 py-0.5 rounded">{t("srgbGreenRgb0")}</span>
                     </div>
                     <div className="h-20 w-full rounded-xl flex items-end p-2.5 shadow-inner" style={{ backgroundColor: 'rgb(0, 0, 255)' }}>
-                      <span className="text-[10px] font-mono text-white/90 bg-black/50 px-2 py-0.5 rounded">sRGB Blue · rgb(0, 0, 255)</span>
+                      <span className="text-[10px] font-mono text-white/90 bg-black/50 px-2 py-0.5 rounded">{t("srgbBlueRgb0")}</span>
                     </div>
                   </div>
                 </div>
@@ -279,7 +269,7 @@ export function ColorGamutPattern({ testId }: ColorGamutPatternProps) {
                 {/* Display P3 Column */}
                 <div className="bg-white/5 p-5 rounded-2xl border border-white/10 flex flex-col items-center">
                   <div className="flex items-center gap-2 mb-4">
-                    <span className="text-xs font-semibold tracking-widest text-white/70 uppercase font-mono">Requested Display-P3</span>
+                    <span className="text-xs font-semibold tracking-widest text-white/70 uppercase font-mono">{t("requestedDisplayP3")}</span>
                     <span className="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/30">
                       {cssP3Supported ? "CSS Display-P3" : "CSS P3 Unsupported"}
                     </span>
@@ -290,24 +280,21 @@ export function ColorGamutPattern({ testId }: ColorGamutPatternProps) {
                       style={{ backgroundColor: cssP3Supported ? 'color(display-p3 1 0 0)' : 'rgb(255, 0, 0)' }}
                     >
                       <span className="text-[10px] font-mono text-white/90 bg-black/50 px-2 py-0.5 rounded">
-                        P3 Wide Red · color(display-p3 1 0 0)
-                      </span>
+                        {t("p3WideRedColor")}</span>
                     </div>
                     <div 
                       className="h-20 w-full rounded-xl flex items-end p-2.5 shadow-inner" 
                       style={{ backgroundColor: cssP3Supported ? 'color(display-p3 0 1 0)' : 'rgb(0, 255, 0)' }}
                     >
                       <span className="text-[10px] font-mono text-black/90 bg-white/60 px-2 py-0.5 rounded">
-                        P3 Wide Green · color(display-p3 0 1 0)
-                      </span>
+                        {t("p3WideGreenColor")}</span>
                     </div>
                     <div 
                       className="h-20 w-full rounded-xl flex items-end p-2.5 shadow-inner" 
                       style={{ backgroundColor: cssP3Supported ? 'color(display-p3 0 0 1)' : 'rgb(0, 0, 255)' }}
                     >
                       <span className="text-[10px] font-mono text-white/90 bg-black/50 px-2 py-0.5 rounded">
-                        P3 Blue · color(display-p3 0 0 1)
-                      </span>
+                        {t("p3BlueColorDisplay")}</span>
                     </div>
                   </div>
                 </div>
@@ -317,8 +304,7 @@ export function ColorGamutPattern({ testId }: ColorGamutPatternProps) {
               <div className="flex items-start gap-2.5 max-w-xl text-xs text-white/60 bg-white/5 border border-white/10 p-3.5 rounded-xl w-full">
                 <Info className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
                 <p className="text-left leading-relaxed">
-                  <strong>Visual content comparison:</strong> Evaluates human visual perception of requested sRGB vs Display-P3 colors. On wide-gamut displays, P3 Red and Green exhibit richer saturation. Blue shares chromaticity between both standards. This visual check does not measure physical panel gamut coverage percentages or Delta E accuracy.
-                </p>
+                  <strong>{t("visualContentComparison")}</strong> {t("evaluatesHumanVisualPerception")}</p>
               </div>
             </div>
           )}
@@ -329,15 +315,13 @@ export function ColorGamutPattern({ testId }: ColorGamutPatternProps) {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 w-full">
                 <div>
                   <div className="text-xs uppercase tracking-wider text-white/60 font-mono font-semibold">
-                    Continuous Gamut Saturation Ramp
-                  </div>
+                    {t("continuousGamutSaturationRamp")}</div>
                   <div className="text-[11px] text-white/40 mt-0.5">
-                    Compare sRGB vs Display-P3 gradient transitions
-                  </div>
+                    {t("compareSrgbVsDisplay")}</div>
                 </div>
 
                 <div className="flex items-center gap-2 text-xs">
-                  <span className="text-white/50">Channel:</span>
+                  <span className="text-white/50">{t("channel")}</span>
                   {(["red", "green", "blue"] as const).map(ch => (
                     <button
                       key={ch}
@@ -359,32 +343,31 @@ export function ColorGamutPattern({ testId }: ColorGamutPatternProps) {
                 <div>
                   <div className="h-12 w-full rounded-lg shadow-inner" style={{ background: `linear-gradient(to right, rgb(0, 0, 0), ${SRGB_COLORS[targetChannel]})` }} />
                   <div className="flex justify-between text-[11px] font-mono text-white/50 mt-1">
-                    <span>sRGB 0% {targetChannel}</span>
-                    <span>sRGB 100% {targetChannel}</span>
+                    <span>{t("srgb0")}{targetChannel}</span>
+                    <span>{t("srgb100")}{targetChannel}</span>
                   </div>
                 </div>
 
                 <div>
                   <div className="h-12 w-full rounded-lg shadow-inner" style={{ background: getP3Gradient(targetChannel) }} />
                   <div className="flex justify-between text-[11px] font-mono text-white/50 mt-1">
-                    <span>Display-P3 0% {targetChannel}</span>
-                    <span>Display-P3 100% {targetChannel}</span>
+                    <span>{t("displayP30")}{targetChannel}</span>
+                    <span>{t("displayP3100")}{targetChannel}</span>
                   </div>
                 </div>
               </div>
 
               <div className="text-[11px] text-white/40 leading-relaxed border-t border-white/10 pt-3 text-left">
-                Continuous ramp comparison verifies gradient smoothness and clipping behavior. On wide-gamut panels, the Display-P3 ramp continues smoothly into deep saturated tones without abrupt clipping or color banding.
-              </div>
+                {t("continuousRampComparisonVerifies")}</div>
             </div>
           )}
 
         </div>
       </div>
 
-      <TestControlBar testId={testId} title="Color Gamut Test – sRGB & Display-P3 Visual Check">
+      <TestControlBar testId={testId} title={t("colorGamutTestSrgbTitle")}>
         <div className="flex items-center gap-2 text-xs">
-          <span className="text-amber-300 font-bold font-mono uppercase tracking-wider">Status:</span>
+          <span className="text-amber-300 font-bold font-mono uppercase tracking-wider">{t("status")}</span>
           <span className={`font-mono px-3 py-1 rounded-lg text-xs font-bold ${
             cssP3Supported && mediaP3Match
               ? "bg-emerald-500/30 text-emerald-300 border border-emerald-400/50"

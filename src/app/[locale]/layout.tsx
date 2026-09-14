@@ -9,6 +9,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { ExtensionCleanup } from "@/components/ExtensionCleanup";
 import { getBaseUrl, OG_LOCALES } from "@/lib/seo";
+import Script from "next/script";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -119,10 +120,47 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`} suppressHydrationWarning>
-      <head>
+      <body className="min-h-full flex flex-col bg-background text-foreground" suppressHydrationWarning>
+        <Script
+          id="extension-guard"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                function isExt(s) {
+                  return typeof s === 'string' && (
+                    s.indexOf('chrome-extension://') !== -1 ||
+                    s.indexOf('moz-extension://') !== -1 ||
+                    s.indexOf('safari-extension://') !== -1 ||
+                    s.indexOf('eppiocemhmnlbhjplcgkofciiegomcon') !== -1 ||
+                    s.indexOf('M_ID') !== -1
+                  );
+                }
+                window.addEventListener('error', function(e) {
+                  if (isExt(e.filename) || isExt(e.message) || (e.error && isExt(e.error.stack))) {
+                    e.stopImmediatePropagation();
+                    e.preventDefault();
+                  }
+                }, true);
+                window.addEventListener('unhandledrejection', function(e) {
+                  var r = e.reason;
+                  if (r && (isExt(r.message) || isExt(r.stack) || isExt(String(r)))) {
+                    e.stopImmediatePropagation();
+                    e.preventDefault();
+                  }
+                }, true);
+              })();
+            `
+          }}
+        />
         {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DHGBWM8X0R" />
-        <script
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-DHGBWM8X0R"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -132,8 +170,6 @@ export default async function RootLayout({
             `,
           }}
         />
-      </head>
-      <body className="min-h-full flex flex-col bg-background text-foreground" suppressHydrationWarning>
         <ExtensionCleanup />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header />

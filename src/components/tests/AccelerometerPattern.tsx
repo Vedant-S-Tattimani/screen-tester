@@ -12,6 +12,7 @@ import {
   Smartphone, 
   AlertTriangle 
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface AccelerometerPatternProps {
   testId?: string;
@@ -38,6 +39,7 @@ interface MotionData {
 }
 
 export function AccelerometerPattern({ testId = "accelerometer-test" }: AccelerometerPatternProps) {
+    const t = useTranslations("Tests.AccelerometerPattern");
   useTestContext();
 
   const [sensorState, setSensorState] = useState<SensorState>(() => {
@@ -183,43 +185,42 @@ export function AccelerometerPattern({ testId = "accelerometer-test" }: Accelero
         <div className="flex items-center gap-3">
           {/* Status Badge */}
           <div className="flex items-center gap-1.5 font-mono">
-            <span className="text-slate-400 uppercase text-[10px] tracking-wider">Status:</span>
+            <span className="text-slate-400 uppercase text-[10px] tracking-wider">{t("status")}</span>
             {sensorState === "ACTIVE" && (
               <span className="inline-flex items-center gap-1 text-emerald-400 font-semibold">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                Active ({motionData.eventCount} events)
-              </span>
+                {t("active")}{motionData.eventCount} {t("events")}</span>
             )}
             {sensorState === "IDLE" && (
-              <span className="text-slate-400 font-medium">Ready (Stopped)</span>
+              <span className="text-slate-400 font-medium">{t("readyStopped")}</span>
             )}
             {sensorState === "PERMISSION_REQUIRED" && (
-              <span className="text-amber-400 font-medium">Permission Required</span>
+              <span className="text-amber-400 font-medium">{t("permissionRequired")}</span>
             )}
             {sensorState === "NO_DATA" && (
-              <span className="text-amber-400 font-medium">No Sensor Hardware Detected</span>
+              <span className="text-amber-400 font-medium">{t("noSensorHardwareDetected")}</span>
             )}
             {sensorState === "DENIED" && (
-              <span className="text-rose-400 font-medium">Permission Denied</span>
+              <span className="text-rose-400 font-medium">{t("permissionDenied")}</span>
             )}
             {sensorState === "UNSUPPORTED" && (
-              <span className="text-rose-400 font-medium">API Unsupported</span>
+              <span className="text-rose-400 font-medium">{t("apiUnsupported")}</span>
             )}
           </div>
 
           <div className="h-4 w-px bg-slate-800" />
 
           <div className="flex items-center gap-1.5 font-mono">
-            <span className="text-slate-400 uppercase text-[10px] tracking-wider">Peak G-Force:</span>
-            <span className="text-sm font-bold text-blue-400">{peakG}g</span>
+            <span className="text-slate-400 uppercase text-[10px] tracking-wider">{t("peakGForce")}</span>
+            <span className="text-sm font-bold text-blue-400">{peakG}{t("g")}</span>
           </div>
 
           {motionData.interval != null && (
             <>
               <div className="h-4 w-px bg-slate-800 hidden sm:block" />
               <div className="hidden sm:flex items-center gap-1.5 font-mono text-slate-400">
-                <span className="uppercase text-[10px] tracking-wider">Interval:</span>
-                <span className="text-slate-200">{motionData.interval}ms</span>
+                <span className="uppercase text-[10px] tracking-wider">{t("interval")}</span>
+                <span className="text-slate-200">{motionData.interval}{t("ms")}</span>
               </div>
             </>
           )}
@@ -234,7 +235,7 @@ export function AccelerometerPattern({ testId = "accelerometer-test" }: Accelero
               className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-semibold shadow-xs transition-colors"
             >
               <Play className="w-3.5 h-3.5" />
-              <span>Start Sensor</span>
+              <span>{t("startSensor")}</span>
             </button>
           ) : (
             <button
@@ -243,7 +244,7 @@ export function AccelerometerPattern({ testId = "accelerometer-test" }: Accelero
               className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg text-xs font-semibold transition-colors"
             >
               <Square className="w-3.5 h-3.5 text-rose-400" />
-              <span>Stop Sensor</span>
+              <span>{t("stopSensor")}</span>
             </button>
           )}
 
@@ -251,8 +252,8 @@ export function AccelerometerPattern({ testId = "accelerometer-test" }: Accelero
             type="button"
             onClick={handleReset}
             className="p-1.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
-            title="Reset Telemetry"
-            aria-label="Reset Telemetry"
+            title={t("resetTelemetryTitle")}
+            aria-label={t("resetTelemetryTitle")}
           >
             <RotateCcw className="w-4 h-4" />
           </button>
@@ -265,7 +266,7 @@ export function AccelerometerPattern({ testId = "accelerometer-test" }: Accelero
         <div className="flex flex-col items-center justify-center p-6 bg-slate-900/60 rounded-2xl border border-slate-800 relative min-h-[300px]">
           <div className="text-xs font-mono font-medium text-slate-400 mb-4 uppercase tracking-wider flex items-center gap-2">
             <Compass className="w-4 h-4 text-blue-400" />
-            <span>2D Tilt & G-Force Reticle</span>
+            <span>{t("2dTiltGForce")}</span>
           </div>
 
           {/* Reticle Circle */}
@@ -279,10 +280,10 @@ export function AccelerometerPattern({ testId = "accelerometer-test" }: Accelero
             <div className="absolute w-44 h-44 rounded-full border border-slate-700/60" />
 
             {/* Axis Labels */}
-            <span className="absolute top-1 text-[9px] font-mono text-slate-500 uppercase">+Y</span>
-            <span className="absolute bottom-1 text-[9px] font-mono text-slate-500 uppercase">-Y</span>
-            <span className="absolute left-1 text-[9px] font-mono text-slate-500 uppercase">-X</span>
-            <span className="absolute right-1 text-[9px] font-mono text-slate-500 uppercase">+X</span>
+            <span className="absolute top-1 text-[9px] font-mono text-slate-500 uppercase">{t("y")}</span>
+            <span className="absolute bottom-1 text-[9px] font-mono text-slate-500 uppercase">{t("y_1")}</span>
+            <span className="absolute left-1 text-[9px] font-mono text-slate-500 uppercase">{t("x")}</span>
+            <span className="absolute right-1 text-[9px] font-mono text-slate-500 uppercase">{t("x_1")}</span>
 
             {/* Dynamic Puck / Bubble */}
             <div 
@@ -297,8 +298,7 @@ export function AccelerometerPattern({ testId = "accelerometer-test" }: Accelero
           </div>
 
           <div className="mt-4 text-[11px] font-mono text-slate-400 text-center">
-            Tilt device or accelerate to observe reticle displacement
-          </div>
+            {t("tiltDeviceOrAccelerate")}</div>
         </div>
 
         {/* Right: Detailed Telemetry Cards */}
@@ -306,24 +306,24 @@ export function AccelerometerPattern({ testId = "accelerometer-test" }: Accelero
           {/* Linear Acceleration (m/s²) */}
           <div className="p-4 bg-slate-900/60 rounded-xl border border-slate-800 space-y-2">
             <div className="flex items-center justify-between text-xs">
-              <span className="font-semibold text-slate-300">Linear Acceleration (excluding gravity)</span>
-              <span className="text-[10px] font-mono text-slate-500">m/s²</span>
+              <span className="font-semibold text-slate-300">{t("linearAccelerationExcludingGravity")}</span>
+              <span className="text-[10px] font-mono text-slate-500">{t("mS")}</span>
             </div>
             <div className="grid grid-cols-3 gap-2 font-mono text-center">
               <div className="p-2 bg-slate-950 rounded-lg border border-slate-800/80">
-                <span className="text-[10px] text-slate-500 block">X</span>
+                <span className="text-[10px] text-slate-500 block">{t("x_2")}</span>
                 <span className="text-sm font-bold text-slate-200">
                   {motionData.accX != null ? `${motionData.accX}` : "—"}
                 </span>
               </div>
               <div className="p-2 bg-slate-950 rounded-lg border border-slate-800/80">
-                <span className="text-[10px] text-slate-500 block">Y</span>
+                <span className="text-[10px] text-slate-500 block">{t("y_2")}</span>
                 <span className="text-sm font-bold text-slate-200">
                   {motionData.accY != null ? `${motionData.accY}` : "—"}
                 </span>
               </div>
               <div className="p-2 bg-slate-950 rounded-lg border border-slate-800/80">
-                <span className="text-[10px] text-slate-500 block">Z</span>
+                <span className="text-[10px] text-slate-500 block">{t("z")}</span>
                 <span className="text-sm font-bold text-slate-200">
                   {motionData.accZ != null ? `${motionData.accZ}` : "—"}
                 </span>
@@ -334,24 +334,24 @@ export function AccelerometerPattern({ testId = "accelerometer-test" }: Accelero
           {/* Acceleration Including Gravity (m/s²) */}
           <div className="p-4 bg-slate-900/60 rounded-xl border border-slate-800 space-y-2">
             <div className="flex items-center justify-between text-xs">
-              <span className="font-semibold text-slate-300">Total Acceleration (including gravity)</span>
-              <span className="text-[10px] font-mono text-slate-500">m/s²</span>
+              <span className="font-semibold text-slate-300">{t("totalAccelerationIncludingGravity")}</span>
+              <span className="text-[10px] font-mono text-slate-500">{t("mS")}</span>
             </div>
             <div className="grid grid-cols-3 gap-2 font-mono text-center">
               <div className="p-2 bg-slate-950 rounded-lg border border-slate-800/80">
-                <span className="text-[10px] text-slate-500 block">X</span>
+                <span className="text-[10px] text-slate-500 block">{t("x_2")}</span>
                 <span className="text-sm font-bold text-blue-400">
                   {motionData.gravX != null ? `${motionData.gravX}` : "—"}
                 </span>
               </div>
               <div className="p-2 bg-slate-950 rounded-lg border border-slate-800/80">
-                <span className="text-[10px] text-slate-500 block">Y</span>
+                <span className="text-[10px] text-slate-500 block">{t("y_2")}</span>
                 <span className="text-sm font-bold text-blue-400">
                   {motionData.gravY != null ? `${motionData.gravY}` : "—"}
                 </span>
               </div>
               <div className="p-2 bg-slate-950 rounded-lg border border-slate-800/80">
-                <span className="text-[10px] text-slate-500 block">Z</span>
+                <span className="text-[10px] text-slate-500 block">{t("z")}</span>
                 <span className="text-sm font-bold text-blue-400">
                   {motionData.gravZ != null ? `${motionData.gravZ}` : "—"}
                 </span>
@@ -364,11 +364,10 @@ export function AccelerometerPattern({ testId = "accelerometer-test" }: Accelero
             <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-amber-300 space-y-1">
               <div className="flex items-center gap-1.5 font-bold">
                 <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>No Motion Sensor Hardware Detected</span>
+                <span>{t("noMotionSensorHardware")}</span>
               </div>
               <p className="text-[11px] text-amber-200/80">
-                Standard desktop computers and monitors do not contain physical accelerometer chips. To test live motion events, open this page on a smartphone, tablet, or laptop equipped with built-in inertial sensors.
-              </p>
+                {t("standardDesktopComputersAnd")}</p>
             </div>
           )}
 
@@ -376,11 +375,10 @@ export function AccelerometerPattern({ testId = "accelerometer-test" }: Accelero
             <div className="p-3 bg-blue-500/10 border border-blue-500/30 rounded-xl text-xs text-blue-300 space-y-1">
               <div className="flex items-center gap-1.5 font-bold">
                 <Smartphone className="w-4 h-4 text-blue-400 shrink-0" />
-                <span>User Permission Required (iOS)</span>
+                <span>{t("userPermissionRequiredIos")}</span>
               </div>
               <p className="text-[11px] text-blue-200/80">
-                Apple Safari requires an explicit user tap to access device motion sensors. Click &quot;Start Sensor&quot; above and tap &quot;Allow&quot; on the browser prompt.
-              </p>
+                {t("appleSafariRequiresAn")}</p>
             </div>
           )}
         </div>
@@ -390,11 +388,10 @@ export function AccelerometerPattern({ testId = "accelerometer-test" }: Accelero
       <div className="p-3 bg-slate-900 border-t border-slate-800 text-[11px] text-slate-400 leading-relaxed flex items-start gap-2.5">
         <ShieldAlert className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
         <div>
-          <strong className="text-slate-200">Hardware Boundary Notice:</strong> This test displays motion telemetry reported by your browser via DeviceMotionEvent. It does not independently calibrate sensor bias or verify laboratory-grade physical measurement accuracy. Values reflect operating system sensor-fusion calculations.
-        </div>
+          <strong className="text-slate-200">{t("hardwareBoundaryNotice")}</strong> {t("thisTestDisplaysMotion")}</div>
       </div>
 
-      <TestControlBar testId={testId} title="Accelerometer Test" />
+      <TestControlBar testId={testId} title={t("accelerometerTestTitle")} />
     </div>
   );
 }

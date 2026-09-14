@@ -1,7 +1,7 @@
 import { generateSeoMetadata } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
-import { MotionPattern } from "@/components/tests/MotionPattern";
+import { MotionBlurPattern } from "@/components/tests/MotionBlurPattern";
 import { Metadata } from "next";
 import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
 import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
@@ -36,7 +36,7 @@ export default async function MotionBlurTestPage({ params }: { params: Promise<{
         ) : undefined
       }
     >
-      <MotionPattern testId="motion-blur-test" />
+      <MotionBlurPattern testId="motion-blur-test" />
     </TestWrapper>
   );
 }

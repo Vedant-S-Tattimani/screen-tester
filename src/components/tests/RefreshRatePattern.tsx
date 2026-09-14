@@ -5,12 +5,14 @@ import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
 import { getDevicePixelRatio } from "@/lib/browserCapabilities";
 import { Play, Pause, Activity } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface RefreshRatePatternProps {
   testId?: string;
 }
 
 export function RefreshRatePattern({ testId }: RefreshRatePatternProps) {
+    const t = useTranslations("Tests.RefreshRatePattern");
   const { isRunning, isPaused, setIsPaused, registerNavigation } = useTestContext();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   
@@ -110,14 +112,13 @@ export function RefreshRatePattern({ testId }: RefreshRatePatternProps) {
               {estimatedFps > 0 ? estimatedFps : "--"}
             </span>
             <span className="text-2xl sm:text-3xl font-mono text-white/50 font-normal uppercase">
-              Hz
-            </span>
+              {t("hz")}</span>
           </div>
 
           <div className="flex items-center gap-3 mt-4 bg-black/70 backdrop-blur-md border border-white/10 px-4 py-2 rounded-xl text-xs font-mono tabular-nums text-white/80 shadow-lg">
             <div className="flex items-center gap-1.5 text-emerald-400">
               <Activity className="w-3.5 h-3.5" />
-              <span>Frame Interval: {frameTimeMs > 0 ? `${frameTimeMs} ms` : "--"}</span>
+              <span>{t("frameInterval")}{frameTimeMs > 0 ? `${frameTimeMs} ms` : "--"}</span>
             </div>
             <span className="text-white/20">|</span>
             <span className="text-white/60">
@@ -129,12 +130,11 @@ export function RefreshRatePattern({ testId }: RefreshRatePatternProps) {
           </div>
 
           <p className="text-xs text-white/40 mt-3 max-w-xs text-center font-mono">
-            V-Sync Locked Hardware Timing
-          </p>
+            {t("vSyncLockedHardware")}</p>
         </div>
       </div>
 
-      <TestControlBar testId={testId} title="Refresh Rate (Hz) Estimation">
+      <TestControlBar testId={testId} title={t("refreshRateHzEstimationTitle")}>
         <div className="flex items-center gap-3">
           <button
             onClick={() => setIsPaused(!isPaused)}

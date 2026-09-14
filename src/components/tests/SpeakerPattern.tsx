@@ -16,6 +16,7 @@ import {
   Headphones,
   Activity
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface SpeakerPatternProps {
   testId?: string;
@@ -31,6 +32,7 @@ interface AudioOutputDevice {
 }
 
 export function SpeakerPattern({ testId = "speaker-test" }: SpeakerPatternProps) {
+    const t = useTranslations("Tests.SpeakerPattern");
   const { setObservation } = useTestContext();
 
   const [audioState, setAudioState] = useState<AudioState>(() => {
@@ -248,25 +250,25 @@ export function SpeakerPattern({ testId = "speaker-test" }: SpeakerPatternProps)
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1.5 font-mono">
             <Volume2 className="w-4 h-4 text-blue-400 shrink-0" />
-            <span className="text-slate-400 uppercase text-[10px] tracking-wider">Status:</span>
+            <span className="text-slate-400 uppercase text-[10px] tracking-wider">{t("status")}</span>
             {audioState === "PLAYING" && (
               <span className="inline-flex items-center gap-1 text-emerald-400 font-semibold">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                Playing ({channelMode.toUpperCase()} &bull; {toneType.toUpperCase()})
+                {t("playing")}{channelMode.toUpperCase()} {t("bull")}{toneType.toUpperCase()})
               </span>
             )}
             {audioState === "IDLE" && (
-              <span className="text-slate-400 font-medium">Ready (Stopped)</span>
+              <span className="text-slate-400 font-medium">{t("readyStopped")}</span>
             )}
             {audioState === "UNSUPPORTED" && (
-              <span className="text-rose-400 font-medium">Web Audio API Unsupported</span>
+              <span className="text-rose-400 font-medium">{t("webAudioApiUnsupported")}</span>
             )}
           </div>
 
           <div className="h-4 w-px bg-slate-800" />
 
           <div className="flex items-center gap-1.5 font-mono text-slate-400">
-            <span className="uppercase text-[10px] tracking-wider">Volume:</span>
+            <span className="uppercase text-[10px] tracking-wider">{t("volume")}</span>
             <span className="text-slate-200 font-semibold">{Math.round(volume * 100)}%</span>
           </div>
 
@@ -274,8 +276,8 @@ export function SpeakerPattern({ testId = "speaker-test" }: SpeakerPatternProps)
             <>
               <div className="h-4 w-px bg-slate-800 hidden sm:block" />
               <div className="hidden sm:flex items-center gap-1.5 font-mono text-slate-400">
-                <span className="uppercase text-[10px] tracking-wider">Endpoints:</span>
-                <span className="text-slate-200">{outputDevices.length} Detected</span>
+                <span className="uppercase text-[10px] tracking-wider">{t("endpoints")}</span>
+                <span className="text-slate-200">{outputDevices.length} {t("detected")}</span>
               </div>
             </>
           )}
@@ -290,7 +292,7 @@ export function SpeakerPattern({ testId = "speaker-test" }: SpeakerPatternProps)
               className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-semibold shadow-xs transition-colors"
             >
               <Play className="w-3.5 h-3.5" />
-              <span>Play Tone</span>
+              <span>{t("playTone")}</span>
             </button>
           ) : (
             <button
@@ -299,7 +301,7 @@ export function SpeakerPattern({ testId = "speaker-test" }: SpeakerPatternProps)
               className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-rose-600 hover:bg-rose-500 text-white rounded-lg text-xs font-semibold shadow-xs transition-colors"
             >
               <Square className="w-3.5 h-3.5" />
-              <span>Stop Audio</span>
+              <span>{t("stopAudio")}</span>
             </button>
           )}
 
@@ -307,8 +309,8 @@ export function SpeakerPattern({ testId = "speaker-test" }: SpeakerPatternProps)
             type="button"
             onClick={() => { stopAudio(); setVolume(0.2); setChannelMode("stereo"); setToneType("mid"); }}
             className="p-1.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
-            title="Reset Audio Settings"
-            aria-label="Reset Audio Settings"
+            title={t("resetAudioSettingsTitle")}
+            aria-label={t("resetAudioSettingsTitle")}
           >
             <RotateCcw className="w-4 h-4" />
           </button>
@@ -319,8 +321,7 @@ export function SpeakerPattern({ testId = "speaker-test" }: SpeakerPatternProps)
       <div className="px-4 py-2.5 bg-amber-500/10 border-b border-amber-500/20 text-[11px] text-amber-300 flex items-center gap-2">
         <ShieldAlert className="w-4 h-4 text-amber-400 shrink-0" />
         <span>
-          <strong>Hearing Safety Warning:</strong> Start at a low volume and increase gradually. Avoid sustained loud tones through headphones or high-power monitors.
-        </span>
+          <strong>{t("hearingSafetyWarning")}</strong> {t("startAtALow")}</span>
       </div>
 
       {/* Main Testing Surface */}
@@ -329,7 +330,7 @@ export function SpeakerPattern({ testId = "speaker-test" }: SpeakerPatternProps)
         <div>
           <h2 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
             <Headphones className="w-3.5 h-3.5 text-blue-400" />
-            <span>Stereo Channel Separation</span>
+            <span>{t("stereoChannelSeparation")}</span>
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {/* Left Only */}
@@ -343,12 +344,11 @@ export function SpeakerPattern({ testId = "speaker-test" }: SpeakerPatternProps)
               }`}
             >
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold">Left Channel Only</span>
-                <span className="text-[10px] font-mono text-blue-400">PAN -1.0</span>
+                <span className="text-xs font-bold">{t("leftChannelOnly")}</span>
+                <span className="text-[10px] font-mono text-blue-400">{t("pan10")}</span>
               </div>
               <p className="text-[11px] text-slate-400 mt-1">
-                Audio is routed 100% to the left speaker driver. The right speaker should remain completely silent.
-              </p>
+                {t("audioIsRouted100")}</p>
             </button>
 
             {/* Stereo Center */}
@@ -362,12 +362,11 @@ export function SpeakerPattern({ testId = "speaker-test" }: SpeakerPatternProps)
               }`}
             >
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold">Stereo Center</span>
-                <span className="text-[10px] font-mono text-emerald-400">CENTER 0.0</span>
+                <span className="text-xs font-bold">{t("stereoCenter")}</span>
+                <span className="text-[10px] font-mono text-emerald-400">{t("center00")}</span>
               </div>
               <p className="text-[11px] text-slate-400 mt-1">
-                Balanced simultaneous dual-channel playback across left and right speaker drivers.
-              </p>
+                {t("balancedSimultaneousDualChannel")}</p>
             </button>
 
             {/* Right Only */}
@@ -381,12 +380,11 @@ export function SpeakerPattern({ testId = "speaker-test" }: SpeakerPatternProps)
               }`}
             >
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold">Right Channel Only</span>
-                <span className="text-[10px] font-mono text-purple-400">PAN +1.0</span>
+                <span className="text-xs font-bold">{t("rightChannelOnly")}</span>
+                <span className="text-[10px] font-mono text-purple-400">{t("pan10_1")}</span>
               </div>
               <p className="text-[11px] text-slate-400 mt-1">
-                Audio is routed 100% to the right speaker driver. The left speaker should remain completely silent.
-              </p>
+                {t("audioIsRouted100_1")}</p>
             </button>
           </div>
         </div>
@@ -395,7 +393,7 @@ export function SpeakerPattern({ testId = "speaker-test" }: SpeakerPatternProps)
         <div>
           <h2 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
             <Activity className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Test Tone Presets (Listening Check)</span>
+            <span>{t("testTonePresetsListening")}</span>
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
             {[
@@ -432,7 +430,7 @@ export function SpeakerPattern({ testId = "speaker-test" }: SpeakerPatternProps)
               <div className="flex items-center justify-between text-xs">
                 <span className="font-semibold text-slate-300 flex items-center gap-1.5">
                   <Sliders className="w-3.5 h-3.5 text-blue-400" />
-                  <span>Test Volume Level</span>
+                  <span>{t("testVolumeLevel")}</span>
                 </span>
                 <span className="font-mono text-slate-400 font-bold">{Math.round(volume * 100)}%</span>
               </div>
@@ -451,8 +449,7 @@ export function SpeakerPattern({ testId = "speaker-test" }: SpeakerPatternProps)
             {outputDevices.length > 0 && isSinkIdSupported && (
               <div className="sm:w-64 space-y-1.5">
                 <label htmlFor="speaker-output-device-select" className="text-xs font-semibold text-slate-300 block">
-                  Output Endpoint (setSinkId)
-                </label>
+                  {t("outputEndpointSetsinkid")}</label>
                 <select
                   id="speaker-output-device-select"
                   value={selectedDeviceId}
@@ -477,15 +474,13 @@ export function SpeakerPattern({ testId = "speaker-test" }: SpeakerPatternProps)
         <div className="p-4 bg-slate-900/80 rounded-2xl border border-slate-800 space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-slate-200">
-              User Audio Observation (Mandatory Human Check)
-            </span>
+              {t("userAudioObservationMandatory")}</span>
             {userObservationChoice && (
-              <span className="text-[10px] font-mono text-blue-400 uppercase">Recorded</span>
+              <span className="text-[10px] font-mono text-blue-400 uppercase">{t("recorded")}</span>
             )}
           </div>
           <p className="text-xs text-slate-400 leading-relaxed">
-            The browser generates pure digital audio waveforms, but <strong>cannot measure physical acoustic distortion, physical driver rattle, or true room SPL</strong>. How did the speakers sound?
-          </p>
+            {t("theBrowserGeneratesPure")}<strong>{t("cannotMeasurePhysicalAcoustic")}</strong>{t("howDidTheSpeakers")}</p>
 
           <div className="flex flex-wrap items-center gap-2 pt-1">
             <button
@@ -498,7 +493,7 @@ export function SpeakerPattern({ testId = "speaker-test" }: SpeakerPatternProps)
               }`}
             >
               <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Sounds normal</span>
+              <span>{t("soundsNormal")}</span>
             </button>
 
             <button
@@ -511,7 +506,7 @@ export function SpeakerPattern({ testId = "speaker-test" }: SpeakerPatternProps)
               }`}
             >
               <XCircle className="w-3.5 h-3.5 text-rose-400" />
-              <span>Needs attention (Distorted / Silent)</span>
+              <span>{t("needsAttentionDistortedSilent")}</span>
             </button>
 
             <button
@@ -524,7 +519,7 @@ export function SpeakerPattern({ testId = "speaker-test" }: SpeakerPatternProps)
               }`}
             >
               <HelpCircle className="w-3.5 h-3.5 text-amber-400" />
-              <span>Unsure</span>
+              <span>{t("unsure")}</span>
             </button>
           </div>
         </div>
@@ -534,11 +529,10 @@ export function SpeakerPattern({ testId = "speaker-test" }: SpeakerPatternProps)
       <div className="p-3 bg-slate-900 border-t border-slate-800 text-[11px] text-slate-400 leading-relaxed flex items-start gap-2.5">
         <ShieldAlert className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
         <div>
-          <strong className="text-slate-200">Hardware Boundary Notice:</strong> The browser synthesizes digital PCM waveforms via Web Audio API. It does not measure physical driver frequency response curves, SPL decibels, or cabinet resonance. Channel panning tests verify electrical channel assignment only.
-        </div>
+          <strong className="text-slate-200">{t("hardwareBoundaryNotice")}</strong> {t("theBrowserSynthesizesDigital")}</div>
       </div>
 
-      <TestControlBar testId={testId} title="Speaker & Stereo Channel Test" />
+      <TestControlBar testId={testId} title={t("speakerStereoChannelTestTitle")} />
     </div>
   );
 }

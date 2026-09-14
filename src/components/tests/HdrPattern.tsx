@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
 import { SunMedium, CheckCircle, Monitor, Layers, Sliders, Info, ShieldCheck, Eye, Moon } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface HdrPatternProps {
   testId?: string;
@@ -46,6 +47,7 @@ const HIGHLIGHT_CARDS: HighlightCardData[] = [
 ];
 
 export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) {
+    const t = useTranslations("Tests.HdrPattern");
   const { registerNavigation } = useTestContext();
   const [hdrSupported, setHdrSupported] = useState<boolean | null>(null);
   const [p3Supported, setP3Supported] = useState<boolean | null>(null);
@@ -125,34 +127,30 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
               </div>
               <div>
                 <div className="text-xs uppercase tracking-widest text-white/50 font-semibold font-mono">
-                  Browser-Reported Pipeline &amp; Visual Check
-                </div>
+                  {t("browserReportedPipelineAmp")}</div>
                 <h2 className="text-lg sm:text-xl font-bold tracking-tight text-white mt-0.5">
-                  HDR Capability &amp; Visual Check
-                </h2>
+                  {t("hdrCapabilityAmpVisual")}</h2>
               </div>
             </div>
 
             <div className="flex items-center gap-2">
               {hdrSupported === null ? (
-                <span className="text-xs text-white/50 font-mono">Probing Pipeline...</span>
+                <span className="text-xs text-white/50 font-mono">{t("probingPipeline")}</span>
               ) : hdrSupported ? (
                 <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                  <CheckCircle className="w-3.5 h-3.5" /> CSS (dynamic-range: high) Detected
-                </span>
+                  <CheckCircle className="w-3.5 h-3.5" /> {t("cssDynamicRangeHigh")}</span>
               ) : (
                 <span 
                   className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-500/20 text-slate-200 border border-slate-500/30"
-                  title="SDR (Standard Dynamic Range) is normal for standard displays. For HDR-capable monitors, press Win + Alt + B in Windows to toggle HDR."
+                  title={t("sdrStandardDynamicRangeTitle")}
                 >
-                  <Monitor className="w-3.5 h-3.5 text-slate-400" /> CSS (dynamic-range: standard) Active
-                </span>
+                  <Monitor className="w-3.5 h-3.5 text-slate-400" /> {t("cssDynamicRangeStandard")}</span>
               )}
             </div>
           </div>
 
           {/* Tab Navigation Pill */}
-          <div role="tablist" aria-label="HDR View Modes" className="flex items-center gap-1 bg-white/5 p-1 rounded-xl border border-white/10 text-xs">
+          <div role="tablist" aria-label={t("hdrViewModesTitle")} className="flex items-center gap-1 bg-white/5 p-1 rounded-xl border border-white/10 text-xs">
             <button
               role="tab"
               aria-selected={activeTab === "overview"}
@@ -162,7 +160,7 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
               }`}
             >
               <ShieldCheck className="w-3.5 h-3.5" />
-              <span>Browser Pipeline</span>
+              <span>{t("browserPipeline")}</span>
             </button>
             <button
               role="tab"
@@ -173,7 +171,7 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
               }`}
             >
               <Layers className="w-3.5 h-3.5" />
-              <span>10-Bit Banding Ramp</span>
+              <span>{t("10BitBandingRamp")}</span>
             </button>
             <button
               role="tab"
@@ -184,7 +182,7 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
               }`}
             >
               <Sliders className="w-3.5 h-3.5" />
-              <span>Highlight Clipping</span>
+              <span>{t("highlightClipping")}</span>
             </button>
             <button
               role="tab"
@@ -195,7 +193,7 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
               }`}
             >
               <Moon className="w-3.5 h-3.5" />
-              <span>Shadow Detail</span>
+              <span>{t("shadowDetail")}</span>
             </button>
           </div>
 
@@ -206,15 +204,14 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
             <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col justify-between">
                 <div>
-                  <div className="text-xs uppercase tracking-wider text-white/50 font-mono font-semibold mb-1">Browser-Reported Dynamic Range</div>
-                  <div className="text-xl font-bold text-white mb-2">CSS dynamic-range</div>
+                  <div className="text-xs uppercase tracking-wider text-white/50 font-mono font-semibold mb-1">{t("browserReportedDynamicRange")}</div>
+                  <div className="text-xl font-bold text-white mb-2">{t("cssDynamicRange")}</div>
                   <p className="text-xs text-white/60 leading-relaxed">
-                    Queries whether the operating system compositor reports high dynamic range support to the browser media query.
-                  </p>
+                    {t("queriesWhetherTheOperating")}</p>
                 </div>
                 <div className="mt-4 pt-4 border-t border-white/10 flex flex-col gap-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-white/50">Status:</span>
+                    <span className="text-xs text-white/50">{t("status")}</span>
                     <span className={`text-xs font-mono font-semibold px-2.5 py-1 rounded-md ${
                       hdrSupported ? "bg-emerald-500/20 text-emerald-400" : "bg-white/10 text-white/70"
                     }`}>
@@ -222,7 +219,7 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-white/50">Gamut:</span>
+                    <span className="text-white/50">{t("gamut")}</span>
                     <span className="font-mono text-white/80">
                       {rec2020Supported ? "Rec.2020 (HDR Wide)" : p3Supported ? "Display-P3 (Reported)" : "sRGB (Standard)"}
                     </span>
@@ -232,14 +229,13 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
 
               <div className="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col justify-between">
                 <div>
-                  <div className="text-xs uppercase tracking-wider text-white/50 font-mono font-semibold mb-1">Color Depth</div>
-                  <div className="text-xl font-bold text-white mb-2">Reported Buffer Color Depth</div>
+                  <div className="text-xs uppercase tracking-wider text-white/50 font-mono font-semibold mb-1">{t("colorDepth")}</div>
+                  <div className="text-xl font-bold text-white mb-2">{t("reportedBufferColorDepth")}</div>
                   <p className="text-xs text-white/60 leading-relaxed">
-                    Queries <code className="font-mono">screen.colorDepth</code>. 24-bit indicates standard 8-bit SDR buffer depth; 30-bit/32-bit indicates a high-bitrate buffer pipeline.
-                  </p>
+                    {t("queries")}<code className="font-mono">{t("screenColordepth")}</code>{t("24BitIndicatesStandard")}</p>
                 </div>
                 <div className="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
-                  <span className="text-xs text-white/50">Reported Depth:</span>
+                  <span className="text-xs text-white/50">{t("reportedDepth")}</span>
                   <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded-md bg-white/10 text-white/90">
                     {colorDepth ? `${colorDepth}-bit (${colorDepth >= 30 ? "10-bit reported" : "8-bit standard"})` : "Probing..."}
                   </span>
@@ -250,15 +246,13 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
               <div className="sm:col-span-2 bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 flex items-start gap-3 text-xs text-amber-200/90 leading-relaxed">
                 <ShieldCheck className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                 <div>
-                  <strong>Technical Notice (Browser Signals vs. Physical HDR Performance):</strong> A browser reporting <code className="font-mono bg-black/40 px-1 rounded">dynamic-range: high</code> confirms that the OS compositor exposes HDR capability to the browser. However, a browser cannot measure actual panel peak luminance (nits), sustained brightness, local dimming zones, or prove DisplayHDR certification. Physical peak luminance and HDR certification require laboratory luminance meters. Standard edge-lit displays may report HDR support without producing true high-contrast specular highlights.
-                </div>
+                  <strong>{t("technicalNoticeBrowserSignals")}</strong> {t("aBrowserReporting")}<code className="font-mono bg-black/40 px-1 rounded">{t("dynamicRangeHigh")}</code> {t("confirmsThatTheOs")}</div>
               </div>
 
               <div className="sm:col-span-2 bg-white/5 border border-white/10 rounded-2xl p-4 flex items-start gap-3 text-xs text-white/70">
                 <Info className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
                 <div>
-                  <strong>Windows Shortcut Tip:</strong> On Windows 10 & 11, press <kbd className="px-1.5 py-0.5 bg-black/60 border border-white/20 rounded font-mono text-[11px] text-white">Win + Alt + B</kbd> to toggle HDR on/off instantly. Ensure your display cable is DisplayPort 1.4 or HDMI 2.0+ for HDR bandwidth.
-                </div>
+                  <strong>{t("windowsShortcutTip")}</strong> {t("onWindows1011")}<kbd className="px-1.5 py-0.5 bg-black/60 border border-white/20 rounded font-mono text-[11px] text-white">{t("winAltB")}</kbd> {t("toToggleHdrOn")}</div>
               </div>
             </div>
           )}
@@ -270,16 +264,14 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
             <div className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-6 space-y-6">
               <div>
                 <h3 className="text-sm font-semibold text-white font-mono uppercase tracking-wider">
-                  8-Bit Quantized Stepping vs Continuous Ramp
-                </h3>
+                  {t("8BitQuantizedStepping")}</h3>
                 <p className="text-xs text-white/60 mt-1">
-                  On standard 8-bit SDR panels, gradient stepping shows visible vertical stripe boundaries (color banding). On 10-bit HDR panels, intermediate 10-bit steps blend smoothly without visible seams.
-                </p>
+                  {t("onStandard8Bit")}</p>
               </div>
 
               {/* 8-bit stepped ramp */}
               <div>
-                <div className="text-[11px] font-mono text-white/50 mb-1.5">8-Bit Stepped Gradient (256 discrete levels):</div>
+                <div className="text-[11px] font-mono text-white/50 mb-1.5">{t("8BitSteppedGradient")}</div>
                 <div className="h-14 w-full rounded-xl overflow-hidden flex border border-white/10 shadow-inner">
                   {Array.from({ length: 32 }).map((_, i) => {
                     const lum = Math.round((i / 31) * 255);
@@ -296,7 +288,7 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
 
               {/* Smooth continuous ramp */}
               <div>
-                <div className="text-[11px] font-mono text-white/50 mb-1.5">Smooth High-Bitrate Ramp:</div>
+                <div className="text-[11px] font-mono text-white/50 mb-1.5">{t("smoothHighBitrateRamp")}</div>
                 <div 
                   className="h-14 w-full rounded-xl border border-white/10 shadow-inner" 
                   style={{ background: "linear-gradient(to right, #000000 0%, #ffffff 100%)" }}
@@ -312,11 +304,9 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
             <div className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 sm:p-6 flex flex-col items-center gap-5 text-center">
               <div>
                 <h3 className="text-sm font-semibold text-white font-mono uppercase tracking-wider">
-                  Specular Highlight Roll-Off
-                </h3>
+                  {t("specularHighlightRollOff")}</h3>
                 <p className="text-xs text-white/70 mt-1 max-w-xl mx-auto leading-relaxed">
-                  Compare how your display renders near-peak white luminance. Look closely at the <strong className="text-white">center reticle target</strong> inside each square. If a reticle disappears into solid white, your display is <strong className="text-amber-300">hard-clipping highlights</strong> instead of smoothly tone-mapping near-peak luminance.
-                </p>
+                  {t("compareHowYourDisplay")}<strong className="text-white">{t("centerReticleTarget")}</strong> {t("insideEachSquareIf")}<strong className="text-amber-300">{t("hardClippingHighlights")}</strong> {t("insteadOfSmoothlyTone")}</p>
               </div>
 
               {/* 4 Calibrated Specular Highlight Cards */}
@@ -335,7 +325,7 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
                     >
                       {/* Top Card Header */}
                       <div className="w-full flex items-center justify-between text-[9px] sm:text-[10px] font-mono font-bold text-black/60 select-none">
-                        <span>RGB {item.bgRgb}</span>
+                        <span>{t("rgb")}{item.bgRgb}</span>
                         <span className="text-[9px] uppercase tracking-wider text-black/40">
                           {idx === 3 ? "Peak" : `Box ${idx + 1}`}
                         </span>
@@ -380,7 +370,7 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
                       <div className="text-center w-full select-none pt-1">
                         <div className="text-xs font-mono font-bold text-black">{item.label}</div>
                         <div className="text-[9px] sm:text-[10px] font-mono text-black/60 mt-0.5">
-                          Reticle: RGB {reticleRgb} ({delta > 0 ? `+${delta}` : delta})
+                          {t("reticleRgb")}{reticleRgb} ({delta > 0 ? `+${delta}` : delta})
                         </div>
                       </div>
                     </div>
@@ -391,17 +381,14 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
               {/* Diagnostic Interpretation Guide */}
               <div className="w-full max-w-2xl grid grid-cols-1 sm:grid-cols-3 gap-2 text-[10px] sm:text-[11px] text-center mt-1">
                 <div className="px-2.5 py-1.5 rounded-lg bg-emerald-950/30 border border-emerald-900/40 text-emerald-300">
-                  <strong className="block text-emerald-200">All 4 Reticles Visible</strong>
-                  Excellent tone-mapping; highlight textures are preserved up to peak white.
-                </div>
+                  <strong className="block text-emerald-200">{t("all4ReticlesVisible")}</strong>
+                  {t("excellentToneMappingHighlight")}</div>
                 <div className="px-2.5 py-1.5 rounded-lg bg-amber-950/30 border border-amber-900/40 text-amber-300">
-                  <strong className="block text-amber-200">Reticle 4 Blown Out</strong>
-                  Typical SDR/standard clipping; top 2% peak white clips to pure white.
-                </div>
+                  <strong className="block text-amber-200">{t("reticle4BlownOut")}</strong>
+                  {t("typicalSdrStandardClipping")}</div>
                 <div className="px-2.5 py-1.5 rounded-lg bg-red-950/30 border border-red-900/40 text-red-300">
-                  <strong className="block text-red-200">Reticles 3 & 4 Invisible</strong>
-                  Severe highlight clipping; monitor contrast is set too high or HDR tone-mapping is off.
-                </div>
+                  <strong className="block text-red-200">{t("reticles34Invisible")}</strong>
+                  {t("severeHighlightClippingMonitor")}</div>
               </div>
             </div>
           )}
@@ -413,14 +400,11 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
             <div className="w-full bg-black border border-white/10 rounded-2xl p-4 sm:p-6 flex flex-col items-center gap-5 text-center">
               <div>
                 <div className="text-xs uppercase tracking-widest text-white/50 font-mono font-semibold">
-                  PQ EOTF Shadow Tracking & Black Floor
-                </div>
+                  {t("pqEotfShadowTracking")}</div>
                 <h3 className="text-base sm:text-lg font-bold text-white mt-0.5">
-                  HDR Near-Black Shadow Detail
-                </h3>
+                  {t("hdrNearBlackShadow")}</h3>
                 <p className="text-xs text-white/60 max-w-lg mt-1">
-                  Evaluates whether HDR low-luminance steps remain distinguishable from true black (0 nits) without crushing or blooming.
-                </p>
+                  {t("evaluatesWhetherHdrLow")}</p>
               </div>
 
               {/* Near-Black Reference Steps Grid */}
@@ -449,13 +433,12 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
               </div>
 
               <div className="w-full max-w-2xl p-3 rounded-xl bg-white/5 border border-white/10 text-left text-xs text-white/70 space-y-1">
-                <strong>What to inspect in HDR mode:</strong>
+                <strong>{t("whatToInspectIn")}</strong>
                 <p>
-                  1. In a dark room, square #1 (0.8%) should be just barely discernible from the surrounding black. If it is pitch black, your display is <strong>crushing shadows</strong>.
+                  {t("1InADark")}<strong>{t("crushingShadows")}</strong>.
                 </p>
                 <p>
-                  2. On Mini-LED monitors, observe whether local dimming zones create glowing light halos (blooming) around these low-luminance squares. On OLED, each pixel remains completely isolated with zero halo.
-                </p>
+                  {t("2OnMiniLed")}</p>
               </div>
             </div>
           )}
@@ -466,7 +449,7 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
       {/* ========================================================= */}
       {/* TEST CONTROL BAR (DOCKED OUTSIDE & BELOW VIEWPORT)       */}
       {/* ========================================================= */}
-      <TestControlBar testId={testId} title="HDR Capability & Visual Check">
+      <TestControlBar testId={testId} title={t("hdrCapabilityVisualCheckTitle")}>
         <div className="flex flex-wrap items-center gap-2">
           {/* Mode Tabs Switcher */}
           <div className="flex items-center bg-slate-100 dark:bg-black/80 p-1 rounded-xl border border-slate-200 dark:border-white/20 text-xs">
@@ -478,8 +461,7 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
                   : "bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-50 border border-slate-200 dark:bg-white/10 dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/25 dark:border-white/15 font-semibold"
               }`}
             >
-              Browser Pipeline
-            </button>
+              {t("browserPipeline")}</button>
             <button
               onClick={() => setActiveTab("banding")}
               className={`px-3 py-1.5 rounded-lg transition-all font-bold cursor-pointer ${
@@ -488,8 +470,7 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
                   : "bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-50 border border-slate-200 dark:bg-white/10 dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/25 dark:border-white/15 font-semibold"
               }`}
             >
-              10-Bit Ramp
-            </button>
+              {t("10BitRamp")}</button>
             <button
               onClick={() => setActiveTab("specular")}
               className={`px-3 py-1.5 rounded-lg transition-all font-bold cursor-pointer ${
@@ -498,8 +479,7 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
                   : "bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-50 border border-slate-200 dark:bg-white/10 dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/25 dark:border-white/15 font-semibold"
               }`}
             >
-              Highlight Clipping
-            </button>
+              {t("highlightClipping")}</button>
             <button
               onClick={() => setActiveTab("shadow")}
               className={`px-3 py-1.5 rounded-lg transition-all font-bold cursor-pointer ${
@@ -508,14 +488,13 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
                   : "bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-50 border border-slate-200 dark:bg-white/10 dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/25 dark:border-white/15 font-semibold"
               }`}
             >
-              Shadow Detail
-            </button>
+              {t("shadowDetail")}</button>
           </div>
 
           {/* Controls specific to Highlight Clipping */}
           {activeTab === "specular" && (
             <div className="flex items-center gap-1.5 border-l border-slate-300 dark:border-white/20 pl-2 text-xs">
-              <span className="text-amber-600 dark:text-amber-300 font-mono text-xs font-bold hidden sm:inline">Delta:</span>
+              <span className="text-amber-600 dark:text-amber-300 font-mono text-xs font-bold hidden sm:inline">{t("delta")}</span>
               <button
                 onClick={() => setSensitivity("standard")}
                 className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
@@ -523,10 +502,9 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
                     ? "bg-slate-900 dark:bg-white text-white dark:text-gray-950 font-extrabold shadow-xs"
                     : "text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-white/20 bg-white dark:bg-white/10 border border-slate-200 dark:border-white/15"
                 }`}
-                title="Standard ~2% delta"
+                title={t("standard2DeltaTitle")}
               >
-                Standard (2%)
-              </button>
+                {t("standard2")}</button>
               <button
                 onClick={() => setSensitivity("subtle")}
                 className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
@@ -534,10 +512,9 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
                     ? "bg-slate-900 dark:bg-white text-white dark:text-gray-950 font-extrabold shadow-xs"
                     : "text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-white/20 bg-white dark:bg-white/10 border border-slate-200 dark:border-white/15"
                 }`}
-                title="Subtle ~1% delta"
+                title={t("subtle1DeltaTitle")}
               >
-                Subtle (1%)
-              </button>
+                {t("subtle1")}</button>
               <button
                 onClick={() => setSensitivity("ultrafine")}
                 className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
@@ -545,18 +522,17 @@ export function HdrPattern({ testId = "hdr-capability-test" }: HdrPatternProps) 
                     ? "bg-slate-900 dark:bg-white text-white dark:text-gray-950 font-extrabold shadow-xs"
                     : "text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-white/20 bg-white dark:bg-white/10 border border-slate-200 dark:border-white/15"
                 }`}
-                title="Ultra-Fine ~0.5% delta"
+                title={t("ultraFine05Title")}
               >
-                Ultra-Fine (0.5%)
-              </button>
+                {t("ultraFine05")}</button>
 
               <button
                 onClick={triggerBlink}
                 className="ml-1 flex items-center gap-1 px-2.5 py-1 rounded-md border border-border/50 bg-muted/40 hover:bg-muted text-gray-800 dark:text-slate-200 dark:hover:text-white text-[11px] font-medium transition-colors shadow-2xs"
-                title="Momentarily blink reticles so you can spot their exact location"
+                title={t("momentarilyBlinkReticlesSoTitle")}
               >
                 <Eye className="w-3.5 h-3.5 text-blue-500" />
-                <span>Flash Reticles</span>
+                <span>{t("flashReticles")}</span>
               </button>
             </div>
           )}

@@ -5,6 +5,7 @@ import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
 import { getDevicePixelRatio } from "@/lib/browserCapabilities";
 import { Info } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export type MotionMode = "ghosting" | "overdrive" | "blacksmear";
 
@@ -15,6 +16,7 @@ interface MotionPatternProps {
 const SPEED_PRESETS = [120, 240, 480, 960, 1440, 1920];
 
 export function MotionPattern({ testId = "ghosting-test" }: MotionPatternProps) {
+    const t = useTranslations("Tests.MotionPattern");
   const { isRunning, isPaused, registerNavigation } = useTestContext();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   
@@ -197,15 +199,15 @@ export function MotionPattern({ testId = "ghosting-test" }: MotionPatternProps) 
       <div 
         className="absolute inset-0 cursor-pointer overflow-hidden select-none"
         onClick={cycleSpeed}
-        title="Click anywhere to increase speed (120 → 240 → 480 → 960 → 1440 → 1920 px/s)"
+        title={t("clickAnywhereToIncreaseTitle")}
       >
         <canvas ref={canvasRef} className="block w-full h-full" />
 
         {/* Floating Speed & Mode Cue */}
         <div className="absolute top-3 left-3 pointer-events-none flex items-center gap-2 bg-black/75 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/20 text-white text-xs font-mono shadow-md z-10">
-          <span className="text-amber-400 font-bold">{speed} px/s</span>
+          <span className="text-amber-400 font-bold">{speed} {t("pxS")}</span>
           <span className="text-white/40">•</span>
-          <span className="text-white/70 text-[11px]">Click screen to increase speed</span>
+          <span className="text-white/70 text-[11px]">{t("clickScreenToIncrease")}</span>
         </div>
 
         {/* Educational Disclaimer Dialog */}
@@ -217,39 +219,34 @@ export function MotionPattern({ testId = "ghosting-test" }: MotionPatternProps) 
             <div className="flex items-center justify-between pb-3 border-b border-white/10">
               <div className="flex items-center gap-2 font-semibold text-amber-400">
                 <Info className="w-4 h-4" />
-                <span>Motion Diagnostics & Response Time Boundaries</span>
+                <span>{t("motionDiagnosticsResponseTime")}</span>
               </div>
               <button 
                 onClick={() => setShowEduInfo(false)}
                 className="text-white/60 hover:text-white px-2 py-0.5 rounded text-xs font-mono"
               >
-                ✕ Close
-              </button>
+                {t("close")}</button>
             </div>
             <div className="mt-3 space-y-2.5 text-white/80 leading-relaxed">
               <p>
-                <strong>What to look for:</strong>
+                <strong>{t("whatToLookFor")}</strong>
               </p>
               <ul className="list-disc pl-4 space-y-1.5">
                 <li>
-                  <strong>Ghosting (Trailing blur):</strong> A dark or smeared trail behind moving objects indicates slower liquid crystal transitions (common on VA and older IPS panels).
-                </li>
+                  <strong>{t("ghostingTrailingBlur")}</strong> {t("aDarkOrSmeared")}</li>
                 <li>
-                  <strong>Inverse Ghosting (Corona / Overshoot):</strong> A bright white or glowing outline ahead or behind the moving block. This means your monitor&apos;s physical <em>Overdrive / Response Time</em> setting is pushed too high. Lower overdrive one notch (e.g. from &quot;Fastest&quot; to &quot;Fast&quot;).
-                </li>
+                  <strong>{t("inverseGhostingCoronaOvershoot")}</strong> {t("aBrightWhiteOr")}<em>{t("overdriveResponseTime")}</em> {t("settingIsPushedToo")}</li>
                 <li>
-                  <strong>Black Smearing:</strong> On VA panels and some OLEDs, transitioning from pure 0% black to 5% dark gray takes several times longer than light-to-light transitions, producing purple or pitch-black smears in dark scenes.
-                </li>
+                  <strong>{t("blackSmearing")}</strong> {t("onVaPanelsAnd")}</li>
               </ul>
               <div className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-white/70">
-                <strong>Measurement Boundary:</strong> This is a visual diagnostic aid. Web browsers cannot provide laboratory-grade millisecond response time (GtG / MPRT) measurements, which require a high-speed photodiode oscilloscope and a pursuit camera rig.
-              </div>
+                <strong>{t("measurementBoundary")}</strong> {t("thisIsAVisual")}</div>
             </div>
           </div>
         )}
       </div>
 
-      <TestControlBar testId={testId} title="Motion & Response Time">
+      <TestControlBar testId={testId} title={t("motionResponseTimeTitle")}>
         <div className="flex flex-wrap items-center gap-3">
           {/* Mode Selector */}
           <div className="flex items-center bg-slate-100 dark:bg-black/80 p-1 rounded-xl border border-slate-200 dark:border-white/20 text-xs">
@@ -261,8 +258,7 @@ export function MotionPattern({ testId = "ghosting-test" }: MotionPatternProps) 
                   : "bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-50 border border-slate-200 dark:bg-white/10 dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/25 dark:border-white/15 font-semibold"
               }`}
             >
-              Ghosting
-            </button>
+              {t("ghosting")}</button>
             <button
               onClick={() => setActiveMode("overdrive")}
               className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
@@ -271,8 +267,7 @@ export function MotionPattern({ testId = "ghosting-test" }: MotionPatternProps) 
                   : "bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-50 border border-slate-200 dark:bg-white/10 dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/25 dark:border-white/15 font-semibold"
               }`}
             >
-              Overdrive (Overshoot)
-            </button>
+              {t("overdriveOvershoot")}</button>
             <button
               onClick={() => setActiveMode("blacksmear")}
               className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
@@ -281,13 +276,12 @@ export function MotionPattern({ testId = "ghosting-test" }: MotionPatternProps) 
                   : "bg-white text-slate-800 hover:text-slate-950 hover:bg-slate-50 border border-slate-200 dark:bg-white/10 dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/25 dark:border-white/15 font-semibold"
               }`}
             >
-              Black Smearing
-            </button>
+              {t("blackSmearing_1")}</button>
           </div>
 
           {/* Speed Presets */}
           <div className="flex items-center gap-1.5 bg-slate-100 dark:bg-black/60 rounded-xl px-2.5 py-1 border border-slate-200 dark:border-white/20 text-xs">
-            <span className="text-[10px] text-amber-600 dark:text-amber-300 font-bold uppercase font-mono px-1">Speed:</span>
+            <span className="text-[10px] text-amber-600 dark:text-amber-300 font-bold uppercase font-mono px-1">{t("speed")}</span>
             {SPEED_PRESETS.map((s) => (
               <button
                 key={s}
@@ -328,10 +322,10 @@ export function MotionPattern({ testId = "ghosting-test" }: MotionPatternProps) 
             className={`flex items-center gap-1 text-xs px-2.5 py-1 rounded-lg border transition-colors ${
               showEduInfo ? "bg-amber-500/20 text-amber-500 border-amber-500/40" : "hover:bg-muted dark:hover:bg-white/10 text-gray-700 dark:text-slate-200 dark:hover:text-white border-border/50"
             }`}
-            title="Read about ghosting, overdrive overshoot, and black smearing"
+            title={t("readAboutGhostingOverdriveTitle")}
           >
             <Info className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Guide</span>
+            <span className="hidden sm:inline">{t("guide")}</span>
           </button>
         </div>
       </TestControlBar>

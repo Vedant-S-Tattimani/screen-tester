@@ -472,13 +472,13 @@ export function TouchScreenPattern({ testId = "touch-screen-test" }: TouchScreen
           <div className="flex items-center gap-3">
             {/* Live touch counter */}
             <div className="flex items-center gap-1 text-[11px] font-mono">
-              <span className="text-white/60">Active:</span>
+              <span className="text-white/60">{t("active")}</span>
               <span className="px-1.5 py-0.2 rounded bg-white/15 font-bold text-white">
                 {activePointers.size}
               </span>
             </div>
             <div className="flex items-center gap-1 text-[11px] font-mono">
-              <span className="text-white/60">Peak:</span>
+              <span className="text-white/60">{t("peak")}</span>
               <span className="px-1.5 py-0.2 rounded bg-white/15 font-bold text-white">
                 {peakSimultaneous}
               </span>
@@ -627,11 +627,11 @@ export function TouchScreenPattern({ testId = "touch-screen-test" }: TouchScreen
 
               <div className="grid grid-cols-2 gap-3 pt-2">
                 <div className="p-3 rounded-xl bg-black/60 border border-white/10">
-                  <span className="text-[10px] uppercase font-mono text-white/50 block">Current Active</span>
+                  <span className="text-[10px] uppercase font-mono text-white/50 block">{t("currentActive")}</span>
                   <span className="text-2xl font-bold font-mono text-blue-400">{activePointers.size}</span>
                 </div>
                 <div className="p-3 rounded-xl bg-black/60 border border-white/10">
-                  <span className="text-[10px] uppercase font-mono text-white/50 block">Peak Detected</span>
+                  <span className="text-[10px] uppercase font-mono text-white/50 block">{t("peakDetected")}</span>
                   <span className="text-2xl font-bold font-mono text-emerald-400">{peakSimultaneous}</span>
                 </div>
               </div>
@@ -768,7 +768,7 @@ export function TouchScreenPattern({ testId = "touch-screen-test" }: TouchScreen
 
             {/* Live event state badge */}
             <div className="px-4 py-2 rounded-xl border border-white/20 bg-white/5 text-xs font-mono">
-              <span className="text-white/60 mr-2">Event State:</span>
+              <span className="text-white/60 mr-2">{t("eventState")}</span>
               <strong className="text-emerald-400">
                 {t(`release.${releaseStatus}`)}
               </strong>
@@ -806,7 +806,7 @@ export function TouchScreenPattern({ testId = "touch-screen-test" }: TouchScreen
             } flex flex-col items-center justify-center pointer-events-none shadow-2xl transition-transform duration-75 z-40 border-2 border-white`}
             style={{ left: p.x, top: p.y }}
           >
-            <span className="text-[10px] font-mono font-bold">ID: {p.id}</span>
+            <span className="text-[10px] font-mono font-bold">{t("id")}{p.id}</span>
             <span className="text-[8px] font-mono opacity-80">{p.type}</span>
           </div>
         ))}
@@ -837,8 +837,8 @@ export function TouchScreenPattern({ testId = "touch-screen-test" }: TouchScreen
               type="button"
               onClick={handleReset}
               className="ml-0.5 p-1 text-gray-500 hover:text-gray-900 rounded-md transition-colors cursor-pointer"
-              title="Reset Test"
-              aria-label="Reset Test"
+              title={t("resetTestTitle")}
+              aria-label={t("resetTestTitle")}
             >
               <RotateCcw className="w-3.5 h-3.5" />
             </button>
@@ -847,8 +847,7 @@ export function TouchScreenPattern({ testId = "touch-screen-test" }: TouchScreen
           {/* User Observation Selector */}
           <div className="flex items-center gap-1 border-l border-gray-200 pl-2 text-xs">
             <span className="text-[10px] font-mono text-gray-500 hidden xl:inline">
-              Touch:
-            </span>
+              {t("touch")}</span>
             <button
               type="button"
               onClick={() => setObservation(observation === "PASS" ? null : "PASS")}

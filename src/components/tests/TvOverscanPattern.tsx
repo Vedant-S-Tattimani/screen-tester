@@ -5,12 +5,14 @@ import { TestControlBar } from "../test-runner/TestControlBar";
 import { TestInlineControls } from "../test-runner/TestInlineControls";
 import { Tv, ShieldAlert, Info, Maximize } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface TvOverscanPatternProps {
   testId?: string;
 }
 
 export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPatternProps) {
+    const t = useTranslations("Tests.TvOverscanPattern");
   const { toggleFullscreen, isFullscreen } = useTestContext();
 
   return (
@@ -37,31 +39,23 @@ export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPat
 
         {/* Corner Position Labels */}
         <div className="absolute top-1 left-2 text-[10px] font-mono font-bold text-cyan-300">
-          TOP-LEFT (0,0)
-        </div>
+          {t("topLeft00")}</div>
         <div className="absolute top-1 right-2 text-[10px] font-mono font-bold text-cyan-300 text-right">
-          TOP-RIGHT
-        </div>
+          {t("topRight")}</div>
         <div className="absolute bottom-1 left-2 text-[10px] font-mono font-bold text-cyan-300">
-          BOTTOM-LEFT
-        </div>
+          {t("bottomLeft")}</div>
         <div className="absolute bottom-1 right-2 text-[10px] font-mono font-bold text-cyan-300 text-right">
-          BOTTOM-RIGHT
-        </div>
+          {t("bottomRight")}</div>
 
         {/* Edge Midpoint Labels */}
         <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[9px] font-mono font-bold text-emerald-300 bg-black/60 px-2 rounded-xs">
-          TOP EDGE &bull; 1PX CYAN / 2PX GREEN
-        </div>
+          {t("topEdgeBull1px")}</div>
         <div className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[9px] font-mono font-bold text-emerald-300 bg-black/60 px-2 rounded-xs">
-          BOTTOM EDGE &bull; 1PX CYAN / 2PX GREEN
-        </div>
+          {t("bottomEdgeBull1px")}</div>
         <div className="absolute left-1 top-1/2 -translate-y-1/2 -rotate-90 text-[9px] font-mono font-bold text-emerald-300 bg-black/60 px-2 rounded-xs">
-          LEFT EDGE
-        </div>
+          {t("leftEdge")}</div>
         <div className="absolute right-1 top-1/2 -translate-y-1/2 rotate-90 text-[9px] font-mono font-bold text-emerald-300 bg-black/60 px-2 rounded-xs">
-          RIGHT EDGE
-        </div>
+          {t("rightEdge")}</div>
 
         {/* 1:1 Pixel Checkerboard Corner Patches (Moiré / Scaling Artifact Detector) */}
         <div
@@ -71,7 +65,7 @@ export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPat
             backgroundSize: "4px 4px"
           }}
         >
-          <div className="absolute -bottom-4 left-0 text-[8px] font-mono text-slate-400 whitespace-nowrap">Fine Detail Patch</div>
+          <div className="absolute -bottom-4 left-0 text-[8px] font-mono text-slate-400 whitespace-nowrap">{t("fineDetailPatch")}</div>
         </div>
 
         <div
@@ -81,7 +75,7 @@ export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPat
             backgroundSize: "4px 4px"
           }}
         >
-          <div className="absolute -bottom-4 right-0 text-[8px] font-mono text-slate-400 whitespace-nowrap">Fine Detail Patch</div>
+          <div className="absolute -bottom-4 right-0 text-[8px] font-mono text-slate-400 whitespace-nowrap">{t("fineDetailPatch")}</div>
         </div>
 
         <div
@@ -91,7 +85,7 @@ export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPat
             backgroundSize: "4px 4px"
           }}
         >
-          <div className="absolute -top-4 left-0 text-[8px] font-mono text-slate-400 whitespace-nowrap">Fine Detail Patch</div>
+          <div className="absolute -top-4 left-0 text-[8px] font-mono text-slate-400 whitespace-nowrap">{t("fineDetailPatch")}</div>
         </div>
 
         <div
@@ -101,7 +95,7 @@ export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPat
             backgroundSize: "4px 4px"
           }}
         >
-          <div className="absolute -top-4 right-0 text-[8px] font-mono text-slate-400 whitespace-nowrap">Fine Detail Patch</div>
+          <div className="absolute -top-4 right-0 text-[8px] font-mono text-slate-400 whitespace-nowrap">{t("fineDetailPatch")}</div>
         </div>
 
         {/* Centered Precision Target Crosshairs & Calibration Reticle */}
@@ -124,11 +118,9 @@ export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPat
 
           <div className="mt-3 text-center bg-slate-900/90 backdrop-blur-md px-4 py-2 rounded-xl border border-slate-700/80 shadow-lg">
             <span className="text-xs font-mono font-bold text-white uppercase tracking-wider block">
-              TV Overscan & Pixel Mapping Visual Test
-            </span>
+              {t("tvOverscanPixelMapping")}</span>
             <span className="text-[10px] font-mono text-slate-400 block mt-0.5 max-w-[300px]">
-              If the outer cyan boundary or corner markers are cropped, the display/video path may be applying overscan or scaling.
-            </span>
+              {t("ifTheOuterCyan")}</span>
           </div>
         </div>
       </div>
@@ -140,7 +132,7 @@ export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPat
           <div className="flex items-center gap-2">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-muted rounded-xl text-xs font-mono text-foreground">
               <Tv className="w-3.5 h-3.5 text-blue-500" />
-              <span>Target: 100% Fullscreen Visibility</span>
+              <span>{t("target100FullscreenVisibility")}</span>
             </div>
           </div>
 
@@ -149,19 +141,17 @@ export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPat
             className="inline-flex items-center gap-1.5 px-4 py-2 bg-foreground text-background text-xs font-medium rounded-xl hover:opacity-90 transition-opacity"
           >
             <Maximize className="w-3.5 h-3.5" />
-            Enter Fullscreen Mode (Press F)
-          </button>
+            {t("enterFullscreenModePress")}</button>
         </div>
 
         {/* Technical Honesty Disclaimer Banner */}
         <div className="p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-amber-900 dark:text-amber-200 leading-relaxed space-y-1">
           <div className="flex items-center gap-2 font-semibold">
             <ShieldAlert className="w-4 h-4 text-amber-500 shrink-0" />
-            <span>Hardware Boundary Notice</span>
+            <span>{t("hardwareBoundaryNotice")}</span>
           </div>
           <p>
-            Web browsers <strong>cannot query your television&apos;s internal firmware picture mode or overscan aspect ratio setting</strong>. You must observe the edge boundaries with your eyes and adjust your television&apos;s remote control picture settings accordingly.
-          </p>
+            {t("webBrowsers")}<strong>{t("cannotQueryYourTelevision")}</strong>{t("youMustObserveThe")}</p>
         </div>
 
         {/* Step-by-Step TV Setup Instructions */}
@@ -169,38 +159,38 @@ export function TvOverscanPattern({ testId = "tv-overscan-test" }: TvOverscanPat
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">STEP 1 — Use Fullscreen.</strong>
+              <strong className="text-foreground">{t("step1UseFullscreen")}</strong>
             </div>
           </div>
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">STEP 2 — Check whether the outer cyan boundary and corner markers remain fully visible.</strong>
+              <strong className="text-foreground">{t("step2CheckWhether")}</strong>
             </div>
           </div>
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">STEP 3 — If they are cropped, check the TV/display&apos;s picture-size/overscan/scaling settings.</strong>
+              <strong className="text-foreground">{t("step3IfThey")}</strong>
             </div>
           </div>
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">STEP 4 — Inspect the high-frequency patches for sharp, clean fine detail.</strong>
+              <strong className="text-foreground">{t("step4InspectThe")}</strong>
             </div>
           </div>
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">STEP 5 — If the fine pattern appears blurred, scaled, or altered, investigate display scaling/output resolution settings.</strong>
+              <strong className="text-foreground">{t("step5IfThe")}</strong>
             </div>
           </div>
         </div>
       </div>
       </TestInlineControls>
 
-      <TestControlBar testId={testId} title="TV Overscan & Pixel Mapping Visual Test" />
+      <TestControlBar testId={testId} title={t("tvOverscanPixelMappingTitle")} />
     </div>
   );
 }

@@ -5,6 +5,7 @@ import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
 import { getDevicePixelRatio } from "@/lib/browserCapabilities";
 import { Info, Type, Grid, CircleDot, Sun, Moon } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export type SharpnessTab = "grids" | "typography" | "moire";
 
@@ -13,6 +14,7 @@ interface SharpnessPatternProps {
 }
 
 export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPatternProps) {
+    const t = useTranslations("Tests.SharpnessPattern");
   const { registerNavigation } = useTestContext();
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -177,7 +179,7 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
       <div 
         className="absolute inset-0 overflow-hidden select-none cursor-pointer"
         onClick={handleViewportClick}
-        title="Click to toggle black/white background"
+        title={t("clickToToggleBlackTitle")}
       >
         {activeTab !== "typography" ? (
           <canvas ref={canvasRef} className="block w-full h-full" />
@@ -191,56 +193,45 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
               {/* Header */}
               <div className="border-b border-border/40 pb-4">
                 <div className="text-[11px] uppercase tracking-widest text-muted-foreground font-mono font-semibold">
-                  Productivity & Code Rendering Lab
-                </div>
+                  {t("productivityCodeRenderingLab")}</div>
                 <h2 className="text-xl sm:text-2xl font-bold tracking-tight mt-1">
-                  Text Clarity, Subpixel Antialiasing & Fringing
-                </h2>
+                  {t("textClaritySubpixelAntialiasing")}</h2>
                 <p className="text-xs text-muted-foreground mt-1">
-                  Inspect font rasterization, subpixel fringing (ClearType / FreeType), and contrast legibility across multiple sizes and weights.
-                  <span className="block mt-1.5 font-mono text-[11.5px] text-amber-500 dark:text-amber-400 font-semibold">
-                    💡 Click anywhere to toggle black/white background
-                  </span>
+                  {t("inspectFontRasterizationSubpixel")}<span className="block mt-1.5 font-mono text-[11.5px] text-amber-500 dark:text-amber-400 font-semibold">
+                    {t("clickAnywhereToToggle")}</span>
                 </p>
               </div>
 
               {/* Typography Ladder */}
               <div className="space-y-3 bg-muted/20 p-4 rounded-xl border border-border/40">
                 <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground font-mono">
-                  Font Scale Ladder (Sans-Serif)
-                </div>
+                  {t("fontScaleLadderSans")}</div>
                 <div className="space-y-2">
                   <div className="text-[8px] leading-tight">
-                    <span className="font-mono opacity-50 mr-2">[8px]</span>
-                    The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs. 0123456789
-                  </div>
+                    <span className="font-mono opacity-50 mr-2">{t("8px")}</span>
+                    {t("theQuickBrownFox")}</div>
                   <div className="text-[10px] leading-tight">
-                    <span className="font-mono opacity-50 mr-2">[10px]</span>
-                    The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs. 0123456789
-                  </div>
+                    <span className="font-mono opacity-50 mr-2">{t("10px")}</span>
+                    {t("theQuickBrownFox")}</div>
                   <div className="text-[11px] leading-tight">
-                    <span className="font-mono opacity-50 mr-2">[11px]</span>
-                    The quick brown fox jumps over the lazy dog. Clean text should have no color halos along vertical stems.
-                  </div>
+                    <span className="font-mono opacity-50 mr-2">{t("11px")}</span>
+                    {t("theQuickBrownFox_1")}</div>
                   <div className="text-[12px] leading-snug">
-                    <span className="font-mono opacity-50 mr-2">[12px]</span>
-                    Standard UI Text: Look for fringing (red/blue edges) caused by non-standard BGR or WRGB subpixel layouts.
-                  </div>
+                    <span className="font-mono opacity-50 mr-2">{t("12px")}</span>
+                    {t("standardUiTextLook")}</div>
                   <div className="text-[14px] leading-snug">
-                    <span className="font-mono opacity-50 mr-2">[14px]</span>
-                    Body Copy: 14px text rendered cleanly on a calibrated 4K or 1440p monitor should appear sharp as print.
-                  </div>
+                    <span className="font-mono opacity-50 mr-2">{t("14px")}</span>
+                    {t("bodyCopy14pxText")}</div>
                   <div className="text-[18px] font-semibold leading-normal">
-                    <span className="font-mono opacity-50 mr-2 text-xs font-normal">[18px]</span>
-                    Heading Text: Bold and Semibold letterforms should maintain crisp inner negative space without bleeding.
-                  </div>
+                    <span className="font-mono opacity-50 mr-2 text-xs font-normal">{t("18px")}</span>
+                    {t("headingTextBoldAnd")}</div>
                 </div>
               </div>
 
               {/* Line Width Target Stems */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="p-3 bg-muted/20 rounded-xl border border-border/40">
-                  <div className="text-[11px] font-mono font-semibold text-muted-foreground mb-1.5">1px Hairline Stems</div>
+                  <div className="text-[11px] font-mono font-semibold text-muted-foreground mb-1.5">{t("1pxHairlineStems")}</div>
                   <div className="space-y-1">
                     <div className="h-[1px] bg-current w-full" />
                     <div className="h-[1px] bg-current w-3/4" />
@@ -248,7 +239,7 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
                   </div>
                 </div>
                 <div className="p-3 bg-muted/20 rounded-xl border border-border/40">
-                  <div className="text-[11px] font-mono font-semibold text-muted-foreground mb-1.5">2px Stroke Stems</div>
+                  <div className="text-[11px] font-mono font-semibold text-muted-foreground mb-1.5">{t("2pxStrokeStems")}</div>
                   <div className="space-y-1">
                     <div className="h-[2px] bg-current w-full" />
                     <div className="h-[2px] bg-current w-3/4" />
@@ -256,7 +247,7 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
                   </div>
                 </div>
                 <div className="p-3 bg-muted/20 rounded-xl border border-border/40">
-                  <div className="text-[11px] font-mono font-semibold text-muted-foreground mb-1.5">3px Stroke Stems</div>
+                  <div className="text-[11px] font-mono font-semibold text-muted-foreground mb-1.5">{t("3pxStrokeStems")}</div>
                   <div className="space-y-1">
                     <div className="h-[3px] bg-current w-full" />
                     <div className="h-[3px] bg-current w-3/4" />
@@ -268,8 +259,7 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
               {/* Developer Code Sample (Programming Display Check) */}
               <div className="bg-muted/30 p-4 rounded-xl border border-border/40 space-y-2">
                 <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground font-mono">
-                  Monospace Code Sample (Developer Screen Evaluation)
-                </div>
+                  {t("monospaceCodeSampleDeveloper")}</div>
                 <pre className="font-mono text-[12px] sm:text-[13px] leading-relaxed p-3 rounded-lg bg-black/5 dark:bg-white/5 overflow-x-auto border border-border/30">
 {`function verifyDisplaySubpixelLayout(dpr: number, layout: "RGB" | "BGR" | "WOLED") {
   const isCrisp = dpr >= 2.0 ? "Retina High DPI" : "Standard 1x Scaling";
@@ -292,36 +282,32 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
             <div className="flex items-center justify-between pb-3 border-b border-white/10">
               <div className="flex items-center gap-2 font-semibold text-amber-400">
                 <Info className="w-4 h-4" />
-                <span>Sharpness, Text Clarity & Moiré Guide</span>
+                <span>{t("sharpnessTextClarityMoir")}</span>
               </div>
               <button 
                 onClick={() => setShowEduInfo(false)}
                 className="text-white/60 hover:text-white px-2 py-0.5 rounded text-xs font-mono"
               >
-                ✕ Close
-              </button>
+                {t("close")}</button>
             </div>
             <div className="mt-3 space-y-2.5 text-white/80 leading-relaxed">
               <p>
-                <strong>What to look for:</strong>
+                <strong>{t("whatToLookFor")}</strong>
               </p>
               <ul className="list-disc pl-4 space-y-1.5">
                 <li>
-                  <strong>1px Sharpness:</strong> At 100% native scaling, 1px alternating lines should show razor-sharp black and white pixels without soft gray interpolation. If lines look blurry or smeared, verify that your display resolution matches your monitor&apos;s native hardware resolution.
-                </li>
+                  <strong>{t("1pxSharpness")}</strong> {t("at100NativeScaling")}</li>
                 <li>
-                  <strong>Subpixel Text Fringing:</strong> Standard Windows/macOS subpixel rendering assumes an <em>RGB</em> stripe layout. Monitors with <em>BGR</em> layouts (or WOLED/QD-OLED triangular layouts) can exhibit pink or cyan color halos along vertical text edges.
-                </li>
+                  <strong>{t("subpixelTextFringing")}</strong> {t("standardWindowsMacosSubpixel")}<em>{t("rgb")}</em> {t("stripeLayoutMonitorsWith")}<em>{t("bgr")}</em> {t("layoutsOrWoledQd")}</li>
                 <li>
-                  <strong>Moiré Interference:</strong> Concentric circular interference bands occur when high spatial frequency patterns beat against display pixel apertures or non-integer OS scaling (e.g. 125% or 150%). At 100% or 200% integer scaling, moiré rings are minimized.
-                </li>
+                  <strong>{t("moirInterference")}</strong> {t("concentricCircularInterferenceBands")}</li>
               </ul>
             </div>
           </div>
         )}
       </div>
 
-      <TestControlBar testId={testId} title="Sharpness & Text Clarity">
+      <TestControlBar testId={testId} title={t("sharpnessTextClarityTitle")}>
         <div className="flex flex-wrap items-center gap-3">
           {/* Mode Tabs */}
           <div className="flex items-center bg-slate-100 dark:bg-black/80 p-1 rounded-xl border border-slate-200 dark:border-white/20 text-xs">
@@ -334,7 +320,7 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
               }`}
             >
               <Grid className={`w-3.5 h-3.5 ${activeTab === "grids" ? "text-slate-950" : "text-amber-600 dark:text-amber-300"}`} />
-              <span>1px Grids</span>
+              <span>{t("1pxGrids")}</span>
             </button>
             <button
               onClick={() => setActiveTab("typography")}
@@ -345,7 +331,7 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
               }`}
             >
               <Type className={`w-3.5 h-3.5 ${activeTab === "typography" ? "text-slate-950" : "text-amber-600 dark:text-amber-300"}`} />
-              <span>Text Lab</span>
+              <span>{t("textLab")}</span>
             </button>
             <button
               onClick={() => setActiveTab("moire")}
@@ -356,7 +342,7 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
               }`}
             >
               <CircleDot className={`w-3.5 h-3.5 ${activeTab === "moire" ? "text-slate-950" : "text-amber-600 dark:text-amber-300"}`} />
-              <span>Moiré Pattern</span>
+              <span>{t("moirPattern")}</span>
             </button>
           </div>
 
@@ -364,7 +350,7 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
           <button
             onClick={toggleInverted}
             className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg border border-slate-200 dark:border-white/20 hover:bg-slate-200 dark:hover:bg-white/25 bg-slate-100 dark:bg-white/10 text-slate-800 dark:text-amber-200 hover:text-slate-950 dark:hover:text-white font-bold transition-colors cursor-pointer"
-            title="Toggle Black-on-White / White-on-Black"
+            title={t("toggleBlackOnWhiteTitle")}
           >
             {inverted ? <Sun className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" /> : <Moon className="w-3.5 h-3.5 text-amber-600 dark:text-amber-300" />}
             <span>{inverted ? "Light BG" : "Dark BG"}</span>
@@ -373,7 +359,7 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
           {/* Moiré Density Slider */}
           {activeTab === "moire" && (
             <div className="flex items-center gap-1.5 text-xs bg-slate-100 dark:bg-black/60 px-2.5 py-1 rounded-lg border border-slate-200 dark:border-white/20">
-              <span className="text-[10px] text-amber-600 dark:text-amber-300 font-bold uppercase font-mono tracking-wider">Density:</span>
+              <span className="text-[10px] text-amber-600 dark:text-amber-300 font-bold uppercase font-mono tracking-wider">{t("density")}</span>
               {[1, 2, 3, 4, 5].map((lvl) => (
                 <button
                   key={lvl}
@@ -396,10 +382,10 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
             className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg border transition-colors cursor-pointer font-semibold ${
               showEduInfo ? "bg-amber-500 text-slate-950 border-amber-300 font-bold" : "hover:bg-white/20 bg-white/10 text-amber-200 hover:text-white border-white/20"
             }`}
-            title="Read about sharpness, subpixel rendering, and moiré"
+            title={t("readAboutSharpnessSubpixelTitle")}
           >
             <Info className="w-3.5 h-3.5 text-amber-300" />
-            <span className="hidden sm:inline">Guide</span>
+            <span className="hidden sm:inline">{t("guide")}</span>
           </button>
         </div>
       </TestControlBar>

@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
 import { ChevronLeft, ChevronRight, Info, Timer, Eye, Flame } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export type OledTestMode = "near_black" | "subpixels" | "retention_stress";
 
@@ -40,6 +41,7 @@ interface BurnInPatternProps {
 }
 
 export function BurnInPattern({ testId = "burn-in-test" }: BurnInPatternProps) {
+    const t = useTranslations("Tests.BurnInPattern");
   const { registerNavigation } = useTestContext();
   
   const [activeMode, setActiveMode] = useState<OledTestMode>("near_black");
@@ -141,14 +143,12 @@ export function BurnInPattern({ testId = "burn-in-test" }: BurnInPatternProps) {
                 <div className="bg-neutral-950/90 border border-white/20 p-6 rounded-2xl text-center text-white shadow-2xl backdrop-blur-md max-w-sm">
                   <div className="text-amber-400 text-xs font-mono font-semibold uppercase tracking-wider mb-1 flex items-center justify-center gap-1.5">
                     <Timer className="w-4 h-4 animate-pulse" />
-                    <span>Stress Conditioning In Progress</span>
+                    <span>{t("stressConditioningInProgress")}</span>
                   </div>
                   <div className="text-4xl font-extrabold font-mono my-2 text-white">
-                    {stressSecondsLeft}s
-                  </div>
+                    {stressSecondsLeft}{t("s")}</div>
                   <p className="text-xs text-white/70">
-                    Displaying high-contrast static checkerboard to condition pixel capacitance. Screen will automatically flip to 5% gray when timer expires.
-                  </p>
+                    {t("displayingHighContrastStatic")}</p>
                 </div>
               </div>
             )}
@@ -159,33 +159,28 @@ export function BurnInPattern({ testId = "burn-in-test" }: BurnInPatternProps) {
                 <div className="bg-neutral-950/90 border border-white/20 p-6 rounded-2xl shadow-2xl backdrop-blur-md max-w-md space-y-3">
                   <div className="flex items-center justify-center gap-1.5 text-emerald-400 text-xs font-mono font-semibold uppercase tracking-wider">
                     <Eye className="w-4 h-4" />
-                    <span>Observation Phase (5% Gray Field)</span>
+                    <span>{t("observationPhase5Gray")}</span>
                   </div>
                   <p className="text-xs text-white/80 leading-relaxed">
-                    Carefully inspect the screen now. Do you notice faint ghost checkerboard squares lingering on this dark gray background?
-                  </p>
+                    {t("carefullyInspectTheScreen")}</p>
                   <div className="p-3 bg-white/5 border border-white/10 rounded-xl text-left text-[11px] text-white/70 space-y-1">
-                    <strong className="text-white block">Key Distinction:</strong>
+                    <strong className="text-white block">{t("keyDistinction")}</strong>
                     <p>
-                      • <strong>Temporary Image Retention (Normal):</strong> If you see faint outlines that gradually fade away over the next 1–3 minutes, this is reversible transistor capacitance charge.
-                    </p>
+                      • <strong>{t("temporaryImageRetentionNormal")}</strong> {t("ifYouSeeFaint")}</p>
                     <p>
-                      • <strong>Permanent Burn-In:</strong> True burn-in is cumulative degradation that remains visible permanently across days and weeks of normal usage.
-                    </p>
+                      • <strong>{t("permanentBurnIn")}</strong> {t("trueBurnInIs")}</p>
                   </div>
                   <div className="pt-2 flex justify-center gap-2">
                     <button
                       onClick={startRetentionTest}
                       className="px-3.5 py-1.5 rounded-lg bg-white text-black font-semibold text-xs hover:bg-neutral-200 transition-colors"
                     >
-                      Restart Stress Timer
-                    </button>
+                      {t("restartStressTimer")}</button>
                     <button
                       onClick={resetRetentionTest}
                       className="px-3.5 py-1.5 rounded-lg border border-white/20 text-white/80 font-medium text-xs hover:bg-white/10 transition-colors"
                     >
-                      Exit Test
-                    </button>
+                      {t("exitTest")}</button>
                   </div>
                 </div>
               </div>
@@ -199,17 +194,15 @@ export function BurnInPattern({ testId = "burn-in-test" }: BurnInPatternProps) {
                     <Flame className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-white">Image Retention vs. Burn-In Test</h3>
+                    <h3 className="text-lg font-bold text-white">{t("imageRetentionVsBurn")}</h3>
                     <p className="text-xs text-white/70 mt-1">
-                      Evaluates your panel&apos;s resistance to temporary ghosting (TFT charge retention) without causing permanent harm.
-                    </p>
+                      {t("evaluatesYourPanelApos")}</p>
                   </div>
                   <button
                     onClick={startRetentionTest}
                     className="w-full py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs transition-colors shadow-xs"
                   >
-                    Start 15-Second Conditioning Test
-                  </button>
+                    {t("start15SecondConditioning")}</button>
                 </div>
               </div>
             )}
@@ -222,36 +215,31 @@ export function BurnInPattern({ testId = "burn-in-test" }: BurnInPatternProps) {
             <div className="flex items-center justify-between pb-3 border-b border-white/10">
               <div className="flex items-center gap-2 font-semibold text-amber-400">
                 <Info className="w-4 h-4" />
-                <span>OLED Uniformity, Image Retention & Burn-In Explained</span>
+                <span>{t("oledUniformityImageRetention")}</span>
               </div>
               <button 
                 onClick={() => setShowEduInfo(false)}
                 className="text-white/60 hover:text-white px-2 py-0.5 rounded text-xs font-mono"
               >
-                ✕ Close
-              </button>
+                {t("close")}</button>
             </div>
             <div className="mt-3 space-y-2.5 text-white/80 leading-relaxed">
               <div className="p-2.5 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-200">
-                <strong>Core Principle:</strong> Temporary image retention ≠ automatically permanent burn-in. Do not assume your monitor is defective if you observe temporary retention.
-              </div>
+                <strong>{t("corePrinciple")}</strong> {t("temporaryImageRetentionAutomatically")}</div>
               <ul className="list-disc pl-4 space-y-1.5">
                 <li>
-                  <strong>5% Gray Vertical Banding:</strong> Almost all large OLED panels exhibit faint vertical streaks on very dark 5% gray slides due to manufacturing tolerances in the thin-film transistor backplane. This is typical for OLED technology and is virtually invisible in real content.
-                </li>
+                  <strong>{t("5GrayVerticalBanding")}</strong> {t("almostAllLargeOled")}</li>
                 <li>
-                  <strong>Temporary Image Retention (Ghosting):</strong> Storing a bright static logo for minutes can leave a faint imprint that fades within seconds or minutes. Modern OLED monitors run automatic pixel-cleaning / pixel-refresh cycles when in standby to equalize residual voltage.
-                </li>
+                  <strong>{t("temporaryImageRetentionGhosting")}</strong> {t("storingABrightStatic")}</li>
                 <li>
-                  <strong>Permanent Burn-In:</strong> Occurs only after thousands of cumulative hours displaying static elements at maximum brightness without compensation cycles. Modern QD-OLED and WOLED panels use pixel shift, logo luminance dimming, and thermal dissipation to mitigate this.
-                </li>
+                  <strong>{t("permanentBurnIn")}</strong> {t("occursOnlyAfterThousands")}</li>
               </ul>
             </div>
           </div>
         )}
       </div>
 
-      <TestControlBar testId={testId} title="OLED & Image Retention">
+      <TestControlBar testId={testId} title={t("oledImageRetentionTitle")}>
         <div className="flex flex-wrap items-center gap-3">
           {/* Mode Switcher */}
           <div className="flex items-center bg-muted/60 p-0.5 rounded-lg border border-border/60 text-xs">
@@ -266,8 +254,7 @@ export function BurnInPattern({ testId = "burn-in-test" }: BurnInPatternProps) {
                   : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
-              Near-Black (5% Gray)
-            </button>
+              {t("nearBlack5Gray")}</button>
             <button
               onClick={() => {
                 setActiveMode("subpixels");
@@ -279,8 +266,7 @@ export function BurnInPattern({ testId = "burn-in-test" }: BurnInPatternProps) {
                   : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
-              Subpixel Aging (RGB/CMY)
-            </button>
+              {t("subpixelAgingRgbCmy")}</button>
             <button
               onClick={() => {
                 setActiveMode("retention_stress");
@@ -292,8 +278,7 @@ export function BurnInPattern({ testId = "burn-in-test" }: BurnInPatternProps) {
                   : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
-              Retention Stress Test
-            </button>
+              {t("retentionStressTest")}</button>
           </div>
 
           {/* Stepper for Near-Black and Subpixel Modes */}
@@ -302,7 +287,7 @@ export function BurnInPattern({ testId = "burn-in-test" }: BurnInPatternProps) {
               <button 
                 onClick={prevPattern}
                 className="p-1 hover:bg-muted dark:hover:bg-white/10 rounded text-gray-900 dark:text-white transition-colors"
-                title="Previous pattern (Left Arrow)"
+                title={t("previousPatternLeftArrowTitle")}
               >
                 <ChevronLeft className="w-3.5 h-3.5" />
               </button>
@@ -312,7 +297,7 @@ export function BurnInPattern({ testId = "burn-in-test" }: BurnInPatternProps) {
               <button 
                 onClick={nextPattern}
                 className="p-1 hover:bg-muted dark:hover:bg-white/10 rounded text-gray-900 dark:text-white transition-colors"
-                title="Next pattern (Right Arrow)"
+                title={t("nextPatternRightArrowTitle")}
               >
                 <ChevronRight className="w-3.5 h-3.5" />
               </button>
@@ -325,10 +310,10 @@ export function BurnInPattern({ testId = "burn-in-test" }: BurnInPatternProps) {
             className={`flex items-center gap-1 text-xs px-2.5 py-1 rounded-lg border transition-colors ${
               showEduInfo ? "bg-amber-500/20 text-amber-500 border-amber-500/40" : "hover:bg-muted dark:hover:bg-white/10 text-gray-700 dark:text-slate-200 dark:hover:text-white border-border/50"
             }`}
-            title="Read about OLED near-black banding and burn-in"
+            title={t("readAboutOledNearTitle")}
           >
             <Info className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Guide</span>
+            <span className="hidden sm:inline">{t("guide")}</span>
           </button>
         </div>
       </TestControlBar>

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
 import { TestInlineControls } from "../test-runner/TestInlineControls";
+import { useTranslations } from "next-intl";
 
 interface LevelPatternProps {
   type: "black" | "white";
@@ -14,6 +15,7 @@ const BLACK_STEPS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 
 const WHITE_STEPS = [254, 253, 252, 251, 250, 249, 248, 247, 246, 245, 244, 243, 242, 241, 240, 239, 238, 237, 236, 235, 234, 233, 232, 231, 230];
 
 export function LevelPattern({ type, testId }: LevelPatternProps) {
+    const t = useTranslations("Tests.LevelPattern");
   const { registerNavigation } = useTestContext();
   const [showOutlines, setShowOutlines] = useState(true);
   const [showLabels, setShowLabels] = useState(true);
@@ -78,26 +80,23 @@ export function LevelPattern({ type, testId }: LevelPatternProps) {
         {type === "white" && (
           <TestInlineControls>
             <div className="w-full max-w-4xl mx-auto bg-card border border-border/70 rounded-2xl p-5 shadow-sm space-y-4 mb-6">
-              <span className="text-sm font-bold uppercase tracking-wider block text-center">Visual Observation</span>
+              <span className="text-sm font-bold uppercase tracking-wider block text-center">{t("visualObservation")}</span>
               <div className="flex flex-col sm:flex-row gap-2 w-full justify-center">
                 <button 
                   onClick={(e) => { e.stopPropagation(); setObservation("all"); }} 
                   className={`text-xs px-4 py-2 rounded-xl border transition-colors cursor-pointer ${observation === "all" ? "bg-blue-600 text-white border-blue-600 font-semibold shadow-md" : "bg-muted text-foreground border-border/50 hover:bg-muted/80 font-semibold"}`}
                 >
-                  I can distinguish 252–254
-                </button>
+                  {t("iCanDistinguish252")}</button>
                 <button 
                   onClick={(e) => { e.stopPropagation(); setObservation("some"); }} 
                   className={`text-xs px-4 py-2 rounded-xl border transition-colors cursor-pointer ${observation === "some" ? "bg-amber-500 text-white border-amber-500 font-semibold shadow-md" : "bg-muted text-foreground border-border/50 hover:bg-muted/80 font-semibold"}`}
                 >
-                  Some shades merge
-                </button>
+                  {t("someShadesMerge")}</button>
                 <button 
                   onClick={(e) => { e.stopPropagation(); setObservation("clipped"); }} 
                   className={`text-xs px-4 py-2 rounded-xl border transition-colors cursor-pointer ${observation === "clipped" ? "bg-red-500 text-white border-red-500 font-semibold shadow-md" : "bg-muted text-foreground border-border/50 hover:bg-muted/80 font-semibold"}`}
                 >
-                  Everything above 250 looks white
-                </button>
+                  {t("everythingAbove250Looks")}</button>
               </div>
             </div>
           </TestInlineControls>

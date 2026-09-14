@@ -501,11 +501,9 @@ export function StuckPixelFixerPattern({ testId = "stuck-pixel-fixer" }: StuckPi
             <div className="p-4 sm:p-5 rounded-2xl bg-neutral-900/95 border border-white/20 text-white shadow-2xl backdrop-blur-md space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-mono uppercase tracking-wider text-white/50 font-semibold">
-                  Visual Observation
-                </span>
+                  {t("visualObservation")}</span>
                 <span className="text-xs text-blue-400 font-mono">
-                  {Math.round(elapsedSeconds / 60)}m run completed
-                </span>
+                  {Math.round(elapsedSeconds / 60)}{t("mRunCompleted")}</span>
               </div>
               <h3 className="text-sm sm:text-base font-bold text-white">
                 {t("feedback.prompt")}
@@ -573,7 +571,7 @@ export function StuckPixelFixerPattern({ testId = "stuck-pixel-fixer" }: StuckPi
                 {t("warningText")}
               </p>
               <div className="p-3.5 rounded-xl bg-black/50 border border-white/10 text-xs text-neutral-400 space-y-1">
-                <strong>Important Notice:</strong>
+                <strong>{t("importantNotice")}</strong>
                 <p>{t("disclaimer")}</p>
               </div>
               <div className="flex items-center justify-end gap-3 pt-2">
@@ -582,8 +580,7 @@ export function StuckPixelFixerPattern({ testId = "stuck-pixel-fixer" }: StuckPi
                   onClick={() => setShowWarningModal(false)}
                   className="px-4 py-2 rounded-xl text-xs font-medium text-neutral-400 hover:text-white transition-colors"
                 >
-                  Cancel
-                </button>
+                  {t("cancel")}</button>
                 <button
                   type="button"
                   onClick={() => {
@@ -604,8 +601,7 @@ export function StuckPixelFixerPattern({ testId = "stuck-pixel-fixer" }: StuckPi
                   }}
                   className="px-5 py-2 rounded-xl text-xs font-semibold bg-amber-500 hover:bg-amber-600 text-black transition-colors shadow-lg"
                 >
-                  I Understand, Start
-                </button>
+                  {t("iUnderstandStart")}</button>
               </div>
             </div>
           </div>
@@ -715,8 +711,7 @@ export function StuckPixelFixerPattern({ testId = "stuck-pixel-fixer" }: StuckPi
                     : "bg-gray-100 dark:bg-neutral-800 hover:bg-gray-200 dark:hover:bg-neutral-700 text-gray-700 dark:text-neutral-300"
                 }`}
               >
-                {mins}m
-              </button>
+                {mins}{t("m")}</button>
             ))}
           </div>
         </div>

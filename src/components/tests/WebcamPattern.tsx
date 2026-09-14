@@ -14,6 +14,7 @@ import {
   Download, 
   AlertTriangle
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface WebcamPatternProps {
   testId?: string;
@@ -44,6 +45,7 @@ interface TrackTelemetry {
 }
 
 export function WebcamPattern({ testId = "webcam-test" }: WebcamPatternProps) {
+    const t = useTranslations("Tests.WebcamPattern");
   useTestContext();
 
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -238,36 +240,35 @@ export function WebcamPattern({ testId = "webcam-test" }: WebcamPatternProps) {
         <div className="flex items-center gap-3">
           {/* Status Badge */}
           <div className="flex items-center gap-1.5 font-mono">
-            <span className="text-slate-400 uppercase text-[10px] tracking-wider">Status:</span>
+            <span className="text-slate-400 uppercase text-[10px] tracking-wider">{t("status")}</span>
             {cameraState === "STREAMING" && (
               <span className="inline-flex items-center gap-1 text-emerald-400 font-semibold">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                Live Preview
-              </span>
+                {t("livePreview")}</span>
             )}
             {cameraState === "STARTING" && (
-              <span className="text-blue-400 font-semibold animate-pulse">Requesting Camera...</span>
+              <span className="text-blue-400 font-semibold animate-pulse">{t("requestingCamera")}</span>
             )}
             {cameraState === "IDLE" && (
-              <span className="text-slate-400 font-medium">Ready (Stopped)</span>
+              <span className="text-slate-400 font-medium">{t("readyStopped")}</span>
             )}
             {cameraState === "DENIED" && (
-              <span className="text-rose-400 font-medium">Permission Denied</span>
+              <span className="text-rose-400 font-medium">{t("permissionDenied")}</span>
             )}
             {cameraState === "NOT_FOUND" && (
-              <span className="text-rose-400 font-medium">No Camera Found</span>
+              <span className="text-rose-400 font-medium">{t("noCameraFound")}</span>
             )}
             {cameraState === "IN_USE" && (
-              <span className="text-amber-400 font-medium">Camera in Use by Another App</span>
+              <span className="text-amber-400 font-medium">{t("cameraInUseBy")}</span>
             )}
             {cameraState === "INSECURE" && (
-              <span className="text-rose-400 font-medium">Insecure Context (Requires HTTPS)</span>
+              <span className="text-rose-400 font-medium">{t("insecureContextRequiresHttps")}</span>
             )}
             {cameraState === "UNSUPPORTED" && (
-              <span className="text-rose-400 font-medium">getUserMedia Unsupported</span>
+              <span className="text-rose-400 font-medium">{t("getusermediaUnsupported")}</span>
             )}
             {cameraState === "ERROR" && (
-              <span className="text-rose-400 font-medium">Error</span>
+              <span className="text-rose-400 font-medium">{t("error")}</span>
             )}
           </div>
 
@@ -276,9 +277,9 @@ export function WebcamPattern({ testId = "webcam-test" }: WebcamPatternProps) {
             <>
               <div className="h-4 w-px bg-slate-800 hidden sm:block" />
               <div className="hidden sm:flex items-center gap-1.5 font-mono text-slate-400">
-                <span className="uppercase text-[10px] tracking-wider">Resolution:</span>
+                <span className="uppercase text-[10px] tracking-wider">{t("resolution")}</span>
                 <span className="text-slate-200 font-semibold">
-                  {telemetry.width} &times; {telemetry.height}
+                  {telemetry.width} {t("times")}{telemetry.height}
                 </span>
               </div>
             </>
@@ -288,8 +289,8 @@ export function WebcamPattern({ testId = "webcam-test" }: WebcamPatternProps) {
             <>
               <div className="h-4 w-px bg-slate-800 hidden md:block" />
               <div className="hidden md:flex items-center gap-1.5 font-mono text-slate-400">
-                <span className="uppercase text-[10px] tracking-wider">Rate:</span>
-                <span className="text-slate-200">{telemetry.frameRate} fps</span>
+                <span className="uppercase text-[10px] tracking-wider">{t("rate")}</span>
+                <span className="text-slate-200">{telemetry.frameRate} {t("fps")}</span>
               </div>
             </>
           )}
@@ -321,8 +322,8 @@ export function WebcamPattern({ testId = "webcam-test" }: WebcamPatternProps) {
                 ? "bg-blue-600/30 border-blue-500 text-blue-300" 
                 : "bg-slate-800 border-slate-700 text-slate-400 hover:text-white"
             }`}
-            title="Toggle Horizontal Mirror Preview"
-            aria-label="Toggle Horizontal Mirror Preview"
+            title={t("toggleHorizontalMirrorPreviewTitle")}
+            aria-label={t("toggleHorizontalMirrorPreviewTitle")}
           >
             <FlipHorizontal className="w-3.5 h-3.5" />
           </button>
@@ -335,7 +336,7 @@ export function WebcamPattern({ testId = "webcam-test" }: WebcamPatternProps) {
               className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-semibold shadow-xs transition-colors"
             >
               <Play className="w-3.5 h-3.5" />
-              <span>Start Camera</span>
+              <span>{t("startCamera")}</span>
             </button>
           ) : (
             <button
@@ -344,7 +345,7 @@ export function WebcamPattern({ testId = "webcam-test" }: WebcamPatternProps) {
               className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg text-xs font-semibold transition-colors"
             >
               <Square className="w-3.5 h-3.5 text-rose-400" />
-              <span>Stop Camera</span>
+              <span>{t("stopCamera")}</span>
             </button>
           )}
 
@@ -356,7 +357,7 @@ export function WebcamPattern({ testId = "webcam-test" }: WebcamPatternProps) {
               className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-semibold shadow-xs transition-colors"
             >
               <Camera className="w-3.5 h-3.5" />
-              <span>Snapshot</span>
+              <span>{t("snapshot")}</span>
             </button>
           )}
         </div>
@@ -381,13 +382,12 @@ export function WebcamPattern({ testId = "webcam-test" }: WebcamPatternProps) {
             <div className="w-16 h-16 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-500">
               <Camera className="w-8 h-8" />
             </div>
-            <h2 className="text-sm font-bold text-slate-200">Camera Inactive</h2>
+            <h2 className="text-sm font-bold text-slate-200">{t("cameraInactive")}</h2>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Click &quot;Start Camera&quot; above to begin local video preview testing. Your browser will prompt for camera access permission.
-            </p>
+              {t("clickQuotStartCamera")}</p>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-slate-900 border border-slate-800 rounded-full text-[11px] text-slate-400 font-mono">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Local processing &bull; Zero uploads &bull; No microphone access</span>
+              <span>{t("localProcessingBullZero")}</span>
             </div>
           </div>
         )}
@@ -398,10 +398,9 @@ export function WebcamPattern({ testId = "webcam-test" }: WebcamPatternProps) {
             <div className="w-16 h-16 rounded-full bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400">
               <CameraOff className="w-8 h-8" />
             </div>
-            <h2 className="text-sm font-bold text-rose-300">Camera Permission Denied</h2>
+            <h2 className="text-sm font-bold text-rose-300">{t("cameraPermissionDenied")}</h2>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Camera access was denied or dismissed. To test your webcam, click the camera icon in your browser address bar and set permissions to &quot;Allow&quot;.
-            </p>
+              {t("cameraAccessWasDenied")}</p>
           </div>
         )}
 
@@ -411,10 +410,9 @@ export function WebcamPattern({ testId = "webcam-test" }: WebcamPatternProps) {
             <div className="w-16 h-16 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
               <AlertTriangle className="w-8 h-8" />
             </div>
-            <h2 className="text-sm font-bold text-amber-300">Camera Already in Use</h2>
+            <h2 className="text-sm font-bold text-amber-300">{t("cameraAlreadyInUse")}</h2>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Another program (such as Zoom, Microsoft Teams, OBS, or Skype) is currently using the camera with exclusive hardware access. Close competing applications and try again.
-            </p>
+              {t("anotherProgramSuchAs")}</p>
           </div>
         )}
 
@@ -424,10 +422,9 @@ export function WebcamPattern({ testId = "webcam-test" }: WebcamPatternProps) {
             <div className="w-16 h-16 rounded-full bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400">
               <CameraOff className="w-8 h-8" />
             </div>
-            <h2 className="text-sm font-bold text-rose-300">No Video Input Device Detected</h2>
+            <h2 className="text-sm font-bold text-rose-300">{t("noVideoInputDevice")}</h2>
             <p className="text-xs text-slate-400 leading-relaxed">
-              No webcam hardware was detected by the operating system. Verify your webcam cable connection or check laptop hardware privacy switches.
-            </p>
+              {t("noWebcamHardwareWas")}</p>
           </div>
         )}
 
@@ -437,7 +434,7 @@ export function WebcamPattern({ testId = "webcam-test" }: WebcamPatternProps) {
             <div className="w-16 h-16 rounded-full bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400">
               <AlertTriangle className="w-8 h-8" />
             </div>
-            <h2 className="text-sm font-bold text-rose-300">Unable to Start Camera</h2>
+            <h2 className="text-sm font-bold text-rose-300">{t("unableToStartCamera")}</h2>
             <p className="text-xs text-slate-400 leading-relaxed">
               {errorMessage || "An unexpected error occurred while requesting the video stream."}
             </p>
@@ -449,10 +446,10 @@ export function WebcamPattern({ testId = "webcam-test" }: WebcamPatternProps) {
           <div className="absolute inset-0 bg-black/80 backdrop-blur-xs flex items-center justify-center p-4 z-20">
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 max-w-md w-full space-y-3 shadow-2xl">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-slate-200">Local Snapshot Frame</span>
+                <span className="text-xs font-bold text-slate-200">{t("localSnapshotFrame")}</span>
                 <span className="text-[10px] font-mono text-emerald-400 flex items-center gap-1">
                   <ShieldCheck className="w-3 h-3" />
-                  <span>Client Memory Only</span>
+                  <span>{t("clientMemoryOnly")}</span>
                 </span>
               </div>
               
@@ -472,7 +469,7 @@ export function WebcamPattern({ testId = "webcam-test" }: WebcamPatternProps) {
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-semibold transition-colors"
                 >
                   <Download className="w-3.5 h-3.5" />
-                  <span>Download Snapshot</span>
+                  <span>{t("downloadSnapshot")}</span>
                 </a>
 
                 <button
@@ -480,8 +477,7 @@ export function WebcamPattern({ testId = "webcam-test" }: WebcamPatternProps) {
                   onClick={() => setSnapshotUrl(null)}
                   className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs font-medium transition-colors"
                 >
-                  Close
-                </button>
+                  {t("close")}</button>
               </div>
             </div>
           </div>
@@ -492,11 +488,10 @@ export function WebcamPattern({ testId = "webcam-test" }: WebcamPatternProps) {
       <div className="p-3 bg-slate-900 border-t border-slate-800 text-[11px] text-slate-400 leading-relaxed flex items-start gap-2.5">
         <ShieldAlert className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
         <div>
-          <strong className="text-slate-200">Hardware & Privacy Notice:</strong> Video frames are processed locally within this browser window and are never transmitted, analyzed externally, or stored on servers. The browser reports negotiated stream dimensions; it cannot verify physical lens optical resolution or color reproduction accuracy.
-        </div>
+          <strong className="text-slate-200">{t("hardwarePrivacyNotice")}</strong> {t("videoFramesAreProcessed")}</div>
       </div>
 
-      <TestControlBar testId={testId} title="Webcam Test" />
+      <TestControlBar testId={testId} title={t("webcamTestTitle")} />
     </div>
   );
 }

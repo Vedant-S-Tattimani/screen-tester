@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const MODES = [
   { id: "smooth", label: "Smooth Gradient" },
@@ -17,6 +18,7 @@ interface AdvancedGrayscalePatternProps {
 }
 
 export function AdvancedGrayscalePattern({ testId }: AdvancedGrayscalePatternProps) {
+    const t = useTranslations("Tests.AdvancedGrayscalePattern");
   const { registerNavigation } = useTestContext();
   const [modeIndex, setModeIndex] = useState(0);
 
@@ -73,7 +75,7 @@ export function AdvancedGrayscalePattern({ testId }: AdvancedGrayscalePatternPro
         )}
       </div>
 
-      <TestControlBar testId={testId} title="Grayscale & Contrast">
+      <TestControlBar testId={testId} title={t("grayscaleContrastTitle")}>
         <div className="flex items-center gap-2 bg-muted/60 rounded-lg p-1 border border-border/50">
           <button 
             onClick={prevMode}

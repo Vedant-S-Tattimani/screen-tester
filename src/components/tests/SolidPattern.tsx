@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
+import { useTranslations } from "next-intl";
 
 export interface SolidColorItem {
   hex: string;
@@ -29,6 +30,7 @@ interface SolidPatternProps {
 }
 
 export function SolidPattern({ colors, autoCycleInterval, testId }: SolidPatternProps) {
+    const t = useTranslations("Tests.SolidPattern");
   const { 
     isRunning, 
     isPaused, 
@@ -143,20 +145,18 @@ export function SolidPattern({ colors, autoCycleInterval, testId }: SolidPattern
         className="absolute inset-0 transition-colors duration-0 select-none cursor-pointer"
         style={{ backgroundColor: currentColor.hex }}
         onClick={handleCanvasClick}
-        title="Click anywhere to cycle to the next solid color"
+        title={t("clickAnywhereToCycleTitle")}
       />
 
       {/* Floating Guidance Banner when User Reports Pixel Issue */}
       {observation === "ISSUE" && (
         <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-black/90 text-white px-5 py-3 rounded-2xl border border-red-500/80 shadow-2xl backdrop-blur-md max-w-md text-center pointer-events-auto">
           <div className="flex items-center justify-center gap-1.5 text-red-400 font-mono text-xs font-bold uppercase">
-            <span>⚠ Possible Pixel Issue Reported</span>
+            <span>{t("possiblePixelIssueReported")}</span>
           </div>
           <div className="text-[12px] text-slate-200 mt-1 font-sans">
-            Recorded during <strong>{currentColor.name}</strong> test pattern.
-            <br />
-            <span className="text-amber-300 font-medium">Optional:</span> Tap the screen to pin location, or click <strong>Continue</strong> to proceed.
-          </div>
+            {t("recordedDuring")}<strong>{currentColor.name}</strong> {t("testPattern")}<br />
+            <span className="text-amber-300 font-medium">{t("optional")}</span> {t("tapTheScreenTo")}<strong>{t("continue")}</strong> {t("toProceed")}</div>
         </div>
       )}
       
@@ -168,8 +168,8 @@ export function SolidPattern({ colors, autoCycleInterval, testId }: SolidPattern
           <button 
             type="button"
             onClick={prevColor}
-            aria-label="Previous color"
-            title="Previous color (Left Arrow)"
+            aria-label={t("previousColorTitle")}
+            title={t("previousColorLeftArrowTitle")}
             className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center hover:bg-white/20 rounded-lg transition-colors text-amber-300 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-amber-400 cursor-pointer shrink-0"
           >
             <ChevronLeft className="w-4 h-4" />
@@ -221,8 +221,8 @@ export function SolidPattern({ colors, autoCycleInterval, testId }: SolidPattern
             type="button"
             onClick={nextColor}
             className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center hover:bg-white/20 rounded-lg transition-colors text-amber-300 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-amber-400 cursor-pointer shrink-0"
-            aria-label="Next color"
-            title="Next color (Right Arrow)"
+            aria-label={t("nextColorTitle")}
+            title={t("nextColorRightArrowTitle")}
           >
             <ChevronRight className="w-4 h-4" />
           </button>

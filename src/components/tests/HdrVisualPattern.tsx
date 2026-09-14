@@ -6,6 +6,7 @@ import { TestControlBar } from "../test-runner/TestControlBar";
 import { TestInlineControls } from "../test-runner/TestInlineControls";
 import { SunMedium, Layers, Sliders, Info, ShieldAlert, Eye, Moon, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface HdrVisualPatternProps {
   testId?: string;
@@ -62,6 +63,7 @@ function useColorDepth(): number {
 }
 
 export function HdrVisualPattern({ testId = "hdr-test" }: HdrVisualPatternProps) {
+    const t = useTranslations("Tests.HdrVisualPattern");
   const { isFullscreen } = useTestContext();
   const [activeTab, setActiveTab] = useState<HdrViewMode>("specular");
 
@@ -86,11 +88,9 @@ export function HdrVisualPattern({ testId = "hdr-test" }: HdrVisualPatternProps)
           <div className="w-full h-full flex flex-col items-center justify-center space-y-6">
             <div className="text-center space-y-1">
               <span className="text-xs font-mono uppercase tracking-widest text-slate-400">
-                Highlight Clipping & Peak White Separation
-              </span>
+                {t("highlightClippingPeakWhite")}</span>
               <p className="text-xs text-slate-500 max-w-md">
-                Inspect whether subtle circular target reticles remain distinguishable inside near-peak highlights.
-              </p>
+                {t("inspectWhetherSubtleCircular")}</p>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-4 w-full max-w-3xl">
@@ -117,7 +117,7 @@ export function HdrVisualPattern({ testId = "hdr-test" }: HdrVisualPatternProps)
                       </div>
                     </div>
                     <span className="mt-2 text-[11px] font-mono text-slate-300 font-semibold">{swatch.label}</span>
-                    <span className="text-[10px] font-mono text-slate-500">RGB {swatch.bgRgb}</span>
+                    <span className="text-[10px] font-mono text-slate-500">{t("rgb")}{swatch.bgRgb}</span>
                   </div>
                 );
               })}
@@ -130,11 +130,9 @@ export function HdrVisualPattern({ testId = "hdr-test" }: HdrVisualPatternProps)
           <div className="w-full h-full flex flex-col items-center justify-center space-y-6">
             <div className="text-center space-y-1">
               <span className="text-xs font-mono uppercase tracking-widest text-slate-400">
-                Near-Black Shadow Detail & Dark Clipping
-              </span>
+                {t("nearBlackShadowDetail")}</span>
               <p className="text-xs text-slate-500 max-w-md">
-                In a dimmed room, check how low in the dark spectrum you can distinguish subtle squares from true 0% black.
-              </p>
+                {t("inADimmedRoom")}</p>
             </div>
 
             <div className="grid grid-cols-4 sm:grid-cols-8 gap-2 w-full max-w-3xl">
@@ -161,28 +159,25 @@ export function HdrVisualPattern({ testId = "hdr-test" }: HdrVisualPatternProps)
           <div className="w-full h-full flex flex-col items-center justify-center space-y-4">
             <div className="text-center space-y-1">
               <span className="text-xs font-mono uppercase tracking-widest text-slate-400">
-                Side-by-Side SDR Reference vs High Dynamic Range
-              </span>
+                {t("sideBySideSdr")}</span>
             </div>
 
             <div className="grid grid-cols-2 gap-4 w-full max-w-2xl h-56 rounded-xl overflow-hidden border border-slate-700">
               {/* SDR Side */}
               <div className="h-full bg-neutral-900 p-4 flex flex-col justify-between border-r border-slate-700">
-                <span className="text-xs font-mono uppercase text-slate-400 font-bold">Standard sRGB</span>
+                <span className="text-xs font-mono uppercase text-slate-400 font-bold">{t("standardSrgb")}</span>
                 <div className="space-y-2">
                   <div className="h-10 rounded-md bg-gradient-to-r from-red-600 via-green-600 to-blue-600 opacity-90" />
                   <div className="h-10 rounded-md bg-white opacity-85 flex items-center justify-center text-black text-xs font-bold font-mono">
-                    Standard White (100-120 nits SDR)
-                  </div>
+                    {t("standardWhite100120")}</div>
                 </div>
-                <span className="text-[10px] font-mono text-slate-500">Clamped to SDR range</span>
+                <span className="text-[10px] font-mono text-slate-500">{t("clampedToSdrRange")}</span>
               </div>
 
               {/* HDR / Extended Side */}
               <div className="h-full bg-black p-4 flex flex-col justify-between">
                 <span className="text-xs font-mono uppercase text-sky-400 font-bold flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5" /> High Dynamic Range / P3
-                </span>
+                  <Sparkles className="w-3.5 h-3.5" /> {t("highDynamicRangeP3")}</span>
                 <div className="space-y-2">
                   <div
                     className="h-10 rounded-md bg-gradient-to-r from-[#FF0000] via-[#00FF00] to-[#0000FF]"
@@ -191,10 +186,9 @@ export function HdrVisualPattern({ testId = "hdr-test" }: HdrVisualPatternProps)
                     }}
                   />
                   <div className="h-10 rounded-md bg-white flex items-center justify-center text-black text-xs font-bold font-mono shadow-[0_0_20px_rgba(255,255,255,0.8)]">
-                    Peak White Headroom
-                  </div>
+                    {t("peakWhiteHeadroom")}</div>
                 </div>
-                <span className="text-[10px] font-mono text-slate-400">Extended dynamic range</span>
+                <span className="text-[10px] font-mono text-slate-400">{t("extendedDynamicRange")}</span>
               </div>
             </div>
           </div>
@@ -205,11 +199,9 @@ export function HdrVisualPattern({ testId = "hdr-test" }: HdrVisualPatternProps)
           <div className="w-full h-full flex flex-col items-center justify-center space-y-4">
             <div className="text-center space-y-1">
               <span className="text-xs font-mono uppercase tracking-widest text-slate-400">
-                Wide Color Gamut Primaries (sRGB vs Display P3)
-              </span>
+                {t("wideColorGamutPrimaries")}</span>
               <p className="text-xs text-slate-500 max-w-md">
-                Displays supporting DCI-P3 / HDR render deeper reds and more vivid emerald greens beyond conventional sRGB.
-              </p>
+                {t("displaysSupportingDciP3")}</p>
             </div>
 
             <div className="grid grid-cols-3 gap-4 w-full max-w-xl">
@@ -218,21 +210,21 @@ export function HdrVisualPattern({ testId = "hdr-test" }: HdrVisualPatternProps)
                   className="h-20 rounded-lg shadow-inner"
                   style={{ backgroundColor: "color(display-p3 1 0 0, rgb(255, 0, 0))" }}
                 />
-                <span className="text-xs font-mono text-slate-300 font-bold">P3 Deep Red</span>
+                <span className="text-xs font-mono text-slate-300 font-bold">{t("p3DeepRed")}</span>
               </div>
               <div className="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-2 text-center">
                 <div
                   className="h-20 rounded-lg shadow-inner"
                   style={{ backgroundColor: "color(display-p3 0 1 0, rgb(0, 255, 0))" }}
                 />
-                <span className="text-xs font-mono text-slate-300 font-bold">P3 Emerald Green</span>
+                <span className="text-xs font-mono text-slate-300 font-bold">{t("p3EmeraldGreen")}</span>
               </div>
               <div className="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-2 text-center">
                 <div
                   className="h-20 rounded-lg shadow-inner"
                   style={{ backgroundColor: "color(display-p3 0 0 1, rgb(0, 0, 255))" }}
                 />
-                <span className="text-xs font-mono text-slate-300 font-bold">P3 Royal Blue</span>
+                <span className="text-xs font-mono text-slate-300 font-bold">{t("p3RoyalBlue")}</span>
               </div>
             </div>
           </div>
@@ -243,8 +235,7 @@ export function HdrVisualPattern({ testId = "hdr-test" }: HdrVisualPatternProps)
           <div className="w-full h-full flex flex-col items-center justify-center space-y-4">
             <div className="text-center space-y-1">
               <span className="text-xs font-mono uppercase tracking-widest text-slate-400">
-                Full Spectrum 16-Step Grayscale
-              </span>
+                {t("fullSpectrum16Step")}</span>
             </div>
             <div className="flex w-full max-w-2xl h-24 rounded-xl overflow-hidden border border-slate-700">
               {Array.from({ length: 16 }).map((_, i) => {
@@ -269,28 +260,28 @@ export function HdrVisualPattern({ testId = "hdr-test" }: HdrVisualPatternProps)
         {/* Live Detected Browser HDR Capability Overlay */}
         <div className="absolute bottom-4 left-4 flex flex-wrap items-center gap-2.5 bg-slate-900/85 backdrop-blur-md px-3.5 py-2 rounded-xl border border-slate-700/60 text-[11px] font-mono text-slate-300 shadow-md">
           <div className="flex items-center gap-1.5">
-            <span className="text-slate-400">CSS HDR:</span>
+            <span className="text-slate-400">{t("cssHdr")}</span>
             <strong className={hdrSupported ? "text-emerald-400" : "text-amber-400"}>
               {hdrSupported === null ? "..." : hdrSupported ? "ACTIVE" : "INACTIVE"}
             </strong>
           </div>
           <div className="h-3 w-px bg-slate-700" />
           <div className="flex items-center gap-1.5">
-            <span className="text-slate-400">Display-P3:</span>
+            <span className="text-slate-400">{t("displayP3")}</span>
             <strong className={p3Supported ? "text-emerald-400" : "text-slate-400"}>
               {p3Supported ? "SUPPORTED" : "SDR"}
             </strong>
           </div>
           <div className="h-3 w-px bg-slate-700" />
           <div className="flex items-center gap-1.5">
-            <span className="text-slate-400">Rec.2020:</span>
+            <span className="text-slate-400">{t("rec2020")}</span>
             <strong className={rec2020Supported ? "text-emerald-400" : "text-slate-500"}>
               {rec2020Supported ? "SUPPORTED" : "NO"}
             </strong>
           </div>
           <div className="h-3 w-px bg-slate-700" />
           <div className="flex items-center gap-1.5">
-            <span className="text-slate-400">Color Depth:</span>
+            <span className="text-slate-400">{t("colorDepth")}</span>
             <strong className="text-white">{colorDepth ? `${colorDepth}-bit` : "--"}</strong>
           </div>
         </div>
@@ -331,11 +322,10 @@ export function HdrVisualPattern({ testId = "hdr-test" }: HdrVisualPatternProps)
         <div className="p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-amber-900 dark:text-amber-200 leading-relaxed space-y-1">
           <div className="flex items-center gap-2 font-semibold">
             <ShieldAlert className="w-4 h-4 text-amber-500 shrink-0" />
-            <span>Hardware Boundary Notice</span>
+            <span>{t("hardwareBoundaryNotice")}</span>
           </div>
           <p>
-            Browser CSS media queries (such as <code>dynamic-range: high</code> and <code>color-gamut: p3</code>) confirm that your operating system compositor is outputting an HDR signal to the browser. However, <strong>the browser cannot measure physical peak brightness in nits or physical contrast ratios</strong>. True optical luminance and peak HDR performance require dedicated colorimeter hardware.
-          </p>
+            {t("browserCssMediaQueries")}<code>{t("dynamicRangeHigh")}</code> {t("and")}<code>{t("colorGamutP3")}</code>{t("confirmThatYourOperating")}<strong>{t("theBrowserCannotMeasure")}</strong>{t("trueOpticalLuminanceAnd")}</p>
         </div>
 
         {/* Guidance */}
@@ -343,32 +333,28 @@ export function HdrVisualPattern({ testId = "hdr-test" }: HdrVisualPatternProps)
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">1. Operating System HDR:</strong> In Windows Display Settings or macOS System Settings, confirm HDR is toggled ON for this display.
-            </div>
+              <strong className="text-foreground">{t("1OperatingSystemHdr")}</strong> {t("inWindowsDisplaySettings")}</div>
           </div>
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">2. Monitor Picture Mode:</strong> In your monitor OSD, select an accurate HDR preset (e.g. HDR Cinema, Filmmaker, or HDR Standard) rather than dynamic/vivid modes.
-            </div>
+              <strong className="text-foreground">{t("2MonitorPictureMode")}</strong> {t("inYourMonitorOsd")}</div>
           </div>
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">3. Check for Clipping:</strong> In the Highlight Clipping pattern, reticles in the 94% and 97% swatches should remain visible without blown-out white blooming.
-            </div>
+              <strong className="text-foreground">{t("3CheckForClipping")}</strong> {t("inTheHighlightClipping")}</div>
           </div>
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">4. Check for Crushed Darks:</strong> In the Shadow Detail pattern, dark blocks (2% to 5%) should remain distinct from pure black.
-            </div>
+              <strong className="text-foreground">{t("4CheckForCrushed")}</strong> {t("inTheShadowDetail")}</div>
           </div>
         </div>
       </div>
       </TestInlineControls>
 
-      <TestControlBar testId={testId} title="HDR Visual Inspection" />
+      <TestControlBar testId={testId} title={t("hdrVisualInspectionTitle")} />
     </div>
   );
 }

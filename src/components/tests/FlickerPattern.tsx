@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
 import { Play, Pause, Info, Zap, AlertTriangle } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export type FlickerMode = "uniform" | "inversion" | "strobe_wave";
 
@@ -19,6 +20,7 @@ const SPEEDS = [
 ];
 
 export function FlickerPattern({ testId = "screen-flicker-test" }: FlickerPatternProps) {
+    const t = useTranslations("Tests.FlickerPattern");
   const { isRunning, isPaused, setIsPaused, registerNavigation } = useTestContext();
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -153,20 +155,18 @@ export function FlickerPattern({ testId = "screen-flicker-test" }: FlickerPatter
             <div className="max-w-md w-full bg-neutral-950/95 border border-amber-500/40 p-6 rounded-2xl shadow-2xl space-y-4 text-white">
               <div className="flex items-center justify-center gap-2 text-amber-400 font-mono text-xs uppercase tracking-wider font-semibold">
                 <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>Photosensitivity &amp; Flashing Notice</span>
+                <span>{t("photosensitivityAmpFlashingNotice")}</span>
               </div>
-              <h3 className="text-base font-bold text-white">Rapid Screen Flashing Test</h3>
+              <h3 className="text-base font-bold text-white">{t("rapidScreenFlashingTest")}</h3>
               <p className="text-xs sm:text-[13px] text-white/80 leading-relaxed">
-                This test uses rapid flashing. It may cause discomfort or trigger photosensitive reactions in some people. Start only if you are comfortable proceeding.
-              </p>
+                {t("thisTestUsesRapid")}</p>
               <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <button
                   type="button"
                   onClick={() => setIsStrobeConfirmed(true)}
                   className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-neutral-950 font-semibold text-xs sm:text-sm transition-all shadow-lg cursor-pointer"
                 >
-                  Start Strobe Pattern
-                </button>
+                  {t("startStrobePattern")}</button>
                 <button
                   type="button"
                   onClick={() => {
@@ -175,8 +175,7 @@ export function FlickerPattern({ testId = "screen-flicker-test" }: FlickerPatter
                   }}
                   className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white/90 font-medium text-xs transition-colors cursor-pointer"
                 >
-                  Use Safe Hand Test Instead
-                </button>
+                  {t("useSafeHandTest")}</button>
               </div>
             </div>
           </div>
@@ -189,15 +188,14 @@ export function FlickerPattern({ testId = "screen-flicker-test" }: FlickerPatter
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
             </span>
-            <span>Strobe Active</span>
+            <span>{t("strobeActive")}</span>
             <span className="text-white/30">|</span>
             <button
               type="button"
               onClick={() => setIsStrobeConfirmed(false)}
               className="text-amber-400 hover:text-amber-300 underline text-[11px] cursor-pointer"
             >
-              Stop Strobe
-            </button>
+              {t("stopStrobe")}</button>
           </div>
         )}
 
@@ -207,19 +205,18 @@ export function FlickerPattern({ testId = "screen-flicker-test" }: FlickerPatter
             <div className="max-w-md bg-neutral-950/85 backdrop-blur-md p-5 rounded-2xl border border-white/20 text-white shadow-2xl space-y-3 pointer-events-auto">
               <div className="flex items-center justify-center gap-2 text-amber-400 font-semibold text-xs uppercase tracking-wider font-mono">
                 <Zap className="w-4 h-4" />
-                <span>Optical Stroboscopic Pen / Hand Test</span>
+                <span>{t("opticalStroboscopicPenHand")}</span>
               </div>
               <p className="text-xs text-white/80 leading-relaxed">
-                Wave a pen or spread your fingers rapidly back and forth in front of this solid gray screen:
-              </p>
+                {t("waveAPenOr")}</p>
               <div className="grid grid-cols-2 gap-2 text-[11px] text-left">
                 <div className="p-2.5 rounded-lg bg-white/5 border border-white/10">
-                  <span className="font-semibold text-emerald-400 block mb-1">Smooth Blur:</span>
-                  If motion looks continuous and smooth, the display uses <strong>DC dimming (Flicker-Free)</strong>.
+                  <span className="font-semibold text-emerald-400 block mb-1">{t("smoothBlur")}</span>
+                  {t("ifMotionLooksContinuous")}<strong>{t("dcDimmingFlickerFree")}</strong>.
                 </div>
                 <div className="p-2.5 rounded-lg bg-white/5 border border-white/10">
-                  <span className="font-semibold text-amber-400 block mb-1">Stroboscopic Steps:</span>
-                  If you see distinct stepped silhouettes (phantom array), your monitor uses <strong>PWM backlight cycling</strong>.
+                  <span className="font-semibold text-amber-400 block mb-1">{t("stroboscopicSteps")}</span>
+                  {t("ifYouSeeDistinct")}<strong>{t("pwmBacklightCycling")}</strong>.
                 </div>
               </div>
             </div>
@@ -232,34 +229,32 @@ export function FlickerPattern({ testId = "screen-flicker-test" }: FlickerPatter
             <div className="flex items-center justify-between pb-3 border-b border-white/10">
               <div className="flex items-center gap-2 font-semibold text-amber-400">
                 <Info className="w-4 h-4" />
-                <span>Visual Flicker vs. Hardware PWM Measurement</span>
+                <span>{t("visualFlickerVsHardware")}</span>
               </div>
               <button 
                 onClick={() => setShowEduInfo(false)}
                 className="text-white/60 hover:text-white px-2 py-0.5 rounded text-xs font-mono"
               >
-                ✕ Close
-              </button>
+                {t("close")}</button>
             </div>
             <div className="mt-3 space-y-2.5 text-white/80 leading-relaxed">
               <div className="p-2.5 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-200">
-                <strong>Important Technical Disclosure:</strong> A web browser cannot directly measure PWM frequency, exact flicker rates, or modulation depth. Software animation frames are tied to browser render cycles and cannot sample internal LED driver switching (which typically operates between 240Hz and 25,000Hz+).
-              </div>
+                <strong>{t("importantTechnicalDisclosure")}</strong> {t("aWebBrowserCannot")}</div>
               <p>
-                <strong>What this test evaluates:</strong>
+                <strong>{t("whatThisTestEvaluates")}</strong>
               </p>
               <ul className="list-disc pl-4 space-y-1">
-                <li><strong>Perceptual Flicker Sensitivity:</strong> Explores human visual comfort across different low-frequency alternating patterns.</li>
-                <li><strong>Dot &amp; Column Inversion (Vcom Bias):</strong> Visually checks for liquid crystal inversion voltage imbalance that causes subtle crawling or flickering patterns.</li>
-                <li><strong>Stroboscopic Hand / Pen Observation:</strong> Uses persistence of vision to visually observe whether backlight dimming shows stepped stroboscopic shadows (PWM) or continuous blur (DC dimming).</li>
-                <li><strong>Optional Camera Inspection Note:</strong> Using a smartphone camera or slow-motion video can sometimes reveal dark scanning bands, but results depend entirely on the camera&apos;s shutter speed, rolling shutter, frame rate, and image processing—it is not an instrumented PWM measurement.</li>
+                <li><strong>{t("perceptualFlickerSensitivity")}</strong> {t("exploresHumanVisualComfort")}</li>
+                <li><strong>{t("dotAmpColumnInversion")}</strong> {t("visuallyChecksForLiquid")}</li>
+                <li><strong>{t("stroboscopicHandPenObservation")}</strong> {t("usesPersistenceOfVision")}</li>
+                <li><strong>{t("optionalCameraInspectionNote")}</strong> {t("usingASmartphoneCamera")}</li>
               </ul>
             </div>
           </div>
         )}
       </div>
 
-      <TestControlBar testId={testId} title="Flicker & PWM Visual Check">
+      <TestControlBar testId={testId} title={t("flickerPwmVisualCheckTitle")}>
         <div className="flex flex-wrap items-center gap-3">
           {/* Mode Selector */}
           <div className="flex items-center bg-muted/60 p-0.5 rounded-lg border border-border/60 text-xs">
@@ -274,8 +269,7 @@ export function FlickerPattern({ testId = "screen-flicker-test" }: FlickerPatter
                   : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
-              Uniform Alternation
-            </button>
+              {t("uniformAlternation")}</button>
             <button
               onClick={() => {
                 setActiveMode("inversion");
@@ -287,8 +281,7 @@ export function FlickerPattern({ testId = "screen-flicker-test" }: FlickerPatter
                   : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
-              Dot Inversion (Vcom)
-            </button>
+              {t("dotInversionVcom")}</button>
             <button
               onClick={() => {
                 setActiveMode("strobe_wave");
@@ -300,8 +293,7 @@ export function FlickerPattern({ testId = "screen-flicker-test" }: FlickerPatter
                   : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
-              Hand / Pen Test
-            </button>
+              {t("handPenTest")}</button>
           </div>
 
           {/* Speed & Pause for Animated Modes */}
@@ -339,10 +331,10 @@ export function FlickerPattern({ testId = "screen-flicker-test" }: FlickerPatter
             className={`flex items-center gap-1 text-xs px-2.5 py-1 rounded-lg border transition-colors ${
               showEduInfo ? "bg-amber-500/20 text-amber-500 border-amber-500/40" : "hover:bg-muted dark:hover:bg-white/10 text-gray-700 dark:text-slate-200 dark:hover:text-white border-border/50"
             }`}
-            title="Read about visual flicker and hardware PWM limitations"
+            title={t("readAboutVisualFlickerTitle")}
           >
             <Info className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Limitations</span>
+            <span className="hidden sm:inline">{t("limitations")}</span>
           </button>
         </div>
       </TestControlBar>

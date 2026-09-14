@@ -198,7 +198,8 @@ export default async function Home({
         getTestItem("vibration-test", "deviceInput"),
         getTestItem("webcam-test", "deviceInput"),
         getTestItem("speaker-test", "deviceInput"),
-        getTestItem("microphone-test", "deviceInput")
+        getTestItem("microphone-test", "deviceInput"),
+        getTestItem("reaction-time-test", "deviceInput")
       ]
     }
   ];

@@ -188,10 +188,16 @@ export const monitorTests: MonitorTest[] = [
 
   // MOTION
   {
+    id: "ghosting-test",
+    category: "motion",
+    primaryIntent: "monitor ghosting pixel response and overdrive test",
+    relatedTestIds: ["motion-blur-test", "refresh-rate-test", "screen-tearing-test"]
+  },
+  {
     id: "motion-blur-test",
     category: "motion",
     primaryIntent: "monitor motion blur test",
-    relatedTestIds: ["refresh-rate-test"]
+    relatedTestIds: ["ghosting-test", "refresh-rate-test"]
   },
   {
     id: "refresh-rate-test",
@@ -304,6 +310,12 @@ export const monitorTests: MonitorTest[] = [
     category: "deviceInput",
     primaryIntent: "microphone and audio input stream test",
     relatedTestIds: ["speaker-test", "webcam-test", "display-info"]
+  },
+  {
+    id: "reaction-time-test",
+    category: "deviceInput",
+    primaryIntent: "response time and input latency test",
+    relatedTestIds: ["refresh-rate-test", "screen-flicker-test", "motion-blur-test"]
   }
 ];
 
@@ -343,6 +355,7 @@ export const TEST_KEY_MAP: Record<string, { ns: "lib" | "tests" | "tools", key: 
   "backlight-bleed-test": { ns: "lib", key: "tests.backlightBleed" },
   "blooming-test": { ns: "tests", key: "blooming" },
   "motion-blur-test": { ns: "tests", key: "motionBlurTest" }, 
+  "ghosting-test": { ns: "lib", key: "tests.ghostingTest" },
   "refresh-rate-test": { ns: "lib", key: "tests.refreshRate" },
   "screen-tearing-test": { ns: "tests", key: "screenTearing" },
   "screen-flicker-test": { ns: "tests", key: "flicker" },

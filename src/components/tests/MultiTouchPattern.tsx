@@ -10,6 +10,7 @@ import {
   Timer
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface MultiTouchPatternProps {
   testId?: string;
@@ -41,6 +42,7 @@ const CONTACT_COLORS = [
 const emptySubscribe = () => () => {};
 
 export function MultiTouchPattern({ testId = "multi-touch-test" }: MultiTouchPatternProps) {
+    const t = useTranslations("Tests.MultiTouchPattern");
   const { isFullscreen } = useTestContext();
   const surfaceRef = useRef<HTMLDivElement>(null);
 
@@ -291,28 +293,28 @@ export function MultiTouchPattern({ testId = "multi-touch-test" }: MultiTouchPat
         <div className="flex items-center gap-2 sm:gap-3 px-3.5 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-white/15 text-xs text-slate-200 shadow-2xl font-mono">
           <div className="flex items-center gap-1.5">
             <Hand className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-            <span className="text-[10px] text-slate-400 uppercase tracking-wider">Active:</span>
+            <span className="text-[10px] text-slate-400 uppercase tracking-wider">{t("active")}</span>
             <span className="text-xs font-bold text-blue-400">{contacts.size}</span>
           </div>
 
           <div className="h-3 w-px bg-white/20" />
 
           <div className="flex items-center gap-1.5">
-            <span className="text-[10px] text-slate-400 uppercase tracking-wider">Peak:</span>
+            <span className="text-[10px] text-slate-400 uppercase tracking-wider">{t("peak")}</span>
             <span className="text-xs font-bold text-emerald-400">{peakContacts}</span>
           </div>
 
           <div className="h-3 w-px bg-white/20 hidden sm:block" />
 
           <div className="hidden sm:flex items-center gap-1.5 text-slate-400">
-            <span className="text-[10px] uppercase tracking-wider">Pointer:</span>
+            <span className="text-[10px] uppercase tracking-wider">{t("pointer")}</span>
             <span className="text-xs capitalize text-slate-200">{lastPointerType}</span>
           </div>
 
           <div className="h-3 w-px bg-white/20 hidden md:block" />
 
           <div className="hidden md:flex items-center gap-1.5 text-slate-400">
-            <span className="text-[10px] uppercase tracking-wider" title="Browser-reported navigator.maxTouchPoints">Max:</span>
+            <span className="text-[10px] uppercase tracking-wider" title={t("browserReportedNavigatorMaxtouchpointsTitle")}>{t("max")}</span>
             <span className="text-xs text-slate-200 font-semibold" suppressHydrationWarning>{browserMaxTouchPoints}</span>
           </div>
         </div>
@@ -336,11 +338,9 @@ export function MultiTouchPattern({ testId = "multi-touch-test" }: MultiTouchPat
               <div className="max-w-md space-y-2">
                 <Fingerprint className="w-12 h-12 mx-auto text-slate-600 stroke-[1.2] animate-pulse" />
                 <p className="text-sm font-medium text-slate-400">
-                  Touch the surface with multiple fingers simultaneously.
-                </p>
+                  {t("touchTheSurfaceWith")}</p>
                 <p className="text-xs text-slate-600">
-                  Each active contact will display its live coordinates, unique pointer ID, and distinct marker ring.
-                </p>
+                  {t("eachActiveContactWill")}</p>
               </div>
             )}
           </div>
@@ -370,11 +370,10 @@ export function MultiTouchPattern({ testId = "multi-touch-test" }: MultiTouchPat
             <div className="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl max-w-sm w-full text-center space-y-4 shadow-xl">
               <div className="flex items-center justify-center gap-2">
                 <Timer className="w-5 h-5 text-amber-400" />
-                <h3 className="text-sm font-bold text-slate-200">Simultaneous Hold Challenge</h3>
+                <h3 className="text-sm font-bold text-slate-200">{t("simultaneousHoldChallenge")}</h3>
               </div>
               <p className="text-xs text-slate-400">
-                Place and hold <strong className="text-white">{holdTargetCount} contacts</strong> simultaneously for 1.5 seconds.
-              </p>
+                {t("placeAndHold")}<strong className="text-white">{holdTargetCount} {t("contacts")}</strong> {t("simultaneouslyFor15")}</p>
 
               {/* Target count selector */}
               <div className="flex items-center justify-center gap-2 pointer-events-auto">
@@ -387,8 +386,7 @@ export function MultiTouchPattern({ testId = "multi-touch-test" }: MultiTouchPat
                       holdTargetCount === cnt ? "bg-amber-500 text-slate-950 font-bold" : "bg-slate-800 text-slate-300 hover:bg-slate-700"
                     }`}
                   >
-                    {cnt} pts
-                  </button>
+                    {cnt} {t("pts")}</button>
                 ))}
               </div>
 
@@ -405,11 +403,10 @@ export function MultiTouchPattern({ testId = "multi-touch-test" }: MultiTouchPat
               <div className="text-xs font-mono">
                 {holdAchieved ? (
                   <span className="text-emerald-400 font-bold uppercase tracking-wider">
-                    Challenge Passed! ({holdTargetCount} contacts held)
-                  </span>
+                    {t("challengePassed")}{holdTargetCount} {t("contactsHeld")}</span>
                 ) : (
                   <span className="text-slate-400">
-                    Contacts active: <strong className={contacts.size >= holdTargetCount ? "text-emerald-400" : "text-amber-400"}>{contacts.size}</strong> / {holdTargetCount}
+                    {t("contactsActive")}<strong className={contacts.size >= holdTargetCount ? "text-emerald-400" : "text-amber-400"}>{contacts.size}</strong> / {holdTargetCount}
                   </span>
                 )}
               </div>
@@ -423,42 +420,42 @@ export function MultiTouchPattern({ testId = "multi-touch-test" }: MultiTouchPat
             {/* Top-Left */}
             <div className={`absolute top-2 left-2 w-16 h-16 rounded-xl border-2 flex items-center justify-center text-[10px] font-bold font-mono transition-colors ${
               edgeTouched[0] ? "bg-emerald-500/30 border-emerald-400 text-emerald-300" : "bg-slate-900/60 border-slate-700 text-slate-400"
-            }`}>TL</div>
+            }`}>{t("tl")}</div>
 
             {/* Top-Right */}
             <div className={`absolute top-2 right-2 w-16 h-16 rounded-xl border-2 flex items-center justify-center text-[10px] font-bold font-mono transition-colors ${
               edgeTouched[1] ? "bg-emerald-500/30 border-emerald-400 text-emerald-300" : "bg-slate-900/60 border-slate-700 text-slate-400"
-            }`}>TR</div>
+            }`}>{t("tr")}</div>
 
             {/* Bottom-Left */}
             <div className={`absolute bottom-2 left-2 w-16 h-16 rounded-xl border-2 flex items-center justify-center text-[10px] font-bold font-mono transition-colors ${
               edgeTouched[2] ? "bg-emerald-500/30 border-emerald-400 text-emerald-300" : "bg-slate-900/60 border-slate-700 text-slate-400"
-            }`}>BL</div>
+            }`}>{t("bl")}</div>
 
             {/* Bottom-Right */}
             <div className={`absolute bottom-2 right-2 w-16 h-16 rounded-xl border-2 flex items-center justify-center text-[10px] font-bold font-mono transition-colors ${
               edgeTouched[3] ? "bg-emerald-500/30 border-emerald-400 text-emerald-300" : "bg-slate-900/60 border-slate-700 text-slate-400"
-            }`}>BR</div>
+            }`}>{t("br")}</div>
 
             {/* Top Edge */}
             <div className={`absolute top-2 left-24 right-24 h-10 rounded-lg border-2 flex items-center justify-center text-[10px] font-bold font-mono transition-colors ${
               edgeTouched[4] ? "bg-emerald-500/30 border-emerald-400 text-emerald-300" : "bg-slate-900/60 border-slate-700 text-slate-400"
-            }`}>Top Bezel Target</div>
+            }`}>{t("topBezelTarget")}</div>
 
             {/* Bottom Edge */}
             <div className={`absolute bottom-2 left-24 right-24 h-10 rounded-lg border-2 flex items-center justify-center text-[10px] font-bold font-mono transition-colors ${
               edgeTouched[5] ? "bg-emerald-500/30 border-emerald-400 text-emerald-300" : "bg-slate-900/60 border-slate-700 text-slate-400"
-            }`}>Bottom Bezel Target</div>
+            }`}>{t("bottomBezelTarget")}</div>
 
             {/* Left Edge */}
             <div className={`absolute left-2 top-24 bottom-24 w-10 rounded-lg border-2 flex items-center justify-center text-[10px] font-bold font-mono [writing-mode:vertical-lr] transition-colors ${
               edgeTouched[6] ? "bg-emerald-500/30 border-emerald-400 text-emerald-300" : "bg-slate-900/60 border-slate-700 text-slate-400"
-            }`}>Left Bezel Target</div>
+            }`}>{t("leftBezelTarget")}</div>
 
             {/* Right Edge */}
             <div className={`absolute right-2 top-24 bottom-24 w-10 rounded-lg border-2 flex items-center justify-center text-[10px] font-bold font-mono [writing-mode:vertical-lr] transition-colors ${
               edgeTouched[7] ? "bg-emerald-500/30 border-emerald-400 text-emerald-300" : "bg-slate-900/60 border-slate-700 text-slate-400"
-            }`}>Right Bezel Target</div>
+            }`}>{t("rightBezelTarget")}</div>
           </div>
         )}
 
@@ -479,7 +476,7 @@ export function MultiTouchPattern({ testId = "multi-touch-test" }: MultiTouchPat
               </div>
               {/* Coordinates Pill */}
               <div className="absolute top-12 left-1/2 -translate-x-1/2 whitespace-nowrap bg-slate-900/90 text-[10px] font-mono border border-slate-800 px-2 py-0.5 rounded-md text-slate-300 shadow-md">
-                P{contact.id} ({contact.x}, {contact.y})
+                {t("p")}{contact.id} ({contact.x}, {contact.y})
               </div>
             </div>
           );
@@ -487,7 +484,7 @@ export function MultiTouchPattern({ testId = "multi-touch-test" }: MultiTouchPat
       </div>
 
       {/* Test Control Bar with Mode Switcher & Global Actions */}
-      <TestControlBar testId={testId} title="Multi-Touch Test">
+      <TestControlBar testId={testId} title={t("multiTouchTestTitle")}>
         <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-900/80 p-0.5 rounded-lg border border-slate-200 dark:border-slate-800">
           <button
             type="button"
@@ -497,8 +494,7 @@ export function MultiTouchPattern({ testId = "multi-touch-test" }: MultiTouchPat
               mode === "free" ? "bg-blue-600 text-white shadow-xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
             )}
           >
-            Free Touch
-          </button>
+            {t("freeTouch")}</button>
           <button
             type="button"
             onClick={() => setMode("grid")}
@@ -507,8 +503,7 @@ export function MultiTouchPattern({ testId = "multi-touch-test" }: MultiTouchPat
               mode === "grid" ? "bg-blue-600 text-white shadow-xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
             )}
           >
-            Grid
-          </button>
+            {t("grid")}</button>
           <button
             type="button"
             onClick={() => setMode("hold")}
@@ -517,8 +512,7 @@ export function MultiTouchPattern({ testId = "multi-touch-test" }: MultiTouchPat
               mode === "hold" ? "bg-blue-600 text-white shadow-xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
             )}
           >
-            Hold
-          </button>
+            {t("hold")}</button>
           <button
             type="button"
             onClick={() => setMode("edges")}
@@ -527,14 +521,13 @@ export function MultiTouchPattern({ testId = "multi-touch-test" }: MultiTouchPat
               mode === "edges" ? "bg-blue-600 text-white shadow-xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
             )}
           >
-            Edges
-          </button>
+            {t("edges")}</button>
           <button
             type="button"
             onClick={handleReset}
             className="ml-0.5 p-1 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-800 rounded-md transition-colors cursor-pointer"
-            title="Reset All Counters"
-            aria-label="Reset All Counters"
+            title={t("resetAllCountersTitle")}
+            aria-label={t("resetAllCountersTitle")}
           >
             <RotateCcw className="w-3.5 h-3.5" />
           </button>

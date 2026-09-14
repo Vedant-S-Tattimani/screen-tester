@@ -5,6 +5,7 @@ import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
 import { getDevicePixelRatio } from "@/lib/browserCapabilities";
 import { Play, Pause, Activity, Gauge } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface ScreenTearingPatternProps {
   testId?: string;
@@ -18,6 +19,7 @@ const SPEED_PRESETS = [
 ];
 
 export function ScreenTearingPattern({ testId }: ScreenTearingPatternProps) {
+    const t = useTranslations("Tests.ScreenTearingPattern");
   const { isRunning, isPaused, setIsPaused, registerNavigation } = useTestContext();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [speed, setSpeed] = useState(18);
@@ -167,26 +169,25 @@ export function ScreenTearingPattern({ testId }: ScreenTearingPatternProps) {
         <div className="absolute top-4 left-4 flex items-center gap-3 bg-black/75 backdrop-blur-md border border-white/10 px-3.5 py-2 rounded-xl text-xs font-mono tabular-nums text-white/90 shadow-xl pointer-events-none">
           <div className="flex items-center gap-1.5 text-emerald-400">
             <Activity className="w-3.5 h-3.5" />
-            <span className="font-semibold">{fps > 0 ? fps : "--"} FPS (rAF)</span>
+            <span className="font-semibold">{fps > 0 ? fps : "--"} {t("fpsRaf")}</span>
           </div>
           <span className="text-white/20">|</span>
           <div className="text-white/70">
-            <span>{frameTimeMs > 0 ? frameTimeMs : "--"} ms</span>
+            <span>{frameTimeMs > 0 ? frameTimeMs : "--"} {t("ms")}</span>
           </div>
           <span className="text-white/20">|</span>
           <div className="flex items-center gap-1 text-blue-400">
             <Gauge className="w-3.5 h-3.5" />
-            <span>{speed} px/f</span>
+            <span>{speed} {t("pxF")}</span>
           </div>
         </div>
 
         {/* Floating Technical Honesty Notice */}
         <div className="absolute top-4 right-4 z-10 bg-black/80 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/15 text-[11px] text-white/80 font-mono text-right shadow-lg pointer-events-none max-w-sm hidden sm:block">
-          Visual tearing inspection • rAF timing does not verify hardware VRR state
-        </div>
+          {t("visualTearingInspectionRaf")}</div>
       </div>
 
-      <TestControlBar testId={testId} title="Screen Tearing & Frame-Pacing Test">
+      <TestControlBar testId={testId} title={t("screenTearingFramePacingTitle")}>
         <div className="flex items-center gap-3">
           <button
             onClick={() => setIsPaused(!isPaused)}
@@ -199,7 +200,7 @@ export function ScreenTearingPattern({ testId }: ScreenTearingPatternProps) {
 
           <div 
             role="radiogroup" 
-            aria-label="Sweep Speed Presets" 
+            aria-label={t("sweepSpeedPresetsTitle")} 
             className="flex items-center gap-1 bg-slate-100 dark:bg-white/10 p-1 rounded-lg border border-slate-200 dark:border-border/50"
           >
             {SPEED_PRESETS.map((s, idx) => (
@@ -221,8 +222,7 @@ export function ScreenTearingPattern({ testId }: ScreenTearingPatternProps) {
           </div>
 
           <span className="text-xs text-amber-600 dark:text-amber-300 font-bold hidden sm:inline font-mono">
-            Tearing &amp; Frame Delivery
-          </span>
+            {t("tearingAmpFrameDelivery")}</span>
         </div>
       </TestControlBar>
     </>

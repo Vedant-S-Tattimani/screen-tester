@@ -5,6 +5,7 @@ import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
 import { TestInlineControls } from "../test-runner/TestInlineControls";
 import { Gauge, Info, ShieldAlert, Play, Pause } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface VrrPatternProps {
   testId?: string;
@@ -13,6 +14,7 @@ interface VrrPatternProps {
 type WorkloadLevel = "low" | "medium" | "high" | "sweep";
 
 export function VrrPattern({ testId = "vrr-test" }: VrrPatternProps) {
+    const t = useTranslations("Tests.VrrPattern");
   useTestContext();
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -251,28 +253,28 @@ export function VrrPattern({ testId = "vrr-test" }: VrrPatternProps) {
 
         {/* Live In-Canvas Telemetry HUD */}
         <div className="absolute top-4 left-4 flex flex-wrap items-center gap-3 bg-slate-900/85 backdrop-blur-md px-4 py-2.5 rounded-xl border border-slate-700/60 text-xs font-mono shadow-lg text-slate-200">
-          <div className="flex items-center gap-1.5" title="Browser requestAnimationFrame frame delivery timing (not physical monitor refresh rate)">
+          <div className="flex items-center gap-1.5" title={t("browserRequestanimationframeFrameDeliveryTitle")}>
             <Gauge className="w-4 h-4 text-emerald-400" />
-            <span>rAF FPS:</span>
+            <span>{t("rafFps")}</span>
             <strong className="text-emerald-400 text-sm">{fps || "--"}</strong>
           </div>
           <div className="h-3.5 w-px bg-slate-700" />
           <div>
-            <span>AVG:</span> <strong className="text-white">{avgFps || "--"}</strong>
+            <span>{t("avg")}</span> <strong className="text-white">{avgFps || "--"}</strong>
           </div>
           <div className="h-3.5 w-px bg-slate-700" />
           <div>
-            <span>1% LOW:</span> <strong className="text-amber-400">{onePercentLow || "--"}</strong>
+            <span>{t("1Low")}</span> <strong className="text-amber-400">{onePercentLow || "--"}</strong>
           </div>
           <div className="h-3.5 w-px bg-slate-700" />
           <div>
-            <span>JITTER:</span> <strong className="text-sky-400">{frameTimeJitter}ms</strong>
+            <span>{t("jitter")}</span> <strong className="text-sky-400">{frameTimeJitter}{t("ms")}</strong>
           </div>
         </div>
 
         {/* Workload Badge */}
         <div className="absolute top-4 right-4 bg-slate-900/85 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-slate-700/60 text-xs font-mono text-slate-300">
-          Workload: <span className="uppercase font-bold text-sky-400">{workload}</span>
+          {t("workload")}<span className="uppercase font-bold text-sky-400">{workload}</span>
         </div>
       </div>
 
@@ -296,13 +298,12 @@ export function VrrPattern({ testId = "vrr-test" }: VrrPatternProps) {
               }}
               className="px-3.5 py-2 bg-muted text-foreground hover:bg-muted/80 text-xs font-medium rounded-xl transition-colors"
             >
-              Cycle Speed ({currentSpeed}px/s)
-            </button>
+              {t("cycleSpeed")}{currentSpeed}{t("pxS")}</button>
           </div>
 
           {/* Workload Selection */}
           <div className="flex items-center gap-1.5 bg-muted/60 dark:bg-white/10 p-1.5 rounded-xl border border-border/60">
-            <span className="text-[11px] font-mono px-2 text-amber-500 dark:text-amber-300 font-bold uppercase tracking-wider">Workload:</span>
+            <span className="text-[11px] font-mono px-2 text-amber-500 dark:text-amber-300 font-bold uppercase tracking-wider">{t("workload")}</span>
             {(["low", "medium", "high", "sweep"] as WorkloadLevel[]).map((lvl) => (
               <button
                 key={lvl}
@@ -323,11 +324,10 @@ export function VrrPattern({ testId = "vrr-test" }: VrrPatternProps) {
         <div className="p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-amber-900 dark:text-amber-200 leading-relaxed space-y-1">
           <div className="flex items-center gap-2 font-semibold">
             <ShieldAlert className="w-4 h-4 text-amber-500 shrink-0" />
-            <span>Hardware Boundary Notice</span>
+            <span>{t("hardwareBoundaryNotice")}</span>
           </div>
           <p>
-            Browser animation timing provides evidence about frame pacing and render synchronization, but <strong>cannot prove that a specific hardware VRR (G-Sync, FreeSync, or HDMI VRR) mode is engaged</strong>. True hardware variable refresh requires dedicated OS driver handshakes and full-screen exclusive 3D game engines.
-          </p>
+            {t("browserAnimationTimingProvides")}<strong>{t("cannotProveThatA")}</strong>{t("trueHardwareVariableRefresh")}</p>
         </div>
 
         {/* Setup Checklist */}
@@ -335,32 +335,28 @@ export function VrrPattern({ testId = "vrr-test" }: VrrPatternProps) {
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">1. Enable VRR in Monitor OSD:</strong> Ensure Adaptive Sync, G-Sync Compatible, or FreeSync is enabled in your monitor&apos;s hardware on-screen display.
-            </div>
+              <strong className="text-foreground">{t("1EnableVrrIn")}</strong> {t("ensureAdaptiveSyncG")}</div>
           </div>
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">2. OS / Driver Setup:</strong> In NVIDIA Control Panel or AMD Software, verify G-Sync/FreeSync is enabled for windowed & fullscreen mode.
-            </div>
+              <strong className="text-foreground">{t("2OsDriverSetup")}</strong> {t("inNvidiaControlPanel")}</div>
           </div>
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">3. Use Fullscreen:</strong> Press <kbd className="px-1 bg-background border border-border rounded">F</kbd> to inspect moving bars without OS desktop compositor interference.
-            </div>
+              <strong className="text-foreground">{t("3UseFullscreen")}</strong> {t("press")}<kbd className="px-1 bg-background border border-border rounded">{t("f")}</kbd> {t("toInspectMovingBars")}</div>
           </div>
           <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground">4. Compare Workload Levels:</strong> Switch between Low and High/Sweep workload to observe if pacing tears or micro-stutters under load.
-            </div>
+              <strong className="text-foreground">{t("4CompareWorkloadLevels")}</strong> {t("switchBetweenLowAnd")}</div>
           </div>
         </div>
       </div>
       </TestInlineControls>
 
-      <TestControlBar testId={testId} title="VRR / Adaptive Sync Visual Inspection" />
+      <TestControlBar testId={testId} title={t("vrrAdaptiveSyncVisualTitle")} />
     </div>
   );
 }

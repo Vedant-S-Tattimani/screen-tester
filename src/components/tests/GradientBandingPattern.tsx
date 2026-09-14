@@ -5,6 +5,7 @@ import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
 import { TestInlineControls } from "../test-runner/TestInlineControls";
 import { ShieldAlert, Info, Maximize } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface GradientBandingPatternProps {
   testId?: string;
@@ -13,6 +14,7 @@ interface GradientBandingPatternProps {
 type GradientMode = "gray-horizontal" | "gray-vertical" | "rgb-horizontal" | "dark-shadow" | "dither-compare";
 
 export function GradientBandingPattern({ testId = "gradient-banding-test" }: GradientBandingPatternProps) {
+    const t = useTranslations("Tests.GradientBandingPattern");
   const { toggleFullscreen } = useTestContext();
   const [mode, setMode] = useState<GradientMode>("gray-horizontal");
   const [quantizeSteps, setQuantizeSteps] = useState<number | null>(null); // null = smooth, 64 = 6-bit sim, 256 = 8-bit sim
@@ -160,19 +162,17 @@ export function GradientBandingPattern({ testId = "gradient-banding-test" }: Gra
               className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-muted hover:bg-muted/80 text-foreground text-xs font-medium rounded-xl transition-colors"
             >
               <Maximize className="w-3.5 h-3.5" />
-              Fullscreen
-            </button>
+              {t("fullscreen")}</button>
           </div>
 
           {/* Technical Honesty Disclaimer Banner */}
           <div className="p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-amber-900 dark:text-amber-200 leading-relaxed space-y-1">
             <div className="flex items-center gap-2 font-semibold">
               <ShieldAlert className="w-4 h-4 text-amber-500 shrink-0" />
-              <span>Hardware Boundary Notice</span>
+              <span>{t("hardwareBoundaryNotice")}</span>
             </div>
             <p>
-              A web browser canvas <strong>cannot verify the physical bit depth (6-bit + FRC, true 8-bit, or true 10-bit) of your display panel</strong>. Browser rasterizers apply internal dithering and GPU compositing. If you observe distinct vertical bands, they may stem from OS display color depth settings, GPU limited RGB range, or monitor picture mode, rather than physical panel limitations.
-            </p>
+              {t("aWebBrowserCanvas")}<strong>{t("cannotVerifyThePhysical")}</strong>{t("browserRasterizersApplyInternal")}</p>
           </div>
 
           {/* Diagnostic Guidance */}
@@ -180,32 +180,28 @@ export function GradientBandingPattern({ testId = "gradient-banding-test" }: Gra
             <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
               <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
               <div>
-                <strong className="text-foreground">1. Check Dark Gradients:</strong> Switch to the &apos;Dark Range (0%–25%)&apos; pattern. Shadow transitions should roll off smoothly without abrupt stair-stepping.
-              </div>
+                <strong className="text-foreground">{t("1CheckDarkGradients")}</strong> {t("switchToTheApos")}</div>
             </div>
             <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
               <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
               <div>
-                <strong className="text-foreground">2. RGB Dynamic Range:</strong> In your graphics control panel, confirm your monitor is set to <strong>Output Dynamic Range: Full (0–255)</strong>. Limited (16–235) causes severe banding.
-              </div>
+                <strong className="text-foreground">{t("2RgbDynamicRange")}</strong> {t("inYourGraphicsControl")}<strong>{t("outputDynamicRangeFull")}</strong>{t("limited16235Causes")}</div>
             </div>
             <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
               <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
               <div>
-                <strong className="text-foreground">3. Monitor Picture Modes:</strong> Avoid aggressive dynamic contrast presets or &quot;FPS / Game&quot; modes that manipulate gamma curves and introduce artificial posterization.
-              </div>
+                <strong className="text-foreground">{t("3MonitorPictureModes")}</strong> {t("avoidAggressiveDynamicContrast")}</div>
             </div>
             <div className="flex items-start gap-2 bg-muted/30 p-3 rounded-xl border border-border/40">
               <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
               <div>
-                <strong className="text-foreground">4. FRC & Dithering:</strong> Many affordable monitors use 6-bit + FRC (Frame Rate Control). Subtle microscopic noise is normal and prevents macro banding.
-              </div>
+                <strong className="text-foreground">{t("4FrcDithering")}</strong> {t("manyAffordableMonitorsUse")}</div>
             </div>
           </div>
         </div>
       </TestInlineControls>
 
-      <TestControlBar testId={testId} title="Gradient & Banding Test" />
+      <TestControlBar testId={testId} title={t("gradientBandingTestTitle")} />
     </div>
   );
 }

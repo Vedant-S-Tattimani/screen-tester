@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const STANDARD_COLORS = [
   { name: "Black", value: "#000000" },
@@ -22,6 +23,7 @@ interface SolidColorPatternProps {
 }
 
 export function SolidColorPattern({ testId }: SolidColorPatternProps) {
+    const t = useTranslations("Tests.SolidColorPattern");
   const { registerNavigation } = useTestContext();
   const [index, setIndex] = useState(0);
   const [customHex, setCustomHex] = useState("");
@@ -64,7 +66,7 @@ export function SolidColorPattern({ testId }: SolidColorPatternProps) {
         style={{ backgroundColor: currentColor }}
         onClick={nextColor}
       />
-      <TestControlBar testId={testId} title="Solid Color Purity">
+      <TestControlBar testId={testId} title={t("solidColorPurityTitle")}>
         <div className="flex flex-wrap items-center gap-4">
           <div className="flex items-center gap-1 bg-muted/60 rounded-lg p-1 border border-border/50">
             <button 
@@ -87,7 +89,7 @@ export function SolidColorPattern({ testId }: SolidColorPatternProps) {
           <div className="h-4 w-px bg-border/50 hidden md:block"></div>
           
           <div className="flex items-center gap-2">
-            <label className="text-gray-800 dark:text-slate-200 text-xs font-medium">Custom HEX:</label>
+            <label className="text-gray-800 dark:text-slate-200 text-xs font-medium">{t("customHex")}</label>
             <input 
               type="text" 
               placeholder="#FF6B00"

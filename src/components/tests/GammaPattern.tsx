@@ -6,6 +6,7 @@ import { TestControlBar } from "../test-runner/TestControlBar";
 import { getDevicePixelRatio } from "@/lib/browserCapabilities";
 import { Sliders, Eye, RotateCcw, ShieldAlert, CheckCircle2, Info } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface GammaPatternProps {
   testId?: string;
@@ -19,6 +20,7 @@ const PRESET_GAMMAS = [
 ];
 
 export function GammaPattern({ testId = "gamma-test" }: GammaPatternProps) {
+    const t = useTranslations("Tests.GammaPattern");
   const { isRunning, registerNavigation } = useTestContext();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [selectedGamma, setSelectedGamma] = useState<number>(2.2);
@@ -171,17 +173,16 @@ export function GammaPattern({ testId = "gamma-test" }: GammaPatternProps) {
           <div className="bg-black/85 dark:bg-black/90 backdrop-blur-md px-4 py-2.5 rounded-xl border border-white/15 text-white shadow-xl max-w-2xl text-center space-y-1">
             <div className="flex items-center justify-center gap-2 text-xs font-semibold text-amber-400">
               <Eye className="w-3.5 h-3.5" />
-              <span>Gamma Visual Target: {selectedGamma.toFixed(2)}</span>
+              <span>{t("gammaVisualTarget")}{selectedGamma.toFixed(2)}</span>
             </div>
             <p className="text-[11px] sm:text-xs text-white/90 leading-normal">
-              Step back or squint slightly. When display gamma visually aligns, the striped pattern and the solid patch blend into one seamless gray tone.
-            </p>
+              {t("stepBackOrSquint")}</p>
           </div>
         </div>
       </div>
 
       {/* Control Bar Dock */}
-      <TestControlBar testId={testId} title="Gamma Visual Check">
+      <TestControlBar testId={testId} title={t("gammaVisualCheckTitle")}>
         <div className="flex flex-wrap items-center gap-2 sm:gap-3">
           {/* Preset Buttons */}
           <div className="flex items-center gap-1.5 bg-slate-100 dark:bg-black/80 p-1 rounded-xl border border-slate-200 dark:border-white/20">
@@ -212,7 +213,7 @@ export function GammaPattern({ testId = "gamma-test" }: GammaPatternProps) {
               step="0.05"
               value={selectedGamma}
               onChange={(e) => setSelectedGamma(parseFloat(e.target.value))}
-              aria-label="Gamma calibration target slider"
+              aria-label={t("gammaCalibrationTargetSliderTitle")}
               aria-valuemin={1.6}
               aria-valuemax={2.6}
               aria-valuenow={selectedGamma}
@@ -228,8 +229,8 @@ export function GammaPattern({ testId = "gamma-test" }: GammaPatternProps) {
             type="button"
             onClick={resetGamma}
             className="p-2 rounded-lg border border-slate-200 dark:border-white/25 hover:bg-slate-200 dark:hover:bg-white/25 bg-slate-100 dark:bg-white/15 text-slate-800 dark:text-amber-300 hover:text-slate-950 dark:hover:text-white transition-colors cursor-pointer"
-            title="Reset to Gamma 2.2 Standard"
-            aria-label="Reset to 2.2"
+            title={t("resetToGamma2Title")}
+            aria-label={t("resetTo22Title")}
           >
             <RotateCcw className="w-3.5 h-3.5 text-amber-600 dark:text-amber-300" />
           </button>
@@ -244,17 +245,17 @@ export function GammaPattern({ testId = "gamma-test" }: GammaPatternProps) {
  * Rendered below the test viewport via extraControls in TestWrapper
  */
 export function GammaGuidance() {
+    const t = useTranslations("Tests.GammaPattern");
   return (
     <div className="w-full max-w-4xl mx-auto bg-card border border-border/70 rounded-2xl p-5 shadow-xs space-y-4">
       {/* Honesty Banner */}
       <div className="p-4 bg-blue-50 border border-blue-200 dark:bg-blue-950/40 dark:border-blue-800 rounded-xl text-xs text-blue-950 dark:text-blue-100 leading-relaxed space-y-1">
         <div className="flex items-center gap-2 font-semibold">
           <ShieldAlert className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
-          <span>Visual Gamma Evaluation Aid (Not Hardware Calibration)</span>
+          <span>{t("visualGammaEvaluationAid")}</span>
         </div>
         <p className="text-blue-900 dark:text-blue-200">
-          Gamma curves describe the non-linear relationship between digital signal values and physical photon luminance emitted by your display panel. Web browsers cannot directly measure physical panel gamma curves or luminance response without an external colorimeter or spectrophotometer sensor. This visual test creates an optical luminance balance pattern so your eyes can inspect whether your monitor visually matches the standard Gamma 2.2 curve or exhibits crushed/washed-out tones.
-        </p>
+          {t("gammaCurvesDescribeThe")}</p>
       </div>
 
       {/* 3 Clear Inspection Directives */}
@@ -262,31 +263,28 @@ export function GammaGuidance() {
         <div className="p-3.5 rounded-xl bg-muted/30 border border-border/40 space-y-1.5">
           <div className="flex items-center gap-1.5 font-bold text-foreground">
             <Eye className="w-4 h-4 text-emerald-500 shrink-0" />
-            <span>1. What You Are Observing</span>
+            <span>{t("1WhatYouAre")}</span>
           </div>
           <p className="text-muted-foreground leading-relaxed">
-            Visually inspects whether shadow midtones and luminance steps appear balanced against the standard <strong>Gamma 2.2</strong> curve, ensuring midtones are neither crushed nor washed out.
-          </p>
+            {t("visuallyInspectsWhetherShadow")}<strong>{t("gamma22")}</strong> {t("curveEnsuringMidtonesAre")}</p>
         </div>
 
         <div className="p-3.5 rounded-xl bg-muted/30 border border-border/40 space-y-1.5">
           <div className="flex items-center gap-1.5 font-bold text-foreground">
             <CheckCircle2 className="w-4 h-4 text-blue-500 shrink-0" />
-            <span>2. What To Do</span>
+            <span>{t("2WhatToDo")}</span>
           </div>
           <p className="text-muted-foreground leading-relaxed">
-            Step back 2 meters or squint slightly. At <strong>Gamma 2.2</strong>, the 1-pixel striped area and the solid patch should blend together into a single uniform gray shade.
-          </p>
+            {t("stepBack2Meters")}<strong>{t("gamma22")}</strong>{t("the1PixelStriped")}</p>
         </div>
 
         <div className="p-3.5 rounded-xl bg-muted/30 border border-border/40 space-y-1.5">
           <div className="flex items-center gap-1.5 font-bold text-foreground">
             <Info className="w-4 h-4 text-amber-500 shrink-0" />
-            <span>3. What Indicates a Problem</span>
+            <span>{t("3WhatIndicatesA")}</span>
           </div>
           <p className="text-muted-foreground leading-relaxed">
-            <strong>Solid patch darker than stripes at 2.2:</strong> Monitor gamma is too high (crushed midtones). <strong>Solid patch lighter than stripes:</strong> Monitor gamma is too low (washed out). Adjust the Gamma setting in your monitor&apos;s OSD menu.
-          </p>
+            <strong>{t("solidPatchDarkerThan")}</strong> {t("monitorGammaIsToo")}<strong>{t("solidPatchLighterThan")}</strong> {t("monitorGammaIsToo_1")}</p>
         </div>
       </div>
     </div>

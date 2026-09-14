@@ -5,6 +5,7 @@ import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
 import { ChevronLeft, ChevronRight, Eye, Info, ShieldAlert, CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface BrightnessPatternProps {
   testId?: string;
@@ -85,6 +86,7 @@ const HIGHLIGHT_STEPS = [
 ];
 
 export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatternProps) {
+    const t = useTranslations("Tests.BrightnessPattern");
   const { registerNavigation } = useTestContext();
   const [activeStageIndex, setActiveStageIndex] = useState(0);
 
@@ -135,7 +137,7 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
               <span>{currentStage.shortTitle}</span>
               <span className="text-white/40">•</span>
               <span className="text-white/60 font-mono text-[11px]">
-                Stage {activeStageIndex + 1} of {BRIGHTNESS_STAGES.length}
+                {t("stage")}{activeStageIndex + 1} {t("of")}{BRIGHTNESS_STAGES.length}
               </span>
             </div>
             <p className="text-[11px] sm:text-xs text-white/90 leading-normal">
@@ -154,11 +156,9 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
           <div className="w-full max-w-5xl px-4 sm:px-8 py-16 flex flex-col items-center justify-center gap-6 text-white">
             <div className="text-center space-y-1">
               <span className="text-xs sm:text-sm font-semibold text-white block">
-                Near-Black Luminance Discrimination
-              </span>
+                {t("nearBlackLuminanceDiscrimination")}</span>
               <span className="text-[11px] text-white/60 font-mono block">
-                Target: Step 2% (RGB 5) should be barely distinguishable from pure black 0% (RGB 0).
-              </span>
+                {t("targetStep2Rgb")}</span>
             </div>
 
             {/* Stepped shadow patches */}
@@ -184,8 +184,7 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
                       </span>
                       {isTarget && (
                         <span className="text-[8px] uppercase tracking-wider font-bold bg-emerald-600 text-white px-1.5 py-0.2 rounded mt-0.5">
-                          Calibration Target
-                        </span>
+                          {t("calibrationTarget")}</span>
                       )}
                     </div>
 
@@ -198,7 +197,7 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
                     </div>
 
                     <span className="text-xs font-mono font-bold text-amber-300">
-                      RGB {step.rgb}
+                      {t("rgb")}{step.rgb}
                     </span>
                   </div>
                 );
@@ -206,8 +205,7 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
             </div>
 
             <div className="text-xs font-mono text-amber-200 text-center max-w-xl font-semibold bg-black/70 px-4 py-2 rounded-xl border border-white/20">
-              If steps 1% and 2% are invisible, raise your monitor brightness. If 0% looks gray, lower your monitor brightness.
-            </div>
+              {t("ifSteps1And")}</div>
           </div>
         )}
 
@@ -218,14 +216,11 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
           <div className="w-full h-full flex flex-col items-center justify-center p-6 text-white">
             <div className="max-w-md p-5 rounded-2xl bg-neutral-950/95 backdrop-blur-md border border-white/25 text-center shadow-2xl space-y-2 pointer-events-none">
               <span className="text-xs font-mono uppercase font-bold text-amber-400 tracking-wider block">
-                Pure Black Field RGB (0, 0, 0)
-              </span>
+                {t("pureBlackFieldRgb")}</span>
               <p className="text-xs text-white font-medium leading-relaxed">
-                Check whether black appears deeply black or visibly glowing / milky in your environment.
-              </p>
+                {t("checkWhetherBlackAppears")}</p>
               <span className="text-xs font-mono text-cyan-300 font-bold block">
-                Click anywhere or press Right Arrow to advance to Mid-Gray
-              </span>
+                {t("clickAnywhereOrPress")}</span>
             </div>
           </div>
         )}
@@ -237,26 +232,24 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
           <div className="w-full max-w-4xl px-4 py-16 flex flex-col items-center justify-center gap-6 text-black">
             <div className="max-w-md p-5 rounded-2xl bg-black/80 backdrop-blur-md border border-white/20 text-center text-white shadow-2xl space-y-2 pointer-events-none">
               <span className="text-xs font-mono uppercase font-bold text-blue-400 tracking-wider block">
-                50% Neutral Midtone RGB (128, 128, 128)
-              </span>
+                {t("50NeutralMidtoneRgb")}</span>
               <p className="text-xs text-white/80 leading-relaxed">
-                Assess overall brightness comfort. The gray field should feel balanced in your ambient room lighting without causing eye strain.
-              </p>
+                {t("assessOverallBrightnessComfort")}</p>
             </div>
 
             {/* Reference steps (25%, 50%, 75%) for contextual comparison */}
             <div className="grid grid-cols-3 gap-3 w-full max-w-lg p-3 bg-black/60 rounded-2xl border border-white/20 shadow-xl">
               <div className="h-20 rounded-xl bg-[#404040] flex flex-col items-center justify-center text-white font-mono text-xs">
-                <span>25% Gray</span>
-                <span className="text-[10px] opacity-60">RGB 64</span>
+                <span>{t("25Gray")}</span>
+                <span className="text-[10px] opacity-60">{t("rgb64")}</span>
               </div>
               <div className="h-20 rounded-xl bg-[#808080] border-2 border-blue-400 flex flex-col items-center justify-center text-white font-mono text-xs shadow-md">
-                <span className="font-bold">50% Midtone</span>
-                <span className="text-[10px] opacity-70">RGB 128</span>
+                <span className="font-bold">{t("50Midtone")}</span>
+                <span className="text-[10px] opacity-70">{t("rgb128")}</span>
               </div>
               <div className="h-20 rounded-xl bg-[#BFBFBF] flex flex-col items-center justify-center text-black font-mono text-xs">
-                <span>75% Gray</span>
-                <span className="text-[10px] opacity-60">RGB 192</span>
+                <span>{t("75Gray")}</span>
+                <span className="text-[10px] opacity-60">{t("rgb192")}</span>
               </div>
             </div>
           </div>
@@ -269,11 +262,9 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
           <div className="w-full max-w-5xl px-4 sm:px-8 py-16 flex flex-col items-center justify-center gap-6 text-black">
             <div className="text-center space-y-1">
               <span className="text-xs sm:text-sm font-semibold text-black block">
-                Near-White Highlight Detail & Clipping
-              </span>
+                {t("nearWhiteHighlightDetail")}</span>
               <span className="text-[11px] text-black/60 font-mono block">
-                Target: Step 98% (RGB 250) and 99% (RGB 252) should be distinguishable from 100% (RGB 255).
-              </span>
+                {t("targetStep98Rgb")}</span>
             </div>
 
             {/* Stepped highlight patches */}
@@ -299,8 +290,7 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
                       </span>
                       {isTarget && (
                         <span className="text-[8px] uppercase tracking-wider font-bold bg-blue-600 text-white px-1.5 py-0.2 rounded mt-0.5">
-                          Calibration Target
-                        </span>
+                          {t("calibrationTarget")}</span>
                       )}
                     </div>
 
@@ -313,7 +303,7 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
                     </div>
 
                     <span className="text-[10px] font-mono text-black/60">
-                      RGB {step.rgb}
+                      {t("rgb")}{step.rgb}
                     </span>
                   </div>
                 );
@@ -321,8 +311,7 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
             </div>
 
             <div className="text-[11px] font-mono text-black/60 text-center max-w-xl">
-              If steps 98% and 99% merge seamlessly into 100% white, bright details are <strong>clipped</strong> (contrast or brightness is set too high).
-            </div>
+              {t("ifSteps98And")}<strong>{t("clipped")}</strong> {t("contrastOrBrightnessIs")}</div>
           </div>
         )}
 
@@ -333,21 +322,18 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
           <div className="w-full h-full flex flex-col items-center justify-center p-6 text-black">
             <div className="max-w-md p-5 rounded-2xl bg-white/90 backdrop-blur-md border border-black/20 text-center shadow-2xl space-y-2 pointer-events-none">
               <span className="text-xs font-mono uppercase font-bold text-blue-600 tracking-wider block">
-                Pure White Field RGB (255, 255, 255)
-              </span>
+                {t("pureWhiteFieldRgb")}</span>
               <p className="text-xs text-black/80 leading-relaxed">
-                Check whether peak brightness looks comfortably readable or uncomfortably harsh, and verify that corners and edges have uniform brightness.
-              </p>
+                {t("checkWhetherPeakBrightness")}</p>
               <span className="text-[10px] font-mono text-black/50 block">
-                Click anywhere or press Right Arrow to cycle back to Stage 1
-              </span>
+                {t("clickAnywhereOrPress_1")}</span>
             </div>
           </div>
         )}
       </div>
 
       {/* Control Bar Dock */}
-      <TestControlBar testId={testId} title="Brightness & Luminance Test">
+      <TestControlBar testId={testId} title={t("brightnessLuminanceTestTitle")}>
         <div className="flex flex-wrap items-center gap-2">
           {/* Stage Switcher Strip */}
           <div className="flex items-center gap-1 bg-slate-100 dark:bg-white/10 p-1 rounded-lg border border-slate-200 dark:border-border/50">
@@ -358,8 +344,8 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
                 prevStage();
               }}
               className="p-1.5 hover:bg-slate-200 dark:hover:bg-white/20 rounded transition-colors text-amber-600 dark:text-amber-300 cursor-pointer"
-              title="Previous stage (Left Arrow)"
-              aria-label="Previous stage"
+              title={t("previousStageLeftArrowTitle")}
+              aria-label={t("previousStageTitle")}
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -392,8 +378,8 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
                 nextStage();
               }}
               className="p-1.5 hover:bg-slate-200 dark:hover:bg-white/20 rounded transition-colors text-amber-600 dark:text-amber-300 cursor-pointer"
-              title="Next stage (Right Arrow / Click)"
-              aria-label="Next stage"
+              title={t("nextStageRightArrowTitle")}
+              aria-label={t("nextStageTitle")}
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -409,17 +395,17 @@ export function BrightnessPattern({ testId = "brightness-test" }: BrightnessPatt
  * Rendered below viewport via extraControls in TestWrapper
  */
 export function BrightnessGuidance() {
+    const t = useTranslations("Tests.BrightnessPattern");
   return (
     <div className="w-full max-w-4xl mx-auto bg-card border border-border/70 rounded-2xl p-5 shadow-xs space-y-4">
       {/* Honesty Banner */}
       <div className="p-4 bg-blue-50 border border-blue-200 dark:bg-blue-950/40 dark:border-blue-800 rounded-xl text-xs text-blue-950 dark:text-blue-100 leading-relaxed space-y-1">
         <div className="flex items-center gap-2 font-semibold">
           <ShieldAlert className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
-          <span>Visual Calibration Aid (Physical Luminance in cd/m² Requires Hardware)</span>
+          <span>{t("visualCalibrationAidPhysical")}</span>
         </div>
         <p className="text-blue-900 dark:text-blue-200">
-          A standard web browser cannot measure true physical screen brightness (cd/m² or nits) because web APIs do not have access to photometer sensor hardware. This test provides controlled visual targets so you can adjust your monitor&apos;s physical brightness and contrast controls to achieve optimal shadow and highlight distinction.
-        </p>
+          {t("aStandardWebBrowser")}</p>
       </div>
 
       {/* 3 Clear Inspection Directives */}
@@ -427,31 +413,28 @@ export function BrightnessGuidance() {
         <div className="p-3.5 rounded-xl bg-muted/30 border border-border/40 space-y-1.5">
           <div className="flex items-center gap-1.5 font-bold text-foreground">
             <Eye className="w-4 h-4 text-emerald-500 shrink-0" />
-            <span>1. What You Are Testing</span>
+            <span>{t("1WhatYouAre")}</span>
           </div>
           <p className="text-muted-foreground leading-relaxed">
-            Evaluates shadow detail visibility and highlight retention across dark, midtone, and bright test fields.
-          </p>
+            {t("evaluatesShadowDetailVisibility")}</p>
         </div>
 
         <div className="p-3.5 rounded-xl bg-muted/30 border border-border/40 space-y-1.5">
           <div className="flex items-center gap-1.5 font-bold text-foreground">
             <CheckCircle2 className="w-4 h-4 text-blue-500 shrink-0" />
-            <span>2. What To Do</span>
+            <span>{t("2WhatToDo")}</span>
           </div>
           <p className="text-muted-foreground leading-relaxed">
-            Open your monitor&apos;s On-Screen Display (OSD). In Stage 1, adjust brightness until step 2% is barely visible. In Stage 4, ensure step 98% doesn&apos;t wash out into 100% white.
-          </p>
+            {t("openYourMonitorApos")}</p>
         </div>
 
         <div className="p-3.5 rounded-xl bg-muted/30 border border-border/40 space-y-1.5">
           <div className="flex items-center gap-1.5 font-bold text-foreground">
             <Info className="w-4 h-4 text-amber-500 shrink-0" />
-            <span>3. What Indicates a Problem</span>
+            <span>{t("3WhatIndicatesA")}</span>
           </div>
           <p className="text-muted-foreground leading-relaxed">
-            <strong>Crushed darks:</strong> Dark steps merge into 0% black. <strong>Blown-out highlights:</strong> Bright steps merge into 100% white. <strong>Excessive glow:</strong> Pure black looks visibly glowing gray.
-          </p>
+            <strong>{t("crushedDarks")}</strong> {t("darkStepsMergeInto")}<strong>{t("blownOutHighlights")}</strong> {t("brightStepsMergeInto")}<strong>{t("excessiveGlow")}</strong> {t("pureBlackLooksVisibly")}</p>
         </div>
       </div>
     </div>

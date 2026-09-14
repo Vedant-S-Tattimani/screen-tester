@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
 import { ChevronLeft, ChevronRight, Info } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export type BandingMode = "smooth" | "bitdepth" | "cmyk" | "dither";
 
@@ -31,6 +32,7 @@ interface ColorBandingPatternProps {
 }
 
 export function ColorBandingPattern({ testId = "color-banding-test" }: ColorBandingPatternProps) {
+    const t = useTranslations("Tests.ColorBandingPattern");
   const { registerNavigation } = useTestContext();
   const [activeMode, setActiveMode] = useState<BandingMode>("smooth");
   const [presetIndex, setPresetIndex] = useState(0);
@@ -137,33 +139,30 @@ export function ColorBandingPattern({ testId = "color-banding-test" }: ColorBand
             <div className="flex items-center justify-between pb-3 border-b border-white/10">
               <div className="flex items-center gap-2 font-semibold text-amber-400">
                 <Info className="w-4 h-4" />
-                <span>Visual Diagnostic vs. Colorimeter Calibration</span>
+                <span>{t("visualDiagnosticVsColorimeter")}</span>
               </div>
               <button 
                 onClick={() => setShowEduInfo(false)}
                 className="text-white/60 hover:text-white px-2 py-0.5 rounded text-xs font-mono"
               >
-                ✕ Close
-              </button>
+                {t("close")}</button>
             </div>
             <div className="mt-3 space-y-2 text-white/80 leading-relaxed">
               <p>
-                <strong>What causes visible banding?</strong> Banding appears as stepped horizontal or vertical lines where smooth color transitions should exist. Common root causes:
-              </p>
+                <strong>{t("whatCausesVisibleBanding")}</strong> {t("bandingAppearsAsStepped")}</p>
               <ul className="list-disc pl-4 space-y-1">
-                <li><strong>Panel Bit Depth:</strong> 6-bit panels (common in budget high-refresh monitors) use Frame Rate Control (FRC) dithering and exhibit noticeable stepping. True 8-bit and 10-bit panels render significantly smoother steps.</li>
-                <li><strong>GPU Dynamic Range:</strong> Ensure your graphics control panel (NVIDIA/AMD/Intel) is set to <em>Full Dynamic Range (0–255)</em> rather than <em>Limited (16–235)</em>.</li>
-                <li><strong>Color Profiles:</strong> Highly aggressive ICC color profiles or software gamma corrections force quantization rounding errors.</li>
+                <li><strong>{t("panelBitDepth")}</strong> {t("6BitPanelsCommon")}</li>
+                <li><strong>{t("gpuDynamicRange")}</strong> {t("ensureYourGraphicsControl")}<em>{t("fullDynamicRange0")}</em> {t("ratherThan")}<em>{t("limited16235")}</em>.</li>
+                <li><strong>{t("colorProfiles")}</strong> {t("highlyAggressiveIccColor")}</li>
               </ul>
               <div className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-white/70 mt-3">
-                <strong>Measurement Boundary:</strong> This is a subjective human-eye test. True color volume, Delta E accuracy, and gamma compliance require hardware spectrophotometers (e.g. Calibrite / Datacolor / Klein).
-              </div>
+                <strong>{t("measurementBoundary")}</strong> {t("thisIsASubjective")}</div>
             </div>
           </div>
         )}
       </div>
 
-      <TestControlBar testId={testId} title="Color Banding & Bit Depth">
+      <TestControlBar testId={testId} title={t("colorBandingBitDepthTitle")}>
         <div className="flex flex-wrap items-center gap-2">
           {/* Mode Tabs */}
           <div className="flex items-center bg-muted/60 p-0.5 rounded-lg border border-border/60 text-xs">
@@ -175,8 +174,7 @@ export function ColorBandingPattern({ testId = "color-banding-test" }: ColorBand
                   : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
-              Smooth Gradients
-            </button>
+              {t("smoothGradients")}</button>
             <button
               onClick={() => setActiveMode("bitdepth")}
               className={`px-2.5 py-1 rounded-md font-medium transition-all ${
@@ -185,8 +183,7 @@ export function ColorBandingPattern({ testId = "color-banding-test" }: ColorBand
                   : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
-              Bit-Depth Steps
-            </button>
+              {t("bitDepthSteps")}</button>
             <button
               onClick={() => setActiveMode("dither")}
               className={`px-2.5 py-1 rounded-md font-medium transition-all ${
@@ -195,8 +192,7 @@ export function ColorBandingPattern({ testId = "color-banding-test" }: ColorBand
                   : "text-gray-600 dark:text-slate-200 hover:text-gray-900 dark:hover:text-white hover:bg-white/10"
               }`}
             >
-              Dither / FRC
-            </button>
+              {t("ditherFrc")}</button>
           </div>
 
           {/* Smooth Mode Controls */}
@@ -205,7 +201,7 @@ export function ColorBandingPattern({ testId = "color-banding-test" }: ColorBand
               <button 
                 onClick={prevPreset}
                 className="p-1 hover:bg-muted dark:hover:bg-white/10 rounded text-gray-900 dark:text-white transition-colors"
-                title="Previous gradient (Left Arrow)"
+                title={t("previousGradientLeftArrowTitle")}
               >
                 <ChevronLeft className="w-3.5 h-3.5" />
               </button>
@@ -215,7 +211,7 @@ export function ColorBandingPattern({ testId = "color-banding-test" }: ColorBand
               <button 
                 onClick={nextPreset}
                 className="p-1 hover:bg-muted dark:hover:bg-white/10 rounded text-gray-900 dark:text-white transition-colors"
-                title="Next gradient (Right Arrow)"
+                title={t("nextGradientRightArrowTitle")}
               >
                 <ChevronRight className="w-3.5 h-3.5" />
               </button>
@@ -229,20 +225,17 @@ export function ColorBandingPattern({ testId = "color-banding-test" }: ColorBand
                 onClick={() => setBitDepthStep(6)}
                 className={`px-2 py-0.5 rounded text-[11px] font-medium ${bitDepthStep === 6 ? "bg-amber-500/30 text-amber-300 font-bold border border-amber-500/50" : "text-gray-600 dark:text-slate-300 hover:text-white"}`}
               >
-                6-bit (64 steps)
-              </button>
+                {t("6Bit64Steps")}</button>
               <button
                 onClick={() => setBitDepthStep(8)}
                 className={`px-2 py-0.5 rounded text-[11px] font-medium ${bitDepthStep === 8 ? "bg-blue-500/30 text-blue-300 font-bold border border-blue-500/50" : "text-gray-600 dark:text-slate-300 hover:text-white"}`}
               >
-                8-bit (256 steps)
-              </button>
+                {t("8Bit256Steps")}</button>
               <button
                 onClick={() => setBitDepthStep(10)}
                 className={`px-2 py-0.5 rounded text-[11px] font-medium ${bitDepthStep === 10 ? "bg-emerald-500/30 text-emerald-300 font-bold border border-emerald-500/50" : "text-gray-600 dark:text-slate-300 hover:text-white"}`}
               >
-                10-bit (Simulated)
-              </button>
+                {t("10BitSimulated")}</button>
             </div>
           )}
 
@@ -252,10 +245,10 @@ export function ColorBandingPattern({ testId = "color-banding-test" }: ColorBand
             className={`flex items-center gap-1 text-xs px-2.5 py-1 rounded-lg border transition-colors ${
               showEduInfo ? "bg-amber-500/20 text-amber-500 border-amber-500/40" : "hover:bg-muted dark:hover:bg-white/10 text-gray-700 dark:text-slate-200 dark:hover:text-white border-border/50"
             }`}
-            title="Read about visual banding vs colorimeter calibration"
+            title={t("readAboutVisualBandingTitle")}
           >
             <Info className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Explanation</span>
+            <span className="hidden sm:inline">{t("explanation")}</span>
           </button>
         </div>
       </TestControlBar>
