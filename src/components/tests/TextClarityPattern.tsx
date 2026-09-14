@@ -13,6 +13,16 @@ interface TextClarityPatternProps {
 type TextContrastTheme = "dark-on-light" | "light-on-dark" | "colored-fringing";
 
 const FONT_SCALES = [8, 10, 12, 14, 16, 20, 24, 32];
+import { TestInlineControls } from "../test-runner/TestInlineControls";
+import { ShieldAlert, Info, Maximize, ZoomIn } from "lucide-react";
+
+interface TextClarityPatternProps {
+  testId?: string;
+}
+
+type TextContrastTheme = "dark-on-light" | "light-on-dark" | "colored-fringing";
+
+const FONT_SCALES = [8, 10, 12, 14, 16, 20, 24, 32];
 
 export function TextClarityPattern({ testId = "text-clarity-test" }: TextClarityPatternProps) {
   const { toggleFullscreen } = useTestContext();
@@ -20,18 +30,19 @@ export function TextClarityPattern({ testId = "text-clarity-test" }: TextClarity
   const [zoomLevel, setZoomLevel] = useState<number>(1);
 
   return (
-    <div className="relative w-full flex flex-col items-center">
+    <>
       {/* Test Inspection Surface */}
       <div
-        className={`relative w-full min-h-[520px] rounded-2xl overflow-hidden border shadow-2xl p-6 sm:p-8 select-none transition-colors duration-200 ${
+        className={`absolute inset-0 overflow-auto select-none transition-colors duration-200 ${
           theme === "dark-on-light"
-            ? "bg-white text-slate-900 border-slate-300"
+            ? "bg-white text-slate-900"
             : theme === "light-on-dark"
-            ? "bg-slate-950 text-slate-100 border-slate-800"
-            : "bg-slate-900 text-white border-slate-800"
+            ? "bg-slate-950 text-slate-100"
+            : "bg-slate-900 text-white"
         }`}
       >
-        <div style={{ transform: `scale(${zoomLevel})`, transformOrigin: "top left" }} className="space-y-8">
+        <div className="p-6 sm:p-8 min-h-full flex flex-col">
+          <div style={{ transform: `scale(${zoomLevel})`, transformOrigin: "top left" }} className="space-y-8 flex-1 max-w-5xl mx-auto w-full">
           
           {/* Header Description */}
           <div className="border-b pb-4 border-current/20 flex flex-wrap items-center justify-between gap-4">
@@ -161,6 +172,7 @@ export function TextClarityPattern({ testId = "text-clarity-test" }: TextClarity
               </div>
             </div>
           )}
+          </div>
         </div>
       </div>
 
@@ -248,6 +260,6 @@ export function TextClarityPattern({ testId = "text-clarity-test" }: TextClarity
       </TestInlineControls>
 
       <TestControlBar testId={testId} title="Text Clarity & Subpixel Test" />
-    </div>
+    </>
   );
 }

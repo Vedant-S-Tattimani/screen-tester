@@ -5,6 +5,7 @@ import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
 import { TestInlineControls } from "../test-runner/TestInlineControls";
 import { Maximize, ShieldAlert, Info } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface ScalingAspectPatternProps {
   testId?: string;
@@ -13,13 +14,18 @@ interface ScalingAspectPatternProps {
 type AspectFrameMode = "all" | "16-9" | "16-10" | "4-3" | "21-9";
 
 export function ScalingAspectPattern({ testId = "scaling-aspect-test" }: ScalingAspectPatternProps) {
-  const { toggleFullscreen } = useTestContext();
+  const { toggleFullscreen, isFullscreen } = useTestContext();
   const [activeFrame, setActiveFrame] = useState<AspectFrameMode>("all");
 
   return (
-    <div className="relative w-full flex flex-col items-center">
+    <div className={cn("relative w-full flex flex-col items-center", isFullscreen && "h-full")}>
       {/* Aspect Geometry Viewport */}
-      <div className="relative w-full aspect-video min-h-[460px] max-h-[75vh] bg-slate-950 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl flex items-center justify-center p-6 select-none">
+      <div className={cn(
+        "relative w-full bg-slate-950 overflow-hidden flex items-center justify-center p-6 select-none",
+        isFullscreen 
+          ? "h-full rounded-none border-none"
+          : "aspect-video min-h-[460px] max-h-[75vh] rounded-2xl border border-slate-800 shadow-2xl"
+      )}>
         
         {/* Concentric Precision Circles (Identifies Non-Uniform Horizontal/Vertical Stretching) */}
         <div className="relative flex items-center justify-center pointer-events-none">

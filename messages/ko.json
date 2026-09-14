@@ -821,6 +821,10 @@
         "<strong>입력 레벨 및 파형:</strong> 마이크를 향해 소리를 냅니다. 파형이 반응하고 레벨 미터가 30%~80% 사이에서 움직이는지 확인합니다.",
         "<strong>로컬 루프백 및 관찰:</strong> 5초 샘플을 녹음하여 캡처된 오디오를 로컬에서 직접 들어보고(음향 피드백 방지를 위해 헤드폰 권장), 관찰 결과를 기록하세요."
       ]
+    },
+    "reactionTimeTest": {
+      "title": "Reaction Time Test",
+      "description": "Measure your human reaction time in milliseconds. Test your reflexes with this simple interactive tool."
     }
   },
   "Tests": {
@@ -1066,7 +1070,8 @@
     "motionBlurTest": {
       "title": "모션 블러 테스트 – 동적 선명도 및 MPRT 점검",
       "description": "빠르게 움직이는 장면과 이동 객체에서 동적 해상도, 홀드 블러 및 MPRT 추적을 정밀 분석합니다."
-    }
+    },
+    "reactionTimeTest": "Reaction Time Test"
   },
   "Guides": {
     "pageTitle": "디스플레이 테스트 가이드 – 모니터, TV, 노트북 화면 점검법",

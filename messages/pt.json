@@ -821,6 +821,10 @@
         "<strong>NÍVEL E FORMA DE ONDA:</strong> Fale no microfone. Verifique se a onda oscila e se o medidor de nível marca entre 30% e 80%.",
         "<strong>LOOPBACK LOCAL E OBSERVAÇÃO:</strong> Grave uma amostra de 5 segundos para ouvir o áudio capturado localmente (fones de ouvido recomendados para evitar realimentação acústica) e registre sua observação."
       ]
+    },
+    "reactionTimeTest": {
+      "title": "Reaction Time Test",
+      "description": "Measure your human reaction time in milliseconds. Test your reflexes with this simple interactive tool."
     }
   },
   "Tests": {
@@ -1066,7 +1070,8 @@
     "motionBlurTest": {
       "title": "Teste de Desfoque de Movimento – Clareza e Verificação MPRT",
       "description": "Analise a resolução em movimento, o desfoque de persistência e o rastreamento MPRT em cenas rápidas."
-    }
+    },
+    "reactionTimeTest": "Reaction Time Test"
   },
   "Guides": {
     "pageTitle": "Guias de Teste de Monitor e Tela – Como Avaliar Displays",

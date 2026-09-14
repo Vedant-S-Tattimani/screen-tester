@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTestContext } from "../test-runner/TestContext";
 import { TestControlBar } from "../test-runner/TestControlBar";
+import { TestInlineControls } from "../test-runner/TestInlineControls";
 
 interface LevelPatternProps {
   type: "black" | "white";
@@ -75,31 +76,31 @@ export function LevelPattern({ type, testId }: LevelPatternProps) {
         </div>
 
         {type === "white" && (
-          <div className="absolute bottom-[70px] sm:bottom-[80px] left-0 right-0 flex justify-center z-10 pointer-events-none">
-            <div className="bg-white/95 backdrop-blur-md px-4 py-3 rounded-2xl border border-black/10 shadow-xl flex flex-col items-center gap-2 max-w-[320px] w-full mx-4 pointer-events-auto">
-              <span className="text-[11px] font-bold text-black uppercase tracking-wider">Visual Observation</span>
-              <div className="flex flex-col gap-1.5 w-full">
+          <TestInlineControls>
+            <div className="w-full max-w-4xl mx-auto bg-card border border-border/70 rounded-2xl p-5 shadow-sm space-y-4 mb-6">
+              <span className="text-sm font-bold uppercase tracking-wider block text-center">Visual Observation</span>
+              <div className="flex flex-col sm:flex-row gap-2 w-full justify-center">
                 <button 
                   onClick={(e) => { e.stopPropagation(); setObservation("all"); }} 
-                  className={`text-xs px-3 py-1.5 rounded-lg border transition-colors cursor-pointer ${observation === "all" ? "bg-blue-600 text-white border-blue-600 font-semibold" : "bg-white text-black border-black/20 hover:bg-black/5"}`}
+                  className={`text-xs px-4 py-2 rounded-xl border transition-colors cursor-pointer ${observation === "all" ? "bg-blue-600 text-white border-blue-600 font-semibold shadow-md" : "bg-muted text-foreground border-border/50 hover:bg-muted/80 font-semibold"}`}
                 >
                   I can distinguish 252–254
                 </button>
                 <button 
                   onClick={(e) => { e.stopPropagation(); setObservation("some"); }} 
-                  className={`text-xs px-3 py-1.5 rounded-lg border transition-colors cursor-pointer ${observation === "some" ? "bg-amber-500 text-white border-amber-500 font-semibold" : "bg-white text-black border-black/20 hover:bg-black/5"}`}
+                  className={`text-xs px-4 py-2 rounded-xl border transition-colors cursor-pointer ${observation === "some" ? "bg-amber-500 text-white border-amber-500 font-semibold shadow-md" : "bg-muted text-foreground border-border/50 hover:bg-muted/80 font-semibold"}`}
                 >
                   Some shades merge
                 </button>
                 <button 
                   onClick={(e) => { e.stopPropagation(); setObservation("clipped"); }} 
-                  className={`text-xs px-3 py-1.5 rounded-lg border transition-colors cursor-pointer ${observation === "clipped" ? "bg-red-500 text-white border-red-500 font-semibold" : "bg-white text-black border-black/20 hover:bg-black/5"}`}
+                  className={`text-xs px-4 py-2 rounded-xl border transition-colors cursor-pointer ${observation === "clipped" ? "bg-red-500 text-white border-red-500 font-semibold shadow-md" : "bg-muted text-foreground border-border/50 hover:bg-muted/80 font-semibold"}`}
                 >
                   Everything above 250 looks white
                 </button>
               </div>
             </div>
-          </div>
+          </TestInlineControls>
         )}
       </div>
 

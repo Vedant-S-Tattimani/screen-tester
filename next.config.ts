@@ -75,6 +75,11 @@ const nextConfig: NextConfig = {
         destination: '/:locale/tests/resolution-checker',
         permanent: true,
       },
+      {
+        source: '/:locale/tests/reaction-time',
+        destination: '/:locale/tests/reaction-time-test',
+        permanent: true,
+      },
       // Inspection aliases
       {
         source: '/:locale/diagnostic',

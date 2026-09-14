@@ -850,6 +850,10 @@
         "<strong>INPUT LEVEL & WAVEFORM:</strong> Speak or make sound toward the microphone. Verify that the waveform oscillates and the live input meter registers between 30% and 80%.",
         "<strong>LOCAL LOOPBACK & OBSERVATION:</strong> Record a 5-second sample to listen to your captured audio locally (headphones recommended to avoid acoustic feedback), then record your observation."
       ]
+    },
+    "reactionTimeTest": {
+      "title": "Reaction Time Test",
+      "description": "Measure your human reaction time in milliseconds. Test your reflexes with this simple interactive tool."
     }
   },
   "Tests": {
@@ -1095,7 +1099,8 @@
     "microphoneTest": {
       "title": "Microphone Test",
       "description": "Verify microphone input functionality, live level metering, waveform activity, and digital clipping."
-    }
+    },
+    "reactionTimeTest": "Reaction Time Test"
   },
   "Guides": {
     "pageTitle": "Display Testing Guides – How to Inspect Monitors, TVs & Laptops",

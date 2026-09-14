@@ -821,6 +821,10 @@
         "<strong>PEGEL & WELLENFORM:</strong> Sprechen Sie in das Mikrofon. Prüfen Sie, ob die Wellenform ausschlägt und der Pegelmesser zwischen 30 % und 80 % anzeigt.",
         "<strong>LOKALER LOOPBACK & BEOBACHTUNG:</strong> Nehmen Sie eine 5-Sekunden-Stichprobe auf, um Ihr erfasstes Audio lokal anzuhören (Kopfhörer empfohlen, um akustische Rückkopplungen zu vermeiden), und tragen Sie anschließend Ihre Beobachtung ein."
       ]
+    },
+    "reactionTimeTest": {
+      "title": "Reaction Time Test",
+      "description": "Measure your human reaction time in milliseconds. Test your reflexes with this simple interactive tool."
     }
   },
   "Tests": {
@@ -1066,7 +1070,8 @@
     "motionBlurTest": {
       "title": "Bewegungsunschärfe-Test – Bewegungsschärfe & MPRT-Prüfung",
       "description": "Analysieren Sie Bewegungsschärfe, Persistenzunschärfe und MPRT-Tracking bei rasanten Szenen und bewegten Testobjekten."
-    }
+    },
+    "reactionTimeTest": "Reaction Time Test"
   },
   "Guides": {
     "pageTitle": "Monitor-Ratgeber & Anleitungen – Displays Richtig Prüfen",

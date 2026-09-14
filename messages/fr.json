@@ -821,6 +821,10 @@
         "<strong>NIVEAU & FORME D'ONDE :</strong> Parlez vers le microphone. Vérifiez que la forme d'onde réagit et que le vumètre oscille entre 30% et 80%.",
         "<strong>BOUCLAGE LOCAL & OBSERVATION :</strong> Enregistrez un échantillon de 5 secondes pour écouter votre audio capturé localement (casque recommandé pour éviter le larsen), puis enregistrez votre observation."
       ]
+    },
+    "reactionTimeTest": {
+      "title": "Reaction Time Test",
+      "description": "Measure your human reaction time in milliseconds. Test your reflexes with this simple interactive tool."
     }
   },
   "Tests": {
@@ -1066,7 +1070,8 @@
     "motionBlurTest": {
       "title": "Test de Flou de Mouvement – Clarté et Vérification MPRT",
       "description": "Analysez la résolution en mouvement, le flou de persistance et le suivi MPRT sur des scènes rapides."
-    }
+    },
+    "reactionTimeTest": "Reaction Time Test"
   },
   "Guides": {
     "pageTitle": "Guides de Test d'Écran – Comment Diagnostiquer vos Moniteurs et TV",

@@ -821,6 +821,10 @@
         "<strong>इनपुट स्तर और वेवफ़ॉर्म:</strong> माइक में बोलें। जांचें कि वेवफ़ॉर्म प्रतिक्रिया दे रहा है और स्तर 30% से 80% के बीच है।",
         "<strong>स्थानीय लूपबैक और अवलोकन:</strong> कैप्चर किए गए ऑडियो को स्थानीय रूप से सुनने के लिए 5-सेकंड का नमूना रिकॉर्ड करें (ध्वनिक फीडबैक से बचने के लिए हेडफ़ोन की अनुशंसा की जाती है), फिर अपना अवलोकन दर्ज करें।"
       ]
+    },
+    "reactionTimeTest": {
+      "title": "Reaction Time Test",
+      "description": "Measure your human reaction time in milliseconds. Test your reflexes with this simple interactive tool."
     }
   },
   "Tests": {
@@ -1066,7 +1070,8 @@
     "motionBlurTest": {
       "title": "मोशन ब्लर टेस्ट – डिस्प्ले मोशन क्लैरिटी और MPRT चेक",
       "description": "तेज गति वाले दृश्यों और गतिशील परीक्षण वस्तुओं पर मोशन रिज़ॉल्यूशन, पर्सिस्टेंस ब्लर और MPRT ट्रैकिंग का विश्लेषण करें।"
-    }
+    },
+    "reactionTimeTest": "Reaction Time Test"
   },
   "Guides": {
     "pageTitle": "डिस्प्ले टेस्टिंग गाइड्स – मॉनिटर, टीवी और लैपटॉप की जांच कैसे करें",

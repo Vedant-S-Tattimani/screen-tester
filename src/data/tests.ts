@@ -135,7 +135,7 @@ export const monitorTests: MonitorTest[] = [
     id: "vrr-test",
     category: "advanced",
     primaryIntent: "vrr adaptive sync visual inspection",
-    relatedTestIds: ["refresh-rate-test", "screen-tearing-test", "ghosting-test"]
+    relatedTestIds: ["refresh-rate-test", "screen-tearing-test"]
   },
   {
     id: "hdr-test",
@@ -188,28 +188,22 @@ export const monitorTests: MonitorTest[] = [
 
   // MOTION
   {
-    id: "ghosting-test",
-    category: "motion",
-    primaryIntent: "monitor ghosting test",
-    relatedTestIds: ["motion-blur-test", "refresh-rate-test", "screen-tearing-test"]
-  },
-  {
     id: "motion-blur-test",
     category: "motion",
     primaryIntent: "monitor motion blur test",
-    relatedTestIds: ["ghosting-test", "refresh-rate-test"]
+    relatedTestIds: ["refresh-rate-test"]
   },
   {
     id: "refresh-rate-test",
     category: "motion",
     primaryIntent: "refresh rate test",
-    relatedTestIds: ["ghosting-test", "motion-blur-test", "screen-tearing-test"]
+    relatedTestIds: ["motion-blur-test", "screen-tearing-test"]
   },
   {
     id: "screen-tearing-test",
     category: "motion",
     primaryIntent: "screen tearing test",
-    relatedTestIds: ["refresh-rate-test", "ghosting-test"]
+    relatedTestIds: ["refresh-rate-test"]
   },
   {
     id: "screen-flicker-test",
@@ -260,6 +254,12 @@ export const monitorTests: MonitorTest[] = [
     category: "capabilities",
     primaryIntent: "custom test pattern generator",
     relatedTestIds: ["sharpness-test", "uniformity-test", "compare-displays"]
+  },
+  {
+    id: "reaction-time-test",
+    category: "capabilities",
+    primaryIntent: "human reaction time test",
+    relatedTestIds: ["refresh-rate-test"]
   },
 
   // DEVICE & INPUT
@@ -342,7 +342,6 @@ export const TEST_KEY_MAP: Record<string, { ns: "lib" | "tests" | "tools", key: 
   "uniformity-test": { ns: "lib", key: "tests.uniformityTest" },
   "backlight-bleed-test": { ns: "lib", key: "tests.backlightBleed" },
   "blooming-test": { ns: "tests", key: "blooming" },
-  "ghosting-test": { ns: "tests", key: "ghostingTest" },
   "motion-blur-test": { ns: "tests", key: "motionBlurTest" }, 
   "refresh-rate-test": { ns: "lib", key: "tests.refreshRate" },
   "screen-tearing-test": { ns: "tests", key: "screenTearing" },
@@ -368,6 +367,7 @@ export const TEST_KEY_MAP: Record<string, { ns: "lib" | "tests" | "tools", key: 
   "vibration-test": { ns: "tests", key: "vibrationTest" },
   "webcam-test": { ns: "tests", key: "webcamTest" },
   "speaker-test": { ns: "tests", key: "speakerTest" },
-  "microphone-test": { ns: "tests", key: "microphoneTest" }
+  "microphone-test": { ns: "tests", key: "microphoneTest" },
+  "reaction-time-test": { ns: "tests", key: "reactionTimeTest" }
 };
 

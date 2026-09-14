@@ -821,6 +821,10 @@
         "<strong>入力レベルと波形:</strong> マイクに向かって声を出します。波形が振動し、レベルメーターが30%〜80%の間で振れることを確認します。",
         "<strong>ローカルループバックと観察:</strong> 5秒間のサンプルを録音して、キャプチャされた音声をローカルで再生確認します（ハウリング防止のためヘッドホンの使用を推奨）。その後、観察結果を記録してください。"
       ]
+    },
+    "reactionTimeTest": {
+      "title": "Reaction Time Test",
+      "description": "Measure your human reaction time in milliseconds. Test your reflexes with this simple interactive tool."
     }
   },
   "Tests": {
@@ -1066,7 +1070,8 @@
     "motionBlurTest": {
       "title": "モーションブラーテスト – 動画応答性とMPRTチェック",
       "description": "高速で動くシーンやテストオブジェクトにおける動画解像度、ホールドボケ、MPRTトラッキングを分析します。"
-    }
+    },
+    "reactionTimeTest": "Reaction Time Test"
   },
   "Guides": {
     "pageTitle": "画面テスト総合ガイド – モニター・テレビ・PCの診断と選び方",
