@@ -807,5 +807,158 @@ export const EN_EXPLAINERS: Record<string, ExplainerData> = {
       actionLabel: "Read Speaker Troubleshooting",
       actionHref: "/knowledge-base/troubleshooting#speaker-no-sound"
     }
+  },
+
+  "accelerometer-test": {
+    overview: "The Accelerometer Test measures linear acceleration and gravitational forces along three physical axes (X, Y, and Z) using the DeviceMotionEvent and Generic Sensor APIs. It visualizes tilt, dynamic movement, and Earth's 1g gravitational pull in real time.",
+    whatToLookFor: [
+      {
+        label: "Gravitational Force Distribution (1g)",
+        description: "When lying flat on a table, the Z-axis should read approximately ~9.8 m/s² (1g), while X and Y stay near 0 m/s²."
+      },
+      {
+        label: "Axis Response on Tilt",
+        description: "Tilting the device left/right changes X-axis values, while tilting forward/backward changes Y-axis values smoothly."
+      },
+      {
+        label: "Rapid Movement Spikes",
+        description: "Quickly shaking or moving the device produces transient acceleration spikes on the interactive real-time graph."
+      },
+      {
+        label: "Sensor Permission State",
+        description: "iOS Safari requires an explicit user permission prompt (DeviceMotionEvent.requestPermission) before transmitting motion data."
+      }
+    ],
+    canObserve: [
+      "Raw acceleration with and without gravity across X, Y, and Z axes in m/s²",
+      "Sensor reporting frequency (interval in milliseconds) supported by the browser",
+      "Visual orientation target reticle responsive to gravitational alignment"
+    ],
+    cannotMeasure: [
+      "Factory-calibrated sensor bias or laboratory-grade zero-point drift",
+      "Physical MEMS silicon accelerometer micro-defects or internal solder joint cracks",
+      "Absolute geographical position or GPS coordinates"
+    ],
+    interpretation: "A functioning accelerometer shows stable ~9.8 m/s² gravitational acceleration on the axis pointing downward. Significant jitter or frozen values when rotating suggest sensor calibration issues or OS permission restrictions.",
+    nextSteps: {
+      text: "Sensor values not changing or stuck at zero? Consult our sensor troubleshooting guide.",
+      actionLabel: "Read Sensor Troubleshooting",
+      actionHref: "/knowledge-base/troubleshooting"
+    }
+  },
+
+  "gyroscope-test": {
+    overview: "The Gyroscope Test measures angular velocity and rotational orientation along Alpha (Yaw/Z), Beta (Pitch/X), and Gamma (Roll/Y) axes using the DeviceOrientationEvent API. It provides a real-time artificial horizon and 3D orientation sphere to verify rotational tracking.",
+    whatToLookFor: [
+      {
+        label: "Artificial Horizon Alignment",
+        description: "The artificial horizon line should tilt smoothly when tilting the device left or right, and elevate when tilting up or down."
+      },
+      {
+        label: "Pitch (Beta: -180° to 180°)",
+        description: "Tilting your device forward and backward should produce smooth, proportional changes in pitch degrees."
+      },
+      {
+        label: "Roll (Gamma: -90° to 90°)",
+        description: "Tilting your device sideways from left to right updates roll angle accurately without lag or inversion."
+      },
+      {
+        label: "Compass Heading (Alpha: 0° to 360°)",
+        description: "Rotating the device flat on a table tracks compass azimuth when absolute device orientation is supported."
+      }
+    ],
+    canObserve: [
+      "Angular orientation angles (Alpha, Beta, Gamma) in degrees dispatched by the browser",
+      "Visual artificial horizon attitude indicator and 3D rotational preview",
+      "Identification of absolute compass orientation vs relative motion tracking"
+    ],
+    cannotMeasure: [
+      "MEMS gyroscope thermal drift rate (degrees per hour) without controlled continuous observation",
+      "Internal sensor sampling rate beyond browser event loop throttling (typically 60Hz)",
+      "Hardware magnetic interference compensation on devices lacking a magnetometer"
+    ],
+    interpretation: "The gyroscope tracks orientation by integrating angular velocity. If the artificial horizon drifts slowly while motionless, subtle gyro drift is normal, but jumping or frozen values indicate a stuck sensor or blocked OS permission.",
+    nextSteps: {
+      text: "Experiencing inverted tilt or no response? Review our mobile sensor permissions checklist.",
+      actionLabel: "Read Sensor Troubleshooting",
+      actionHref: "/knowledge-base/troubleshooting"
+    }
+  },
+
+  "vibration-test": {
+    overview: "The Vibration Test triggers your device's built-in haptic vibration motor via the HTML5 Vibration API (navigator.vibrate). It validates haptic response across single pulses, rhythmic patterns, and continuous vibration sequences.",
+    whatToLookFor: [
+      {
+        label: "Single Pulse Response",
+        description: "A 200ms or 500ms test pulse should produce an immediate, distinct mechanical buzzing sensation in the device body."
+      },
+      {
+        label: "Pattern Cadence & Pauses",
+        description: "During rhythmic patterns (e.g. SOS or heartbeat), verify that pauses between vibrations are clean without motor lag."
+      },
+      {
+        label: "Motor Strength Consistency",
+        description: "Ensure vibration feedback remains consistent and does not produce unexpected rattling, buzzing, or grinding sounds."
+      },
+      {
+        label: "Browser & OS Support",
+        description: "The Vibration API is supported on Android Chrome/Firefox, but intentionally restricted by Apple iOS Safari for security reasons."
+      }
+    ],
+    canObserve: [
+      "Direct execution of Vibration API commands (single pulses and array patterns) in milliseconds",
+      "Detection of navigator.vibrate browser capability and user-activation requirement",
+      "Interactive visual animation synchronized with haptic vibration sequences"
+    ],
+    cannotMeasure: [
+      "Physical haptic actuator frequency (Hz) or motor RPM",
+      "Mechanical acceleration force (G-force / milli-G) without an external accelerometer probe",
+      "Hardware ERM (eccentric rotating mass) vs LRA (linear resonant actuator) motor distinction"
+    ],
+    interpretation: "If vibration triggers on Android but remains silent, verify that system vibration is enabled in OS Sound & Haptics settings and that battery saver mode is disabled. On iOS, vibration cannot be triggered by web browsers.",
+    nextSteps: {
+      text: "Vibration motor silent despite tapping the test buttons? Check our vibration troubleshooting guide.",
+      actionLabel: "Read Vibration Troubleshooting",
+      actionHref: "/knowledge-base/troubleshooting"
+    }
+  },
+
+  "microphone-test": {
+    overview: "The Microphone Test captures live audio through your microphone using the WebRTC getUserMedia API and Web Audio API. It renders a real-time oscilloscope waveform, frequency spectrum, input volume meter, and loopback recording playback to inspect audio clarity.",
+    whatToLookFor: [
+      {
+        label: "Real-Time Input Level & Metering",
+        description: "Speaking into the microphone should raise the green VU meter smoothly. Normal speech should hover between 40% and 75%."
+      },
+      {
+        label: "Clipping & Distortion Detection",
+        description: "Loud sounds should not push the volume meter into the red distortion zone, which causes harsh digital clipping."
+      },
+      {
+        label: "Waveform & Spectrum Oscillation",
+        description: "Watch the oscilloscope waveform and frequency bar visualizer respond dynamically to your voice pitch and volume."
+      },
+      {
+        label: "Loopback Playback Clarity",
+        description: "Record a short 5-second test clip and play it back to listen for background hiss, static, echo, or robotic voice artifacts."
+      }
+    ],
+    canObserve: [
+      "Real-time audio waveform and frequency spectrum via Web Audio AnalyserNode",
+      "RMS volume level and peak decibel headroom calculated entirely locally in your browser",
+      "Local audio recording and loopback playback without uploading data to any external server"
+    ],
+    cannotMeasure: [
+      "Calibrated acoustic sound pressure level (dB SPL) without a laboratory reference microphone",
+      "Microphone capsule physical polar pattern (cardioid, omnidirectional, figure-8)",
+      "Hardware analog preamp noise floor (EIN) independent of digital audio processing"
+    ],
+    interpretation: "A healthy microphone produces crisp loopback playback with low background noise. Low volume indicates incorrect system input gain, while heavy static usually indicates a loose 3.5mm jack or driver sample rate mismatch.",
+    nextSteps: {
+      text: "Microphone not picking up sound or audio distorted? Review our microphone troubleshooting guide.",
+      actionLabel: "Read Microphone Troubleshooting",
+      actionHref: "/knowledge-base/troubleshooting#mic-not-working"
+    }
   }
 };
+

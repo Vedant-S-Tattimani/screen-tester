@@ -771,15 +771,14 @@
       "description_p1": "Inspect display scaling uniformity and geometry to detect non-uniform stretching, squashing, or incorrect aspect ratio modes. Concentric circles and calibrated grid overlays expose anamorphic distortion immediately.",
       "instructions": [
         "<strong>TRUE GEOMETRY:</strong> Inspect the concentric center circles. They must appear perfectly circular. If they look oval or egg-shaped, your display is stretching the image.",
-        "<strong>SQUARE GRID:</strong> Verify that the background grid lines form perfect equal squares rather than elongated rectangles.",
         "<strong>ASPECT FRAMES:</strong> Switch between 16:9, 16:10, 4:3, and 21:9 reference outlines to verify how your display handles non-native content aspect ratios."
       ]
     },
     "multi-touch-test": {
-      "metaTitle": "Multi-Touch Test",
-      "metaDescription": "Test simultaneous touch screen contacts, multi-finger gesture tracking, and digitizer edge registration. Free online browser multi-touch tester.",
-      "title": "Standalone Multi-Touch Test",
-      "description_p1": "This test allows you to verify simultaneous touch contacts and pointer tracking on touchscreens, tablets, and multi-touch digitizers. Browser and operating system gesture engines observe and report active contacts, which may differ from physical digitizer hardware limits.",
+      "metaTitle": "Touch Test - Test Your Touchscreen Online | Screen Tester",
+      "metaDescription": "Use this free touch test to check touchscreen multi-finger contacts, digitizer tracking, and touch point responsiveness online in your browser.",
+      "title": "Touch Test",
+      "description_p1": "Use this free touch test to check whether your touchscreen detects multiple fingers and responds correctly to touch input. Inspect active contact points, pointer coordinates, and digitizer tracking in real time.",
       "instructions": [
         "<strong>FREE TOUCH MODE:</strong> Place multiple fingers on the surface simultaneously. Observe the active contact counter, individual pointer IDs, coordinates, and peak simultaneous touch count.",
         "<strong>MULTI-TOUCH GRID:</strong> Touch different grid cells to verify that simultaneous contacts across separate screen quadrants register accurately without phantom ghost touches.",
@@ -787,10 +786,10 @@
       ]
     },
     "accelerometer-test": {
-      "metaTitle": "Accelerometer Test",
-      "metaDescription": "Test your device accelerometer and motion sensors online. Real-time 3-axis linear acceleration and gravity vector telemetry in your browser.",
+      "metaTitle": "Accelerometer Test - Test Your Device Sensor Online | Screen Tester",
+      "metaDescription": "Test your phone or device accelerometer online. Inspect real-time 3-axis motion, linear acceleration, and gravity sensor telemetry in your browser.",
       "title": "Accelerometer Test",
-      "description_p1": "This test displays real-time motion and acceleration telemetry reported by your browser via DeviceMotionEvent. It observes linear acceleration and gravitational forces without claiming laboratory-grade physical sensor calibration.",
+      "description_p1": "Use this free accelerometer test to check your device motion sensors and acceleration vectors in real time. Inspect 3-axis movement, gravitational pull, and sensor responsiveness directly in your browser.",
       "instructions": [
         "<strong>START MOTION SENSOR:</strong> Click 'Start Sensor' to begin reading motion events. On iOS devices, tap 'Allow' when the browser requests permission to access motion sensors.",
         "<strong>2D G-FORCE RETICLE:</strong> Tilt your phone or tablet in any direction. The visual reticle puck will displace according to gravitational pull along the X and Y axes.",
@@ -798,10 +797,10 @@
       ]
     },
     "gyroscope-test": {
-      "metaTitle": "Gyroscope Test",
-      "metaDescription": "Test device orientation, angular rotation, roll, pitch, and yaw angles online. Live artificial horizon attitude indicator and compass heading check.",
+      "metaTitle": "Gyroscope Test - Test Your Gyroscope Online | Screen Tester",
+      "metaDescription": "Test your device gyroscope online. Check rotation angles, pitch, roll, and yaw orientation telemetry in real time with an interactive horizon gauge.",
       "title": "Gyroscope Test",
-      "description_p1": "This test exposes browser-reported angular orientation and rotational movement via DeviceOrientationEvent. Values reflect operating system calculations and do not verify physical MEMS gyroscope calibration or mechanical drift.",
+      "description_p1": "Use this free gyroscope test to check your device rotation and orientation sensors online. Inspect angular movement, tilt angles (pitch, roll, yaw), and rotational tracking in real time.",
       "instructions": [
         "<strong>ENABLE GYROSCOPE:</strong> Click 'Start Sensor' to begin listening to orientation events. Confirm any browser permission prompts on mobile devices.",
         "<strong>ATTITUDE INDICATOR:</strong> Rotate and pitch your device. The artificial horizon gauge will reflect roll (gamma) and pitch (beta) relative to the horizon plane.",
@@ -809,10 +808,10 @@
       ]
     },
     "vibration-test": {
-      "metaTitle": "Vibration Test",
-      "metaDescription": "Test your mobile phone vibration motor and haptic feedback online. Pulse presets, custom vibration sequences, and safety-limited haptic patterns.",
+      "metaTitle": "Vibration Test - Test Your Phone Vibration Online | Screen Tester",
+      "metaDescription": "Test your mobile phone vibration motor and haptic feedback online. Test short, medium, and long vibration pulses or create custom vibration patterns.",
       "title": "Vibration Test",
-      "description_p1": "Test tactile vibration motor feedback and haptic actuator response using the browser Vibration API. The browser engine can only verify that a command was accepted; physical tactile vibration must be observed and confirmed by the user.",
+      "description_p1": "Use this free vibration test to check your phone or mobile device vibration motor and haptic feedback online. Test pulse presets and custom vibration patterns to verify tactile response.",
       "instructions": [
         "<strong>PRESET PULSES:</strong> Tap Short (100ms), Medium (300ms), or Long (600ms) to test standard tactile feedback pulses on your mobile device.",
         "<strong>CUSTOM SEQUENCE:</strong> Enter comma-separated pulse and pause durations in milliseconds (e.g. 200, 100, 200) to test custom rhythmic haptic sequences within safe duration limits.",
@@ -820,10 +819,10 @@
       ]
     },
     "webcam-test": {
-      "metaTitle": "Webcam Test",
-      "metaDescription": "Test your webcam and camera stream online. Real-time video preview, browser-reported resolution and frame rate, and 100% private local snapshots.",
+      "metaTitle": "Webcam Test - Test Your Camera Online | Screen Tester",
+      "metaDescription": "Test your webcam and camera online for free. Check live camera video preview, resolution, frame rate, and take private local test snapshots.",
       "title": "Webcam Test",
-      "description_p1": "This utility provides a live local camera preview to verify webcam functionality, resolution, and frame pacing. Video frames remain strictly inside your browser memory; zero video data is recorded, processed by AI, or transmitted over the network.",
+      "description_p1": "Use this free webcam test to check your camera stream and video input online. Inspect real-time camera preview, stream resolution, frame rate, and verify camera permissions securely.",
       "instructions": [
         "<strong>START CAMERA:</strong> Click 'Start Camera' to initiate the video stream. Confirm the browser permission dialog to allow video access (microphone access is never requested).",
         "<strong>CAMERA SELECTION & MIRRORING:</strong> If multiple cameras are attached, select between front and rear cameras. Toggle the mirror button for natural mirror-image viewing.",
@@ -831,10 +830,10 @@
       ]
     },
     "speaker-test": {
-      "metaTitle": "Speaker & Stereo Channel Test",
-      "metaDescription": "Test your speakers and headphones online. Listen for left and right channel separation, audio balance, test tone clarity (100Hz–2500Hz), and frequency sweeps.",
-      "title": "Speaker & Stereo Channel Test",
-      "description_p1": "Verify audio output functionality, stereo channel separation, and audio clarity using synthesized test tones. Digital audio waveforms help users listen for channel balance, crackling, and dropouts, but do not measure physical acoustic frequency response or room sound pressure levels.",
+      "metaTitle": "Speaker Test - Test Your Speakers Online | Screen Tester",
+      "metaDescription": "Test your speakers and headphones online for free. Check left and right stereo sound channels, audio balance, frequency response, and speaker clarity.",
+      "title": "Speaker Test",
+      "description_p1": "Use this free speaker test to check your speakers or headphones online. Verify left and right stereo audio channel separation, sound balance, and test tone clarity across frequency ranges.",
       "instructions": [
         "<strong>SAFE VOLUME WARNING:</strong> Start at a low volume level and increase gradually. Avoid sustained high-volume tones through headphones or near-field monitors.",
         "<strong>STEREO CHANNEL SEPARATION:</strong> Switch between Left Only (pan -1.0), Stereo Center, and Right Only (pan +1.0) to confirm channels are wired correctly and not reversed.",
@@ -842,10 +841,10 @@
       ]
     },
     "microphone-test": {
-      "metaTitle": "Microphone Test",
-      "metaDescription": "Test your microphone and audio input online. Live audio level meter, waveform oscilloscope, digital clipping indicator, and local in-browser loopback check.",
+      "metaTitle": "Microphone Test - Test Your Mic Online | Screen Tester",
+      "metaDescription": "Test your microphone and audio input online for free. Check live mic volume levels, real-time audio waveform, digital clipping, and record a playback sample.",
       "title": "Microphone Test",
-      "description_p1": "Verify microphone connectivity, browser audio capture, and relative input amplitude. Screen Tester does not upload captured microphone audio or recordings to its servers. Audio processing and recordings are handled locally in the browser.",
+      "description_p1": "Use this free microphone test to check your mic and audio input online. Verify live microphone volume levels, monitor waveform activity, detect clipping, and test local sound playback securely.",
       "instructions": [
         "<strong>START MICROPHONE:</strong> Click 'Start Microphone' and allow browser audio access when prompted (video is never requested).",
         "<strong>INPUT LEVEL & WAVEFORM:</strong> Speak or make sound toward the microphone. Verify that the waveform oscillates and the live input meter registers between 30% and 80%.",
@@ -854,6 +853,34 @@
     }
   },
   "Tests": {
+    "multiTouchTest": {
+      "title": "Touch Test",
+      "description": "Test multi-finger touch points, touchscreen digitizer tracking, and contact responsiveness online."
+    },
+    "accelerometerTest": {
+      "title": "Accelerometer Test",
+      "description": "Test device 3-axis motion sensors, linear acceleration, and gravity vectors online in real time."
+    },
+    "gyroscopeTest": {
+      "title": "Gyroscope Test",
+      "description": "Test device orientation, angular rotation angles (pitch, roll, yaw), and horizon tilt tracking online."
+    },
+    "vibrationTest": {
+      "title": "Vibration Test",
+      "description": "Test mobile phone vibration motor response and custom haptic feedback patterns online."
+    },
+    "webcamTest": {
+      "title": "Webcam Test",
+      "description": "Test webcam and camera video stream, preview resolution, framerate, and local test snapshots online."
+    },
+    "speakerTest": {
+      "title": "Speaker Test",
+      "description": "Test stereo speakers and headphones for left/right channel separation, sound balance, and audio clarity."
+    },
+    "microphoneTest": {
+      "title": "Microphone Test",
+      "description": "Test microphone audio input, live level volume meter, waveform activity, and loopback playback online."
+    },
     "viewingAngle": {
       "title": "Viewing Angle Test – Color & Contrast Off-Axis Shift Check",
       "description": "Evaluate IPS, VA, OLED, and TN panel color fidelity and contrast stability when viewed from wide angles.",

@@ -746,10 +746,10 @@
       ]
     },
     "multi-touch-test": {
-      "metaTitle": "Prueba Multi-Touch – Verifique contactos táctiles simultáneos online",
-      "metaDescription": "Compruebe contactos simultáneos en pantalla táctil, gestos multitáctiles y registro en bordes. Probador multi-touch en el navegador.",
-      "title": "Prueba Multi-Touch",
-      "description_p1": "Esta prueba le permite verificar contactos táctiles simultáneos y seguimiento de puntero en pantallas táctiles y tabletas. El navegador y el sistema operativo reportan los contactos observados.",
+      "metaTitle": "Test de Pantalla Táctil - Prueba Táctil Online | Screen Tester",
+      "metaDescription": "Compruebe contactos simultáneos en pantalla táctil, gestos multitáctiles y respuesta del digitalizador online en su navegador. Test táctil gratuito.",
+      "title": "Test de pantalla táctil",
+      "description_p1": "Utilice este test gratuito de pantalla táctil para comprobar si su pantalla detecta múltiples dedos y responde correctamente al tacto. Inspeccione puntos de contacto activos y seguimiento del puntero en tiempo real.",
       "instructions": [
         "<strong>MODO LIBRE:</strong> Toque la superficie con varios dedos a la vez. Observe el contador de contactos, IDs individuales y recuento máximo.",
         "<strong>CUADRÍCULA MULTITÁCTIL:</strong> Toque cuadrantes para comprobar que contactos simultáneos se registran con precisión y sin pulsaciones fantasma.",
@@ -757,10 +757,10 @@
       ]
     },
     "accelerometer-test": {
-      "metaTitle": "Prueba de Acelerómetro – Sensor de movimiento y fuerzas G online",
-      "metaDescription": "Pruebe el acelerómetro de su dispositivo online. Telemetría en tiempo real de aceleración lineal de 3 ejes y gravedad en su navegador.",
-      "title": "Prueba de Acelerómetro",
-      "description_p1": "Muestra telemetría de movimiento en tiempo real reportada por el navegador mediante DeviceMotionEvent. Observa aceleración lineal y gravedad sin afirmar calibración de laboratorio.",
+      "metaTitle": "Test de Acelerómetro - Prueba de Sensores de Movimiento Online | Screen Tester",
+      "metaDescription": "Pruebe el acelerómetro y sensor de movimiento de su teléfono online. Telemetría en tiempo real de aceleración lineal de 3 ejes y gravedad en su navegador.",
+      "title": "Test de acelerómetro",
+      "description_p1": "Utilice este test de acelerómetro gratuito para comprobar los sensores de movimiento de su dispositivo en tiempo real. Inspeccione la aceleración en 3 ejes (X, Y, Z), la gravedad y la respuesta del sensor en el navegador.",
       "instructions": [
         "<strong>INICIAR SENSOR:</strong> Pulse 'Iniciar sensor'. En iOS, pulse 'Permitir' en la solicitud del navegador para acceder a sensores.",
         "<strong>RETÍCULA 2D:</strong> Incline su dispositivo. La burbuja indicadora se desplazará según la gravedad en los ejes X e Y.",
@@ -768,10 +768,10 @@
       ]
     },
     "gyroscope-test": {
-      "metaTitle": "Prueba de Giroscopio – Orientación y ángulos de rotación online",
-      "metaDescription": "Pruebe orientación, rotación angular, alabeo, cabeceo y guiñada online. Horizonte artificial y rumbo de brújula en directo.",
-      "title": "Prueba de Giroscopio",
-      "description_p1": "Expone orientación angular y rotación reportadas por el navegador a través de DeviceOrientationEvent. Refleja cálculos del sistema operativo.",
+      "metaTitle": "Test de Giroscopio - Prueba de Orientación y Rotación Online | Screen Tester",
+      "metaDescription": "Pruebe el giroscopio de su dispositivo online. Compruebe ángulos de rotación, alabeo, cabeceo y guiñada en tiempo real con un horizonte artificial interactivo.",
+      "title": "Test de giroscopio",
+      "description_p1": "Utilice este test de giroscopio gratuito para verificar la orientación y rotación angular de su dispositivo en línea. Inspeccione los ángulos de inclinación (pitch, roll, yaw) y el seguimiento en tiempo real.",
       "instructions": [
         "<strong>ACTIVAR GIROSCOPIO:</strong> Pulse 'Iniciar sensor'. Confirme los permisos requeridos en dispositivos móviles.",
         "<strong>INDICADOR DE ACTITUD:</strong> Gire e incline el dispositivo. El horizonte artificial reflejará el alabeo (gamma) y cabeceo (beta).",
@@ -779,10 +779,10 @@
       ]
     },
     "vibration-test": {
-      "metaTitle": "Prueba de Vibración – Motor háptico de teléfono móvil online",
-      "metaDescription": "Pruebe el motor de vibración de su smartphone online. Pulsos estándar y secuencias personalizadas con límites de seguridad.",
-      "title": "Prueba de Vibración",
-      "description_p1": "Pruebe la respuesta del motor de vibración mediante la API Vibration del navegador. El navegador solo confirma el comando; la sensación física debe ser evaluada por el usuario.",
+      "metaTitle": "Test de Vibración - Prueba de Vibración Móvil Online | Screen Tester",
+      "metaDescription": "Pruebe el motor de vibración y la respuesta háptica de su teléfono online. Compruebe pulsos estándar y patrones de vibración personalizados con límites seguros.",
+      "title": "Test de vibración",
+      "description_p1": "Utilice este test de vibración gratuito para comprobar el motor de vibración y la respuesta háptica de su teléfono móvil. Pruebe pulsos predefinidos y patrones personalizados para evaluar la respuesta táctil.",
       "instructions": [
         "<strong>PULSOS ESTÁNDAR:</strong> Pulse Corto (100ms), Medio (300ms) o Largo (600ms) para probar impulsos táctiles estándar.",
         "<strong>SECUENCIA PERSONALIZADA:</strong> Introduzca duraciones en milisegundos separadas por comas (ej. 200, 100, 200) dentro de límites seguros.",
@@ -790,10 +790,10 @@
       ]
     },
     "webcam-test": {
-      "metaTitle": "Prueba de Cámara Web – Vista previa, resolución y foto local privada",
-      "metaDescription": "Pruebe su webcam online. Vista previa de vídeo en directo, resolución reportada, fotogramas por segundo y capturas 100% privadas.",
-      "title": "Prueba de Cámara Web",
-      "description_p1": "Proporciona vista previa local de cámara para comprobar funcionamiento, resolución y fluidez. Los fotogramas permanecen en la memoria local; no se transmiten datos a ningún servidor.",
+      "metaTitle": "Test de Webcam - Prueba de Cámara Online | Screen Tester",
+      "metaDescription": "Pruebe su cámara web y cámara online gratis. Verifique la vista previa de vídeo en directo, resolución, fotogramas por segundo y realice capturas locales privadas.",
+      "title": "Test de webcam",
+      "description_p1": "Utilice este test de webcam gratuito para comprobar el funcionamiento de su cámara en línea. Inspeccione la vista previa en directo, resolución, tasa de fotogramas y permisos de forma 100% segura y privada.",
       "instructions": [
         "<strong>INICIAR CÁMARA:</strong> Pulse 'Iniciar cámara' y acepte el permiso (nunca se solicita acceso al micrófono).",
         "<strong>SELECCIÓN Y ESPEJO:</strong> Si tiene varias cámaras, elija entre frontal y trasera. Utilice el botón de espejo para una vista natural.",
@@ -801,10 +801,10 @@
       ]
     },
     "speaker-test": {
-      "metaTitle": "Prueba de Altavoces y Canales Estéreo",
-      "metaDescription": "Pruebe altavoces y auriculares online. Evalúe la separación de canales izquierdo y derecho, balance de sonido, tonos de prueba (100Hz-2500Hz) y barridos.",
-      "title": "Prueba de Altavoces y Canales Estéreo",
-      "description_p1": "Verifique la salida de audio, la separación de canales estéreo y la claridad con tonos de prueba. Ayuda a escuchar el balance de canales o distorsiones, pero no mide respuestas de frecuencia acústica ni niveles de presión sonora.",
+      "metaTitle": "Test de Altavoces - Prueba de Sonido y Audio Estéreo Online | Screen Tester",
+      "metaDescription": "Pruebe sus altavoces y auriculares online gratis. Compruebe la separación de canales izquierdo y derecho, balance de sonido y claridad de tonos de prueba.",
+      "title": "Test de altavoces",
+      "description_p1": "Utilice este test de altavoces gratuito para comprobar la salida de sonido de sus altavoces o auriculares. Verifique la separación estéreo izquierda/derecha, el balance de audio y la claridad en distintas frecuencias.",
       "instructions": [
         "<strong>AVISO DE VOLUMEN:</strong> Comience con volumen bajo y auméntelo gradualmente. Evite tonos altos prolongados en auriculares.",
         "<strong>SEPARACIÓN ESTÉREO:</strong> Alterne entre Solo Izquierdo (pan -1.0), Centro Estéreo y Solo Derecho (pan +1.0) para verificar los cables.",
@@ -812,10 +812,10 @@
       ]
     },
     "microphone-test": {
-      "metaTitle": "Prueba de Micrófono – Verificación Online, Medidor de Nivel y Onda de Audio",
-      "metaDescription": "Pruebe su micrófono y entrada de audio en línea. Medidor de nivel de audio en vivo, osciloscopio de forma de onda, indicador de recorte digital y prueba de bucle local en el navegador.",
-      "title": "Prueba de Micrófono",
-      "description_p1": "Verifique la conectividad del micrófono, la captura de audio en el navegador y la amplitud relativa de entrada. Screen Tester no sube el audio ni las grabaciones del micrófono a sus servidores. El procesamiento de audio y las grabaciones se manejan localmente en el navegador.",
+      "metaTitle": "Test de Micrófono - Prueba de Micro y Audio Online | Screen Tester",
+      "metaDescription": "Pruebe su micrófono y entrada de audio online gratis. Compruebe el medidor de nivel de voz en vivo, la forma de onda de audio, recorte digital y grabación de prueba.",
+      "title": "Test de micrófono",
+      "description_p1": "Utilice este test de micrófono gratuito para comprobar su micrófono y entrada de audio en línea. Inspeccione el nivel de volumen en vivo, observe la oscilación de onda y pruebe la reproducción de forma segura.",
       "instructions": [
         "<strong>INICIAR MICRÓFONO:</strong> Haz clic en 'Iniciar micrófono' y permite el acceso al audio cuando el navegador lo solicite.",
         "<strong>NIVEL Y FORMA DE ONDA:</strong> Habla hacia el micrófono. Comprueba que la onda oscile y que el medidor marque entre 30% y 80%.",
@@ -824,6 +824,34 @@
     }
   },
   "Tests": {
+    "multiTouchTest": {
+      "title": "Test de pantalla táctil",
+      "description": "Pruebe puntos táctiles simultáneos, seguimiento de dedos y respuesta de la pantalla táctil online."
+    },
+    "accelerometerTest": {
+      "title": "Test de acelerómetro",
+      "description": "Pruebe sensores de movimiento de 3 ejes, aceleración lineal y vectores de gravedad online."
+    },
+    "gyroscopeTest": {
+      "title": "Test de giroscopio",
+      "description": "Compruebe orientación angular, ángulos de rotación (alabeo, cabeceo, guiñada) y seguimiento online."
+    },
+    "vibrationTest": {
+      "title": "Test de vibración",
+      "description": "Compruebe el motor de vibración del teléfono y patrones hápticos táctiles online."
+    },
+    "webcamTest": {
+      "title": "Test de webcam",
+      "description": "Pruebe la transmisión de vídeo de la cámara, resolución, tasa de fotogramas y capturas locales."
+    },
+    "speakerTest": {
+      "title": "Test de altavoces",
+      "description": "Pruebe altavoces estéreo y auriculares para separación de canales izquierdo/derecho y claridad sonora."
+    },
+    "microphoneTest": {
+      "title": "Test de micrófono",
+      "description": "Pruebe la entrada de audio del micrófono, medidor de volumen en vivo y osciloscopio de onda online."
+    },
     "viewingAngle": {
       "title": "Test de Ángulos de Visión – Fidelidad de Color y Contraste Fuera de Eje",
       "description": "Comprueba la estabilidad de color y contraste en paneles IPS, VA, OLED y TN al mirar la pantalla desde los laterales.",

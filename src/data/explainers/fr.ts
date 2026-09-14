@@ -807,5 +807,158 @@ export const FR_EXPLAINERS: Record<string, ExplainerData> = {
       actionLabel: "Dépannage Haut-Parleurs",
       actionHref: "/knowledge-base/troubleshooting#speaker-no-sound"
     }
+  },
+
+  "accelerometer-test": {
+    overview: "Le Test d'Accéléromètre mesure l'accélération linéaire et les forces gravitationnelles selon les trois axes physiques (X, Y et Z) via l'API DeviceMotionEvent. Il visualise en temps réel l'inclinaison, les mouvements dynamiques et la gravité terrestre de 1g.",
+    whatToLookFor: [
+      {
+        label: "Distribution de la Gravité (1g)",
+        description: "À plat sur une table, l'axe Z doit indiquer environ ~9,8 m/s² (1g), tandis que les axes X et Y restent proches de 0 m/s²."
+      },
+      {
+        label: "Réactivité lors de l'Inclinaison",
+        description: "Incliner l'appareil vers la gauche ou la droite modifie X, tandis qu'une inclinaison avant/arrière fait varier Y de façon fluide."
+      },
+      {
+        label: "Pics d'Accélération Rapide",
+        description: "Secouer ou déplacer vivement l'appareil produit des pics d'accélération visibles instantanément sur le graphique interactif."
+      },
+      {
+        label: "Autorisation du Capteur",
+        description: "Sur iOS Safari, une invite de confirmation de l'utilisateur est obligatoire avant d'accéder aux données de mouvement."
+      }
+    ],
+    canObserve: [
+      "Accélération brute avec et sans gravité sur les axes X, Y et Z en m/s²",
+      "Fréquence et intervalle de rapport du capteur supportés par le navigateur",
+      "Réticule visuel interactif réagissant à l'alignement gravitationnel"
+    ],
+    cannotMeasure: [
+      "Biais d'étalonnage d'usine ou dérive de point zéro de précision laboratoire",
+      "Micro-défauts internes du silicium MEMS",
+      "Coordonnées géographiques absolues ou position GPS"
+    ],
+    interpretation: "Un accéléromètre fonctionnel affiche une gravité stable de ~9,8 m/s² sur l'axe dirigé vers le bas. Des valeurs figées ou incohérentes signalent des blocages de permissions ou un souci de capteur.",
+    nextSteps: {
+      text: "Les valeurs ne bougent pas ou restent à zéro ? Consultez notre guide de dépannage des capteurs.",
+      actionLabel: "Guide Dépannage Capteurs",
+      actionHref: "/knowledge-base/troubleshooting"
+    }
+  },
+
+  "gyroscope-test": {
+    overview: "Le Test de Gyroscope mesure la vitesse angulaire et l'orientation de rotation selon les axes Alpha (Lacet/Z), Bêta (Tangage/X) et Gamma (Roulis/Y) via l'API DeviceOrientationEvent. Il intègre un horizon artificiel et une sphère 3D interactive.",
+    whatToLookFor: [
+      {
+        label: "Alignement de l'Horizon Artificiel",
+        description: "La ligne d'horizon artificiel doit s'incliner en douceur en penchant l'appareil à gauche ou à droite, et monter/descendre au tangage."
+      },
+      {
+        label: "Tangage (Bêta : -180° à 180°)",
+        description: "Incliner l'appareil vers l'avant ou l'arrière fait évoluer l'angle de tangage de manière fluide et proportionnelle."
+      },
+      {
+        label: "Roulis (Gamma : -90° à 90°)",
+        description: "Incliner l'appareil latéralement met à jour le roulis sans saccade ni inversion."
+      },
+      {
+        label: "Cap de Boussole (Alpha : 0° à 360°)",
+        description: "Pivoter l'appareil à plat suit l'azimut magnétique lorsque le capteur matériel est présent."
+      }
+    ],
+    canObserve: [
+      "Angles d'orientation angulaire (Alpha, Bêta, Gamma en degrés) transmis par le navigateur",
+      "Indicateur d'horizon artificiel et prévisualisation 3D dynamique",
+      "Distinction entre suivi relatif et orientation magnétique absolue"
+    ],
+    cannotMeasure: [
+      "Taux de dérive thermique du gyroscope MEMS sur longue durée sans banc d'essai",
+      "Fréquence d'échantillonnage interne au-delà de la boucle d'événements du navigateur",
+      "Compensation des perturbations magnétiques en l'absence de magnétomètre"
+    ],
+    interpretation: "Le gyroscope calcule l'orientation par intégration de la vitesse angulaire. Une légère dérive au repos est normale, mais des valeurs figées indiquent un refus d'autorisation système.",
+    nextSteps: {
+      text: "L'orientation ne répond pas ou réagit à l'envers ? Vérifiez les autorisations mobiles.",
+      actionLabel: "Dépannage Capteurs Mobiles",
+      actionHref: "/knowledge-base/troubleshooting"
+    }
+  },
+
+  "vibration-test": {
+    overview: "Le Test de Vibration active le vibreur haptique intégré de votre smartphone via l'API HTML5 Vibration (navigator.vibrate). Il permet d'éprouver les impulsions courtes, les rythmes séquentiels et les vibrations continues.",
+    whatToLookFor: [
+      {
+        label: "Réactivité d'une Impulsion Unique",
+        description: "Une impulsion test de 200ms ou 500ms doit provoquer un bourdonnement mécanique instantané et bien net."
+      },
+      {
+        label: "Cadence et Pauses des Rythmes",
+        description: "Dans des motifs tels que SOS ou battement de cœur, vérifiez que les pauses sont nettes sans inertie excessive du moteur."
+      },
+      {
+        label: "Régularité et Absence de Grincement",
+        description: "Assurez-vous que la vibration est stable et ne produit aucun cliquetis anormal dans le châssis."
+      },
+      {
+        label: "Prise en Charge Navigateur et Système",
+        description: "L'API Vibration fonctionne sur Android (Chrome/Firefox), mais Apple l'interdit délibérément sur iOS Safari pour des raisons de sécurité."
+      }
+    ],
+    canObserve: [
+      "Exécution directe des commandes de vibration (impulsions et séries) en millisecondes",
+      "Détection de la prise en charge de navigator.vibrate et validation de l'action utilisateur",
+      "Animation visuelle synchronisée avec les séquences de vibration"
+    ],
+    cannotMeasure: [
+      "Fréquence de rotation du moteur haptique en tours/minute ou Hertz",
+      "Force d'accélération mécanique réelle (G) sans capteur externe calibré",
+      "Identification physique du type d'actionneur (moteur ERM vs haptique LRA)"
+    ],
+    interpretation: "Si votre smartphone Android ne vibre pas, vérifiez les réglages Son & Vibreur du système et désactivez l'économiseur de batterie. Sur iPhone (iOS), les navigateurs web ne peuvent pas déclencher le vibreur.",
+    nextSteps: {
+      text: "Le vibreur reste silencieux malgré les boutons de test ? Consultez notre guide vibreur.",
+      actionLabel: "Dépannage Vibreur",
+      actionHref: "/knowledge-base/troubleshooting"
+    }
+  },
+
+  "microphone-test": {
+    overview: "Le Test de Microphone capte le son en direct grâce aux API WebRTC getUserMedia et Web Audio. Il fournit un oscilloscope en direct, un analyseur de spectre, un vumètre de volume et une lecture en boucle pour juger de la pureté du son.",
+    whatToLookFor: [
+      {
+        label: "Niveau d'Entrée et Vumètre en Temps Réel",
+        description: "Parler dans le micro doit faire réagir la jauge verte. Une voix normale doit se situer idéalement entre 40 % et 75 %."
+      },
+      {
+        label: "Prévention de la Saturation (Clipping)",
+        description: "Des sons forts ne doivent pas atteindre la zone rouge sous peine d'écrêtage numérique et de grésillement."
+      },
+      {
+        label: "Forme d'Onde et Spectre Fréquentiel",
+        description: "Vérifiez que l'oscilloscope et les barres de fréquence s'animent de façon réactive avec la hauteur de votre voix."
+      },
+      {
+        label: "Clarté de la Réécoute Locale",
+        description: "Enregistrez un court extrait de 5 secondes puis réécoutez-le pour déceler souffle, sifflement, écho ou voix métallique."
+      }
+    ],
+    canObserve: [
+      "Affichage en temps réel de la forme d'onde et du spectre par Web Audio AnalyserNode",
+      "Calcul local du niveau sonore RMS et de la réserve de dynamique sans aucun serveur",
+      "Enregistrement immédiat et réécoute en boucle 100 % confidentielle dans votre onglet"
+    ],
+    cannotMeasure: [
+      "Pression acoustique réelle étalonnée (dB SPL) sans sonomètre professionnel",
+      "Directivité physique de la capsule (cardioïde, omnidirectionnelle, bidirectionnelle)",
+      "Bruit de fond analogique brut du préampli avant numérisation"
+    ],
+    interpretation: "Un microphone opérationnel offre une restitution propre avec un faible bruit résiduel. Un volume trop faible provient généralement du gain d'entrée système, tandis qu'un bruit continu signale un câble défectueux.",
+    nextSteps: {
+      text: "Le micro ne capte aucun son ou sature anormalement ? Consultez notre guide de dépannage micro.",
+      actionLabel: "Dépannage Microphone",
+      actionHref: "/knowledge-base/troubleshooting#mic-not-working"
+    }
   }
 };
+

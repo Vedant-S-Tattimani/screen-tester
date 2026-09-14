@@ -807,5 +807,158 @@ export const DE_EXPLAINERS: Record<string, ExplainerData> = {
       actionLabel: "Lautsprecher Troubleshooting lesen",
       actionHref: "/knowledge-base/troubleshooting#speaker-no-sound"
     }
+  },
+
+  "accelerometer-test": {
+    overview: "Der Beschleunigungsmesser-Test misst die lineare Beschleunigung und Gravitationskräfte entlang dreier physischer Achsen (X, Y und Z) mithilfe der DeviceMotionEvent-API. Er visualisiert Neigung, dynamische Bewegung und die Erdbeschleunigung von 1g in Echtzeit.",
+    whatToLookFor: [
+      {
+        label: "Verteilung der Gravitationskraft (1g)",
+        description: "Flach auf dem Tisch liegend sollte die Z-Achse etwa ~9,8 m/s² (1g) anzeigen, während X und Y nahe 0 m/s² verweilen."
+      },
+      {
+        label: "Achsenreaktion bei Neigung",
+        description: "Das Neigen nach links/rechts verändert die X-Werte, während Vor- und Zurückneigen die Y-Werte stufenlos anpasst."
+      },
+      {
+        label: "Ausschläge bei schneller Bewegung",
+        description: "Ruckartiges Schütteln oder Bewegen erzeugt vorübergehende Beschleunigungsspitzen im interaktiven Echtzeit-Diagramm."
+      },
+      {
+        label: "Sensor-Berechtigungsstatus",
+        description: "Unter iOS Safari ist eine explizite Benutzerbestätigung erforderlich, bevor Bewegungsdaten an den Browser übertragen werden."
+      }
+    ],
+    canObserve: [
+      "Rohbeschleunigung mit und ohne Gravitation auf X-, Y- und Z-Achsen in m/s²",
+      "Vom Browser unterstützte Abtastrate und Aktualisierungsintervalle",
+      "Interaktives Ausrichtungs-Fadenkreuz basierend auf dem Erdschwerefeld"
+    ],
+    cannotMeasure: [
+      "Werkskalibriertes Sensor-Offset oder Labor-Nullpunktdrift",
+      "Interne mikroelektronische Siliziumfehler im MEMS-Chip",
+      "Absolute geografische Position oder GPS-Koordinaten"
+    ],
+    interpretation: "Ein einwandfreier Beschleunigungsmesser zeigt stabile ~9,8 m/s² auf der nach unten gerichteten Achse. Einfrierende Werte deuten auf Berechtigungsblockaden oder Sensorfehler hin.",
+    nextSteps: {
+      text: "Sensorwerte verändern sich nicht oder bleiben bei null? Konsultieren Sie unsere Sensor-Fehlerbehebung.",
+      actionLabel: "Sensor-Troubleshooting aufrufen",
+      actionHref: "/knowledge-base/troubleshooting"
+    }
+  },
+
+  "gyroscope-test": {
+    overview: "Der Gyroskop-Test erfasst die Winkelgeschwindigkeit und Drehbewegung um die Achsen Alpha (Gier/Z), Beta (Nick/X) und Gamma (Roll/Y) über die DeviceOrientationEvent-API. Er bietet einen künstlichen Horizont und eine 3D-Kugel zur Drehprüfung.",
+    whatToLookFor: [
+      {
+        label: "Künstlicher Horizont",
+        description: "Die Horizontlinie sollte sich beim seitlichen Kippen sanft neigen und beim Neigen nach oben/unten steigen bzw. sinken."
+      },
+      {
+        label: "Nickwinkel (Beta: -180° bis 180°)",
+        description: "Das Vor- und Zurückneigen verändert die Nickgrade stufenlos und ohne sprunghafte Artefakte."
+      },
+      {
+        label: "Rollwinkel (Gamma: -90° bis 90°)",
+        description: "Seitliches Kippen aktualisiert den Rollwinkel präzise und richtungstreu."
+      },
+      {
+        label: "Kompasskurs (Alpha: 0° bis 360°)",
+        description: "Flaches Drehen des Geräts folgt dem Azimut, sofern ein absoluter Kompass-Sensor verbaut ist."
+      }
+    ],
+    canObserve: [
+      "Winkelorientierung (Alpha, Beta, Gamma in Grad) aus dem Browser-Event",
+      "Visueller künstlicher Horizont und 3D-Rotationsvorschau",
+      "Erkennung von absolutem Kompasskurs versus relativer Bewegung"
+    ],
+    cannotMeasure: [
+      "Thermische Langzeitdrift des MEMS-Gyroskops ohne stationäre Messreihe",
+      "Interne Hardware-Abtastraten jenseits der Browser-Ereignisschleife",
+      "Magnetische Störfeldkompensation auf Geräten ohne Magnetometer"
+    ],
+    interpretation: "Das Gyroskop bestimmt die Raumlage durch Integration der Winkelgeschwindigkeit. Minimale Ruhedrift ist bei Mobilgeräten üblich; blockierte Werte weisen auf Systemberechtigungen hin.",
+    nextSteps: {
+      text: "Neigung reagiert nicht oder invertiert? Prüfen Sie die Berechtigungen für mobile Sensoren.",
+      actionLabel: "Sensor-Troubleshooting aufrufen",
+      actionHref: "/knowledge-base/troubleshooting"
+    }
+  },
+
+  "vibration-test": {
+    overview: "Der Vibrationstest steuert den haptischen Vibrationsmotor Ihres Mobilgeräts über die HTML5 Vibration API (navigator.vibrate) an. Er prüft Einzelimpulse, rhythmische Takte und Dauervibration.",
+    whatToLookFor: [
+      {
+        label: "Einzelimpuls-Reaktion",
+        description: "Ein 200ms- oder 500ms-Testimpuls sollte sofort ein spürbares mechanisches Brummen im Gerätegehäuse erzeugen."
+      },
+      {
+        label: "Rhythmusmuster & Pausen",
+        description: "Bei Mustern wie SOS oder Herzschlag prüfen, ob die Pausen zwischen Vibrationen sauber und ohne Nachschwingen getrennt sind."
+      },
+      {
+        label: "Vibrationsstärke & Klang",
+        description: "Achten Sie darauf, dass die Vibration gleichmäßig ist und keine scheppernden Fremdgeräusche im Gehäuse auftreten."
+      },
+      {
+        label: "Browser- und Betriebssystem-Support",
+        description: "Die Vibration API wird von Android Chrome/Firefox unterstützt, unter Apple iOS Safari ist sie aus Sicherheitsgründen gesperrt."
+      }
+    ],
+    canObserve: [
+      "Direkte Ausführung von Vibrationsbefehlen (Einzelimpulse und Arrays) in Millisekunden",
+      "Erkennung der navigator.vibrate-Unterstützung und Benutzerinteraktions-Prüfung",
+      "Interaktive visuelle Animation synchron zum Vibrationsablauf"
+    ],
+    cannotMeasure: [
+      "Schwingfrequenz des Haptik-Motors in Hz oder Motordrehzahl (RPM)",
+      "Mechanische Beschleunigungskraft (G-Kraft) ohne externe Messinstrumente",
+      "Unterscheidung zwischen ERM-Rotationsmotor und modernem LRA-Linearmotor"
+    ],
+    interpretation: "Vibriert ein Android-Smartphone nicht, prüfen Sie die Systemeinstellungen unter Ton & Haptik und deaktivieren Sie den Energiesparmodus. Auf iOS-Geräten ist Web-Vibration prinzipbedingt nicht möglich.",
+    nextSteps: {
+      text: "Motor vibriert trotz Tastendruck nicht? Lesen Sie unsere Vibrations-Fehlerbehebung.",
+      actionLabel: "Vibrations-Troubleshooting lesen",
+      actionHref: "/knowledge-base/troubleshooting"
+    }
+  },
+
+  "microphone-test": {
+    overview: "Der Mikrofontest erfasst Audiosignale in Echtzeit über WebRTC getUserMedia und die Web Audio API. Ein Live-Oszilloskop, Frequenzspektrum, Pegelmesser und Loopback-Wiedergabe ermöglichen die akustische Qualitätsprüfung.",
+    whatToLookFor: [
+      {
+        label: "Live-Eingangspegel und VU-Meter",
+        description: "Beim Sprechen ins Mikrofon sollte die grüne Pegelanzeige weich ausschlagen (ideal: 40 % bis 75 % bei normaler Sprache)."
+      },
+      {
+        label: "Übersteuerungs- und Clipping-Schutz",
+        description: "Laute Laute sollten die Pegelanzeige nicht in den roten Bereich treiben, um digitales Übersteuern zu vermeiden."
+      },
+      {
+        label: "Wellenform & Frequenzspektrum",
+        description: "Beobachten Sie, wie Oszilloskop und Frequenzbalken reaktionsschnell auf Tonhöhe und Lautstärke Ihrer Stimme reagieren."
+      },
+      {
+        label: "Klangreinheit bei Loopback-Wiedergabe",
+        description: "Nehmen Sie einen kurzen 5-Sekunden-Clip auf und spielen Sie ihn ab, um Hintergrundrauschen, Hall oder Aussetzer zu erkennen."
+      }
+    ],
+    canObserve: [
+      "Audio-Wellenform und Spektrum in Echtzeit über Web Audio AnalyserNode",
+      "RMS-Lautstärkepegel und Aussteuerungsreserve rein lokal im Browser berechnet",
+      "Lokale Testaufnahme und Loopback-Wiedergabe ohne Serverübertragung"
+    ],
+    cannotMeasure: [
+      "Absoluter Schalldruckpegel (dB SPL) ohne geeichtes Messmikrofon",
+      "Akustische Richtcharakteristik der Kapsel (Niere, Kugel, Acht)",
+      "Analoges Vorverstärker-Eigenrauschen (EIN) vor der A/D-Wandlung"
+    ],
+    interpretation: "Ein fehlerfreies Mikrofon liefert saubere Wiedergabe bei geringem Grundrauschen. Geringe Lautstärke liegt meist am Systemeinstellungs-Pegel, während starkes Knistern auf Wackelkontakte oder Samplerate-Fehler hinweist.",
+    nextSteps: {
+      text: "Mikrofon nimmt keinen Ton auf oder klingt verzerrt? Konsultieren Sie unsere Mikrofon-Fehlerbehebung.",
+      actionLabel: "Mikrofon-Troubleshooting aufrufen",
+      actionHref: "/knowledge-base/troubleshooting#mic-not-working"
+    }
   }
 };
+

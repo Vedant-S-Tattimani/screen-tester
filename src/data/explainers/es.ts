@@ -807,5 +807,158 @@ export const ES_EXPLAINERS: Record<string, ExplainerData> = {
       actionLabel: "Guía de Problemas con Altavoces",
       actionHref: "/knowledge-base/troubleshooting#speaker-no-sound"
     }
+  },
+
+  "accelerometer-test": {
+    overview: "El Test de Acelerómetro mide la aceleración lineal y las fuerzas gravitacionales en tres ejes físicos (X, Y y Z) mediante la API DeviceMotionEvent. Visualiza la inclinación, el movimiento dinámico y la atracción gravitatoria de 1g de la Tierra en tiempo real.",
+    whatToLookFor: [
+      {
+        label: "Distribución de Fuerza Gravitatoria (1g)",
+        description: "En reposo horizontal sobre una mesa plana, el eje Z debe indicar ~9.8 m/s² (1g), mientras que X e Y se mantienen cerca de 0 m/s²."
+      },
+      {
+        label: "Respuesta en Inclinación",
+        description: "Inclinar el dispositivo de izquierda a derecha modifica los valores de X, mientras que la inclinación hacia adelante o atrás actualiza Y suavemente."
+      },
+      {
+        label: "Picos de Movimiento Rápido",
+        description: "Agitar o mover el dispositivo rápidamente genera picos transitorios de aceleración en la gráfica interactiva en tiempo real."
+      },
+      {
+        label: "Permisos del Sensor",
+        description: "En iOS Safari se requiere una confirmación explícita del usuario para acceder a los datos de movimiento."
+      }
+    ],
+    canObserve: [
+      "Aceleración con y sin gravedad en ejes X, Y y Z en m/s²",
+      "Frecuencia e intervalo de muestreo del sensor soportado por el navegador",
+      "Retícula visual interactiva orientada según el vector gravitatorio"
+    ],
+    cannotMeasure: [
+      "Sesgo calibrado de fábrica o deriva de punto cero de laboratorio",
+      "Microdefectos físicos de silicio en el chip MEMS",
+      "Posición geográfica absoluta o coordenadas GPS"
+    ],
+    interpretation: "Un acelerómetro en buen estado muestra una lectura estable de ~9.8 m/s² en el eje que apunta hacia abajo. La congelación o lecturas nulas indican restricciones de permisos o problemas de calibración del sistema.",
+    nextSteps: {
+      text: "¿Los valores no cambian o se quedan en cero? Consulte nuestra guía de diagnóstico de sensores.",
+      actionLabel: "Ver Diagnóstico de Sensores",
+      actionHref: "/knowledge-base/troubleshooting"
+    }
+  },
+
+  "gyroscope-test": {
+    overview: "El Test de Giroscopio mide la velocidad angular y la orientación de rotación en los ejes Alfa (Guiñada/Z), Beta (Cabeceo/X) y Gamma (Alabeo/Y) con la API DeviceOrientationEvent. Incluye un horizonte artificial y esfera 3D interactiva.",
+    whatToLookFor: [
+      {
+        label: "Alineación del Horizonte Artificial",
+        description: "La línea de horizonte artificial debe inclinarse suavemente al ladear el dispositivo a la izquierda o derecha, y subir/bajar al cabecear."
+      },
+      {
+        label: "Cabeceo (Beta: -180° a 180°)",
+        description: "Inclinar hacia adelante y atrás modifica los grados de cabeceo de forma proporcional y continua."
+      },
+      {
+        label: "Alabeo (Gamma: -90° a 90°)",
+        description: "Inclinar de lado actualiza el ángulo de alabeo con precisión y sin saltos ni inversión de ejes."
+      },
+      {
+        label: "Rumbo de Brújula (Alfa: 0° a 360°)",
+        description: "Girar el dispositivo en plano horizontal sigue el acimut de brújula cuando el hardware magnético está disponible."
+      }
+    ],
+    canObserve: [
+      "Ángulos de orientación angular (Alfa, Beta, Gamma en grados) emitidos por el navegador",
+      "Indicador de horizonte artificial y previsualización de rotación 3D",
+      "Diferenciación entre orientación absoluta y movimiento relativo"
+    ],
+    cannotMeasure: [
+      "Tasa de deriva térmica continua del giroscopio MEMS sin pruebas prolongadas",
+      "Frecuencia de muestreo interna más allá del bucle de eventos del navegador",
+      "Compensación de interferencias electromagnéticas sin magnetómetro físico"
+    ],
+    interpretation: "El giroscopio calcula la orientación integrando la velocidad angular. Una ligera deriva estática es normal en sensores móviles, pero valores bloqueados o invertidos sugieren bloqueos de permisos del sistema.",
+    nextSteps: {
+      text: "¿La inclinación no responde o está invertida? Revise nuestra guía de sensores móviles.",
+      actionLabel: "Diagnóstico de Sensores",
+      actionHref: "/knowledge-base/troubleshooting"
+    }
+  },
+
+  "vibration-test": {
+    overview: "El Test de Vibración activa el motor háptico integrado de su dispositivo mediante la API HTML5 Vibration (navigator.vibrate). Comprueba la respuesta de pulsos individuales, secuencias rítmicas y vibración continua.",
+    whatToLookFor: [
+      {
+        label: "Respuesta de Pulso Individual",
+        description: "Un pulso de 200ms o 500ms debe generar una vibración mecánica nítida e inmediata en el cuerpo del teléfono."
+      },
+      {
+        label: "Cadencia y Pausas en Patrones",
+        description: "En patrones como SOS o latido cardíaco, verifique que los silencios entre vibraciones sean definidos y sin retardo de motor."
+      },
+      {
+        label: "Consistencia del Motor",
+        description: "Asegúrese de que la intensidad sea constante y sin ruidos metálicos o rozamientos extraños dentro del dispositivo."
+      },
+      {
+        label: "Compatibilidad del Sistema y Navegador",
+        description: "La API Vibration es compatible con Android Chrome/Firefox, pero está deliberadamente desactivada por Apple en iOS Safari."
+      }
+    ],
+    canObserve: [
+      "Ejecución directa de comandos de vibración en milisegundos",
+      "Detección de soporte de navigator.vibrate y requisitos de interacción del usuario",
+      "Animación interactiva sincronizada con las secuencias hápticas"
+    ],
+    cannotMeasure: [
+      "Frecuencia de oscilación del actuador háptico (Hz) o RPM del motor",
+      "Fuerza de aceleración mecánica (Fuerza G) sin instrumental externo",
+      "Diferenciación entre motores ERM (masa rotatoria) y LRA (resonante lineal)"
+    ],
+    interpretation: "Si la vibración no funciona en Android, revise la configuración de Sonido y Háptica del sistema operativo y desactive el modo de ahorro de energía. En iOS, los navegadores no tienen acceso al motor de vibración.",
+    nextSteps: {
+      text: "¿El dispositivo no vibra al pulsar los botones? Consulte nuestra guía de vibración.",
+      actionLabel: "Guía de Problemas con Vibración",
+      actionHref: "/knowledge-base/troubleshooting"
+    }
+  },
+
+  "microphone-test": {
+    overview: "El Test de Micrófono captura audio en vivo mediante WebRTC getUserMedia y Web Audio API. Muestra un osciloscopio en tiempo real, analizador de frecuencias, vúmetro de volumen y reproducción local para evaluar la nitidez del sonido.",
+    whatToLookFor: [
+      {
+        label: "Nivel de Entrada y Vúmetro en Vivo",
+        description: "Al hablar por el micrófono, la barra verde debe reaccionar suavemente. La voz normal suele situarse entre el 40% y el 75%."
+      },
+      {
+        label: "Prevención de Saturación y Distorsión",
+        description: "Sonidos fuertes no deben entrar en la zona roja de advertencia, lo que provoca corte digital y distorsión desagradable."
+      },
+      {
+        label: "Forma de Onda y Espectro",
+        description: "Observe la onda dinámica y las barras de frecuencia oscilar al variar el tono y volumen de su voz."
+      },
+      {
+        label: "Claridad de Reproducción en Bucle",
+        description: "Grabe un fragmento corto de 5 segundos y escuche la reproducción para comprobar si hay ruidos de fondo, eco o voz robótica."
+      }
+    ],
+    canObserve: [
+      "Forma de onda y espectro de audio en tiempo real con Web Audio AnalyserNode",
+      "Nivel de volumen RMS y margen dinámico calculado 100% de forma local en su navegador",
+      "Grabación de prueba y reproducción inmediata sin enviar datos a ningún servidor externo"
+    ],
+    cannotMeasure: [
+      "Nivel de presión sonora calibrado (dB SPL) sin micrófono de laboratorio",
+      "Patrón polar físico de la cápsula (cardioide, omnidireccional, figura en 8)",
+      "Ruido de fondo analógico del preamplificador antes del procesamiento digital"
+    ],
+    interpretation: "Un micrófono en buen estado ofrece una reproducción nítida con bajo ruido ambiental. Volumen muy bajo suele deberse a la ganancia en los ajustes del sistema, mientras que el ruido de estática continua suele indicar problemas en el cable o jack de 3.5 mm.",
+    nextSteps: {
+      text: "¿El micrófono no graba sonido o se oye distorsionado? Revise nuestra guía de micrófono.",
+      actionLabel: "Solución de Problemas de Micrófono",
+      actionHref: "/knowledge-base/troubleshooting#mic-not-working"
+    }
   }
 };
+

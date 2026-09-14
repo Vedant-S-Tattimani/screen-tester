@@ -3,6 +3,8 @@ import { Metadata } from "next";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
 import { GyroscopePattern } from "@/components/tests/GyroscopePattern";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 
 export async function generateMetadata({
   params
@@ -11,7 +13,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "TestPages.gyroscope-test" });
-  return generateSeoMetadata("/tests/gyroscope-test", t("metaTitle"), t("metaDescription"));
+  return generateSeoMetadata("/tests/gyroscope-test", t("metaTitle"), t("metaDescription"), locale);
 }
 
 export default async function GyroscopeTestPage({
@@ -22,6 +24,8 @@ export default async function GyroscopeTestPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "TestPages.gyroscope-test" });
+  const explainerData = getFeatureExplainer("gyroscope-test", locale);
+  const explainerLabels = getExplainerLabels(locale);
 
   return (
     <TestWrapper
@@ -39,8 +43,14 @@ export default async function GyroscopeTestPage({
           ))}
         </ul>
       }
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }
     >
       <GyroscopePattern testId="gyroscope-test" />
     </TestWrapper>
   );
 }
+

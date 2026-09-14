@@ -746,10 +746,10 @@
       ]
     },
     "multi-touch-test": {
-      "metaTitle": "Multi-Touch-Test – Gleichzeitige Touchscreen-Berührungen online prüfen",
-      "metaDescription": "Testen Sie gleichzeitige Touch-Kontakte, Mehrfinger-Gesten und Randbereiche. Kostenloser Online-Multi-Touch-Tester im Browser.",
-      "title": "Multi-Touch-Test",
-      "description_p1": "Mit diesem Test können Sie gleichzeitige Touch-Kontakte und Pointer-Tracking auf Touchscreens und Tablets überprüfen. Browser und Betriebssystem erfassen Kontakte, was von physikalischen Hardwaregrenzen abweichen kann.",
+      "metaTitle": "Touchscreen Test - Touchscreen Online Testen | Screen Tester",
+      "metaDescription": "Testen Sie gleichzeitige Touchscreen-Kontakte, Mehrfinger-Gesten und Digitizer-Präzision online im Browser. Kostenloser Multi-Touch Test.",
+      "title": "Touchscreen Test",
+      "description_p1": "Nutzen Sie diesen kostenlosen Touchscreen Test, um zu prüfen, ob Ihr Bildschirm mehrere Finger erkennt und zuverlässig auf Berührungen reagiert. Überprüfen Sie aktive Kontaktpunkte und Zeigerkoordinaten in Echtzeit.",
       "instructions": [
         "<strong>FREIER TOUCH-MODUS:</strong> Berühren Sie die Fläche mit mehreren Fingern gleichzeitig. Beobachten Sie Zähler, Koordinaten und Spitzenwerte.",
         "<strong>MULTI-TOUCH-RASTER:</strong> Berühren Sie Rasterfelder, um zu prüfen, ob gleichzeitige Berührungen in verschiedenen Quadranten ohne Geisterberührungen erkannt werden.",
@@ -757,10 +757,10 @@
       ]
     },
     "accelerometer-test": {
-      "metaTitle": "Beschleunigungsmesser-Test – Bewegung & G-Kraft online prüfen",
-      "metaDescription": "Testen Sie Beschleunigungsmesser und Bewegungssensoren online. Echtzeit-Telemetrie für Linearbeschleunigung und Gravitationsvektoren.",
-      "title": "Beschleunigungsmesser-Test",
-      "description_p1": "Dieser Test zeigt Echtzeit-Bewegungstelemetrie an, die vom Browser über DeviceMotionEvent gemeldet wird. Es werden Beschleunigung und Schwerkraft ohne Laboranspruch dargestellt.",
+      "metaTitle": "Beschleunigungssensor Test - Bewegungssensor Online Testen | Screen Tester",
+      "metaDescription": "Testen Sie Beschleunigungssensor und Bewegungssensoren Ihres Geräts online. Echtzeit-Telemetrie für 3-Achsen-Linearbeschleunigung und Gravitationsvektoren.",
+      "title": "Beschleunigungssensor Test",
+      "description_p1": "Nutzen Sie diesen kostenlosen Beschleunigungssensor Test, um die Bewegungssensoren Ihres Geräts in Echtzeit zu prüfen. Beobachten Sie 3-Achsen-Bewegungen (X, Y, Z), Schwerkrafteinflüsse und Sensorreaktionen.",
       "instructions": [
         "<strong>SENSOR STARTEN:</strong> Klicken Sie auf 'Sensor starten'. Tippen Sie auf iOS auf 'Erlauben', wenn der Browser nach Bewegungsdaten fragt.",
         "<strong>2D-G-KRAFT-FADENKREUZ:</strong> Neigen Sie Ihr Gerät in beliebige Richtungen. Der Anzeigepunkt bewegt sich entsprechend der Schwerkraft entlang der X- und Y-Achse.",
@@ -768,10 +768,10 @@
       ]
     },
     "gyroscope-test": {
-      "metaTitle": "Gyroskop-Test – Geräteorientierung & Rotationswinkel online prüfen",
-      "metaDescription": "Testen Sie Geräteorientierung, Drehwinkel, Rollen, Neigen und Gieren online. Künstlicher Horizont und Kompasskursprüfung.",
-      "title": "Gyroskop-Test",
-      "description_p1": "Dieser Test visualisiert vom Browser gemeldete Winkelorientierungen via DeviceOrientationEvent. Die Werte spiegeln Berechnungen des Betriebssystems wider.",
+      "metaTitle": "Gyroskop Test - Rotationssensor Online Testen | Screen Tester",
+      "metaDescription": "Testen Sie das Gyroskop Ihres Geräts online. Überprüfen Sie Rotationswinkel, Rollen, Neigen und Gieren in Echtzeit mit einem interaktiven künstlichen Horizont.",
+      "title": "Gyroskop Test",
+      "description_p1": "Nutzen Sie diesen kostenlosen Gyroskop Test, um Dreh- und Orientierungssensoren online zu überprüfen. Kontrollieren Sie Neigungswinkel (Nick, Roll, Gier) und flüssiges Dreh-Tracking direkt im Browser.",
       "instructions": [
         "<strong>GYROSKOP AKTIVIEREN:</strong> Klicken Sie auf 'Sensor starten'. Bestätigen Sie eventuelle Berechtigungsabfragen auf Mobilgeräten.",
         "<strong>KÜNSTLICHER HORIZONT:</strong> Drehen und neigen Sie das Gerät. Die Horizontanzeige bildet Roll- und Nickbewegungen nach.",
@@ -779,10 +779,10 @@
       ]
     },
     "vibration-test": {
-      "metaTitle": "Vibrations-Test – Handy-Vibrationsmotor & Haptik online testen",
-      "metaDescription": "Testen Sie den Vibrationsmotor Ihres Smartphones online. Standard-Impulse und benutzerdefinierte Vibrationsmuster mit Sicherheitsgrenzen.",
-      "title": "Vibrations-Test",
-      "description_p1": "Testen Sie das taktile Feedback des Vibrationsmotors über die Browser Vibration API. Der Browser kann nur den Empfang des Befehls bestätigen; das Fühlen der Vibration obliegt dem Nutzer.",
+      "metaTitle": "Vibration Test - Handy Vibration Online Testen | Screen Tester",
+      "metaDescription": "Testen Sie den Vibrationsmotor und das haptische Feedback Ihres Smartphones online. Prüfen Sie Standard-Impulse und benutzerdefinierte Vibrationsmuster.",
+      "title": "Vibration Test",
+      "description_p1": "Nutzen Sie diesen kostenlosen Vibration Test, um den Vibrationsmotor und das haptische Feedback Ihres Mobiltelefons zu testen. Prüfen Sie kurze und lange Impulse sowie eigene rhythmische Sequenzen.",
       "instructions": [
         "<strong>STANDARD-IMPULSE:</strong> Tippen Sie auf Kurz (100ms), Mittel (300ms) oder Lang (600ms), um Standard-Feedbackimpulse zu testen.",
         "<strong>BENUTZERDEFINIERT:</strong> Geben Sie kommagetrennte Dauern in Millisekunden ein (z. B. 200, 100, 200), um Sequenzen innerhalb sicherer Limits zu testen.",
@@ -790,10 +790,10 @@
       ]
     },
     "webcam-test": {
-      "metaTitle": "Webcam-Test – Kamera-Vorschau, Auflösung & lokale Schnappschüsse",
-      "metaDescription": "Testen Sie Ihre Webcam online. Live-Video-Vorschau, Auflösungs- und Framerate-Anzeige und 100% private lokale Schnappschüsse.",
-      "title": "Webcam-Test",
-      "description_p1": "Dieses Tool bietet eine lokale Kamera-Vorschau zur Überprüfung von Funktion, Auflösung und Bildrate. Videobilder verbleiben ausschließlich im Browserspeicher; keine Daten werden übertragen.",
+      "metaTitle": "Webcam Test - Kamera Online Testen | Screen Tester",
+      "metaDescription": "Testen Sie Ihre Webcam und Kamera online kostenlos. Überprüfen Sie Live-Video-Vorschau, Auflösung, Framerate und erstellen Sie private lokale Schnappschüsse.",
+      "title": "Webcam Test",
+      "description_p1": "Nutzen Sie diesen kostenlosen Webcam Test, um Kamerabild und Videoeingang online zu überprüfen. Prüfen Sie Live-Vorschau, Bildauflösung, Bildwiederholrate und Kameraberechtigungen sicher und lokal.",
       "instructions": [
         "<strong>KAMERA STARTEN:</strong> Klicken Sie auf 'Kamera starten' und bestätigen Sie die Berechtigung (Mikrofonzugriff wird niemals angefordert).",
         "<strong>KAMERAWAHL & SPIEGELN:</strong> Wechseln Sie zwischen Kameras und nutzen Sie die Spiegeltaste für eine natürliche Ansicht.",
@@ -801,10 +801,10 @@
       ]
     },
     "speaker-test": {
-      "metaTitle": "Lautsprecher & Stereo-Kanal-Test",
-      "metaDescription": "Testen Sie Lautsprecher und Kopfhörer online. Beurteilen Sie Stereokanaltrennung, Klangbalance, Testton-Klarheit (100 Hz–2500 Hz) und Frequenzsweeps.",
-      "title": "Lautsprecher & Stereo-Kanal-Test",
-      "description_p1": "Überprüfen Sie Audioausgabe, Stereokanaltrennung und Klangklarheit mit synthetisierten Testtönen. Sie können Kanalbalance, Knacken oder Aussetzer akustisch beurteilen; der Browser misst jedoch keinen akustischen Frequenzgang oder Schalldruckpegel.",
+      "metaTitle": "Lautsprecher Test - Sound & Stereo Lautsprecher Testen | Screen Tester",
+      "metaDescription": "Testen Sie Lautsprecher und Kopfhörer online kostenlos. Prüfen Sie Stereokanaltrennung links/rechts, Klangbalance und Testton-Klarheit über Frequenzbereiche.",
+      "title": "Lautsprecher Test",
+      "description_p1": "Nutzen Sie diesen kostenlosen Lautsprecher Test, um Ihre Boxen oder Kopfhörer online zu testen. Überprüfen Sie linke und rechte Stereokanäle, Klangbalance und Frequenzwiedergabe.",
       "instructions": [
         "<strong>GEHÖRSCHUTZ-HINWEIS:</strong> Beginnen Sie bei geringer Lautstärke. Vermeiden Sie anhaltend laute Töne über Kopfhörer.",
         "<strong>STEREOTRENNUNG:</strong> Schalten Sie zwischen Nur Links (Pan -1,0), Stereo Mitte und Nur Rechts (Pan +1,0) um, um die Kanalverkabelung zu prüfen.",
@@ -812,10 +812,10 @@
       ]
     },
     "microphone-test": {
-      "metaTitle": "Mikrofon-Test – Online-Mikrofonprüfung, Pegelanzeige & Wellenform",
-      "metaDescription": "Testen Sie Ihr Mikrofon und Ihren Audioeingang online. Live-Audio-Pegelmesser, Wellenform-Oszilloskop, digitale Übersteuerungsanzeige und lokaler Loopback-Check im Browser.",
-      "title": "Mikrofon-Test",
-      "description_p1": "Überprüfen Sie Mikrofonverbindung, Browser-Audioerfassung und relative Eingangsamplitude. Screen Tester lädt keine erfassten Audiodaten oder Aufnahmen auf seine Server hoch. Die Audioverarbeitung und Aufnahmen erfolgen lokal im Browser.",
+      "metaTitle": "Mikrofon Test - Mikrofon Online Testen & Prüfen | Screen Tester",
+      "metaDescription": "Testen Sie Ihr Mikrofon und Ihren Audioeingang online kostenlos. Live-Audio-Pegelmesser, Wellenform-Oszilloskop, Clipping-Anzeige und lokale Aufnahme.",
+      "title": "Mikrofon Test",
+      "description_p1": "Nutzen Sie diesen kostenlosen Mikrofon Test, um Ihr Mikrofon und den Audioeingang online zu überprüfen. Kontrollieren Sie den Live-Lautstärkepegel, beobachten Sie die Wellenform und testen Sie die Audiowiedergabe.",
       "instructions": [
         "<strong>MIKROFON STARTEN:</strong> Klicken Sie auf 'Mikrofon starten' und erlauben Sie den Mikrofonzugriff (Video wird niemals angefordert).",
         "<strong>PEGEL & WELLENFORM:</strong> Sprechen Sie in das Mikrofon. Prüfen Sie, ob die Wellenform ausschlägt und der Pegelmesser zwischen 30 % und 80 % anzeigt.",
@@ -824,6 +824,34 @@
     }
   },
   "Tests": {
+    "multiTouchTest": {
+      "title": "Touchscreen Test",
+      "description": "Prüfen Sie gleichzeitige Touch-Kontakte, Mehrfinger-Gesten und Randbereiche online."
+    },
+    "accelerometerTest": {
+      "title": "Beschleunigungssensor Test",
+      "description": "Prüfen Sie 3-Achsen-Bewegungssensoren, Beschleunigung und Schwerkraftvektoren online."
+    },
+    "gyroscopeTest": {
+      "title": "Gyroskop Test",
+      "description": "Prüfen Sie Rotationswinkel (Rollen, Neigen, Gieren) und Geräteorientierung online."
+    },
+    "vibrationTest": {
+      "title": "Vibration Test",
+      "description": "Testen Sie den Vibrationsmotor und haptische Feedback-Muster des Handys online."
+    },
+    "webcamTest": {
+      "title": "Webcam Test",
+      "description": "Prüfen Sie Kamera-Videovorschau, Auflösung, Framerate und lokale Test-Schnappschüsse."
+    },
+    "speakerTest": {
+      "title": "Lautsprecher Test",
+      "description": "Testen Sie Stereo-Lautsprecher und Kopfhörer auf Kanaltrennung links/rechts und Klangklarheit."
+    },
+    "microphoneTest": {
+      "title": "Mikrofon Test",
+      "description": "Prüfen Sie den Mikrofon-Audioeingang, Live-Lautstärkepegel und Wellenform-Oszilloskop online."
+    },
     "viewingAngle": {
       "title": "Blickwinkeltest – Farbstabilität & Kontrastabfall aufeinander prüfen",
       "description": "Prüfen Sie IPS-, VA-, OLED- und TN-Displays auf Farbverschiebungen und Helligkeitsabfall aus seitlichen Blickwinkeln.",

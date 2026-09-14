@@ -807,5 +807,158 @@ export const KO_EXPLAINERS: Record<string, ExplainerData> = {
       actionLabel: "스피커 문제 해결 가이드",
       actionHref: "/knowledge-base/troubleshooting#speaker-no-sound"
     }
+  },
+
+  "accelerometer-test": {
+    overview: "가속도계 테스트는 DeviceMotionEvent API를 활용하여 3개의 물리적 축(X, Y, Z)을 따라 선형 가속도와 지구의 1g 중력 가속도를 실시간으로 측정 및 시각화합니다. 기기의 기울기, 동적 움직임 및 충격을 즉시 감지합니다.",
+    whatToLookFor: [
+      {
+        label: "중력 가속도(1g) 분포",
+        description: "평평한 테이블에 화면을 위로 두고 놓았을 때, Z축은 약 ~9.8 m/s²(1g)를 나타내고 X축과 Y축은 0 m/s² 근처를 유지해야 합니다."
+      },
+      {
+        label: "기울기에 따른 축 반응",
+        description: "기기를 좌우로 기울이면 X축 값이, 앞뒤로 기울이면 Y축 값이 부드럽게 변합니다."
+      },
+      {
+        label: "급격한 움직임 스파이크",
+        description: "기기를 빠르게 흔들거나 움직이면 실시간 반응 그래프에 순간적인 가속도 스파이크가 나타납니다."
+      },
+      {
+        label: "센서 권한 상태",
+        description: "iOS Safari에서는 모션 데이터에 접근하기 위해 사용자의 명시적인 권한 승인이 필요합니다."
+      }
+    ],
+    canObserve: [
+      "중력 포함 및 미포함 X, Y, Z축 가속도(m/s² 단위)",
+      "브라우저에서 지원하는 센서 보고 주기(밀리초 간격)",
+      "중력 정렬에 반응하는 대화형 타깃 조준선(레티클)"
+    ],
+    cannotMeasure: [
+      "공장 출하 시 보정된 센서 편차 또는 정밀 실험실급 제로점 드리프트",
+      "MEMS 실리콘 센서 칩의 내부 물리적 미세 결함",
+      "기기의 절대 지리적 위치 또는 GPS 좌표"
+    ],
+    interpretation: "정상 가속도계는 아래를 향하는 축에 안정적인 ~9.8 m/s² 중력 가속도를 기록합니다. 센서 값이 멈추거나 0으로 고정되면 권한 차단 또는 센서 캘리브레이션 오류를 점검해야 합니다.",
+    nextSteps: {
+      text: "센서 값이 변하지 않거나 0에 멈춰 있나요? 센서 문제 해결 가이드를 확인하세요.",
+      actionLabel: "센서 문제 해결 가이드",
+      actionHref: "/knowledge-base/troubleshooting"
+    }
+  },
+
+  "gyroscope-test": {
+    overview: "자이로스코프 테스트는 DeviceOrientationEvent API를 통해 Alpha(요/Z축), Beta(피치/X축), Gamma(롤/Y축) 3축의 각속도와 회전 자세를 측정합니다. 실시간 인공 수평선과 3D 구형 모델로 회전 상태를 검증합니다.",
+    whatToLookFor: [
+      {
+        label: "인공 수평선 정렬",
+        description: "기기를 좌우로 기울이면 수평선이 부드럽게 기울어지고, 앞뒤로 기울이면 위아래로 승강해야 합니다."
+      },
+      {
+        label: "피치 각도 (Beta: -180° ~ 180°)",
+        description: "기기를 앞뒤로 기울일 때 끊김이나 반전 없이 피치 각도가 비례하여 변하는지 확인합니다."
+      },
+      {
+        label: "롤 각도 (Gamma: -90° ~ 90°)",
+        description: "기기를 좌우 측면으로 기울이면 롤 각도가 지연 없이 정확하게 갱신됩니다."
+      },
+      {
+        label: "나침반 방위각 (Alpha: 0° ~ 360°)",
+        description: "기기를 수평으로 회전시키면 하드웨어 지원 기기에서 나침반 방위각을 정확히 추적합니다."
+      }
+    ],
+    canObserve: [
+      "브라우저에서 전달되는 회전 각도(Alpha, Beta, Gamma, 도 단위)",
+      "시각적 인공 수평선 자세 지시계 및 3D 회전 프리뷰",
+      "절대 방위 추적과 상대 모션 추적 상태 식별"
+    ],
+    cannotMeasure: [
+      "지속 관찰 없는 MEMS 자이로스코프의 열 드리프트 비율",
+      "브라우저 이벤트 루프(통상 60Hz) 이상의 초고속 내부 칩 샘플링 속도",
+      "지자기 센서가 없는 기기에서의 전자기 간섭 자동 보정"
+    ],
+    interpretation: "자이로는 각속도를 적분하여 자세를 측정합니다. 정지 상태에서 미세한 드리프트는 정상이지만, 값이 튀거나 고정되는 것은 센서 오류 또는 시스템 권한 거부를 의미합니다.",
+    nextSteps: {
+      text: "기울기가 반응하지 않거나 반대로 움직이나요? 모바일 센서 권한을 확인하세요.",
+      actionLabel: "센서 문제 해결 가이드",
+      actionHref: "/knowledge-base/troubleshooting"
+    }
+  },
+
+  "vibration-test": {
+    overview: "진동 테스트는 HTML5 Vibration API(navigator.vibrate)를 사용하여 기기의 햅틱 진동 모터를 직접 작동시킵니다. 단일 펄스, 리듬 패턴 및 연속 진동 시퀀스의 응답성을 검증합니다.",
+    whatToLookFor: [
+      {
+        label: "단일 펄스 응답성",
+        description: "200ms 또는 500ms 테스트 펄스를 눌렀을 때 기기 본체에서 즉각적이고 또렷한 진동 피드백이 발생하는지 확인합니다."
+      },
+      {
+        label: "리듬 패턴과 정지 간격",
+        description: "SOS 또는 심장박동 패턴 시 진동 사이의 정지 구간이 모터 딜레이 없이 깔끔하게 구분되는지 점검합니다."
+      },
+      {
+        label: "모터 세기 균일성 및 잡음",
+        description: "진동 강도가 일정하게 유지되며 본체 내부에서 비정상적인 덜컥거림이나 긁히는 소리가 없는지 확인합니다."
+      },
+      {
+        label: "브라우저 및 OS 지원 여부",
+        description: "Vibration API는 Android Chrome/Firefox에서 지원되지만, Apple iOS Safari에서는 보안 정책상 비활성화되어 있습니다."
+      }
+    ],
+    canObserve: [
+      "밀리초 단위의 Vibration API 명령(단일 펄스 및 배열 패턴) 직접 실행",
+      "navigator.vibrate 브라우저 지원 여부 및 사용자 터치 액션 감지",
+      "진동 시퀀스와 완벽하게 동기화된 대화형 시각 애니메이션"
+    ],
+    cannotMeasure: [
+      "햅틱 액추에이터의 진동수(Hz) 또는 모터 회전수(RPM)",
+      "외부 측정기 없는 기계적 가속도 힘(G-포스)",
+      "편심 모터(ERM)와 리니어 액추에이터(LRA) 간의 물리적 하드웨어 구분"
+    ],
+    interpretation: "Android에서 진동이 작동하지 않으면 기기 설정의 소리 및 진동 항목에서 햅틱 피드백이 켜져 있는지, 절전 모드가 해제되어 있는지 확인하세요. iOS 브라우저에서는 진동 API가 지원되지 않습니다.",
+    nextSteps: {
+      text: "버튼을 눌러도 폰이 진동하지 않나요? 진동 문제 해결 가이드를 확인하세요.",
+      actionLabel: "진동 문제 해결 가이드",
+      actionHref: "/knowledge-base/troubleshooting"
+    }
+  },
+
+  "microphone-test": {
+    overview: "마이크 테스트는 WebRTC getUserMedia 및 Web Audio API를 통해 마이크 입력 오디오를 실시간 캡처합니다. 오실로스코프 파형, 주파수 스펙트럼, 입력 볼륨 미터, 루프백 재생을 제공하여 마이크 상태를 종합 진단합니다.",
+    whatToLookFor: [
+      {
+        label: "실시간 입력 레벨 미터 반응",
+        description: "마이크에 대고 말할 때 녹색 VU 미터가 부드럽게 상승해야 합니다. 일반 대화 음량은 40%~75%가 적정합니다."
+      },
+      {
+        label: "음 왜곡 및 클리핑 방지",
+        description: "큰 소리를 낼 때 미터가 빨간색 경고 구간을 초과하여 디지털 클리핑 및 찢어지는 소리가 나지 않는지 확인합니다."
+      },
+      {
+        label: "파형 및 주파수 바의 다이내믹 반응",
+        description: "음성의 음높이와 음량 변화에 따라 오실로스코프 파형과 주파수 스펙트럼 바가 역동적으로 반응하는지 봅니다."
+      },
+      {
+        label: "루프백 녹음 재생 선명도",
+        description: "5초 동안 테스트 음성을 녹음한 후 재생하여 배경 잡음, 지직거림, 하울링, 로봇 목소리 왜곡이 없는지 청취합니다."
+      }
+    ],
+    canObserve: [
+      "Web Audio AnalyserNode를 통한 실시간 오디오 파형 및 주파수 스펙트럼",
+      "외부 서버 전송 없이 브라우저 내부에서 100% 로컬로 계산되는 RMS 볼륨 레벨",
+      "개인정보가 안전하게 보호되는 로컬 테스트 녹음 및 즉각적인 루프백 청취"
+    ],
+    cannotMeasure: [
+      "측정용 마이크 없는 정밀 음압 레벨(dB SPL)",
+      "마이크 캡슐의 물리적 지향 특성(단일지향성, 무지향성, 양지향성)",
+      "A/D 변환 전 순수 아날로그 프리앰프 잡음 레벨(EIN)"
+    ],
+    interpretation: "정상적인 마이크는 낮은 배경 노이즈와 함께 또렷한 음성을 녹음합니다. 소리가 너무 작으면 OS 입력 게인을 확인하고, 심한 잡음은 3.5mm 잭의 접촉 불량이나 드라이버 샘플레이트 불일치를 확인하세요.",
+    nextSteps: {
+      text: "마이크가 소리를 인식하지 못하거나 음질이 왜곡되나요? 마이크 문제 해결 가이드를 확인하세요.",
+      actionLabel: "마이크 문제 해결 가이드",
+      actionHref: "/knowledge-base/troubleshooting#mic-not-working"
+    }
   }
 };
+
