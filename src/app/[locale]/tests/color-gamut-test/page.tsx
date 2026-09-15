@@ -1,3 +1,5 @@
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 import { generateSeoMetadata } from "@/lib/seo";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
 import { ColorGamutPattern } from "@/components/tests/ColorGamutPattern";
@@ -21,6 +23,8 @@ export default async function ColorGamutTestPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const explainerData = getFeatureExplainer("color-gamut-test", locale);
+  const explainerLabels = getExplainerLabels(locale);
   const t = await getTranslations({ locale, namespace: "Tests" });
   
   const instructions = t.has("colorGamut.instructions")
@@ -32,8 +36,7 @@ export default async function ColorGamutTestPage({
       title={t("colorGamut.title")}
       description={t("colorGamut.description")}
       instructions={instructions}
-      testId="color-gamut-test"
-    >
+      testId="color-gamut-test">
       <ColorGamutPattern />
     </TestWrapper>
   );

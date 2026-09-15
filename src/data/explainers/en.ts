@@ -1369,5 +1369,1300 @@ export const EN_EXPLAINERS: Record<string, ExplainerData> = {
     }
 },
 
+  "bright-pixel-test": {
+  "overview": "Bright or hot pixels are subpixels (red, green, blue, or white) that remain stuck in an illuminated or partially energized state, visible against pure black and dark backgrounds.",
+  "whatToLookFor": [
+    {
+      "label": "Hot Subpixel Dots",
+      "description": "Isolated glowing pinpricks of color visible against dark frames in a dimmed room."
+    },
+    {
+      "label": "Chromatic Subpixel Glow",
+      "description": "Single red, green, or blue subpixel channels stuck open while neighboring subpixels are off."
+    },
+    {
+      "label": "Clustered Hot Pixels",
+      "description": "Multiple defective bright pixels grouped closely together, typically qualifying for warranty return."
+    },
+    {
+      "label": "Bleed vs Bright Pixels",
+      "description": "Distinguish sharp 1-pixel pinpricks from diffuse, cloudy edge backlight bleed."
+    }
+  ],
+  "canObserve": [
+    "Exact pixel coordinates on pitch black (#000000) and dark backgrounds",
+    "Color channel isolation across primary RGB and white test frames",
+    "Contrast ratio between hot subpixels and dark surrounding canvas"
+  ],
+  "cannotMeasure": [
+    "Silicon transistor gate leakage current",
+    "Physical silicon crystal defect depth under glass substrate",
+    "Thermal drift characteristics of panel backplane"
+  ],
+  "interpretation": "ISO 9241-307 Class 1 displays permit zero bright pixels, while Class 2 panels typically allow up to 2 permanently bright pixels per million.",
+  "nextSteps": {
+    "text": "Have you located a stuck subpixel? Attempt rapid visual stimulation to unstick it.",
+    "actionLabel": "Launch Stuck Pixel Fixer",
+    "actionHref": "/tests/stuck-pixel-fixer"
+  }
+},
+  "burn-in-test": {
+  "overview": "Screen burn-in (permanent image retention) occurs when organic OLED compounds or phosphors degrade unevenly due to static high-luminance elements such as taskbars, channel logos, or HUD meters.",
+  "whatToLookFor": [
+    {
+      "label": "Ghosted Taskbar Silhouettes",
+      "description": "Faint outlines of operating system taskbars or browser navigation bars visible on full-screen gray."
+    },
+    {
+      "label": "HUD & Logo Shadows",
+      "description": "Persistent shadows of static video game health bars or television news banners."
+    },
+    {
+      "label": "50% Gray Field Shading",
+      "description": "Uneven mottled patches or brightness non-uniformity across mid-gray canvases."
+    },
+    {
+      "label": "Temporary vs Permanent Retention",
+      "description": "Check if the shadow dissipates after running non-static video content for 15 minutes."
+    }
+  ],
+  "canObserve": [
+    "After-image faint silhouettes across 50% gray and solid primary colors",
+    "Quadrant luminescence consistency across the entire display area",
+    "Static boundary footprint detection on uniform color fields"
+  ],
+  "cannotMeasure": [
+    "Chemical degradation percentage of OLED organic emissive subpixels",
+    "Internal panel total power-on hours (POH)",
+    "Factory compensation cycle counter and voltage offsets"
+  ],
+  "interpretation": "Temporary image retention (TIR) fades within minutes, whereas permanent burn-in remains visible indefinitely across uniform gray and colored backgrounds.",
+  "nextSteps": {
+    "text": "Calculate your panel's long-term burn-in risk based on your daily usage habits.",
+    "actionLabel": "Launch OLED Burn-in Calculator",
+    "actionHref": "/tools/oled-burn-in-calculator"
+  }
+},
+  "color-test": {
+  "overview": "Display color testing evaluates primary and secondary color reproduction, subpixel spectral purity, and digital-to-analog canvas rendering consistency across full-screen color fields.",
+  "whatToLookFor": [
+    {
+      "label": "Color Purity & Saturation",
+      "description": "Ensure solid red, green, blue, cyan, magenta, and yellow fill the screen uniformly without blotches."
+    },
+    {
+      "label": "Edge Chromatic Uniformity",
+      "description": "Check that colors do not shift in hue or tone near the outer bezel boundaries."
+    },
+    {
+      "label": "Banding in Saturated Colors",
+      "description": "Inspect whether intense pure colors trigger contour banding or posterization."
+    },
+    {
+      "label": "Subpixel Defect Isolation",
+      "description": "Observe single dark or off-color specks that become visible only on specific color fields."
+    }
+  ],
+  "canObserve": [
+    "Full-screen display of calibrated sRGB and P3 hex color fields",
+    "Visual edge-to-edge color temperature and tint consistency",
+    "Color channel switching response without persistent after-images"
+  ],
+  "cannotMeasure": [
+    "Absolute spectrophotometric color coordinates (CIE 1931 xy)",
+    "Optical peak nits per individual color channel",
+    "Physical backlight phosphor spectral spikes"
+  ],
+  "interpretation": "Quality IPS and OLED displays render uniform color saturation from edge to edge without blotchy color temperature shifts or tinting.",
+  "nextSteps": {
+    "text": "Want to inspect precise color accuracy and delta deviations?",
+    "actionLabel": "Launch Color Accuracy Test",
+    "actionHref": "/tests/color-accuracy-test"
+  }
+},
+  "grayscale-test": {
+  "overview": "The grayscale test evaluates a monitor's ability to render smooth, neutral luminance steps from absolute black (0%) to peak white (100%) without chromatic color casts or step clipping.",
+  "whatToLookFor": [
+    {
+      "label": "Neutral Gray Tone Balance",
+      "description": "Gray steps should appear completely neutral without pink, green, or blue tinting."
+    },
+    {
+      "label": "Distinct Step Separation",
+      "description": "Every block in the 16 or 32 step ramp should be individually distinguishable from its neighbor."
+    },
+    {
+      "label": "Dark Step Crush",
+      "description": "Verify that steps 1, 2, and 3 do not collapse into pure black."
+    },
+    {
+      "label": "Highlight Step Clipping",
+      "description": "Verify that the brightest steps below 100% are clearly visible against pure white."
+    }
+  ],
+  "canObserve": [
+    "Stepwise luminance discrimination across standardized 16/32/64 block ramps",
+    "Optical neutrality and color balance between neighboring grayscale patches",
+    "Browser canvas rendering of linear and sRGB grayscale steps"
+  ],
+  "cannotMeasure": [
+    "Physical transfer function gamma curve exponent without a colorimeter",
+    "Black floor luminance in candelas per square meter (cd/m²)",
+    "Hardware internal Look-Up Table (1D/3D LUT) bit-depth"
+  ],
+  "interpretation": "Even steps with neutral color balance indicate proper factory calibration. Tinted gray blocks indicate white point drift or unbalanced RGB gain settings.",
+  "nextSteps": {
+    "text": "Evaluate your display's mathematical luminance transfer curve.",
+    "actionLabel": "Launch Gamma Test",
+    "actionHref": "/tests/gamma-test"
+  }
+},
+  "saturation-test": {
+  "overview": "Saturation testing verifies how cleanly a display transitions from completely desaturated neutral gray (0%) to fully saturated pure color (100%) across primary and secondary channels.",
+  "whatToLookFor": [
+    {
+      "label": "Linear Saturation Steps",
+      "description": "Each 10% increment from 0% to 100% should show an equal and distinct jump in color intensity."
+    },
+    {
+      "label": "Premature Color Clipping",
+      "description": "Ensure colors do not reach maximum saturation prematurely at 80% or 90%."
+    },
+    {
+      "label": "Hue Shifts During Desaturation",
+      "description": "Watch for color shifts (e.g. red turning orange as saturation decreases)."
+    },
+    {
+      "label": "Wide-Gamut Oversaturation",
+      "description": "Verify whether colors appear naturally balanced or unnaturally neon."
+    }
+  ],
+  "canObserve": [
+    "10-step saturation ramps across Red, Green, Blue, Cyan, Magenta, and Yellow",
+    "Visual step boundary clarity and progression smoothness",
+    "Browser color space clamping consistency"
+  ],
+  "cannotMeasure": [
+    "Spectrophotometric purity percentage",
+    "Spectral power distribution of color emissions",
+    "Physical optical gamut volume in CIELAB units"
+  ],
+  "interpretation": "Displays with good color management show clean, distinct saturation increments without flattening into solid color blocks before 100%.",
+  "nextSteps": {
+    "text": "Inspect whether your display supports wide color spaces beyond sRGB.",
+    "actionLabel": "Launch Color Gamut Test",
+    "actionHref": "/tests/color-gamut-test"
+  }
+},
+  "color-banding-test": {
+  "overview": "Color banding occurs when subtle gradients break into visible stepped bands or posterization contours due to insufficient bit-depth, GPU quantization, or poor monitor image processing.",
+  "whatToLookFor": [
+    {
+      "label": "Stepped Banding Contours",
+      "description": "Visible harsh lines across smooth gradients instead of a seamless transition."
+    },
+    {
+      "label": "Dark Gradient Posterization",
+      "description": "Blocky step artifacts in dark shadow regions of the gradient."
+    },
+    {
+      "label": "Dithering Noise Grain",
+      "description": "Fine spatial noise grain visible when temporal or spatial dithering (FRC) is active."
+    },
+    {
+      "label": "Color Tinting in Gradients",
+      "description": "Chromatic streaks appearing within supposedly neutral gray or monochrome gradients."
+    }
+  ],
+  "canObserve": [
+    "Visual gradient smoothness across 8-bit and 10-bit RGB gradients",
+    "Presence of spatial dithering noise and step quantization artifacts",
+    "Linear and radial gradient rendering consistency"
+  ],
+  "cannotMeasure": [
+    "Native hardware panel bit-depth (true 8-bit vs 6-bit+FRC)",
+    "GPU output color format (RGB 4:4:4 vs 4:2:2/4:2:0 subsampling)",
+    "Internal scaler dithering matrix algorithms"
+  ],
+  "interpretation": "Smooth gradients without harsh lines indicate proper 8-bit or 10-bit color transmission. Visible banding suggests 6-bit FRC limitations or limited dynamic range settings.",
+  "nextSteps": {
+    "text": "Test multi-channel gradient ramps across custom RGB spectra.",
+    "actionLabel": "Launch Gradient Banding Test",
+    "actionHref": "/tests/gradient-banding-test"
+  }
+},
+  "color-gamut-test": {
+  "overview": "Color gamut testing evaluates whether your display, GPU driver, and browser support wide color spaces such as DCI-P3 and Rec. 2020 beyond standard sRGB.",
+  "whatToLookFor": [
+    {
+      "label": "P3 Gamut Extension Target",
+      "description": "A hidden symbol or number visible only on screens capable of displaying Display P3 colors."
+    },
+    {
+      "label": "sRGB Clamping Boundary",
+      "description": "Observe whether colors outside sRGB are clipped or accurately rendered."
+    },
+    {
+      "label": "Deep Red & Green Saturation",
+      "description": "Check if reds and greens look significantly richer than on standard office monitors."
+    },
+    {
+      "label": "Browser Color Management State",
+      "description": "Verify that your web browser is actively utilizing OS color management profiles."
+    }
+  ],
+  "canObserve": [
+    "Browser CSS color gamut media query detection (@media (color-gamut: p3))",
+    "Visual differentiation between sRGB and Display P3 color patches",
+    "Canvas wide-gamut color profile rendering"
+  ],
+  "cannotMeasure": [
+    "Percentage coverage of DCI-P3 or AdobeRGB without a spectrophotometer",
+    "Optical volume in CIELAB units",
+    "Physical phosphor emission wavelengths"
+  ],
+  "interpretation": "If the P3 indicator logo is clearly distinguishable from the sRGB background, your display hardware, operating system, and browser actively support wide color gamuts.",
+  "nextSteps": {
+    "text": "Check high dynamic range peak brightness and metadata handling.",
+    "actionLabel": "Launch HDR Capability Test",
+    "actionHref": "/tests/hdr-capability-test"
+  }
+},
+  "color-accuracy-test": {
+  "overview": "Color accuracy inspection utilizes standardized reference color patches to visually detect hue shifts, perceptual color errors, and skin tone distortion across your display.",
+  "whatToLookFor": [
+    {
+      "label": "Reference Patch Uniformity",
+      "description": "Inspect standard ColorChecker-style patches for balance and neutrality."
+    },
+    {
+      "label": "Skin Tone Naturalness",
+      "description": "Verify that portrait skin tones do not appear artificially sunburned (too red) or jaundiced (too yellow)."
+    },
+    {
+      "label": "Neutral Gray Axis Alignment",
+      "description": "Check that the neutral gray row shows zero chromatic tinting."
+    },
+    {
+      "label": "Secondary Color Balance",
+      "description": "Ensure cyan, magenta, and yellow maintain pure hues without drifting toward primaries."
+    }
+  ],
+  "canObserve": [
+    "Standard 24-patch reference color palette rendering",
+    "Visual alignment against standardized digital reference values",
+    "Side-by-side patch consistency across screen regions"
+  ],
+  "cannotMeasure": [
+    "Numerical Delta E (ΔE 2000) deviation values without an external sensor",
+    "Absolute CIE L*a*b* coordinates",
+    "Ambient light flare impact on perception"
+  ],
+  "interpretation": "Well-calibrated displays maintain accurate hue and saturation across all test patches without excessive redness in skin tones or greenish grays.",
+  "nextSteps": {
+    "text": "Learn how to calibrate your monitor using hardware on-screen display controls.",
+    "actionLabel": "Launch OSD Calibration Guide",
+    "actionHref": "/tools/osd-calibration-guide"
+  }
+},
+  "brightness-test": {
+  "overview": "Brightness testing inspects near-black shadow detail (levels 1% to 10%) to ensure dark elements in games, movies, and photos are not crushed into impenetrable pitch black.",
+  "whatToLookFor": [
+    {
+      "label": "Near-Black Square Visibility",
+      "description": "Square patches with luminance values from 1% to 5% should be barely distinguishable from the black background."
+    },
+    {
+      "label": "Dark Step Separation",
+      "description": "Each successive square should be visibly brighter than the previous one."
+    },
+    {
+      "label": "Black Level Floor",
+      "description": "The background should remain deep black and not wash out into charcoal gray."
+    },
+    {
+      "label": "Room Lighting Impact",
+      "description": "Turn off room lights to verify that subtle dark squares remain discernible."
+    }
+  ],
+  "canObserve": [
+    "Visual distinction of near-black squares against pure black",
+    "Step visibility threshold across subtle luminance increments",
+    "Contrast between black floor and lowest gray levels"
+  ],
+  "cannotMeasure": [
+    "Absolute peak or minimum luminance in candelas per square meter (nits)",
+    "Backlight voltage regulation curves",
+    "Ambient reflected glare percentage"
+  ],
+  "interpretation": "An optimal display reveals step 2% or 3% without washing out the 0% reference black background into a hazy gray.",
+  "nextSteps": {
+    "text": "Now verify that bright highlights are not clipping into pure white.",
+    "actionLabel": "Launch Contrast Test",
+    "actionHref": "/tests/contrast-test"
+  }
+},
+  "contrast-test": {
+  "overview": "Contrast testing verifies the dynamic ratio between the brightest whites and darkest blacks, ensuring both highlight textures and shadow details remain simultaneously visible.",
+  "whatToLookFor": [
+    {
+      "label": "White Step Differentiation",
+      "description": "Verify that squares from 90% to 99% luminance are distinguishable from the pure white background."
+    },
+    {
+      "label": "Black Step Separation",
+      "description": "Verify that dark squares from 1% to 10% remain visible against black."
+    },
+    {
+      "label": "Highlight Blooming",
+      "description": "Ensure bright white blocks do not bleed optical glare into adjacent dark areas."
+    },
+    {
+      "label": "Washed-Out Midtones",
+      "description": "Check that contrast is not artificially boosted, which crushes color gradients."
+    }
+  ],
+  "canObserve": [
+    "Simultaneous visibility of near-white and near-black test patches",
+    "Boundary separation across multi-step contrast ramps",
+    "Visual dynamic range balance across the screen"
+  ],
+  "cannotMeasure": [
+    "Static ANSI contrast ratio (e.g. 1000:1 vs 3000:1) without optical probe",
+    "Dynamic contrast modulation speed",
+    "Panel reflectance ratio"
+  ],
+  "interpretation": "Properly set contrast allows near-white squares (up to 98%) to be visible without clipping into pure white, while keeping near-black squares distinct.",
+  "nextSteps": {
+    "text": "Examine deep shadow detail in dark room viewing environments.",
+    "actionLabel": "Launch Black Level Test",
+    "actionHref": "/tests/black-level-test"
+  }
+},
+  "black-level-test": {
+  "overview": "The black level test measures shadow detail reproduction and black floor depth, ensuring the lowest luminance signals are rendered accurately without black crush or gray haze.",
+  "whatToLookFor": [
+    {
+      "label": "Lowest Visible Gray Step",
+      "description": "Locate the lowest percentage box (1%, 2%, or 3%) you can distinguish from true black."
+    },
+    {
+      "label": "Pure Black Background Stability",
+      "description": "Confirm the outer background is rendered at 0% (RGB 0,0,0)."
+    },
+    {
+      "label": "Glow vs Black Depth",
+      "description": "Note whether the background is truly dark or elevated by IPS glow / backlight bleed."
+    },
+    {
+      "label": "Corner Non-Uniformity",
+      "description": "Check if black level rises near the screen corners compared to the center."
+    }
+  ],
+  "canObserve": [
+    "Exact threshold of lowest visible near-black step (1% to 8%)",
+    "Visual black depth against a darkened viewing room",
+    "Corner glow interference affecting shadow perception"
+  ],
+  "cannotMeasure": [
+    "Absolute minimum black luminance in cd/m² (nits)",
+    "Liquid crystal light-blocking polarization ratio",
+    "Panel light seal integrity"
+  ],
+  "interpretation": "On OLED panels, true black emits 0 nits. On LCD panels, a faint glow is normal, but steps 1%–2% should remain distinct from the background.",
+  "nextSteps": {
+    "text": "Test low-luminance grayscale response near 0% to 5%.",
+    "actionLabel": "Launch Near-Black Test",
+    "actionHref": "/tests/near-black-test"
+  }
+},
+  "white-level-test": {
+  "overview": "White level testing inspects the upper highlights of your display to ensure bright white details (levels 240 through 254 in 8-bit) do not clip into a featureless white wash.",
+  "whatToLookFor": [
+    {
+      "label": "Near-White Square Boundaries",
+      "description": "Check if squares 250, 252, and 254 are visibly distinct from the pure white background (255)."
+    },
+    {
+      "label": "Discoloration in Bright Highlights",
+      "description": "Ensure peak white squares do not take on a yellowish or cyan color cast."
+    },
+    {
+      "label": "Eye Fatigue / Glare",
+      "description": "Check if maximum white causes eye discomfort in your current room lighting."
+    },
+    {
+      "label": "Highlight Blooming",
+      "description": "Observe whether high-brightness white blocks bleed light into neighboring borders."
+    }
+  ],
+  "canObserve": [
+    "Distinguishable boundaries of high-luminance squares against pure white (255)",
+    "Color neutrality of peak white across screen quadrants",
+    "Edge highlight clipping threshold"
+  ],
+  "cannotMeasure": [
+    "Peak sustained luminance in nits without a light meter",
+    "Optical color temperature of peak white (e.g. 6500K) without a colorimeter",
+    "Automatic Brightness Limiter (ABL) throttle curves"
+  ],
+  "interpretation": "If near-white squares up to 253 or 254 are distinguishable from the white background, your monitor avoids highlight clipping and preserves cloud and specular detail.",
+  "nextSteps": {
+    "text": "Inspect overall luminance uniformity across the full display surface.",
+    "actionLabel": "Launch Uniformity Test",
+    "actionHref": "/tests/uniformity-test"
+  }
+},
+  "gamma-test": {
+  "overview": "Gamma testing uses optical halftone dither fields to visually calibrate display luminance curves to standard 2.2 without requiring an expensive hardware colorimeter.",
+  "whatToLookFor": [
+    {
+      "label": "Solid vs Dithered Pattern Blending",
+      "description": "Notice where the inner solid circles blend completely into the alternating striped background."
+    },
+    {
+      "label": "Viewing Distance Adjustment",
+      "description": "Step back or squint slightly so fine 1-pixel lines blur into a solid tone."
+    },
+    {
+      "label": "Gamma Curve Blend Point",
+      "description": "Identify which numerical value (1.8, 2.0, 2.2, 2.4, 2.6) matches the background."
+    },
+    {
+      "label": "Color Drift in Gray",
+      "description": "Observe if the blend point differs between Red, Green, and Blue channels."
+    }
+  ],
+  "canObserve": [
+    "Perceptual match point between 50% luminance dither fields and solid gray swatches",
+    "Visual approximation of effective gamma curve exponent",
+    "Color balance and chromatic neutrality of midtones"
+  ],
+  "cannotMeasure": [
+    "Exact multi-point 10-point/20-point parametric gamma curve",
+    "Hardware LUT profile data inside monitor scalar",
+    "Digital-to-optical conversion transfer function in millicandelas"
+  ],
+  "interpretation": "For general computing and sRGB mastering, the pattern should seamlessly blend into the background at the 2.2 indicator mark when viewed from normal distance.",
+  "nextSteps": {
+    "text": "Calibrate your monitor settings using on-screen hardware buttons.",
+    "actionLabel": "Launch OSD Calibration Guide",
+    "actionHref": "/tools/osd-calibration-guide"
+  }
+},
+  "solid-color-test": {
+  "overview": "Solid color field testing presents full-screen primary, secondary, black, white, and gray backgrounds to inspect panel uniformity, color purity, and subpixel defects.",
+  "whatToLookFor": [
+    {
+      "label": "Edge Color Shifts",
+      "description": "Check if the color temperature shifts near the perimeter edges of the screen."
+    },
+    {
+      "label": "Dirty Screen Effect (DSE)",
+      "description": "On gray and white fields, inspect for blotchy, cloudy, or banded patches."
+    },
+    {
+      "label": "Subpixel Defect Isolation",
+      "description": "Spot dead or stuck subpixels that only reveal themselves on specific primary color fields."
+    },
+    {
+      "label": "Vignetting / Corner Shadowing",
+      "description": "Observe whether extreme corners appear slightly darkened compared to the center."
+    }
+  ],
+  "canObserve": [
+    "Full-screen visual color consistency across 8 standardized color fields",
+    "Edge-to-center brightness shifts and vignetting",
+    "Visual detection of dust particles and defective subpixels"
+  ],
+  "cannotMeasure": [
+    "Photometric 9-point or 25-point ANSI uniformity percentage",
+    "Panel thickness variation in micrometers",
+    "Backlight diffuser optical transmission efficiency"
+  ],
+  "interpretation": "Uniform solid colors indicate high panel quality and even backlight distribution. Uneven patches or corner vignetting are common on budget LCD displays.",
+  "nextSteps": {
+    "text": "Inspect 9-zone panel luminance and color temperature uniformity.",
+    "actionLabel": "Launch Uniformity Test",
+    "actionHref": "/tests/uniformity-test"
+  }
+},
+  "viewing-angle-test": {
+  "overview": "Viewing angle testing evaluates how color saturation, brightness, and contrast degrade when the display is viewed from off-center, oblique, and vertical angles.",
+  "whatToLookFor": [
+    {
+      "label": "Color Washout at Angles",
+      "description": "Move your head side to side and observe if vibrant colors fade into pastel shades."
+    },
+    {
+      "label": "Gamma Shift / Contrast Loss",
+      "description": "Notice if dark shadow details wash out and black levels elevate into milky gray."
+    },
+    {
+      "label": "IPS Glow vs VA Gamma Shift",
+      "description": "IPS panels show a silver/white sheen at wide angles; VA panels lose center contrast."
+    },
+    {
+      "label": "Vertical Inversion (TN Panels)",
+      "description": "View from below to check if colors invert into negative images on budget TN panels."
+    }
+  ],
+  "canObserve": [
+    "Perceived color and contrast shift as viewing angle increases relative to normal",
+    "Radial gradient uniformity when viewed off-axis",
+    "Angular stability of text and high-contrast lines"
+  ],
+  "cannotMeasure": [
+    "Exact VESA-defined 178°/178° viewing angle contrast threshold (10:1 CR)",
+    "Optical polarizing filter extinction ratio",
+    "Refractive index of panel glass substrate"
+  ],
+  "interpretation": "IPS and OLED panels maintain high color fidelity across wide angles. VA panels suffer contrast loss and gamma shift, while TN panels invert colors vertically.",
+  "nextSteps": {
+    "text": "Check if off-angle viewing exposes corner backlight bleed.",
+    "actionLabel": "Launch Backlight Bleed Test",
+    "actionHref": "/tests/backlight-bleed-test"
+  }
+},
+  "blooming-test": {
+  "overview": "Blooming testing inspects halo artifacts on Full-Array Local Dimming (FALD) and Mini-LED displays where light leaks from active backlight zones into surrounding dark pixels.",
+  "whatToLookFor": [
+    {
+      "label": "Glowing Halos Around Targets",
+      "description": "Inspect small white boxes on black for a diffuse glowing aura around their perimeters."
+    },
+    {
+      "label": "Subtitle Blooming on Black Bars",
+      "description": "Check if white text causes distracting light flare into black letterbox areas."
+    },
+    {
+      "label": "Starfield Flare",
+      "description": "Observe tiny 1px white stars to see if adjacent backlight zones illuminate unnecessarily."
+    },
+    {
+      "label": "Zone Transition Pulsing",
+      "description": "Move high-contrast objects across the screen to check for delayed backlight zone brightening."
+    }
+  ],
+  "canObserve": [
+    "Visual halo extent and luminance contrast across calibrated target diameters (1px, 5px, 20px, 100px)",
+    "Dynamic tracking of moving high-contrast elements across screen quadrants",
+    "Sub-pixel boundary sharpness against true black (RGB 0,0,0) canvases"
+  ],
+  "cannotMeasure": [
+    "Total physical Mini-LED dimming zone count inside the chassis",
+    "Zone microcontroller algorithm response time in milliseconds",
+    "Absolute optical halo luminance without a spot photometer"
+  ],
+  "interpretation": "Blooming is a physical characteristic of Mini-LED zone count resolution. Reducing local dimming intensity or adding ambient bias lighting minimizes the effect.",
+  "nextSteps": {
+    "text": "Compare edge backlight bleed vs local dimming performance.",
+    "actionLabel": "Launch Backlight Bleed Test",
+    "actionHref": "/tests/backlight-bleed-test"
+  }
+},
+  "tv-overscan-test": {
+  "overview": "TV overscan testing verifies whether your television or external display renders images with exact 1:1 pixel mapping or artificially zooms in and cuts off perimeter edges.",
+  "whatToLookFor": [
+    {
+      "label": "0% Edge Border Visibility",
+      "description": "White boundary lines marked 0% must perfectly touch the physical screen bezel on all four sides."
+    },
+    {
+      "label": "Cropped Indicator Arrows",
+      "description": "Check if arrowheads at the outer edges are truncated or hidden behind the bezel."
+    },
+    {
+      "label": "Scaling Blurriness",
+      "description": "Inspect whether text and single-pixel borders appear soft and fuzzy due to scaling interpolation."
+    },
+    {
+      "label": "1px Line Sharpness",
+      "description": "Alternating 1px border lines should render crisply without moiré interference."
+    }
+  ],
+  "canObserve": [
+    "Percentage of edge cropping (0%, 2.5%, 5%) on all four display borders",
+    "Boundary arrow visibility and exact pixel-to-bezel alignment",
+    "Pixel-to-pixel sharpness against canvas edges"
+  ],
+  "cannotMeasure": [
+    "Internal TV scaler DSP chip registers",
+    "Video HDMI EDID overscan flags",
+    "Chassis bezel optical overlap dimensions"
+  ],
+  "interpretation": "If the 0% boundary lines are fully visible and 1px borders are razor-sharp, your display has 1:1 pixel mapping enabled ('Just Scan', 'Fit to Screen', or 'Dot by Dot').",
+  "nextSteps": {
+    "text": "Verify aspect ratio scaling across circular geometric shapes.",
+    "actionLabel": "Launch Scaling & Aspect Ratio Test",
+    "actionHref": "/tests/scaling-aspect-test"
+  }
+},
+  "scaling-aspect-test": {
+  "overview": "Scaling and aspect ratio testing validates geometric symmetry across standard display ratios (16:9, 16:10, 21:9, 32:9, 4:3), ensuring circles remain perfectly round and unwarped.",
+  "whatToLookFor": [
+    {
+      "label": "Concentric Circle Symmetry",
+      "description": "Check that circles are perfectly round with no oval distortion, stretching, or squashing."
+    },
+    {
+      "label": "Square Aspect Uniformity",
+      "description": "Verify that square grids have identical pixel width and height."
+    },
+    {
+      "label": "Linear Grid Orthogonality",
+      "description": "Ensure horizontal and vertical lines meet at exact 90-degree right angles."
+    },
+    {
+      "label": "Interpolation Moiré",
+      "description": "Inspect concentric rings for jagged aliasing or moiré shimmer."
+    }
+  ],
+  "canObserve": [
+    "Visual circular symmetry against pixel grids across standard aspect ratios",
+    "Aspect ratio distortion caused by incorrect GPU or display scaling modes",
+    "Canvas resolution scaling behavior"
+  ],
+  "cannotMeasure": [
+    "Physical panel aspect ratio in millimeters",
+    "GPU hardware scaling interpolation filter kernels",
+    "Anamorphic lens optical distortion"
+  ],
+  "interpretation": "Elongated or squashed circles indicate an aspect ratio mismatch in the OS display settings, GPU control panel, or monitor OSD aspect mode.",
+  "nextSteps": {
+    "text": "Check your display's physical and logical resolution settings.",
+    "actionLabel": "Launch Resolution Checker",
+    "actionHref": "/tests/resolution-checker"
+  }
+},
+  "screen-tearing-test": {
+  "overview": "Screen tearing occurs when the graphics card frame rate is out of sync with the monitor's fixed refresh cycles, causing consecutive frames to render in split horizontal slices.",
+  "whatToLookFor": [
+    {
+      "label": "Horizontal Split Lines",
+      "description": "Look for horizontal fracture lines slicing across moving vertical bars."
+    },
+    {
+      "label": "Discontinuous Motion",
+      "description": "Notice when the top portion of a moving element is displaced ahead of the bottom portion."
+    },
+    {
+      "label": "Multi-Tear Artifacts",
+      "description": "At high framerates, look for multiple simultaneous tears across the screen height."
+    },
+    {
+      "label": "V-Sync Stutter vs Tearing",
+      "description": "Check whether enabling V-Sync trades tearing for periodic micro-stutters."
+    }
+  ],
+  "canObserve": [
+    "Visual horizontal tearing artifacts on high-velocity moving bars",
+    "Frame synchronization stability across user refresh rates",
+    "Impact of browser vsync lock on animation smoothness"
+  ],
+  "cannotMeasure": [
+    "GPU hardware scanout line timing",
+    "DisplayPort/HDMI vertical blanking interval micro-timings",
+    "Direct G-Sync/FreeSync hardware module handshake registers"
+  ],
+  "interpretation": "Horizontal tear lines confirm disabled or mismatched V-Sync. Variable Refresh Rate (VRR / FreeSync / G-Sync) eliminates tearing without input lag.",
+  "nextSteps": {
+    "text": "Test variable refresh rate smoothness and tear-free motion.",
+    "actionLabel": "Launch VRR Test",
+    "actionHref": "/tests/vrr-test"
+  }
+},
+  "screen-flicker-test": {
+  "overview": "Screen flicker testing exposes rapid periodic luminance fluctuations caused by low-frequency PWM backlights, voltage ripple, or panel driver timing instability.",
+  "whatToLookFor": [
+    {
+      "label": "Visual Strobing or Shimmering",
+      "description": "Detect subtle high-frequency buzzing or flashing on fine striped patterns."
+    },
+    {
+      "label": "Stroboscopic Phantom Lines",
+      "description": "Move your eyes rapidly across the screen; lines will appear beaded if flicker is present."
+    },
+    {
+      "label": "Peripheral Vision Sensitivity",
+      "description": "Look slightly away from the monitor to see if flicker is more pronounced in peripheral vision."
+    },
+    {
+      "label": "Brightness Threshold",
+      "description": "Adjust monitor brightness down to see if flicker begins only below a certain level."
+    }
+  ],
+  "canObserve": [
+    "Visual perception of flicker patterns across fine gratings and alternating fields",
+    "Stroboscopic interaction with human saccadic eye movements",
+    "Pattern shimmer across high-frequency luminance masks"
+  ],
+  "cannotMeasure": [
+    "Precise electrical pulse frequency in Hertz without an oscilloscope photodiode",
+    "Backlight driver duty cycle percentage",
+    "Harmonic flicker index"
+  ],
+  "interpretation": "Visible flicker on solid or patterned backgrounds indicates low-frequency PWM dimming or refresh instability, a primary cause of eye fatigue and headaches.",
+  "nextSteps": {
+    "text": "Perform a dedicated test for pulse-width modulation dimming.",
+    "actionLabel": "Launch PWM Flicker Test",
+    "actionHref": "/tests/pwm-flicker-test"
+  }
+},
+  "resolution-checker": {
+  "overview": "The Resolution Checker provides real-time diagnostics of physical display resolution, CSS viewport dimensions, Device Pixel Ratio (DPR), and pixel density.",
+  "whatToLookFor": [
+    {
+      "label": "Native Resolution Match",
+      "description": "Verify that reported physical screen pixels match your monitor manufacturer's specification."
+    },
+    {
+      "label": "High-DPI DPR Scaling Factor",
+      "description": "Check whether your Device Pixel Ratio is set to 1.0x (100%), 1.25x (125%), 1.5x (150%), or 2.0x (200%)."
+    },
+    {
+      "label": "Logical Viewport Dimensions",
+      "description": "Observe the available CSS pixel space presented to web pages and applications."
+    },
+    {
+      "label": "Aspect Ratio Classification",
+      "description": "Confirm that the calculated aspect ratio matches standard 16:9, 16:10, or ultra-wide dimensions."
+    }
+  ],
+  "canObserve": [
+    "Browser viewport dimensions (`window.innerWidth`, `window.innerHeight`)",
+    "Operating system screen dimensions (`screen.width`, `screen.height`)",
+    "Device Pixel Ratio (`window.devicePixelRatio`) reported by the browser environment",
+    "Screen orientation and available desktop workspace"
+  ],
+  "cannotMeasure": [
+    "Physical monitor diagonal measurement in inches without user input",
+    "Physical dot pitch in millimeters",
+    "Multi-monitor topology outside browser scope"
+  ],
+  "interpretation": "Operating at the panel's native resolution ensures razor-sharp text and graphics. Fractional scaling (e.g. 125%) may cause subtle softness in legacy desktop applications.",
+  "nextSteps": {
+    "text": "Inspect detailed WebGL graphics capabilities and hardware display info.",
+    "actionLabel": "Launch Display Info Diagnostics",
+    "actionHref": "/tests/display-info"
+  }
+},
+  "touch-screen-test": {
+  "overview": "Touchscreen diagnostics test touch sensor accuracy, responsiveness, dead zones, and edge sensitivity across mobile devices, tablets, and touchscreen monitors.",
+  "whatToLookFor": [
+    {
+      "label": "Touch Tracking Accuracy",
+      "description": "Drawn lines should follow directly beneath your fingertip without offset or lag."
+    },
+    {
+      "label": "Unresponsive Dead Zones",
+      "description": "Test all corners and borders to ensure every quadrant registers touch inputs."
+    },
+    {
+      "label": "Touch Latency / Trailing",
+      "description": "Notice the trailing distance between your moving finger and the drawn ink trail."
+    },
+    {
+      "label": "Edge Registration",
+      "description": "Verify that touches along the extreme outer edge of the display register reliably."
+    }
+  ],
+  "canObserve": [
+    "Real-time touch coordinates on the screen canvas",
+    "Active touch point tracking and drawing continuity",
+    "Touch event firing frequency and responsiveness"
+  ],
+  "cannotMeasure": [
+    "Capacitive touch digitizer sampling rate in Hertz (e.g. 120Hz/240Hz polling)",
+    "Physical glass surface impedance and anti-fingerprint coating condition",
+    "Pressure sensitivity levels in grams without pressure-sensitive hardware"
+  ],
+  "interpretation": "Smooth, continuous lines across the entire display area verify that the capacitive digitizer has no dead spots, ghost touch issues, or boundary clipping.",
+  "nextSteps": {
+    "text": "Test multi-finger gesture tracking and maximum touch points.",
+    "actionLabel": "Launch Multi-Touch Test",
+    "actionHref": "/tests/multi-touch-test"
+  }
+},
+  "sharpness-test": {
+  "overview": "Sharpness testing evaluates font rendering, edge clarity, and artificial edge enhancement ringing caused by excessive monitor on-screen display sharpness settings.",
+  "whatToLookFor": [
+    {
+      "label": "White Halo Ringing",
+      "description": "Look for bright white borders or fringes around black text and high-contrast lines."
+    },
+    {
+      "label": "Siemens Star Spurious Resolution",
+      "description": "Check if spoke lines converge cleanly to the center without circular moiré artifacts."
+    },
+    {
+      "label": "1px Fine Line Raster Clarity",
+      "description": "Alternating black and white lines should appear sharp without muddy gray blurring."
+    },
+    {
+      "label": "Text Edge Smudging",
+      "description": "Inspect small text samples to ensure letters are crisp without artificial sharpening noise."
+    }
+  ],
+  "canObserve": [
+    "High-contrast fine detail rendering across varying font sizes",
+    "Presence of artificial white contour halos and edge ringing",
+    "Radial spoke resolution on Siemens star patterns"
+  ],
+  "cannotMeasure": [
+    "Optical lens MTF (Modulation Transfer Function) curve",
+    "Panel subpixel aperture ratio",
+    "Anti-glare matte coating graininess"
+  ],
+  "interpretation": "Excessive sharpness produces white halos around text and lines, creating visual noise. Lowering monitor OSD sharpness to neutral restores clean, natural edges.",
+  "nextSteps": {
+    "text": "Evaluate subpixel font smoothing and ClearType rendering.",
+    "actionLabel": "Launch Text Clarity Test",
+    "actionHref": "/tests/text-clarity-test"
+  }
+},
+  "compare-displays": {
+  "overview": "The Display Comparison & Calculator suite calculates Pixel Density (PPI), optimal viewing distances, and aspect ratios, and provides side-by-side monitor evaluation tools.",
+  "whatToLookFor": [
+    {
+      "label": "PPI & PPD Calculations",
+      "description": "Compare pixel density and pixels per degree to determine true sharpness."
+    },
+    {
+      "label": "Visual Acuity Limit",
+      "description": "Check the distance at which individual pixels become imperceptible to the human eye ('Retina')."
+    },
+    {
+      "label": "Aspect Ratio Proportion",
+      "description": "Preview wireframe boxes comparing 16:9, 16:10, 21:9, and 32:9 screen shapes."
+    },
+    {
+      "label": "Dual Screen Matching",
+      "description": "Evaluate color, white point, and resolution parity between multiple monitors."
+    }
+  ],
+  "canObserve": [
+    "Mathematical PPI and Retina distance calculations based on user dimensions",
+    "Interactive aspect ratio wireframe previews and dimension comparisons",
+    "Multi-display specification matching matrices"
+  ],
+  "cannotMeasure": [
+    "Colorimeter delta differences between two separate physical panels in real-time",
+    "Physical manufacturing bezel tolerances"
+  ],
+  "interpretation": "Displays exceeding 60 Pixels Per Degree (PPD) at normal viewing distances reach the human visual acuity limit ('Retina'), rendering individual pixels invisible.",
+  "nextSteps": {
+    "text": "Match color and white point between two side-by-side monitors.",
+    "actionLabel": "Launch Dual Monitor Matcher",
+    "actionHref": "/tools/dual-monitor-matcher"
+  }
+},
+  "display-info": {
+  "overview": "Display Information Diagnostics queries web platform and hardware APIs to inspect GPU vendor, WebGL renderer capabilities, HDR support, color depth, and screen geometry.",
+  "whatToLookFor": [
+    {
+      "label": "GPU Hardware Model & Vendor",
+      "description": "Check the unmasked WebGL graphics card string reported by your system."
+    },
+    {
+      "label": "WebGL 1 & WebGL 2 Support",
+      "description": "Verify that 3D canvas acceleration and modern shader profiles are active."
+    },
+    {
+      "label": "Wide Color Gamut Capability",
+      "description": "Inspect whether your browser detects sRGB, Display-P3, or Rec. 2020 color support."
+    },
+    {
+      "label": "Multi-Screen Window Placement",
+      "description": "Check multi-monitor placement API availability for multi-display setups."
+    }
+  ],
+  "canObserve": [
+    "System color depth and bits per pixel",
+    "Browser screen dimensions and available workspace",
+    "WebGL unmasked renderer and vendor strings",
+    "CSS color gamut media query capabilities"
+  ],
+  "cannotMeasure": [
+    "Internal GPU core clocks and VRAM bandwidth",
+    "Physical monitor firmware version",
+    "Physical HDMI/DisplayPort cable revision"
+  ],
+  "interpretation": "Comprehensive hardware detection confirms whether hardware acceleration and modern web graphics capabilities are fully enabled in your browser.",
+  "nextSteps": {
+    "text": "Benchmark 3D WebGL rendering frame stability and FPS.",
+    "actionLabel": "Launch GPU Benchmark Test",
+    "actionHref": "/tests/gpu-benchmark-test"
+  }
+},
+  "custom-pattern": {
+  "overview": "The Custom Pattern Generator allows you to configure 12 precision test patterns—including 2D grids, checkerboards, line rasters, and moiré circles—to inspect display geometry and optical alignment.",
+  "whatToLookFor": [
+    {
+      "label": "Grid Line Straightness",
+      "description": "Inspect outer boundary lines for barrel distortion or pincushioning on curved displays."
+    },
+    {
+      "label": "Checkerboard Contrast & Bloom",
+      "description": "Check for light bleed from bright white squares into adjacent dark squares."
+    },
+    {
+      "label": "1px Horizontal/Vertical Lines",
+      "description": "Confirm that fine line gratings render with razor-sharp 1:1 pixel phase tracking."
+    },
+    {
+      "label": "Moiré Interference Rings",
+      "description": "Look for circular aliasing rings on fine concentric line patterns."
+    }
+  ],
+  "canObserve": [
+    "Real-time rendering of adjustable line densities, colors, and checkerboard sizes",
+    "Custom text rendering across serif and sans-serif styles",
+    "Visual crosshair convergence and boundary alignment"
+  ],
+  "cannotMeasure": [
+    "External optical distortion from projector lenses or cameras",
+    "Internal video scaler clock jitter on analog VGA inputs",
+    "Physical chassis bezel frame alignment tolerances"
+  ],
+  "interpretation": "Precision geometric grids instantly reveal curvature distortions, scaler phase issues, and contrast limitations that natural images hide.",
+  "nextSteps": {
+    "text": "Read our comprehensive guide to display inspection standards.",
+    "actionLabel": "Read Test Patterns Guide",
+    "actionHref": "/knowledge-base/display-test-patterns-and-visual-inspection-standards"
+  }
+},
+  "multi-touch-test": {
+  "overview": "Multi-touch testing evaluates simultaneous contact tracking, maximum touch point limits, and gesture registration across touchscreen laptops, tablets, and phones.",
+  "whatToLookFor": [
+    {
+      "label": "Maximum Touch Point Count",
+      "description": "Place 2, 5, or 10 fingers on the screen to verify how many simultaneous points register."
+    },
+    {
+      "label": "Individual Point Drift / Jitter",
+      "description": "Hold fingers stationary and check if reported coordinates stay rock-solid or wobble."
+    },
+    {
+      "label": "Ghost Touch Artifacts",
+      "description": "Ensure no phantom touches appear in areas where you are not touching the glass."
+    },
+    {
+      "label": "Smooth Multi-Finger Tracking",
+      "description": "Move multiple fingers across the screen and verify all trails update without dropped frames."
+    }
+  ],
+  "canObserve": [
+    "Simultaneous active touch point count and identifiers",
+    "Individual touch coordinates, radius, and rotation angle",
+    "Gesture interaction responsiveness and event firing rates"
+  ],
+  "cannotMeasure": [
+    "Hardware capacitive controller scan rate in Hertz",
+    "Palm rejection threshold algorithms in device firmware",
+    "Pen/stylus electromagnetic digitizer layers"
+  ],
+  "interpretation": "Quality modern touch screens support 5 to 10 simultaneous touches with zero cross-talk jitter or dropped contacts.",
+  "nextSteps": {
+    "text": "Test single-touch accuracy and edge dead zone boundaries.",
+    "actionLabel": "Launch Touch Screen Test",
+    "actionHref": "/tests/touch-screen-test"
+  }
+},
+  "accelerometer-test": {
+  "overview": "Accelerometer diagnostics inspect internal 3-axis motion sensors (X, Y, Z acceleration) on mobile devices, laptops, and tablets using the DeviceMotion API.",
+  "whatToLookFor": [
+    {
+      "label": "Gravity Vector Tracking",
+      "description": "Verify that the Z-axis registers approximately 9.8 m/s² when the device is resting flat on a table."
+    },
+    {
+      "label": "Real-Time Tilt Sensitivity",
+      "description": "Tilt the device forward, backward, left, and right to observe smooth acceleration changes."
+    },
+    {
+      "label": "Sensor Noise Floor",
+      "description": "Check how stable the readings remain when the device is completely stationary."
+    },
+    {
+      "label": "Movement Responsiveness",
+      "description": "Shake or move the device to confirm instant acceleration response."
+    }
+  ],
+  "canObserve": [
+    "Real-time 3-axis acceleration including gravity (`accelerationIncludingGravity.x/y/z`)",
+    "Linear acceleration without gravity (`acceleration.x/y/z`)",
+    "Sensor update rate in Hertz reported by the browser"
+  ],
+  "cannotMeasure": [
+    "MEMS physical silicon spring calibration",
+    "Temperature coefficient drift inside sensor package",
+    "Direct analog voltage levels from sensor circuitry"
+  ],
+  "interpretation": "A flat, stationary device should register approximately 9.81 m/s² on the Z-axis and near 0 m/s² on X and Y. Excessive fluctuation indicates sensor noise.",
+  "nextSteps": {
+    "text": "Inspect rotational velocity and angular orientation.",
+    "actionLabel": "Launch Gyroscope Test",
+    "actionHref": "/tests/gyroscope-test"
+  }
+},
+  "gyroscope-test": {
+  "overview": "Gyroscope diagnostics measure rotational velocity (Alpha, Beta, Gamma angular rates) to evaluate orientation tracking and VR/motion sensor fidelity.",
+  "whatToLookFor": [
+    {
+      "label": "Rotational Velocity Tracking",
+      "description": "Spin or rotate the device along each axis and observe responsive rate curves in deg/s."
+    },
+    {
+      "label": "Zero-Rate Bias Drift",
+      "description": "Verify that rotation values return to 0 deg/s when the device stops moving."
+    },
+    {
+      "label": "Axis Orientation Alignment",
+      "description": "Confirm that Pitch, Roll, and Yaw correctly map to physical device rotations."
+    },
+    {
+      "label": "Sensor Jitter",
+      "description": "Observe if readings vibrate or remain calm during steady holding."
+    }
+  ],
+  "canObserve": [
+    "Real-time 3-axis rotational velocity (`rotationRate.alpha/beta/gamma`)",
+    "Absolute or relative orientation angles (`alpha`, `beta`, `gamma`)",
+    "Motion event dispatch frequency"
+  ],
+  "cannotMeasure": [
+    "Optical gyroscopic ring laser precision",
+    "Hardware compass magnetic field interference",
+    "Factory calibration matrix inside sensor chip"
+  ],
+  "interpretation": "A stationary phone or tablet should report zero or near-zero rotational velocity. Constant non-zero values indicate zero-rate bias drift.",
+  "nextSteps": {
+    "text": "Test 3-axis linear acceleration and tilt response.",
+    "actionLabel": "Launch Accelerometer Test",
+    "actionHref": "/tests/accelerometer-test"
+  }
+},
+  "vibration-test": {
+  "overview": "Vibration testing verifies haptic feedback motors and vibration actuators on mobile devices using the Web Vibration API.",
+  "whatToLookFor": [
+    {
+      "label": "Haptic Pulse Sharpness",
+      "description": "Feel whether the vibration starts and stops crisply without lingering buzz."
+    },
+    {
+      "label": "Sustained Motor Intensity",
+      "description": "Verify steady vibration force during continuous vibration pulses."
+    },
+    {
+      "label": "Rhythmic Pattern Accuracy",
+      "description": "Listen and feel for distinct rhythm cadences during SOS or custom pattern playback."
+    },
+    {
+      "label": "Chassis Resonance",
+      "description": "Check if the vibration causes excessive mechanical rattling in device buttons."
+    }
+  ],
+  "canObserve": [
+    "Execution of single pulse and rhythmic vibration pattern arrays",
+    "Browser Web Vibration API feature support (`navigator.vibrate`)",
+    "User-triggered haptic tactile responses"
+  ],
+  "cannotMeasure": [
+    "Actuator physical G-force acceleration",
+    "ERM (Eccentric Rotating Mass) vs LRA (Linear Resonant Actuator) motor architecture",
+    "Acoustic noise emission in decibels"
+  ],
+  "interpretation": "Clear, distinct haptic pulses verify that the device vibration motor and operating system permissions are functioning correctly.",
+  "nextSteps": {
+    "text": "Inspect device touchscreen responsiveness and accuracy.",
+    "actionLabel": "Launch Touch Screen Test",
+    "actionHref": "/tests/touch-screen-test"
+  }
+},
+  "webcam-test": {
+  "overview": "Webcam diagnostics evaluate video capture resolution, frame rate, focus, exposure, and color accuracy across integrated and USB web cameras.",
+  "whatToLookFor": [
+    {
+      "label": "Optical Sharpness & Focus",
+      "description": "Inspect fine text and facial details for clean focus without digital blur."
+    },
+    {
+      "label": "Auto-Exposure Hunting",
+      "description": "Check if brightness continuously pumps or stays steady when lighting shifts."
+    },
+    {
+      "label": "Low-Light Sensor Noise",
+      "description": "Observe whether dark areas develop heavy colored grain or mosquito noise."
+    },
+    {
+      "label": "Color Balance & Skin Tones",
+      "description": "Verify that white balance looks natural rather than yellowish or sickly blue."
+    }
+  ],
+  "canObserve": [
+    "Real-time video stream resolution and aspect ratio",
+    "Camera device selection and switching",
+    "Canvas snapshot capture and preview"
+  ],
+  "cannotMeasure": [
+    "CMOS image sensor physical pixel size in microns",
+    "Hardware ISP lens distortion correction algorithms",
+    "Signal-to-Noise Ratio (SNR) in decibels"
+  ],
+  "interpretation": "High frame rates and sharp, noise-free capture indicate adequate ambient lighting and proper camera driver configuration.",
+  "nextSteps": {
+    "text": "Test microphone input levels and audio clarity.",
+    "actionLabel": "Launch Microphone Test",
+    "actionHref": "/tests/microphone-test"
+  }
+},
+  "speaker-test": {
+  "overview": "Speaker testing verifies left and right stereo channel separation, frequency response, phase alignment, and audio driver playback balance.",
+  "whatToLookFor": [
+    {
+      "label": "Left Channel Isolation",
+      "description": "Verify sound plays exclusively from the left physical speaker."
+    },
+    {
+      "label": "Right Channel Isolation",
+      "description": "Verify sound plays exclusively from the right physical speaker."
+    },
+    {
+      "label": "Stereo Center Imaging",
+      "description": "Both speakers playing simultaneously should create the illusion of sound originating in the center."
+    },
+    {
+      "label": "Rattling or Distortion",
+      "description": "Listen for buzzing, clipping, or chassis vibration during frequency sweeps."
+    }
+  ],
+  "canObserve": [
+    "Independent left, right, and center synthesized tone playback",
+    "Web Audio API stereo panner routing and volume gain",
+    "Frequency sweep tone generation from 20Hz to 20,000Hz"
+  ],
+  "cannotMeasure": [
+    "Acoustic frequency response curve in dB SPL without an external calibrated microphone",
+    "Total Harmonic Distortion (THD) percentage",
+    "Speaker voice coil temperature and impedance"
+  ],
+  "interpretation": "Sound should emit exclusively from the designated speaker during channel testing. Sound leaking to the opposite speaker indicates mono downmixing.",
+  "nextSteps": {
+    "text": "Verify video and audio synchronization latency.",
+    "actionLabel": "Launch Audio Sync Test",
+    "actionHref": "/tests/audio-sync-test"
+  }
+},
+  "microphone-test": {
+  "overview": "Microphone testing evaluates audio input levels, background noise floor, frequency response, and microphone sensitivity using the Web Audio API.",
+  "whatToLookFor": [
+    {
+      "label": "VU Meter Activity",
+      "description": "Speak into the microphone and confirm the volume meter responds dynamically."
+    },
+    {
+      "label": "Background Noise Floor",
+      "description": "When remaining silent, the volume meter should drop down to near-zero."
+    },
+    {
+      "label": "Clipping / Peaking",
+      "description": "Loud speech should not peg the meter permanently into red overload."
+    },
+    {
+      "label": "Frequency Spectrum Range",
+      "description": "Observe whether bass, mid, and treble voice frequencies register on the visualizer."
+    }
+  ],
+  "canObserve": [
+    "Real-time audio waveform and frequency spectrum visualizer",
+    "Peak volume input levels and decibel thresholds",
+    "Microphone hardware device selection and permission state"
+  ],
+  "cannotMeasure": [
+    "Capsule acoustic frequency response curve in Hertz",
+    "Absolute sound pressure level (dBA)",
+    "Self-noise floor of analog preamp circuitry"
+  ],
+  "interpretation": "Clear waveform peaks during speech and a quiet baseline during silence verify healthy microphone sensitivity and proper gain settings.",
+  "nextSteps": {
+    "text": "Verify stereo speaker channel separation and output balance.",
+    "actionLabel": "Launch Speaker Test",
+    "actionHref": "/tests/speaker-test"
+  }
+},
+  "reaction-time-test": {
+  "overview": "Reaction time testing measures human visual reflex latency combined with display input lag and browser event processing delays.",
+  "whatToLookFor": [
+    {
+      "label": "Instant Visual State Change",
+      "description": "Focus intently on the target box as it changes from waiting red to trigger green."
+    },
+    {
+      "label": "Click Response Timing",
+      "description": "Click or tap as rapidly as possible the moment green appears."
+    },
+    {
+      "label": "False Start Detection",
+      "description": "Clicking too early triggers a warning and resets the trial."
+    },
+    {
+      "label": "Latency Distribution",
+      "description": "Complete 5 trials to observe your mean reaction speed and consistency."
+    }
+  ],
+  "canObserve": [
+    "Millisecond latency from visual state transition to pointer/keyboard event trigger",
+    "Statistical average, median, and variance across multiple consecutive trials",
+    "False start timing violations"
+  ],
+  "cannotMeasure": [
+    "Isolated human neural synaptic transmission time separate from display input lag and mouse USB polling latency",
+    "Display panel internal frame processing delay in isolation"
+  ],
+  "interpretation": "Typical visual human reaction times range from 200ms to 260ms. Total measured time includes monitor refresh delay and peripheral input latency.",
+  "nextSteps": {
+    "text": "Evaluate input lag and click-to-photon latency factors.",
+    "actionLabel": "Launch Input Lag Test",
+    "actionHref": "/tests/input-lag-test"
+  }
+},
+  "pixel-inversion-test": {
+  "overview": "Pixel inversion (interlace flicker) tests how well the monitor's VCOM voltage balances liquid crystal polarity, preventing visible flicker and pixel crosstalk.",
+  "whatToLookFor": [
+    {
+      "label": "Flickering Pattern Blocks",
+      "description": "Look for patches that buzz, flicker, or vibrate while other patches remain static."
+    },
+    {
+      "label": "Solid Gray Stability",
+      "description": "Patterns should appear as calm, uniform gray blocks without pulsating intensity."
+    },
+    {
+      "label": "Pixel Inversion Crosstalk",
+      "description": "Check if moving lines create vertical or horizontal ghost bands on striped backgrounds."
+    },
+    {
+      "label": "Color Tinting on Inversion",
+      "description": "Observe whether fine alternating patterns take on a green or purple color cast."
+    }
+  ],
+  "canObserve": [
+    "Visual flickering on calibrated subpixel checkerboards and dot-inversion patterns",
+    "VCOM voltage balance stability across 6 standardized inversion test patterns",
+    "Subpixel crosstalk under high-frequency electrical polarity switching"
+  ],
+  "cannotMeasure": [
+    "Internal LCD panel VCOM bias voltage in millivolts",
+    "Liquid crystal polarity switching micro-currents",
+    "Hardware panel driver timing registers"
+  ],
+  "interpretation": "If any pattern flickers noticeably, your display has slight VCOM voltage imbalance, common on high-refresh budget gaming panels.",
+  "nextSteps": {
+    "text": "Test variable refresh rate brightness fluctuations.",
+    "actionLabel": "Launch VRR Flicker Test",
+    "actionHref": "/tests/vrr-flicker-test"
+  }
+},
 };
 

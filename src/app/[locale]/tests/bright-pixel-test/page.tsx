@@ -1,3 +1,5 @@
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 import { generateSeoMetadata } from "@/lib/seo";
 import { Metadata } from "next";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
@@ -32,6 +34,8 @@ export default async function BrightPixelTest({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const explainerData = getFeatureExplainer("bright-pixel-test", locale);
+  const explainerLabels = getExplainerLabels(locale);
   const t = await getTranslations({ locale, namespace: "TestPages.bright-pixel-test" });
 
   return (
@@ -49,6 +53,11 @@ export default async function BrightPixelTest({
             <li key={i} dangerouslySetInnerHTML={{ __html: item }} />
           ))}
         </ul>
+      }
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
       }
     >
       <SolidPattern colors={BRIGHT_PIXEL_COLORS} testId="bright-pixel-test" />

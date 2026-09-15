@@ -221,13 +221,14 @@
     "allTestsFilterAll": "सभी टेस्ट",
     "allTestsCount": "35 परीक्षण",
     "allTestsCategories": {
-      "colorPixels": "कलर और पिक्सल टेस्ट",
-      "gradientContrast": "ग्रेडिएंट और कंट्रास्ट टेस्ट",
-      "uniformityPanel": "एकरूपता और बैकलाइट टेस्ट",
-      "motionPerformance": "मोशन और रिफ्रेश रेट टेस्ट",
-      "sharpnessCapabilities": "शार्पनेस और क्षमताएं",
-      "deviceInput": "डिवाइस और इनपुट",
-      "utilitiesTools": "उपयोगिताएँ और उपकरण"
+      "deadPixelsDefects": "डेड पिक्सेल और पैनल दोष",
+      "colorGamut": "रंग और गैमट कैलिब्रेशन",
+      "brightnessContrast": "चमक, कंट्रास्ट और ग्रेडिएंट",
+      "uniformityBacklight": "पैनल एकरूपता और बैकलाइट",
+      "motionGaming": "मोशन, प्रतिक्रिया समय और गेमिंग",
+      "sharpnessSpecs": "शार्पनेस, रिज़ॉल्यूशन और डिस्प्ले विवरण",
+      "hardwareSensors": "हार्डवेयर, सेंसर और इनपुट डायग्नोस्टिक्स",
+      "toolsCalculators": "कैलकुलेटर और निरीक्षण उपकरण"
     },
     "allTestsNoResults": "कोई टेस्ट नहीं मिला",
     "moreFreeTestingToolsTitle": "अन्य निःशुल्क परीक्षण उपकरण",
@@ -288,12 +289,12 @@
         "description": "प्राथमिक और द्वितीयक रंग प्रजनन और दृश्य संतृप्ति एकरूपता का मूल्यांकन करता है।"
       },
       "gradientTest": {
-        "title": "ग्रेडिएंट बैंडिंग",
-        "description": "बिट-डेप्थ सीमाओं या आक्रामक संपीड़न बैंडिंग को उजागर करने के लिए चिकनी रंग संक्रमण प्रदर्शित करता है।"
+        "title": "कलर बैंडिंग और बिट-डेप्थ टेस्ट",
+        "description": "8-बिट बनाम 10-बिट रंग परिमाणीकरण, ग्रेडेशन स्टेप्स और डिथरिंग बैंडिंग का पता लगाएं।"
       },
       "brightnessTest": {
-        "title": "ब्राइटनेस और कंट्रास्ट",
-        "description": "डायनामिक रेंज विवरण को अधिकतम करने के लिए स्टेप्ड ग्रेस्केल ग्रिड का उपयोग करके ब्लैक/व्हाइट लेवल को कैलिब्रेट करें।"
+        "title": "ब्राइटनेस और ब्लैक क्लिपिंग टेस्ट",
+        "description": "डिस्प्ले ब्राइटनेस फ्लोर को कैलिब्रेट करें और डार्क शैडो डिटेल क्रशिंग को रोकें।"
       },
       "uniformityTest": {
         "title": "स्क्रीन यूनिफॉर्मिटी",
@@ -304,8 +305,8 @@
         "description": "अंधेरे वातावरण में IPS या LED पैनल के किनारों से प्रकाश रिसाव की पहचान करने के लिए शुद्ध ब्लैक रेंडरिंग।"
       },
       "ghostingTest": {
-        "title": "घोस्टिंग / ओवरड्राइव",
-        "description": "पिक्सेल संक्रमण समय, मोशन ब्लर और इनवर्स घोस्टिंग (कोरोना प्रभाव) की कल्पना करने के लिए उच्च गति वाले चलते तत्व।"
+        "title": "मॉनिटर घोस्टिंग और ओवरड्राइव टेस्ट",
+        "description": "LCD पिक्सेल प्रतिक्रिया समय, ट्रेलिंग घोस्ट आर्टिफैक्ट्स और ओवरड्राइव ओवरशूट कोरोना का परीक्षण करें।"
       },
       "refreshRate": {
         "title": "रिफ्रेश रेट एस्टिमेटर",
@@ -340,8 +341,8 @@
         "description": "OS HDR कंपोजिटिंग, 10-बिट बफर डेप्थ, BT.2020 / DCI-P3 वाइड गैमट, Canvas P3 और HDR10 वीडियो प्लेबैक कोडेक की जांच करें।"
       },
       "contrastTest": {
-        "title": "कंट्रास्ट कैलिब्रेशन",
-        "description": "25 डायनामिक स्तरों पर कंट्रास्ट अनुपात और ग्रे स्केल ग्रेडिएंट का मूल्यांकन करें।"
+        "title": "कंट्रास्ट और व्हाइट सेचुरेशन टेस्ट",
+        "description": "डायनामिक रेंज, पीक व्हाइट क्लिपिंग और हाईलाइट कंट्रास्ट अलगाव को कैलिब्रेट करें।"
       },
       "brightPixel": {
         "title": "ब्राइट पिक्सल टेस्ट",
@@ -453,11 +454,9 @@
       "title": "डेड पिक्सेल टेस्ट (Dead Pixel Test)",
       "description_p1": "यह डेड पिक्सेल टेस्ट (Dead Pixel Test) आपके मॉनिटर या स्क्रीन पर खराब और अटके हुए पिक्सल को ढूंढने में मदद करता है। फुल-स्क्रीन सॉलिड रंगों को बदलकर आप स्क्रीन पर किसी भी डार्क या ब्राइट डॉट को आसानी से देख सकते हैं।",
       "instructions": [
-        "Ensure your screen is clean before starting. Dust can look like dead pixels.",
-        "Click or use <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> / <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd> to cycle through the test colors.",
-        "Carefully scan the entire screen for tiny dots that don't match the background color.",
-        "A black dot on a white background is typically a <strong>dead pixel</strong>.",
-        "A bright dot on a black background is typically a <strong>stuck pixel</strong>."
+        "<strong>क्या जांचें:</strong> शुरू करने से पहले स्क्रीन को अच्छी तरह साफ कर लें। धूल के कण डेड पिक्सेल जैसे दिख सकते हैं।",
+        "<strong>उपयोग कैसे करें:</strong> टेस्ट रंगों को बदलने के लिए क्लिक करें या <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> / <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd> दबाएं।",
+        "<strong>क्या ध्यान दें:</strong> पूरी स्क्रीन पर ऐसे छोटे बिंदुओं की तलाश करें जो पृष्ठभूमि रंग से मेल न खाते हों। सफेद पर काला बिंदु आमतौर पर <strong>डेड पिक्सेल</strong> होता है; काले पर चमकदार बिंदु <strong>अटका हुआ पिक्सेल</strong> होता है।"
       ]
     },
     "color-test": {
@@ -466,46 +465,47 @@
       "title": "स्क्रीन कलर टेस्ट और स्क्रीन कलर कैलिब्रेशन",
       "description_p1": "यह स्क्रीन कलर टेस्ट आपके मॉनिटर पर प्राथमिक और द्वितीयक रंगों की शुद्धता, स्क्रीन कलर कैलिब्रेशन और स्क्रीन एकरूपता की जांच करता है। फुल स्क्रीन कलर पैटर्न्स की मदद से आप डिस्प्ले के कलर टिनटिंग और विजुअल कैलिब्रेशन को परख सकते हैं।",
       "instructions": [
-        "Cycle through the colors using <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> or <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd>.",
-        "Look for uneven saturation across the screen.",
-        "Check the grayscale patterns for any unwanted color tints (e.g., the gray looking slightly pink or blue).",
-        "Ensure that primary colors look vibrant and accurate without bleeding.",
-        "<strong>ABOUT THIS TEST:</strong> Provides reference patterns for visual inspection. It does not measure physical panel color accuracy (Delta E)."
+        "<strong>क्या जांचें:</strong> <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> या <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd> दबाकर रंगों को बदलें।",
+        "<strong>उपयोग कैसे करें:</strong> पूरी स्क्रीन पर रंगों के फैलाव और संतृप्ति (सैचुरेशन) में असमानता देखें।",
+        "<strong>क्या ध्यान दें:</strong> ग्रेस्केल पैटर्न में किसी भी अवांछित रंग के टिंट की जांच करें। सुनिश्चित करें कि प्राथमिक रंग बिना ब्लीडिंग के जीवंत दिखें।",
+        "<strong>इस टेस्ट के बारे में:</strong> यह विजुअल निरीक्षण के लिए संदर्भ पैटर्न प्रदान करता है। यह डिस्प्ले के भौतिक रंग सटीकता (Delta E) को नहीं मापता है।"
       ]
     },
     "brightness-test": {
       "metaTitle": "ब्राइटनेस और ब्लैक लेवल टेस्ट – स्क्रीन ब्राइटनेस और शैडो डिटेल्स सेट करें",
       "metaDescription": "बिना शैडो डिटेल्स खोए अपने मॉनिटर की ब्राइटनेस और ब्लैक लेवल को सही करें। PLUGE बार्स के साथ सही विजिबिलिटी पाएं।",
-      "title": "ब्राइटनेस और ब्लैक लेवल टेस्ट",
+      "title": "ब्राइटनेस और ब्लैक क्लिपिंग टेस्ट",
       "description_p1": "यह टेस्ट आपके मॉनिटर की ब्राइटनेस (ब्लैक लेवल ऑफसेट) को कैलिब्रेट करता है और ल्यूमिनेन्स का परीक्षण करता है ताकि गहरे ब्लैक में शैडो डिटेल नष्ट न हों।",
       "instructions": [
         "<strong>PLUGE रेफरेंस बार:</strong> बार 0% असली ब्लैक है। मॉनिटर की ब्राइटनेस तब तक एडजस्ट करें जब तक कि <strong>बार +2% (RGB 5) बैकग्राउंड से हल्का सा अलग दिखने लगे</strong>।",
         "<strong>ब्लैक क्रश चेतावनी:</strong> यदि बार +1% और +2% दिखाई नहीं दे रहे हैं, तो ब्राइटनेस बहुत कम है। यदि बैकग्राउंड ग्रे चमक रहा है, तो ब्राइटनेस बहुत अधिक है।",
         "<strong>1% शैडो रैंप:</strong> अपने डिस्प्ले की सटीक ब्लैक क्लिपिंग सीमा जानने के लिए 1% रैंप मोड का उपयोग करें।",
         "<strong>पीक ल्यूमिनेन्स और ABL:</strong> यह जांचने के लिए ABL विंडो मोड पर स्विच करें कि क्या आपका OLED या लैपटॉप फुल-स्क्रीन व्हाइट पर ब्राइटनेस कम करता है।"
-      ]
+      ],
+      "description": "डिस्प्ले ब्राइटनेस फ्लोर को कैलिब्रेट करें और डार्क शैडो डिटेल क्रशिंग को रोकें।"
     },
     "contrast-test": {
       "metaTitle": "कंट्रास्ट टेस्ट – मॉनिटर कंट्रास्ट रेशियो और व्हाइट लेवल्स की जांच",
       "metaDescription": "अपने मॉनिटर के कंट्रास्ट रेशियो और व्हाइट लेवल सेपरेशन की जांच करें ताकि ब्राइट हाइलाइट्स में डिटेल्स स्पष्ट दिखाई दें।",
-      "title": "कंट्रास्ट कैलिब्रेशन टेस्ट",
+      "title": "कंट्रास्ट और व्हाइट सेचुरेशन टेस्ट",
       "description_p1": "यह परीक्षण आपको 0% शुद्ध काले से 100% शुद्ध सफेद तक 25-चरणीय ग्रिड प्रदर्शित करके मॉनिटर के कंट्रास्ट अनुपात को ट्यून करने में मदद करता है।",
       "inst1": "ग्रिड ब्लॉकों की जांच करें ताकि आस-पास के स्तर स्पष्ट रूप से अलग दिखाई दें।",
       "inst2": "अपने मॉनिटर के कंट्रास्ट को समायोजित करें ताकि 92% और 96% ब्लॉक 100% सफेद में न मिलें।",
-      "inst3": "नीचे दिए गए नियंत्रणों का उपयोग करके संख्यात्मक प्रतिशत टॉगल करें या मोड बदलें।"
+      "inst3": "नीचे दिए गए नियंत्रणों का उपयोग करके संख्यात्मक प्रतिशत टॉगल करें या मोड बदलें।",
+      "description": "डायनामिक रेंज, पीक व्हाइट क्लिपिंग और हाईलाइट कंट्रास्ट अलगाव को कैलिब्रेट करें।"
     },
     "ghosting-test": {
       "metaTitle": "मॉनिटर घोस्टिंग टेस्ट – रिस्पांस टाइम और मोशन ब्लर की जांच",
       "metaDescription": "मुफ़्त मॉनिटर घोस्टिंग टेस्ट। मूविंग टेस्ट पैटर्न्स की मदद से अपने डिस्प्ले के पिक्सल रिस्पांस टाइम, मोशन क्लैरिटी और ओवरड्राइव घोस्टिंग की जांच करें।",
-      "title": "मॉनिटर घोस्टिंग टेस्ट (Ghosting Test)",
+      "title": "मॉनिटर घोस्टिंग और ओवरड्राइव टेस्ट",
       "description_p1": "यह मॉनिटर घोस्टिंग टेस्ट स्क्रीन के पिक्सल रिस्पांस टाइम और मोशन क्लैरिटी का मूल्यांकन करता है। मूविंग पैटर्न्स के पीछे बनने वाले ट्रेलिंग (घोस्टिंग) और ओवरड्राइव ओवरशूट को आसानी से पहचानें।",
       "instructions": [
-        "Focus your eyes on the moving blocks. Do not stare statically at the center of the screen.",
-        "Look for trailing shadows (ghosting) behind the moving blocks.",
-        "If you see a bright/inverted colored trail, this is <strong>inverse ghosting (overshoot)</strong>, usually caused by setting your monitor's overdrive setting too high.",
-        "Adjust the speed and contrast controls to test different pixel transition scenarios.",
-        "<strong>ABOUT THIS TEST:</strong> This is a visual aid for detecting ghosting. A web browser cannot precisely measure pixel response time (GtG or MPRT) in milliseconds."
-      ]
+        "<strong>क्या जांचें:</strong> अपनी आंखों से हिलते हुए ब्लॉकों का पीछा करें। स्क्रीन के केंद्र में स्थिर न देखें।",
+        "<strong>उपयोग कैसे करें:</strong> हिलते हुए ब्लॉकों के पीछे बनने वाली धुंधली लकीर (घोस्टिंग) को देखें।",
+        "<strong>क्या ध्यान दें:</strong> यदि चमकदार या उल्टे रंग की पूंछ दिखती है, तो यह <strong>इनवर्स घोस्टिंग (ओवरशूट)</strong> है जो बहुत अधिक ओवरड्राइव के कारण होता है।",
+        "<strong>इस टेस्ट के बारे में:</strong> यह घोस्टिंग का पता लगाने के लिए एक दृश्य सहायता है। ब्राउज़र मिलीसेकंड में पिक्सेल प्रतिक्रिया समय (GtG/MPRT) को नहीं मापता है।"
+      ],
+      "description": "LCD पिक्सेल प्रतिक्रिया समय, ट्रेलिंग घोस्ट आर्टिफैक्ट्स और ओवरड्राइव ओवरशूट कोरोना का परीक्षण करें।"
     },
     "refresh-rate-test": {
       "metaTitle": "रिफ्रेश रेट टेस्ट – मॉनिटर के रियल-टाइम Hz और फ्रेम रेट की जांच",
@@ -513,11 +513,9 @@
       "title": "रिफ्रेश रेट टेस्ट (Refresh Rate Test)",
       "description_p1": "यह रिफ्रेश रेट टेस्ट आपके ब्राउज़र में मॉनिटर के रियल-टाइम हर्ट्ज़ (Hz) और फ्रेम पेसिंग को मापता है। इससे आप पुष्टि कर सकते हैं कि आपका डिस्प्ले अपने सही 60Hz, 144Hz या 240Hz रिफ्रेश रेट पर आउटपुट दे रहा है।",
       "instructions": [
-        "<strong>Note:</strong> Browsers usually cap rendering at your primary monitor's refresh rate (e.g., 60Hz, 120Hz, 144Hz).",
-        "Make sure you do not have background video playback running, as some browsers down-clock animations to match video framerates.",
-        "For multi-monitor setups, drag the browser window to the screen you want to test.",
-        "If the reading is significantly lower than expected, check your OS display settings or GPU control panel to ensure your refresh rate isn't artificially capped.",
-        "<strong>ABOUT THIS TEST:</strong> This test estimates refresh rate based on browser rendering timing (requestAnimationFrame). It is a software estimate, not a direct hardware measurement."
+        "<strong>क्या जांचें:</strong> ब्राउज़र आमतौर पर आपके प्राथमिक मॉनिटर के रिफ्रेश रेट पर रेंडरिंग को सीमित करते हैं।",
+        "<strong>उपयोग कैसे करें:</strong> सुनिश्चित करें कि पृष्ठभूमि में कोई वीडियो नहीं चल रहा है।",
+        "<strong>क्या ध्यान दें:</strong> मल्टी-मॉनिटर सेटअप में, ब्राउज़र विंडो को उस स्क्रीन पर खींचें जिसका आप परीक्षण करना चाहते हैं।"
       ]
     },
     "backlight-bleed-test": {
@@ -526,11 +524,9 @@
       "title": "बैकलाइट ब्लीड टेस्ट",
       "description_p1": "यह परीक्षण एक शुद्ध काली स्क्रीन रेंडर करता है। यह LCD बैकलाइट ब्लीड, क्लाउडिंग या IPS ग्लो को उजागर करने के लिए डिज़ाइन किया गया है।",
       "instructions": [
-        "<strong>Crucial:</strong> This test must be performed in a completely dark room.",
-        "Set your monitor to its standard or calibrated brightness level (do not force 100% brightness unless that is how you normally use it).",
-        "Look at the corners and edges of the screen.",
-        "<strong>Backlight Bleed</strong> appears as distinct patches of white/yellow light leaking from the bezel.",
-        "<strong>IPS Glow</strong> shifts and changes intensity as you move your viewing angle."
+        "<strong>क्या जांचें:</strong> यह परीक्षण पूरी तरह से अंधेरे कमरे में किया जाना चाहिए।",
+        "<strong>उपयोग कैसे करें:</strong> अपने मॉनिटर को सामान्य उपयोग के ब्राइटनेस स्तर पर सेट करें।",
+        "<strong>क्या ध्यान दें:</strong> कोनों और किनारों की जांच करें। <strong>बैकलाइट ब्लीड</strong> फ्रेम से निकलने वाली अवांछित रोशनी है; <strong>IPS ग्लो</strong> देखने के कोण के साथ बदलता है।"
       ]
     },
     "bright-pixel-test": {
@@ -561,10 +557,9 @@
       "title": "स्क्रीन यूनिफॉर्मिटी और DSE टेस्ट",
       "description_p1": "यह परीक्षण बैकलाइट ब्लीडिंग, किनारे के कालेपन और DSE की पहचान करने में मदद के लिए चरणबद्ध ग्रेस्केल बैकग्राउंड प्रदर्शित करता है।",
       "instructions": [
-        "Check the corners and edges on the 5% and 10% dark grays for clouding or light bleed.",
-        "On the 20% and 50% grays, look for splotches, bands, or \"dirty\" smudges across the center of the screen (DSE).",
-        "On the 100% white screen, check if any section of the screen looks warmer (pink/yellow) or cooler (blue) than the rest.",
-        "<strong>ABOUT THIS TEST:</strong> This test provides reference backgrounds for visual inspection. It does not measure physical panel luminance variance."
+        "<strong>क्या जांचें:</strong> 5% और 10% गहरे ग्रे बैकग्राउंड पर कोनों और किनारों पर क्लाउडिंग की जांच करें।",
+        "<strong>उपयोग कैसे करें:</strong> 20% और 50% ग्रे पर स्क्रीन के बीच में धब्बे या डर्टी स्क्रीन इफेक्ट (DSE) देखें।",
+        "<strong>क्या ध्यान दें:</strong> 100% सफेद स्क्रीन पर देखें कि क्या कोई हिस्सा दूसरों की तुलना में अधिक पीला या नीला दिखता है।"
       ]
     },
     "black-level-test": {
@@ -616,11 +611,12 @@
     "motion-blur-test": {
       "metaTitle": "मोशन ब्लर टेस्ट – गेमिंग डिस्प्ले की मोशन क्लैरिटी और MPRT",
       "metaDescription": "फास्ट-मूविंग सीन्स में स्क्रीन की मोशन क्लैरिटी और रिस्पांस टाइम का विश्लेषण करें।",
-      "title": "मोशन ब्लर टेस्ट",
+      "title": "MPRT और मोशन ब्लर पर्सिस्टेंस टेस्ट",
       "description_p1": "आकलन करें कि बिना धुंधले या स्मीयरिंग विवरण के आपका मॉनिटर तेज गति को कितनी अच्छी तरह संभालता है।",
       "inst1": "चलती हुई ब्लॉकों को आंखों से ट्रैक करें।",
       "inst2": "छोटे आंतरिक वर्ग को देखें। यदि किनारे पूरी तरह धुंधले हो जाते हैं, तो आपके मॉनिटर में धीमी पिक्सल प्रतिक्रिया है।",
-      "inst3": "विभिन्न पैनल ओवरड्राइव परिदृश्यों के तहत परीक्षण करने के लिए गति और कंट्रास्ट एडजस्ट करें।"
+      "inst3": "विभिन्न पैनल ओवरड्राइव परिदृश्यों के तहत परीक्षण करने के लिए गति और कंट्रास्ट एडजस्ट करें।",
+      "description": "मूविंग पिक्चर रिस्पॉन्स टाइम (MPRT), सैंपल-एंड-होल्ड ब्लर पर्सिस्टेंस और आई-पर्स्यूट स्पष्टता का परीक्षण करें।"
     },
     "hdr-capability-test": {
       "metaTitle": "HDR हार्डवेयर और सिग्नल डिटेक्टर – OS और ब्राउज़र क्षमताएं",
@@ -664,10 +660,9 @@
       "title": "ग्रेडिएंट बैंडिंग टेस्ट",
       "description_p1": "एक पूरी तरह से चिकनी 24-बिट (1.67 करोड़ रंग) ग्रेडिएंट प्रदर्शित करता है। कम गुणवत्ता वाले पैनल पर बैंडिंग दिखाई दे सकती है।",
       "instructions": [
-        "Look closely at the transition from black to the target color.",
-        "A true 10-bit or high-quality 8-bit+FRC panel will display a buttery smooth transition.",
-        "If you see obvious vertical stripes (stair-stepping), your display is struggling with color depth.",
-        "Use <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> or arrow keys to cycle gradients."
+        "<strong>क्या जांचें:</strong> काले से लक्ष्य रंग में सहज बदलाव को ध्यान से देखें।",
+        "<strong>उपयोग कैसे करें:</strong> 10-बिट या उच्च गुणवत्ता वाला 8-बिट+FRC पैनल बिना किसी रुकावट के सहज ग्रेडिएंट दिखाता है।",
+        "<strong>क्या ध्यान दें:</strong> स्पष्ट रेखाएं या पट्टियां (बैंडिंग) पैनल की रंग गहराई की सीमा को दर्शाती हैं।"
       ]
     },
     "vrr-test": {
@@ -706,13 +701,14 @@
     "gradient-banding-test": {
       "metaTitle": "ग्रेडिएंट और बैंडिंग टेस्ट – 8-बिट, 10-बिट और कलर ट्रांजिशन डायग्नोस्टिक",
       "metaDescription": "डिस्प्ले ग्रेडिएंट स्मूथनेस की जांच करें और ग्रेस्केल, RGB और डार्क रैंप पर क्वांटाइजेशन बैंडिंग की पहचान करें।",
-      "title": "ग्रेडिएंट और बैंडिंग टेस्ट",
+      "title": "स्मूथ ग्रेडिएंट और रैंप ट्रांज़िशन टेस्ट",
       "description_p1": "डिस्प्ले ग्रेडिएंट की सहजता का मूल्यांकन करें और अवांछित स्ट्रिपिंग या रंग बदलावों का पता लगाएं। ब्राउज़र कैनवास हार्डवेयर बिट डेप्थ साबित नहीं कर सकता, लेकिन दृश्य संदर्भ प्रदान करता है।",
       "instructions": [
         "<strong>ग्रेडिएंट मोड:</strong> ग्रेस्केल क्षैतिज/लंबवत, RGB प्राइमरी और डार्क शैडो (0%–25%) के बीच स्विच करें।",
         "<strong>बैंडिंग बनाम स्मूथनेस:</strong> निरंतर रंगों के बीच दिखाई देने वाली धारियों या रेखाओं की जांच करें।",
         "<strong>क्वांटाइजेशन सिमुलेटर:</strong> डिजिटल स्टेपिंग की तुलना अपने मॉनिटर के मूल ग्रेडिएंट से करने के लिए 64-चरण मोड चालू करें।"
-      ]
+      ],
+      "description": "मल्टी-स्टॉप लीनियर और रेडियल ग्रेडिएंट स्मूथनेस, टोनल निरंतरता और फाइन रैंप ट्रांज़िशन का मूल्यांकन करें।"
     },
     "text-clarity-test": {
       "metaTitle": "टेक्स्ट स्पष्टता और सबपिक्सल रेंडरिंग टेस्ट – फ़ॉन्ट शार्पनेस जांच",
@@ -750,13 +746,14 @@
     "multi-touch-test": {
       "metaTitle": "टच टेस्ट - ऑनलाइन टचस्क्रीन और मल्टी-टच की जाँच करें | Screen Tester",
       "metaDescription": "टच स्क्रीन पर एक साथ कई उंगलियों के संपर्क, जेस्चर ट्रैकिंग और टचस्क्रीन रिस्पॉन्स की ऑनलाइन जांच करें। मुफ्त ब्राउज़र टच टेस्ट।",
-      "title": "टच टेस्ट",
+      "title": "मल्टी-टच जेस्चर और मल्टी-फिंगर टेस्ट",
       "description_p1": "इस मुफ्त टच टेस्ट का उपयोग करके जांचें कि आपकी टचस्क्रीन कई उंगलियों को पहचानती है और टच इनपुट पर सही प्रतिक्रिया देती है या नहीं। वास्तविक समय में सक्रिय टच पॉइंट और ट्रैकिंग का निरीक्षण करें।",
       "instructions": [
         "<strong>मुक्त टच मोड:</strong> एक साथ कई उंगलियों से स्क्रीन को स्पर्श करें। सक्रिय संपर्क काउंटर, निर्देशांक और अधिकतम संपर्क देखें।",
         "<strong>मल्टी-टच ग्रिड:</strong> ग्रिड सेल को छूकर सत्यापित करें कि स्क्रीन के विभिन्न हिस्सों पर एक साथ टच ठीक से दर्ज हो रहे हैं।",
         "<strong>होल्ड और किनारे:</strong> होल्ड चुनौती (1.5 सेकंड के लिए 3-5 उंगलियां रखना) और किनारों के टच रिजेक्शन का परीक्षण करें।"
-      ]
+      ],
+      "description": "एक साथ 10-पॉइंट मल्टी-टच ट्रैकिंग, पिंच, रोटेट और जेस्चर संवेदनशीलता सत्यापित करें।"
     },
     "accelerometer-test": {
       "metaTitle": "एक्सेलेरोमीटर टेस्ट - मोशन और सेंसर की ऑनलाइन जांच | Screen Tester",
@@ -825,90 +822,83 @@
       ]
     },
     "reactionTimeTest": {
-      "title": "Reaction Time Test",
+      "title": "प्रतिक्रिया समय परीक्षण (Reaction Time)",
       "description": "Measure your human reaction time in milliseconds. Test your reflexes with this simple interactive tool."
     },
     "reaction-time-test": {
       "metaTitle": "Reaction Time Test",
       "metaDescription": "Test your display and input reaction time latency.",
-      "title": "Reaction Time Test",
+      "title": "ह्यूमन रिफ्लेक्स रिएक्शन टाइम बेंचमार्क",
       "description_p1": "Click or tap when the color changes to measure latency.",
       "instructions": [
-        "Wait for the screen to change from red to green.",
-        "Click as fast as you can once it turns green.",
-        "Your reaction time will be recorded in milliseconds."
-      ]
+        "स्क्रीन के लाल से हरे होने की प्रतीक्षा करें।",
+        "जैसे ही यह हरा हो, जितनी जल्दी हो सके क्लिक करें।",
+        "आपका प्रतिक्रिया समय मिलीसेकंड में दर्ज किया जाएगा।"
+      ],
+      "description": "सांख्यिकीय निरंतरता स्कोरिंग के साथ मिलीसेकंड में दृश्य प्रतिक्रिया समय को मापें।"
     },
     "pixel-inversion-test": {
-      "title": "Pixel Inversion & VCOM Flicker Test",
+      "title": "पिक्सेल इनवर्जन और VCOM झिलमिलाहट परीक्षण",
       "metaTitle": "Pixel Inversion & VCOM Test | Screen Tester",
       "description": "Inspect pixel inversion patterns, VCOM voltage calibration, and pixel walk artifacts across LCD and OLED panels.",
       "metaDescription": "Test your monitor for pixel inversion artifacts, VCOM voltage balance, and pixel walk flicker using high-frequency checkerboard patterns.",
       "instructions": [
-        "Switch through 1x1 dot, 2x2 checkerboard, vertical stripe, and subpixel patterns.",
-        "Observe the screen from your normal working distance with the monitor at native resolution.",
-        "Notice whether any pattern vibrates, shimmers, or displays faint moving wave bands.",
-        "A properly calibrated VCOM voltage will render all gray checkerboards as steady, non-flickering neutral gray."
+        "1x1 डॉट, 2x2 चेकरबोर्ड, वर्टिकल स्ट्राइप और सबपिक्सेल पैटर्न के बीच स्विच करें।",
+        "सामान्य दूरी से देखें कि क्या कोई पैटर्न झिलमिलाता है या हिलती हुई तरंगें दिखाता है।",
+        "उचित रूप से कैलिब्रेट किया गया VCOM वोल्टेज सभी चेकरबोर्ड को स्थिर ग्रे दिखाता है।"
       ]
     },
     "strobe-crosstalk-test": {
-      "title": "Strobe Crosstalk & BFI Inspection Test",
+      "title": "स्ट्रोब क्रॉसस्टॉक और BFI निरीक्षण परीक्षण",
       "metaTitle": "Strobe Crosstalk & BFI Test | Screen Tester",
       "description": "Inspect backlight strobing blur reduction, strobe phase alignment, and double-image crosstalk across vertical screen zones.",
       "metaDescription": "Test monitor backlight strobing (ULMB, DyAc, ELMB) and Black Frame Insertion for strobe crosstalk and duplicate silhouette ghosting.",
       "instructions": [
-        "Enable backlight strobing or BFI in your monitor's hardware OSD menu.",
-        "Watch the moving target bars across the top, center, and bottom screen tracks.",
-        "Check for double-image silhouettes behind the moving bars in each zone.",
-        "Inspect which zone has the clearest motion and whether top or bottom shows strobe phase ghosting."
+        "मॉनिटर के OSD में बैकलाइट स्ट्रोबिंग या BFI सक्षम करें।",
+        "स्क्रीन के शीर्ष, मध्य और निचले हिस्से में चलती सलाखों को देखें।",
+        "जांचें कि क्या चलती सलाखों के पीछे दोहरा प्रतिबिंब (क्रॉसटॉक) दिखाई देता है।"
       ]
     },
     "vrr-flicker-test": {
-      "title": "VRR Brightness Flicker Stress Test",
+      "title": "VRR ब्राइटनेस फ्लिकर और गामा शिफ्ट टेस्ट",
       "metaTitle": "VRR Brightness Flicker Test | Screen Tester",
-      "description": "Stress-test adaptive sync (G-Sync, FreeSync) displays for brightness flicker and gamma shift during rapid framerate fluctuation.",
+      "description": "परिवर्तनीय ताज़ा दर चमक के उतार-चढ़ाव और OLED गामा बदलाव का निदान करें।",
       "metaDescription": "Stress test your monitor for VRR brightness flicker and gamma fluctuation during dynamic refresh rate swings.",
       "instructions": [
-        "Ensure G-Sync, FreeSync, or Adaptive-Sync is enabled in your graphics driver and monitor OSD.",
-        "Run the automated framerate sweep between low and high refresh bounds.",
-        "Carefully observe the dark gray background and midtone patches for subtle brightness pumping or flicker.",
-        "OLED and VA panels are most susceptible to near-black VRR gamma flicker during framerate fluctuations."
+        "ड्राइवर और मॉनिटर में G-Sync या FreeSync सक्षम करें।",
+        "कम और उच्च रिफ्रेश रेट के बीच ऑटोमैटिक स्वीप चलाएं।",
+        "गहरे ग्रे बैकग्राउंड में ब्राइटनेस के उतार-चढ़ाव (फ्लिकर) की जांच करें।"
       ]
     },
     "pursuit-camera-test": {
-      "title": "Pursuit Camera Sync & MPRT Calibration Track",
+      "title": "पर्स्यूट कैमरा सिंक और MPRT कैलिब्रेशन ट्रैक",
       "metaTitle": "Pursuit Camera Sync Track | Screen Tester",
       "description": "Calibrate tracking cameras and smartphones to photograph moving objects for scientific MPRT and ghosting measurement.",
       "metaDescription": "Pursuit camera temporal sync track for photographic measurement of monitor motion blur, ghosting, and MPRT.",
       "instructions": [
-        "Set your camera or smartphone to manual exposure mode with a shutter speed of 1/4 to 1/2 of your panning time.",
-        "Track the moving pattern smoothly from left to right as it glides across the display.",
-        "Review your captured photo: verify the white vertical graduation ticks form a single crisp vertical line.",
-        "When temporal graduation lines are un-smeared, your camera tracking was synchronized, allowing accurate MPRT measurement."
+        "अपने कैमरे या स्मार्टफोन को मैनुअल एक्सपोजर मोड पर सेट करें।",
+        "चलती वस्तु (UFO) का पीछा करते हुए फोटो खींचें।",
+        "स्पष्ट रेखाएं सटीक MPRT और घोस्टिंग माप की पुष्टि करती हैं।"
       ]
     },
     "audio-sync-test": {
-      "title": "Audio / Video Lip-Sync Calibration Test",
+      "title": "ऑडियो / वीडियो लिप-सिंक सिंक्रोनाइज़ेशन परीक्षण",
       "metaTitle": "Audio Video Sync Test | Screen Tester",
       "description": "Calibrate audio-video delay, soundbar latency, and Bluetooth audio lag with millisecond visual and acoustic sweep pulses.",
       "metaDescription": "Test and calibrate audio-to-video lip-sync delay with visual sweep bars and synchronized 1kHz millisecond beeps.",
       "instructions": [
-        "Ensure audio output is enabled and unmuted in your browser.",
-        "Watch the sweeping radar dial as it crosses the center alignment notch.",
-        "Listen for the instantaneous 1 kHz audio beep.",
-        "Adjust the millisecond offset slider until the visual alignment and sound occur simultaneously."
+        "जांचें कि ब्राउज़र में ऑडियो चालू है।",
+        "विजुअल फ्लैश और बीप टोन के बीच सिंक्रोनाइज़ेशन की जांच करें।"
       ]
     },
     "gamepad-test": {
-      "title": "Gamepad & Controller Input Test",
+      "title": "गेमपैड और कंट्रोलर इनपुट टेस्ट",
       "metaTitle": "Gamepad & Controller Drift Test | Screen Tester",
       "description": "Test gamepad controllers, analog stick drift, deadzones, trigger axes, and button actuation using the HTML5 Gamepad API.",
       "metaDescription": "Online gamepad and controller tester. Check analog stick drift, deadzone precision, triggers, and buttons in real-time.",
       "instructions": [
-        "Connect an Xbox, PlayStation, Switch, or generic controller via USB or Bluetooth.",
-        "Press any button on the controller to wake the Gamepad API.",
-        "Rotate both analog sticks to test circularity error and check resting drift values against the deadzone threshold.",
-        "Squeeze analog triggers and press all buttons to verify actuation and responsiveness."
+        "एक गेमपैड कनेक्ट करें और इसे पंजीकृत करने के लिए कोई भी बटन दबाएं।",
+        "डेडज़ोन और सटीकता की जांच के लिए जॉयस्टिक और ट्रिगर्स को हिलाएं।"
       ]
     },
     "battery-test": {
@@ -972,9 +962,9 @@
       ]
     },
     "input-lag-test": {
-      "title": "इनपुट लैग विज़ुअलाइज़र",
+      "title": "डिस्प्ले इनपुट लैग और लेटेंसी विज़ुअलाइज़र",
       "metaTitle": "इनपुट लैग और क्लिक-टू-फोटॉन टेस्ट | Screen Tester",
-      "description": "10-ट्रायल रिएक्शन टेस्ट के साथ अपनी विज़ुअल-टू-क्लिक इनपुट लैग मापें।",
+      "description": "डिस्प्ले पाइपलाइन प्रोसेसिंग देरी और क्लिक-टू-फोटॉन स्क्रीन लेटेंसी को विज़ुअलाइज़ करें।",
       "metaDescription": "इनपुट लैग और क्लिक-टू-फोटॉन लेटेंसी मापें। हिस्टोग्राम और सांख्यिकीय विश्लेषण के साथ 10-ट्रायल टेस्ट।",
       "instructions": [
         "परीक्षण शुरू करने के लिए ग्रे बॉक्स पर क्लिक करें।",
@@ -1019,8 +1009,8 @@
       ]
     },
     "pwm-flicker-test": {
-      "title": "PWM बैकलाइट फ़्लिकर और आँखों का तनाव परीक्षण",
-      "description": "पल्स-विड्थ मॉड्यूलेशन (PWM) बैकलाइट झिलमिलाहट और आँखों की थकान का पता लगाएं।",
+      "title": "PWM बैकलाइट फ्लिकर और आंखों के तनाव की जांच",
+      "description": "स्ट्रोबोस्कोपिक LED पल्स-विड्थ मॉड्यूलेशन फ्लिकर का पता लगाएं और आंखों की थकान का मूल्यांकन करें।",
       "metaTitle": "PWM फ़्लिकर टेस्ट - विजुअल आराम और कैमरा जांच",
       "metaDescription": "अदृश्य PWM बैकलाइट फ़्लिकर और विभिन्न चमक स्तरों पर झिलमिलाहट की जांच करें।",
       "instructions": [
@@ -1109,8 +1099,8 @@
   },
   "Tests": {
     "multiTouchTest": {
-      "title": "मल्टी-टच टेस्ट",
-      "description": "एक साथ कई उंगलियों के टच पॉइंट्स, डिजिटाइज़र ट्रैकिंग और संपर्क पहचान का परीक्षण करें।"
+      "title": "मल्टी-टच जेस्चर और मल्टी-फिंगर टेस्ट",
+      "description": "एक साथ 10-पॉइंट मल्टी-टच ट्रैकिंग, पिंच, रोटेट और जेस्चर संवेदनशीलता सत्यापित करें।"
     },
     "accelerometerTest": {
       "title": "एक्सेलेरोमीटर टेस्ट",
@@ -1157,8 +1147,8 @@
       "instructions": "चमकीले वर्ग के आसपास हेलो देखें।"
     },
     "touchScreen": {
-      "title": "टच स्क्रीन टेस्ट – मल्टी-टच और डेड टच ज़ोन डायग्नोस्टिक",
-      "description": "अपने फोन, टैबलेट या टचस्क्रीन लैपटॉप के टच रिस्पांस और मल्टी-फिंगर इनपुट की ऑनलाइन जांच करें।",
+      "title": "टच स्क्रीन डिजिटाइज़र और डेड ज़ोन टेस्ट",
+      "description": "टच डिजिटाइज़र ट्रैकिंग, टच पॉइंट सटीकता और किनारे के डेड ज़ोन को मैप करें।",
       "instructions": "डेड ज़ोन की जांच के लिए स्क्रीन पर हर जगह ड्रा करें।"
     },
     "solidColor": {
@@ -1172,8 +1162,8 @@
       "instructions": "रेफरेंस पैच पर स्किन टोन, न्यूट्रल और कलर कास्ट का विजुअल निरीक्षण करें।"
     },
     "flicker": {
-      "title": "फ्लिकर और PWM विजुअल चेक – बैकलाइट स्ट्रोब और आंखों का तनाव टेस्ट",
-      "description": "बैकलाइट में प्रत्यक्ष स्ट्रोब फ्लिकर और इनवर्जन विसंगतियों का विजुअल निरीक्षण करें। ब्राउज़र सीधे हार्डवेयर PWM फ्रीक्वेंसी को नहीं माप सकते।",
+      "title": "स्क्रीन फ्लिकर और रिफ्रेश स्थिरता टेस्ट",
+      "description": "फुल-स्क्रीन ऑप्टिकल फ्लिकर और डिस्प्ले रिफ्रेश सिंक्रोनाइज़ेशन का निरीक्षण करें।",
       "instructions": "विजुअल अवलोकन या वैकल्पिक कैमरा निरीक्षण का उपयोग करें (कैमरा शटर और फ्रेम दर पर निर्भर)।"
     },
     "sharpness": {
@@ -1296,8 +1286,8 @@
       "instructions": "अंधेरे कमरे में 0% और 5% डार्क ब्लॉक्स के बीच अंतर की पहचान करें।"
     },
     "gradientBandingTest": {
-      "title": "ग्रेडिएंट और बैंडिंग टेस्ट – स्मूथ कलर और ग्रेस्केल ट्रांजिशन",
-      "description": "कलर ग्रेडिएंट्स पर कठोर स्टेपिंग, क्वांटाइजेशन लाइनों और रंग बदलावों का पता लगाएं।",
+      "title": "स्मूथ ग्रेडिएंट और रैंप ट्रांज़िशन टेस्ट",
+      "description": "मल्टी-स्टॉप लीनियर और रेडियल ग्रेडिएंट स्मूथनेस, टोनल निरंतरता और फाइन रैंप ट्रांज़िशन का मूल्यांकन करें।",
       "instructions": "दिखाई देने वाली रंग या ग्रेस्केल बैंडिंग के लिए क्षैतिज और लंबवत ग्रेडिएंट की जांच करें।"
     },
     "textClarityTest": {
@@ -1320,12 +1310,12 @@
       "description": "उच्च गति वाले मूविंग पैटर्न के साथ पिक्सेल रिस्पॉन्स टाइम, ट्रेलिंग घोस्ट आर्टिफैक्ट्स और ओवरड्राइव कोरोना का मूल्यांकन करें।"
     },
     "motionBlurTest": {
-      "title": "मोशन ब्लर टेस्ट – डिस्प्ले मोशन क्लैरिटी और MPRT चेक",
-      "description": "तेज गति वाले दृश्यों और गतिशील परीक्षण वस्तुओं पर मोशन रिज़ॉल्यूशन, पर्सिस्टेंस ब्लर और MPRT ट्रैकिंग का विश्लेषण करें।"
+      "title": "MPRT और मोशन ब्लर पर्सिस्टेंस टेस्ट",
+      "description": "मूविंग पिक्चर रिस्पॉन्स टाइम (MPRT), सैंपल-एंड-होल्ड ब्लर पर्सिस्टेंस और आई-पर्स्यूट स्पष्टता का परीक्षण करें।"
     },
     "reactionTimeTest": {
-      "title": "प्रतिक्रिया समय परीक्षण",
-      "description": "मिलीसेकंड में अपनी दृश्य प्रतिक्रिया समय और डिस्प्ले इनपुट लेटेंसी मापें।"
+      "title": "ह्यूमन रिफ्लेक्स रिएक्शन टाइम बेंचमार्क",
+      "description": "सांख्यिकीय निरंतरता स्कोरिंग के साथ मिलीसेकंड में दृश्य प्रतिक्रिया समय को मापें।"
     },
     "AccelerometerPattern": {
       "status": "Status:",
@@ -2471,8 +2461,8 @@
       "description": "स्क्रीन के ऊपरी, मध्य और निचले क्षेत्रों में बैकलाइट स्ट्रोबिंग और डबल इमेज की जांच करें।"
     },
     "vrrFlickerTest": {
-      "title": "VRR चमक फ़्लिकर स्ट्रेस टेस्ट",
-      "description": "परिवर्तनीय रीफ्रेश दर (G-Sync / FreeSync) पर चमक फ़्लिकर और गामा बदलाव का परीक्षण करें।"
+      "title": "VRR ब्राइटनेस फ्लिकर और गामा शिफ्ट टेस्ट",
+      "description": "परिवर्तनीय ताज़ा दर चमक के उतार-चढ़ाव और OLED गामा बदलाव का निदान करें।"
     },
     "pursuitCameraTest": {
       "title": "पर्स्यूट कैमरा सिंक और MPRT ट्रैक",
@@ -2645,8 +2635,8 @@
       "description": "OS डार्क मोड प्राथमिकता का पता लगाएं और दोनों थीम में UI का पूर्वावलोकन करें।"
     },
     "inputLagTest": {
-      "title": "इनपुट लैग विज़ुअलाइज़र",
-      "description": "10-ट्रायल विज़ुअल रिएक्शन टेस्ट, हिस्टोग्राम और सांख्यिकीय विश्लेषण के साथ क्लिक-टू-फोटॉन इनपुट लैग मापें।"
+      "title": "डिस्प्ले इनपुट लैग और लेटेंसी विज़ुअलाइज़र",
+      "description": "डिस्प्ले पाइपलाइन प्रोसेसिंग देरी और क्लिक-टू-फोटॉन स्क्रीन लेटेंसी को विज़ुअलाइज़ करें।"
     },
     "ambientLightTest": {
       "title": "एम्बिएंट लाइट सेंसर टेस्ट",
@@ -2852,22 +2842,51 @@
     "subpixelLayoutTest": {
       "title": "सबपिक्सेल लेआउट और टेक्स्ट फ्रिंजिंग",
       "description": "RGB, BGR और OLED सबपिक्सेल संरचना और टेक्स्ट के किनारों की जांच करें।",
-      "metaDescription": "सबपिक्सेल संरचना और फ़ॉन्ट स्पष्टता का परीक्षण।"
+      "metaDescription": "सबपिक्सेल संरचना और फ़ॉन्ट स्पष्टता का परीक्षण।",
+      "clearTypeGuide": "Windows पर ClearType को कैसे ट्यून करें",
+      "clearTypeDesc": "Win + R दबाएं, cttune टाइप करें और विज़ार्ड का पालन करें। ऐसे नमूने चुनें जो रंगीन किनारों के बिना सबसे स्पष्ट दिखाई दें।",
+      "structureTitle": "सबपिक्सेल संरचना का विवरण",
+      "rgbStandard": "मानक RGB: बिना रंगीन हेलो के इष्टतम टेक्स्ट स्पष्टता।",
+      "bgrStripe": "BGR स्ट्राइप: जब तक ClearType ट्यून न हो, हल्के रंगीन किनारे दे सकता है।",
+      "qdoledLayout": "QD-OLED त्रिकोणीय: उच्च-कंट्रास्ट किनारों पर हल्का मैजेंटा/हरा फ्रिंज।",
+      "woledLayout": "WOLED RWBG: अतिरिक्त सफेद सबपिक्सेल टेक्स्ट को हल्का नरम बना सकता है।"
     },
     "pwmFlickerTest": {
-      "title": "PWM बैकलाइट फ़्लिकर टेस्ट",
-      "description": "बैकलाइट झिलमिलाहट और आँखों की थकान का परीक्षण करें।",
-      "metaDescription": "PWM झिलमिलाहट और विजुअल आराम मापें।"
+      "title": "PWM बैकलाइट फ्लिकर और आंखों के तनाव की जांच",
+      "description": "स्ट्रोबोस्कोपिक LED पल्स-विड्थ मॉड्यूलेशन फ्लिकर का पता लगाएं और आंखों की थकान का मूल्यांकन करें।",
+      "metaDescription": "PWM झिलमिलाहट और विजुअल आराम मापें।",
+      "shutterMethodTitle": "स्मार्टफोन कैमरा शटर विधि",
+      "shutterMethodDesc": "स्मार्टफोन कैमरा को प्रो मोड में खोलें। शटर स्पीड को 1/1000s या उससे तेज़ सेट करें। डार्क रोलिंग बैंड्स PWM बैकलाइट स्ट्रोबिंग का संकेत देते हैं।",
+      "freqGuideTitle": "PWM फ्रीक्वेंसी एर्गोनोमिक गाइड",
+      "flickerFree": "फ्लिकर-फ्री (DC डिमिंग)",
+      "highFreq": "उच्च आवृत्ति (>1000 Hz) – आंखों के लिए सुरक्षित",
+      "lowFreq": "कम आवृत्ति (<250 Hz) – आंखों में संभावित तनाव"
     },
     "gtgResponseTimeTest": {
       "title": "GtG रिस्पांस टाइम",
       "description": "ग्रे स्तरों के बीच पिक्सेल गति मापें और ओवरड्राइव ट्यून करें।",
-      "metaDescription": "पिक्सेल प्रतिक्रिया समय और ओवरड्राइव का मूल्यांकन।"
+      "metaDescription": "पिक्सेल प्रतिक्रिया समय और ओवरड्राइव का मूल्यांकन।",
+      "overdriveTitle": "ओवरड्राइव आर्टिफैक्ट्स को कैसे समझें",
+      "overdriveDesc": "चलते हुए आयत के किनारों पर ध्यान दें। यदि ओवरड्राइव बहुत कम है, तो पीछे रंगीन धुंधलापन दिखाई देगा। यदि बहुत अधिक (Extreme) है, तो विपरीत रंग का कोरोना हेलो बनेगा। इष्टतम सेटिंग आमतौर पर Normal या Fast होती है।",
+      "pause": "रोकें",
+      "resume": "चालू रखें",
+      "speed": "गति",
+      "bgGrey": "पृष्ठभूमि ग्रे",
+      "blockGrey": "ब्लॉक ग्रे",
+      "transitionStatus": "रूपांतरण: RGB({start}) → RGB({end}) · गति: {speed} px/s · मोड: {mode}"
     },
     "mousePollingTest": {
       "title": "माउस पोलिंग रेट और प्रिसिजन",
       "description": "माउस की Hz दर, जिटर और डबल-क्लिक समस्याओं को मापें।",
-      "metaDescription": "सटीक माउस पोलिंग दर और सेंसर परीक्षक।"
+      "metaDescription": "सटीक माउस पोलिंग दर और सेंसर परीक्षक।",
+      "areaPrompt": "इस क्षेत्र के भीतर माउस को तेजी से घुमाएं",
+      "realtimeHz": "रीयल-टाइम पोलिंग दर",
+      "peakHz": "अधिकतम पोलिंग दर",
+      "averageHz": "औसत आवृत्ति",
+      "jitter": "टाइमिंग जिटर",
+      "stability": "पोलिंग स्थिरता",
+      "sampleCount": "कुल नमूने",
+      "reset": "रीसेट करें"
     },
     "gpuBenchmarkTest": {
       "title": "GPU WebGL 3D बेंचमार्क",
@@ -2905,6 +2924,52 @@
       "reverseMotionDirectionTitle": "गति की दिशा उलटें",
       "readAboutMotionBlurTitle": "मोशन ब्लर और MPRT के बारे में पढ़ें",
       "guide": "गाइड"
+    },
+    "deadPixelMapper": {
+      "isoAssessment": "ISO 9241-307 RMA मूल्यांकन",
+      "class1Title": "क्लास 1 (शून्य चमकीला बिंदु):",
+      "class1Pass": "उत्तीर्ण (0 दोष)",
+      "class2Title": "क्लास 2 (मानक उपभोक्ता):",
+      "class2Pass": "उत्तीर्ण (सीमा के भीतर)",
+      "rmaEligible": "RMA वारंटी के लिए पात्र",
+      "isoNote": "अधिकांश उपभोक्ता वारंटी ISO क्लास 2 मानकों का पालन करती हैं (प्रति 10 लाख पिक्सेल पर अधिकतम 2 मृत पिक्सेल)।",
+      "copyReport": "RMA लॉग क्लिपबोर्ड पर कॉपी करें",
+      "reportCopied": "रिपोर्ट क्लिपबोर्ड पर कॉपी हो गई!",
+      "tableHeaders": {
+        "id": "ID",
+        "coords": "निर्देशांक",
+        "color": "रंग",
+        "type": "दोष प्रकार",
+        "zone": "क्षेत्र",
+        "actions": "कार्रवाई"
+      },
+      "zones": {
+        "center": "केंद्र (मुख्य)",
+        "edge": "किनारा (परिधि)"
+      },
+      "defectTypes": {
+        "dead_dark": "मृत (काला)",
+        "stuck_red": "अटका (लाल)",
+        "stuck_green": "अटका (हरा)",
+        "stuck_blue": "अटका (नीला)",
+        "bright_subpixel": "चमकीला सबपिक्सेल",
+        "dust": "धूल / कण"
+      },
+      "loupeTitle": "12x ऑप्टिकल लूप",
+      "addDefectTip": "दोष मार्कर जोड़ने के लिए कैनवास पर कहीं भी क्लिक करें",
+      "noDefectsLogged": "अभी तक कोई दोष दर्ज नहीं हुआ। पिक्सेल को चिह्नित करने के लिए स्क्रीन पर क्लिक करें।"
+    },
+    "oledBurnInCalculator": {
+      "timelineTitle": "बर्न-इन संभावना समयरेखा",
+      "hazardHotspots": "स्थिर जोखिम क्षेत्र",
+      "dailyUsage": "दैनिक सक्रिय उपयोग (घंटे)",
+      "brightnessLevel": "औसत चमक / HDR तीव्रता",
+      "staticPercent": "स्थिर UI तत्वों का प्रतिशत",
+      "coolingMethod": "पैनल कूलिंग / हीटसिंक तकनीक",
+      "riskLow": "कम जोखिम – 5+ वर्ष तक सुरक्षित",
+      "riskModerate": "मध्यम जोखिम – 3-4 वर्षों में मामूली असर",
+      "riskHigh": "उच्च जोखिम – 18-24 महीनों में इमेज रिटेंशन",
+      "recommendations": "दीर्घायु के लिए सिफारिशें"
     }
   },
   "Guides": {
@@ -3548,7 +3613,8 @@
       "workflowCtaTitle": "क्या आप मौके पर मॉनिटर टेस्ट करने के लिए तैयार हैं?",
       "workflowCtaDesc": "हमारे 'Used Monitor Workflow' को शुरू करें ताकि आपके लैपटॉप पर सभी टेस्ट क्रमबद्ध तरीके से अपने आप खुलते जाएं।",
       "workflowCtaButton": "इन्स्पेक्शन वर्कफ्लो शुरू करें",
-      "relatedTestsHeading": "अनुशंसित टेस्टिंग टूल्स"
+      "relatedTestsHeading": "अनुशंसित टेस्टिंग टूल्स",
+      "description": "सेकेंड-हैंड मॉनिटर खरीदने से पहले भौतिक टूट-फूट, डेड पिक्सेल, बैकलाइट खराबी और पोर्ट्स की मजबूती जांचने की व्यावहारिक गाइड।"
     },
     "newMonitor": {
       "metaTitle": "नए मॉनिटर का निरीक्षण और रिटर्न विंडो चेकलिस्ट",
@@ -3868,7 +3934,8 @@
       "workflowCtaDesc": "अपनी स्क्रीन पर सीधे डेड पिक्सल, बैकलाइट और एकरूपता की जांच करने के लिए हमारा गाइडेड न्यू मॉनिटर वर्कफ़्लो शुरू करें।",
       "workflowCtaButton": "नया मॉनिटर वर्कफ़्लो शुरू करें",
       "relatedTestsHeading": "अनुशंसित परीक्षण सूट",
-      "osdLinksTitle": "ओएसडी और सिग्नल सत्यापन परीक्षण"
+      "osdLinksTitle": "ओएसडी और सिग्नल सत्यापन परीक्षण",
+      "description": "रिटेलर की रिटर्न विंडो बंद होने से पहले नए कंप्यूटर मॉनिटर में भौतिक क्षति, पिक्सेल दोष, पैनल एकरूपता और मोशन प्रदर्शन की जांच के लिए व्यावहारिक चरण-दर-चरण मार्गदर्शिका।"
     },
     "displayportVsHdmi": {
       "metaTitle": "डिस्प्लेपोर्ट बनाम एचडीएमआई: बैंडविड्थ, संशोधन और क्रोमा सबसैंपलिंग",
@@ -5724,7 +5791,13 @@
         "desc": "संकेन्द्रित छल्ले पिक्सेल पिच और गैर-पूर्णांक OS स्केलिंग (जैसे 125% या 150%) के विरुद्ध स्थानिक आवृत्ति हस्तक्षेप को उजागर करते हैं।"
       }
     },
-    "fullscreenHint": "बाहर निकलने के लिए ESC या F दबाएं"
+    "fullscreenHint": "बाहर निकलने के लिए ESC या F दबाएं",
+    "instructions": [
+      "<strong>2D अलाइनमेंट ग्रिड:</strong> डिस्प्ले बैरल डिस्टॉर्शन, कर्व वॉरपिंग और ऑप्टिकल कन्वर्जेंस की जांच करें।",
+      "<strong>चेकरबोर्ड मैट्रिक्स:</strong> लाइट ब्लूमिंग या लोकल डिमिंग हेलो के बिना ANSI हाई-कंट्रास्ट स्पष्टता सत्यापित करें।",
+      "<strong>क्षैतिज और ऊर्ध्वाधर रेखाएं:</strong> रेखा स्कैनिंग अलाइनमेंट, पिक्सेल क्लॉक और सिंगल-पिक्सेल लाइन शार्पनेस जांचें।",
+      "<strong>लगातार वर्कफ़्लो:</strong> ग्रिड स्पेसिंग समायोजित करें या आवश्यकतानुसार 12 कैलिब्रेशन प्रीसेट में से चुनें।"
+    ]
   },
   "CompareDisplays": {
     "breadcrumbAll": "सभी परीक्षण",

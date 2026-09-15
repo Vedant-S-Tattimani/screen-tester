@@ -220,13 +220,14 @@
     "allTestsFilterAll": "모든 테스트",
     "allTestsCount": "35개 테스트",
     "allTestsCategories": {
-      "colorPixels": "색상 및 픽셀 테스트",
-      "gradientContrast": "계조 및 명암비 테스트",
-      "uniformityPanel": "화면 균일도 및 백라이트 테스트",
-      "motionPerformance": "모션 및 주사율 테스트",
-      "sharpnessCapabilities": "선명도 및 디스플레이 기능 테스트",
-      "deviceInput": "기기 및 입력",
-      "utilitiesTools": "유틸리티 및 도구"
+      "deadPixelsDefects": "불량 화소 및 패널 결함 점검",
+      "colorGamut": "색상 및 색역 캘리브레이션",
+      "brightnessContrast": "밝기, 명암비 및 그라데이션",
+      "uniformityBacklight": "패널 균일도 및 백라이트 점검",
+      "motionGaming": "응답 속도, 모션 및 게이밍 성능",
+      "sharpnessSpecs": "선명도, 해상도 및 디스플레이 스펙",
+      "hardwareSensors": "하드웨어, 센서 및 입력 장치 진단",
+      "toolsCalculators": "디스플레이 계산기 및 검수 도구"
     },
     "allTestsNoResults": "검색 결과가 없습니다:",
     "moreFreeTestingToolsTitle": "추가 무료 테스트 도구",
@@ -288,12 +289,12 @@
         "description": "기본 색상과 보조 색상의 재현율 및 시각적 채도의 균일성을 평가합니다."
       },
       "gradientTest": {
-        "title": "그라디언트 밴딩",
-        "description": "부드러운 색상 전환을 표시하여 비트 심도 제한이나 압축 밴딩을 노출시킵니다."
+        "title": "컬러 밴딩 및 비트 심도 테스트",
+        "description": "8비트 vs 10비트 컬러 양자화 왜곡, 계조 끊김(계단 현상) 및 디더링 밴딩을 감지합니다."
       },
       "brightnessTest": {
-        "title": "밝기 & 대비",
-        "description": "단계별 그레이스케일 격자를 사용하여 흑백 레벨을 보정하고 다이내믹 레인지 디테일을 극대화합니다."
+        "title": "밝기 및 블랙 클리핑(암부 뭉개짐) 테스트",
+        "description": "디스플레이 기본 밝기를 조절하여 어두운 그림자 영역의 디테일 뭉개짐(블랙 크러시)을 방지합니다."
       },
       "uniformityTest": {
         "title": "화면 균일성",
@@ -304,8 +305,8 @@
         "description": "어두운 환경에서 IPS 또는 LED 패널의 가장자리에서 새어나오는 빛을 확인하기 위한 순수 블랙 렌더링입니다."
       },
       "ghostingTest": {
-        "title": "고스팅 / 오버드라이브",
-        "description": "고속으로 이동하는 요소를 통해 픽셀 전환 시간, 모션 블러, 역 고스팅(코로나 효과)을 시각화합니다."
+        "title": "모니터 고스팅 및 오버드라이브 잔상 테스트",
+        "description": "LCD 픽셀 응답 속도, 끌림 잔상(고스팅) 및 오버드라이브 역잔상(오버슈트 코로나)을 정밀 점검합니다."
       },
       "refreshRate": {
         "title": "주사율 측정기",
@@ -340,8 +341,8 @@
         "description": "OS HDR 컴포지팅, 10비트 버퍼 심도, BT.2020 / DCI-P3 광색역, Canvas P3 및 HDR10 비디오 재생 코덱을 진단합니다."
       },
       "contrastTest": {
-        "title": "명암비 보정",
-        "description": "25단계 동적 레벨을 통해 명암비와 계조 분리 성능을 평가합니다."
+        "title": "명암비 및 화이트 포화(백색 클리핑) 테스트",
+        "description": "동적 명암비 범위, 피크 화이트 클리핑(화이트 크러시) 및 밝은 하이라이트 분리도를 정밀 보정합니다."
       },
       "brightPixel": {
         "title": "휘점(브라이트 픽셀) 테스트",
@@ -453,11 +454,9 @@
       "title": "불량 화소 테스트 (불량 픽셀 검사)",
       "description_p1": "이 불량 화소 테스트는 모니터나 노트북 화면의 결함 화소(꺼진 암점 또는 켜진 채 고정된 휘점)를 빠르게 찾아낼 수 있는 화면 검사 도구입니다. 전체 화면 단색을 차례로 전환하며 패널 결함을 꼼꼼히 점검할 수 있습니다.",
       "instructions": [
-        "Ensure your screen is clean before starting. Dust can look like dead pixels.",
-        "Click or use <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> / <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd> to cycle through the test colors.",
-        "Carefully scan the entire screen for tiny dots that don't match the background color.",
-        "A black dot on a white background is typically a <strong>dead pixel</strong>.",
-        "A bright dot on a black background is typically a <strong>stuck pixel</strong>."
+        "<strong>확인 사항:</strong> 테스트 전에 화면의 먼지를 깨끗이 닦으세요. 먼지가 불량 화소처럼 보일 수 있습니다.",
+        "<strong>사용 방법:</strong> 클릭하거나 <kbd class=\"px-1 bg-background border border-border rounded\">스페이스바</kbd> / <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd> 키를 눌러 단색 배경을 순차 전환합니다.",
+        "<strong>관찰 포인트:</strong> 배경색과 일치하지 않는 미세한 점을 찾으세요. 흰색 배경의 검은 점은 <strong>암점(데드 픽셀)</strong>, 검은 배경의 발광점은 <strong>휘점(스턱 픽셀)</strong>입니다."
       ]
     },
     "color-test": {
@@ -466,46 +465,47 @@
       "title": "모니터 색상 테스트 및 시각적 캘리브레이션",
       "description_p1": "이 모니터 색상 테스트는 화면의 기본 색상 표현과 전체적인 색감 균일도를 시각적으로 점검하는 도구입니다. 원색 및 보색 패턴을 전환하여 패널의 색 왜곡, 밴딩 현상, 특정 부위의 누런 끼나 붉은 끼를 쉽게 확인할 수 있습니다.",
       "instructions": [
-        "Cycle through the colors using <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> or <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd>.",
-        "Look for uneven saturation across the screen.",
-        "Check the grayscale patterns for any unwanted color tints (e.g., the gray looking slightly pink or blue).",
-        "Ensure that primary colors look vibrant and accurate without bleeding.",
-        "<strong>ABOUT THIS TEST:</strong> Provides reference patterns for visual inspection. It does not measure physical panel color accuracy (Delta E)."
+        "<strong>확인 사항:</strong> <kbd class=\"px-1 bg-background border border-border rounded\">스페이스바</kbd> 또는 <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd> 키를 눌러 테스트 색상을 순차적으로 전환합니다.",
+        "<strong>사용 방법:</strong> 화면 전반에 걸쳐 채도 불균형이나 얼룩이 없는지 점검합니다.",
+        "<strong>관찰 포인트:</strong> 그레이스케일 패턴에서 붉은빛이나 푸른빛이 도는 색 왜곡이 없는지 확인하고, 기본 원색이 번짐 없이 선명한지 살펴봅니다.",
+        "<strong>테스트 안내:</strong> 육안 점검용 레퍼런스 패턴입니다. 패널의 물리적 델타 E 수치를 직접 측정하지는 않습니다."
       ]
     },
     "brightness-test": {
       "metaTitle": "모니터 밝기 및 블랙 레벨 테스트 – 암부 표현력 및 PLUGE 보정",
       "metaDescription": "블랙 크러시 없이 암부 디테일을 살릴 수 있도록 모니터 밝기와 블랙 레벨을 조절하는 테스트입니다. PLUGE 패턴 지원.",
-      "title": "밝기 및 블랙 레벨 테스트",
+      "title": "밝기 및 블랙 클리핑(암부 뭉개짐) 테스트",
       "description_p1": "이 테스트는 모니터의 밝기(블랙 레벨 오프셋)를 보정하여 암부 디테일이 뭉개지지 않고 깊은 블랙을 표현하도록 돕습니다.",
       "instructions": [
         "<strong>PLUGE 기준 바:</strong> 바 0%는 순수 블랙입니다. 검은 배경에서 <strong>바 +2% (RGB 5)가 간신히 구분될 때까지</strong> 모니터 밝기를 조정하십시오.",
         "<strong>블랙 크러시 경고:</strong> 바 +1% 및 +2%가 보이지 않는다면 밝기가 너무 낮아 암부 디테일이 묻힌 상태입니다. 배경이 회색으로 들뜨면 밝기가 너무 높습니다.",
         "<strong>1% 섀도 램프:</strong> 0%~10% 구간의 1% 단위 미세 단계를 통해 디스플레이의 정확한 블랙 클리핑 지점을 확인하세요.",
         "<strong>피크 휘도 및 ABL:</strong> 100% 전체 화면 흰색과 10% 윈도우를 비교하여 OLED나 노트북 디스플레이의 자동 밝기 제한(ABL) 동작을 확인하세요."
-      ]
+      ],
+      "description": "디스플레이 기본 밝기를 조절하여 어두운 그림자 영역의 디테일 뭉개짐(블랙 크러시)을 방지합니다."
     },
     "contrast-test": {
       "metaTitle": "모니터 명암비 테스트 – 화이트 클리핑 및 명암 구분 점검",
       "metaDescription": "모니터의 명암비와 명부 표현력을 점검하세요. 밝은 영역의 화이트 클리핑을 방지하고 섬세한 밝기 단계를 구분합니다.",
-      "title": "명암비 보정 테스트",
+      "title": "명암비 및 화이트 포화(백색 클리핑) 테스트",
       "description_p1": "이 테스트는 0% 순수 블랙부터 100% 순수 화이트까지 25단계 그라데이션 그리드를 표시하여 모니터의 명암비 및 감마 설정을 돕습니다.",
       "inst1": "인접한 블록 간의 명암 차이가 명확하게 구분되는지 확인하세요.",
       "inst2": "92% 및 96% 블록이 100% 화이트와 뭉개지지 않도록 모니터 명암비를 조정하세요.",
-      "inst3": "하단 제어 표시줄을 사용하여 숫자 백분율을 켜거나 끄고 모드를 전환할 수 있습니다."
+      "inst3": "하단 제어 표시줄을 사용하여 숫자 백분율을 켜거나 끄고 모드를 전환할 수 있습니다.",
+      "description": "동적 명암비 범위, 피크 화이트 클리핑(화이트 크러시) 및 밝은 하이라이트 분리도를 정밀 보정합니다."
     },
     "ghosting-test": {
       "metaTitle": "모니터 잔상 테스트 – 고스팅 및 응답속도 오버드라이브 검사",
       "metaDescription": "모니터 잔상 테스트 (고스팅 테스트). 움직이는 테스트 패턴을 통해 모니터의 패널 응답속도, 모션 잔상, 오버드라이브 역잔상(오버슈트)을 정밀하게 확인하세요.",
-      "title": "모니터 잔상 테스트 (고스팅 검사)",
+      "title": "모니터 고스팅 및 오버드라이브 잔상 테스트",
       "description_p1": "이 모니터 잔상 테스트는 디스플레이 패널의 픽셀 응답속도와 모션 선명도를 진단하는 도구입니다. 다양한 속도로 움직이는 그래픽을 관찰하여 화면에 끌리는 잔상(고스팅)이나 과도한 오버드라이브 설정으로 인한 역잔상을 확인할 수 있습니다.",
       "instructions": [
-        "Focus your eyes on the moving blocks. Do not stare statically at the center of the screen.",
-        "Look for trailing shadows (ghosting) behind the moving blocks.",
-        "If you see a bright/inverted colored trail, this is <strong>inverse ghosting (overshoot)</strong>, usually caused by setting your monitor's overdrive setting too high.",
-        "Adjust the speed and contrast controls to test different pixel transition scenarios.",
-        "<strong>ABOUT THIS TEST:</strong> This is a visual aid for detecting ghosting. A web browser cannot precisely measure pixel response time (GtG or MPRT) in milliseconds."
-      ]
+        "<strong>확인 사항:</strong> 움직이는 블록을 시선으로 추적하세요. 화면 중앙을 정적으로 응시하지 마세요.",
+        "<strong>사용 방법:</strong> 블록 뒤로 이어지는 잔상(고스팅)의 길이를 관찰합니다.",
+        "<strong>관찰 포인트:</strong> 밝은 반전 색상의 꼬리가 나타나면 모니터 오버드라이브 설정이 과도한 <strong>역잔상(오버슈트)</strong>입니다.",
+        "<strong>테스트 안내:</strong> 육안 잔상 점검용 도구이며, 브라우저가 물리적 GtG/MPRT를 밀리초 단위로 직접 계측하지는 않습니다."
+      ],
+      "description": "LCD 픽셀 응답 속도, 끌림 잔상(고스팅) 및 오버드라이브 역잔상(오버슈트 코로나)을 정밀 점검합니다."
     },
     "refresh-rate-test": {
       "metaTitle": "주사율 테스트 – 모니터 실시간 Hz 및 프레임 속도 측정",
@@ -513,11 +513,9 @@
       "title": "주사율 테스트 (모니터 Hz 측정)",
       "description_p1": "이 주사율 테스트는 모니터의 실제 작동 주사율(Hz)과 프레임 전송 안정성을 브라우저에서 실시간으로 측정합니다. 사용 중인 게이밍 모니터가 설정된 144Hz나 240Hz 주사율로 정상 출력되고 있는지 손쉽게 검증할 수 있습니다.",
       "instructions": [
-        "<strong>Note:</strong> Browsers usually cap rendering at your primary monitor's refresh rate (e.g., 60Hz, 120Hz, 144Hz).",
-        "Make sure you do not have background video playback running, as some browsers down-clock animations to match video framerates.",
-        "For multi-monitor setups, drag the browser window to the screen you want to test.",
-        "If the reading is significantly lower than expected, check your OS display settings or GPU control panel to ensure your refresh rate isn't artificially capped.",
-        "<strong>ABOUT THIS TEST:</strong> This test estimates refresh rate based on browser rendering timing (requestAnimationFrame). It is a software estimate, not a direct hardware measurement."
+        "<strong>확인 사항:</strong> 브라우저는 주로 기본 주 모니터의 주사율(60Hz, 144Hz 등)에 맞춰 렌더링을 제한합니다.",
+        "<strong>사용 방법:</strong> 배경 영상 재생을 일시 중지하여 프레임 동기화 간섭을 방지하세요.",
+        "<strong>관찰 포인트:</strong> 다중 모니터 환경에서는 테스트하려는 디스플레이로 브라우저 창을 이동하세요."
       ]
     },
     "backlight-bleed-test": {
@@ -526,11 +524,9 @@
       "title": "백라이트 번짐 테스트",
       "description_p1": "이 테스트는 순수한 검정 화면을 렌더링합니다. LCD 백라이트 번짐, 클라우딩 또는 IPS 글로우를 드러내도록 설계되었습니다.",
       "instructions": [
-        "<strong>Crucial:</strong> This test must be performed in a completely dark room.",
-        "Set your monitor to its standard or calibrated brightness level (do not force 100% brightness unless that is how you normally use it).",
-        "Look at the corners and edges of the screen.",
-        "<strong>Backlight Bleed</strong> appears as distinct patches of white/yellow light leaking from the bezel.",
-        "<strong>IPS Glow</strong> shifts and changes intensity as you move your viewing angle."
+        "<strong>확인 사항:</strong> 방의 불을 완전히 끄고 어두운 환경에서 테스트해야 정확합니다.",
+        "<strong>사용 방법:</strong> 모니터를 평소 사용하는 표준 밝기 수준으로 설정하세요.",
+        "<strong>관찰 포인트:</strong> <strong>빛샘(Backlight Bleed)</strong>은 베젤 가장자리에서 새어 나오는 빛이며, <strong>IPS 글로우</strong>는 시야각에 따라 빛의 위치가 변합니다."
       ]
     },
     "bright-pixel-test": {
@@ -561,10 +557,9 @@
       "title": "화면 균일성 및 DSE 테스트",
       "description_p1": "이 테스트는 백라이트 번짐, 가장자리 어두워짐 및 DSE를 식별하는 데 도움이 되는 단계별 그레이스케일 배경을 표시합니다.",
       "instructions": [
-        "Check the corners and edges on the 5% and 10% dark grays for clouding or light bleed.",
-        "On the 20% and 50% grays, look for splotches, bands, or \"dirty\" smudges across the center of the screen (DSE).",
-        "On the 100% white screen, check if any section of the screen looks warmer (pink/yellow) or cooler (blue) than the rest.",
-        "<strong>ABOUT THIS TEST:</strong> This test provides reference backgrounds for visual inspection. It does not measure physical panel luminance variance."
+        "<strong>확인 사항:</strong> 5% 및 10% 어두운 회색에서 모서리의 빛샘 및 뭉침을 점검합니다.",
+        "<strong>사용 방법:</strong> 20% 및 50% 회색에서 화면 중앙의 얼룩이나 더티 스크린 현상(DSE)을 확인합니다.",
+        "<strong>관찰 포인트:</strong> 100% 흰색 화면에서 특정 부위가 붉거나 푸르게 치우치지 않는지 살핍니다."
       ]
     },
     "black-level-test": {
@@ -616,11 +611,12 @@
     "motion-blur-test": {
       "metaTitle": "모션 블러 테스트 – 동적 해상도 및 화면 끌림 현상 점검",
       "metaDescription": "빠른 움직임 속에서 모니터의 잔상 지속 시간과 모션 블러를 시각적으로 분석하여 게이밍 성능을 평가합니다.",
-      "title": "모션 블러 테스트",
+      "title": "MPRT 및 모션 블러 잔상 지속성 테스트",
       "description_p1": "세부 사항을 흐리게 하거나 번지게 하지 않고 모니터가 빠른 동작을 얼마나 잘 처리하는지 평가합니다.",
       "inst1": "눈으로 움직이는 블록을 추적하세요.",
       "inst2": "작은 내부 사각형을 보세요. 가장자리가 완전히 흐려지면 모니터의 픽셀 응답이 느린 것입니다.",
-      "inst3": "다양한 패널 오버드라이브 시나리오에서 테스트하려면 속도와 대비를 조정하세요."
+      "inst3": "다양한 패널 오버드라이브 시나리오에서 테스트하려면 속도와 대비를 조정하세요.",
+      "description": "동영상 응답 시간(MPRT), 샘플 앤 홀드 디스플레이의 잔상 지속성 및 시선 추적 선명도를 점검합니다."
     },
     "hdr-capability-test": {
       "metaTitle": "HDR 하드웨어 및 신호 감지기 – OS 및 브라우저 기능",
@@ -664,10 +660,9 @@
       "title": "그라디언트 밴딩 테스트",
       "description_p1": "완벽하게 매끄러운 24비트(1,670만 색상) 그라디언트를 표시합니다. 품질이 낮은 패널에서는 밴딩이 나타날 수 있습니다.",
       "instructions": [
-        "Look closely at the transition from black to the target color.",
-        "A true 10-bit or high-quality 8-bit+FRC panel will display a buttery smooth transition.",
-        "If you see obvious vertical stripes (stair-stepping), your display is struggling with color depth.",
-        "Use <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> or arrow keys to cycle gradients."
+        "<strong>확인 사항:</strong> 검정색에서 목표 색상으로 이어지는 계조 변화를 면밀히 관찰합니다.",
+        "<strong>사용 방법:</strong> 정품 10비트 또는 고품질 8비트+FRC 패널은 계단 현상 없이 매끄러운 그라데이션을 렌더링합니다.",
+        "<strong>관찰 포인트:</strong> 눈에 띄는 줄무늬(밴딩)는 디스플레이의 색 심도 표현 한계를 나타냅니다."
       ]
     },
     "vrr-test": {
@@ -706,13 +701,14 @@
     "gradient-banding-test": {
       "metaTitle": "그라데이션 및 밴딩 테스트 – 8비트, 10비트 및 색상 전환 진단",
       "metaDescription": "디스플레이의 그라데이션 부드러움을 점검하고 그레이스케일, RGB, 암부 영역의 양자화 밴딩(계단 현상)을 감지합니다.",
-      "title": "그라데이션 및 밴딩 테스트",
+      "title": "부드러운 그라데이션 및 계조 램프 전이 테스트",
       "description_p1": "화면의 그라데이션 부드러움을 평가하고 부자연스러운 양자화 줄무늬나 색상 왜곡을 감지합니다. 브라우저 캔버스가 하드웨어 비트 깊이를 입증하지는 못하지만 고정밀 시각 기준을 제공합니다.",
       "instructions": [
         "<strong>그라데이션 모드:</strong> 수평/수직 그레이스케일, RGB 기본색, 어두운 암부(0%~25%)를 전환하며 톤 전이를 확인합니다.",
         "<strong>밴딩 vs 부드러움:</strong> 부드럽게 이어져야 할 색상 전환 구간에 뚜렷한 세로줄이나 계단 현상이 있는지 확인합니다.",
         "<strong>양자화 시뮬레이터:</strong> 64단계 양자화 비교를 켜서 인위적인 디지털 계단 현상과 모니터의 원래 표현력을 대조해 봅니다."
-      ]
+      ],
+      "description": "멀티스톱 선형 및 방사형 그라데이션의 부드러움, 색조 연속성 및 미세 계조 램프 전이를 평가합니다."
     },
     "text-clarity-test": {
       "metaTitle": "텍스트 가독성 및 서브픽셀 렌더링 테스트 – 폰트 선명도와 색 번짐",
@@ -750,13 +746,14 @@
     "multi-touch-test": {
       "metaTitle": "터치 테스트 - 터치스크린 및 멀티터치 검사 | Screen Tester",
       "metaDescription": "터치스크린의 다중 손가락 동시 접촉, 제스처 인식, 디지타이저 반응성을 브라우저에서 온라인으로 검사할 수 있는 무료 터치 테스트.",
-      "title": "터치 테스트",
+      "title": "멀티터치 제스처 및 10점 동시 입력 테스트",
       "description_p1": "이 무료 터치 테스트를 통해 터치스크린이 여러 손가락의 터치를 동시에 감지하고 정확하게 반응하는지 검사하세요. 실시간 접촉 좌표, 터치 포인트 수 및 추적 정확도를 확인할 수 있습니다.",
       "instructions": [
         "<strong>자유 터치 모드:</strong> 여러 손가락으로 동시에 화면을 터치합니다. 실시간 접점 카운터, 포인터 ID, 좌표 및 최대 동시 터치 수를 확인합니다.",
         "<strong>멀티터치 그리드:</strong> 그리드 셀을 터치하여 고스트 터치 없이 화면 각 영역에서 동시 터치가 정확히 인식되는지 확인합니다.",
         "<strong>유지 및 가장자리:</strong> 홀드 챌린지(손가락 3~5개를 1.5초간 유지)와 모서리 터치를 통해 가장자리 터치 방지 기능을 테스트합니다."
-      ]
+      ],
+      "description": "최대 10점 동시 멀티터치 좌표 추적, 핀치 투 줌, 회전 및 멀티핑거 제스처 반응성을 테스트합니다."
     },
     "accelerometer-test": {
       "metaTitle": "가속도 센서 테스트 - 모션 센서 온라인 검사 | Screen Tester",
@@ -825,90 +822,82 @@
       ]
     },
     "reactionTimeTest": {
-      "title": "Reaction Time Test",
+      "title": "반응 속도 테스트",
       "description": "Measure your human reaction time in milliseconds. Test your reflexes with this simple interactive tool."
     },
     "reaction-time-test": {
       "metaTitle": "Reaction Time Test",
       "metaDescription": "Test your display and input reaction time latency.",
-      "title": "Reaction Time Test",
+      "title": "반사 신경 및 시각 반응 속도(ms) 벤치마크",
       "description_p1": "Click or tap when the color changes to measure latency.",
       "instructions": [
-        "Wait for the screen to change from red to green.",
-        "Click as fast as you can once it turns green.",
-        "Your reaction time will be recorded in milliseconds."
-      ]
+        "화면이 빨간색에서 초록색으로 바뀔 때까지 대기하세요.",
+        "초록색으로 바뀌는 순간 최대한 빠르게 클릭하세요.",
+        "반응 속도가 밀리초(ms) 단위로 측정 및 기록됩니다."
+      ],
+      "description": "시각적 색상 변화 자극에 대한 인간의 인지 반응 시간을 밀리초(ms) 단위로 측정하고 통계적 안정성을 평가합니다."
     },
     "pixel-inversion-test": {
-      "title": "Pixel Inversion & VCOM Flicker Test",
+      "title": "픽셀 인버전 및 VCOM 플리커 테스트",
       "metaTitle": "Pixel Inversion & VCOM Test | Screen Tester",
       "description": "Inspect pixel inversion patterns, VCOM voltage calibration, and pixel walk artifacts across LCD and OLED panels.",
       "metaDescription": "Test your monitor for pixel inversion artifacts, VCOM voltage balance, and pixel walk flicker using high-frequency checkerboard patterns.",
       "instructions": [
-        "Switch through 1x1 dot, 2x2 checkerboard, vertical stripe, and subpixel patterns.",
-        "Observe the screen from your normal working distance with the monitor at native resolution.",
-        "Notice whether any pattern vibrates, shimmers, or displays faint moving wave bands.",
-        "A properly calibrated VCOM voltage will render all gray checkerboards as steady, non-flickering neutral gray."
+        "1x1 도트, 2x2 체커보드, 수직 스트라이프 및 서브픽셀 패턴을 순차적으로 전환합니다.",
+        "일반적인 시청 거리에서 특정 패턴이 심하게 떨리거나 물결치는지 관찰합니다.",
+        "VCOM 전압이 정확한 패널은 모든 체커보드가 깜빡임 없는 균일한 회색으로 표시됩니다."
       ]
     },
     "strobe-crosstalk-test": {
-      "title": "Strobe Crosstalk & BFI Inspection Test",
+      "title": "스트로브 크로스토크 및 BFI 검사 테스트",
       "metaTitle": "Strobe Crosstalk & BFI Test | Screen Tester",
       "description": "Inspect backlight strobing blur reduction, strobe phase alignment, and double-image crosstalk across vertical screen zones.",
       "metaDescription": "Test monitor backlight strobing (ULMB, DyAc, ELMB) and Black Frame Insertion for strobe crosstalk and duplicate silhouette ghosting.",
       "instructions": [
-        "Enable backlight strobing or BFI in your monitor's hardware OSD menu.",
-        "Watch the moving target bars across the top, center, and bottom screen tracks.",
-        "Check for double-image silhouettes behind the moving bars in each zone.",
-        "Inspect which zone has the clearest motion and whether top or bottom shows strobe phase ghosting."
+        "모니터 OSD에서 백라이트 스트로빙(BFI/MBR) 기능을 켭니다.",
+        "화면 상단, 중앙, 하단을 가로지르는 이동 바의 이중상(크로스토크)을 점검합니다.",
+        "어느 영역이 가장 선명하고 상하단에 잔상 왜곡이 발생하는지 확인하세요."
       ]
     },
     "vrr-flicker-test": {
-      "title": "VRR Brightness Flicker Stress Test",
+      "title": "VRR 가변 주사율 밝기 플리커 및 감마 시프트 테스트",
       "metaTitle": "VRR Brightness Flicker Test | Screen Tester",
-      "description": "Stress-test adaptive sync (G-Sync, FreeSync) displays for brightness flicker and gamma shift during rapid framerate fluctuation.",
+      "description": "가변 주사율(VRR/G-Sync/FreeSync) 구동 시 발생하는 밝기 깜빡임, LFC 프레임 점프 및 OLED 감마 왜곡을 진단합니다.",
       "metaDescription": "Stress test your monitor for VRR brightness flicker and gamma fluctuation during dynamic refresh rate swings.",
       "instructions": [
-        "Ensure G-Sync, FreeSync, or Adaptive-Sync is enabled in your graphics driver and monitor OSD.",
-        "Run the automated framerate sweep between low and high refresh bounds.",
-        "Carefully observe the dark gray background and midtone patches for subtle brightness pumping or flicker.",
-        "OLED and VA panels are most susceptible to near-black VRR gamma flicker during framerate fluctuations."
+        "그래픽 드라이버 및 모니터 OSD에서 G-Sync 또는 FreeSync를 활성화합니다.",
+        "최저/최고 주사율 사이의 자동 스위프를 실행하여 밝기 깜빡임을 점검합니다.",
+        "OLED 및 VA 패널은 주사율 급변 시 암부 감마 플리커가 발생하기 쉽습니다."
       ]
     },
     "pursuit-camera-test": {
-      "title": "Pursuit Camera Sync & MPRT Calibration Track",
+      "title": "퍼슈트 카메라 동기화 및 MPRT 보정 트랙",
       "metaTitle": "Pursuit Camera Sync Track | Screen Tester",
       "description": "Calibrate tracking cameras and smartphones to photograph moving objects for scientific MPRT and ghosting measurement.",
       "metaDescription": "Pursuit camera temporal sync track for photographic measurement of monitor motion blur, ghosting, and MPRT.",
       "instructions": [
-        "Set your camera or smartphone to manual exposure mode with a shutter speed of 1/4 to 1/2 of your panning time.",
-        "Track the moving pattern smoothly from left to right as it glides across the display.",
-        "Review your captured photo: verify the white vertical graduation ticks form a single crisp vertical line.",
-        "When temporal graduation lines are un-smeared, your camera tracking was synchronized, allowing accurate MPRT measurement."
+        "카메라를 수동 셔터스피드 모드로 설정하고 이동하는 물체(UFO)를 부드럽게 추적 촬영합니다.",
+        "촬영본의 눈금선이 겹치지 않고 또렷하게 찍히면 정확한 MPRT 측정이 가능합니다."
       ]
     },
     "audio-sync-test": {
-      "title": "Audio / Video Lip-Sync Calibration Test",
+      "title": "오디오/비디오 립싱크 동기화 테스트",
       "metaTitle": "Audio Video Sync Test | Screen Tester",
       "description": "Calibrate audio-video delay, soundbar latency, and Bluetooth audio lag with millisecond visual and acoustic sweep pulses.",
       "metaDescription": "Test and calibrate audio-to-video lip-sync delay with visual sweep bars and synchronized 1kHz millisecond beeps.",
       "instructions": [
-        "Ensure audio output is enabled and unmuted in your browser.",
-        "Watch the sweeping radar dial as it crosses the center alignment notch.",
-        "Listen for the instantaneous 1 kHz audio beep.",
-        "Adjust the millisecond offset slider until the visual alignment and sound occur simultaneously."
+        "브라우저의 오디오가 음소거되지 않았는지 확인합니다.",
+        "화면 플래시와 비프음이 정중앙 마커에서 정확히 일치하는지 점검하세요."
       ]
     },
     "gamepad-test": {
-      "title": "Gamepad & Controller Input Test",
+      "title": "게임패드 및 컨트롤러 입력 테스트",
       "metaTitle": "Gamepad & Controller Drift Test | Screen Tester",
       "description": "Test gamepad controllers, analog stick drift, deadzones, trigger axes, and button actuation using the HTML5 Gamepad API.",
       "metaDescription": "Online gamepad and controller tester. Check analog stick drift, deadzone precision, triggers, and buttons in real-time.",
       "instructions": [
-        "Connect an Xbox, PlayStation, Switch, or generic controller via USB or Bluetooth.",
-        "Press any button on the controller to wake the Gamepad API.",
-        "Rotate both analog sticks to test circularity error and check resting drift values against the deadzone threshold.",
-        "Squeeze analog triggers and press all buttons to verify actuation and responsiveness."
+        "게임패드를 연결하고 아무 버튼이나 눌러 인식시킵니다.",
+        "스틱, 트리거, 버튼을 조작하여 데드존과 입력 오차를 점검합니다."
       ]
     },
     "battery-test": {
@@ -972,9 +961,9 @@
       ]
     },
     "input-lag-test": {
-      "title": "입력 지연 시각화기",
+      "title": "디스플레이 입력 지연(인풋랙) 및 화면 지연 시간 시각화 도구",
       "metaTitle": "입력 지연 테스트 | Screen Tester",
-      "description": "10회 반응 테스트로 시각-클릭 입력 지연을 측정합니다.",
+      "description": "디스플레이 내부 영상 신호 처리 지연 시간과 클릭-투-포톤(Click-to-Photon) 화면 지연을 시각적으로 관찰합니다.",
       "metaDescription": "입력 지연과 클릭-투-포톤 레이턴시를 측정합니다. 히스토그램과 통계 분석이 포함된 10회 테스트.",
       "instructions": [
         "회색 상자를 클릭하여 테스트를 시작합니다.",
@@ -1019,8 +1008,8 @@
       ]
     },
     "pwm-flicker-test": {
-      "title": "PWM 백라이트 플리커 및 눈 피로 테스트",
-      "description": "펄스 폭 변조(PWM) 백라이트 깜빡임과 스트로보스코픽 눈 피로를 감지합니다.",
+      "title": "PWM 백라이트 플리커 및 눈 피로도 테스트",
+      "description": "LED 펄스 폭 변조(PWM) 스트로보 깜빡임을 감지하고 시각적 피로도 위험 기준을 평가합니다.",
       "metaTitle": "PWM 플리커 테스트 - 시각적 편안함 및 스마트폰 카메라 검사",
       "metaDescription": "눈에 보이지 않는 PWM 백라이트 깜빡임과 스트로보 잔상을 감지합니다.",
       "instructions": [
@@ -1109,8 +1098,8 @@
   },
   "Tests": {
     "multiTouchTest": {
-      "title": "멀티터치 테스트",
-      "description": "동시 다중 손가락 터치 포인트, 디지타이저 추적 및 터치 인식 상태를 테스트합니다."
+      "title": "멀티터치 제스처 및 10점 동시 입력 테스트",
+      "description": "최대 10점 동시 멀티터치 좌표 추적, 핀치 투 줌, 회전 및 멀티핑거 제스처 반응성을 테스트합니다."
     },
     "accelerometerTest": {
       "title": "가속도계 테스트",
@@ -1157,8 +1146,8 @@
       "instructions": "밝은 사각형 주위의 헤일로를 확인합니다."
     },
     "touchScreen": {
-      "title": "터치스크린 테스트 – 멀티터치 인식 및 터치 먹통 영역 점검",
-      "description": "스마트폰, 태블릿, 터치 노트북의 터치 인식 정확도, 동시 입력 포인트, 터치 불량 구역을 온라인으로 테스트합니다.",
+      "title": "터치스크린 디지타이저 및 불감증(데드존) 테스트",
+      "description": "터치 디지타이저 좌표 추적, 터치 포인트 인식 정밀도 및 모서리 데드존을 검사합니다.",
       "instructions": "데드 존을 확인하기 위해 화면 전체에 그려보세요."
     },
     "solidColor": {
@@ -1172,8 +1161,8 @@
       "instructions": "참조 패치와 비교하여 피부톤, 뉴트럴 그레이, 색조 틀어짐 여부를 육안으로 관찰합니다."
     },
     "flicker": {
-      "title": "플리커 및 PWM 시각 점검 – 백라이트 깜빡임 및 눈 피로도 점검",
-      "description": "백라이트의 감지 가능한 스트로브 깜빡임과 인버전 현상을 시각적으로 관찰합니다. 브라우저는 하드웨어 PWM 주파수를 직접 측정할 수 없습니다.",
+      "title": "화면 깜빡임(플리커) 및 주사율 안정성 테스트",
+      "description": "전체 화면의 시간적 광학 깜빡임과 디스플레이 주사율 동기화 안정성을 점검합니다.",
       "instructions": "육안 관찰 또는 카메라 보조 점검을 사용하세요(카메라 셔터 속도 및 프레임 레이트에 따라 결과가 달라집니다)."
     },
     "sharpness": {
@@ -1296,8 +1285,8 @@
       "instructions": "어두운 방에서 0%~5% 암부 블록 간의 구분 가능 여부를 확인합니다."
     },
     "gradientBandingTest": {
-      "title": "그라데이션 및 밴딩 테스트 – 부드러운 색상 및 계조 전이",
-      "description": "그라데이션 구간의 거친 계단 현상, 양자화 줄무늬, 색상 왜곡 감지.",
+      "title": "부드러운 그라데이션 및 계조 램프 전이 테스트",
+      "description": "멀티스톱 선형 및 방사형 그라데이션의 부드러움, 색조 연속성 및 미세 계조 램프 전이를 평가합니다.",
       "instructions": "수평 및 수직 그라데이션에서 눈에 띄는 줄무늬가 있는지 점검합니다."
     },
     "textClarityTest": {
@@ -1320,12 +1309,12 @@
       "description": "고속 이동 패턴을 통해 픽셀 응답 시간, 잔상(고스팅) 현상 및 오버드라이브 역잔상(코로나)을 평가합니다."
     },
     "motionBlurTest": {
-      "title": "모션 블러 테스트 – 동적 선명도 및 MPRT 점검",
-      "description": "빠르게 움직이는 장면과 이동 객체에서 동적 해상도, 홀드 블러 및 MPRT 추적을 정밀 분석합니다."
+      "title": "MPRT 및 모션 블러 잔상 지속성 테스트",
+      "description": "동영상 응답 시간(MPRT), 샘플 앤 홀드 디스플레이의 잔상 지속성 및 시선 추적 선명도를 점검합니다."
     },
     "reactionTimeTest": {
-      "title": "반응 속도 테스트",
-      "description": "시각적 반응 속도와 디스플레이 입력 지연 시간을 밀리초 단위로 측정합니다。"
+      "title": "반사 신경 및 시각 반응 속도(ms) 벤치마크",
+      "description": "시각적 색상 변화 자극에 대한 인간의 인지 반응 시간을 밀리초(ms) 단위로 측정하고 통계적 안정성을 평가합니다."
     },
     "AccelerometerPattern": {
       "status": "Status:",
@@ -2471,8 +2460,8 @@
       "description": "백라이트 스트로빙(ULMB, DyAc) 시 화면 상단, 중앙, 하단에서 발생하는 이중 상 및 위상 불일치를 검사합니다."
     },
     "vrrFlickerTest": {
-      "title": "VRR 밝기 플리커 스트레스 테스트",
-      "description": "가변 주사율(G-Sync / FreeSync) 환경에서 발생하는 감마 변화 및 저주파 밝기 깜빡임을 테스트합니다."
+      "title": "VRR 가변 주사율 밝기 플리커 및 감마 시프트 테스트",
+      "description": "가변 주사율(VRR/G-Sync/FreeSync) 구동 시 발생하는 밝기 깜빡임, LFC 프레임 점프 및 OLED 감마 왜곡을 진단합니다."
     },
     "pursuitCameraTest": {
       "title": "퍼슈트 카메라 동기화 및 MPRT 트랙",
@@ -2645,8 +2634,8 @@
       "description": "OS 다크 모드 기본 설정을 감지하고 두 테마에서 UI를 미리 봅니다."
     },
     "inputLagTest": {
-      "title": "입력 지연 시각화기",
-      "description": "10회 시각 반응 테스트, 히스토그램 및 통계 분석으로 클릭-투-포톤 입력 지연을 측정합니다."
+      "title": "디스플레이 입력 지연(인풋랙) 및 화면 지연 시간 시각화 도구",
+      "description": "디스플레이 내부 영상 신호 처리 지연 시간과 클릭-투-포톤(Click-to-Photon) 화면 지연을 시각적으로 관찰합니다."
     },
     "ambientLightTest": {
       "title": "주변광 센서 테스트",
@@ -2852,22 +2841,51 @@
     "subpixelLayoutTest": {
       "title": "서브픽셀 배열 & 텍스트 번짐",
       "description": "RGB, BGR, OLED 서브픽셀 배열 및 폰트 색 번짐 진단.",
-      "metaDescription": "서브픽셀 배열 및 텍스트 선명도 진단."
+      "metaDescription": "서브픽셀 배열 및 텍스트 선명도 진단.",
+      "clearTypeGuide": "Windows ClearType 폰트 가독성 보정 방법",
+      "clearTypeDesc": "Win + R 키를 누르고 cttune을 입력하여 ClearType 텍스트 튜너 마법사를 실행하세요. 글자 테두리에 색번짐(프린징)이 없는 가장 선명한 샘플을 선택합니다.",
+      "structureTitle": "패널별 서브픽셀 배열 구조 안내",
+      "rgbStandard": "표준 스트라이프 RGB: 윈도우 기본 ClearType에 완벽히 최적화되어 색 번짐 없는 또렷한 텍스트 렌더링.",
+      "bgrStripe": "BGR 스트라이프: ClearType 재조정 전까지 글자 양옆에 붉은색/푸른색 테두리가 나타날 수 있음.",
+      "qdoledLayout": "QD-OLED 삼각형 배열: 고대비 수평 라인에서 미세한 마젠타/초록색 색번짐 현상이 감지될 수 있음.",
+      "woledLayout": "WOLED (RWBG): 백색 서브픽셀 추가로 밝기는 우수하나 미세 글씨 외곽선이 다소 부드럽게 보일 수 있음."
     },
     "pwmFlickerTest": {
-      "title": "PWM 플리커 테스트",
-      "description": "백라이트 깜빡임과 스트로보로 인한 눈 피로도 감지.",
-      "metaDescription": "PWM 깜빡임 및 시각적 피로도 측정."
+      "title": "PWM 백라이트 플리커 및 눈 피로도 테스트",
+      "description": "LED 펄스 폭 변조(PWM) 스트로보 깜빡임을 감지하고 시각적 피로도 위험 기준을 평가합니다.",
+      "metaDescription": "PWM 깜빡임 및 시각적 피로도 측정.",
+      "shutterMethodTitle": "스마트폰 카메라 셔터 속도 점검법",
+      "shutterMethodDesc": "스마트폰 카메라의 프로(수동) 모드에서 셔터 스피드를 1/1000초 이상으로 설정하고 모니터를 비춥니다. 검은색 롤링 띠가 보인다면 PWM 백라이트 깜빡임이 작동 중인 것입니다.",
+      "freqGuideTitle": "PWM 주파수별 눈 건강 및 인체공학 가이드",
+      "flickerFree": "플리커 프리 (직류 DC 디밍 방식)",
+      "highFreq": "고주파 PWM (1000Hz 이상) – 눈 건강에 안전",
+      "lowFreq": "저주파 PWM (250Hz 이하) – 시각 피로 및 두통 유발 가능"
     },
     "gtgResponseTimeTest": {
       "title": "GtG 응답속도 테스트",
       "description": "회색 단계별 픽셀 전환 속도와 오버드라이브 역잔상 측정.",
-      "metaDescription": "픽셀 응답속도 및 오버슈트 평가."
+      "metaDescription": "픽셀 응답속도 및 오버슈트 평가.",
+      "overdriveTitle": "오버드라이브 잔상 및 역잔상(코로나) 판별법",
+      "overdriveDesc": "이동하는 사각형 블록의 앞뒤 모서리를 시선으로 부드럽게 추적하세요. 모니터 OSD 오버드라이브가 너무 낮으면 물체 뒤로 긴 끌림 잔상이 남고, 너무 높으면(Extreme) 전압 과부하로 인해 하얗거나 반전된 역잔상(오버슈트 코로나)이 생깁니다. 보통 'Normal' 또는 'Fast' 모드가 가장 이상적입니다.",
+      "pause": "일시정지",
+      "resume": "재개",
+      "speed": "속도",
+      "bgGrey": "배경 회색조",
+      "blockGrey": "이동 블록 회색조",
+      "transitionStatus": "전이 단계: RGB({start}) → RGB({end}) · 속도: {speed} px/s · 모드: {mode}"
     },
     "mousePollingTest": {
       "title": "마우스 폴링레이트 & 정밀도",
       "description": "실시간 마우스 Hz, 지터 안정성 및 더블클릭 불량 측정.",
-      "metaDescription": "정밀 마우스 폴링레이트 및 센서 테스터."
+      "metaDescription": "정밀 마우스 폴링레이트 및 센서 테스터.",
+      "areaPrompt": "이 영역 안에서 마우스를 빠르게 회전하거나 움직이세요",
+      "realtimeHz": "실시간 폴링 레이트",
+      "peakHz": "최대 측정 주파수 (Peak)",
+      "averageHz": "평균 전송 주파수",
+      "jitter": "타이밍 지터 (변동폭)",
+      "stability": "폴링 안정도",
+      "sampleCount": "수집된 샘플 수",
+      "reset": "측정값 초기화"
     },
     "gpuBenchmarkTest": {
       "title": "GPU WebGL 3D 벤치마크",
@@ -2905,6 +2923,52 @@
       "reverseMotionDirectionTitle": "이동 방향 반전",
       "readAboutMotionBlurTitle": "모션 블러 및 MPRT 알아보기",
       "guide": "가이드"
+    },
+    "deadPixelMapper": {
+      "isoAssessment": "ISO 9241-307 교환·RMA 적합성 판정",
+      "class1Title": "클래스 1 (무결점 / 광점 0개):",
+      "class1Pass": "적합 (결함 0개)",
+      "class2Title": "클래스 2 (일반 소비자 표준):",
+      "class2Pass": "적합 (허용 기준 내)",
+      "rmaEligible": "초기 불량·RMA 교환 신청 대상",
+      "isoNote": "대부분의 모니터 제조사(LG, 삼성, 델 등)는 100만 픽셀당 암점 2개 이내를 규정하는 ISO 클래스 2를 적용합니다.",
+      "copyReport": "RMA 검수 보고서 복사",
+      "reportCopied": "보고서가 클립보드에 복사되었습니다!",
+      "tableHeaders": {
+        "id": "번호",
+        "coords": "좌표",
+        "color": "배경색",
+        "type": "결함 유형",
+        "zone": "영역",
+        "actions": "관리"
+      },
+      "zones": {
+        "center": "중앙부 (집중 영역)",
+        "edge": "가장자리 (외곽)"
+      },
+      "defectTypes": {
+        "dead_dark": "암점 (완전 꺼짐)",
+        "stuck_red": "휘점 (빨강)",
+        "stuck_green": "휘점 (초록)",
+        "stuck_blue": "휘점 (파랑)",
+        "bright_subpixel": "미세 광점",
+        "dust": "이물질 / 먼지"
+      },
+      "loupeTitle": "12배 정밀 광학 루페",
+      "addDefectTip": "화면을 클릭하면 해당 위치의 불량 화소 좌표가 등록됩니다",
+      "noDefectsLogged": "등록된 결함이 없습니다. 화면을 클릭하여 불량 화소를 지정하세요."
+    },
+    "oledBurnInCalculator": {
+      "timelineTitle": "OLED 번인 발생 가능성 타임라인",
+      "hazardHotspots": "고정 정적 요소 취약 구역",
+      "dailyUsage": "하루 평균 사용 시간 (시간)",
+      "brightnessLevel": "평균 화면 밝기 / HDR 강도",
+      "staticPercent": "고정 UI (작업표시줄·로고) 비율",
+      "coolingMethod": "패널 방열판 / 히트싱크 구조",
+      "riskLow": "낮은 위험도 – 5년 이상 열화 없이 안전한 상태 유지",
+      "riskModerate": "중간 위험도 – 3~4년 사용 시 특정 서브픽셀 감쇄 가능",
+      "riskHigh": "높은 위험도 – 18~24개월 이내 영구 번인 발생 위험",
+      "recommendations": "OLED 패널 수명 연장을 위한 권장 조치"
     }
   },
   "Guides": {
@@ -3548,7 +3612,8 @@
       "workflowCtaTitle": "현장에서 즉시 모니터를 점검하시겠습니까?",
       "workflowCtaDesc": "노트북에서 '중고 모니터 점검 워크플로우'를 실행하면 단계별 필수 검사 화면이 자동으로 순서대로 진행됩니다.",
       "workflowCtaButton": "중고 모니터 검사 워크플로우 시작",
-      "relatedTestsHeading": "추천 모니터 검사 도구"
+      "relatedTestsHeading": "추천 모니터 검사 도구",
+      "description": "중고 컴퓨터 모니터를 거래하기 전 외관 파손, 불량화소, 백라이트 노화, 포트 유격 등을 현장에서 꼼꼼히 점검하기 위한 실전 가이드."
     },
     "newMonitor": {
       "metaTitle": "신품 모니터 점검 및 반품 기간 체크리스트",
@@ -3868,7 +3933,8 @@
       "workflowCtaDesc": "모니터 화면에서 직접 불량 화소, 빛샘, 균일도를 순서대로 확인해 볼 수 있는 '신품 모니터 점검 워크플로우'를 실행하세요.",
       "workflowCtaButton": "신품 모니터 워크플로우 시작",
       "relatedTestsHeading": "추천 테스트 모음",
-      "osdLinksTitle": "OSD 및 신호 검증 테스트"
+      "osdLinksTitle": "OSD 및 신호 검증 테스트",
+      "description": "모니터 수령 후 판매처의 초기 불량 교환 및 반품 기한이 만료되기 전에 외관 손상, 화소 결함, 화면 균일도 및 잔상을 단계별로 점검하는 실전 가이드."
     },
     "displayportVsHdmi": {
       "metaTitle": "DisplayPort vs HDMI: 대역폭, 리비전 규격 및 크로마 서브샘플링 비교",
@@ -5724,7 +5790,13 @@
         "desc": "동심원 패턴을 통해 픽셀 피치 및 비정수 OS 배율(125%, 150%)에 따른 공간 주파수 간섭을 시각화합니다."
       }
     },
-    "fullscreenHint": "ESC 또는 F를 눌러 종료"
+    "fullscreenHint": "ESC 또는 F를 눌러 종료",
+    "instructions": [
+      "<strong>2D 격자 정렬 패턴:</strong> 화면 가장자리 전반의 왜곡(배럴/핀쿠션), 커브드 패널의 균일도 및 광학 수차를 검사합니다.",
+      "<strong>체커보드 격자 매트릭스:</strong> 로컬 디밍 빛 번짐(블루밍)이나 가장자리 테두리 간섭 없는 ANSI 고대비 명암을 점검합니다.",
+      "<strong>수평 및 수직 라인:</strong> 래스터 스캔 정렬 상태, 픽셀 클럭 위상 일치도 및 1픽셀 초미세선 선명도를 확인합니다.",
+      "<strong>유연한 워크플로:</strong> 밀도 조절 버튼으로 간격을 조정하거나 필요에 따라 12가지 교정 프리셋을 자유롭게 전환하세요."
+    ]
   },
   "CompareDisplays": {
     "breadcrumbAll": "전체 테스트",

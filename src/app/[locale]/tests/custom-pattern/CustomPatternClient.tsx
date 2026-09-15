@@ -547,7 +547,8 @@ function CustomPatternRunner({
   );
 }
 
-export function CustomPatternClient() {
+
+export function CustomPatternClient({ educationalContent }: { educationalContent?: ReactNode } = {}) {
   const t = useTranslations("CustomPattern");
 
   const [activePreset, setActivePreset] = useState<CustomPatternPreset>("grid");
@@ -758,14 +759,23 @@ export function CustomPatternClient() {
   return (
     <TestWrapper
       testId="custom-pattern"
+      educationalContent={educationalContent}
       title={t("title")}
       description={t("subtitle")}
       instructions={
         <ul className="list-disc pl-5 space-y-1.5">
-          <li><strong>2D Alignment Grid:</strong> Inspect for display barrel distortion, pincushioning, curvature warping, and optical convergence across all panel edges.</li>
-          <li><strong>Checkerboard Matrix:</strong> Verify ANSI high-contrast square clarity without light blooming, edge fringing, or local dimming halo artifacts.</li>
-          <li><strong>Horizontal & Vertical Lines:</strong> Check raster scanning alignment, pixel clock phasing, and single-pixel line sharpness.</li>
-          <li><strong>Continuous Workflow:</strong> Use the density buttons to adjust grid spacing or switch to any of the 12 calibration presets as needed.</li>
+          {t.has("instructions") && Array.isArray(t.raw("instructions")) ? (
+            (t.raw("instructions") as string[]).map((item: string, i: number) => (
+              <li key={i} dangerouslySetInnerHTML={{ __html: item }} />
+            ))
+          ) : (
+            <>
+              <li><strong>2D Alignment Grid:</strong> Inspect for display barrel distortion, pincushioning, curvature warping, and optical convergence across all panel edges.</li>
+              <li><strong>Checkerboard Matrix:</strong> Verify ANSI high-contrast square clarity without light blooming, edge fringing, or local dimming halo artifacts.</li>
+              <li><strong>Horizontal & Vertical Lines:</strong> Check raster scanning alignment, pixel clock phasing, and single-pixel line sharpness.</li>
+              <li><strong>Continuous Workflow:</strong> Use the density buttons to adjust grid spacing or switch to any of the 12 calibration presets as needed.</li>
+            </>
+          )}
         </ul>
       }
       extraControls={extendedControls}

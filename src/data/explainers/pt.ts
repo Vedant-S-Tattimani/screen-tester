@@ -1,1373 +1,2405 @@
 import { ExplainerData, ExplainerLabels } from "./types";
 
 export const PT_LABELS: ExplainerLabels = {
-  overviewHeading: "Visão Geral da Inspeção de Tela",
-  whatToLookForHeading: "O Que Observar Durante a Inspeção",
-  boundariesHeading: "Limites de Medição e Honestidade Técnica",
-  canObserveLabel: "O Que o Screen Tester Pode Observar",
-  cannotMeasureLabel: "O Que o Navegador Não Consegue Medir com Precisão",
-  interpretationHeading: "Interpretação das Suas Observações",
-  nextStepsHeading: "Próximos Passos Recomendados",
+  "overviewHeading": "Visão Geral da Inspeção de Tela",
+  "whatToLookForHeading": "O Que Observar Durante a Inspeção",
+  "boundariesHeading": "Limites de Medição e Honestidade Técnica",
+  "canObserveLabel": "O Que o Screen Tester Pode Observar",
+  "cannotMeasureLabel": "O Que o Navegador Não Consegue Medir com Precisão",
+  "interpretationHeading": "Interpretação das Suas Observações",
+  "nextStepsHeading": "Próximos Passos Recomendados"
 };
 
 export const PT_EXPLAINERS: Record<string, ExplainerData> = {
   "dead-pixel-test": {
-    overview: "Um pixel morto é um subpixel de cristal líquido ou emissor OLED permanentemente desligado que permanece totalmente escuro, independentemente do sinal. Em fundos claros — especialmente branco puro, ciano e amarelo —, os pixels mortos se destacam como pequenos pontos pretos imóveis.",
-    whatToLookFor: [
+    "overview": "Un píxel muerto es un subpixel de cristal líquido ou un emisor OLED permanentemente apagado que permanece completamente oscuro independientemente da señal que se le envíe. En fondos brillantes, especialmente branco puro, cian e amarillo, los píxeles muertos se destacan como motas oscuras ou negras estáticas e nítidas.",
+    "whatToLookFor": [
       {
-        label: "Pontos escuros estáticos em fundos claros",
-        description: "Um ponto preto minúsculo que não muda de cor ao alternar entre cores sólidas brilhantes indica um pixel morto."
+        "label": "Puntos oscuros estáticos en telas blancas/claras",
+        "description": "Un pequeñou punto preto que no cambia ni se ilumina a medida que recorre fondos sólidos e brillantes indica un píxel muerto."
       },
       {
-        label: "Diferenciar pixel morto de poeira",
-        description: "A poeira superficial muda de posição conforme o ângulo de visão e pode ser limpa. Pixels mortos reais ficam atrás do polarizador."
+        "label": "Distinguir los píxeles muertos do polvo",
+        "description": "El polvo da superficie se desplaza cuando se ve desde diferentes ángulos e se puede limpiar suavemente. Un verdadero píxel muerto se encuentra detrás do filtro polarizador exterior."
       },
       {
-        label: "Defeito de subpixel vs. pixel completo",
-        description: "Se apenas um subpixel (vermelho, verde ou azul) falhou, o ponto parecerá levemente descolorido em vez de totalmente preto sobre branco."
+        "label": "Defectos de subpixels frente a píxeles completos",
+        "description": "Si solo falla un subpixel (rojo, verde ou azul), el píxel aparecerá ligeramente descolorido en lugar de preto sobre branco."
       },
       {
-        label: "Agrupamento de pixels mortos (Clusters)",
-        description: "Vários pixels mortos concentrados em uma área pequena representam um defeito grave e geralmente garantem troca imediata pelo fabricante."
+        "label": "Defectos do racimo",
+        "description": "Múltiples píxeles muertos agrupados en un área pequeña representan un defecto grave do panel e generalmente califican para un reemplazo inmediato bajo garantía do fabricante."
       }
     ],
-    canObserve: [
-      "Identificação visual de pixels desligados sobre fundos sólidos primários e secundários",
-      "Coordenadas exatas e contagem de pontos escuros suspeitos nas zonas da tela",
-      "Contraste visual entre a luminosidade do fundo e subpixels inativos"
+    "canObserve": [
+      "Identificación visual de píxeles apagados en fondos primarios e secundarios sólidos",
+      "Coordenadas exactas da tela e recuento de puntos oscuros sospechosos nas zonas de visualización",
+      "Validación de contraste entre la luminancia de fondo e los subpixels sin alimentación"
     ],
-    cannotMeasure: [
-      "Continuidade elétrica ou voltagem dos transistores de película fina (TFT)",
-      "Detecção automatizada sem inspeção visual humana direta",
-      "Classificação física de defeitos internos sob as camadas de vidro do painel"
+    "cannotMeasure": [
+      "Continuidad eléctrica ou estado de voltaje do transistor de película delgada (TFT) subyacente",
+      "Detección automática sin inspección visual humana do usuario",
+      "Clasificación de defectos físicos de fabricación bajo capas de vidrio."
     ],
-    interpretation: "Pixels mortos surgem de falhas microscópicas de transistores durante a fabricação. A maioria dos fabricantes adota a norma ISO 9241-307 Classe 2, que tolera de 2 a 5 subpixels defeituosos por milhão.",
-    nextSteps: {
-      text: "¿Detectou subpixels que permanecem acesos em cores sólidas? Experimente nossa ferramenta de estimulação.",
-      actionLabel: "Abrir Stuck Pixel Fixer",
-      actionHref: "/tests/stuck-pixel-fixer"
+    "interpretation": "Los píxeles muertos son causados ​​por fallas microscópicas de los transistores durante la fabricación do panel ou por impacto físico. La mayoría de los fabricantes de telas siguen las pautas ISO 9241-307 Clase 1 ou Clase 2, que definen umbrales aceptables (generalmente de 2 a 5 subpixels muertos por millón).",
+    "nextSteps": {
+      "text": "Si detecta subpixels atascados que permanecen iluminados en lugar de negros, utilice nuestra herramienta de ejercicio dedicada para intentar recuperarlos.",
+      "actionLabel": "Inicie el reparador de píxeles atascados",
+      "actionHref": "/tests/stuck-pixel-fixer"
     }
   },
-
   "stuck-pixel-test": {
-    overview: "Ao contrário de um pixel morto, um pixel preso (stuck pixel) é causado por uma célula de cristal líquido travada na posição aberta, deixando a luz passar continuamente. Ele aparece como um ponto brilhante constante (vermelho, verde, azul, ciano ou branco), bem visível sobre fundo preto.",
-    whatToLookFor: [
+    "overview": "A diferencia de un píxel muerto que permanece permanentemente oscuro, un píxel atascado es causado por una celda de cristal líquido atascada en un estado abierto, lo que permite que la luz de fondo pase continuamente. Aparece como un punto persistente de cor brillante, generalmente rojo, verde, azul, cian, magenta ou branco puro, más visible sobre fondos negros sólidos e oscuros.",
+    "whatToLookFor": [
       {
-        label: "Pontos coloridos brilhantes sobre preto puro",
-        description: "Inspecione a tela preta em uma sala escura. Qualquer ponto brilhando em vermelho, verde, azul ou amarelo é um subpixel preso."
+        "label": "Puntos de cores brillantes sobre preto puro",
+        "description": "Inspeccione una tela completamente negra en una habitación oscura. Cualquier punto nítido que brille en rojo, verde, azul ou amarillo es un subpixel atascado."
       },
       {
-        label: "Teste com cores complementares",
-        description: "Um subpixel verde preso desaparecerá em fundo verde, mas brilhará intensamente sobre fundos vermelhos, azuis ou pretos."
+        "label": "testes de cor complementarias",
+        "description": "Un subpixel verde atascado desaparecerá sobre un fondo verde, pero brillará intensamente sobre fondos rojos, azules ou negros."
       },
       {
-        label: "Pixels brancos permanentes",
-        description: "Se os três subpixels (RGB) estiverem abertos simultaneamente, o defeito aparecerá como um ponto branco estático em fundos escuros."
+        "label": "Píxeles blancos calientes",
+        "description": "Si los tres subpixels (RGB) están permanentemente abiertos, el punto aparecerá como un punto branco estático en fondos oscuros."
       },
       {
-        label: "Diferença para vazamento de luz",
-        description: "Pixels presos são pontos microscópicos isolados; o vazamento de luz cria manchas difusas ao longo das bordas da moldura."
+        "label": "Distinción do sangrado de retroiluminación",
+        "description": "Los píxeles atascados son pinchazos de luz de un solo píxel, mientras que el sangrado da luz de fondo produce parches difusos similares a nubes a lo largo de los bordes da tela."
       }
     ],
-    canObserve: [
-      "Identificação visual de subpixels acesos sobre fundos pretos e complementares",
-      "Isolamento dos canais de cor afetados (vermelho, verde ou azul)",
-      "Mapeamento dos quadrantes da tela com anomalias ativas"
+    "canObserve": [
+      "Identificación visual de subpixels iluminados sobre fondos oscuros e complementarios.",
+      "Aislamiento de canales de cor de subpixels defectuosos individuales (R, G ou B)",
+      "Mapeo de cuadrantes de tela de píxeles defectuosos"
     ],
-    cannotMeasure: [
-      "Viscosidade química ou estado de alinhamento físico dos cristais líquidos",
-      "Resistência elétrica ou velocidade de chaveamento do transistor",
-      "Garantia de permanência do defeito sem acompanhamento ao longo do tempo"
+    "cannotMeasure": [
+      "Viscosidad química do cristal líquido ou estado de alineación física.",
+      "Velocidad de conmutación de puerta de transistor ou resistencia eléctrica",
+      "Permanencia garantizada do defecto sin observación prolongada."
     ],
-    interpretation: "Pixels presos acontecem quando as moléculas de cristal líquido ficam estáticas por cargas eletrostáticas ou tolerâncias de fabricação. Ao contrário dos pixels mortos, muitos podem ser destravados por estimulação visual rápida.",
-    nextSteps: {
-      text: "Localizou um pixel preso? Tente reativá-lo com nosso exercitador de cores rápidas.",
-      actionLabel: "Testar Stuck Pixel Fixer",
-      actionHref: "/tests/stuck-pixel-fixer"
+    "interpretation": "Los píxeles atascados ocurren con frecuencia cuando una molécula de cristal líquido no logra regresar a su estado relajado, a menudo debido a irregularidades de fabricación ou cargas eléctricas microscópicas. A diferencia de los píxeles muertos, los píxeles atascados temporalmente a veces se pueden aflojar mediante estimulación visual.",
+    "nextSteps": {
+      "text": "¿Has localizado un píxel atascado? Intente una rápida estimulación visual de subpixels con nuestro ejercitador de cor localizado.",
+      "actionLabel": "Pruebe el solucionador de píxeles atascados",
+      "actionHref": "/tests/stuck-pixel-fixer"
     }
   },
-
   "stuck-pixel-fixer": {
-    overview: "O Stuck Pixel Fixer utiliza sequências de cores primárias em alta frequência e padrões de ruído visual para estimular as moléculas de cristal líquido a alternarem de estado rapidamente, tentando destravar o subpixel.",
-    whatToLookFor: [
+    "overview": "Stuck Pixel Fixer utiliza ciclos de cor localizados de alta frecuencia e patrones de ruido visual para excitar rápidamente las moléculas de cristal líquido. La alternancia rápida de cores primarios e secundarios obliga a los transistores de subpixels e a las células de cristal líquido a alternar estados a alta velocidad, lo que ocasionalmente puede liberar un subpixel temporalmente atascado.",
+    "whatToLookFor": [
       {
-        label: "Posicionamento preciso da caixa",
-        description: "Posicione a caixa animada diretamente sobre o pixel afetado para evitar flashes desnecessários no restante da tela."
+        "label": "Alineación de caja dirigida",
+        "description": "Coloque la caja de estimulación animada directamente sobre el píxel atascado para evitar distracciones estroboscópicas en toda la tela."
       },
       {
-        label: "Escolha do padrão de estímulo",
-        description: "Alterne entre Ciclo RGB e Ruído de Cores para aplicar diferentes frequências de comutação."
+        "label": "Selección de patrón",
+        "description": "Alterne entre ciclo RGB (estimulación amplia) e ruido de cor (excitación aleatoria de alta frecuencia) para obtener resultados óptimos."
       },
       {
-        label: "Duração recomendada da sessão",
-        description: "Deixe a estimulação rodar por 15 a 30 minutos, pause e confira em fundo preto se o pixel voltou a responder."
+        "label": "Duración da sesión",
+        "description": "Ejecute la estimulación durante 15 a 30 minutos, luego haga una pausa e inspeccione en preto puro para verificar si el píxel se ha liberado."
       },
       {
-        label: "Aviso de sensibilidade à luz",
-        description: "Interrompa o uso imediatamente se sentir tontura ou cansaço visual. Não recomendado para pessoas com fotossensibilidade."
+        "label": "Aviso de sensibilidad visual",
+        "description": "Si experimenta mareos, dolor de cabeza ou fatiga visual, detenga la estimulación inmediatamente. Nunca utilizar si es fotosensible."
       }
     ],
-    canObserve: [
-      "Reprodução fluida de sequências RGB em alta velocidade e padrões de ruído diretamente no navegador",
-      "Posicionamento interativo da área de estímulo e cronômetro ajustável",
-      "Confirmação visual do estado do pixel antes e depois do ciclo de estimulação"
+    "canObserve": [
+      "Reproducción visual en tiempo real de ciclos RGB de alta velocidad e patrones de ruido de subpixels aleatorios",
+      "Posicionamiento localizado preciso e seguimiento da duración do temporizador directamente en su navegador",
+      "Confirmación visual de si la capacidad de respuesta de los píxeles cambia antes e después da estimulación"
     ],
-    cannotMeasure: [
-      "Reparo físico de transistores TFT queimados ou trilhas rompidas",
-      "Taxa de sucesso garantida (varia conforme a integridade do painel)",
-      "Recuperação de pixels mortos (completamente pretos e sem energia)"
+    "cannotMeasure": [
+      "Reparación eléctrica a nivel de hardware de transistores TFT físicamente dañados ou quemados",
+      "Cualquier porcentaje de recuperación garantizado: el éxito depende completamente da química do panel físico.",
+      "Reparación automática de software de píxeles muertos (negros permanentemente apagados)"
     ],
-    interpretation: "Métodos de software só surtem efeito em cristais líquidos temporariamente travados. Se houver dano físico microscópico permanente no transistor, a estimulação visual não surtirá efeito.",
-    nextSteps: {
-      text: "Após a sessão, retorne ao teste de pixels presos para inspecionar a área em fundo preto sólido.",
-      actionLabel: "Verificar com Stuck Pixel Test",
-      actionHref: "/tests/stuck-pixel-test"
+    "interpretation": "Los ejercitadores de software trabajan exclusivamente con células de cristal líquido temporalmente atascadas. Si un subpixel se desprende físicamente, se fractura ou está completamente muerto (sin alimentación), la estimulación do software no puede revivirlo. Si la estimulación falla después de repetidas sesiones, consulte los términos de garantía do fabricante.",
+    "nextSteps": {
+      "text": "Después de ejecutar la estimulación, vuelva a la teste de píxeles atascados para inspeccionar el área en preto puro.",
+      "actionLabel": "Verificar con teste de píxeles atascados",
+      "actionHref": "/tests/stuck-pixel-test"
     }
   },
-
   "refresh-rate-test": {
-    overview: "A taxa de atualização (em Hertz, Hz) indica quantas vezes por segundo a tela reconstrói a imagem. Este teste utiliza a API de animação do navegador (requestAnimationFrame) para calcular a entrega de quadros e verificar se corresponde à taxa configurada no sistema.",
-    whatToLookFor: [
+    "overview": "La frecuencia de actualización da tela (medida en Hertz, Hz) indica cuántas veces por segundo la tela reconstruye la imagen. Esta teste utiliza el reloj de animación de alta resoluçãou do navegador (requestAnimationFrame) para observar el ritmo de entrega de quadros, detectar quadros perdidos e verificar si el navegador coincide com a frecuencia de actualización configurada de su sistema operativo.",
+    "whatToLookFor": [
       {
-        label: "Taxa observada vs. configurada",
-        description: "Verifique se a leitura coincide com o valor definido nas configurações do monitor (ex.: 60Hz, 120Hz, 144Hz ou 240Hz)."
+        "label": "Frecuencia de actualización informada versus configurada",
+        "description": "Verifique que el valor informado coincida com ou objetivo de su tela (por ejemplo, 60 Hz, 120 Hz, 144 Hz, 240 Hz ou 360 Hz)."
       },
       {
-        label: "Consistência de quadros (Frame Pacing)",
-        description: "Em um monitor estável de 144Hz, os quadros devem chegar em intervalos uniformes de aproximadamente 6,94 ms."
+        "label": "Ritmo de cuadro e fluctuación",
+        "description": "Mire el gráfico do delta de tiempo entre quadros. Una tela estable de 144 Hz debería ofrecer quadros a intervalos constantes de ~6,94 ms."
       },
       {
-        label: "Navegador travado em 60Hz",
-        description: "Se o seu monitor de 144Hz mostrar apenas 60Hz, verifique se modos de economia de bateria ou aceleração de hardware estão limitando a aba."
+        "label": "Limitación de marco do navegador",
+        "description": "Si un monitor de 144 Hz informa exactamente 60 Hz, es posible que la configuraçãou de tela de su navegador ou sistema operativo esté limitada para ahorrar batería ou que falten indicadores de GPU."
       },
       {
-        label: "Fluidez da barra em movimento",
-        description: "Em telas de alta frequência, o elemento móvel deve deslizar sem solavancos nem travamentos visíveis."
+        "label": "Suavidad do indicador móvil",
+        "description": "Inspeccione la barra móvil. En telas de alta actualización, la animación debe deslizarse con un mínimo de vibración ou tartamudeo."
       }
     ],
-    canObserve: [
-      "Frequência e variação temporal das chamadas requestAnimationFrame do navegador",
-      "Taxa estimada de FPS e consistência da sincronização vertical",
-      "Comportamento do compositor gráfico na aba ativa"
+    "canObserve": [
+      "Solicitud do navegadorAnimationFrame Frecuencia de devolución de llamada e variación do tiempo delta",
+      "FPS de animación de navegador calculados e consistencia de ritmo de quadros",
+      "Entrega de sincronización do compositor en ventana en la pestaña activa do navegador"
     ],
-    cannotMeasure: [
-      "Frequência nativa do hardware do painel além dos limites expostos pelo navegador",
-      "Largura de banda e protocolo físico de cabos HDMI ou DisplayPort",
-      "Intervalos de apagamento vertical (VBLANK) medidos por osciloscópio"
+    "cannotMeasure": [
+      "Frecuencia de actualización do hardware do panel físico independiente de los límites do compositor do navegador",
+      "Ancho de banda de enlace de cable DisplayPort ou HDMI e temporización de paquetes",
+      "Intervalos de supresión vertical a nivel de osciloscopio (VBLANK) ou sincronización de sobremarcha do panel"
     ],
-    interpretation: "Navegadores sincronizam seus ciclos de renderização com o compositor do sistema operacional. Planos de energia ou múltiplos monitores com taxas diferentes podem forçar o navegador a 60Hz.",
-    nextSteps: {
-      text: "¿Seu monitor gamer está limitado a 60Hz no navegador? Siga nosso guia de solução.",
-      actionLabel: "Guia de Taxa de Atualização",
-      actionHref: "/knowledge-base/troubleshooting#refresh-rate-capped"
+    "interpretation": "Los navegadores web sincronizan sus bucles de renderizado com ou compositor de visualización a través de vsync. Sin embargo, los perfiles de ahorro de energía, las configuraciones de varios monitores con frecuencias de actualización no coincidentes ou la limitación de pestañas en segundo plano pueden hacer que el navegador se muestre por debajo da capacidad nativa do monitor.",
+    "nextSteps": {
+      "text": "¿Su frecuencia de actualización tiene un límite de 60 Hz en un monitor de juegos? Consulte nuestra guía sobre cómo configurar las frecuencias de actualización da tela do sistema operativo e la GPU.",
+      "actionLabel": "Leer Solución de problemas de frecuencia de actualización",
+      "actionHref": "/knowledge-base/troubleshooting#refresh-rate-capped"
     }
   },
-
   "ghosting-test": {
-    overview: "O ghosting se manifesta como rastros ou sombras borradas atrás de objetos em movimento. Ocorre quando os cristais líquidos demoram mais tempo para mudar de cor (tempo de resposta) do que a duração de exibição de um quadro.",
-    whatToLookFor: [
+    "overview": "El efecto fantasma en movimento aparece como sombras que se arrastran ou réplicas manchadas detrás de objetos en movimento. Ocurre cuando las moléculas de cristal líquido tardan más en realizar la transición entre estados de cor (tiempo de respuesta de píxeles) que la duración de un solo cuadro de actualización. Esta teste representa bloques en movimento contra varios tonos de fondo para exponer las coronas de sobremarcha e seguimiento do tiempo de respuesta.",
+    "whatToLookFor": [
       {
-        label: "Rastros escuros (Ghosting tradicional)",
-        description: "Sombras escuras atrás de objetos indicam transições lentas de escuro para claro, comuns em painéis VA."
+        "label": "Sombras oscuras (fantasma tradicional)",
+        "description": "Una mancha oscura detrás de un objeto en movimento indica transiciones lentas de cristal líquido de oscuro a claro, comunes nos paneles VA."
       },
       {
-        label: "Halos brilhantes ou coronas (Ghosting inverso)",
-        description: "Rastros brancos ou luminosos indicam que o ajuste de Overdrive ou Tempo de Resposta do monitor está agressivo demais (overshoot)."
+        "label": "Halos/Coronas brillantes (efecto fantasma inverso)",
+        "description": "Un rastro brillante detrás do objeto significa que la configuraçãou de Overdrive (OD) ou Tiempo de respuesta do monitor es demasiado agresiva (overshoot)."
       },
       {
-        label: "Variação por cor de fundo",
-        description: "Observe se o arrasto é mais severo em fundos vermelhos ou cinza-escuro do que em tons claros."
+        "label": "Seguimiento de cor específico",
+        "description": "Observe si el seguimiento es peor en fondos rojos, verdes ou cinza oscuro. Los tiempos de transición varían mucho entre pares de cores."
       },
       {
-        label: "Rastreamento ocular vs. resposta do painel",
-        description: "Acompanhe o objeto com os olhos para separar o desfoque retiniano natural do arrasto real dos cristais líquidos."
+        "label": "Observación con cámara de persecución",
+        "description": "Siga el objeto en movimento con los ojos ou con una cámara en movimento para aislar la respuesta do panel que se desprende do desenfoque do movimento da retina."
       }
     ],
-    canObserve: [
-      "Presença visual de rastros e coronas em diferentes velocidades de deslocamento",
-      "Diferença de resposta entre transições claro-no-escuro e escuro-no-claro",
-      "Impacto imediato ao alterar os níveis de Overdrive no menu OSD do monitor"
+    "canObserve": [
+      "Presencia visual de bordes de fuga, manchas e coronas de sobreimpulso en velocidades personalizables",
+      "Comparación de sensibilidad de contraste de pares de cores (transiciones de claro a oscuro versus de oscuro a claro)",
+      "Impacto visual de ajustar la configuraçãou OSD física de Overdrive/Tiempo de respuesta de su monitor"
     ],
-    cannotMeasure: [
-      "Tempo de resposta Cinza a Cinza (GtG) exato em milissegundos com padrão de laboratório",
-      "Curvas de decaimento de luz medidas por câmeras de rastreamento óptico (Pursuit Camera)",
-      "Tensões de acionamento elétrico dos subpixels"
+    "cannotMeasure": [
+      "Tiempo de respuesta de laboratorio cinza a cinza (GtG) en milisegundos exactos",
+      "Curvas de caída de intensidad de luz da cámara de seguimiento fotométrica",
+      "Curvas de respuesta de voltaje de cristal líquido de subpixels"
     ],
-    interpretation: "O ghosting depende diretamente da tecnologia do painel (TN é rápido mas com cores fracas, IPS é equilibrado, VA costuma apresentar arrasto em tons escuros e OLED tem resposta quase instantânea). Um nível médio de Overdrive costuma oferecer o melhor balanço.",
-    nextSteps: {
-      text: "¿Quer aprender a calibrar o Overdrive e eliminar as manchas de ghosting inverso?",
-      actionLabel: "Guia de Ghosting e Desfoque",
-      actionHref: "/knowledge-base/monitor-ghosting-and-motion-blur"
+    "interpretation": "El efecto fantasma está determinado fundamentalmente por la tecnología do panel (TN es rápido pero de cor deficiente, IPS está equilibrado, VA a menudo muestra manchas en el nivel de oscuridad, OLED tiene una respuesta casi instantánea). Ajustar la configuraçãou OSD 'Tiempo de respuesta' ou 'Overdrive' de su monitor a Medio generalmente logra el mejor equilibrio entre imágenes fantasma e sobreimpulso.",
+    "nextSteps": {
+      "text": "¿Quiere aprender cómo funciona la sobremarcha do monitor e cómo eliminar los halos fantasma inversos?",
+      "actionLabel": "Lea la guía de imágenes fantasma e desenfoque de movimento",
+      "actionHref": "/knowledge-base/monitor-ghosting-and-motion-blur"
     }
   },
-
   "motion-blur-test": {
-    overview: "Diferente do ghosting, o desfoque de movimento em telas planas modernas provém do método Sample-and-Hold: como o quadro fica estático até a próxima atualização, os olhos humanos criam desfoque ao acompanhar o movimento contínuo.",
-    whatToLookFor: [
+    "overview": "A diferencia do efecto fantasma (que surge de una respuesta lenta de los píxeles), el desenfoque de movimento nos paneles planos modernos es causado predominantemente por la mecánica de visualización de muestreo e retención. Debido a que la tela mantiene cada cuadro de imagen continuamente hasta la siguiente actualización, sus ojos siguen el movimento suave a través de una imagen estática, creando una percepción de desenfoque retiniano.",
+    "whatToLookFor": [
       {
-        label: "Perda de nitidez em alta velocidade",
-        description: "Observe linhas verticais e textos enquanto se deslocam. Repare a partir de qual velocidade os detalhes começam a embaçar."
+        "label": "Retención de detalles a alta velocidad",
+        "description": "Observe las finas líneas verticales e el texto a medida que viajan por la tela. Observe dónde se combinan los detalles finos."
       },
       {
-        label: "Comparação de velocidades",
-        description: "Compare deslocamentos a 240 px/s com 960 px/s para perceber como a velocidade amplia o desfoque retiniano."
+        "label": "Comparación de velocidad",
+        "description": "Compare el movimento de baja velocidad (240 px/s) com ou de alta velocidad (960 px/s) para ver cómo el desenfoque do seguimiento ocular aumenta com a velocidad."
       },
       {
-        label: "Efeito da inserção de quadros pretos (BFI)",
-        description: "Se o seu monitor tiver luz estroboscópica (ULMB, ELMB, DyAc), ative-a para notar um ganho expressivo de definição em movimento."
+        "label": "Efectos de inserción de marco preto (BFI)",
+        "description": "Si su monitor tiene una función de retroiluminación estroboscópica (ULMB, ELMB, DyAc), habilitarla agudiza drásticamente los patrones en movimento."
       },
       {
-        label: "Sample-and-Hold em telas OLED",
-        description: "Mesmo com resposta instantânea de 0,1ms, painéis OLED a 60Hz ou 120Hz sem estroboscopia ainda produzem desfoque por retenção ocular."
+        "label": "Desenfoque de muestra e retención OLED",
+        "description": "Incluso con una respuesta de píxeles instantánea de 0,1 ms, el desenfoque de muestreo e retención seguirá produciéndose a 60 Hz ou 120 Hz sin luz estroboscópica."
       }
     ],
-    canObserve: [
-      "Diferenças na nitidez percebida em várias velocidades e taxas de atualização",
-      "Clareza visual obtida ao ligar modos de luz estroboscópica de hardware (BFI)",
-      "Contraste nítido entre bordas estáticas e contornos em movimento"
+    "canObserve": [
+      "Diferencias de desenfoque de movimento perceptual a través de diferentes velocidades horizontales e frecuencias de actualización",
+      "Mejoras en la nitidez visual al utilizar los modos estroboscópicos/BFI de retroiluminación do hardware",
+      "Contraste entre bordes estáticos nítidos e contornos en movimento borrosos"
     ],
-    cannotMeasure: [
-      "Tempo de resposta de imagem em movimento (MPRT) em milissegundos exatos",
-      "Curvas fisiológicas de integração de luz na retina humana",
-      "Ciclo de trabalho da pulsação do backlight"
+    "cannotMeasure": [
+      "Tiempo de respuesta física de imágenes en movimento (MPRT) en milisegundos exactos",
+      "Curvas de integración da luz retiniana da visión humana.",
+      "Porcentaje do ciclo de trabajo da luz de fondo estroboscópica"
     ],
-    interpretation: "Para reduzir o desfoque Sample-and-Hold, é necessário aumentar os hercios da tela (reduzindo o tempo de exibição de cada quadro) ou inserir intervalos escuros (BFI / Estroboscopia).",
-    nextSteps: {
-      text: "Confira no teste de taxa de atualização como mais hercios atenuam o desfoque.",
-      actionLabel: "Testar Taxa de Atualização",
-      actionHref: "/tests/refresh-rate-test"
+    "interpretation": "Para reducir el desenfoque de muestreo e retención, las telas deben aumentar la frecuencia de actualización (acortando la duración da visualización de cada cuadro) ou implementar luz de fondo estroboscópica (insertando intervalos oscuros para aclarar la persistencia da retina).",
+    "nextSteps": {
+      "text": "Compárelo com a teste de frecuencia de actualización para comprender cómo los Hz más altos reducen el desenfoque de movimento.",
+      "actionLabel": "Inspeccionar frecuencia de actualización",
+      "actionHref": "/tests/refresh-rate-test"
     }
   },
-
   "vrr-test": {
-    overview: "A taxa de atualização variável (VRR: NVIDIA G-Sync, AMD FreeSync, VESA Adaptive-Sync) sincroniza os ciclos do monitor com os quadros gerados pela placa de vídeo, eliminando cortes e engasgos.",
-    whatToLookFor: [
+    "overview": "La frecuencia de actualización variable (VRR), que incluye NVIDIA G-Sync, AMD FreeSync e VESA Adaptive-Sync, sincroniza dinámicamente los ciclos de actualización de su monitor com a velocidad de procesamiento de quadros da GPU. Esta teste modula las tasas de entrega de animación para inspeccionar visualmente el ritmo, el desgarro e la vibración de quadros adaptativos en su navegador.",
+    "whatToLookFor": [
       {
-        label: "Cortes de tela (Screen Tearing)",
-        description: "Procure por divisões horizontais em que a metade de cima e a de baixo mostram quadros desalinhados."
+        "label": "Artefactos desgarradores de tela",
+        "description": "Busque líneas de división horizontales donde la parte superior e inferior da imagen muestren diferentes quadros simultáneamente."
       },
       {
-        label: "Microengasgos (Stutter / Judder)",
-        description: "Repare se o elemento em movimento desliza suavemente ou dá pequenos solavancos quando os quadros variam."
+        "label": "Vibración e tartamudeo do marco",
+        "description": "Observe si el indicador móvil se desliza suavemente ou muestra micropausas a medida que cambia la frecuencia de renderizado."
       },
       {
-        label: "VRR em modo janela vs. tela cheia",
-        description: "Muitos drivers de vídeo ativam o G-Sync ou FreeSync apenas em tela cheia exclusiva, salvo configuração específica."
+        "label": "VRR en ventana ou en tela completa",
+        "description": "Muchos controladores de GPU solo activan G-Sync/FreeSync en aplicaciones de tela completa real, a menos que estén configurados para el modo de ventana."
       },
       {
-        label: "Compensação de baixa taxa (LFC)",
-        description: "Quando os quadros caem abaixo do limite mínimo do monitor (ex.: 48Hz), veja se a duplicação de quadros ocorre sem travamentos."
+        "label": "LFC (compensación de baja velocidad de quadros)",
+        "description": "Cuando la velocidad de quadros cae por debajo do rango VRR mínimo de su monitor (por ejemplo, por debajo de 48 Hz), observe si los quadros se duplican sin problemas."
       }
     ],
-    canObserve: [
-      "Percepção visual de linhas de tearing e microengasgos sob taxas de quadros variáveis",
-      "Suavidade da animação durante oscilações de cadência no navegador",
-      "Diferença de fluidez entre execução em janela e tela cheia"
+    "canObserve": [
+      "Líneas visuales desgarradas e micro tartamudeo durante el renderizado de intervalo variable",
+      "Suavidad do ritmo da animación en condiciones de entrega de quadros fluctuantes",
+      "Diferencia percibida por el usuario entre el comportamiento de visualización en ventana e en tela completa"
     ],
-    cannotMeasure: [
-      "Comunicação direta de baixo nível entre o driver da placa de vídeo e o monitor",
-      "Status de ativação de hardware do módulo G-Sync ou FreeSync",
-      "Fluxo de metadados em tempo real nos canais auxiliares DisplayPort"
+    "cannotMeasure": [
+      "Protocolo de enlace interno do controlador de GPU con hardware escalador de monitor",
+      "Estado de activación do módulo G-Sync/FreeSync a nivel de hardware",
+      "Comunicación de metadatos do canal DisplayPort AUX en tiempo real"
     ],
-    interpretation: "Como o navegador roda dentro do gerenciador de janelas do sistema operacional, o VRR depende de recursos como Agendamento Acelerado de GPU (HAGS) e configurações do driver.",
-    nextSteps: {
-      text: "¿Observa engasgos ou descompasso mesmo com VRR? Acesse nosso guia de solução de problemas.",
-      actionLabel: "Guia de Solução VRR",
-      actionHref: "/knowledge-base/troubleshooting#vrr-stutter-tearing"
+    "interpretation": "Debido a que los navegadores web se ejecutan dentro do compositor de ventanas do sistema operativo, la participación de VRR depende da configuraçãou a nivel do sistema operativo (como la programación de GPU acelerada por hardware de Windows e la configuraçãou de G-Sync en ventana do controlador de GPU).",
+    "nextSteps": {
+      "text": "¿Experimentas microtartamudeos ou desgarros? Revise nuestra guía de solución de problemas de VRR paso a paso.",
+      "actionLabel": "Lea la solución de problemas de VRR",
+      "actionHref": "/knowledge-base/troubleshooting#vrr-stutter-tearing"
     }
   },
-
   "backlight-bleed-test": {
-    overview: "O vazamento de luz (backlight bleed) ocorre quando a iluminação traseira de telas LCD escapa pelas bordas ou cantos devido à pressão da moldura. Este teste em tela preta pura ajuda a identificar vazamentos e separá-los do brilho angular dos painéis IPS (IPS Glow).",
-    whatToLookFor: [
+    "overview": "El sangrado de retroiluminación ocurre en telas LCD cuando la capa de cristal líquido no logra bloquear completamente la luz emitida por CCFL ou retroiluminación LED, lo que permite que la luz se filtre por los bordes ou esquinas. Esta teste de preto puro en tela completa le permite inspeccionar fugas nos bordes, parches turbios e distinguir el sangrado do brilho IPS desde el ángulo de visión.",
+    "whatToLookFor": [
       {
-        label: "Feixes de luz nas bordas e cantos",
-        description: "Áreas esbranquiçadas ou amareladas ao longo da moldura que continuam visíveis mesmo mudando o ângulo de visão."
+        "label": "Bengalas de luz para bordes e esquinas",
+        "description": "Luz amarilla ou blanca brillante que se acumula a lo largo de los bordes exteriores do marco e permanece visible independientemente do ángulo de visión."
       },
       {
-        label: "IPS Glow vs. Vazamento real",
-        description: "Mova a cabeça para os lados: se o brilho mudar de intensidade ou posição conforme o ângulo, é IPS Glow normal, não um vazamento mecânico."
+        "label": "brilho IPS vs sangrado de retroiluminación",
+        "description": "Mueve la cabeza de lado a lado. Si el brilho cambia de posición ou cambia de intensidad con su ángulo, es un brilho IPS normal, no un sangrado."
       },
       {
-        label: "Efeito nuvem (Clouding)",
-        description: "Manchas claras difusas espalhadas pela tela, decorrentes de lâminas difusoras irregulares ou torção do chassi."
+        "label": "Nublamiento / Murafanning",
+        "description": "Áreas difusas e irregulares de brilho elevado esparcidas por el panel causadas por láminas de difusión desigual ou presión mecánica."
       },
       {
-        label: "Comparação com OLED e Mini-LED",
-        description: "Telas OLED emitem luz por pixel e entregam 0 nits sem vazamento. Painéis Mini-LED podem exibir halos discretos ao redor de áreas claras."
+        "label": "Comparación OLED / Mini-LED",
+        "description": "Las telas OLED emiten luz por píxel e no presentan pérdida de retroiluminación (0 nits puros). Los mini-LED FALD pueden mostrar un halo localizado."
       }
     ],
-    canObserve: [
-      "Vazamentos de luz visíveis em cantos e pontos de pressão da moldura em fundo preto",
-      "Distribuição de manchas claras em ambiente totalmente escurecido",
-      "Sensibilidade ao ângulo de visão para separar vazamentos estáticos de reflexos de IPS Glow"
+    "canObserve": [
+      "Fuga visual nos bordes, puntos de pellizco localizados en el bisel e patrones nublados contra el preto",
+      "Gravedad relativa da fuga de luz nas esquinas da tela en un entorno oscuro",
+      "Diferencias de sensibilidad do ángulo de visión (distinguiendo el sangrado estático do brilho dinámico de IPS)"
     ],
-    cannotMeasure: [
-      "Luminância absoluta do painel em cd/m² (nits) sem sonda óptica de precisão",
-      "Razão de contraste estático nativo (ex.: 1000:1 contra 3000:1)",
-      "Certificação oficial de contraste ANSI em 16 zonas"
+    "cannotMeasure": [
+      "Luminancia absoluta do panel en cd/m² (nits) sin espectrofotómetro",
+      "Relación de contraste estático nativo (por ejemplo, 1000:1 frente a 3000:1)",
+      "Certificación de cumplimiento de contraste ANSI de 16 zonas"
     ],
-    interpretation: "Um brilho moderado (IPS Glow) é uma característica óptica inerente aos painéis IPS. Vazamentos acentuados, por outro lado, são defeitos de montagem em que a moldura aperta a tela.",
-    nextSteps: {
-      text: "Entenda a fundo as diferenças entre IPS Glow, vazamento de luz e preto puro OLED.",
-      actionLabel: "Guia Backlight Bleed vs IPS Glow",
-      actionHref: "/knowledge-base/backlight-bleed-vs-ips-glow"
+    "interpretation": "El brilho suave de IPS es una característica óptica inherente de los paneles de conmutación en plano de gran angular. Sin embargo, el sangrado grave da luz de fondo es un defecto de ensamblaje mecánico en el que el bisel do monitor pellizca la placa guía de luz interna.",
+    "nextSteps": {
+      "text": "Conozca las diferencias cruciales entre el brilho de IPS, el sangrado de retroiluminación e los niveles de preto de OLED.",
+      "actionLabel": "Lea la guía de purga de retroiluminación frente a brilho IPS",
+      "actionHref": "/knowledge-base/backlight-bleed-vs-ips-glow"
     }
   },
-
   "near-black-test": {
-    overview: "O teste de quase preto avalia a capacidade da tela de distinguir tons de cinza extremamente escuros logo acima do preto absoluto (de 0,5% a 5% de luminância). Se o monitor esmagar esses tons (Black Crush), detalhes essenciais em sombras são perdidos em filmes e jogos.",
-    whatToLookFor: [
+    "overview": "Las testes de casi preto evalúan la capacidad de una tela para delinear tonos sutiles de cinza oscuro inmediatamente por encima do preto puro (0% a 5% de luminancia). Si un monitor convierte las sombras oscuras en preto puro, se perderán permanentemente los detalles críticos de las sombras en películas, juegos e edición de fotografías.",
+    "whatToLookFor": [
       {
-        label: "Black Crush (Esmagamento de sombras)",
-        description: "Se o primeiro bloco (0,5% ou 1%) não puder ser distinguido do fundo preto, o monitor está esmagando os tons escuros."
+        "label": "Black Crush (recorte prematuro)",
+        "description": "Si el paso 1 (0,5 % ou 1 %) es completamente invisible e se fusiona con un preto puro, su monitor sufre un aplastamiento do preto."
       },
       {
-        label: "Separação entre blocos contíguos",
-        description: "Em ambiente escuro, você deve conseguir enxergar os limites entre cada um dos tons baixos de cinza."
+        "label": "Distinción de paso individual",
+        "description": "Debería poder percibir contornos de límites tenues entre muestras tons de cinza consecutivas de baja luminosidad en una habitación oscura."
       },
       {
-        label: "Variação de gamma por ângulo em painéis VA",
-        description: "Em telas VA, detalhes em sombras costumam surgir com mais clareza ao observar a tela com leve inclinação."
+        "label": "Desplazamiento gamma do ángulo de visión",
+        "description": "En los paneles VA, busque el \"aplastamiento preto en el eje\": detalle de sombra que aparece solo cuando se ve ligeramente fuera de ángulo."
       },
       {
-        label: "Reflexos da luz ambiente",
-        description: "A iluminação da sala reduz bastante a capacidade dos olhos de notar cinzas profundos; apague as luzes para testar com precisão."
+        "label": "Reflejo de luz ambiental",
+        "description": "Apague las luces do techo da habitación; El resplandor ambiental perjudica gravemente la percepción do ojo humano de tonos casi negros."
       }
     ],
-    canObserve: [
-      "Limiares visuais de percepção para blocos de cinza a 0,5%, 1%, 2%, 3%, 4% e 5%",
-      "Separação de detalhes em cenas muito escuras",
-      "Impacto de ajustes como Gamma, Equalizador de Preto e Faixa Dinâmica HDMI"
+    "canObserve": [
+      "Umbrales de visibilidad visual para parches de luminancia casi negros do 0,5%, 1%, 2%, 3%, 4% e 5%",
+      "Separación de detalles de sombras perceptuales en muestras de cores oscuros",
+      "Impacto da configuraçãou do monitor Gamma, Ecualizador de preto e Rango dinámico HDMI"
     ],
-    cannotMeasure: [
-      "Valores fotométricos de luminância abaixo de 0,05 nits sem sensor profissional",
-      "Alinhamento matemático estrito com curvas de gamma (BT.1886 vs. 2.2)",
-      "Ponto de preto nativo do painel em cd/m²"
+    "cannotMeasure": [
+      "Valores de luminancia fotométrica inferiores a 0,05 nits sin corímetro de laboratorio",
+      "Conformidad matemática exacta da curva gamma (BT.1886 frente a 2,2 frente a sRGB)",
+      "Panel hardware punto preto nativo en candelas absolutas por metro cuadrado"
     ],
-    interpretation: "O esmagamento de sombras costuma resultar de uma faixa dinâmica incorreta na GPU (Limitado 16–235 em vez de Completo 0–255) ou de perfis de contraste dinâmico desregulados.",
-    nextSteps: {
-      text: "¿Está perdendo detalhes em áreas escuras? Confira nosso guia para corrigir o Black Crush.",
-      actionLabel: "Guia de Correção de Black Crush",
-      actionHref: "/knowledge-base/troubleshooting#black-crush"
+    "interpretation": "El aplastamiento do preto suele ser causado por un rango dinámico de salida de cor da GPU incorrecto (Limitado 16–235 frente a Completo 0–255), un ecualizador de preto do monitor demasiado agresivo ou curvas gamma de gama baja no lineales.",
+    "nextSteps": {
+      "text": "¿Perdiendo detalles de sombras en juegos e vídeos? Siga nuestra guía de solución de problemas para corregir el aplastamiento preto.",
+      "actionLabel": "Lea la solución de problemas de Black Crush",
+      "actionHref": "/knowledge-base/troubleshooting#black-crush"
     }
   },
-
   "gradient-banding-test": {
-    overview: "Gradientes suaves exigem transições tonais contínuas. Se a tela, a placa de vídeo ou o perfil de cores operarem com profundidade de bits insuficiente, as transições quebram em degraus visíveis ou faixas marcadas (banding / posterização).",
-    whatToLookFor: [
+    "overview": "Los degradados de cor suaves requieren gradaciones finas en miles de valores tonales intermedios. Cuando un panel de visualización, un controlador de gráficos ou un canal de imágenes tiene una profundidad de bits insuficiente ou un procesamiento de cor deficiente, los gradientes suaves se degradan en bandas escalonadas visibles ou líneas de posterización marcadas.",
+    "whatToLookFor": [
       {
-        label: "Linhas de degrau visíveis",
-        description: "Repare se surgem divisões bruscas em vez de uma transição gradual em rampas de cinza e cores primárias."
+        "label": "Líneas de paso visibles",
+        "description": "Busque límites de franjas verticales u horizontales distintos en transiciones suaves de cor RGB e escala de tons de cinza."
       },
       {
-        label: "Banding isolado por canal",
-        description: "Verifique se o problema é mais pronunciado em tons de azul ou áreas escuras do que na escala neutra de cinzas."
+        "label": "Bandas específicas do canal",
+        "description": "Observe si las bandas son más pronunciadas nos degradados de sombras azules u oscuras en comparación com a escala de tons de cinza de tonos medios."
       },
       {
-        label: "Profundidade de bits e pontilhamento FRC",
-        description: "Telas de 8 e 10 bits nativos produzem rampas suaves; painéis de 6 bits com FRC costumam exibir leve granulado ou degraus."
+        "label": "Cuantización de profundidad de bits",
+        "description": "Los verdaderos paneles de 8 e 10 bits generan rampas suaves. Los paneles de 6 bits que dependen do control de velocidad de quadros (FRC) muestran un grano ou bandas sutiles."
       },
       {
-        label: "Faixa dinâmica completa vs. limitada",
-        description: "Se a placa gráfica emitir sinal 'Limitado' (16–235), os extremos claro e escuro do gradiente serão cortados abruptamente."
+        "label": "Rango dinámico limitado versus completo",
+        "description": "Si su GPU transmite una señal limitada (16–235) a través de HDMI, los extremos do degradado oscuro e brillante se recortarán nítidamente."
       }
     ],
-    canObserve: [
-      "Degraus visíveis de cores em gradientes monocromáticos e RGB",
-      "Comparação entre rampas horizontais, verticais e multicanais",
-      "Artefatos causados por perfis ICC corrompidos ou faixa dinâmica reduzida"
+    "canObserve": [
+      "Presencia visual de pasos de bandas de cor en escala de tons de cinza e gradientes de cores primarios/secundarios",
+      "Comparación entre rampas de cor horizontales, verticales e multicanal",
+      "Artefactos visuales resultantes de perfiles de cor de software ou configuraciones de rango dinámico de GPU"
     ],
-    cannotMeasure: [
-      "Profundidade física de bits do painel sem depender dos dados do sistema",
-      "Variações mensuráveis Delta E entre degraus de cor vizinhos",
-      "Algoritmos internos de dithering espacial embutidos no monitor"
+    "cannotMeasure": [
+      "Profundidad de bits de hardware directo (6 bits, 8 bits, 10 bits) independiente de los informes de GPU",
+      "Desviación de cor Delta E cuantificada entre pasos de cor adyacentes",
+      "Rendimiento do algoritmo de difuminado espacial a nivel de escalador de hardware"
     ],
-    interpretation: "O banding pode decorrer de painéis de 6 bits, configuração de faixa HDMI restrita (16–235) ou perfis de cor que podam faixas de valores.",
-    nextSteps: {
-      text: "¿Quer simular degraus de 6 bits, 8 bits e testar dithering? Use nossa ferramenta especializada.",
-      actionLabel: "Testar Profundidade & Dither",
-      actionHref: "/tests/color-banding-test"
+    "interpretation": "Las bandas pueden deberse a limitaciones de hardware (paneles de 6 bits), configuraciones incorrectas do controlador (rango dinámico RGB limitado) ou perfiles de calibración ICC agresivos que truncan los valores de cor digitales.",
+    "nextSteps": {
+      "text": "¿Quiere simular pasos específicos de 6 bits, 8 bits e difuminado? Pruebe nuestra herramienta dedicada Bandas de cor e profundidad de bits.",
+      "actionLabel": "Pruebe la teste de profundidad de bits e tramado",
+      "actionHref": "/tests/color-banding-test"
     }
   },
-
   "uniformity-test": {
-    overview: "A uniformidade de tela afere a constância do brilho e da temperatura de cor em todo o display. Irregularidades nas camadas difusoras do painel causam escurecimento nas bordas ou o Efeito Tela Suja (Dirty Screen Effect - DSE).",
-    whatToLookFor: [
+    "overview": "La uniformidad da tela mide la consistencia com a que un monitor reproduce el brilho e la temperatura do cor en toda su superficie. Las imperfecciones en la fabricación, las láminas de difusión da retroiluminación ou la iluminación de los bordes a menudo provocan esquinas más oscuras, puntos calientes centrales ou el efecto de tela sucia (DSE).",
+    "whatToLookFor": [
       {
-        label: "Vinhetagem nas bordas e cantos",
-        description: "Examine em cinzas a 25%, 50% e 75% se as extremidades parecem claramente mais escuras que o centro."
+        "label": "Viñeteado de esquinas e bordes",
+        "description": "Inspeccione las esquinas exteriores e los bordes perimetrales con un 25 %, 50 % e 75 % de cinza. Observe si las esquinas aparecen notablemente más oscuras."
       },
       {
-        label: "Efeito Tela Suja (DSE)",
-        description: "Manchas nebulosas ou texturas turvas que chamam a atenção ao mover a visão sobre fundos sólidos (como campos esportivos)."
+        "label": "Efecto de tela sucia (DSE)",
+        "description": "Busque patrones de textura tenues, turbios ou con manchas en el centro da tela, que se notan al desplazarse por tonos sólidos."
       },
       {
-        label: "Variação na temperatura de cor",
-        description: "Observe se um lado do monitor parece mais quente (amarelado/avermelhado) e o outro mais frio (azulado)."
+        "label": "Tinte de temperatura de cor",
+        "description": "Observe si un lado da tela parece más cálido (rojizo/amarillento) e el lado opuesto más fríou (azulado)."
       },
       {
-        label: "Comparação na grade 5x5",
-        description: "Compare as células da grade para quantificar visualmente a queda de luz do centro para as bordas."
+        "label": "Comparación zona por zona",
+        "description": "Compare las celdas da cuadrícula de 5x5 para evaluar la variación relativa de luminancia desde el centro hasta el perímetro."
       }
     ],
-    canObserve: [
-      "Quedas visuais de luminosidade, vinhetagem periférica e pontos quentes em cinzas e brancos",
-      "Diferenças nítidas de temperatura de cor entre setores do display",
-      "Avaliação em vários patamares padronizados de brilho"
+    "canObserve": [
+      "Caídas de luminancia visual, viñeteado de bordes e puntos calientes centrales en tons de cinza e blancos sólidos",
+      "La temperatura do cor visual cambia entre las regiones do panel izquierdo, central e derecho",
+      "Inspección en múltiples niveles de luminancia estandarizados de tons de cinza neutros e cores primarios"
     ],
-    cannotMeasure: [
-      "Valores percentuais exatos de uniformidade (ex.: '98,5% uniforme') sem espectrofotômetro multiponto de laboratório",
-      "Variação térmica exata em Kelvin nas coordenadas do painel",
-      "Estado de circuitos digitais de compensação de uniformidade (DUC)"
+    "cannotMeasure": [
+      "Métricas de uniformidad porcentual (por ejemplo, '98,5% uniforme') sin rejillas de espectrofotómetro multipunto",
+      "Variaciones de temperatura de cor correlacionada (CCT en Kelvin) entre las coordenadas do panel",
+      "Estado de activación do circuito de compensación de uniformidad de fábrica (DUC)"
     ],
-    interpretation: "Monitores convencionais toleram quedas de 10% a 15% de luz nos cantos. Telas profissionais para edição gráfica usam circuitos DUC para manter variações abaixo de 5%.",
-    nextSteps: {
-      text: "Entenda o que causa o efeito tela suja e quando cabe acionar a garantia do fabricante.",
-      actionLabel: "Guia de Uniformidade de Tela",
-      actionHref: "/knowledge-base/backlight-bleed-vs-ips-glow"
+    "interpretation": "Los monitores de consumo generalmente toleran una caída de luminancia do 10 % al 15 % hacia los bordes. Los monitores gráficos profesionales emplean Compensación de Uniformidad Digital (DUC) para lograr una variación inferior al 5%.",
+    "nextSteps": {
+      "text": "Descubra por qué se producen el efecto de tela sucia e el viñeteado e cuándo se justifica el reemplazo do panel.",
+      "actionLabel": "Leer la guía de uniformidad de tela",
+      "actionHref": "/knowledge-base/backlight-bleed-vs-ips-glow"
     }
   },
-
   "text-clarity-test": {
-    overview: "A nitidez dos textos depende da densidade de pixels (PPI), da escala do sistema operacional, do arranjo físico dos subpixels (RGB, BGR, QD-OLED) e dos motores de suavização de fontes.",
-    whatToLookFor: [
+    "overview": "La claridad do texto depende da densidad de píxeles do monitor (PPI), la configuraçãou de escala da tela, la geometría física de los subpixels (RGB, BGR, QD-OLED pentile) e los algoritmos de suavizado de fuentes do sistema operativo. Esta teste evalúa la legibilidad, los bordes de cor e la representación de fuentes en múltiples tamaños e pesos.",
+    "whatToLookFor": [
       {
-        label: "Bordas coloridas nas letras",
-        description: "Halos vermelhos ou azuis nas hastes verticais indicam divergência entre o arranjo de subpixels e o renderizador do sistema."
+        "label": "Franjas de cor nos bordes da fuente",
+        "description": "Inspeccione el texto preto de alto contraste sobre branco. Los tenues halos rojos ou cian a lo largo de los trazos verticales indican una discrepancia en el diseñou de los subpixels."
       },
       {
-        label: "Arranjo BGR invertido",
-        description: "Alguns monitores utilizam subpixels BGR em vez de RGB; sem calibrar o ClearType no Windows, as fontes ficam borradas."
+        "label": "Inversión de subpixels BGR",
+        "description": "Algunos monitores utilizan diseños de subpixels BGR en lugar de RGB estándar, lo que provoca texto borroso a menos que se reconfigure Windows ClearType."
       },
       {
-        label: "Bordas coloridas em telas OLED",
-        description: "Distribuições triangulares em painéis QD-OLED e WOLED geram finos contornos verdes ou magenta em bordas horizontais."
+        "label": "Bordes de texto OLED",
+        "description": "Las disposiciones de subpixels WOLED e QD-OLED triangulares producen sutiles franjas verdes ou magenta a lo largo de los bordes horizontales do texto."
       },
       {
-        label: "Desfoque por escala fracionada",
-        description: "Fatores como 125% ou 150% podem gerar perda de nitidez em programas legados para desktop."
+        "label": "Desenfoque de escala fraccional",
+        "description": "La escala de visualización no entera (como 125 % ou 150 %) puede causar una sutil suavidad en la rasterización de fuentes en aplicaciones de escritorio heredadas."
       }
     ],
-    canObserve: [
-      "Halos e bordas coloridas nos contornos tipográficos em tamanhos de 8px a 32px",
-      "Diferenças de nitidez entre fontes com serifa, sem serifa e com contraste invertido",
-      "Influência do zoom do navegador e da escala do sistema operacional na leitura"
+    "canObserve": [
+      "Franjas de cor visuales e halos en contornos de texto fino en tamaños de fuente de 8 px a 32 px",
+      "Diferencias de representación de subpixels entre los pesos de fuente, serif frente a sans-serif e modos de inversión",
+      "Impacto do zoom do navegador e la escala de visualización do sistema operativo en la nitidez de las fuentes"
     ],
-    cannotMeasure: [
-      "Geometria física microscópica dos subpixels sem lente macro ou microscópio",
-      "Parâmetros internos de renderização do DirectWrite ou ClearType",
-      "Função de transferência de modulação óptica (MTF) do painel"
+    "cannotMeasure": [
+      "Geometría física microscópica de subpixels sin lente macro ni microscopio",
+      "Indicadores de configuraçãou do rasterizador de fuentes DirectWrite/ClearType internos do sistema operativo",
+      "Función de transferencia de modulación de nitidez acústica u óptica (MTF)"
     ],
-    interpretation: "Se as letras parecerem embaçadas ou com contornos coloridos, reexecutar o Ajustador de Texto ClearType no Windows costuma corrigir falhas em painéis BGR.",
-    nextSteps: {
-      text: "¿Fontes borradas ou com halos coloridos? Siga nosso guia para ajustar o ClearType e o escalonamento.",
-      actionLabel: "Guia de Nitidez de Texto",
-      actionHref: "/knowledge-base/troubleshooting#blurry-text-scaling"
+    "interpretation": "Si el texto aparece borroso con contornos de cores, volver a ejecutar Windows ClearType Tuner ou ajustar el suavizado de fuentes de macOS a menudo resuelve las incompatibilidades de diseñou RGB/BGR.",
+    "nextSteps": {
+      "text": "¿Ves fuentes borrosas ou franjas de cores alrededor do texto? Siga nuestra guía para ajustar ClearType e mostrar la escala.",
+      "actionLabel": "Leer solución de problemas de claridad do texto",
+      "actionHref": "/knowledge-base/troubleshooting#blurry-text-scaling"
     }
   },
-
-    "hdr-capability-test": {
-    "overview": "O Detector de Hardware e Sinal HDR audita se o compositor de janelas do SO, driver de vídeo e pipeline do navegador estão comunicando sinais HDR. Ele analisa CSS Media Queries Nível 4 (dynamic-range: high), gama ampla (Rec.2020 / Display-P3), buffers Canvas P3, alvos WebGL float e codecs de vídeo HDR de 10 bits acelerados por hardware.",
-    "whatToLookFor": [
-        {
-            "label": "Estado do Sinal HDR do Compositor",
-            "description": "Confirma se o compositor de janelas do SO emite sinal HDR para o navegador. Se inativo, o HDR está desativado nas configurações do sistema."
-        },
-        {
-            "label": "Profundidade de Buffer e Pipeline",
-            "description": "Detecta a profundidade de cor (24 bits SDR vs 30 bits+ HDR) e verifica se Canvas e WebGL2 conseguem alocar buffers P3 e float."
-        },
-        {
-            "label": "Gama Ampla (Rec.2020 e P3)",
-            "description": "Avalia se o monitor suporta volume de cor além do sRGB padrão para vermelhos carmesim e verdes esmeralda vibrantes."
-        },
-        {
-            "label": "Aceleração de Codecs de Vídeo HDR",
-            "description": "Testa suporte à decodificação por hardware para HDR10 (HEVC Main 10), AV1 de 10 bits (YouTube HDR) e VP9 Perfil 2."
-        }
-    ],
-    "canObserve": [
-        "Estado de saída HDR em tempo real do compositor do sistema operacional",
-        "Suporte de hardware e navegador para gamas Display-P3 e Rec.2020",
-        "Profundidade de cor do buffer de tela e suporte a buffers float",
-        "Capacidade de reprodução acelerada por hardware de codecs de 10 bits"
-    ],
-    "cannotMeasure": [
-        "Pico físico de brilho (nits) sem um colorímetro óptico de laboratório",
-        "Conformidade de nível de certificação VESA DisplayHDR (ex: DisplayHDR 400 vs 600 vs 1000)",
-        "Número de zonas físicas de local dimming em telas Mini-LED"
-    ],
-    "interpretation": "Se dynamic-range constar como padrão (inativo), pressione Win + Alt + B no Windows ou ative o HDR nas configurações do macOS.",
-    "nextSteps": {
-        "text": "Deseja inspecionar corte de realces, curvas tonais e nits de pico? Inicie o teste óptico.",
-        "actionLabel": "Iniciar Inspeção Visual HDR",
-        "actionHref": "/tests/hdr-test"
-    }
-},
-
-  "hdr-test": {
-    "overview": "O teste de Calibração Visual e Inspeção de Realces HDR oferece padrões ópticos controlados para avaliar como o painel responde fisicamente aos sinais HDR. Ele testa pontos de corte em realces especulares, mapeamento de tons, pico de brilho em janela APL de 10%, curvas PQ/EOTF e sombras.",
-    "whatToLookFor": [
-        {
-            "label": "Rolloff e Corte de Realces Especulares",
-            "description": "Inspecione os blocos de 90% a 100% de branco pico. As retículas circulares devem permanecer visíveis sem estourar em branco plano."
-        },
-        {
-            "label": "Janela de Brilho Pico 10% APL",
-            "description": "Uma janela de 10% sobre fundo preto absoluto testa os nits de pico, local dimming e halos de luz."
-        },
-        {
-            "label": "Gradação de Curva PQ / EOTF",
-            "description": "Compara gradientes suaves de 10 bits com rampas de 8 bits para revelar artefatos de banding e compressão tonal excessiva."
-        },
-        {
-            "label": "Detalhe em Sombras (Black Crush)",
-            "description": "Verifica se tons escuros sutis (0,5% a 5%) se distinguem do preto 0% absoluto sem elevar os níveis de preto."
-        }
-    ],
-    "canObserve": [
-        "Ponto de corte de realces especulares através dos níveis de branco",
-        "Halos de local dimming e reserva de brilho pico na janela 10% APL",
-        "Fluidez de transições tonais de 10 bits versus banding de 8 bits",
-        "Separação de detalhes em sombras e comportamento de esmagamento de pretos"
-    ],
-    "cannotMeasure": [
-        "Pico exato de luminância em nits sem sensores de laboratório",
-        "Precisão de temperatura de cor (Kelvin) sem espectrofotômetro",
-        "Tempo de resposta de pixel ou overshoot de overdrive"
-    ],
-    "interpretation": "Monitores com mapeamento de tons deficiente estouram realces acima de 94% ou esmagam detalhes escuros. Telas OLED e Mini-LED premium retêm retículas até 99%.",
-    "nextSteps": {
-        "text": "Precisa verificar se o sistema operacional e codecs de vídeo suportam HDR? Acesse o detector de hardware.",
-        "actionLabel": "Verificar Hardware e Sinal HDR",
-        "actionHref": "/tests/hdr-capability-test"
-    }
-},
-
-  "strobe-crosstalk-test": {
-    "overview": "Backlight strobing (ULMB, DyAc, ELMB, LightBoost) eliminates eye-tracking motion blur by pulsing the backlight on only when liquid crystals have finished transitioning. However, because displays scan pixels from top to bottom while backlights flash globally across the entire screen, pixel transitions at the very top or bottom may be incomplete when the pulse fires. This timing mismatch creates duplicate phantom images known as strobe crosstalk.",
+  "hdr-capability-test": {
+    "overview": "O teste des capacités HDR verifica si votre écran, votre système d'exploitation et votre navigateur prennent en charge les profils de haute dynamique (HDR10, Dolby Vision) et l'espace étendu.",
     "whatToLookFor": [
       {
-        "label": "Double-Image Silhouettes",
-        "description": "Watch the moving bars in the top, center, and bottom tracks. Notice whether you see a single sharp bar or a faint duplicate ghost trailing or leading it."
+        "label": "Prise en charge du profil HDR",
+        "description": "Vérifiez si l'écran signale une compatibilité HDR active dans l'espace colorimétrique étendu."
       },
       {
-        "label": "Top vs Center vs Bottom Clarity",
-        "description": "Most monitors optimize strobe phase for the screen center. The center zone should show crisp, single-image motion, while top and bottom zones typically show varying degrees of crosstalk."
-      },
-      {
-        "label": "Strobe Pulse Width & Brightness",
-        "description": "Shorter strobe pulses yield sharper motion but lower overall display brightness. Adjust your monitor's strobe duty cycle in its OSD to balance clarity vs luminance."
+        "label": "Luminosité maximale",
+        "description": "Observez les zones de hautes lumières pour confirmer l'impact lumineux supérieur."
       }
     ],
     "canObserve": [
-      "Relative strobe crosstalk visibility across vertical screen zones",
-      "Identification of optimal strobe phase calibration point on your panel",
-      "Comparison of motion blur reduction at various panning velocities"
+      "Détection de la prise en charge de l'espace étendu",
+      "Prise en charge de la plage dynamique du moniteur"
     ],
     "cannotMeasure": [
-      "Exact backlight strobe flash duration in microseconds",
-      "Photometric strobe luminance peak in nits without a photodiode",
-      "Hardware panel scan-out velocity and VSYNC timing interval"
+      "Pic lumineux réel en nits (cd/m²)",
+      "Capacité matérielle de gradation locale"
     ],
-    "interpretation": "A small amount of strobe crosstalk at the extreme top and bottom edges is normal on LCD monitors. Severe crosstalk across the center zone indicates mismatched strobe phase or refresh rate desync.",
+    "interpretation": "Si le profil HDR est détecté, votre système est prêt pour les flux vidéo et jeux en ultra-haute dynamique.",
     "nextSteps": {
-      "text": "Compare strobed motion against native sample-and-hold motion blur.",
-      "actionLabel": "Run Motion Blur Test",
+      "text": "Souhaitez-vous lancer la mire HDR ?",
+      "actionLabel": "Lancer le test HDR",
+      "actionHref": "/tests/hdr-test"
+    }
+  },
+  "hdr-test": {
+    "overview": "La mire de test HDR avalia le rendu des hautes lumières, le contraste dynamique et la gradation des détails sans écrêtage lumineux.",
+    "whatToLookFor": [
+      {
+        "label": "Détails dans les hautes lumières",
+        "description": "Vérifiez que les zones les plus lumineuses conservent leurs détails sans saturation excessive."
+      },
+      {
+        "label": "Profondeur des noirs",
+        "description": "Assurez-vous que les noirs restent profonds en présence d'éléments lumineux intenses."
+      }
+    ],
+    "canObserve": [
+      "Rendu des contrastes extrêmes",
+      "Absence d'écrêtage des hautes lumières"
+    ],
+    "cannotMeasure": [
+      "Courbe EOTF PQ exacte au niveau photométrique"
+    ],
+    "interpretation": "Un affichage équilibré entre noirs denses et pics de clarté confirme une excellente gestion HDR.",
+    "nextSteps": {
+      "text": "Vérifiez les niveaux de noir",
+      "actionLabel": "Test du niveau de noir",
+      "actionHref": "/tests/black-level-test"
+    }
+  },
+  "strobe-crosstalk-test": {
+    "overview": "La luz de fondo estroboscópica (ULMB, DyAc, ELMB, LightBoost) elimina el desenfoque do movimento do seguimiento ocular al encender la luz de fondo solo cuando los cristales líquidos han terminado de realizar la transición. Sin embargo, debido a que las telas escanean los píxeles de arriba a abajo mientras las luces de fondo parpadean globalmente en toda la tela, las transiciones de píxeles en la parte superior ou inferior pueden estar incompletas cuando se activa el pulso. Esta discrepancia de tiempo crea imágenes fantasma duplicadas conocidas como diafonía estroboscópica.",
+    "whatToLookFor": [
+      {
+        "label": "Siluetas de doble imagen",
+        "description": "Observe las barras en movimento nas pistas superior, central e inferior. Observe si ve una sola barra nítida ou un débil fantasma duplicado siguiéndola ou preparándola."
+      },
+      {
+        "label": "Claridad superior versus central versus inferior",
+        "description": "La mayoría de los monitores optimizan la fase estroboscópica para el centro da tela. La zona central debe mostrar movimento nítido de una sola imagen, mientras que las zonas superior e inferior suelen mostrar distintos grados de diafonía."
+      },
+      {
+        "label": "Ancho e brilho do pulso estroboscópico",
+        "description": "Los pulsos estroboscópicos más cortos producen un movimento más nítido pero un brilho general da tela más bajo. Ajuste el ciclo de trabajo do estroboscópico de su monitor en su OSD para equilibrar la claridad e la luminancia."
+      }
+    ],
+    "canObserve": [
+      "Visibilidad relativa de diafonía estroboscópica nas zonas verticales da tela.",
+      "Identificación do punto óptimo de calibración de fase estroboscópica en su panel",
+      "Comparación da reducción do desenfoque de movimento a distintas velocidades de panorámica"
+    ],
+    "cannotMeasure": [
+      "Duración exacta do flash estroboscópico de retroiluminación en microsegundos",
+      "Pico de luminancia estroboscópica fotométrica en nits sin fotodiodo",
+      "Velocidad de escaneo do panel de hardware e intervalo de tiempo VSYNC"
+    ],
+    "interpretation": "Una pequeña cantidad de interferencias estroboscópicas nos bordes superior e inferior es normal nos monitores LCD. Una diafonía intensa en la zona central indica una fase estroboscópica no coincidente ou una desincronización da frecuencia de actualización.",
+    "nextSteps": {
+      "text": "Compare el movimento estroboscópico com ou desenfoque de movimento nativo de muestreo e retención.",
+      "actionLabel": "Ejecutar teste de desenfoque de movimento",
       "actionHref": "/tests/motion-blur-test"
     }
   },
   "vrr-flicker-test": {
-    "overview": "Variable Refresh Rate (VRR / G-Sync / FreeSync) dynamically matches screen refresh rate to GPU rendering output. However, liquid crystal relaxation and OLED pixel luminance curves vary depending on the duration of the refresh cycle. When framerates swing rapidly—especially between high FPS and lower boundary thresholds—luminance curves shift dynamically, producing noticeable brightness flicker in dark and near-black areas.",
+    "overview": "La frecuencia de actualización variable (VRR / G-Sync / FreeSync) hace coincidir dinámicamente la frecuencia de actualización da tela com a salida de renderizado da GPU. Sin embargo, la relajación do cristal líquido e las curvas de luminancia de los píxeles OLED varían según la duración do ciclo de actualización. Cuando las velocidades de quadros oscilan rápidamente, especialmente entre FPS altos e umbrales de límites más bajos, las curvas de luminancia cambian dinámicamente, produciendo un cintilação de brilho notable en áreas oscuras e casi negras.",
     "whatToLookFor": [
       {
-        "label": "Near-Black Brightness Pumping",
-        "description": "Observe the 10% near-black and 25% dark gray patches as the automated framerate sweep cycles. Look for subtle rhythmic pulsations in overall darkness."
+        "label": "Bombeo de brilho casi preto",
+        "description": "Observe los parches de 10% casi negros e 25% de cinza oscuro a medida que avanza el ciclo de barrido de velocidad de quadros automatizado. Busque pulsaciones rítmicas sutiles en la oscuridad general."
       },
       {
-        "label": "LFC (Low Framerate Compensation) Transition Jolt",
-        "description": "When framerates dip below the minimum VRR threshold (e.g., below 48Hz), graphics drivers double frame presentation (LFC). This rapid Hz shift can cause a momentary luminance flicker."
+        "label": "Sacudida de transición LFC (compensación de baja velocidad de quadros)",
+        "description": "Cuando la velocidad de cuadros cae por debajo do umbral mínimo de VRR (por ejemplo, por debajo de 48 Hz), los controladores de gráficos presentan una presentación de cuadro doble (LFC). Este rápido cambio de Hz puede provocar un cintilação momentáneo de luminancia."
       },
       {
-        "label": "OLED Gamma Shift",
-        "description": "OLED displays are particularly prone to VRR gamma flicker because subpixel charge times depend heavily on frame length. Dark scene textures may pulse visibly during framerate drops."
+        "label": "Cambio de gama OLED",
+        "description": "Las telas OLED son particularmente propensas al cintilação gamma VRR porque los tiempos de carga de los subpixels dependen en gran medida da longitud do fotograma. Las texturas de las escenas oscuras pueden parpadear visiblemente durante las caídas da velocidad de quadros."
       }
     ],
     "canObserve": [
-      "Visual identification of gamma curve shifts across dark gray luminance levels",
-      "Detection of brightness pumping during simulated framerate oscillation",
-      "Comparison between subtle midtone gray vs near-black flicker sensitivity"
+      "Identificación visual de cambios en la curva gamma a través de niveles de luminancia de cor cinza oscuro",
+      "Detección de bombeo de brilho durante la oscilación de velocidad de quadros simulada",
+      "Comparación entre la sensibilidad al cintilação do cinza sutil de tonos medios e la sensibilidad al cintilação casi preto"
     ],
     "cannotMeasure": [
-      "Hardware GPU-to-display Adaptive-Sync timing packets",
-      "Exact millivolt OLED subpixel voltage fluctuations",
-      "Automatic detection without user visual evaluation"
+      "Paquetes de temporización de sincronización adaptativa de GPU a tela de hardware",
+      "Fluctuaciones exactas de voltaje de subpixels OLED en milivoltios",
+      "Detección automática sin evaluación visual do usuario"
     ],
-    "interpretation": "If you observe strong brightness pulsing, your display has sensitive VRR gamma curves. Cap your framerate slightly below max refresh rate or disable VRR in games with unstable frame times to prevent flicker.",
+    "interpretation": "Si observa fuertes pulsaciones de brilho, su tela tiene curvas gamma VRR sensibles. Limite su velocidad de quadros ligeramente por debajo da frecuencia de actualización máxima ou desactive VRR en juegos con tiempos de quadros inestables para evitar el cintilação.",
     "nextSteps": {
-      "text": "Verify your display's variable refresh rate support and range.",
-      "actionLabel": "Run VRR Capability Test",
+      "text": "Verifique el rango e la compatibilidad com a frecuencia de actualización variable de su tela.",
+      "actionLabel": "Ejecute la teste de capacidad de VRR",
       "actionHref": "/tests/vrr-test"
     }
   },
   "pursuit-camera-test": {
-    "overview": "Human eyes track moving on-screen objects with continuous smooth pursuit motion. Standard stationary camera photographs cannot capture true display motion blur because they don't move with the eye. A pursuit camera tracks the moving pattern at exact matched speed, allowing photographic capture of true perceived Motion Picture Response Time (MPRT) and ghosting smear.",
+    "overview": "Los ojos humanos siguen los objetos en movimento en la tela con un movimento de persecución suave e continuo. Las fotografías de cámaras fijas estándar no pueden capturar el desenfoque de movimento real porque no se mueven com ou ojo. Una cámara de seguimiento rastrea el patrón de movimento a una velocidad exacta, lo que permite la captura fotográfica do tiempo de respuesta de imagen en movimento (MPRT) percibido real e la mancha fantasma.",
     "whatToLookFor": [
       {
-        "label": "Temporal Graduation Alignment",
-        "description": "The top track contains vertical white graduation ticks. When tracking smoothly with your camera or phone, these ticks will merge into a single sharp vertical line in your photo."
+        "label": "Alineación de graduación temporal",
+        "description": "La pista superior contiene marcas de graduación blancas verticales. Al realizar un seguimiento fluido con su cámara ou teléfono, estas marcas se fusionarán en una única línea vertical nítida en su foto."
       },
       {
-        "label": "Ghosting & Trailing Artifacts",
-        "description": "Once tracking sync is verified by crisp vertical ticks, examine the trailing edge of the moving object to see phosphor decay, overdrive coronas, or ghost trails."
+        "label": "Artefactos fantasmas e rastreros",
+        "description": "Una vez que se verifica la sincronización do seguimiento mediante marcas verticales nítidas, examine el borde posterior do objeto en movimento para ver la decadencia do fósforo, las coronas sobrecargadas ou los rastros fantasma."
       },
       {
-        "label": "Overdrive Overshoot (Coronas)",
-        "description": "A bright glowing outline trailing behind the moving object indicates excessive monitor pixel overdrive (inverse ghosting)."
+        "label": "Sobremarcha Sobreimpulso (Coronas)",
+        "description": "Un contorno brillante que se arrastra detrás do objeto en movimento indica una sobrecarga excesiva de píxeles do monitor (efecto fantasma inverso)."
       }
     ],
     "canObserve": [
-      "Camera panning synchronization via temporal graduation track verification",
-      "Visual smear width directly proportional to perceived MPRT",
-      "Distinction between pixel transition blur (GtG) and sample-and-hold eye-tracking blur (MPRT)"
+      "Sincronización de panorámica de cámara mediante verificación de seguimiento de graduación temporal",
+      "Ancho do frotis visual directamente proporcional al MPRT percibido",
+      "Distinción entre desenfoque de transición de píxeles (GtG) e desenfoque de seguimiento ocular de muestreo e retención (MPRT)"
     ],
     "cannotMeasure": [
-      "Automatic MPRT calculation without taking and measuring a tracking photograph",
-      "Sub-millisecond photodiode optical response curves",
-      "Optical tracking rail velocity without calibrated hardware"
+      "Cálculo MPRT automático sin tomar ni medir una fotografía de seguimiento",
+      "Curvas de respuesta óptica de fotodiodos de submilisegundos",
+      "Velocidad do riel de seguimiento óptico sin hardware calibrado"
     ],
-    "interpretation": "When temporal graduation marks form a clean vertical line in your exposure, tracking was synchronized. The width of trailing smear on the object reflects the display's true MPRT motion blur.",
+    "interpretation": "Cuando las marcas de graduación temporal forman una línea vertical limpia en su exposición, el seguimiento se sincronizó. El ancho da mancha que se arrastra sobre el objeto refleja el verdadero desenfoque de movimento MPRT da tela.",
     "nextSteps": {
-      "text": "Compare motion performance across different overdrive settings in your monitor OSD.",
-      "actionLabel": "Run Ghosting Test",
+      "text": "Compare el rendimiento do movimento en diferentes configuraciones de overdrive en el OSD de su monitor.",
+      "actionLabel": "Ejecutar teste de imagen fantasma",
       "actionHref": "/tests/ghosting-test"
     }
   },
   "audio-sync-test": {
-    "overview": "Modern visual processing (frame scaling, HDR dynamic tone mapping, and motion smoothing) introduces video latency. Meanwhile, soundbars, AV receivers, and Bluetooth audio devices (A2DP codec buffers) introduce audio latency. If video and audio diverge by more than ITU-R perceptual thresholds (+45ms to -125ms), speech lip-sync becomes noticeably disjointed.",
+    "overview": "O teste de synchronisation audio/vidéo verifica l'alignement temporel entre les repères sonores et les animations visuelles pour éliminer tout décalage (lip-sync).",
     "whatToLookFor": [
       {
-        "label": "Simultaneous Flash and Beep",
-        "description": "Watch the rotating needle pass the top 12 o'clock zero mark. The instant visual white/green flash should align perfectly with the audible 1 kHz pulse."
+        "label": "Précision de l'impact",
+        "description": "Le son doit coïncider exactement avec le passage de la barre sur le repère zéro."
       },
       {
-        "label": "Audio Leading Video (Negative Offset)",
-        "description": "If you hear the beep before you see the visual flash, the display is lagging behind the audio. Audio needs to be delayed."
-      },
-      {
-        "label": "Video Leading Audio (Positive Offset)",
-        "description": "If you see the flash before you hear the beep, audio processing (e.g., Bluetooth lag or soundbar processing) is delayed relative to the display."
+        "label": "Latence Bluetooth/HDMI",
+        "description": "Détectez d'éventuels retards audio causés par des casques sans fil ou des barres de son."
       }
     ],
     "canObserve": [
-      "Human perceptual synchronization between optical visual flashes and acoustic pulses",
-      "Measurement of required millisecond compensation offset (+/- 200ms)",
-      "Audio output channel verification via Web Audio API 1 kHz synthesized pulses"
+      "Alignement précis image-son en millisecondes",
+      "Latence des périphériques audio"
     ],
     "cannotMeasure": [
-      "Hardware electrical acoustic sound wave arrival times with microsecond laboratory precision",
-      "Microphone acoustic feedback loop without audio input authorization",
-      "Bluetooth packet retransmission delays at the operating system driver level"
+      "Temps de propagation interne du matériel audio analogique"
     ],
-    "interpretation": "Perceptual lip-sync alignment within +/- 20ms is considered excellent and imperceptible to human audiences. Latencies greater than 50ms should be corrected using audio delay settings in your soundbar or media player.",
+    "interpretation": "Une synchronisation parfaite à 0 ms garantit une expérience optimale pour les films et le jeu vidéo.",
     "nextSteps": {
-      "text": "Test your speakers for stereo channel separation and frequency range.",
-      "actionLabel": "Run Speaker Test",
+      "text": "Testez vos haut-parleurs",
+      "actionLabel": "Test des haut-parleurs",
       "actionHref": "/tests/speaker-test"
     }
   },
   "gamepad-test": {
-    "overview": "Game controllers use analog potentiometers or Hall-effect magnetic sensors to translate thumbstick movement into directional coordinates. Over time, internal carbon wiper wear, spring degradation, and dust contamination cause the stick to register off-center coordinates when resting untouched—a defect known as stick drift.",
+    "overview": "Los controladores de juegos utilizan potenciómetros analógicos ou sensores magnéticos de efecto Hall para traducir el movimento do joystick en coordenadas direccionales. Con el tiempo, el desgaste interno do limpiador de carbono, la degradación de los resortes e la contaminación por polvo hacen que la palanca registre coordenadas descentradas cuando permanece intacta, un defecto conocido como deriva da palanca.",
     "whatToLookFor": [
       {
-        "label": "Resting Stick Drift",
-        "description": "Release both thumbsticks completely. If the crosshair indicator sits outside the central zero point or drifts continuously, stick drift is present."
+        "label": "Deriva do palo en reposo",
+        "description": "Suelte ambos joysticks por completo. Si el indicador en forma de cruz se encuentra fuera do punto cero central ou se desplaza continuamente, hay deriva da palanca."
       },
       {
-        "label": "Circularity Error",
-        "description": "Rotate the sticks along their outer boundaries. Quality gamepads produce a clean, smooth circle without clipping flat at the diagonal corners."
+        "label": "Error de circularidad",
+        "description": "Gire los palos a lo largo de sus límites exteriores. Los gamepads de calidad producen un círculo limpio e suave sin quedar plano nas esquinas diagonales."
       },
       {
-        "label": "Deadzone Thresholding",
-        "description": "Check how far you must nudge the stick before the coordinate responds. Excessive deadzones make aiming sluggish, while too-small deadzones cause drift."
+        "label": "Umbral de zona muerta",
+        "description": "Comprueba hasta qué punto debes empujar la palanca antes de que responda la coordenada. Las zonas muertas excesivas hacen que apuntar sea lento, mientras que las zonas muertas demasiado pequeñas provocan desviaciones."
       },
       {
-        "label": "Analog Trigger Smoothness",
-        "description": "Gradually squeeze LT and RT triggers. The percentage readout should climb smoothly from 0% to 100% without jumping or sticking."
+        "label": "Suavidad do disparador analógico",
+        "description": "Apriete gradualmente los gatillos LT e RT. La lectura do porcentaje debe subir suavemente do 0 % al 100 % sin saltar ni quedarse pegado."
       }
     ],
     "canObserve": [
-      "Real-time analog stick X/Y coordinate readouts and resting drift values",
-      "Full 16-button digital actuation matrix and analog trigger pressure percentages",
-      "Controller connection status, device ID name, and polling rate via HTML5 Gamepad API"
+      "Lecturas de coordenadas X/Y do joystick analógico en tiempo real e valores de deriva en reposo",
+      "Matriz de actuación digital completa de 16 botones e porcentajes de presión de disparo analógico",
+      "Estado de conexión do controlador, nombre de ID do dispositivo e tasa de sondeo a través da API HTML5 Gamepad"
     ],
     "cannotMeasure": [
-      "Physical potentiometer wiper resistance in ohms",
-      "Internal battery voltage level (unless supported by proprietary browser extensions)",
-      "Wireless Bluetooth radio interference or packet drop rates"
+      "Resistencia física do limpiador do potenciómetro en ohmios",
+      "Nivel de voltaje da batería interna (a menos que sea compatible con extensiones de navegador patentadas)",
+      "Interferencias de radio inalámbricas Bluetooth ou tasas de caída de paquetes"
     ],
-    "interpretation": "A resting coordinate value below 0.05 (5%) is typically absorbed by standard game deadzones. Values exceeding 0.10 (10%) will cause visible in-game camera drift and suggest recalibration or cleaning.",
+    "interpretation": "Un valor de coordenadas en reposo inferior a 0,05 (5 %) suele ser absorbido por las zonas muertas do juego estándar. Los valores superiores a 0,10 (10%) provocarán una desviación visible da cámara en el juego e sugerirán una recalibración ou limpieza.",
     "nextSteps": {
-      "text": "Test your display's input latency and your personal reaction time.",
-      "actionLabel": "Run Reaction Time Test",
+      "text": "Pruebe la latencia de entrada de su tela e su tiempo de reacción personal.",
+      "actionLabel": "Ejecutar teste de tiempo de reacción",
       "actionHref": "/tests/reaction-time-test"
     }
-  }
-  ,
+  },
   "battery-test": {
-    "overview": "O inspetor de saúde de bateria e energia monitora o nível de carga, conexão com a tomada e estimativas de autonomia usando a API W3C Battery Status.",
+    "overview": "O teste de batterie monitora l'état de charge, l'autonomie estimée et l'impact énergétique de l'écran sur votre appareil portable.",
     "whatToLookFor": [
-        {
-            "label": "Nível de carga em tempo real",
-            "description": "Acompanha a porcentagem da bateria reportada pelo sistema operacional."
-        },
-        {
-            "label": "Conexão com adaptador AC",
-            "description": "Identifica se o dispositivo está na tomada ou na bateria interna."
-        },
-        {
-            "label": "Tempo de recarga e autonomia",
-            "description": "Calcula a duração estimada até carga total ou até o descarregamento."
-        },
-        {
-            "label": "Histórico de descarga",
-            "description": "Monitora o consumo elétrico durante a execução de testes visuais."
-        }
+      {
+        "label": "Niveau de charge en temps réel",
+        "description": "Vérifiez le pourcentage de charge et le statut d'alimentation (secteur ou batterie)."
+      },
+      {
+        "label": "Consommation liée à la luminosité",
+        "description": "Observez la variation de l'autonomie estimée selon le niveau de luminosité."
+      }
     ],
     "canObserve": [
-        "Porcentagem de bateria em tempo real reportada pelo SO",
-        "Transição entre carregamento e descarga via eventos nativos",
-        "Segundos estimados até recarga completa ou esgotamento",
-        "Tendência de nível de carga na sessão ativa"
+      "Statut de charge via l'API Battery Status",
+      "Estimation du temps de décharge"
     ],
     "cannotMeasure": [
-        "Degradação química em mAh sem software do fabricante",
-        "Temperatura interna, impedância ou contagem de ciclos",
-        "Métricas em navegadores que restringem a API por privacidade"
+      "Dégradation chimique de la batterie à long terme"
     ],
-    "interpretation": "Se o navegador indicar ausência de suporte, deve-se a proteções de privacidade contra fingerprinting. Quedas repentinas indicam desgaste da bateria.",
+    "interpretation": "Réduire la luminosité de l'écran permet de prolonger considérablement l'autonomie sur batterie.",
     "nextSteps": {
-        "text": "Deseja verificar a velocidade de download e latência da rede?",
-        "actionLabel": "Testar velocidade de rede",
-        "actionHref": "/tests/network-speed-test"
+      "text": "Vérifiez le mode sombre",
+      "actionLabel": "Test du mode sombre",
+      "actionHref": "/tests/dark-mode-test"
     }
-},
-
+  },
   "network-speed-test": {
-    "overview": "O teste de velocidade de rede e latência avalia ping, jitter, tipo de conexão e taxa de download através das APIs de temporização do navegador.",
+    "overview": "O teste de vitesse réseau mede le débit descendant, la latence et la stabilité de votre connexion Internet directement dans le navigateur.",
     "whatToLookFor": [
-        {
-            "label": "Latência Ping (RTT)",
-            "description": "Mede o tempo de ida e volta dos pacotes até o servidor em milissegundos."
-        },
-        {
-            "label": "Taxa de Download (Mbps)",
-            "description": "Calcula a largura de banda efetiva durante o recebimento de pacotes."
-        },
-        {
-            "label": "Tipo de Conexão",
-            "description": "Detecta o tipo de rede efetivo (4G, Wi-Fi, cabo) e teto de downlink."
-        },
-        {
-            "label": "Estabilidade e Jitter",
-            "description": "Identifica flutuações e atrasos entre pings consecutivos."
-        }
+      {
+        "label": "Vitesse de téléchargement (Mbps)",
+        "description": "Vérifiez que le débit atteint les valeurs souscrites auprès de votre fournisseur."
+      },
+      {
+        "label": "Temps de latence (Ping)",
+        "description": "Un ping faible est essentiel pour la fluidité des jeux en ligne et des visioconférences."
+      }
     ],
     "canObserve": [
-        "Tempo de ida e volta HTTP/HTTPS em milissegundos",
-        "Classe de conexão efetiva via navigator.connection",
-        "Velocidade real de download calculada por transferência de dados",
-        "Status do modo de economia de dados do navegador"
+      "Débit en mégabits par seconde",
+      "Temps de réponse du serveur (ping en ms)"
     ],
     "cannotMeasure": [
-        "Latência pura de socket TCP sem sobrecarga do navegador",
-        "Atenuação de linha física ou margens de ruído do modem",
-        "Interferência de radiofrequência no canal Wi-Fi"
+      "Perte de paquets sur l'ensemble des nœuds de routage réseau"
     ],
-    "interpretation": "Pings abaixo de 30 ms são excelentes para jogos online. Velocidades acima de 50 Mbps garantem reprodução suave em 4K HDR.",
+    "interpretation": "Un débit stable et une latence inférieure à 30 ms assurent une navigation et un streaming sans coupure.",
     "nextSteps": {
-        "text": "Deseja verificar o tempo de resposta entre o clique e a tela?",
-        "actionLabel": "Testar latência de entrada",
-        "actionHref": "/tests/input-lag-test"
+      "text": "Consultez les informations système",
+      "actionLabel": "Infos sur l'affichage",
+      "actionHref": "/tests/display-info"
     }
-},
-
+  },
   "color-blindness-test": {
-    "overview": "O simulador de daltonismo aplica matrizes SVG para emular 8 variações de deficiência visual de cores, permitindo auditar acessibilidade e contraste visual.",
+    "overview": "El Simulador de daltonismo aplica filtros de matriz de cor SVG calibrados matemáticamente para emular 8 tipos distintos de deficiencia de visión do cor (CVD). Permite a los desarrolladores e diseñadores evaluar la legibilidad da interfaz de usuario, las relaciones de contraste e la accesibilidad a la información codificada por cores.",
     "whatToLookFor": [
-        {
-            "label": "Protanopia e Protanomalia (Vermelho)",
-            "description": "Deficiência de cones L; tons de vermelho tornam-se marrons escuros ou acinzentados."
-        },
-        {
-            "label": "Deuteranopia e Deuteranomalia (Verde)",
-            "description": "Deficiência de cones M; verdes e vermelhos fundem-se em nuances amareladas."
-        },
-        {
-            "label": "Tritanopia e Tritanomalia (Azul)",
-            "description": "Deficiência de cones S; azul parece esverdeado e amarelo aparece lilás ou cinza."
-        },
-        {
-            "label": "Acromatopsia (Visão monocromática)",
-            "description": "Ausência total de cones funcionais; visualização restrita à escala de cinza."
-        }
+      {
+        "label": "Protanopía e protanomalía (rojo-débil)",
+        "description": "La deficiencia de cono L hace que los rojos puros parezcan marrón oscuro ou carbón; Las distinciones rojo-verde disminuyen."
+      },
+      {
+        "label": "Deuteranopia e Deuteranomalía (Verde-Débil)",
+        "description": "La deficiencia do cono M desdibuja los verdes e rojos en tonos amarillentos; la forma más frecuente de ECV."
+      },
+      {
+        "label": "Tritanopía e tritanomalía (azul-débil)",
+        "description": "La deficiencia do cono S hace que los azules parezcan verdosos e los amarillos parezcan violeta claro ou cinza."
+      },
+      {
+        "label": "Acromatopsia (monocromacia total)",
+        "description": "Ausencia total de fotorreceptores cónicos funcionales, percibiendo la visualización en tonos puros de cinza."
+      }
     ],
     "canObserve": [
-        "Transformação em tempo real de textos, gráficos e botões com 8 matrizes",
-        "Comparativo lado a lado entre visão tricromática normal e deficiência simulada",
-        "Perda de contraste entre indicadores de sucesso (verde) e erro (vermelho)",
-        "Legibilidade tipográfica em cada variante de visão cromática"
+      "Transformación óptica en tiempo real de texto, íconos, gráficos e muestras en 8 matrices CVD",
+      "Comparación lado a lado da visión tricromática normal frente a la deficiencia de cor simulada",
+      "Degradación do contraste entre los indicadores clave de estado da interfaz de usuario (verde de éxito frente a rojo de error)",
+      "Legibilidad do texto contra los tonos de fondo bajo cada variante de visión do cor."
     ],
     "cannotMeasure": [
-        "Diagnóstico clínico oftalmológico do usuário",
-        "Sensibilidade individual dos fotorreceptores da retina",
-        "Espectro de emissão da retroiluminação sem espectrorradiômetro"
+      "Diagnóstico clínico da capacidad genética de visión do cor do usuario humano (p. ej., teste Farnsworth-Munsell 100-Hue)",
+      "Variaciones exactas da sensibilidad retiniana de conos e bastones individuales",
+      "Visualización física de picos de emisión espectral sin espectroradiómetro."
     ],
-    "interpretation": "Se avisos importantes tornam-se indistinguíveis em Deuteranopia ou Protanopia, adicione ícones e rótulos textuais para atender às diretrizes WCAG 2.2.",
+    "interpretation": "Si sus indicadores críticos da interfaz de usuario (como alertas de error, gráficos ou botones de acción principal) se vuelven indistinguibles en Deuteranopia ou Protanopia, complemente las señales de cor con íconos, tipografía en negrita e contornos de formas distintas para cumplir con las pautas WCAG 2.2.",
     "nextSteps": {
-        "text": "Verifique a cobertura de espaço de cores sRGB e DCI-P3 do monitor.",
-        "actionLabel": "Testar gama de cores",
-        "actionHref": "/tests/color-gamut-test"
+      "text": "Inspeccione la cobertura da gama de cores física de su monitor en sRGB e DCI-P3.",
+      "actionLabel": "Comprobar gama de cores",
+      "actionHref": "/tests/color-gamut-test"
     }
-},
-
+  },
   "screen-recorder": {
-    "overview": "O gravador de tela e captura utiliza as APIs Screen Capture e MediaRecorder para registrar janelas, guias ou telas inteiras em WebM e salvar capturas em PNG com fidelidade total de pixels.",
+    "overview": "O gravador de tela permite capturer votre écran ou une fenêtre d'application en haute résolution et à cadence élevée sans installer de logiciel.",
     "whatToLookFor": [
-        {
-            "label": "Resolução do fluxo de vídeo",
-            "description": "Verifica se as dimensões do vídeo gravado correspondem à resolução nativa da tela."
-        },
-        {
-            "label": "Taxa de quadros por segundo",
-            "description": "Acompanha a fluidez de captura e duração em tempo real."
-        },
-        {
-            "label": "Áudio de sistema integrado",
-            "description": "Grava áudio do sistema ou guia junto com a imagem da tela."
-        },
-        {
-            "label": "Captura de tela PNG nítida",
-            "description": "Exporta instantaneamente um quadro congelado em alta resolução PNG."
-        }
+      {
+        "label": "Qualité de capture",
+        "description": "Vérifiez que la vidéo enregistrée est fluide et conserve toute la netteté du bureau."
+      },
+      {
+        "label": "Capture audio intégrée",
+        "description": "Assurez-vous que l'audio du système ou du micro est enregistré correctement."
+      }
     ],
     "canObserve": [
-        "Dimensões do fluxo de vídeo, proporção e taxa de quadros",
-        "Tempo de gravação, estado de pausa e tamanho do arquivo WebM",
-        "Exportação de buffer Canvas para imagem PNG para download",
-        "Permissões do navegador para compartilhamento de tela"
+      "Capture vidéo haute définition via l'API Screen Capture",
+      "Exportation vidéo directe"
     ],
     "cannotMeasure": [
-        "Latência de codificação da GPU no nível do sistema operacional",
-        "Conteúdos protegidos por DRM (reproduzidos como tela preta por segurança)",
-        "Taxa de atualização física além das limitações do navegador"
+      "Encodage matériel externe sur carte d'acquisition dédiée"
     ],
-    "interpretation": "Toda a gravação e captura é mantida estritamente na memória local do navegador, sem envio para a nuvem, garantindo confidencialidade.",
+    "interpretation": "Cet outil est idéal pour documenter des anomalies visuelles ou créer des tutoriels vidéo.",
     "nextSteps": {
-        "text": "Deseja verificar o funcionamento e foco da sua webcam?",
-        "actionLabel": "Testar webcam",
-        "actionHref": "/tests/webcam-test"
+      "text": "Consultez le certificat d'affichage",
+      "actionLabel": "Certificat d'affichage",
+      "actionHref": "/tools/display-certificate"
     }
-},
-
+  },
   "dark-mode-test": {
-    "overview": "O teste de modo escuro e temas avalia a sincronização de prefers-color-scheme, propriedades CSS color-scheme e contraste tipográfico em paletas claras e escuras.",
+    "overview": "O teste du mode sombre verifica la détection automatique du thème du système et la lisibilité des éléments graphiques sur fond sombre.",
     "whatToLookFor": [
-        {
-            "label": "Sincronização com o SO",
-            "description": "Verifica se o navegador responde às preferências de tema do sistema operacional."
-        },
-        {
-            "label": "Suporte a CSS color-scheme",
-            "description": "Testa barras de rolagem e campos de formulário nativos no modo escuro."
-        },
-        {
-            "label": "Contraste de componentes",
-            "description": "Avalia a legibilidade de textos, botões e cartões em ambos os modos."
-        },
-        {
-            "label": "Preto puro para OLED",
-            "description": "Avalia o uso de #000000 para economia energética em telas OLED."
-        }
+      {
+        "label": "Détection du thème système",
+        "description": "Vérifiez si l'application s'adapte instantanément au mode sombre de votre système."
+      },
+      {
+        "label": "Contraste du texte",
+        "description": "Assurez-vous que les textes restent parfaitement lisibles sans fatigue oculaire."
+      }
     ],
     "canObserve": [
-        "Detecção de prefers-color-scheme via matchMedia em tempo real",
-        "Suporte a controles de formulário nativos no modo escuro",
-        "Alternância interativa entre Sistema, Claro e Escuro",
-        "Legibilidade tipográfica em superfícies claras e escuras"
+      "Prise en charge de la requête CSS prefers-color-scheme",
+      "Rendu des thèmes clair et sombre"
     ],
     "cannotMeasure": [
-        "Economia elétrica real em miliamperes sem equipamento de bancada",
-        "Adaptação à luz ambiente sem sensor integrado",
-        "Filtros de luz azul do sistema operacional"
+      "Économie énergétique exacte sur dalle LCD à rétroéclairage global"
     ],
-    "interpretation": "Telas OLED desligam subpixels em áreas pretas puras, economizando bateria e reduzindo o estresse ocular em ambientes com pouca luz.",
+    "interpretation": "Sur les écrans OLED, le mode sombre réduit drastiquement la consommation électrique des pixels noirs éteints.",
     "nextSteps": {
-        "text": "Meça a iluminação do ambiente para regular o brilho ideal da tela.",
-        "actionLabel": "Testar sensor de luz ambiente",
-        "actionHref": "/tests/ambient-light-test"
+      "text": "Calculez le risque de brûlure OLED",
+      "actionLabel": "Calculateur de brûlure OLED",
+      "actionHref": "/tools/oled-burn-in-calculator"
     }
-},
-
+  },
   "input-lag-test": {
-    "overview": "O visualizador de latência de entrada realiza um benchmark estatístico de 10 tentativas medindo o atraso entre o sinal visual e o clique do mouse, com cálculo de média, desvio padrão e histograma.",
+    "overview": "El visualizador de retraso de entrada proporciona un punto de referencia estadístico de reacción de 10 testes e latencia de canalización. Mide el delta entre un estímulo visual aleatorio e el registro do clic do mouse ou la actuación do teclado, gráficando el promedio, la desviación estándar e un histograma de distribución de respuesta.",
     "whatToLookFor": [
-        {
-            "label": "Tempo de reação visual",
-            "description": "Mede os milissegundos decorridos entre a mudança para verde e o clique."
-        },
-        {
-            "label": "Consistência estatística",
-            "description": "Desvio padrão baixo (< 25 ms) reflete estabilidade de hardware e reflexos."
-        },
-        {
-            "label": "Detecção de largada falsa",
-            "description": "Registra e descarta cliques prematuros na fase vermelha."
-        },
-        {
-            "label": "Histograma de distribuição",
-            "description": "Exibe a concentração dos tempos de reação obtidos."
-        }
+      {
+        "label": "Tiempo de reacción do estímulo visual",
+        "description": "Mide los milisegundos transcurridos desde el cuadro exacto do cambio de cor hasta el clic do puntero."
+      },
+      {
+        "label": "Consistencia estadística (Std Dev)",
+        "description": "Una desviación estándar baja (< 25 ms) indica una sincronización de canalización de hardware e percepción consistente."
+      },
+      {
+        "label": "Picos atípicos e comienzos en falso",
+        "description": "Detecta clics preventivos realizados antes de que aparezca el disparador visual verde."
+      },
+      {
+        "label": "Histograma de distribución",
+        "description": "Visualiza la agrupación de latencia para distinguir la reacción biológica de los retrasos nas colas do sistema."
+      }
     ],
     "canObserve": [
-        "Registros de alta precisão via performance.now()",
-        "Métricas estatísticas: média, melhor, pior tempo e desvio padrão em 10 testes",
-        "Máquina de estados contra cliques antecipados",
-        "Histograma de distribuição de faixas de latência"
+      "Marcas de tiempo de milisegundos de alta resoluçãou a través de performance.now() desde la representación do estímulo hasta el envíou do evento",
+      "Métricas estadísticas: promedio, mejor (más rápido), peor (más lento) e desviación estándar en 10 ensayos",
+      "Máquina de estado visual en tiempo real que evita clics falsos",
+      "Histograma de tiempo de respuesta que asigna depósitos de latencia"
     ],
     "cannotMeasure": [
-        "Latência clique-para-fóton com sensor óptico externo (como LDAT)",
-        "Taxa de polling USB isolada das interrupções do sistema operacional",
-        "Tempo de resposta físico dos cristais líquidos"
+      "Latencia de clic a fotón de fotodiodo óptico aislado sin sondas de hardware externas (por ejemplo, LDAT)",
+      "Microintervalos de sondeo USB internos separados da programación de interrupciones do sistema operativo",
+      "Tiempo de respuesta de sobremarcha do monitor físico"
     ],
-    "interpretation": "Valores entre 180 ms e 240 ms são comuns em monitores rápidos. Acima de 300 ms, recomenda-se ativar o Modo Jogo no monitor.",
+    "interpretation": "Una reacción humana combinada más una puntuación de canal de visualización de 180 ms a 240 ms es típica para configuraciones de juegos de alta actualización. Las puntuaciones superiores a 300 ms sugieren un retraso en el posprocesamiento da visualización (modo de juego desactivado) ou una mayor latencia de entrada.",
     "nextSteps": {
-        "text": "Verifique a taxa de atualização real do seu monitor.",
-        "actionLabel": "Testar taxa de atualização",
-        "actionHref": "/tests/refresh-rate-test"
+      "text": "Verifique la frecuencia de actualización do hardware real de su tela e el ritmo de entrega de quadros.",
+      "actionLabel": "Iniciar teste de frecuencia de actualización",
+      "actionHref": "/tests/refresh-rate-test"
     }
-},
-
+  },
   "ambient-light-test": {
-    "overview": "O teste do sensor de luz ambiente lê valores de iluminância em lux (lx) usando a API AmbientLightSensor e recomenda níveis ergonômicos de brilho da tela.",
+    "overview": "El inspector do sensor de luz ambiental lee los niveles de iluminancia en lux (lx) utilizando la API AmbientLightSensor. Evalúa las condiciones de iluminación da habitación, proporciona recomendaciones ergonómicas de brilho da tela e representa gráficamente las fluctuaciones da luz a lo largo do tiempo.",
     "whatToLookFor": [
-        {
-            "label": "Iluminância em lux em tempo real",
-            "description": "Mede a luz do ambiente captada pelo sensor do dispositivo."
-        },
-        {
-            "label": "Recomendação ergonômica de brilho",
-            "description": "Indica o ajuste ideal de brilho para a iluminação da sala."
-        },
-        {
-            "label": "Aviso de reflexos",
-            "description": "Alerta para iluminação excessiva (> 1000 lx) que causa ofuscamento."
-        },
-        {
-            "label": "Estabilidade da luz",
-            "description": "Monitora variações de luz natural ou lâmpadas oscilantes."
-        }
+      {
+        "label": "Iluminancia Lux en tiempo real",
+        "description": "Supervisa la intensidad da luz ambiental en lux capturada por fotodetectores de dispositivos integrados."
+      },
+      {
+        "label": "Consejos de brilho ergonómico",
+        "description": "Recomienda niveles óptimos do control deslizante de nit/brilho do monitor para las condiciones actuales de su habitación."
+      },
+      {
+        "label": "Advertencia de riesgo de deslumbramiento",
+        "description": "Identifica si una iluminación ambiental intensa (> 1000 lx) requiere sombreado antideslumbrante ou brilho máximo."
+      },
+      {
+        "label": "Estabilidad da iluminación ambiental",
+        "description": "Realiza un seguimiento de los cambios de iluminación da habitación a lo largo do tiempo para identificar bombillas parpadeantes ou cambios de luz natural."
+      }
     ],
     "canObserve": [
-        "Valores de iluminância em lux fornecidos pelo sensor físico",
-        "Classificação do ambiente (escuro, moderado, escritório, ensolarado)",
-        "Porcentagem de brilho sugerida com base em normas ergonômicas",
-        "Gráfico do histórico de luminosidade durante a sessão"
+      "Valores de iluminancia ambiental en tiempo real en lux de fotodetectores de hardware",
+      "Categorización de zonas de iluminación (Totalmente oscuro, Habitación tenue, Oficina, Interiores luminosos, Luz natural)",
+      "Porcentaje de brilho de tela recomendado según las pautas de ergonomía ISO",
+      "Gráfico histórico de niveles de luz durante la sesión activa."
     ],
     "cannotMeasure": [
-        "Medições em navegadores sem suporte à Generic Sensor API",
-        "Temperatura de cor (Kelvin) ou índice IRC das lâmpadas",
-        "Ângulos de reflexo direto na superfície da tela"
+      "Lecturas de luz ambiental en navegadores ou sistemas operativos que carecen de compatibilidad con API de sensor genérico",
+      "Temperatura de cor (Kelvin) ou clasificación CRI da iluminación da habitación sin un sensor ambiental RGB",
+      "Ángulos do vector de deslumbramiento direccional que inciden en la superficie do panel"
     ],
-    "interpretation": "Ambientes de trabalho confortáveis devem ficar entre 300 e 500 lx com tela ajustada entre 120 e 150 nits. Ambientes escuros (< 50 lx) exigem brilho baixo.",
+    "interpretation": "Para una lectura cómoda sin fatiga visual, un entorno de oficina debe oscilar entre 300 lux e 500 lux com ou brilho da tela configurado en aproximadamente 120-150 nits. Los valores inferiores a 50 lx requieren reducir el brilho da tela para minimizar la fatiga.",
     "nextSteps": {
-        "text": "Calibre o brilho e os pontos de preto do seu monitor.",
-        "actionLabel": "Testar brilho",
-        "actionHref": "/tests/brightness-test"
+      "text": "Calibre el brilho da tela e el umbral do nivel de preto.",
+      "actionLabel": "Iniciar teste de brilho",
+      "actionHref": "/tests/brightness-test"
     }
-},
-
+  },
   "dpi-calculator": {
-    "overview": "A calculadora de DPI e PPI calcula densidade de pixels, espaçamento entre pontos (dot pitch), megapixels totais e distância limite Retina a partir do tamanho diagonal e resolução.",
+    "overview": "A calculadora de DPI et PPI détermine la densité physique de pixels de votre écran selon sa diagonale et sa résolution native.",
     "whatToLookFor": [
-        {
-            "label": "Pixels por polegada (PPI)",
-            "description": "Mede a concentração de pixels na diagonal da tela."
-        },
-        {
-            "label": "Espaçamento de pontos (Dot Pitch)",
-            "description": "Calcula a distância física entre centros de subpixels em milímetros."
-        },
-        {
-            "label": "Distância de visualização Retina",
-            "description": "Indica a distância em que o olho humano não distingue pixels individuais (60 PPD)."
-        },
-        {
-            "label": "Proporção e megapixels",
-            "description": "Calcula a área total do painel, proporção e número de pixels."
-        }
+      {
+        "label": "Densité de pixels (PPI)",
+        "description": "Une densité supérieure à 110 PPI pour un moniteur garantit des polices lisses et nettes."
+      },
+      {
+        "label": "Distance optimale de vision",
+        "description": "Consultez la distance recommandée pour que les pixels deviennent indiscernables."
+      }
     ],
     "canObserve": [
-        "PPI calculado, espaçamento de pontos em mm e total de megapixels",
-        "Distâncias ergonômicas e limite Retina em centímetros e polegadas",
-        "Predefinições para monitores comuns (24\" 1080p, 27\" 1440p, 32\" 4K)",
-        "Controles interativos para diagonal e resolução"
+      "Calcul précis du pas de masque (pitch) et du PPI",
+      "Recommandation d'échelle d'affichage"
     ],
     "cannotMeasure": [
-        "Medidas físicas das bordas externas sem inserção do usuário",
-        "Perda de nitidez por revestimentos foscos antirreflexo",
-        "Distorção anamórfica sem dimensões exatas"
+      "Diagonale sans saisie manuelle de l'utilisateur"
     ],
-    "interpretation": "Densidades acima de 110 PPI proporcionam excelente clareza de texto, enquanto acima de 220 PPI alcançam fidelidade Retina à distância normal de mesa (50 a 60 cm).",
+    "interpretation": "Une densité de pixels élevée améliore considérablement le confort de lecture et la netteté des détails.",
     "nextSteps": {
-        "text": "Teste a nitidez tipográfica e a renderização de subpixels.",
-        "actionLabel": "Testar clareza de texto",
-        "actionHref": "/tests/text-clarity-test"
+      "text": "Vérifiez la clarté du texte",
+      "actionLabel": "Test de clarté du texte",
+      "actionHref": "/tests/text-clarity-test"
     }
-},
-
+  },
   "subpixel-layout-test": {
-    "overview": "Subpixel layout testing analyzes the microscopic physical geometry of red, green, and blue emitter strips within each pixel. Variations between standard RGB, inverted BGR, triangular QD-OLED, and WOLED layouts directly determine whether operating system text antialiasing (such as Windows ClearType) appears crisp or suffers from magenta/green color halos.",
+    "overview": "Las testes de diseñou de subpixels analizan la geometría física microscópica de las tiras emisoras rojas, verdes e azules dentro de cada píxel. Las variaciones entre los diseños RGB estándar, BGR invertido, QD-OLED triangular e WOLED determinan directamente si el antialiasing de texto do sistema operativo (como Windows ClearType) aparece nítido ou presenta halos de cor magenta/verde.",
     "whatToLookFor": [
-        {
-            "label": "Subpixel Geometry Structure",
-            "description": "Identifies whether your panel uses standard RGB vertical stripes, BGR stripes, or non-standard triangular subpixels."
-        },
-        {
-            "label": "High-Contrast Text Fringing",
-            "description": "Inspects black-on-white and white-on-black text for colored halos (green on top, magenta below)."
-        },
-        {
-            "label": "1px Grid Alignment",
-            "description": "Verifies whether 1-pixel alternating lines render as completely neutral grey without color artifacts."
-        },
-        {
-            "label": "ClearType Antialiasing Calibration",
-            "description": "Evaluates whether running Windows cttune or font smoothing eliminates edge discoloration."
-        }
+      {
+        "label": "Estructura de geometría de subpixels",
+        "description": "Identifica si su panel utiliza franjas verticales RGB estándar, franjas BGR ou subpixels triangulares no estándar."
+      },
+      {
+        "label": "Bordes de texto de alto contraste",
+        "description": "Inspecciona el texto preto sobre branco e branco sobre preto en busca de halos de cores (verde arriba, magenta abajo)."
+      },
+      {
+        "label": "Alineación de cuadrícula de 1px",
+        "description": "Verifica si las líneas alternas de 1 píxel se representan como un cinza completamente neutro sin artefactos de cor."
+      },
+      {
+        "label": "Calibración de antialiasing ClearType",
+        "description": "Evalúa si la ejecución de Windows cttune ou el suavizado de fuentes elimina la decoloración de los bordes."
+      }
     ],
     "canObserve": [
-        "Color fringing artifacts rendered across high-contrast serif, sans-serif, and monospace fonts",
-        "Subpixel alignment against calibrated 1-pixel alternating vertical and horizontal line gratings",
-        "Visual simulation of subpixel emission structures across 6 major panel architectures"
+      "Artefactos de franjas de cor representados en fuentes serif, sans-serif e monoespaciadas de alto contraste",
+      "Alineación de subpixels contra rejillas de líneas verticales e horizontales alternas de 1 píxel calibradas",
+      "Simulación visual de estructuras de emisión de subpixels en 6 arquitecturas de paneles principales"
     ],
     "cannotMeasure": [
-        "Physical microscope optical verification of sub-millimeter silicon emitter geometry",
-        "Direct registry settings of the host operating system's font rasterizer",
-        "Hardware scaler subpixel interpolation inside external video capture cards"
+      "Verificación óptica con microscopio físico da geometría do emisor de silicio submilimétrico",
+      "configuraçãou de registro directo do rasterizador de fuentes do sistema operativo host",
+      "Interpolación de subpixels do escalador de hardware dentro de tarjetas de captura de video externas"
     ],
-    "interpretation": "If text shows faint green or magenta borders on a 1440p or 4K screen, your display likely features a BGR or QD-OLED subpixel layout. Running the Windows ClearType Tuner or switching to grayscale antialiasing will resolve the fringing.",
+    "interpretation": "Si el texto muestra bordes verdes ou magenta tenues en una tela de 1440p ou 4K, es probable que su tela tenga un diseñou de subpixels BGR ou QD-OLED. Ejecutar Windows ClearType Tuner ou cambiar a antialiasing en escala de tons de cinza resolverá los bordes.",
     "nextSteps": {
-        "text": "Want to inspect overall display sharpness and resolution scaling?",
-        "actionLabel": "Launch Text Clarity Test",
-        "actionHref": "/tests/text-clarity-test"
+      "text": "¿Quiere inspeccionar la nitidez general da tela e la escala de resoluçãou?",
+      "actionLabel": "Iniciar teste de claridad de texto",
+      "actionHref": "/tests/text-clarity-test"
     }
-},
-
+  },
   "pwm-flicker-test": {
-    "overview": "Pulse-Width Modulation (PWM) is a dimming technique used by certain LCD backlights and OLED panels that rapidly strobes the light source on and off to achieve lower brightness. While invisible to the naked eye at high frequencies, low-frequency PWM (120Hz–480Hz) causes severe eye strain, dry eyes, headaches, and migraines.",
+    "overview": "La modulación de ancho de pulso (PWM) es una técnica de atenuación utilizada por ciertas luces de fondo LCD e paneles OLED que enciende e apaga rápidamente la fuente de luz para lograr un brilho más bajo. Si bien es invisible a simple vista en altas frecuencias, el PWM de baja frecuencia (120 Hz a 480 Hz) provoca fatiga visual intensa, ojos secos, dolores de cabeza e migrañas.",
     "whatToLookFor": [
-        {
-            "label": "Stroboscopic Phantom Beads",
-            "description": "Moving your eyes or waving an object in front of the screen breaks moving lines into distinct phantom beads if PWM is present."
-        },
-        {
-            "label": "Smartphone Shutter Scanlines",
-            "description": "Using a phone camera at 1/1000s or faster reveals dark scrolling horizontal bands caused by duty-cycle modulation."
-        },
-        {
-            "label": "Flicker-Free Brightness Threshold",
-            "description": "Identifies at what monitor OSD brightness percentage the display switches from DC dimming to PWM."
-        },
-        {
-            "label": "Duty Cycle Luminescence",
-            "description": "Measures the optical ratio between ON duration and OFF duration during each dimming cycle."
-        }
+      {
+        "label": "Perlas fantasma estroboscópicas",
+        "description": "Mover los ojos ou agitar un objeto frente a la tela rompe las líneas en movimento en distintas cuentas fantasmas si hay PWM presente."
+      },
+      {
+        "label": "Líneas de escaneo do obturador do teléfono inteligente",
+        "description": "El uso da cámara de un teléfono a 1/1000 ou más rápido revela bandas horizontales de desplazamiento oscuro causadas por la modulación do ciclo de trabajo."
+      },
+      {
+        "label": "Umbral de brilho sin parpadeos",
+        "description": "Identifica en qué porcentaje de brilho OSD do monitor la tela cambia de atenuación de CC a PWM."
+      },
+      {
+        "label": "Luminiscencia do ciclo de trabajo",
+        "description": "Mide la relación óptica entre la duración de ENCENDIDO e la duración de APAGADO durante cada ciclo de atenuación."
+      }
     ],
     "canObserve": [
-        "Visual stroboscopic interference patterns generated by high-velocity scrolling gratings",
-        "Optical interaction between user saccadic eye movements and panel refresh cycles",
-        "Guidelines for smartphone camera verification of PWM frequency"
+      "Patrones de interferencia estroboscópica visual generados por rejillas de desplazamiento de alta velocidad",
+      "Interacción óptica entre los movimentos oculares sacádicos do usuario e los ciclos de actualización do panel.",
+      "Directrices para la verificación da frecuencia PWM da cámara de un teléfono inteligente"
     ],
     "cannotMeasure": [
-        "Exact physical pulse frequency in Hertz without an external photodiode oscilloscope probe",
-        "Harmonic distortion index of the LED driver circuit",
-        "Micro-voltage ripple on the backlight power rail"
+      "Frecuencia de pulso físico exacta en Hertz sin una sonda de osciloscopio de fotodiodo externo",
+      "Índice de distorsión armónica do circuito controlador LED.",
+      "Ondulación de microvoltaje en el riel de alimentación de retroiluminación"
     ],
-    "interpretation": "Displays certified as 'Flicker-Free' or 'TÜV Eye Comfort' utilize continuous Direct Current (DC) dimming down to 0% brightness. If you see beaded ghosting trails, your panel uses PWM dimming at low brightness settings.",
+    "interpretation": "Las telas certificadas como \"sin cintilação\" ou \"TÜV Eye Comfort\" utilizan corriente directa (CC) continua para atenuar el brilho hasta un 0 %. Si ve rastros de cuentas fantasma, su panel utiliza atenuación PWM en configuraciones de brilho bajo.",
     "nextSteps": {
-        "text": "Want to test for high-frequency VRR luminance fluctuations?",
-        "actionLabel": "Launch VRR Flicker Test",
-        "actionHref": "/tests/vrr-flicker-test"
+      "text": "¿Quiere probar las fluctuaciones de luminancia VRR de alta frecuencia?",
+      "actionLabel": "Inicie la teste de cintilação VRR",
+      "actionHref": "/tests/vrr-flicker-test"
     }
-},
-
+  },
   "dead-pixel-mapper": {
-    "overview": "The Dead Pixel RMA Coordinate Mapper is an interactive inspection tool designed for documenting defective panel pixels. It allows buyers to pinpoint defective pixel coordinates, classify defects by type, calculate ISO 9241-307 warranty eligibility, and export formal RMA inspection logs for manufacturer replacement claims.",
+    "overview": "Dead Pixel RMA Coordinate Mapper es una herramienta de inspección interactiva diseñada para documentar píxeles de paneles defectuosos. Permite a los compradores identificar las coordenadas de los píxeles defectuosos, clasificar los defectos por tipo, calcular la elegibilidad da garantía ISO 9241-307 e exportar registros formales de inspección RMA para reclamos de reemplazo do fabricante.",
     "whatToLookFor": [
-        {
-            "label": "Dead (Dark) Pixels",
-            "description": "Permanently unpowered subpixel triads that remain pitch black against white, cyan, and yellow screens."
-        },
-        {
-            "label": "Stuck (Bright) Subpixels",
-            "description": "Subpixels locked in an open state, glowing red, green, blue, or white against pure black backgrounds."
-        },
-        {
-            "label": "Defect Coordinates (X, Y)",
-            "description": "Precise pixel address from the top-left origin to prove defect location to service technicians."
-        },
-        {
-            "label": "ISO 9241-307 Class Thresholds",
-            "description": "Automatic comparison against Class 1 (Zero-Defect) and Class 2 (Consumer Allowance) replacement limits."
-        }
+      {
+        "label": "Píxeles muertos (oscuros)",
+        "description": "Tríadas de subpixels permanentemente desconectadas que permanecen completamente negras contra telas blancas, cian e amarillas."
+      },
+      {
+        "label": "subpixels atascados (brillantes)",
+        "description": "subpixels bloqueados en un estado abierto, brillando en rojo, verde, azul ou branco sobre fondos negros puros."
+      },
+      {
+        "label": "Coordenadas do defecto (X, Y)",
+        "description": "Dirección de píxel precisa desde el origen superior izquierdo para demostrar la ubicación do defecto a los técnicos de servicio."
+      },
+      {
+        "label": "Umbrales de clase ISO 9241-307",
+        "description": "Comparación automática con los límites de reemplazo de Clase 1 (Cero defectos) e Clase 2 (Asignación al consumidor)."
+      }
     ],
     "canObserve": [
-        "Exact screen coordinates (X, Y) of logged defective points across 9 solid test backgrounds",
-        "Calculation of central zone vs. peripheral zone defect clustering",
-        "ISO 9241-307 Class 1 and Class 2 warranty return compliance"
+      "Coordenadas de tela exactas (X, Y) de los puntos defectuosos registrados en 9 fondos de teste sólidos",
+      "Cálculo da agrupación de defectos da zona central versus la zona periférica",
+      "Cumplimiento de devolución de garantía ISO 9241-307 Clase 1 e Clase 2"
     ],
     "cannotMeasure": [
-        "Automatic algorithmic defect detection without manual user visual inspection",
-        "Sub-surface glass dust vs. true TFT transistor failure without optical magnification",
-        "Internal electrical continuity of the panel driver IC"
+      "Detección algorítmica automática de defectos sin inspección visual manual do usuario",
+      "Polvo de vidrio subterráneo versus falla real do transistor TFT sin aumento óptico",
+      "Continuidad eléctrica interna do IC do controlador do panel"
     ],
-    "interpretation": "Most major monitor manufacturers (Dell, LG, ASUS, Samsung) adhere to ISO 9241-307 Class 2, which allows up to 2 full dead pixels or 5 stuck subpixels per million. Premium gaming and professional displays often feature Zero Bright Dot (Class 1) coverage.",
+    "interpretation": "La mayoría de los principales fabricantes de monitores (Dell, LG, ASUS, Samsung) cumplen com a norma ISO 9241-307 Clase 2, que permite hasta 2 píxeles muertos completos ou 5 subpixels atascados por millón. Las telas profesionales e de juegos premium a menudo cuentan con cobertura Zero Bright Dot (Clase 1).",
     "nextSteps": {
-        "text": "Have stuck subpixels that remain lit? Try reviving them with our high-speed exerciser.",
-        "actionLabel": "Launch Stuck Pixel Fixer",
-        "actionHref": "/tests/stuck-pixel-fixer"
+      "text": "¿Se han atascado subpixels que permanecen encendidos? Intente revivirlos con nuestro ejercitador de alta velocidad.",
+      "actionLabel": "Inicie el reparador de píxeles atascados",
+      "actionHref": "/tests/stuck-pixel-fixer"
     }
-},
-
+  },
   "gtg-response-time-test": {
-    "overview": "Grey-to-Grey (GtG) response time measures the time required for a liquid crystal pixel to transition from one arbitrary intermediate grey level to another. While manufacturers advertise 1ms or 0.5ms GtG, real-world transitions vary significantly, and aggressive overdrive settings often cause severe inverse ghosting (overshoot).",
+    "overview": "El tiempo de respuesta de cinza a cinza (GtG) mide el tiempo necesario para que un píxel de cristal líquido pase de un nivel de cinza intermedio arbitrario a otro. Si bien los fabricantes anuncian GtG de 1 ms ou 0,5 ms, las transiciones en el mundo real varían significativamente e las configuraciones de overdrive agresivas a menudo causan un efecto fantasma inverso severo (sobreimpulso).",
     "whatToLookFor": [
-        {
-            "label": "VA Panel Black Smearing",
-            "description": "Inspects transitions from 0% pure black to 20% dark grey, where VA liquid crystals are slowest."
-        },
-        {
-            "label": "Overdrive Overshoot (Coronas)",
-            "description": "Checks for bright white or dark inverted halos trailing moving objects caused by excessive overdrive voltage."
-        },
-        {
-            "label": "Leading vs Trailing Blur",
-            "description": "Compares rise time (dark to light) against fall time (light to dark) across high-speed moving targets."
-        },
-        {
-            "label": "Overdrive Mode Balancing",
-            "description": "Guides selection of the optimal OSD overdrive tier (Off, Normal, Fast, Extreme)."
-        }
+      {
+        "label": "Manchas negras do panel VA",
+        "description": "Inspecciona las transiciones de 0 % de preto puro a 20 % de cinza oscuro, donde los cristales líquidos VA son más lentos."
+      },
+      {
+        "label": "Sobremarcha Sobreimpulso (Coronas)",
+        "description": "Comprueba si hay halos invertidos de cor branco brillante u oscuros detrás de objetos en movimento causados ​​por un voltaje de sobremarcha excesivo."
+      },
+      {
+        "label": "Desenfoque inicial vs final",
+        "description": "Compara el tiempo de subida (de oscuro a claro) com ou tiempo de caída (de claro a oscuro) en objetivos en movimento a alta velocidad."
+      },
+      {
+        "label": "Equilibrio do modo Overdrive",
+        "description": "Guía la selección do nivel de sobremarcha OSD óptimo (Apagado, Normal, Rápido, Extremo)."
+      }
     ],
     "canObserve": [
-        "Visual ghosting trails across customizable start and end grey luminance values",
-        "Simulation of overdrive corona overshoot across standard liquid crystal overdrive tiers",
-        "Edge sharpness and clarity of moving objects across calibrated velocity levels"
+      "Senderos visuales fantasma a través de valores de luminancia de tons de cinza iniciales e finales personalizables",
+      "Simulación de sobreimpulso de corona de sobremarcha en niveles de sobremarcha de cristal líquido estándar",
+      "nitidez e claridad de los bordes de objetos en movimento a través de niveles de velocidad calibrados"
     ],
     "cannotMeasure": [
-        "Sub-millisecond photodiode oscilloscope transition curves (10% to 90% rise time)",
-        "Internal overdrive voltage table lookup values inside the monitor scaler ASIC",
-        "Temperature-dependent liquid crystal viscosity changes"
+      "Curvas de transición de osciloscopio de fotodiodo de submilisegundos (tiempo de subida do 10% al 90%)",
+      "Valores de búsqueda da tabla de voltaje de sobremarcha interna dentro do escalador de monitor ASIC",
+      "Cambios en la viscosidad do cristal líquido que dependen da temperatura"
     ],
-    "interpretation": "If moving objects show a bright halo or inverse silhouette, your monitor's OSD Overdrive is set too high ('Extreme'). Dialing back to 'Fast' or 'Normal' will deliver cleaner motion clarity without corona artifacts.",
+    "interpretation": "Si los objetos en movimento muestran un halo brillante ou una silueta inversa, el OSD Overdrive de su monitor está configurado demasiado alto (\"Extremo\"). Volver a marcar a 'Rápido' ou 'Normal' brindará una claridad de movimento más limpia sin artefactos de corona.",
     "nextSteps": {
-        "text": "Want to benchmark moving UFO sharpness and persistence blur?",
-        "actionLabel": "Launch Ghosting Test",
-        "actionHref": "/tests/ghosting-test"
+      "text": "¿Quieres comparar la nitidez de los OVNIs en movimento e el desenfoque persistente?",
+      "actionLabel": "Lanzar teste de imagen fantasma",
+      "actionHref": "/tests/ghosting-test"
     }
-},
-
+  },
   "oled-burn-in-calculator": {
-    "overview": "The OLED Burn-in Risk & Longevity Calculator models organic light-emitting diode subpixel degradation based on panel technology generation, daily operating hours, static interface content ratios, and typical SDR/HDR luminance levels. It provides an actuarial forecast of panel lifespan and static HUD hazard hotspots.",
+    "overview": "A calculadora de rémanence OLED avalia le risque de marquage permanent en fonction de vos habitudes d'utilisation quotidienne et de la luminosité.",
     "whatToLookFor": [
-        {
-            "label": "Panel Generation Resilience",
-            "description": "Accounts for differences between first-gen QD-OLED, modern Gen 3 QD-OLED, and WOLED MLA micro-lens arrays."
-        },
-        {
-            "label": "Static Content Ratio",
-            "description": "Calculates cumulative static stress from Windows taskbars, browser headers, and gaming HUDs."
-        },
-        {
-            "label": "Luminance Stress Multiplier",
-            "description": "Models the exponential acceleration of organic material aging at high sustained nits."
-        },
-        {
-            "label": "Mitigation Habits Impact",
-            "description": "Evaluates the protective value of pixel shift, auto-hide taskbar, logo dimmers, and screen timeouts."
-        }
+      {
+        "label": "Score de risque d'usure",
+        "description": "Consultez votre niveau de risque calculé selon vos heures d'éléments statiques (barre des tâches, logos)."
+      },
+      {
+        "label": "Conseils de prévention",
+        "description": "Appliquez les réglages recommandés pour prolonger la durée de vie de votre dalle OLED."
+      }
     ],
     "canObserve": [
-        "Actuarial estimation of cumulative static hours before uneven subpixel aging occurs",
-        "Projected burn-in probability percentages across 1-year, 3-year, and 5-year ownership horizons",
-        "Hazard heatmap visualization of high-risk static interface regions"
+      "Modélisation statistique de la dégradation des sous-pixels",
+      "Recommandations d'entretien du panneau"
     ],
     "cannotMeasure": [
-        "Real-time physical subpixel voltage degradation on your specific physical panel",
-        "Ambient room operating temperature and chassis heatsink thermal dissipation efficiency",
-        "Internal factory compensation cycle log data stored in panel EEPROM"
+      "État chimique microscopique actuel des composés organiques du panneau"
     ],
-    "interpretation": "Modern OLED monitors with active pixel shift, thermal heatsinks, and auto-hide taskbars typically achieve 5+ years of daily mixed productivity and gaming without visible retention. High sustained SDR brightness on static white backgrounds accelerates aging.",
+    "interpretation": "Activer le masquage automatique de la barre des tâches et limiter la luminosité réduit fortement les risques de marquage.",
     "nextSteps": {
-        "text": "Want to inspect your current panel for existing static image retention?",
-        "actionLabel": "Launch Burn-In Test",
-        "actionHref": "/tests/burn-in-test"
+      "text": "Vérifiez la présence de marquage",
+      "actionLabel": "Test de brûlure d'écran",
+      "actionHref": "/tests/burn-in-test"
     }
-},
-
+  },
   "mouse-polling-test": {
-    "overview": "The Mouse Polling Rate & Sensor Precision test captures USB hardware event timestamps via high-precision browser timers. It measures real-time and peak polling frequency in Hertz (up to 8000Hz), checks packet interval stability (jitter), tests button actuation, and diagnoses mechanical switch double-click bouncing.",
+    "overview": "O teste de fréquence de souris mede le taux d'interrogation (Hz) et la régularité des rapports de position de votre souris ou périphérique de pointage.",
     "whatToLookFor": [
-        {
-            "label": "Real-Time Polling Rate (Hz)",
-            "description": "Measures actual USB event report frequency (125Hz, 500Hz, 1000Hz, 4000Hz, 8000Hz)."
-        },
-        {
-            "label": "Interval Jitter & Stability",
-            "description": "Checks consistency of delta times between movement packets (e.g. 1.0ms for 1000Hz, 0.25ms for 4000Hz)."
-        },
-        {
-            "label": "Mechanical Double-Click Chatter",
-            "description": "Detects switch bounce intervals under 60ms indicating worn mechanical microswitches."
-        },
-        {
-            "label": "DPI Sensor Calibration",
-            "description": "Verifies physical drag distance in inches against registered screen pixel movement."
-        }
+      {
+        "label": "Fréquence maximale (Hz)",
+        "description": "Déplacez rapidement la souris en cercles pour vérifier si elle atteint 500 Hz, 1000 Hz ou plus."
+      },
+      {
+        "label": "Régularité des intervalles",
+        "description": "Vérifiez l'absence de chutes brutales de fréquence pouvant provoquer des micro-saccades."
+      }
     ],
     "canObserve": [
-        "USB mouse movement event frequency reported via performance.now() high-resolution timestamps",
-        "Peak, average, and real-time polling rates across continuous motion sessions",
-        "Multi-button click actuation counts and millisecond inter-click intervals"
+      "Taux d'échantillonnage en temps réel (Hz)",
+      "Intervalle moyen entre les rapports en millisecondes"
     ],
     "cannotMeasure": [
-        "Hardware USB bus polling rate when the mouse is stationary (optical sensors only report on movement)",
-        "Sensor lift-off distance (LOD) in physical millimeters",
-        "Direct MCU firmware polling rate when browser event loops are throttled by heavy background tasks"
+      "Accélération matérielle interne du capteur optique"
     ],
-    "interpretation": "A gaming mouse set to 1000Hz should sustain 950Hz–1000Hz during rapid movement with ~1.0ms interval deltas. If click intervals under 50ms register from single physical depressions, your mouse switch suffers from contact chatter.",
+    "interpretation": "Un taux stable de 1000 Hz offre une précision maximale et s'harmonise parfaitement avec les écrans à haut rafraîchissement.",
     "nextSteps": {
-        "text": "Want to test your visual reaction speed and click latency?",
-        "actionLabel": "Launch Reaction Time Test",
-        "actionHref": "/tests/reaction-time-test"
+      "text": "Mesurez votre temps de réaction",
+      "actionLabel": "Test du temps de réaction",
+      "actionHref": "/tests/reaction-time-test"
     }
-},
-
+  },
   "gpu-benchmark-test": {
-    "overview": "The GPU WebGL 3D Stress & Performance Benchmark renders complex real-time 3D particle systems and rotating geometries directly in your browser. It measures sustained frame rate, 1% low FPS, frame time variance, and hardware capabilities to identify GPU bottlenecks and thermal throttling under load.",
+    "overview": "O benchmark graphique WebGL avalia les performances de rendu 3D de votre carte graphique et la stabilité du débit d'images sous charge.",
     "whatToLookFor": [
-        {
-            "label": "Sustained FPS vs Display Hz",
-            "description": "Evaluates whether your GPU can consistently match your monitor's native refresh rate."
-        },
-        {
-            "label": "1% Low FPS Stutter",
-            "description": "Tracks the bottom 1% of frame times to detect micro-stutters and background asset hitches."
-        },
-        {
-            "label": "Frame Time Variance (ms)",
-            "description": "Monitors frame pacing consistency (16.6ms for 60Hz, 6.9ms for 144Hz, 4.1ms for 240Hz)."
-        },
-        {
-            "label": "Thermal Throttling Drop",
-            "description": "Identifies whether frame rates degrade over the course of a 30-second sustained benchmark."
-        }
+      {
+        "label": "Cadence moyenne (FPS)",
+        "description": "Observez le nombre d'images par seconde pendant le rendu des scènes 3D complexes."
+      },
+      {
+        "label": "Stabilité du frametime",
+        "description": "Vérifiez que le graphe de fluidité ne présente pas de pics de ralentissement."
+      }
     ],
     "canObserve": [
-        "Client-side WebGL 3D rendering throughput across 10,000 to 200,000 active particles",
-        "Real-time frame rate, average FPS, 1% low frame rates, and millisecond frame pacing",
-        "Detected WebGL graphics renderer string, GPU vendor, and maximum texture dimensions"
+      "Fréquence d'images moyenne et minimale",
+      "Rendu graphique via WebGL 2.0",
+      "Stabilité sous charge"
     ],
     "cannotMeasure": [
-        "Physical GPU core temperature (°C) or fan RPM without native operating system telemetry utilities",
-        "GPU board power draw in Watts (TDP)",
-        "VRAM memory clock frequency or memory junction temperatures"
+      "Température physique de la puce GPU sans utilitaire système dédié"
     ],
-    "interpretation": "High average FPS with low 1% low FPS indicates frame pacing stutter or background CPU thread contention. Smooth frame pacing ensures responsive, tear-free motion on high-refresh gaming displays.",
+    "interpretation": "Un débit d'images constant sans micro-saccades atteste d'une configuration matérielle équilibrée.",
     "nextSteps": {
-        "text": "Want to inspect your monitor's real-time refresh rate pacing?",
-        "actionLabel": "Launch Refresh Rate Test",
-        "actionHref": "/tests/refresh-rate-test"
+      "text": "Vérifiez la fréquence de rafraîchissement",
+      "actionLabel": "Test de rafraîchissement",
+      "actionHref": "/tests/refresh-rate-test"
     }
-},
-
+  },
   "display-certificate": {
-    "overview": "The Display Inspection Certificate is a formal quality documentation tool. It aggregates automatically detected hardware parameters (native resolution, color depth, wide gamut, pixel density) with manual visual inspection ratings to generate a printable, certified inspection report for resale grading or manufacturer RMA warranty claims.",
+    "overview": "El Certificado de inspección de exhibición es una herramienta formal de documentación de calidad. Agrega parámetros de hardware detectados automáticamente (resoluçãou nativa, profundidad de cor, amplia gama, densidad de píxeles) con calificaciones de inspección visual manual para generar un informe de inspección certificado e imprimible para calificaciones de reventa ou reclamos de garantía RMA do fabricante.",
     "whatToLookFor": [
-        {
-            "label": "Hardware Specification Log",
-            "description": "Certifies native panel resolution, color bit-depth, device pixel ratio, and wide color gamut support."
-        },
-        {
-            "label": "Defect Audit Summary",
-            "description": "Records exact counts of dead pixels, stuck subpixels, and backlight bleed severity."
-        },
-        {
-            "label": "ISO 9241-307 Compliance",
-            "description": "Documents whether the panel meets Class 1 (Zero Bright Dot) or Class 2 consumer replacement criteria."
-        },
-        {
-            "label": "Print-Ready Verification Layout",
-            "description": "Formats all data into a clean, watermark-certified certificate optimized for PDF export and printing."
-        }
+      {
+        "label": "Registro de especificaciones de hardware",
+        "description": "Certifica la resoluçãou nativa do panel, la profundidad de bits do cor, la proporción de píxeles do dispositivo e la compatibilidad con una amplia gama de cores."
+      },
+      {
+        "label": "Resumen de auditoría de defectos",
+        "description": "Registra recuentos exactos de píxeles muertos, subpixels atascados e gravedad do sangrado de retroiluminación."
+      },
+      {
+        "label": "Cumplimiento da norma ISO 9241-307",
+        "description": "Documenta si el panel cumple con los criterios de reemplazo do consumidor Clase 1 (cero puntos brillantes) ou Clase 2."
+      },
+      {
+        "label": "Diseñou de verificación listo para imprimir",
+        "description": "Formatea todos los datos en un certificado limpio e certificado con marca de agua optimizado para la exportación e impresión de PDF."
+      }
     ],
     "canObserve": [
-        "Compilation of system-reported display parameters and user-verified quality grades",
-        "Generation of unique cryptographic verification IDs and inspection timestamps",
-        "Print-optimized document layout hiding navigation and interactive UI controls"
+      "Recopilación de parámetros de visualización informados por el sistema e grados de calidad verificados por el usuario.",
+      "Generación de ID de verificación criptográfica únicas e marcas de tiempo de inspección",
+      "Diseñou de documentos optimizado para impresión que oculta la navegación e los controles interactivos da interfaz de usuario."
     ],
     "cannotMeasure": [
-        "Automated physical panel serial number readout from internal EDID firmware (requires manual entry)",
-        "Legal underwriting of manufacturer warranty claims outside official manufacturer service centers",
-        "Spectroradiometer color accuracy Delta E verification without external hardware colorimeters"
+      "Lectura automatizada do número de serie do panel físico desde el firmware EDID interno (requiere entrada manual)",
+      "Suscripción legal de reclamaciones de garantía do fabricante fuera de los centros de servicio oficiales do fabricante.",
+      "Precisión do cor do espectrorradiómetro Verificación Delta E sin corímetros de hardware externos"
     ],
-    "interpretation": "Display inspection certificates provide trusted documentation when buying or selling used monitors or submitting RMA return claims during manufacturer return windows.",
+    "interpretation": "Los certificados de inspección de telas brindan documentación confiable al comprar ou vender monitores usados ​​ou al presentar reclamos de devolución RMA durante los períodos de devolución do fabricante.",
     "nextSteps": {
-        "text": "Need to pinpoint defective pixel coordinates before generating your certificate?",
-        "actionLabel": "Launch Dead Pixel Mapper",
-        "actionHref": "/tools/dead-pixel-mapper"
+      "text": "¿Necesita identificar las coordenadas de píxeles defectuosos antes de generar su certificado?",
+      "actionLabel": "Inicie el mapeador de píxeles muertos",
+      "actionHref": "/tools/dead-pixel-mapper"
     }
-},
-
+  },
   "osd-calibration-guide": {
-    "overview": "The Interactive OSD Monitor Calibration Assistant is a visual guide for calibrating your display's physical On-Screen Display (OSD) hardware buttons. It walks users through 6 essential steps—Brightness, Contrast, Gamma 2.2, 6500K Color Temperature, Sharpness, and Overdrive—without requiring expensive hardware colorimeters.",
+    "overview": "El Asistente de calibración do monitor OSD interactivo es una guía visual para calibrar los botones físicos do hardware de visualización en tela (OSD) de su tela. Guía a los usuarios a través de 6 pasos esenciales: brilho, contraste, gamma 2.2, temperatura de cor de 6500 K, nitidez e sobremarcha, sin necesidad de costosos corímetros de hardware.",
     "whatToLookFor": [
-        {
-            "label": "Brightness (Black Clipping)",
-            "description": "Tunes OSD Brightness so patch #16 is faintly visible while patch #0 remains inky black."
-        },
-        {
-            "label": "Contrast (White Saturation)",
-            "description": "Adjusts OSD Contrast so near-white patch #253 remains distinguishable from pure white #255."
-        },
-        {
-            "label": "Gamma 2.2 Optical Blend",
-            "description": "Aligns midtone luminance using an optical pattern where the center disc blends at 2.2."
-        },
-        {
-            "label": "Color Temperature (6500K D65)",
-            "description": "Balances Red, Green, and Blue gain sliders to achieve clean, neutral white and grey tones."
-        }
+      {
+        "label": "brilho (recorte preto)",
+        "description": "Ajusta el brilho de OSD para que el parche n.° 16 sea apenas visible mientras que el parche n.° 0 permanezca preto como la tinta."
+      },
+      {
+        "label": "Contraste (saturación de blancos)",
+        "description": "Ajusta el contraste de OSD para que el parche casi branco #253 permanezca distinguible do branco puro #255."
+      },
+      {
+        "label": "Mezcla óptica gamma 2.2",
+        "description": "Alinea la luminancia de los medios tonos usando un patrón óptico donde el disco central se mezcla en 2,2."
+      },
+      {
+        "label": "Temperatura de cor (6500K D65)",
+        "description": "Equilibra los controles deslizantes de ganancia rojo, verde e azul para lograr tonos blancos e tons de cinza limpios e neutros."
+      }
     ],
     "canObserve": [
-        "Visual feedback targets designed specifically for standard monitor OSD adjustment ranges",
-        "Optical blend checkerboards verifying sRGB Gamma 2.2 alignment without calibration probes",
-        "High-contrast text and moving block targets for tuning sharpness and overdrive tiers"
+      "Objetivos de retroalimentación visual diseñados específicamente para rangos de ajuste OSD de monitores estándar",
+      "Tableros de mezcla óptica que verifican la alineación de sRGB Gamma 2.2 sin sondas de calibración",
+      "Texto de alto contraste e objetivos de bloques móviles para ajustar la nitidez e los niveles de sobremarcha"
     ],
     "cannotMeasure": [
-        "Direct software control over physical monitor OSD buttons via DDC/CI protocol",
-        "Exact color temperature in Kelvin without a spectrophotometer or colorimeter hardware probe",
-        "Hardware LUT (Look-Up Table) internal calibration inside professional color-grading monitors"
+      "Control directo do software sobre los botones OSD do monitor físico mediante el protocolo DDC/CI",
+      "Temperatura de cor exacta en Kelvin sin espectrofotómetro ni sonda de corímetro",
+      "Calibración interna de hardware LUT (Look-Up Table) dentro de monitores profesionales de gradación de cor"
     ],
-    "interpretation": "Factory default monitor settings are almost always oversaturated, overly bright (100%), and too cool (8000K+). Following this 6-step OSD tuning guide brings your display significantly closer to international sRGB/Rec.709 mastering standards.",
+    "interpretation": "La configuraçãou predeterminada de fábrica do monitor casi siempre está sobresaturada, demasiado brillante (100%) e demasiado fría (8000K+). Seguir esta guía de ajuste OSD de 6 pasos acercará significativamente su tela a los estándares internacionales de masterización sRGB/Rec.709.",
     "nextSteps": {
-        "text": "Want to verify color gamut coverage and ColorChecker accuracy?",
-        "actionLabel": "Launch Color Accuracy Test",
-        "actionHref": "/tests/color-accuracy-test"
+      "text": "¿Quiere verificar la cobertura da gama de cores e la precisión de ColorChecker?",
+      "actionLabel": "Iniciar la teste de precisión do cor",
+      "actionHref": "/tests/color-accuracy-test"
     }
-},
-
+  },
+  "bright-pixel-test": {
+    "overview": "Los píxeles brillantes ou calientes son subpixels (rojo, verde, azul ou branco) que permanecen atrapados en un estado iluminado ou parcialmente energizado, visibles contra fondos negros puros e oscuros.",
+    "whatToLookFor": [
+      {
+        "label": "Puntos de subpixels calientes",
+        "description": "Pinchazos de cor brillantes aislados visibles contra marcos oscuros en una habitación oscura."
+      },
+      {
+        "label": "Resplandor cromático de subpixels",
+        "description": "Los canales de subpixels rojos, verdes ou azules individuales se quedan abiertos mientras los subpixels vecinos están apagados."
+      },
+      {
+        "label": "Píxeles calientes agrupados",
+        "description": "Múltiples píxeles brillantes defectuosos agrupados muy juntos, que normalmente califican para devolución en garantía."
+      },
+      {
+        "label": "Sangrado versus píxeles brillantes",
+        "description": "Distinga los pinchazos nítidos de 1 píxel do sangrado difuso e nublado da retroiluminación do borde."
+      }
+    ],
+    "canObserve": [
+      "Coordenadas exactas de píxeles en tonos negros (#000000) e fondos oscuros",
+      "Aislamiento do canal de cor nos marcos de teste blancos e RGB primarios",
+      "Relación de contraste entre los subpixels calientes e el lienzo circundante oscuro"
+    ],
+    "cannotMeasure": [
+      "Corriente de fuga de puerta de transistor de silicio",
+      "Profundidad do defecto físico do cristal de silicio debajo do sustrato de vidrio",
+      "Características de deriva térmica do panel posterior"
+    ],
+    "interpretation": "Las telas ISO 9241-307 Clase 1 no permiten píxeles brillantes, mientras que los paneles Clase 2 normalmente permiten hasta 2 píxeles permanentemente brillantes por millón.",
+    "nextSteps": {
+      "text": "¿Has localizado un subpixel atascado? Intente una estimulación visual rápida para despegarlo.",
+      "actionLabel": "Inicie el reparador de píxeles atascados",
+      "actionHref": "/tests/stuck-pixel-fixer"
+    }
+  },
+  "burn-in-test": {
+    "overview": "El desgaste da tela (retención permanente da imagen) se produce cuando los compuestos orgánicos OLED ou los fósforos se degradan de manera desigual debido a elementos estáticos de alta luminosidad, como barras de tareas, logotipos de canales ou medidores HUD.",
+    "whatToLookFor": [
+      {
+        "label": "Siluetas fantasmas da barra de tareas",
+        "description": "Contornos tenues de las barras de tareas do sistema operativo ou de las barras de navegación do navegador visibles en cinza en tela completa."
+      },
+      {
+        "label": "HUD e sombras do logotipo",
+        "description": "Sombras persistentes de barras estáticas de salud de videojuegos ou carteles de noticias de televisión."
+      },
+      {
+        "label": "50% sombreado de campo cinza",
+        "description": "Manchas moteadas desiguales ou falta de uniformidad de brilho en lienzos de cor cinza medio."
+      },
+      {
+        "label": "Retención temporal versus permanente",
+        "description": "Verifique se la sombra se disipa después de ejecutar contenido de vídeo no estático durante 15 minutos."
+      }
+    ],
+    "canObserve": [
+      "Siluetas tenues en la imagen residual en un 50 % de tons de cinza e cores primarios sólidos",
+      "Consistencia de luminiscencia de cuadrante en toda el área de visualización",
+      "Detección de huellas de límites estáticos en campos de cor uniformes"
+    ],
+    "cannotMeasure": [
+      "Porcentaje de degradación química de subpixels emisores orgánicos OLED",
+      "Horas totales de encendido do panel interno (POH)",
+      "Contador de ciclos de compensación de fábrica e compensaciones de voltaje."
+    ],
+    "interpretation": "La retención de imagen temporal (TIR) ​​se desvanece en cuestión de minutos, mientras que la retención permanente permanece visible indefinidamente sobre fondos tons de cinza e coloreados uniformes.",
+    "nextSteps": {
+      "text": "Calcule el riesgo de desgaste a largo plazo de su panel en función de sus hábitos de uso diario.",
+      "actionLabel": "Inicie la calculadora de desgaste OLED",
+      "actionHref": "/tools/oled-burn-in-calculator"
+    }
+  },
+  "color-test": {
+    "overview": "Las testes de cor de tela evalúan la reproducción do cor primario e secundario, la pureza espectral de subpixels e la consistencia da representación do lienzo digital a analógico nos campos de cor de tela completa.",
+    "whatToLookFor": [
+      {
+        "label": "Pureza e saturación do cor",
+        "description": "Asegúrese de que el rojo, verde, azul, cian, magenta e amarillo sólidos llenen la tela de manera uniforme e sin manchas."
+      },
+      {
+        "label": "Uniformidad cromática do borde",
+        "description": "Verifique que los cores no cambien de matiz ou tono cerca de los límites do bisel exterior."
+      },
+      {
+        "label": "Bandas en cores saturados",
+        "description": "Inspeccione si los cores puros intensos provocan bandas de contorno ou posterización."
+      },
+      {
+        "label": "Aislamiento de defectos de subpixels",
+        "description": "Observe motas individuales oscuras ou descoloridas que se vuelven visibles solo en campos de cores específicos."
+      }
+    ],
+    "canObserve": [
+      "Visualización en tela completa de campos de cor hexadecimal sRGB e P3 calibrados",
+      "Temperatura de cor visual de borde a borde e consistencia do tinte",
+      "Respuesta de cambio de canal de cor sin imágenes residuales persistentes"
+    ],
+    "cannotMeasure": [
+      "Coordenadas de cor espectrofotométricas absolutas (CIE 1931 xy)",
+      "Nits de pico óptico por canal de cor individual",
+      "Picos espectrales de fósforo de retroiluminación física"
+    ],
+    "interpretation": "Las telas IPS e OLED de calidad ofrecen una saturación de cor uniforme de borde a borde sin cambios de temperatura de cor ni tintes.",
+    "nextSteps": {
+      "text": "¿Quiere inspeccionar la precisión do cor e las desviaciones delta?",
+      "actionLabel": "Iniciar la teste de precisión do cor",
+      "actionHref": "/tests/color-accuracy-test"
+    }
+  },
+  "grayscale-test": {
+    "overview": "La teste de escala de tons de cinza evalúa la capacidad de un monitor para representar pasos de luminancia neutros e suaves desde el preto absoluto (0%) hasta el branco máximo (100%) sin matices cromáticos ni recortes de pasos.",
+    "whatToLookFor": [
+      {
+        "label": "Equilibrio de tonos de tons de cinza neutros",
+        "description": "Los escalones tons de cinza deben parecer completamente neutros sin tintes rosados, verdes ou azules."
+      },
+      {
+        "label": "Separación de pasos distintos",
+        "description": "Cada bloque en la rampa de 16 ou 32 escalones debe distinguirse individualmente de su vecino."
+      },
+      {
+        "label": "Paso oscuro aplastado",
+        "description": "Verifique que los pasos 1, 2 e 3 no colapsen en preto puro."
+      },
+      {
+        "label": "Resaltar recorte de pasos",
+        "description": "Verifique que los pasos más brillantes por debajo do 100% sean claramente visibles contra el branco puro."
+      }
+    ],
+    "canObserve": [
+      "Discriminación de luminancia gradual a través de rampas estandarizadas de 16/32/64 bloques",
+      "Neutralidad óptica e equilibrio de cor entre parches vecinos en escala de tons de cinza.",
+      "Representación do lienzo do navegador de pasos lineales e en escala de tons de cinza sRGB"
+    ],
+    "cannotMeasure": [
+      "Función de transferencia física exponente de curva gamma sin corímetro",
+      "Luminancia do suelo preto en candelas por metro cuadrado (cd/m²)",
+      "Profundidad de bits da tabla de búsqueda interna de hardware (LUT 1D/3D)"
+    ],
+    "interpretation": "Incluso los pasos con equilibrio de cor neutro indican una calibración de fábrica adecuada. Los bloques tons de cinza teñidos indican una desviación do punto branco ou configuraciones de ganancia RGB desequilibradas.",
+    "nextSteps": {
+      "text": "Evalúe la curva matemática de transferencia de luminancia de su tela.",
+      "actionLabel": "Iniciar teste gamma",
+      "actionHref": "/tests/gamma-test"
+    }
+  },
+  "saturation-test": {
+    "overview": "Las testes de saturación verifican qué tan limpiamente una tela pasa de un cinza neutro completamente desaturado (0%) a un cor puro completamente saturado (100%) nos canales primarios e secundarios.",
+    "whatToLookFor": [
+      {
+        "label": "Pasos de saturación lineal",
+        "description": "Cada incremento do 10% do 0% al 100% debería mostrar un salto igual e distinto en la intensidad do cor."
+      },
+      {
+        "label": "Recorte de cor prematuro",
+        "description": "Asegúrese de que los cores no alcancen la saturación máxima prematuramente al 80% ou 90%."
+      },
+      {
+        "label": "Cambios de tono durante la desaturación",
+        "description": "Esté atento a los cambios de cor (por ejemplo, el rojo se vuelve naranja a medida que disminuye la saturación)."
+      },
+      {
+        "label": "Sobresaturación de amplia gama",
+        "description": "Verifique se los cores parecen naturalmente equilibrados ou anormalmente neón."
+      }
+    ],
+    "canObserve": [
+      "Rampas de saturación de 10 pasos en rojo, verde, azul, cian, magenta e amarillo",
+      "Claridad visual de los límites de los pasos e suavidad de progresión",
+      "Consistencia de sujeción do espacio de cor do navegador"
+    ],
+    "cannotMeasure": [
+      "Porcentaje de pureza espectrofotométrica",
+      "Distribución de potencia espectral de las emisiones de cor.",
+      "Volumen físico da gama óptica en unidades CIELAB"
+    ],
+    "interpretation": "Las telas con una buena gestión do cor muestran incrementos de saturación claros e distintos sin aplanarse en bloques de cor sólido antes do 100%.",
+    "nextSteps": {
+      "text": "Inspeccione si su tela admite espacios de cor amplios más allá de sRGB.",
+      "actionLabel": "Iniciar teste de gama de cores",
+      "actionHref": "/tests/color-gamut-test"
+    }
+  },
+  "color-banding-test": {
+    "overview": "Las bandas de cor se producen cuando los gradientes sutiles se dividen en bandas escalonadas visibles ou contornos de posterización debido a una profundidad de bits insuficiente, una cuantificación da GPU ou un procesamiento deficiente da imagen do monitor.",
+    "whatToLookFor": [
+      {
+        "label": "Contornos de bandas escalonadas",
+        "description": "Líneas duras visibles a través de gradientes suaves en lugar de una transición perfecta."
+      },
+      {
+        "label": "Posterización de degradado oscuro",
+        "description": "Artefactos de pasos en bloques en regiones de sombras oscuras do degradado."
+      },
+      {
+        "label": "Grano de ruido de tramado",
+        "description": "Grano de ruido espacial fino visible cuando el tramado temporal ou espacial (FRC) está activo."
+      },
+      {
+        "label": "Teñido de cor en degradados",
+        "description": "Rayas cromáticas que aparecen dentro de degradados monocromáticos ou tons de cinza supuestamente neutros."
+      }
+    ],
+    "canObserve": [
+      "Suavidad de gradiente visual en gradientes RGB de 8 e 10 bits",
+      "Presencia de ruido de tramado espacial e artefactos de cuantificación de pasos.",
+      "Consistencia de renderizado de degradado lineal e radial"
+    ],
+    "cannotMeasure": [
+      "Profundidad de bits do panel de hardware nativo (8 bits reales frente a 6 bits + FRC)",
+      "Formato de cor de salida de GPU (submuestreo RGB 4:4:4 vs 4:2:2/4:2:0)",
+      "Algoritmos de matriz de difuminado do escalador interno"
+    ],
+    "interpretation": "Los degradados suaves sin líneas marcadas indican una transmisión de cor adecuada de 8 ou 10 bits. Las bandas visibles sugieren limitaciones de FRC de 6 bits ou configuraciones de rango dinámico limitado.",
+    "nextSteps": {
+      "text": "Pruebe rampas de gradiente multicanal en espectros RGB personalizados.",
+      "actionLabel": "Iniciar la teste de bandas de gradiente",
+      "actionHref": "/tests/gradient-banding-test"
+    }
+  },
+  "color-gamut-test": {
+    "overview": "Las testes de gama de cores evalúan si su tela, controlador de GPU e navegador admiten espacios de cor amplios, como DCI-P3 e Rec. 2020 más allá do estándar sRGB.",
+    "whatToLookFor": [
+      {
+        "label": "Objetivo de extensión de gama P3",
+        "description": "Un símbolo ou número oculto visible solo en telas capaces de mostrar cores Display P3."
+      },
+      {
+        "label": "Límite de sujeción sRGB",
+        "description": "Observe si los cores fuera de sRGB se recortan ou se reproducen con precisión."
+      },
+      {
+        "label": "Saturación de rojo intenso e verde",
+        "description": "Verifique se los rojos e verdes se ven significativamente más ricos que nos monitores de oficina estándar."
+      },
+      {
+        "label": "Estado de gestión do cor do navegador",
+        "description": "Verifique que su navegador web esté utilizando activamente los perfiles de administración de cor do sistema operativo."
+      }
+    ],
+    "canObserve": [
+      "Detección de consultas de medios de gama de cores CSS do navegador (@media (cor-gamut: p3))",
+      "Diferenciación visual entre parches de cor sRGB e Display P3",
+      "Representación do perfil de cor de amplia gama de lienzos"
+    ],
+    "cannotMeasure": [
+      "Cobertura porcentual de DCI-P3 ou AdobeRGB sin espectrofotómetro",
+      "Volumen óptico en unidades CIELAB",
+      "Longitudes de onda de emisión de fósforo físico."
+    ],
+    "interpretation": "Si el logotipo do indicador P3 se distingue claramente do fondo sRGB, el hardware de su tela, el sistema operativo e el navegador admiten activamente amplias gamas de cores.",
+    "nextSteps": {
+      "text": "Verifique el brilho máximo de alto rango dinámico e el manejo de metadatos.",
+      "actionLabel": "Inicie la teste de capacidad HDR",
+      "actionHref": "/tests/hdr-capability-test"
+    }
+  },
+  "color-accuracy-test": {
+    "overview": "La inspección da precisión do cor utiliza parches de cor de referencia estandarizados para detectar visualmente cambios de tono, errores de percepción do cor e distorsión do tono da piel en la tela.",
+    "whatToLookFor": [
+      {
+        "label": "Uniformidad do parche de referencia",
+        "description": "Inspeccione los parches estándar estilo ColorChecker para verificar su equilibrio e neutralidad."
+      },
+      {
+        "label": "Naturalidad do tono de piel",
+        "description": "Verifique que los tonos de piel do retrato no parezcan quemados artificialmente por el sol (demasiado rojos) ou ictéricos (demasiado amarillos)."
+      },
+      {
+        "label": "Alineación do eje cinza neutro",
+        "description": "Verifique que la fila cinza neutra muestre cero tintes cromáticos."
+      },
+      {
+        "label": "Equilibrio de cor secundario",
+        "description": "Asegúrese de que el cian, el magenta e el amarillo mantengan los tonos puros sin desviarse hacia los primarios."
+      }
+    ],
+    "canObserve": [
+      "Representación de paleta de cores de referencia estándar de 24 parches",
+      "Alineación visual con valores de referencia digitales estandarizados",
+      "Coherencia de parches en paralelo en todas las regiones da tela"
+    ],
+    "cannotMeasure": [
+      "Valores de desviación numéricos Delta E (ΔE 2000) sin sensor externo",
+      "Coordenadas absolutas CIE L*a*b*",
+      "Impacto da llamarada de luz ambiental en la percepción"
+    ],
+    "interpretation": "Las telas bien calibradas mantienen el tono e la saturación precisos en todas las zonas de teste sin enrojecimiento excesivo nos tonos de piel ou tons de cinza verdosos.",
+    "nextSteps": {
+      "text": "Aprenda a calibrar su monitor usando controles de visualización en tela de hardware.",
+      "actionLabel": "Inicie la guía de calibración OSD",
+      "actionHref": "/tools/osd-calibration-guide"
+    }
+  },
+  "brightness-test": {
+    "overview": "Las testes de brilho inspeccionan los detalles de las sombras casi negras (niveles do 1 % al 10 %) para garantizar que los elementos oscuros de los juegos, películas e fotografías no queden aplastados en un tono preto impenetrable.",
+    "whatToLookFor": [
+      {
+        "label": "Visibilidad do cuadrado casi preto",
+        "description": "Las manchas cuadradas con valores de luminancia do 1% al 5% apenas deberían distinguirse do fondo preto."
+      },
+      {
+        "label": "Separación de pasos oscuros",
+        "description": "Cada cuadrado sucesivo debe ser visiblemente más brillante que el anterior."
+      },
+      {
+        "label": "Piso nivel preto",
+        "description": "El fondo debe permanecer preto intenso e no decolorarse hasta convertirse en cinza carbón."
+      },
+      {
+        "label": "Impacto da iluminación da habitación",
+        "description": "Apague las luces da habitación para verificar que los sutiles cuadrados oscuros sigan siendo discernibles."
+      }
+    ],
+    "canObserve": [
+      "Distinción visual de cuadrados casi negros frente a preto puro",
+      "Umbral de visibilidad de paso a través de incrementos sutiles de luminancia",
+      "Contraste entre el suelo preto e los niveles de cinza más bajos"
+    ],
+    "cannotMeasure": [
+      "Pico absoluto ou luminancia mínima en candelas por metro cuadrado (nits)",
+      "Curvas de regulación de voltaje de retroiluminación.",
+      "Porcentaje de deslumbramiento reflejado en el ambiente"
+    ],
+    "interpretation": "Una visualización óptima revela el paso 2% ou 3% sin que el fondo preto de referencia do 0% se desvanezca e se convierta en un cinza brumoso.",
+    "nextSteps": {
+      "text": "Ahora verifique que las luces brillantes no se recorten en un branco puro.",
+      "actionLabel": "Iniciar teste de contraste",
+      "actionHref": "/tests/contrast-test"
+    }
+  },
+  "contrast-test": {
+    "overview": "Las testes de contraste verifican la relación dinámica entre los blancos más brillantes e los negros más oscuros, asegurando que tanto las texturas de las luces como los detalles de las sombras permanezcan visibles simultáneamente.",
+    "whatToLookFor": [
+      {
+        "label": "Diferenciación de paso branco",
+        "description": "Verifique que los cuadrados do 90% al 99% de luminancia se distingan do fondo branco puro."
+      },
+      {
+        "label": "Separación de pasos negros",
+        "description": "Verifique que los cuadrados oscuros do 1% al 10% permanezcan visibles contra el preto."
+      },
+      {
+        "label": "Resaltar la floración",
+        "description": "Asegúrese de que los bloques blancos brillantes no transmitan brilho óptico a las áreas oscuras adyacentes."
+      },
+      {
+        "label": "Medios tonos descoloridos",
+        "description": "Verifique que el contraste no se aumente artificialmente, lo que aplasta los degradados de cor."
+      }
+    ],
+    "canObserve": [
+      "Visibilidad simultánea de parches de teste casi blancos e casi negros",
+      "Separación de límites a través de rampas de contraste de varios pasos",
+      "Equilibrio de rango dinámico visual en toda la tela"
+    ],
+    "cannotMeasure": [
+      "Relación de contraste ANSI estática (por ejemplo, 1000:1 frente a 3000:1) sin sonda óptica",
+      "Velocidad de modulación de contraste dinámico",
+      "Relación de reflectancia do panel"
+    ],
+    "interpretation": "El contraste configurado correctamente permite que los cuadrados casi blancos (hasta un 98 %) sean visibles sin recortarlos en branco puro, mientras se mantienen distintos los cuadrados casi negros.",
+    "nextSteps": {
+      "text": "Examine los detalles de las sombras profundas en entornos de visualización de cuartos oscuros.",
+      "actionLabel": "Iniciar teste de nivel de preto",
+      "actionHref": "/tests/black-level-test"
+    }
+  },
+  "black-level-test": {
+    "overview": "La teste de nivel de preto mide la reproducción de los detalles de las sombras e la profundidad do suelo preto, asegurando que las señales de luminancia más baja se representen con precisión sin aplastamiento do preto ni neblina cinza.",
+    "whatToLookFor": [
+      {
+        "label": "Paso cinza visible más bajo",
+        "description": "Localice el cuadro de porcentaje más bajo (1%, 2% ou 3%) que pueda distinguir do preto verdadero."
+      },
+      {
+        "label": "Estabilidad do fondo preto puro",
+        "description": "Confirme que el fondo exterior se renderice al 0% (RGB 0,0,0)."
+      },
+      {
+        "label": "Resplandor versus profundidad negra",
+        "description": "Tenga en cuenta si el fondo es realmente oscuro ou elevado por el brilho/sangrado de retroiluminación de IPS."
+      },
+      {
+        "label": "Falta de uniformidad nas esquinas",
+        "description": "Verifique se el nivel de preto aumenta cerca de las esquinas da tela en comparación com ou centro."
+      }
+    ],
+    "canObserve": [
+      "Umbral exacto do paso más bajo visible casi preto (1% a 8%)",
+      "Profundidad visual do preto en una sala de visualización oscura",
+      "Interferencia do brilho de las esquinas que afecta la percepción de las sombras."
+    ],
+    "cannotMeasure": [
+      "Luminancia negra mínima absoluta en cd/m² (nits)",
+      "Relación de polarización de bloqueo de luz de cristal líquido",
+      "Integridad do sello da luz do panel"
+    ],
+    "interpretation": "En los paneles OLED, el preto verdadero emite 0 nits. En los paneles LCD, un brilho tenue es normal, pero los pasos do 1% al 2% deben permanecer distintos do fondo.",
+    "nextSteps": {
+      "text": "Pruebe la respuesta en escala de tons de cinza de baja luminosidad cerca do 0 % al 5 %.",
+      "actionLabel": "Lanzar teste casi negra",
+      "actionHref": "/tests/near-black-test"
+    }
+  },
+  "white-level-test": {
+    "overview": "La teste de nivel de branco inspecciona los aspectos más destacados da tela para garantizar que los detalles blancos brillantes (niveles 240 a 254 en 8 bits) no queden atrapados en un lavado branco sin rasgos distintivos.",
+    "whatToLookFor": [
+      {
+        "label": "Límites do cuadrado casi branco",
+        "description": "Verifique se los cuadrados 250, 252 e 254 son visiblemente distintos do fondo branco puro (255)."
+      },
+      {
+        "label": "Decoloración en reflejos brillantes",
+        "description": "Asegúrese de que los cuadrados blancos pico no adquieran un tono amarillento ou cian."
+      },
+      {
+        "label": "Fatiga ocular/deslumbramiento",
+        "description": "Verifique se el branco máximo causa molestias oculares com a iluminación actual de su habitación."
+      },
+      {
+        "label": "Resaltar la floración",
+        "description": "Observe si los bloques blancos de alto brilho desvían la luz hacia los límites vecinos."
+      }
+    ],
+    "canObserve": [
+      "Límites distinguibles de cuadrados de alta luminosidad contra el branco puro (255)",
+      "Neutralidad do cor do branco máximo nos cuadrantes da tela",
+      "Umbral de recorte de resaltado de borde"
+    ],
+    "cannotMeasure": [
+      "Luminancia máxima sostenida en liendres sin fotómetro",
+      "Temperatura de cor óptica do branco máximo (p. ej., 6500 K) sin corímetro",
+      "Curvas de aceleración do limitador automático de brilho (ABL)"
+    ],
+    "interpretation": "Si los cuadrados casi blancos de hasta 253 ou 254 se distinguen do fondo branco, su monitor evita el recorte de luces e conserva las nubes e los detalles especulares.",
+    "nextSteps": {
+      "text": "Inspeccione la uniformidad general da luminancia en toda la superficie da tela.",
+      "actionLabel": "Lanzar teste de uniformidad",
+      "actionHref": "/tests/uniformity-test"
+    }
+  },
+  "gamma-test": {
+    "overview": "Las testes gamma utilizan campos ópticos de tramado de medios tonos para calibrar visualmente las curvas de luminancia da tela al estándar 2.2 sin necesidad de un costoso corímetro de hardware.",
+    "whatToLookFor": [
+      {
+        "label": "Mezcla de patrones sólidos e difuminados",
+        "description": "Observe dónde los círculos sólidos internos se mezclan completamente com ou fondo de rayas alternas."
+      },
+      {
+        "label": "Ajuste da distancia de visualización",
+        "description": "Retroceda ou entrecierre ligeramente los ojos para que las líneas finas de 1 píxel se difuminen e formen un tono sólido."
+      },
+      {
+        "label": "Punto de fusión de curva gamma",
+        "description": "Identifique qué valor numérico (1,8, 2,0, 2,2, 2,4, 2,6) coincide com ou fondo."
+      },
+      {
+        "label": "Deriva de cor en cinza",
+        "description": "Observe si el punto de fusión difiere entre los canales rojo, verde e azul."
+      }
+    ],
+    "canObserve": [
+      "Punto de coincidencia perceptual entre campos de interpolación de luminancia do 50 % e muestras de cinza sólido",
+      "Aproximación visual do exponente efectivo da curva gamma.",
+      "Equilibrio de cor e neutralidad cromática de los medios tonos."
+    ],
+    "cannotMeasure": [
+      "Curva gamma paramétrica multipunto exacta de 10 puntos/20 puntos",
+      "Datos de perfil LUT de hardware dentro do monitor escalar",
+      "Función de transferencia de conversión de digital a óptico en milicandelas"
+    ],
+    "interpretation": "Para informática general e masterización sRGB, el patrón debe mezclarse perfectamente com ou fondo en la marca do indicador 2.2 cuando se ve desde una distancia normal.",
+    "nextSteps": {
+      "text": "Calibre la configuraçãou de su monitor usando los botones de hardware en tela.",
+      "actionLabel": "Inicie la guía de calibración OSD",
+      "actionHref": "/tools/osd-calibration-guide"
+    }
+  },
+  "solid-color-test": {
+    "overview": "Las testes de campo de cor sólido presentan fondos primarios, secundarios, negros, blancos e tons de cinza de tela completa para inspeccionar la uniformidad do panel, la pureza do cor e los defectos de subpixels.",
+    "whatToLookFor": [
+      {
+        "label": "Cambios de cor de borde",
+        "description": "Verifique se la temperatura do cor cambia cerca de los bordes perimetrales da tela."
+      },
+      {
+        "label": "Efecto de tela sucia (DSE)",
+        "description": "En campos tons de cinza e blancos, inspeccione si hay manchas, nubes ou bandas."
+      },
+      {
+        "label": "Aislamiento de defectos de subpixels",
+        "description": "Detecte subpixels muertos ou atascados que solo se revelan en campos de cores primarios específicos."
+      },
+      {
+        "label": "Viñeteado/sombreado de esquinas",
+        "description": "Observe si las esquinas extremas aparecen ligeramente oscurecidas en comparación com ou centro."
+      }
+    ],
+    "canObserve": [
+      "Consistencia de cor visual en tela completa en 8 campos de cor estandarizados",
+      "Cambios de brilho de borde a centro e viñeteado",
+      "Detección visual de partículas de polvo e subpixels defectuosos"
+    ],
+    "cannotMeasure": [
+      "Porcentaje de uniformidad ANSI fotométrico de 9 puntos ou 25 puntos",
+      "Variación do espesor do panel en micrómetros.",
+      "Eficiencia de transmisión óptica do difusor de retroiluminación."
+    ],
+    "interpretation": "Los cores sólidos uniformes indican una alta calidad do panel e una distribución uniforme da luz de fondo. Las manchas irregulares ou las viñetas nas esquinas son comunes nas telas LCD económicas.",
+    "nextSteps": {
+      "text": "Inspeccione la uniformidad da luminancia e la temperatura de cor do panel de 9 zonas.",
+      "actionLabel": "Lanzar teste de uniformidad",
+      "actionHref": "/tests/uniformity-test"
+    }
+  },
+  "viewing-angle-test": {
+    "overview": "La teste de ángulo de visión evalúa cómo se degradan la saturación do cor, el brilho e el contraste cuando la tela se ve desde ángulos descentrados, oblicuos e verticales.",
+    "whatToLookFor": [
+      {
+        "label": "Decoloración do cor en ángulos",
+        "description": "Mueva la cabeza de lado a lado e observe si los cores vibrantes se desvanecen en tonos pastel."
+      },
+      {
+        "label": "Cambio de gamma/pérdida de contraste",
+        "description": "Observe si los detalles de las sombras oscuras se desvanecen e los niveles de preto se elevan a un cinza lechoso."
+      },
+      {
+        "label": "IPS Glow frente a VA Gamma Shift",
+        "description": "Los paneles IPS muestran un brilho plateado/branco en ángulos amplios; Los paneles VA pierden contraste central."
+      },
+      {
+        "label": "Inversión Vertical (Paneles TN)",
+        "description": "Mire desde abajo para comprobar si los cores se invierten en imágenes negativas en paneles TN económicos."
+      }
+    ],
+    "canObserve": [
+      "El cor percibido e el contraste cambian a medida que el ángulo de visión aumenta en relación con lo normal",
+      "Radial gradient uniformity when viewed off-axis",
+      "Estabilidad angular do texto e líneas de alto contraste."
+    ],
+    "cannotMeasure": [
+      "Exact VESA-defined 178°/178° viewing angle contrast threshold (10:1 CR)",
+      "Optical polarizing filter extinction ratio",
+      "Refractive index of panel glass substrate"
+    ],
+    "interpretation": "IPS and OLED panels maintain high cor fidelity across wide angles. VA panels suffer contrast loss and gamma shift, while TN panels invert colors vertically.",
+    "nextSteps": {
+      "text": "Check if off-angle viewing exposes corner backlight bleed.",
+      "actionLabel": "Launch Backlight Bleed Test",
+      "actionHref": "/tests/backlight-bleed-test"
+    }
+  },
+  "blooming-test": {
+    "overview": "Las testes de floración inspeccionan artefactos de halo en telas Mini-LED e con atenuación local de matriz completa (FALD) donde la luz se filtra desde las zonas de retroiluminación activa hacia los píxeles oscuros circundantes.",
+    "whatToLookFor": [
+      {
+        "label": "Halos brillantes alrededor de los objetivos",
+        "description": "Inspeccione pequeñas cajas blancas sobre preto en busca de un aura brillante difusa alrededor de sus perímetros."
+      },
+      {
+        "label": "Subtítulo que florece en barras negras",
+        "description": "Verifique se el texto branco provoca destellos de luz que distraen la atención nas áreas do buzón preto."
+      },
+      {
+        "label": "Llamarada do campo estelar",
+        "description": "Observe pequeñas estrellas blancas de 1 px para ver si las zonas de retroiluminación adyacentes se iluminan innecesariamente."
+      },
+      {
+        "label": "Pulsación de transición de zona",
+        "description": "Mueva objetos de alto contraste por la tela para comprobar si hay un retraso en el brilho da zona de retroiluminación."
+      }
+    ],
+    "canObserve": [
+      "Extensión do halo visual e contraste de luminancia en diámetros objetivo calibrados (1 px, 5 px, 20 px, 100 px)",
+      "Seguimiento dinámico de elementos móviles de alto contraste nos cuadrantes da tela",
+      "nitidez de límites de subpixels frente a lienzos en preto verdadero (RGB 0,0,0)"
+    ],
+    "cannotMeasure": [
+      "Recuento total de zonas físicas de atenuación Mini-LED dentro do chasis",
+      "Zone microcontroller algorithm response time in milliseconds",
+      "Absolute optical halo luminance without a spot photometer"
+    ],
+    "interpretation": "Blooming is a physical characteristic of Mini-LED zone count resolution. Reducing local dimming intensity or adding ambient bias lighting minimizes the effect.",
+    "nextSteps": {
+      "text": "Compare el sangrado da retroiluminación do borde com ou rendimiento da atenuación local.",
+      "actionLabel": "Launch Backlight Bleed Test",
+      "actionHref": "/tests/backlight-bleed-test"
+    }
+  },
+  "tv-overscan-test": {
+    "overview": "La teste de sobreexploración de TV verifica si su televisor ou tela externa genera imágenes con un mapeo de píxeles exacto de 1:1 ou acerca e corta artificialmente los bordes do perímetro.",
+    "whatToLookFor": [
+      {
+        "label": "0 % de visibilidad do borde do borde",
+        "description": "Las líneas de límite blancas marcadas con 0% deben tocar perfectamente el marco físico da tela nos cuatro lados."
+      },
+      {
+        "label": "Flechas indicadoras recortadas",
+        "description": "Verifique se las puntas de flecha nos bordes exteriores están truncadas u ocultas detrás do bisel."
+      },
+      {
+        "label": "Escalar el desenfoque",
+        "description": "Inspeccione si el texto e los bordes de un solo píxel aparecen suaves e borrosos debido a la interpolación de escala."
+      },
+      {
+        "label": "nitidez de línea de 1px",
+        "description": "Las líneas de borde alternadas de 1 px deberían mostrarse nítidamente sin interferencias de muaré."
+      }
+    ],
+    "canObserve": [
+      "Porcentaje de recorte de bordes (0%, 2,5%, 5%) nos cuatro bordes de visualización",
+      "Visibilidad da flecha de límite e alineación exacta do píxel al bisel",
+      "Pixel-to-pixel sharpness against canvas edges"
+    ],
+    "cannotMeasure": [
+      "Internal TV scaler DSP chip registers",
+      "Video HDMI EDID overscan flags",
+      "Chassis bezel optical overlap dimensions"
+    ],
+    "interpretation": "If the 0% boundary lines are fully visible and 1px borders are razor-sharp, your display has 1:1 pixel mapping enabled ('Just Scan', 'Fit to Screen', or 'Dot by Dot').",
+    "nextSteps": {
+      "text": "Verify aspect ratio scaling across circular geometric shapes.",
+      "actionLabel": "Launch Scaling & Aspect Ratio Test",
+      "actionHref": "/tests/scaling-aspect-test"
+    }
+  },
+  "scaling-aspect-test": {
+    "overview": "Las testes de escala e relación de aspecto validan la simetría geométrica nas relaciones de visualización estándar (16:9, 16:10, 21:9, 32:9, 4:3), asegurando que los círculos permanezcan perfectamente redondos e sin deformaciones.",
+    "whatToLookFor": [
+      {
+        "label": "Simetría de círculos concéntricos",
+        "description": "Verifique que los círculos sean perfectamente redondos, sin distorsiones, estiramientos ni aplastamientos ovalados."
+      },
+      {
+        "label": "Uniformidad de aspecto cuadrado",
+        "description": "Verifique que las cuadrículas cuadradas tengan un ancho e alto de píxeles idénticos."
+      },
+      {
+        "label": "Ortogonalidad de cuadrícula lineal",
+        "description": "Asegúrese de que las líneas horizontales e verticales se encuentren en ángulos rectos exactos de 90 grados."
+      },
+      {
+        "label": "Interpolación muaré",
+        "description": "Inspeccione los anillos concéntricos en busca de alias irregulares ou brilho muaré."
+      }
+    ],
+    "canObserve": [
+      "Simetría circular visual frente a cuadrículas de píxeles en relaciones de aspecto estándar",
+      "Distorsión da relación de aspecto causada por GPU incorrecta ou modos de escala de tela",
+      "Canvas resolution scaling behavior"
+    ],
+    "cannotMeasure": [
+      "Physical panel aspect ratio in millimeters",
+      "GPU hardware scaling interpolation filter kernels",
+      "Anamorphic lens optical distortion"
+    ],
+    "interpretation": "Elongated or squashed circles indicate an aspect ratio mismatch in the OS display settings, GPU control panel, or monitor OSD aspect mode.",
+    "nextSteps": {
+      "text": "Check your display's physical and logical resolution settings.",
+      "actionLabel": "Launch Resolution Checker",
+      "actionHref": "/tests/resolution-checker"
+    }
+  },
+  "screen-tearing-test": {
+    "overview": "El desgarro da tela ocurre cuando la velocidad de quadros da tarjeta gráfica no está sincronizada con los ciclos de actualización fijos do monitor, lo que hace que los quadros consecutivos se representen en cortes horizontales divididos.",
+    "whatToLookFor": [
+      {
+        "label": "Líneas de división horizontales",
+        "description": "Busque líneas de fractura horizontales que corten barras verticales en movimento."
+      },
+      {
+        "label": "movimento discontinuo",
+        "description": "Observe cuando la parte superior de un elemento móvil se desplaza por delante da parte inferior."
+      },
+      {
+        "label": "Artefactos de múltiples lágrimas",
+        "description": "A velocidades de quadros altas, busque múltiples desgarros simultáneos en la altura da tela."
+      },
+      {
+        "label": "V-Sync tartamudea frente a desgarro",
+        "description": "Verifique se al habilitar V-Sync se producen desgarros por micro tartamudeos periódicos."
+      }
+    ],
+    "canObserve": [
+      "Visual horizontal tearing artifacts on high-velocity moving bars",
+      "Frame synchronization stability across user refresh rates",
+      "Impact of browser vsync lock on animation smoothness"
+    ],
+    "cannotMeasure": [
+      "GPU hardware scanout line timing",
+      "DisplayPort/HDMI vertical blanking interval micro-timings",
+      "Direct G-Sync/FreeSync hardware module handshake registers"
+    ],
+    "interpretation": "Horizontal tear lines confirm disabled or mismatched V-Sync. Variable Refresh Rate (VRR / FreeSync / G-Sync) eliminates tearing without input lag.",
+    "nextSteps": {
+      "text": "Test variable refresh rate smoothness and tear-free motion.",
+      "actionLabel": "Launch VRR Test",
+      "actionHref": "/tests/vrr-test"
+    }
+  },
+  "screen-flicker-test": {
+    "overview": "Las testes de cintilação da tela exponen rápidas fluctuaciones periódicas de luminancia causadas por retroiluminación PWM de baja frecuencia, ondulación de voltaje ou inestabilidad de sincronización do controlador do panel.",
+    "whatToLookFor": [
+      {
+        "label": "Visual estroboscópico ou brillante",
+        "description": "Detecta zumbidos ou destellos sutiles de alta frecuencia en patrones de rayas finas."
+      },
+      {
+        "label": "Líneas fantasma estroboscópicas",
+        "description": "Mueva sus ojos rápidamente por la tela; Las líneas aparecerán con cuentas si hay cintilação."
+      },
+      {
+        "label": "Sensibilidad da visión periférica",
+        "description": "Mire ligeramente lejos do monitor para ver si el cintilação es más pronunciado en la visión periférica."
+      },
+      {
+        "label": "Umbral de brilho",
+        "description": "Ajuste el brilho do monitor hacia abajo para ver si el cintilação comienza solo por debajo de cierto nivel."
+      }
+    ],
+    "canObserve": [
+      "Percepción visual de patrones de cintilação a través de rejillas finas e campos alternos.",
+      "Interacción estroboscópica con movimentos oculares sacádicos humanos.",
+      "El patrón brilla en máscaras de luminancia de alta frecuencia"
+    ],
+    "cannotMeasure": [
+      "Frecuencia de pulso eléctrico precisa en Hertz sin fotodiodo de osciloscopio",
+      "Porcentaje do ciclo de trabajo do controlador de retroiluminación",
+      "Índice de cintilação armónico"
+    ],
+    "interpretation": "Visible flicker on solid or patterned backgrounds indicates low-frequency PWM dimming or refresh instability, a primary cause of eye fatigue and headaches.",
+    "nextSteps": {
+      "text": "Perform a dedicated test for pulse-width modulation dimming.",
+      "actionLabel": "Iniciar la teste de cintilação PWM",
+      "actionHref": "/tests/pwm-flicker-test"
+    }
+  },
+  "resolution-checker": {
+    "overview": "El Comprobador de resoluçãou proporciona diagnósticos en tiempo real da resoluçãou da tela física, las dimensiones da ventana gráfica CSS, la relación de píxeles do dispositivo (DPR) e la densidad de píxeles.",
+    "whatToLookFor": [
+      {
+        "label": "Coincidencia de resoluçãou nativa",
+        "description": "Verifique que los píxeles físicos da tela informados coincidan con las especificaciones do fabricante de su monitor."
+      },
+      {
+        "label": "Factor de escala DPR de alto DPI",
+        "description": "Verifique se la proporción de píxeles de su dispositivo está configurada en 1,0x (100%), 1,25x (125%), 1,5x (150%) ou 2,0x (200%)."
+      },
+      {
+        "label": "Dimensiones da ventana gráfica lógica",
+        "description": "Observe el espacio de píxeles CSS disponible presentado en páginas web e aplicaciones."
+      },
+      {
+        "label": "Clasificación de relación de aspecto",
+        "description": "Confirm that the calculated aspect ratio matches standard 16:9, 16:10, or ultra-wide dimensions."
+      }
+    ],
+    "canObserve": [
+      "Dimensiones da ventana gráfica do navegador (`window.innerWidth`, `window.innerHeight`)",
+      "Dimensiones da tela do sistema operativo (`screen.width`, `screen.height`)",
+      "Device Pixel Ratio (`window.devicePixelRatio`) reported by the browser environment",
+      "Orientación da tela e espacio de trabajo de escritorio disponible"
+    ],
+    "cannotMeasure": [
+      "Physical monitor diagonal measurement in inches without user input",
+      "Physical dot pitch in millimeters",
+      "Multi-monitor topology outside browser scope"
+    ],
+    "interpretation": "Operating at the panel's native resolution ensures razor-sharp text and graphics. Fractional scaling (e.g. 125%) may cause subtle softness in legacy desktop applications.",
+    "nextSteps": {
+      "text": "Inspect detailed WebGL graphics capabilities and hardware display info.",
+      "actionLabel": "Launch Display Info Diagnostics",
+      "actionHref": "/tests/display-info"
+    }
+  },
+  "touch-screen-test": {
+    "overview": "Los diagnósticos de tela táctil prueban la precisión, la capacidad de respuesta, las zonas muertas e la sensibilidad de los bordes do sensor táctil en dispositivos móviles, tabletas e monitores de tela táctil.",
+    "whatToLookFor": [
+      {
+        "label": "Precisión do seguimiento táctil",
+        "description": "Las líneas dibujadas deben seguir directamente debajo da yema do dedo sin desplazamientos ni retrasos."
+      },
+      {
+        "label": "Zonas muertas que no responden",
+        "description": "Pruebe todas las esquinas e bordes para asegurarse de que cada cuadrante registre entradas táctiles."
+      },
+      {
+        "label": "Latencia táctil / seguimiento",
+        "description": "Observe la distancia entre el dedo en movimento e el rastro de tinta dibujado."
+      },
+      {
+        "label": "Registro de borde",
+        "description": "Verifique que toque a lo largo do borde exterior extremo do registro de tela de manera confiable."
+      }
+    ],
+    "canObserve": [
+      "Coordenadas táctiles en tiempo real en el lienzo da tela.",
+      "Active touch point tracking and drawing continuity",
+      "Touch event firing frequency and responsiveness"
+    ],
+    "cannotMeasure": [
+      "Capacitive touch digitizer sampling rate in Hertz (e.g. 120Hz/240Hz polling)",
+      "Physical glass surface impedance and anti-fingerprint coating condition",
+      "Pressure sensitivity levels in grams without pressure-sensitive hardware"
+    ],
+    "interpretation": "Smooth, continuous lines across the entire display area verify that the capacitive digitizer has no dead spots, ghost touch issues, or boundary clipping.",
+    "nextSteps": {
+      "text": "Test multi-finger gesture tracking and maximum touch points.",
+      "actionLabel": "Launch Multi-Touch Test",
+      "actionHref": "/tests/multi-touch-test"
+    }
+  },
+  "sharpness-test": {
+    "overview": "Las testes de nitidez evalúan la representación de fuentes, la claridad de los bordes e el timbre de mejora artificial de los bordes causado por una configuraçãou excesiva de nitidez da visualización en tela do monitor.",
+    "whatToLookFor": [
+      {
+        "label": "Anillo de halo branco",
+        "description": "Busque bordes ou franjas de cor branco brillante alrededor do texto preto e líneas de alto contraste."
+      },
+      {
+        "label": "resoluçãou espuria da estrella Siemens",
+        "description": "Verifique se las líneas de los radios convergen limpiamente hacia el centro sin artefactos muaré circulares."
+      },
+      {
+        "label": "Claridad de trama de línea fina de 1 px",
+        "description": "Las líneas alternas en branco e preto deben aparecer nítidas sin manchas tons de cinza turbias."
+      },
+      {
+        "label": "Borde do texto manchado",
+        "description": "Inspeccione pequeñas muestras de texto para asegurarse de que las letras estén nítidas e sin ruido artificial de nitidez."
+      }
+    ],
+    "canObserve": [
+      "High-contrast fine detail rendering across varying font sizes",
+      "Presence of artificial white contour halos and edge ringing",
+      "Radial spoke resolution on Siemens star patterns"
+    ],
+    "cannotMeasure": [
+      "Curva MTF (función de transferencia de modulación) de lente óptica",
+      "Panel subpixel aperture ratio",
+      "Anti-glare matte coating graininess"
+    ],
+    "interpretation": "Excessive sharpness produces white halos around text and lines, creating visual noise. Lowering monitor OSD sharpness to neutral restores clean, natural edges.",
+    "nextSteps": {
+      "text": "Evaluate subpixel font smoothing and ClearType rendering.",
+      "actionLabel": "Iniciar teste de claridad de texto",
+      "actionHref": "/tests/text-clarity-test"
+    }
+  },
+  "compare-displays": {
+    "overview": "A ferramenta de comparaison de telas permite verificar simultanément le rendu des couleurs, la balance des blancs et la luminosité sur deux moniteurs côte à côte.",
+    "whatToLookFor": [
+      {
+        "label": "Correspondance du point blanc",
+        "description": "Vérifiez si les blancs des deux écrans ont la même température sans dérive chaude ou froide."
+      },
+      {
+        "label": "Fidélité des couleurs",
+        "description": "Comparez les teintes de référence pour ajuster les profils colorimétriques entre vos deux dalles."
+      }
+    ],
+    "canObserve": [
+      "Affichage de mires identiques sur plusieurs fenêtres",
+      "Ajustement visuel de la balance colorimétrique"
+    ],
+    "cannotMeasure": [
+      "Delta E photométrique absolu sans colorimètre externe"
+    ],
+    "interpretation": "Harmoniser la luminosité et la température de couleur entre deux écrans élimine la fatigue oculaire lors du multitâche.",
+    "nextSteps": {
+      "text": "Ajustez les réglages OSD",
+      "actionLabel": "Guide de calibration OSD",
+      "actionHref": "/guides/osd-calibration-guide"
+    }
+  },
+  "display-info": {
+    "overview": "La teste de Información de tela recopila los parámetros técnicos disponibles a través do navegador: resoluçãou lógica e física, relación de píxeles (DPR), profundidad de cor e taxa de atualização.",
+    "whatToLookFor": [
+      {
+        "label": "resoluçãou nativa correcta",
+        "description": "Verifique que la resoluçãou informada coincida con las especificaciones do panel."
+      },
+      {
+        "label": "Escalado do sistema (DPR)",
+        "description": "Verifique se el factor de escala refleja la configuraçãou de su sistema operativo (100%, 125%, 150%, 200%)."
+      }
+    ],
+    "canObserve": [
+      "resoluçãou de tela e ventana",
+      "Profundidad de cor en bits",
+      "Relación de aspecto e DPR"
+    ],
+    "cannotMeasure": [
+      "Dimensiones físicas en pulgadas",
+      "Marca e modelo do panel a nivel de hardware"
+    ],
+    "interpretation": "Confirmar que el sistema operativo e el navegador reconocen la resoluçãou completa evita pérdida de nitidez.",
+    "nextSteps": {
+      "text": "¿Desea verificar la nitidez do texto?",
+      "actionLabel": "Iniciar teste de nitidez",
+      "actionHref": "/tests/sharpness-test"
+    }
+  },
+  "custom-pattern": {
+    "overview": "Le générateur de mires personnalisées permite créer des grilles, bandes de couleur et formes géométriques pour valider la précision de votre affichage.",
+    "whatToLookFor": [
+      {
+        "label": "Alignement de la grille",
+        "description": "Vérifiez que les lignes s'affichent avec une netteté absolue sur toute la surface."
+      },
+      {
+        "label": "Uniformité de la couleur",
+        "description": "Contrôlez que le fond choisi ne présente aucune variation de teinte dans les coins."
+      }
+    ],
+    "canObserve": [
+      "Génération de mires haute résolution",
+      "Contrôle géométrique et centrage parfait"
+    ],
+    "cannotMeasure": [
+      "Alignement microscopique physique des sous-pixels"
+    ],
+    "interpretation": "Un rendu net et sans déformation confirme un mappage 1:1 parfait de la dalle.",
+    "nextSteps": {
+      "text": "Vérifiez le format d'image",
+      "actionLabel": "Test de format d'image",
+      "actionHref": "/tests/scaling-aspect-test"
+    }
+  },
+  "multi-touch-test": {
+    "overview": "La teste Multi-Touch analiza la capacidad da tela táctil para registrar múltiples puntos de contacto simultáneos de manera precisa e sin retrasos.",
+    "whatToLookFor": [
+      {
+        "label": "Número máximo de toques",
+        "description": "Coloque varios dedos simultáneamente en la tela para comprobar cuántos puntos detecta su panel."
+      },
+      {
+        "label": "Seguimiento fluido",
+        "description": "Mueva los dedos en círculos para confirmar que no se producen saltos ni desconexiones."
+      }
+    ],
+    "canObserve": [
+      "Conteo de toques simultáneos",
+      "Coordenadas X/Y en tiempo real",
+      "Tasa de respuesta táctil"
+    ],
+    "cannotMeasure": [
+      "Nivel de presión física sin lápiz óptico compatible",
+      "Tiempo de escaneo do controlador táctil"
+    ],
+    "interpretation": "Los paneles modernos deben reconocer al menos 10 toques simultáneos sin toques fantasma.",
+    "nextSteps": {
+      "text": "¿Desea comprobar la respuesta táctil simple?",
+      "actionLabel": "Iniciar teste táctil",
+      "actionHref": "/tests/touch-screen-test"
+    }
+  },
+  "accelerometer-test": {
+    "overview": "La teste do acelerómetro evalúa los sensores de movimento de su dispositivo nos tres ejes espaciales (X, Y, Z).",
+    "whatToLookFor": [
+      {
+        "label": "Fuerza de gravedad en reposo",
+        "description": "Con el dispositivo plano sobre una mesa, el eje Z debe indicar aproximadamente 9,8 m/s² (1G)."
+      },
+      {
+        "label": "Respuesta a la inclinación",
+        "description": "Al inclinar el dispositivo, los ejes X e Y deben responder de inmediato."
+      }
+    ],
+    "canObserve": [
+      "Valores de aceleración en m/s²",
+      "Detección de inclinación",
+      "Sensibilidad al movimento"
+    ],
+    "cannotMeasure": [
+      "Calibración interna de fábrica do chip",
+      "Deriva por temperatura"
+    ],
+    "interpretation": "Una respuesta inmediata e un valor cercano a 9,8 m/s² en reposo confirman el correcto funcionamiento.",
+    "nextSteps": {
+      "text": "¿Desea probar el giroscopio?",
+      "actionLabel": "Iniciar teste de giroscopio",
+      "actionHref": "/tests/gyroscope-test"
+    }
+  },
+  "gyroscope-test": {
+    "overview": "La teste do giroscopio comprueba la velocidad angular e los movimentos de rotación nos tres ejes.",
+    "whatToLookFor": [
+      {
+        "label": "Estabilidad en reposo",
+        "description": "Sin mover el dispositivo, los valores deben mantenerse cerca de 0."
+      },
+      {
+        "label": "Detección de rotación",
+        "description": "Verifique que girar el dispositivo en cualquier sentido se refleje con fluidez."
+      }
+    ],
+    "canObserve": [
+      "Velocidad de rotación en rad/s",
+      "Dirección de giro en cada eje",
+      "Fluidez de muestreo"
+    ],
+    "cannotMeasure": [
+      "Orientación magnética absoluta sin brújula",
+      "Deriva temporal prolongada"
+    ],
+    "interpretation": "Valores estables en reposo e respuesta rápida a los giros indican que el sensor está en perfecto estado.",
+    "nextSteps": {
+      "text": "¿Desea probar la vibración do dispositivo?",
+      "actionLabel": "Iniciar teste de vibración",
+      "actionHref": "/tests/vibration-test"
+    }
+  },
+  "vibration-test": {
+    "overview": "La teste de vibración comprueba el motor háptico interno do dispositivo, su intensidad e los pulsos de respuesta.",
+    "whatToLookFor": [
+      {
+        "label": "nitidez da vibración",
+        "description": "Verifique que el motor vibre limpiamente sin sonidos extraños ni piezas sueltas."
+      },
+      {
+        "label": "Patrones de pulso",
+        "description": "Verifique se responde a pulsos cortos e secuencias continuas."
+      }
+    ],
+    "canObserve": [
+      "Activación do motor mediante la API de vibración",
+      "Diferentes ritmos e pulsos"
+    ],
+    "cannotMeasure": [
+      "Aceleración física real en Grms",
+      "Consumo de energía do motor"
+    ],
+    "interpretation": "Un funcionamiento claro e sin ruidos mecánicos anómalos confirma el buen estado do actuador háptico.",
+    "nextSteps": {
+      "text": "¿Desea probar los altavoces?",
+      "actionLabel": "Iniciar teste de altavoces",
+      "actionHref": "/tests/speaker-test"
+    }
+  },
+  "webcam-test": {
+    "overview": "La teste de cámara web permite verificar la señal de vídeo, resoluçãou máxima, tasa de quadros e balance de cor en tiempo real.",
+    "whatToLookFor": [
+      {
+        "label": "resoluçãou e nitidez",
+        "description": "Verifique que la imagen sea nítida e coincida com a resoluçãou esperada."
+      },
+      {
+        "label": "Fluidez de movimento",
+        "description": "Asegúrese de que el movimento se capture a 30 ou 60 fps sin tirones."
+      },
+      {
+        "label": "Exposición e cor",
+        "description": "Verifique que no haya sobreexposición ni ruido excesivo en zonas oscuras."
+      }
+    ],
+    "canObserve": [
+      "Vista previa de vídeo en directo",
+      "resoluçãou e tasa de quadros activas",
+      "Calidad de imagen e cor"
+    ],
+    "cannotMeasure": [
+      "Ruido de sensor a nivel físico de fotodiodos",
+      "Distorsión óptica de lentes"
+    ],
+    "interpretation": "Una imagen clara, fluida e con cores naturales confirma que su cámara web está lista para videollamadas.",
+    "nextSteps": {
+      "text": "¿Desea verificar el micrófono?",
+      "actionLabel": "Iniciar teste de micrófono",
+      "actionHref": "/tests/microphone-test"
+    }
+  },
+  "speaker-test": {
+    "overview": "La teste de altavoces comprueba la separación estéreo de los canales izquierdo e derecho, la respuesta en frecuencia e la distorsión acústica.",
+    "whatToLookFor": [
+      {
+        "label": "Separación estéreo",
+        "description": "Asegúrese de que el sonido izquierdo suene únicamente por el altavoz izquierdo e viceversa."
+      },
+      {
+        "label": "Barrido de frecuencias",
+        "description": "Escuche el barrido de graves a agudos para detectar vibraciones molestas ou cortes."
+      }
+    ],
+    "canObserve": [
+      "Reproducción independiente izquierda/derecha",
+      "Barrido de audio de 20 Hz a 20 kHz",
+      "Detección de chasquidos"
+    ],
+    "cannotMeasure": [
+      "Presión sonora absoluta en decibelios (dB SPL)",
+      "Distorsión armónica total (THD%)"
+    ],
+    "interpretation": "Una separación estéreo nítida e un barrido sin vibraciones garantizan un rendimiento sonoro correcto.",
+    "nextSteps": {
+      "text": "¿Desea probar la sincronización de audio e vídeo?",
+      "actionLabel": "Iniciar teste de sincronización",
+      "actionHref": "/tests/audio-sync-test"
+    }
+  },
+  "microphone-test": {
+    "overview": "La teste de micrófono analiza la sensibilidad de entrada de audio, el espectro de frecuencias e el nivel de ruido de fondo.",
+    "whatToLookFor": [
+      {
+        "label": "Nivel de entrada",
+        "description": "Al hablar, el indicador debe subir con claridad a la zona verde (-12 dB a -6 dB)."
+      },
+      {
+        "label": "Ruido de fondo",
+        "description": "En silencio, el medidor debe caer al mínimo sin emitir zumbidos constantes."
+      }
+    ],
+    "canObserve": [
+      "Medidor de volumen en tiempo real",
+      "Espectrograma de frecuencias Web Audio",
+      "Sensibilidad e ganancia"
+    ],
+    "cannotMeasure": [
+      "Ruido intrínseco do sensor electroacústico",
+      "Patrón polar de captación"
+    ],
+    "interpretation": "Una voz clara e un nivel bajo de ruido de fondo indican que el micrófono funciona correctamente.",
+    "nextSteps": {
+      "text": "¿Desea probar el tiempo de reacción?",
+      "actionLabel": "Iniciar teste de tiempo de reacción",
+      "actionHref": "/tests/reaction-time-test"
+    }
+  },
+  "reaction-time-test": {
+    "overview": "La teste de tiempo de reacción mide su velocidad de reflejos visuales combinada com a latencia do sistema e do ratón.",
+    "whatToLookFor": [
+      {
+        "label": "Tiempo medio de respuesta",
+        "description": "Haga clic lo más rápido posible cuando el cor cambie a verde para medir sus milisegundos (ms)."
+      },
+      {
+        "label": "Consistencia de resultados",
+        "description": "Realice varias testes consecutivas para calcular su media real."
+      }
+    ],
+    "canObserve": [
+      "Tiempo de reacción exacto en milisegundos",
+      "Estadísticas e media de intentos",
+      "Beneficio de telas de alta frecuencia"
+    ],
+    "cannotMeasure": [
+      "Tiempo de conducción neuronal aislado do hardware",
+      "Tiempo de rebote físico do interruptor do ratón"
+    ],
+    "interpretation": "El promedio en adultos sanos se sitúa entre 200 e 250 ms. Menos de 200 ms refleja reflejos muy rápidos.",
+    "nextSteps": {
+      "text": "¿Desea probar la tasa de sondeo do ratón?",
+      "actionLabel": "Iniciar teste de sondeo",
+      "actionHref": "/tests/mouse-polling-test"
+    }
+  },
+  "pixel-inversion-test": {
+    "overview": "La teste de inversión de píxeles (VCOM) comprueba el equilibrio de polaridad en telas LCD para evitar parpadeos e patrones de muaré.",
+    "whatToLookFor": [
+      {
+        "label": "cintilação rápido",
+        "description": "Observe si alguno de los patrones tramados parpadea intensamente ou si se muestra como un cinza quieto."
+      },
+      {
+        "label": "Tono cinza uniforme",
+        "description": "En un panel bien calibrado, los patrones deben verse neutros e estables a distancia normal."
+      }
+    ],
+    "canObserve": [
+      "cintilação visual con patrones de inversión de fase",
+      "Comportamiento do tipo de inversión do panel",
+      "Estabilidad de frecuencia"
+    ],
+    "cannotMeasure": [
+      "Voltaje VCOM interno en voltios",
+      "Ángulo de retardo de las moléculas do cristal líquido"
+    ],
+    "interpretation": "Si los patrones se perciben como un cinza fijo sin centelleo, la tensión VCOM está correctamente calibrada.",
+    "nextSteps": {
+      "text": "¿Desea comprobar el cintilação PWM?",
+      "actionLabel": "Iniciar teste de cintilação PWM",
+      "actionHref": "/tests/pwm-flicker-test"
+    }
+  }
 };
-

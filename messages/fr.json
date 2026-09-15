@@ -220,13 +220,14 @@
     "allTestsFilterAll": "Tous les tests",
     "allTestsCount": "35 tests",
     "allTestsCategories": {
-      "colorPixels": "TESTS DE COULEURS ET PIXELS",
-      "gradientContrast": "TESTS DE DÉGRADÉ ET CONTRASTE",
-      "uniformityPanel": "TESTS D'HOMOGÉNÉITÉ ET RÉTROÉCLAIRAGE",
-      "motionPerformance": "MOUVEMENT ET TAUX DE RAFRAÎCHISSEMENT",
-      "sharpnessCapabilities": "NETTETÉ ET CAPACITÉS",
-      "deviceInput": "APPAREILS ET ENTRÉE",
-      "utilitiesTools": "UTILITAIRES & OUTILS"
+      "deadPixelsDefects": "Pixels Morts et Défauts de Dalle",
+      "colorGamut": "Couleur et Étalonnage du Gamut",
+      "brightnessContrast": "Luminosité, Contraste et Dégradés",
+      "uniformityBacklight": "Uniformité de la Dalle et Rétroéclairage",
+      "motionGaming": "Mouvement, Temps de Réponse et Gaming",
+      "sharpnessSpecs": "Netteté, Résolution et Spécifications d'Affichage",
+      "hardwareSensors": "Matériel, Capteurs et Diagnostics d'Entrée",
+      "toolsCalculators": "Calculateurs et Outils d'Inspection"
     },
     "allTestsNoResults": "Aucun test trouvé pour",
     "moreFreeTestingToolsTitle": "Plus d'Outils de Test Gratuits",
@@ -288,12 +289,12 @@
         "description": "Évalue la reproduction des couleurs primaires et secondaires et l'uniformité de la saturation visuelle."
       },
       "gradientTest": {
-        "title": "Bandes de Dégradé",
-        "description": "Affiche des transitions de couleurs douces pour exposer les limitations de profondeur de bits ou les bandes de compression."
+        "title": "Test de Banding de Couleur et Profondeur de Bits",
+        "description": "Détectez la quantification 8 bits vs 10 bits, les escaliers de gradation et le banding."
       },
       "brightnessTest": {
-        "title": "Luminosité & Contraste",
-        "description": "Calibrez les niveaux de noir/blanc en utilisant des grilles de niveaux de gris étagées pour maximiser les détails de la plage dynamique."
+        "title": "Test de Luminosité et Écrêtage des Noirs",
+        "description": "Calibrez le seuil de luminosité et prévenez l'écrasement des détails dans les ombres sombres."
       },
       "uniformityTest": {
         "title": "Uniformité de l'Écran",
@@ -304,8 +305,8 @@
         "description": "Rendu noir pur pour identifier les fuites de lumière depuis les bords des panneaux IPS ou LED dans des environnements sombres."
       },
       "ghostingTest": {
-        "title": "Ghosting / Overdrive",
-        "description": "Éléments mobiles à grande vitesse pour visualiser les temps de transition des pixels, le flou de mouvement et le ghosting inversé."
+        "title": "Test de Ghosting et Overdrive de l'Écran",
+        "description": "Évaluez le temps de réponse LCD, les traînées de ghosting et l'overshoot d'overdrive."
       },
       "refreshRate": {
         "title": "Estimateur de Taux de Rafraîchissement",
@@ -340,8 +341,8 @@
         "description": "Auditez la composition HDR de l'OS, profondeur 10 bits, gamut étendu BT.2020/DCI-P3, Canvas P3 et codecs vidéo HDR10."
       },
       "contrastTest": {
-        "title": "Étalonnage du Contraste",
-        "description": "Évaluez le rapport de contraste, la séparation des tons et les dégradés sur 25 niveaux dynamiques."
+        "title": "Test de Contraste et Saturation des Blancs",
+        "description": "Calibrez la plage dynamique, l'écrêtage des blancs et la séparation des hautes lumières."
       },
       "brightPixel": {
         "title": "Test des pixels lumineux",
@@ -450,87 +451,83 @@
     "dead-pixel-test": {
       "metaTitle": "Test Pixels Morts – Détecter les Pixels Défectueux Plein Écran",
       "metaDescription": "Test pixels morts gratuit pour écran de PC et PC portable. Affichez des fonds unis RVB, blanc et noir pour repérer facilement les pixels morts et bloqués.",
-      "title": "Test Pixels Morts",
+      "title": "Test des pixels morts",
       "description_p1": "Ce test de pixels morts écran vous permet de repérer immédiatement les sous-pixels bloqués ou éteints sur votre moniteur ou ordinateur portable. Le test alterne des couleurs pures en plein écran pour révéler le moindre défaut.",
       "instructions": [
-        "Ensure your screen is clean before starting. Dust can look like dead pixels.",
-        "Click or use <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> / <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd> to cycle through the test colors.",
-        "Carefully scan the entire screen for tiny dots that don't match the background color.",
-        "A black dot on a white background is typically a <strong>dead pixel</strong>.",
-        "A bright dot on a black background is typically a <strong>stuck pixel</strong>."
+        "<strong>VÉRIFICATION:</strong> Nettoyez soigneusement votre écran avant le test; la poussière ressemble à des pixels morts.",
+        "<strong>UTILISATION:</strong> Cliquez ou utilisez <kbd class=\"px-1 bg-background border border-border rounded\">Espace</kbd> / <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd> pour faire défiler les couleurs de test.",
+        "<strong>OBSERVATION:</strong> Scrutez l'écran à la recherche de points anormaux. Un point noir sur fond blanc est un <strong>pixel mort</strong>; un point lumineux sur fond noir est un <strong>pixel bloqué</strong>."
       ]
     },
     "color-test": {
       "metaTitle": "Test des Couleurs & Calibration Écran – Fidélité RVB & Balance Visuelle",
       "metaDescription": "Test des couleurs et calibration écran visuelle en ligne. Contrôlez la pureté RVB, l'équilibre chromatique et l'homogénéité de votre moniteur sans logiciel.",
-      "title": "Test des Couleurs Écran & Calibration Visuelle",
+      "title": "Test des couleurs du moniteur (Équilibre RVB)",
       "description_p1": "Effectuez un test des couleurs d'écran pour vérifier la justesse et la calibration visuelle de votre moniteur. En passant en revue des aplats de couleurs primaires et secondaires, repérez d'éventuelles dérives colorimétriques et défauts d'uniformité.",
       "instructions": [
-        "Cycle through the colors using <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> or <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd>.",
-        "Look for uneven saturation across the screen.",
-        "Check the grayscale patterns for any unwanted color tints (e.g., the gray looking slightly pink or blue).",
-        "Ensure that primary colors look vibrant and accurate without bleeding.",
-        "<strong>ABOUT THIS TEST:</strong> Provides reference patterns for visual inspection. It does not measure physical panel color accuracy (Delta E)."
+        "<strong>VÉRIFICATION:</strong> Faites défiler les couleurs avec <kbd class=\"px-1 bg-background border border-border rounded\">Espace</kbd> ou <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd>.",
+        "<strong>UTILISATION:</strong> Vérifiez l'uniformité de la saturation sur l'ensemble de la dalle.",
+        "<strong>OBSERVATION:</strong> Contrôlez les mires grises pour déceler des dominantes de couleur parasites. Assurez-vous que les primaires sont vives et nettes.",
+        "<strong>À PROPOS:</strong> Mires de référence visuelle. Ne remplace pas une mesure physique de colorimétrie (Delta E)."
       ]
     },
     "brightness-test": {
       "metaTitle": "Test de Luminosité et Niveau de Noir – Calibration et Barres PLUGE",
       "metaDescription": "Réglez la luminosité et les noirs de votre écran sans boucher les ombres grâce aux barres de référence PLUGE et mires de nuances.",
-      "title": "Test de Luminosité et Niveau de Noir",
+      "title": "Test de luminosité (PLUGE)",
       "description_p1": "Ce test calibre la luminosité (niveau de noir) de votre écran et évalue sa luminance. Un réglage précis garantit des noirs profonds sans boucher les ombres.",
       "instructions": [
         "<strong>BARRES DE RÉFÉRENCE PLUGE :</strong> La barre 0% est le noir pur de référence. Réglez la luminosité de l'écran jusqu'à ce que la <strong>barre +2% (RGB 5) soit à peine perceptible</strong> sur le fond noir.",
         "<strong>AVERTISSEMENT NOIRS BOUCHÉS :</strong> Si les barres +1% et +2% sont invisibles, la luminosité est trop basse. Si le fond paraît gris ou lumineux, la luminosité est trop haute.",
         "<strong>RAMPE D'OMBRE 1% :</strong> Utilisez le mode rampe à 1% pour tester les paliers précis (0% à 10%) et identifier le seuil d'écrêtage.",
         "<strong>LUMINANCE DE CRÊTE & ABL :</strong> Passez aux fenêtres ABL pour vérifier si votre dalle OLED ou PC portable atténue le blanc plein écran par rapport aux fenêtres restreintes."
-      ]
+      ],
+      "description": "Calibrez le seuil de luminosité et prévenez l'écrasement des détails dans les ombres sombres."
     },
     "contrast-test": {
       "metaTitle": "Test de Contraste d'Écran – Niveaux de Blanc et Taux de Contraste",
       "metaDescription": "Évaluez le rapport de contraste de votre écran et la séparation des blancs pour préserver tous les détails des hautes lumières.",
-      "title": "Test d'Étalonnage du Contraste",
+      "title": "Test de contraste et niveau de blanc",
       "description_p1": "Ce test vous aide à configurer le contraste et la courbe gamma de votre écran à l'aide d'une grille à 25 niveaux de dégradé allant de 0 % de noir pur à 100 % de blanc pur.",
       "inst1": "Inspectez les blocs pour vous assurer que les niveaux adjacents sont visuellement distincts.",
       "inst2": "Ajustez le contraste pour éviter que les blocs 92 % et 96 % ne se fondent dans le blanc 100 %.",
-      "inst3": "Affichez ou masquez les pourcentages numériques ou basculez entre les modes de luminosité et de contraste."
+      "inst3": "Affichez ou masquez les pourcentages numériques ou basculez entre les modes de luminosité et de contraste.",
+      "description": "Calibrez la plage dynamique, l'écrêtage des blancs et la séparation des hautes lumières."
     },
     "ghosting-test": {
       "metaTitle": "Test Ghosting Écran – Mesure de Rémanence et Temps de Réponse",
       "metaDescription": "Test de ghosting écran et rémanence en ligne. Analysez le temps de réponse des pixels, le flou de mouvement et les artefacts d'overdrive de votre moniteur.",
-      "title": "Test Ghosting Écran & Rémanence",
+      "title": "Test d'images fantômes (Ghosting)",
       "description_p1": "Ce test de ghosting écran permet de visualiser la rémanence et le temps de réponse des cristaux liquides. Grâce aux mires animées à vitesses variables, repérez les traînées de flou (ghosting) ou les contours inversés (overshoot).",
       "instructions": [
-        "Focus your eyes on the moving blocks. Do not stare statically at the center of the screen.",
-        "Look for trailing shadows (ghosting) behind the moving blocks.",
-        "If you see a bright/inverted colored trail, this is <strong>inverse ghosting (overshoot)</strong>, usually caused by setting your monitor's overdrive setting too high.",
-        "Adjust the speed and contrast controls to test different pixel transition scenarios.",
-        "<strong>ABOUT THIS TEST:</strong> This is a visual aid for detecting ghosting. A web browser cannot precisely measure pixel response time (GtG or MPRT) in milliseconds."
-      ]
+        "<strong>VÉRIFICATION:</strong> Suivez des yeux les blocs en mouvement sans fixer le centre de l'écran.",
+        "<strong>UTILISATION:</strong> Observez la traînée de flou (ghosting) derrière les objets.",
+        "<strong>OBSERVATION:</strong> Une traînée claire ou inversée signale un <strong>overshoot</strong> dû à un overdrive trop agressif.",
+        "<strong>À PROPOS:</strong> Aide visuelle; un navigateur ne mesure pas directement le temps de réponse (GtG/MPRT) en millisecondes."
+      ],
+      "description": "Évaluez le temps de réponse LCD, les traînées de ghosting et l'overshoot d'overdrive."
     },
     "refresh-rate-test": {
       "metaTitle": "Test Taux de Rafraîchissement – Mesure des Hz du Moniteur en Ligne",
       "metaDescription": "Test de taux de rafraîchissement d'écran en ligne. Mesurez la fréquence réelle en Hz et la synchronisation de votre moniteur (60Hz, 144Hz, 240Hz, 360Hz).",
-      "title": "Test Taux de Rafraîchissement (Fréquence en Hz)",
+      "title": "Test du taux de rafraîchissement (Hz)",
       "description_p1": "Ce test de taux de rafraîchissement mesure en temps réel la fréquence en Hertz (Hz) et la régularité des images affichées par votre écran. Assurez-vous que votre moniteur fonctionne bien à sa cadence native de 60Hz, 144Hz ou 240Hz.",
       "instructions": [
-        "<strong>Note:</strong> Browsers usually cap rendering at your primary monitor's refresh rate (e.g., 60Hz, 120Hz, 144Hz).",
-        "Make sure you do not have background video playback running, as some browsers down-clock animations to match video framerates.",
-        "For multi-monitor setups, drag the browser window to the screen you want to test.",
-        "If the reading is significantly lower than expected, check your OS display settings or GPU control panel to ensure your refresh rate isn't artificially capped.",
-        "<strong>ABOUT THIS TEST:</strong> This test estimates refresh rate based on browser rendering timing (requestAnimationFrame). It is a software estimate, not a direct hardware measurement."
+        "<strong>VÉRIFICATION:</strong> Les navigateurs calent généralement le rafraîchissement sur celui du moniteur principal.",
+        "<strong>UTILISATION:</strong> Fermez les vidéos en arrière-plan pour éviter tout bridage de fréquence.",
+        "<strong>OBSERVATION:</strong> En configuration multi-écrans, glissez la fenêtre sur l'écran cible.",
+        "<strong>À PROPOS:</strong> Estimation logicielle via requestAnimationFrame."
       ]
     },
     "backlight-bleed-test": {
       "metaTitle": "Test de Fuite de Rétroéclairage – Détection du Backlight Bleed et IPS Glow",
       "metaDescription": "Détectez les fuites de lumière sur les bords de votre écran LCD ou LED (backlight bleed) et l'effet IPS glow dans le noir.",
-      "title": "Test de Saignement de Rétroéclairage",
+      "title": "Test de fuites de rétroéclairage et IPS Glow",
       "description_p1": "Ce test affiche un écran entièrement noir. Il est conçu pour exposer le saignement de rétroéclairage LCD, le clouding ou la lueur IPS.",
       "instructions": [
-        "<strong>Crucial:</strong> This test must be performed in a completely dark room.",
-        "Set your monitor to its standard or calibrated brightness level (do not force 100% brightness unless that is how you normally use it).",
-        "Look at the corners and edges of the screen.",
-        "<strong>Backlight Bleed</strong> appears as distinct patches of white/yellow light leaking from the bezel.",
-        "<strong>IPS Glow</strong> shifts and changes intensity as you move your viewing angle."
+        "<strong>VÉRIFICATION:</strong> Effectuez ce test dans une pièce plongée dans le noir complet.",
+        "<strong>UTILISATION:</strong> Réglez le moniteur sur sa luminosité de travail habituelle.",
+        "<strong>OBSERVATION:</strong> Les <strong>fuites de rétroéclairage</strong> créent des halos nets aux bords; le <strong>IPS Glow</strong> varie selon l'angle de vision."
       ]
     },
     "bright-pixel-test": {
@@ -547,7 +544,7 @@
     "stuck-pixel-test": {
       "metaTitle": "Test de sous-pixels bloqués",
       "metaDescription": "Test en ligne de pixels bloqués pour écrans et moniteurs. Inspectez des fonds sombres et des masques de couleurs primaires pour détecter les sous-pixels allumés.",
-      "title": "Test de sous-pixels bloqués",
+      "title": "Test des pixels bloqués",
       "description_p1": "Un test de pixels bloqués vous permet d'inspecter votre écran pour repérer les sous-pixels individuels restant continuellement allumés en rouge, vert ou bleu.",
       "instructions": [
         "<strong>CE QU'IL FAUT VÉRIFIER:</strong> Assurez-vous que l'écran est propre. La poussière peut être confondue avec un défaut de pixel.",
@@ -558,19 +555,18 @@
     "uniformity-test": {
       "metaTitle": "Test d'Uniformité d'Écran – Dirty Screen Effect (DSE) et Dégradés de Gris",
       "metaDescription": "Vérifiez l'uniformité lumineuse de votre dalle et l'effet d'écran sale (DSE) avec des fonds gris à 5%, 20% et 50%.",
-      "title": "Test d'Uniformité d'Écran et DSE",
+      "title": "Test d'uniformité de l'écran",
       "description_p1": "Ce test affiche des fonds de niveaux de gris échelonnés pour aider à identifier le saignement de rétroéclairage, l'assombrissement des bords et le DSE.",
       "instructions": [
-        "Check the corners and edges on the 5% and 10% dark grays for clouding or light bleed.",
-        "On the 20% and 50% grays, look for splotches, bands, or \"dirty\" smudges across the center of the screen (DSE).",
-        "On the 100% white screen, check if any section of the screen looks warmer (pink/yellow) or cooler (blue) than the rest.",
-        "<strong>ABOUT THIS TEST:</strong> This test provides reference backgrounds for visual inspection. It does not measure physical panel luminance variance."
+        "<strong>VÉRIFICATION:</strong> Inspectez les coins et bords sur gris foncé 5% et 10%.",
+        "<strong>UTILISATION:</strong> Sur gris 20% et 50%, traquez l'effet d'écran sale (DSE) ou les bandes.",
+        "<strong>OBSERVATION:</strong> Sur blanc 100%, vérifiez l'absence de dérive thermique chaude ou froide."
       ]
     },
     "black-level-test": {
       "metaTitle": "Test du Niveau de Noir – Détail des Ombres et Étalonnage Sombre",
       "metaDescription": "Ajustez les seuils de luminance proches du noir (0% à 5%) pour éviter l'écrasement des détails dans les scènes sombres.",
-      "title": "Test de Niveau de Noir",
+      "title": "Test du niveau de noir et détails sombres",
       "description_p1": "Ce test vous aide à configurer le réglage du niveau de noir (luminosité) de votre moniteur. Il affiche des blocs de gris extrêmement sombres.",
       "inst1": "Éteignez les lumières de la pièce ou réduisez l'éblouissement sur l'écran.",
       "inst2": "Ajustez le réglage 'Luminosité' de votre moniteur jusqu'à ce que vous puissiez à peine distinguer le bloc 1 du fond noir pur.",
@@ -579,7 +575,7 @@
     "white-level-test": {
       "metaTitle": "Test du Niveau de Blanc – Étalonnage des Hautes Lumières et Écrêtage",
       "metaDescription": "Contrôlez les nuances de blanc entre 95% et 100% pour éviter les zones brûlées et préserver les textures lumineuses.",
-      "title": "Test du Niveau de Blanc",
+      "title": "Test du niveau de blanc et hautes lumières",
       "description_p1": "Utilisez ce motif pour ajuster le contrôle de Contraste de votre moniteur et vérifier l'écrêtage près du blanc. Le test affiche des teintes progressivement plus sombres près du blanc pur pour que vous puissiez vérifier que les détails des hautes lumières restent visibles.",
       "inst1": "Ouvrez le menu à l'écran (OSD) de votre moniteur et localisez le contrôle physique de Contraste.",
       "inst2": "Ajustez le Contraste tout en regardant les carrés proches du blanc (252-254) sur le fond blanc pur (255).",
@@ -606,7 +602,7 @@
     "gamma-test": {
       "metaTitle": "Contrôle Visuel du Gamma",
       "metaDescription": "Évaluez visuellement le suivi gamma avec les mires de référence Gamma 2.2 et 2.4. La mesure objective nécessite un colorimètre matériel.",
-      "title": "Contrôle Visuel du Gamma",
+      "title": "Test d'étalonnage gamma (2.2)",
       "description_p1": "Ce test visuel vous permet d'évaluer le suivi gamma et les tons moyens par rapport aux courbes standard. Le gamma 2.2 est la norme sRGB ; une calibration objective exige un matériel externe.",
       "inst1": "Entrez en plein écran et éloignez-vous du moniteur, ou plissez les yeux jusqu'à ce que les lignes supérieures deviennent floues.",
       "inst2": "Comparez la moitié supérieure floue avec les trois blocs solides en dessous.",
@@ -616,11 +612,12 @@
     "motion-blur-test": {
       "metaTitle": "Test de Flou de Mouvement – Netteté Dynamique et Analyse MPRT",
       "metaDescription": "Analysez la persistance rétinienne et la netteté en mouvement sur les animations rapides pour écrans de jeu.",
-      "title": "Test de Flou de Mouvement",
+      "title": "Test de flou de mouvement",
       "description_p1": "Évaluez à quel point votre moniteur gère le mouvement rapide sans flou ni étalement des détails.",
       "inst1": "Suivez les blocs en mouvement avec vos yeux.",
       "inst2": "Regardez le petit carré intérieur. Si les bords deviennent complètement flous, votre moniteur a une réponse de pixel lente.",
-      "inst3": "Ajustez la vitesse et le contraste pour tester dans différents scénarios de surdrive du panneau."
+      "inst3": "Ajustez la vitesse et le contraste pour tester dans différents scénarios de surdrive du panneau.",
+      "description": "Mesurez le temps de réponse de l'image en mouvement (MPRT), la persistance rétinienne et la netteté dynamique."
     },
     "hdr-capability-test": {
       "metaTitle": "Détecteur Matériel et Signal HDR – Capacités OS et Navigateur",
@@ -664,10 +661,9 @@
       "title": "Test de Bandes de Dégradé",
       "description_p1": "Affiche un dégradé parfaitement lisse de 24 bits (16,7 millions de couleurs). Sur les panneaux de qualité inférieure, un banding peut apparaître.",
       "instructions": [
-        "Look closely at the transition from black to the target color.",
-        "A true 10-bit or high-quality 8-bit+FRC panel will display a buttery smooth transition.",
-        "If you see obvious vertical stripes (stair-stepping), your display is struggling with color depth.",
-        "Use <kbd class=\"px-1 bg-background border border-border rounded\">Space</kbd> or arrow keys to cycle gradients."
+        "<strong>VÉRIFICATION:</strong> Examinez attentivement la transition du noir vers la couleur.",
+        "<strong>UTILISATION:</strong> Une dalle 10 bits ou 8 bits+FRC affiche un dégradé parfaitement continu.",
+        "<strong>OBSERVATION:</strong> Des bandes verticales nettes révèlent une quantification de profondeur de couleur."
       ]
     },
     "vrr-test": {
@@ -706,18 +702,19 @@
     "gradient-banding-test": {
       "metaTitle": "Test de Dégradé & Banding – Diagnostic 8 Bits, 10 Bits & Transitions",
       "metaDescription": "Testez la fluidité des dégradés de l'écran et repérez les bandes de quantification sur les échelles de gris, RGB et ombres sombres.",
-      "title": "Test de Dégradé & Banding",
+      "title": "Test de dégradés et bandes de couleur",
       "description_p1": "Évaluez la progressivité des dégradés à l'écran et détectez les bandes de quantification indésirables ou les sauts de teinte. Le canvas du navigateur n'atteste pas de la profondeur matérielle mais offre des mires haute fidélité.",
       "instructions": [
         "<strong>MODES DE DÉGRADÉ:</strong> Basculez entre Nuances de gris horizontales/verticales, Primaires RGB et Ombres sombres (0 %–25 %).",
         "<strong>BANDES VS FLUIDITÉ:</strong> Repérez toute ligne de démarcation ou cassure au sein des rampes de couleurs censées être parfaitement continues.",
         "<strong>SIMULATEUR DE QUANTIFICATION:</strong> Activez le comparateur 64 étapes pour contraster un découpage volontaire avec la réponse native de votre écran."
-      ]
+      ],
+      "description": "Évaluez la fluidité des dégradés linéaires et radiaux multi-étapes et la continuité tonale."
     },
     "text-clarity-test": {
       "metaTitle": "Test de Netteté du Texte & Rendu Sous-Pixel – Précision & Franges",
       "metaDescription": "Inspectez la netteté du texte, les franges colorées de sous-pixels et le rendu typographique sur plusieurs tailles, contrastes et trames de lignes.",
-      "title": "Test de Netteté du Texte & Sous-Pixels",
+      "title": "Test de netteté du texte et sous-pixels",
       "description_p1": "Inspectez la clarté du texte affiché, la netteté des contours et les franges colorées selon les réglages actuels de mise à l'échelle de votre système d'exploitation.",
       "instructions": [
         "<strong>MISE À L'ÉCHELLE:</strong> Assurez-vous que le zoom du navigateur est à 100 % (Ctrl+0) et que le système utilise la résolution native de la dalle.",
@@ -750,13 +747,14 @@
     "multi-touch-test": {
       "metaTitle": "Test Écran Tactile - Vérifier le Tactile en Ligne | Screen Tester",
       "metaDescription": "Testez les contacts multi-doigts sur écran tactile, la détection des gestes et la réactivité du numériseur en ligne. Test tactile gratuit dans votre navigateur.",
-      "title": "Test écran tactile",
+      "title": "Test Multi-Touch et Gestes Multi-Doigts",
       "description_p1": "Utilisez ce test d'écran tactile gratuit pour vérifier si votre écran détecte plusieurs doigts simultanément et répond précisément au toucher. Inspectez les points de contact actifs et le tracé en temps réel.",
       "instructions": [
         "<strong>MODE LIBRE:</strong> Touchez la surface avec plusieurs doigts simultanément. Observez le compteur de contacts actifs et le pic maximal.",
         "<strong>GRILLE MULTI-TOUCH:</strong> Touchez les cellules de la grille pour vérifier que les contacts distincts sont détectés sans frappes fantômes.",
         "<strong>MAINTIEN ET BORDS:</strong> Testez le défi de maintien (3 à 5 doigts pendant 1,5 seconde) et touchez les bordures pour évaluer le rejet de paume."
-      ]
+      ],
+      "description": "Vérifiez le suivi simultané jusqu'à 10 points de contact, pincement et gestes tactiles."
     },
     "accelerometer-test": {
       "metaTitle": "Test Accéléromètre - Capteur de Mouvement en Ligne | Screen Tester",
@@ -776,7 +774,7 @@
       "description_p1": "Utilisez ce test de gyroscope gratuit pour vérifier l'orientation et la rotation angulaire de votre appareil. Inspectez les mouvements angulaires (lacet, tangage, roulis) et le suivi en temps réel.",
       "instructions": [
         "<strong>ACTIVER LE GYROSCOPE:</strong> Cliquez sur 'Démarrer le capteur'. Validez les demandes de permission sur appareils mobiles.",
-        "<strong>INDICATEUR D'ATTITUDE:</strong> Pivotez et inclinez l'appareil. L'horizon artificiel illustre le roulis (gamma) et le tangage (beta).",
+        "<strong>Observation:</strong> Vérifiez l'uniformité des couleurs et l'absence de dérives sur les bords.",
         "<strong>ANGLES D'EULER:</strong> Vérifiez Alpha (boussole 0°–360°), Beta (tangage -180°–180°) et Gamma (roulis -90°–90°)."
       ]
     },
@@ -825,90 +823,87 @@
       ]
     },
     "reactionTimeTest": {
-      "title": "Reaction Time Test",
+      "title": "Test du temps de réaction",
       "description": "Measure your human reaction time in milliseconds. Test your reflexes with this simple interactive tool."
     },
     "reaction-time-test": {
       "metaTitle": "Reaction Time Test",
       "metaDescription": "Test your display and input reaction time latency.",
-      "title": "Reaction Time Test",
+      "title": "Test de Réflexes et Temps de Réaction Humain",
       "description_p1": "Click or tap when the color changes to measure latency.",
       "instructions": [
-        "Wait for the screen to change from red to green.",
-        "Click as fast as you can once it turns green.",
-        "Your reaction time will be recorded in milliseconds."
-      ]
+        "Attendez que l'écran passe du rouge au vert.",
+        "Cliquez aussi vite que possible dès que la couleur change.",
+        "Votre temps de réaction sera consigné en millisecondes."
+      ],
+      "description": "Mesurez votre temps de réaction visuel en millisecondes avec score statistique de régularité."
     },
     "pixel-inversion-test": {
-      "title": "Pixel Inversion & VCOM Flicker Test",
+      "title": "Test d'inversion de pixel et scintillement VCOM",
       "metaTitle": "Pixel Inversion & VCOM Test | Screen Tester",
       "description": "Inspect pixel inversion patterns, VCOM voltage calibration, and pixel walk artifacts across LCD and OLED panels.",
       "metaDescription": "Test your monitor for pixel inversion artifacts, VCOM voltage balance, and pixel walk flicker using high-frequency checkerboard patterns.",
       "instructions": [
-        "Switch through 1x1 dot, 2x2 checkerboard, vertical stripe, and subpixel patterns.",
-        "Observe the screen from your normal working distance with the monitor at native resolution.",
-        "Notice whether any pattern vibrates, shimmers, or displays faint moving wave bands.",
-        "A properly calibrated VCOM voltage will render all gray checkerboards as steady, non-flickering neutral gray."
+        "<strong>Commandes:</strong> Faites défiler les couleurs avec la touche <kbd class=\"px-1 bg-background border border-border rounded\">Espace</kbd> ou <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd>.",
+        "Observez l'écran à distance de travail normale à résolution native.",
+        "Vérifiez qu'aucun motif ne scintille intensément ou ne produise d'ondes mobiles.",
+        "Une tension VCOM bien calibrée affiche un gris neutre et parfaitement stable."
       ]
     },
     "strobe-crosstalk-test": {
-      "title": "Strobe Crosstalk & BFI Inspection Test",
+      "title": "Test de diaphonie stroboscopique et inspection BFI",
       "metaTitle": "Strobe Crosstalk & BFI Test | Screen Tester",
       "description": "Inspect backlight strobing blur reduction, strobe phase alignment, and double-image crosstalk across vertical screen zones.",
       "metaDescription": "Test monitor backlight strobing (ULMB, DyAc, ELMB) and Black Frame Insertion for strobe crosstalk and duplicate silhouette ghosting.",
       "instructions": [
-        "Enable backlight strobing or BFI in your monitor's hardware OSD menu.",
-        "Watch the moving target bars across the top, center, and bottom screen tracks.",
-        "Check for double-image silhouettes behind the moving bars in each zone.",
-        "Inspect which zone has the clearest motion and whether top or bottom shows strobe phase ghosting."
+        "Activez le rétroéclairage stroboscopique (BFI/MBR) dans l'OSD de votre écran.",
+        "Observez les barres cibles défilant en haut, au centre et en bas de l'écran.",
+        "Recherchez la présence d'images dédoublées (crosstalk) derrière les barres.",
+        "Repérez la zone offrant la plus grande netteté et observez les déphasages haut/bas."
       ]
     },
     "vrr-flicker-test": {
-      "title": "VRR Brightness Flicker Stress Test",
+      "title": "Test de Scintillement de Luminosité VRR et Décalage Gamma",
       "metaTitle": "VRR Brightness Flicker Test | Screen Tester",
-      "description": "Stress-test adaptive sync (G-Sync, FreeSync) displays for brightness flicker and gamma shift during rapid framerate fluctuation.",
+      "description": "Diagnostiquez les fluctuations de luminosité à fréquence variable et les dérives gamma OLED.",
       "metaDescription": "Stress test your monitor for VRR brightness flicker and gamma fluctuation during dynamic refresh rate swings.",
       "instructions": [
-        "Ensure G-Sync, FreeSync, or Adaptive-Sync is enabled in your graphics driver and monitor OSD.",
-        "Run the automated framerate sweep between low and high refresh bounds.",
-        "Carefully observe the dark gray background and midtone patches for subtle brightness pumping or flicker.",
-        "OLED and VA panels are most susceptible to near-black VRR gamma flicker during framerate fluctuations."
+        "Activez G-Sync, FreeSync ou Adaptive-Sync dans votre pilote et votre écran.",
+        "Lancez le balayage automatique des fréquences entre les limites de rafraîchissement.",
+        "Scrutez les zones gris foncé pour déceler d'éventuels scintillements de luminosité.",
+        "Les dalles OLED et VA sont particulièrement sensibles au scintillement gamma en VRR."
       ]
     },
     "pursuit-camera-test": {
-      "title": "Pursuit Camera Sync & MPRT Calibration Track",
+      "title": "Piste de calibration Pursuit Camera et MPRT",
       "metaTitle": "Pursuit Camera Sync Track | Screen Tester",
       "description": "Calibrate tracking cameras and smartphones to photograph moving objects for scientific MPRT and ghosting measurement.",
       "metaDescription": "Pursuit camera temporal sync track for photographic measurement of monitor motion blur, ghosting, and MPRT.",
       "instructions": [
-        "Set your camera or smartphone to manual exposure mode with a shutter speed of 1/4 to 1/2 of your panning time.",
-        "Track the moving pattern smoothly from left to right as it glides across the display.",
-        "Review your captured photo: verify the white vertical graduation ticks form a single crisp vertical line.",
-        "When temporal graduation lines are un-smeared, your camera tracking was synchronized, allowing accurate MPRT measurement."
+        "Réglez votre appareil ou smartphone en exposition manuelle avec vitesse d'obturation rapide.",
+        "Suivez avec fluidité l'objet mobile (UFO) tout en prenant la photo.",
+        "Des graduations nettes confirment un suivi réussi pour mesurer précisément le MPRT."
       ]
     },
     "audio-sync-test": {
-      "title": "Audio / Video Lip-Sync Calibration Test",
+      "title": "Test de synchronisation audio/vidéo (Lip-Sync)",
       "metaTitle": "Audio Video Sync Test | Screen Tester",
       "description": "Calibrate audio-video delay, soundbar latency, and Bluetooth audio lag with millisecond visual and acoustic sweep pulses.",
       "metaDescription": "Test and calibrate audio-to-video lip-sync delay with visual sweep bars and synchronized 1kHz millisecond beeps.",
       "instructions": [
-        "Ensure audio output is enabled and unmuted in your browser.",
-        "Watch the sweeping radar dial as it crosses the center alignment notch.",
-        "Listen for the instantaneous 1 kHz audio beep.",
-        "Adjust the millisecond offset slider until the visual alignment and sound occur simultaneously."
+        "Vérifiez que la sortie audio est activée et non coupée dans votre navigateur.",
+        "Observez la synchronisation entre l'éclair lumineux et le bip sonore.",
+        "Vérifiez si le son retentit exactement au passage du marqueur central."
       ]
     },
     "gamepad-test": {
-      "title": "Gamepad & Controller Input Test",
+      "title": "Test d'entrée manette et contrôleur de jeu",
       "metaTitle": "Gamepad & Controller Drift Test | Screen Tester",
       "description": "Test gamepad controllers, analog stick drift, deadzones, trigger axes, and button actuation using the HTML5 Gamepad API.",
       "metaDescription": "Online gamepad and controller tester. Check analog stick drift, deadzone precision, triggers, and buttons in real-time.",
       "instructions": [
-        "Connect an Xbox, PlayStation, Switch, or generic controller via USB or Bluetooth.",
-        "Press any button on the controller to wake the Gamepad API.",
-        "Rotate both analog sticks to test circularity error and check resting drift values against the deadzone threshold.",
-        "Squeeze analog triggers and press all buttons to verify actuation and responsiveness."
+        "<strong>Commandes:</strong> Faites défiler les couleurs avec la touche <kbd class=\"px-1 bg-background border border-border rounded\">Espace</kbd> ou <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd>.",
+        "Testez sticks analogiques, gâchettes et boutons pour déceler les zones mortes."
       ]
     },
     "battery-test": {
@@ -917,10 +912,10 @@
       "description": "Vérifiez le niveau de batterie, l'état de charge, le temps restant estimé et la source d'alimentation de votre appareil.",
       "metaDescription": "Vérificateur de santé de batterie en ligne. Affichez le niveau de batterie, l'état de charge et les informations d'alimentation en temps réel.",
       "instructions": [
-        "Ouvrez le test sur un ordinateur portable, une tablette ou un appareil mobile avec batterie.",
+        "<strong>Commandes:</strong> Faites défiler les couleurs avec la touche <kbd class=\"px-1 bg-background border border-border rounded\">Espace</kbd> ou <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd>.",
         "Consultez le pourcentage actuel de la batterie et l'état de charge.",
         "Surveillez le temps estimé de charge complète ou le temps restant sur batterie.",
-        "Observez le graphique d'historique pour suivre les changements de niveau de batterie."
+        "<strong>Remarque:</strong> Ce motif de référence fournit un contrôle visuel immédiat."
       ]
     },
     "network-speed-test": {
@@ -972,14 +967,14 @@
       ]
     },
     "input-lag-test": {
-      "title": "Visualiseur de Latence d'Entrée",
+      "title": "Visualiseur d'Input Lag et Latence d'Affichage",
       "metaTitle": "Test de Latence d'Entrée | Screen Tester",
-      "description": "Mesurez votre latence d'entrée visuelle-à-clic avec un test de réaction en 10 essais.",
+      "description": "Visualisez le délai de traitement de l'affichage et la latence clic-vers-photon.",
       "metaDescription": "Mesurez la latence d'entrée et clic-à-photon. Test de réaction en 10 essais avec histogramme et analyse statistique.",
       "instructions": [
-        "Cliquez sur la zone grise pour commencer le test.",
-        "Attendez que la zone devienne verte — NE cliquez PAS pendant la phase rouge.",
-        "Cliquez aussi vite que possible quand vous voyez le vert.",
+        "<strong>Commandes:</strong> Faites défiler les couleurs avec la touche <kbd class=\"px-1 bg-background border border-border rounded\">Espace</kbd> ou <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd>.",
+        "<strong>Observation:</strong> Vérifiez l'uniformité des couleurs et l'absence de dérives sur les bords.",
+        "<strong>Remarque:</strong> Ce motif de référence fournit un contrôle visuel immédiat.",
         "Complétez les 10 essais pour voir vos résultats statistiques complets."
       ]
     },
@@ -989,7 +984,7 @@
       "description": "Lisez les niveaux de lumière ambiante en temps réel en lux avec l'API AmbientLightSensor.",
       "metaDescription": "Test de capteur de lumière ambiante en ligne. Mesurez la luminosité en lux et obtenez des recommandations.",
       "instructions": [
-        "Autorisez le capteur lorsque le navigateur le demande.",
+        "<strong>Commandes:</strong> Faites défiler les couleurs avec la touche <kbd class=\"px-1 bg-background border border-border rounded\">Espace</kbd> ou <kbd class=\"px-1 bg-background border border-border rounded\">→</kbd>.",
         "La lecture en lux se met à jour en temps réel avec les changements de lumière.",
         "Rapprochez ou éloignez votre appareil des sources lumineuses.",
         "Consultez la recommandation pour la luminosité optimale de l'écran."
@@ -1015,12 +1010,12 @@
       "instructions": [
         "Sélectionnez l'architecture de votre dalle ou utilisez les mires à 1 pixel pour vérifier l'alignement.",
         "Examinez les échantillons de texte sur fonds clairs et sombres pour détecter les bavures magenta ou vertes.",
-        "Suivez les recommandations ClearType pour ajuster le rendu sous-pixel sous Windows ou macOS."
+        "<strong>Remarque:</strong> Ce motif de référence fournit un contrôle visuel immédiat."
       ]
     },
     "pwm-flicker-test": {
-      "title": "Test de Scintillement PWM et Fatigue Visuelle",
-      "description": "Détectez le scintillement haute fréquence par modulation de largeur d'impulsions (PWM).",
+      "title": "Test de Scintillement PWM et Fatigue Oculaire",
+      "description": "Détectez le scintillement stroboscopique PWM du rétroéclairage LED et évaluez la fatigue oculaire.",
       "metaTitle": "Test de Scintillement PWM - Confort Oculaire & Vérification Caméra",
       "metaDescription": "Détectez le scintillement invisible du rétroéclairage PWM responsable de maux de tête.",
       "instructions": [
@@ -1092,7 +1087,7 @@
       "instructions": [
         "Vérifiez les paramètres détectés automatiquement (définition, profondeur des couleurs, gamut).",
         "Renseignez le modèle de l'écran, le numéro de série et les résultats du contrôle visuel.",
-        "Cliquez sur 'Imprimer / Enregistrer en PDF' pour obtenir votre certificat officiel."
+        "<strong>Remarque:</strong> Ce motif de référence fournit un contrôle visuel immédiat."
       ]
     },
     "osd-calibration-guide": {
@@ -1109,8 +1104,8 @@
   },
   "Tests": {
     "multiTouchTest": {
-      "title": "Test Multi-Touch",
-      "description": "Vérifiez les points de contact simultanés, le suivi du numériseur et l'enregistrement tactile."
+      "title": "Test Multi-Touch et Gestes Multi-Doigts",
+      "description": "Vérifiez le suivi simultané jusqu'à 10 points de contact, pincement et gestes tactiles."
     },
     "accelerometerTest": {
       "title": "Test de l'Accéléromètre",
@@ -1157,8 +1152,8 @@
       "instructions": "Recherchez des halos autour du carré brillant."
     },
     "touchScreen": {
-      "title": "Test d'Écran Tactile – Diagnostic Multitouche et Zones Mortes",
-      "description": "Vérifiez la réactivité tactile, les points de contact simultanés et l'absence de zones non réactives en ligne.",
+      "title": "Test de Numériseur Tactile et Zones Inactives",
+      "description": "Cartographiez la réactivité tactile, la précision des points de contact et les zones mortes des bords.",
       "instructions": "Dessinez partout sur l'écran pour vérifier les zones mortes."
     },
     "solidColor": {
@@ -1172,8 +1167,8 @@
       "instructions": "Examinez visuellement les tons chair, neutres et dominantes de couleur sur les mires."
     },
     "flicker": {
-      "title": "Contrôle Visuel de Scintillement et PWM – Rétroéclairage et Confort Oculaire",
-      "description": "Examinez visuellement le rétroéclairage pour détecter scintillements et artefacts. Les navigateurs ne peuvent mesurer directement la fréquence PWM matérielle.",
+      "title": "Test de Scintillement d'Écran et Stabilité de Fréquence",
+      "description": "Inspectez le scintillement optique temporel et la synchronisation de rafraîchissement.",
       "instructions": "Utilisez l'observation visuelle ou une caméra (dépendant de la vitesse d'obturation et de la cadence)."
     },
     "sharpness": {
@@ -1296,8 +1291,8 @@
       "instructions": "Vérifiez dans le noir la distinction des blocs sombres entre 0 % et 5 %."
     },
     "gradientBandingTest": {
-      "title": "Test de Dégradé & Banding – Transitions Tonales Régulières",
-      "description": "Détectez les cassures tonales, lignes de quantification et bandes sur les dégradés.",
+      "title": "Test de Dégradés Fluides et Rampes de Transition",
+      "description": "Évaluez la fluidité des dégradés linéaires et radiaux multi-étapes et la continuité tonale.",
       "instructions": "Inspectez les dégradés horizontaux et verticaux pour repérer toute démarcation visible."
     },
     "textClarityTest": {
@@ -1320,12 +1315,12 @@
       "description": "Évaluez le temps de réponse des pixels, les traînées de rémanence et les couronnes d'overdrive avec des motifs animés."
     },
     "motionBlurTest": {
-      "title": "Test de Flou de Mouvement – Clarté et Vérification MPRT",
-      "description": "Analysez la résolution en mouvement, le flou de persistance et le suivi MPRT sur des scènes rapides."
+      "title": "Test de Persistance et Flou de Mouvement (MPRT)",
+      "description": "Mesurez le temps de réponse de l'image en mouvement (MPRT), la persistance rétinienne et la netteté dynamique."
     },
     "reactionTimeTest": {
-      "title": "Test de Temps de Réaction",
-      "description": "Mesurez votre temps de réaction visuel et la latence d'affichage en millisecondes."
+      "title": "Test de Réflexes et Temps de Réaction Humain",
+      "description": "Mesurez votre temps de réaction visuel en millisecondes avec score statistique de régularité."
     },
     "AccelerometerPattern": {
       "status": "Status:",
@@ -2471,8 +2466,8 @@
       "description": "Évaluez le rétroéclairage stroboscopique et l'insertion d'images noires (BFI) en haut, au centre et en bas de l'écran."
     },
     "vrrFlickerTest": {
-      "title": "Test de Scintillement de Luminosité VRR",
-      "description": "Testez la résistance des écrans à rafraîchissement variable (G-Sync, FreeSync) aux sauts de gamma et au scintillement de luminosité."
+      "title": "Test de Scintillement de Luminosité VRR et Décalage Gamma",
+      "description": "Diagnostiquez les fluctuations de luminosité à fréquence variable et les dérives gamma OLED."
     },
     "pursuitCameraTest": {
       "title": "Piste de Synchronisation de Caméra de Poursuite",
@@ -2645,8 +2640,8 @@
       "description": "Détectez la préférence mode sombre et prévisualisez l'UI dans les deux thèmes."
     },
     "inputLagTest": {
-      "title": "Visualiseur de Latence d'Entrée",
-      "description": "Mesurez la latence d'entrée clic-à-photon avec 10 essais, histogramme et analyse statistique."
+      "title": "Visualiseur d'Input Lag et Latence d'Affichage",
+      "description": "Visualisez le délai de traitement de l'affichage et la latence clic-vers-photon."
     },
     "ambientLightTest": {
       "title": "Capteur de Lumière Ambiante",
@@ -2852,22 +2847,51 @@
     "subpixelLayoutTest": {
       "title": "Disposition des Sous-Pixels & Franges",
       "description": "Inspectez les structures RGB, BGR et OLED et les franges de couleur sur le texte.",
-      "metaDescription": "Diagnostic de géométrie des sous-pixels et clarté des polices."
+      "metaDescription": "Diagnostic de géométrie des sous-pixels et clarté des polices.",
+      "clearTypeGuide": "Ajuster ClearType sous Windows",
+      "clearTypeDesc": "Appuyez sur Win + R, tapez cttune et suivez l'assistant de réglage du texte pour supprimer les franges colorées.",
+      "structureTitle": "Géométries des Sous-pixels Expliquées",
+      "rgbStandard": "RGB Standard : Rendu textuel optimal sans bavure colorée.",
+      "bgrStripe": "BGR : Peut causer de légères franges colorées sans recalibration.",
+      "qdoledLayout": "QD-OLED Triangulaire : Léger liseré magenta/vert sur contrastes horizontaux.",
+      "woledLayout": "WOLED RWBG : Le sous-pixel blanc peut adoucir les contours de texte."
     },
     "pwmFlickerTest": {
-      "title": "Test de Scintillement PWM",
-      "description": "Détectez le scintillement du rétroéclairage et prévenez la fatigue oculaire.",
-      "metaDescription": "Mesure du scintillement stroboscopique du rétroéclairage."
+      "title": "Test de Scintillement PWM et Fatigue Oculaire",
+      "description": "Détectez le scintillement stroboscopique PWM du rétroéclairage LED et évaluez la fatigue oculaire.",
+      "metaDescription": "Mesure du scintillement stroboscopique du rétroéclairage.",
+      "shutterMethodTitle": "Méthode par Caméra de Smartphone",
+      "shutterMethodDesc": "Ouvrez l'appareil photo de votre smartphone en mode Pro. Réglez la vitesse d'obturation à 1/1000s ou plus. Des bandes sombres défilantes indiquent un rétroéclairage PWM stroboscopique.",
+      "freqGuideTitle": "Guide Ergonomique des Fréquences PWM",
+      "flickerFree": "Sans Scintillement (DC Dimming)",
+      "highFreq": "Haute Fréquence (>1000 Hz) – Confort Oculaire",
+      "lowFreq": "Basse Fréquence (<250 Hz) – Risque de Fatigue Visuelle"
     },
     "gtgResponseTimeTest": {
       "title": "Temps de Réponse GtG",
       "description": "Mesurez la réactivité des transitions et identifiez les halos d'overdrive.",
-      "metaDescription": "Évaluation de la réactivité des pixels et dépassement de tension."
+      "metaDescription": "Évaluation de la réactivité des pixels et dépassement de tension.",
+      "overdriveTitle": "Interpréter les artefacts d'overdrive",
+      "overdriveDesc": "Suivez les bords du rectangle en mouvement. Si l'overdrive est trop bas, une traînée floue apparaît. S'il est trop élevé (Extreme), une surtension crée un halo inversé ou une traînée blanche (corona). Le réglage idéal est Normal ou Rapide.",
+      "pause": "Pause",
+      "resume": "Reprendre",
+      "speed": "Vitesse",
+      "bgGrey": "Gris d'Arrière-plan",
+      "blockGrey": "Gris du Bloc",
+      "transitionStatus": "Transition : RGB({start}) → RGB({end}) · Vitesse : {speed} px/s · Mode : {mode}"
     },
     "mousePollingTest": {
       "title": "Polling Rate et Précision Souris",
       "description": "Mesurez la fréquence en Hz, la régularité et les anomalies de double-clic.",
-      "metaDescription": "Outil de mesure de fréquence et précision de capteur souris."
+      "metaDescription": "Outil de mesure de fréquence et précision de capteur souris.",
+      "areaPrompt": "Déplacez rapidement la souris dans cette zone",
+      "realtimeHz": "Taux de Sondage en Temps Réel",
+      "peakHz": "Fréquence Maximale",
+      "averageHz": "Fréquence Moyenne",
+      "jitter": "Gigue Temporelle (Jitter)",
+      "stability": "Stabilité du Sondage",
+      "sampleCount": "Échantillons Totaux",
+      "reset": "Réinitialiser le Compteur"
     },
     "gpuBenchmarkTest": {
       "title": "Benchmark WebGL 3D pour GPU",
@@ -2905,6 +2929,52 @@
       "reverseMotionDirectionTitle": "Inverser le sens du mouvement",
       "readAboutMotionBlurTitle": "En savoir plus sur le flou de mouvement et le MPRT",
       "guide": "Guide"
+    },
+    "deadPixelMapper": {
+      "isoAssessment": "Évaluation RMA ISO 9241-307",
+      "class1Title": "Classe 1 (Zéro Point Brillant) :",
+      "class1Pass": "CONFORME (0 Défaut)",
+      "class2Title": "Classe 2 (Standard Grand Public) :",
+      "class2Pass": "CONFORME (Dans la Limite)",
+      "rmaEligible": "ÉLIGIBLE AU RETOUR RMA",
+      "isoNote": "La plupart des garanties fabricants suivent la norme ISO Classe 2 (max. 2 pixels morts ou 5 sous-pixels bloqués par million).",
+      "copyReport": "Copier le Journal RMA dans le Presse-papiers",
+      "reportCopied": "Rapport Copié dans le Presse-papiers !",
+      "tableHeaders": {
+        "id": "ID",
+        "coords": "Coordonnées",
+        "color": "Couleur",
+        "type": "Type de Défaut",
+        "zone": "Zone",
+        "actions": "Actions"
+      },
+      "zones": {
+        "center": "Centre (Focal)",
+        "edge": "Périmètre (Bord)"
+      },
+      "defectTypes": {
+        "dead_dark": "Mort (Sombre)",
+        "stuck_red": "Bloqué (Rouge)",
+        "stuck_green": "Bloqué (Vert)",
+        "stuck_blue": "Bloqué (Bleu)",
+        "bright_subpixel": "Sous-pixel Brillant",
+        "dust": "Poussière / Résidu"
+      },
+      "loupeTitle": "Loupe Optique 12x",
+      "addDefectTip": "Cliquez sur la zone de test pour pointer un défaut",
+      "noDefectsLogged": "Aucun défaut consigné. Cliquez sur l'écran pour localiser les anomalies."
+    },
+    "oledBurnInCalculator": {
+      "timelineTitle": "Probabilité de Marquage dans le Temps",
+      "hazardHotspots": "Zones à Risque Statique",
+      "dailyUsage": "Utilisation Quotidienne (Heures)",
+      "brightnessLevel": "Luminosité Moyenne / HDR",
+      "staticPercent": "Éléments Statiques à l'Écran (%)",
+      "coolingMethod": "Refroidissement / Dissipateur Thermique",
+      "riskLow": "Risque Faible – Estimé à plus de 5 ans sans marquage",
+      "riskModerate": "Risque Modéré – Usure progressive après 3 à 4 ans",
+      "riskHigh": "Risque Élevé – Marquage visible sous 18 à 24 mois",
+      "recommendations": "Conseils pour Préserver la Dalle OLED"
     }
   },
   "Guides": {
@@ -3548,7 +3618,8 @@
       "workflowCtaTitle": "Prêt à inspecter un écran d'occasion sur place ?",
       "workflowCtaDesc": "Lancez notre séquence guidée d'inspection pour écran d'occasion pour dérouler tous les tests sur votre ordinateur portable lors du rendez-vous.",
       "workflowCtaButton": "Lancer l'inspection d'écran d'occasion",
-      "relatedTestsHeading": "Outils de diagnostic recommandés"
+      "relatedTestsHeading": "Outils de diagnostic recommandés",
+      "description": "Guide pratique pour tester un moniteur de seconde main : dommages physiques, pixels morts, usure du rétroéclairage et stabilité des ports."
     },
     "newMonitor": {
       "metaTitle": "Guide d'Inspection d'un Nouvel Écran et Délai de Rétractation",
@@ -3868,7 +3939,8 @@
       "workflowCtaDesc": "Lancez notre parcours guidé d'inspection d'écran neuf pour dérouler mires de pixels, contrôles d'éclairage et d'uniformité directement sur votre affichage.",
       "workflowCtaButton": "Lancer le parcours écran neuf",
       "relatedTestsHeading": "Suite de tests conseillée",
-      "osdLinksTitle": "Tests de vérification du signal et de l'OSD"
+      "osdLinksTitle": "Tests de vérification du signal et de l'OSD",
+      "description": "Un guide pratique pas à pas pour inspecter un moniteur neuf à sa réception : dommages physiques, pixels défectueux, uniformité et netteté en mouvement avant la fin du délai de retour."
     },
     "displayportVsHdmi": {
       "metaTitle": "DisplayPort vs HDMI : Bande passante, révisions et sous-échantillonnage",
@@ -5724,7 +5796,13 @@
         "desc": "Les anneaux concentriques mettent en évidence les battements de fréquence spatiale avec le pas de masque et les échelles non entières (ex. 125% ou 150%)."
       }
     },
-    "fullscreenHint": "Appuyez sur Échap ou F pour quitter"
+    "fullscreenHint": "Appuyez sur Échap ou F pour quitter",
+    "instructions": [
+      "<strong>Grille d'Alignement 2D :</strong> Inspectez la distorsion en coussinet ou en barillet, la courbure et la convergence sur les bords.",
+      "<strong>Matrice en Damier :</strong> Vérifiez la netteté du contraste ANSI sans effet de blooming ni halo de gradation locale.",
+      "<strong>Lignes Horizontales et Verticales :</strong> Contrôlez l'alignement de balayage, la phase de pixel et la netteté à 1 pixel.",
+      "<strong>Flux de Test :</strong> Ajustez l'espacement de grille ou basculez entre les 12 préréglages selon vos besoins."
+    ]
   },
   "CompareDisplays": {
     "breadcrumbAll": "TOUS LES TESTS",

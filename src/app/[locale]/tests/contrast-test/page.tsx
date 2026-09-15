@@ -1,3 +1,5 @@
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 import { generateSeoMetadata } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
@@ -21,6 +23,8 @@ export default async function ContrastTestPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const explainerData = getFeatureExplainer("contrast-test", locale);
+  const explainerLabels = getExplainerLabels(locale);
   const t = await getTranslations({ locale, namespace: "ContrastTest" });
 
   return (
@@ -30,6 +34,12 @@ export default async function ContrastTestPage({
       description={<p>{t("description")}</p>}
       instructions={<p>{t("disclaimer")}</p>}
       extraControls={<ContrastGuidance />}
+    
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }
     >
       <ContrastPattern testId="contrast-test" />
     </TestWrapper>

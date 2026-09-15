@@ -247,7 +247,9 @@ export function MousePollingPattern({ testId }: { testId?: string }) {
                 <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mx-auto shadow-md">
                   <MousePointer className="w-6 h-6 animate-pulse" />
                 </div>
-                <h4 className="text-base font-bold text-gray-950">Move Mouse Rapidly Inside This Area</h4>
+                <h4 className="text-base font-bold text-gray-950">
+                  {t.has("areaPrompt") ? t("areaPrompt") : "Move Mouse Rapidly Inside This Area"}
+                </h4>
                 <p className="text-xs text-gray-600 max-w-md">
                   Make fast, continuous circles or side-to-side movements. USB polling only fires when the optical sensor registers physical movement deltas.
                 </p>

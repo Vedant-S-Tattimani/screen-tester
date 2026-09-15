@@ -424,7 +424,9 @@ export function SubpixelLayoutPattern({ testId }: { testId?: string }) {
               <div className="p-5 rounded-xl border border-gray-200 bg-white space-y-3">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5 text-blue-600" />
-                  <h4 className="text-sm font-bold text-gray-950">How to Tune ClearType on Windows</h4>
+                  <h4 className="text-sm font-bold text-gray-950">
+                    {t.has("clearTypeGuide") ? t("clearTypeGuide") : "How to Tune ClearType on Windows"}
+                  </h4>
                 </div>
                 <ol className="list-decimal pl-5 text-xs text-gray-600 space-y-2">
                   <li>Press <kbd className="px-1.5 py-0.5 rounded bg-gray-100 border text-[11px] font-mono">Win + R</kbd>, type <code className="text-blue-600 font-bold">cttune.exe</code>, and hit Enter.</li>
@@ -438,7 +440,9 @@ export function SubpixelLayoutPattern({ testId }: { testId?: string }) {
               <div className="p-5 rounded-xl border border-gray-200 bg-white space-y-3">
                 <div className="flex items-center gap-2">
                   <AlertTriangle className="w-5 h-5 text-amber-600" />
-                  <h4 className="text-sm font-bold text-gray-950">macOS &amp; Linux Text Smoothing</h4>
+                  <h4 className="text-sm font-bold text-gray-950">
+                    {t.has("structureTitle") ? t("structureTitle") : "Subpixel Geometries Explained"}
+                  </h4>
                 </div>
                 <p className="text-xs text-gray-600 leading-relaxed">
                   Modern macOS (since Mojave) disables subpixel antialiasing by default in favor of high-DPI whole-pixel grayscale smoothing. 

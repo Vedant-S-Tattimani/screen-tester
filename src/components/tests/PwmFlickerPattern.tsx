@@ -290,12 +290,14 @@ export function PwmFlickerPattern({ testId }: { testId?: string }) {
               <div className="p-5 rounded-xl border border-gray-200 bg-white space-y-3">
                 <div className="flex items-center gap-2">
                   <Camera className="w-5 h-5 text-blue-600" />
-                  <h4 className="text-sm font-bold text-gray-950">Smartphone Camera Shutter Method</h4>
+                  <h4 className="text-sm font-bold text-gray-950">
+                    {t.has("shutterMethodTitle") ? t("shutterMethodTitle") : "Smartphone Camera Shutter Method"}
+                  </h4>
                 </div>
                 <p className="text-xs text-gray-600 leading-relaxed">
-                  PWM dimming turns the backlight completely ON and OFF hundreds of times per second. 
-                  Because human persistence of vision averages this out, your eyes see a dimmer image, but your visual cortex suffers micro-strain.
-                  Your phone camera shutter can capture the truth in milliseconds:
+                  {t.has("shutterMethodDesc")
+                    ? t("shutterMethodDesc")
+                    : "PWM dimming turns the backlight completely ON and OFF hundreds of times per second. Because human persistence of vision averages this out, your eyes see a dimmer image, but your visual cortex suffers micro-strain. Your phone camera shutter can capture the truth in milliseconds:"}
                 </p>
                 <ol className="list-decimal pl-5 text-xs text-gray-700 space-y-2">
                   <li>Open your smartphone camera app in <strong>Pro / Manual mode</strong> (or record in <strong>240fps Slow Motion</strong>).</li>
@@ -309,7 +311,9 @@ export function PwmFlickerPattern({ testId }: { testId?: string }) {
               <div className="p-5 rounded-xl border border-gray-200 bg-white space-y-4">
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="w-5 h-5 text-emerald-600" />
-                  <h4 className="text-sm font-bold text-gray-950">PWM Frequency Ergonomic Guide</h4>
+                  <h4 className="text-sm font-bold text-gray-950">
+                    {t.has("freqGuideTitle") ? t("freqGuideTitle") : "PWM Frequency Ergonomic Guide"}
+                  </h4>
                 </div>
                 <div className="space-y-2.5 text-xs">
                   <div className="p-2.5 rounded-lg border border-red-200 bg-red-50 text-red-900">

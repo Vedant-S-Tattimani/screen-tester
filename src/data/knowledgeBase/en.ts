@@ -2948,11 +2948,7 @@ export const EN_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
         "answer": "Always adjust the monitor's physical hardware OSD RGB gain controls first. Software GPU LUT adjustments can introduce color banding and reduce dynamic range."
       }
     ],
-    "relatedTestIds": [
-      "dual-monitor-matcher",
-      "color-test",
-      "white-level-test"
-    ],
+    "relatedTestIds": ["dual-monitor-matcher", "compare-displays", "color-test", "white-level-test"],
     "relatedTroubleshootingIds": [
       "color-tint"
     ],
@@ -3906,11 +3902,7 @@ export const EN_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
       "answer": "True dead pixels caused by transistor failure do not spread. However, if a seal is compromised or moisture penetrates the substrate, localized pixel failure clusters may grow."
     }
   ],
-  "relatedTestIds": [
-    "dead-pixel-mapper",
-    "dead-pixel-test",
-    "stuck-pixel-fixer"
-  ],
+  "relatedTestIds": ["dead-pixel-mapper", "dead-pixel-test", "bright-pixel-test", "stuck-pixel-fixer"],
   "relatedTroubleshootingIds": [
     "dead-vs-stuck-pixels"
   ],
@@ -4340,6 +4332,335 @@ export const EN_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "resolution-and-scaling"
   ],
   "primarySearchIntent": "monitor osd calibration hardware buttons brightness contrast gamma 6500k",
+  "readingTimeMinutes": 5
+},
+  {
+  "slug": "display-gamma-curves-and-grayscale-tracking",
+  "category": "display-basics",
+  "title": "Display Gamma Curves, EOTF & Grayscale Tracking Explained",
+  "subtitle": "Understanding Gamma 2.2, sRGB transfer functions, BT.1886, black crush, and grayscale step calibration.",
+  "description": "Learn how monitor gamma curves and electro-optical transfer functions (EOTF) determine shadow detail, midtone brightness, and grayscale linearity across SDR and HDR displays.",
+  "directAnswer": "Gamma describes the mathematical relationship between the numerical brightness value of an input pixel signal and the actual optical luminance output produced by your display.",
+  "whyItMatters": "Incorrect display gamma causes severe image degradation: high gamma (e.g. 2.6) crushes dark shadow details into solid black, while low gamma (e.g. 1.8) washes out contrast, making blacks appear milky and faded.",
+  "whatToLookFor": [
+    "Shadow detail disappearing into murky pitch black (black crush)",
+    "Washed-out milky midtones on contrast ramps (low gamma)",
+    "Discolored tinting across grayscale steps (color temperature drift)",
+    "Stepped banding instead of smooth gradient transitions across dark tones"
+  ],
+  "howToTest": [
+    "Open the Gamma Test in Screen Tester to visually match solid gray swatches against alternating black-and-white dithered patterns",
+    "Inspect the Grayscale Test to ensure all 16 to 32 luminance steps from 0% to 100% are individually distinguishable",
+    "Check Black Level and White Level tests to ensure near-black steps (1%–4%) and near-white steps (96%–99%) remain visible"
+  ],
+  "whatScreenTesterCanObserve": [
+    "Visual alignment between solid color patches and optical halftone dithered reference fields",
+    "Stepwise luminance discrimination across standardized 16/32/64 grayscale ramps",
+    "Browser canvas rendering of sRGB transfer function curves"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "Absolute radiometric luminance in candelas per square meter (cd/m²) without an external colorimeter probe",
+    "Exact hardware LUT (Look-Up Table) bit-depth inside the monitor scalar chip",
+    "Hardware-level GPU ICC profile calibration matrices"
+  ],
+  "commonCauses": [
+    "Monitor OSD Gamma preset set to an uncalibrated mode (e.g., 'Mode 1' or 'Gaming' instead of '2.2')",
+    "GPU control panel output dynamic range set to 'Limited (16-235)' instead of 'Full (0-255)' over HDMI",
+    "Operating system HDR tone mapping applying an aggressive roll-off curve to SDR content"
+  ],
+  "whatToDoNext": [
+    "In your monitor's OSD menu, navigate to Picture/Color and select the standard Gamma 2.2 or sRGB preset",
+    "Ensure your GPU driver (NVIDIA Control Panel or AMD Radeon Software) is outputting Full Dynamic Range RGB",
+    "Run the Display OSD Calibration Guide to systematically dial in brightness, contrast, and gamma steps"
+  ],
+  "sections": [
+    {
+      "title": "Why Displays Need a Non-Linear Gamma Curve",
+      "content": [
+        "Human vision does not perceive brightness linearly. Our eyes are vastly more sensitive to subtle differences in dark shadows than to equivalent changes in bright highlights.",
+        "If displays stored and outputted light linearly, digital video encoding would waste bits on bright tones that we cannot differentiate while starving dark tones, causing harsh contour banding. Gamma encoding compresses the signal to match the logarithmic sensitivity of human perception."
+      ]
+    },
+    {
+      "title": "Standard Gamma Targets: 2.2 vs. 2.4 vs. BT.1886",
+      "content": [
+        "Gamma 2.2 is the universal de facto standard for PC monitors, web browsing, graphic design, and sRGB/AdobeRGB environments.",
+        "Gamma 2.4 and BT.1886 are targeted for dark-room home theater mastering and television viewing. BT.1886 specifically adapts the transfer function to the minimum black level of the display, preventing shadow detail loss on LCD panels with elevated black floors."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "What is black crush and how can I fix it?",
+      "answer": "Black crush occurs when low luminance values (levels 1 through 10 in 8-bit color) collapse into pure black, obliterating dark textures in games and movies. It is resolved by lowering display gamma in the monitor OSD or slightly raising the Brightness setting."
+    },
+    {
+      "question": "Can I calibrate gamma without a hardware colorimeter?",
+      "answer": "Yes. Optical visual matching tests (such as the halftone pattern in Screen Tester) allow you to align perceived midtone luminance with mathematical 50% dither fields, achieving approximate ±0.1 gamma accuracy."
+    }
+  ],
+  "relatedTestIds": [
+    "gamma-test",
+    "grayscale-test",
+    "contrast-test",
+    "brightness-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "color-banding-gradient"
+  ],
+  "relatedArticleSlugs": [
+    "black-levels-and-shadow-detail",
+    "display-uniformity",
+    "color-depth-and-banding"
+  ],
+  "primarySearchIntent": "monitor gamma test calibration grayscale curve",
+  "readingTimeMinutes": 6
+},
+  {
+  "slug": "color-accuracy-delta-e-and-gamut-coverage",
+  "category": "display-basics",
+  "title": "Color Accuracy, Delta E & Gamut Coverage Explained",
+  "subtitle": "How color spaces (sRGB, DCI-P3, AdobeRGB), Delta E error thresholds, and saturation tracking impact color fidelity.",
+  "description": "Learn the science of monitor color accuracy: how Delta E metrics quantify perceptual color differences, why wide-gamut monitors can look oversaturated, and how to calibrate color tracking.",
+  "directAnswer": "Color accuracy measures how faithfully a monitor reproduces standardized color coordinates, quantified by Delta E (ΔE)—the mathematical distance between a requested color and the physical light measured by a spectrophotometer.",
+  "whyItMatters": "For photo editors, digital artists, video colorists, and gamers, inaccurate colors distort creative intent. A ΔE above 3.0 results in noticeable skin tone discoloration, mismatched brand logos, and unnatural oversaturation.",
+  "whatToLookFor": [
+    "Skin tones that appear artificially sunburned or greenish-yellow",
+    "Fluorescent neon app icons caused by untamed DCI-P3 wide color gamut clamping issues",
+    "Color shifts where neutral gray bars look warm (reddish) or cold (bluish)",
+    "Clipping where subtle color gradations flatten into solid blocks at maximum saturation"
+  ],
+  "howToTest": [
+    "Run the Color Accuracy and Saturation tests in Screen Tester to evaluate 10% to 100% saturation sweeps across primary and secondary colors",
+    "Inspect the Color Gamut test to check whether your browser and operating system successfully map sRGB and Display-P3 color profiles",
+    "Compare side-by-side monitors using the Dual Monitor Color Matcher to identify white point drift"
+  ],
+  "whatScreenTesterCanObserve": [
+    "Browser CSS color space profile support (sRGB, display-p3, rec2020 via `@media (color-gamut)`)",
+    "Visual color step separation across 10-step saturation ramps for red, green, blue, cyan, magenta, and yellow",
+    "Consistent rendering of standard ColorChecker 24-patch reference arrays"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "Absolute CIE xy / L*a*b* coordinates without an external spectrophotometer or colorimeter",
+    "Exact numerical Delta E (ΔE 2000) measurement values for individual color patches",
+    "Spectral power distribution (SPD) of the backlight LED phosphors or quantum dots"
+  ],
+  "commonCauses": [
+    "Wide-gamut display operating in native unmanaged mode without an sRGB clamp, causing extreme oversaturation in non-color-managed web browsers",
+    "Factory color temperature preset set to 'Warm' or 'Cool' rather than standard 6500K (D65)",
+    "Corrupted or conflicting ICC display color profiles loaded in operating system color management settings"
+  ],
+  "whatToDoNext": [
+    "Enable the sRGB Emulation mode in your monitor's OSD to prevent oversaturation during daily SDR web use",
+    "Set monitor Color Temperature to 'User' or 'Custom' and calibrate Red, Green, and Blue gains to match D65 (6500K)",
+    "Use Windows Color Management or macOS Displays settings to verify the assigned monitor ICC profile"
+  ],
+  "sections": [
+    {
+      "title": "Understanding Delta E (ΔE) Thresholds",
+      "content": [
+        "Delta E represents the Euclidean distance between two colors in a perceptually uniform color space (such as CIELAB or CIEDE2000).",
+        "ΔE < 1.0: Imperceptible difference to the human eye. Considered reference studio grade.",
+        "ΔE 1.0–2.0: Perceptible only through close side-by-side inspection by trained colorists.",
+        "ΔE 2.0–3.0: Standard acceptable threshold for factory-calibrated professional monitors.",
+        "ΔE > 3.0: Readily apparent color deviation noticeable to untrained consumers."
+      ]
+    },
+    {
+      "title": "The Wide Gamut Oversaturation Problem",
+      "content": [
+        "Modern gaming and multimedia monitors boast 95%+ DCI-P3 or AdobeRGB coverage. However, most web content, YouTube videos, and games are mastered in standard sRGB.",
+        "Without an active sRGB clamp or operating system color management, the monitor stretches standard sRGB coordinates across its wider physical color gamut, making reds look neon and skin tones look unnatural."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "What is the difference between sRGB, DCI-P3, and AdobeRGB?",
+      "answer": "sRGB is the universal standard for web, gaming, and general computing. DCI-P3 is a wider gamut developed for digital cinema featuring deeper greens and vibrant reds. AdobeRGB extends further into rich cyans and greens, engineered specifically for print and CMYK photography workflows."
+    },
+    {
+      "question": "Why does my new monitor look oversaturated compared to my old one?",
+      "answer": "Your new monitor likely has a wide-gamut panel (such as Nano-IPS, Quantum Dot, or OLED) displaying standard sRGB content without color gamut clamping. Enabling the monitor's sRGB mode will restore natural, accurate colors."
+    }
+  ],
+  "relatedTestIds": [
+    "color-accuracy-test",
+    "saturation-test",
+    "color-gamut-test",
+    "color-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "color-tint-shift"
+  ],
+  "relatedArticleSlugs": [
+    "color-depth-and-banding",
+    "hdr-display-fundamentals",
+    "dual-monitor-color-and-white-point-matching"
+  ],
+  "primarySearchIntent": "monitor color accuracy delta e saturation gamut calibration",
+  "readingTimeMinutes": 6
+},
+  {
+  "slug": "local-dimming-blooming-and-fald-haloing",
+  "category": "display-problems",
+  "title": "Mini-LED Local Dimming, Blooming Artifacts & Haloing Explained",
+  "subtitle": "How Full-Array Local Dimming (FALD) operates, why haloing occurs around bright objects, and how to optimize dimming zones.",
+  "description": "Explore the mechanics of Mini-LED and FALD displays: why local dimming causes blooming and halo artifacts against dark backgrounds, zone transition delays, and how to minimize halos.",
+  "directAnswer": "Blooming (or haloing) is an optical artifact on Full-Array Local Dimming (FALD) and Mini-LED LCD screens where light from illuminated backlight zones leaks beyond the borders of small bright objects into adjacent dark pixels.",
+  "whyItMatters": "While Mini-LED panels deliver extraordinary peak brightness (1000+ nits) and deep blacks, aggressive local dimming creates distracting glowing halos around mouse cursors, white movie subtitles, and night sky stars, diminishing dark-scene contrast.",
+  "whatToLookFor": [
+    "A soft, diffuse glowing aura surrounding bright white subtitles on black movie letterbox bars",
+    "Luminance pulsing or delayed brightening as the mouse cursor moves across dark desktop windows",
+    "Crushed faint starfields in space scenes caused by dimming algorithm zone shutdowns",
+    "Visible grid boundaries when high-contrast geometric objects transition across backlighting zones"
+  ],
+  "howToTest": [
+    "Open the Blooming & Local Dimming Test in Screen Tester to cycle small white inspection targets of varying sizes against pitch black",
+    "Evaluate starfield simulations to check if tiny high-luminance dots trigger adjacent backlight zone flare",
+    "Move dynamic contrast test targets across zone boundaries to test local dimming algorithm response speed"
+  ],
+  "whatScreenTesterCanObserve": [
+    "Visual halo extent and luminance contrast across calibrated target diameters (1px, 5px, 20px, 100px)",
+    "Dynamic tracking of moving high-contrast elements across screen quadrants",
+    "Sub-pixel boundary sharpness against true black (RGB 0,0,0) canvases"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "Exact physical count or matrix geometry of Mini-LED hardware dimming zones inside the chassis",
+    "Backlight microcontroller firmware algorithm response latency in milliseconds",
+    "Absolute zone bleed optical luminance without a narrow-angle spot photometer"
+  ],
+  "commonCauses": [
+    "Physical zone resolution limitation: a 4K panel with 1,152 dimming zones has one backlight zone for every ~7,200 pixels, making exact boundary masking physically impossible",
+    "Monitor OSD Local Dimming preset set to 'High' or 'Aggressive', pushing peak zone brightness beyond the liquid crystal layer's light-blocking capability",
+    "Off-axis viewing: IPS and VA panels suffer elevated light leakage when viewed from angles, dramatically exaggerating perceived blooming"
+  ],
+  "whatToDoNext": [
+    "Adjust your monitor OSD Local Dimming setting to 'Medium' or 'Low' for desktop productivity to reduce cursor and subtitle haloing",
+    "Position your line of sight directly perpendicular to the screen center, as off-angle viewing quadruples visible blooming",
+    "Introduce gentle ambient bias lighting behind your monitor to raise pupil constriction and reduce human perceptual sensitivity to halos"
+  ],
+  "sections": [
+    {
+      "title": "How Mini-LED and FALD Work",
+      "content": [
+        "Traditional LCD monitors use edge-lit LED strips that illuminate the entire panel as a single uniform sheet, resulting in poor black levels (~1,000:1 contrast).",
+        "Full-Array Local Dimming (FALD) replaces edge strips with a grid of hundreds or thousands of microscopic Mini-LEDs positioned directly behind the LCD substrate. An onboard microcontroller dynamically brightens zones behind bright highlights while completely powering down zones behind shadows, achieving OLED-like black depth."
+      ]
+    },
+    {
+      "title": "The Zone Resolution Gap: Mini-LED vs. OLED",
+      "content": [
+        "Even state-of-the-art Mini-LED displays with 2,304 zones must illuminate thousands of pixels with a single LED cluster. When a tiny bright object (such as a 10-pixel star) appears, the entire zone must ignite, spilling light onto surrounding dark pixels.",
+        "In contrast, OLED displays feature self-emissive subpixels—each of the 8,294,400 pixels on a 4K OLED acts as its own individual dimming zone, eliminating blooming completely with infinite (∞:1) contrast."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Can firmware updates reduce Mini-LED blooming?",
+      "answer": "Yes. Manufacturers frequently refine dimming algorithms via firmware updates to smooth zone brightness transitions, adjust subtitle detection heuristics, and balance highlight preservation against shadow haloing."
+    },
+    {
+      "question": "Why does blooming look worse in photos than in real life?",
+      "answer": "Smartphone cameras capture scenes using long exposures and high sensitivity in low-light environments, massively overexposing light bleed and making blooming appear 5 to 10 times more severe than human eyes perceive it."
+    }
+  ],
+  "relatedTestIds": [
+    "blooming-test",
+    "backlight-bleed-test",
+    "contrast-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "backlight-bleed-glow"
+  ],
+  "relatedArticleSlugs": [
+    "backlight-bleed-vs-ips-glow",
+    "black-levels-and-shadow-detail",
+    "oled-burn-in-and-image-retention"
+  ],
+  "primarySearchIntent": "mini led blooming halo test local dimming fald",
+  "readingTimeMinutes": 6
+},
+  {
+  "slug": "display-test-patterns-and-visual-inspection-standards",
+  "category": "browser-and-testing",
+  "title": "Display Test Patterns, Geometry Grids & Visual Inspection Standards",
+  "subtitle": "Using standardized test patterns, grid rasters, crosshairs, and checkerboards for optical evaluation.",
+  "description": "Learn how professional broadcast test patterns, SMPTE bars, alignment grids, and checkerboard rasters are used to calibrate monitor geometry, sharpness, and convergence.",
+  "directAnswer": "Standardized test patterns are precision visual reference cards designed to stress specific display capabilities—including optical geometry, pixel clock phasing, ANSI contrast, and frequency response.",
+  "whyItMatters": "Calibrating a monitor using natural photographs or movie scenes is inherently subjective and error-prone. Precision test patterns provide unambiguous mathematical geometries (1-pixel rasters, orthogonal grids) that instantly expose optical flaws.",
+  "whatToLookFor": [
+    "Bending, barrel distortion, or pincushioning along straight outer grid lines on curved or ultra-wide monitors",
+    "Uneven optical focus where center text is sharp but outer display corners appear blurred",
+    "Shimmering moiré interference rings on fine dot matrix or concentric circular line rasters",
+    "Phase jitter or pixel buzzing on alternating single-pixel black-and-white vertical stripe fields"
+  ],
+  "howToTest": [
+    "Launch the Custom Pattern Generator in Screen Tester and toggle through the 2D Grid, Checkerboard, and 1px Line patterns",
+    "Inspect the 1-pixel alternating vertical lines preset to confirm your monitor's scaler is running at 1:1 pixel clock tracking without phase noise",
+    "Use the Sharpness & Siemens Star pattern to verify there is no artificial edge halo ringing or oversharpening"
+  ],
+  "whatScreenTesterCanObserve": [
+    "Pixel-perfect 1:1 hardware canvas rendering of calibrated geometric shapes and line gratings",
+    "Interactive adjustment of grid densities, stroke widths, and foreground/background contrast ratios",
+    "Visual crosshair convergence and boundary alignment against browser viewport borders"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "Physical optical lens distortion inside projector optics or VR headset fresnel lenses",
+    "Internal video scaler DAC (Digital-to-Analog Converter) clock jitter on legacy analog VGA inputs",
+    "Manufacturing tolerances of physical bezel frame alignment"
+  ],
+  "commonCauses": [
+    "Excessive monitor OSD Sharpness setting causing white halos along high-contrast lines",
+    "Incorrect video input clock/phase synchronization (on analog connections) or GPU fractional scaling",
+    "Physical curved panel manufacturing stress creating optical convergence nonuniformity"
+  ],
+  "whatToDoNext": [
+    "Set monitor OSD Sharpness to its neutral baseline (typically 50% or 0 depending on brand) where no white fringes appear around dark lines",
+    "Ensure desktop display resolution is set to the panel's exact native resolution with 100% integer scaling",
+    "Use geometric grids when setting up multi-monitor desks to align physical bezels and horizon lines"
+  ],
+  "sections": [
+    {
+      "title": "The Purpose of 1-Pixel Alternating Line Rasters",
+      "content": [
+        "A 1-pixel alternating line pattern (one pixel on, one pixel off) represents the Nyquist limit—the highest spatial frequency a display can physically reproduce.",
+        "If the signal is scaled, smoothed, or compressed, the crisp alternating stripes blur into a solid muddy gray or break into oscillating moiré bands. Perfect rendering proves flawless 1:1 pixel mapping."
+      ]
+    },
+    {
+      "title": "Checkerboard Patterns and ANSI Contrast Testing",
+      "content": [
+        "While peak contrast is often measured using pure white and pure black full-screen fields, real-world content contains simultaneous bright and dark elements.",
+        "A 4 × 4 checkerboard pattern measures ANSI contrast, exposing how much light from bright white rectangles scatters inside the panel optics and chassis into adjacent black rectangles."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "What is the Siemens Star pattern used for?",
+      "answer": "The Siemens star consists of radial spokes converging toward a central point. It is used to test optical resolution, lens focus, and display sharpness. In oversharpened displays, the center spokes blur into concentric circular artifacts (spurious resolution)."
+    },
+    {
+      "question": "Why do fine line patterns look like they are shimmering or vibrating?",
+      "answer": "Shimmering or buzzing on 1-pixel patterns is typically caused by pixel inversion (VCOM polarity toggling) or sub-optimal clock phase tracking, common when running high-refresh panels over bandwidth-constrained cables."
+    }
+  ],
+  "relatedTestIds": [
+    "custom-pattern",
+    "solid-color-test",
+    "sharpness-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "text-fuzzy-blurry"
+  ],
+  "relatedArticleSlugs": [
+    "resolution-and-scaling",
+    "text-clarity-and-subpixel-rendering",
+    "what-browser-display-tests-can-and-cannot-measure"
+  ],
+  "primarySearchIntent": "monitor test patterns calibration grid checkerboard visual inspection",
   "readingTimeMinutes": 5
 },
 ];

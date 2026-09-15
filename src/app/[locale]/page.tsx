@@ -33,6 +33,8 @@ export default async function Home({
   const tPages = await getTranslations({ locale, namespace: "TestPages" });
   const tFixer = await getTranslations({ locale, namespace: "StuckPixelFixerTest" });
   const tTools = await getTranslations({ locale, namespace: "Tools" });
+  const tCustom = await getTranslations({ locale, namespace: "CustomPattern" });
+  const tCompare = await getTranslations({ locale, namespace: "CompareDisplays" });
 
   const libMap: Record<string, string> = {
     "dead-pixel-test": "deadPixel",
@@ -97,7 +99,10 @@ export default async function Home({
     "pwm-flicker-test": "pwmFlickerTest",
     "gtg-response-time-test": "gtgResponseTimeTest",
     "mouse-polling-test": "mousePollingTest",
-    "gpu-benchmark-test": "gpuBenchmarkTest"
+    "gpu-benchmark-test": "gpuBenchmarkTest",
+    "motion-blur-test": "motionBlurTest",
+    "reaction-time-test": "reactionTimeTest",
+    "resolution-checker": "resolution-checker"
   };
 
   const toolsMap: Record<string, string> = {
@@ -120,6 +125,20 @@ export default async function Home({
       try {
         title = tFixer("title");
         description = tFixer("disclaimer");
+      } catch {}
+    }
+
+    if (id === "custom-pattern") {
+      try {
+        title = tCustom("title");
+        description = tCustom("subtitle");
+      } catch {}
+    }
+
+    if (id === "compare-displays") {
+      try {
+        title = tCompare("title");
+        description = tCompare("subtitle");
       } catch {}
     }
 
@@ -165,115 +184,125 @@ export default async function Home({
 
   const categories: ScreenTestCategory[] = [
     {
-      id: "colorPixels",
-      title: t("allTestsCategories.colorPixels"),
+      id: "deadPixelsDefects",
+      title: t("allTestsCategories.deadPixelsDefects"),
       tests: [
-        getTestItem("dead-pixel-test", "colorPixels"),
-        getTestItem("stuck-pixel-test", "colorPixels"),
-        getTestItem("bright-pixel-test", "colorPixels"),
-        getTestItem("stuck-pixel-fixer", "colorPixels"),
-        getTestItem("burn-in-test", "colorPixels"),
-        getTestItem("pixel-inversion-test", "colorPixels"),
-        getTestItem("color-test", "colorPixels"),
-        getTestItem("color-gamut-test", "colorPixels"),
-        getTestItem("color-accuracy-test", "colorPixels"),
-        getTestItem("saturation-test", "colorPixels"),
-        getTestItem("color-blindness-test", "colorPixels")
+        getTestItem("dead-pixel-test", "deadPixelsDefects"),
+        getTestItem("stuck-pixel-test", "deadPixelsDefects"),
+        getTestItem("bright-pixel-test", "deadPixelsDefects"),
+        getTestItem("stuck-pixel-fixer", "deadPixelsDefects"),
+        getTestItem("dead-pixel-mapper", "deadPixelsDefects"),
+        getTestItem("burn-in-test", "deadPixelsDefects"),
+        getTestItem("oled-burn-in-calculator", "deadPixelsDefects"),
+        getTestItem("pixel-inversion-test", "deadPixelsDefects")
       ]
     },
     {
-      id: "gradientContrast",
-      title: t("allTestsCategories.gradientContrast"),
+      id: "colorGamut",
+      title: t("allTestsCategories.colorGamut"),
       tests: [
-        getTestItem("contrast-test", "gradientContrast"),
-        getTestItem("brightness-test", "gradientContrast"),
-        getTestItem("black-level-test", "gradientContrast"),
-        getTestItem("near-black-test", "gradientContrast"),
-        getTestItem("white-level-test", "gradientContrast"),
-        getTestItem("gamma-test", "gradientContrast"),
-        getTestItem("color-banding-test", "gradientContrast"),
-        getTestItem("gradient-banding-test", "gradientContrast"),
-        getTestItem("grayscale-test", "gradientContrast")
+        getTestItem("color-test", "colorGamut"),
+        getTestItem("solid-color-test", "colorGamut"),
+        getTestItem("color-gamut-test", "colorGamut"),
+        getTestItem("color-accuracy-test", "colorGamut"),
+        getTestItem("saturation-test", "colorGamut"),
+        getTestItem("color-banding-test", "colorGamut"),
+        getTestItem("gradient-banding-test", "colorGamut"),
+        getTestItem("color-blindness-test", "colorGamut")
       ]
     },
     {
-      id: "uniformityPanel",
-      title: t("allTestsCategories.uniformityPanel"),
+      id: "brightnessContrast",
+      title: t("allTestsCategories.brightnessContrast"),
       tests: [
-        getTestItem("uniformity-test", "uniformityPanel"),
-        getTestItem("backlight-bleed-test", "uniformityPanel"),
-        getTestItem("blooming-test", "uniformityPanel"),
-        getTestItem("solid-color-test", "uniformityPanel"),
-        getTestItem("viewing-angle-test", "uniformityPanel")
+        getTestItem("contrast-test", "brightnessContrast"),
+        getTestItem("brightness-test", "brightnessContrast"),
+        getTestItem("black-level-test", "brightnessContrast"),
+        getTestItem("near-black-test", "brightnessContrast"),
+        getTestItem("white-level-test", "brightnessContrast"),
+        getTestItem("grayscale-test", "brightnessContrast"),
+        getTestItem("gamma-test", "brightnessContrast"),
+        getTestItem("hdr-capability-test", "brightnessContrast"),
+        getTestItem("hdr-test", "brightnessContrast"),
+        getTestItem("dark-mode-test", "brightnessContrast")
       ]
     },
     {
-      id: "motionPerformance",
-      title: t("allTestsCategories.motionPerformance"),
+      id: "uniformityBacklight",
+      title: t("allTestsCategories.uniformityBacklight"),
       tests: [
-        getTestItem("ghosting-test", "motionPerformance"),
-        getTestItem("motion-blur-test", "motionPerformance"),
-        getTestItem("refresh-rate-test", "motionPerformance"),
-        getTestItem("vrr-test", "motionPerformance"),
-        getTestItem("vrr-flicker-test", "motionPerformance"),
-        getTestItem("strobe-crosstalk-test", "motionPerformance"),
-        getTestItem("pursuit-camera-test", "motionPerformance"),
-        getTestItem("screen-tearing-test", "motionPerformance"),
-        getTestItem("screen-flicker-test", "motionPerformance"),
-        getTestItem("input-lag-test", "motionPerformance"),
-        getTestItem("pwm-flicker-test", "motionPerformance"),
-        getTestItem("gtg-response-time-test", "motionPerformance")
+        getTestItem("uniformity-test", "uniformityBacklight"),
+        getTestItem("backlight-bleed-test", "uniformityBacklight"),
+        getTestItem("blooming-test", "uniformityBacklight"),
+        getTestItem("viewing-angle-test", "uniformityBacklight"),
+        getTestItem("screen-flicker-test", "uniformityBacklight"),
+        getTestItem("pwm-flicker-test", "uniformityBacklight"),
+        getTestItem("vrr-flicker-test", "uniformityBacklight")
       ]
     },
     {
-      id: "sharpnessCapabilities",
-      title: t("allTestsCategories.sharpnessCapabilities"),
+      id: "motionGaming",
+      title: t("allTestsCategories.motionGaming"),
       tests: [
-        getTestItem("sharpness-test", "sharpnessCapabilities"),
-        getTestItem("text-clarity-test", "sharpnessCapabilities"),
-        getTestItem("hdr-capability-test", "sharpnessCapabilities"),
-        getTestItem("hdr-test", "sharpnessCapabilities"),
-        getTestItem("tv-overscan-test", "sharpnessCapabilities"),
-        getTestItem("scaling-aspect-test", "sharpnessCapabilities"),
-        getTestItem("touch-screen-test", "sharpnessCapabilities"),
-        getTestItem("dark-mode-test", "sharpnessCapabilities"),
-        getTestItem("subpixel-layout-test", "sharpnessCapabilities"),
-        getTestItem("gpu-benchmark-test", "sharpnessCapabilities")
+        getTestItem("ghosting-test", "motionGaming"),
+        getTestItem("motion-blur-test", "motionGaming"),
+        getTestItem("refresh-rate-test", "motionGaming"),
+        getTestItem("gtg-response-time-test", "motionGaming"),
+        getTestItem("input-lag-test", "motionGaming"),
+        getTestItem("vrr-test", "motionGaming"),
+        getTestItem("screen-tearing-test", "motionGaming"),
+        getTestItem("strobe-crosstalk-test", "motionGaming"),
+        getTestItem("pursuit-camera-test", "motionGaming"),
+        getTestItem("gpu-benchmark-test", "motionGaming")
       ]
     },
     {
-      id: "deviceInput",
-      title: t("allTestsCategories.deviceInput"),
+      id: "sharpnessSpecs",
+      title: t("allTestsCategories.sharpnessSpecs"),
       tests: [
-        getTestItem("multi-touch-test", "deviceInput"),
-        getTestItem("accelerometer-test", "deviceInput"),
-        getTestItem("gyroscope-test", "deviceInput"),
-        getTestItem("vibration-test", "deviceInput"),
-        getTestItem("webcam-test", "deviceInput"),
-        getTestItem("speaker-test", "deviceInput"),
-        getTestItem("microphone-test", "deviceInput"),
-        getTestItem("audio-sync-test", "deviceInput"),
-        getTestItem("gamepad-test", "deviceInput"),
-        getTestItem("reaction-time-test", "deviceInput"),
-        getTestItem("battery-test", "deviceInput"),
-        getTestItem("network-speed-test", "deviceInput"),
-        getTestItem("ambient-light-test", "deviceInput"),
-        getTestItem("mouse-polling-test", "deviceInput")
+        getTestItem("sharpness-test", "sharpnessSpecs"),
+        getTestItem("text-clarity-test", "sharpnessSpecs"),
+        getTestItem("subpixel-layout-test", "sharpnessSpecs"),
+        getTestItem("scaling-aspect-test", "sharpnessSpecs"),
+        getTestItem("tv-overscan-test", "sharpnessSpecs"),
+        getTestItem("resolution-checker", "sharpnessSpecs"),
+        getTestItem("display-info", "sharpnessSpecs"),
+        getTestItem("compare-displays", "sharpnessSpecs"),
+        getTestItem("custom-pattern", "sharpnessSpecs")
       ]
     },
     {
-      id: "utilitiesTools",
-      title: t("allTestsCategories.utilitiesTools"),
+      id: "hardwareSensors",
+      title: t("allTestsCategories.hardwareSensors"),
       tests: [
-        getTestItem("screen-recorder", "utilitiesTools"),
-        getTestItem("dpi-calculator", "utilitiesTools"),
-        getTestItem("display-bandwidth-calculator", "utilitiesTools"),
-        getTestItem("viewing-distance-calculator", "utilitiesTools"),
-        getTestItem("dual-monitor-matcher", "utilitiesTools"),
-        getTestItem("dead-pixel-mapper", "utilitiesTools"),
-        getTestItem("oled-burn-in-calculator", "utilitiesTools"),
-        getTestItem("display-certificate", "utilitiesTools"),
-        getTestItem("osd-calibration-guide", "utilitiesTools")
+        getTestItem("touch-screen-test", "hardwareSensors"),
+        getTestItem("multi-touch-test", "hardwareSensors"),
+        getTestItem("reaction-time-test", "hardwareSensors"),
+        getTestItem("mouse-polling-test", "hardwareSensors"),
+        getTestItem("gamepad-test", "hardwareSensors"),
+        getTestItem("audio-sync-test", "hardwareSensors"),
+        getTestItem("speaker-test", "hardwareSensors"),
+        getTestItem("microphone-test", "hardwareSensors"),
+        getTestItem("webcam-test", "hardwareSensors"),
+        getTestItem("accelerometer-test", "hardwareSensors"),
+        getTestItem("gyroscope-test", "hardwareSensors"),
+        getTestItem("vibration-test", "hardwareSensors"),
+        getTestItem("ambient-light-test", "hardwareSensors"),
+        getTestItem("battery-test", "hardwareSensors"),
+        getTestItem("network-speed-test", "hardwareSensors")
+      ]
+    },
+    {
+      id: "toolsCalculators",
+      title: t("allTestsCategories.toolsCalculators"),
+      tests: [
+        getTestItem("dpi-calculator", "toolsCalculators"),
+        getTestItem("display-bandwidth-calculator", "toolsCalculators"),
+        getTestItem("viewing-distance-calculator", "toolsCalculators"),
+        getTestItem("dual-monitor-matcher", "toolsCalculators"),
+        getTestItem("screen-recorder", "toolsCalculators"),
+        getTestItem("display-certificate", "toolsCalculators"),
+        getTestItem("osd-calibration-guide", "toolsCalculators")
       ]
     }
   ];

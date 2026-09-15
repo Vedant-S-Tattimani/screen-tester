@@ -1,3 +1,5 @@
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 import { generateSeoMetadata } from "@/lib/seo";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
 import { BloomingPattern } from "@/components/tests/BloomingPattern";
@@ -21,6 +23,8 @@ export default async function BloomingTestPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const explainerData = getFeatureExplainer("blooming-test", locale);
+  const explainerLabels = getExplainerLabels(locale);
   const t = await getTranslations({ locale, namespace: "Tests" });
   
   return (
@@ -28,8 +32,7 @@ export default async function BloomingTestPage({
       title={t("blooming.title")}
       description={t("blooming.description")}
       instructions={t("blooming.instructions")}
-      testId="blooming-test"
-    >
+      testId="blooming-test">
       <BloomingPattern />
     </TestWrapper>
   );

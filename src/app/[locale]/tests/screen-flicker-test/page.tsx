@@ -1,3 +1,5 @@
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 import { setRequestLocale } from "next-intl/server";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
 import { FlickerPattern } from "@/components/tests/FlickerPattern";
@@ -24,6 +26,8 @@ export default async function FlickerTestPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const explainerData = getFeatureExplainer("screen-flicker-test", locale);
+  const explainerLabels = getExplainerLabels(locale);
   const t = await getTranslations({ locale, namespace: "Tests" });
   
   return (
@@ -31,8 +35,7 @@ export default async function FlickerTestPage({
       title={t("flicker.title")}
       description={t("flicker.description")}
       instructions={t("flicker.instructions")}
-      testId="screen-flicker-test"
-    >
+      testId="screen-flicker-test">
       <FlickerPattern testId="screen-flicker-test" />
     </TestWrapper>
   );

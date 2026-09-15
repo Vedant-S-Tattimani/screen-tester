@@ -121,38 +121,6 @@ export default async function RootLayout({
   return (
     <html lang={locale} className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col bg-background text-foreground" suppressHydrationWarning>
-        <Script
-          id="extension-guard"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                function isExt(s) {
-                  return typeof s === 'string' && (
-                    s.indexOf('chrome-extension://') !== -1 ||
-                    s.indexOf('moz-extension://') !== -1 ||
-                    s.indexOf('safari-extension://') !== -1 ||
-                    s.indexOf('eppiocemhmnlbhjplcgkofciiegomcon') !== -1 ||
-                    s.indexOf('M_ID') !== -1
-                  );
-                }
-                window.addEventListener('error', function(e) {
-                  if (isExt(e.filename) || isExt(e.message) || (e.error && isExt(e.error.stack))) {
-                    e.stopImmediatePropagation();
-                    e.preventDefault();
-                  }
-                }, true);
-                window.addEventListener('unhandledrejection', function(e) {
-                  var r = e.reason;
-                  if (r && (isExt(r.message) || isExt(r.stack) || isExt(String(r)))) {
-                    e.stopImmediatePropagation();
-                    e.preventDefault();
-                  }
-                }, true);
-              })();
-            `
-          }}
-        />
         {/* Google tag (gtag.js) */}
         <Script
           strategy="afterInteractive"

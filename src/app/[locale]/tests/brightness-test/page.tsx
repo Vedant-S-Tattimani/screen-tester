@@ -1,3 +1,5 @@
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 import { generateSeoMetadata } from "@/lib/seo";
 import { Metadata } from "next";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
@@ -21,6 +23,8 @@ export default async function BrightnessTestPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const explainerData = getFeatureExplainer("brightness-test", locale);
+  const explainerLabels = getExplainerLabels(locale);
   const t = await getTranslations({ locale, namespace: "BrightnessTest" });
 
   return (
@@ -30,6 +34,12 @@ export default async function BrightnessTestPage({
       description={<p>{t("description")}</p>}
       instructions={<p>{t("disclaimer")}</p>}
       extraControls={<BrightnessGuidance />}
+    
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }
     >
       <BrightnessPattern testId="brightness-test" />
     </TestWrapper>

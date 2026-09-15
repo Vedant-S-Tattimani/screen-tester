@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { AlertCircle, Info, ArrowRight, CheckCircle2, Maximize2, Minimize2 } from "lucide-react";
 import { useRouter, Link } from "@/i18n/routing";
 import { recordTestObservation, ObservationResult } from "@/lib/inspectionStorage";
+import { KnowledgeBaseCallout } from "@/components/layout/KnowledgeBaseCallout";
 
 // --- Helpers for formatting and calculations ---
 
@@ -460,8 +461,9 @@ export function ResolutionCheckerClient({ educationalContent }: { educationalCon
       
       {/* Feature Explainer & Search Intent Details */}
       {educationalContent && (
-        <div className="w-full">
+        <div className="w-full space-y-6">
           {educationalContent}
+          <KnowledgeBaseCallout testId="resolution-checker" />
         </div>
       )}
 

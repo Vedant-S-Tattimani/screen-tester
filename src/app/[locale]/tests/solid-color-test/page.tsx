@@ -1,3 +1,5 @@
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 import { generateSeoMetadata } from "@/lib/seo";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
 import { SolidColorPattern } from "@/components/tests/SolidColorPattern";
@@ -21,6 +23,8 @@ export default async function SolidColorTestPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const explainerData = getFeatureExplainer("solid-color-test", locale);
+  const explainerLabels = getExplainerLabels(locale);
   const t = await getTranslations({ locale, namespace: "Tests" });
   
   return (
@@ -28,8 +32,7 @@ export default async function SolidColorTestPage({
       title={t("solidColor.title")}
       description={t("solidColor.description")}
       instructions={t("solidColor.instructions")}
-      testId="solid-color-test"
-    >
+      testId="solid-color-test">
       <SolidColorPattern testId="solid-color-test" />
     </TestWrapper>
   );

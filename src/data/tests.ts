@@ -62,7 +62,7 @@ export const monitorTests: MonitorTest[] = [
   {
     id: "color-banding-test",
     category: "color",
-    primaryIntent: "monitor color banding test",
+    primaryIntent: "monitor color banding and bit-depth quantization test",
     relatedTestIds: ["color-test", "gamma-test", "gradient-banding-test"]
   },
   {
@@ -82,13 +82,13 @@ export const monitorTests: MonitorTest[] = [
   {
     id: "brightness-test",
     category: "luminance",
-    primaryIntent: "monitor brightness test",
+    primaryIntent: "monitor brightness and black clipping test",
     relatedTestIds: ["black-level-test", "white-level-test", "contrast-test", "gamma-test"]
   },
   {
     id: "contrast-test",
     category: "luminance",
-    primaryIntent: "monitor contrast test",
+    primaryIntent: "monitor contrast and white saturation test",
     relatedTestIds: ["brightness-test", "white-level-test", "black-level-test", "gamma-test"]
   },
   {
@@ -152,7 +152,7 @@ export const monitorTests: MonitorTest[] = [
   {
     id: "gradient-banding-test",
     category: "advanced",
-    primaryIntent: "gradient banding visual test",
+    primaryIntent: "monitor smooth gradient and ramp transitions test",
     relatedTestIds: ["color-banding-test", "color-test", "grayscale-test"]
   },
   {
@@ -196,7 +196,7 @@ export const monitorTests: MonitorTest[] = [
   {
     id: "motion-blur-test",
     category: "motion",
-    primaryIntent: "monitor motion blur test",
+    primaryIntent: "monitor MPRT and motion blur persistence test",
     relatedTestIds: ["ghosting-test", "refresh-rate-test"]
   },
   {
@@ -214,7 +214,7 @@ export const monitorTests: MonitorTest[] = [
   {
     id: "screen-flicker-test",
     category: "motion",
-    primaryIntent: "monitor flicker test",
+    primaryIntent: "monitor screen flicker and refresh stability test",
     relatedTestIds: ["refresh-rate-test"]
   },
 
@@ -235,7 +235,7 @@ export const monitorTests: MonitorTest[] = [
   {
     id: "touch-screen-test",
     category: "capabilities",
-    primaryIntent: "touch screen test",
+    primaryIntent: "touch screen digitizer and dead zone test",
     relatedTestIds: ["resolution-checker"]
   },
   {
@@ -267,7 +267,7 @@ export const monitorTests: MonitorTest[] = [
   {
     id: "multi-touch-test",
     category: "deviceInput",
-    primaryIntent: "standalone multi touch test",
+    primaryIntent: "multi-touch gestures and multi-finger tracking test",
     relatedTestIds: ["touch-screen-test", "resolution-checker"]
   },
   {
@@ -309,7 +309,7 @@ export const monitorTests: MonitorTest[] = [
   {
     id: "reaction-time-test",
     category: "deviceInput",
-    primaryIntent: "response time and input latency test",
+    primaryIntent: "human reflex reaction time benchmark",
     relatedTestIds: ["refresh-rate-test", "screen-flicker-test", "motion-blur-test"]
   },
   {
@@ -381,7 +381,7 @@ export const monitorTests: MonitorTest[] = [
   {
     id: "input-lag-test",
     category: "motion",
-    primaryIntent: "input lag click to photon visual latency test",
+    primaryIntent: "display input lag and visual latency test",
     relatedTestIds: ["reaction-time-test", "refresh-rate-test", "ghosting-test"]
   },
   {
@@ -405,7 +405,7 @@ export const monitorTests: MonitorTest[] = [
   {
     id: "pwm-flicker-test",
     category: "motion",
-    primaryIntent: "pwm flicker backlight eye strain test",
+    primaryIntent: "pwm backlight flicker and eye strain test",
     relatedTestIds: ["screen-flicker-test", "vrr-flicker-test"]
   },
   {

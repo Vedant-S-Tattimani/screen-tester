@@ -1,3 +1,5 @@
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 import { generateSeoMetadata } from "@/lib/seo";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
 import { ScreenTearingPattern } from "@/components/tests/ScreenTearingPattern";
@@ -21,6 +23,8 @@ export default async function ScreenTearingTestPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const explainerData = getFeatureExplainer("screen-tearing-test", locale);
+  const explainerLabels = getExplainerLabels(locale);
   const t = await getTranslations({ locale, namespace: "Tests" });
   
   return (
@@ -28,8 +32,7 @@ export default async function ScreenTearingTestPage({
       title={t("screenTearing.title")}
       description={t("screenTearing.description")}
       instructions={t("screenTearing.instructions")}
-      testId="screen-tearing-test"
-    >
+      testId="screen-tearing-test">
       <ScreenTearingPattern testId="screen-tearing-test" />
     </TestWrapper>
   );

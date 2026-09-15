@@ -1,3 +1,5 @@
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 import { generateSeoMetadata } from "@/lib/seo";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
 import { SharpnessPattern } from "@/components/tests/SharpnessPattern";
@@ -21,6 +23,8 @@ export default async function SharpnessTestPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const explainerData = getFeatureExplainer("sharpness-test", locale);
+  const explainerLabels = getExplainerLabels(locale);
   const t = await getTranslations({ locale, namespace: "Tests" });
   
   return (
@@ -28,8 +32,7 @@ export default async function SharpnessTestPage({
       title={t("sharpness.title")}
       description={t("sharpness.description")}
       instructions={t("sharpness.instructions")}
-      testId="sharpness-test"
-    >
+      testId="sharpness-test">
       <SharpnessPattern testId="sharpness-test" />
     </TestWrapper>
   );

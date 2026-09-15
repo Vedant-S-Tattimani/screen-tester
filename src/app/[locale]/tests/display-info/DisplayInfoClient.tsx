@@ -15,6 +15,7 @@ import {
   getWebGLDiagnostics, getDevicePixelRatio 
 } from "@/lib/browserCapabilities";
 import { recordTestObservation, ObservationResult } from "@/lib/inspectionStorage";
+import { KnowledgeBaseCallout } from "@/components/layout/KnowledgeBaseCallout";
 
 interface ScreenDetailInfo {
   label?: string;
@@ -971,8 +972,9 @@ export function DisplayInfoClient({ educationalContent }: { educationalContent?:
 
         {/* Feature Explainer & Search Intent Details */}
         {educationalContent && (
-          <div className="w-full">
+          <div className="w-full space-y-6">
             {educationalContent}
+            <KnowledgeBaseCallout testId="display-info" />
           </div>
         )}
 

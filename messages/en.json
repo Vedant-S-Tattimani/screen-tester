@@ -259,13 +259,14 @@
     "allTestsFilterAll": "All Tests",
     "allTestsCount": "35 tests",
     "allTestsCategories": {
-      "colorPixels": "COLOR & PIXEL TESTS",
-      "gradientContrast": "GRADIENT & CONTRAST TESTS",
-      "uniformityPanel": "UNIFORMITY & BACKLIGHT TESTS",
-      "motionPerformance": "MOTION & REFRESH RATE",
-      "sharpnessCapabilities": "SHARPNESS & CAPABILITIES",
-      "deviceInput": "DEVICE & INPUT",
-      "utilitiesTools": "UTILITIES & TOOLS"
+      "deadPixelsDefects": "Dead Pixels & Panel Defects",
+      "colorGamut": "Color & Gamut Calibration",
+      "brightnessContrast": "Brightness, Contrast & Gradients",
+      "uniformityBacklight": "Panel Uniformity & Backlight",
+      "motionGaming": "Motion, Response Time & Gaming",
+      "sharpnessSpecs": "Sharpness, Resolution & Display Specs",
+      "hardwareSensors": "Hardware, Sensors & Input Diagnostics",
+      "toolsCalculators": "Calculators & Inspection Tools"
     },
     "allTestsNoResults": "No tests found matching",
     "moreFreeTestingToolsTitle": "More Free Testing Tools",
@@ -330,12 +331,12 @@
         "description": "Assess color rendering and saturation using primary and secondary color patterns."
       },
       "gradientTest": {
-        "title": "Gradient Banding",
-        "description": "Check for smooth transitions in gradients to test your panel's true bit-depth capabilities."
+        "title": "Color Banding & Bit-Depth Test",
+        "description": "Detect 8-bit vs 10-bit color quantization, gradation steps, and dithering banding."
       },
       "brightnessTest": {
-        "title": "Brightness & Contrast",
-        "description": "Tune your black levels and white point to ensure no detail is lost in the extreme ranges."
+        "title": "Brightness & Black Clipping Test",
+        "description": "Calibrate display brightness floor and prevent dark shadow detail crushing."
       },
       "uniformityTest": {
         "title": "Screen Uniformity",
@@ -346,8 +347,8 @@
         "description": "Detect IPS glow, clouding, and light leakage from the bezel in a dark room environment."
       },
       "ghostingTest": {
-        "title": "Motion Blur / Ghosting",
-        "description": "Check pixel response times and overdrive artifacts with high-speed moving elements."
+        "title": "Monitor Ghosting & Overdrive Test",
+        "description": "Test LCD pixel response time, trailing ghost artifacts, and overdrive overshoot coronas."
       },
       "refreshRate": {
         "title": "Refresh Rate Test",
@@ -382,8 +383,8 @@
         "description": "Audit OS HDR compositing, 10-bit buffer depth, BT.2020 / DCI-P3 wide gamut, Canvas P3, and HDR10 video playback codecs."
       },
       "contrastTest": {
-        "title": "Contrast Calibration",
-        "description": "Evaluate contrast ratio, color separation, and gradient steps across 25 dynamic levels."
+        "title": "Contrast & White Saturation Test",
+        "description": "Calibrate dynamic range, peak white clipping, and highlight contrast separation."
       }
     },
     "searchPlaceholder": "Search tests...",
@@ -511,35 +512,38 @@
     "brightness-test": {
       "metaTitle": "Brightness & Black Level Test",
       "metaDescription": "Calibrate monitor brightness and black level without crushing shadow details. Features PLUGE reference bars, 1% shadow ramps, and peak white windows.",
-      "title": "Brightness & Black Level Test",
+      "title": "Brightness & Black Clipping Test",
       "description_p1": "This test calibrates your monitor's brightness (black level offset) and evaluates luminance capability. Setting brightness properly ensures deep, inky blacks without crushing shadow details into pure black or washing out dark scenes.",
       "instructions": [
         "<strong>WHAT TO CHECK (PLUGE BARS):</strong> On the default PLUGE pattern, inspect the vertical bars against the black background. Bar 0% is true reference black. Adjust your monitor's physical Brightness setting until <strong>Bar +2% (RGB 5) is just barely discernible</strong> from black.",
         "<strong>BLACK CRUSH WARNING:</strong> If you cannot distinguish Bar +1% or Bar +2% from the background, your brightness is set too low (shadow details are crushed into pure black). If the black background looks glowing or gray, your brightness is set too high (washed-out black level).",
         "<strong>1% SHADOW RAMP:</strong> Switch to the <strong>1% Shadow Ramp</strong> mode to check fine near-black steps (0% to 10%) and identify your display's exact black clipping threshold.",
         "<strong>PEAK LUMINANCE & ABL:</strong> Switch to <strong>Peak & ABL Windows</strong> to test sustained full-screen white (100%) versus a 10% peak window. Notice whether your OLED, mini-LED, or laptop display dims due to Automatic Brightness Limiting (ABL)."
-      ]
+      ],
+      "description": "Calibrate display brightness floor and prevent dark shadow detail crushing."
     },
     "contrast-test": {
       "metaTitle": "Monitor Contrast Ratio Test",
       "metaDescription": "Evaluate your monitor's contrast ratio and white level separation. Ensure bright highlights remain clear without clipping whites into flat blocks.",
-      "title": "Contrast Calibration Test",
+      "title": "Contrast & White Saturation Test",
       "description_p1": "This test helps you configure your monitor's contrast ratio and gamma response by displaying a 25-step gradient grid from 0% pure black to 100% pure white.",
       "inst1": "Inspect the grid blocks to ensure adjacent contrast steps are visually distinct.",
       "inst2": "Adjust your monitor's Contrast setting so that blocks 92% and 96% do not blend into 100% white.",
-      "inst3": "Toggle numerical percentages or switch between brightness and contrast modes using the controls below."
+      "inst3": "Toggle numerical percentages or switch between brightness and contrast modes using the controls below.",
+      "description": "Calibrate dynamic range, peak white clipping, and highlight contrast separation."
     },
     "ghosting-test": {
       "metaTitle": "Monitor Ghosting Test",
       "metaDescription": "Free monitor ghosting test to measure pixel response time and motion blur. Inspect moving visual patterns to detect ghosting trails and overdrive coronas.",
-      "title": "Ghosting Test",
+      "title": "Monitor Ghosting & Overdrive Test",
       "description_p1": "This monitor ghosting test evaluates pixel response times and motion clarity. By watching moving patterns at different speeds, you can easily identify trailing ghosting artifacts or overshoot (coronas) caused by aggressive monitor overdrive settings.",
       "instructions": [
         "<strong>WHAT TO CHECK:</strong> Focus your eyes on the moving blocks. Do not stare statically at the center of the screen.",
         "<strong>HOW TO USE:</strong> Look for trailing shadows (ghosting) behind the moving blocks.",
         "<strong>WHAT YOU MAY NOTICE:</strong> If you see a bright/inverted colored trail, this is <strong>inverse ghosting (overshoot)</strong>, usually caused by setting your monitor's overdrive setting too high. Adjust the speed and contrast controls to test different pixel transition scenarios.",
         "<strong>ABOUT THIS TEST:</strong> This is a visual aid for detecting ghosting. A web browser cannot precisely measure pixel response time (GtG or MPRT) in milliseconds."
-      ]
+      ],
+      "description": "Test LCD pixel response time, trailing ghost artifacts, and overdrive overshoot coronas."
     },
     "refresh-rate-test": {
       "metaTitle": "Refresh Rate Test",
@@ -647,11 +651,12 @@
     "motion-blur-test": {
       "metaTitle": "Motion Blur Test",
       "metaDescription": "Analyze motion resolution and persistence blur on fast-paced scenes and moving test objects.",
-      "title": "Motion Blur Test",
+      "title": "MPRT & Motion Blur Persistence Test",
       "description_p1": "Assess how well your monitor handles fast motion without blurring or smearing details.",
       "inst1": "Track the moving blocks with your eyes.",
       "inst2": "Look at the small inner square. If the edges blur completely, your monitor has a slow pixel response time.",
-      "inst3": "Adjust speed and contrast to test under different panel overdrive scenarios."
+      "inst3": "Adjust speed and contrast to test under different panel overdrive scenarios.",
+      "description": "Test moving picture response time (MPRT), sample-and-hold blur persistence, and eye-pursuit clarity."
     },
     "hdr-capability-test": {
       "metaTitle": "HDR Hardware & Signal Detector – OS & Browser Capabilities",
@@ -736,13 +741,14 @@
     "gradient-banding-test": {
       "metaTitle": "Gradient Banding Test",
       "metaDescription": "Test display gradient smoothness and color stepping across grayscale, RGB, and dark tonal ramps. Detect bit-depth truncation and quantization banding.",
-      "title": "Gradient & Banding Test",
+      "title": "Smooth Gradient & Ramp Transitions Test",
       "description_p1": "Evaluate display gradient smoothness and detect unwanted quantization banding, harsh tonal steps, or color shifts. A browser canvas cannot definitively prove panel hardware bit depth, but provides high-fidelity reference ramps for visual inspection.",
       "instructions": [
         "<strong>GRADIENT MODES:</strong> Switch between Horizontal Grayscale, Vertical Grayscale, RGB Primaries, and Dark Shadow (0%–25%) to inspect tonal transitions across ranges.",
         "<strong>BANDING VS SMOOTHNESS:</strong> Look for distinct vertical or horizontal stripes (stepping) across what should be continuous smooth color ramps.",
         "<strong>QUANTIZATION COMPARISON:</strong> Toggle the 64-step quantization simulator to contrast intentional digital stepping against your display's native gradient handling."
-      ]
+      ],
+      "description": "Evaluate multi-stop linear and radial gradient smoothness, tonal continuity, and fine ramp transitions."
     },
     "text-clarity-test": {
       "metaTitle": "Text Clarity Test",
@@ -779,13 +785,14 @@
     "multi-touch-test": {
       "metaTitle": "Touch Test - Test Your Touchscreen Online | Screen Tester",
       "metaDescription": "Use this free touch test to check touchscreen multi-finger contacts, digitizer tracking, and touch point responsiveness online in your browser.",
-      "title": "Touch Test",
+      "title": "Multi-Touch Gestures & Multi-Finger Test",
       "description_p1": "Use this free touch test to check whether your touchscreen detects multiple fingers and responds correctly to touch input. Inspect active contact points, pointer coordinates, and digitizer tracking in real time.",
       "instructions": [
         "<strong>FREE TOUCH MODE:</strong> Place multiple fingers on the surface simultaneously. Observe the active contact counter, individual pointer IDs, coordinates, and peak simultaneous touch count.",
         "<strong>MULTI-TOUCH GRID:</strong> Touch different grid cells to verify that simultaneous contacts across separate screen quadrants register accurately without phantom ghost touches.",
         "<strong>HOLD & EDGE TARGETS:</strong> Test the simultaneous hold challenge (holding 3–5 fingers for 1.5 seconds) and touch the outer perimeter and corners to test digitizer edge rejection."
-      ]
+      ],
+      "description": "Verify simultaneous 10-point multi-touch tracking, pinch, rotate, and gesture responsiveness."
     },
     "accelerometer-test": {
       "metaTitle": "Accelerometer Test - Test Your Device Sensor Online | Screen Tester",
@@ -860,13 +867,14 @@
     "reaction-time-test": {
       "metaTitle": "Reaction Time Test",
       "metaDescription": "Test your display and input reaction time latency.",
-      "title": "Reaction Time Test",
+      "title": "Human Reflex Reaction Time Benchmark",
       "description_p1": "Click or tap when the color changes to measure latency.",
       "instructions": [
         "Wait for the screen to change from red to green.",
         "Click as fast as you can once it turns green.",
         "Your reaction time will be recorded in milliseconds."
-      ]
+      ],
+      "description": "Benchmark cognitive visual reaction time in milliseconds with statistical consistency scoring."
     },
     "pixel-inversion-test": {
       "title": "Pixel Inversion & VCOM Flicker Test",
@@ -893,9 +901,9 @@
       ]
     },
     "vrr-flicker-test": {
-      "title": "VRR Brightness Flicker Stress Test",
+      "title": "VRR Brightness Flicker & Gamma Shift Test",
       "metaTitle": "VRR Brightness Flicker Test | Screen Tester",
-      "description": "Stress-test adaptive sync (G-Sync, FreeSync) displays for brightness flicker and gamma shift during rapid framerate fluctuation.",
+      "description": "Diagnose variable refresh rate brightness fluctuations, LFC frame jumps, and OLED gamma shifts.",
       "metaDescription": "Stress test your monitor for VRR brightness flicker and gamma fluctuation during dynamic refresh rate swings.",
       "instructions": [
         "Ensure G-Sync, FreeSync, or Adaptive-Sync is enabled in your graphics driver and monitor OSD.",
@@ -1001,9 +1009,9 @@
       ]
     },
     "input-lag-test": {
-      "title": "Input Lag Visualizer",
+      "title": "Display Input Lag & Latency Visualizer",
       "metaTitle": "Input Lag & Click-to-Photon Latency Test | Screen Tester",
-      "description": "Measure your visual-to-click input lag with a 10-trial reaction test. Tracks average, best, worst times and standard deviation with a histogram.",
+      "description": "Visualize display pipeline processing delay and click-to-photon screen latency.",
       "metaDescription": "Measure input lag and click-to-photon latency. 10-trial visual reaction test with histogram, average, and statistical analysis.",
       "instructions": [
         "Click the gray box to begin the test.",
@@ -1049,7 +1057,7 @@
     },
     "pwm-flicker-test": {
       "title": "PWM Backlight Flicker & Eye Strain Test",
-      "description": "Detect pulse-width modulation (PWM) backlight flicker and stroboscopic eye strain thresholds.",
+      "description": "Detect stroboscopic LED pulse-width modulation flicker and evaluate visual fatigue thresholds.",
       "metaTitle": "PWM Backlight Flicker Test - Stroboscopic Eye Comfort & Shutter Check",
       "metaDescription": "Test for invisible PWM backlight flicker and stroboscopic trails across different brightness levels.",
       "instructions": [
@@ -1138,8 +1146,8 @@
   },
   "Tests": {
     "multiTouchTest": {
-      "title": "Multi-Touch Test",
-      "description": "Test simultaneous multi-finger touch points, digitizer tracking, and contact registration."
+      "title": "Multi-Touch Gestures & Multi-Finger Test",
+      "description": "Verify simultaneous 10-point multi-touch tracking, pinch, rotate, and gesture responsiveness."
     },
     "accelerometerTest": {
       "title": "Accelerometer Test",
@@ -1186,8 +1194,8 @@
       "instructions": "Look for halos around the bright square."
     },
     "touchScreen": {
-      "title": "Touch Screen Test – Multi-Touch Multi-Finger Input Diagnostic",
-      "description": "Test touchscreen touch points, responsiveness, dead touch zones, and multi-finger gestures online.",
+      "title": "Touch Screen Digitizer & Dead Zone Test",
+      "description": "Map touch digitizer tracking, touch point accuracy, and edge dead zones.",
       "instructions": "Draw all over the screen to check for dead zones."
     },
     "solidColor": {
@@ -1201,8 +1209,8 @@
       "instructions": "Visually inspect skin tones, neutrals, and color casts against reference patches."
     },
     "flicker": {
-      "title": "Flicker & PWM Visual Check – Backlight Strobe & Eye Comfort Test",
-      "description": "Visually inspect display backlight for perceptible strobe flicker and inversion artifacts. Browsers cannot directly measure hardware PWM frequency or modulation depth.",
+      "title": "Screen Flicker & Refresh Stability Test",
+      "description": "Inspect full-screen high-frequency temporal optical flicker and display refresh synchronization.",
       "instructions": "Use visual observation or optional camera inspection (dependent on camera shutter and frame rate)."
     },
     "sharpness": {
@@ -1225,8 +1233,8 @@
       "description": "Evaluate pixel response times, trailing ghost artifacts, and overdrive coronas with high-speed moving patterns."
     },
     "motionBlurTest": {
-      "title": "Motion Blur Test – Display Motion Clarity & MPRT Check",
-      "description": "Analyze motion resolution, persistence blur, and MPRT tracking on fast-paced scenes and moving test objects."
+      "title": "MPRT & Motion Blur Persistence Test",
+      "description": "Test moving picture response time (MPRT), sample-and-hold blur persistence, and eye-pursuit clarity."
     },
     "resolution-checker": {
       "title": "Screen Resolution & DPR Checker",
@@ -1333,8 +1341,8 @@
       "instructions": "Look for step separation between 0% and 5% near-black blocks in a dark room."
     },
     "gradientBandingTest": {
-      "title": "Gradient & Banding Test – Smooth Color & Grayscale Transitions",
-      "description": "Detect harsh tonal stepping, quantization lines, and color shifts across smooth linear gradients.",
+      "title": "Smooth Gradient & Ramp Transitions Test",
+      "description": "Evaluate multi-stop linear and radial gradient smoothness, tonal continuity, and fine ramp transitions.",
       "instructions": "Examine horizontal and vertical gradients for visible color or grayscale banding."
     },
     "textClarityTest": {
@@ -1353,8 +1361,8 @@
       "instructions": "Check concentric circles for true roundness and verify square grid alignment."
     },
     "reactionTimeTest": {
-      "title": "Reaction Time Test",
-      "description": "Test human visual reaction time and display response latency in milliseconds."
+      "title": "Human Reflex Reaction Time Benchmark",
+      "description": "Benchmark cognitive visual reaction time in milliseconds with statistical consistency scoring."
     },
     "AccelerometerPattern": {
       "status": "Status:",
@@ -2500,8 +2508,8 @@
       "description": "Evaluate backlight strobing and Black Frame Insertion (BFI) phase across top, center, and bottom screen zones."
     },
     "vrrFlickerTest": {
-      "title": "VRR Brightness Flicker Stress Test",
-      "description": "Stress-test adaptive sync (G-Sync / FreeSync) displays for low-frequency gamma shifts and brightness flicker."
+      "title": "VRR Brightness Flicker & Gamma Shift Test",
+      "description": "Diagnose variable refresh rate brightness fluctuations, LFC frame jumps, and OLED gamma shifts."
     },
     "pursuitCameraTest": {
       "title": "Pursuit Camera Sync & MPRT Calibration",
@@ -2674,8 +2682,8 @@
       "description": "Detect OS dark mode preference, test CSS color-scheme support, and preview UI in both themes."
     },
     "inputLagTest": {
-      "title": "Input Lag Visualizer",
-      "description": "Measure click-to-photon input lag with a 10-trial visual reaction test, histogram, and statistical analysis."
+      "title": "Display Input Lag & Latency Visualizer",
+      "description": "Visualize display pipeline processing delay and click-to-photon screen latency."
     },
     "ambientLightTest": {
       "title": "Ambient Light Sensor Test",
@@ -2881,22 +2889,51 @@
     "subpixelLayoutTest": {
       "title": "Subpixel Layout & Text Fringing",
       "description": "Inspect RGB, BGR, QD-OLED, and WOLED subpixel geometries and text edge fringing.",
-      "metaDescription": "Diagnose subpixel rendering structure and font color halos."
+      "metaDescription": "Diagnose subpixel rendering structure and font color halos.",
+      "clearTypeGuide": "How to Tune ClearType on Windows",
+      "clearTypeDesc": "Press Win + R, type cttune, and follow the Windows ClearType Text Tuner wizard. Choose samples that appear sharpest without color fringes along letter stems.",
+      "structureTitle": "Subpixel Geometries Explained",
+      "rgbStandard": "Standard Stripe RGB: Optimal ClearType rendering without color halos.",
+      "bgrStripe": "BGR Stripe: Causes slight red/blue fringing unless ClearType is re-calibrated.",
+      "qdoledLayout": "QD-OLED Triangular: Slight magenta/green fringing on high-contrast horizontal edges.",
+      "woledLayout": "WOLED RWBG: Additional white subpixel may cause subtle letter softenings."
     },
     "pwmFlickerTest": {
-      "title": "PWM Backlight Flicker Test",
-      "description": "Detect pulse-width modulation (PWM) backlight flicker and stroboscopic eye strain.",
-      "metaDescription": "Measure stroboscopic backlight flicker and eye strain thresholds."
+      "title": "PWM Backlight Flicker & Eye Strain Test",
+      "description": "Detect stroboscopic LED pulse-width modulation flicker and evaluate visual fatigue thresholds.",
+      "metaDescription": "Measure stroboscopic backlight flicker and eye strain thresholds.",
+      "shutterMethodTitle": "Smartphone Camera Shutter Method",
+      "shutterMethodDesc": "Open your smartphone camera in Pro/Manual mode. Set shutter speed to 1/1000s or faster and point it at the display. Visible dark rolling bands indicate PWM backlight strobing.",
+      "freqGuideTitle": "PWM Frequency Ergonomic Guide",
+      "flickerFree": "Flicker-Free (DC Dimming)",
+      "highFreq": "High Frequency (>1000 Hz) – Eye Safe",
+      "lowFreq": "Low Frequency (<250 Hz) – Potential Eye Strain"
     },
     "gtgResponseTimeTest": {
       "title": "Grey-to-Grey (GtG) Response Time",
       "description": "Benchmark pixel transition speeds and identify monitor overdrive inverse coronas.",
-      "metaDescription": "Evaluate GtG pixel rise/fall times and overdrive overshoot."
+      "metaDescription": "Evaluate GtG pixel rise/fall times and overdrive overshoot.",
+      "overdriveTitle": "How to Read Overdrive Artifacts",
+      "overdriveDesc": "Track the leading and trailing edges of the moving rectangle with your eyes. If monitor overdrive is set too low, trailing ghost blur appears matching the moving block color. If overdrive is set too high (Extreme), excessive voltage pushes liquid crystals past the target state, creating a bright white or dark inverted corona halo. The ideal setting is typically Normal or Fast.",
+      "pause": "Pause",
+      "resume": "Resume Motion",
+      "speed": "Speed",
+      "bgGrey": "Background Grey",
+      "blockGrey": "Moving Block Grey",
+      "transitionStatus": "Transition: RGB({start}) → RGB({end}) · Speed: {speed} px/s · Mode: {mode}"
     },
     "mousePollingTest": {
       "title": "Mouse Polling Rate & Precision",
       "description": "Measure real-time mouse polling frequency in Hz, jitter, and double-click chatter.",
-      "metaDescription": "High-precision mouse polling rate and sensor precision tester."
+      "metaDescription": "High-precision mouse polling rate and sensor precision tester.",
+      "areaPrompt": "Move Mouse Rapidly Inside This Area",
+      "realtimeHz": "Real-Time Polling Rate",
+      "peakHz": "Peak Polling Rate",
+      "averageHz": "Average Frequency",
+      "jitter": "Timing Jitter",
+      "stability": "Polling Stability",
+      "sampleCount": "Total Samples",
+      "reset": "Reset Counter"
     },
     "gpuBenchmarkTest": {
       "title": "GPU WebGL 3D Benchmark",
@@ -2934,6 +2971,52 @@
       "reverseMotionDirectionTitle": "Reverse motion direction",
       "readAboutMotionBlurTitle": "Read about motion blur & MPRT",
       "guide": "Guide"
+    },
+    "deadPixelMapper": {
+      "isoAssessment": "ISO 9241-307 RMA Assessment",
+      "class1Title": "Class 1 (Zero-Bright-Dot):",
+      "class1Pass": "PASS (0 Defect)",
+      "class2Title": "Class 2 (Consumer Standard):",
+      "class2Pass": "PASS (Within Limit)",
+      "rmaEligible": "RMA ELIGIBLE",
+      "isoNote": "Most consumer warranties (Dell, LG, ASUS, Samsung) adhere to ISO Class 2 (max 2 dead or 5 stuck subpixels per 1M pixels). Premium lines guarantee 0 bright subpixels.",
+      "copyReport": "Copy RMA Log to Clipboard",
+      "reportCopied": "Report Copied to Clipboard!",
+      "tableHeaders": {
+        "id": "ID",
+        "coords": "Coordinates",
+        "color": "Color",
+        "type": "Defect Type",
+        "zone": "Zone",
+        "actions": "Actions"
+      },
+      "zones": {
+        "center": "Center (Focus)",
+        "edge": "Perimeter (Edge)"
+      },
+      "defectTypes": {
+        "dead_dark": "Dead (Dark)",
+        "stuck_red": "Stuck (Red)",
+        "stuck_green": "Stuck (Green)",
+        "stuck_blue": "Stuck (Blue)",
+        "bright_subpixel": "Bright Subpixel",
+        "dust": "Debris / Dust"
+      },
+      "loupeTitle": "12x Optical Loupe",
+      "addDefectTip": "Click anywhere on the canvas to log a defect marker",
+      "noDefectsLogged": "No defects logged yet. Click the canvas to pinpoint defective pixels."
+    },
+    "oledBurnInCalculator": {
+      "timelineTitle": "Burn-In Probability Timeline",
+      "hazardHotspots": "Static Hazard Hotspots",
+      "dailyUsage": "Daily Active Usage (Hours)",
+      "brightnessLevel": "Average Brightness / HDR Intensity",
+      "staticPercent": "Static UI Elements Percentage",
+      "coolingMethod": "Panel Cooling / Heatsink Tech",
+      "riskLow": "Low Risk – Estimated 5+ Years Degradation-Free",
+      "riskModerate": "Moderate Risk – Expect Minor Subpixel Aging at 3-4 Years",
+      "riskHigh": "High Risk – Visible Static Image Retention within 18-24 Months",
+      "recommendations": "Longevity Recommendations"
     }
   },
   "Guides": {
@@ -3577,7 +3660,8 @@
       "workflowCtaTitle": "Ready to test a used monitor on-site?",
       "workflowCtaDesc": "Launch our guided multi-step Used Monitor Inspection Workflow to run automated visual test sequences on your laptop during the meetup.",
       "workflowCtaButton": "Launch Used Monitor Workflow",
-      "relatedTestsHeading": "Recommended Testing Suite"
+      "relatedTestsHeading": "Recommended Testing Suite",
+      "description": "A step-by-step practical guide to testing second-hand computer monitors for physical damage, dead pixels, backlight wear, and port stability before completing your purchase."
     },
     "newMonitor": {
       "metaTitle": "New Monitor Inspection & Return Window Checklist",
@@ -3897,7 +3981,8 @@
       "workflowCtaDesc": "Launch our guided New Monitor Inspection Workflow to step through dead pixel patterns, backlight checks, and uniformity sequences directly on your display.",
       "workflowCtaButton": "Launch New Monitor Workflow",
       "relatedTestsHeading": "Recommended Testing Suite",
-      "osdLinksTitle": "OSD & Signal Verification Tests"
+      "osdLinksTitle": "OSD & Signal Verification Tests",
+      "description": "A step-by-step practical guide to testing a newly delivered computer monitor for physical damage, pixel defects, panel uniformity, and motion performance before your retailer return window closes."
     },
     "displayportVsHdmi": {
       "metaTitle": "DisplayPort vs HDMI: Bandwidth, Revisions & Chroma Subsampling",
@@ -5715,7 +5800,13 @@
         "desc": "Moiré concentric rings expose spatial frequency beating against display pixel pitch and non-integer OS scaling (e.g. 125% or 150% scaling)."
       }
     },
-    "fullscreenHint": "Press ESC or F to exit"
+    "fullscreenHint": "Press ESC or F to exit",
+    "instructions": [
+      "<strong>2D Alignment Grid:</strong> Inspect for display barrel distortion, pincushioning, curvature warping, and optical convergence across all panel edges.",
+      "<strong>Checkerboard Matrix:</strong> Verify ANSI high-contrast square clarity without light blooming, edge fringing, or local dimming halo artifacts.",
+      "<strong>Horizontal & Vertical Lines:</strong> Check raster scanning alignment, pixel clock phasing, and single-pixel line sharpness.",
+      "<strong>Continuous Workflow:</strong> Use the density buttons to adjust grid spacing or switch to any of the 12 calibration presets as needed."
+    ]
   },
   "CompareDisplays": {
     "breadcrumbAll": "ALL TESTS",

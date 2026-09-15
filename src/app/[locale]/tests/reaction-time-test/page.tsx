@@ -1,3 +1,5 @@
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 import { generateSeoMetadata } from "@/lib/seo";
 import { Metadata } from "next";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
@@ -21,6 +23,8 @@ export default async function ReactionTimeTest({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const explainerData = getFeatureExplainer("reaction-time-test", locale);
+  const explainerLabels = getExplainerLabels(locale);
   const t = await getTranslations({ locale, namespace: "TestPages.reaction-time-test" });
 
   return (
@@ -38,6 +42,11 @@ export default async function ReactionTimeTest({
             <li key={i} dangerouslySetInnerHTML={{ __html: item }} />
           ))}
         </ul>
+      }
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
       }
     >
       <ReactionTimePattern testId="reaction-time-test" />

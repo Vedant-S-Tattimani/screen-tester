@@ -10,62 +10,51 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "La resolución de pantalla representa la cuadrícula física de píxeles horizontales y verticales, mientras que el escalado del SO amplía los elementos de la interfaz para mantener la legibilidad en altas densidades (PPI).",
     "whyItMatters": "Utilizar una pantalla a una resolución no nativa o con escalado fraccionario no optimizado produce texto borroso y moiré de interpolación porque los píxeles digitales no coinciden 1:1 con los subpíxeles físicos.",
     "whatToLookFor": [
-      "Fuzzy or smudged font edges across desktop applications",
-      "Stretched or squashed circles and squares indicating aspect ratio mismatch",
-      "Moiré interference patterns on fine checkerboard or grid patterns",
-      "Uneven line thickness across spreadsheet cells or software toolbars"
+      "Resolución de Monitor, Relación de Aspecto y Escalado del SO - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Open the Resolution Checker test in Screen Tester to inspect physical canvas pixels vs. CSS logical pixels",
-      "Verify that your operating system display resolution is set to the panel's native specification",
-      "Run the Scaling & Aspect Ratio test to inspect concentric circles for circular symmetry (no oval elongation)"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Browser viewport width and height in CSS pixels (`window.innerWidth`, `window.innerHeight`)",
-      "Device Pixel Ratio (`window.devicePixelRatio`) reported by the browser environment",
-      "Screen dimensions reported by the operating system window manager (`screen.width`, `screen.height`)",
-      "Visual rendering of 1-pixel alternating line gratings and calibrated geometric shapes"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Physical diagonal monitor size in inches (unless manually input by the user)",
-      "Physical panel pixel pitch (sub-millimeter distance between phosphor dots or subpixels)",
-      "Hardware scaling filters implemented inside the monitor chassis scaler chip"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Operating system set to a non-native resolution (e.g., 1080p selected on a 1440p panel)",
-      "Fractional UI scaling (e.g., 125% or 175%) without integer scaling support in legacy Win32 apps",
-      "Incorrect monitor OSD aspect ratio setting (e.g., '16:9 Wide' forced on a 16:10 or 4:3 input signal)",
-      "GPU driver display scaling configured to 'Stretch' instead of 'Aspect Ratio' or 'No Scaling'"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Set your operating system display resolution to 'Recommended (Native)' in Windows or macOS settings",
-      "If text is too small, use integer scaling (e.g., 200% on a 4K display) or calibrate system text antialiasing",
-      "Check your monitor on-screen display (OSD) and set Aspect Ratio to 'Auto', 'Original', or '1:1'"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "Physical Resolution vs. Logical Viewport",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "Physical resolution describes the exact count of microscopic physical light-emitting elements manufactured into the display substrate (e.g., 3840 × 2160 physical subpixel triads).",
-          "Logical resolution (CSS pixels) is the abstraction presented to web browsers and desktop software. On high-density screens (such as 4K monitors or Retina laptops), the operating system applies a scale multiplier (Device Pixel Ratio). At 200% scaling, a 3840 × 2160 screen behaves like a 1920 × 1080 logical canvas, with each logical coordinate backed by a 2 × 2 grid of physical pixels."
+          "La resolución de pantalla representa la cuadrícula física de píxeles horizontales y verticales, mientras que el escalado del SO amplía los elementos de la interfaz para mantener la legibilidad en altas densidades (PPI).. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
         ]
       },
       {
-        "title": "The Problem of Fractional Scaling",
+        "title": "Configuración óptima y resolución de problemas",
         "content": [
-          "Integer scaling (100%, 200%, 300%) maps single digital pixels cleanly onto exact whole physical pixels (1:1 or 2:2).",
-          "Fractional scaling (125%, 150%, 175%) requires software renderers to split single digital pixels across fractional hardware boundaries (e.g., 1 digital pixel spans 1.25 physical pixels). Without advanced vector rendering, bitmap elements must be resampled and interpolated, causing subtle blurriness."
+          "Utilizar una pantalla a una resolución no nativa o con escalado fraccionario no optimizado produce texto borroso y moiré de interpolación porque los píxeles digitales no coinciden 1:1 con los subpíxeles físicos. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "Why does my 4K monitor look blurry in some desktop applications?",
-        "answer": "Legacy desktop applications that do not support modern Per-Monitor DPI scaling are stretched as low-resolution bitmaps by the operating system window manager, leading to fuzzy fonts and soft window borders."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "Is 1080p content sharp on a 4K display?",
-        "answer": "Because 3840 × 2160 is exactly 2× the width and height of 1920 × 1080, integer scaling allows 4 physical pixels to represent 1 source pixel cleanly without bilinear blur. However, standard bilinear scalers may soften the image unless integer scaling is explicitly enabled in GPU drivers."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -93,308 +82,68 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "Los tirones y anomalías de escalado en sistemas multimonitor ocurren cuando el compositor de escritorio del sistema operativo, el controlador gráfico o las aplicaciones encuentran dificultades para sincronizar frecuencias de refresco distintas o coordinar factores de escalado DPI fraccionarios entre varias pantallas.",
     "whyItMatters": "Los entornos de trabajo modernos combinan con frecuencia pantallas heterogéneas, como un monitor gaming rápido junto a una pantalla secundaria estándar o un portátil conectado a un monitor 4K externo. Cuando las frecuencias, las densidades de píxeles o los perfiles de color difieren, pequeñas desincronizaciones pueden provocar saltos en el cursor, judder en vídeos o fuentes borrosas. El diagnóstico requiere aislar si el problema proviene del hardware del monitor, del controlador gráfico, del compositor del sistema operativo o del renderizado de la aplicación.",
     "whatToLookFor": [
-      "Movimiento entrecortado o saltos en el cursor del ratón al pasar de un monitor principal rápido a una pantalla secundaria",
-      "Tirones visibles o cuadros perdidos al reproducir vídeo en una pantalla mientras se navega o trabaja en la otra",
-      "Cambios bruscos de tamaño o texto borroso al arrastrar ventanas entre pantallas con diferente porcentaje de escalado",
-      "Microtirones o cadencia irregular de cuadros en juegos en modo ventana o animaciones web cuando la pantalla secundaria está activa",
-      "Fluidez de desplazamiento inconsistente en el navegador entre los distintos monitores de la configuración",
-      "Frecuencia de refresco o resolución que se restablece inesperadamente a un valor inferior tras suspender el equipo o reiniciar"
+      "Configuración multimonitor: Frecuencias mixtas, escalado DPI y tirones - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla.",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla.",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla.",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla.",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Abra la [Prueba de frecuencia de refresco](/tests/refresh-rate-test) en Screen Tester y observe los intervalos de cuadros en cada monitor por separado.",
-      "Arrastre la ventana del navegador con la [Prueba de frecuencia de refresco](/tests/refresh-rate-test) entre ambas pantallas para verificar la adaptación dinámica.",
-      "Inicie la [Prueba de VRR](/tests/vrr-test) para comprobar visualmente la suavidad del movimiento y descartar desgarros o irregularidades de cadencia.",
-      "Evalúe la nitidez tipográfica y los cambios de escalado de la interfaz con la [Prueba de claridad de texto](/tests/text-clarity-test).",
-      "Compare la persistencia de movimiento y estelas en ambos monitores mediante la [Prueba de desenfoque de movimiento](/tests/motion-blur-test) y la [Prueba de ghosting](/tests/ghosting-test).",
-      "Consulte las dimensiones y la relación de píxeles informadas por el navegador con [Información de pantalla](/tests/display-info).",
-      "Revise la aceleración por hardware y las API de pantalla del navegador en [Compatibilidad del navegador](/tools/browser-compatibility).",
-      "Consulte nuestra [Guía de solución de problemas](/knowledge-base/troubleshooting) interactiva si un monitor permanece bloqueado en una frecuencia básica."
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Marcas de tiempo de callbacks de animación en navegador mediante `requestAnimationFrame` en la pantalla activa",
-      "Desviación estándar de los intervalos de entrega de fotogramas (detección de microtirones y pérdidas de fluidez)",
-      "Device Pixel Ratio (`window.devicePixelRatio`) y geometría lógica CSS del viewport reportados por el navegador",
-      "Comparación visual de fluidez de movimiento, cadencia de péndulo y desplazamiento entre corriente y batería",
-      "Soporte de APIs del navegador para posicionamiento de ventanas multipantalla y enumeración de monitores"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Tiempos de barrido físico del panel o sincronización de reloj por cable DisplayPort o HDMI",
-      "Voltaje de líneas de alimentación internas, telemetría ACPI de carga de batería o límites térmicos",
-      "Estados de reloj de la GPU (P-states/D-states), posición física de conmutadores MUX o enlaces PCIe ASPM",
-      "Programación interna de intercambio de búferes del compositor del sistema operativo (DWM, Wayland o Quartz)",
-      "Densidad de píxeles (DPI) física real del panel de forma independiente a la escala reportada por el SO"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "El gestor de ventanas del sistema operativo coordina con dificultad intervalos de presentación independientes entre frecuencias dispares",
-      "La decodificación de vídeo acelerada por hardware en una pantalla secundaria vincula los hilos de presentación a su cadencia",
-      "Diferencias de escalado DPI fraccionario (ej. 100 % en 1440p junto a 150 % en 4K) fuerzan el reescalado borroso tipo mapa de bits",
-      "La tasa de refresco variable (G-Sync / FreeSync) activa en modo ventana entra en conflicto con elementos animados del escritorio secundario",
-      "La frecuencia de reloj de la memoria de la GPU fluctúa o se bloquea al máximo por estándares de temporización distintos (CVT frente a CVT-RB)",
-      "Sistemas de gráficos híbridos en portátiles que transfieren la señal externa a través del búfer de la GPU integrada"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Compruebe en la configuración avanzada de pantalla del sistema operativo que cada monitor tenga asignada su frecuencia máxima nativa.",
-      "Si percibe tirones con frecuencias mixtas, pruebe a configurar la pantalla secundaria en un divisor entero de la principal si es posible.",
-      "Unifique el escalado del SO donde sea viable o ajuste la compatibilidad de DPI por monitor para aplicaciones clásicas.",
-      "Configure G-Sync o FreeSync en el panel de control gráfico en 'Solo pantalla completa' para evitar interferencias en el escritorio.",
-      "Desconecte temporalmente la pantalla secundaria para aislar si los tirones son propios de un monitor o fruto del modo multipantalla."
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "Por qué las configuraciones multimonitor con frecuencias mixtas pueden comportarse de forma dispar",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "Utilizar varios monitores con frecuencias de refresco diferentes —por ejemplo, combinar una pantalla gaming de 144Hz, 165Hz o 240Hz con un monitor secundario de 60Hz o 75Hz— es una disposición muy extendida. Sin embargo, con frecuencia se aprecian anomalías de movimiento que no existían al trabajar con una única pantalla rápida.",
-          "Los síntomas habituales abarcan desplazamientos irregulares en el navegador, pérdida de fluidez en ventanas animadas, saltos en el cursor del ratón o pausas en la reproducción de vídeo. Es fundamental destacar que las frecuencias mixtas no provocan tirones por defecto en el hardware; los sistemas operativos y las tarjetas gráficas modernas están preparados para gestionar varias señales de sincronización independientes.",
-          "Que la experiencia sea fluida depende de múltiples factores interconectados: la arquitectura del compositor del sistema operativo, el controlador gráfico, las rutas de aceleración por hardware en navegadores, las API de vídeo y la gestión energética de la GPU. Diagnosticar los tirones exige analizar estas capas en lugar de atribuir el problema a un fallo del monitor."
-        ],
-        "bullets": [
-          "Las frecuencias mixtas no generan tirones automáticamente, pero exigen más al compositor del sistema operativo.",
-          "Pueden manifestarse saltos en el cursor, desplazamiento irregular en navegadores y caídas de cuadros en ventanas.",
-          "La fluidez general depende del SO, el controlador, la aceleración por hardware y la temporización de pantalla.",
-          "Las pruebas en navegador analizan la entrega de cuadros a nivel de aplicación, no el barrido físico del panel."
+          "Los tirones y anomalías de escalado en sistemas multimonitor ocurren cuando el compositor de escritorio del sistema operativo, el controlador gráfico o las aplicaciones encuentran dificultades para sincronizar frecuencias de refresco distintas o coordinar factores de escalado DPI fraccionarios entre varias pantallas.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
         ]
       },
       {
-        "title": "Frecuencias mixtas en la práctica: Escenarios habituales y presentación de cuadros",
+        "title": "Configuración óptima y resolución de problemas",
         "content": [
-          "En una configuración multipantalla, cada monitor recibe una señal de sincronización vertical independiente desde la tarjeta gráfica. En combinaciones frecuentes como 60Hz con 144Hz, 60Hz con 165Hz o 120Hz con 144Hz, los intervalos de refresco no coinciden: un panel de 60Hz se actualiza cada 16,67ms aprox., mientras que uno de 144Hz lo hace cada 6,94ms.",
-          "Si en la pantalla secundaria de 60Hz se reproduce un vídeo o animación mientras en la de 144Hz se juega o navega, el gestor de ventanas del sistema operativo debe sincronizar dos colas asíncronas. En sistemas antiguos, el compositor limitaba a menudo toda la interfaz al mínimo común denominador, recortando el monitor rápido a 60 FPS.",
-          "Los compositores actuales (como las versiones recientes de Windows DWM o Wayland en Linux) utilizan ciclos de presentación desacoplados para cada monitor. Pese a ello, pueden surgir colisiones: la reproducción de vídeo por hardware en la pantalla de 60Hz puede acaparar temporalmente hilos de renderizado. Probar cada pantalla por separado ayuda a confirmar si el software limita el rendimiento."
-        ],
-        "bullets": [
-          "Combinaciones desiguales (ej. 60Hz + 144Hz) operan con intervalos de actualización desalineados.",
-          "El compositor de ventanas debe gestionar búferes independientes para cada monitor conectado.",
-          "La reproducción de medios en pantallas lentas puede interferir en los hilos de presentación de la GPU.",
-          "Las pruebas en navegador mediante requestAnimationFrame miden la entrega de software, no la electrónica del panel."
-        ]
-      },
-      {
-        "title": "Escalado DPI en múltiples pantallas: Escalado fraccionario y nitidez de texto",
-        "content": [
-          "Los entornos multipantalla combinan a menudo monitores con tamaños y resoluciones nativas muy distintas. Un caso habitual es un monitor 4K de 27 pulgadas (con escalado al 150 %) junto a una pantalla 1080p de 24 pulgadas (al 100 %), o un portátil compacto conectado a una pantalla externa grande.",
-          "Al utilizar porcentajes de escalado diferentes (100 %, 125 %, 150 % o 200 %), el sistema operativo calcula las coordenadas y dibuja la interfaz de usuario de forma individual para cada densidad de píxeles. Las aplicaciones modernas adaptadas a DPI por monitor recalculan dinámicamente las fuentes y elementos vectoriales al cruzar el límite entre pantallas.",
-          "Sin embargo, programas antiguos sin soporte moderno de DPI por monitor no pueden redibujarse sobre la marcha. Al trasladarlos a una pantalla con distinto escalado, el sistema operativo escala la ventana como un mapa de bits, provocando textos borrosos e iconos difuminados. La [Prueba de claridad de texto](/tests/text-clarity-test) permite verificar si la falta de nitidez se debe al escalado o a la representación de subpíxeles."
-        ],
-        "bullets": [
-          "El escalado mixto requiere que el sistema operativo procese densidades de píxeles independientes.",
-          "Las aplicaciones adaptadas redibujan vectores y fuentes para conservar nitidez al cambiar de pantalla.",
-          "El software antiguo suele ser escalado como mapa de bits por el SO, lo que produce borrosidad.",
-          "Mover ventanas entre pantallas con distinto escalado puede ocasionar saltos de interfaz transitorios."
-        ]
-      },
-      {
-        "title": "Resolución, viewports y escalado: Coordenadas digitales frente al panel físico",
-        "content": [
-          "Para comprender el funcionamiento multimonitor es clave distinguir las especificaciones del panel físico de las capas de software. Es común confundir el escalado del sistema operativo, el zoom de la aplicación, el zoom del navegador, los píxeles CSS y los píxeles físicos del panel.",
-          "La resolución física es la cuadrícula fija de subpíxeles fabricada en el panel (por ejemplo, 3840 × 2160 tríadas RGB). El factor de píxeles del dispositivo (Device Pixel Ratio, DPR) es el multiplicador que el sistema operativo transmite al navegador: con un 150 % de escalado, el DPR es 1,5; con 200 %, es 2,0. El viewport lógico (píxeles CSS) es el espacio de coordenadas para maquetar la web (`window.innerWidth` y `window.innerHeight`).",
-          "Screen Tester mantiene un compromiso de transparencia: el navegador informa con precisión de las dimensiones del viewport y del `window.devicePixelRatio` mediante API web estándar. No obstante, el navegador no tiene acceso físico al panel para medir el tamaño real de los subpíxeles ni certificar los filtros del escalador interno del monitor."
-        ],
-        "bullets": [
-          "Resolución física: La matriz fija microscópica de subpíxeles del panel de pantalla.",
-          "Device Pixel Ratio (DPR): Multiplicador de escala entregado por el SO al motor del navegador.",
-          "Píxeles lógicos CSS: Coordenadas de software empleadas para el diseño y renderizado web.",
-          "Límites de medición: Las API web notifican coordenadas lógicas y DPR, no medidas ópticas de laboratorio."
-        ]
-      },
-      {
-        "title": "Procedimiento de diagnóstico multimonitor estructurado: Secuencia metódica",
-        "content": [
-          "Para solucionar problemas de tirones, saltos de cursor o texto borroso en varias pantallas, evite modificar ajustes de manera desordenada. Siga este procedimiento en 7 pasos:",
-          "Paso A: Registrar la configuración base. Anote resolución nativa, frecuencia de refresco, porcentaje de escalado, tipo de cable (DisplayPort o HDMI) y estado de HDR de cada monitor.",
-          "Paso B: Probar pantallas de forma individual. Desconecte los monitores secundarios y compruebe el principal en solitario con la [Prueba de frecuencia de refresco](/tests/refresh-rate-test) para verificar que es fluido por sí mismo.",
-          "Paso C: Probar la configuración combinada en reposo. Vuelva a conectar el segundo monitor sin abrir programas pesados y repita la [Prueba de frecuencia de refresco](/tests/refresh-rate-test) en la pantalla principal.",
-          "Paso D: Mover ventanas entre pantallas. Arrastre la ventana de prueba a través de la frontera entre monitores para comprobar si caen los cuadros o se degrada la nitidez del texto.",
-          "Paso E: Probar desplazamiento y animación. Realice desplazamientos rápidos en ambas pantallas con la [Prueba de frecuencia de refresco](/tests/refresh-rate-test) y la [Prueba de desenfoque de movimiento](/tests/motion-blur-test).",
-          "Paso F: Introducir reproducción de vídeo. Reproduzca vídeo en el monitor secundario mientras ejecuta pruebas en el principal para detectar posibles saturaciones del compositor.",
-          "Paso G: Modificar una sola variable cada vez. Cambie un único ajuste (como la aceleración por hardware o un divisor de frecuencia) y vuelva a probar antes de tocar nada más."
-        ],
-        "bullets": [
-          "Paso A: Registrar resoluciones, frecuencias, porcentajes de escalado y tipos de conexión.",
-          "Paso B: Analizar cada monitor por separado para asegurar su rendimiento individual.",
-          "Paso C: Probar la configuración combinada en reposo para evaluar la estabilidad del compositor.",
-          "Paso D y E: Arrastrar ventanas entre pantallas y comprobar la suavidad de desplazamiento.",
-          "Paso F y G: Incorporar cargas de vídeo y modificar únicamente un parámetro por prueba."
-        ]
-      },
-      {
-        "title": "Aislamiento de la capa de origen: Modelo diagnóstico por niveles",
-        "content": [
-          "Dado que los tirones en el escritorio pueden originarse en diferentes puntos de la arquitectura, resulta útil clasificar las observaciones por capas:",
-          "1. Capa de pantalla y panel: Incidencias en el propio monitor, como fallos en el intercambio EDID por canales DDC o ajustes inadecuados de overdrive en el OSD. Evaluación con la [Prueba de ghosting](/tests/ghosting-test).",
-          "2. Capa de conexión y señal: Problemas de ancho de banda en cables, adaptadores pasivos o saturación de concentradores DisplayPort MST. Verificación con [Información de pantalla](/tests/display-info).",
-          "3. Capa de GPU y controlador: Gestión de colas de presentación, frecuencias de reloj de memoria o perfiles de energía multipantalla. Solución mediante actualización o reinstalación limpia del controlador.",
-          "4. Capa del compositor del SO: Coordinación de intervalos V-Sync asíncronos por el gestor de ventanas (Windows DWM, Linux Wayland/X11, macOS Quartz). Comparación entre modo individual y multipantalla.",
-          "5. Capa de aplicación y navegador: Arquitectura de procesos del navegador web, renderizado por GPU o políticas de suspensión de pestañas en segundo plano. Revisión en [Compatibilidad del navegador](/tools/browser-compatibility).",
-          "6. Capa de reproducción de vídeo: Decodificadores acelerados por hardware que fijan la presentación a la cadencia de la película (24, 30 o 60 FPS)."
-        ],
-        "bullets": [
-          "Capa de pantalla: Firmware del monitor, comunicación EDID o ajustes de overdrive OSD.",
-          "Capa de señal: Ancho de banda del cable, revisiones de interfaz o cuellos de botella en hubs.",
-          "Capa de GPU: Colas de salida gráfica, relojes de memoria y parámetros del controlador.",
-          "Capa del compositor: Sincronización del gestor de ventanas sobre ciclos de refresco dispares.",
-          "Capa de aplicación: Procesos de navegador, aceleración gráfica y gestión de tareas.",
-          "Capa de vídeo: Restricción de cuadros impuesta por códecs a cadencias fijas de medios."
-        ]
-      },
-      {
-        "title": "Entornos mixtos de HDR y SDR: Luminancia, espacio de color y compositor",
-        "content": [
-          "Combinar una pantalla HDR junto a un monitor SDR introduce una mayor complejidad de composición en el escritorio. Cuando un monitor trabaja en HDR y el contiguo en SDR, el compositor debe gestionar dos espacios de color y curvas de luminancia simultáneamente.",
-          "En Windows, el compositor convierte los elementos sRGB convencionales en un contenedor ampliado para la pantalla HDR, emitiendo a la vez sRGB nativo de 8 bits hacia la pantalla SDR. Si el control de 'Brillo de contenido SDR' no está bien compensado, los blancos pueden verse desproporcionadamente intensos o apagados en comparación.",
-          "Asimismo, arrastrar ventanas multimedia entre pantallas exige recalcular el mapa de tonos de inmediato, lo que puede causar pequeños parpadeos o saltos de color. La herramienta [Información de pantalla](/tests/display-info) muestra las capacidades HDR detectadas, aunque el software web no puede calibrar la precisión del motor de color del SO."
-        ],
-        "bullets": [
-          "Los entornos mixtos HDR/SDR demandan cálculos simultáneos de curvas tonales y color.",
-          "El control de brillo para contenido SDR debe calibrarse para equilibrar los blancos entre monitores.",
-          "Arrastrar contenido entre pantallas inicia adaptaciones dinámicas de tonos.",
-          "Las consultas del navegador muestran el soporte informado, pero no certifican la calibración de color del SO."
-        ]
-      },
-      {
-        "title": "Tasa de refresco variable (VRR) en múltiples pantallas: Sincronización en modo ventana",
-        "content": [
-          "La tasa de refresco variable (VRR) —incluyendo NVIDIA G-Sync, AMD FreeSync y VESA Adaptive-Sync— sincroniza la frecuencia del monitor con los cuadros generados por la GPU. En juegos a pantalla completa en un solo monitor proporciona una fluidez excelente, pero en entornos multimonitor puede provocar comportamientos anómalos.",
-          "Si en el panel de control de la tarjeta gráfica se activa el modo 'Ventana y pantalla completa', el controlador intenta sincronizar la frecuencia con la ventana en primer plano. Si en la pantalla contigua se actualiza un navegador, un vídeo o una aplicación con aceleración gráfica, el controlador puede dudar sobre qué frecuencia priorizar, provocando parpadeos o microtirones.",
-          "Con la [Prueba de VRR](/tests/vrr-test) y la [Prueba de frecuencia de refresco](/tests/refresh-rate-test) en Screen Tester puede examinar la regularidad del movimiento. Si experimenta problemas en juegos en ventana, configurar VRR solo para pantalla completa suele solventar estas interferencias."
-        ],
-        "bullets": [
-          "VRR adapta de forma dinámica la frecuencia del monitor a los cuadros de la GPU.",
-          "El modo ventana de VRR puede verse interferido por elementos animados en pantallas accesorias.",
-          "Las oscilaciones de sincronización pueden causar parpadeos o tirones en el escritorio.",
-          "Screen Tester permite una inspección visual de la cadencia, sin leer registros internos del controlador."
-        ]
-      },
-      {
-        "title": "Portátil y monitor externo: Estaciones de acoplamiento, energía y gráficos híbridos",
-        "content": [
-          "Conectar un monitor externo a un ordenador portátil plantea peculiaridades técnicas frente a los equipos de sobremesa. Muchos portátiles modernos cuentan con gráficos híbridos (como NVIDIA Optimus, AMD SmartAccess Graphics o memoria unificada de Apple), donde la GPU integrada y la dedicada se reparten las tareas.",
-          "Según el diseño del fabricante, la GPU integrada suele alimentar la pantalla del portátil, mientras que las salidas de vídeo externas (HDMI, USB-C con DisplayPort Alternate Mode o Thunderbolt) pueden conectar directamente con la gráfica dedicada o pasar por el búfer de la integrada. Esta transferencia de cuadros por el bus puede añadir latencias y pequeños tirones.",
-          "Por otra parte, funcionar con batería activa perfiles de energía restrictivos en el sistema y en la tarjeta gráfica. Aunque no siempre reduce la frecuencia, muchos equipos pasan a 60Hz o rebajan la velocidad de los enlaces PCIe al desconectar el cargador. Realizar pruebas conectado a la corriente permite descartar limitaciones energéticas frente a fallos de configuración."
-        ],
-        "bullets": [
-          "Los sistemas gráficos híbridos reparten las pantallas entre diferentes controladores.",
-          "Las señales externas que atraviesan la gráfica integrada pueden sumar tiempos de copia en el bus.",
-          "Las bases Thunderbolt o USB-C comparten ancho de banda con datos y conexiones de red.",
-          "Los perfiles de batería pueden limitar rendimientos gráficos; realice pruebas con el cargador conectado."
-        ]
-      },
-      {
-        "title": "Comportamiento de la pantalla del portátil con batería vs. corriente: Relojes, energía y escalado",
-        "content": [
-          "El funcionamiento de un ordenador portátil con batería de corriente continua (CC) modifica sustancialmente sus límites térmicos y de potencia en comparación con la conexión a la red eléctrica (CA). Para maximizar la autonomía, el sistema operativo y los controladores de la CPU y GPU aplican políticas de contención energética que pueden alterar visiblemente la fluidez de la pantalla.",
-          "Con batería, los perfiles del sistema operativo (como Mejor eficiencia energética, Equilibrado o Máximo rendimiento en Windows; modo de bajo consumo en macOS; perfiles energéticos en Linux) reducen la actividad en segundo plano. Las GPUs reducen sus frecuencias y pasan a estados de memoria P-states más bajos, mientras que el bus PCIe activa el modo ASPM (L0s/L1) para ahorrar energía, limitando el ancho de banda hacia los controladores de pantalla.",
-          "Al mismo tiempo, los paneles modernos recurren a mecanismos de refresco dinámico. Con la Frecuencia de actualización dinámica (DRR) de Windows 11 o el firmware del fabricante, paneles rápidos (120Hz, 144Hz, 240Hz) pueden reducirse automáticamente a 60Hz o activar el autorrefresco de panel (PSR) en reposo. Tecnologías como CABC, Intel DPST o AMD Vari-Bright también modifican dinámicamente el brillo y la curva de gamma según el contenido mostrado.",
-          "No obstante, el uso con batería NO reduce la frecuencia de refresco de manera universal en todos los portátiles. Equipos de juego con conmutador MUX pueden mantener frecuencias elevadas a costa de agotar rápidamente la batería, mientras que los ultrabooks priorizan la eficiencia. Distinguir si un comportamiento es una optimización legítima o una anomalía requiere un análisis metódico."
-        ],
-        "bullets": [
-          "La batería activa estados de bajo consumo en CPU, GPU y enlaces PCIe ASPM para ahorrar energía.",
-          "La Frecuencia dinámica (DRR) y el autorrefresco (PSR) pueden limitar la pantalla a 60Hz con batería.",
-          "Sistemas adaptativos (CABC, Intel DPST, AMD Vari-Bright) modulan contraste y brillo dinámicamente.",
-          "Los modos de batería no limitan la pantalla de forma universal; varía según el fabricante y el SO."
-        ]
-      },
-      {
-        "title": "Panel interno del portátil frente a monitores externos con batería",
-        "content": [
-          "Los portátiles actuales integran arquitecturas gráficas híbridas (como NVIDIA Optimus, AMD SmartAccess Graphics o la memoria unificada de Apple), donde la pantalla interna y las salidas de vídeo externas se distribuyen entre distintos controladores.",
-          "Habitualmente, la pantalla interna se conecta por un bus eDP (Embedded DisplayPort) a la gráfica integrada (iGPU). Con batería, la gráfica dedicada (dGPU) suele suspenderse por completo para evitar consumo. Si una aplicación requiere la dGPU, los fotogramas deben copiarse por el bus del sistema hacia la iGPU, lo que supone un paso intermedio que puede causar microtirones si el bus PCIe está restringido por ahorro de energía.",
-          "Los monitores externos conectados por HDMI, USB-C DisplayPort Alt Mode o docks Thunderbolt introducen variables adicionales. Muchos puertos externos conectan directamente con la dGPU o comparten ancho de banda en docks USB con datos y red. Desconectar la alimentación de red puede provocar que el dock renegocie la entrega de energía (Power Delivery) o fuerce a la dGPU a un estado de bajo rendimiento, provocando pérdidas de fluidez que no ocurren enchufado a la corriente."
-        ],
-        "bullets": [
-          "La pantalla interna se conecta por eDP a la iGPU; la dGPU suele apagarse con batería.",
-          "La copia de fotogramas entre gráficas puede introducir microtirones con batería por límites en el bus.",
-          "Los docks Thunderbolt y USB-C comparten ancho de banda y pueden renegociar energía al desenchufar.",
-          "Probar el monitor externo con corriente permite aislar límites del dock de fallos de configuración."
-        ]
-      },
-      {
-        "title": "Protocolo disciplinado de comparación: Batería vs. Corriente en portátiles",
-        "content": [
-          "Para averiguar si los tirones, la bajada de hercios o los cambios de brillo obedecen a políticas energéticas del sistema operativo o a fallos reales, siga este procedimiento en 5 fases:",
-          "Fase 1: Medición de referencia con corriente. Conecte el cargador original de fábrica. Ajuste el perfil energético del SO en 'Equilibrado' o 'Máximo rendimiento'. Abra la [Prueba de frecuencia de actualización](/tests/refresh-rate-test) y la [Prueba de desenfoque de movimiento](/tests/motion-blur-test) en Screen Tester. Anote la fluidez y la estabilidad de fotogramas.",
-          "Fase 2: Desconexión del cargador. Desenchufe el cable con Screen Tester abierto. Observe las reacciones inmediatas: ¿Se atenúa la pantalla? ¿La configuración de Windows o la [Prueba de frecuencia de actualización](/tests/refresh-rate-test) indican un descenso de 120Hz/144Hz a 60Hz? ¿La [Prueba de HDR](/tests/hdr-test) refleja que el HDR se ha desactivado por política de batería?",
-          "Fase 3: Evaluación de la interacción dinámica. Mueva el cursor del ratón rápidamente y desplace texto. Con Windows DRR, observe si el movimiento reactiva los hercios o permanece bloqueado a 60Hz. Compruebe la [Prueba de VRR](/tests/vrr-test) si su pantalla admite sincronización adaptativa.",
-          "Fase 4: Evaluación de monitores externos. Si tiene una pantalla conectada, observe si arrastrar ventanas se vuelve entrecortado con batería. Compruebe los parámetros de pantalla con [Información de pantalla](/tests/display-info) y el estado de APIs con [Compatibilidad del navegador](/tools/browser-compatibility).",
-          "Fase 5: Reconexión a la corriente. Vuelva a conectar el cargador. Verifique si la frecuencia de refresco, el brillo y la cadencia de fotogramas se restauran de inmediato o si precisan reiniciar la aplicación."
-        ],
-        "bullets": [
-          "Fase 1: Establecer la fluidez de referencia con el cargador original en modo Rendimiento/Equilibrado.",
-          "Fase 2: Desconectar el cable y registrar cambios automáticos del SO en refresco, brillo y HDR.",
-          "Fase 3: Evaluar la respuesta dinámica del cursor y desplazamiento ante la tecnología DRR.",
-          "Fase 4: Comparar el monitor externo con batería y corriente para aislar cuellos de botella del dock.",
-          "Fase 5: Reconectar la red eléctrica y verificar la recuperación limpia de los valores de pantalla."
-        ]
-      },
-      {
-        "title": "Diagnóstico de tirones por energía: Comportamiento previsto vs. Anomalías",
-        "content": [
-          "Distinguir entre funciones normales de ahorro de batería y problemas de configuración evita modificaciones innecesarias del sistema:",
-          "Comportamientos normales de ahorro energético: (1) Reducción automática de 144Hz/165Hz a 60Hz al activarse el modo Ahorro de batería; (2) Cambios dinámicos de contraste y brillo en fondos oscuros debidos a Intel DPST o AMD Vari-Bright; (3) Desactivación automática de HDR con batería si está seleccionada la opción 'Optimizar para duración de batería'; (4) Leve reducción del brillo máximo disponible.",
-          "Anomalías que requieren atención: (1) Tirones continuos del cursor o caídas acusadas de fotogramas estando conectado al cargador oficial; (2) Parpadeos violentos o apagados prolongados de pantalla al enchufar o desenchufar el cargador; (3) Pantalla bloqueada a 60Hz conectada a la corriente a pesar de disponer de un panel de alta frecuencia; (4) Microtirones acusados al usar un monitor externo conectado a la corriente.",
-          "Pasos conservadores de solución: Compruebe la frecuencia configurada en las opciones avanzadas de pantalla de Windows; revise el software del fabricante (Lenovo Vantage, ASUS Armoury Crate, Dell Optimizer) para descartar bloqueos de refresco en perfiles ecológicos; actualice los controladores gráficos de forma limpia y compruebe que el cargador entrega la potencia en vatios oficial (los cargadores USB-C de baja potencia provocan estrangulamiento térmico/energético aun estando enchufados). Para fallos de hardware, consulte nuestra [Guía de resolución de problemas](/knowledge-base/troubleshooting)."
-        ],
-        "bullets": [
-          "Normal: Caída a 60Hz en ahorro de batería, ajustes de contraste CABC y desconexión de HDR.",
-          "Anomalía: Tirones persistentes con cargador oficial, parpadeos al enchufar o bloqueo a 60Hz en red.",
-          "Comprobar utilidades OEM (Armoury Crate, Vantage, Optimizer) por bloqueos de frecuencia forzados.",
-          "Verificar que el cargador suministra la potencia en vatios requerida para evitar estrangulamiento."
-        ]
-      },
-      {
-        "title": "Protocolo controlado de aislamiento multimonitor: Flujo diagnóstico paso a paso",
-        "content": [
-          "Al diagnosticar tirones de movimiento, cadencia de fotogramas irregular o anomalías de escalado en entornos multimonitor, realizar ajustes al azar genera confusión entre variables. Siga este procedimiento metódico y seguro para aislar la capa responsable de forma concluyente.",
-          "Arquitectura diagnóstica y niveles de evidencia: Distinga claramente cuatro niveles de observación: (1) Reportado por el navegador: cadencia de fotogramas rAF, devicePixelRatio y dimensiones del viewport (reflejan la ejecución del software, no el barrido físico del panel); (2) Reportado por el SO: frecuencia de refresco configurada, porcentaje de escalado y estado HDR expuestos por el sistema; (3) Observado por el usuario: tirones visibles, salto del cursor y fluidez al arrastrar ventanas; (4) Especificación del fabricante: límites del panel, ancho de banda del conector y capacidades del dock.",
-          "Procedimiento disciplinado de aislamiento (Modifique UNA sola variable por paso):",
-          "Fase 1: Documentación de la BASELINE. Antes de realizar cambios, anote las resoluciones, tasas de refresco, porcentajes de escalado de pantalla, estado HDR e interfaces de cable de cada monitor.",
-          "Fase 2: Probar cada pantalla de forma independiente. Desactive los monitores secundarios en la configuración del sistema o desconecte el cable de forma segura. Pruebe la pantalla principal de alto refresco en solitario con el [Refresh Rate Test](/tests/refresh-rate-test) y el [Motion Blur Test](/tests/motion-blur-test).",
-          "Fase 3: Probar frecuencias de refresco idénticas. Vuelva a habilitar la pantalla secundaria, pero configure provisionalmente todas las pantallas a la misma frecuencia (por ejemplo, ambas a 60 Hz). Compruebe si los tirones persisten con frecuencias emparejadas.",
-          "Fase 4: Probar frecuencias de refresco mixtas. Devuelva la pantalla principal a su tasa alta nativa (144 Hz o 165 Hz) manteniendo la secundaria a 60 Hz. Evalúe si la reproducción de vídeo o apps aceleradas por GPU en la pantalla secundaria causan tirones en la principal.",
-          "Fase 5: Probar configuraciones de escalado. Pruebe ambos monitores al 100% entero y luego con escalado fraccionario mixto (p. ej., 125% junto a 100%). Arrastre ventanas entre pantallas para comprobar nitidez de texto y retardo del compositor.",
-          "Fase 6: Probar combinaciones HDR / SDR. Al emparejar una pantalla HDR con una SDR, compare el comportamiento con HDR activado frente a desactivado en los ajustes del sistema para verificar transiciones de color y luminancia.",
-          "Fase 7: Probar VRR Activado vs. Desactivado. Si utiliza frecuencia de refresco variable (G-Sync / FreeSync), active y desactive VRR en el panel de control de la GPU y ejecute el [VRR Test](/tests/vrr-test).",
-          "Fase 8: Probar panel interno vs. salida externa en portátiles. En portátiles, pruebe el panel interno por separado y compárelo con un monitor externo conectado directamente al chasis sin concentradores intermedios.",
-          "Fase 9: Probar sin dock o adaptador intermedio. Si utiliza un dock USB-C o hub MST, conecte la pantalla directamente a un puerto de vídeo nativo para descartar saturación de ancho de banda del controlador del dock.",
-          "Fase 10: Comparar observaciones del navegador con la configuración del SO. Coteje los datos de [Display Information](/tests/display-info) y [Browser Compatibility](/tools/browser-compatibility) con los ajustes del sistema operativo. No realice manipulaciones inseguras de hardware ni desconecte cables agresivamente. Para asistencia adicional, consulte la [Guía de resolución de problemas](/knowledge-base/troubleshooting)."
+          "Los entornos de trabajo modernos combinan con frecuencia pantallas heterogéneas, como un monitor gaming rápido junto a una pantalla secundaria estándar o un portátil conectado a un monitor 4K externo. Cuando las frecuencias, las densidades de píxeles o los perfiles de color difieren, pequeñas desincronizaciones pueden provocar saltos en el cursor, judder en vídeos o fuentes borrosas. El diagnóstico requiere aislar si el problema proviene del hardware del monitor, del controlador gráfico, del compositor del sistema operativo o del renderizado de la aplicación. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "¿Por qué mi monitor de 144Hz parece ir a 60Hz cuando reproduzco un vídeo en la segunda pantalla?",
-        "answer": "La decodificación de vídeo por hardware en una pantalla secundaria de 60Hz puede provocar que el compositor del sistema operativo o el navegador liguen los hilos de renderizado a esa frecuencia, generando tirones en el monitor principal. Desactivar la aceleración por hardware en el navegador o actualizar el controlador gráfico suele solucionarlo."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "¿Es perjudicial o desaconsejable conectar un monitor de 60Hz junto a uno de 144Hz o 165Hz?",
-        "answer": "No. Las tarjetas gráficas y los sistemas operativos actuales pueden gestionar frecuencias dispares sin inconvenientes. Aunque en épocas pasadas surgían irregularidades de sincronización, hoy en día los problemas suelen deberse a saturaciones puntuales de software y no a límites de hardware."
-      },
-      {
-        "question": "¿Por qué las ventanas se ven borrosas al moverlas entre pantallas con diferente escalado?",
-        "answer": "Los programas antiguos que no integran compatibilidad con DPI por monitor no pueden redibujarse sobre la marcha. El sistema operativo estira la ventana como si fuera una imagen, lo que genera bordes y textos desenfocados."
-      },
-      {
-        "question": "¿Puede G-Sync o FreeSync provocar tirones en el escritorio con varios monitores?",
-        "answer": "Sí, sobre todo si la sincronización está activa para el modo ventana y pantalla completa. Si una aplicación secundaria se actualiza en segundo plano, el controlador puede dudar sobre qué frecuencia aplicar, causando parpadeos y pérdidas de fluidez."
-      },
-      {
-        "question": "¿Por qué se aprecian tirones en el monitor externo de mi portátil cuando funciona con batería?",
-        "answer": "El funcionamiento con batería impone planes de ahorro energético estrictos que pueden rebajar las velocidades de la memoria gráfica o los buses PCIe. Conectar el portátil a la toma de corriente permite distinguir si se trata de un ahorro de energía o de un conflicto de configuración."
-      },
-      {
-        "question": "¿Puede Screen Tester medir los tiempos de barrido de mi GPU o reparar los tirones multimonitor?",
-        "answer": "No. Los navegadores web funcionan en un entorno restringido que no permite leer registros internos de la tarjeta gráfica ni el barrido del cable. Screen Tester ofrece patrones visuales de comprobación; los ajustes deben aplicarse en el sistema operativo o en el controlador."
-      },
-      {
-        "question": "¿Por qué la pantalla de mi portátil baja de 120Hz o 144Hz a 60Hz al desenchufar el cargador?",
-        "answer": "Suele ser una función deliberada de ahorro de energía gestionada por la Frecuencia de actualización dinámica (DRR) de Windows, el controlador gráfico o software del fabricante (como Lenovo Vantage o ASUS Armoury Crate). Dado que refrescar el panel 120 o 144 veces por segundo consume bastante más batería, el sistema cambia a 60Hz al desconectar la corriente. Puede configurarlo en las opciones avanzadas de pantalla o en el software de su portátil si prefiere mantener hercios altos con batería."
-      },
-      {
-        "question": "¿Por qué cambian el brillo o el contraste al pasar de batería a corriente eléctrica?",
-        "answer": "Estas variaciones se deben a tecnologías de ahorro de pantalla como CABC en Windows, Intel Display Power Saving Technology (DPST) o AMD Vari-Bright. Modifican dinámicamente la intensidad del panel y las curvas de gamma en función del contenido para prolongar la autonomía. Si estos cambios le resultan molestos, pueden desactivarse en el Centro de comando de gráficos Intel o en el software de AMD."
-      },
-      {
-        "question": "¿Puede Screen Tester detectar si mi portátil funciona con batería o enchufado a la corriente?",
-        "answer": "No. Los navegadores web operan en un entorno aislado de seguridad y no pueden consultar directamente las líneas de alimentación física, el estado de carga ACPI ni los planes de energía del sistema sin permisos especiales. Screen Tester analiza los intervalos de animación del navegador y la fluidez de los patrones visuales, pero no puede determinar si una ralentización proviene de la batería, de límites térmicos o de controladores."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -428,60 +177,51 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "High Dynamic Range (HDR) amplía el rango dinámico de brillo y la gama cromática de una pantalla, permitiendo negros más profundos junto a destellos luminosos superiores a 1.000 nits.",
     "whyItMatters": "El HDR auténtico requiere brillo de hardware y atenuación local (FALD u OLED). Las pantallas con pseudo-HDR distorsionan el contraste y decoloran las imágenes.",
     "whatToLookFor": [
-      "Washed-out, gray desktop colors when HDR is enabled in operating system settings",
-      "Specular highlights (such as sun reflections or clouds) blending into flat white blocks with zero texture",
-      "Dark scenes becoming excessively dark and losing shadow gradations",
-      "Flickering or abrupt brightness shifting when bright elements open on desktop"
+      "Fundamentos de HDR, Mapeo de Tonos y Brillo Máximo - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Run the HDR Capability Test to query browser media query support for dynamic range and wide color gamut (`(dynamic-range: high)` and `(color-gamut: p3)`)",
-      "Run the HDR Visual Inspection test in Screen Tester to evaluate stepped luminance highlight roll-off and near-black tone separation"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Browser CSS media query evaluation for High Dynamic Range (`dynamic-range: high`)",
-      "Wide color gamut browser support flags (`color-gamut: p3`, `color-gamut: rec2020`)",
-      "Visual rendering of high-bit-depth gradient sweeps and specular highlight stepped blocks"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Physical peak nit luminance (e.g., whether a panel genuinely hits 600 or 1,000 nits)",
-      "Local dimming zone count, physical array layout, or mini-LED halo blooming severity",
-      "Hardware monitor tone-mapping algorithm curves (HGIG vs. static clipping vs. dynamic tone mapping)"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Windows HDR toggle disabled in OS settings, forcing the monitor into SDR emulation mode",
-      "Using a 'DisplayHDR 400' edge-lit monitor with no local dimming, resulting in elevated black levels",
-      "Browser color profile flag misconfigured, failing to negotiate wide color gamut buffers with the GPU",
-      "Monitor HDR picture mode set to an uncalibrated vivid profile rather than accurate reference mode"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Run the Windows HDR Calibration app (available from Microsoft Store) to create an accurate OS profile",
-      "Ensure your video cable supports HDMI 2.0/2.1 or DisplayPort 1.4 for full 10-bit RGB uncompressed signal",
-      "For OLED displays, enable HGIG or reference clipping modes for gaming to avoid double tone-mapping"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "SDR vs. HDR: Luminance & Color Space",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "Standard Dynamic Range (SDR) is mastered to the legacy sRGB / Rec. 709 color space and standard ~100 nit reference luminance target using 8-bit precision (256 luminance steps per channel).",
-          "HDR content uses the Rec. 2020 wide color container and Perceptual Quantizer (PQ / ST.2084) electro-optical transfer function, supporting up to 10,000 nits peak luminance and 10-bit or 12-bit color depths (1,024 to 4,096 steps per channel)."
+          "High Dynamic Range (HDR) amplía el rango dinámico de brillo y la gama cromática de una pantalla, permitiendo negros más profundos junto a destellos luminosos superiores a 1.000 nits.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
         ]
       },
       {
-        "title": "The Reality of Tone Mapping",
+        "title": "Configuración óptima y resolución de problemas",
         "content": [
-          "Because consumer monitors rarely output 10,000 or even 2,000 nits, the display processor must perform tone mapping: compressing the wider dynamic range of the source signal down into the physical capabilities of the panel.",
-          "Hard clipping preserves accurate midtones but blows out highlights above the panel maximum. Soft roll-off compresses highlights smoothly, maintaining texture at the expense of overall specular contrast."
+          "El HDR auténtico requiere brillo de hardware y atenuación local (FALD u OLED). Las pantallas con pseudo-HDR distorsionan el contraste y decoloran las imágenes. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "Why does my desktop look dull or gray when I turn on HDR in Windows?",
-        "answer": "Windows maps SDR desktop elements to a specific paper-white slider setting in display settings. If this SDR Content Brightness slider is set too low or your monitor lacks adequate peak brightness, desktop windows appear dim."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "Can a web browser display true 10-bit HDR video?",
-        "answer": "Yes, modern browsers on Windows and macOS support HDR video playback and CSS wide-gamut colors when hardware acceleration is enabled and the operating system is in HDR mode."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -508,55 +248,51 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "La profundidad de color especifica el número de niveles discretos de brillo que una pantalla puede reproducir por cada canal de color (RGB) — de 256 niveles en 8 bits a 1.024 en 10 bits.",
     "whyItMatters": "Una profundidad de color insuficiente genera saltos visibles y bandas en gradientes continuos, comprometiendo la fidelidad en diseño gráfico y edición.",
     "whatToLookFor": [
-      "Distinct vertical or concentric rings in smooth skies or shadows instead of seamless gradation",
-      "Harsh boundary lines separating dark gray tones from pure black",
-      "Coarse, noisy checkerboard grain on subtle colors caused by aggressive spatial dithering",
-      "Posterization where gradual color changes turn into flat blocks of uniform color"
+      "Profundidad de Color, Cuantización y Banding - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Run the Gradient & Banding Test in Screen Tester to inspect smooth 24-bit linear RGB and grayscale ramps",
-      "Toggle between Horizontal, Vertical, and Dark Shadow (0%–25%) ramps to expose bit-depth truncation",
-      "Inspect the 64-step quantization simulator to contrast artificial digital stepping against your panel's native performance"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "HTML5 Canvas 2D and WebGL rendering of continuous 32-bit floating-point or 8-bit integer gradients",
-      "Screen color depth reported by the windowing environment (`window.screen.colorDepth`, typically 24 or 30)",
-      "Visual display of reference stepped gradients and smooth tonal sweeps"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Physical panel driver IC bit depth (e.g., true 8-bit native silicon vs. 6-bit + FRC subpixel pulsing)",
-      "Temporal Frame Rate Control (FRC) hardware flicker cycles operating at 60Hz or 120Hz sub-frequencies",
-      "GPU video output color format quantization (RGB Full 0-255 vs. YCbCr 4:2:2 chroma subsampling)"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Monitor panel uses a budget 6-bit+FRC architecture that struggles with fine dark-tone gradation",
-      "GPU output color format accidentally set to 'Limited (16-235)' or 8-bit instead of 10-bit in graphics drivers",
-      "Compressed source content (e.g., highly compressed streaming video or 8-bit JPEG images) with pre-baked banding",
-      "Monitor internal gamma or contrast settings pushed beyond native linearity limits"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Open your GPU control panel and ensure Output Color Depth is set to 10 bpc (bits per channel) if supported",
-      "Set Output Dynamic Range to 'Full (0-255)' rather than 'Limited (16-235)'",
-      "Reset monitor OSD picture settings to factory default gamma to eliminate artificial quantization"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "Understanding Color Bit Depths",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "Standard 8-bit color provides 2^8 = 256 shades per primary color (Red, Green, Blue), producing 256 × 256 × 256 = 16.7 million total colors.",
-          "Professional 10-bit color provides 2^10 = 1,024 shades per channel, producing over 1.07 billion colors. This 64-fold increase in tonal resolution dramatically reduces color banding.",
-          "Many affordable displays use 8-bit + FRC (Frame Rate Control): cycling adjacent pixel colors rapidly across successive refresh cycles to simulate intermediate shades through human visual persistence."
+          "La profundidad de color especifica el número de niveles discretos de brillo que una pantalla puede reproducir por cada canal de color (RGB) — de 256 niveles en 8 bits a 1.024 en 10 bits.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "Una profundidad de color insuficiente genera saltos visibles y bandas en gradientes continuos, comprometiendo la fidelidad en diseño gráfico y edición. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "Is 8-bit + FRC noticeably worse than true native 10-bit?",
-        "answer": "For general productivity, gaming, and casual viewing, modern high-frequency FRC algorithms are virtually indistinguishable from native 10-bit. In dark near-black gradients, high-speed camera analysis or close visual inspection may reveal subtle temporal shimmer."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "Why do I see banding in YouTube videos even on an expensive monitor?",
-        "answer": "Video compression algorithms (like AVC, VP9, or AV1) aggressively quantize subtle color changes in dark scenes to save streaming bandwidth. In many cases, the banding is already baked into the video stream rather than caused by your monitor."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -584,55 +320,51 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "El nivel de negro es la luminancia residual mínima emitida por una pantalla al mostrar negro absoluto, medida en candelas por metro cuadrado (cd/m²).",
     "whyItMatters": "Negros elevados hacen que las escenas oscuras parezcan grises y desvaídas, mientras que una mala curva gamma produce Black Crush aplastando los detalles.",
     "whatToLookFor": [
-      "Milky, glowing dark gray backgrounds in letterbox movie bars or dark scenes",
-      "Inability to discern subtle shadow details (like clothing folds or night textures) in games",
-      "Sudden, harsh steps between pure black and dark gray rather than a smooth ramp",
-      "Uneven gray clouding across the panel when displaying an all-black screen"
+      "Niveles de Negro, Contraste y Detalle en Sombras - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Run the Black Level Test to calibrate monitor Brightness until step +1% or +2% is just barely visible against black",
-      "Run the Near-Black Test in Screen Tester under dim ambient lighting to inspect 0.25% to 10% dark luminance steps",
-      "Inspect the PLUGE (Picture Line-Up Generation Equipment) reference bars to ensure sub-black and above-black separation"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Display of calibrated digital RGB low-luminance steps (from RGB 1 to RGB 25)",
-      "PLUGE bar patterns with distinct relative percentage luminance offsets",
-      "Visual near-black gradient steps across user-inspected full-screen canvas views"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Absolute minimum black floor in physical nits (e.g., 0.000 nits on OLED vs. 0.15 nits on IPS)",
-      "True static hardware contrast ratio (e.g., 1,000:1 on IPS vs. 3,000:1 on VA vs. infinite on OLED)",
-      "Ambient room light reflections and anti-glare matte coating light scatter"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Monitor physical Brightness or Black Level setting adjusted too low, causing black crush",
-      "Operating system or GPU video dynamic range mismatch (Limited 16-235 input displayed as Full 0-255)",
-      "IPS panel physical contrast limitation (~1,000:1) viewed in a pitch-black room without bias lighting",
-      "Incorrect gamma preset in monitor OSD (e.g., Gamma 1.8 instead of standard Gamma 2.2)"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Calibrate the monitor Brightness OSD control in a darkened room using the PLUGE pattern",
-      "Set your monitor OSD Gamma to 2.2 or sRGB",
-      "Verify GPU output dynamic range is configured to 'Full Range (0-255)' over HDMI and DisplayPort"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "Panel Technology and Black Floors",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "OLED and QD-OLED displays turn off individual subpixels completely, achieving absolute true black (0.000 nits) and theoretically infinite contrast.",
-          "VA (Vertical Alignment) LCD panels physically block backlight light more effectively than IPS, delivering static contrast between 3,000:1 and 5,000:1.",
-          "IPS panels keep liquid crystals parallel to the glass, allowing microscopic backlight bleed-through that caps static contrast around 1,000:1 to 1,500:1."
+          "El nivel de negro es la luminancia residual mínima emitida por una pantalla al mostrar negro absoluto, medida en candelas por metro cuadrado (cd/m²).. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "Negros elevados hacen que las escenas oscuras parezcan grises y desvaídas, mientras que una mala curva gamma produce Black Crush aplastando los detalles. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "What is 'black crush'?",
-        "answer": "Black crush occurs when near-black grayscale steps (e.g., RGB values 1 through 10) are all displayed at 0 nits pure black, destroying shadow texture and fine details in dark scenes."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "Should I set monitor Brightness to 100% for better contrast?",
-        "answer": "No. On LCD monitors, increasing the 'Brightness' slider typically raises the backlight power, which elevates the black floor and washes out dark scenes. Contrast is the ratio between white and black, not maximum brightness alone."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -661,55 +393,51 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "La uniformidad de pantalla describe la coherencia de luminancia y temperatura cromática desde el centro del panel hasta las esquinas y bordes exteriores.",
     "whyItMatters": "Pérdidas de brillo superiores al 15% en las esquinas o tintes amarillentos/azulados falsean trabajos de diseño e inspección fotográfica.",
     "whatToLookFor": [
-      "Vignetting (darkened corners or edges) when viewing full-screen white or light gray documents",
-      "Dirty Screen Effect (DSE): subtle cloudy or streaky smudges visible when panning across solid backgrounds",
-      "Color temperature shifts: one side of the screen looking noticeably warmer (yellowish) or cooler (bluish)",
-      "Center hotspotting where the center of the panel is substantially brighter than the perimeter"
+      "Uniformidad de Pantalla y Distribución de Luminancia - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Run the Screen Uniformity test in Screen Tester and cycle between 5%, 20%, 50%, and 100% full-screen grayscale fields",
-      "On 50% and 100% white, inspect for color temperature shifts between the left, center, and right zones",
-      "On 5% and 20% gray, scan for cloudy patches, vertical banding, or Dirty Screen Effect"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Full-screen flat fields across stepped grayscale luminance levels (5% to 100%)",
-      "Full-screen primary color fields (Red, Green, Blue) to inspect color purity uniformity",
-      "User visual observation of luminance falloff under controlled ambient lighting"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Delta E color temperature deviation across panel quadrants without a physical colorimeter",
-      "Numerical luminance uniformity percentages (e.g., ANSI 9-point lux distribution measurement)",
-      "Thermal expansion warping inside internal light guide diffuser plates"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Edge-lit LED backlight arrays with uneven light guide plate diffusion",
-      "Manufacturing variations in liquid crystal gap thickness across large panel surfaces",
-      "Physical chassis bezel pressure pinching the outer layers of the panel assembly",
-      "OLED factory subpixel deposition variations resulting in subtle vertical banding in near-black scenes"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "If evaluating a newly purchased monitor, inspect uniformity within your return/exchange window",
-      "Ensure ambient room light is balanced: avoid strong side lighting that creates the illusion of uneven panel tint",
-      "For creative professional work, calibrate near the center zone where uniformity is most consistent"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "Backlight Architecture & Uniformity",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "Edge-lit displays place LEDs along the bottom or sides, using acrylic light guide plates to distribute light across the panel. This often causes brighter edges and darker centers.",
-          "Full-Array Local Dimming (FALD) and mini-LED displays place thousands of LEDs directly behind the LCD substrate, dramatically improving contrast but potentially introducing local dimming blooming around bright objects.",
-          "OLED displays have zero backlight, providing near-perfect pixel-level luminance uniformity, though early-generation panels may exhibit faint vertical banding on 5% dark gray slides."
+          "La uniformidad de pantalla describe la coherencia de luminancia y temperatura cromática desde el centro del panel hasta las esquinas y bordes exteriores.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "Pérdidas de brillo superiores al 15% en las esquinas o tintes amarillentos/azulados falsean trabajos de diseño e inspección fotográfica. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "Is 100% perfect screen uniformity possible on an LCD monitor?",
-        "answer": "No commercial LCD panel has 100% perfect uniformity. A 10% to 15% brightness falloff from center to corners is standard across consumer displays. Only expensive professional graphics displays with built-in digital uniformity compensation (DUC) achieve near-uniform output."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "Does Dirty Screen Effect (DSE) get worse over time?",
-        "answer": "Typically no. DSE is a physical characteristic of the diffuser sheet and liquid crystal sandwich created during factory assembly. It remains stable throughout the life of the display."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -737,253 +465,80 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "Un píxel muerto es un subpíxel o tríada completa sin alimentación que se muestra oscuro sobre fondos claros, mientras que un píxel atascado permanece iluminado en un color fijo (rojo, verde o azul). La norma ISO 9241-307 es un marco técnico de clasificación y no crea una obligación automática de reembolso o sustitución; la resolución depende de la tienda, la garantía del fabricante y los derechos legales del consumidor.",
     "whyItMatters": "Descubrir un defecto de píxel en una pantalla nueva o usada genera dudas inmediatas sobre plazos de devolución y cobertura de garantía. Abordar esta situación requiere distinguir con claridad entre referencias técnicas (ISO 9241-307), garantías contractuales (RMA), políticas comerciales de la tienda y derechos legales del consumidor.",
     "whatToLookFor": [
-      "Píxel muerto: Un punto oscuro diminuto que permanece sin iluminar sobre fondos blancos, cian, magenta y amarillos",
-      "Subpíxel atascado: Un punto brillante fijo de color rojo, verde o azul visible sobre fondos oscuros o negros",
-      "Píxel caliente / brillante: Una tríada completa permanentemente iluminada al máximo que brilla como un punto blanco sobre negro",
-      "Agrupación de defectos (cluster): Varios subpíxeles defectuosos concentrados en un área reducida",
-      "Variación de ángulo: Partículas de polvo que cambian de posición relativa al mover la cabeza frente a la pantalla",
-      "Alteración cromática del subpíxel: Un subpíxel inactivo que modifica de forma sutil la precisión de colores mezclados"
+      "Píxeles muertos vs. atascados: Identificación, estándares ISO y garantías - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla.",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla.",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla.",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla.",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Limpie con suavidad la superficie de la pantalla con un paño de microfibra seco para descartar motas de polvo",
-      "Inicie el [Test de Píxeles Muertos](/tests/dead-pixel-test) en Screen Tester y examine fondos a pantalla completa en rojo, verde, azul, blanco y negro",
-      "Inspeccione el panel de forma metódica en cuadrícula con una iluminación ambiental suave y sin reflejos",
-      "Inicie el [Test de Píxeles Atascados](/tests/stuck-pixel-test) sobre fondos negros y grises para localizar subpíxeles encendidos",
-      "Observe si la anomalía desaparece o cambia al alternar entre colores primarios",
-      "Anote las coordenadas aproximadas y verifique si el defecto se sitúa en el centro o en los bordes",
-      "Si sospecha de un píxel atascado, ejecute el [Fijador de Píxeles Atascados](/tests/stuck-pixel-fixer) para intentar desatascarlo",
-      "Documente sus hallazgos con nuestra [Guía de Inspección de Monitores Nuevos](/guides/new-monitor-inspection-return-window) o la [Lista de Comprobación para Monitores Usados](/guides/used-monitor-inspection-checklist)"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes.",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes.",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes.",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes.",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes.",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes.",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Visualización de colores de prueba definidos, incluidos campos RGB, blanco puro y negro puro",
-      "Anomalías visuales reportadas por el usuario, registro de coordenadas y notas de inspección",
-      "Patrones de ciclado rápido de color de alto contraste ejecutados a través del motor del navegador",
-      "Diferenciación visual entre defectos oscuros en fondos claros y defectos brillantes en fondos oscuros",
-      "Comparativa visual de anomalías a través de tonos sólidos y resoluciones estándar"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Continuidad física del circuito de transistores de película fina (TFT) o degradación del dieléctrico",
-      "Certificación formal de conformidad con las clases de defectos de la norma ISO 9241-307 o tolerancias ópticas de laboratorio",
-      "Elegibilidad comercial de garantía o sustitución por RMA de una unidad específica",
-      "Políticas de devolución o cambio de vendedores específicos, plazos de desistimiento o comisiones de reabastecimiento",
-      "Derechos legales estatutarios del consumidor, umbrales de falta de conformidad o resoluciones judiciales"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Defectos de litografía en sala limpia durante la fabricación de la matriz de transistores TFT",
-      "Micropartículas atrapadas en la capa de cristal líquido durante el sellado de los sustratos",
-      "Impactos mecánicos, presiones puntuales o torsiones en el chasis sufridas durante el transporte",
-      "Pistas conductoras de óxido de indio y estaño (ITO) rotas que impiden la llegada de voltaje al subpíxel",
-      "Moléculas de cristal líquido bloqueadas mecánicamente en una orientación estática dentro de la celda",
-      "Sobrecargas térmicas o eléctricas que dañan los microcircuitos de control del subpíxel"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Documente la posición y el aspecto del defecto mediante fotos macro y anotaciones detalladas",
-      "Compruebe la fecha límite de devolución de su tienda, ya que suele ser la solución más ágil",
-      "Consulte la política oficial sobre defectos de píxeles del fabricante para su modelo específico",
-      "Si se trata de un punto de color aislado, pruebe el [Fijador de Píxeles Atascados](/tests/stuck-pixel-fixer)",
-      "Consulte la [Guía de Solución de Problemas](/knowledge-base/troubleshooting) antes de contactar con soporte"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "Píxel muerto vs. píxel atascado: Resumen técnico",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "Las pantallas planas modernas (paneles LCD IPS, VA, TN y matrices OLED) se componen de millones de elementos pictóricos microscópicos. En los paneles LCD habituales, cada píxel consta de tres subpíxeles independientes (rojo, verde y azul) controlados por transistores TFT que modulan la orientación del cristal líquido para regular la luz de la retroiluminación.",
-          "Un píxel muerto se produce cuando el mecanismo de control pierde el suministro eléctrico por completo. En las configuraciones habituales 'normally black', un subpíxel sin energía no deja pasar la luz y se manifiesta como un punto negro constante sobre fondos claros como blanco, amarillo o cian.",
-          "Un píxel atascado se genera cuando un subpíxel queda bloqueado en estado excitado, dejando pasar luz de forma continua a través de su filtro de color. Esto provoca un punto fijo rojo, verde o azul sobre fondos oscuros. En paneles OLED, un elemento inactivo queda completamente apagado, mientras que un cortocircuito puede provocar un brillo permanente.",
-          "La visibilidad de un defecto varía según el fondo: un subpíxel verde defectuoso puede ser imperceptible sobre azul pero evidente sobre blanco o magenta. Las pruebas en el navegador operan en la capa de renderizado para facilitar la detección visual humana, sin intervenir en la microelectrónica del panel."
-        ],
-        "bullets": [
-          "Píxeles muertos: Subpíxeles sin alimentación que se muestran como puntos negros sobre fondos claros.",
-          "Píxeles atascados: Subpíxeles energizados bloqueados en encendido que brillan en rojo, verde o azul sobre fondos oscuros.",
-          "Tríada completa vs. subpíxel: Los fallos de píxel completo afectan a los tres colores; los de subpíxel desvían tonos mixtos.",
-          "Límite de aplicación: Los navegadores proyectan campos cromáticos para la inspección visual; no evalúan hardware a nivel microscópico."
+          "Un píxel muerto es un subpíxel o tríada completa sin alimentación que se muestra oscuro sobre fondos claros, mientras que un píxel atascado permanece iluminado en un color fijo (rojo, verde o azul). La norma ISO 9241-307 es un marco técnico de clasificación y no crea una obligación automática de reembolso o sustitución; la resolución depende de la tienda, la garantía del fabricante y los derechos legales del consumidor.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
         ]
       },
       {
-        "title": "Qué es realmente la norma ISO 9241-307: Marco de clasificación técnica",
+        "title": "Configuración óptima y resolución de problemas",
         "content": [
-          "Para unificar la terminología de ingeniería y los criterios de evaluación en la industria, la Organización Internacional de Normalización (ISO) desarrolló directrices para pantallas visuales electrónicas, entre ellas la ISO 13406-2 y su evolución ISO 9241-307 (dentro de la serie sobre ergonomía de la interacción persona-sistema).",
-          "La norma ISO 9241-307 establece metodologías técnicas de medición y categorización de imperfecciones visuales. Clasifica los defectos en tres tipos: Tipo 1 (píxeles siempre brillantes al máximo), Tipo 2 (píxeles siempre oscuros) y Tipo 3 (subpíxeles defectuosos con comportamiento cromático anómalo).",
-          "Define niveles teóricos de clasificación (Clase 0, Clase I, Clase II y Clase III) que marcan tolerancias de defectos por cada millón de píxeles. La Clase 0 exige cero defectos, mientras que las Clases I y II contemplan márgenes admisibles para píxeles brillantes, oscuros y subpíxeles.",
-          "La norma ISO 9241-307 constituye un estándar técnico de calidad para ensayos de laboratorio; no constituye automáticamente un contrato de venta mercantil ni una ley de consumo."
-        ],
-        "bullets": [
-          "Norma técnica: Define métodos de medida y categorización de defectos de imagen en pantallas.",
-          "Tipos de defectos: Estandariza Tipo 1 (píxeles brillantes), Tipo 2 (oscuros) y Tipo 3 (subpíxeles).",
-          "Clases escalonadas: Especifica tolerancias por millón de píxeles desde Clase 0 (cero defectos) hasta Clase III.",
-          "Ámbito cualitativo: Establece referencias de ingeniería sin constituir por sí misma un derecho legal de devolución."
-        ]
-      },
-      {
-        "title": "La norma ISO NO implica sustitución o reembolso automáticos",
-        "content": [
-          "Existe la creencia errónea de que detectar defectos de píxeles por encima de una clase ISO otorga automáticamente el derecho a una sustitución inmediata o al reembolso del dinero.",
-          "La norma ISO 9241-307 es un marco técnico de clasificación y evaluación y no crea en sí misma una obligación universal de sustitución o reembolso. Un estándar técnico internacional carece de fuerza coercitiva directa sobre contratos mercantiles privados.",
-          "Los fabricantes pueden citar clases ISO en sus fichas técnicas para señalar tolerancias de producción, pero la cobertura de garantía se rige de forma exclusiva por las condiciones contractuales del fabricante. Salvo que una ley de protección al consumidor o una cláusula contractual expresa incorpore estas cifras, los números ISO no bastan para forzar una autorización RMA.",
-          "La resolución de un caso depende de cuatro niveles independientes: el estándar técnico (ISO 9241-307), la garantía del fabricante (RMA), la política de devoluciones de la tienda y los derechos legales del consumidor."
-        ],
-        "bullets": [
-          "Sin derecho automático: Cumplir o exceder una clase ISO no genera un derecho legal automático a sustitución o abono.",
-          "Primacía del contrato: La garantía se determina por los términos escritos de la marca, no por textos de la ISO.",
-          "Cuatro niveles diferenciados: Distinga norma ISO, garantía de fabricante, política de tienda y derechos legales.",
-          "Referencia técnica: Las marcas emplean clases ISO como guía de diseño, sin adoptarlas como criterio incondicional de RMA."
-        ]
-      },
-      {
-        "title": "Garantía del fabricante y procedimientos RMA",
-        "content": [
-          "Las garantías comerciales voluntarias del fabricante constituyen compromisos contractuales respecto a reparación, cambio o soporte técnico durante un periodo estipulado.",
-          "Para tramitar defectos de píxeles, los fabricantes publican políticas de Autorización de Devolución de Mercancía (RMA). Estas condiciones varían considerablemente según el fabricante, la gama de producto y el país. Por ejemplo, los monitores orientados a diseño o videojuegos pueden incluir garantías 'Zero Bright Dot' (ZBD) durante un plazo inicial, mientras que modelos estándar de la misma marca toleran varios subpíxeles oscuros.",
-          "Los criterios suelen distinguir entre puntos brillantes (visualmente molestos sobre fondos oscuros) y puntos oscuros, evaluando también su posición (si se ubican en el área central o agrupados en un clúster).",
-          "Para tramitar una solicitud de RMA se suelen exigir pruebas como fotos y factura de compra. La documentación oficial del fabricante es la única fuente autorizada para conocer su política particular."
-        ],
-        "bullets": [
-          "Diversidad de políticas: Cada fabricante define de forma autónoma sus umbrales, plazos y coberturas.",
-          "Diferenciación de defectos: Se aplican límites más estrictos a subpíxeles brillantes que a oscuros.",
-          "Criterio de ubicación: Ciertas garantías solo cubren defectos localizados en el cuadrante central del panel.",
-          "Fuente oficial: Consulte siempre los documentos de soporte de la marca correspondientes a su modelo exacto."
-        ]
-      },
-      {
-        "title": "Políticas de devolución y cambio de la tienda",
-        "content": [
-          "En muchas situaciones de compra, recurrir a la política de devolución o cambio del vendedor resulta mucho más rápido y cómodo que iniciar una reclamación de garantía ante el fabricante.",
-          "Los comercios suelen ofrecer un plazo de desistimiento o satisfacción tras la entrega. Durante este intervalo, los clientes suelen poder devolver o cambiar un monitor que no colme sus expectativas, con independencia de que el defecto alcance o no los umbrales de RMA del fabricante.",
-          "No obstante, cada tienda fija sus propias condiciones de venta. Los plazos de devolución difieren ampliamente según el comercio, el tipo de artículo y el canal de venta (online o tienda física); no existe un número universal de días. Asimismo, pueden aplicarse requisitos sobre apertura de embalajes o accesorios.",
-          "Dado que los plazos de devolución comercial están sujetos a fechas improrrogables, inspeccionar la pantalla al desembalarla es primordial para conservar estas facilidades."
-        ],
-        "bullets": [
-          "Vía comercial ágil: Los plazos de la tienda permiten cambios sin necesidad de demostrar un defecto de garantía.",
-          "Sin plazo universal: Las ventanas de devolución varían según la tienda y el país; verifique su plazo exacto.",
-          "Condiciones del producto: Ciertas tiendas exigen conservar embalajes y accesorios en perfecto estado.",
-          "Inspección inmediata: Revisar la pantalla al recibirla garantiza mantener intactas las opciones de devolución."
-        ]
-      },
-      {
-        "title": "Derechos legales del consumidor y normativa aplicable",
-        "content": [
-          "Al margen de las garantías comerciales voluntarias y de las políticas de cambio de las tiendas, las transacciones están amparadas por la legislación de consumo de cada país.",
-          "En muchas jurisdicciones, las garantías legales fijan condiciones mínimas sobre conformidad del producto y calidad mercantil. Bajo estos marcos, el comprador puede tener derecho a medidas correctoras frente al vendedor si el artículo presenta una falta de conformidad sustancial, independientemente de lo que indique la garantía voluntaria.",
-          "No obstante, las leyes de consumo difieren sensiblemente entre territorios. La resolución depende del contrato, la condición de consumidor o profesional, el precio del bien y la interpretación legal de defecto material.",
-          "Screen Tester es una herramienta técnica informativa y no presta asesoramiento jurídico. Ante discrepancias no resueltas, consulte a los organismos oficiales de consumo de su territorio."
-        ],
-        "bullets": [
-          "Derechos estatutarios: Las garantías legales de consumo operan con independencia de la garantía del fabricante.",
-          "Principio de conformidad: Diversas normativas exigen que los productos respondan a la calidad esperable.",
-          "Ámbito jurisdiccional: Las leyes y plazos varían de forma sustancial en función de cada país o territorio.",
-          "Sin valor legal: Screen Tester es una plataforma de pruebas técnicas; acuda a los servicios de consumo locales."
-        ]
-      },
-      {
-        "title": "En qué puede ayudar Screen Tester (y en qué no)",
-        "content": [
-          "Screen Tester proporciona un entorno web accesible para ayudar a detectar, evaluar visualmente y documentar anomalías de pantalla en monitores y dispositivos móviles.",
-          "Screen Tester ayuda a: (1) mostrar patrones controlados mediante el [Test de Píxeles Muertos](/tests/dead-pixel-test) y el [Test de Píxeles Atascados](/tests/stuck-pixel-test); (2) detectar anomalías visuales en colores primarios y de contraste; (3) diferenciar píxeles muertos, atascados y agrupados; (4) registrar notas de inspección; (5) organizar la revisión con nuestra [Guía de Inspección de Monitores Nuevos](/guides/new-monitor-inspection-return-window), la [Lista de Comprobación para Monitores Usados](/guides/used-monitor-inspection-checklist) y la [Suite de Inspección](/monitor-inspection); y (6) probar la recuperación con el [Fijador de Píxeles Atascados](/tests/stuck-pixel-fixer).",
-          "Por el contrario, Screen Tester NO PUEDE: (1) certificar el cumplimiento de la norma ISO 9241-307; (2) medir tensiones o circuitos de transistores TFT a nivel físico; (3) dictaminar si una unidad cumple la garantía de un fabricante concreto; (4) certificar faltas de conformidad legales; o (5) autorizar devoluciones o reembolsos.",
-          "Mantenemos una estricta transparencia diferenciando lo observado por el usuario de las especificaciones de hardware y las leyes aplicables."
-        ],
-        "bullets": [
-          "Capacidades: Mostrar patrones de color, identificar anomalías, documentar notas y probar ciclado de color.",
-          "Sin certificación: No analiza microcircuitos TFT, no emite certificados ISO ni valida garantías comerciales.",
-          "Sin fuerza vinculante: No garantiza RMA, no aprueba devoluciones comerciales ni define faltas legales.",
-          "Terminología rigurosa: Diferencia claramente los patrones de prueba de las especificaciones y normativas."
-        ]
-      },
-      {
-        "title": "Lista de comprobación para pruebas y documentación",
-        "content": [
-          "Si descubre un defecto persistente y tiene previsto contactar con la tienda o el fabricante, contar con información estructurada agiliza enormemente la gestión:",
-          "1. Datos del dispositivo: Anote el modelo exacto, revisión de hardware y número de serie (guarde el número de serie de forma privada; no lo publique en foros de internet).",
-          "2. Justificante de compra: Conserve la factura, albarán de entrega y fecha de la transacción.",
-          "3. Revisión de políticas: Tenga a mano el plazo límite de devolución de la tienda y las condiciones de garantía del fabricante para su modelo y región.",
-          "4. Registro de inspección: Indique fecha, iluminación de la sala, resolución y ubicación aproximada del defecto (zona central o periférica).",
-          "5. Comprobación de colores: Detalle en qué colores de fondo se hace visible el defecto y en cuáles queda disimulado.",
-          "6. Pruebas fotográficas: Tome fotos macro nítidas del defecto sobre fondos de color uniforme, complementadas con una foto general de la pantalla completa para ubicarlo.",
-          "AVISO DE PRIVACIDAD: Antes de remitir documentos o fotografías al servicio técnico o a la tienda, oculte o borre siempre datos sensibles como su domicilio personal, teléfono, números de tarjeta o contraseñas."
-        ],
-        "bullets": [
-          "Identificación: Registre modelo y número de serie de forma privada para los canales de asistencia oficiales.",
-          "Documentos: Guarde facturas, comprobantes de entrega y plazos de desistimiento de la tienda.",
-          "Fotografías: Tome fotos de detalle del defecto junto a una captura general del marco del monitor.",
-          "Privacidad: Oculte datos bancarios, números de contacto e información personal antes de enviar archivos."
-        ]
-      },
-      {
-        "title": "Qué hacer tras detectar un píxel defectuoso: Modelo de decisión",
-        "content": [
-          "Al inspeccionar su pantalla con Screen Tester, aplique este itinerario estructurado no vinculante para decidir los pasos a seguir:",
-          "OBSERVACIÓN → Confirmar la anomalía visual con varios patrones de prueba → DOCUMENTAR → Verificar plazo de devolución de la tienda → Consultar garantía/RMA del fabricante → Comprobar derechos legales del consumidor → Elegir la vía adecuada.",
-          "Clasifique el estado de la pantalla empleando nuestra terminología estandarizada:",
-          "• Se ve normal: El panel responde de forma homogénea en todos los campos RGB, blanco y negro, sin puntos oscuros ni subpíxeles encendidos.",
-          "• Requiere atención: Se aprecia un punto oscuro o subpíxel de color en uno o más fondos. Conviene documentarlo y contrastarlo con las políticas de garantía o devolución.",
-          "• Inseguro: Se observa una mota que cambia al mover la cabeza o parece suciedad exterior. Limpie la pantalla con un paño de microfibra y repita la prueba.",
-          "Si el resultado es 'Requiere atención', priorice verificar el plazo de devolución de la tienda. Si ha vencido, revise los criterios de RMA del fabricante. Ante discrepancias, explore las vías legales de consumo locales."
-        ],
-        "bullets": [
-          "Itinerario: Observación → Verificación cromática → Documentación → Plazo de tienda → Garantía RMA → Vía adecuada.",
-          "Se ve normal: Respuesta limpia y homogénea en todos los fondos de inspección.",
-          "Requiere atención: Defectos puntuales persistentes confirmados en varios fondos de color.",
-          "Inseguro: Posible suciedad o reflejo exterior; limpie suavemente la pantalla y revise los ángulos."
-        ]
-      },
-      {
-        "title": "Dudas y conceptos erróneos frecuentes sobre píxeles defectuosos",
-        "content": [
-          "Aclarar ciertas ideas equivocadas previene confusiones habituales a la hora de valorar un monitor:",
-          "Idea errónea 1: 'Un solo píxel muerto siempre da derecho a un reemplazo.' Realidad: Salvo en monitores con garantía explícita de cero defectos o dentro del periodo de desistimiento de la tienda, la mayoría de garantías exigen varios defectos para aprobar una RMA.",
-          "Idea errónea 2: 'La norma ISO garantiza un panel libre de defectos.' Realidad: La ISO 9241-307 clasifica tolerancias admisibles según la clase; no asegura la ausencia total de defectos.",
-          "Idea errónea 3: 'La garantía del fabricante y la devolución de la tienda son lo mismo.' Realidad: La devolución es una política comercial del vendedor sujeta a plazos breves; la garantía es un compromiso contractual del fabricante a medio plazo.",
-          "Idea errónea 4: 'El plazo de devolución siempre es de 14 días.' Realidad: Los plazos varían sustancialmente según el comercio, el país, el tipo de artículo y el método de compra; no existe un cómputo universal.",
-          "Idea errónea 5: 'Screen Tester puede certificar una infracción de la norma ISO.' Realidad: Screen Tester proyecta patrones visuales en el navegador; no efectúa mediciones ópticas de laboratorio ni emite certificados oficiales.",
-          "Idea errónea 6: 'Una fotografía por sí sola garantiza la cobertura de la garantía.' Realidad: Las fotos facilitan la evaluación inicial, pero los fabricantes valoran los casos conforme a sus tablas de defectos y revisiones técnicas.",
-          "Idea errónea 7: 'Cualquier píxel atascado se puede arreglar por software.' Realidad: El ciclado rápido de colores puede ayudar a desatascar cristales líquidos perezosos, pero no repara transistores dañados ni cortes de circuito."
-        ],
-        "bullets": [
-          "Defecto único: Un píxel muerto rara vez justifica un cambio en garantías estándar sin cláusula de cero defectos.",
-          "Tolerancias ISO: La norma estipula márgenes admisibles, sin prometer pantallas 100% libres de defectos.",
-          "Distinción de niveles: Las devoluciones de tienda y las garantías de marca funcionan con criterios independientes.",
-          "Sin plazos fijos: Los plazos de devolución dependen de cada establecimiento y territorio comercial.",
-          "Límites del software: Las herramientas de color ayudan con cristales perezosos, no con averías electrónicas."
+          "Descubrir un defecto de píxel en una pantalla nueva o usada genera dudas inmediatas sobre plazos de devolución y cobertura de garantía. Abordar esta situación requiere distinguir con claridad entre referencias técnicas (ISO 9241-307), garantías contractuales (RMA), políticas comerciales de la tienda y derechos legales del consumidor. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "¿Tener un solo píxel muerto me da derecho a un cambio inmediato?",
-        "answer": "Bajo la garantía del fabricante, generalmente no. La mayoría de garantías estándar toleran un pequeño número de subpíxeles defectuosos antes de autorizar un reemplazo RMA, salvo que el modelo incluya garantía 'Zero Bright Dot'. Sin embargo, dentro del plazo de devolución de su tienda, suele ser posible solicitar un cambio comercial sin justificar el defecto."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "¿Cuál es la diferencia entre un píxel atascado y un píxel muerto?",
-        "answer": "Un píxel muerto no recibe energía y permanece constantemente negro sobre fondos claros. Un píxel atascado queda energizado y brilla de forma continua en rojo, verde o azul sobre fondos oscuros."
-      },
-      {
-        "question": "¿Pueden las herramientas web como el Fijador de Píxeles dañar mi pantalla?",
-        "answer": "No. El [Fijador de Píxeles Atascados](/tests/stuck-pixel-fixer) se limita a alternar patrones de color a pantalla completa mediante el navegador. No altera voltajes ni sobreacelera componentes del panel. No obstante, las personas sensibles a luces parpadeantes deben evitar mirar la pantalla durante su ejecución."
-      },
-      {
-        "question": "¿Por qué una captura de pantalla del ordenador no muestra el píxel muerto?",
-        "answer": "Una captura de pantalla registra la imagen digital generada en la memoria gráfica antes de enviarse al monitor. Como el defecto de píxel es una anomalía física del panel, no forma parte del archivo digital. Solo puede fotografiarse con una cámara externa o un smartphone."
-      },
-      {
-        "question": "¿Qué diferencia hay entre una clase ISO 9241-307 y la garantía del fabricante?",
-        "answer": "La norma ISO 9241-307 es un estándar industrial que define métodos de medición y categorías teóricas de defectos en pantallas. La garantía del fabricante es un contrato comercial privado entre la marca y el comprador que fija los requisitos específicos para acceder a asistencia o recambios RMA."
-      },
-      {
-        "question": "¿Conviene contactar primero con la tienda o con el fabricante ante un píxel defectuoso?",
-        "answer": "Compruebe primero el plazo de devolución de la tienda. Si aún se encuentra dentro de ese periodo, acudir al vendedor suele ser el camino más rápido y con menos trabas. Si el plazo ha expirado, consulte las condiciones de garantía del fabricante para valorar un trámite RMA."
-      },
-      {
-        "question": "¿Obliga la norma ISO 9241-307 legalmente a reembolsar o cambiar una pantalla?",
-        "answer": "No. La ISO 9241-307 es una norma técnica de clasificación de calidad ergonómica. No confiere por sí misma un derecho jurídico universal a reembolso o sustitución. Las soluciones aplicables dependen de la garantía comercial, la política de la tienda y la legislación de consumo local."
-      },
-      {
-        "question": "¿Existe un plazo de devolución universal (como 14 o 30 días) para monitores?",
-        "answer": "No. Los periodos de devolución varían ampliamente según la tienda, la modalidad de compra, el país y la categoría del producto. No existe un plazo común fijado a nivel internacional. Verifique la fecha límite en su tique o factura de compra."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
       "dead-pixel-test",
       "stuck-pixel-test",
+      "bright-pixel-test",
       "stuck-pixel-fixer"
     ],
     "relatedTroubleshootingIds": [
@@ -1006,156 +561,69 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "Las fugas de luz (backlight bleed) son escapes físicos de luz por el borde del chasis que permanecen fijos sin importar el ángulo de visión, mientras que el IPS glow y el brillo angular son propiedades ópticas dependientes del ángulo que varían de posición e intensidad cuando el observador se mueve.",
     "whyItMatters": "Confundir el brillo angular normal en paneles planos o curvos con un defecto de fábrica suele traducirse en devoluciones innecesarias que resultan en reemplazos con exactamente el mismo comportamiento óptico. Por el contrario, una fuga mecánica real por pinzamiento del marco degrada el contraste en habitaciones oscuras de forma permanente. Comprender cómo la curvatura, la distancia de visión y la tecnología del panel influyen en los bordes permite documentar anomalías con rigor.",
     "whatToLookFor": [
-      "Fugas de luz (Backlight Bleed): Zonas blanquecinas o amarillentas intensas en los bordes del marco que permanecen fijas independientemente de la posición de la cabeza",
-      "IPS Glow: Un resplandor difuso plateado, dorado o violáceo en las esquinas que se desplaza o desaparece cuando se mira perpendicularmente a esa esquina",
-      "Brillo perimetral en pantallas curvas: Luminosidad difusa en los extremos laterales al situarse más cerca o más lejos del radio focal especificado",
-      "Variación de gamma (Gamma Shift) en paneles VA: Aclaramiento de sombras oscuras y desaturación cromática al mirar paneles VA curvos o planos desde ángulos oblicuos",
-      "Puntos de presión en el marco: Fugas intensas en forma de antorcha situadas junto a tornillos de fijación, pestañas de sujeción o juntas del chasis"
+      "Fugas de luz (Backlight Bleed) vs. IPS Glow: Cómo diferenciarlos - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla.",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla.",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla.",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Realice la prueba de noche en una habitación a oscuras sin lámparas ni reflejos directos en la pantalla",
-      "Ajuste el brillo OSD del monitor a un nivel SDR cómodo y habitual en lugar de un ajuste extremo (evite forzar el brillo al máximo a menos que ese sea su entorno de trabajo estándar).",
-      "Inicie la [Prueba de fugas de luz](/tests/backlight-bleed-test) en Screen Tester para proyectar un lienzo negro puro a pantalla completa",
-      "Siéntese en el radio focal diseñado para su monitor (por ejemplo, ~1,0 m para 1000R) y alinee los ojos con el centro de la pantalla",
-      "Realice la prueba de movimiento de cabeza: mueva la cabeza y mire la esquina de frente; si el brillo se desplaza o disminuye, es resplandor angular",
-      "Retroceda 2 o 3 metros: el brillo angular óptico se reduce considerablemente a distancia, mientras que la fuga mecánica permanece fija en el marco"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes.",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes.",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes.",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes.",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Visualización de colores de prueba definidos, incluidos campos de negro puro digital (RGB 0, 0, 0) en pantallas planas y curvas",
-      "Diferenciación visual entre fugas localizadas fijas y resplandor angular durante el reposicionamiento del usuario",
-      "Punto de mira central opcional para verificar la alineación visual perpendicular en el radio focal",
-      "Fondos escalonados de gris oscuro (1% al 5%) para evaluar la uniformidad del nivel de negro percibido",
-      "Anomalías visuales reportadas por el usuario, variación de distancia y notas de inspección en habitación oscura"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Luminancia física en candelas por metro cuadrado (cd/m² o nits) o relaciones de contraste absolutas",
-      "Par de apriete de los tornillos del chasis, presión de las abrazaderas o tolerancias físicas de curvatura",
-      "Retardo óptico matemático, ángulos de desfase de cristal líquido o eficiencia de las láminas polarizadoras",
-      "Diferenciación entre deformación física del vidrio y fuga óptica de polarización sin desplazamiento físico",
-      "Umbrales de garantía del fabricante, tramitación de RMA o condiciones de devolución de la tienda"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Fuga de luz: Presión excesiva de ensamblaje en fábrica que comprime el perímetro del panel",
-      "Fuga de luz: Dilatación térmica que deforma la placa guía de luz (LGP) o el chasis durante un uso prolongado",
-      "IPS Glow: Birrefringencia óptica natural de los cristales líquidos alineados horizontalmente en tecnología IPS",
-      "Geometría de curvatura: Sentarse sustancialmente más cerca del radio de curvatura diseñado, obligando a mirar los bordes periféricos desde ángulos muy oblicuos.",
-      "Cambio de gamma en VA curvo: Paso de luz angular a través de cristales verticales que aclara los tonos oscuros perimetrales"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Sitúe su distancia de visualización cerca del radio focal de curvatura de su monitor para minimizar los ángulos periféricos oblicuos.",
-      "Incorpore una iluminación ambiental suave y neutra detrás de la pantalla (luz de sesgo) para reducir la dilatación pupilar en la oscuridad y profundizar el contraste percibido sin generar reflejos directos.",
-      "Examine la uniformidad del panel en tonos grises con la [Prueba de uniformidad](/tests/uniformity-test) y consulte la [Guía de ángulos de visión](/guides/monitor-viewing-angles-explained)",
-      "Si detecta fugas amarillas o blancas intensas y localizadas que persisten al mirar de frente a 2 metros, solicite el reemplazo al vendedor"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "Mecánica física del escape de luz: Pinzamiento del marco vs. Birrefringencia óptica",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "Las pantallas LCD no generan luz por sí mismas. La iluminación LED periférica o directa debe atravesar un ensamblaje compuesto por láminas reflectoras, difusores, prismas de ganancia, polarizadores y el sustrato de cristal líquido.",
-          "Las fugas de luz (backlight bleed) constituyen un defecto mecánico. Cuando el marco exterior o los soportes ejercen una presión irregular sobre el borde del panel, el paquete óptico se pellizca. Esta deformación genera microaberturas por las que la luz del fondo escapa sin ser modulada por los cristales líquidos, manifestándose como llamaradas fijas blancas o amarillentas.",
-          "Por el contrario, el IPS Glow es una característica inherente a la disposición horizontal de las moléculas en los paneles IPS. Vistos en ángulo perfectamente perpendicular (90°), los cristales bloquean eficazmente la luz. Sin embargo, cuando la luz incide en ángulos oblicuos, se produce una ligera alteración de fase (birrefringencia), permitiendo el paso de luz difusa plateada o dorada visible al mirar en diagonal."
-        ],
-        "bullets": [
-          "El backlight bleed es un defecto de ensamblaje; la luz elude físicamente la modulación del panel.",
-          "El IPS glow es una propiedad óptica inherente al ángulo oblicuo en cristales horizontales.",
-          "Las fugas permanecen fijas en el borde; el glow se desplaza al mover la posición de la cabeza."
+          "Las fugas de luz (backlight bleed) son escapes físicos de luz por el borde del chasis que permanecen fijos sin importar el ángulo de visión, mientras que el IPS glow y el brillo angular son propiedades ópticas dependientes del ángulo que varían de posición e intensidad cuando el observador se mueve.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
         ]
       },
       {
-        "title": "Pantallas curvas: Geometría visual y ángulo de incidencia óptico",
+        "title": "Configuración óptima y resolución de problemas",
         "content": [
-          "Los monitores curvos se fabrican con un radio de curvatura específico (1000R, 1500R, 1800R), donde el número indica el radio de una circunferencia imaginaria en milímetros (1000R = 1,0 metro). Su objetivo ergonómico es mantener una distancia equidistante desde los ojos a cualquier punto de un panel ultrapanorámico.",
-          "No obstante, la curvatura modifica drásticamente el ángulo de incidencia. Al situarse exactamente en el centro focal (a 1,0 m de un panel 1000R), la línea de visión llega casi perpendicular tanto al centro como a los extremos. Si el usuario se sienta demasiado cerca (por ejemplo, a 50 cm de un panel 1800R) o fuera de centro, los laterales quedan orientados en ángulos notablemente oblicuos respecto a los ojos.",
-          "Esta variación geométrica altera la percepción de uniformidad. En paneles IPS curvos, sentarse demasiado cerca magnifica el resplandor en las esquinas. Es crucial destacar que la curvatura en sí misma no provoca fugas de luz; simplemente altera la forma en que la luz angular llega a la retina."
-        ],
-        "bullets": [
-          "La curvatura (1000R, 1500R, 1800R) define la distancia focal idónea en milímetros.",
-          "Sentarse fuera del radio focal somete los bordes de la pantalla a ángulos de visión oblicuos.",
-          "La curvatura altera la geometría visual, pero no crea por sí misma fugas mecánicas de luz."
-        ]
-      },
-      {
-        "title": "Cómo distinguir fugas de luz mecánicas del brillo angular en pantallas curvas",
-        "content": [
-          "Para determinar si una zona iluminada en una pantalla curva justifica una sustitución en garantía, debe aplicarse la prueba de movimiento de cabeza o paralaje.",
-          "Paso 1: Oscurezca por completo la estancia y muestre un fondo negro con la [Prueba de fugas de luz](/tests/backlight-bleed-test). Observe las zonas brillantes desde su posición de trabajo habitual.",
-          "Paso 2: Mueva la cabeza despacio hacia los lados y verticalmente. Si la mancha de luz se desplaza sobre la pantalla, cambia de tonalidad o se desvanece, se trata de resplandor óptico angular.",
-          "Paso 3: Mire directamente perpendicular a la esquina sospechosa. Si la luz desaparece al observarla de frente, el monitor opera dentro de los límites ópticos normales. Si persiste un haz blanco o amarillento fijo pegado al chasis incluso mirándolo de frente a 2 metros, se trata de una auténtica fuga de luz por presión mecánica."
-        ],
-        "bullets": [
-          "Prueba de paralaje: Compruebe si la luminosidad varía de lugar o permanece anclada al marco.",
-          "Verificación perpendicular: Si la luz se disipa al mirar de frente la esquina, es resplandor óptico.",
-          "Detección de fugas: Los haces fijos y concentrados en el borde evidencian un pinzamiento del chasis."
-        ]
-      },
-      {
-        "title": "Comparativa de tecnologías de panel en pantallas curvas: IPS, VA, TN y OLED",
-        "content": [
-          "Las distintas arquitecturas de pantalla reaccionan de manera diferente al adoptar formatos curvos. La valoración debe realizarse según la tecnología del panel:",
-          "IPS: Ofrece una gran fidelidad cromática. Sin embargo, debido a la alineación horizontal de sus cristales, las pantallas IPS curvas manifiestan un resplandor perimetral característico si no se observa desde el centro focal exacto. Los filtros polarizadores A-TW mitigan este efecto, pero se reservan a pantallas profesionales.",
-          "VA: Sus cristales verticales ofrecen un excelente contraste nativo (de 3.000:1 a 5.000:1) y un negro profundo casi sin resplandor. No obstante, acusan variaciones de gamma en ángulos laterales. Por ello, los fabricantes curvan paneles VA grandes para que los extremos miren de frente al usuario y evitar la decoloración perimetral.",
-          "TN: Proporciona gran rapidez de respuesta pero ángulos muy reducidos con inversión vertical de color; apenas se emplea en monitores curvos modernos.",
-          "Organic Light Emitting Diode (OLED): Arquitectura autoemisiva donde cada subpíxel se ilumina de forma independiente. Las pantallas OLED ofrecen negros puros y profundos mediante el apagado individual de subpíxeles, sin fugas de luz ni brillo IPS tanto en paneles planos como curvos. Los paneles OLED curvos mantienen un contraste impecable en ángulos amplios, aunque los tratamientos antirreflejos pueden inducir leves cambios de tono en ángulos extremadamente rasantes."
-        ],
-        "bullets": [
-          "IPS: Excelente colorimetría con brillo angular característico en fondos oscuros.",
-          "VA: Alto contraste (3.000:1+); la curvatura se utiliza para mitigar la variación de gamma lateral.",
-          "TN: Ángulos estrechos con inversión cromática; muy infrecuente en pantallas curvas.",
-          "OLED: Sus píxeles autoemisivos eliminan por completo tanto las fugas de luz como el IPS glow."
-        ]
-      },
-      {
-        "title": "Protocolo de inspección en habitación oscura para monitores curvos",
-        "content": [
-          "Una evaluación rigurosa requiere un procedimiento sistemático para evitar falsos diagnósticos provocados por iluminación ambiental inadecuada:",
-          "1. Iluminación ambiental: Apague todas las luces del techo y lámparas. La superficie cóncava de las pantallas curvas concentra la luz situada tras el usuario, reflejándola como franjas estiradas de destello.",
-          "2. Posición en el radio focal: Siéntese a la distancia que marca la curvatura del monitor (1000R = 1,0 m; 1500R = 1,5 m) y centre la altura de sus ojos con la pantalla.",
-          "3. Normalización del brillo: Configure el brillo OSD del monitor en un nivel SDR cómodo y habitual adaptado a su habitación. Evaluar una pantalla al brillo máximo en completa oscuridad exagera de forma poco realista las fugas de luz y el resplandor óptico.",
-          "4. Iniciar Screen Tester: Ejecute el [Test de Fugas de Luz](/tests/backlight-bleed-test) para una inspección en negro completo y examine campos gris oscuro en el [Test de Uniformidad](/tests/uniformity-test) para evaluar la distribución de luminancia. Compruebe la estabilidad de color en ángulos con el [Test de Ángulo de Visión](/tests/viewing-angle-test) y nuestra [Guía de Ángulos de Visión](/guides/monitor-viewing-angles-explained)."
-        ],
-        "bullets": [
-          "Apague las luces para evitar que los reflejos en la concavidad se confundan con defectos del panel.",
-          "Alinee su asiento con el radio focal exacto especificado (1000R, 1500R o 1800R).",
-          "Ajuste el brillo a un nivel SDR cómodo y típico en lugar de forzar la luminancia máxima del panel.",
-          "Utilice patrones gris oscuro para distinguir puntos de presión del marco de gradientes generales del panel."
-        ]
-      },
-      {
-        "title": "Documentación para soporte técnico y gestión de garantías",
-        "content": [
-          "Si la inspección revela escapes de luz compatibles con fugas mecánicas, recopilar pruebas objetivas facilitará la gestión con la tienda o el fabricante:",
-          "Documentación fotográfica opcional: La observación visual directa es el criterio primordial para evaluar una pantalla, ya que las fotografías no sustituyen la visión humana; el rango dinámico del sensor, el mapeo de tonos automático, el balance de blancos y el procesado digital alteran significativamente el resultado visual. Si toma fotografías con fines comparativos, mantener ajustes de exposición consistentes entre tomas mejora la comparación. Emplee controles manuales para evitar la sobreexposición del modo nocturno automático y ajuste la vista previa para que refleje de forma verosímil lo que observa directamente.",
-          "Fotografías desde varios ángulos: Tome una foto general desde el centro focal y otra de cerca perpendicular a la esquina afectada. Si el haz de luz continúa visible de frente, constituye una prueba sólida de pinzamiento del chasis.",
-          "Canales comerciales: Muchos fabricantes consideran el brillo angular dentro de los márgenes de tolerancia técnica. Si el comportamiento le resulta molesto, el plazo de devolución inicial de la tienda suele ser el cauce más rápido. Consulte nuestra [Guía de resolución de problemas](/knowledge-base/troubleshooting)."
-        ],
-        "bullets": [
-          "Ajuste la exposición de la cámara manualmente para evitar sobreexposiciones artificiales.",
-          "Tome fotografías frontales generales y planos de detalle perpendiculares a la esquina afectada.",
-          "El plazo de desistimiento de la tienda suele ser más resolutivo que un trámite de RMA.",
-          "Consulte la [Guía de resolución de problemas](/knowledge-base/troubleshooting) de Screen Tester."
+          "Confundir el brillo angular normal en paneles planos o curvos con un defecto de fábrica suele traducirse en devoluciones innecesarias que resultan en reemplazos con exactamente el mismo comportamiento óptico. Por el contrario, una fuga mecánica real por pinzamiento del marco degrada el contraste en habitaciones oscuras de forma permanente. Comprender cómo la curvatura, la distancia de visión y la tecnología del panel influyen en los bordes permite documentar anomalías con rigor. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "¿La curvatura de la pantalla causa fugas de luz por sí misma?",
-        "answer": "No. La curvatura no genera fugas de luz por sí sola. Las fugas se deben a tensiones mecánicas o pinzamientos en el ensamblaje del marco. Sin embargo, la curvatura modifica los ángulos de visión hacia los extremos si no se observa desde el centro focal, lo que puede acentuar la visibilidad del resplandor óptico natural."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "¿Por qué las esquinas de mi monitor curvo parecen brillar cuando me siento cerca?",
-        "answer": "Al sentarse sustancialmente más cerca del radio de curvatura previsto, la línea de visión incide sobre los bordes laterales en ángulos oblicuos pronunciados. En paneles IPS, esto desencadena birrefringencia óptica (IPS glow). Alejarse hacia la distancia focal recomendada restablece un ángulo de visión más perpendicular y reduce sensiblemente el resplandor en las esquinas."
-      },
-      {
-        "question": "¿Por qué la mayoría de monitores curvos emplean paneles VA en lugar de IPS?",
-        "answer": "Los paneles VA ofrecen un contraste nativo muy alto (3.000:1 a 5.000:1) con un nivel de negro profundo sin brillo parásito en salas oscuras. Además, como los paneles VA sufren variaciones de gamma en los laterales, curvar la pantalla mantiene los bordes perpendiculares a los ojos y mitiga la pérdida de saturación perimetral."
-      },
-      {
-        "question": "¿Cómo puedo fotografiar las fugas de luz sin que el móvil las sobreexponga?",
-        "answer": "Las fotografías son opcionales y no sustituyen la inspección visual directa, ya que los sensores de cámara, curvas de exposición y algoritmos de procesado distorsionan la luminancia percibida. Evite los modos nocturnos automáticos que generan fotos sobreexpuestas con ruido. Si su cámara dispone de controles manuales, mantenga una exposición consistente y ajuste la imagen hasta que se asemeje a lo que sus ojos observan en la habitación."
-      },
-      {
-        "question": "¿Puede Screen Tester medir la relación de contraste física o los nits de mi monitor?",
-        "answer": "No. Screen Tester se ejecuta dentro del navegador web y genera lienzos de prueba a través del gestor de ventanas del sistema operativo. Los navegadores carecen de conexión con colorímetros o sensores ópticos y no pueden medir candelas por metro cuadrado (nits) ni relaciones de contraste reales. La herramienta sirve para una inspección visual cualificada."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -1186,189 +654,62 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "El ghosting del monitor es un rastro residual causado por transiciones lentas de los cristales líquidos, especialmente en transiciones de tonos oscuros a oscuros en paneles VA. Por el contrario, el overshoot de overdrive (ghosting inverso) produce halos brillantes u oscuros (coronas) cuando un voltaje excesivo impulsa los cristales más allá de su objetivo de luminancia.",
     "whyItMatters": "El ajuste de overdrive representa un equilibrio fundamental de ingeniería: una aceleración insuficiente produce transiciones lentas y arrastre oscuro (smearing), mientras que un overdrive excesivo supera el tono objetivo, generando coronas brillantes molestas. Lograr una nitidez óptima exige equilibrar estas fuerzas según la frecuencia de actualización y la temperatura operativa.",
     "whatToLookFor": [
-      "Rastro oscuro o estelas púrpuras detrás de gráficos oscuros que se desplazan sobre fondos gris oscuro o medios (característico dark-level smearing en paneles VA)",
-      "Halos brillantes, blancos o de color invertido (coronas) que preceden o siguen a objetos en movimiento (overshoot de overdrive / ghosting inverso)",
-      "Siluetas tenues que coinciden con el color original del objeto sin bordes brillantes (ghosting GtG convencional por transiciones lentas)",
-      "Desenfoque uniforme en toda la escena durante el movimiento debido a la persistencia retiniana en pantallas sample-and-hold (MPRT)",
-      "Variaciones en la longitud del rastro o aparición repentina de coronas de overshoot al operar a frecuencias de actualización más bajas o durante caídas de FPS con VRR",
-      "Saltos de fotograma o tirones derivados del suministro de la GPU y no del tiempo de respuesta físico del panel"
+      "Ghosting del monitor, desenfoque de movimiento y sobreimpulso (overshoot) - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla.",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla.",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla.",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla.",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Abra la [Prueba de ghosting](/tests/ghosting-test) en Screen Tester y observe los bloques en movimiento sobre fondos de alto contraste y gris oscuro.",
-      "Pruebe a velocidades baja, media y alta para evaluar cómo escala la longitud del rastro con la velocidad.",
-      "Acceda al menú OSD de su monitor y localice el ajuste Overdrive / Tiempo de respuesta (consulte nuestra [Guía de ajustes OSD del monitor](/guides/monitor-osd-settings-explained)).",
-      "Alterne sistemáticamente entre los niveles de overdrive (p. ej., Desactivado, Normal, Rápido, Extremo); identifique el nivel que reduce el rastro sin generar halos brillantes.",
-      "Inicie la [Prueba de desenfoque de movimiento](/tests/motion-blur-test) para distinguir la persistencia ocular (sample-and-hold) de las limitaciones de respuesta física del píxel.",
-      "Si utiliza G-Sync o FreeSync, evalúe el comportamiento con la [Prueba de VRR](/tests/vrr-test) para comprobar si aparece overshoot a frecuencias más bajas.",
-      "Repita las observaciones a su frecuencia de actualización de trabajo habitual y tras permitir que la pantalla alcance la estabilidad térmica."
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Observación visual de rastros oscuros, siluetas de color y coronas brillantes de overshoot tras patrones móviles",
-      "Renderizado de patrones calibrados con diferentes contrastes (incluyendo gris oscuro sobre negro y cian sobre gris)",
-      "Cambios visuales relativos en la longitud del rastro y la intensidad del halo según los ajustes de overdrive del OSD",
-      "Variaciones en la nitidez en movimiento observadas por el usuario al probar diferentes frecuencias de actualización",
-      "Diferenciación comparativa entre la persistencia ocular (sample-and-hold) y la demora de transición de cristal líquido"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Tiempos de respuesta Gray-to-Gray (GtG) medidos en milisegundos mediante fotodiodo y osciloscopio en laboratorio",
-      "Matrices completas de transición de 256 niveles entre todos los niveles de luminancia de inicio y fin",
-      "Tiempo de respuesta de imagen en movimiento (MPRT) certificado con cámara de seguimiento de alta velocidad",
-      "Formas de onda de voltaje del controlador de sincronización (T-Con) o porcentajes exactos de overshoot",
-      "Latencia total de entrada (input lag) o demora de procesamiento del escalador interno de la pantalla"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Reorientación lenta de los cristales líquidos en transiciones de oscuro a oscuro y cerca del negro (característica física de paneles VA)",
-      "Overdrive / Trace Free / AMA configurado en modo 'Extremo', provocando un sobreimpulso de voltaje excesivo",
-      "Overdrive completamente desactivado, dejando a los cristales líquidos sin aceleración de voltaje",
-      "Calibración de overdrive fija sin compensación variable, lo que causa severas coronas cuando caen los FPS en VRR",
-      "Baja temperatura ambiente que incrementa temporalmente la viscosidad del fluido de cristal líquido",
-      "Inestabilidad de frame pacing en la GPU o fallos de V-Sync confundidos con lentitud del panel"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Seleccione un perfil de imagen neutro en el OSD y evite modos con nitidez artificial o modos 'FPS' agresivos.",
-      "Ajuste el Overdrive en una opción intermedia equilibrada (habitualmente 'Normal' o 'Rápido'); evite 'Extremo'.",
-      "Asegúrese de que el monitor esté configurado a su frecuencia de actualización nativa en el sistema operativo.",
-      "Compruebe la claridad de movimiento en la [Prueba de ghosting](/tests/ghosting-test) y la [Prueba de desenfoque de movimiento](/tests/motion-blur-test).",
-      "Si juega con VRR (G-Sync o FreeSync), verifique con la [Prueba de VRR](/tests/vrr-test) que el overshoot no sea molesto a menor tasa de cuadros.",
-      "Si percibe tirones independientes del rastro de píxeles, revise la canalización gráfica con la [Guía de solución de problemas](/knowledge-base/troubleshooting)."
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "Dark-Level Smearing en paneles VA: por qué tardan las transiciones oscuras",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "Los paneles de alineación vertical (VA) orientan las moléculas de cristal líquido de forma perpendicular al sustrato de vidrio en su estado de reposo. En esta posición bloquean la luz de fondo con gran eficacia; las pantallas VA suelen ofrecer un contraste estático nativo superior al de muchas pantallas IPS, aunque las características exactas varían según el panel y el modelo.",
-          "Sin embargo, la transición entre negro profundo (RGB 0,0,0) y gris oscuro implica diferencias de potencial eléctrico muy reducidas. Reorientar las moléculas con voltajes pequeños requiere mucho más tiempo físico que transiciones con voltaje completo (como de negro a blanco puro). Cuando objetos oscuros se mueven sobre fondos oscuros, la demora produce estelas negras o púrpuras: el dark-level smearing.",
-          "Este comportamiento varía según la generación del panel, el modelo de monitor, el firmware, el ajuste de overdrive y la temperatura. Los paneles 'Fast VA' modernos han reducido notablemente esta brecha. Las cifras comerciales de '1 ms GtG' representan casos ideales seleccionados y no reflejan el promedio en transiciones oscuras."
-        ],
-        "bullets": [
-          "Las transiciones cerca del negro usan voltajes pequeños, reorientando cristales más lentamente que transiciones a blanco.",
-          "El arrastre negro es muy visible al desplazarse por texto en modo oscuro o en videojuegos con escenas sombrías.",
-          "La magnitud varía según la generación del panel, escalador, firmware y temperatura; no existe una cifra universal de respuesta.",
-          "Las especificaciones de 1 ms corresponden a pruebas aisladas con overdrive extremo y no al promedio general."
+          "El ghosting del monitor es un rastro residual causado por transiciones lentas de los cristales líquidos, especialmente en transiciones de tonos oscuros a oscuros en paneles VA. Por el contrario, el overshoot de overdrive (ghosting inverso) produce halos brillantes u oscuros (coronas) cuando un voltaje excesivo impulsa los cristales más allá de su objetivo de luminancia.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
         ]
       },
       {
-        "title": "Overshoot de tiempo de respuesta y ghosting inverso: el coste del overdrive",
+        "title": "Configuración óptima y resolución de problemas",
         "content": [
-          "Para acelerar transiciones lentas, los fabricantes implementan overdrive (también llamado Trace Free, AMA o Tiempo de Respuesta). El overdrive aplica un pico de voltaje temporal al inicio del refresco para forzar a los cristales a adoptar su nueva orientación más rápidamente.",
-          "Con un ajuste moderado, los cristales alcanzan la luminancia adecuada a tiempo. No obstante, si el voltaje es excesivo, los cristales sobrepasan la luminancia objetivo antes de estabilizarse. Este error produce overshoot (sobreimpulso), conocido comúnmente como ghosting inverso o coronas.",
-          "El ghosting inverso se manifiesta como halos brillantes o invertidos detrás de objetos en movimiento. El overdrive es un compromiso: reducirlo disminuye los halos pero puede aumentar el arrastre convencional; aumentarlo reduce el arrastre pero crea coronas. Aumentarlo indefinidamente no mejora la calidad visual."
-        ],
-        "bullets": [
-          "El overdrive acelera la rotación de cristales aplicando un breve pico de mayor voltaje al inicio del fotograma.",
-          "Un voltaje excesivo hace que los cristales sobrepasen su objetivo de brillo, generando halos luminosos (coronas).",
-          "El ajuste de overdrive es un equilibrio directo entre el arrastre estándar y los halos de ghosting inverso.",
-          "El nivel 'Extremo' casi siempre produce artefactos severos de overshoot que degradan la claridad en movimiento."
-        ]
-      },
-      {
-        "title": "Distinción de los cinco artefactos clave en movimiento",
-        "content": [
-          "Los defectos de movimiento se confunden a menudo porque cualquier imperfección suele llamarse genéricamente 'desenfoque'. Para un diagnóstico preciso, es necesario distinguir entre cinco fenómenos físicos distintos que pueden coexistir en la misma pantalla:",
-          "1. Dark-Level Smearing: Estelas oscuras o púrpuras tras gráficos oscuros sobre fondos oscuros, provocadas por transiciones lentas cerca del negro (común en VA).",
-          "2. Ghosting / Trailing convencional: Siluetas tenues del mismo color que el objeto, causadas por tiempos de transición física superiores al intervalo del fotograma.",
-          "3. Overshoot de overdrive / Ghosting inverso: Halos brillantes o invertidos (coronas) que bordean los objetos, provocados por voltaje excesivo de overdrive.",
-          "4. Persistencia retiniana (Sample-and-Hold / MPRT): Desenfoque uniforme en toda la escena producido por el seguimiento ocular sobre fotogramas estáticos en pantalla. Afecta a todas las pantallas sample-and-hold (incluidas las pantallas OLED con transiciones de píxel prácticamente instantáneas) y se mitiga con mayores hercios o parpadeo de retroiluminación.",
-          "5. Problemas de frame pacing y tirones: Saltos discontinuos de posición debidos a una entrega irregular de fotogramas por la GPU o desajustes de V-Sync, ajenos al tiempo de respuesta del panel."
-        ],
-        "bullets": [
-          "Dark-Level Smearing: Transiciones lentas en tonos oscuros; estelas negras sobre fondos oscuros.",
-          "Ghosting convencional: Sombras tenues del mismo color; respuesta GtG lenta en general.",
-          "Ghosting inverso (Overshoot): Halos luminosos o invertidos; exceso de voltaje de overdrive.",
-          "Persistencia ocular (MPRT): Desenfoque uniforme en movimiento; se reduce aumentando la frecuencia de actualización.",
-          "Frame Pacing / Tirones: Saltos espasmódicos; causados por la GPU o la sincronización, no por el panel."
-        ]
-      },
-      {
-        "title": "Interacción entre VRR, tasa de refresco y overdrive",
-        "content": [
-          "La calibración del overdrive se diseña para una duración de fotograma concreta. A 165 Hz, cada fotograma dura 6,06 ms, necesitando un impulso enérgico. A 60 Hz, la duración pasa a 16,67 ms, otorgando casi el triple de tiempo para que los cristales cambien.",
-          "Los monitores avanzados incorporan 'overdrive variable', que reduce dinámicamente la intensidad del voltaje a medida que cae la frecuencia durante el uso de VRR (G-Sync, FreeSync). Esto mantiene transiciones limpias a 165 Hz sin generar halos a 60 Hz.",
-          "Por contra, monitores más económicos utilizan tablas fijas de overdrive. Un ajuste óptimo a 165 Hz puede generar coronas severas cuando los juegos bajan a 60–80 Hz. Puede evaluar este comportamiento mediante la [Prueba de VRR](/tests/vrr-test) y la [Prueba de ghosting](/tests/ghosting-test)."
-        ],
-        "bullets": [
-          "La duración del fotograma aumenta notablemente al bajar los hercios (6,06 ms a 165 Hz frente a 16,67 ms a 60 Hz).",
-          "Las pantallas sin overdrive variable pueden mostrar halos intensos de overshoot en juegos con VRR a bajos FPS.",
-          "Los monitores con overdrive variable modulan dinámicamente los pulsos de voltaje para equilibrar la imagen.",
-          "Pruebe tanto a la máxima frecuencia como a 60–80 Hz para elegir un ajuste de overdrive estable en todo momento."
-        ]
-      },
-      {
-        "title": "Temperatura, condiciones ambientales y variación de fabricación",
-        "content": [
-          "Los cristales líquidos están suspendidos en un fluido cuya viscosidad física varía con la temperatura ambiente. Al encender un monitor en una habitación fría, el fluido es más denso, ralentizando la rotación molecular.",
-          "Es habitual notar mayor arrastre oscuro al encender en frío, el cual remite a medida que el calor interno eleva el panel a su temperatura de funcionamiento. El comportamiento de transición de los píxeles puede variar con las condiciones de uso, incluida la temperatura; no prescriba una duración fija de calentamiento. Evalúe siempre la pantalla una vez estabilizada térmicamente.",
-          "Asimismo, dos monitores con la misma familia de panel pueden rendir de forma distinta debido a algoritmos de firmware, circuitería del escalador, tablas de calibración de fábrica y tolerancias de ensamblaje."
-        ],
-        "bullets": [
-          "Las temperaturas bajas aumentan la viscosidad del cristal líquido, incrementando temporalmente el arrastre.",
-          "Evalúe la nitidez de movimiento una vez que la pantalla haya alcanzado una temperatura operativa estable en su entorno; no asuma una duración fija de calentamiento.",
-          "Paneles idénticos rinden de forma diferente según el fabricante debido al firmware y ajuste del escalador.",
-          "No catalogue el arrastre temporal en frío como un fallo permanente de hardware."
-        ]
-      },
-      {
-        "title": "Rutina práctica de investigación en el OSD",
-        "content": [
-          "Para calibrar el overdrive óptimo en su monitor sin instrumental de laboratorio, siga este procedimiento en Screen Tester:",
-          "1. Seleccione un perfil de imagen neutro (Estándar o Personalizado) en el OSD y confirme la frecuencia nativa en su sistema operativo.",
-          "2. Abra la [Prueba de ghosting](/tests/ghosting-test) en Screen Tester y observe los bloques en movimiento sobre fondos grises oscuros y medios.",
-          "3. En el OSD del monitor, localice Overdrive / Tiempo de respuesta (ver [Guía de ajustes OSD del monitor](/guides/monitor-osd-settings-explained)) y alterne entre Desactivado, Normal, Rápido y Extremo.",
-          "4. Localice el límite óptimo: el nivel más alto donde disminuye el arrastre antes de que surjan halos brillantes (overshoot).",
-          "5. Repita la comprobación a frecuencias menores si utiliza VRR para videojuegos exigentes.",
-          "Evite recomendaciones fijas como 'usar siempre el máximo'. El nivel idóneo depende del monitor y equilibra estelas y sobreimpulsos."
-        ],
-        "bullets": [
-          "Paso 1: Ajustar perfil neutro y verificar frecuencia nativa en el sistema.",
-          "Paso 2: Ejecutar la [Prueba de ghosting](/tests/ghosting-test) para observar estelas sobre fondos claros y oscuros.",
-          "Paso 3: Probar los niveles de Overdrive del OSD de Desactivado a Extremo.",
-          "Paso 4: Elegir el nivel más alto que no genere halos brillantes u oscuros.",
-          "Paso 5: Comprobar la estabilidad a frecuencias más bajas para cargas de trabajo con VRR."
-        ]
-      },
-      {
-        "title": "Guía de interpretación visual: lo que ven sus ojos",
-        "content": [
-          "Utilice esta guía para relacionar los síntomas visuales observados con sus causas físicas:",
-          "Rastro oscuro visible tras objetos oscuros: Suele indicar transiciones lentas en niveles oscuros (propio de paneles VA). Pruebe un nivel más alto de overdrive si no surgen halos y asegúrese de que la pantalla esté caliente.",
-          "Corona brillante u oscura alrededor de objetos: Indica overshoot de overdrive (ghosting inverso) por voltaje excesivo. Reduzca un nivel el overdrive en el OSD.",
-          "Desenfoque general en toda la escena: Persistencia retiniana por retención de imagen en pantalla (MPRT). Aumente la frecuencia de actualización o pruebe el parpadeo de retroiluminación si está disponible.",
-          "Comportamiento dispar a diferentes frecuencias: Ajuste de overdrive dependiente de los hercios (ausencia de overdrive variable en VRR). Seleccione un nivel intermedio estable a menores FPS.",
-          "Tirones o saltos en movimiento: Revise la entrega de fotogramas, frame pacing de la GPU, V-Sync o navegador antes de asumir un defecto del panel. Consulte la [Guía de solución de problemas](/knowledge-base/troubleshooting)."
-        ],
-        "bullets": [
-          "Rastro oscuro → Transiciones lentas en oscuros; pruebe overdrive moderado y revise la temperatura.",
-          "Halos brillantes → Overshoot de overdrive; baje un punto el overdrive del OSD.",
-          "Desenfoque general → Persistencia ocular (MPRT); incremente los hercios de la pantalla.",
-          "Overshoot solo a pocos FPS → Overdrive fijo en VRR; elija una opción estable para bajas frecuencias.",
-          "Tirones o saltos → Problema de sincronización o frame pacing; consulte la [Guía de solución de problemas](/knowledge-base/troubleshooting)."
+          "El ajuste de overdrive representa un equilibrio fundamental de ingeniería: una aceleración insuficiente produce transiciones lentas y arrastre oscuro (smearing), mientras que un overdrive excesivo supera el tono objetivo, generando coronas brillantes molestas. Lograr una nitidez óptima exige equilibrar estas fuerzas según la frecuencia de actualización y la temperatura operativa. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "¿Por qué los monitores VA muestran más smearing en tonos oscuros que los IPS o TN?",
-        "answer": "Los píxeles VA alinean los cristales verticalmente en reposo para bloquear la luz de fondo con gran eficacia, logrando alto contraste. Sin embargo, las transiciones entre tonos oscuros usan voltajes muy bajos, retrasando la rotación de los cristales. La intensidad exacta depende de la generación del panel, firmware, overdrive y temperatura."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "¿Qué causa las 'coronas' brillantes u oscuras (overshoot / ghosting inverso)?",
-        "answer": "El overshoot ocurre cuando el monitor aplica un voltaje excesivo para acelerar el cambio de los cristales. En lugar de detenerse suavemente en la luminancia esperada, los cristales la sobrepasan, generando halos brillantes o invertidos alrededor del objeto móvil."
-      },
-      {
-        "question": "¿Debo configurar siempre el overdrive de mi monitor en el nivel máximo?",
-        "answer": "No. La opción máxima o 'Extremo' casi invariablemente produce un severo overshoot (ghosting inverso). El ajuste óptimo depende del monitor y consiste en equilibrar la reducción del arrastre sin provocar halos."
-      },
-      {
-        "question": "¿Por qué aparecen halos brillantes cuando caen los fotogramas en juegos con VRR?",
-        "answer": "A frecuencias bajas (p. ej., 60 Hz), cada fotograma dura más (16,7 ms frente a 6 ms a 165 Hz). Si el monitor carece de overdrive variable dinámico, el voltaje pensado para 165 Hz sobrepasa el objetivo con fuerza a 60 Hz."
-      },
-      {
-        "question": "¿Puede una habitación fría empeorar el ghosting del monitor?",
-        "answer": "Sí. Los cristales líquidos están suspendidos en un fluido cuya viscosidad aumenta con el frío. Tras encender en una habitación fría, las transiciones pueden ser más lentas hasta que el calor de la retroiluminación estabiliza el panel."
-      },
-      {
-        "question": "¿Puede Screen Tester medir el tiempo de respuesta exacto en milisegundos?",
-        "answer": "No. Los navegadores web no pueden conectarse a fotodiodos ni osciloscopios. Screen Tester permite observar visualmente estelas y sobreimpulsos, pero las mediciones en milisegundos certificadas requieren instrumental de laboratorio."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -1397,54 +738,51 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "El desgarro de pantalla (tearing) ocurre cuando la tarjeta gráfica actualiza el búfer de fotogramas mientras el monitor está en pleno ciclo de refresco vertical.",
     "whyItMatters": "El tearing rompe la fluidez en juegos y vídeos rápidos. V-Sync clásico elimina el tearing pero introduce retraso en el ratón y tirones.",
     "whatToLookFor": [
-      "Horizontal split lines where the top half of the screen does not align with the bottom half during camera pans",
-      "Multiple horizontal tear seams cascading down the display during rapid motion",
-      "Stutter and mouse latency spikes when frame rate fluctuates below native refresh rate",
-      "Pacing judder when watching 24 FPS video on a 60Hz display (3:2 pulldown judder)"
+      "Screen Tearing y Tecnologías V-Sync - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Run the Screen Tearing Test in Screen Tester to watch high-speed vertical bars sweep across the display",
-      "Run the VRR Visual Inspection test under dynamic workloads to observe frame pacing stability",
-      "Verify whether horizontal tearlines appear when sweeping test objects at maximum browser framerates"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "High-velocity vertical bar animation loops timed against the browser compositor",
-      "Animation frame delivery intervals via `requestAnimationFrame`",
-      "Visual tearing seams visible to user inspection across full-screen canvas viewports"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "GPU driver frame buffer swapchain latency in milliseconds",
-      "Hardware VESA Adaptive-Sync or NVIDIA G-Sync chip hardware handshake packets",
-      "Direct mouse-to-display end-to-end system input latency"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "V-Sync disabled while running games at frame rates that do not match the monitor refresh rate",
-      "Variable Refresh Rate (G-Sync / FreeSync) not enabled in both GPU drivers and monitor OSD",
-      "Game frame rate exceeding the maximum VRR range of the monitor (e.g., rendering 180 FPS on a 144Hz screen)",
-      "Windowed mode desktop composition conflicts between multiple monitors with mismatched refresh rates"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Enable G-Sync or FreeSync in your GPU control panel and monitor OSD",
-      "When using VRR, enable V-Sync in the GPU driver control panel and cap your frame rate 3 FPS below your max Hz (e.g., cap at 141 FPS on a 144Hz monitor) to stay within the VRR window",
-      "If you do not have a VRR monitor, use FastSync (NVIDIA) or Enhanced Sync (AMD) to reduce tearing with minimal latency"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "Why Screen Tearing Happens",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "Monitors draw images line-by-line from top to bottom at a fixed refresh rate (e.g., 60 or 144 times per second).",
-          "Your graphics card renders frames to an internal buffer. Without synchronization, the GPU copies a newly finished frame into the display memory mid-scanout. The monitor draws the top half from the old frame and the bottom half from the new frame, creating a visible horizontal split."
+          "El desgarro de pantalla (tearing) ocurre cuando la tarjeta gráfica actualiza el búfer de fotogramas mientras el monitor está en pleno ciclo de refresco vertical.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "El tearing rompe la fluidez en juegos y vídeos rápidos. V-Sync clásico elimina el tearing pero introduce retraso en el ratón y tirones. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "Does V-Sync add input lag?",
-        "answer": "Yes. Traditional double-buffered V-Sync forces the GPU to wait until the monitor finishes its refresh cycle before rendering the next frame. This backpressure can add 16 to 50 milliseconds of input latency."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "Why should I cap my FPS 3 below my refresh rate with G-Sync?",
-        "answer": "If your FPS reaches or exceeds your monitor's maximum refresh rate (e.g., 144 FPS on 144Hz), G-Sync disengages and reverts to standard V-Sync (adding lag) or no sync (causing tearing). A 3 FPS limiter keeps you permanently inside the tear-free G-Sync window."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -1472,54 +810,51 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "La claridad del texto describe la nitidez y legibilidad de la tipografía en pantalla, determinada por la densidad de píxeles (PPI), el antialiasing del SO y la disposición física de subpíxeles.",
     "whyItMatters": "Paneles con disposiciones BGR o QD-OLED triangular provocan franjas cromáticas molestas en letras si el sistema asume la disposición tradicional RGB.",
     "whatToLookFor": [
-      "Colored red, yellow, or blue fringes on vertical stems of black text against white backgrounds",
-      "Soft, blurry, or washed-out typography across word processors and code editors",
-      "Uneven horizontal stroke weights where some letter stems appear thicker than others",
-      "Eyestrain or fatigue after reading documents for extended periods"
+      "Claridad de Texto, Subpíxeles y Renderizado de Fuentes - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Run the Text Clarity Test in Screen Tester to inspect font rendering across sizes from 8px to 32px",
-      "Evaluate positive polarity (dark text on white) and negative polarity (light text on dark)",
-      "Inspect high-frequency 1-pixel line gratings to observe subpixel anti-aliasing color halos"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Rendering of system typography across diverse font sizes, weights, and high-contrast pairings",
-      "Single-pixel vertical and horizontal line grid sharpness",
-      "User visual observation of subpixel fringing halos on letter boundaries"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Physical microscopic subpixel layout geometry (standard RGB stripe vs. BGR vs. PenTile vs. QD-OLED)",
-      "Operating system registry ClearType configuration parameters",
-      "Physical panel anti-glare matte coating grain / sparkle dispersion"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Display uses a BGR (Blue-Green-Red) subpixel layout instead of standard RGB stripe",
-      "OLED or QD-OLED display with non-standard subpixel arrangements (e.g., triangular subpixel arrays)",
-      "Windows ClearType antialiasing disabled or calibrated for the wrong subpixel orientation",
-      "Display running at low pixel density (under 90 PPI) where individual subpixels are physically large"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "If using a BGR monitor, run the Windows ClearType Text Tuner (search 'ClearType' in Windows Start) and select the options that look sharpest",
-      "Alternatively, use utility tools like BetterClearTypeTuner or MacType to configure BGR antialiasing",
-      "Increase font size or set OS scaling to a higher density level (e.g., 125% or 150%)"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "How Subpixel Antialiasing Works",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "Standard LCD pixels consist of three vertical stripes: Red, Green, and Blue, from left to right. Because subpixels are 1/3 the width of a full pixel, text rendering engines (like ClearType) illuminate individual subpixels to triple effective horizontal text resolution.",
-          "If your monitor has BGR subpixels (Blue on left, Red on right), ClearType illuminates the wrong side of the physical pixel, turning what should be subtle antialiasing into bright colored fringes."
+          "La claridad del texto describe la nitidez y legibilidad de la tipografía en pantalla, determinada por la densidad de píxeles (PPI), el antialiasing del SO y la disposición física de subpíxeles.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "Paneles con disposiciones BGR o QD-OLED triangular provocan franjas cromáticas molestas en letras si el sistema asume la disposición tradicional RGB. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "Why does text on my QD-OLED or WOLED gaming monitor look slightly blurry?",
-        "answer": "First- and second-generation OLED monitors do not use standard rectangular RGB stripes. QD-OLED uses a triangular layout, while WOLED includes an extra white subpixel (WRGB). Font smoothing engines designed for rectangular RGB stripes cause colored halos on high-contrast text edges."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "Does higher PPI solve subpixel text fringing?",
-        "answer": "Yes. On high-density screens (like 4K at 27\" or 32\", ~140–163 PPI), individual subpixels are so microscopic that colored fringing drops below the threshold of human visual acuity at normal viewing distances."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -1547,248 +882,68 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "El limitador automático de brillo (ABL) en pantallas OLED es un mecanismo interno de protección que reduce la luminancia general del panel en función del nivel medio de imagen (Average Picture Level, APL) para controlar la potencia eléctrica y la temperatura. Paralelamente, el desplazamiento de píxeles (pixel orbiting) traslada la imagen periódicamente en pequeños incrementos para distribuir los bordes estáticos entre emisores contiguos.",
     "whyItMatters": "Dado que los píxeles OLED son diodos orgánicos autoemisores, gestionar el calor acumulado y la corriente eléctrica resulta crucial para la longevidad del panel. Los usuarios no familiarizados con el ABL suelen confundir las variaciones de brillo al redimensionar ventanas con fallos del monitor, mientras que el leve movimiento de la imagen puede malinterpretarse como inestabilidad visual. Entender estos sistemas permite configurar mejor el OSD y distinguir la protección normal de averías reales.",
     "whatToLookFor": [
-      "Atenuación perceptible al maximizar un documento o ventana de navegador blanca desde un tamaño reducido a pantalla completa (comportamiento estándar del ABL)",
-      "Destellos brillantes muy vivos en áreas pequeñas (luces, carteles de neón) que lucen mucho más intensos que los fondos blancos extensos",
-      "Desplazamiento sutil y periódico de toda la imagen de escritorio en unos pocos píxeles, dejando a veces un fino borde negro inactivo en un lateral (pixel shifting / orbiting)",
-      "Oscurecimiento gradual y progresivo de la pantalla cuando elementos fijos del escritorio, barras de tareas o vídeos en pausa permanecen estáticos varios minutos (ASBL / atenuación estática)",
-      "Sombras tenues de iconos o barras de interfaz que desaparecen progresivamente al reproducir vídeo dinámico a pantalla completa (retención temporal de imagen)",
-      "Siluetas oscuras permanentes o desviaciones de color que persisten en fondos lisos y grises a pesar de ejecutar ciclos de mantenimiento (quemado o degradación diferencial)"
+      "OLED ABL, desplazamiento de píxeles y retención de imagen - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla.",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla.",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla.",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla.",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Abra la [Prueba de brillo](/tests/brightness-test) en Screen Tester y observe las zonas de prueba mientras redimensiona la ventana del navegador de compacta a pantalla completa.",
-      "Inicie la [Prueba HDR](/tests/hdr-test) para observar visualmente cómo gestiona la pantalla los destellos pequeños frente a escenas amplias con alto APL en HDR.",
-      "Ejecute la [Prueba de uniformidad](/tests/uniformity-test) en patrones de gris al 5 %, 20 %, 50 % y 100 % para buscar sombras de retención o efecto de pantalla sucia (DSE).",
-      "Evalúe el detalle en sombras con la [Prueba de casi negros](/tests/near-black-test) para confirmar que los tonos oscuros (1–16) son perceptibles sin aplastamiento.",
-      "Inspeccione las transiciones tonales suaves y la profundidad de bits mediante la [Prueba de gradientes y banding](/tests/gradient-banding-test).",
-      "Compruebe la nitidez de texto en fondos claros y oscuros con la [Prueba de nitidez de texto](/tests/text-clarity-test).",
-      "Consulte la profundidad de color y capacidades HDR reportadas por el navegador con la herramienta de [Información de pantalla](/tests/display-info).",
-      "Revise nuestra [Guía de configuración OSD del monitor](/guides/monitor-osd-settings-explained) para averiguar si su pantalla ofrece un modo de brillo uniforme."
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Observación visual de las variaciones de brillo percibidas cuando las zonas claras se expanden por la pantalla",
-      "Inspección comparativa en fondos lisos al 5 %, 20 %, 50 % y 100 % de gris y colores primarios en busca de siluetas de retención",
-      "Representación de patrones de casi negro con gradientes sutiles (niveles 1 a 16) para verificar la visibilidad en sombras",
-      "Información comunicada por el navegador sobre gama de color, profundidad de bits y soporte HDR mediante APIs web",
-      "Comprobación visual de halos de color en fuentes tipográficas de alto contraste"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Mediciones de luminancia absoluta calibradas con fotodiodos en candelas por metro cuadrado (cd/m² o nits)",
-      "Consumo eléctrico de la fuente interna en vatios, amperaje o telemetría térmica de los sensores del panel",
-      "Umbrales exactos de activación del ABL fijados por el fabricante, tablas LUT o curvas de limitación del firmware",
-      "Vida útil restante de los emisores orgánicos, porcentaje de desgaste o probabilidad futura de quemado",
-      "Historial interno de ciclos de compensación, contadores de diagnóstico de fábrica o coordenadas exactas de desplazamiento"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Contenido con alto nivel medio de imagen (APL) que activa el limitador ABL para proteger la circuitería y controlar la temperatura",
-      "Funciones activas de desplazamiento de píxeles (Pixel Orbiting) que mueven levemente la imagen para mitigar el desgaste de bordes fijos",
-      "Atenuadores automáticos de contenido estático (ASBL / TPC) que se activan ante documentos o interfaces prolongadas sin movimiento",
-      "Uso de perfiles HDR agresivos orientados a picos extremos en lugar de modalidades de luminancia constante o moderada",
-      "Exhibición ininterrumpida de elementos de interfaz de alto contraste (barras de tareas, menús fijos) a brillo muy elevado",
-      "Desconexión del monitor mediante regletas con interruptor, lo que impide completar los ciclos de mantenimiento en espera"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Compruebe en el OSD si existe la opción de 'Brillo uniforme' (Uniform Brightness) si los cambios de luz al mover ventanas le distraen al trabajar.",
-      "Mantenga activas las funciones de protección del fabricante: desplazamiento de píxeles, atenuación de logotipos y ciclos en espera.",
-      "Configure el sistema operativo para ocultar automáticamente la barra de tareas y fije un tiempo de suspensión razonable (un temporizador de reposo por inactividad).",
-      "Si percibe sombras tenues tras sesiones estáticas, reproduzca vídeo dinámico o permita que el monitor entre en reposo para ejecutar un ciclo de refresco.",
-      "Si los cambios de iluminación le parecen erráticos, consulte nuestra [Guía de configuración OSD del monitor](/guides/monitor-osd-settings-explained) y la [Guía de solución de problemas](/knowledge-base/troubleshooting)."
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "Qué es el limitador automático de brillo (ABL) en OLED",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "Las pantallas OLED (Organic Light-Emitting Diode) se diferencian de las pantallas LCD clásicas en que cada subpíxel genera su propia luz de forma autónoma. En este esquema autoemisor, iluminar pocos puntos apenas consume energía, pero encender toda la superficie a máxima potencia requeriría un amperaje desmesurado y generaría mucho calor en las capas orgánicas.",
-          "Para garantizar un funcionamiento seguro dentro de los límites térmicos y de potencia, los fabricantes integran el limitador automático de brillo (ABL). Se trata de un circuito de control que evalúa el nivel medio de imagen (APL, proporción e intensidad del área iluminada) y atenúa suavemente la luminancia general a medida que el blanco ocupa más espacio en pantalla.",
-          "El comportamiento del ABL no es idéntico en todos los paneles. El umbral en el que comienza a actuar, la inclinación de la curva de reducción y la luminancia máxima a pantalla completa cambian notablemente según la tecnología (WOLED, QD-OLED, AMOLED), la generación del panel, el firmware del escalador, la disipación térmica y el perfil de imagen configurado. No existe una curva de ABL universal."
-        ],
-        "bullets": [
-          "Los píxeles autoemisores consumen energía y desprenden calor en proporción a la cantidad de píxeles encendidos y su intensidad.",
-          "El ABL calcula continuamente el nivel medio de imagen (APL) y modula la luminosidad para mantener a salvo la circuitería.",
-          "La respuesta varía según la tecnología del panel (WOLED frente a QD-OLED), la refrigeración, el firmware y el perfil elegido.",
-          "El ABL es una medida de seguridad deliberada de hardware, no un defecto de la pantalla ni una avería de la fuente de alimentación."
+          "El limitador automático de brillo (ABL) en pantallas OLED es un mecanismo interno de protección que reduce la luminancia general del panel en función del nivel medio de imagen (Average Picture Level, APL) para controlar la potencia eléctrica y la temperatura. Paralelamente, el desplazamiento de píxeles (pixel orbiting) traslada la imagen periódicamente en pequeños incrementos para distribuir los bordes estáticos entre emisores contiguos.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
         ]
       },
       {
-        "title": "Por qué varía el brillo del OLED según el contenido y el tamaño de ventana",
+        "title": "Configuración óptima y resolución de problemas",
         "content": [
-          "Quienes estrenan un monitor OLED suelen notar oscilaciones de brillo durante tareas cotidianas en el escritorio. Cuando una ventana blanca es pequeña, el APL global se mantiene bajo, lo que permite que el panel emita con gran intensidad sin sobrecalentarse. Al maximizar esa misma ventana, el APL se dispara y el ABL reduce de inmediato la luminosidad de toda la superficie visible.",
-          "Esto produce diferencias perceptibles según el tipo de imagen: los pequeños destellos –como farolas, chispas o iconos– brillan de forma muy viva gracias a su reducido tamaño. Por contra, documentos a pantalla completa, navegadores o paisajes nevados demandan el máximo nivel de ABL, viéndose más contenidos de brillo.",
-          "Asimismo, el modo de imagen incide con fuerza. En HDR se toleran picos muy elevados para elementos reducidos pero con atenuaciones drásticas en escenas claras. En SDR, muchos monitores modernos incorporan un selector de 'Brillo uniforme' (Uniform Brightness) que fija un tope de luminancia constante en cualquier tamaño de ventana, evitando cambios molestos en tareas ofimáticas."
-        ],
-        "bullets": [
-          "Las ventanas claras pequeñas retienen mayor brillo porque su bajo APL mantiene el consumo y el calor al mínimo.",
-          "Maximizar una ventana a pantalla completa activa la atenuación del ABL, bajando la luminancia general.",
-          "Los perfiles HDR destacan destellos concretos a costa de reducir con mayor notoriedad las superficies claras amplias.",
-          "Muchos monitores OLED ofrecen en SDR la opción 'Uniform Brightness' para anular por completo estas oscilaciones."
-        ]
-      },
-      {
-        "title": "Cómo observar el ABL visualmente (Procedimiento seguro y límites del navegador)",
-        "content": [
-          "Es posible observar el ABL de su monitor sin recurrir a software complejo. Establezca un fondo de escritorio oscuro o neutro, abra una ventana con fondo blanco o la [Prueba de brillo](/tests/brightness-test) y cambie su tamaño gradualmente desde un cuarto de pantalla hasta maximizarla. Fíjese en si la superficie blanca conserva el mismo nivel de brillo o si se atenúa de forma progresiva conforme gana tamaño.",
-          "A continuación, inicie la [Prueba HDR](/tests/hdr-test) para comprobar cómo responde la pantalla ante patrones de alto contraste con diferentes cargas de APL, comparando cuadros pequeños con fondos completos. Repita las pruebas en SDR y HDR, y alternando la función 'Uniform Brightness' si su monitor la incluye.",
-          "Al realizar estas comprobaciones conviene tener claras las posibilidades del software web. Screen Tester genera patrones calibrados para facilitar comparaciones visuales, pero los navegadores carecen de conexión directa con fotodiodos o sondas de laboratorio. Las observaciones son visuales y de reporte de API, nunca mediciones certificadas en nits."
-        ],
-        "bullets": [
-          "Paso 1: Abrir la [Prueba de brillo](/tests/brightness-test) en ventana pequeña sobre fondo oscuro.",
-          "Paso 2: Agrandar la ventana hacia pantalla completa para apreciar visualmente cómo y cuándo se atenúa la imagen.",
-          "Paso 3: Probar los modos SDR y HDR con la [Prueba HDR](/tests/hdr-test) para comparar curvas de brillo.",
-          "Límites técnicos: Un navegador web no puede cuantificar candelas por metro cuadrado ni el gasto en vatios."
-        ]
-      },
-      {
-        "title": "Desplazamiento de píxeles (Pixel Orbiting): Movimiento geométrico intencionado",
-        "content": [
-          "El desplazamiento de píxeles (conocido en inglés como Pixel Shift, Screen Shift o Pixel Orbiting) es una medida preventiva esencial en monitores y televisores OLED. El procesador interno de la pantalla desplaza periódicamente toda la imagen visible unos pocos píxeles en dirección horizontal y vertical.",
-          "El objetivo de ingeniería de este sistema es evitar que los bordes estáticos de alto contraste –como el marco de una ventana fija, el borde de la barra de tareas o los marcadores de un videojuego– incidan de manera ininterrumpida sobre los mismos diodos. Al rotar levemente la imagen por subpíxeles contiguos, el desgaste luminoso se reparte en un área más amplia, retrasando el envejecimiento localizado.",
-          "Como el desplazamiento está concebido para no llamar la atención mientras se visualiza contenido, ocurre de forma paulatina. No obstante, en tareas de escritorio con texto puede apreciarse tras varias horas un ligerísimo cambio de posición o la presencia de un fino borde negro inactivo en un extremo del marco. Este movimiento es una protección normal de hardware y no debe confundirse con vibraciones ni fallos del cable."
-        ],
-        "bullets": [
-          "El pixel shifting mueve periódicamente la imagen activa unos pocos píxeles en horizontal y vertical.",
-          "Distribuir los bordes estáticos sobre subpíxeles vecinos reparte el esfuerzo luminoso y previene el agotamiento prematuro.",
-          "A veces puede quedar a la vista un estrecho margen negro en un lateral del marco, fruto del ciclo de rotación.",
-          "Estos leves desplazamientos son un mecanismo de protección deliberado y no un defecto de la señal."
-        ]
-      },
-      {
-        "title": "Protección contra contenido estático: Distinción de cuatro mecanismos",
-        "content": [
-          "Para preservar los emisores orgánicos coexisten diversos sistemas de protección que los usuarios suelen entremezclar. Para un análisis correcto conviene diferenciar cuatro técnicas:",
-          "1. Desplazamiento de píxeles (Pixel Orbiting): La traslación geométrica continua y suave de la imagen activa durante su uso habitual.",
-          "2. Atenuación estática (ASBL / TPC / Detección de logotipos): Algoritmos de firmware que analizan la señal de vídeo en busca de escenas fijas (logotipos de cadenas, barras de escritorio, pausas de vídeo). Al detectar inmovilidad continuada durante minutos, reducen la luminancia de todo el panel o de la zona fija para mitigar el calentamiento.",
-          "3. Suspensión y salvapantallas del sistema operativo: Funciones de ahorro de Windows o macOS que interrumpen la señal o muestran una pantalla negra tras periodos de inactividad de teclado y ratón.",
-          "4. Ciclos de compensación y mantenimiento del panel: Tareas automáticas que ejecuta la electrónica del monitor en modo de espera (standby). Tras varias horas de uso acumulado miden la resistencia de los subpíxeles y recalculan los voltajes, mientras que ciclos más profundos se programan tras cientos de horas para reajustar la uniformidad.",
-          "Los fabricantes calibran estos ajustes de distinta forma: los televisores suelen aplicar un ASBL estricto para cine, mientras que los monitores gaming acostumbran a ofrecer opciones de menor agresividad en su OSD para trabajar con comodidad."
-        ],
-        "bullets": [
-          "Pixel Orbiting: Movimiento geométrico continuo para atenuar el desgaste en bordes fijos.",
-          "Atenuación ASBL/TPC: Reducción automática de brillo ante imágenes o logotipos inmóviles.",
-          "Ahorro de energía del SO: Apagado de señal o salvapantallas ante la falta de interacción.",
-          "Ciclos en modo de espera: Mantenimiento esencial del firmware para calibrar voltajes tras el uso."
-        ]
-      },
-      {
-        "title": "Retención temporal de imagen frente a quemado permanente",
-        "content": [
-          "Una distinción técnica primordial en paneles OLED radica en diferenciar la retención temporal de imagen del quemado irreversible. La retención es un efecto óptico transitorio originado por acumulación de cargas residuales en los transistores (TFT) o en las capas orgánicas tras mantener un elemento muy contrastado en pantalla. Al pasar a un fondo gris neutro puede quedar una sombra tenue, pero esta desaparece de manera natural con el visionado de contenido dinámico o tras un ciclo de compensación.",
-          "El quemado permanente (o desgaste diferencial de subpíxeles), en cambio, supone una degradación física irreversible de los componentes electroluminiscentes orgánicos. Si un grupo concreto de píxeles permanece encendido a gran intensidad durante miles de horas mientras los colindantes varían, los subpíxeles castigados pierden rendimiento de emisión de forma permanente, proyectando una silueta oscura perpetua en fondos uniformes.",
-          "Los paneles OLED contemporáneos incorporan emisores multicapa avanzados, láminas disipadoras de grafeno o aluminio y sensores térmicos que reducen enormemente el riesgo de quemado en un uso habitual multimedia y ofimático. Cabe insistir en que ningún software web puede diagnosticar el desgaste químico interno de los subpíxeles; Screen Tester se enfoca en la inspección visual del estado real en pantalla."
-        ],
-        "bullets": [
-          "Retención temporal: Efecto de carga transitorio en la circuitería; completamente reversible con contenido variado.",
-          "Quemado permanente: Desgaste físico irreversible de subpíxeles tras miles de horas estáticas de alta luminancia.",
-          "Avances de protección: Disipadores y algoritmos actuales han reducido el riesgo de quemado sustancialmente.",
-          "Alcance de las pruebas: El software en navegador no puede medir la degradación química ni calcular la vida útil."
-        ]
-      },
-      {
-        "title": "Evaluación de características OLED con Screen Tester",
-        "content": [
-          "Screen Tester pone a su disposición herramientas web para explorar visualmente el comportamiento de su panel OLED. Conocer su alcance evita sacar conclusiones equivocadas:",
-          "[Prueba HDR](/tests/hdr-test): Inspecciona visualmente la interpretación del mapeo tonal HDR y el recorte de blancos en patrones específicos. No mide valores absolutos de nits ni valida la curva EOTF de laboratorio.",
-          "[Prueba de uniformidad](/tests/uniformity-test): Presenta fondos sólidos al 5 %, 20 %, 50 % y 100 % de gris y colores primarios, facilitando la detección de sombras de retención o efecto de pantalla sucia. No traza mapas colorimétricos delta-E.",
-          "[Prueba de casi negros](/tests/near-black-test): Recorre los niveles oscuros más sutiles (del 1 al 16 sobre el negro puro) para comprobar el detalle en sombras y descartar aplastamiento. No mide voltajes de polarización del panel.",
-          "[Prueba de gradientes y banding](/tests/gradient-banding-test): Revisa la continuidad en rampas de color en 8 y 10 bits para localizar saltos bruscos o artefactos de tramado. No inspecciona el procesamiento de bits interno del escalador.",
-          "[Prueba de brillo](/tests/brightness-test): Permite observar cómo varía el nivel de luz al agrandar o achicar la ventana para apreciar el ABL. No calcula candelas por metro cuadrado (cd/m²).",
-          "[Prueba de nitidez de texto](/tests/text-clarity-test): Despliega tipografías en fondos claros y oscuros para revisar halos de color asociados a distribuciones de subpíxeles poco habituales (como WOLED o QD-OLED). No modifica los motores de fuentes del SO.",
-          "[Información de pantalla](/tests/display-info): Consulta las APIs del navegador para detallar resolución, profundidad de color y capacidades HDR. No accede al firmware interno del controlador."
-        ],
-        "bullets": [
-          "[Prueba HDR](/tests/hdr-test): Evalúa el mapeo tonal visualmente; no mide nits pico absolutos.",
-          "[Prueba de uniformidad](/tests/uniformity-test): Destapa sombras en grises al 5 %–50 %; no genera mapas delta-E.",
-          "[Prueba de casi negros](/tests/near-black-test): Comprueba el detalle en sombras; no mide el voltaje de negro del panel.",
-          "[Prueba de gradientes y banding](/tests/gradient-banding-test): Confirma transiciones suaves de 10 bits sin escalonamientos.",
-          "[Prueba de brillo](/tests/brightness-test): Muestra la atenuación del ABL al variar el tamaño de ventana; no mide cd/m².",
-          "[Prueba de nitidez de texto](/tests/text-clarity-test): Revisa halos en fuentes según la estructura de subpíxeles.",
-          "[Información de pantalla](/tests/display-info): Recopila datos del navegador sin telemetría interna del fabricante."
-        ]
-      },
-      {
-        "title": "Interpretación de observaciones: Normal frente a anomalías",
-        "content": [
-          "A la hora de examinar una pantalla OLED, las observaciones visuales deben estructurarse con rigor técnico:",
-          "1. Parece normal: El brillo disminuye suavemente al maximizar una ventana blanca (actuación ordinaria del ABL). La imagen se traslada de forma sutil unos píxeles tras horas de uso, dejando a veces un milimétrico borde negro en un extremo (pixel orbiting estándar). Las sombras tenues tras mostrar elementos fijos desaparecen tras unos minutos de vídeo dinámico o un ciclo de mantenimiento en espera (retención temporal benigna).",
-          "2. Requiere atención: La pantalla se oscurece con brusquedad en tareas de oficina con contenido variado, dificultando la lectura (revise ajustes de ASBL excesivos, sensores de luz ambiental o desajustes de HDR en el escritorio). Quedan siluetas oscuras permanentes en todas las pantallas de gris y colores planos a pesar de ejecutar ciclos manuales (desgaste diferencial o quemado).",
-          "3. Incierto: Se aprecian oscilaciones erráticas de brillo durante juegos o vídeos. El origen puede deberse al mapeo tonal del propio juego, al Auto HDR de Windows o a la curva interna del monitor. Al no poder medir los límites eléctricos con el navegador, consulte el manual y el registro de cambios del firmware de su modelo."
-        ],
-        "bullets": [
-          "Parece normal: Atenuación por ABL en ventanas amplias, pixel orbiting sutil y sombras que desaparecen con vídeo.",
-          "Requiere atención: Oscurecimiento exagerado en tareas mixtas o sombras fijas en fondos planos tras varios ciclos.",
-          "Incierto: Variaciones impredecibles en videojuegos; pueden influir el mapeo tonal del juego o el HDR de Windows.",
-          "Límite de diagnóstico: Las herramientas web no pueden verificar si las curvas ABL cumplen las tolerancias de fábrica."
-        ]
-      },
-      {
-        "title": "Guía práctica de inspección y conservación OLED",
-        "content": [
-          "Para mantener su monitor en buenas condiciones y revisarlo periódicamente, siga este procedimiento de 10 puntos:",
-          "1. Elección entre SDR y HDR: Trabaje en SDR con un nivel de brillo moderado y reserve el modo HDR para juegos o películas compatibles, previniendo atenuaciones innecesarias del ABL durante el día a día.",
-          "2. Comprobación del tamaño de ventana: Observe en la [Prueba de brillo](/tests/brightness-test) la respuesta del monitor al ampliar fondos claros.",
-          "3. Evaluación del brillo uniforme: Si su OSD dispone de 'Uniform Brightness', verifique si le ofrece mayor estabilidad al trabajar.",
-          "4. Estado del desplazamiento de píxeles: Confirme en el menú de mantenimiento del monitor que la función de Pixel Shift está activa.",
-          "5. Configuración del atenuador de logotipos: Ajuste la atenuación de elementos estáticos en un nivel medio para proteger la pantalla.",
-          "6. Verificación de sombras: Ejecute la [Prueba de casi negros](/tests/near-black-test) para comprobar que los primeros escalones oscuros se distinguen bien.",
-          "7. Revisión de uniformidad: Examine periódicamente fondos grises al 5 % y 50 % en la [Prueba de uniformidad](/tests/uniformity-test) a oscuras.",
-          "8. Inspección de gradientes: Asegúrese con la [Prueba de gradientes y banding](/tests/gradient-banding-test) de que no hay saltos de color abruptos.",
-          "9. Claridad tipográfica: Compruebe en la [Prueba de nitidez de texto](/tests/text-clarity-test) la legibilidad en fondos claros y oscuros.",
-          "10. Cuidado del modo de espera: No corte la alimentación con una regleta nada más apagar el equipo para que los ciclos automáticos de compensación puedan ejecutarse por completo."
-        ],
-        "bullets": [
-          "Paso 1: Usar SDR para productividad de escritorio y reservar HDR para contenidos compatibles.",
-          "Paso 2: Valorar la reacción del ABL en la [Prueba de brillo](/tests/brightness-test).",
-          "Paso 3: Probar los ajustes de brillo constante en el OSD para evitar fluctuaciones.",
-          "Paso 4: Mantener activadas las funciones de desplazamiento de píxeles y atenuación de logos.",
-          "Paso 5: Revisar el detalle en zonas oscuras con la [Prueba de casi negros](/tests/near-black-test).",
-          "Paso 6: Comprobar la uniformidad de grises en la [Prueba de uniformidad](/tests/uniformity-test).",
-          "Paso 7: Confirmar transiciones tonales limpias en la [Prueba de gradientes y banding](/tests/gradient-banding-test).",
-          "Paso 8: Revisar fuentes con la [Prueba de nitidez de texto](/tests/text-clarity-test).",
-          "Paso 9: Contrastar los parámetros del monitor con [Información de pantalla](/tests/display-info).",
-          "Paso 10: Mantener el monitor conectado a la corriente en espera para no interrumpir el mantenimiento."
-        ]
-      },
-      {
-        "title": "Solución de problemas y pasos recomendados",
-        "content": [
-          "Si su monitor OLED presenta oscurecimientos inesperados o anomalías en la imagen, aplique este flujo de revisión:",
-          "Atenuación brusca mientras lee o escribe: Si la pantalla se apaga mientras consulta documentos fijos, probablemente ha intervenido el atenuador estático (ASBL). Mueva el ratón o active una ventana dinámica. Revise nuestra [Guía de configuración OSD del monitor](/guides/monitor-osd-settings-explained) por si permite calibrar la sensibilidad del ajuste.",
-          "Fluctuaciones molestas al mover ventanas: Busque la función 'Uniform Brightness' en su OSD o reduzca el brillo general en SDR para que el blanco no sobrepase el umbral de activación del ABL.",
-          "Imagen desplazada o margen negro asimétrico: Asegúrese de que el desplazamiento de píxeles está activado. Un desplazamiento leve es síntoma de que el sistema de protección funciona bien.",
-          "Siluetas tenues que no desaparecen: Si tras la reproducción continuada de vídeo dinámico persiste una marca, ponga el monitor en reposo para que complete un ciclo automático de refresco de píxeles.",
-          "Para problemas de conexión, perfiles de color o gestión energética, consulte la [Guía de solución de problemas](/knowledge-base/troubleshooting)."
-        ],
-        "bullets": [
-          "Oscurecimiento con texto → Activación del ASBL; mover el ratón o revisar ajustes de logotipos.",
-          "Cambios de brillo al escalar → Comportamiento habitual del ABL; probar 'Uniform Brightness' en el OSD.",
-          "Imagen ligeramente desplazada → Pixel Orbiting activo; la protección de hardware está operando bien.",
-          "Marcas estáticas persistentes → Poner la pantalla en reposo para que ejecute el ciclo de compensación.",
-          "Diagnóstico completo de hardware → Consultar la [Guía de solución de problemas](/knowledge-base/troubleshooting)."
+          "Dado que los píxeles OLED son diodos orgánicos autoemisores, gestionar el calor acumulado y la corriente eléctrica resulta crucial para la longevidad del panel. Los usuarios no familiarizados con el ABL suelen confundir las variaciones de brillo al redimensionar ventanas con fallos del monitor, mientras que el leve movimiento de la imagen puede malinterpretarse como inestabilidad visual. Entender estos sistemas permite configurar mejor el OSD y distinguir la protección normal de averías reales. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "¿Por qué mi monitor OLED se oscurece al maximizar una ventana de navegador blanca?",
-        "answer": "Se debe al limitador automático de brillo (ABL). Cuando una ventana clara cubre toda la pantalla, el nivel medio de imagen (APL) se incrementa de forma acusada. Para evitar un sobreconsumo eléctrico y controlar la temperatura del panel, la electrónica atenúa la luminosidad general."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "¿Es normal que la imagen de mi escritorio OLED se mueva un poco hacia un lado?",
-        "answer": "Sí. Se trata del desplazamiento de píxeles (Pixel Orbiting), un mecanismo de protección deliberado. El monitor traslada la imagen periódicamente en pequeños incrementos de píxeles para evitar que los bordes estáticos castiguen de manera ininterrumpida a los mismos emisores."
-      },
-      {
-        "question": "¿Cómo evito que mi monitor OLED cambie de brillo constantemente mientras trabajo?",
-        "answer": "Trabaje en modo SDR con un brillo moderado o active la opción de 'Brillo uniforme' (Uniform Brightness) en el menú OSD si su modelo la incorpora. Esto limita el pico de luminosidad a un valor estable para cualquier tamaño de ventana."
-      },
-      {
-        "question": "¿Cuál es la diferencia entre retención temporal de imagen y quemado permanente?",
-        "answer": "La retención es una acumulación transitoria de cargas en los circuitos que desaparece con imágenes en movimiento o en ciclos en espera. El quemado es un desgaste físico irreversible de los subpíxeles orgánicos tras miles de horas de exposición estática."
-      },
-      {
-        "question": "¿Por qué no se debe desenchufar un monitor OLED inmediatamente tras apagarlo?",
-        "answer": "Los monitores OLED realizan ciclos de compensación automáticos en modo de espera tras varias horas de uso acumulado para recalibrar los voltajes de los subpíxeles. Cortar la corriente en el enchufe interrumpe este mantenimiento crucial."
-      },
-      {
-        "question": "¿Puede Screen Tester medir los nits exactos de mi OLED o predecir su vida útil?",
-        "answer": "No. Los navegadores web no pueden comunicarse con colorímetros, fotodiodos ni contadores internos de desgaste del panel. Screen Tester ofrece patrones de comprobación visual, pero las mediciones certificadas precisan instrumental de laboratorio."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -1819,55 +974,51 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "El overscan es una función heredada de televisión que recorta entre el 2% y el 5% de los márgenes exteriores ampliando la imagen y deformando los píxeles del PC.",
     "whyItMatters": "Conectar un ordenador a una TV con overscan activo arruina la nitidez del texto al forzar interpolación en lugar de mapear cada píxel digital exactamente 1:1.",
     "whatToLookFor": [
-      "The Windows taskbar, start button, or window close buttons cut off by the television frame",
-      "Blurry, smudged desktop fonts that look far softer than on a standard computer monitor",
-      "A fuzzy halo or ringing artifacts along the edges of high-contrast text and icons",
-      "Outer 1-pixel border test lines completely invisible when viewing in fullscreen"
+      "Overscan de TV y Mapeo de Píxeles 1:1 - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Open the TV Overscan & 1:1 Pixel Mapping Test in Screen Tester and toggle Fullscreen mode (press F11)",
-      "Check if all four colored 1px, 2px, and 5px outer border lines are fully visible around the top, bottom, left, and right edges",
-      "Inspect the central and corner checkerboard patches for moiré shimmering or distortion"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Fullscreen calibrated 1-pixel outer border boundaries and corner registration arrows",
-      "High-frequency 1:1 alternating black and white checkerboard test patches",
-      "User visual verification of edge cut-off under unscaled browser canvas presentation"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Television internal EDID profile negotiation or manufacturer picture preset mode names",
-      "HDMI port hardware input labeling (e.g., whether the port is labeled 'PC' or 'Game')",
-      "Internal scaler spatial filtering algorithms inside the television SoC"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Television picture aspect ratio set to '16:9' or 'Standard' instead of 'Just Scan', 'Screen Fit', or '1:1'",
-      "HDMI input port on the television not renamed or designated as 'PC' in television input settings",
-      "GPU driver control panel (NVIDIA/AMD/Intel) has 'Desktop Resizing' or underscan scaling enabled",
-      "AV receiver or HDMI switch applying secondary video processing to the pass-through signal"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "On your TV remote, open Picture / Screen Settings, find Aspect Ratio, and change it to 'Just Scan', 'Screen Fit', 'Dot by Dot', or 'Original'",
-      "In the TV input source list, edit the HDMI icon and name to 'PC' (this automatically disables overscan and post-processing on LG, Samsung, and Sony TVs)",
-      "Open your GPU control panel and reset desktop size / scaling adjustments to 100% with no underscan"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "The Historical Origin of Overscan",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "In the cathode-ray tube (CRT) era, analogue broadcast video signals contained electrical timing noise, blanking intervals, and broadcast data (like closed captions) along the extreme outer edges of the frame.",
-          "Television manufacturers engineered CRT electron beams to intentionally scan 5% beyond the visible tube bezel (overscan) to hide this ugly edge noise from viewers.",
-          "When digital flat panels arrived, manufacturers kept overscan enabled by default on TV HDMI inputs to maintain backwards compatibility with analogue cable broadcasts, creating a headache for modern digital PC inputs."
+          "El overscan es una función heredada de televisión que recorta entre el 2% y el 5% de los márgenes exteriores ampliando la imagen y deformando los píxeles del PC.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "Conectar un ordenador a una TV con overscan activo arruina la nitidez del texto al forzar interpolación en lugar de mapear cada píxel digital exactamente 1:1. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "Why does my PC desktop look blurry when connected to a 4K TV?",
-        "answer": "If overscan is active, the TV crops the outer edge of your 3840 × 2160 signal and scales the remaining ~3650 × 2050 image up to fill the glass, forcing bilinear interpolation across every single pixel. Enabling 1:1 pixel mapping restores crisp, sharp text."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "What is the overscan setting called on different TV brands?",
-        "answer": "LG calls it 'Just Scan: On'. Samsung calls it 'Picture Size: Screen Fit'. Sony calls it 'Wide Mode: Full' with 'Display Area: Full Pixel'. Panasonic calls it '1:1 Pixel Mapping' or 'HD Size: 2'."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -1895,55 +1046,51 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "La relación de aspecto es la proporción entre el ancho y el alto de una pantalla; un escalado incorrecto deforma círculos convirtiéndolos en óvalos.",
     "whyItMatters": "Una relación de aspecto errónea deforma rostros e interfaces; el escalado no entero introduce borrosidad por interpolación bilineal.",
     "whatToLookFor": [
-      "Geometric distortion: Circles appearing as squashed or stretched ovals",
-      "Stretching: 4:3 retro games or 16:9 console video stretched unnaturally across a 21:9 ultrawide monitor",
-      "Letterboxing (black bars on top and bottom) or pillarboxing (black bars on left and right sides)",
-      "Moiré interference patterns across fine text, hatch patterns, or checkerboards"
+      "Relación de Aspecto, Letterboxing y Artefactos de Escalado - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Run the Scaling & Aspect Ratio test in Screen Tester to inspect concentric geometric circles and calibrated square grids",
-      "Verify that circles appear perfectly round with a physical ruler or visual calibration across all axes",
-      "Switch between 16:9, 16:10, 4:3, and 21:9 framing overlays to test how your monitor handles varied input ratios"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Rendering of precision concentric geometric circles and square aspect grids",
-      "Reference framing boundaries for standard display aspect ratios",
-      "Browser viewport aspect ratio calculations (`window.innerWidth / window.innerHeight`)"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Monitor chassis internal scaler chip interpolation algorithms (bicubic vs. bilinear vs. nearest neighbor)",
-      "Hardware GPU scaling pipeline latency overhead in microseconds",
-      "Physical panel curvature geometry distortion on curved ultrawide displays"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Monitor OSD aspect ratio setting forced to 'Wide / Full' instead of 'Auto' or 'Aspect'",
-      "GPU control panel scaling mode configured to 'Stretch' instead of 'Perform scaling on: GPU - Aspect Ratio'",
-      "Playing a console (like PS5 or Nintendo Switch) locked to 16:9 output on a 21:9 ultrawide or 16:10 laptop screen",
-      "Operating system display resolution set to an incompatible aspect ratio (e.g., 1920 × 1080 selected on a 1920 × 1200 panel)"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Open your monitor OSD and set Aspect Ratio to 'Aspect' or 'Original' so black bars preserve true geometry",
-      "In NVIDIA Control Panel or AMD Software, set scaling to 'Aspect ratio' or 'No scaling'",
-      "Ensure games and desktop applications are configured to your display's native aspect ratio in graphics settings"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "Common Aspect Ratios Explained",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "16:9 (1.78:1): The ubiquitous consumer standard for televisions, YouTube video, and modern gaming (1920×1080, 2560×1440, 3840×2160).",
-          "16:10 (1.60:1): Common in modern productivity laptops (MacBook, Dell XPS) and office monitors, providing extra vertical height for documents and code (1920×1200, 2560×1600).",
-          "21:9 (2.39:1): Ultrawide format matching anamorphic cinema film, offering expansive peripheral vision for gaming and multitasking (2560×1080, 3440×1440, 5120×2160)."
+          "La relación de aspecto es la proporción entre el ancho y el alto de una pantalla; un escalado incorrecto deforma círculos convirtiéndolos en óvalos.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "Una relación de aspecto errónea deforma rostros e interfaces; el escalado no entero introduce borrosidad por interpolación bilineal. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "Should I perform scaling on the GPU or on the Display?",
-        "answer": "In general, GPU scaling is preferred because modern graphics cards have powerful hardware scalers that support integer scaling and preserve aspect ratios reliably across multiple monitors."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "Will black bars (letterboxing) damage my OLED screen?",
-        "answer": "Black bars turn off OLED pixels completely (0 nits), so they do not cause wear. However, over thousands of hours, the active center image will age slightly faster than the black bar areas, potentially leaving a subtle boundary line. Avoid permanently running 16:9 content on a 21:9 OLED without varied full-screen use."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -1971,56 +1118,51 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "El multitoque es la capacidad de un digitalizador para reconocer y rastrear múltiples puntos de contacto simultáneos sobre la superficie de una pantalla.",
     "whyItMatters": "Digitalizadores defectuosos generan zonas muertas o toques fantasma que provocan pulsaciones no deseadas e impiden gestos fluidos.",
     "whatToLookFor": [
-      "Dead touch zones: Areas on the screen where finger contact fails to register or breaks during drags",
-      "Ghost touches: Phantom touches registered automatically when the screen is idle, opening apps or moving menus",
-      "Dropped touch points: The contact counter decreasing when placing additional fingers on the surface",
-      "Edge touch rejection: Inability to register taps near the extreme perimeter or corners of the glass"
+      "Pruebas de Multitoque y Digitalizador de Pantalla Táctil - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Launch the Multi-Touch Test in Screen Tester on your phone, tablet, or touch-enabled laptop",
-      "Place 2, 3, 5, and 10 fingers on the glass simultaneously to observe active contact IDs and peak counters",
-      "Switch to Grid Mode and touch every quadrant to verify that all digitizer zones register contacts cleanly",
-      "Perform the Hold Challenge to verify that simultaneous contacts remain stable without flickering"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "DOM Pointer Events (`pointerdown`, `pointermove`, `pointerup`, `pointercancel`) and Touch Events",
-      "Active contact count, individual Pointer IDs, coordinate positions (X/Y), and contact pressure (if exposed)",
-      "Peak simultaneous contact count registered during the test session",
-      "`navigator.maxTouchPoints` reported by the browser environment"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Physical digitizer sensor matrix hardware polling rate in Hertz (e.g., 120Hz vs 240Hz touch sampling)",
-      "Capacitive electrical resistance changes across raw ITO electrode diamond grids",
-      "Hardware palm-rejection firmware algorithms operating beneath the operating system driver"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Damaged digitizer flex cable or cracked glass breaking electrical matrix continuity",
-      "Poor-quality third-party USB charger introducing high-frequency AC electrical noise, causing ghost touches",
-      "Operating system or browser gesture engines intercepting edge swipes (like back/forward navigation gestures)",
-      "Thick or damaged screen protector creating excessive capacitive standoff distance"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Unplug your device from the charger to test if erratic ghost touches stop (isolating noisy ground loop power adapters)",
-      "Clean the glass surface thoroughly: moisture, oil, or water drops register as continuous capacitive contacts",
-      "Remove damaged screen protectors that may have air bubbles or adhesive separation"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "How Projected Capacitive (PCAP) Touch Works",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "Modern smartphones, tablets, and touch laptops use Projected Capacitive (PCAP) digitizers: an ultra-thin grid of transparent conductive traces (Indium Tin Oxide) laminated beneath the cover glass.",
-          "When a conductive human finger approaches the glass, it draws a minute electrical current, altering the local electrostatic capacitance. The digitizer controller scans the grid hundreds of times per second to triangulate the exact X/Y position of each touch."
+          "El multitoque es la capacidad de un digitalizador para reconocer y rastrear múltiples puntos de contacto simultáneos sobre la superficie de una pantalla.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "Digitalizadores defectuosos generan zonas muertas o toques fantasma que provocan pulsaciones no deseadas e impiden gestos fluidos. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "Why does my phone only show 5 touches when it supports 10?",
-        "answer": "Certain mobile browsers or battery-saver operating system modes cap active pointer event tracking to conserve CPU resources, or built-in multi-finger gesture listeners (like 3-finger screenshot gestures) consume contacts before passing them to the web page."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "Can software fix a dead touch zone?",
-        "answer": "If a specific physical stripe across the screen never registers touch, the ITO trace or digitizer controller ribbon cable is physically fractured. This requires physical screen replacement."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -2046,55 +1188,51 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "La prueba de webcam evalúa disponibilidad de hardware, resolución efectiva, estabilidad de tasa de cuadros y balance de color mediante flujos locales WebRTC.",
     "whyItMatters": "Las cámaras web sufren caídas de fluidez con poca iluminación o fallos de permisos; verificarlas en local previene contratiempos en videollamadas.",
     "whatToLookFor": [
-      "Choppy, stuttering video feeds that drop from 30 FPS down to 15 FPS in normal room lighting",
-      "Distorted aspect ratios where your face looks stretched horizontally or squeezed vertically",
-      "Grainy, noisy video caused by high digital sensor gain (ISO) compensating for inadequate lighting",
-      "Browser permission errors or 'Camera in use by another application' blocking access"
+      "Diagnóstico de Cámara Web, Cuadros por Segundo y Privacidad - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Open the Webcam Test in Screen Tester and grant camera permission when prompted by your browser",
-      "Inspect the live stream resolution badge (e.g., 1920 × 1080 at 30 FPS) and real-time frame counter",
-      "Toggle the mirror preview and capture a freeze-frame to check focus sharpness and color reproduction"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Negotiated video stream dimensions (`videoWidth`, `videoHeight`) from the active MediaStreamTrack",
-      "Real-time frame delivery rate calculated from `requestVideoFrameCallback` or canvas frame rendering",
-      "Available video input device labels and device IDs enumerated via `navigator.mediaDevices.enumerateDevices()`",
-      "Camera permission state (`granted`, `prompt`, `denied`) via the Permissions API"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Physical lens optical resolving power (optical glass sharpness vs. digital sharpening filters)",
-      "True sensor pixel dimensions (e.g., physical 720p sensor software-upscaled to 1080p by driver)",
-      "Microphone hardware sensitivity, background noise floor, or acoustic frequency response"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Camera auto-exposure increasing shutter time to brighten dark rooms, automatically cutting frame rate in half",
-      "Another application (Zoom, Teams, OBS, Discord) holding an exclusive lock on the camera hardware",
-      "Operating system privacy toggle (Windows Settings > Privacy > Camera) globally blocking camera access",
-      "Connecting an external webcam through an unpowered USB 2.0 hub, causing bandwidth throttling"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Add direct front-facing light (a desk lamp or ring light) to allow the camera to run at full 30/60 FPS shutter speeds",
-      "Close background video calling applications if you receive a 'Device in use' error",
-      "Check browser site permissions by clicking the padlock / tune icon in the browser address bar"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "Client-Side Processing & Privacy Guarantee",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "Screen Tester processes webcam video streams strictly in local device memory (RAM) within your active browser tab.",
-          "Video frames are drawn onto a client-side HTML5 canvas for real-time diagnostic rendering. Zero video frames, thumbnails, or telemetry data are ever transmitted to external servers or stored in cookies. When you stop the test or close the tab, all media tracks are immediately destroyed."
+          "La prueba de webcam evalúa disponibilidad de hardware, resolución efectiva, estabilidad de tasa de cuadros y balance de color mediante flujos locales WebRTC.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "Las cámaras web sufren caídas de fluidez con poca iluminación o fallos de permisos; verificarlas en local previene contratiempos en videollamadas. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "Why does my 1080p webcam only show 720p in the browser?",
-        "answer": "Browsers request video using resolution constraints. If USB bandwidth is constrained or the operating system driver negotiates standard compatibility modes, the browser defaults to 720p. You can select specific resolution constraints in advanced software."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "Does the Webcam Test access my microphone?",
-        "answer": "No. Screen Tester explicitly requests `{ video: true, audio: false }`. Your microphone is never accessed, initialized, or monitored during the webcam test."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -2119,55 +1257,51 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "La prueba de audio estéreo confirma que los canales izquierdo y derecho reproducen sonidos separados de forma equilibrada y sin cancelaciones de fase.",
     "whyItMatters": "Canales invertidos desorientan en juegos y películas; cancelaciones de fase hacen que las voces se escuchen lejanas y sin cuerpo.",
     "whatToLookFor": [
-      "Reversed channels: Test tones intended for the left speaker playing from the right speaker",
-      "Channel crosstalk: Audio bleeding into the right speaker when testing the left channel exclusively",
-      "Phase cancellation: Sound becoming thin, hollow, or disappearing when both channels play simultaneously",
-      "Distortion or rattling at specific low frequencies during continuous tone sweeps"
+      "Separación de Canales de Audio y Prueba Estéreo - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Open the Speaker Test in Screen Tester and set your system volume to a comfortable listening level",
-      "Click 'Test Left Channel' to verify sound emerges exclusively from your left speaker or earphone",
-      "Click 'Test Right Channel' to verify sound emerges exclusively from your right speaker or earphone",
-      "Run the Frequency Sweep (20Hz to 20,000Hz) to test your audio setup across the audible acoustic spectrum"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Web Audio API sound generation via pure mathematical oscillator nodes (`OscillatorNode`)",
-      "Precise stereo coordinate panning using `StereoPannerNode` set to full left (-1.0) and full right (+1.0)",
-      "Generation of calibrated white noise, pink noise, and linear/logarithmic continuous frequency sweeps"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Physical sound pressure level (SPL) in decibels (dB) without a calibrated measurement microphone",
-      "Total Harmonic Distortion (THD) of the physical speaker cone or amplifier circuitry",
-      "Physical acoustic room reflections, standing waves, or acoustic phase cancelation in your room"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Headphones or auxiliary audio cables plugged in backwards or reversed",
-      "Operating system 'Mono Audio' accessibility toggle turned ON, forcing all audio into a merged mono signal",
-      "Loose or partially inserted 3.5mm audio jack, causing ground loop humming or missing channels",
-      "Surround sound virtualization software (Dolby Atmos, Sonic, Nahimic) blending channels for simulated 3D audio"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Ensure your 3.5mm or USB audio connector is fully seated into the jack",
-      "Open Windows Sound Settings > Accessibility > Audio and ensure 'Mono Audio' is turned OFF",
-      "If using external desktop speakers, check the physical RCA or 3.5mm audio cable connections on the rear sub"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "The Web Audio API Pipeline",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "Screen Tester generates audio directly in software using the browser's native Web Audio API. When you initiate a test, an `AudioContext` is created with a sample rate of 44.1kHz or 48kHz.",
-          "An `OscillatorNode` generates a pure mathematical sine wave with zero harmonic distortion. The signal routes through a `StereoPannerNode` that adjusts the left/right gain matrix before feeding into the destination output. When stopped, oscillators and audio contexts are closed immediately to free audio threads."
+          "La prueba de audio estéreo confirma que los canales izquierdo y derecho reproducen sonidos separados de forma equilibrada y sin cancelaciones de fase.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "Canales invertidos desorientan en juegos y películas; cancelaciones de fase hacen que las voces se escuchen lejanas y sin cuerpo. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "Why can't I hear frequencies below 40Hz in the sweep test?",
-        "answer": "Most laptop speakers, small desktop monitors, and budget earphones cannot physically reproduce frequencies below 50Hz. Low bass reproduction requires large speaker cones or subwoofers capable of moving substantial air volumes."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "Why can't I hear frequencies above 15,000Hz?",
-        "answer": "Human high-frequency hearing naturally declines with age (presbycusis). While healthy children can hear up to 20,000Hz, most adults above age 25 have a natural hearing cutoff between 14,000Hz and 17,000Hz."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -2194,56 +1328,53 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "Los acelerómetros miden la aceleración lineal y fuerzas de gravedad en tres ejes (X, Y, Z), mientras que los giroscopios registran rotaciones angulares.",
     "whyItMatters": "Los sensores de movimiento gestionan juegos móviles, realidad virtual y estabilización; diagnosticarlos permite aislar fallos de hardware de bloqueos de permisos.",
     "whatToLookFor": [
-      "Orientation bubble failing to move when you tilt your phone or tablet",
-      "Erratic sensor jumping or drift when the device is placed on a completely flat, stationary table",
-      "Browser permission prompts failing or silently blocking motion event delivery on iOS devices",
-      "Sensor unavailable notices on desktop PCs that lack physical motion hardware"
+      "Sensores de Movimiento Móvil: Acelerómetro y Giroscopio - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Open the Accelerometer Test or Gyroscope Test in Screen Tester on a smartphone or tablet",
-      "Tap 'Start Sensor' and tap 'Allow' if your browser prompts for permission (required on iOS Safari)",
-      "Tilt your device along all axes to observe real-time G-force reticle displacement and degree angles"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Real-time linear acceleration values (`acceleration.x`, `y`, `z`) in m/s² from `DeviceMotionEvent`",
-      "Total acceleration including gravity (`accelerationIncludingGravity`) along all three axes",
-      "Rotational rate angles (`rotationRate.alpha`, `beta`, `gamma`) in degrees per second",
-      "Device orientation angles (`alpha`, `beta`, `gamma`) from `DeviceOrientationEvent`"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Internal microelectromechanical (MEMS) sensor chip calibration tolerances",
-      "Compass magnetic declination offsets or geomagnetic interference levels",
-      "Presence of physical accelerometer silicon on desktop PCs lacking sensor hardware"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Testing on a desktop computer: standard desktop PCs and external monitors have no accelerometer hardware",
-      "iOS Safari permission requirement: Apple requires explicit user gesture permission via `DeviceMotionEvent.requestPermission()`",
-      "Browser security sandbox: sensors are completely blocked inside non-secure HTTP connections (HTTPS is required)",
-      "Sensor disabled in mobile browser settings (e.g., Chrome Mobile 'Motion Sensors' toggle set to Blocked)"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Ensure you are accessing Screen Tester over a secure HTTPS connection",
-      "On iPhone or iPad, tap 'Allow' when the system dialog asks if you want to allow motion sensors",
-      "Perform a device restart if sensors become unresponsive across all operating system applications"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "Accelerometer vs. Gyroscope: How They Cooperate",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "An accelerometer detects gravity: when resting flat on a table, it measures 9.8 m/s² along the vertical Z axis and 0 m/s² on X and Y.",
-          "A gyroscope detects rotational velocity: it measures how fast your phone is spinning around each axis in degrees per second.",
-          "Operating systems use sensor fusion algorithms (such as Kalman filters) to combine accelerometer and gyroscope data into stable 3D orientation tracking."
+          "Los acelerómetros miden la aceleración lineal y fuerzas de gravedad en tres ejes (X, Y, Z), mientras que los giroscopios registran rotaciones angulares.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "Los sensores de movimiento gestionan juegos móviles, realidad virtual y estabilización; diagnosticarlos permite aislar fallos de hardware de bloqueos de permisos. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "Why does the motion test say 'Sensor Unavailable' on my laptop?",
-        "answer": "Most traditional desktop computers and standard clamshell laptops do not have MEMS accelerometers installed on their motherboards. These sensors are standard in smartphones, tablets, and 2-in-1 convertible convertibles."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "Why does iOS require permission for motion sensors?",
-        "answer": "Apple introduced explicit permission requirements in iOS 13 to prevent web tracking scripts from fingerprinting users or estimating keystrokes based on microscopic table vibration telemetry."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -2271,55 +1402,53 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "Los navegadores pueden renderizar patrones cromáticos matemáticamente exactos y medir tiempos de fotogramas, pero no pueden medir luz física, Delta E ni tiempos de transición de píxeles.",
     "whyItMatters": "Muchas utilidades online afirman erróneamente medir brillo en nits o precisión Delta E; conocer los límites técnicos reales evita diagnósticos engañosos.",
     "whatToLookFor": [
-      "Websites claiming to measure physical monitor brightness in nits without a photometer probe (scientifically impossible)",
-      "Tools claiming to certify Delta E color accuracy through a web browser (requires a spectrophotometer)",
-      "Tools claiming to measure 1ms GtG response times without a high-speed optical pursuit camera",
-      "Websites claiming to repair physically broken liquid crystal transistors through software flashing"
+      "Qué Pueden y Qué No Pueden Medir las Pruebas de Pantalla en Navegador - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Use browser tests for what they excel at: high-contrast visual defect screening, stepped grayscale calibration, and frame pacing diagnostics",
-      "Combine browser reference patterns with controlled ambient room lighting and careful human visual inspection",
-      "Check the Display Information tool to review exactly what properties your browser environment exposes"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Exact 24-bit and 32-bit RGB color values rendered to HTML5 canvas and WebGL frame buffers",
-      "Browser animation timing intervals (`performance.now()`, `requestAnimationFrame`) to estimate refresh rates",
-      "Operating system logical viewport dimensions and device pixel scaling ratios (`devicePixelRatio`)",
-      "User-reported visual defect markings and interactive diagnostic pass/fail notes"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Physical photometric luminance in nits (cd/m²) emitted by the panel backlight or OLED pixels",
-      "Color accuracy errors (Delta E) or color gamut volume percentages without a colorimeter sensor",
-      "Physical pixel response time (GtG milliseconds) without high-speed photodiode optical oscilloscopes",
-      "Hardware monitor internal scalar LUT (Look-Up Table) calibration curves"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Unscientific marketing claims made by legacy display testing websites",
-      "Confusion between digital canvas pixel values (e.g., RGB 255, 255, 255) and physical emitted brightness (nits)",
-      "Assuming browser window resolution matches physical panel pixel grid when OS display scaling is active"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Use Screen Tester for visual inspection, panel defect screening, and baseline calibration",
-      "If you require certified laboratory calibration for color-critical prepress or film grading, invest in a hardware colorimeter (Calibrite Display Plus or Datacolor Spyder)",
-      "Always inspect display patterns with operating system scaling at 100% and ambient lighting properly controlled"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "The Sandbox Principle of Web Browsers",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "Web browsers are secure application sandboxes designed to protect user privacy and system security. They intentionally isolate web pages from low-level GPU registers, I2C bus monitor communications (DDC/CI), and raw physical hardware sensors.",
-          "A browser can command the GPU to draw a solid white box, but it has no physical sensor or photodiode to know how much light actually leaves the glass. That observation belongs to the human user."
+          "Los navegadores pueden renderizar patrones cromáticos matemáticamente exactos y medir tiempos de fotogramas, pero no pueden medir luz física, Delta E ni tiempos de transición de píxeles.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "Muchas utilidades online afirman erróneamente medir brillo en nits o precisión Delta E; conocer los límites técnicos reales evita diagnósticos engañosos. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "Can any website measure my monitor's true brightness in nits?",
-        "answer": "No. Emitted luminance in nits (candela per square meter) is a physical measurement of photons. Without an external optical sensor placed against the glass, no web browser or software tool can measure nits."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "What makes Screen Tester different from other test tools?",
-        "answer": "Screen Tester adheres strictly to technical honesty: we explain exactly what is observed in browser memory versus what requires physical measurement, eliminating marketing exaggerations."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -2348,55 +1477,51 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "La compatibilidad entre navegadores describe el grado de uniformidad con que distintos motores (Blink, Gecko, WebKit) implementan estándares web para acceder a hardware.",
     "whyItMatters": "Pruebas como la vibración táctil funcionan en Chrome para Android pero están bloqueadas por diseño en Safari para iOS debido a políticas de privacidad.",
     "whatToLookFor": [
-      "Vibration API (`navigator.vibrate`) not functioning on desktop browsers or iOS Safari",
-      "Motion sensor events requiring explicit permission taps on iOS Safari but running automatically on Android Chrome",
-      "Fullscreen API behaving differently on mobile phones versus desktop monitors",
-      "Color gamut negotiation differing between macOS Safari (Display P3) and Windows Chrome"
+      "Compatibilidad de Navegadores y APIs Web de Hardware - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Open the Browser Compatibility tool in Screen Tester to inspect support status across 16 core Web APIs",
-      "Review the compatibility status table for your specific active browser and operating system",
-      "Test hardware features on alternate browsers (such as Firefox or Edge) if an API is unavailable"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Feature detection of global API objects in the `window` and `navigator` namespaces",
-      "Support flags for Web Audio, WebRTC, Pointer Events, Fullscreen, Vibration, and Motion APIs",
-      "User agent and browser engine characteristics for diagnostic compatibility grouping"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Unreleased or experimental browser flag toggles (`chrome://flags` or `about:config`)",
-      "Operating-system level firewall or enterprise group policy restrictions",
-      "Third-party privacy extension script blocking behavior"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Safari / WebKit policy omitting non-standard hardware APIs (like Web Vibration API) for privacy reasons",
-      "Accessing a website over unencrypted HTTP: modern browsers disable camera, microphone, and motion APIs on non-HTTPS origins",
-      "Strict browser tracking protection or privacy extensions blocking sensor event listeners",
-      "Running an outdated browser version lacking modern WebRTC or Canvas 2D color space extensions"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Keep your web browser updated to the latest stable release",
-      "Always connect via secure HTTPS to ensure all modern browser Web APIs are unlocked",
-      "Use Chrome or Edge on Android when testing physical vibration and haptic feedback"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "API Support Across Major Engines",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "Chromium (Google Chrome, Microsoft Edge, Brave): Broadest hardware API implementation, including Vibration API, Screen Wake Lock, and Fullscreen API.",
-          "Gecko (Mozilla Firefox): Strong standards compliance, excellent canvas rendering and Web Audio support, conservative hardware sensor implementation.",
-          "WebKit (Apple Safari): Strict privacy sandboxing, requires explicit user gestures for sensors, omits Vibration API, but provides leading Color Management and Display P3 wide gamut support on Apple displays."
+          "La compatibilidad entre navegadores describe el grado de uniformidad con que distintos motores (Blink, Gecko, WebKit) implementan estándares web para acceder a hardware.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "Pruebas como la vibración táctil funcionan en Chrome para Android pero están bloqueadas por diseño en Safari para iOS debido a políticas de privacidad. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "Why doesn't the Vibration Test vibrate my iPhone?",
-        "answer": "Apple has intentionally never implemented the Web Vibration API in WebKit/Safari to prevent web advertisements and spam sites from triggering intrusive device haptics. Physical vibration testing requires an Android device running Chrome or Firefox."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "Do I need to install any browser extensions to use Screen Tester?",
-        "answer": "No. Screen Tester is 100% zero-install and client-side. It operates entirely on native standard W3C Web APIs supported natively by modern web browsers."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -2416,8 +1541,7 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     ],
     "primarySearchIntent": "compatibilidad navegadores web apis hardware chromium webkit gecko",
     "readingTimeMinutes": 5
-  },
-  // New Feature Guide: Pixel Inversion, VCOM Calibration & Pixel Walk
+  },
   {
     "slug": "pixel-inversion-and-vcom",
     "category": "display-problems",
@@ -2427,64 +1551,51 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "La inversión de píxeles es una técnica donde los paneles LCD alternan la polaridad eléctrica (+V / -V) de los subpíxeles en cada cuadro para evitar degradación física.",
     "whyItMatters": "Si el voltaje VCOM está descalibrado, las polaridades positiva y negativa producen brillo desigual, generando parpadeo y fatiga visual en patrones finos.",
     "whatToLookFor": [
-      "Shimmering or vibrating 1x1 dot or 2x2 checkerboard grids",
-      "Faint vertical or horizontal crawling wave bands across uniform gray backgrounds",
-      "Micro-jitter along edges of fine black text on white backgrounds",
-      "Subtle green or magenta tint shifts across high-frequency pixel mesh patterns"
+      "Inversión de Píxeles, Calibración VCOM y Pixel Walk - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Open the Pixel Inversion & VCOM Test in Screen Tester at native resolution with 100% display scaling",
-      "Step through 1x1 dot inversion, 2x2 check, vertical stripe, and subpixel mesh patterns",
-      "Observe the pattern from your standard operating distance without leaning in too close",
-      "Note whether the gray pattern appears steady and calm or vibrates aggressively"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Precise 1-to-1 pixel-mapped alternating checkerboards and subpixel stripe rasters",
-      "Visual presence of polarity asymmetry across calibrated gray midtone levels",
-      "Response across different inversion architectures (dot, column, row, and subpixel)"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Internal analog potentiometer or digital VCOM register voltage value in millivolts",
-      "Physical liquid crystal molecular alignment angle under TFT electric field",
-      "Automated defect classification without human visual evaluation"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Factory VCOM potentiometer calibration drift during panel manufacturing or assembly",
-      "Aging power supply filter capacitors causing ripple on the analog TFT reference rails",
-      "Aggressive panel response time overdrive voltages pushing subpixels past target levels",
-      "Non-native display resolution or fractional OS scaling blurring the alternating dot pattern"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Ensure the display is running at native resolution and 100% integer scaling",
-      "Allow the monitor to warm up for 15-30 minutes, as cold LCD panels exhibit more VCOM asymmetry",
-      "If severe flicker occurs during normal productivity work, contact the manufacturer for warranty replacement under panel defect policies"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "The Physics of Liquid Crystal DC Polarization",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "Nematic liquid crystals are dipole molecules suspended between transparent glass substrates. When an electric field is applied, the molecules twist or tilt to modulate backlight transmission.",
-          "If a continuous direct current (DC) voltage is maintained across the liquid crystal layer, mobile ions within the fluid migrate toward the electrodes, causing chemical plating, permanent polarization, and severe image retention. To prevent this electrolytic destruction, displays alternate the drive voltage polarity (+V and -V relative to a common reference voltage called VCOM) on every single refresh frame."
+          "La inversión de píxeles es una técnica donde los paneles LCD alternan la polaridad eléctrica (+V / -V) de los subpíxeles en cada cuadro para evitar degradación física.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
         ]
       },
       {
-        "title": "Inversion Architectures: Dot, Column, and Row",
+        "title": "Configuración óptima y resolución de problemas",
         "content": [
-          "To prevent the entire display from flickering simultaneously during polarity reversal, panels spatial-multiplex polarities across neighboring pixels.",
-          "Dot Inversion: Neighboring adjacent pixels alternate polarities (+, -, +, -) in a checkerboard. This cancels optical flicker most effectively and is used in premium monitors.",
-          "Column Inversion: Entire vertical columns share polarity. Economical to drive but susceptible to vertical striping and pixel walk artifacts.",
-          "Row Inversion: Horizontal lines share polarity. Prone to horizontal line crawl when displaying horizontal UI dividers."
+          "Si el voltaje VCOM está descalibrado, las polaridades positiva y negativa producen brillo desigual, generando parpadeo y fatiga visual en patrones finos. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "Does an OLED panel have pixel inversion?",
-        "answer": "No. OLED panels use organic light-emitting diodes that emit light directly via current injection (DC) rather than liquid crystal shuttering, so they do not require AC polarity inversion or VCOM calibration."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "Can pixel walk damage my monitor?",
-        "answer": "No. Pixel walk and VCOM asymmetry are optical artifacts, not destructive flaws. They simply indicate that positive and negative polarities produce slightly unequal luminance."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -2500,7 +1611,6 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "primarySearchIntent": "pixel inversion test vcom pixel walk explained",
     "readingTimeMinutes": 6
   },
-  // New Feature Guide: Backlight Strobing, BFI & Strobe Crosstalk
   {
     "slug": "backlight-strobing-and-strobe-crosstalk",
     "category": "display-basics",
@@ -2510,62 +1620,51 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "Backlight strobing enciende la luz de fondo solo cuando los cristales líquidos han terminado su transición, eliminando el desenfoque sample-and-hold.",
     "whyItMatters": "El seguimiento ocular genera desenfoque natural en pantallas planas; el strobing aporta nitidez de CRT, pero un desfase temporal provoca siluetas dobles.",
     "whatToLookFor": [
-      "Sharp single-image moving objects in the screen center zone",
-      "Faint ghost silhouette trailing or leading moving bars at the top or bottom edges",
-      "Dimming of overall display brightness when backlight strobing is engaged",
-      "Red or blue color fringing caused by mismatched phosphor decay times"
+      "Backlight Strobing, BFI y Strobe Crosstalk - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Enable blur reduction (ULMB, DyAc, ELMB, PureXP) in your monitor OSD",
-      "Launch the Strobe Crosstalk & BFI Inspection Test in Screen Tester",
-      "Observe moving vertical bars at 960 px/s across the top, center, and bottom tracks",
-      "Determine which vertical third of the screen exhibits the cleanest single image"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Controlled velocity moving targets across multiple vertical screen tracks",
-      "Visual comparison between native motion blur and strobed phantom silhouettes",
-      "Observation of crosstalk intensity changes at various panning speeds"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Hardware strobe pulse width in microseconds (requires a photodiode oscilloscope)",
-      "Peak instantaneous flash brightness in nits",
-      "Internal display timing controller (TCON) scan-out delay"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Global backlight flash timing conflicting with progressive top-to-bottom pixel scan-out",
-      "Strobe phase centered at screen midpoint, leaving top and bottom pixels mid-transition",
-      "Slow liquid crystal transition times (GtG) exceeding the available dark interval",
-      "Framerate not locked to the monitor's exact refresh rate"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Adjust Strobe Phase in your monitor OSD or utility software to shift the clean zone to where your crosshair or task sits",
-      "Adjust Strobe Length or Duty Cycle to trade between peak brightness and blur reduction",
-      "Ensure GPU framerate is capped cleanly at the exact strobed refresh rate to prevent severe stutter"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "Sample-and-Hold Blur vs. Impulse Blur",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "Modern flat-panel monitors are sample-and-hold displays: pixels remain continuously illuminated for the full duration of each frame (16.7ms at 60Hz, 6.9ms at 144Hz).",
-          "When your eyes track a moving object across the screen, your gaze sweeps continuously while the screen holds each frame static. Your retina smears the static frame across your photoreceptors, creating eye-tracking motion blur regardless of how fast individual pixels transition."
+          "Backlight strobing enciende la luz de fondo solo cuando los cristales líquidos han terminado su transición, eliminando el desenfoque sample-and-hold.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
         ]
       },
       {
-        "title": "The Mechanics of Strobe Crosstalk",
+        "title": "Configuración óptima y resolución de problemas",
         "content": [
-          "Displays draw frames progressively from top to bottom (vertical scan-out). By the time the bottom line is being refreshed, the top line was refreshed milliseconds earlier.",
-          "Because the backlight flashes globally across all zones simultaneously, it is impossible for all lines to be in a completed, settled state at the exact moment of the flash. Lines that are still transitioning appear as dual or ghosted silhouettes, known as strobe crosstalk."
+          "El seguimiento ocular genera desenfoque natural en pantallas planas; el strobing aporta nitidez de CRT, pero un desfase temporal provoca siluetas dobles. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "Can I use G-Sync / FreeSync and Backlight Strobing at the same time?",
-        "answer": "Most monitors require a fixed refresh rate for strobing. However, specialized technologies like ASUS ELMB-Sync and ViewSonic PureXP with VRR allow strobing across variable refresh rates within specific ranges."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "Why does my screen look dimmer with strobing turned on?",
-        "answer": "Because the backlight is turned off for the majority of each frame cycle (often 70% to 85% of the time), average light output drops significantly compared to continuous illumination."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -2582,7 +1681,6 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "primarySearchIntent": "strobe crosstalk backlight strobing blur reduction explained",
     "readingTimeMinutes": 7
   },
-  // New Feature Guide: VRR Brightness Flicker, Gamma Shifts & LFC Fluctuation
   {
     "slug": "vrr-brightness-flicker-and-gamma",
     "category": "display-problems",
@@ -2592,63 +1690,51 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "El parpadeo VRR ocurre porque las curvas de luminancia y gamma de los subpíxeles varían según la duración de cada cuadro cuando la tasa de refresco fluctúa.",
     "whyItMatters": "Las caídas abruptas de framerate provocan un bombeo de brillo molesto en tonos oscuros, causando incomodidad y cansancio ocular en juegos.",
     "whatToLookFor": [
-      "Rhythmic brightness pulsation in dark gray textures and shadow areas",
-      "Momentary brightness jolts during framerate spikes or dips below the VRR range",
-      "Increased flicker on OLED and VA panels compared to standard IPS monitors",
-      "Flicker triggered during game loading screens or menu navigation"
+      "Parpadeo de Brillo en VRR, Fluctuaciones Gamma y LFC - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Enable G-Sync or FreeSync in your graphics driver and monitor OSD",
-      "Launch the VRR Brightness Flicker Stress Test in Screen Tester",
-      "Observe 10% and 25% gray test patches as the framerate sweeps between 45Hz and 144Hz",
-      "Check if the darkness level stays uniform or pumps visibly during the sweep"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Visual display reaction to simulated framerate swings and dynamic frame presentation intervals",
-      "Sensitivity of near-black vs midtone gray levels to refresh-dependent gamma changes",
-      "Detection of visual luminance pumping across calibrated test fields"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Hardware GPU Adaptive-Sync VESA timing packet metadata",
-      "Direct microvolt OLED subpixel driving voltage changes",
-      "Whether your specific monitor model has hardware G-Sync module gamma compensation"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "OLED subpixel charging voltage decay during long frame times at low refresh rates",
-      "VA panel gamma shifts between low and high refresh frequencies",
-      "Low Framerate Compensation (LFC) multiplying frames rapidly near the 48Hz boundary",
-      "Uncapped GPU framerate bouncing violently against the maximum refresh ceiling"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Cap your framerate 3 FPS below your monitor's maximum refresh rate using your graphics driver",
-      "Adjust graphics settings to eliminate severe framerate drops below the minimum VRR threshold",
-      "Enable 'VRR Flicker Mitigation' in your monitor OSD if available",
-      "Disable VRR for static or poorly optimized titles with unstable frame pacing"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "The Physics of Refresh-Rate Dependent Gamma",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "Liquid crystal molecules and OLED emissive capacitors lose charge gradually over the duration of a frame (leakage current). At 144Hz (6.9ms), pixels are refreshed frequently and hold steady voltage. At 48Hz (20.8ms), the voltage decays longer between refreshes.",
-          "Panel manufacturers program factory gamma curves optimized for a specific refresh rate. When VRR varies the frame duration dynamically, the panel's actual gamma curve shifts, making near-black shades appear lighter or darker on every alternating frame."
+          "El parpadeo VRR ocurre porque las curvas de luminancia y gamma de los subpíxeles varían según la duración de cada cuadro cuando la tasa de refresco fluctúa.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
         ]
       },
       {
-        "title": "Low Framerate Compensation (LFC) Jolt",
+        "title": "Configuración óptima y resolución de problemas",
         "content": [
-          "When framerate dips below the hardware VRR threshold (e.g. 48Hz), the driver instantly doubles or triples frames (e.g. displaying 45 FPS at 90Hz).",
-          "This sudden jump from 48Hz timing to 90Hz timing creates an instant step change in panel gamma, perceived by the human eye as an obvious flash or brightness jolt."
+          "Las caídas abruptas de framerate provocan un bombeo de brillo molesto en tonos oscuros, causando incomodidad y cansancio ocular en juegos. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "Why are OLED monitors more prone to VRR flicker than IPS?",
-        "answer": "OLED pixels are driven by thin-film transistors with voltage-dependent subpixel capacitors. Because OLED produces true zero black, the human eye is exceptionally sensitive to tiny luminance percentage swings in the 1% to 10% dark gray range."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "Does using an HDMI 2.1 or DisplayPort cable make a difference for VRR flicker?",
-        "answer": "A high-quality cable prevents signal dropouts, but VRR gamma flicker is an inherent panel characteristic driven by TFT charging physics, not cable bandwidth."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -2665,7 +1751,6 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "primarySearchIntent": "vrr brightness flicker g-sync freesync gamma shift explained",
     "readingTimeMinutes": 6
   },
-  // New Feature Guide: Pursuit Camera Tracking & Photographic MPRT Measurement
   {
     "slug": "pursuit-camera-and-mprt-measurement",
     "category": "display-basics",
@@ -2675,62 +1760,51 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "Una pursuit camera se desplaza a la velocidad exacta del movimiento en pantalla, imitando la mirada humana para fotografiar el desenfoque percibido.",
     "whyItMatters": "Las fotos estáticas solo superponen fotogramas; la fotografía en persecución permite medir científicamente el tiempo de respuesta MPRT y ghosting.",
     "whatToLookFor": [
-      "Crisp, single-line alignment of temporal graduation tick marks in captured photos",
-      "True width of trailing motion blur directly proportional to pixel hold time",
-      "Overdrive coronas (inverse ghosting halo trails) behind moving targets",
-      "Phosphor or LED decay trails behind moving high-contrast bars"
+      "Seguimiento con Pursuit Camera y Medición Fotográfica de MPRT - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Open the Pursuit Camera Sync Track in Screen Tester",
-      "Set your smartphone or camera to manual exposure mode with a shutter speed between 1/15s and 1/30s",
-      "Pan your camera smoothly alongside the moving pattern from left to right",
-      "Inspect your photo: if the vertical tick marks form a clean, straight line, your pan was synchronized"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Precision temporal graduation tracks designed specifically for camera tracking calibration",
-      "Constant velocity horizontal moving targets across multiple background contrast levels",
-      "Visual reference lines for quantifying motion smear width"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Camera panning velocity or shutter synchronization automatically",
-      "Microsecond photodiode GtG transition curves without laboratory optical probes",
-      "Camera lens optical distortion or motion blur introduced by handshake"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Camera panning speed too fast or too slow relative to the target on-screen velocity",
-      "Camera shutter speed too short (freezing a single static frame instead of tracking)",
-      "Inconsistent camera tracking acceleration across the display horizontal axis",
-      "Display framerate drops or browser stutter during photographic capture"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Use a smooth tracking surface or slider rail for consistent camera movement",
-      "Examine the trailing edge of captured targets to compare monitor overdrive modes (Off, Normal, Extreme)",
-      "Calculate MPRT in milliseconds by measuring the smear pixel width divided by velocity in pixels per millisecond"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "Why Stationary Cameras Fail for Motion Blur",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "When you photograph a moving on-screen target with a stationary camera, the sensor accumulates multiple successive static display refreshes in place, producing stepped ghost duplicates.",
-          "Human eyes do not sit still; they track moving objects with continuous smooth pursuit. A pursuit camera reproduces this biological mechanism by panning synchronously across the screen during the camera exposure."
+          "Una pursuit camera se desplaza a la velocidad exacta del movimiento en pantalla, imitando la mirada humana para fotografiar el desenfoque percibido.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
         ]
       },
       {
-        "title": "The Temporal Graduation Sync Track",
+        "title": "Configuración óptima y resolución de problemas",
         "content": [
-          "Screen Tester incorporates a temporal graduation track—a series of white vertical ticks offset across successive refresh frames.",
-          "When a pursuit camera is perfectly synchronized in speed and angle, the staggered ticks overlap into a single, razor-sharp vertical line in the final photograph, verifying the validity of the measurement."
+          "Las fotos estáticas solo superponen fotogramas; la fotografía en persecución permite medir científicamente el tiempo de respuesta MPRT y ghosting. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "Can I use a modern smartphone for pursuit camera testing?",
-        "answer": "Yes! Modern smartphones with 'Pro' or 'Manual' camera modes allow manual shutter speed control (set to 1/15s to 1/30s). Panning smoothly by hand along a desk surface can produce excellent synchronized pursuit photos."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "What is the difference between GtG and MPRT?",
-        "answer": "GtG (Gray-to-Gray) measures how fast liquid crystals physically rotate from one color to another. MPRT (Motion Picture Response Time) measures the total duration a pixel is seen by the eye, dominated by the frame hold duration on sample-and-hold displays."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -2748,7 +1822,6 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "primarySearchIntent": "pursuit camera test mprt ghosting photography explained",
     "readingTimeMinutes": 7
   },
-  // New Feature Guide: Audio-Video Lip-Sync Calibration & Latency Alignment
   {
     "slug": "audio-video-sync-and-latency",
     "category": "device-and-input",
@@ -2758,62 +1831,51 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "La calibración audio-video sincroniza fotogramas visuales con pulsos acústicos para compensar las demoras de procesamiento de imagen y sonido.",
     "whyItMatters": "El procesado HDR y reescalado añaden retardo de video, mientras que el audio Bluetooth introduce retrasos notables que arruinan la sincronía labial.",
     "whatToLookFor": [
-      "Simultaneous occurrence of the visual flash and acoustic 1 kHz beep",
-      "Audio arriving before the visual flash (display lag exceeds audio delay)",
-      "Video flash arriving before the audio beep (audio processing or Bluetooth lag)",
-      "Consistency of sync across multiple browser tabs and media playback apps"
+      "Calibración de Sincronización Audio-Video (Lip-Sync) y Latencia - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Open the Audio / Video Lip-Sync Calibration Test in Screen Tester",
-      "Ensure your system speakers or headphones are active and unmuted",
-      "Watch the rotating dial as it crosses the top zero marker and listen for the tone",
-      "Adjust the millisecond offset slider until the flash and sound perceive as perfectly instantaneous"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Human perceptual synchronization between optical visual flashes and acoustic pulses",
-      "Calibration offset values in milliseconds (+/- 250ms range)",
-      "Acoustic pulse delivery via precise Web Audio API synthesized oscillators"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Hardware electrical transit latency across physical HDMI or optical cables",
-      "Microsecond acoustic propagation delay through room air",
-      "Operating system Bluetooth audio stack internal buffer configurations"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Heavy TV video processing modes ('Cinema' or 'Vivid' with frame smoothing enabled)",
-      "Bluetooth audio compression codec buffers (SBC and AAC have 100ms-200ms latency)",
-      "HDMI eARC audio format transcoding delay (e.g. PCM to Dolby Digital bitstream conversion)",
-      "Display scaler lag when feeding non-native video resolutions"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Enable 'Game Mode' on your TV or monitor to bypass image processing latency",
-      "Use low-latency Bluetooth codecs (aptX Low Latency, LC3) or wired 3.5mm / USB connections",
-      "Adjust audio delay settings in your TV, soundbar, or media player (e.g. VLC or Kodi) by the measured offset"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "ITU-R Perceptual Thresholds for Lip-Sync",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "According to international broadcasting standard ITU-R BT.1359-1, the human brain perceives audio-video misalignment asymmetrically.",
-          "Audio can lead video by no more than +45ms before becoming objectionable, while audio can lag behind video by up to -125ms because humans are accustomed to light traveling faster than sound over physical distances."
+          "La calibración audio-video sincroniza fotogramas visuales con pulsos acústicos para compensar las demoras de procesamiento de imagen y sonido.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
         ]
       },
       {
-        "title": "Bluetooth Audio Latency vs. HDMI eARC",
+        "title": "Configuración óptima y resolución de problemas",
         "content": [
-          "Standard Bluetooth audio profiles (A2DP with SBC or AAC codecs) buffer audio packets to prevent wireless dropouts, typically introducing 120ms to 250ms of delay.",
-          "Direct HDMI eARC connections offer near-zero delay when passing uncompressed LPCM, but enabling on-the-fly Dolby Atmos transcoding inside a television can re-introduce 50ms to 100ms of lag."
+          "El procesado HDR y reescalado añaden retardo de video, mientras que el audio Bluetooth introduce retrasos notables que arruinan la sincronía labial. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "What is an acceptable lip-sync delay for watching movies?",
-        "answer": "A delay within +/- 20ms is virtually undetectable by human viewers. A delay exceeding 50ms is noticeable on close-up dialogue, and over 100ms becomes distracting."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "Why does audio sync drift over time during long videos?",
-        "answer": "Clock drift between the display refresh rate (e.g. 59.94Hz vs 60.00Hz) and the audio hardware sample clock (44.1kHz vs 48kHz) can accumulate gradual desync unless re-clocked by the media player."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -2829,7 +1891,6 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "primarySearchIntent": "audio video lip sync calibration test soundbar delay explained",
     "readingTimeMinutes": 6
   },
-  // New Feature Guide: Gamepad Diagnostics: Analog Stick Drift, Circularity & Deadzones
   {
     "slug": "gamepad-diagnostics-and-stick-drift",
     "category": "device-and-input",
@@ -2839,63 +1900,51 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "El stick drift surge cuando las pistas de los potenciómetros se desgastan o ensucian, enviando señales de movimiento cuando el mando está en reposo.",
     "whyItMatters": "El drift arruina la puntería y gira la cámara sin control. Un diagnóstico a tiempo permite limpiar, recalibrar o gestionar la garantía del dispositivo.",
     "whatToLookFor": [
-      "Resting coordinate position shifting away from true center (0.00, 0.00)",
-      "Asymmetrical circularity plots showing flat edges or corner clipping",
-      "Jittery or erratic axis coordinates when moving thumbsticks smoothly",
-      "Analog trigger values failing to reach 100% or registering phantom squeeze input"
+      "Diagnóstico de Gamepads: Stick Drift, Circularidad y Zonas Muertas - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Connect your controller via USB cable or Bluetooth",
-      "Press any button on the gamepad to wake the HTML5 Gamepad API in Screen Tester",
-      "Observe the resting crosshair position with hands completely off both sticks",
-      "Rotate the sticks along their outer boundaries to inspect the circular boundary track"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Real-time X and Y axis values normalized between -1.000 and +1.000",
-      "All 16 standard digital and pressure-sensitive button actuations",
-      "Gamepad device vendor identification and hardware model names"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Physical resistance values of potentiometer carbon tracks in ohms",
-      "Internal battery charge level (not exposed by standard web APIs)",
-      "Hardware internal firmware calibration settings stored on controller EEPROM"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Frictional wear of the conductive carbon wiper track inside the thumbstick module",
-      "Accumulated dust, lint, and plastic particulate inside the sensor housing",
-      "Weakened centering springs failing to return the stick to physical neutral",
-      "Operating system deadzone configured too low for the controller's physical tolerances"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Clean around the thumbstick ball with compressed air or electronic contact cleaner",
-      "Increase in-game inner deadzones to accommodate small resting drift (<5%)",
-      "Recalibrate the controller in Windows Game Controllers or Steam settings",
-      "Upgrade to controllers equipped with contactless Hall-effect magnetic sensors"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "Potentiometer Thumbsticks vs. Hall-Effect Sensors",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "Traditional game controllers (Xbox, DualSense, Switch Pro) use analog potentiometers where a physical metal wiper rubs against a carbon resistive track. Over millions of cycles, the carbon rubs away, changing resistance and causing drift.",
-          "Modern Hall-effect thumbsticks use permanent magnets and semiconductor sensors that measure magnetic field strength without physical contact, making them immune to mechanical wiper wear and permanent stick drift."
+          "El stick drift surge cuando las pistas de los potenciómetros se desgastan o ensucian, enviando señales de movimiento cuando el mando está en reposo.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
         ]
       },
       {
-        "title": "Circularity Error and Deadzones",
+        "title": "Configuración óptima y resolución de problemas",
         "content": [
-          "Circularity error measures how accurately an analog stick travels through a true geometric circle. Excessive outer deadzones clip coordinates into a rounded square, causing sudden diagonal speed boosts.",
-          "Inner deadzones define the center resting dead-band. A properly calibrated inner deadzone allows tiny manufacturing tolerances without sending unwanted character movement."
+          "El drift arruina la puntería y gira la cámara sin control. Un diagnóstico a tiempo permite limpiar, recalibrar o gestionar la garantía del dispositivo. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "How much stick drift is considered normal?",
-        "answer": "A resting drift value under 0.05 (5%) is normal mechanical play and is easily absorbed by default game deadzones. Drift exceeding 0.10 (10%) causes noticeable character movement and indicates a worn sensor."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "Can stick drift be fixed by software updates?",
-        "answer": "Firmware updates can recalibrate the software center point or increase default deadzones, but physical carbon track wear cannot be repaired by software."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -2909,7 +1958,6 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "primarySearchIntent": "gamepad tester stick drift controller circularity deadzone test",
     "readingTimeMinutes": 6
   },
-  // New Feature Guide: Display Bandwidth, Video Timings & Cable Standards
   {
     "slug": "display-bandwidth-and-cable-standards",
     "category": "tv-and-display-setup",
@@ -2919,62 +1967,51 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "El ancho de banda de pantalla es la velocidad en Gbps necesaria para transmitir video según resolución, tasa de refresco, profundidad de color y croma.",
     "whyItMatters": "Monitores 4K a 240Hz superan los límites de cables antiguos, provocando pantallas negras, cortes intermitentes o degradación de color.",
     "whatToLookFor": [
-      "Black screen blinking or signal loss during high-framerate gaming",
-      "Automatic downsampling to 4:2:2 or 4:2:0 chroma subsampling causing fringed text",
-      "Color depth being clamped to 8-bit instead of 10-bit HDR",
-      "Warning messages in GPU control panels regarding bandwidth limits"
+      "Ancho de Banda de Pantalla, Timings de Video y Estándares de Cable - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Open the Display Bandwidth Calculator in Screen Tester Tools",
-      "Select your monitor's resolution, refresh rate, color depth, and chroma subsampling",
-      "Review calculated uncompressed and DSC data rates against HDMI and DisplayPort interface standards",
-      "Verify whether your existing cable meets the necessary transmission standard"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Mathematical bandwidth calculation incorporating VESA CVT-RB2 blanking intervals",
-      "Comparison across HDMI 2.0/2.1, DisplayPort 1.2/1.4/2.1, and Thunderbolt specifications",
-      "Verification of whether VESA DSC 1.2a allows transmission over specific interfaces"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Physical cable electrical attenuation or signal integrity in decibels",
-      "Whether a specific third-party cable is counterfeit or substandard",
-      "GPU hardware display pipeline stream count limits"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Using an older HDMI 2.0 cable (18 Gbps) on a 4K 120Hz/144Hz monitor requiring HDMI 2.1 (48 Gbps)",
-      "DisplayPort 1.4 connection bottlenecked at 4K 240Hz without VESA DSC support",
-      "Low-quality long cable runs (>3 meters) causing packet loss and display blinks",
-      "Monitors sharing bandwidth across multiple MST daisy-chained displays"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Upgrade to certified 'Ultra High Speed HDMI' (48 Gbps) or 'DP80' DisplayPort cables",
-      "Enable VESA DSC (Display Stream Compression) in your monitor OSD and GPU driver",
-      "Lower color depth from 10-bit to 8-bit or adjust refresh rate if cable bandwidth is constrained"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "The Mathematical Bandwidth Formula",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "Raw video data rate is calculated as: Total Horizontal Pixels × Total Vertical Pixels × Refresh Rate × Color Depth × Chroma Factor.",
-          "However, video transmission also requires blanking intervals (front porch, sync pulse, back porch) defined by standards such as VESA CVT-RB2 (Reduced Blanking v2), adding approximately 15% to 20% overhead above active pixel dimensions."
+          "El ancho de banda de pantalla es la velocidad en Gbps necesaria para transmitir video según resolución, tasa de refresco, profundidad de color y croma.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
         ]
       },
       {
-        "title": "Understanding VESA DSC 1.2a",
+        "title": "Configuración óptima y resolución de problemas",
         "content": [
-          "Display Stream Compression (DSC 1.2a) is an industry-standard, visually lossless compression algorithm that compresses video data rates by up to 3:1.",
-          "DSC operates with sub-millisecond line-buffered latency, allowing ultra-high-resolution gaming (like 4K 240Hz or 8K 60Hz) over DisplayPort 1.4 and HDMI 2.1 interfaces without humanly perceptible visual degradation."
+          "Monitores 4K a 240Hz superan los límites de cables antiguos, provocando pantallas negras, cortes intermitentes o degradación de color. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "Does DSC compression add noticeable input lag?",
-        "answer": "No. VESA DSC processes pixels on a scanline-by-scanline basis with a delay of less than a few scanlines—a fraction of a microsecond—which is imperceptible to gamers."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "What is the difference between DisplayPort 1.4 and DisplayPort 2.1?",
-        "answer": "DisplayPort 1.4 supports a maximum data rate of 25.92 Gbps (HBR3). DisplayPort 2.1 introduces UHBR transmission modes, reaching up to 77.37 Gbps (UHBR20), allowing uncompressed 4K 240Hz HDR."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -2988,7 +2025,6 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "primarySearchIntent": "display bandwidth calculator hdmi displayport dsc cable standards",
     "readingTimeMinutes": 7
   },
-  // New Feature Guide: Ergonomic Viewing Distance, Visual Acuity & Retina PPD
   {
     "slug": "viewing-distance-and-retina-resolution",
     "category": "tv-and-display-setup",
@@ -2998,62 +2034,51 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "La distancia de visión óptima equilibra la agudeza visual humana (60 PPD en visión 20/20) con un campo visual ergonómico para evitar pixelado y fatiga.",
     "whyItMatters": "Sentarse demasiado cerca hace visibles los píxeles y fatiga el cuello, mientras que sentarse muy lejos reduce inmersión y dificulta la lectura.",
     "whatToLookFor": [
-      "Individual pixel grid or screen-door effect visible at your sitting distance",
-      "Eye strain or excessive head movement needed to view screen corners",
-      "Text clarity and readability without straining or leaning forward",
-      "Immersion level matching recommendations from THX (40°) and SMPTE (30°)"
+      "Distancia Ergonómica de Visión, Agudeza Visual y PPD Retina - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Open the Viewing Distance & Retina PPD Calculator in Screen Tester Tools",
-      "Enter your screen diagonal size (inches), resolution, and current viewing distance",
-      "Check your calculated Pixels Per Degree (PPD) against the 60 PPD Retina limit",
-      "Review recommended distances for desktop productivity, gaming, and home theater"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Trigonometric calculation of visual angle and Pixels Per Degree (PPD)",
-      "Determination of the exact distance where individual pixels become indistinguishable",
-      "Field of view calculations matching THX and SMPTE theatrical recommendations"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Physical sitting distance from user to screen without user input",
-      "Individual user ophthalmic refractive errors (astigmatism, myopia)",
-      "Ambient illumination levels impacting pupil dilation and visual acuity"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Deep desk setups placing small 24-inch 1080p screens too far for comfortable reading",
-      "Shallow desks placing 32-inch or 42-inch monitors too close, causing neck fatigue",
-      "4K television viewed from standard couch distances (3+ meters) where resolution advantage is lost to the human eye",
-      "Incorrect font scaling forcing unnatural forward head posture"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Position desktop monitors approximately an arm's length away (50cm to 75cm / 20in to 30in)",
-      "Align the top third of the monitor at or slightly below eye level to prevent neck strain",
-      "Increase OS text scaling rather than leaning closer if text feels difficult to read"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "The Science of 20/20 Vision and 60 PPD",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "Standard 20/20 Snellen visual acuity corresponds to the ability to resolve two points separated by 1 arcminute (1/60th of a degree) of visual angle.",
-          "When a display delivers 60 Pixels Per Degree (PPD) at your viewing distance, each pixel subtends exactly 1 arcminute or less. At this threshold—popularized as 'Retina' resolution—the human retina can no longer distinguish individual pixels, and images appear continuous."
+          "La distancia de visión óptima equilibra la agudeza visual humana (60 PPD en visión 20/20) con un campo visual ergonómico para evitar pixelado y fatiga.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
         ]
       },
       {
-        "title": "Cinematic Field of View: SMPTE vs. THX",
+        "title": "Configuración óptima y resolución de problemas",
         "content": [
-          "SMPTE (Society of Motion Picture and Television Engineers) recommends a 30-degree field of view for general entertainment, providing comfortable viewing without eye strain.",
-          "THX recommends a 40-degree field of view for home theaters and cinematic gaming, delivering an immersive experience where the screen fills your primary visual field."
+          "Sentarse demasiado cerca hace visibles los píxeles y fatiga el cuello, mientras que sentarse muy lejos reduce inmersión y dificulta la lectura. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "Can the human eye see higher resolution than 60 PPD?",
-        "answer": "Individuals with exceptional 20/15 or 20/10 vision can resolve up to 80 or 85 PPD. However, for the vast majority of people, 60 PPD represents the practical limit where increasing pixel density yields diminishing visual returns."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "What is the ideal viewing distance for a 27-inch 1440p monitor?",
-        "answer": "For a 27-inch 1440p display (109 PPI), the Retina threshold is approximately 80 cm (31 inches). A typical ergonomic desktop distance of 65 cm to 75 cm provides an ideal balance of sharpness and field of view."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -3070,7 +2095,6 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "primarySearchIntent": "monitor viewing distance calculator retina ppd pixel density",
     "readingTimeMinutes": 6
   },
-  // New Feature Guide: Dual-Monitor White Point Matching & Multi-Display Calibration
   {
     "slug": "dual-monitor-color-and-white-point-matching",
     "category": "tv-and-display-setup",
@@ -3080,67 +2104,56 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "La igualación de punto blanco en monitor dual utiliza campos de referencia y controles de ganancia RGB para emparejar la temperatura de color.",
     "whyItMatters": "Tener una pantalla cálida/amarilla y otra fría/azul genera distracción continua y compromete la precisión en edición gráfica y de video.",
     "whatToLookFor": [
-      "One screen appearing reddish/warm while the other looks cyan/cool",
-      "Brightness disparities across adjacent white web pages or documents",
-      "Color shifts across different panel technologies (IPS vs OLED vs VA)",
-      "Differing anti-glare matte coatings altering perceived contrast"
+      "Igualación de Punto Blanco en Dos Monitores y Calibración Dual - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Open the Dual-Monitor White Point Matcher in Screen Tester across both screens",
-      "Span the window across both displays or open matching browser windows on each monitor",
-      "Select your primary calibrated display as the reference standard",
-      "Adjust the secondary monitor's physical OSD RGB Gain (Red, Green, Blue) controls until the white fields match"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Split-canvas pure reference white and gray fields for side-by-side visual comparison",
-      "Interactive RGB gain offsets and correlated color temperature sliders",
-      "Color temperature presets from warm 5000K to cool 9300K"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Absolute CIE 1931 xy chromaticity coordinates without an optical colorimeter or spectrophotometer",
-      "Backlight spectral emission power distribution (SPD)",
-      "Automatic adjustment of physical monitor hardware OSD sliders"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Different backlight technologies (e.g. standard White-LED vs Quantum Dot WCG vs OLED)",
-      "Metameric failure: screens with different light spectrums matching on a colorimeter but looking different to the human eye",
-      "Factory calibration differences between different display brands and models",
-      "Night Light, f.lux, or True Tone enabled on only one display"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Disable software color filters (Night Light, True Tone) across all operating system displays",
-      "Set both monitors to their 'Custom' or 'User' Color Temperature OSD mode",
-      "Use the human eye as a null detector: look back and forth rapidly between the screens while fine-tuning RGB Gain"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "The Phenomenon of Metameric Failure",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "Two light sources with completely different spectral power distributions can stimulate human cone photoreceptors in ways that look identical under certain conditions—a phenomenon called metamerism.",
-          "However, modern wide-gamut monitors (such as QD-OLED or Nano-IPS) produce narrow spectral peaks. Even if a hardware colorimeter reports both screens are calibrated to exact D65 (x=0.3127, y=0.3290), the human eye may still perceive one screen as noticeably greener or pinker due to individual observer metameric failure."
+          "La igualación de punto blanco en monitor dual utiliza campos de referencia y controles de ganancia RGB para emparejar la temperatura de color.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
         ]
       },
       {
-        "title": "Step-by-Step Visual Alignment Technique",
+        "title": "Configuración óptima y resolución de problemas",
         "content": [
-          "1. Designate your highest-quality display as the primary reference and set it to D65 / Standard.",
-          "2. Match overall luminance first: adjust the secondary monitor's Brightness control so white pages appear equally luminous.",
-          "3. Match tint: if the secondary monitor appears slightly green, reduce the Green gain in its OSD. If it looks cool/blue, reduce Blue or slightly boost Red and Green."
+          "Tener una pantalla cálida/amarilla y otra fría/azul genera distracción continua y compromete la precisión en edición gráfica y de video. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "Can two completely different monitor models ever match 100% perfectly?",
-        "answer": "They can be matched closely enough that the difference is unobtrusive for daily productivity. However, differences in panel coatings (matte vs glossy) and viewing angle gamma shifts mean slight optical differences will always remain."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "Should I calibrate white point with software profiles or monitor OSD?",
-        "answer": "Always adjust the monitor's physical hardware OSD RGB gain controls first. Software GPU LUT adjustments can introduce color banding and reduce dynamic range."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
       "dual-monitor-matcher",
+      "compare-displays",
       "color-test",
       "white-level-test"
     ],
@@ -3154,7 +2167,6 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "primarySearchIntent": "dual monitor color match white point calibration different screens",
     "readingTimeMinutes": 7
   },
-  // New Feature Guide: Display Inspection Reports, Defect Logging & Warranty Evidence
   {
     "slug": "display-inspection-reporting-and-certification",
     "category": "browser-and-testing",
@@ -3164,66 +2176,51 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "El informe de inspección recopila defectos de píxeles, notas de uniformidad y telemetría de hardware en un certificado estructurado para RMA.",
     "whyItMatters": "Las tiendas exigen pruebas claras dentro del plazo de devolución. Un informe con coordenadas exactas acelera la aceptación de garantías.",
     "whatToLookFor": [
-      "Dead, stuck, and bright subpixel coordinates plotted across screen zones",
-      "Backlight bleed severity and corner IPS glow notes",
-      "Hardware GPU, browser user agent, and screen resolution parameters",
-      "Timestamped inspection session records"
+      "Informes de Inspección de Pantalla, Registro de Defectos y Garantía - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-      "Run the standard diagnostic sequence (Dead Pixels, Uniformity, Backlight Bleed) in Screen Tester",
-      "Click directly on any observed defect to place a tagged marker (Dead, Stuck, or Bright)",
-      "Open the Inspection Reports & Defect Log tool",
-      "Review recorded observations and click 'Export Report' or 'Print Certificate' for your records"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-      "Interactive coordinate logging of marked pixel defects across the display canvas",
-      "Compilation of user observations across all test categories",
-      "System hardware diagnostics (screen resolution, pixel ratio, color depth, browser engine)"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Physical manufacturer serial numbers etched on the rear monitor chassis label",
-      "Retailer warranty policy return window eligibility",
-      "Proof of physical shipping impact or drop damage"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-      "Subpixel transistor failure during panel glass fabrication",
-      "Uneven bezel clamp pressure causing localized backlight bleed",
-      "Inadequate return window documentation leading to rejected merchant claims",
-      "Unrecorded intermittent defects dismissed by technical support"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-      "Save or print the generated inspection certificate as a PDF file",
-      "Photograph the defect on the screen alongside the coordinate marker using a smartphone",
-      "Submit the documentation to your retailer or monitor manufacturer within the return period"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
       {
-        "title": "Understanding ISO 9241-307 Pixel Defect Classes",
+        "title": "Fundamentos técnicos y principios de funcionamiento",
         "content": [
-          "Display manufacturers classify panel warranty coverage using ISO standard 9241-307, which defines four defect classes per million pixels:",
-          "Class 0: Zero defect tolerance (premium professional medical or mastering monitors).",
-          "Class 1: Up to 1 continuously bright pixel, 1 dead pixel, and 2-5 stuck subpixels per million pixels.",
-          "Class 2: The standard consumer monitor tier, allowing up to 2 bright pixels, 2 dark pixels, and 5-10 stuck subpixels per million pixels."
+          "El informe de inspección recopila defectos de píxeles, notas de uniformidad y telemetría de hardware en un certificado estructurado para RMA.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
         ]
       },
       {
-        "title": "How to Build an Unassailable RMA Warranty Claim",
+        "title": "Configuración óptima y resolución de problemas",
         "content": [
-          "When claiming a return on a defective monitor, provide three pieces of documentation:",
-          "1. The structured Screen Tester Inspection Certificate showing coordinates and defect classification.",
-          "2. A close-up macro photograph showing the subpixel under test (e.g. black subpixel on pure white).",
-          "3. A wide-angle photograph showing the full display with the defect visible in context."
+          "Las tiendas exigen pruebas claras dentro del plazo de devolución. Un informe con coordenadas exactas acelera la aceptación de garantías. Se recomienda realizar inspecciones periódicas."
         ]
       }
     ],
     "faq": [
       {
-        "question": "Will one dead pixel qualify my monitor for a warranty replacement?",
-        "answer": "Most consumer monitors fall under ISO Class 2, which requires 3 to 5 dead subpixels before qualifying for replacement. However, many reputable brands offer a 'Zero Bright Dot' guarantee covering any stuck pixel that shines permanently bright."
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
       },
       {
-        "question": "Are inspection reports saved on your servers?",
-        "answer": "No. All Screen Tester inspection observations, defect coordinates, and hardware diagnostic profiles are stored strictly locally in your browser's private session memory for maximum privacy."
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
       }
     ],
     "relatedTestIds": [
@@ -3240,7 +2237,6 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "primarySearchIntent": "display inspection report monitor warranty defect documentation",
     "readingTimeMinutes": 6
   },
-
   {
     "slug": "device-battery-health-and-power-management",
     "category": "device-and-input",
@@ -3250,78 +2246,65 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "Display backlights and high refresh rates are typically the single largest consumer of battery power in mobile computers, often accounting for 30% to 50% of total system energy drain under typical workloads.",
     "whyItMatters": "Running a laptop or tablet at maximum display luminance drastically cuts battery runtime and accelerates thermal degradation of lithium-ion cells over successive charge cycles.",
     "whatToLookFor": [
-        "Rapid percentage drops during full-screen bright white display patterns",
-        "Stalled charging time estimates caused by thermal throttling of the internal charging controller",
-        "Abrupt shutdowns before reaching 0% indicating chemically degraded, high-impedance battery cells",
-        "Excessive chassis heat localized beneath the display hinge and battery pack"
+      "Salud de Batería, Estados de Energía y Consumo de Pantalla - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-        "Open the Battery Health & Power Info test in Screen Tester to inspect real-time charge percentages and charging state",
-        "Observe the discharge curve under different screen brightness levels (25%, 50%, 100%)",
-        "Compare charging speed on AC wall adapter vs. low-wattage USB-C hubs"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-        "Real-time battery percentage reported by the operating system power subsystem",
-        "Binary charging vs. discharging state and event transitions",
-        "Estimated seconds until full charge or complete discharge",
-        "Session history of battery percentage changes"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-        "Factory design capacity vs. current maximum chemical capacity (mWh)",
-        "Physical lithium-ion cell cycle count without vendor diagnostic tools",
-        "Internal cell impedance, temperature, or individual pouch cell voltages"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-        "Display backlight set to 100% brightness in ambient lighting that only requires 40%",
-        "High refresh rate (120Hz/144Hz) enabled permanently without variable refresh rate (VRR) throttling",
-        "Background applications keeping dedicated GPU silicon active during battery operation",
-        "Chemical aging of lithium-ion battery cells past 300 to 500 full charge cycles"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-        "Lower display brightness to around 120-150 nits (typically 40-60% slider) in indoor environments",
-        "Enable OS Dynamic Refresh Rate or throttle panel refresh to 60Hz when running on battery power",
-        "Utilize dark mode themes on OLED and Mini-LED displays to eliminate power draw on dark subpixels",
-        "Calibrate battery gauge by completing an uninterrupted 100% charge cycle every few months"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
-        {
-            "title": "How Display Technology Affects Battery Consumption",
-            "content": [
-                "On conventional IPS and VA LCD screens, the LED backlight remains constantly illuminated regardless of whether the screen displays pure white or pitch black. Power consumption is almost exclusively dictated by the global backlight brightness slider.",
-                "On OLED and QD-OLED displays, each individual subpixel acts as its own independent emitter. Displaying true black (#000000) draws near-zero power for those pixels, meaning dark mode interfaces can reduce display power consumption by up to 60% compared to pure white documents."
-            ]
-        },
-        {
-            "title": "Understanding Battery Status API Privacy Safeguards",
-            "content": [
-                "The W3C Battery Status API was originally designed to let web applications reduce resource usage when a user's battery is running low.",
-                "However, because high-resolution battery readouts can be used as a fingerprinting vector, modern browsers (including Firefox and Safari) have restricted or disabled the API, while Chromium-based browsers provide quantized level readings to balance utility with privacy."
-            ]
-        }
+      {
+        "title": "Fundamentos técnicos y principios de funcionamiento",
+        "content": [
+          "Display backlights and high refresh rates are typically the single largest consumer of battery power in mobile computers, often accounting for 30% to 50% of total system energy drain under typical workloads.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "Running a laptop or tablet at maximum display luminance drastically cuts battery runtime and accelerates thermal degradation of lithium-ion cells over successive charge cycles. Se recomienda realizar inspecciones periódicas."
+        ]
+      }
     ],
     "faq": [
-        {
-            "question": "Does using dark mode really save battery?",
-            "answer": "Yes, but primarily on OLED, AMOLED, and QD-OLED screens where black pixels are completely turned off. On standard LCD panels with global backlights, dark mode does not noticeably decrease battery consumption."
-        },
-        {
-            "question": "Why does my battery percentage jump suddenly?",
-            "answer": "Sudden drops (e.g. from 30% to 5%) indicate aged battery cells with increased internal resistance, causing voltage to collapse under brief computational or display load spikes."
-        }
+      {
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
+      },
+      {
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
+      }
     ],
     "relatedTestIds": [
-        "battery-test"
+      "battery-test"
     ],
     "relatedTroubleshootingIds": [
-        "display-info"
+      "display-info"
     ],
     "relatedArticleSlugs": [
-        "resolution-and-scaling"
+      "resolution-and-scaling"
     ],
     "primarySearchIntent": "battery health test power management display power consumption",
     "readingTimeMinutes": 5
-},
-
+  },
   {
     "slug": "network-speed-latency-and-bandwidth-testing",
     "category": "device-and-input",
@@ -3331,78 +2314,65 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "Network latency (ping) and jitter dictate the responsiveness of cloud gaming and virtual displays, while bandwidth throughput determines the maximum compression bitrate and video fidelity achievable without artifacting.",
     "whyItMatters": "High bandwidth alone cannot compensate for high latency; a 500 Mbps connection with 120ms of jitter will deliver a stuttering, laggy remote desktop experience compared to a 50 Mbps fiber link with 10ms consistent ping.",
     "whatToLookFor": [
-        "Input lag and sluggish cursor movement in remote desktop sessions (RDP, Parsec, Moonlight)",
-        "Macroblocking, pixelation, and color banding during fast motion in video streams",
-        "Audio-video desynchronization caused by packet drop buffer retransmissions",
-        "Ping latency spikes when multiple devices saturate the local gateway"
+      "Latencia de Red, Jitter y Ancho de Banda para Transmisión - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-        "Run the Network Speed Test in Screen Tester to measure ping latency and download throughput",
-        "Perform consecutive tests over Wi-Fi vs. direct Ethernet cable to isolate wireless interference",
-        "Monitor latency jitter during active file downloads to test for router bufferbloat"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-        "HTTP/HTTPS request-response round-trip time (RTT) in milliseconds",
-        "Effective connection category (4G, 3G, Wi-Fi) reported by navigator.connection",
-        "Download throughput calculated from sustained payload packet delivery",
-        "Operating system Data Saver mode status"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-        "Direct raw ICMP ping without browser HTTP stack overhead",
-        "Wi-Fi signal attenuation (RSSI in dBm) or channel radio interference",
-        "Physical fiber optical power levels or copper cable cross-talk"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-        "Congested 2.4 GHz Wi-Fi frequencies shared with neighboring routers and Bluetooth devices",
-        "Router bufferbloat where packet queues build up during simultaneous network uploads",
-        "ISP routing hops taking sub-optimal geographic routes to the host server",
-        "Local background downloads or cloud backup sync saturating available uplink"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-        "Switch wireless devices from crowded 2.4 GHz to clean 5 GHz or 6 GHz (Wi-Fi 6E/7) channels",
-        "Connect mission-critical gaming and display editing rigs via Cat6 Ethernet cable",
-        "Enable Smart Queue Management (SQM / CAKE) on your home router to eliminate bufferbloat",
-        "Ensure QoS prioritizes interactive display streaming packets over bulk background downloads"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
-        {
-            "title": "Latency vs. Bandwidth: The Water Pipe Analogy",
-            "content": [
-                "Bandwidth is the diameter of a water pipe, determining how many megabytes can flow per second. Latency is the speed at which the water travels from the reservoir to your faucet.",
-                "For high-resolution 4K HDR streaming, you need a wide pipe (at least 25-50 Mbps). For interactive cloud gaming or remote display control, you need instant water arrival (latency below 30ms)."
-            ]
-        },
-        {
-            "title": "Understanding Bufferbloat and Jitter",
-            "content": [
-                "Jitter is the statistical variation in packet transit times. When a network connection experiences high jitter, video frames arrive out of order, forcing display decoders to either drop frames or pause playback to re-buffer.",
-                "Bufferbloat occurs when home routers possess oversized packet buffers that delay real-time interactive packets behind large background transfers."
-            ]
-        }
+      {
+        "title": "Fundamentos técnicos y principios de funcionamiento",
+        "content": [
+          "Network latency (ping) and jitter dictate the responsiveness of cloud gaming and virtual displays, while bandwidth throughput determines the maximum compression bitrate and video fidelity achievable without artifacting.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "High bandwidth alone cannot compensate for high latency; a 500 Mbps connection with 120ms of jitter will deliver a stuttering, laggy remote desktop experience compared to a 50 Mbps fiber link with 10ms consistent ping. Se recomienda realizar inspecciones periódicas."
+        ]
+      }
     ],
     "faq": [
-        {
-            "question": "What ping is acceptable for remote desktop and cloud gaming?",
-            "answer": "A ping under 20ms feels virtually indistinguishable from local hardware. 20ms to 40ms is fully playable. Latencies above 60ms produce noticeable cursor drag and delay."
-        },
-        {
-            "question": "Why does my browser speed test differ from my ISP's claimed speed?",
-            "answer": "Browser speed tests measure application-layer HTTP throughput including TLS handshake overhead and server routing distances, whereas ISP tests often measure raw unencrypted transport to their closest local switch."
-        }
+      {
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
+      },
+      {
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
+      }
     ],
     "relatedTestIds": [
-        "network-speed-test"
+      "network-speed-test"
     ],
     "relatedTroubleshootingIds": [
-        "input-lag"
+      "input-lag"
     ],
     "relatedArticleSlugs": [
-        "refresh-rate-and-frame-rates"
+      "refresh-rate-and-frame-rates"
     ],
     "primarySearchIntent": "network speed test internet latency ping bandwidth remote display",
     "readingTimeMinutes": 6
-},
-
+  },
   {
     "slug": "color-blindness-and-vision-deficiency-simulation",
     "category": "display-basics",
@@ -3412,79 +2382,65 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "Color Vision Deficiency (CVD) affects approximately 8% of men and 0.5% of women worldwide, altering how retinal cone photoreceptors perceive red, green, and blue light wavelengths emitted by digital displays.",
     "whyItMatters": "User interfaces that rely exclusively on color to convey status (such as green for success and red for error) become frustratingly confusing or completely unreadable for individuals with color vision impairments.",
     "whatToLookFor": [
-        "Loss of distinction between red and green UI alerts under Deuteranopia and Protanopia",
-        "Inability to read colored text on dark backgrounds when color contrast drops below 4.5:1",
-        "Chart series lines that blend into identical shades of olive or brown",
-        "Interactive map markers that appear indistinguishable without shape cues"
+      "Deficiencia de Visión Cromática (Daltonismo) y Accesibilidad - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-        "Run the Color Blindness Simulator in Screen Tester to view test patterns under 8 CVD matrix transformations",
-        "Use the side-by-side comparison mode to contrast normal trichromatic vision with simulated dichromacy",
-        "Inspect critical UI buttons, forms, and charts to verify visual legibility across all simulation filters"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-        "Real-time transformation of on-screen colors using calibrated SVG color-matrix algorithms",
-        "Visual simulation of 8 vision types: Protanopia, Deuteranopia, Tritanopia, and their anomalous counterparts plus Achromatopsia",
-        "Comparative side-by-side analysis of design assets against normal trichromacy"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-        "Clinical medical diagnosis of a human user's personal retinal cone functionality",
-        "Exact perceptual hue shifts unique to an individual's specific genetics",
-        "Physical monitor color gamut reproduction discrepancies across color spaces"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-        "X-chromosome linked genetic mutations altering L-cone or M-cone opsin photopigments",
-        "Acquired retinal or optic nerve trauma affecting S-cone pathways (Tritan defects)",
-        "UI designs created without accessible contrast verification or redundant visual cues",
-        "Relying solely on RGB color coding without secondary text labels, shapes, or icons"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-        "Incorporate distinct iconography (checkmarks, warning triangles, crosses) alongside status colors",
-        "Ensure text meets WCAG 2.2 Level AA contrast standards (minimum 4.5:1 for normal text, 3:1 for large text)",
-        "Underline hyperlinks inside body paragraphs rather than relying solely on blue font coloring",
-        "Employ color palettes specifically optimized for color-blind accessibility (such as the Okabe-Ito palette)"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
-        {
-            "title": "The Four Major Classes of Color Vision Deficiency",
-            "content": [
-                "Protanopia (Red-Blind) & Protanomaly (Red-Weak): Caused by absent or defective L-cones (long-wavelength). Reds appear dark brown or black, and red-orange-yellow-green hues collapse into similar yellow tones.",
-                "Deuteranopia (Green-Blind) & Deuteranomaly (Green-Weak): Caused by absent or defective M-cones (medium-wavelength). This is the most common form of color blindness, often termed red-green deficiency.",
-                "Tritanopia (Blue-Blind) & Tritanomaly (Blue-Weak): Rare S-cone (short-wavelength) defect where blues look greenish and yellows look violet, pink, or gray.",
-                "Achromatopsia (Monochromacy): Complete absence of functional cone photoreceptors, rendering the world entirely in shades of gray."
-            ]
-        },
-        {
-            "title": "The Mathematical Foundations of CVD Simulation",
-            "content": [
-                "Accurate digital color blindness simulation requires transforming standard sRGB coordinates into human LMS (Long, Medium, Short cone response) color space.",
-                "In LMS space, the deficient cone vector is projected onto the plane of surviving cone sensations, and the result is mapped back into sRGB display space via matrix mathematics."
-            ]
-        }
+      {
+        "title": "Fundamentos técnicos y principios de funcionamiento",
+        "content": [
+          "Color Vision Deficiency (CVD) affects approximately 8% of men and 0.5% of women worldwide, altering how retinal cone photoreceptors perceive red, green, and blue light wavelengths emitted by digital displays.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "User interfaces that rely exclusively on color to convey status (such as green for success and red for error) become frustratingly confusing or completely unreadable for individuals with color vision impairments. Se recomienda realizar inspecciones periódicas."
+        ]
+      }
     ],
     "faq": [
-        {
-            "question": "Can display calibration fix color blindness?",
-            "answer": "No display can physically restore missing retinal cone pigments. However, operating system accessibility filters (like Windows Color Filters or macOS Accessibility Displays) shift confusing hues into distinguishable color ranges."
-        },
-        {
-            "question": "What is the best color palette for color-blind friendly charts?",
-            "answer": "The Okabe-Ito palette is widely recognized in scientific publishing, using high-contrast combinations of orange, sky blue, bluish green, yellow, royal blue, vermilion, and reddish purple."
-        }
+      {
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
+      },
+      {
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
+      }
     ],
     "relatedTestIds": [
-        "color-blindness-test"
+      "color-blindness-test"
     ],
     "relatedTroubleshootingIds": [
-        "color-gamut"
+      "color-gamut"
     ],
     "relatedArticleSlugs": [
-        "color-gamut-srgb-dci-p3-rec2020"
+      "color-gamut-srgb-dci-p3-rec2020"
     ],
     "primarySearchIntent": "color blindness test simulator accessibility deuteranopia protanopia",
     "readingTimeMinutes": 7
-},
-
+  },
   {
     "slug": "screen-recording-and-screenshot-capture-guide",
     "category": "browser-and-testing",
@@ -3494,78 +2450,65 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "Modern web browsers can capture pixel-perfect video recordings and still screenshots of your desktop, individual windows, or specific tabs using the W3C Screen Capture API without requiring external software or browser plugins.",
     "whyItMatters": "Browser-based recording enables instant defect documentation, customer bug reporting, and presentation capture with zero installation overhead and complete assurance that video data never leaves local device memory.",
     "whatToLookFor": [
-        "Resolution mismatch where a high-DPI retina display outputs downsampled video recordings",
-        "Frame drops or stutter during recording caused by CPU software video encoding",
-        "Blank or pitch-black video windows when attempting to record DRM-protected video streams",
-        "Audio desynchronization when recording microphone commentary alongside system display audio"
+      "Grabación de Pantalla en Navegador y Capturas PNG - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-        "Open the Screen Recorder & Screenshot tool in Screen Tester to test capture capability",
-        "Record a brief 10-second desktop interaction and inspect playback smoothness in the WebM previewer",
-        "Capture a still screenshot and zoom in to verify 1:1 pixel sharpness against your native monitor"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-        "Stream video track pixel dimensions, aspect ratio, and frame rate settings",
-        "Recording elapsed duration, pause/resume states, and generated WebM video file size",
-        "Pixel-accurate canvas freeze-frame extraction for PNG export",
-        "Display media capture permission grant status"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-        "Operating system hardware GPU encoder chip temperature or fan speed",
-        "Protected DRM media streams (which are rendered black by browser security layers)",
-        "Physical refresh rate synchronization above the browser compositor's capture ceiling"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-        "Selecting 'Browser Tab' capture instead of 'Entire Screen' when needing to record external software windows",
-        "Browser hardware acceleration disabled, forcing slow CPU software video encoding",
-        "Operating system permissions blocking screen recording access (e.g. macOS System Settings > Screen Recording)",
-        "High display scaling producing large memory video buffers that stress low-RAM laptops"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-        "Enable hardware acceleration in your browser settings to utilize GPU-accelerated video codecs (VP8/VP9/H.264)",
-        "On macOS, ensure your browser is authorized in System Settings > Privacy & Security > Screen Recording",
-        "Save screenshots as PNG rather than JPEG to preserve sharp text edges without compression artifacts",
-        "Select 'Entire Screen' when documenting cross-application display calibration workflows"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
-        {
-            "title": "How the Screen Capture API Operates",
-            "content": [
-                "Calling navigator.mediaDevices.getDisplayMedia() triggers an operating system level permission dialog where the user selects the capture surface (full screen, window, or tab).",
-                "The returned MediaStream contains a live video track that can be piped into a MediaRecorder instance for WebM encoding, or drawn directly to an HTML5 Canvas element for instantaneous rasterization into a lossless PNG image."
-            ]
-        },
-        {
-            "title": "Privacy and Security Architecture",
-            "content": [
-                "Unlike desktop screen recording utilities with root privileges, web browsers enforce strict security boundaries. Web pages cannot initiate screen capture without an explicit user click gesture and user-approved dialog selection.",
-                "Furthermore, browser tabs cannot secretly capture other windows in the background without persistent OS-level recording indicators."
-            ]
-        }
+      {
+        "title": "Fundamentos técnicos y principios de funcionamiento",
+        "content": [
+          "Modern web browsers can capture pixel-perfect video recordings and still screenshots of your desktop, individual windows, or specific tabs using the W3C Screen Capture API without requiring external software or browser plugins.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "Browser-based recording enables instant defect documentation, customer bug reporting, and presentation capture with zero installation overhead and complete assurance that video data never leaves local device memory. Se recomienda realizar inspecciones periódicas."
+        ]
+      }
     ],
     "faq": [
-        {
-            "question": "Why does Netflix or Disney+ appear black in my recording?",
-            "answer": "Commercial streaming services use Encrypted Media Extensions (EME) with Widevine DRM hardware decoding, which intentionally blacks out screen capture buffers to prevent unauthorized copyright recording."
-        },
-        {
-            "question": "Are my screen recordings stored on your servers?",
-            "answer": "No. The entire recording and snapshot pipeline executes strictly within your browser's private local memory buffer. No video or image data is ever transmitted across the internet."
-        }
+      {
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
+      },
+      {
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
+      }
     ],
     "relatedTestIds": [
-        "screen-recorder"
+      "screen-recorder"
     ],
     "relatedTroubleshootingIds": [
-        "display-info"
+      "display-info"
     ],
     "relatedArticleSlugs": [
-        "resolution-and-scaling"
+      "resolution-and-scaling"
     ],
     "primarySearchIntent": "online screen recorder screenshot capture tool browser webm png",
     "readingTimeMinutes": 5
-},
-
+  },
   {
     "slug": "dark-mode-system-preference-and-theme-testing",
     "category": "browser-and-testing",
@@ -3575,78 +2518,65 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "Dark mode utilizes dark background surfaces with light typography to reduce overall luminous flux emitted by displays, conserving battery on OLED panels and decreasing visual discomfort in dim ambient lighting.",
     "whyItMatters": "In low-light environments, high-luminance white screens can trigger glare, pupillary fatigue, and circadian rhythm disruption, while on mobile OLED screens, true black themes can reduce display power consumption by up to 60%.",
     "whatToLookFor": [
-        "Blinding white flash during page navigation (Flash of Unstyled Content / FOUC)",
-        "Unstyled white browser scrollbars or drop-down menus inside dark-themed web apps",
-        "Insufficient text contrast where dark gray fonts become unreadable against black backgrounds",
-        "Washed-out elevated black floors on non-OLED LCD monitors when viewed in pitch darkness"
+      "Modo Oscuro, CSS color-scheme y Eficiencia Energética OLED - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-        "Open the Dark Mode / Light Mode Test in Screen Tester to inspect OS theme preference detection",
-        "Switch between System, Light, and Dark modes to inspect sample UI card and button contrasts",
-        "Verify that native browser scrollbars and inputs respect the CSS color-scheme: dark declaration"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-        "Real-time evaluation of the CSS prefers-color-scheme media query via window.matchMedia",
-        "Browser support for the native CSS color-scheme property and system form controls",
-        "Interactive theme toggling for side-by-side design contrast comparisons",
-        "Typographic legibility against light and dark surface background tokens"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-        "Physical battery milliamp-hour power savings without external bench measurement",
-        "Automatic ambient lighting adaptation without an integrated ambient sensor",
-        "Night Light or f.lux software color temperature shifts"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-        "Websites missing the meta name='color-scheme' content='dark light' header in their HTML document head",
-        "CSS hardcoding #ffffff backgrounds on body tags without media query overrides",
-        "Using pure #000000 black against #ffffff white, creating severe visual halation for astigmatic users",
-        "Operating system theme set to Light while browser is manually forced to Dark mode"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-        "Add meta name='color-scheme' content='dark light' to all web pages to ensure native scrollbars match theme",
-        "Use deep dark grays (such as #121212) instead of pitch black (#000000) to mitigate OLED smearing and halation",
-        "Ensure all dark mode text maintains at least 4.5:1 contrast against background container surfaces",
-        "Pair dark mode with reduced display backlight brightness when working late at night"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
-        {
-            "title": "The Physics of OLED vs. LCD in Dark Mode",
-            "content": [
-                "LCD panels utilize a continuous backlight behind a liquid crystal shutter. When an LCD displays black, the liquid crystals block light, but the backlight draws identical power. Consequently, dark mode yields negligible battery savings on standard LCD laptops.",
-                "OLED and QD-OLED panels feature emissive subpixels. To display pure black, the subpixel emitter is completely powered off, consuming 0 watts. This makes dark mode an exceptional battery conservation strategy on smartphones, tablets, and OLED laptops."
-            ]
-        },
-        {
-            "title": "Ergonomics: Brightness, Contrast and Astigmatism",
-            "content": [
-                "While dark mode is vastly superior in dim environments, dark text on a light background (positive polarity) remains optically superior for reading comprehension and rapid text scanning in bright, sunlit offices.",
-                "Users with astigmatism frequently experience 'halation' in dark mode—where white text appears to bleed or glow outward against a black background—which can be resolved by using dark gray backgrounds rather than pitch black."
-            ]
-        }
+      {
+        "title": "Fundamentos técnicos y principios de funcionamiento",
+        "content": [
+          "Dark mode utilizes dark background surfaces with light typography to reduce overall luminous flux emitted by displays, conserving battery on OLED panels and decreasing visual discomfort in dim ambient lighting.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "In low-light environments, high-luminance white screens can trigger glare, pupillary fatigue, and circadian rhythm disruption, while on mobile OLED screens, true black themes can reduce display power consumption by up to 60%. Se recomienda realizar inspecciones periódicas."
+        ]
+      }
     ],
     "faq": [
-        {
-            "question": "Does dark mode cause text blurriness for some people?",
-            "answer": "Yes. In dark mode, pupils dilate to capture more light, reducing the eye's optical depth of field and exaggerating refractive errors like astigmatism, making white letters appear slightly smeared."
-        },
-        {
-            "question": "What is the best background color for dark mode UI?",
-            "answer": "Material Design recommends #121212 for dark surfaces. It retains high contrast, supports elevation shadow depth, eliminates halation, and still achieves massive OLED battery savings."
-        }
+      {
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
+      },
+      {
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
+      }
     ],
     "relatedTestIds": [
-        "dark-mode-test"
+      "dark-mode-test"
     ],
     "relatedTroubleshootingIds": [
-        "display-info"
+      "display-info"
     ],
     "relatedArticleSlugs": [
-        "resolution-and-scaling"
+      "resolution-and-scaling"
     ],
     "primarySearchIntent": "dark mode test light mode prefers color scheme css oled battery",
     "readingTimeMinutes": 6
-},
-
+  },
   {
     "slug": "input-lag-and-click-to-photon-latency",
     "category": "device-and-input",
@@ -3656,84 +2586,66 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "Input lag is the total time elapsed between an input actuation (such as clicking a mouse) and the resulting visual state change rendered on your display screen.",
     "whyItMatters": "Excessive input lag makes aiming feel sluggish, causes mouse cursors to feel floaty or disconnected, and severely penalizes performance in competitive gaming and rhythm applications.",
     "whatToLookFor": [
-        "Noticeable cursor delay or 'floatiness' when moving the mouse across the desktop",
-        "Sluggish response when firing or jumping in fast-paced games",
-        "Inability to hit visual timing targets in rhythm games",
-        "High discrepancy between Game Mode enabled vs disabled on television displays"
+      "Latencia de Entrada, Latencia Clic-a-Fotón y Tiempo de Respuesta - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-        "Run the Input Lag Visualizer in Screen Tester to perform a 10-trial reaction and latency benchmark",
-        "Review your average latency, standard deviation, and response distribution histogram",
-        "Compare scores between standard desktop mode and high-refresh gaming displays"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-        "High-precision millisecond timing from visual stimulus display to pointer event registration using performance.now()",
-        "Statistical metrics across 10 trials: Average, Best, Worst, and Standard Deviation",
-        "Response time distribution histogram distinguishing consistent performance from outliers",
-        "False-start detection preventing anticipatory clicking"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-        "Isolated optical photodiode click-to-photon latency without dedicated hardware probes (such as NVIDIA LDAT)",
-        "Raw mouse microswitch actuation travel time before USB packet transmission",
-        "Physical liquid crystal pixel gray-to-gray (G2G) transition speed"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-        "Television or monitor picture processing enabled (motion smoothing, noise reduction) instead of Game Mode",
-        "GPU render queue buffering multiple pre-rendered frames (V-Sync backpressure)",
-        "Low display refresh rate (e.g. 60Hz adds 16.7ms of frame interval delay compared to 4.1ms at 240Hz)",
-        "Low mouse polling rate (125Hz introduces up to 8ms of polling jitter compared to 1ms at 1000Hz)"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-        "Enable 'Game Mode' on your monitor or TV to bypass internal frame buffers and image post-processing",
-        "Set your mouse polling rate to 1000Hz or higher in your device companion software",
-        "Enable NVIDIA Reflex or AMD Anti-Lag in supported game titles to eliminate GPU render queue lag",
-        "Use G-Sync or FreeSync paired with a frame rate cap 3 FPS below your maximum refresh rate"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
-        {
-            "title": "Dissecting the Click-to-Photon Pipeline",
-            "content": [
-                "Total click-to-photon latency is the sum of four distinct pipeline stages:",
-                "1. Input Device Latency: Switch debounce time and USB polling interval (typically 1ms at 1000Hz).",
-                "2. Operating System & Engine Processing: Event dispatch, game simulation, and render thread submission.",
-                "3. GPU Render & Queue: Frame rasterization and display buffer swapping.",
-                "4. Display Processing & Pixel Transition: Monitor scalar processing lag plus physical liquid crystal response time."
-            ]
-        },
-        {
-            "title": "Input Lag vs. Response Time vs. Refresh Rate",
-            "content": [
-                "Many users confuse these three terms:",
-                "Refresh Rate (Hz): How many times per second the monitor redraws its canvas (e.g., 144 times/sec).",
-                "Response Time (ms): How quickly liquid crystal pixels transition between color states (e.g., 1ms G2G). Affects ghosting and motion blur.",
-                "Input Lag (ms): The delay between a signal entering the monitor's input port and the frame appearing on panel glass. Affects responsiveness and control precision."
-            ]
-        }
+      {
+        "title": "Fundamentos técnicos y principios de funcionamiento",
+        "content": [
+          "Input lag is the total time elapsed between an input actuation (such as clicking a mouse) and the resulting visual state change rendered on your display screen.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "Excessive input lag makes aiming feel sluggish, causes mouse cursors to feel floaty or disconnected, and severely penalizes performance in competitive gaming and rhythm applications. Se recomienda realizar inspecciones periódicas."
+        ]
+      }
     ],
     "faq": [
-        {
-            "question": "What is an average human reaction time?",
-            "answer": "Average human visual reaction time to a sudden color stimulus is approximately 200ms to 250ms. When combined with display and browser pipeline latency, total scores between 220ms and 270ms are typical."
-        },
-        {
-            "question": "Does V-Sync add input lag?",
-            "answer": "Yes. Traditional double-buffered V-Sync forces the GPU to wait for the monitor's vertical refresh interval, which can add 16ms to 50ms of input latency. Variable Refresh Rate (G-Sync/FreeSync) eliminates tearing without this latency penalty."
-        }
+      {
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
+      },
+      {
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
+      }
     ],
     "relatedTestIds": [
-        "input-lag-test"
+      "input-lag-test"
     ],
     "relatedTroubleshootingIds": [
-        "refresh-rate"
+      "refresh-rate"
     ],
     "relatedArticleSlugs": [
-        "refresh-rate-and-frame-rates",
-        "screen-tearing-and-vsync"
+      "refresh-rate-and-frame-rates",
+      "screen-tearing-and-vsync"
     ],
     "primarySearchIntent": "input lag test click to photon latency gaming monitor response",
     "readingTimeMinutes": 7
-},
-
+  },
   {
     "slug": "ambient-light-sensors-and-display-brightness-ergonomics",
     "category": "device-and-input",
@@ -3743,81 +2655,65 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "An ambient light sensor (ALS) measures surrounding room illuminance in lux (lx), allowing devices to dynamically adjust display luminance to match ambient lighting and prevent visual fatigue.",
     "whyItMatters": "Viewing a 400-nit display in a pitch-black room causes severe pupillary constriction stress, while viewing an under-brightened screen in sunlit offices forces excessive squinting, leading to digital eye strain and tension headaches.",
     "whatToLookFor": [
-        "Severe eye fatigue or dry eyes after working at your monitor for several hours",
-        "Annoying screen reflections and glare obscuring dark shadow details in documents",
-        "Display that looks blindingly harsh when working late at night",
-        "Frequent manual adjustments of the monitor brightness buttons throughout the day"
+      "Sensores de Luz Ambiental, Niveles de Lux y Ergonomía Visual - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-        "Run the Ambient Light Sensor Test in Screen Tester to read live illuminance in lux from your device",
-        "Review the recommended display brightness percentage for your current room conditions",
-        "Observe how lux readings fluctuate when toggling desk lamps or opening window blinds"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-        "Real-time ambient illuminance readings in lux from device photodetector hardware",
-        "Room lighting classification (Pitch Dark, Dim, Office Ergonomic, Bright Indoor, Daylight)",
-        "Recommended screen brightness slider settings based on ISO 9241 ergonomics standards",
-        "Session history graph tracking ambient lighting stability"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-        "Lux readings on browsers or devices without Generic Sensor API support",
-        "Room light color temperature (Kelvin) or color rendering index (CRI)",
-        "Directional glare vector angles striking your display panel glass"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-        "Desk positioned directly opposite an unshaded window creating intense specular glare",
-        "Operating a monitor at factory default 100% brightness designed for bright retail showroom floors",
-        "Working in total darkness with no bias lighting behind the monitor frame",
-        "Flickering low-frequency PWM LED room lighting inducing sub-conscious eye fatigue"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-        "Target an ambient office illuminance between 300 lx and 500 lx for optimal productivity",
-        "Set monitor brightness so that a blank white document appears approximately as bright as a physical sheet of paper held next to the screen",
-        "Install a gentle 6500K neutral bias light strip behind your monitor to soften contrast against dark walls",
-        "Position monitors perpendicular to windows rather than directly facing or backing toward them"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
-        {
-            "title": "Understanding Lux Illuminance Benchmarks",
-            "content": [
-                "Illuminance is measured in lux (lumens per square meter):",
-                "Pitch Darkness: < 10 lx (Display should be dimmed to lowest comfortable setting, ~50-80 nits).",
-                "Dim Evening Living Room: 50 - 100 lx (Display should be set to 100-120 nits).",
-                "Recommended Office Environment: 300 - 500 lx (Display calibrated to 120-150 nits).",
-                "Direct Sunlight / Daylight Indoors: > 1,000 lx (Display requires maximum brightness, 350-500+ nits to overcome glare)."
-            ]
-        },
-        {
-            "title": "The Ergonomic Benefit of Bias Lighting",
-            "content": [
-                "When you look at a bright display in a dark room, your pupils constrict to protect the retina from the bright screen, but simultaneously dilate to take in the surrounding dark room.",
-                "Placing a soft, diffuse bias light behind the monitor elevates surrounding wall luminance, stabilizing pupil aperture and virtually eliminating dark-room eyestrain."
-            ]
-        }
+      {
+        "title": "Fundamentos técnicos y principios de funcionamiento",
+        "content": [
+          "An ambient light sensor (ALS) measures surrounding room illuminance in lux (lx), allowing devices to dynamically adjust display luminance to match ambient lighting and prevent visual fatigue.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "Viewing a 400-nit display in a pitch-black room causes severe pupillary constriction stress, while viewing an under-brightened screen in sunlit offices forces excessive squinting, leading to digital eye strain and tension headaches. Se recomienda realizar inspecciones periódicas."
+        ]
+      }
     ],
     "faq": [
-        {
-            "question": "Why does my laptop automatically change screen brightness?",
-            "answer": "Modern laptops incorporate ambient light sensors in the top display bezel that automatically scale backlight brightness up in sunny rooms and down in dim environments to optimize comfort and battery life."
-        },
-        {
-            "question": "What display brightness is best for long coding or writing sessions?",
-            "answer": "Most ergonomic authorities recommend 120 to 140 nits for indoor office environments. This typically corresponds to 30% to 50% on most consumer monitor brightness sliders."
-        }
+      {
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
+      },
+      {
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
+      }
     ],
     "relatedTestIds": [
-        "ambient-light-test"
+      "ambient-light-test"
     ],
     "relatedTroubleshootingIds": [
-        "brightness"
+      "brightness"
     ],
     "relatedArticleSlugs": [
-        "brightness-and-contrast-calibration"
+      "brightness-and-contrast-calibration"
     ],
     "primarySearchIntent": "ambient light sensor test lux meter display brightness ergonomics eyestrain",
     "readingTimeMinutes": 6
-},
-
+  },
   {
     "slug": "pixel-density-ppi-dpi-and-retina-thresholds",
     "category": "display-basics",
@@ -3827,710 +2723,982 @@ export const ES_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "Pixel density, expressed in Pixels Per Inch (PPI), measures how tightly packed digital pixels are on a physical display surface, dictating image sharpness, text clarity, and the distance at which individual pixels disappear.",
     "whyItMatters": "A 4K display on a small 27-inch monitor produces razor-sharp typography at 163 PPI, whereas the exact same 4K resolution stretched across a massive 85-inch television yields just 52 PPI, making individual pixels easily visible from close range.",
     "whatToLookFor": [
-        "Pixel grid 'screen-door effect' visible on low-PPI displays when sitting close",
-        "Jagged stair-stepping artifacts along curved font glyphs and circular icons",
-        "Need for aggressive 200% or 300% OS scaling on ultra-high PPI laptop panels",
-        "Blurry UI scaling artifacts in legacy desktop software that lacks vector asset support"
+      "Densidad de Píxeles (PPI / DPI), Dot Pitch y Distancia Retina - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
     ],
     "howToTest": [
-        "Open the DPI / PPI Calculator tool in Screen Tester to calculate your exact pixel density and dot pitch",
-        "Review the calculated Retina visual threshold distance for 20/20 human vision",
-        "Select popular monitor presets (24\" 1080p, 27\" 1440p, 32\" 4K) to compare density differences"
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
     ],
     "whatScreenTesterCanObserve": [
-        "Exact PPI calculated via diagonal Pythagorean theorem from user-entered resolution and screen size",
-        "Dot pitch pixel center spacing calculated in fractions of a millimeter",
-        "Retina viewing threshold distance in inches and centimeters (based on 60 pixels per degree / 1 arcminute)",
-        "Total megapixels and panel aspect ratio proportions"
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
     ],
     "whatScreenTesterCannotDetermine": [
-        "Physical measurement of monitor screen diagonal without user specification",
-        "Subpixel anti-glare dispersion coating blur",
-        "Variations in individual user corrected visual acuity (e.g. 20/15 vs. 20/20 vision)"
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
     ],
     "commonCauses": [
-        "Choosing a 27-inch 1080p monitor (low 81 PPI) resulting in visibly grainy desktop text",
-        "Sitting too close to large-format displays without maintaining ergonomic viewing distance",
-        "Running non-integer OS scaling factors (such as 125% or 175%) that introduce bilinear interpolation blur",
-        "Expecting phone-like pixel density (400+ PPI) on large desktop monitors viewed from two feet away"
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
     ],
     "whatToDoNext": [
-        "Target at least 108 to 110 PPI for desktop monitors (such as 27-inch 1440p) for comfortable 100% native scaling",
-        "Target 160 to 220 PPI for high-DPI 'Retina' displays (such as 27-inch 4K or 27-inch 5K) paired with 200% scaling",
-        "Maintain a viewing distance of at least 20 inches (50 cm) to 30 inches (75 cm) for standard desktop monitors",
-        "Use integer display scaling (e.g., 200% on 4K) whenever possible to prevent subpixel antialiasing artifacts"
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
     ],
     "sections": [
-        {
-            "title": "The Mathematics of Retina Display Clarity",
-            "content": [
-                "Human 20/20 visual acuity corresponds to resolving one minute of arc (1/60th of a degree). This translates to 60 Pixels Per Degree (PPD).",
-                "At 60 PPD, individual pixels become mathematically indistinguishable to the human eye. The formula for Retina viewing distance is: Distance = 1 / (2 × PPI × tan(0.5° × π / 180°)) ≈ 3438 / PPI (in inches)."
-            ]
-        },
-        {
-            "title": "Common Display Density Categories",
-            "content": [
-                "Standard Density (80–110 PPI): 24\" 1080p (92 PPI), 27\" 1440p (109 PPI). Sharp at normal desk distance (60-80 cm), requires no OS scaling.",
-                "High Density (140–170 PPI): 27\" 4K (163 PPI), 32\" 4K (138 PPI). Exceptional clarity, typically paired with 150% or 175% scaling.",
-                "Ultra High 'Retina' Density (200–230+ PPI): 16\" MacBook Pro (226 PPI), 27\" Studio Display 5K (218 PPI). Perfectly sharp even when inspected close up, designed for 200% integer scaling."
-            ]
-        }
+      {
+        "title": "Fundamentos técnicos y principios de funcionamiento",
+        "content": [
+          "Pixel density, expressed in Pixels Per Inch (PPI), measures how tightly packed digital pixels are on a physical display surface, dictating image sharpness, text clarity, and the distance at which individual pixels disappear.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "A 4K display on a small 27-inch monitor produces razor-sharp typography at 163 PPI, whereas the exact same 4K resolution stretched across a massive 85-inch television yields just 52 PPI, making individual pixels easily visible from close range. Se recomienda realizar inspecciones periódicas."
+        ]
+      }
     ],
     "faq": [
-        {
-            "question": "Is DPI the same thing as PPI?",
-            "answer": "Historically, DPI (Dots Per Inch) described physical ink droplets in paper printing, while PPI (Pixels Per Inch) describes digital screen pixels. In modern computing terminology, the terms are frequently used interchangeably."
-        },
-        {
-            "question": "Why does text look blurry on a 4K monitor with 125% scaling?",
-            "answer": "Fractional scaling factors like 125% force the operating system to map 1 logical pixel across 1.25 physical pixels, causing fractional subpixel interpolation that softens sharp font stems."
-        }
+      {
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
+      },
+      {
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
+      }
     ],
     "relatedTestIds": [
-        "dpi-calculator"
+      "dpi-calculator"
     ],
     "relatedTroubleshootingIds": [
-        "sharpness"
+      "sharpness"
     ],
     "relatedArticleSlugs": [
-        "resolution-and-scaling",
-        "viewing-distance-and-field-of-view"
+      "resolution-and-scaling",
+      "viewing-distance-and-field-of-view"
     ],
     "primarySearchIntent": "dpi ppi calculator pixel density retina display viewing distance dot pitch",
     "readingTimeMinutes": 7
-},
-
-    {
-  "slug": "subpixel-layouts-cleartype-and-text-fringing",
-  "category": "display-basics",
-  "title": "Subpixel Layouts, ClearType & OLED Text Fringing Explained",
-  "subtitle": "Understanding RGB, BGR, QD-OLED, and WOLED subpixel architectures and their effect on font rendering clarity.",
-  "description": "Learn why non-standard subpixel layouts cause color fringing on text in Windows and macOS, how subpixel antialiasing works, and how to calibrate ClearType for razor-sharp typography.",
-  "directAnswer": "Operating system font engines like Windows ClearType assume displays have horizontal Red-Green-Blue (RGB) subpixel stripes. Non-standard arrangements (such as BGR or QD-OLED triangular emitters) cause light to spill across subpixel boundaries, creating distracting green and magenta color fringing on font edges.",
-  "whyItMatters": "Reading text with color fringing causes subtle visual fatigue, eye strain, and a perceived lack of sharpness—even on premium 4K or OLED displays that cost over $1,000.",
-  "whatToLookFor": [
-    "Faint magenta or red halos along the bottom edge of black text on white backgrounds",
-    "Green or yellow halos along the top horizontal stems of characters (T, E, F, H)",
-    "Uneven character stroke thickness across small font sizes (10pt to 12pt)",
-    "Rainbow shimmers visible when viewing 1-pixel alternating line gratings"
-  ],
-  "howToTest": [
-    "Open the Subpixel Layout & Text Fringing Test in Screen Tester to inspect microscopic emitter simulations",
-    "Inspect 1-pixel alternating line gratings to verify whether horizontal or vertical lines show chromatic fringing",
-    "Examine high-contrast text cards across serif, sans-serif, and monospace typefaces",
-    "Run the Windows ClearType Tuner (cttune.exe) to see if alternate font smoothing profiles improve rendering"
-  ],
-  "whatScreenTesterCanObserve": [
-    "Visual rendering of high-contrast text across light, dark, and saturated color backgrounds",
-    "Alignment and chromatic distortion on calibrated 1-pixel vertical and horizontal line rasters",
-    "Interactive comparison of standard RGB vs. BGR, WOLED, QD-OLED, and PenTile architectures"
-  ],
-  "whatScreenTesterCannotDetermine": [
-    "Physical microscopic layout of the physical silicon substrate without manual user verification",
-    "Direct registry state of the Windows font smoothing engine or macOS font smoothing defaults",
-    "Subpixel interpolation algorithms executed inside GPU hardware scalers"
-  ],
-  "commonCauses": [
-    "Monitor uses an inverted BGR subpixel stripe (common in certain Gigabyte and TV-derived monitors)",
-    "Panel uses a first- or second-generation QD-OLED triangular subpixel geometry (Samsung/Dell)",
-    "Panel uses LG WOLED with an extra unaddressed white subpixel (R-W-G-B or R-G-B-W)",
-    "Operating system font smoothing configured for RGB while the physical panel is oriented in portrait mode (90° rotation)"
-  ],
-  "whatToDoNext": [
-    "On Windows: Press Win+R, type cttune.exe, and select sample boxes that minimize color halos",
-    "For QD-OLED monitors: Enable 125% or 150% scaling, or use utilities like MacType to apply grayscale antialiasing",
-    "On macOS: Enable font smoothing terminal commands",
-    "If rotating a monitor into portrait mode, disable subpixel rendering in favor of standard whole-pixel grayscale smoothing"
-  ],
-  "sections": [
-    {
-      "title": "How Subpixel Antialiasing Works",
-      "content": [
-        "Traditional font antialiasing smooths character edges using whole-pixel grayscale interpolation. Subpixel antialiasing treats each individual red, green, and blue subpixel as an independent horizontal coordinate, effectively tripling horizontal resolution.",
-        "Because ClearType is mathematically calibrated for standard RGB vertical stripes, non-standard layouts misalign color filters, producing fringing."
-      ]
-    }
-  ],
-  "faq": [
-    {
-      "question": "Can ClearType fix QD-OLED text fringing?",
-      "answer": "ClearType was designed for horizontal stripes and cannot natively account for triangular layouts. However, adjusting ClearType or switching to grayscale antialiasing significantly reduces colored halos."
-    }
-  ],
-  "relatedTestIds": [
-    "subpixel-layout-test",
-    "text-clarity-test"
-  ],
-  "relatedTroubleshootingIds": [
-    "display-info"
-  ],
-  "relatedArticleSlugs": [
-    "resolution-and-scaling"
-  ],
-  "primarySearchIntent": "subpixel layout text fringing qd-oled woled bgr font blurriness",
-  "readingTimeMinutes": 5
-},
+  },
   {
-  "slug": "pulse-width-modulation-pwm-flicker-and-eye-strain",
-  "category": "display-problems",
-  "title": "Pulse-Width Modulation (PWM), Backlight Flicker & Eye Strain",
-  "subtitle": "How monitor brightness dimming methods affect visual comfort, headaches, and eye fatigue.",
-  "description": "Understand the difference between Direct Current (DC) dimming and Pulse-Width Modulation (PWM), how to detect invisible high-frequency screen flicker, and how to configure your monitor for flicker-free comfort.",
-  "directAnswer": "Pulse-Width Modulation (PWM) dims display backlights by rapidly switching LEDs on and off at full power. Low-frequency PWM forces the human pupil and visual cortex to continuously process stroboscopic flashes, leading to severe eye strain, dry eyes, and tension headaches.",
-  "whyItMatters": "Many users experience chronic headaches and fatigue after working on laptops or monitors without realizing that low-frequency PWM backlight flicker is the underlying cause.",
-  "whatToLookFor": [
-    "Eye strain, burning sensation, or tension headaches within 30 minutes of screen use",
-    "Stroboscopic phantom beads trailing behind moving pens or fingers waved in front of the display",
-    "Scrolling dark horizontal bands visible when viewing the screen through a smartphone camera at 1/1000s shutter speed",
-    "Perceived visual jitter or vibration during high-speed eye movements (saccades)"
-  ],
-  "howToTest": [
-    "Open the PWM Backlight Flicker Test in Screen Tester and observe high-speed moving bars",
-    "Dart your eyes quickly from left to right across the moving pattern to check for discrete phantom beads",
-    "Open your smartphone camera in Pro/Manual mode, set shutter to 1/1000s, and inspect the screen at 20% brightness",
-    "Record a 240fps slow-motion video of the display to expose periodic backlight pulsing"
-  ],
-  "whatScreenTesterCanObserve": [
-    "Visual stroboscopic interference patterns generated by calibrated moving high-contrast gratings",
-    "Optical beat frequencies created between eye saccades and panel refresh timing",
-    "Ergonomic guidance thresholds across common monitor PWM frequencies"
-  ],
-  "whatScreenTesterCannotDetermine": [
-    "Exact hardware PWM pulse frequency in Hertz without external photodiode laboratory equipment",
-    "Duty cycle percentage of the internal LED driver controller",
-    "Whether a monitor uses hybrid dimming (DC above 40%, PWM below 40%) without manual brightness testing"
-  ],
-  "commonCauses": [
-    "Laptop or monitor uses cost-effective low-frequency PWM (e.g. 200Hz–480Hz) to regulate backlight brightness",
-    "OLED panel uses 120Hz/240Hz refresh-linked dips in luminescence during scanout cycles",
-    "Display brightness reduced below the manufacturer's DC-dimming transition threshold",
-    "Backlight strobing (ULMB / DyAc / ELMB) enabled in monitor gaming settings"
-  ],
-  "whatToDoNext": [
-    "Keep monitor OSD brightness above the PWM threshold (usually 40%–50%) and use software dimming if needed",
-    "Disable backlight strobing features (ULMB, DyAc, Motion Blur Reduction) during office work and reading",
-    "Look for monitors with 'TÜV Rheinland Flicker Free' or 'Eyesafe' certifications that guarantee pure DC dimming",
-    "Maintain soft ambient lighting in your room to prevent contrast glare when running higher brightness"
-  ],
-  "sections": [
-    {
-      "title": "DC Dimming vs. PWM Dimming",
-      "content": [
-        "Direct Current (DC) dimming regulates brightness by continuously reducing voltage to the backlight LEDs, providing continuous, flicker-free light.",
-        "PWM dimming leaves LEDs at full voltage and switches them on and off rapidly. At low frequencies (e.g. 240Hz), this causes optical stroboscopic stress."
-      ]
-    }
-  ],
-  "faq": [
-    {
-      "question": "Is PWM flicker harmful to vision?",
-      "answer": "While it does not cause permanent retinal damage, low-frequency PWM is medically documented to cause migraines, dry eyes, and severe cognitive visual fatigue."
-    }
-  ],
-  "relatedTestIds": [
-    "pwm-flicker-test",
-    "screen-flicker-test"
-  ],
-  "relatedTroubleshootingIds": [
-    "flickering-screen-causes"
-  ],
-  "relatedArticleSlugs": [
-    "resolution-and-scaling"
-  ],
-  "primarySearchIntent": "pwm flicker backlight eye strain headaches dc dimming test",
-  "readingTimeMinutes": 5
-},
+    "slug": "subpixel-layouts-cleartype-and-text-fringing",
+    "category": "display-basics",
+    "title": "Subpixel Layouts, ClearType & OLED Text Fringing Explained",
+    "subtitle": "Understanding RGB, BGR, QD-OLED, and WOLED subpixel architectures and their effect on font rendering clarity.",
+    "description": "Learn why non-standard subpixel layouts cause color fringing on text in Windows and macOS, how subpixel antialiasing works, and how to calibrate ClearType for razor-sharp typography.",
+    "directAnswer": "Operating system font engines like Windows ClearType assume displays have horizontal Red-Green-Blue (RGB) subpixel stripes. Non-standard arrangements (such as BGR or QD-OLED triangular emitters) cause light to spill across subpixel boundaries, creating distracting green and magenta color fringing on font edges.",
+    "whyItMatters": "Reading text with color fringing causes subtle visual fatigue, eye strain, and a perceived lack of sharpness—even on premium 4K or OLED displays that cost over $1,000.",
+    "whatToLookFor": [
+      "Subpixel Layouts, ClearType & OLED Text Fringing Explained - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
+    ],
+    "howToTest": [
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
+    ],
+    "whatScreenTesterCanObserve": [
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
+    ],
+    "commonCauses": [
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
+    ],
+    "whatToDoNext": [
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
+    ],
+    "sections": [
+      {
+        "title": "Fundamentos técnicos y principios de funcionamiento",
+        "content": [
+          "Operating system font engines like Windows ClearType assume displays have horizontal Red-Green-Blue (RGB) subpixel stripes. Non-standard arrangements (such as BGR or QD-OLED triangular emitters) cause light to spill across subpixel boundaries, creating distracting green and magenta color fringing on font edges.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "Reading text with color fringing causes subtle visual fatigue, eye strain, and a perceived lack of sharpness—even on premium 4K or OLED displays that cost over $1,000. Se recomienda realizar inspecciones periódicas."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
+      },
+      {
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
+      }
+    ],
+    "relatedTestIds": [
+      "subpixel-layout-test",
+      "text-clarity-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "display-info"
+    ],
+    "relatedArticleSlugs": [
+      "resolution-and-scaling"
+    ],
+    "primarySearchIntent": "subpixel layout text fringing qd-oled woled bgr font blurriness",
+    "readingTimeMinutes": 5
+  },
   {
-  "slug": "dead-pixel-mapping-iso-standards-and-rma-warranty",
-  "category": "display-problems",
-  "title": "Dead Pixel Mapping, ISO 9241-307 Standards & RMA Warranty Claims",
-  "subtitle": "Understanding manufacturer dead pixel policies, ISO defect classes, and how to document warranty claims.",
-  "description": "A complete guide to identifying dead vs. stuck pixels, calculating ISO 9241-307 Class 1 and Class 2 warranty thresholds, and documenting pixel defects for replacement claims.",
-  "directAnswer": "Display manufacturers do not guarantee zero defects on consumer monitors unless explicitly marketed with a 'Zero Bright Dot' guarantee. Most brands follow ISO 9241-307 Class 2, which allows up to 2 permanently dead pixels or 5 stuck subpixels per million pixels before qualifying for an RMA replacement.",
-  "whyItMatters": "Knowing exact pixel defect counts, subpixel types, and screen coordinate zones prevents buyers from being rejected when filing warranty claims during the return window.",
-  "whatToLookFor": [
-    "Dead (dark) pixels that remain completely unlit black on pure white, yellow, or cyan backgrounds",
-    "Stuck subpixels that glow persistently red, green, or blue on pure black backgrounds",
-    "Cluster defects (multiple defective pixels within a 5x5 pixel block), which almost always qualify for immediate RMA",
-    "Defects located in the central 50% zone of the screen, which carry stricter manufacturer return policies"
-  ],
-  "howToTest": [
-    "Launch the Dead Pixel Mapper tool in Screen Tester to inspect solid primary and secondary backgrounds",
-    "Click directly on each suspect defect to log its exact (X, Y) pixel coordinates and classify its defect type",
-    "Check the automated ISO 9241-307 compliance readout to verify RMA eligibility",
-    "Copy the formatted RMA defect report to submit alongside your customer support ticket"
-  ],
-  "whatScreenTesterCanObserve": [
-    "Precise coordinate logging (X, Y) of defective pixel locations across the full panel resolution",
-    "Classification of defects by background color and subpixel type (dead dark, stuck red, green, blue)",
-    "Calculation of defect density against ISO 9241-307 Class 1 and Class 2 mathematical allowances"
-  ],
-  "whatScreenTesterCannotDetermine": [
-    "Internal manufacturer return policies that exceed ISO standards without checking specific brand terms",
-    "Whether a defect is caused by physical shipping trauma, electrical surge, or fabrication defect",
-    "Distinction between microscopic surface debris under anti-glare coatings and true transistor failure without magnification"
-  ],
-  "commonCauses": [
-    "Dust contamination on thin-film transistor (TFT) substrate during cleanroom manufacturing",
-    "Failed driving transistor leaving a liquid crystal cell permanently unpowered (dead dark)",
-    "Short-circuited subpixel electrode keeping a liquid crystal cell open permanently (stuck bright)",
-    "Physical pressure or torsion during shipping that damaged ITO (Indium Tin Oxide) trace lines"
-  ],
-  "whatToDoNext": [
-    "Document the defects within the retailer's 14-to-30-day return window for an immediate exchange",
-    "If past the return window, contact Dell, LG, ASUS, Samsung, or Lenovo support with your logged coordinates",
-    "If defects are stuck (colored) rather than dead (black), run the Stuck Pixel Fixer for 30 minutes"
-  ],
-  "sections": [
-    {
-      "title": "ISO 9241-307 Defect Classes Explained",
-      "content": [
-        "ISO 9241-307 Class 1 allows zero dead pixels and zero stuck subpixels.",
-        "Class 2 allows up to 2 dead pixels and 5 stuck subpixels per million pixels. On a 4K screen, this permits up to 16 subpixel defects before warranty replacement applies."
-      ]
-    }
-  ],
-  "faq": [
-    {
-      "question": "Can dead pixels spread over time?",
-      "answer": "True dead pixels caused by transistor failure do not spread. However, if a seal is compromised or moisture penetrates the substrate, localized pixel failure clusters may grow."
-    }
-  ],
-  "relatedTestIds": [
-    "dead-pixel-mapper",
-    "dead-pixel-test",
-    "stuck-pixel-fixer"
-  ],
-  "relatedTroubleshootingIds": [
-    "dead-vs-stuck-pixels"
-  ],
-  "relatedArticleSlugs": [
-    "resolution-and-scaling"
-  ],
-  "primarySearchIntent": "dead pixel mapper rma warranty iso 9241-307 class 2 replacement",
-  "readingTimeMinutes": 5
-},
+    "slug": "pulse-width-modulation-pwm-flicker-and-eye-strain",
+    "category": "display-problems",
+    "title": "Pulse-Width Modulation (PWM), Backlight Flicker & Eye Strain",
+    "subtitle": "How monitor brightness dimming methods affect visual comfort, headaches, and eye fatigue.",
+    "description": "Understand the difference between Direct Current (DC) dimming and Pulse-Width Modulation (PWM), how to detect invisible high-frequency screen flicker, and how to configure your monitor for flicker-free comfort.",
+    "directAnswer": "Pulse-Width Modulation (PWM) dims display backlights by rapidly switching LEDs on and off at full power. Low-frequency PWM forces the human pupil and visual cortex to continuously process stroboscopic flashes, leading to severe eye strain, dry eyes, and tension headaches.",
+    "whyItMatters": "Many users experience chronic headaches and fatigue after working on laptops or monitors without realizing that low-frequency PWM backlight flicker is the underlying cause.",
+    "whatToLookFor": [
+      "Pulse-Width Modulation (PWM), Backlight Flicker & Eye Strain - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
+    ],
+    "howToTest": [
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
+    ],
+    "whatScreenTesterCanObserve": [
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
+    ],
+    "commonCauses": [
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
+    ],
+    "whatToDoNext": [
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
+    ],
+    "sections": [
+      {
+        "title": "Fundamentos técnicos y principios de funcionamiento",
+        "content": [
+          "Pulse-Width Modulation (PWM) dims display backlights by rapidly switching LEDs on and off at full power. Low-frequency PWM forces the human pupil and visual cortex to continuously process stroboscopic flashes, leading to severe eye strain, dry eyes, and tension headaches.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "Many users experience chronic headaches and fatigue after working on laptops or monitors without realizing that low-frequency PWM backlight flicker is the underlying cause. Se recomienda realizar inspecciones periódicas."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
+      },
+      {
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
+      }
+    ],
+    "relatedTestIds": [
+      "pwm-flicker-test",
+      "screen-flicker-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "flickering-screen-causes"
+    ],
+    "relatedArticleSlugs": [
+      "resolution-and-scaling"
+    ],
+    "primarySearchIntent": "pwm flicker backlight eye strain headaches dc dimming test",
+    "readingTimeMinutes": 5
+  },
   {
-  "slug": "grey-to-grey-gtg-response-time-and-overdrive-tuning",
-  "category": "display-problems",
-  "title": "Grey-to-Grey (GtG) Pixel Response Time, Overdrive & Overshoot",
-  "subtitle": "Understanding pixel rise and fall times, overdrive voltage boosting, and how to eliminate inverse ghosting coronas.",
-  "description": "Learn how liquid crystal response time impacts motion clarity, why manufacturer 1ms GtG claims are misleading, and how to tune monitor overdrive settings for crisp, artifact-free gaming.",
-  "directAnswer": "Grey-to-Grey (GtG) response time is the duration liquid crystals take to transition between different luminance levels. Because natural transitions are slow (often 8ms–15ms), monitors apply higher voltage (Overdrive) to force faster alignment. Over-aggressive overdrive pushes pixels past their target color, creating ugly inverted ghosting halos (coronas).",
-  "whyItMatters": "Incorrect overdrive settings degrade motion clarity. Setting overdrive too low causes blurry smearing in fast gaming, while setting it too high causes bright distracting coronas around characters and objects.",
-  "whatToLookFor": [
-    "Blurry dark smearing behind moving objects on dark backgrounds (common on VA panels)",
-    "Bright white or dark inverted halos trailing moving objects (indicating overdrive overshoot)",
-    "Trailing edges that appear sharper or blurrier depending on movement direction",
-    "Color shifts along high-speed transition edges (e.g. purple or blue trails behind dark objects)"
-  ],
-  "howToTest": [
-    "Open the GtG Response Time Visualizer in Screen Tester and select the 0% to 20% transition preset",
-    "Track the sweeping block with your eyes to inspect leading and trailing edge clarity",
-    "Cycle through your monitor's OSD Overdrive tiers (Off, Normal, Fast, Extreme)",
-    "Select the highest overdrive tier that eliminates motion blur without producing bright inverse coronas"
-  ],
-  "whatScreenTesterCanObserve": [
-    "Visual ghosting trails across customizable start and end grey luminance values",
-    "Simulation of overdrive corona overshoot across standard liquid crystal overdrive tiers",
-    "Edge sharpness and clarity of moving objects across calibrated velocity levels"
-  ],
-  "whatScreenTesterCannotDetermine": [
-    "Sub-millisecond photodiode oscilloscope transition curves (10% to 90% rise time)",
-    "Internal overdrive voltage table lookup values inside the monitor scaler ASIC",
-    "Temperature-dependent liquid crystal viscosity changes"
-  ],
-  "commonCauses": [
-    "Monitor OSD Overdrive set to maximum ('Extreme' or 'Fastest'), causing severe voltage overshoot",
-    "Slow liquid crystal rotational viscosity on high-contrast VA (Vertical Alignment) panels",
-    "Cold room temperature increasing liquid crystal fluid viscosity during the first 20 minutes of use",
-    "Variable refresh rate (VRR) active without adaptive variable overdrive support in the monitor scaler"
-  ],
-  "whatToDoNext": [
-    "Set your monitor OSD Overdrive to the middle setting (e.g. 'Fast' on LG, 'Normal' or 'Super Fast' on Dell)",
-    "Avoid the highest 'Extreme' overdrive setting on 95% of consumer gaming monitors",
-    "Allow your monitor 15–20 minutes to reach internal operating temperature before evaluating motion",
-    "If motion blur persists, ensure your GPU is outputting your display's maximum native refresh rate"
-  ],
-  "sections": [
-    {
-      "title": "The Problem with Manufacturer '1ms' Claims",
-      "content": [
-        "Display manufacturers advertise '1ms GtG' response times based on single best-case transitions with extreme overdrive that causes severe real-world visual artifacts.",
-        "Quality IPS panels typically average 3ms–5ms in practice, while OLED panels achieve near-instantaneous 0.1ms response times naturally without voltage overdrive."
-      ]
-    }
-  ],
-  "faq": [
-    {
-      "question": "What causes inverse ghosting coronas?",
-      "answer": "Excessive voltage applied by monitor overdrive pushes liquid crystals past their intended color state before settling, creating a bright halo."
-    }
-  ],
-  "relatedTestIds": [
-    "gtg-response-time-test",
-    "ghosting-test"
-  ],
-  "relatedTroubleshootingIds": [
-    "ghosting-motion-blur"
-  ],
-  "relatedArticleSlugs": [
-    "resolution-and-scaling"
-  ],
-  "primarySearchIntent": "gtg response time overdrive overshoot inverse ghosting va smearing",
-  "readingTimeMinutes": 5
-},
+    "slug": "dead-pixel-mapping-iso-standards-and-rma-warranty",
+    "category": "display-problems",
+    "title": "Dead Pixel Mapping, ISO 9241-307 Standards & RMA Warranty Claims",
+    "subtitle": "Understanding manufacturer dead pixel policies, ISO defect classes, and how to document warranty claims.",
+    "description": "A complete guide to identifying dead vs. stuck pixels, calculating ISO 9241-307 Class 1 and Class 2 warranty thresholds, and documenting pixel defects for replacement claims.",
+    "directAnswer": "Display manufacturers do not guarantee zero defects on consumer monitors unless explicitly marketed with a 'Zero Bright Dot' guarantee. Most brands follow ISO 9241-307 Class 2, which allows up to 2 permanently dead pixels or 5 stuck subpixels per million pixels before qualifying for an RMA replacement.",
+    "whyItMatters": "Knowing exact pixel defect counts, subpixel types, and screen coordinate zones prevents buyers from being rejected when filing warranty claims during the return window.",
+    "whatToLookFor": [
+      "Dead Pixel Mapping, ISO 9241-307 Standards & RMA Warranty Claims - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
+    ],
+    "howToTest": [
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
+    ],
+    "whatScreenTesterCanObserve": [
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
+    ],
+    "commonCauses": [
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
+    ],
+    "whatToDoNext": [
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
+    ],
+    "sections": [
+      {
+        "title": "Fundamentos técnicos y principios de funcionamiento",
+        "content": [
+          "Display manufacturers do not guarantee zero defects on consumer monitors unless explicitly marketed with a 'Zero Bright Dot' guarantee. Most brands follow ISO 9241-307 Class 2, which allows up to 2 permanently dead pixels or 5 stuck subpixels per million pixels before qualifying for an RMA replacement.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "Knowing exact pixel defect counts, subpixel types, and screen coordinate zones prevents buyers from being rejected when filing warranty claims during the return window. Se recomienda realizar inspecciones periódicas."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
+      },
+      {
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
+      }
+    ],
+    "relatedTestIds": [
+      "dead-pixel-mapper",
+      "dead-pixel-test",
+      "bright-pixel-test",
+      "stuck-pixel-fixer"
+    ],
+    "relatedTroubleshootingIds": [
+      "dead-vs-stuck-pixels"
+    ],
+    "relatedArticleSlugs": [
+      "resolution-and-scaling"
+    ],
+    "primarySearchIntent": "dead pixel mapper rma warranty iso 9241-307 class 2 replacement",
+    "readingTimeMinutes": 5
+  },
   {
-  "slug": "oled-burn-in-mechanisms-longevity-and-prevention",
-  "category": "display-problems",
-  "title": "OLED & QD-OLED Burn-in Mechanisms, Degradation Factors & Prevention",
-  "subtitle": "A comprehensive technical breakdown of organic emitter decay, static interface hazards, and longevity habits.",
-  "description": "Learn how OLED and QD-OLED burn-in occurs at the subpixel level, how luminance and thermal buildup accelerate aging, and how to configure your system for 5+ years of burn-in-free performance.",
-  "directAnswer": "OLED burn-in is cumulative, non-uniform subpixel degradation caused by the gradual loss of luminance in organic light-emitting materials. When static elements (like taskbars or gaming HUDs) illuminate the same subpixels for thousands of hours, those specific emitters age faster than surrounding pixels, leaving a permanent faint ghost outline.",
-  "whyItMatters": "OLED monitors deliver infinite contrast and near-instant response times, but improper productivity habits or maximum sustained SDR brightness can permanently damage the panel.",
-  "whatToLookFor": [
-    "Faint ghost outlines of Windows taskbar icons, browser address bars, or gaming minimaps on solid grey screens",
-    "Uneven color shifts across full-screen red or blue solid backgrounds (blue OLED emitters age fastest)",
-    "Darker bands corresponding to widescreen letterbox black bars or split-screen window borders",
-    "Residual static logos visible when watching full-screen movies or playing cinematic games"
-  ],
-  "howToTest": [
-    "Open the OLED Burn-in Calculator in Screen Tester to model your risk timeline and panel longevity",
-    "Launch the Burn-In Test and cycle through 50% neutral grey, pure red, green, and blue solid screens",
-    "Inspect static hazard hotspots (bottom taskbar area, top browser tab strip, bottom-right clock)",
-    "Review the automated risk rating based on your daily usage hours and brightness settings"
-  ],
-  "whatScreenTesterCanObserve": [
-    "Visual identification of permanent image retention across solid primary and secondary backgrounds",
-    "Mathematical modeling of cumulative static hours against panel resilience factors",
-    "Static UI hazard heatmaps illustrating where desktop interfaces concentrate emitter stress"
-  ],
-  "whatScreenTesterCannotDetermine": [
-    "Physical chemical degradation percentage of individual organic subpixel stacks",
-    "Internal monitor factory compensation cycle logs stored in scaler EEPROM",
-    "Chassis heatsink temperature and thermal dissipation efficiency"
-  ],
-  "commonCauses": [
-    "Displaying bright static Windows/macOS taskbars for 8+ hours daily without auto-hiding",
-    "Running SDR desktop productivity at maximum HDR peak brightness (300+ nits)",
-    "Unplugging monitor power strips, preventing automatic background pixel-refresh cycles from running on standby",
-    "Using light mode browser themes and documents for full-screen coding or writing workflows"
-  ],
-  "whatToDoNext": [
-    "Enable 'Automatically hide the taskbar' in Windows or macOS settings",
-    "Lower SDR desktop brightness to 120–160 nits (typically 40%–55% monitor brightness slider)",
-    "Enable system Dark Mode across operating system, browser, and IDE code editors",
-    "Never unplug the monitor from AC wall power—allow it to complete standby pixel-clean cycles automatically"
-  ],
-  "sections": [
-    {
-      "title": "How OLED Pixels Age",
-      "content": [
-        "Unlike LCDs that rely on an external backlight, each OLED subpixel emits its own light using organic carbon-based molecules. Over time, heat and electrical current degrade the light-emitting capability.",
-        "When all pixels age uniformly (such as playing dynamic video), no burn-in is visible. Burn-in only appears when static elements degrade specific pixels faster than adjacent areas."
-      ]
-    }
-  ],
-  "faq": [
-    {
-      "question": "Is temporary image retention the same as burn-in?",
-      "answer": "No. Temporary retention disappears within minutes after running dynamic content or a pixel refresh. True burn-in is permanent emitter degradation."
-    }
-  ],
-  "relatedTestIds": [
-    "oled-burn-in-calculator",
-    "burn-in-test"
-  ],
-  "relatedTroubleshootingIds": [
-    "oled-burn-in-retention"
-  ],
-  "relatedArticleSlugs": [
-    "resolution-and-scaling"
-  ],
-  "primarySearchIntent": "oled burn in risk longevity calculator qd-oled lifespan prevention",
-  "readingTimeMinutes": 5
-},
+    "slug": "grey-to-grey-gtg-response-time-and-overdrive-tuning",
+    "category": "display-problems",
+    "title": "Grey-to-Grey (GtG) Pixel Response Time, Overdrive & Overshoot",
+    "subtitle": "Understanding pixel rise and fall times, overdrive voltage boosting, and how to eliminate inverse ghosting coronas.",
+    "description": "Learn how liquid crystal response time impacts motion clarity, why manufacturer 1ms GtG claims are misleading, and how to tune monitor overdrive settings for crisp, artifact-free gaming.",
+    "directAnswer": "Grey-to-Grey (GtG) response time is the duration liquid crystals take to transition between different luminance levels. Because natural transitions are slow (often 8ms–15ms), monitors apply higher voltage (Overdrive) to force faster alignment. Over-aggressive overdrive pushes pixels past their target color, creating ugly inverted ghosting halos (coronas).",
+    "whyItMatters": "Incorrect overdrive settings degrade motion clarity. Setting overdrive too low causes blurry smearing in fast gaming, while setting it too high causes bright distracting coronas around characters and objects.",
+    "whatToLookFor": [
+      "Grey-to-Grey (GtG) Pixel Response Time, Overdrive & Overshoot - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
+    ],
+    "howToTest": [
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
+    ],
+    "whatScreenTesterCanObserve": [
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
+    ],
+    "commonCauses": [
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
+    ],
+    "whatToDoNext": [
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
+    ],
+    "sections": [
+      {
+        "title": "Fundamentos técnicos y principios de funcionamiento",
+        "content": [
+          "Grey-to-Grey (GtG) response time is the duration liquid crystals take to transition between different luminance levels. Because natural transitions are slow (often 8ms–15ms), monitors apply higher voltage (Overdrive) to force faster alignment. Over-aggressive overdrive pushes pixels past their target color, creating ugly inverted ghosting halos (coronas).. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "Incorrect overdrive settings degrade motion clarity. Setting overdrive too low causes blurry smearing in fast gaming, while setting it too high causes bright distracting coronas around characters and objects. Se recomienda realizar inspecciones periódicas."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
+      },
+      {
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
+      }
+    ],
+    "relatedTestIds": [
+      "gtg-response-time-test",
+      "ghosting-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "ghosting-motion-blur"
+    ],
+    "relatedArticleSlugs": [
+      "resolution-and-scaling"
+    ],
+    "primarySearchIntent": "gtg response time overdrive overshoot inverse ghosting va smearing",
+    "readingTimeMinutes": 5
+  },
   {
-  "slug": "mouse-polling-rate-sensor-jitter-and-refresh-rate-synergy",
-  "category": "device-and-input",
-  "title": "Mouse Polling Rate (Hz), Sensor Jitter & High-Refresh Synergy",
-  "subtitle": "Understanding USB report rates, tracking smoothness, click switch chatter, and how mouse Hz matches monitor refresh rates.",
-  "description": "Learn how mouse polling rates (125Hz to 8000Hz) impact cursor smoothness on high-refresh screens, how to test sensor jitter, and how to detect mechanical double-click switch failure.",
-  "directAnswer": "Mouse polling rate is the frequency (measured in Hertz) at which the mouse reports its position and button states to the operating system. On high-refresh displays (144Hz, 240Hz, 360Hz+), a standard 125Hz office mouse stutters because the screen updates faster than the mouse reports new coordinates. A 1000Hz+ polling rate guarantees fresh cursor coordinates on every single screen refresh.",
-  "whyItMatters": "Using a low-polling mouse on a 240Hz gaming display negates high-refresh fluidity, while mechanical switch bounce (chatter) causes frustrating accidental double-clicks.",
-  "whatToLookFor": [
-    "Choppy or stuttering cursor movement when dragging windows across a 144Hz+ monitor",
-    "Interval jitter spikes (packet delivery variances greater than 2ms on a 1000Hz mouse)",
-    "Unintended double-clicks when attempting a single physical click on desktop icons or web links",
-    "Mismatch between physical hand movement distance and on-screen cursor displacement"
-  ],
-  "howToTest": [
-    "Open the Mouse Polling Rate & Precision Test in Screen Tester",
-    "Move your mouse rapidly in continuous circles inside the test pad to record peak and average Hz",
-    "Observe the live packet interval graph to ensure stable ~1.0ms delivery without dropped packets",
-    "Use the Button Actuation tab to test for double-click switch bounce under 60ms"
-  ],
-  "whatScreenTesterCanObserve": [
-    "USB mouse movement event frequency reported via performance.now() high-resolution timestamps",
-    "Peak, average, and real-time polling rates across continuous motion sessions",
-    "Multi-button click actuation counts and millisecond inter-click intervals"
-  ],
-  "whatScreenTesterCannotDetermine": [
-    "Hardware USB bus polling rate when the mouse is stationary (optical sensors only report on movement)",
-    "Sensor lift-off distance (LOD) in physical millimeters",
-    "Direct MCU firmware polling rate when browser event loops are throttled by heavy background tasks"
-  ],
-  "commonCauses": [
-    "Mouse connected through an unpowered USB hub or slow legacy USB 2.0 keyboard passthrough port",
-    "Mouse driver software set to 125Hz or 500Hz energy-saving modes on wireless models",
-    "Oxidation or fatigue on mechanical Omron/Kailh microswitch copper leaf springs causing chatter",
-    "CPU thermal throttling causing USB controller interrupt latency spikes"
-  ],
-  "whatToDoNext": [
-    "Plug high-polling gaming mice directly into motherboard rear USB 3.0 ports",
-    "Set mouse software (Logitech G HUB, Razer Synapse, etc.) to 1000Hz or 4000Hz",
-    "If double-click chatter is detected, replace mechanical switches or upgrade to optical mouse switches",
-    "Disable 'Enhance pointer precision' (mouse acceleration) in Windows mouse properties"
-  ],
-  "sections": [
-    {
-      "title": "Do 4000Hz and 8000Hz Polling Rates Really Matter?",
-      "content": [
-        "Standard 1000Hz mice report coordinates every 1.0 millisecond. At 60Hz or 144Hz, this is more than sufficient.",
-        "On 360Hz and 540Hz displays, frame times drop to 2.7ms and 1.8ms. Under these conditions, an 8000Hz mouse provides lower input latency and near-perfect cursor tracking fluidity."
-      ]
-    }
-  ],
-  "faq": [
-    {
-      "question": "Why does 8000Hz polling rate cause CPU lag in some games?",
-      "answer": "8000Hz polling generates 8,000 CPU hardware interrupts per second. On older 4-core CPUs, processing these interrupts can bottleneck game main threads."
-    }
-  ],
-  "relatedTestIds": [
-    "mouse-polling-test",
-    "gamepad-test"
-  ],
-  "relatedTroubleshootingIds": [
-    "input-lag-latency"
-  ],
-  "relatedArticleSlugs": [
-    "resolution-and-scaling"
-  ],
-  "primarySearchIntent": "mouse polling rate hz test double click chatter sensor jitter",
-  "readingTimeMinutes": 5
-},
+    "slug": "oled-burn-in-mechanisms-longevity-and-prevention",
+    "category": "display-problems",
+    "title": "OLED & QD-OLED Burn-in Mechanisms, Degradation Factors & Prevention",
+    "subtitle": "A comprehensive technical breakdown of organic emitter decay, static interface hazards, and longevity habits.",
+    "description": "Learn how OLED and QD-OLED burn-in occurs at the subpixel level, how luminance and thermal buildup accelerate aging, and how to configure your system for 5+ years of burn-in-free performance.",
+    "directAnswer": "OLED burn-in is cumulative, non-uniform subpixel degradation caused by the gradual loss of luminance in organic light-emitting materials. When static elements (like taskbars or gaming HUDs) illuminate the same subpixels for thousands of hours, those specific emitters age faster than surrounding pixels, leaving a permanent faint ghost outline.",
+    "whyItMatters": "OLED monitors deliver infinite contrast and near-instant response times, but improper productivity habits or maximum sustained SDR brightness can permanently damage the panel.",
+    "whatToLookFor": [
+      "OLED & QD-OLED Burn-in Mechanisms, Degradation Factors & Prevention - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
+    ],
+    "howToTest": [
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
+    ],
+    "whatScreenTesterCanObserve": [
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
+    ],
+    "commonCauses": [
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
+    ],
+    "whatToDoNext": [
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
+    ],
+    "sections": [
+      {
+        "title": "Fundamentos técnicos y principios de funcionamiento",
+        "content": [
+          "OLED burn-in is cumulative, non-uniform subpixel degradation caused by the gradual loss of luminance in organic light-emitting materials. When static elements (like taskbars or gaming HUDs) illuminate the same subpixels for thousands of hours, those specific emitters age faster than surrounding pixels, leaving a permanent faint ghost outline.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "OLED monitors deliver infinite contrast and near-instant response times, but improper productivity habits or maximum sustained SDR brightness can permanently damage the panel. Se recomienda realizar inspecciones periódicas."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
+      },
+      {
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
+      }
+    ],
+    "relatedTestIds": [
+      "oled-burn-in-calculator",
+      "burn-in-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "oled-burn-in-retention"
+    ],
+    "relatedArticleSlugs": [
+      "resolution-and-scaling"
+    ],
+    "primarySearchIntent": "oled burn in risk longevity calculator qd-oled lifespan prevention",
+    "readingTimeMinutes": 5
+  },
   {
-  "slug": "gpu-webgl-3d-performance-frame-stability-and-thermal-throttling",
-  "category": "display-basics",
-  "title": "GPU WebGL 3D Performance, 1% Lows & Thermal Throttling",
-  "subtitle": "Understanding graphics rendering throughput, frame pacing variance, and GPU performance consistency under sustained load.",
-  "description": "Learn how browser-based WebGL benchmarks evaluate GPU capabilities, why 1% low FPS matters more than average framerates, and how to identify thermal throttling.",
-  "directAnswer": "A graphics processing unit (GPU) must sustain steady frame delivery to prevent stuttering. While average FPS indicates overall power, 1% low FPS reveals micro-stutters and hitching caused by memory bandwidth bottlenecks, driver latency, or GPU thermal downclocking under heavy rendering workloads.",
-  "whyItMatters": "A monitor's refresh rate can only be enjoyed if the GPU delivers frames consistently. Heavy frame drops ruin smoothness even on G-Sync and FreeSync variable refresh rate displays.",
-  "whatToLookFor": [
-    "Sudden stuttering or hitching during sustained 3D particle animations",
-    "Large gaps between average FPS (e.g. 120 FPS) and 1% low FPS (e.g. 35 FPS)",
-    "Gradual degradation in frame rate over 30 to 60 seconds as the GPU heats up",
-    "Frame time variance exceeding 5ms during steady camera rotation"
-  ],
-  "howToTest": [
-    "Open the GPU WebGL 3D Benchmark in Screen Tester and select the Medium or Heavy stress preset",
-    "Monitor real-time FPS and frame time variance across 40,000 to 100,000 active 3D particles",
-    "Run the 30-second benchmark to evaluate sustained performance stability",
-    "Compare 1% low FPS against your monitor's native refresh rate"
-  ],
-  "whatScreenTesterCanObserve": [
-    "Client-side WebGL 3D rendering throughput across 10,000 to 200,000 active particles",
-    "Real-time frame rate, average FPS, 1% low frame rates, and millisecond frame pacing",
-    "Detected WebGL graphics renderer string, GPU vendor, and maximum texture dimensions"
-  ],
-  "whatScreenTesterCannotDetermine": [
-    "Physical GPU core temperature (°C) or fan RPM without native operating system telemetry utilities",
-    "GPU board power draw in Watts (TDP)",
-    "VRAM memory clock frequency or memory junction temperatures"
-  ],
-  "commonCauses": [
-    "Laptop or small form-factor PC suffering from thermal throttling due to dust buildup or inadequate cooling",
-    "Browser utilizing integrated CPU graphics (e.g. Intel UHD) instead of a dedicated NVIDIA or AMD GPU",
-    "Hardware acceleration disabled in browser settings, forcing software canvas emulation",
-    "Background applications or browser tabs consuming dedicated video memory (VRAM)"
-  ],
-  "whatToDoNext": [
-    "Verify that 'Use graphics acceleration when available' is enabled in your browser settings",
-    "Configure Windows Graphics Settings to assign 'High Performance (Dedicated GPU)' to your web browser",
-    "Clean laptop cooling vents and fans to prevent thermal downclocking during sustained 3D tasks",
-    "Update GPU graphics drivers from NVIDIA, AMD, or Intel to optimize WebGL shader compilation"
-  ],
-  "sections": [
-    {
-      "title": "Why 1% Lows Matter More Than Average FPS",
-      "content": [
-        "Human perception is sensitive to abrupt frame pauses. A game averaging 144 FPS with frequent drops to 30 FPS will feel choppy and frustrating.",
-        "The 1% low metric isolates the worst 1% of frame times. When 1% lows remain close to average FPS, visual output feels exceptionally smooth."
-      ]
-    }
-  ],
-  "faq": [
-    {
-      "question": "Why does my browser benchmark run on integrated graphics?",
-      "answer": "Laptops with dual GPUs often assign web browsers to the power-saving integrated GPU by default. You can force high performance in Windows Settings > System > Display > Graphics."
-    }
-  ],
-  "relatedTestIds": [
-    "gpu-benchmark-test",
-    "refresh-rate-test"
-  ],
-  "relatedTroubleshootingIds": [
-    "screen-tearing-vs-stutter"
-  ],
-  "relatedArticleSlugs": [
-    "resolution-and-scaling"
-  ],
-  "primarySearchIntent": "gpu webgl 3d benchmark 1 percent low fps thermal throttling",
-  "readingTimeMinutes": 5
-},
+    "slug": "mouse-polling-rate-sensor-jitter-and-refresh-rate-synergy",
+    "category": "device-and-input",
+    "title": "Mouse Polling Rate (Hz), Sensor Jitter & High-Refresh Synergy",
+    "subtitle": "Understanding USB report rates, tracking smoothness, click switch chatter, and how mouse Hz matches monitor refresh rates.",
+    "description": "Learn how mouse polling rates (125Hz to 8000Hz) impact cursor smoothness on high-refresh screens, how to test sensor jitter, and how to detect mechanical double-click switch failure.",
+    "directAnswer": "Mouse polling rate is the frequency (measured in Hertz) at which the mouse reports its position and button states to the operating system. On high-refresh displays (144Hz, 240Hz, 360Hz+), a standard 125Hz office mouse stutters because the screen updates faster than the mouse reports new coordinates. A 1000Hz+ polling rate guarantees fresh cursor coordinates on every single screen refresh.",
+    "whyItMatters": "Using a low-polling mouse on a 240Hz gaming display negates high-refresh fluidity, while mechanical switch bounce (chatter) causes frustrating accidental double-clicks.",
+    "whatToLookFor": [
+      "Mouse Polling Rate (Hz), Sensor Jitter & High-Refresh Synergy - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
+    ],
+    "howToTest": [
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
+    ],
+    "whatScreenTesterCanObserve": [
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
+    ],
+    "commonCauses": [
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
+    ],
+    "whatToDoNext": [
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
+    ],
+    "sections": [
+      {
+        "title": "Fundamentos técnicos y principios de funcionamiento",
+        "content": [
+          "Mouse polling rate is the frequency (measured in Hertz) at which the mouse reports its position and button states to the operating system. On high-refresh displays (144Hz, 240Hz, 360Hz+), a standard 125Hz office mouse stutters because the screen updates faster than the mouse reports new coordinates. A 1000Hz+ polling rate guarantees fresh cursor coordinates on every single screen refresh.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "Using a low-polling mouse on a 240Hz gaming display negates high-refresh fluidity, while mechanical switch bounce (chatter) causes frustrating accidental double-clicks. Se recomienda realizar inspecciones periódicas."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
+      },
+      {
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
+      }
+    ],
+    "relatedTestIds": [
+      "mouse-polling-test",
+      "gamepad-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "input-lag-latency"
+    ],
+    "relatedArticleSlugs": [
+      "resolution-and-scaling"
+    ],
+    "primarySearchIntent": "mouse polling rate hz test double click chatter sensor jitter",
+    "readingTimeMinutes": 5
+  },
   {
-  "slug": "display-inspection-certificates-resale-grading-and-warranty-documentation",
-  "category": "browser-and-testing",
-  "title": "Display Inspection Certificates, Resale Grading & Warranty Documentation",
-  "subtitle": "How to inspect and certify monitor condition, grade used panels, and document defects for warranty returns.",
-  "description": "A complete guide to conducting formal display inspections, assigning cosmetic and panel grades (A+, A, B, RMA), and creating official inspection certificates for resale or return claims.",
-  "directAnswer": "A display inspection certificate provides verified proof of monitor hardware specifications, pixel integrity, backlight bleed severity, and color performance. It protects buyers when purchasing used monitors and gives owners indisputable documentation when submitting warranty RMA claims during return windows.",
-  "whyItMatters": "Buying or selling used monitors without verified inspection leads to disputes over unannounced dead pixels or severe backlight bleed. Standardized grading brings transparency to used display transactions.",
-  "whatToLookFor": [
-    "Confirmed native panel resolution, color depth, and wide color gamut support",
-    "Exact count of defective dead pixels and stuck subpixels",
-    "Cosmetic bezel condition, stand stability, and panel anti-glare scratch inspection",
-    "Backlight bleed and corner IPS glow severity evaluated in a darkened room"
-  ],
-  "howToTest": [
-    "Complete the core tests in Screen Tester: Dead Pixels, Uniformity, Backlight Bleed, and Color Accuracy",
-    "Open the Display Inspection Certificate tool to automatically populate detected hardware specifications",
-    "Input monitor brand, model name, serial number, and manual inspection grading results",
-    "Click 'Print / Save as PDF' to generate an official certified display quality report"
-  ],
-  "whatScreenTesterCanObserve": [
-    "Compilation of system-reported display parameters and user-verified quality grades",
-    "Generation of unique cryptographic verification IDs and inspection timestamps",
-    "Print-optimized document layout hiding navigation and interactive UI controls"
-  ],
-  "whatScreenTesterCannotDetermine": [
-    "Automated physical panel serial number readout from internal EDID firmware (requires manual entry)",
-    "Legal underwriting of manufacturer warranty claims outside official manufacturer service centers",
-    "Spectroradiometer color accuracy Delta E verification without external hardware colorimeters"
-  ],
-  "commonCauses": [
-    "Buyers discovering unannounced dead pixels or severe corner bleed after purchasing used displays",
-    "Manufacturers requesting verified defect coordinates and photographic proof for warranty replacements",
-    "Corporate IT departments needing formal asset health logs for workstation inventory audits"
-  ],
-  "whatToDoNext": [
-    "Always generate an inspection certificate immediately upon unboxing a newly purchased monitor",
-    "Attach the PDF certificate to return requests if the display fails ISO 9241-307 criteria",
-    "Provide the certificate when listing used monitors on marketplaces for higher resale value"
-  ],
-  "sections": [
-    {
-      "title": "Standardized Display Grading Tiers",
-      "content": [
-        "Grade A+ (Mint / Certified): Zero dead pixels, zero bright subpixels, minimal uniform backlight glow, flawless anti-glare coating.",
-        "Grade A (Excellent): Maximum 1–2 minor subpixel defects outside the central zone, minor IPS glow within acceptable manufacturing tolerances.",
-        "Grade B (Used / Average): 3+ subpixel defects or noticeable corner backlight bleed.",
-        "RMA / Defective: Defect count exceeds manufacturer ISO 9241-307 allowances, qualifying for immediate replacement."
-      ]
-    }
-  ],
-  "faq": [
-    {
-      "question": "Can I use this certificate for manufacturer RMA warranty claims?",
-      "answer": "Yes. Major manufacturers like Dell, ASUS, LG, and Lenovo accept structured defect reports containing resolution, serial number, defect classification, and coordinate logs."
-    }
-  ],
-  "relatedTestIds": [
-    "display-certificate",
-    "dead-pixel-mapper"
-  ],
-  "relatedTroubleshootingIds": [
-    "dead-vs-stuck-pixels"
-  ],
-  "relatedArticleSlugs": [
-    "resolution-and-scaling"
-  ],
-  "primarySearchIntent": "display inspection certificate used monitor grading rma documentation",
-  "readingTimeMinutes": 5
-},
+    "slug": "gpu-webgl-3d-performance-frame-stability-and-thermal-throttling",
+    "category": "display-basics",
+    "title": "GPU WebGL 3D Performance, 1% Lows & Thermal Throttling",
+    "subtitle": "Understanding graphics rendering throughput, frame pacing variance, and GPU performance consistency under sustained load.",
+    "description": "Learn how browser-based WebGL benchmarks evaluate GPU capabilities, why 1% low FPS matters more than average framerates, and how to identify thermal throttling.",
+    "directAnswer": "A graphics processing unit (GPU) must sustain steady frame delivery to prevent stuttering. While average FPS indicates overall power, 1% low FPS reveals micro-stutters and hitching caused by memory bandwidth bottlenecks, driver latency, or GPU thermal downclocking under heavy rendering workloads.",
+    "whyItMatters": "A monitor's refresh rate can only be enjoyed if the GPU delivers frames consistently. Heavy frame drops ruin smoothness even on G-Sync and FreeSync variable refresh rate displays.",
+    "whatToLookFor": [
+      "GPU WebGL 3D Performance, 1% Lows & Thermal Throttling - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
+    ],
+    "howToTest": [
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
+    ],
+    "whatScreenTesterCanObserve": [
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
+    ],
+    "commonCauses": [
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
+    ],
+    "whatToDoNext": [
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
+    ],
+    "sections": [
+      {
+        "title": "Fundamentos técnicos y principios de funcionamiento",
+        "content": [
+          "A graphics processing unit (GPU) must sustain steady frame delivery to prevent stuttering. While average FPS indicates overall power, 1% low FPS reveals micro-stutters and hitching caused by memory bandwidth bottlenecks, driver latency, or GPU thermal downclocking under heavy rendering workloads.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "A monitor's refresh rate can only be enjoyed if the GPU delivers frames consistently. Heavy frame drops ruin smoothness even on G-Sync and FreeSync variable refresh rate displays. Se recomienda realizar inspecciones periódicas."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
+      },
+      {
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
+      }
+    ],
+    "relatedTestIds": [
+      "gpu-benchmark-test",
+      "refresh-rate-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "screen-tearing-vs-stutter"
+    ],
+    "relatedArticleSlugs": [
+      "resolution-and-scaling"
+    ],
+    "primarySearchIntent": "gpu webgl 3d benchmark 1 percent low fps thermal throttling",
+    "readingTimeMinutes": 5
+  },
   {
-  "slug": "monitor-osd-hardware-calibration-and-target-curves",
-  "category": "tv-and-display-setup",
-  "title": "Monitor On-Screen Display (OSD) Calibration, Hardware Controls & Target Curves",
-  "subtitle": "A practical guide to tuning physical monitor buttons for accurate Brightness, Contrast, Gamma 2.2, and 6500K color.",
-  "description": "Learn how to calibrate your monitor using its built-in hardware OSD menu buttons without expensive colorimeters, avoid black crush and white clipping, and achieve standard sRGB color accuracy.",
-  "directAnswer": "Most monitors ship from the factory with exaggerated, inaccurate settings—100% brightness, excessive contrast, and oversaturated cool blue white balance (8000K+) designed to pop under retail showroom lights. Calibrating the physical OSD buttons aligns your monitor with international sRGB and Rec.709 standards (6500K neutral white, Gamma 2.2).",
-  "whyItMatters": "Uncalibrated monitors distort photos, cause muddy shadows in movies, and lead to eye fatigue. Proper OSD tuning ensures that games, photos, and web content look exactly as content creators intended.",
-  "whatToLookFor": [
-    "Black crush (shadow details disappearing into solid pitch black due to incorrect brightness)",
-    "White clipping (bright skies and clouds losing detail due to excessive contrast)",
-    "Unpleasant blue or green color casts on white web pages and documents",
-    "Artificial white edge halos around text caused by excessive hardware sharpness"
-  ],
-  "howToTest": [
-    "Open the Interactive OSD Calibration Assistant in Screen Tester and follow the 6 visual steps",
-    "Adjust OSD Brightness until calibration patch #16 is faintly visible on black",
-    "Lower OSD Contrast until near-white patch #253 is distinguishable from pure white #255",
-    "Step back 4 feet to verify that the Gamma 2.2 optical blend target blends seamlessly into the striped background",
-    "Tune Red, Green, and Blue gain sliders to achieve neutral 6500K D65 white balance"
-  ],
-  "whatScreenTesterCanObserve": [
-    "Visual feedback targets designed specifically for standard monitor OSD adjustment ranges",
-    "Optical blend checkerboards verifying sRGB Gamma 2.2 alignment without calibration probes",
-    "High-contrast text and moving block targets for tuning sharpness and overdrive tiers"
-  ],
-  "whatScreenTesterCannotDetermine": [
-    "Direct software control over physical monitor OSD buttons via DDC/CI protocol",
-    "Exact color temperature in Kelvin without a spectrophotometer or colorimeter hardware probe",
-    "Hardware LUT (Look-Up Table) internal calibration inside professional color-grading monitors"
-  ],
-  "commonCauses": [
-    "Factory default 'Standard' or 'Gaming' picture mode configured for oversaturated retail demonstration",
-    "OSD Sharpness set too high, introducing ringing artifacts on native digital HDMI/DisplayPort signals",
-    "Monitor OSD Brightness set to 100% in a 100-lux indoor office environment",
-    "Monitor Gamma setting set to an uncalibrated mode (e.g. Mode 1 or Off)"
-  ],
-  "whatToDoNext": [
-    "Select 'Standard' or 'Custom / User' picture preset in your monitor OSD",
-    "Lower brightness to around 25%–45% (approx 120 nits) for comfortable daytime reading",
-    "Select Color Temperature 'Warm' or adjust RGB Gain to 50-50-50 for neutral white",
-    "Keep OSD Sharpness at the factory neutral default (typically 50% or 0)"
-  ],
-  "sections": [
-    {
-      "title": "The Golden Rule: Hardware First, Software Second",
-      "content": [
-        "Always adjust your monitor's physical OSD buttons before applying software color profiles or GPU driver color adjustments.",
-        "Software adjustments work by truncating digital LUT values, which reduces dynamic color range and can cause gradient banding. Hardware OSD tuning controls physical panel voltages directly, preserving full 8-bit or 10-bit color depth."
-      ]
-    }
-  ],
-  "faq": [
-    {
-      "question": "Should I calibrate my monitor with lights on or off?",
-      "answer": "Calibrate in your typical working environment lighting. Avoid direct sunlight falling across the screen, and use soft, indirect ambient light."
-    }
-  ],
-  "relatedTestIds": [
-    "osd-calibration-guide",
-    "brightness-test",
-    "contrast-test"
-  ],
-  "relatedTroubleshootingIds": [
-    "washed-out-colors"
-  ],
-  "relatedArticleSlugs": [
-    "resolution-and-scaling"
-  ],
-  "primarySearchIntent": "monitor osd calibration hardware buttons brightness contrast gamma 6500k",
-  "readingTimeMinutes": 5
-},
+    "slug": "display-inspection-certificates-resale-grading-and-warranty-documentation",
+    "category": "browser-and-testing",
+    "title": "Display Inspection Certificates, Resale Grading & Warranty Documentation",
+    "subtitle": "How to inspect and certify monitor condition, grade used panels, and document defects for warranty returns.",
+    "description": "A complete guide to conducting formal display inspections, assigning cosmetic and panel grades (A+, A, B, RMA), and creating official inspection certificates for resale or return claims.",
+    "directAnswer": "A display inspection certificate provides verified proof of monitor hardware specifications, pixel integrity, backlight bleed severity, and color performance. It protects buyers when purchasing used monitors and gives owners indisputable documentation when submitting warranty RMA claims during return windows.",
+    "whyItMatters": "Buying or selling used monitors without verified inspection leads to disputes over unannounced dead pixels or severe backlight bleed. Standardized grading brings transparency to used display transactions.",
+    "whatToLookFor": [
+      "Display Inspection Certificates, Resale Grading & Warranty Documentation - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
+    ],
+    "howToTest": [
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
+    ],
+    "whatScreenTesterCanObserve": [
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
+    ],
+    "commonCauses": [
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
+    ],
+    "whatToDoNext": [
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
+    ],
+    "sections": [
+      {
+        "title": "Fundamentos técnicos y principios de funcionamiento",
+        "content": [
+          "A display inspection certificate provides verified proof of monitor hardware specifications, pixel integrity, backlight bleed severity, and color performance. It protects buyers when purchasing used monitors and gives owners indisputable documentation when submitting warranty RMA claims during return windows.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "Buying or selling used monitors without verified inspection leads to disputes over unannounced dead pixels or severe backlight bleed. Standardized grading brings transparency to used display transactions. Se recomienda realizar inspecciones periódicas."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
+      },
+      {
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
+      }
+    ],
+    "relatedTestIds": [
+      "display-certificate",
+      "dead-pixel-mapper"
+    ],
+    "relatedTroubleshootingIds": [
+      "dead-vs-stuck-pixels"
+    ],
+    "relatedArticleSlugs": [
+      "resolution-and-scaling"
+    ],
+    "primarySearchIntent": "display inspection certificate used monitor grading rma documentation",
+    "readingTimeMinutes": 5
+  },
+  {
+    "slug": "monitor-osd-hardware-calibration-and-target-curves",
+    "category": "tv-and-display-setup",
+    "title": "Monitor On-Screen Display (OSD) Calibration, Hardware Controls & Target Curves",
+    "subtitle": "A practical guide to tuning physical monitor buttons for accurate Brightness, Contrast, Gamma 2.2, and 6500K color.",
+    "description": "Learn how to calibrate your monitor using its built-in hardware OSD menu buttons without expensive colorimeters, avoid black crush and white clipping, and achieve standard sRGB color accuracy.",
+    "directAnswer": "Most monitors ship from the factory with exaggerated, inaccurate settings—100% brightness, excessive contrast, and oversaturated cool blue white balance (8000K+) designed to pop under retail showroom lights. Calibrating the physical OSD buttons aligns your monitor with international sRGB and Rec.709 standards (6500K neutral white, Gamma 2.2).",
+    "whyItMatters": "Uncalibrated monitors distort photos, cause muddy shadows in movies, and lead to eye fatigue. Proper OSD tuning ensures that games, photos, and web content look exactly as content creators intended.",
+    "whatToLookFor": [
+      "Monitor On-Screen Display (OSD) Calibration, Hardware Controls & Target Curves - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
+    ],
+    "howToTest": [
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
+    ],
+    "whatScreenTesterCanObserve": [
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
+    ],
+    "commonCauses": [
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
+    ],
+    "whatToDoNext": [
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
+    ],
+    "sections": [
+      {
+        "title": "Fundamentos técnicos y principios de funcionamiento",
+        "content": [
+          "Most monitors ship from the factory with exaggerated, inaccurate settings—100% brightness, excessive contrast, and oversaturated cool blue white balance (8000K+) designed to pop under retail showroom lights. Calibrating the physical OSD buttons aligns your monitor with international sRGB and Rec.709 standards (6500K neutral white, Gamma 2.2).. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "Uncalibrated monitors distort photos, cause muddy shadows in movies, and lead to eye fatigue. Proper OSD tuning ensures that games, photos, and web content look exactly as content creators intended. Se recomienda realizar inspecciones periódicas."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
+      },
+      {
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
+      }
+    ],
+    "relatedTestIds": [
+      "osd-calibration-guide",
+      "brightness-test",
+      "contrast-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "washed-out-colors"
+    ],
+    "relatedArticleSlugs": [
+      "resolution-and-scaling"
+    ],
+    "primarySearchIntent": "monitor osd calibration hardware buttons brightness contrast gamma 6500k",
+    "readingTimeMinutes": 5
+  },
+  {
+    "slug": "display-gamma-curves-and-grayscale-tracking",
+    "category": "display-basics",
+    "title": "Curvas Gamma de Pantalla, EOTF y Seguimiento de Escala de Grises",
+    "subtitle": "Gamma 2.2, funciones de transferencia sRGB, BT.1886, aplastamiento de negros y calibración de tonos.",
+    "description": "Gamma 2.2, funciones de transferencia sRGB, BT.1886, aplastamiento de negros y calibración de tonos.",
+    "directAnswer": "El valor gamma describe la relación matemática entre el valor de brillo numérico de entrada y la luminancia óptica real emitida por su monitor.",
+    "whyItMatters": "Incorrect display gamma causes severe image degradation: high gamma (e.g. 2.6) crushes dark shadow details into solid black, while low gamma (e.g. 1.8) washes out contrast, making blacks appear milky and faded.",
+    "whatToLookFor": [
+      "Curvas Gamma de Pantalla, EOTF y Seguimiento de Escala de Grises - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
+    ],
+    "howToTest": [
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
+    ],
+    "whatScreenTesterCanObserve": [
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
+    ],
+    "commonCauses": [
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
+    ],
+    "whatToDoNext": [
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
+    ],
+    "sections": [
+      {
+        "title": "Fundamentos técnicos y principios de funcionamiento",
+        "content": [
+          "El valor gamma describe la relación matemática entre el valor de brillo numérico de entrada y la luminancia óptica real emitida por su monitor.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "Incorrect display gamma causes severe image degradation: high gamma (e.g. 2.6) crushes dark shadow details into solid black, while low gamma (e.g. 1.8) washes out contrast, making blacks appear milky and faded. Se recomienda realizar inspecciones periódicas."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
+      },
+      {
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
+      }
+    ],
+    "relatedTestIds": [
+      "gamma-test",
+      "grayscale-test",
+      "contrast-test",
+      "brightness-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "color-banding-gradient"
+    ],
+    "relatedArticleSlugs": [
+      "black-levels-and-shadow-detail",
+      "display-uniformity",
+      "color-depth-and-banding"
+    ],
+    "primarySearchIntent": "monitor gamma test calibration grayscale curve",
+    "readingTimeMinutes": 6
+  },
+  {
+    "slug": "color-accuracy-delta-e-and-gamut-coverage",
+    "category": "display-basics",
+    "title": "Precisión de Color, Delta E y Cobertura de Espacios de Color",
+    "subtitle": "Espacios de color (sRGB, DCI-P3, AdobeRGB), límites de Delta E y seguimiento de saturación.",
+    "description": "Espacios de color (sRGB, DCI-P3, AdobeRGB), límites de Delta E y seguimiento de saturación.",
+    "directAnswer": "La precisión del color mide con qué fidelidad un monitor reproduce coordenadas estándar, cuantificadas mediante Delta E (ΔE).",
+    "whyItMatters": "For photo editors, digital artists, video colorists, and gamers, inaccurate colors distort creative intent. A ΔE above 3.0 results in noticeable skin tone discoloration, mismatched brand logos, and unnatural oversaturation.",
+    "whatToLookFor": [
+      "Precisión de Color, Delta E y Cobertura de Espacios de Color - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
+    ],
+    "howToTest": [
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
+    ],
+    "whatScreenTesterCanObserve": [
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
+    ],
+    "commonCauses": [
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
+    ],
+    "whatToDoNext": [
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
+    ],
+    "sections": [
+      {
+        "title": "Fundamentos técnicos y principios de funcionamiento",
+        "content": [
+          "La precisión del color mide con qué fidelidad un monitor reproduce coordenadas estándar, cuantificadas mediante Delta E (ΔE).. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "For photo editors, digital artists, video colorists, and gamers, inaccurate colors distort creative intent. A ΔE above 3.0 results in noticeable skin tone discoloration, mismatched brand logos, and unnatural oversaturation. Se recomienda realizar inspecciones periódicas."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
+      },
+      {
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
+      }
+    ],
+    "relatedTestIds": [
+      "color-accuracy-test",
+      "saturation-test",
+      "color-gamut-test",
+      "color-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "color-tint-shift"
+    ],
+    "relatedArticleSlugs": [
+      "color-depth-and-banding",
+      "hdr-display-fundamentals",
+      "dual-monitor-color-and-white-point-matching"
+    ],
+    "primarySearchIntent": "monitor color accuracy delta e saturation gamut calibration",
+    "readingTimeMinutes": 6
+  },
+  {
+    "slug": "local-dimming-blooming-and-fald-haloing",
+    "category": "display-problems",
+    "title": "Mini-LED Local Dimming, Efectos de Blooming y Halos en FALD",
+    "subtitle": "Cómo funciona el atenuado local FALD, por qué se forman halos en fondos oscuros y ajustes.",
+    "description": "Cómo funciona el atenuado local FALD, por qué se forman halos en fondos oscuros y ajustes.",
+    "directAnswer": "El blooming (o haloing) es un artefacto óptico en pantallas Mini-LED y FALD donde la luz de las zonas de retroiluminación activas se desborda hacia píxeles oscuros adyacentes.",
+    "whyItMatters": "While Mini-LED panels deliver extraordinary peak brightness (1000+ nits) and deep blacks, aggressive local dimming creates distracting glowing halos around mouse cursors, white movie subtitles, and night sky stars, diminishing dark-scene contrast.",
+    "whatToLookFor": [
+      "Mini-LED Local Dimming, Efectos de Blooming y Halos en FALD - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
+    ],
+    "howToTest": [
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
+    ],
+    "whatScreenTesterCanObserve": [
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
+    ],
+    "commonCauses": [
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
+    ],
+    "whatToDoNext": [
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
+    ],
+    "sections": [
+      {
+        "title": "Fundamentos técnicos y principios de funcionamiento",
+        "content": [
+          "El blooming (o haloing) es un artefacto óptico en pantallas Mini-LED y FALD donde la luz de las zonas de retroiluminación activas se desborda hacia píxeles oscuros adyacentes.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "While Mini-LED panels deliver extraordinary peak brightness (1000+ nits) and deep blacks, aggressive local dimming creates distracting glowing halos around mouse cursors, white movie subtitles, and night sky stars, diminishing dark-scene contrast. Se recomienda realizar inspecciones periódicas."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
+      },
+      {
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
+      }
+    ],
+    "relatedTestIds": [
+      "blooming-test",
+      "backlight-bleed-test",
+      "contrast-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "backlight-bleed-glow"
+    ],
+    "relatedArticleSlugs": [
+      "backlight-bleed-vs-ips-glow",
+      "black-levels-and-shadow-detail",
+      "oled-burn-in-and-image-retention"
+    ],
+    "primarySearchIntent": "mini led blooming halo test local dimming fald",
+    "readingTimeMinutes": 6
+  },
+  {
+    "slug": "display-test-patterns-and-visual-inspection-standards",
+    "category": "browser-and-testing",
+    "title": "Patrones de Prueba de Pantalla, Rejillas de Geometría y Estándares",
+    "subtitle": "Uso de patrones de prueba estandarizados, líneas de 1px, retículas y tableros de ajedrez.",
+    "description": "Uso de patrones de prueba estandarizados, líneas de 1px, retículas y tableros de ajedrez.",
+    "directAnswer": "Los patrones de prueba estandarizados son cartas de referencia óptica matemática diseñadas para evaluar la geometría, fase del reloj de píxeles y nitidez del monitor.",
+    "whyItMatters": "Calibrating a monitor using natural photographs or movie scenes is inherently subjective and error-prone. Precision test patterns provide unambiguous mathematical geometries (1-pixel rasters, orthogonal grids) that instantly expose optical flaws.",
+    "whatToLookFor": [
+      "Patrones de Prueba de Pantalla, Rejillas de Geometría y Estándares - Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Compruebe si hay irregularidades, parpadeos o artefactos en toda la superficie de la pantalla."
+    ],
+    "howToTest": [
+      "Abra la herramienta correspondiente en Screen Tester y active el modo de pantalla completa (F11).",
+      "Revise la superficie de la pantalla con iluminación adecuada, desde el centro hacia los bordes."
+    ],
+    "whatScreenTesterCanObserve": [
+      "Inspección visual de patrones, alineación geométrica y respuesta de píxeles en pantalla",
+      "Detección en tiempo real de resolución, tasa de refresco y profundidad de color vía API"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "Mediciones físicas a nivel de hardware (requiere fotómetros o colorímetros externos)",
+      "Voltajes internos del circuito de retroiluminación o desgaste físico del panel"
+    ],
+    "commonCauses": [
+      "Configuración de pantalla del sistema operativo, escalado del controlador GPU o ancho de banda del cable",
+      "Ajustes incorrectos en el menú OSD del monitor (temperatura de color, contraste o tiempo de respuesta)"
+    ],
+    "whatToDoNext": [
+      "Ejecute las pruebas específicas recomendadas en Screen Tester para verificar el perfil de su pantalla.",
+      "Tras ajustar la configuración, vuelva a comprobar el patrón para verificar la calidad de imagen."
+    ],
+    "sections": [
+      {
+        "title": "Fundamentos técnicos y principios de funcionamiento",
+        "content": [
+          "Los patrones de prueba estandarizados son cartas de referencia óptica matemática diseñadas para evaluar la geometría, fase del reloj de píxeles y nitidez del monitor.. El rendimiento visual depende de la interacción entre el panel físico, la retroiluminación y el procesamiento del controlador gráfico."
+        ]
+      },
+      {
+        "title": "Configuración óptima y resolución de problemas",
+        "content": [
+          "Calibrating a monitor using natural photographs or movie scenes is inherently subjective and error-prone. Precision test patterns provide unambiguous mathematical geometries (1-pixel rasters, orthogonal grids) that instantly expose optical flaws. Se recomienda realizar inspecciones periódicas."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "¿Este problema está cubierto por la garantía del fabricante (RMA)?",
+        "answer": "Depende de la política de garantía de cada fabricante y los estándares ISO 9241-307. Pequeñas tolerancias a menudo se consideran normales."
+      },
+      {
+        "question": "¿Cómo puedo solucionar o prevenir este comportamiento en el uso diario?",
+        "answer": "Asegúrese de usar la resolución nativa, mantenga una frecuencia de actualización adecuada y aplique un perfil de color correcto en su sistema."
+      }
+    ],
+    "relatedTestIds": [
+      "custom-pattern",
+      "solid-color-test",
+      "sharpness-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "text-fuzzy-blurry"
+    ],
+    "relatedArticleSlugs": [
+      "resolution-and-scaling",
+      "text-clarity-and-subpixel-rendering",
+      "what-browser-display-tests-can-and-cannot-measure"
+    ],
+    "primarySearchIntent": "monitor test patterns calibration grid checkerboard visual inspection",
+    "readingTimeMinutes": 5
+  }
 ];

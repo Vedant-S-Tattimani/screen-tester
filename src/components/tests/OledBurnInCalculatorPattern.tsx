@@ -307,7 +307,7 @@ export function OledBurnInCalculatorPattern({ testId }: { testId?: string }) {
             {/* Risk Probability Timeline */}
             <div className="p-5 rounded-xl border border-gray-200 bg-white space-y-3 shadow-2xs">
               <h4 className="text-xs font-mono font-bold uppercase text-gray-800">
-                Burn-In Probability Timeline
+                {t.has("timelineTitle") ? t("timelineTitle") : "Burn-In Probability Timeline"}
               </h4>
 
               <div className="space-y-3">
@@ -319,7 +319,7 @@ export function OledBurnInCalculatorPattern({ testId }: { testId?: string }) {
                   <div className="h-2 rounded-full bg-gray-100 overflow-hidden">
                     <div 
                       className={`h-full rounded-full transition-all duration-300 ${
-                        metrics.risk1Year > 20 ? "bg-rose-500" : "bg-emerald-500"
+                        metrics.risk1Year > 50 ? "bg-rose-500" : "bg-blue-600"
                       }`}
                       style={{ width: `${Math.max(4, metrics.risk1Year)}%` }}
                     />
@@ -334,7 +334,7 @@ export function OledBurnInCalculatorPattern({ testId }: { testId?: string }) {
                   <div className="h-2 rounded-full bg-gray-100 overflow-hidden">
                     <div 
                       className={`h-full rounded-full transition-all duration-300 ${
-                        metrics.risk3Years > 35 ? "bg-rose-500" : metrics.risk3Years > 18 ? "bg-amber-500" : "bg-emerald-500"
+                        metrics.risk3Years > 50 ? "bg-rose-500" : "bg-blue-600"
                       }`}
                       style={{ width: `${Math.max(4, metrics.risk3Years)}%` }}
                     />
@@ -360,7 +360,9 @@ export function OledBurnInCalculatorPattern({ testId }: { testId?: string }) {
 
             {/* Static HUD Hazard Heatmap */}
             <div className="p-4 rounded-xl border border-gray-200 bg-gray-50 space-y-2">
-              <h5 className="text-xs font-mono font-bold text-gray-800">Static Hazard Hotspots</h5>
+              <h5 className="text-xs font-mono font-bold text-gray-800">
+                {t.has("hazardHotspots") ? t("hazardHotspots") : "Static Hazard Hotspots"}
+              </h5>
               <div className="relative h-28 rounded-lg border border-gray-300 bg-gray-900 overflow-hidden">
                 {/* Top browser tabs */}
                 <div className="absolute top-0 left-0 right-0 h-4 bg-red-500/50 border-b border-red-500 flex items-center px-2">

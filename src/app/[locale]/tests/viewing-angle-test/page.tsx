@@ -1,3 +1,5 @@
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 import { generateSeoMetadata } from "@/lib/seo";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
 import { ViewingAnglePattern } from "@/components/tests/ViewingAnglePattern";
@@ -21,6 +23,8 @@ export default async function ViewingAngleTestPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const explainerData = getFeatureExplainer("viewing-angle-test", locale);
+  const explainerLabels = getExplainerLabels(locale);
   const t = await getTranslations({ locale, namespace: "ViewingAngleTest" });
   
   return (
@@ -28,8 +32,7 @@ export default async function ViewingAngleTestPage({
       title={t("title")}
       description={t("description")}
       instructions={t("instructions")}
-      testId="viewing-angle-test"
-    >
+      testId="viewing-angle-test">
       <ViewingAnglePattern testId="viewing-angle-test" />
     </TestWrapper>
   );

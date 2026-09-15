@@ -303,7 +303,7 @@ export function DeadPixelMapperPattern({ testId }: { testId?: string }) {
           <div className="lg:col-span-2 rounded-xl border border-gray-200 overflow-hidden bg-white">
             <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-gray-50">
               <h4 className="text-xs font-bold font-mono uppercase text-gray-800">
-                Pinpointed Defects Registry ({defects.length})
+                {t.has("tableHeaders.type") ? `${t("tableHeaders.type")} (${defects.length})` : `Pinpointed Defects (${defects.length})`}
               </h4>
               {defects.length > 0 && (
                 <button
@@ -319,17 +319,17 @@ export function DeadPixelMapperPattern({ testId }: { testId?: string }) {
             <div className="max-h-52 overflow-y-auto">
               {defects.length === 0 ? (
                 <div className="p-8 text-center text-xs text-gray-500">
-                  No defective pixels logged yet. Cycle through colors and click any defective point on screen to record it.
+                  {t.has("noDefectsLogged") ? t("noDefectsLogged") : "No defective pixels logged yet. Cycle through colors and click any defective point on screen to record it."}
                 </div>
               ) : (
                 <table className="w-full text-left text-xs font-mono">
                   <thead className="bg-gray-50/70 border-b border-gray-100 text-gray-500 text-[11px]">
                     <tr>
-                      <th className="px-4 py-2 font-normal">#</th>
-                      <th className="px-4 py-2 font-normal">Coord (X,Y)</th>
-                      <th className="px-4 py-2 font-normal">Type</th>
-                      <th className="px-4 py-2 font-normal">Zone</th>
-                      <th className="px-4 py-2 font-normal text-right">Action</th>
+                      <th className="px-4 py-2 font-normal">{t.has("tableHeaders.id") ? t("tableHeaders.id") : "#"}</th>
+                      <th className="px-4 py-2 font-normal">{t.has("tableHeaders.coords") ? t("tableHeaders.coords") : "Coord (X,Y)"}</th>
+                      <th className="px-4 py-2 font-normal">{t.has("tableHeaders.type") ? t("tableHeaders.type") : "Type"}</th>
+                      <th className="px-4 py-2 font-normal">{t.has("tableHeaders.zone") ? t("tableHeaders.zone") : "Zone"}</th>
+                      <th className="px-4 py-2 font-normal text-right">{t.has("tableHeaders.actions") ? t("tableHeaders.actions") : "Action"}</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100">
@@ -337,8 +337,8 @@ export function DeadPixelMapperPattern({ testId }: { testId?: string }) {
                       <tr key={d.id} className="hover:bg-gray-50">
                         <td className="px-4 py-2 font-bold text-gray-900">#{i + 1}</td>
                         <td className="px-4 py-2 text-blue-600">({d.x}, {d.y})</td>
-                        <td className="px-4 py-2 capitalize">{d.type.replace("_", " ")}</td>
-                        <td className="px-4 py-2 capitalize text-gray-600">{d.zone}</td>
+                        <td className="px-4 py-2 capitalize">{t.has(`defectTypes.${d.type}`) ? t(`defectTypes.${d.type}`) : d.type.replace("_", " ")}</td>
+                        <td className="px-4 py-2 capitalize text-gray-600">{t.has(`zones.${d.zone}`) ? t(`zones.${d.zone}`) : d.zone}</td>
                         <td className="px-4 py-2 text-right">
                           <button
                             onClick={() => removeDefect(d.id)}
@@ -359,32 +359,31 @@ export function DeadPixelMapperPattern({ testId }: { testId?: string }) {
           <div className="p-5 rounded-xl border border-gray-200 bg-gray-50/80 space-y-4 flex flex-col justify-between">
             <div className="space-y-3">
               <h4 className="text-xs font-bold font-mono uppercase text-gray-900">
-                ISO 9241-307 RMA Assessment
+                {t.has("isoAssessment") ? t("isoAssessment") : "ISO 9241-307 RMA Assessment"}
               </h4>
 
               <div className="space-y-2 text-xs">
                 <div className="flex items-center justify-between p-2.5 rounded-lg border bg-white">
-                  <span className="font-medium text-gray-700">Class 1 (Zero-Bright-Dot):</span>
+                  <span className="font-medium text-gray-700">{t.has("class1Title") ? t("class1Title") : "Class 1 (Zero-Bright-Dot):"}</span>
                   <span className={`font-bold font-mono text-[11px] px-2 py-0.5 rounded ${
                     isClass1Pass ? "bg-emerald-100 text-emerald-800" : "bg-rose-100 text-rose-800"
                   }`}>
-                    {isClass1Pass ? "PASS (0 Defect)" : "RMA ELIGIBLE"}
+                    {isClass1Pass ? (t.has("class1Pass") ? t("class1Pass") : "PASS (0 Defect)") : (t.has("rmaEligible") ? t("rmaEligible") : "RMA ELIGIBLE")}
                   </span>
                 </div>
 
                 <div className="flex items-center justify-between p-2.5 rounded-lg border bg-white">
-                  <span className="font-medium text-gray-700">Class 2 (Consumer Standard):</span>
+                  <span className="font-medium text-gray-700">{t.has("class2Title") ? t("class2Title") : "Class 2 (Consumer Standard):"}</span>
                   <span className={`font-bold font-mono text-[11px] px-2 py-0.5 rounded ${
                     isClass2Pass ? "bg-emerald-100 text-emerald-800" : "bg-rose-100 text-rose-800"
                   }`}>
-                    {isClass2Pass ? "PASS (Within Limit)" : "RMA ELIGIBLE"}
+                    {isClass2Pass ? (t.has("class2Pass") ? t("class2Pass") : "PASS (Within Limit)") : (t.has("rmaEligible") ? t("rmaEligible") : "RMA ELIGIBLE")}
                   </span>
                 </div>
               </div>
 
               <p className="text-[11px] text-gray-500 leading-relaxed">
-                Most consumer warranties (Dell, LG, ASUS, Samsung) adhere to ISO Class 2 (max 2 dead or 5 stuck subpixels per 1M pixels). 
-                Premium lines guarantee 0 bright subpixels.
+                {t.has("isoNote") ? t("isoNote") : "Most consumer warranties (Dell, LG, ASUS, Samsung) adhere to ISO Class 2 (max 2 dead or 5 stuck subpixels per 1M pixels). Premium lines guarantee 0 bright subpixels."}
               </p>
             </div>
 
@@ -399,7 +398,7 @@ export function DeadPixelMapperPattern({ testId }: { testId?: string }) {
                 }`}
               >
                 <Copy className="w-4 h-4" />
-                <span>{copiedNotification ? "Report Copied to Clipboard!" : "Copy RMA Log to Clipboard"}</span>
+                <span>{copiedNotification ? (t.has("reportCopied") ? t("reportCopied") : "Report Copied to Clipboard!") : (t.has("copyReport") ? t("copyReport") : "Copy RMA Log to Clipboard")}</span>
               </button>
             </div>
           </div>

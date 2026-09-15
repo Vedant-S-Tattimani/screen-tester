@@ -324,13 +324,14 @@ export function GtgResponseTimePattern({ testId }: { testId?: string }) {
         <div className="p-4 rounded-xl border border-gray-200 bg-white space-y-2">
           <div className="flex items-center gap-2">
             <Zap className="w-4 h-4 text-amber-600" />
-            <h4 className="text-xs font-bold uppercase font-mono text-gray-950">How to Read Overdrive Artifacts</h4>
+            <h4 className="text-xs font-bold uppercase font-mono text-gray-950">
+              {t.has("overdriveTitle") ? t("overdriveTitle") : "How to Read Overdrive Artifacts"}
+            </h4>
           </div>
           <p className="text-xs text-gray-600 leading-relaxed">
-            Track the leading and trailing edges of the moving rectangle with your eyes. 
-            If your monitor&apos;s physical OSD overdrive is set <strong>too low</strong>, you will see a trailing ghost blur matching the moving color. 
-            If overdrive is set <strong>too high (&quot;Extreme&quot;)</strong>, excessive voltage pushes the liquid crystals past the target state, creating a bright white or dark inverted &quot;corona&quot; halo. 
-            The ideal setting is typically <strong>&quot;Normal&quot; or &quot;Fast&quot;</strong> where motion is sharp without coronas.
+            {t.has("overdriveDesc") 
+              ? t("overdriveDesc") 
+              : "Track the leading and trailing edges of the moving rectangle with your eyes. If your monitor's physical OSD overdrive is set too low, you will see a trailing ghost blur matching the moving color. If overdrive is set too high, excessive voltage pushes the liquid crystals past the target state, creating a bright white or dark inverted corona halo. The ideal setting is typically Normal or Fast where motion is sharp without coronas."}
           </p>
         </div>
       </div>

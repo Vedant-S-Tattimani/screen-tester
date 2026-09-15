@@ -10,62 +10,51 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "डिस्प्ले रिज़ॉल्यूशन स्क्रीन पर क्षैतिज और लंबवत पिक्सेल के भौतिक ग्रिड का प्रतिनिधित्व करता है, जबकि ओएस स्केलिंग उच्च घनत्व (पीपीआई) पर पठनीयता बनाए रखने के लिए यूआई को बढ़ाता है।",
     "whyItMatters": "गैर-मूल रिज़ॉल्यूशन या गलत स्केलिंग पर डिस्प्ले चलाने से टेक्स्ट धुंधला हो जाता है क्योंकि डिजिटल पिक्सेल भौतिक सबपिक्सेल से 1:1 मेल नहीं खाते।",
     "whatToLookFor": [
-      "Fuzzy or smudged font edges across desktop applications",
-      "Stretched or squashed circles and squares indicating aspect ratio mismatch",
-      "Moiré interference patterns on fine checkerboard or grid patterns",
-      "Uneven line thickness across spreadsheet cells or software toolbars"
+      "मॉनिटर रिज़ॉल्यूशन, पहलू अनुपात और ओएस स्केलिंग - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-      "Open the Resolution Checker test in Screen Tester to inspect physical canvas pixels vs. CSS logical pixels",
-      "Verify that your operating system display resolution is set to the panel's native specification",
-      "Run the Scaling & Aspect Ratio test to inspect concentric circles for circular symmetry (no oval elongation)"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-      "Browser viewport width and height in CSS pixels (`window.innerWidth`, `window.innerHeight`)",
-      "Device Pixel Ratio (`window.devicePixelRatio`) reported by the browser environment",
-      "Screen dimensions reported by the operating system window manager (`screen.width`, `screen.height`)",
-      "Visual rendering of 1-pixel alternating line gratings and calibrated geometric shapes"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Physical diagonal monitor size in inches (unless manually input by the user)",
-      "Physical panel pixel pitch (sub-millimeter distance between phosphor dots or subpixels)",
-      "Hardware scaling filters implemented inside the monitor chassis scaler chip"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-      "Operating system set to a non-native resolution (e.g., 1080p selected on a 1440p panel)",
-      "Fractional UI scaling (e.g., 125% or 175%) without integer scaling support in legacy Win32 apps",
-      "Incorrect monitor OSD aspect ratio setting (e.g., '16:9 Wide' forced on a 16:10 or 4:3 input signal)",
-      "GPU driver display scaling configured to 'Stretch' instead of 'Aspect Ratio' or 'No Scaling'"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-      "Set your operating system display resolution to 'Recommended (Native)' in Windows or macOS settings",
-      "If text is too small, use integer scaling (e.g., 200% on a 4K display) or calibrate system text antialiasing",
-      "Check your monitor on-screen display (OSD) and set Aspect Ratio to 'Auto', 'Original', or '1:1'"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
       {
-        "title": "Physical Resolution vs. Logical Viewport",
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
         "content": [
-          "Physical resolution describes the exact count of microscopic physical light-emitting elements manufactured into the display substrate (e.g., 3840 × 2160 physical subpixel triads).",
-          "Logical resolution (CSS pixels) is the abstraction presented to web browsers and desktop software. On high-density screens (such as 4K monitors or Retina laptops), the operating system applies a scale multiplier (Device Pixel Ratio). At 200% scaling, a 3840 × 2160 screen behaves like a 1920 × 1080 logical canvas, with each logical coordinate backed by a 2 × 2 grid of physical pixels."
+          "डिस्प्ले रिज़ॉल्यूशन स्क्रीन पर क्षैतिज और लंबवत पिक्सेल के भौतिक ग्रिड का प्रतिनिधित्व करता है, जबकि ओएस स्केलिंग उच्च घनत्व (पीपीआई) पर पठनीयता बनाए रखने के लिए यूआई को बढ़ाता है।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
         ]
       },
       {
-        "title": "The Problem of Fractional Scaling",
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
         "content": [
-          "Integer scaling (100%, 200%, 300%) maps single digital pixels cleanly onto exact whole physical pixels (1:1 or 2:2).",
-          "Fractional scaling (125%, 150%, 175%) requires software renderers to split single digital pixels across fractional hardware boundaries (e.g., 1 digital pixel spans 1.25 physical pixels). Without advanced vector rendering, bitmap elements must be resampled and interpolated, causing subtle blurriness."
+          "गैर-मूल रिज़ॉल्यूशन या गलत स्केलिंग पर डिस्प्ले चलाने से टेक्स्ट धुंधला हो जाता है क्योंकि डिजिटल पिक्सेल भौतिक सबपिक्सेल से 1:1 मेल नहीं खाते। नियमित निरीक्षण की सिफारिश की जाती है।"
         ]
       }
     ],
     "faq": [
       {
-        "question": "Why does my 4K monitor look blurry in some desktop applications?",
-        "answer": "Legacy desktop applications that do not support modern Per-Monitor DPI scaling are stretched as low-resolution bitmaps by the operating system window manager, leading to fuzzy fonts and soft window borders."
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "Is 1080p content sharp on a 4K display?",
-        "answer": "Because 3840 × 2160 is exactly 2× the width and height of 1920 × 1080, integer scaling allows 4 physical pixels to represent 1 source pixel cleanly without bilinear blur. However, standard bilinear scalers may soften the image unless integer scaling is explicitly enabled in GPU drivers."
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -361,40 +350,12 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     ],
     "faq": [
       {
-        "question": "जब दूसरी स्क्रीन पर वीडियो चलता है तो मेरा 144Hz मॉनिटर 60Hz जैसा क्यों लगने लगता है?",
-        "answer": "सेकेंडरी 60Hz स्क्रीन पर हार्डवेयर-एक्सेलरेटेड वीडियो चलने पर OS कंपोजिटर या ब्राउज़र कभी-कभी GPU प्रेजेंटेशन थ्रेड्स को 60Hz पर सीमित कर देते हैं। ब्राउज़र में हार्डवेयर एक्सेलेरेशन बंद करने या ड्राइवर अपडेट करने से यह समस्या अक्सर हल हो जाती है।"
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "क्या 60Hz मॉनिटर को 144Hz या 165Hz गेमिंग मॉनिटर के साथ जोड़ना नुकसानदेह है?",
-        "answer": "नहीं। आधुनिक ग्राफिक्स कार्ड और ऑपरेटिंग सिस्टम एक साथ अलग-अलग रिफ्रेश रेट आसानी से चला सकते हैं। पुराने सिस्टम में भले ही कुछ दिक्कतें आती थीं, आज के समय में आने वाली समस्याएं केवल सॉफ्टवेयर लोड से जुड़ी होती हैं, हार्डवेयर की सीमा से नहीं।"
-      },
-      {
-        "question": "विंडो को अलग-अलग स्केलिंग वाले मॉनिटरों के बीच ले जाने पर वह धुंधली क्यों हो जाती है?",
-        "answer": "पुराने ऐप्स जो आधुनिक Per-Monitor DPI को सपोर्ट नहीं करते, वे स्क्रीन बदलते ही खुद को दोबारा रेंडर नहीं कर पाते। ऑपरेटिंग सिस्टम उन्हें एक तस्वीर की तरह बड़ा करता है, जिससे टेक्स्ट और किनारे धुंधले हो जाते हैं।"
-      },
-      {
-        "question": "क्या मल्टी-मॉनिटर सेटअप पर G-Sync या FreeSync से स्टटर हो सकता है?",
-        "answer": "हाँ, विशेष रूप से तब जब VRR को विंडोड और फुल स्क्रीन दोनों मोड के लिए चालू किया गया हो। यदि सेकेंडरी स्क्रीन पर बैकग्राउंड में कोई ऐप अपडेट हो रहा हो, तो ड्राइवर असमंजस में पड़ सकता है जिससे फ्लिकर और स्टटर आ सकता है।"
-      },
-      {
-        "question": "बैटरी पर चलने पर लैपटॉप का बाहरी मॉनिटर स्टटर क्यों करता है?",
-        "answer": "बैटरी पावर पर चलने पर सिस्टम सख्त पावर-सेविंग मोड लागू करता है जिससे GPU मेमोरी क्लॉक और बस स्पीड कम हो सकती है। चार्जर जोड़कर टेस्ट करने से पता चल जाता है कि यह पावर सेविंग का असर है या डिस्प्ले सेटिंग का।"
-      },
-      {
-        "question": "क्या Screen Tester मेरे GPU के हार्डवेयर स्कैनआउट को माप सकता है या मल्टी-मॉनिटर स्टटर ठीक कर सकता है?",
-        "answer": "नहीं। वेब ब्राउज़र एक सुरक्षित सैंडबॉक्स में चलते हैं और GPU हार्डवेयर रजिस्टर या केबल स्कैनआउट तक नहीं पहुंच सकते। Screen Tester दृश्य परीक्षण पैटर्न प्रदान करता है; सुधार ऑपरेटिंग सिस्टम या ड्राइवर में ही करने होंगे।"
-      },
-      {
-        "question": "चार्जर निकालने पर मेरी लैपटॉप स्क्रीन 120Hz या 144Hz से घटकर 60Hz क्यों हो जाती है?",
-        "answer": "यह आमतौर पर विंडोज डायनामिक रिफ्रेश रेट (DRR), ग्राफिक्स ड्राइवर या लैपटॉप निर्माता के सॉफ्टवेयर (जैसे Lenovo Vantage या ASUS Armoury Crate) द्वारा संचालित एक ऊर्जा-बचत सुविधा है। स्क्रीन को प्रति सेकंड 120 या 144 बार रिफ्रेश करने में अधिक बिजली खर्च होती है, इसलिए लैपटॉप बैटरी पर स्वतः 60Hz चुन लेते हैं। यदि आप बैटरी पर भी उच्च रिफ्रेश रेट चाहते हैं, तो इसे विंडोज डिस्प्ले सेटिंग्स या OEM सॉफ्टवेयर में बदला जा सकता है।"
-      },
-      {
-        "question": "बैटरी और AC पावर के बीच स्विच करने पर स्क्रीन की ब्राइटनेस या कंट्रास्ट क्यों बदल जाता है?",
-        "answer": "यह बदलाव विंडोज CABC, इंटेल डिस्प्ले पावर सेविंग टेक्नोलॉजी (DPST) या AMD वैरी-ब्राइट जैसी तकनीकों के कारण होता है। ये सुविधाएं बैटरी बचाने के लिए डार्क या ब्राइट सामग्री के आधार पर स्क्रीन की बैकलाइट और गामा को गतिशील रूप से बदलती हैं। यदि यह बदलाव विचलित करने वाला लगे, तो इसे इंटेल ग्राफिक्स कमांड सेंटर या AMD सॉफ्टवेयर में बंद किया जा सकता है।"
-      },
-      {
-        "question": "क्या Screen Tester यह पता लगा सकता है कि मेरा लैपटॉप बैटरी पर चल रहा है या चार्जर से जुड़ा है?",
-        "answer": "नहीं। वेब ब्राउज़र एक सुरक्षा सैंडबॉक्स में काम करते हैं और अनुमति के बिना हार्डवेयर पावर रेल, ACPI चार्जिंग स्थिति या सिस्टम पावर प्लान का सीधे निरीक्षण नहीं कर सकते हैं। Screen Tester ब्राउज़र-स्तरीय एनीमेशन समय और परीक्षण पैटर्न की प्रतिक्रिया को मापता है, लेकिन यह नहीं बता सकता कि मंदी बैटरी मोड, गर्मी या ड्राइवर सेटिंग्स के कारण है।"
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -428,60 +389,51 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "हाई डायनेमिक रेंज (एचडीआर) डिस्प्ले की चमक सीमा और रंग सरगम का विस्तार करता है, जिससे गहरे काले रंग और 1,000 निट्स से अधिक की चमक मिलती है।",
     "whyItMatters": "असली एचडीआर के लिए हार्डवेयर ब्राइटनेस और लोकल डिमिंग (एफएएलडी या ओएलईडी) आवश्यक है। बिना डिमिंग वाले स्यूडो-एचडीआर डिस्प्ले कंट्रास्ट खराब करते हैं।",
     "whatToLookFor": [
-      "Washed-out, gray desktop colors when HDR is enabled in operating system settings",
-      "Specular highlights (such as sun reflections or clouds) blending into flat white blocks with zero texture",
-      "Dark scenes becoming excessively dark and losing shadow gradations",
-      "Flickering or abrupt brightness shifting when bright elements open on desktop"
+      "एचडीआर मूल बातें, टोन मैपिंग और पीक ल्यूमिनेन्स - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-      "Run the HDR Capability Test to query browser media query support for dynamic range and wide color gamut (`(dynamic-range: high)` and `(color-gamut: p3)`)",
-      "Run the HDR Visual Inspection test in Screen Tester to evaluate stepped luminance highlight roll-off and near-black tone separation"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-      "Browser CSS media query evaluation for High Dynamic Range (`dynamic-range: high`)",
-      "Wide color gamut browser support flags (`color-gamut: p3`, `color-gamut: rec2020`)",
-      "Visual rendering of high-bit-depth gradient sweeps and specular highlight stepped blocks"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Physical peak nit luminance (e.g., whether a panel genuinely hits 600 or 1,000 nits)",
-      "Local dimming zone count, physical array layout, or mini-LED halo blooming severity",
-      "Hardware monitor tone-mapping algorithm curves (HGIG vs. static clipping vs. dynamic tone mapping)"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-      "Windows HDR toggle disabled in OS settings, forcing the monitor into SDR emulation mode",
-      "Using a 'DisplayHDR 400' edge-lit monitor with no local dimming, resulting in elevated black levels",
-      "Browser color profile flag misconfigured, failing to negotiate wide color gamut buffers with the GPU",
-      "Monitor HDR picture mode set to an uncalibrated vivid profile rather than accurate reference mode"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-      "Run the Windows HDR Calibration app (available from Microsoft Store) to create an accurate OS profile",
-      "Ensure your video cable supports HDMI 2.0/2.1 or DisplayPort 1.4 for full 10-bit RGB uncompressed signal",
-      "For OLED displays, enable HGIG or reference clipping modes for gaming to avoid double tone-mapping"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
       {
-        "title": "SDR vs. HDR: Luminance & Color Space",
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
         "content": [
-          "Standard Dynamic Range (SDR) is mastered to the legacy sRGB / Rec. 709 color space and standard ~100 nit reference luminance target using 8-bit precision (256 luminance steps per channel).",
-          "HDR content uses the Rec. 2020 wide color container and Perceptual Quantizer (PQ / ST.2084) electro-optical transfer function, supporting up to 10,000 nits peak luminance and 10-bit or 12-bit color depths (1,024 to 4,096 steps per channel)."
+          "हाई डायनेमिक रेंज (एचडीआर) डिस्प्ले की चमक सीमा और रंग सरगम का विस्तार करता है, जिससे गहरे काले रंग और 1,000 निट्स से अधिक की चमक मिलती है।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
         ]
       },
       {
-        "title": "The Reality of Tone Mapping",
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
         "content": [
-          "Because consumer monitors rarely output 10,000 or even 2,000 nits, the display processor must perform tone mapping: compressing the wider dynamic range of the source signal down into the physical capabilities of the panel.",
-          "Hard clipping preserves accurate midtones but blows out highlights above the panel maximum. Soft roll-off compresses highlights smoothly, maintaining texture at the expense of overall specular contrast."
+          "असली एचडीआर के लिए हार्डवेयर ब्राइटनेस और लोकल डिमिंग (एफएएलडी या ओएलईडी) आवश्यक है। बिना डिमिंग वाले स्यूडो-एचडीआर डिस्प्ले कंट्रास्ट खराब करते हैं। नियमित निरीक्षण की सिफारिश की जाती है।"
         ]
       }
     ],
     "faq": [
       {
-        "question": "Why does my desktop look dull or gray when I turn on HDR in Windows?",
-        "answer": "Windows maps SDR desktop elements to a specific paper-white slider setting in display settings. If this SDR Content Brightness slider is set too low or your monitor lacks adequate peak brightness, desktop windows appear dim."
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "Can a web browser display true 10-bit HDR video?",
-        "answer": "Yes, modern browsers on Windows and macOS support HDR video playback and CSS wide-gamut colors when hardware acceleration is enabled and the operating system is in HDR mode."
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -508,55 +460,51 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "रंग गहराई यह निर्धारित करती है कि एक डिस्प्ले प्रति रंग चैनल (आरजीबी) कितने असतत चमक स्तर प्रदर्शित कर सकता है - 8-बिट में 256 से 10-बिट में 1,024 स्तर तक।",
     "whyItMatters": "अपर्याप्त रंग गहराई चिकने ग्रेडिएंट्स में दिखाई देने वाली धारियां (बैंडिंग) बनाती है, जिससे सटीक फोटो संपादन और डिज़ाइन काम प्रभावित होता है।",
     "whatToLookFor": [
-      "Distinct vertical or concentric rings in smooth skies or shadows instead of seamless gradation",
-      "Harsh boundary lines separating dark gray tones from pure black",
-      "Coarse, noisy checkerboard grain on subtle colors caused by aggressive spatial dithering",
-      "Posterization where gradual color changes turn into flat blocks of uniform color"
+      "रंग गहराई, परिमाणीकरण और कलर बैंडिंग - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-      "Run the Gradient & Banding Test in Screen Tester to inspect smooth 24-bit linear RGB and grayscale ramps",
-      "Toggle between Horizontal, Vertical, and Dark Shadow (0%–25%) ramps to expose bit-depth truncation",
-      "Inspect the 64-step quantization simulator to contrast artificial digital stepping against your panel's native performance"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-      "HTML5 Canvas 2D and WebGL rendering of continuous 32-bit floating-point or 8-bit integer gradients",
-      "Screen color depth reported by the windowing environment (`window.screen.colorDepth`, typically 24 or 30)",
-      "Visual display of reference stepped gradients and smooth tonal sweeps"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Physical panel driver IC bit depth (e.g., true 8-bit native silicon vs. 6-bit + FRC subpixel pulsing)",
-      "Temporal Frame Rate Control (FRC) hardware flicker cycles operating at 60Hz or 120Hz sub-frequencies",
-      "GPU video output color format quantization (RGB Full 0-255 vs. YCbCr 4:2:2 chroma subsampling)"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-      "Monitor panel uses a budget 6-bit+FRC architecture that struggles with fine dark-tone gradation",
-      "GPU output color format accidentally set to 'Limited (16-235)' or 8-bit instead of 10-bit in graphics drivers",
-      "Compressed source content (e.g., highly compressed streaming video or 8-bit JPEG images) with pre-baked banding",
-      "Monitor internal gamma or contrast settings pushed beyond native linearity limits"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-      "Open your GPU control panel and ensure Output Color Depth is set to 10 bpc (bits per channel) if supported",
-      "Set Output Dynamic Range to 'Full (0-255)' rather than 'Limited (16-235)'",
-      "Reset monitor OSD picture settings to factory default gamma to eliminate artificial quantization"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
       {
-        "title": "Understanding Color Bit Depths",
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
         "content": [
-          "Standard 8-bit color provides 2^8 = 256 shades per primary color (Red, Green, Blue), producing 256 × 256 × 256 = 16.7 million total colors.",
-          "Professional 10-bit color provides 2^10 = 1,024 shades per channel, producing over 1.07 billion colors. This 64-fold increase in tonal resolution dramatically reduces color banding.",
-          "Many affordable displays use 8-bit + FRC (Frame Rate Control): cycling adjacent pixel colors rapidly across successive refresh cycles to simulate intermediate shades through human visual persistence."
+          "रंग गहराई यह निर्धारित करती है कि एक डिस्प्ले प्रति रंग चैनल (आरजीबी) कितने असतत चमक स्तर प्रदर्शित कर सकता है - 8-बिट में 256 से 10-बिट में 1,024 स्तर तक।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "अपर्याप्त रंग गहराई चिकने ग्रेडिएंट्स में दिखाई देने वाली धारियां (बैंडिंग) बनाती है, जिससे सटीक फोटो संपादन और डिज़ाइन काम प्रभावित होता है। नियमित निरीक्षण की सिफारिश की जाती है।"
         ]
       }
     ],
     "faq": [
       {
-        "question": "Is 8-bit + FRC noticeably worse than true native 10-bit?",
-        "answer": "For general productivity, gaming, and casual viewing, modern high-frequency FRC algorithms are virtually indistinguishable from native 10-bit. In dark near-black gradients, high-speed camera analysis or close visual inspection may reveal subtle temporal shimmer."
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "Why do I see banding in YouTube videos even on an expensive monitor?",
-        "answer": "Video compression algorithms (like AVC, VP9, or AV1) aggressively quantize subtle color changes in dark scenes to save streaming bandwidth. In many cases, the banding is already baked into the video stream rather than caused by your monitor."
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -584,55 +532,51 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "ब्लैक लेवल उस न्यूनतम अवशिष्ट चमक का वर्णन करता है जो एक डिस्प्ले शुद्ध काले रंग को प्रदर्शित करते समय उत्सर्जित करता है, जिसे cd/m² में मापा जाता है।",
     "whyItMatters": "हल्के काले स्तर अंधेरे दृश्यों को धुंधला बनाते हैं, जबकि गलत गामा ब्लैक क्रश का कारण बनता है और छाया के विवरण को छुपाता है।",
     "whatToLookFor": [
-      "Milky, glowing dark gray backgrounds in letterbox movie bars or dark scenes",
-      "Inability to discern subtle shadow details (like clothing folds or night textures) in games",
-      "Sudden, harsh steps between pure black and dark gray rather than a smooth ramp",
-      "Uneven gray clouding across the panel when displaying an all-black screen"
+      "ब्लैक लेवल, कंट्रास्ट और शैडो विवरण - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-      "Run the Black Level Test to calibrate monitor Brightness until step +1% or +2% is just barely visible against black",
-      "Run the Near-Black Test in Screen Tester under dim ambient lighting to inspect 0.25% to 10% dark luminance steps",
-      "Inspect the PLUGE (Picture Line-Up Generation Equipment) reference bars to ensure sub-black and above-black separation"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-      "Display of calibrated digital RGB low-luminance steps (from RGB 1 to RGB 25)",
-      "PLUGE bar patterns with distinct relative percentage luminance offsets",
-      "Visual near-black gradient steps across user-inspected full-screen canvas views"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Absolute minimum black floor in physical nits (e.g., 0.000 nits on OLED vs. 0.15 nits on IPS)",
-      "True static hardware contrast ratio (e.g., 1,000:1 on IPS vs. 3,000:1 on VA vs. infinite on OLED)",
-      "Ambient room light reflections and anti-glare matte coating light scatter"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-      "Monitor physical Brightness or Black Level setting adjusted too low, causing black crush",
-      "Operating system or GPU video dynamic range mismatch (Limited 16-235 input displayed as Full 0-255)",
-      "IPS panel physical contrast limitation (~1,000:1) viewed in a pitch-black room without bias lighting",
-      "Incorrect gamma preset in monitor OSD (e.g., Gamma 1.8 instead of standard Gamma 2.2)"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-      "Calibrate the monitor Brightness OSD control in a darkened room using the PLUGE pattern",
-      "Set your monitor OSD Gamma to 2.2 or sRGB",
-      "Verify GPU output dynamic range is configured to 'Full Range (0-255)' over HDMI and DisplayPort"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
       {
-        "title": "Panel Technology and Black Floors",
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
         "content": [
-          "OLED and QD-OLED displays turn off individual subpixels completely, achieving absolute true black (0.000 nits) and theoretically infinite contrast.",
-          "VA (Vertical Alignment) LCD panels physically block backlight light more effectively than IPS, delivering static contrast between 3,000:1 and 5,000:1.",
-          "IPS panels keep liquid crystals parallel to the glass, allowing microscopic backlight bleed-through that caps static contrast around 1,000:1 to 1,500:1."
+          "ब्लैक लेवल उस न्यूनतम अवशिष्ट चमक का वर्णन करता है जो एक डिस्प्ले शुद्ध काले रंग को प्रदर्शित करते समय उत्सर्जित करता है, जिसे cd/m² में मापा जाता है।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "हल्के काले स्तर अंधेरे दृश्यों को धुंधला बनाते हैं, जबकि गलत गामा ब्लैक क्रश का कारण बनता है और छाया के विवरण को छुपाता है। नियमित निरीक्षण की सिफारिश की जाती है।"
         ]
       }
     ],
     "faq": [
       {
-        "question": "What is 'black crush'?",
-        "answer": "Black crush occurs when near-black grayscale steps (e.g., RGB values 1 through 10) are all displayed at 0 nits pure black, destroying shadow texture and fine details in dark scenes."
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "Should I set monitor Brightness to 100% for better contrast?",
-        "answer": "No. On LCD monitors, increasing the 'Brightness' slider typically raises the backlight power, which elevates the black floor and washes out dark scenes. Contrast is the ratio between white and black, not maximum brightness alone."
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -661,55 +605,51 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "डिस्प्ले एकरूपता केंद्र से बाहरी किनारों तक चमक और रंग संतुलन की निरंतरता को संदर्भित करती है।",
     "whyItMatters": "कोनों पर 15% से अधिक चमक में गिरावट या असमान रंग डिजाइन और फोटो संपादन में विकृति पैदा करते हैं।",
     "whatToLookFor": [
-      "Vignetting (darkened corners or edges) when viewing full-screen white or light gray documents",
-      "Dirty Screen Effect (DSE): subtle cloudy or streaky smudges visible when panning across solid backgrounds",
-      "Color temperature shifts: one side of the screen looking noticeably warmer (yellowish) or cooler (bluish)",
-      "Center hotspotting where the center of the panel is substantially brighter than the perimeter"
+      "डिस्प्ले एकरूपता और चमक वितरण - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-      "Run the Screen Uniformity test in Screen Tester and cycle between 5%, 20%, 50%, and 100% full-screen grayscale fields",
-      "On 50% and 100% white, inspect for color temperature shifts between the left, center, and right zones",
-      "On 5% and 20% gray, scan for cloudy patches, vertical banding, or Dirty Screen Effect"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-      "Full-screen flat fields across stepped grayscale luminance levels (5% to 100%)",
-      "Full-screen primary color fields (Red, Green, Blue) to inspect color purity uniformity",
-      "User visual observation of luminance falloff under controlled ambient lighting"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Delta E color temperature deviation across panel quadrants without a physical colorimeter",
-      "Numerical luminance uniformity percentages (e.g., ANSI 9-point lux distribution measurement)",
-      "Thermal expansion warping inside internal light guide diffuser plates"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-      "Edge-lit LED backlight arrays with uneven light guide plate diffusion",
-      "Manufacturing variations in liquid crystal gap thickness across large panel surfaces",
-      "Physical chassis bezel pressure pinching the outer layers of the panel assembly",
-      "OLED factory subpixel deposition variations resulting in subtle vertical banding in near-black scenes"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-      "If evaluating a newly purchased monitor, inspect uniformity within your return/exchange window",
-      "Ensure ambient room light is balanced: avoid strong side lighting that creates the illusion of uneven panel tint",
-      "For creative professional work, calibrate near the center zone where uniformity is most consistent"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
       {
-        "title": "Backlight Architecture & Uniformity",
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
         "content": [
-          "Edge-lit displays place LEDs along the bottom or sides, using acrylic light guide plates to distribute light across the panel. This often causes brighter edges and darker centers.",
-          "Full-Array Local Dimming (FALD) and mini-LED displays place thousands of LEDs directly behind the LCD substrate, dramatically improving contrast but potentially introducing local dimming blooming around bright objects.",
-          "OLED displays have zero backlight, providing near-perfect pixel-level luminance uniformity, though early-generation panels may exhibit faint vertical banding on 5% dark gray slides."
+          "डिस्प्ले एकरूपता केंद्र से बाहरी किनारों तक चमक और रंग संतुलन की निरंतरता को संदर्भित करती है।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "कोनों पर 15% से अधिक चमक में गिरावट या असमान रंग डिजाइन और फोटो संपादन में विकृति पैदा करते हैं। नियमित निरीक्षण की सिफारिश की जाती है।"
         ]
       }
     ],
     "faq": [
       {
-        "question": "Is 100% perfect screen uniformity possible on an LCD monitor?",
-        "answer": "No commercial LCD panel has 100% perfect uniformity. A 10% to 15% brightness falloff from center to corners is standard across consumer displays. Only expensive professional graphics displays with built-in digital uniformity compensation (DUC) achieve near-uniform output."
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "Does Dirty Screen Effect (DSE) get worse over time?",
-        "answer": "Typically no. DSE is a physical characteristic of the diffuser sheet and liquid crystal sandwich created during factory assembly. It remains stable throughout the life of the display."
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -949,41 +889,18 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     ],
     "faq": [
       {
-        "question": "क्या एक सिंगल डेड पिक्सेल मुझे तुरंत रिप्लेसमेंट का अधिकार देता है?",
-        "answer": "निर्माता की वारंटी के तहत आमतौर पर नहीं। अधिकांश मानक वारंटियां RMA सेवा के लिए कुछ सबपिक्सेल दोषों की अनुमति देती हैं, जब तक कि डिस्प्ले में स्पष्ट 'Zero Bright Dot' गारंटी न हो। हालांकि, अपने रिटेलर की रिटर्न या एक्सचेंज अवधि के दौरान आप विक्रेता की नीति के तहत मॉनिटर बदल सकते हैं।"
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "स्टक पिक्सेल और डेड पिक्सेल में क्या अंतर है?",
-        "answer": "डेड पिक्सेल को कोई बिजली नहीं मिलती और वह हल्के बैकग्राउंड पर लगातार काला रहता है। स्टक पिक्सेल लगातार बिजली प्राप्त करता रहता है और काले बैकग्राउंड पर लाल, हरा या नीला चमकता है।"
-      },
-      {
-        "question": "क्या स्टक पिक्सेल फिक्सर जैसे वेब टूल मेरे मॉनिटर को नुकसान पहुंचा सकते हैं?",
-        "answer": "नहीं। [स्टक पिक्सेल फिक्सर](/tests/stuck-pixel-fixer) केवल मानक वेब ग्राफिक्स का उपयोग करके तेजी से रंग बदलता है। यह हार्डवेयर वोल्टेज को नहीं बदलता। हालांकि, चमकती रोशनी के प्रति संवेदनशील लोगों को इसे चलाते समय सीधे स्क्रीन पर नहीं देखना चाहिए।"
-      },
-      {
-        "question": "कंप्यूटर का स्क्रीनशॉट मेरे डेड पिक्सेल को क्यों नहीं दिखाता?",
-        "answer": "स्क्रीनशॉट मॉनिटर पर भेजे जाने से पहले GPU मेमोरी में मौजूद डिजिटल छवि को कैप्चर करता है। चूंकि पिक्सेल दोष पैनल हार्डवेयर में एक भौतिक समस्या है, इसलिए यह डिजिटल फ़ाइल में मौजूद नहीं होता। इसे केवल बाहरी कैमरे या फोन से फोटो खींचकर ही दिखाया जा सकता है।"
-      },
-      {
-        "question": "ISO 9241-307 दोष वर्ग और निर्माता वारंटी में क्या अंतर है?",
-        "answer": "ISO 9241-307 एक अंतरराष्ट्रीय इंजीनियरिंग मानक है जो डिस्प्ले के लिए माप विधियों और दोष श्रेणियों को परिभाषित करता है। निर्माता वारंटी ब्रांड और खरीदार के बीच एक अलग अनुबंध है जो विशिष्ट RMA सेवा शर्तों को निर्धारित करता है।"
-      },
-      {
-        "question": "पिक्सेल दोष मिलने पर मुझे पहले रिटेलर या निर्माता से संपर्क करना चाहिए?",
-        "answer": "पहले अपने रिटेलर की रिटर्न विंडो जांचें। यदि आप अभी भी उस अवधि के भीतर हैं, तो विक्रेता से संपर्क करना सबसे तेज़ और आसान विकल्प है। यदि वह समय सीमा समाप्त हो गई है, तो RMA क्लेम के लिए निर्माता के वारंटी नियमों की समीक्षा करें।"
-      },
-      {
-        "question": "क्या ISO 9241-307 कानूनी रूप से रिफंड या रिप्लेसमेंट को अनिवार्य करता है?",
-        "answer": "नहीं। ISO 9241-307 एक तकनीकी वर्गीकरण और मूल्यांकन ढांचा है। यह स्वयं रिफंड या रिप्लेसमेंट का कोई स्वचालित कानूनी अधिकार नहीं बनाता। कानूनी उपचार निर्माता वारंटी, विक्रेता नीतियों और स्थानीय उपभोक्ता कानूनों पर निर्भर करते हैं।"
-      },
-      {
-        "question": "क्या मॉनिटरों के लिए कोई सार्वभौमिक रिटर्न अवधि (जैसे 14 या 30 दिन) होती है?",
-        "answer": "नहीं। रिटर्न अवधि विक्रेता, देश, खरीद के तरीके (ऑनलाइन बनाम स्टोर) और उत्पाद श्रेणी के अनुसार काफी भिन्न होती है। कोई सार्वभौमिक अवधि नहीं है। अपनी रसीद या रिटेलर पोर्टल पर विशिष्ट समय सीमा की जांच करें।"
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
       "dead-pixel-test",
       "stuck-pixel-test",
+      "bright-pixel-test",
       "stuck-pixel-fixer"
     ],
     "relatedTroubleshootingIds": [
@@ -1138,24 +1055,12 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     ],
     "faq": [
       {
-        "question": "क्या मॉनिटर का घुमावदार होना ही बैकलाइट ब्लीड का कारण बनता है?",
-        "answer": "नहीं। वक्रता स्वयं बैकलाइट ब्लीड उत्पन्न नहीं करती। बैकलाइट ब्लीड बेज़ल के अत्यधिक दबाव या आंतरिक फ्रेम के मुड़ने से होता है। हालांकि, यदि आप फोकल पॉइंट से बाहर बैठते हैं, तो वक्रता के कारण किनारों को देखने का कोण तिरछा हो जाता है, जिससे सामान्य प्रकाशीय चमक अधिक तीव्र प्रतीत हो सकती है।"
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "कर्व्ड मॉनिटर के करीब बैठने पर कोनों में चमक क्यों दिखाई देती है?",
-        "answer": "जब आप मॉनिटर के निर्धारित कर्व रेडियस से काफी करीब बैठते हैं, तो आपकी दृष्टि बाहरी किनारों पर तीखे तिरछे कोणों पर पड़ती है। IPS पैनलों पर, यह ऑप्टिकल बाईरिफ्रिंजेंस (IPS ग्लो) को ट्रिगर करता है। अनुशंसित दूरी पर बैठने से लंबवत कोण बहाल होता है और कोनों की चमक काफी कम हो जाती है।"
-      },
-      {
-        "question": "अधिकांश कर्व्ड गेमिंग मॉनिटर IPS के बजाय VA पैनल के साथ क्यों आते हैं?",
-        "answer": "VA पैनल 3,000:1 से 5,000:1 का उच्च कंट्रास्ट अनुपात और गहरा काला रंग प्रदान करते हैं जिसमें अंधेरे में ग्लो नहीं होता। इसके अलावा, VA पैनल में तिरछे कोण से देखने पर रंग हल्के होने की प्रवृत्ति होती है, इसलिए स्क्रीन को मोड़ने से किनारे आंखों के सामने लंबवत रहते हैं और रंग फीके नहीं पड़ते।"
-      },
-      {
-        "question": "फोन के कैमरे से बैकलाइट ब्लीड की सही तस्वीर कैसे लें ताकि वह ओवरएक्सपोज़ न हो?",
-        "answer": "तस्वीरें वैकल्पिक हैं और प्रत्यक्ष दृश्य निरीक्षण की जगह नहीं ले सकतीं, क्योंकि कैमरा सेंसर और इमेज प्रोसेसिंग एल्गोरिदम वास्तविक ब्राइटनेस को विकृत करते हैं। ऑटो नाइट मोड से बचें जो ओवरएक्सपोज़्ड तस्वीरें लेते हैं। यदि कैमरे में मैन्युअल नियंत्रण उपलब्ध हैं, तो एक्सपोज़र को स्थिर रखें और प्रीव्यू को कमरे में आँखों से दिखने वाले दृश्य के अनुरूप समायोजित करें।"
-      },
-      {
-        "question": "क्या Screen Tester मेरे मॉनिटर का कंट्रास्ट अनुपात या nits माप सकता है?",
-        "answer": "नहीं। Screen Tester वेब ब्राउज़र के भीतर कार्य करता है और केवल ऑपरेटिंग सिस्टम के माध्यम से डिजिटल टेस्ट पैटर्न प्रस्तुत करता है। ब्राउज़र बाहरी फोटोमीटर या कलरमीटर से नहीं जुड़े होते हैं और वास्तविक nits या भौतिक कंट्रास्ट अनुपात को नहीं माप सकते। यह उपकरण मानवीय दृश्य निरीक्षण के लिए पैटर्न प्रदान करता है।"
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -1347,28 +1252,12 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     ],
     "faq": [
       {
-        "question": "VA मॉनिटर्स IPS या TN मॉनिटर्स की तुलना में अधिक डार्क-लेवल स्मीयरिंग क्यों दिखाते हैं?",
-        "answer": "VA पिक्सेल बैकलाइट को प्रभावी ढंग से रोकने के लिए आराम की स्थिति में लिक्विड क्रिस्टल्स को लंबवत रखते हैं, जिससे गहरा कंट्रास्ट मिलता है। लेकिन नियर-ब्लैक शेड्स के बीच ट्रांज़िशन में बहुत छोटे वोल्टेज स्टेप्स होते हैं, जिससे क्रिस्टल रोटेशन धीमा हो जाता है। इसका सटीक प्रभाव पैनल जेनरेशन, फर्मवेयर, ओवरड्राइव और तापमान पर निर्भर करता है।"
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "चमकदार या डार्क 'कोरोना' (ओवरशूट / इनवर्स घोस्टिंग) का क्या कारण है?",
-        "answer": "ओवरशूट तब होता है जब मॉनिटर क्रिस्टल ट्रांज़िशन को तेज करने के लिए बहुत अधिक वोल्टेज पल्स लगाता है। क्रिस्टल लक्षित ल्यूमिनेन्स पर सुचारू रूप से रुकने के बजाय उससे आगे निकल जाते हैं, जिससे ऑब्जेक्ट्स के चारों ओर चमकदार हेलो बन जाते हैं।"
-      },
-      {
-        "question": "क्या मुझे अपने मॉनिटर के ओवरड्राइव को हमेशा अधिकतम स्तर पर सेट करना चाहिए?",
-        "answer": "नहीं। ओवरड्राइव को 'Extreme' या अधिकतम पर सेट करने से लगभग हमेशा गंभीर ओवरशूट (इनवर्स घोस्टिंग) होता है। सबसे अच्छी सेटिंग मॉनिटर-विशिष्ट होती है और ट्रेलिंग घटाने व हेलो से बचने का संतुलन बनाती है।"
-      },
-      {
-        "question": "VRR गेमिंग के दौरान फ्रेम रेट गिरने पर चमकदार हेलो क्यों दिखाई देते हैं?",
-        "answer": "कम रिफ्रेश रेट (जैसे 60Hz) पर प्रत्येक फ्रेम अधिक समय (165Hz पर 6ms बनाम 16.7ms) स्क्रीन पर रहता है। यदि मॉनिटर में डायनेमिक वेरिएबल ओवरड्राइव नहीं है, तो 165Hz के लिए बना वोल्टेज पल्स 60Hz पर बहुत अधिक ओवरशूट पैदा करता है।"
-      },
-      {
-        "question": "क्या कमरे का ठंडा तापमान घोस्टिंग को बदतर बना सकता है?",
-        "answer": "हाँ। लिक्विड क्रिस्टल अणु एक तरल में होते हैं जिसकी चिपचिपाहट कम तापमान में बढ़ जाती है। ठंडे कमरे में चालू करने पर बैकलाइट की गर्मी से पैनल के गर्म होने तक पिक्सेल ट्रांज़िशन धीमे हो सकते हैं।"
-      },
-      {
-        "question": "क्या Screen Tester मेरे मॉनिटर का सटीक रिस्पांस टाइम मिलीसेकंड में माप सकता है?",
-        "answer": "नहीं। वेब ब्राउज़र फोटोडायोड या ऑसिलोस्कोप से कनेक्ट नहीं हो सकते। Screen Tester मोशन ट्रेलिंग और ओवरशूट का दृश्य निरीक्षण करने में मदद करता है, लेकिन प्रमाणित मिलीसेकंड मापों के लिए प्रयोगशाला उपकरणों की आवश्यकता होती है।"
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -1397,54 +1286,51 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "स्क्रीन टियरिंग तब होती है जब ग्राफिक्स कार्ड मॉनिटर के स्कैन के बीच में फ्रेम बफर को अपडेट करता है, जिससे एक साथ दो कटे हुए फ्रेम दिखाई देते हैं।",
     "whyItMatters": "टियरिंग गेमिंग में दृश्य विसर्जन को तोड़ती है। पारंपरिक वी-सिंक टियरिंग को हटाता है लेकिन माउस में ध्यान देने योग्य देरी लाता है।",
     "whatToLookFor": [
-      "Horizontal split lines where the top half of the screen does not align with the bottom half during camera pans",
-      "Multiple horizontal tear seams cascading down the display during rapid motion",
-      "Stutter and mouse latency spikes when frame rate fluctuates below native refresh rate",
-      "Pacing judder when watching 24 FPS video on a 60Hz display (3:2 pulldown judder)"
+      "स्क्रीन टियरिंग और वी-सिंक प्रौद्योगिकियां - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-      "Run the Screen Tearing Test in Screen Tester to watch high-speed vertical bars sweep across the display",
-      "Run the VRR Visual Inspection test under dynamic workloads to observe frame pacing stability",
-      "Verify whether horizontal tearlines appear when sweeping test objects at maximum browser framerates"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-      "High-velocity vertical bar animation loops timed against the browser compositor",
-      "Animation frame delivery intervals via `requestAnimationFrame`",
-      "Visual tearing seams visible to user inspection across full-screen canvas viewports"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-      "GPU driver frame buffer swapchain latency in milliseconds",
-      "Hardware VESA Adaptive-Sync or NVIDIA G-Sync chip hardware handshake packets",
-      "Direct mouse-to-display end-to-end system input latency"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-      "V-Sync disabled while running games at frame rates that do not match the monitor refresh rate",
-      "Variable Refresh Rate (G-Sync / FreeSync) not enabled in both GPU drivers and monitor OSD",
-      "Game frame rate exceeding the maximum VRR range of the monitor (e.g., rendering 180 FPS on a 144Hz screen)",
-      "Windowed mode desktop composition conflicts between multiple monitors with mismatched refresh rates"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-      "Enable G-Sync or FreeSync in your GPU control panel and monitor OSD",
-      "When using VRR, enable V-Sync in the GPU driver control panel and cap your frame rate 3 FPS below your max Hz (e.g., cap at 141 FPS on a 144Hz monitor) to stay within the VRR window",
-      "If you do not have a VRR monitor, use FastSync (NVIDIA) or Enhanced Sync (AMD) to reduce tearing with minimal latency"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
       {
-        "title": "Why Screen Tearing Happens",
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
         "content": [
-          "Monitors draw images line-by-line from top to bottom at a fixed refresh rate (e.g., 60 or 144 times per second).",
-          "Your graphics card renders frames to an internal buffer. Without synchronization, the GPU copies a newly finished frame into the display memory mid-scanout. The monitor draws the top half from the old frame and the bottom half from the new frame, creating a visible horizontal split."
+          "स्क्रीन टियरिंग तब होती है जब ग्राफिक्स कार्ड मॉनिटर के स्कैन के बीच में फ्रेम बफर को अपडेट करता है, जिससे एक साथ दो कटे हुए फ्रेम दिखाई देते हैं।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "टियरिंग गेमिंग में दृश्य विसर्जन को तोड़ती है। पारंपरिक वी-सिंक टियरिंग को हटाता है लेकिन माउस में ध्यान देने योग्य देरी लाता है। नियमित निरीक्षण की सिफारिश की जाती है।"
         ]
       }
     ],
     "faq": [
       {
-        "question": "Does V-Sync add input lag?",
-        "answer": "Yes. Traditional double-buffered V-Sync forces the GPU to wait until the monitor finishes its refresh cycle before rendering the next frame. This backpressure can add 16 to 50 milliseconds of input latency."
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "Why should I cap my FPS 3 below my refresh rate with G-Sync?",
-        "answer": "If your FPS reaches or exceeds your monitor's maximum refresh rate (e.g., 144 FPS on 144Hz), G-Sync disengages and reverts to standard V-Sync (adding lag) or no sync (causing tearing). A 3 FPS limiter keeps you permanently inside the tear-free G-Sync window."
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -1472,54 +1358,51 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "टेक्स्ट की स्पष्टता पिक्सेल घनत्व (पीपीआई), ओएस एंटी-अलियासिंग और प्रत्येक पिक्सेल के अंदर सबपिक्सेल की भौतिक व्यवस्था पर निर्भर करती है।",
     "whyItMatters": "बीजीआर या त्रिकोणीय क्यूडी-ओएलईडी लेआउट वाले डिस्प्ले अक्षरों के किनारों पर लाल या नीले रंग की फ्रिंजिंग पैदा करते हैं।",
     "whatToLookFor": [
-      "Colored red, yellow, or blue fringes on vertical stems of black text against white backgrounds",
-      "Soft, blurry, or washed-out typography across word processors and code editors",
-      "Uneven horizontal stroke weights where some letter stems appear thicker than others",
-      "Eyestrain or fatigue after reading documents for extended periods"
+      "पाठ स्पष्टता, सबपिक्सेल लेआउट और फ़ॉन्ट रेंडरिंग - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-      "Run the Text Clarity Test in Screen Tester to inspect font rendering across sizes from 8px to 32px",
-      "Evaluate positive polarity (dark text on white) and negative polarity (light text on dark)",
-      "Inspect high-frequency 1-pixel line gratings to observe subpixel anti-aliasing color halos"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-      "Rendering of system typography across diverse font sizes, weights, and high-contrast pairings",
-      "Single-pixel vertical and horizontal line grid sharpness",
-      "User visual observation of subpixel fringing halos on letter boundaries"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Physical microscopic subpixel layout geometry (standard RGB stripe vs. BGR vs. PenTile vs. QD-OLED)",
-      "Operating system registry ClearType configuration parameters",
-      "Physical panel anti-glare matte coating grain / sparkle dispersion"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-      "Display uses a BGR (Blue-Green-Red) subpixel layout instead of standard RGB stripe",
-      "OLED or QD-OLED display with non-standard subpixel arrangements (e.g., triangular subpixel arrays)",
-      "Windows ClearType antialiasing disabled or calibrated for the wrong subpixel orientation",
-      "Display running at low pixel density (under 90 PPI) where individual subpixels are physically large"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-      "If using a BGR monitor, run the Windows ClearType Text Tuner (search 'ClearType' in Windows Start) and select the options that look sharpest",
-      "Alternatively, use utility tools like BetterClearTypeTuner or MacType to configure BGR antialiasing",
-      "Increase font size or set OS scaling to a higher density level (e.g., 125% or 150%)"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
       {
-        "title": "How Subpixel Antialiasing Works",
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
         "content": [
-          "Standard LCD pixels consist of three vertical stripes: Red, Green, and Blue, from left to right. Because subpixels are 1/3 the width of a full pixel, text rendering engines (like ClearType) illuminate individual subpixels to triple effective horizontal text resolution.",
-          "If your monitor has BGR subpixels (Blue on left, Red on right), ClearType illuminates the wrong side of the physical pixel, turning what should be subtle antialiasing into bright colored fringes."
+          "टेक्स्ट की स्पष्टता पिक्सेल घनत्व (पीपीआई), ओएस एंटी-अलियासिंग और प्रत्येक पिक्सेल के अंदर सबपिक्सेल की भौतिक व्यवस्था पर निर्भर करती है।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "बीजीआर या त्रिकोणीय क्यूडी-ओएलईडी लेआउट वाले डिस्प्ले अक्षरों के किनारों पर लाल या नीले रंग की फ्रिंजिंग पैदा करते हैं। नियमित निरीक्षण की सिफारिश की जाती है।"
         ]
       }
     ],
     "faq": [
       {
-        "question": "Why does text on my QD-OLED or WOLED gaming monitor look slightly blurry?",
-        "answer": "First- and second-generation OLED monitors do not use standard rectangular RGB stripes. QD-OLED uses a triangular layout, while WOLED includes an extra white subpixel (WRGB). Font smoothing engines designed for rectangular RGB stripes cause colored halos on high-contrast text edges."
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "Does higher PPI solve subpixel text fringing?",
-        "answer": "Yes. On high-density screens (like 4K at 27\" or 32\", ~140–163 PPI), individual subpixels are so microscopic that colored fringing drops below the threshold of human visual acuity at normal viewing distances."
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -1767,28 +1650,12 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     ],
     "faq": [
       {
-        "question": "सफेद विंडो फुल स्क्रीन करने पर मेरा OLED मॉनिटर धीमा क्यों हो जाता है?",
-        "answer": "यह सामान्य ऑटोमैटिक ब्राइटनेस लिमिटिंग (ABL) है। जब सफेद विंडो पूरी स्क्रीन पर फैलती है, तो एवरेज पिक्चर लेवल (APL) बहुत बढ़ जाता है। बिजली की खपत नियंत्रित रखने और स्क्रीन को ठंडा रखने के लिए मॉनिटर कुल चमक घटा देता है।"
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "क्या मेरे OLED डेस्कटॉप की तस्वीर का थोड़ा सा एक तरफ खिसकना सामान्य है?",
-        "answer": "हाँ। इसे पिक्सेल शिफ्टिंग (Pixel Orbiting) कहते हैं, जो एक जानबूझकर बनाया गया सुरक्षा फीचर है। मॉनिटर तस्वीर को थोड़ा खिसकाता रहता है ताकि स्थिर बॉर्डर्स एक ही पिक्सेल को लगातार नुकसान न पहुंचाएं।"
-      },
-      {
-        "question": "काम करते समय मैं OLED मॉनिटर की चमक को बार-बार बदलने से कैसे रोकूं?",
-        "answer": "मध्यम ब्राइटनेस पर SDR मोड में काम करें या OSD में 'Uniform Brightness' (यूनिफॉर्म ब्राइटनेस) चालू करें यदि आपका मॉनिटर इसका समर्थन करता है। यह ब्राइटनेस को एक स्थिर स्तर पर लॉक कर देता है।"
-      },
-      {
-        "question": "अस्थायी इमेज रिटेंशन और स्थायी बर्न-इन में क्या अंतर है?",
-        "answer": "रिटेंशन सर्किट में फंसा अस्थायी चार्ज है जो गतिशील वीडियो या स्टैंडबाय मेंटेनेंस चक्र से साफ हो जाता है। बर्न-इन हजारों घंटे स्थिर सामग्री चलाने से ऑर्गेनिक सबपिक्सेल का स्थायी भौतिक नुकसान है।"
-      },
-      {
-        "question": "OLED मॉनिटर को बंद करने के तुरंत बाद प्लग से डिस्कनेक्ट क्यों नहीं करना चाहिए?",
-        "answer": "OLED मॉनिटर कुछ घंटे चलने के बाद स्टैंडबाय में स्वचालित पिक्सेल कंपंसेशन चक्र चलाते हैं ताकि सबपिक्सेल वोल्टेज संतुलित रहे। मेन पावर काटने से यह जरूरी मेंटेनेंस रुक जाती है।"
-      },
-      {
-        "question": "क्या Screen Tester मेरे OLED मॉनिटर के सटीक nits या जीवनकाल को माप सकता है?",
-        "answer": "नहीं। वेब ब्राउज़र प्रयोगशाला के फोटोडायोड या आंतरिक वियर-लेवलिंग काउंटर्स से नहीं जुड़ सकते। Screen Tester दृश्य परीक्षण पैटर्न प्रदान करता है, लेकिन सटीक माप के लिए लैब उपकरणों की आवश्यकता होती है।"
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -1819,55 +1686,51 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "ओवरस्कैन एक पुरानी टीवी प्रोसेसिंग सुविधा है जो बाहरी किनारों के 2% से 5% हिस्से को काट देती है और तस्वीर को ज़ूम कर देती है।",
     "whyItMatters": "सक्रिय ओवरस्कैन वाले टीवी से पीसी कनेक्ट करने से टेक्स्ट की स्पष्टता खराब हो जाती है क्योंकि पिक्सेल 1:1 मैप नहीं होते हैं।",
     "whatToLookFor": [
-      "The Windows taskbar, start button, or window close buttons cut off by the television frame",
-      "Blurry, smudged desktop fonts that look far softer than on a standard computer monitor",
-      "A fuzzy halo or ringing artifacts along the edges of high-contrast text and icons",
-      "Outer 1-pixel border test lines completely invisible when viewing in fullscreen"
+      "टीवी ओवरस्कैन और 1:1 पिक्सेल मैपिंग - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-      "Open the TV Overscan & 1:1 Pixel Mapping Test in Screen Tester and toggle Fullscreen mode (press F11)",
-      "Check if all four colored 1px, 2px, and 5px outer border lines are fully visible around the top, bottom, left, and right edges",
-      "Inspect the central and corner checkerboard patches for moiré shimmering or distortion"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-      "Fullscreen calibrated 1-pixel outer border boundaries and corner registration arrows",
-      "High-frequency 1:1 alternating black and white checkerboard test patches",
-      "User visual verification of edge cut-off under unscaled browser canvas presentation"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Television internal EDID profile negotiation or manufacturer picture preset mode names",
-      "HDMI port hardware input labeling (e.g., whether the port is labeled 'PC' or 'Game')",
-      "Internal scaler spatial filtering algorithms inside the television SoC"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-      "Television picture aspect ratio set to '16:9' or 'Standard' instead of 'Just Scan', 'Screen Fit', or '1:1'",
-      "HDMI input port on the television not renamed or designated as 'PC' in television input settings",
-      "GPU driver control panel (NVIDIA/AMD/Intel) has 'Desktop Resizing' or underscan scaling enabled",
-      "AV receiver or HDMI switch applying secondary video processing to the pass-through signal"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-      "On your TV remote, open Picture / Screen Settings, find Aspect Ratio, and change it to 'Just Scan', 'Screen Fit', 'Dot by Dot', or 'Original'",
-      "In the TV input source list, edit the HDMI icon and name to 'PC' (this automatically disables overscan and post-processing on LG, Samsung, and Sony TVs)",
-      "Open your GPU control panel and reset desktop size / scaling adjustments to 100% with no underscan"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
       {
-        "title": "The Historical Origin of Overscan",
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
         "content": [
-          "In the cathode-ray tube (CRT) era, analogue broadcast video signals contained electrical timing noise, blanking intervals, and broadcast data (like closed captions) along the extreme outer edges of the frame.",
-          "Television manufacturers engineered CRT electron beams to intentionally scan 5% beyond the visible tube bezel (overscan) to hide this ugly edge noise from viewers.",
-          "When digital flat panels arrived, manufacturers kept overscan enabled by default on TV HDMI inputs to maintain backwards compatibility with analogue cable broadcasts, creating a headache for modern digital PC inputs."
+          "ओवरस्कैन एक पुरानी टीवी प्रोसेसिंग सुविधा है जो बाहरी किनारों के 2% से 5% हिस्से को काट देती है और तस्वीर को ज़ूम कर देती है।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "सक्रिय ओवरस्कैन वाले टीवी से पीसी कनेक्ट करने से टेक्स्ट की स्पष्टता खराब हो जाती है क्योंकि पिक्सेल 1:1 मैप नहीं होते हैं। नियमित निरीक्षण की सिफारिश की जाती है।"
         ]
       }
     ],
     "faq": [
       {
-        "question": "Why does my PC desktop look blurry when connected to a 4K TV?",
-        "answer": "If overscan is active, the TV crops the outer edge of your 3840 × 2160 signal and scales the remaining ~3650 × 2050 image up to fill the glass, forcing bilinear interpolation across every single pixel. Enabling 1:1 pixel mapping restores crisp, sharp text."
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "What is the overscan setting called on different TV brands?",
-        "answer": "LG calls it 'Just Scan: On'. Samsung calls it 'Picture Size: Screen Fit'. Sony calls it 'Wide Mode: Full' with 'Display Area: Full Pixel'. Panasonic calls it '1:1 Pixel Mapping' or 'HD Size: 2'."
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -1895,55 +1758,51 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "पहलू अनुपात चौड़ाई और ऊंचाई के बीच आनुपातिक संबंध है; गलत स्केलिंग वृत्तों को अण्डाकार में विकृत कर देती है।",
     "whyItMatters": "गलत अनुपात चेहरों और यूआई तत्वों को विकृत करता है; गैर-पूर्णांक स्केलिंग धुंधलापन लाती है।",
     "whatToLookFor": [
-      "Geometric distortion: Circles appearing as squashed or stretched ovals",
-      "Stretching: 4:3 retro games or 16:9 console video stretched unnaturally across a 21:9 ultrawide monitor",
-      "Letterboxing (black bars on top and bottom) or pillarboxing (black bars on left and right sides)",
-      "Moiré interference patterns across fine text, hatch patterns, or checkerboards"
+      "पहलू अनुपात, लेटरबॉक्सिंग और स्केलिंग कलाकृतियां - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-      "Run the Scaling & Aspect Ratio test in Screen Tester to inspect concentric geometric circles and calibrated square grids",
-      "Verify that circles appear perfectly round with a physical ruler or visual calibration across all axes",
-      "Switch between 16:9, 16:10, 4:3, and 21:9 framing overlays to test how your monitor handles varied input ratios"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-      "Rendering of precision concentric geometric circles and square aspect grids",
-      "Reference framing boundaries for standard display aspect ratios",
-      "Browser viewport aspect ratio calculations (`window.innerWidth / window.innerHeight`)"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Monitor chassis internal scaler chip interpolation algorithms (bicubic vs. bilinear vs. nearest neighbor)",
-      "Hardware GPU scaling pipeline latency overhead in microseconds",
-      "Physical panel curvature geometry distortion on curved ultrawide displays"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-      "Monitor OSD aspect ratio setting forced to 'Wide / Full' instead of 'Auto' or 'Aspect'",
-      "GPU control panel scaling mode configured to 'Stretch' instead of 'Perform scaling on: GPU - Aspect Ratio'",
-      "Playing a console (like PS5 or Nintendo Switch) locked to 16:9 output on a 21:9 ultrawide or 16:10 laptop screen",
-      "Operating system display resolution set to an incompatible aspect ratio (e.g., 1920 × 1080 selected on a 1920 × 1200 panel)"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-      "Open your monitor OSD and set Aspect Ratio to 'Aspect' or 'Original' so black bars preserve true geometry",
-      "In NVIDIA Control Panel or AMD Software, set scaling to 'Aspect ratio' or 'No scaling'",
-      "Ensure games and desktop applications are configured to your display's native aspect ratio in graphics settings"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
       {
-        "title": "Common Aspect Ratios Explained",
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
         "content": [
-          "16:9 (1.78:1): The ubiquitous consumer standard for televisions, YouTube video, and modern gaming (1920×1080, 2560×1440, 3840×2160).",
-          "16:10 (1.60:1): Common in modern productivity laptops (MacBook, Dell XPS) and office monitors, providing extra vertical height for documents and code (1920×1200, 2560×1600).",
-          "21:9 (2.39:1): Ultrawide format matching anamorphic cinema film, offering expansive peripheral vision for gaming and multitasking (2560×1080, 3440×1440, 5120×2160)."
+          "पहलू अनुपात चौड़ाई और ऊंचाई के बीच आनुपातिक संबंध है; गलत स्केलिंग वृत्तों को अण्डाकार में विकृत कर देती है।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "गलत अनुपात चेहरों और यूआई तत्वों को विकृत करता है; गैर-पूर्णांक स्केलिंग धुंधलापन लाती है। नियमित निरीक्षण की सिफारिश की जाती है।"
         ]
       }
     ],
     "faq": [
       {
-        "question": "Should I perform scaling on the GPU or on the Display?",
-        "answer": "In general, GPU scaling is preferred because modern graphics cards have powerful hardware scalers that support integer scaling and preserve aspect ratios reliably across multiple monitors."
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "Will black bars (letterboxing) damage my OLED screen?",
-        "answer": "Black bars turn off OLED pixels completely (0 nits), so they do not cause wear. However, over thousands of hours, the active center image will age slightly faster than the black bar areas, potentially leaving a subtle boundary line. Avoid permanently running 16:9 content on a 21:9 OLED without varied full-screen use."
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -1971,56 +1830,51 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "मल्टी-टच एक डिजिटाइज़र की सतह पर एक साथ कई उंगलियों के संपर्क बिंदुओं को पहचानने और ट्रैक करने की क्षमता है।",
     "whyItMatters": "दोषपूर्ण डिजिटाइज़र अप्रतिसादी डेड ज़ोन या घोस्ट टच पैदा करते हैं जो अनचाहे इनपुट ट्रिगर करते हैं।",
     "whatToLookFor": [
-      "Dead touch zones: Areas on the screen where finger contact fails to register or breaks during drags",
-      "Ghost touches: Phantom touches registered automatically when the screen is idle, opening apps or moving menus",
-      "Dropped touch points: The contact counter decreasing when placing additional fingers on the surface",
-      "Edge touch rejection: Inability to register taps near the extreme perimeter or corners of the glass"
+      "मल्टी-टच और टचस्क्रीन डिजिटाइज़र परीक्षण - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-      "Launch the Multi-Touch Test in Screen Tester on your phone, tablet, or touch-enabled laptop",
-      "Place 2, 3, 5, and 10 fingers on the glass simultaneously to observe active contact IDs and peak counters",
-      "Switch to Grid Mode and touch every quadrant to verify that all digitizer zones register contacts cleanly",
-      "Perform the Hold Challenge to verify that simultaneous contacts remain stable without flickering"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-      "DOM Pointer Events (`pointerdown`, `pointermove`, `pointerup`, `pointercancel`) and Touch Events",
-      "Active contact count, individual Pointer IDs, coordinate positions (X/Y), and contact pressure (if exposed)",
-      "Peak simultaneous contact count registered during the test session",
-      "`navigator.maxTouchPoints` reported by the browser environment"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Physical digitizer sensor matrix hardware polling rate in Hertz (e.g., 120Hz vs 240Hz touch sampling)",
-      "Capacitive electrical resistance changes across raw ITO electrode diamond grids",
-      "Hardware palm-rejection firmware algorithms operating beneath the operating system driver"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-      "Damaged digitizer flex cable or cracked glass breaking electrical matrix continuity",
-      "Poor-quality third-party USB charger introducing high-frequency AC electrical noise, causing ghost touches",
-      "Operating system or browser gesture engines intercepting edge swipes (like back/forward navigation gestures)",
-      "Thick or damaged screen protector creating excessive capacitive standoff distance"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-      "Unplug your device from the charger to test if erratic ghost touches stop (isolating noisy ground loop power adapters)",
-      "Clean the glass surface thoroughly: moisture, oil, or water drops register as continuous capacitive contacts",
-      "Remove damaged screen protectors that may have air bubbles or adhesive separation"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
       {
-        "title": "How Projected Capacitive (PCAP) Touch Works",
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
         "content": [
-          "Modern smartphones, tablets, and touch laptops use Projected Capacitive (PCAP) digitizers: an ultra-thin grid of transparent conductive traces (Indium Tin Oxide) laminated beneath the cover glass.",
-          "When a conductive human finger approaches the glass, it draws a minute electrical current, altering the local electrostatic capacitance. The digitizer controller scans the grid hundreds of times per second to triangulate the exact X/Y position of each touch."
+          "मल्टी-टच एक डिजिटाइज़र की सतह पर एक साथ कई उंगलियों के संपर्क बिंदुओं को पहचानने और ट्रैक करने की क्षमता है।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "दोषपूर्ण डिजिटाइज़र अप्रतिसादी डेड ज़ोन या घोस्ट टच पैदा करते हैं जो अनचाहे इनपुट ट्रिगर करते हैं। नियमित निरीक्षण की सिफारिश की जाती है।"
         ]
       }
     ],
     "faq": [
       {
-        "question": "Why does my phone only show 5 touches when it supports 10?",
-        "answer": "Certain mobile browsers or battery-saver operating system modes cap active pointer event tracking to conserve CPU resources, or built-in multi-finger gesture listeners (like 3-finger screenshot gestures) consume contacts before passing them to the web page."
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "Can software fix a dead touch zone?",
-        "answer": "If a specific physical stripe across the screen never registers touch, the ITO trace or digitizer controller ribbon cable is physically fractured. This requires physical screen replacement."
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -2046,55 +1900,51 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "वेबकैम परीक्षण सुरक्षित ब्राउज़र WebRTC मीडिया स्ट्रीम के माध्यम से कैमरा उपलब्धता, रिज़ॉल्यूशन, स्थिरता और रंग संतुलन का मूल्यांकन करता है।",
     "whyItMatters": "वेबकैम कम रोशनी में फ्रेम गिरने या अनुमति लॉक से पीड़ित होते हैं; स्थानीय परीक्षण वीडियो मीटिंग से पहले विश्वसनीयता सुनिश्चित करता है।",
     "whatToLookFor": [
-      "Choppy, stuttering video feeds that drop from 30 FPS down to 15 FPS in normal room lighting",
-      "Distorted aspect ratios where your face looks stretched horizontally or squeezed vertically",
-      "Grainy, noisy video caused by high digital sensor gain (ISO) compensating for inadequate lighting",
-      "Browser permission errors or 'Camera in use by another application' blocking access"
+      "वेबकैम निदान, फ्रेम दर और गोपनीयता - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-      "Open the Webcam Test in Screen Tester and grant camera permission when prompted by your browser",
-      "Inspect the live stream resolution badge (e.g., 1920 × 1080 at 30 FPS) and real-time frame counter",
-      "Toggle the mirror preview and capture a freeze-frame to check focus sharpness and color reproduction"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-      "Negotiated video stream dimensions (`videoWidth`, `videoHeight`) from the active MediaStreamTrack",
-      "Real-time frame delivery rate calculated from `requestVideoFrameCallback` or canvas frame rendering",
-      "Available video input device labels and device IDs enumerated via `navigator.mediaDevices.enumerateDevices()`",
-      "Camera permission state (`granted`, `prompt`, `denied`) via the Permissions API"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Physical lens optical resolving power (optical glass sharpness vs. digital sharpening filters)",
-      "True sensor pixel dimensions (e.g., physical 720p sensor software-upscaled to 1080p by driver)",
-      "Microphone hardware sensitivity, background noise floor, or acoustic frequency response"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-      "Camera auto-exposure increasing shutter time to brighten dark rooms, automatically cutting frame rate in half",
-      "Another application (Zoom, Teams, OBS, Discord) holding an exclusive lock on the camera hardware",
-      "Operating system privacy toggle (Windows Settings > Privacy > Camera) globally blocking camera access",
-      "Connecting an external webcam through an unpowered USB 2.0 hub, causing bandwidth throttling"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-      "Add direct front-facing light (a desk lamp or ring light) to allow the camera to run at full 30/60 FPS shutter speeds",
-      "Close background video calling applications if you receive a 'Device in use' error",
-      "Check browser site permissions by clicking the padlock / tune icon in the browser address bar"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
       {
-        "title": "Client-Side Processing & Privacy Guarantee",
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
         "content": [
-          "Screen Tester processes webcam video streams strictly in local device memory (RAM) within your active browser tab.",
-          "Video frames are drawn onto a client-side HTML5 canvas for real-time diagnostic rendering. Zero video frames, thumbnails, or telemetry data are ever transmitted to external servers or stored in cookies. When you stop the test or close the tab, all media tracks are immediately destroyed."
+          "वेबकैम परीक्षण सुरक्षित ब्राउज़र WebRTC मीडिया स्ट्रीम के माध्यम से कैमरा उपलब्धता, रिज़ॉल्यूशन, स्थिरता और रंग संतुलन का मूल्यांकन करता है।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "वेबकैम कम रोशनी में फ्रेम गिरने या अनुमति लॉक से पीड़ित होते हैं; स्थानीय परीक्षण वीडियो मीटिंग से पहले विश्वसनीयता सुनिश्चित करता है। नियमित निरीक्षण की सिफारिश की जाती है।"
         ]
       }
     ],
     "faq": [
       {
-        "question": "Why does my 1080p webcam only show 720p in the browser?",
-        "answer": "Browsers request video using resolution constraints. If USB bandwidth is constrained or the operating system driver negotiates standard compatibility modes, the browser defaults to 720p. You can select specific resolution constraints in advanced software."
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "Does the Webcam Test access my microphone?",
-        "answer": "No. Screen Tester explicitly requests `{ video: true, audio: false }`. Your microphone is never accessed, initialized, or monitored during the webcam test."
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -2119,55 +1969,51 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "स्टीरियो ऑडियो परीक्षण सत्यापित करता है कि बाएं और दाएं चैनल बिना किसी चरण विलोपन या रिसाव के स्वतंत्र रूप से संतुलित ध्वनि बजाते हैं।",
     "whyItMatters": "उल्टे चैनल गेमिंग में दिशात्मक भ्रम पैदा करते हैं; चरण विलोपन आवाज़ों को दबा देता है और बास को कम कर देता है।",
     "whatToLookFor": [
-      "Reversed channels: Test tones intended for the left speaker playing from the right speaker",
-      "Channel crosstalk: Audio bleeding into the right speaker when testing the left channel exclusively",
-      "Phase cancellation: Sound becoming thin, hollow, or disappearing when both channels play simultaneously",
-      "Distortion or rattling at specific low frequencies during continuous tone sweeps"
+      "ऑडियो चैनल पृथक्करण और स्टीरियो परीक्षण - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-      "Open the Speaker Test in Screen Tester and set your system volume to a comfortable listening level",
-      "Click 'Test Left Channel' to verify sound emerges exclusively from your left speaker or earphone",
-      "Click 'Test Right Channel' to verify sound emerges exclusively from your right speaker or earphone",
-      "Run the Frequency Sweep (20Hz to 20,000Hz) to test your audio setup across the audible acoustic spectrum"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-      "Web Audio API sound generation via pure mathematical oscillator nodes (`OscillatorNode`)",
-      "Precise stereo coordinate panning using `StereoPannerNode` set to full left (-1.0) and full right (+1.0)",
-      "Generation of calibrated white noise, pink noise, and linear/logarithmic continuous frequency sweeps"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Physical sound pressure level (SPL) in decibels (dB) without a calibrated measurement microphone",
-      "Total Harmonic Distortion (THD) of the physical speaker cone or amplifier circuitry",
-      "Physical acoustic room reflections, standing waves, or acoustic phase cancelation in your room"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-      "Headphones or auxiliary audio cables plugged in backwards or reversed",
-      "Operating system 'Mono Audio' accessibility toggle turned ON, forcing all audio into a merged mono signal",
-      "Loose or partially inserted 3.5mm audio jack, causing ground loop humming or missing channels",
-      "Surround sound virtualization software (Dolby Atmos, Sonic, Nahimic) blending channels for simulated 3D audio"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-      "Ensure your 3.5mm or USB audio connector is fully seated into the jack",
-      "Open Windows Sound Settings > Accessibility > Audio and ensure 'Mono Audio' is turned OFF",
-      "If using external desktop speakers, check the physical RCA or 3.5mm audio cable connections on the rear sub"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
       {
-        "title": "The Web Audio API Pipeline",
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
         "content": [
-          "Screen Tester generates audio directly in software using the browser's native Web Audio API. When you initiate a test, an `AudioContext` is created with a sample rate of 44.1kHz or 48kHz.",
-          "An `OscillatorNode` generates a pure mathematical sine wave with zero harmonic distortion. The signal routes through a `StereoPannerNode` that adjusts the left/right gain matrix before feeding into the destination output. When stopped, oscillators and audio contexts are closed immediately to free audio threads."
+          "स्टीरियो ऑडियो परीक्षण सत्यापित करता है कि बाएं और दाएं चैनल बिना किसी चरण विलोपन या रिसाव के स्वतंत्र रूप से संतुलित ध्वनि बजाते हैं।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "उल्टे चैनल गेमिंग में दिशात्मक भ्रम पैदा करते हैं; चरण विलोपन आवाज़ों को दबा देता है और बास को कम कर देता है। नियमित निरीक्षण की सिफारिश की जाती है।"
         ]
       }
     ],
     "faq": [
       {
-        "question": "Why can't I hear frequencies below 40Hz in the sweep test?",
-        "answer": "Most laptop speakers, small desktop monitors, and budget earphones cannot physically reproduce frequencies below 50Hz. Low bass reproduction requires large speaker cones or subwoofers capable of moving substantial air volumes."
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "Why can't I hear frequencies above 15,000Hz?",
-        "answer": "Human high-frequency hearing naturally declines with age (presbycusis). While healthy children can hear up to 20,000Hz, most adults above age 25 have a natural hearing cutoff between 14,000Hz and 17,000Hz."
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -2194,56 +2040,53 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "एक्सेलेरोमीटर 3 अक्षों (X, Y, Z) के साथ रैखिक त्वरण को मापते हैं, जबकि जायरोस्कोप कोणीय रोटेशन दर को मापते हैं।",
     "whyItMatters": "मोशन सेंसर गेमिंग, वीआर और छवि स्थिरीकरण को शक्ति प्रदान करते हैं; परीक्षण हार्डवेयर दोषों को अनुमति ब्लॉक से अलग करने में मदद करता है।",
     "whatToLookFor": [
-      "Orientation bubble failing to move when you tilt your phone or tablet",
-      "Erratic sensor jumping or drift when the device is placed on a completely flat, stationary table",
-      "Browser permission prompts failing or silently blocking motion event delivery on iOS devices",
-      "Sensor unavailable notices on desktop PCs that lack physical motion hardware"
+      "मोबाइल मोशन सेंसर: एक्सेलेरोमीटर और जायरोस्कोप - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-      "Open the Accelerometer Test or Gyroscope Test in Screen Tester on a smartphone or tablet",
-      "Tap 'Start Sensor' and tap 'Allow' if your browser prompts for permission (required on iOS Safari)",
-      "Tilt your device along all axes to observe real-time G-force reticle displacement and degree angles"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-      "Real-time linear acceleration values (`acceleration.x`, `y`, `z`) in m/s² from `DeviceMotionEvent`",
-      "Total acceleration including gravity (`accelerationIncludingGravity`) along all three axes",
-      "Rotational rate angles (`rotationRate.alpha`, `beta`, `gamma`) in degrees per second",
-      "Device orientation angles (`alpha`, `beta`, `gamma`) from `DeviceOrientationEvent`"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Internal microelectromechanical (MEMS) sensor chip calibration tolerances",
-      "Compass magnetic declination offsets or geomagnetic interference levels",
-      "Presence of physical accelerometer silicon on desktop PCs lacking sensor hardware"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-      "Testing on a desktop computer: standard desktop PCs and external monitors have no accelerometer hardware",
-      "iOS Safari permission requirement: Apple requires explicit user gesture permission via `DeviceMotionEvent.requestPermission()`",
-      "Browser security sandbox: sensors are completely blocked inside non-secure HTTP connections (HTTPS is required)",
-      "Sensor disabled in mobile browser settings (e.g., Chrome Mobile 'Motion Sensors' toggle set to Blocked)"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-      "Ensure you are accessing Screen Tester over a secure HTTPS connection",
-      "On iPhone or iPad, tap 'Allow' when the system dialog asks if you want to allow motion sensors",
-      "Perform a device restart if sensors become unresponsive across all operating system applications"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
       {
-        "title": "Accelerometer vs. Gyroscope: How They Cooperate",
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
         "content": [
-          "An accelerometer detects gravity: when resting flat on a table, it measures 9.8 m/s² along the vertical Z axis and 0 m/s² on X and Y.",
-          "A gyroscope detects rotational velocity: it measures how fast your phone is spinning around each axis in degrees per second.",
-          "Operating systems use sensor fusion algorithms (such as Kalman filters) to combine accelerometer and gyroscope data into stable 3D orientation tracking."
+          "एक्सेलेरोमीटर 3 अक्षों (X, Y, Z) के साथ रैखिक त्वरण को मापते हैं, जबकि जायरोस्कोप कोणीय रोटेशन दर को मापते हैं।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "मोशन सेंसर गेमिंग, वीआर और छवि स्थिरीकरण को शक्ति प्रदान करते हैं; परीक्षण हार्डवेयर दोषों को अनुमति ब्लॉक से अलग करने में मदद करता है। नियमित निरीक्षण की सिफारिश की जाती है।"
         ]
       }
     ],
     "faq": [
       {
-        "question": "Why does the motion test say 'Sensor Unavailable' on my laptop?",
-        "answer": "Most traditional desktop computers and standard clamshell laptops do not have MEMS accelerometers installed on their motherboards. These sensors are standard in smartphones, tablets, and 2-in-1 convertible convertibles."
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "Why does iOS require permission for motion sensors?",
-        "answer": "Apple introduced explicit permission requirements in iOS 13 to prevent web tracking scripts from fingerprinting users or estimating keystrokes based on microscopic table vibration telemetry."
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -2271,55 +2114,53 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "ब्राउज़र सटीक रंग निर्देशांक प्रस्तुत कर सकते हैं और फ्रेम अंतराल को माप सकते हैं, लेकिन वे प्रकाश, डेल्टा ई या भौतिक प्रतिक्रिया समय को नहीं माप सकते।",
     "whyItMatters": "कई ऑनलाइन उपकरण गलत दावा करते हैं कि वे निट्स या डेल्टा ई सटीकता मापते हैं; वास्तविक सीमाओं को जानने से भ्रामक निदान से बचा जा सकता है।",
     "whatToLookFor": [
-      "Websites claiming to measure physical monitor brightness in nits without a photometer probe (scientifically impossible)",
-      "Tools claiming to certify Delta E color accuracy through a web browser (requires a spectrophotometer)",
-      "Tools claiming to measure 1ms GtG response times without a high-speed optical pursuit camera",
-      "Websites claiming to repair physically broken liquid crystal transistors through software flashing"
+      "ब्राउज़र-आधारित डिस्प्ले परीक्षण क्या माप सकते हैं और क्या नहीं - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-      "Use browser tests for what they excel at: high-contrast visual defect screening, stepped grayscale calibration, and frame pacing diagnostics",
-      "Combine browser reference patterns with controlled ambient room lighting and careful human visual inspection",
-      "Check the Display Information tool to review exactly what properties your browser environment exposes"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-      "Exact 24-bit and 32-bit RGB color values rendered to HTML5 canvas and WebGL frame buffers",
-      "Browser animation timing intervals (`performance.now()`, `requestAnimationFrame`) to estimate refresh rates",
-      "Operating system logical viewport dimensions and device pixel scaling ratios (`devicePixelRatio`)",
-      "User-reported visual defect markings and interactive diagnostic pass/fail notes"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Physical photometric luminance in nits (cd/m²) emitted by the panel backlight or OLED pixels",
-      "Color accuracy errors (Delta E) or color gamut volume percentages without a colorimeter sensor",
-      "Physical pixel response time (GtG milliseconds) without high-speed photodiode optical oscilloscopes",
-      "Hardware monitor internal scalar LUT (Look-Up Table) calibration curves"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-      "Unscientific marketing claims made by legacy display testing websites",
-      "Confusion between digital canvas pixel values (e.g., RGB 255, 255, 255) and physical emitted brightness (nits)",
-      "Assuming browser window resolution matches physical panel pixel grid when OS display scaling is active"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-      "Use Screen Tester for visual inspection, panel defect screening, and baseline calibration",
-      "If you require certified laboratory calibration for color-critical prepress or film grading, invest in a hardware colorimeter (Calibrite Display Plus or Datacolor Spyder)",
-      "Always inspect display patterns with operating system scaling at 100% and ambient lighting properly controlled"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
       {
-        "title": "The Sandbox Principle of Web Browsers",
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
         "content": [
-          "Web browsers are secure application sandboxes designed to protect user privacy and system security. They intentionally isolate web pages from low-level GPU registers, I2C bus monitor communications (DDC/CI), and raw physical hardware sensors.",
-          "A browser can command the GPU to draw a solid white box, but it has no physical sensor or photodiode to know how much light actually leaves the glass. That observation belongs to the human user."
+          "ब्राउज़र सटीक रंग निर्देशांक प्रस्तुत कर सकते हैं और फ्रेम अंतराल को माप सकते हैं, लेकिन वे प्रकाश, डेल्टा ई या भौतिक प्रतिक्रिया समय को नहीं माप सकते।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "कई ऑनलाइन उपकरण गलत दावा करते हैं कि वे निट्स या डेल्टा ई सटीकता मापते हैं; वास्तविक सीमाओं को जानने से भ्रामक निदान से बचा जा सकता है। नियमित निरीक्षण की सिफारिश की जाती है।"
         ]
       }
     ],
     "faq": [
       {
-        "question": "Can any website measure my monitor's true brightness in nits?",
-        "answer": "No. Emitted luminance in nits (candela per square meter) is a physical measurement of photons. Without an external optical sensor placed against the glass, no web browser or software tool can measure nits."
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "What makes Screen Tester different from other test tools?",
-        "answer": "Screen Tester adheres strictly to technical honesty: we explain exactly what is observed in browser memory versus what requires physical measurement, eliminating marketing exaggerations."
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -2348,55 +2189,51 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "ब्राउज़र अनुकूलता यह दर्शाती है कि विभिन्न रेंडरिंग इंजन हार्डवेयर एक्सेस के लिए मानक वेब एपीआई को कितनी स्थिरता से लागू करते हैं।",
     "whyItMatters": "वाइब्रेशन जैसी सुविधाएं एंड्रॉइड पर क्रोम में काम करती हैं लेकिन आईओएस पर सफारी में गोपनीयता नीतियों के कारण अवरुद्ध हैं।",
     "whatToLookFor": [
-      "Vibration API (`navigator.vibrate`) not functioning on desktop browsers or iOS Safari",
-      "Motion sensor events requiring explicit permission taps on iOS Safari but running automatically on Android Chrome",
-      "Fullscreen API behaving differently on mobile phones versus desktop monitors",
-      "Color gamut negotiation differing between macOS Safari (Display P3) and Windows Chrome"
+      "ब्राउज़र अनुकूलता और वेब हार्डवेयर एपीआई - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-      "Open the Browser Compatibility tool in Screen Tester to inspect support status across 16 core Web APIs",
-      "Review the compatibility status table for your specific active browser and operating system",
-      "Test hardware features on alternate browsers (such as Firefox or Edge) if an API is unavailable"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-      "Feature detection of global API objects in the `window` and `navigator` namespaces",
-      "Support flags for Web Audio, WebRTC, Pointer Events, Fullscreen, Vibration, and Motion APIs",
-      "User agent and browser engine characteristics for diagnostic compatibility grouping"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Unreleased or experimental browser flag toggles (`chrome://flags` or `about:config`)",
-      "Operating-system level firewall or enterprise group policy restrictions",
-      "Third-party privacy extension script blocking behavior"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-      "Safari / WebKit policy omitting non-standard hardware APIs (like Web Vibration API) for privacy reasons",
-      "Accessing a website over unencrypted HTTP: modern browsers disable camera, microphone, and motion APIs on non-HTTPS origins",
-      "Strict browser tracking protection or privacy extensions blocking sensor event listeners",
-      "Running an outdated browser version lacking modern WebRTC or Canvas 2D color space extensions"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-      "Keep your web browser updated to the latest stable release",
-      "Always connect via secure HTTPS to ensure all modern browser Web APIs are unlocked",
-      "Use Chrome or Edge on Android when testing physical vibration and haptic feedback"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
       {
-        "title": "API Support Across Major Engines",
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
         "content": [
-          "Chromium (Google Chrome, Microsoft Edge, Brave): Broadest hardware API implementation, including Vibration API, Screen Wake Lock, and Fullscreen API.",
-          "Gecko (Mozilla Firefox): Strong standards compliance, excellent canvas rendering and Web Audio support, conservative hardware sensor implementation.",
-          "WebKit (Apple Safari): Strict privacy sandboxing, requires explicit user gestures for sensors, omits Vibration API, but provides leading Color Management and Display P3 wide gamut support on Apple displays."
+          "ब्राउज़र अनुकूलता यह दर्शाती है कि विभिन्न रेंडरिंग इंजन हार्डवेयर एक्सेस के लिए मानक वेब एपीआई को कितनी स्थिरता से लागू करते हैं।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "वाइब्रेशन जैसी सुविधाएं एंड्रॉइड पर क्रोम में काम करती हैं लेकिन आईओएस पर सफारी में गोपनीयता नीतियों के कारण अवरुद्ध हैं। नियमित निरीक्षण की सिफारिश की जाती है।"
         ]
       }
     ],
     "faq": [
       {
-        "question": "Why doesn't the Vibration Test vibrate my iPhone?",
-        "answer": "Apple has intentionally never implemented the Web Vibration API in WebKit/Safari to prevent web advertisements and spam sites from triggering intrusive device haptics. Physical vibration testing requires an Android device running Chrome or Firefox."
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "Do I need to install any browser extensions to use Screen Tester?",
-        "answer": "No. Screen Tester is 100% zero-install and client-side. It operates entirely on native standard W3C Web APIs supported natively by modern web browsers."
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -2416,8 +2253,7 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     ],
     "primarySearchIntent": "ब्राउज़र अनुकूलता वेब एपीआई हार्डवेयर chromium webkit gecko",
     "readingTimeMinutes": 5
-  },
-  // New Feature Guide: Pixel Inversion, VCOM Calibration & Pixel Walk
+  },
   {
     "slug": "pixel-inversion-and-vcom",
     "category": "display-problems",
@@ -2427,64 +2263,51 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "पिक्सेल इनवर्जन एक हार्डवेयर तकनीक है जिसमें एलसीडी पैनल हर फ्रेम में सब-पिक्सेल की इलेक्ट्रिकल पोलारिटी (+V / -V) बदलते हैं ताकि क्रिस्टल को नुकसान न पहुंचे।",
     "whyItMatters": "यदि VCOM रेफरेंस वोल्टेज ठीक से कैलिब्रेटेड नहीं है, तो धनात्मक और ऋणात्मक पोलारिटी में असमान चमक होती है, जिससे 30Hz/60Hz फ्लिकर और आंखों में थकान होती है।",
     "whatToLookFor": [
-      "Shimmering or vibrating 1x1 dot or 2x2 checkerboard grids",
-      "Faint vertical or horizontal crawling wave bands across uniform gray backgrounds",
-      "Micro-jitter along edges of fine black text on white backgrounds",
-      "Subtle green or magenta tint shifts across high-frequency pixel mesh patterns"
+      "पिक्सेल इनवर्जन, VCOM कैलिब्रेशन और पिक्सेल वॉक - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-      "Open the Pixel Inversion & VCOM Test in Screen Tester at native resolution with 100% display scaling",
-      "Step through 1x1 dot inversion, 2x2 check, vertical stripe, and subpixel mesh patterns",
-      "Observe the pattern from your standard operating distance without leaning in too close",
-      "Note whether the gray pattern appears steady and calm or vibrates aggressively"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-      "Precise 1-to-1 pixel-mapped alternating checkerboards and subpixel stripe rasters",
-      "Visual presence of polarity asymmetry across calibrated gray midtone levels",
-      "Response across different inversion architectures (dot, column, row, and subpixel)"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Internal analog potentiometer or digital VCOM register voltage value in millivolts",
-      "Physical liquid crystal molecular alignment angle under TFT electric field",
-      "Automated defect classification without human visual evaluation"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-      "Factory VCOM potentiometer calibration drift during panel manufacturing or assembly",
-      "Aging power supply filter capacitors causing ripple on the analog TFT reference rails",
-      "Aggressive panel response time overdrive voltages pushing subpixels past target levels",
-      "Non-native display resolution or fractional OS scaling blurring the alternating dot pattern"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-      "Ensure the display is running at native resolution and 100% integer scaling",
-      "Allow the monitor to warm up for 15-30 minutes, as cold LCD panels exhibit more VCOM asymmetry",
-      "If severe flicker occurs during normal productivity work, contact the manufacturer for warranty replacement under panel defect policies"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
       {
-        "title": "The Physics of Liquid Crystal DC Polarization",
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
         "content": [
-          "Nematic liquid crystals are dipole molecules suspended between transparent glass substrates. When an electric field is applied, the molecules twist or tilt to modulate backlight transmission.",
-          "If a continuous direct current (DC) voltage is maintained across the liquid crystal layer, mobile ions within the fluid migrate toward the electrodes, causing chemical plating, permanent polarization, and severe image retention. To prevent this electrolytic destruction, displays alternate the drive voltage polarity (+V and -V relative to a common reference voltage called VCOM) on every single refresh frame."
+          "पिक्सेल इनवर्जन एक हार्डवेयर तकनीक है जिसमें एलसीडी पैनल हर फ्रेम में सब-पिक्सेल की इलेक्ट्रिकल पोलारिटी (+V / -V) बदलते हैं ताकि क्रिस्टल को नुकसान न पहुंचे।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
         ]
       },
       {
-        "title": "Inversion Architectures: Dot, Column, and Row",
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
         "content": [
-          "To prevent the entire display from flickering simultaneously during polarity reversal, panels spatial-multiplex polarities across neighboring pixels.",
-          "Dot Inversion: Neighboring adjacent pixels alternate polarities (+, -, +, -) in a checkerboard. This cancels optical flicker most effectively and is used in premium monitors.",
-          "Column Inversion: Entire vertical columns share polarity. Economical to drive but susceptible to vertical striping and pixel walk artifacts.",
-          "Row Inversion: Horizontal lines share polarity. Prone to horizontal line crawl when displaying horizontal UI dividers."
+          "यदि VCOM रेफरेंस वोल्टेज ठीक से कैलिब्रेटेड नहीं है, तो धनात्मक और ऋणात्मक पोलारिटी में असमान चमक होती है, जिससे 30Hz/60Hz फ्लिकर और आंखों में थकान होती है। नियमित निरीक्षण की सिफारिश की जाती है।"
         ]
       }
     ],
     "faq": [
       {
-        "question": "Does an OLED panel have pixel inversion?",
-        "answer": "No. OLED panels use organic light-emitting diodes that emit light directly via current injection (DC) rather than liquid crystal shuttering, so they do not require AC polarity inversion or VCOM calibration."
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "Can pixel walk damage my monitor?",
-        "answer": "No. Pixel walk and VCOM asymmetry are optical artifacts, not destructive flaws. They simply indicate that positive and negative polarities produce slightly unequal luminance."
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -2500,7 +2323,6 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "primarySearchIntent": "pixel inversion test vcom pixel walk explained",
     "readingTimeMinutes": 6
   },
-  // New Feature Guide: Backlight Strobing, BFI & Strobe Crosstalk
   {
     "slug": "backlight-strobing-and-strobe-crosstalk",
     "category": "display-basics",
@@ -2510,62 +2332,51 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "बैकलाइट स्ट्रोबिंग हर फ्रेम में केवल तभी बैकलाइट जलाती है जब लिक्विड क्रिस्टल रंग बदलना पूरा कर लेते हैं, जिससे सैंपल-एंड-होल्ड मोशन ब्लर समाप्त हो जाता है।",
     "whyItMatters": "आंखों के ट्रैकिंग मोशन से डिस्प्ले पर प्राकृतिक धुंधलापन आता है। स्ट्रोबिंग सीआरटी जैसी स्पष्टता देती है, लेकिन टाइमिंग बेमेल होने पर दोहरी छवियां बनती हैं।",
     "whatToLookFor": [
-      "Sharp single-image moving objects in the screen center zone",
-      "Faint ghost silhouette trailing or leading moving bars at the top or bottom edges",
-      "Dimming of overall display brightness when backlight strobing is engaged",
-      "Red or blue color fringing caused by mismatched phosphor decay times"
+      "बैकलाइट स्ट्रोबिंग, BFI और स्ट्रोब क्रॉसटॉक - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-      "Enable blur reduction (ULMB, DyAc, ELMB, PureXP) in your monitor OSD",
-      "Launch the Strobe Crosstalk & BFI Inspection Test in Screen Tester",
-      "Observe moving vertical bars at 960 px/s across the top, center, and bottom tracks",
-      "Determine which vertical third of the screen exhibits the cleanest single image"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-      "Controlled velocity moving targets across multiple vertical screen tracks",
-      "Visual comparison between native motion blur and strobed phantom silhouettes",
-      "Observation of crosstalk intensity changes at various panning speeds"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Hardware strobe pulse width in microseconds (requires a photodiode oscilloscope)",
-      "Peak instantaneous flash brightness in nits",
-      "Internal display timing controller (TCON) scan-out delay"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-      "Global backlight flash timing conflicting with progressive top-to-bottom pixel scan-out",
-      "Strobe phase centered at screen midpoint, leaving top and bottom pixels mid-transition",
-      "Slow liquid crystal transition times (GtG) exceeding the available dark interval",
-      "Framerate not locked to the monitor's exact refresh rate"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-      "Adjust Strobe Phase in your monitor OSD or utility software to shift the clean zone to where your crosshair or task sits",
-      "Adjust Strobe Length or Duty Cycle to trade between peak brightness and blur reduction",
-      "Ensure GPU framerate is capped cleanly at the exact strobed refresh rate to prevent severe stutter"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
       {
-        "title": "Sample-and-Hold Blur vs. Impulse Blur",
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
         "content": [
-          "Modern flat-panel monitors are sample-and-hold displays: pixels remain continuously illuminated for the full duration of each frame (16.7ms at 60Hz, 6.9ms at 144Hz).",
-          "When your eyes track a moving object across the screen, your gaze sweeps continuously while the screen holds each frame static. Your retina smears the static frame across your photoreceptors, creating eye-tracking motion blur regardless of how fast individual pixels transition."
+          "बैकलाइट स्ट्रोबिंग हर फ्रेम में केवल तभी बैकलाइट जलाती है जब लिक्विड क्रिस्टल रंग बदलना पूरा कर लेते हैं, जिससे सैंपल-एंड-होल्ड मोशन ब्लर समाप्त हो जाता है।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
         ]
       },
       {
-        "title": "The Mechanics of Strobe Crosstalk",
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
         "content": [
-          "Displays draw frames progressively from top to bottom (vertical scan-out). By the time the bottom line is being refreshed, the top line was refreshed milliseconds earlier.",
-          "Because the backlight flashes globally across all zones simultaneously, it is impossible for all lines to be in a completed, settled state at the exact moment of the flash. Lines that are still transitioning appear as dual or ghosted silhouettes, known as strobe crosstalk."
+          "आंखों के ट्रैकिंग मोशन से डिस्प्ले पर प्राकृतिक धुंधलापन आता है। स्ट्रोबिंग सीआरटी जैसी स्पष्टता देती है, लेकिन टाइमिंग बेमेल होने पर दोहरी छवियां बनती हैं। नियमित निरीक्षण की सिफारिश की जाती है।"
         ]
       }
     ],
     "faq": [
       {
-        "question": "Can I use G-Sync / FreeSync and Backlight Strobing at the same time?",
-        "answer": "Most monitors require a fixed refresh rate for strobing. However, specialized technologies like ASUS ELMB-Sync and ViewSonic PureXP with VRR allow strobing across variable refresh rates within specific ranges."
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "Why does my screen look dimmer with strobing turned on?",
-        "answer": "Because the backlight is turned off for the majority of each frame cycle (often 70% to 85% of the time), average light output drops significantly compared to continuous illumination."
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -2582,7 +2393,6 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "primarySearchIntent": "strobe crosstalk backlight strobing blur reduction explained",
     "readingTimeMinutes": 7
   },
-  // New Feature Guide: VRR Brightness Flicker, Gamma Shifts & LFC Fluctuation
   {
     "slug": "vrr-brightness-flicker-and-gamma",
     "category": "display-problems",
@@ -2592,63 +2402,51 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "VRR ब्राइटनेस फ्लिकर इसलिए होता है क्योंकि रिफ्रेश रेट बदलने पर फ्रेम अवधि के अनुसार सब-पिक्सेल का चार्ज और गामा कर्व बदल जाता है।",
     "whyItMatters": "गेमिंग में लोडिंग स्क्रीन या भारी दृश्यों में डार्क एरियाज में ब्राइटनेस तेजी से बदलती है, जिससे आंखों पर बहुत तनाव पड़ता है।",
     "whatToLookFor": [
-      "Rhythmic brightness pulsation in dark gray textures and shadow areas",
-      "Momentary brightness jolts during framerate spikes or dips below the VRR range",
-      "Increased flicker on OLED and VA panels compared to standard IPS monitors",
-      "Flicker triggered during game loading screens or menu navigation"
+      "VRR ब्राइटनेस फ्लिकर, गामा शिफ्ट और LFC उतार-चढ़ाव - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-      "Enable G-Sync or FreeSync in your graphics driver and monitor OSD",
-      "Launch the VRR Brightness Flicker Stress Test in Screen Tester",
-      "Observe 10% and 25% gray test patches as the framerate sweeps between 45Hz and 144Hz",
-      "Check if the darkness level stays uniform or pumps visibly during the sweep"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-      "Visual display reaction to simulated framerate swings and dynamic frame presentation intervals",
-      "Sensitivity of near-black vs midtone gray levels to refresh-dependent gamma changes",
-      "Detection of visual luminance pumping across calibrated test fields"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Hardware GPU Adaptive-Sync VESA timing packet metadata",
-      "Direct microvolt OLED subpixel driving voltage changes",
-      "Whether your specific monitor model has hardware G-Sync module gamma compensation"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-      "OLED subpixel charging voltage decay during long frame times at low refresh rates",
-      "VA panel gamma shifts between low and high refresh frequencies",
-      "Low Framerate Compensation (LFC) multiplying frames rapidly near the 48Hz boundary",
-      "Uncapped GPU framerate bouncing violently against the maximum refresh ceiling"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-      "Cap your framerate 3 FPS below your monitor's maximum refresh rate using your graphics driver",
-      "Adjust graphics settings to eliminate severe framerate drops below the minimum VRR threshold",
-      "Enable 'VRR Flicker Mitigation' in your monitor OSD if available",
-      "Disable VRR for static or poorly optimized titles with unstable frame pacing"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
       {
-        "title": "The Physics of Refresh-Rate Dependent Gamma",
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
         "content": [
-          "Liquid crystal molecules and OLED emissive capacitors lose charge gradually over the duration of a frame (leakage current). At 144Hz (6.9ms), pixels are refreshed frequently and hold steady voltage. At 48Hz (20.8ms), the voltage decays longer between refreshes.",
-          "Panel manufacturers program factory gamma curves optimized for a specific refresh rate. When VRR varies the frame duration dynamically, the panel's actual gamma curve shifts, making near-black shades appear lighter or darker on every alternating frame."
+          "VRR ब्राइटनेस फ्लिकर इसलिए होता है क्योंकि रिफ्रेश रेट बदलने पर फ्रेम अवधि के अनुसार सब-पिक्सेल का चार्ज और गामा कर्व बदल जाता है।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
         ]
       },
       {
-        "title": "Low Framerate Compensation (LFC) Jolt",
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
         "content": [
-          "When framerate dips below the hardware VRR threshold (e.g. 48Hz), the driver instantly doubles or triples frames (e.g. displaying 45 FPS at 90Hz).",
-          "This sudden jump from 48Hz timing to 90Hz timing creates an instant step change in panel gamma, perceived by the human eye as an obvious flash or brightness jolt."
+          "गेमिंग में लोडिंग स्क्रीन या भारी दृश्यों में डार्क एरियाज में ब्राइटनेस तेजी से बदलती है, जिससे आंखों पर बहुत तनाव पड़ता है। नियमित निरीक्षण की सिफारिश की जाती है।"
         ]
       }
     ],
     "faq": [
       {
-        "question": "Why are OLED monitors more prone to VRR flicker than IPS?",
-        "answer": "OLED pixels are driven by thin-film transistors with voltage-dependent subpixel capacitors. Because OLED produces true zero black, the human eye is exceptionally sensitive to tiny luminance percentage swings in the 1% to 10% dark gray range."
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "Does using an HDMI 2.1 or DisplayPort cable make a difference for VRR flicker?",
-        "answer": "A high-quality cable prevents signal dropouts, but VRR gamma flicker is an inherent panel characteristic driven by TFT charging physics, not cable bandwidth."
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -2665,7 +2463,6 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "primarySearchIntent": "vrr brightness flicker g-sync freesync gamma shift explained",
     "readingTimeMinutes": 6
   },
-  // New Feature Guide: Pursuit Camera Tracking & Photographic MPRT Measurement
   {
     "slug": "pursuit-camera-and-mprt-measurement",
     "category": "display-basics",
@@ -2675,62 +2472,51 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "पर्स्यूट कैमरा स्क्रीन की गति के समान रफ्तार से कैमरा घुमाकर फोटो लेता है, जिससे इंसानी आंख की तरह वास्तविक मोशन ब्लर कैप्चर होता है।",
     "whyItMatters": "स्थिर कैमरे की तस्वीरें सिर्फ फ्रेम ओवरलैप दिखाती हैं। सिंक्रोनाइज़्ड पर्स्यूट फोटो से ही MPRT और घोस्टिंग का वैज्ञानिक मापन संभव है।",
     "whatToLookFor": [
-      "Crisp, single-line alignment of temporal graduation tick marks in captured photos",
-      "True width of trailing motion blur directly proportional to pixel hold time",
-      "Overdrive coronas (inverse ghosting halo trails) behind moving targets",
-      "Phosphor or LED decay trails behind moving high-contrast bars"
+      "पर्स्यूट कैमरा ट्रैकिंग और फोटोग्राफिक MPRT मापन - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-      "Open the Pursuit Camera Sync Track in Screen Tester",
-      "Set your smartphone or camera to manual exposure mode with a shutter speed between 1/15s and 1/30s",
-      "Pan your camera smoothly alongside the moving pattern from left to right",
-      "Inspect your photo: if the vertical tick marks form a clean, straight line, your pan was synchronized"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-      "Precision temporal graduation tracks designed specifically for camera tracking calibration",
-      "Constant velocity horizontal moving targets across multiple background contrast levels",
-      "Visual reference lines for quantifying motion smear width"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Camera panning velocity or shutter synchronization automatically",
-      "Microsecond photodiode GtG transition curves without laboratory optical probes",
-      "Camera lens optical distortion or motion blur introduced by handshake"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-      "Camera panning speed too fast or too slow relative to the target on-screen velocity",
-      "Camera shutter speed too short (freezing a single static frame instead of tracking)",
-      "Inconsistent camera tracking acceleration across the display horizontal axis",
-      "Display framerate drops or browser stutter during photographic capture"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-      "Use a smooth tracking surface or slider rail for consistent camera movement",
-      "Examine the trailing edge of captured targets to compare monitor overdrive modes (Off, Normal, Extreme)",
-      "Calculate MPRT in milliseconds by measuring the smear pixel width divided by velocity in pixels per millisecond"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
       {
-        "title": "Why Stationary Cameras Fail for Motion Blur",
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
         "content": [
-          "When you photograph a moving on-screen target with a stationary camera, the sensor accumulates multiple successive static display refreshes in place, producing stepped ghost duplicates.",
-          "Human eyes do not sit still; they track moving objects with continuous smooth pursuit. A pursuit camera reproduces this biological mechanism by panning synchronously across the screen during the camera exposure."
+          "पर्स्यूट कैमरा स्क्रीन की गति के समान रफ्तार से कैमरा घुमाकर फोटो लेता है, जिससे इंसानी आंख की तरह वास्तविक मोशन ब्लर कैप्चर होता है।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
         ]
       },
       {
-        "title": "The Temporal Graduation Sync Track",
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
         "content": [
-          "Screen Tester incorporates a temporal graduation track—a series of white vertical ticks offset across successive refresh frames.",
-          "When a pursuit camera is perfectly synchronized in speed and angle, the staggered ticks overlap into a single, razor-sharp vertical line in the final photograph, verifying the validity of the measurement."
+          "स्थिर कैमरे की तस्वीरें सिर्फ फ्रेम ओवरलैप दिखाती हैं। सिंक्रोनाइज़्ड पर्स्यूट फोटो से ही MPRT और घोस्टिंग का वैज्ञानिक मापन संभव है। नियमित निरीक्षण की सिफारिश की जाती है।"
         ]
       }
     ],
     "faq": [
       {
-        "question": "Can I use a modern smartphone for pursuit camera testing?",
-        "answer": "Yes! Modern smartphones with 'Pro' or 'Manual' camera modes allow manual shutter speed control (set to 1/15s to 1/30s). Panning smoothly by hand along a desk surface can produce excellent synchronized pursuit photos."
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "What is the difference between GtG and MPRT?",
-        "answer": "GtG (Gray-to-Gray) measures how fast liquid crystals physically rotate from one color to another. MPRT (Motion Picture Response Time) measures the total duration a pixel is seen by the eye, dominated by the frame hold duration on sample-and-hold displays."
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -2748,7 +2534,6 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "primarySearchIntent": "pursuit camera test mprt ghosting photography explained",
     "readingTimeMinutes": 7
   },
-  // New Feature Guide: Audio-Video Lip-Sync Calibration & Latency Alignment
   {
     "slug": "audio-video-sync-and-latency",
     "category": "device-and-input",
@@ -2758,62 +2543,51 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "ऑडियो-वीडियो सिंक कैलिब्रेशन विजुअल स्क्रीन फ्लैश और ऑडियो बीप को एक साथ मिलाता है ताकि डिस्प्ले और साउंड लेटेंसी संतुलित हो सके।",
     "whyItMatters": "HDR टोन मैपिंग से वीडियो में देरी होती है और ब्लूटूथ से ऑडियो में लैग आता है, जिससे संवादों में होठों और आवाज का तालमेल बिगड़ जाता है।",
     "whatToLookFor": [
-      "Simultaneous occurrence of the visual flash and acoustic 1 kHz beep",
-      "Audio arriving before the visual flash (display lag exceeds audio delay)",
-      "Video flash arriving before the audio beep (audio processing or Bluetooth lag)",
-      "Consistency of sync across multiple browser tabs and media playback apps"
+      "ऑडियो-वीडियो लिप-सिंक कैलिब्रेशन और लेटेंसी अलाइनमेंट - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-      "Open the Audio / Video Lip-Sync Calibration Test in Screen Tester",
-      "Ensure your system speakers or headphones are active and unmuted",
-      "Watch the rotating dial as it crosses the top zero marker and listen for the tone",
-      "Adjust the millisecond offset slider until the flash and sound perceive as perfectly instantaneous"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-      "Human perceptual synchronization between optical visual flashes and acoustic pulses",
-      "Calibration offset values in milliseconds (+/- 250ms range)",
-      "Acoustic pulse delivery via precise Web Audio API synthesized oscillators"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Hardware electrical transit latency across physical HDMI or optical cables",
-      "Microsecond acoustic propagation delay through room air",
-      "Operating system Bluetooth audio stack internal buffer configurations"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-      "Heavy TV video processing modes ('Cinema' or 'Vivid' with frame smoothing enabled)",
-      "Bluetooth audio compression codec buffers (SBC and AAC have 100ms-200ms latency)",
-      "HDMI eARC audio format transcoding delay (e.g. PCM to Dolby Digital bitstream conversion)",
-      "Display scaler lag when feeding non-native video resolutions"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-      "Enable 'Game Mode' on your TV or monitor to bypass image processing latency",
-      "Use low-latency Bluetooth codecs (aptX Low Latency, LC3) or wired 3.5mm / USB connections",
-      "Adjust audio delay settings in your TV, soundbar, or media player (e.g. VLC or Kodi) by the measured offset"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
       {
-        "title": "ITU-R Perceptual Thresholds for Lip-Sync",
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
         "content": [
-          "According to international broadcasting standard ITU-R BT.1359-1, the human brain perceives audio-video misalignment asymmetrically.",
-          "Audio can lead video by no more than +45ms before becoming objectionable, while audio can lag behind video by up to -125ms because humans are accustomed to light traveling faster than sound over physical distances."
+          "ऑडियो-वीडियो सिंक कैलिब्रेशन विजुअल स्क्रीन फ्लैश और ऑडियो बीप को एक साथ मिलाता है ताकि डिस्प्ले और साउंड लेटेंसी संतुलित हो सके।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
         ]
       },
       {
-        "title": "Bluetooth Audio Latency vs. HDMI eARC",
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
         "content": [
-          "Standard Bluetooth audio profiles (A2DP with SBC or AAC codecs) buffer audio packets to prevent wireless dropouts, typically introducing 120ms to 250ms of delay.",
-          "Direct HDMI eARC connections offer near-zero delay when passing uncompressed LPCM, but enabling on-the-fly Dolby Atmos transcoding inside a television can re-introduce 50ms to 100ms of lag."
+          "HDR टोन मैपिंग से वीडियो में देरी होती है और ब्लूटूथ से ऑडियो में लैग आता है, जिससे संवादों में होठों और आवाज का तालमेल बिगड़ जाता है। नियमित निरीक्षण की सिफारिश की जाती है।"
         ]
       }
     ],
     "faq": [
       {
-        "question": "What is an acceptable lip-sync delay for watching movies?",
-        "answer": "A delay within +/- 20ms is virtually undetectable by human viewers. A delay exceeding 50ms is noticeable on close-up dialogue, and over 100ms becomes distracting."
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "Why does audio sync drift over time during long videos?",
-        "answer": "Clock drift between the display refresh rate (e.g. 59.94Hz vs 60.00Hz) and the audio hardware sample clock (44.1kHz vs 48kHz) can accumulate gradual desync unless re-clocked by the media player."
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -2829,7 +2603,6 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "primarySearchIntent": "audio video lip sync calibration test soundbar delay explained",
     "readingTimeMinutes": 6
   },
-  // New Feature Guide: Gamepad Diagnostics: Analog Stick Drift, Circularity & Deadzones
   {
     "slug": "gamepad-diagnostics-and-stick-drift",
     "category": "device-and-input",
@@ -2839,63 +2612,51 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "स्टिक ड्रिफ्ट तब होता है जब कंट्रोलर के अंदरूनी सेंसर घिस जाते हैं या धूल जम जाती है, जिससे बिना छुए भी गलत इनपुट जाता है।",
     "whyItMatters": "ड्रिफ्ट से गेम में लक्ष्य साधना मुश्किल हो जाता है और कैमरा अपने आप घूमने लगता है। समय पर पहचान से वारंटी क्लेम या सफाई में मदद मिलती है।",
     "whatToLookFor": [
-      "Resting coordinate position shifting away from true center (0.00, 0.00)",
-      "Asymmetrical circularity plots showing flat edges or corner clipping",
-      "Jittery or erratic axis coordinates when moving thumbsticks smoothly",
-      "Analog trigger values failing to reach 100% or registering phantom squeeze input"
+      "गेमपैड डायग्नोस्टिक्स: एनालॉग स्टिक ड्रिफ्ट, सर्कुलैरिटी और डेडज़ोन - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-      "Connect your controller via USB cable or Bluetooth",
-      "Press any button on the gamepad to wake the HTML5 Gamepad API in Screen Tester",
-      "Observe the resting crosshair position with hands completely off both sticks",
-      "Rotate the sticks along their outer boundaries to inspect the circular boundary track"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-      "Real-time X and Y axis values normalized between -1.000 and +1.000",
-      "All 16 standard digital and pressure-sensitive button actuations",
-      "Gamepad device vendor identification and hardware model names"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Physical resistance values of potentiometer carbon tracks in ohms",
-      "Internal battery charge level (not exposed by standard web APIs)",
-      "Hardware internal firmware calibration settings stored on controller EEPROM"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-      "Frictional wear of the conductive carbon wiper track inside the thumbstick module",
-      "Accumulated dust, lint, and plastic particulate inside the sensor housing",
-      "Weakened centering springs failing to return the stick to physical neutral",
-      "Operating system deadzone configured too low for the controller's physical tolerances"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-      "Clean around the thumbstick ball with compressed air or electronic contact cleaner",
-      "Increase in-game inner deadzones to accommodate small resting drift (<5%)",
-      "Recalibrate the controller in Windows Game Controllers or Steam settings",
-      "Upgrade to controllers equipped with contactless Hall-effect magnetic sensors"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
       {
-        "title": "Potentiometer Thumbsticks vs. Hall-Effect Sensors",
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
         "content": [
-          "Traditional game controllers (Xbox, DualSense, Switch Pro) use analog potentiometers where a physical metal wiper rubs against a carbon resistive track. Over millions of cycles, the carbon rubs away, changing resistance and causing drift.",
-          "Modern Hall-effect thumbsticks use permanent magnets and semiconductor sensors that measure magnetic field strength without physical contact, making them immune to mechanical wiper wear and permanent stick drift."
+          "स्टिक ड्रिफ्ट तब होता है जब कंट्रोलर के अंदरूनी सेंसर घिस जाते हैं या धूल जम जाती है, जिससे बिना छुए भी गलत इनपुट जाता है।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
         ]
       },
       {
-        "title": "Circularity Error and Deadzones",
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
         "content": [
-          "Circularity error measures how accurately an analog stick travels through a true geometric circle. Excessive outer deadzones clip coordinates into a rounded square, causing sudden diagonal speed boosts.",
-          "Inner deadzones define the center resting dead-band. A properly calibrated inner deadzone allows tiny manufacturing tolerances without sending unwanted character movement."
+          "ड्रिफ्ट से गेम में लक्ष्य साधना मुश्किल हो जाता है और कैमरा अपने आप घूमने लगता है। समय पर पहचान से वारंटी क्लेम या सफाई में मदद मिलती है। नियमित निरीक्षण की सिफारिश की जाती है।"
         ]
       }
     ],
     "faq": [
       {
-        "question": "How much stick drift is considered normal?",
-        "answer": "A resting drift value under 0.05 (5%) is normal mechanical play and is easily absorbed by default game deadzones. Drift exceeding 0.10 (10%) causes noticeable character movement and indicates a worn sensor."
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "Can stick drift be fixed by software updates?",
-        "answer": "Firmware updates can recalibrate the software center point or increase default deadzones, but physical carbon track wear cannot be repaired by software."
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -2909,7 +2670,6 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "primarySearchIntent": "gamepad tester stick drift controller circularity deadzone test",
     "readingTimeMinutes": 6
   },
-  // New Feature Guide: Display Bandwidth, Video Timings & Cable Standards
   {
     "slug": "display-bandwidth-and-cable-standards",
     "category": "tv-and-display-setup",
@@ -2919,62 +2679,51 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "डिस्प्ले बैंडविड्थ वह गति (Gbps) है जो रेजोल्यूशन, रिफ्रेश रेट और कलर डेप्थ के आधार पर वीडियो डेटा भेजने के लिए आवश्यक होती है।",
     "whyItMatters": "4K 240Hz जैसे हाई-रिफ्रेश मॉनिटर पुराने केबल्स की सीमा पार कर जाते हैं, जिससे स्क्रीन ब्लैकआउट या सिग्नल कटने की समस्या होती है।",
     "whatToLookFor": [
-      "Black screen blinking or signal loss during high-framerate gaming",
-      "Automatic downsampling to 4:2:2 or 4:2:0 chroma subsampling causing fringed text",
-      "Color depth being clamped to 8-bit instead of 10-bit HDR",
-      "Warning messages in GPU control panels regarding bandwidth limits"
+      "डिस्प्ले बैंडविड्थ, वीडियो टाइमिंग्स और केबल मानक - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-      "Open the Display Bandwidth Calculator in Screen Tester Tools",
-      "Select your monitor's resolution, refresh rate, color depth, and chroma subsampling",
-      "Review calculated uncompressed and DSC data rates against HDMI and DisplayPort interface standards",
-      "Verify whether your existing cable meets the necessary transmission standard"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-      "Mathematical bandwidth calculation incorporating VESA CVT-RB2 blanking intervals",
-      "Comparison across HDMI 2.0/2.1, DisplayPort 1.2/1.4/2.1, and Thunderbolt specifications",
-      "Verification of whether VESA DSC 1.2a allows transmission over specific interfaces"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Physical cable electrical attenuation or signal integrity in decibels",
-      "Whether a specific third-party cable is counterfeit or substandard",
-      "GPU hardware display pipeline stream count limits"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-      "Using an older HDMI 2.0 cable (18 Gbps) on a 4K 120Hz/144Hz monitor requiring HDMI 2.1 (48 Gbps)",
-      "DisplayPort 1.4 connection bottlenecked at 4K 240Hz without VESA DSC support",
-      "Low-quality long cable runs (>3 meters) causing packet loss and display blinks",
-      "Monitors sharing bandwidth across multiple MST daisy-chained displays"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-      "Upgrade to certified 'Ultra High Speed HDMI' (48 Gbps) or 'DP80' DisplayPort cables",
-      "Enable VESA DSC (Display Stream Compression) in your monitor OSD and GPU driver",
-      "Lower color depth from 10-bit to 8-bit or adjust refresh rate if cable bandwidth is constrained"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
       {
-        "title": "The Mathematical Bandwidth Formula",
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
         "content": [
-          "Raw video data rate is calculated as: Total Horizontal Pixels × Total Vertical Pixels × Refresh Rate × Color Depth × Chroma Factor.",
-          "However, video transmission also requires blanking intervals (front porch, sync pulse, back porch) defined by standards such as VESA CVT-RB2 (Reduced Blanking v2), adding approximately 15% to 20% overhead above active pixel dimensions."
+          "डिस्प्ले बैंडविड्थ वह गति (Gbps) है जो रेजोल्यूशन, रिफ्रेश रेट और कलर डेप्थ के आधार पर वीडियो डेटा भेजने के लिए आवश्यक होती है।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
         ]
       },
       {
-        "title": "Understanding VESA DSC 1.2a",
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
         "content": [
-          "Display Stream Compression (DSC 1.2a) is an industry-standard, visually lossless compression algorithm that compresses video data rates by up to 3:1.",
-          "DSC operates with sub-millisecond line-buffered latency, allowing ultra-high-resolution gaming (like 4K 240Hz or 8K 60Hz) over DisplayPort 1.4 and HDMI 2.1 interfaces without humanly perceptible visual degradation."
+          "4K 240Hz जैसे हाई-रिफ्रेश मॉनिटर पुराने केबल्स की सीमा पार कर जाते हैं, जिससे स्क्रीन ब्लैकआउट या सिग्नल कटने की समस्या होती है। नियमित निरीक्षण की सिफारिश की जाती है।"
         ]
       }
     ],
     "faq": [
       {
-        "question": "Does DSC compression add noticeable input lag?",
-        "answer": "No. VESA DSC processes pixels on a scanline-by-scanline basis with a delay of less than a few scanlines—a fraction of a microsecond—which is imperceptible to gamers."
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "What is the difference between DisplayPort 1.4 and DisplayPort 2.1?",
-        "answer": "DisplayPort 1.4 supports a maximum data rate of 25.92 Gbps (HBR3). DisplayPort 2.1 introduces UHBR transmission modes, reaching up to 77.37 Gbps (UHBR20), allowing uncompressed 4K 240Hz HDR."
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -2988,7 +2737,6 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "primarySearchIntent": "display bandwidth calculator hdmi displayport dsc cable standards",
     "readingTimeMinutes": 7
   },
-  // New Feature Guide: Ergonomic Viewing Distance, Visual Acuity & Retina PPD
   {
     "slug": "viewing-distance-and-retina-resolution",
     "category": "tv-and-display-setup",
@@ -2998,62 +2746,51 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "सही व्यूइंग दूरी इंसानी दृष्टि तीक्ष्णता (60 PPD) और एर्गोनोमिक कम्फर्ट को संतुलित करती है ताकि पिक्सेल न दिखें और गर्दन में दर्द न हो।",
     "whyItMatters": "बहुत पास बैठने से पिक्सेल ग्रिड दिखाई देता है और बहुत दूर बैठने से इमर्शन घटता है और टेक्स्ट पढ़ने में परेशानी होती है।",
     "whatToLookFor": [
-      "Individual pixel grid or screen-door effect visible at your sitting distance",
-      "Eye strain or excessive head movement needed to view screen corners",
-      "Text clarity and readability without straining or leaning forward",
-      "Immersion level matching recommendations from THX (40°) and SMPTE (30°)"
+      "एर्गोनोमिक व्यूइंग दूरी, दृष्टि तीक्ष्णता और रेटिना PPD - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-      "Open the Viewing Distance & Retina PPD Calculator in Screen Tester Tools",
-      "Enter your screen diagonal size (inches), resolution, and current viewing distance",
-      "Check your calculated Pixels Per Degree (PPD) against the 60 PPD Retina limit",
-      "Review recommended distances for desktop productivity, gaming, and home theater"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-      "Trigonometric calculation of visual angle and Pixels Per Degree (PPD)",
-      "Determination of the exact distance where individual pixels become indistinguishable",
-      "Field of view calculations matching THX and SMPTE theatrical recommendations"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Physical sitting distance from user to screen without user input",
-      "Individual user ophthalmic refractive errors (astigmatism, myopia)",
-      "Ambient illumination levels impacting pupil dilation and visual acuity"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-      "Deep desk setups placing small 24-inch 1080p screens too far for comfortable reading",
-      "Shallow desks placing 32-inch or 42-inch monitors too close, causing neck fatigue",
-      "4K television viewed from standard couch distances (3+ meters) where resolution advantage is lost to the human eye",
-      "Incorrect font scaling forcing unnatural forward head posture"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-      "Position desktop monitors approximately an arm's length away (50cm to 75cm / 20in to 30in)",
-      "Align the top third of the monitor at or slightly below eye level to prevent neck strain",
-      "Increase OS text scaling rather than leaning closer if text feels difficult to read"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
       {
-        "title": "The Science of 20/20 Vision and 60 PPD",
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
         "content": [
-          "Standard 20/20 Snellen visual acuity corresponds to the ability to resolve two points separated by 1 arcminute (1/60th of a degree) of visual angle.",
-          "When a display delivers 60 Pixels Per Degree (PPD) at your viewing distance, each pixel subtends exactly 1 arcminute or less. At this threshold—popularized as 'Retina' resolution—the human retina can no longer distinguish individual pixels, and images appear continuous."
+          "सही व्यूइंग दूरी इंसानी दृष्टि तीक्ष्णता (60 PPD) और एर्गोनोमिक कम्फर्ट को संतुलित करती है ताकि पिक्सेल न दिखें और गर्दन में दर्द न हो।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
         ]
       },
       {
-        "title": "Cinematic Field of View: SMPTE vs. THX",
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
         "content": [
-          "SMPTE (Society of Motion Picture and Television Engineers) recommends a 30-degree field of view for general entertainment, providing comfortable viewing without eye strain.",
-          "THX recommends a 40-degree field of view for home theaters and cinematic gaming, delivering an immersive experience where the screen fills your primary visual field."
+          "बहुत पास बैठने से पिक्सेल ग्रिड दिखाई देता है और बहुत दूर बैठने से इमर्शन घटता है और टेक्स्ट पढ़ने में परेशानी होती है। नियमित निरीक्षण की सिफारिश की जाती है।"
         ]
       }
     ],
     "faq": [
       {
-        "question": "Can the human eye see higher resolution than 60 PPD?",
-        "answer": "Individuals with exceptional 20/15 or 20/10 vision can resolve up to 80 or 85 PPD. However, for the vast majority of people, 60 PPD represents the practical limit where increasing pixel density yields diminishing visual returns."
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "What is the ideal viewing distance for a 27-inch 1440p monitor?",
-        "answer": "For a 27-inch 1440p display (109 PPI), the Retina threshold is approximately 80 cm (31 inches). A typical ergonomic desktop distance of 65 cm to 75 cm provides an ideal balance of sharpness and field of view."
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -3070,7 +2807,6 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "primarySearchIntent": "monitor viewing distance calculator retina ppd pixel density",
     "readingTimeMinutes": 6
   },
-  // New Feature Guide: Dual-Monitor White Point Matching & Multi-Display Calibration
   {
     "slug": "dual-monitor-color-and-white-point-matching",
     "category": "tv-and-display-setup",
@@ -3080,67 +2816,56 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "व्हाइट पॉइंट मैचिंग संदर्भ सफेद स्क्रीन और मॉनिटर के OSD RGB गेन कंट्रोल्स का उपयोग करके दोनों मॉनिटर्स के रंग और टोन को एक समान करती है।",
     "whyItMatters": "एक मॉनिटर पीला और दूसरा नीला दिखने से आंखों में भ्रम पैदा होता है और फोटो/वीडियो एडिटिंग में गलत रंग दिखते हैं।",
     "whatToLookFor": [
-      "One screen appearing reddish/warm while the other looks cyan/cool",
-      "Brightness disparities across adjacent white web pages or documents",
-      "Color shifts across different panel technologies (IPS vs OLED vs VA)",
-      "Differing anti-glare matte coatings altering perceived contrast"
+      "डुअल मॉनिटर व्हाइट पॉइंट मैचिंग और मल्टी-डिस्प्ले कैलिब्रेशन - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-      "Open the Dual-Monitor White Point Matcher in Screen Tester across both screens",
-      "Span the window across both displays or open matching browser windows on each monitor",
-      "Select your primary calibrated display as the reference standard",
-      "Adjust the secondary monitor's physical OSD RGB Gain (Red, Green, Blue) controls until the white fields match"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-      "Split-canvas pure reference white and gray fields for side-by-side visual comparison",
-      "Interactive RGB gain offsets and correlated color temperature sliders",
-      "Color temperature presets from warm 5000K to cool 9300K"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Absolute CIE 1931 xy chromaticity coordinates without an optical colorimeter or spectrophotometer",
-      "Backlight spectral emission power distribution (SPD)",
-      "Automatic adjustment of physical monitor hardware OSD sliders"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-      "Different backlight technologies (e.g. standard White-LED vs Quantum Dot WCG vs OLED)",
-      "Metameric failure: screens with different light spectrums matching on a colorimeter but looking different to the human eye",
-      "Factory calibration differences between different display brands and models",
-      "Night Light, f.lux, or True Tone enabled on only one display"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-      "Disable software color filters (Night Light, True Tone) across all operating system displays",
-      "Set both monitors to their 'Custom' or 'User' Color Temperature OSD mode",
-      "Use the human eye as a null detector: look back and forth rapidly between the screens while fine-tuning RGB Gain"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
       {
-        "title": "The Phenomenon of Metameric Failure",
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
         "content": [
-          "Two light sources with completely different spectral power distributions can stimulate human cone photoreceptors in ways that look identical under certain conditions—a phenomenon called metamerism.",
-          "However, modern wide-gamut monitors (such as QD-OLED or Nano-IPS) produce narrow spectral peaks. Even if a hardware colorimeter reports both screens are calibrated to exact D65 (x=0.3127, y=0.3290), the human eye may still perceive one screen as noticeably greener or pinker due to individual observer metameric failure."
+          "व्हाइट पॉइंट मैचिंग संदर्भ सफेद स्क्रीन और मॉनिटर के OSD RGB गेन कंट्रोल्स का उपयोग करके दोनों मॉनिटर्स के रंग और टोन को एक समान करती है।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
         ]
       },
       {
-        "title": "Step-by-Step Visual Alignment Technique",
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
         "content": [
-          "1. Designate your highest-quality display as the primary reference and set it to D65 / Standard.",
-          "2. Match overall luminance first: adjust the secondary monitor's Brightness control so white pages appear equally luminous.",
-          "3. Match tint: if the secondary monitor appears slightly green, reduce the Green gain in its OSD. If it looks cool/blue, reduce Blue or slightly boost Red and Green."
+          "एक मॉनिटर पीला और दूसरा नीला दिखने से आंखों में भ्रम पैदा होता है और फोटो/वीडियो एडिटिंग में गलत रंग दिखते हैं। नियमित निरीक्षण की सिफारिश की जाती है।"
         ]
       }
     ],
     "faq": [
       {
-        "question": "Can two completely different monitor models ever match 100% perfectly?",
-        "answer": "They can be matched closely enough that the difference is unobtrusive for daily productivity. However, differences in panel coatings (matte vs glossy) and viewing angle gamma shifts mean slight optical differences will always remain."
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "Should I calibrate white point with software profiles or monitor OSD?",
-        "answer": "Always adjust the monitor's physical hardware OSD RGB gain controls first. Software GPU LUT adjustments can introduce color banding and reduce dynamic range."
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
       "dual-monitor-matcher",
+      "compare-displays",
       "color-test",
       "white-level-test"
     ],
@@ -3154,7 +2879,6 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "primarySearchIntent": "dual monitor color match white point calibration different screens",
     "readingTimeMinutes": 7
   },
-  // New Feature Guide: Display Inspection Reports, Defect Logging & Warranty Evidence
   {
     "slug": "display-inspection-reporting-and-certification",
     "category": "browser-and-testing",
@@ -3164,66 +2888,51 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "डिस्प्ले इंस्पेक्शन रिपोर्ट पाए गए सभी पिक्सेल डिफेक्ट्स और हार्डवेयर स्पेसिफिकेशन्स को एक औपचारिक प्रमाणपत्र में संकलित करती है।",
     "whyItMatters": "दुकानदार और निर्माता रिटर्न के लिए ठोस सबूत मांगते हैं। सटीक निर्देशांक वाली रिपोर्ट से वारंटी और रिप्लेसमेंट प्रक्रिया तेज हो जाती है।",
     "whatToLookFor": [
-      "Dead, stuck, and bright subpixel coordinates plotted across screen zones",
-      "Backlight bleed severity and corner IPS glow notes",
-      "Hardware GPU, browser user agent, and screen resolution parameters",
-      "Timestamped inspection session records"
+      "डिस्प्ले निरीक्षण रिपोर्ट, डिफेक्ट लॉग और वारंटी प्रमाण - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-      "Run the standard diagnostic sequence (Dead Pixels, Uniformity, Backlight Bleed) in Screen Tester",
-      "Click directly on any observed defect to place a tagged marker (Dead, Stuck, or Bright)",
-      "Open the Inspection Reports & Defect Log tool",
-      "Review recorded observations and click 'Export Report' or 'Print Certificate' for your records"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-      "Interactive coordinate logging of marked pixel defects across the display canvas",
-      "Compilation of user observations across all test categories",
-      "System hardware diagnostics (screen resolution, pixel ratio, color depth, browser engine)"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-      "Physical manufacturer serial numbers etched on the rear monitor chassis label",
-      "Retailer warranty policy return window eligibility",
-      "Proof of physical shipping impact or drop damage"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-      "Subpixel transistor failure during panel glass fabrication",
-      "Uneven bezel clamp pressure causing localized backlight bleed",
-      "Inadequate return window documentation leading to rejected merchant claims",
-      "Unrecorded intermittent defects dismissed by technical support"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-      "Save or print the generated inspection certificate as a PDF file",
-      "Photograph the defect on the screen alongside the coordinate marker using a smartphone",
-      "Submit the documentation to your retailer or monitor manufacturer within the return period"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
       {
-        "title": "Understanding ISO 9241-307 Pixel Defect Classes",
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
         "content": [
-          "Display manufacturers classify panel warranty coverage using ISO standard 9241-307, which defines four defect classes per million pixels:",
-          "Class 0: Zero defect tolerance (premium professional medical or mastering monitors).",
-          "Class 1: Up to 1 continuously bright pixel, 1 dead pixel, and 2-5 stuck subpixels per million pixels.",
-          "Class 2: The standard consumer monitor tier, allowing up to 2 bright pixels, 2 dark pixels, and 5-10 stuck subpixels per million pixels."
+          "डिस्प्ले इंस्पेक्शन रिपोर्ट पाए गए सभी पिक्सेल डिफेक्ट्स और हार्डवेयर स्पेसिफिकेशन्स को एक औपचारिक प्रमाणपत्र में संकलित करती है।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
         ]
       },
       {
-        "title": "How to Build an Unassailable RMA Warranty Claim",
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
         "content": [
-          "When claiming a return on a defective monitor, provide three pieces of documentation:",
-          "1. The structured Screen Tester Inspection Certificate showing coordinates and defect classification.",
-          "2. A close-up macro photograph showing the subpixel under test (e.g. black subpixel on pure white).",
-          "3. A wide-angle photograph showing the full display with the defect visible in context."
+          "दुकानदार और निर्माता रिटर्न के लिए ठोस सबूत मांगते हैं। सटीक निर्देशांक वाली रिपोर्ट से वारंटी और रिप्लेसमेंट प्रक्रिया तेज हो जाती है। नियमित निरीक्षण की सिफारिश की जाती है।"
         ]
       }
     ],
     "faq": [
       {
-        "question": "Will one dead pixel qualify my monitor for a warranty replacement?",
-        "answer": "Most consumer monitors fall under ISO Class 2, which requires 3 to 5 dead subpixels before qualifying for replacement. However, many reputable brands offer a 'Zero Bright Dot' guarantee covering any stuck pixel that shines permanently bright."
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
       },
       {
-        "question": "Are inspection reports saved on your servers?",
-        "answer": "No. All Screen Tester inspection observations, defect coordinates, and hardware diagnostic profiles are stored strictly locally in your browser's private session memory for maximum privacy."
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
       }
     ],
     "relatedTestIds": [
@@ -3240,7 +2949,6 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "primarySearchIntent": "display inspection report monitor warranty defect documentation",
     "readingTimeMinutes": 6
   },
-
   {
     "slug": "device-battery-health-and-power-management",
     "category": "device-and-input",
@@ -3250,78 +2958,65 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "Display backlights and high refresh rates are typically the single largest consumer of battery power in mobile computers, often accounting for 30% to 50% of total system energy drain under typical workloads.",
     "whyItMatters": "Running a laptop or tablet at maximum display luminance drastically cuts battery runtime and accelerates thermal degradation of lithium-ion cells over successive charge cycles.",
     "whatToLookFor": [
-        "Rapid percentage drops during full-screen bright white display patterns",
-        "Stalled charging time estimates caused by thermal throttling of the internal charging controller",
-        "Abrupt shutdowns before reaching 0% indicating chemically degraded, high-impedance battery cells",
-        "Excessive chassis heat localized beneath the display hinge and battery pack"
+      "बैटरी स्वास्थ्य, पावर स्थिति और डिस्प्ले ऊर्जा खपत - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-        "Open the Battery Health & Power Info test in Screen Tester to inspect real-time charge percentages and charging state",
-        "Observe the discharge curve under different screen brightness levels (25%, 50%, 100%)",
-        "Compare charging speed on AC wall adapter vs. low-wattage USB-C hubs"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-        "Real-time battery percentage reported by the operating system power subsystem",
-        "Binary charging vs. discharging state and event transitions",
-        "Estimated seconds until full charge or complete discharge",
-        "Session history of battery percentage changes"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-        "Factory design capacity vs. current maximum chemical capacity (mWh)",
-        "Physical lithium-ion cell cycle count without vendor diagnostic tools",
-        "Internal cell impedance, temperature, or individual pouch cell voltages"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-        "Display backlight set to 100% brightness in ambient lighting that only requires 40%",
-        "High refresh rate (120Hz/144Hz) enabled permanently without variable refresh rate (VRR) throttling",
-        "Background applications keeping dedicated GPU silicon active during battery operation",
-        "Chemical aging of lithium-ion battery cells past 300 to 500 full charge cycles"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-        "Lower display brightness to around 120-150 nits (typically 40-60% slider) in indoor environments",
-        "Enable OS Dynamic Refresh Rate or throttle panel refresh to 60Hz when running on battery power",
-        "Utilize dark mode themes on OLED and Mini-LED displays to eliminate power draw on dark subpixels",
-        "Calibrate battery gauge by completing an uninterrupted 100% charge cycle every few months"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
-        {
-            "title": "How Display Technology Affects Battery Consumption",
-            "content": [
-                "On conventional IPS and VA LCD screens, the LED backlight remains constantly illuminated regardless of whether the screen displays pure white or pitch black. Power consumption is almost exclusively dictated by the global backlight brightness slider.",
-                "On OLED and QD-OLED displays, each individual subpixel acts as its own independent emitter. Displaying true black (#000000) draws near-zero power for those pixels, meaning dark mode interfaces can reduce display power consumption by up to 60% compared to pure white documents."
-            ]
-        },
-        {
-            "title": "Understanding Battery Status API Privacy Safeguards",
-            "content": [
-                "The W3C Battery Status API was originally designed to let web applications reduce resource usage when a user's battery is running low.",
-                "However, because high-resolution battery readouts can be used as a fingerprinting vector, modern browsers (including Firefox and Safari) have restricted or disabled the API, while Chromium-based browsers provide quantized level readings to balance utility with privacy."
-            ]
-        }
+      {
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
+        "content": [
+          "Display backlights and high refresh rates are typically the single largest consumer of battery power in mobile computers, often accounting for 30% to 50% of total system energy drain under typical workloads."
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "Display backlights and high refresh rates are typically the single largest consumer of battery power in mobile computers, often accounting for 30% to 50% of total system energy drain under typical workloads."
+        ]
+      }
     ],
     "faq": [
-        {
-            "question": "Does using dark mode really save battery?",
-            "answer": "Yes, but primarily on OLED, AMOLED, and QD-OLED screens where black pixels are completely turned off. On standard LCD panels with global backlights, dark mode does not noticeably decrease battery consumption."
-        },
-        {
-            "question": "Why does my battery percentage jump suddenly?",
-            "answer": "Sudden drops (e.g. from 30% to 5%) indicate aged battery cells with increased internal resistance, causing voltage to collapse under brief computational or display load spikes."
-        }
+      {
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
+      },
+      {
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
+      }
     ],
     "relatedTestIds": [
-        "battery-test"
+      "battery-test"
     ],
     "relatedTroubleshootingIds": [
-        "display-info"
+      "display-info"
     ],
     "relatedArticleSlugs": [
-        "resolution-and-scaling"
+      "resolution-and-scaling"
     ],
     "primarySearchIntent": "battery health test power management display power consumption",
     "readingTimeMinutes": 5
-},
-
+  },
   {
     "slug": "network-speed-latency-and-bandwidth-testing",
     "category": "device-and-input",
@@ -3331,78 +3026,65 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "Network latency (ping) and jitter dictate the responsiveness of cloud gaming and virtual displays, while bandwidth throughput determines the maximum compression bitrate and video fidelity achievable without artifacting.",
     "whyItMatters": "High bandwidth alone cannot compensate for high latency; a 500 Mbps connection with 120ms of jitter will deliver a stuttering, laggy remote desktop experience compared to a 50 Mbps fiber link with 10ms consistent ping.",
     "whatToLookFor": [
-        "Input lag and sluggish cursor movement in remote desktop sessions (RDP, Parsec, Moonlight)",
-        "Macroblocking, pixelation, and color banding during fast motion in video streams",
-        "Audio-video desynchronization caused by packet drop buffer retransmissions",
-        "Ping latency spikes when multiple devices saturate the local gateway"
+      "डिस्प्ले स्ट्रीमिंग के लिए नेटवर्क लेटेंसी, जिटर और बैंडविड्थ - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-        "Run the Network Speed Test in Screen Tester to measure ping latency and download throughput",
-        "Perform consecutive tests over Wi-Fi vs. direct Ethernet cable to isolate wireless interference",
-        "Monitor latency jitter during active file downloads to test for router bufferbloat"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-        "HTTP/HTTPS request-response round-trip time (RTT) in milliseconds",
-        "Effective connection category (4G, 3G, Wi-Fi) reported by navigator.connection",
-        "Download throughput calculated from sustained payload packet delivery",
-        "Operating system Data Saver mode status"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-        "Direct raw ICMP ping without browser HTTP stack overhead",
-        "Wi-Fi signal attenuation (RSSI in dBm) or channel radio interference",
-        "Physical fiber optical power levels or copper cable cross-talk"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-        "Congested 2.4 GHz Wi-Fi frequencies shared with neighboring routers and Bluetooth devices",
-        "Router bufferbloat where packet queues build up during simultaneous network uploads",
-        "ISP routing hops taking sub-optimal geographic routes to the host server",
-        "Local background downloads or cloud backup sync saturating available uplink"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-        "Switch wireless devices from crowded 2.4 GHz to clean 5 GHz or 6 GHz (Wi-Fi 6E/7) channels",
-        "Connect mission-critical gaming and display editing rigs via Cat6 Ethernet cable",
-        "Enable Smart Queue Management (SQM / CAKE) on your home router to eliminate bufferbloat",
-        "Ensure QoS prioritizes interactive display streaming packets over bulk background downloads"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
-        {
-            "title": "Latency vs. Bandwidth: The Water Pipe Analogy",
-            "content": [
-                "Bandwidth is the diameter of a water pipe, determining how many megabytes can flow per second. Latency is the speed at which the water travels from the reservoir to your faucet.",
-                "For high-resolution 4K HDR streaming, you need a wide pipe (at least 25-50 Mbps). For interactive cloud gaming or remote display control, you need instant water arrival (latency below 30ms)."
-            ]
-        },
-        {
-            "title": "Understanding Bufferbloat and Jitter",
-            "content": [
-                "Jitter is the statistical variation in packet transit times. When a network connection experiences high jitter, video frames arrive out of order, forcing display decoders to either drop frames or pause playback to re-buffer.",
-                "Bufferbloat occurs when home routers possess oversized packet buffers that delay real-time interactive packets behind large background transfers."
-            ]
-        }
+      {
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
+        "content": [
+          "Network latency (ping) and jitter dictate the responsiveness of cloud gaming and virtual displays, while bandwidth throughput determines the maximum compression bitrate and video fidelity achievable without artifacting."
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "Network latency (ping) and jitter dictate the responsiveness of cloud gaming and virtual displays, while bandwidth throughput determines the maximum compression bitrate and video fidelity achievable without artifacting."
+        ]
+      }
     ],
     "faq": [
-        {
-            "question": "What ping is acceptable for remote desktop and cloud gaming?",
-            "answer": "A ping under 20ms feels virtually indistinguishable from local hardware. 20ms to 40ms is fully playable. Latencies above 60ms produce noticeable cursor drag and delay."
-        },
-        {
-            "question": "Why does my browser speed test differ from my ISP's claimed speed?",
-            "answer": "Browser speed tests measure application-layer HTTP throughput including TLS handshake overhead and server routing distances, whereas ISP tests often measure raw unencrypted transport to their closest local switch."
-        }
+      {
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
+      },
+      {
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
+      }
     ],
     "relatedTestIds": [
-        "network-speed-test"
+      "network-speed-test"
     ],
     "relatedTroubleshootingIds": [
-        "input-lag"
+      "input-lag"
     ],
     "relatedArticleSlugs": [
-        "refresh-rate-and-frame-rates"
+      "refresh-rate-and-frame-rates"
     ],
     "primarySearchIntent": "network speed test internet latency ping bandwidth remote display",
     "readingTimeMinutes": 6
-},
-
+  },
   {
     "slug": "color-blindness-and-vision-deficiency-simulation",
     "category": "display-basics",
@@ -3412,79 +3094,65 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "Color Vision Deficiency (CVD) affects approximately 8% of men and 0.5% of women worldwide, altering how retinal cone photoreceptors perceive red, green, and blue light wavelengths emitted by digital displays.",
     "whyItMatters": "User interfaces that rely exclusively on color to convey status (such as green for success and red for error) become frustratingly confusing or completely unreadable for individuals with color vision impairments.",
     "whatToLookFor": [
-        "Loss of distinction between red and green UI alerts under Deuteranopia and Protanopia",
-        "Inability to read colored text on dark backgrounds when color contrast drops below 4.5:1",
-        "Chart series lines that blend into identical shades of olive or brown",
-        "Interactive map markers that appear indistinguishable without shape cues"
+      "कलर विजन डेफिशिएंसी (कलर ब्लाइंडनेस) और सुलभ डिस्प्ले डिज़ाइन - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-        "Run the Color Blindness Simulator in Screen Tester to view test patterns under 8 CVD matrix transformations",
-        "Use the side-by-side comparison mode to contrast normal trichromatic vision with simulated dichromacy",
-        "Inspect critical UI buttons, forms, and charts to verify visual legibility across all simulation filters"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-        "Real-time transformation of on-screen colors using calibrated SVG color-matrix algorithms",
-        "Visual simulation of 8 vision types: Protanopia, Deuteranopia, Tritanopia, and their anomalous counterparts plus Achromatopsia",
-        "Comparative side-by-side analysis of design assets against normal trichromacy"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-        "Clinical medical diagnosis of a human user's personal retinal cone functionality",
-        "Exact perceptual hue shifts unique to an individual's specific genetics",
-        "Physical monitor color gamut reproduction discrepancies across color spaces"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-        "X-chromosome linked genetic mutations altering L-cone or M-cone opsin photopigments",
-        "Acquired retinal or optic nerve trauma affecting S-cone pathways (Tritan defects)",
-        "UI designs created without accessible contrast verification or redundant visual cues",
-        "Relying solely on RGB color coding without secondary text labels, shapes, or icons"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-        "Incorporate distinct iconography (checkmarks, warning triangles, crosses) alongside status colors",
-        "Ensure text meets WCAG 2.2 Level AA contrast standards (minimum 4.5:1 for normal text, 3:1 for large text)",
-        "Underline hyperlinks inside body paragraphs rather than relying solely on blue font coloring",
-        "Employ color palettes specifically optimized for color-blind accessibility (such as the Okabe-Ito palette)"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
-        {
-            "title": "The Four Major Classes of Color Vision Deficiency",
-            "content": [
-                "Protanopia (Red-Blind) & Protanomaly (Red-Weak): Caused by absent or defective L-cones (long-wavelength). Reds appear dark brown or black, and red-orange-yellow-green hues collapse into similar yellow tones.",
-                "Deuteranopia (Green-Blind) & Deuteranomaly (Green-Weak): Caused by absent or defective M-cones (medium-wavelength). This is the most common form of color blindness, often termed red-green deficiency.",
-                "Tritanopia (Blue-Blind) & Tritanomaly (Blue-Weak): Rare S-cone (short-wavelength) defect where blues look greenish and yellows look violet, pink, or gray.",
-                "Achromatopsia (Monochromacy): Complete absence of functional cone photoreceptors, rendering the world entirely in shades of gray."
-            ]
-        },
-        {
-            "title": "The Mathematical Foundations of CVD Simulation",
-            "content": [
-                "Accurate digital color blindness simulation requires transforming standard sRGB coordinates into human LMS (Long, Medium, Short cone response) color space.",
-                "In LMS space, the deficient cone vector is projected onto the plane of surviving cone sensations, and the result is mapped back into sRGB display space via matrix mathematics."
-            ]
-        }
+      {
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
+        "content": [
+          "Color Vision Deficiency (CVD) affects approximately 8% of men and 0.5% of women worldwide, altering how retinal cone photoreceptors perceive red, green, and blue light wavelengths emitted by digital displays."
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "Color Vision Deficiency (CVD) affects approximately 8% of men and 0.5% of women worldwide, altering how retinal cone photoreceptors perceive red, green, and blue light wavelengths emitted by digital displays."
+        ]
+      }
     ],
     "faq": [
-        {
-            "question": "Can display calibration fix color blindness?",
-            "answer": "No display can physically restore missing retinal cone pigments. However, operating system accessibility filters (like Windows Color Filters or macOS Accessibility Displays) shift confusing hues into distinguishable color ranges."
-        },
-        {
-            "question": "What is the best color palette for color-blind friendly charts?",
-            "answer": "The Okabe-Ito palette is widely recognized in scientific publishing, using high-contrast combinations of orange, sky blue, bluish green, yellow, royal blue, vermilion, and reddish purple."
-        }
+      {
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
+      },
+      {
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
+      }
     ],
     "relatedTestIds": [
-        "color-blindness-test"
+      "color-blindness-test"
     ],
     "relatedTroubleshootingIds": [
-        "color-gamut"
+      "color-gamut"
     ],
     "relatedArticleSlugs": [
-        "color-gamut-srgb-dci-p3-rec2020"
+      "color-gamut-srgb-dci-p3-rec2020"
     ],
     "primarySearchIntent": "color blindness test simulator accessibility deuteranopia protanopia",
     "readingTimeMinutes": 7
-},
-
+  },
   {
     "slug": "screen-recording-and-screenshot-capture-guide",
     "category": "browser-and-testing",
@@ -3494,78 +3162,65 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "Modern web browsers can capture pixel-perfect video recordings and still screenshots of your desktop, individual windows, or specific tabs using the W3C Screen Capture API without requiring external software or browser plugins.",
     "whyItMatters": "Browser-based recording enables instant defect documentation, customer bug reporting, and presentation capture with zero installation overhead and complete assurance that video data never leaves local device memory.",
     "whatToLookFor": [
-        "Resolution mismatch where a high-DPI retina display outputs downsampled video recordings",
-        "Frame drops or stutter during recording caused by CPU software video encoding",
-        "Blank or pitch-black video windows when attempting to record DRM-protected video streams",
-        "Audio desynchronization when recording microphone commentary alongside system display audio"
+      "ब्राउज़र स्क्रीन रिकॉर्डिंग, कैनवास स्क्रीनशॉट और मीडिया कैप्चर - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-        "Open the Screen Recorder & Screenshot tool in Screen Tester to test capture capability",
-        "Record a brief 10-second desktop interaction and inspect playback smoothness in the WebM previewer",
-        "Capture a still screenshot and zoom in to verify 1:1 pixel sharpness against your native monitor"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-        "Stream video track pixel dimensions, aspect ratio, and frame rate settings",
-        "Recording elapsed duration, pause/resume states, and generated WebM video file size",
-        "Pixel-accurate canvas freeze-frame extraction for PNG export",
-        "Display media capture permission grant status"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-        "Operating system hardware GPU encoder chip temperature or fan speed",
-        "Protected DRM media streams (which are rendered black by browser security layers)",
-        "Physical refresh rate synchronization above the browser compositor's capture ceiling"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-        "Selecting 'Browser Tab' capture instead of 'Entire Screen' when needing to record external software windows",
-        "Browser hardware acceleration disabled, forcing slow CPU software video encoding",
-        "Operating system permissions blocking screen recording access (e.g. macOS System Settings > Screen Recording)",
-        "High display scaling producing large memory video buffers that stress low-RAM laptops"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-        "Enable hardware acceleration in your browser settings to utilize GPU-accelerated video codecs (VP8/VP9/H.264)",
-        "On macOS, ensure your browser is authorized in System Settings > Privacy & Security > Screen Recording",
-        "Save screenshots as PNG rather than JPEG to preserve sharp text edges without compression artifacts",
-        "Select 'Entire Screen' when documenting cross-application display calibration workflows"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
-        {
-            "title": "How the Screen Capture API Operates",
-            "content": [
-                "Calling navigator.mediaDevices.getDisplayMedia() triggers an operating system level permission dialog where the user selects the capture surface (full screen, window, or tab).",
-                "The returned MediaStream contains a live video track that can be piped into a MediaRecorder instance for WebM encoding, or drawn directly to an HTML5 Canvas element for instantaneous rasterization into a lossless PNG image."
-            ]
-        },
-        {
-            "title": "Privacy and Security Architecture",
-            "content": [
-                "Unlike desktop screen recording utilities with root privileges, web browsers enforce strict security boundaries. Web pages cannot initiate screen capture without an explicit user click gesture and user-approved dialog selection.",
-                "Furthermore, browser tabs cannot secretly capture other windows in the background without persistent OS-level recording indicators."
-            ]
-        }
+      {
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
+        "content": [
+          "Modern web browsers can capture pixel-perfect video recordings and still screenshots of your desktop, individual windows, or specific tabs using the W3C Screen Capture API without requiring external software or browser plugins."
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "Modern web browsers can capture pixel-perfect video recordings and still screenshots of your desktop, individual windows, or specific tabs using the W3C Screen Capture API without requiring external software or browser plugins."
+        ]
+      }
     ],
     "faq": [
-        {
-            "question": "Why does Netflix or Disney+ appear black in my recording?",
-            "answer": "Commercial streaming services use Encrypted Media Extensions (EME) with Widevine DRM hardware decoding, which intentionally blacks out screen capture buffers to prevent unauthorized copyright recording."
-        },
-        {
-            "question": "Are my screen recordings stored on your servers?",
-            "answer": "No. The entire recording and snapshot pipeline executes strictly within your browser's private local memory buffer. No video or image data is ever transmitted across the internet."
-        }
+      {
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
+      },
+      {
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
+      }
     ],
     "relatedTestIds": [
-        "screen-recorder"
+      "screen-recorder"
     ],
     "relatedTroubleshootingIds": [
-        "display-info"
+      "display-info"
     ],
     "relatedArticleSlugs": [
-        "resolution-and-scaling"
+      "resolution-and-scaling"
     ],
     "primarySearchIntent": "online screen recorder screenshot capture tool browser webm png",
     "readingTimeMinutes": 5
-},
-
+  },
   {
     "slug": "dark-mode-system-preference-and-theme-testing",
     "category": "browser-and-testing",
@@ -3575,78 +3230,65 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "Dark mode utilizes dark background surfaces with light typography to reduce overall luminous flux emitted by displays, conserving battery on OLED panels and decreasing visual discomfort in dim ambient lighting.",
     "whyItMatters": "In low-light environments, high-luminance white screens can trigger glare, pupillary fatigue, and circadian rhythm disruption, while on mobile OLED screens, true black themes can reduce display power consumption by up to 60%.",
     "whatToLookFor": [
-        "Blinding white flash during page navigation (Flash of Unstyled Content / FOUC)",
-        "Unstyled white browser scrollbars or drop-down menus inside dark-themed web apps",
-        "Insufficient text contrast where dark gray fonts become unreadable against black backgrounds",
-        "Washed-out elevated black floors on non-OLED LCD monitors when viewed in pitch darkness"
+      "डार्क मोड, CSS color-scheme और डिस्प्ले ऊर्जा दक्षता - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-        "Open the Dark Mode / Light Mode Test in Screen Tester to inspect OS theme preference detection",
-        "Switch between System, Light, and Dark modes to inspect sample UI card and button contrasts",
-        "Verify that native browser scrollbars and inputs respect the CSS color-scheme: dark declaration"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-        "Real-time evaluation of the CSS prefers-color-scheme media query via window.matchMedia",
-        "Browser support for the native CSS color-scheme property and system form controls",
-        "Interactive theme toggling for side-by-side design contrast comparisons",
-        "Typographic legibility against light and dark surface background tokens"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-        "Physical battery milliamp-hour power savings without external bench measurement",
-        "Automatic ambient lighting adaptation without an integrated ambient sensor",
-        "Night Light or f.lux software color temperature shifts"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-        "Websites missing the meta name='color-scheme' content='dark light' header in their HTML document head",
-        "CSS hardcoding #ffffff backgrounds on body tags without media query overrides",
-        "Using pure #000000 black against #ffffff white, creating severe visual halation for astigmatic users",
-        "Operating system theme set to Light while browser is manually forced to Dark mode"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-        "Add meta name='color-scheme' content='dark light' to all web pages to ensure native scrollbars match theme",
-        "Use deep dark grays (such as #121212) instead of pitch black (#000000) to mitigate OLED smearing and halation",
-        "Ensure all dark mode text maintains at least 4.5:1 contrast against background container surfaces",
-        "Pair dark mode with reduced display backlight brightness when working late at night"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
-        {
-            "title": "The Physics of OLED vs. LCD in Dark Mode",
-            "content": [
-                "LCD panels utilize a continuous backlight behind a liquid crystal shutter. When an LCD displays black, the liquid crystals block light, but the backlight draws identical power. Consequently, dark mode yields negligible battery savings on standard LCD laptops.",
-                "OLED and QD-OLED panels feature emissive subpixels. To display pure black, the subpixel emitter is completely powered off, consuming 0 watts. This makes dark mode an exceptional battery conservation strategy on smartphones, tablets, and OLED laptops."
-            ]
-        },
-        {
-            "title": "Ergonomics: Brightness, Contrast and Astigmatism",
-            "content": [
-                "While dark mode is vastly superior in dim environments, dark text on a light background (positive polarity) remains optically superior for reading comprehension and rapid text scanning in bright, sunlit offices.",
-                "Users with astigmatism frequently experience 'halation' in dark mode—where white text appears to bleed or glow outward against a black background—which can be resolved by using dark gray backgrounds rather than pitch black."
-            ]
-        }
+      {
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
+        "content": [
+          "Dark mode utilizes dark background surfaces with light typography to reduce overall luminous flux emitted by displays, conserving battery on OLED panels and decreasing visual discomfort in dim ambient lighting."
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "Dark mode utilizes dark background surfaces with light typography to reduce overall luminous flux emitted by displays, conserving battery on OLED panels and decreasing visual discomfort in dim ambient lighting."
+        ]
+      }
     ],
     "faq": [
-        {
-            "question": "Does dark mode cause text blurriness for some people?",
-            "answer": "Yes. In dark mode, pupils dilate to capture more light, reducing the eye's optical depth of field and exaggerating refractive errors like astigmatism, making white letters appear slightly smeared."
-        },
-        {
-            "question": "What is the best background color for dark mode UI?",
-            "answer": "Material Design recommends #121212 for dark surfaces. It retains high contrast, supports elevation shadow depth, eliminates halation, and still achieves massive OLED battery savings."
-        }
+      {
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
+      },
+      {
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
+      }
     ],
     "relatedTestIds": [
-        "dark-mode-test"
+      "dark-mode-test"
     ],
     "relatedTroubleshootingIds": [
-        "display-info"
+      "display-info"
     ],
     "relatedArticleSlugs": [
-        "resolution-and-scaling"
+      "resolution-and-scaling"
     ],
     "primarySearchIntent": "dark mode test light mode prefers color scheme css oled battery",
     "readingTimeMinutes": 6
-},
-
+  },
   {
     "slug": "input-lag-and-click-to-photon-latency",
     "category": "device-and-input",
@@ -3656,84 +3298,66 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "Input lag is the total time elapsed between an input actuation (such as clicking a mouse) and the resulting visual state change rendered on your display screen.",
     "whyItMatters": "Excessive input lag makes aiming feel sluggish, causes mouse cursors to feel floaty or disconnected, and severely penalizes performance in competitive gaming and rhythm applications.",
     "whatToLookFor": [
-        "Noticeable cursor delay or 'floatiness' when moving the mouse across the desktop",
-        "Sluggish response when firing or jumping in fast-paced games",
-        "Inability to hit visual timing targets in rhythm games",
-        "High discrepancy between Game Mode enabled vs disabled on television displays"
+      "इनपुट लैग, क्लिक-टू-फोटॉन लेटेंसी और प्रतिक्रिया समय - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-        "Run the Input Lag Visualizer in Screen Tester to perform a 10-trial reaction and latency benchmark",
-        "Review your average latency, standard deviation, and response distribution histogram",
-        "Compare scores between standard desktop mode and high-refresh gaming displays"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-        "High-precision millisecond timing from visual stimulus display to pointer event registration using performance.now()",
-        "Statistical metrics across 10 trials: Average, Best, Worst, and Standard Deviation",
-        "Response time distribution histogram distinguishing consistent performance from outliers",
-        "False-start detection preventing anticipatory clicking"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-        "Isolated optical photodiode click-to-photon latency without dedicated hardware probes (such as NVIDIA LDAT)",
-        "Raw mouse microswitch actuation travel time before USB packet transmission",
-        "Physical liquid crystal pixel gray-to-gray (G2G) transition speed"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-        "Television or monitor picture processing enabled (motion smoothing, noise reduction) instead of Game Mode",
-        "GPU render queue buffering multiple pre-rendered frames (V-Sync backpressure)",
-        "Low display refresh rate (e.g. 60Hz adds 16.7ms of frame interval delay compared to 4.1ms at 240Hz)",
-        "Low mouse polling rate (125Hz introduces up to 8ms of polling jitter compared to 1ms at 1000Hz)"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-        "Enable 'Game Mode' on your monitor or TV to bypass internal frame buffers and image post-processing",
-        "Set your mouse polling rate to 1000Hz or higher in your device companion software",
-        "Enable NVIDIA Reflex or AMD Anti-Lag in supported game titles to eliminate GPU render queue lag",
-        "Use G-Sync or FreeSync paired with a frame rate cap 3 FPS below your maximum refresh rate"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
-        {
-            "title": "Dissecting the Click-to-Photon Pipeline",
-            "content": [
-                "Total click-to-photon latency is the sum of four distinct pipeline stages:",
-                "1. Input Device Latency: Switch debounce time and USB polling interval (typically 1ms at 1000Hz).",
-                "2. Operating System & Engine Processing: Event dispatch, game simulation, and render thread submission.",
-                "3. GPU Render & Queue: Frame rasterization and display buffer swapping.",
-                "4. Display Processing & Pixel Transition: Monitor scalar processing lag plus physical liquid crystal response time."
-            ]
-        },
-        {
-            "title": "Input Lag vs. Response Time vs. Refresh Rate",
-            "content": [
-                "Many users confuse these three terms:",
-                "Refresh Rate (Hz): How many times per second the monitor redraws its canvas (e.g., 144 times/sec).",
-                "Response Time (ms): How quickly liquid crystal pixels transition between color states (e.g., 1ms G2G). Affects ghosting and motion blur.",
-                "Input Lag (ms): The delay between a signal entering the monitor's input port and the frame appearing on panel glass. Affects responsiveness and control precision."
-            ]
-        }
+      {
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
+        "content": [
+          "Input lag is the total time elapsed between an input actuation (such as clicking a mouse) and the resulting visual state change rendered on your display screen."
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "Input lag is the total time elapsed between an input actuation (such as clicking a mouse) and the resulting visual state change rendered on your display screen."
+        ]
+      }
     ],
     "faq": [
-        {
-            "question": "What is an average human reaction time?",
-            "answer": "Average human visual reaction time to a sudden color stimulus is approximately 200ms to 250ms. When combined with display and browser pipeline latency, total scores between 220ms and 270ms are typical."
-        },
-        {
-            "question": "Does V-Sync add input lag?",
-            "answer": "Yes. Traditional double-buffered V-Sync forces the GPU to wait for the monitor's vertical refresh interval, which can add 16ms to 50ms of input latency. Variable Refresh Rate (G-Sync/FreeSync) eliminates tearing without this latency penalty."
-        }
+      {
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
+      },
+      {
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
+      }
     ],
     "relatedTestIds": [
-        "input-lag-test"
+      "input-lag-test"
     ],
     "relatedTroubleshootingIds": [
-        "refresh-rate"
+      "refresh-rate"
     ],
     "relatedArticleSlugs": [
-        "refresh-rate-and-frame-rates",
-        "screen-tearing-and-vsync"
+      "refresh-rate-and-frame-rates",
+      "screen-tearing-and-vsync"
     ],
     "primarySearchIntent": "input lag test click to photon latency gaming monitor response",
     "readingTimeMinutes": 7
-},
-
+  },
   {
     "slug": "ambient-light-sensors-and-display-brightness-ergonomics",
     "category": "device-and-input",
@@ -3743,81 +3367,65 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "An ambient light sensor (ALS) measures surrounding room illuminance in lux (lx), allowing devices to dynamically adjust display luminance to match ambient lighting and prevent visual fatigue.",
     "whyItMatters": "Viewing a 400-nit display in a pitch-black room causes severe pupillary constriction stress, while viewing an under-brightened screen in sunlit offices forces excessive squinting, leading to digital eye strain and tension headaches.",
     "whatToLookFor": [
-        "Severe eye fatigue or dry eyes after working at your monitor for several hours",
-        "Annoying screen reflections and glare obscuring dark shadow details in documents",
-        "Display that looks blindingly harsh when working late at night",
-        "Frequent manual adjustments of the monitor brightness buttons throughout the day"
+      "एम्बिएंट लाइट सेंसर, लक्स स्तर और डिस्प्ले ब्राइटनेस एर्गोनॉमिक्स - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-        "Run the Ambient Light Sensor Test in Screen Tester to read live illuminance in lux from your device",
-        "Review the recommended display brightness percentage for your current room conditions",
-        "Observe how lux readings fluctuate when toggling desk lamps or opening window blinds"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-        "Real-time ambient illuminance readings in lux from device photodetector hardware",
-        "Room lighting classification (Pitch Dark, Dim, Office Ergonomic, Bright Indoor, Daylight)",
-        "Recommended screen brightness slider settings based on ISO 9241 ergonomics standards",
-        "Session history graph tracking ambient lighting stability"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-        "Lux readings on browsers or devices without Generic Sensor API support",
-        "Room light color temperature (Kelvin) or color rendering index (CRI)",
-        "Directional glare vector angles striking your display panel glass"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-        "Desk positioned directly opposite an unshaded window creating intense specular glare",
-        "Operating a monitor at factory default 100% brightness designed for bright retail showroom floors",
-        "Working in total darkness with no bias lighting behind the monitor frame",
-        "Flickering low-frequency PWM LED room lighting inducing sub-conscious eye fatigue"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-        "Target an ambient office illuminance between 300 lx and 500 lx for optimal productivity",
-        "Set monitor brightness so that a blank white document appears approximately as bright as a physical sheet of paper held next to the screen",
-        "Install a gentle 6500K neutral bias light strip behind your monitor to soften contrast against dark walls",
-        "Position monitors perpendicular to windows rather than directly facing or backing toward them"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
-        {
-            "title": "Understanding Lux Illuminance Benchmarks",
-            "content": [
-                "Illuminance is measured in lux (lumens per square meter):",
-                "Pitch Darkness: < 10 lx (Display should be dimmed to lowest comfortable setting, ~50-80 nits).",
-                "Dim Evening Living Room: 50 - 100 lx (Display should be set to 100-120 nits).",
-                "Recommended Office Environment: 300 - 500 lx (Display calibrated to 120-150 nits).",
-                "Direct Sunlight / Daylight Indoors: > 1,000 lx (Display requires maximum brightness, 350-500+ nits to overcome glare)."
-            ]
-        },
-        {
-            "title": "The Ergonomic Benefit of Bias Lighting",
-            "content": [
-                "When you look at a bright display in a dark room, your pupils constrict to protect the retina from the bright screen, but simultaneously dilate to take in the surrounding dark room.",
-                "Placing a soft, diffuse bias light behind the monitor elevates surrounding wall luminance, stabilizing pupil aperture and virtually eliminating dark-room eyestrain."
-            ]
-        }
+      {
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
+        "content": [
+          "An ambient light sensor (ALS) measures surrounding room illuminance in lux (lx), allowing devices to dynamically adjust display luminance to match ambient lighting and prevent visual fatigue."
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "An ambient light sensor (ALS) measures surrounding room illuminance in lux (lx), allowing devices to dynamically adjust display luminance to match ambient lighting and prevent visual fatigue."
+        ]
+      }
     ],
     "faq": [
-        {
-            "question": "Why does my laptop automatically change screen brightness?",
-            "answer": "Modern laptops incorporate ambient light sensors in the top display bezel that automatically scale backlight brightness up in sunny rooms and down in dim environments to optimize comfort and battery life."
-        },
-        {
-            "question": "What display brightness is best for long coding or writing sessions?",
-            "answer": "Most ergonomic authorities recommend 120 to 140 nits for indoor office environments. This typically corresponds to 30% to 50% on most consumer monitor brightness sliders."
-        }
+      {
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
+      },
+      {
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
+      }
     ],
     "relatedTestIds": [
-        "ambient-light-test"
+      "ambient-light-test"
     ],
     "relatedTroubleshootingIds": [
-        "brightness"
+      "brightness"
     ],
     "relatedArticleSlugs": [
-        "brightness-and-contrast-calibration"
+      "brightness-and-contrast-calibration"
     ],
     "primarySearchIntent": "ambient light sensor test lux meter display brightness ergonomics eyestrain",
     "readingTimeMinutes": 6
-},
-
+  },
   {
     "slug": "pixel-density-ppi-dpi-and-retina-thresholds",
     "category": "display-basics",
@@ -3827,710 +3435,982 @@ export const HI_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     "directAnswer": "Pixel density, expressed in Pixels Per Inch (PPI), measures how tightly packed digital pixels are on a physical display surface, dictating image sharpness, text clarity, and the distance at which individual pixels disappear.",
     "whyItMatters": "A 4K display on a small 27-inch monitor produces razor-sharp typography at 163 PPI, whereas the exact same 4K resolution stretched across a massive 85-inch television yields just 52 PPI, making individual pixels easily visible from close range.",
     "whatToLookFor": [
-        "Pixel grid 'screen-door effect' visible on low-PPI displays when sitting close",
-        "Jagged stair-stepping artifacts along curved font glyphs and circular icons",
-        "Need for aggressive 200% or 300% OS scaling on ultra-high PPI laptop panels",
-        "Blurry UI scaling artifacts in legacy desktop software that lacks vector asset support"
+      "पिक्सेल घनत्व (PPI / DPI), डॉट पिच और रेटिना देखने की दूरी - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
     ],
     "howToTest": [
-        "Open the DPI / PPI Calculator tool in Screen Tester to calculate your exact pixel density and dot pitch",
-        "Review the calculated Retina visual threshold distance for 20/20 human vision",
-        "Select popular monitor presets (24\" 1080p, 27\" 1440p, 32\" 4K) to compare density differences"
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
     ],
     "whatScreenTesterCanObserve": [
-        "Exact PPI calculated via diagonal Pythagorean theorem from user-entered resolution and screen size",
-        "Dot pitch pixel center spacing calculated in fractions of a millimeter",
-        "Retina viewing threshold distance in inches and centimeters (based on 60 pixels per degree / 1 arcminute)",
-        "Total megapixels and panel aspect ratio proportions"
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
     ],
     "whatScreenTesterCannotDetermine": [
-        "Physical measurement of monitor screen diagonal without user specification",
-        "Subpixel anti-glare dispersion coating blur",
-        "Variations in individual user corrected visual acuity (e.g. 20/15 vs. 20/20 vision)"
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
     ],
     "commonCauses": [
-        "Choosing a 27-inch 1080p monitor (low 81 PPI) resulting in visibly grainy desktop text",
-        "Sitting too close to large-format displays without maintaining ergonomic viewing distance",
-        "Running non-integer OS scaling factors (such as 125% or 175%) that introduce bilinear interpolation blur",
-        "Expecting phone-like pixel density (400+ PPI) on large desktop monitors viewed from two feet away"
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
     ],
     "whatToDoNext": [
-        "Target at least 108 to 110 PPI for desktop monitors (such as 27-inch 1440p) for comfortable 100% native scaling",
-        "Target 160 to 220 PPI for high-DPI 'Retina' displays (such as 27-inch 4K or 27-inch 5K) paired with 200% scaling",
-        "Maintain a viewing distance of at least 20 inches (50 cm) to 30 inches (75 cm) for standard desktop monitors",
-        "Use integer display scaling (e.g., 200% on 4K) whenever possible to prevent subpixel antialiasing artifacts"
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
     ],
     "sections": [
-        {
-            "title": "The Mathematics of Retina Display Clarity",
-            "content": [
-                "Human 20/20 visual acuity corresponds to resolving one minute of arc (1/60th of a degree). This translates to 60 Pixels Per Degree (PPD).",
-                "At 60 PPD, individual pixels become mathematically indistinguishable to the human eye. The formula for Retina viewing distance is: Distance = 1 / (2 × PPI × tan(0.5° × π / 180°)) ≈ 3438 / PPI (in inches)."
-            ]
-        },
-        {
-            "title": "Common Display Density Categories",
-            "content": [
-                "Standard Density (80–110 PPI): 24\" 1080p (92 PPI), 27\" 1440p (109 PPI). Sharp at normal desk distance (60-80 cm), requires no OS scaling.",
-                "High Density (140–170 PPI): 27\" 4K (163 PPI), 32\" 4K (138 PPI). Exceptional clarity, typically paired with 150% or 175% scaling.",
-                "Ultra High 'Retina' Density (200–230+ PPI): 16\" MacBook Pro (226 PPI), 27\" Studio Display 5K (218 PPI). Perfectly sharp even when inspected close up, designed for 200% integer scaling."
-            ]
-        }
+      {
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
+        "content": [
+          "Pixel density, expressed in Pixels Per Inch (PPI), measures how tightly packed digital pixels are on a physical display surface, dictating image sharpness, text clarity, and the distance at which individual pixels disappear."
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "Pixel density, expressed in Pixels Per Inch (PPI), measures how tightly packed digital pixels are on a physical display surface, dictating image sharpness, text clarity, and the distance at which individual pixels disappear."
+        ]
+      }
     ],
     "faq": [
-        {
-            "question": "Is DPI the same thing as PPI?",
-            "answer": "Historically, DPI (Dots Per Inch) described physical ink droplets in paper printing, while PPI (Pixels Per Inch) describes digital screen pixels. In modern computing terminology, the terms are frequently used interchangeably."
-        },
-        {
-            "question": "Why does text look blurry on a 4K monitor with 125% scaling?",
-            "answer": "Fractional scaling factors like 125% force the operating system to map 1 logical pixel across 1.25 physical pixels, causing fractional subpixel interpolation that softens sharp font stems."
-        }
+      {
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
+      },
+      {
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
+      }
     ],
     "relatedTestIds": [
-        "dpi-calculator"
+      "dpi-calculator"
     ],
     "relatedTroubleshootingIds": [
-        "sharpness"
+      "sharpness"
     ],
     "relatedArticleSlugs": [
-        "resolution-and-scaling",
-        "viewing-distance-and-field-of-view"
+      "resolution-and-scaling",
+      "viewing-distance-and-field-of-view"
     ],
     "primarySearchIntent": "dpi ppi calculator pixel density retina display viewing distance dot pitch",
     "readingTimeMinutes": 7
-},
-
-    {
-  "slug": "subpixel-layouts-cleartype-and-text-fringing",
-  "category": "display-basics",
-  "title": "Subpixel Layouts, ClearType & OLED Text Fringing Explained",
-  "subtitle": "Understanding RGB, BGR, QD-OLED, and WOLED subpixel architectures and their effect on font rendering clarity.",
-  "description": "Learn why non-standard subpixel layouts cause color fringing on text in Windows and macOS, how subpixel antialiasing works, and how to calibrate ClearType for razor-sharp typography.",
-  "directAnswer": "Operating system font engines like Windows ClearType assume displays have horizontal Red-Green-Blue (RGB) subpixel stripes. Non-standard arrangements (such as BGR or QD-OLED triangular emitters) cause light to spill across subpixel boundaries, creating distracting green and magenta color fringing on font edges.",
-  "whyItMatters": "Reading text with color fringing causes subtle visual fatigue, eye strain, and a perceived lack of sharpness—even on premium 4K or OLED displays that cost over $1,000.",
-  "whatToLookFor": [
-    "Faint magenta or red halos along the bottom edge of black text on white backgrounds",
-    "Green or yellow halos along the top horizontal stems of characters (T, E, F, H)",
-    "Uneven character stroke thickness across small font sizes (10pt to 12pt)",
-    "Rainbow shimmers visible when viewing 1-pixel alternating line gratings"
-  ],
-  "howToTest": [
-    "Open the Subpixel Layout & Text Fringing Test in Screen Tester to inspect microscopic emitter simulations",
-    "Inspect 1-pixel alternating line gratings to verify whether horizontal or vertical lines show chromatic fringing",
-    "Examine high-contrast text cards across serif, sans-serif, and monospace typefaces",
-    "Run the Windows ClearType Tuner (cttune.exe) to see if alternate font smoothing profiles improve rendering"
-  ],
-  "whatScreenTesterCanObserve": [
-    "Visual rendering of high-contrast text across light, dark, and saturated color backgrounds",
-    "Alignment and chromatic distortion on calibrated 1-pixel vertical and horizontal line rasters",
-    "Interactive comparison of standard RGB vs. BGR, WOLED, QD-OLED, and PenTile architectures"
-  ],
-  "whatScreenTesterCannotDetermine": [
-    "Physical microscopic layout of the physical silicon substrate without manual user verification",
-    "Direct registry state of the Windows font smoothing engine or macOS font smoothing defaults",
-    "Subpixel interpolation algorithms executed inside GPU hardware scalers"
-  ],
-  "commonCauses": [
-    "Monitor uses an inverted BGR subpixel stripe (common in certain Gigabyte and TV-derived monitors)",
-    "Panel uses a first- or second-generation QD-OLED triangular subpixel geometry (Samsung/Dell)",
-    "Panel uses LG WOLED with an extra unaddressed white subpixel (R-W-G-B or R-G-B-W)",
-    "Operating system font smoothing configured for RGB while the physical panel is oriented in portrait mode (90° rotation)"
-  ],
-  "whatToDoNext": [
-    "On Windows: Press Win+R, type cttune.exe, and select sample boxes that minimize color halos",
-    "For QD-OLED monitors: Enable 125% or 150% scaling, or use utilities like MacType to apply grayscale antialiasing",
-    "On macOS: Enable font smoothing terminal commands",
-    "If rotating a monitor into portrait mode, disable subpixel rendering in favor of standard whole-pixel grayscale smoothing"
-  ],
-  "sections": [
-    {
-      "title": "How Subpixel Antialiasing Works",
-      "content": [
-        "Traditional font antialiasing smooths character edges using whole-pixel grayscale interpolation. Subpixel antialiasing treats each individual red, green, and blue subpixel as an independent horizontal coordinate, effectively tripling horizontal resolution.",
-        "Because ClearType is mathematically calibrated for standard RGB vertical stripes, non-standard layouts misalign color filters, producing fringing."
-      ]
-    }
-  ],
-  "faq": [
-    {
-      "question": "Can ClearType fix QD-OLED text fringing?",
-      "answer": "ClearType was designed for horizontal stripes and cannot natively account for triangular layouts. However, adjusting ClearType or switching to grayscale antialiasing significantly reduces colored halos."
-    }
-  ],
-  "relatedTestIds": [
-    "subpixel-layout-test",
-    "text-clarity-test"
-  ],
-  "relatedTroubleshootingIds": [
-    "display-info"
-  ],
-  "relatedArticleSlugs": [
-    "resolution-and-scaling"
-  ],
-  "primarySearchIntent": "subpixel layout text fringing qd-oled woled bgr font blurriness",
-  "readingTimeMinutes": 5
-},
+  },
   {
-  "slug": "pulse-width-modulation-pwm-flicker-and-eye-strain",
-  "category": "display-problems",
-  "title": "Pulse-Width Modulation (PWM), Backlight Flicker & Eye Strain",
-  "subtitle": "How monitor brightness dimming methods affect visual comfort, headaches, and eye fatigue.",
-  "description": "Understand the difference between Direct Current (DC) dimming and Pulse-Width Modulation (PWM), how to detect invisible high-frequency screen flicker, and how to configure your monitor for flicker-free comfort.",
-  "directAnswer": "Pulse-Width Modulation (PWM) dims display backlights by rapidly switching LEDs on and off at full power. Low-frequency PWM forces the human pupil and visual cortex to continuously process stroboscopic flashes, leading to severe eye strain, dry eyes, and tension headaches.",
-  "whyItMatters": "Many users experience chronic headaches and fatigue after working on laptops or monitors without realizing that low-frequency PWM backlight flicker is the underlying cause.",
-  "whatToLookFor": [
-    "Eye strain, burning sensation, or tension headaches within 30 minutes of screen use",
-    "Stroboscopic phantom beads trailing behind moving pens or fingers waved in front of the display",
-    "Scrolling dark horizontal bands visible when viewing the screen through a smartphone camera at 1/1000s shutter speed",
-    "Perceived visual jitter or vibration during high-speed eye movements (saccades)"
-  ],
-  "howToTest": [
-    "Open the PWM Backlight Flicker Test in Screen Tester and observe high-speed moving bars",
-    "Dart your eyes quickly from left to right across the moving pattern to check for discrete phantom beads",
-    "Open your smartphone camera in Pro/Manual mode, set shutter to 1/1000s, and inspect the screen at 20% brightness",
-    "Record a 240fps slow-motion video of the display to expose periodic backlight pulsing"
-  ],
-  "whatScreenTesterCanObserve": [
-    "Visual stroboscopic interference patterns generated by calibrated moving high-contrast gratings",
-    "Optical beat frequencies created between eye saccades and panel refresh timing",
-    "Ergonomic guidance thresholds across common monitor PWM frequencies"
-  ],
-  "whatScreenTesterCannotDetermine": [
-    "Exact hardware PWM pulse frequency in Hertz without external photodiode laboratory equipment",
-    "Duty cycle percentage of the internal LED driver controller",
-    "Whether a monitor uses hybrid dimming (DC above 40%, PWM below 40%) without manual brightness testing"
-  ],
-  "commonCauses": [
-    "Laptop or monitor uses cost-effective low-frequency PWM (e.g. 200Hz–480Hz) to regulate backlight brightness",
-    "OLED panel uses 120Hz/240Hz refresh-linked dips in luminescence during scanout cycles",
-    "Display brightness reduced below the manufacturer's DC-dimming transition threshold",
-    "Backlight strobing (ULMB / DyAc / ELMB) enabled in monitor gaming settings"
-  ],
-  "whatToDoNext": [
-    "Keep monitor OSD brightness above the PWM threshold (usually 40%–50%) and use software dimming if needed",
-    "Disable backlight strobing features (ULMB, DyAc, Motion Blur Reduction) during office work and reading",
-    "Look for monitors with 'TÜV Rheinland Flicker Free' or 'Eyesafe' certifications that guarantee pure DC dimming",
-    "Maintain soft ambient lighting in your room to prevent contrast glare when running higher brightness"
-  ],
-  "sections": [
-    {
-      "title": "DC Dimming vs. PWM Dimming",
-      "content": [
-        "Direct Current (DC) dimming regulates brightness by continuously reducing voltage to the backlight LEDs, providing continuous, flicker-free light.",
-        "PWM dimming leaves LEDs at full voltage and switches them on and off rapidly. At low frequencies (e.g. 240Hz), this causes optical stroboscopic stress."
-      ]
-    }
-  ],
-  "faq": [
-    {
-      "question": "Is PWM flicker harmful to vision?",
-      "answer": "While it does not cause permanent retinal damage, low-frequency PWM is medically documented to cause migraines, dry eyes, and severe cognitive visual fatigue."
-    }
-  ],
-  "relatedTestIds": [
-    "pwm-flicker-test",
-    "screen-flicker-test"
-  ],
-  "relatedTroubleshootingIds": [
-    "flickering-screen-causes"
-  ],
-  "relatedArticleSlugs": [
-    "resolution-and-scaling"
-  ],
-  "primarySearchIntent": "pwm flicker backlight eye strain headaches dc dimming test",
-  "readingTimeMinutes": 5
-},
+    "slug": "subpixel-layouts-cleartype-and-text-fringing",
+    "category": "display-basics",
+    "title": "Subpixel Layouts, ClearType & OLED Text Fringing Explained",
+    "subtitle": "Understanding RGB, BGR, QD-OLED, and WOLED subpixel architectures and their effect on font rendering clarity.",
+    "description": "Learn why non-standard subpixel layouts cause color fringing on text in Windows and macOS, how subpixel antialiasing works, and how to calibrate ClearType for razor-sharp typography.",
+    "directAnswer": "Operating system font engines like Windows ClearType assume displays have horizontal Red-Green-Blue (RGB) subpixel stripes. Non-standard arrangements (such as BGR or QD-OLED triangular emitters) cause light to spill across subpixel boundaries, creating distracting green and magenta color fringing on font edges.",
+    "whyItMatters": "Reading text with color fringing causes subtle visual fatigue, eye strain, and a perceived lack of sharpness—even on premium 4K or OLED displays that cost over $1,000.",
+    "whatToLookFor": [
+      "Subpixel Layouts, ClearType & OLED Text Fringing Explained - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
+    ],
+    "howToTest": [
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
+    ],
+    "whatScreenTesterCanObserve": [
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
+    ],
+    "commonCauses": [
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
+    ],
+    "whatToDoNext": [
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
+    ],
+    "sections": [
+      {
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
+        "content": [
+          "Operating system font engines like Windows ClearType assume displays have horizontal Red-Green-Blue (RGB) subpixel stripes. Non-standard arrangements (such as BGR or QD-OLED triangular emitters) cause light to spill across subpixel boundaries, creating distracting green and magenta color fringing on font edges."
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "Operating system font engines like Windows ClearType assume displays have horizontal Red-Green-Blue (RGB) subpixel stripes. Non-standard arrangements (such as BGR or QD-OLED triangular emitters) cause light to spill across subpixel boundaries, creating distracting green and magenta color fringing on font edges."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
+      },
+      {
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
+      }
+    ],
+    "relatedTestIds": [
+      "subpixel-layout-test",
+      "text-clarity-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "display-info"
+    ],
+    "relatedArticleSlugs": [
+      "resolution-and-scaling"
+    ],
+    "primarySearchIntent": "subpixel layout text fringing qd-oled woled bgr font blurriness",
+    "readingTimeMinutes": 5
+  },
   {
-  "slug": "dead-pixel-mapping-iso-standards-and-rma-warranty",
-  "category": "display-problems",
-  "title": "Dead Pixel Mapping, ISO 9241-307 Standards & RMA Warranty Claims",
-  "subtitle": "Understanding manufacturer dead pixel policies, ISO defect classes, and how to document warranty claims.",
-  "description": "A complete guide to identifying dead vs. stuck pixels, calculating ISO 9241-307 Class 1 and Class 2 warranty thresholds, and documenting pixel defects for replacement claims.",
-  "directAnswer": "Display manufacturers do not guarantee zero defects on consumer monitors unless explicitly marketed with a 'Zero Bright Dot' guarantee. Most brands follow ISO 9241-307 Class 2, which allows up to 2 permanently dead pixels or 5 stuck subpixels per million pixels before qualifying for an RMA replacement.",
-  "whyItMatters": "Knowing exact pixel defect counts, subpixel types, and screen coordinate zones prevents buyers from being rejected when filing warranty claims during the return window.",
-  "whatToLookFor": [
-    "Dead (dark) pixels that remain completely unlit black on pure white, yellow, or cyan backgrounds",
-    "Stuck subpixels that glow persistently red, green, or blue on pure black backgrounds",
-    "Cluster defects (multiple defective pixels within a 5x5 pixel block), which almost always qualify for immediate RMA",
-    "Defects located in the central 50% zone of the screen, which carry stricter manufacturer return policies"
-  ],
-  "howToTest": [
-    "Launch the Dead Pixel Mapper tool in Screen Tester to inspect solid primary and secondary backgrounds",
-    "Click directly on each suspect defect to log its exact (X, Y) pixel coordinates and classify its defect type",
-    "Check the automated ISO 9241-307 compliance readout to verify RMA eligibility",
-    "Copy the formatted RMA defect report to submit alongside your customer support ticket"
-  ],
-  "whatScreenTesterCanObserve": [
-    "Precise coordinate logging (X, Y) of defective pixel locations across the full panel resolution",
-    "Classification of defects by background color and subpixel type (dead dark, stuck red, green, blue)",
-    "Calculation of defect density against ISO 9241-307 Class 1 and Class 2 mathematical allowances"
-  ],
-  "whatScreenTesterCannotDetermine": [
-    "Internal manufacturer return policies that exceed ISO standards without checking specific brand terms",
-    "Whether a defect is caused by physical shipping trauma, electrical surge, or fabrication defect",
-    "Distinction between microscopic surface debris under anti-glare coatings and true transistor failure without magnification"
-  ],
-  "commonCauses": [
-    "Dust contamination on thin-film transistor (TFT) substrate during cleanroom manufacturing",
-    "Failed driving transistor leaving a liquid crystal cell permanently unpowered (dead dark)",
-    "Short-circuited subpixel electrode keeping a liquid crystal cell open permanently (stuck bright)",
-    "Physical pressure or torsion during shipping that damaged ITO (Indium Tin Oxide) trace lines"
-  ],
-  "whatToDoNext": [
-    "Document the defects within the retailer's 14-to-30-day return window for an immediate exchange",
-    "If past the return window, contact Dell, LG, ASUS, Samsung, or Lenovo support with your logged coordinates",
-    "If defects are stuck (colored) rather than dead (black), run the Stuck Pixel Fixer for 30 minutes"
-  ],
-  "sections": [
-    {
-      "title": "ISO 9241-307 Defect Classes Explained",
-      "content": [
-        "ISO 9241-307 Class 1 allows zero dead pixels and zero stuck subpixels.",
-        "Class 2 allows up to 2 dead pixels and 5 stuck subpixels per million pixels. On a 4K screen, this permits up to 16 subpixel defects before warranty replacement applies."
-      ]
-    }
-  ],
-  "faq": [
-    {
-      "question": "Can dead pixels spread over time?",
-      "answer": "True dead pixels caused by transistor failure do not spread. However, if a seal is compromised or moisture penetrates the substrate, localized pixel failure clusters may grow."
-    }
-  ],
-  "relatedTestIds": [
-    "dead-pixel-mapper",
-    "dead-pixel-test",
-    "stuck-pixel-fixer"
-  ],
-  "relatedTroubleshootingIds": [
-    "dead-vs-stuck-pixels"
-  ],
-  "relatedArticleSlugs": [
-    "resolution-and-scaling"
-  ],
-  "primarySearchIntent": "dead pixel mapper rma warranty iso 9241-307 class 2 replacement",
-  "readingTimeMinutes": 5
-},
+    "slug": "pulse-width-modulation-pwm-flicker-and-eye-strain",
+    "category": "display-problems",
+    "title": "Pulse-Width Modulation (PWM), Backlight Flicker & Eye Strain",
+    "subtitle": "How monitor brightness dimming methods affect visual comfort, headaches, and eye fatigue.",
+    "description": "Understand the difference between Direct Current (DC) dimming and Pulse-Width Modulation (PWM), how to detect invisible high-frequency screen flicker, and how to configure your monitor for flicker-free comfort.",
+    "directAnswer": "Pulse-Width Modulation (PWM) dims display backlights by rapidly switching LEDs on and off at full power. Low-frequency PWM forces the human pupil and visual cortex to continuously process stroboscopic flashes, leading to severe eye strain, dry eyes, and tension headaches.",
+    "whyItMatters": "Many users experience chronic headaches and fatigue after working on laptops or monitors without realizing that low-frequency PWM backlight flicker is the underlying cause.",
+    "whatToLookFor": [
+      "Pulse-Width Modulation (PWM), Backlight Flicker & Eye Strain - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
+    ],
+    "howToTest": [
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
+    ],
+    "whatScreenTesterCanObserve": [
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
+    ],
+    "commonCauses": [
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
+    ],
+    "whatToDoNext": [
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
+    ],
+    "sections": [
+      {
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
+        "content": [
+          "Pulse-Width Modulation (PWM) dims display backlights by rapidly switching LEDs on and off at full power. Low-frequency PWM forces the human pupil and visual cortex to continuously process stroboscopic flashes, leading to severe eye strain, dry eyes, and tension headaches."
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "Pulse-Width Modulation (PWM) dims display backlights by rapidly switching LEDs on and off at full power. Low-frequency PWM forces the human pupil and visual cortex to continuously process stroboscopic flashes, leading to severe eye strain, dry eyes, and tension headaches."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
+      },
+      {
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
+      }
+    ],
+    "relatedTestIds": [
+      "pwm-flicker-test",
+      "screen-flicker-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "flickering-screen-causes"
+    ],
+    "relatedArticleSlugs": [
+      "resolution-and-scaling"
+    ],
+    "primarySearchIntent": "pwm flicker backlight eye strain headaches dc dimming test",
+    "readingTimeMinutes": 5
+  },
   {
-  "slug": "grey-to-grey-gtg-response-time-and-overdrive-tuning",
-  "category": "display-problems",
-  "title": "Grey-to-Grey (GtG) Pixel Response Time, Overdrive & Overshoot",
-  "subtitle": "Understanding pixel rise and fall times, overdrive voltage boosting, and how to eliminate inverse ghosting coronas.",
-  "description": "Learn how liquid crystal response time impacts motion clarity, why manufacturer 1ms GtG claims are misleading, and how to tune monitor overdrive settings for crisp, artifact-free gaming.",
-  "directAnswer": "Grey-to-Grey (GtG) response time is the duration liquid crystals take to transition between different luminance levels. Because natural transitions are slow (often 8ms–15ms), monitors apply higher voltage (Overdrive) to force faster alignment. Over-aggressive overdrive pushes pixels past their target color, creating ugly inverted ghosting halos (coronas).",
-  "whyItMatters": "Incorrect overdrive settings degrade motion clarity. Setting overdrive too low causes blurry smearing in fast gaming, while setting it too high causes bright distracting coronas around characters and objects.",
-  "whatToLookFor": [
-    "Blurry dark smearing behind moving objects on dark backgrounds (common on VA panels)",
-    "Bright white or dark inverted halos trailing moving objects (indicating overdrive overshoot)",
-    "Trailing edges that appear sharper or blurrier depending on movement direction",
-    "Color shifts along high-speed transition edges (e.g. purple or blue trails behind dark objects)"
-  ],
-  "howToTest": [
-    "Open the GtG Response Time Visualizer in Screen Tester and select the 0% to 20% transition preset",
-    "Track the sweeping block with your eyes to inspect leading and trailing edge clarity",
-    "Cycle through your monitor's OSD Overdrive tiers (Off, Normal, Fast, Extreme)",
-    "Select the highest overdrive tier that eliminates motion blur without producing bright inverse coronas"
-  ],
-  "whatScreenTesterCanObserve": [
-    "Visual ghosting trails across customizable start and end grey luminance values",
-    "Simulation of overdrive corona overshoot across standard liquid crystal overdrive tiers",
-    "Edge sharpness and clarity of moving objects across calibrated velocity levels"
-  ],
-  "whatScreenTesterCannotDetermine": [
-    "Sub-millisecond photodiode oscilloscope transition curves (10% to 90% rise time)",
-    "Internal overdrive voltage table lookup values inside the monitor scaler ASIC",
-    "Temperature-dependent liquid crystal viscosity changes"
-  ],
-  "commonCauses": [
-    "Monitor OSD Overdrive set to maximum ('Extreme' or 'Fastest'), causing severe voltage overshoot",
-    "Slow liquid crystal rotational viscosity on high-contrast VA (Vertical Alignment) panels",
-    "Cold room temperature increasing liquid crystal fluid viscosity during the first 20 minutes of use",
-    "Variable refresh rate (VRR) active without adaptive variable overdrive support in the monitor scaler"
-  ],
-  "whatToDoNext": [
-    "Set your monitor OSD Overdrive to the middle setting (e.g. 'Fast' on LG, 'Normal' or 'Super Fast' on Dell)",
-    "Avoid the highest 'Extreme' overdrive setting on 95% of consumer gaming monitors",
-    "Allow your monitor 15–20 minutes to reach internal operating temperature before evaluating motion",
-    "If motion blur persists, ensure your GPU is outputting your display's maximum native refresh rate"
-  ],
-  "sections": [
-    {
-      "title": "The Problem with Manufacturer '1ms' Claims",
-      "content": [
-        "Display manufacturers advertise '1ms GtG' response times based on single best-case transitions with extreme overdrive that causes severe real-world visual artifacts.",
-        "Quality IPS panels typically average 3ms–5ms in practice, while OLED panels achieve near-instantaneous 0.1ms response times naturally without voltage overdrive."
-      ]
-    }
-  ],
-  "faq": [
-    {
-      "question": "What causes inverse ghosting coronas?",
-      "answer": "Excessive voltage applied by monitor overdrive pushes liquid crystals past their intended color state before settling, creating a bright halo."
-    }
-  ],
-  "relatedTestIds": [
-    "gtg-response-time-test",
-    "ghosting-test"
-  ],
-  "relatedTroubleshootingIds": [
-    "ghosting-motion-blur"
-  ],
-  "relatedArticleSlugs": [
-    "resolution-and-scaling"
-  ],
-  "primarySearchIntent": "gtg response time overdrive overshoot inverse ghosting va smearing",
-  "readingTimeMinutes": 5
-},
+    "slug": "dead-pixel-mapping-iso-standards-and-rma-warranty",
+    "category": "display-problems",
+    "title": "Dead Pixel Mapping, ISO 9241-307 Standards & RMA Warranty Claims",
+    "subtitle": "Understanding manufacturer dead pixel policies, ISO defect classes, and how to document warranty claims.",
+    "description": "A complete guide to identifying dead vs. stuck pixels, calculating ISO 9241-307 Class 1 and Class 2 warranty thresholds, and documenting pixel defects for replacement claims.",
+    "directAnswer": "Display manufacturers do not guarantee zero defects on consumer monitors unless explicitly marketed with a 'Zero Bright Dot' guarantee. Most brands follow ISO 9241-307 Class 2, which allows up to 2 permanently dead pixels or 5 stuck subpixels per million pixels before qualifying for an RMA replacement.",
+    "whyItMatters": "Knowing exact pixel defect counts, subpixel types, and screen coordinate zones prevents buyers from being rejected when filing warranty claims during the return window.",
+    "whatToLookFor": [
+      "Dead Pixel Mapping, ISO 9241-307 Standards & RMA Warranty Claims - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
+    ],
+    "howToTest": [
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
+    ],
+    "whatScreenTesterCanObserve": [
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
+    ],
+    "commonCauses": [
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
+    ],
+    "whatToDoNext": [
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
+    ],
+    "sections": [
+      {
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
+        "content": [
+          "Display manufacturers do not guarantee zero defects on consumer monitors unless explicitly marketed with a 'Zero Bright Dot' guarantee. Most brands follow ISO 9241-307 Class 2, which allows up to 2 permanently dead pixels or 5 stuck subpixels per million pixels before qualifying for an RMA replacement."
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "Display manufacturers do not guarantee zero defects on consumer monitors unless explicitly marketed with a 'Zero Bright Dot' guarantee. Most brands follow ISO 9241-307 Class 2, which allows up to 2 permanently dead pixels or 5 stuck subpixels per million pixels before qualifying for an RMA replacement."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
+      },
+      {
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
+      }
+    ],
+    "relatedTestIds": [
+      "dead-pixel-mapper",
+      "dead-pixel-test",
+      "bright-pixel-test",
+      "stuck-pixel-fixer"
+    ],
+    "relatedTroubleshootingIds": [
+      "dead-vs-stuck-pixels"
+    ],
+    "relatedArticleSlugs": [
+      "resolution-and-scaling"
+    ],
+    "primarySearchIntent": "dead pixel mapper rma warranty iso 9241-307 class 2 replacement",
+    "readingTimeMinutes": 5
+  },
   {
-  "slug": "oled-burn-in-mechanisms-longevity-and-prevention",
-  "category": "display-problems",
-  "title": "OLED & QD-OLED Burn-in Mechanisms, Degradation Factors & Prevention",
-  "subtitle": "A comprehensive technical breakdown of organic emitter decay, static interface hazards, and longevity habits.",
-  "description": "Learn how OLED and QD-OLED burn-in occurs at the subpixel level, how luminance and thermal buildup accelerate aging, and how to configure your system for 5+ years of burn-in-free performance.",
-  "directAnswer": "OLED burn-in is cumulative, non-uniform subpixel degradation caused by the gradual loss of luminance in organic light-emitting materials. When static elements (like taskbars or gaming HUDs) illuminate the same subpixels for thousands of hours, those specific emitters age faster than surrounding pixels, leaving a permanent faint ghost outline.",
-  "whyItMatters": "OLED monitors deliver infinite contrast and near-instant response times, but improper productivity habits or maximum sustained SDR brightness can permanently damage the panel.",
-  "whatToLookFor": [
-    "Faint ghost outlines of Windows taskbar icons, browser address bars, or gaming minimaps on solid grey screens",
-    "Uneven color shifts across full-screen red or blue solid backgrounds (blue OLED emitters age fastest)",
-    "Darker bands corresponding to widescreen letterbox black bars or split-screen window borders",
-    "Residual static logos visible when watching full-screen movies or playing cinematic games"
-  ],
-  "howToTest": [
-    "Open the OLED Burn-in Calculator in Screen Tester to model your risk timeline and panel longevity",
-    "Launch the Burn-In Test and cycle through 50% neutral grey, pure red, green, and blue solid screens",
-    "Inspect static hazard hotspots (bottom taskbar area, top browser tab strip, bottom-right clock)",
-    "Review the automated risk rating based on your daily usage hours and brightness settings"
-  ],
-  "whatScreenTesterCanObserve": [
-    "Visual identification of permanent image retention across solid primary and secondary backgrounds",
-    "Mathematical modeling of cumulative static hours against panel resilience factors",
-    "Static UI hazard heatmaps illustrating where desktop interfaces concentrate emitter stress"
-  ],
-  "whatScreenTesterCannotDetermine": [
-    "Physical chemical degradation percentage of individual organic subpixel stacks",
-    "Internal monitor factory compensation cycle logs stored in scaler EEPROM",
-    "Chassis heatsink temperature and thermal dissipation efficiency"
-  ],
-  "commonCauses": [
-    "Displaying bright static Windows/macOS taskbars for 8+ hours daily without auto-hiding",
-    "Running SDR desktop productivity at maximum HDR peak brightness (300+ nits)",
-    "Unplugging monitor power strips, preventing automatic background pixel-refresh cycles from running on standby",
-    "Using light mode browser themes and documents for full-screen coding or writing workflows"
-  ],
-  "whatToDoNext": [
-    "Enable 'Automatically hide the taskbar' in Windows or macOS settings",
-    "Lower SDR desktop brightness to 120–160 nits (typically 40%–55% monitor brightness slider)",
-    "Enable system Dark Mode across operating system, browser, and IDE code editors",
-    "Never unplug the monitor from AC wall power—allow it to complete standby pixel-clean cycles automatically"
-  ],
-  "sections": [
-    {
-      "title": "How OLED Pixels Age",
-      "content": [
-        "Unlike LCDs that rely on an external backlight, each OLED subpixel emits its own light using organic carbon-based molecules. Over time, heat and electrical current degrade the light-emitting capability.",
-        "When all pixels age uniformly (such as playing dynamic video), no burn-in is visible. Burn-in only appears when static elements degrade specific pixels faster than adjacent areas."
-      ]
-    }
-  ],
-  "faq": [
-    {
-      "question": "Is temporary image retention the same as burn-in?",
-      "answer": "No. Temporary retention disappears within minutes after running dynamic content or a pixel refresh. True burn-in is permanent emitter degradation."
-    }
-  ],
-  "relatedTestIds": [
-    "oled-burn-in-calculator",
-    "burn-in-test"
-  ],
-  "relatedTroubleshootingIds": [
-    "oled-burn-in-retention"
-  ],
-  "relatedArticleSlugs": [
-    "resolution-and-scaling"
-  ],
-  "primarySearchIntent": "oled burn in risk longevity calculator qd-oled lifespan prevention",
-  "readingTimeMinutes": 5
-},
+    "slug": "grey-to-grey-gtg-response-time-and-overdrive-tuning",
+    "category": "display-problems",
+    "title": "Grey-to-Grey (GtG) Pixel Response Time, Overdrive & Overshoot",
+    "subtitle": "Understanding pixel rise and fall times, overdrive voltage boosting, and how to eliminate inverse ghosting coronas.",
+    "description": "Learn how liquid crystal response time impacts motion clarity, why manufacturer 1ms GtG claims are misleading, and how to tune monitor overdrive settings for crisp, artifact-free gaming.",
+    "directAnswer": "Grey-to-Grey (GtG) response time is the duration liquid crystals take to transition between different luminance levels. Because natural transitions are slow (often 8ms–15ms), monitors apply higher voltage (Overdrive) to force faster alignment. Over-aggressive overdrive pushes pixels past their target color, creating ugly inverted ghosting halos (coronas).",
+    "whyItMatters": "Incorrect overdrive settings degrade motion clarity. Setting overdrive too low causes blurry smearing in fast gaming, while setting it too high causes bright distracting coronas around characters and objects.",
+    "whatToLookFor": [
+      "Grey-to-Grey (GtG) Pixel Response Time, Overdrive & Overshoot - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
+    ],
+    "howToTest": [
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
+    ],
+    "whatScreenTesterCanObserve": [
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
+    ],
+    "commonCauses": [
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
+    ],
+    "whatToDoNext": [
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
+    ],
+    "sections": [
+      {
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
+        "content": [
+          "Grey-to-Grey (GtG) response time is the duration liquid crystals take to transition between different luminance levels. Because natural transitions are slow (often 8ms–15ms), monitors apply higher voltage (Overdrive) to force faster alignment. Over-aggressive overdrive pushes pixels past their target color, creating ugly inverted ghosting halos (coronas)."
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "Grey-to-Grey (GtG) response time is the duration liquid crystals take to transition between different luminance levels. Because natural transitions are slow (often 8ms–15ms), monitors apply higher voltage (Overdrive) to force faster alignment. Over-aggressive overdrive pushes pixels past their target color, creating ugly inverted ghosting halos (coronas)."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
+      },
+      {
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
+      }
+    ],
+    "relatedTestIds": [
+      "gtg-response-time-test",
+      "ghosting-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "ghosting-motion-blur"
+    ],
+    "relatedArticleSlugs": [
+      "resolution-and-scaling"
+    ],
+    "primarySearchIntent": "gtg response time overdrive overshoot inverse ghosting va smearing",
+    "readingTimeMinutes": 5
+  },
   {
-  "slug": "mouse-polling-rate-sensor-jitter-and-refresh-rate-synergy",
-  "category": "device-and-input",
-  "title": "Mouse Polling Rate (Hz), Sensor Jitter & High-Refresh Synergy",
-  "subtitle": "Understanding USB report rates, tracking smoothness, click switch chatter, and how mouse Hz matches monitor refresh rates.",
-  "description": "Learn how mouse polling rates (125Hz to 8000Hz) impact cursor smoothness on high-refresh screens, how to test sensor jitter, and how to detect mechanical double-click switch failure.",
-  "directAnswer": "Mouse polling rate is the frequency (measured in Hertz) at which the mouse reports its position and button states to the operating system. On high-refresh displays (144Hz, 240Hz, 360Hz+), a standard 125Hz office mouse stutters because the screen updates faster than the mouse reports new coordinates. A 1000Hz+ polling rate guarantees fresh cursor coordinates on every single screen refresh.",
-  "whyItMatters": "Using a low-polling mouse on a 240Hz gaming display negates high-refresh fluidity, while mechanical switch bounce (chatter) causes frustrating accidental double-clicks.",
-  "whatToLookFor": [
-    "Choppy or stuttering cursor movement when dragging windows across a 144Hz+ monitor",
-    "Interval jitter spikes (packet delivery variances greater than 2ms on a 1000Hz mouse)",
-    "Unintended double-clicks when attempting a single physical click on desktop icons or web links",
-    "Mismatch between physical hand movement distance and on-screen cursor displacement"
-  ],
-  "howToTest": [
-    "Open the Mouse Polling Rate & Precision Test in Screen Tester",
-    "Move your mouse rapidly in continuous circles inside the test pad to record peak and average Hz",
-    "Observe the live packet interval graph to ensure stable ~1.0ms delivery without dropped packets",
-    "Use the Button Actuation tab to test for double-click switch bounce under 60ms"
-  ],
-  "whatScreenTesterCanObserve": [
-    "USB mouse movement event frequency reported via performance.now() high-resolution timestamps",
-    "Peak, average, and real-time polling rates across continuous motion sessions",
-    "Multi-button click actuation counts and millisecond inter-click intervals"
-  ],
-  "whatScreenTesterCannotDetermine": [
-    "Hardware USB bus polling rate when the mouse is stationary (optical sensors only report on movement)",
-    "Sensor lift-off distance (LOD) in physical millimeters",
-    "Direct MCU firmware polling rate when browser event loops are throttled by heavy background tasks"
-  ],
-  "commonCauses": [
-    "Mouse connected through an unpowered USB hub or slow legacy USB 2.0 keyboard passthrough port",
-    "Mouse driver software set to 125Hz or 500Hz energy-saving modes on wireless models",
-    "Oxidation or fatigue on mechanical Omron/Kailh microswitch copper leaf springs causing chatter",
-    "CPU thermal throttling causing USB controller interrupt latency spikes"
-  ],
-  "whatToDoNext": [
-    "Plug high-polling gaming mice directly into motherboard rear USB 3.0 ports",
-    "Set mouse software (Logitech G HUB, Razer Synapse, etc.) to 1000Hz or 4000Hz",
-    "If double-click chatter is detected, replace mechanical switches or upgrade to optical mouse switches",
-    "Disable 'Enhance pointer precision' (mouse acceleration) in Windows mouse properties"
-  ],
-  "sections": [
-    {
-      "title": "Do 4000Hz and 8000Hz Polling Rates Really Matter?",
-      "content": [
-        "Standard 1000Hz mice report coordinates every 1.0 millisecond. At 60Hz or 144Hz, this is more than sufficient.",
-        "On 360Hz and 540Hz displays, frame times drop to 2.7ms and 1.8ms. Under these conditions, an 8000Hz mouse provides lower input latency and near-perfect cursor tracking fluidity."
-      ]
-    }
-  ],
-  "faq": [
-    {
-      "question": "Why does 8000Hz polling rate cause CPU lag in some games?",
-      "answer": "8000Hz polling generates 8,000 CPU hardware interrupts per second. On older 4-core CPUs, processing these interrupts can bottleneck game main threads."
-    }
-  ],
-  "relatedTestIds": [
-    "mouse-polling-test",
-    "gamepad-test"
-  ],
-  "relatedTroubleshootingIds": [
-    "input-lag-latency"
-  ],
-  "relatedArticleSlugs": [
-    "resolution-and-scaling"
-  ],
-  "primarySearchIntent": "mouse polling rate hz test double click chatter sensor jitter",
-  "readingTimeMinutes": 5
-},
+    "slug": "oled-burn-in-mechanisms-longevity-and-prevention",
+    "category": "display-problems",
+    "title": "OLED & QD-OLED Burn-in Mechanisms, Degradation Factors & Prevention",
+    "subtitle": "A comprehensive technical breakdown of organic emitter decay, static interface hazards, and longevity habits.",
+    "description": "Learn how OLED and QD-OLED burn-in occurs at the subpixel level, how luminance and thermal buildup accelerate aging, and how to configure your system for 5+ years of burn-in-free performance.",
+    "directAnswer": "OLED burn-in is cumulative, non-uniform subpixel degradation caused by the gradual loss of luminance in organic light-emitting materials. When static elements (like taskbars or gaming HUDs) illuminate the same subpixels for thousands of hours, those specific emitters age faster than surrounding pixels, leaving a permanent faint ghost outline.",
+    "whyItMatters": "OLED monitors deliver infinite contrast and near-instant response times, but improper productivity habits or maximum sustained SDR brightness can permanently damage the panel.",
+    "whatToLookFor": [
+      "OLED & QD-OLED Burn-in Mechanisms, Degradation Factors & Prevention - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
+    ],
+    "howToTest": [
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
+    ],
+    "whatScreenTesterCanObserve": [
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
+    ],
+    "commonCauses": [
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
+    ],
+    "whatToDoNext": [
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
+    ],
+    "sections": [
+      {
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
+        "content": [
+          "OLED burn-in is cumulative, non-uniform subpixel degradation caused by the gradual loss of luminance in organic light-emitting materials. When static elements (like taskbars or gaming HUDs) illuminate the same subpixels for thousands of hours, those specific emitters age faster than surrounding pixels, leaving a permanent faint ghost outline."
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "OLED burn-in is cumulative, non-uniform subpixel degradation caused by the gradual loss of luminance in organic light-emitting materials. When static elements (like taskbars or gaming HUDs) illuminate the same subpixels for thousands of hours, those specific emitters age faster than surrounding pixels, leaving a permanent faint ghost outline."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
+      },
+      {
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
+      }
+    ],
+    "relatedTestIds": [
+      "oled-burn-in-calculator",
+      "burn-in-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "oled-burn-in-retention"
+    ],
+    "relatedArticleSlugs": [
+      "resolution-and-scaling"
+    ],
+    "primarySearchIntent": "oled burn in risk longevity calculator qd-oled lifespan prevention",
+    "readingTimeMinutes": 5
+  },
   {
-  "slug": "gpu-webgl-3d-performance-frame-stability-and-thermal-throttling",
-  "category": "display-basics",
-  "title": "GPU WebGL 3D Performance, 1% Lows & Thermal Throttling",
-  "subtitle": "Understanding graphics rendering throughput, frame pacing variance, and GPU performance consistency under sustained load.",
-  "description": "Learn how browser-based WebGL benchmarks evaluate GPU capabilities, why 1% low FPS matters more than average framerates, and how to identify thermal throttling.",
-  "directAnswer": "A graphics processing unit (GPU) must sustain steady frame delivery to prevent stuttering. While average FPS indicates overall power, 1% low FPS reveals micro-stutters and hitching caused by memory bandwidth bottlenecks, driver latency, or GPU thermal downclocking under heavy rendering workloads.",
-  "whyItMatters": "A monitor's refresh rate can only be enjoyed if the GPU delivers frames consistently. Heavy frame drops ruin smoothness even on G-Sync and FreeSync variable refresh rate displays.",
-  "whatToLookFor": [
-    "Sudden stuttering or hitching during sustained 3D particle animations",
-    "Large gaps between average FPS (e.g. 120 FPS) and 1% low FPS (e.g. 35 FPS)",
-    "Gradual degradation in frame rate over 30 to 60 seconds as the GPU heats up",
-    "Frame time variance exceeding 5ms during steady camera rotation"
-  ],
-  "howToTest": [
-    "Open the GPU WebGL 3D Benchmark in Screen Tester and select the Medium or Heavy stress preset",
-    "Monitor real-time FPS and frame time variance across 40,000 to 100,000 active 3D particles",
-    "Run the 30-second benchmark to evaluate sustained performance stability",
-    "Compare 1% low FPS against your monitor's native refresh rate"
-  ],
-  "whatScreenTesterCanObserve": [
-    "Client-side WebGL 3D rendering throughput across 10,000 to 200,000 active particles",
-    "Real-time frame rate, average FPS, 1% low frame rates, and millisecond frame pacing",
-    "Detected WebGL graphics renderer string, GPU vendor, and maximum texture dimensions"
-  ],
-  "whatScreenTesterCannotDetermine": [
-    "Physical GPU core temperature (°C) or fan RPM without native operating system telemetry utilities",
-    "GPU board power draw in Watts (TDP)",
-    "VRAM memory clock frequency or memory junction temperatures"
-  ],
-  "commonCauses": [
-    "Laptop or small form-factor PC suffering from thermal throttling due to dust buildup or inadequate cooling",
-    "Browser utilizing integrated CPU graphics (e.g. Intel UHD) instead of a dedicated NVIDIA or AMD GPU",
-    "Hardware acceleration disabled in browser settings, forcing software canvas emulation",
-    "Background applications or browser tabs consuming dedicated video memory (VRAM)"
-  ],
-  "whatToDoNext": [
-    "Verify that 'Use graphics acceleration when available' is enabled in your browser settings",
-    "Configure Windows Graphics Settings to assign 'High Performance (Dedicated GPU)' to your web browser",
-    "Clean laptop cooling vents and fans to prevent thermal downclocking during sustained 3D tasks",
-    "Update GPU graphics drivers from NVIDIA, AMD, or Intel to optimize WebGL shader compilation"
-  ],
-  "sections": [
-    {
-      "title": "Why 1% Lows Matter More Than Average FPS",
-      "content": [
-        "Human perception is sensitive to abrupt frame pauses. A game averaging 144 FPS with frequent drops to 30 FPS will feel choppy and frustrating.",
-        "The 1% low metric isolates the worst 1% of frame times. When 1% lows remain close to average FPS, visual output feels exceptionally smooth."
-      ]
-    }
-  ],
-  "faq": [
-    {
-      "question": "Why does my browser benchmark run on integrated graphics?",
-      "answer": "Laptops with dual GPUs often assign web browsers to the power-saving integrated GPU by default. You can force high performance in Windows Settings > System > Display > Graphics."
-    }
-  ],
-  "relatedTestIds": [
-    "gpu-benchmark-test",
-    "refresh-rate-test"
-  ],
-  "relatedTroubleshootingIds": [
-    "screen-tearing-vs-stutter"
-  ],
-  "relatedArticleSlugs": [
-    "resolution-and-scaling"
-  ],
-  "primarySearchIntent": "gpu webgl 3d benchmark 1 percent low fps thermal throttling",
-  "readingTimeMinutes": 5
-},
+    "slug": "mouse-polling-rate-sensor-jitter-and-refresh-rate-synergy",
+    "category": "device-and-input",
+    "title": "Mouse Polling Rate (Hz), Sensor Jitter & High-Refresh Synergy",
+    "subtitle": "Understanding USB report rates, tracking smoothness, click switch chatter, and how mouse Hz matches monitor refresh rates.",
+    "description": "Learn how mouse polling rates (125Hz to 8000Hz) impact cursor smoothness on high-refresh screens, how to test sensor jitter, and how to detect mechanical double-click switch failure.",
+    "directAnswer": "Mouse polling rate is the frequency (measured in Hertz) at which the mouse reports its position and button states to the operating system. On high-refresh displays (144Hz, 240Hz, 360Hz+), a standard 125Hz office mouse stutters because the screen updates faster than the mouse reports new coordinates. A 1000Hz+ polling rate guarantees fresh cursor coordinates on every single screen refresh.",
+    "whyItMatters": "Using a low-polling mouse on a 240Hz gaming display negates high-refresh fluidity, while mechanical switch bounce (chatter) causes frustrating accidental double-clicks.",
+    "whatToLookFor": [
+      "Mouse Polling Rate (Hz), Sensor Jitter & High-Refresh Synergy - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
+    ],
+    "howToTest": [
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
+    ],
+    "whatScreenTesterCanObserve": [
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
+    ],
+    "commonCauses": [
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
+    ],
+    "whatToDoNext": [
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
+    ],
+    "sections": [
+      {
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
+        "content": [
+          "Mouse polling rate is the frequency (measured in Hertz) at which the mouse reports its position and button states to the operating system. On high-refresh displays (144Hz, 240Hz, 360Hz+), a standard 125Hz office mouse stutters because the screen updates faster than the mouse reports new coordinates. A 1000Hz+ polling rate guarantees fresh cursor coordinates on every single screen refresh."
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "Mouse polling rate is the frequency (measured in Hertz) at which the mouse reports its position and button states to the operating system. On high-refresh displays (144Hz, 240Hz, 360Hz+), a standard 125Hz office mouse stutters because the screen updates faster than the mouse reports new coordinates. A 1000Hz+ polling rate guarantees fresh cursor coordinates on every single screen refresh."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
+      },
+      {
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
+      }
+    ],
+    "relatedTestIds": [
+      "mouse-polling-test",
+      "gamepad-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "input-lag-latency"
+    ],
+    "relatedArticleSlugs": [
+      "resolution-and-scaling"
+    ],
+    "primarySearchIntent": "mouse polling rate hz test double click chatter sensor jitter",
+    "readingTimeMinutes": 5
+  },
   {
-  "slug": "display-inspection-certificates-resale-grading-and-warranty-documentation",
-  "category": "browser-and-testing",
-  "title": "Display Inspection Certificates, Resale Grading & Warranty Documentation",
-  "subtitle": "How to inspect and certify monitor condition, grade used panels, and document defects for warranty returns.",
-  "description": "A complete guide to conducting formal display inspections, assigning cosmetic and panel grades (A+, A, B, RMA), and creating official inspection certificates for resale or return claims.",
-  "directAnswer": "A display inspection certificate provides verified proof of monitor hardware specifications, pixel integrity, backlight bleed severity, and color performance. It protects buyers when purchasing used monitors and gives owners indisputable documentation when submitting warranty RMA claims during return windows.",
-  "whyItMatters": "Buying or selling used monitors without verified inspection leads to disputes over unannounced dead pixels or severe backlight bleed. Standardized grading brings transparency to used display transactions.",
-  "whatToLookFor": [
-    "Confirmed native panel resolution, color depth, and wide color gamut support",
-    "Exact count of defective dead pixels and stuck subpixels",
-    "Cosmetic bezel condition, stand stability, and panel anti-glare scratch inspection",
-    "Backlight bleed and corner IPS glow severity evaluated in a darkened room"
-  ],
-  "howToTest": [
-    "Complete the core tests in Screen Tester: Dead Pixels, Uniformity, Backlight Bleed, and Color Accuracy",
-    "Open the Display Inspection Certificate tool to automatically populate detected hardware specifications",
-    "Input monitor brand, model name, serial number, and manual inspection grading results",
-    "Click 'Print / Save as PDF' to generate an official certified display quality report"
-  ],
-  "whatScreenTesterCanObserve": [
-    "Compilation of system-reported display parameters and user-verified quality grades",
-    "Generation of unique cryptographic verification IDs and inspection timestamps",
-    "Print-optimized document layout hiding navigation and interactive UI controls"
-  ],
-  "whatScreenTesterCannotDetermine": [
-    "Automated physical panel serial number readout from internal EDID firmware (requires manual entry)",
-    "Legal underwriting of manufacturer warranty claims outside official manufacturer service centers",
-    "Spectroradiometer color accuracy Delta E verification without external hardware colorimeters"
-  ],
-  "commonCauses": [
-    "Buyers discovering unannounced dead pixels or severe corner bleed after purchasing used displays",
-    "Manufacturers requesting verified defect coordinates and photographic proof for warranty replacements",
-    "Corporate IT departments needing formal asset health logs for workstation inventory audits"
-  ],
-  "whatToDoNext": [
-    "Always generate an inspection certificate immediately upon unboxing a newly purchased monitor",
-    "Attach the PDF certificate to return requests if the display fails ISO 9241-307 criteria",
-    "Provide the certificate when listing used monitors on marketplaces for higher resale value"
-  ],
-  "sections": [
-    {
-      "title": "Standardized Display Grading Tiers",
-      "content": [
-        "Grade A+ (Mint / Certified): Zero dead pixels, zero bright subpixels, minimal uniform backlight glow, flawless anti-glare coating.",
-        "Grade A (Excellent): Maximum 1–2 minor subpixel defects outside the central zone, minor IPS glow within acceptable manufacturing tolerances.",
-        "Grade B (Used / Average): 3+ subpixel defects or noticeable corner backlight bleed.",
-        "RMA / Defective: Defect count exceeds manufacturer ISO 9241-307 allowances, qualifying for immediate replacement."
-      ]
-    }
-  ],
-  "faq": [
-    {
-      "question": "Can I use this certificate for manufacturer RMA warranty claims?",
-      "answer": "Yes. Major manufacturers like Dell, ASUS, LG, and Lenovo accept structured defect reports containing resolution, serial number, defect classification, and coordinate logs."
-    }
-  ],
-  "relatedTestIds": [
-    "display-certificate",
-    "dead-pixel-mapper"
-  ],
-  "relatedTroubleshootingIds": [
-    "dead-vs-stuck-pixels"
-  ],
-  "relatedArticleSlugs": [
-    "resolution-and-scaling"
-  ],
-  "primarySearchIntent": "display inspection certificate used monitor grading rma documentation",
-  "readingTimeMinutes": 5
-},
+    "slug": "gpu-webgl-3d-performance-frame-stability-and-thermal-throttling",
+    "category": "display-basics",
+    "title": "GPU WebGL 3D Performance, 1% Lows & Thermal Throttling",
+    "subtitle": "Understanding graphics rendering throughput, frame pacing variance, and GPU performance consistency under sustained load.",
+    "description": "Learn how browser-based WebGL benchmarks evaluate GPU capabilities, why 1% low FPS matters more than average framerates, and how to identify thermal throttling.",
+    "directAnswer": "A graphics processing unit (GPU) must sustain steady frame delivery to prevent stuttering. While average FPS indicates overall power, 1% low FPS reveals micro-stutters and hitching caused by memory bandwidth bottlenecks, driver latency, or GPU thermal downclocking under heavy rendering workloads.",
+    "whyItMatters": "A monitor's refresh rate can only be enjoyed if the GPU delivers frames consistently. Heavy frame drops ruin smoothness even on G-Sync and FreeSync variable refresh rate displays.",
+    "whatToLookFor": [
+      "GPU WebGL 3D Performance, 1% Lows & Thermal Throttling - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
+    ],
+    "howToTest": [
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
+    ],
+    "whatScreenTesterCanObserve": [
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
+    ],
+    "commonCauses": [
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
+    ],
+    "whatToDoNext": [
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
+    ],
+    "sections": [
+      {
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
+        "content": [
+          "A graphics processing unit (GPU) must sustain steady frame delivery to prevent stuttering. While average FPS indicates overall power, 1% low FPS reveals micro-stutters and hitching caused by memory bandwidth bottlenecks, driver latency, or GPU thermal downclocking under heavy rendering workloads."
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "A graphics processing unit (GPU) must sustain steady frame delivery to prevent stuttering. While average FPS indicates overall power, 1% low FPS reveals micro-stutters and hitching caused by memory bandwidth bottlenecks, driver latency, or GPU thermal downclocking under heavy rendering workloads."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
+      },
+      {
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
+      }
+    ],
+    "relatedTestIds": [
+      "gpu-benchmark-test",
+      "refresh-rate-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "screen-tearing-vs-stutter"
+    ],
+    "relatedArticleSlugs": [
+      "resolution-and-scaling"
+    ],
+    "primarySearchIntent": "gpu webgl 3d benchmark 1 percent low fps thermal throttling",
+    "readingTimeMinutes": 5
+  },
   {
-  "slug": "monitor-osd-hardware-calibration-and-target-curves",
-  "category": "tv-and-display-setup",
-  "title": "Monitor On-Screen Display (OSD) Calibration, Hardware Controls & Target Curves",
-  "subtitle": "A practical guide to tuning physical monitor buttons for accurate Brightness, Contrast, Gamma 2.2, and 6500K color.",
-  "description": "Learn how to calibrate your monitor using its built-in hardware OSD menu buttons without expensive colorimeters, avoid black crush and white clipping, and achieve standard sRGB color accuracy.",
-  "directAnswer": "Most monitors ship from the factory with exaggerated, inaccurate settings—100% brightness, excessive contrast, and oversaturated cool blue white balance (8000K+) designed to pop under retail showroom lights. Calibrating the physical OSD buttons aligns your monitor with international sRGB and Rec.709 standards (6500K neutral white, Gamma 2.2).",
-  "whyItMatters": "Uncalibrated monitors distort photos, cause muddy shadows in movies, and lead to eye fatigue. Proper OSD tuning ensures that games, photos, and web content look exactly as content creators intended.",
-  "whatToLookFor": [
-    "Black crush (shadow details disappearing into solid pitch black due to incorrect brightness)",
-    "White clipping (bright skies and clouds losing detail due to excessive contrast)",
-    "Unpleasant blue or green color casts on white web pages and documents",
-    "Artificial white edge halos around text caused by excessive hardware sharpness"
-  ],
-  "howToTest": [
-    "Open the Interactive OSD Calibration Assistant in Screen Tester and follow the 6 visual steps",
-    "Adjust OSD Brightness until calibration patch #16 is faintly visible on black",
-    "Lower OSD Contrast until near-white patch #253 is distinguishable from pure white #255",
-    "Step back 4 feet to verify that the Gamma 2.2 optical blend target blends seamlessly into the striped background",
-    "Tune Red, Green, and Blue gain sliders to achieve neutral 6500K D65 white balance"
-  ],
-  "whatScreenTesterCanObserve": [
-    "Visual feedback targets designed specifically for standard monitor OSD adjustment ranges",
-    "Optical blend checkerboards verifying sRGB Gamma 2.2 alignment without calibration probes",
-    "High-contrast text and moving block targets for tuning sharpness and overdrive tiers"
-  ],
-  "whatScreenTesterCannotDetermine": [
-    "Direct software control over physical monitor OSD buttons via DDC/CI protocol",
-    "Exact color temperature in Kelvin without a spectrophotometer or colorimeter hardware probe",
-    "Hardware LUT (Look-Up Table) internal calibration inside professional color-grading monitors"
-  ],
-  "commonCauses": [
-    "Factory default 'Standard' or 'Gaming' picture mode configured for oversaturated retail demonstration",
-    "OSD Sharpness set too high, introducing ringing artifacts on native digital HDMI/DisplayPort signals",
-    "Monitor OSD Brightness set to 100% in a 100-lux indoor office environment",
-    "Monitor Gamma setting set to an uncalibrated mode (e.g. Mode 1 or Off)"
-  ],
-  "whatToDoNext": [
-    "Select 'Standard' or 'Custom / User' picture preset in your monitor OSD",
-    "Lower brightness to around 25%–45% (approx 120 nits) for comfortable daytime reading",
-    "Select Color Temperature 'Warm' or adjust RGB Gain to 50-50-50 for neutral white",
-    "Keep OSD Sharpness at the factory neutral default (typically 50% or 0)"
-  ],
-  "sections": [
-    {
-      "title": "The Golden Rule: Hardware First, Software Second",
-      "content": [
-        "Always adjust your monitor's physical OSD buttons before applying software color profiles or GPU driver color adjustments.",
-        "Software adjustments work by truncating digital LUT values, which reduces dynamic color range and can cause gradient banding. Hardware OSD tuning controls physical panel voltages directly, preserving full 8-bit or 10-bit color depth."
-      ]
-    }
-  ],
-  "faq": [
-    {
-      "question": "Should I calibrate my monitor with lights on or off?",
-      "answer": "Calibrate in your typical working environment lighting. Avoid direct sunlight falling across the screen, and use soft, indirect ambient light."
-    }
-  ],
-  "relatedTestIds": [
-    "osd-calibration-guide",
-    "brightness-test",
-    "contrast-test"
-  ],
-  "relatedTroubleshootingIds": [
-    "washed-out-colors"
-  ],
-  "relatedArticleSlugs": [
-    "resolution-and-scaling"
-  ],
-  "primarySearchIntent": "monitor osd calibration hardware buttons brightness contrast gamma 6500k",
-  "readingTimeMinutes": 5
-},
+    "slug": "display-inspection-certificates-resale-grading-and-warranty-documentation",
+    "category": "browser-and-testing",
+    "title": "Display Inspection Certificates, Resale Grading & Warranty Documentation",
+    "subtitle": "How to inspect and certify monitor condition, grade used panels, and document defects for warranty returns.",
+    "description": "A complete guide to conducting formal display inspections, assigning cosmetic and panel grades (A+, A, B, RMA), and creating official inspection certificates for resale or return claims.",
+    "directAnswer": "A display inspection certificate provides verified proof of monitor hardware specifications, pixel integrity, backlight bleed severity, and color performance. It protects buyers when purchasing used monitors and gives owners indisputable documentation when submitting warranty RMA claims during return windows.",
+    "whyItMatters": "Buying or selling used monitors without verified inspection leads to disputes over unannounced dead pixels or severe backlight bleed. Standardized grading brings transparency to used display transactions.",
+    "whatToLookFor": [
+      "Display Inspection Certificates, Resale Grading & Warranty Documentation - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
+    ],
+    "howToTest": [
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
+    ],
+    "whatScreenTesterCanObserve": [
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
+    ],
+    "commonCauses": [
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
+    ],
+    "whatToDoNext": [
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
+    ],
+    "sections": [
+      {
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
+        "content": [
+          "A display inspection certificate provides verified proof of monitor hardware specifications, pixel integrity, backlight bleed severity, and color performance. It protects buyers when purchasing used monitors and gives owners indisputable documentation when submitting warranty RMA claims during return windows."
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "A display inspection certificate provides verified proof of monitor hardware specifications, pixel integrity, backlight bleed severity, and color performance. It protects buyers when purchasing used monitors and gives owners indisputable documentation when submitting warranty RMA claims during return windows."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
+      },
+      {
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
+      }
+    ],
+    "relatedTestIds": [
+      "display-certificate",
+      "dead-pixel-mapper"
+    ],
+    "relatedTroubleshootingIds": [
+      "dead-vs-stuck-pixels"
+    ],
+    "relatedArticleSlugs": [
+      "resolution-and-scaling"
+    ],
+    "primarySearchIntent": "display inspection certificate used monitor grading rma documentation",
+    "readingTimeMinutes": 5
+  },
+  {
+    "slug": "monitor-osd-hardware-calibration-and-target-curves",
+    "category": "tv-and-display-setup",
+    "title": "Monitor On-Screen Display (OSD) Calibration, Hardware Controls & Target Curves",
+    "subtitle": "A practical guide to tuning physical monitor buttons for accurate Brightness, Contrast, Gamma 2.2, and 6500K color.",
+    "description": "Learn how to calibrate your monitor using its built-in hardware OSD menu buttons without expensive colorimeters, avoid black crush and white clipping, and achieve standard sRGB color accuracy.",
+    "directAnswer": "Most monitors ship from the factory with exaggerated, inaccurate settings—100% brightness, excessive contrast, and oversaturated cool blue white balance (8000K+) designed to pop under retail showroom lights. Calibrating the physical OSD buttons aligns your monitor with international sRGB and Rec.709 standards (6500K neutral white, Gamma 2.2).",
+    "whyItMatters": "Uncalibrated monitors distort photos, cause muddy shadows in movies, and lead to eye fatigue. Proper OSD tuning ensures that games, photos, and web content look exactly as content creators intended.",
+    "whatToLookFor": [
+      "Monitor On-Screen Display (OSD) Calibration, Hardware Controls & Target Curves - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
+    ],
+    "howToTest": [
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
+    ],
+    "whatScreenTesterCanObserve": [
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
+    ],
+    "commonCauses": [
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
+    ],
+    "whatToDoNext": [
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
+    ],
+    "sections": [
+      {
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
+        "content": [
+          "Most monitors ship from the factory with exaggerated, inaccurate settings—100% brightness, excessive contrast, and oversaturated cool blue white balance (8000K+) designed to pop under retail showroom lights. Calibrating the physical OSD buttons aligns your monitor with international sRGB and Rec.709 standards (6500K neutral white, Gamma 2.2)."
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "Most monitors ship from the factory with exaggerated, inaccurate settings—100% brightness, excessive contrast, and oversaturated cool blue white balance (8000K+) designed to pop under retail showroom lights. Calibrating the physical OSD buttons aligns your monitor with international sRGB and Rec.709 standards (6500K neutral white, Gamma 2.2)."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
+      },
+      {
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
+      }
+    ],
+    "relatedTestIds": [
+      "osd-calibration-guide",
+      "brightness-test",
+      "contrast-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "washed-out-colors"
+    ],
+    "relatedArticleSlugs": [
+      "resolution-and-scaling"
+    ],
+    "primarySearchIntent": "monitor osd calibration hardware buttons brightness contrast gamma 6500k",
+    "readingTimeMinutes": 5
+  },
+  {
+    "slug": "display-gamma-curves-and-grayscale-tracking",
+    "category": "display-basics",
+    "title": "डिस्प्ले गामा कर्व्स, EOTF और ग्रेस्केल ट्रैकिंग गाइड",
+    "subtitle": "गामा 2.2, sRGB ट्रांसफर फ़ंक्शंस, BT.1886, ब्लैक क्रश और ग्रेस्केल कैलिब्रेशन को समझें।",
+    "description": "गामा 2.2, sRGB ट्रांसफर फ़ंक्शंस, BT.1886, ब्लैक क्रश और ग्रेस्केल कैलिब्रेशन को समझें।",
+    "directAnswer": "गामा इनपुट पिक्सेल सिग्नल के ब्राइटनेस मान और आपके मॉनिटर द्वारा उत्पादित वास्तविक प्रकाश ल्यूमिनेन्स के बीच गणितीय संबंध का वर्णन करता है।",
+    "whyItMatters": "Incorrect display gamma causes severe image degradation: high gamma (e.g. 2.6) crushes dark shadow details into solid black, while low gamma (e.g. 1.8) washes out contrast, making blacks appear milky and faded.",
+    "whatToLookFor": [
+      "डिस्प्ले गामा कर्व्स, EOTF और ग्रेस्केल ट्रैकिंग गाइड - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
+    ],
+    "howToTest": [
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
+    ],
+    "whatScreenTesterCanObserve": [
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
+    ],
+    "commonCauses": [
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
+    ],
+    "whatToDoNext": [
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
+    ],
+    "sections": [
+      {
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
+        "content": [
+          "गामा इनपुट पिक्सेल सिग्नल के ब्राइटनेस मान और आपके मॉनिटर द्वारा उत्पादित वास्तविक प्रकाश ल्यूमिनेन्स के बीच गणितीय संबंध का वर्णन करता है।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "गामा इनपुट पिक्सेल सिग्नल के ब्राइटनेस मान और आपके मॉनिटर द्वारा उत्पादित वास्तविक प्रकाश ल्यूमिनेन्स के बीच गणितीय संबंध का वर्णन करता है।"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
+      },
+      {
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
+      }
+    ],
+    "relatedTestIds": [
+      "gamma-test",
+      "grayscale-test",
+      "contrast-test",
+      "brightness-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "color-banding-gradient"
+    ],
+    "relatedArticleSlugs": [
+      "black-levels-and-shadow-detail",
+      "display-uniformity",
+      "color-depth-and-banding"
+    ],
+    "primarySearchIntent": "monitor gamma test calibration grayscale curve",
+    "readingTimeMinutes": 6
+  },
+  {
+    "slug": "color-accuracy-delta-e-and-gamut-coverage",
+    "category": "display-basics",
+    "title": "कलर सटीकता, डेल्टा E और कलर सरगम कवरेज समझें",
+    "subtitle": "sRGB, DCI-P3, AdobeRGB कलर स्पेस, डेल्टा E एरर सीमाएं और सैचुरेशन ट्रैकिंग।",
+    "description": "sRGB, DCI-P3, AdobeRGB कलर स्पेस, डेल्टा E एरर सीमाएं और सैचुरेशन ट्रैकिंग।",
+    "directAnswer": "कलर सटीकता मापती है कि मॉनिटर कितनी ईमानदारी से मानक रंगों को पुन: पेश करता है, जिसे डेल्टा E (ΔE) द्वारा मापा जाता है।",
+    "whyItMatters": "For photo editors, digital artists, video colorists, and gamers, inaccurate colors distort creative intent. A ΔE above 3.0 results in noticeable skin tone discoloration, mismatched brand logos, and unnatural oversaturation.",
+    "whatToLookFor": [
+      "कलर सटीकता, डेल्टा E और कलर सरगम कवरेज समझें - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
+    ],
+    "howToTest": [
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
+    ],
+    "whatScreenTesterCanObserve": [
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
+    ],
+    "commonCauses": [
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
+    ],
+    "whatToDoNext": [
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
+    ],
+    "sections": [
+      {
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
+        "content": [
+          "कलर सटीकता मापती है कि मॉनिटर कितनी ईमानदारी से मानक रंगों को पुन: पेश करता है, जिसे डेल्टा E (ΔE) द्वारा मापा जाता है।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "कलर सटीकता मापती है कि मॉनिटर कितनी ईमानदारी से मानक रंगों को पुन: पेश करता है, जिसे डेल्टा E (ΔE) द्वारा मापा जाता है।"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
+      },
+      {
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
+      }
+    ],
+    "relatedTestIds": [
+      "color-accuracy-test",
+      "saturation-test",
+      "color-gamut-test",
+      "color-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "color-tint-shift"
+    ],
+    "relatedArticleSlugs": [
+      "color-depth-and-banding",
+      "hdr-display-fundamentals",
+      "dual-monitor-color-and-white-point-matching"
+    ],
+    "primarySearchIntent": "monitor color accuracy delta e saturation gamut calibration",
+    "readingTimeMinutes": 6
+  },
+  {
+    "slug": "local-dimming-blooming-and-fald-haloing",
+    "category": "display-problems",
+    "title": "मिनी-एलईडी लोकल डिमिंग, ब्लूमिंग प्रभाव और हेलो आर्टिफैक्ट्स",
+    "subtitle": "FALD कैसे काम करता है, डार्क बैकग्राउंड पर ब्राइट ऑब्जेक्ट्स के चारों ओर लाइट ब्लीड क्यों होता है।",
+    "description": "FALD कैसे काम करता है, डार्क बैकग्राउंड पर ब्राइट ऑब्जेक्ट्स के चारों ओर लाइट ब्लीड क्यों होता है।",
+    "directAnswer": "ब्लूमिंग (या हेलोइंग) मिनी-एलईडी और FALD स्क्रीन पर एक दृश्य कलाकृति है जहां बैकलाइट ज़ोन से प्रकाश छोटे चमकीले तत्वों के किनारों से काले पिक्सेल में फैल जाता है।",
+    "whyItMatters": "While Mini-LED panels deliver extraordinary peak brightness (1000+ nits) and deep blacks, aggressive local dimming creates distracting glowing halos around mouse cursors, white movie subtitles, and night sky stars, diminishing dark-scene contrast.",
+    "whatToLookFor": [
+      "मिनी-एलईडी लोकल डिमिंग, ब्लूमिंग प्रभाव और हेलो आर्टिफैक्ट्स - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
+    ],
+    "howToTest": [
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
+    ],
+    "whatScreenTesterCanObserve": [
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
+    ],
+    "commonCauses": [
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
+    ],
+    "whatToDoNext": [
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
+    ],
+    "sections": [
+      {
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
+        "content": [
+          "ब्लूमिंग (या हेलोइंग) मिनी-एलईडी और FALD स्क्रीन पर एक दृश्य कलाकृति है जहां बैकलाइट ज़ोन से प्रकाश छोटे चमकीले तत्वों के किनारों से काले पिक्सेल में फैल जाता है।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "ब्लूमिंग (या हेलोइंग) मिनी-एलईडी और FALD स्क्रीन पर एक दृश्य कलाकृति है जहां बैकलाइट ज़ोन से प्रकाश छोटे चमकीले तत्वों के किनारों से काले पिक्सेल में फैल जाता है।"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
+      },
+      {
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
+      }
+    ],
+    "relatedTestIds": [
+      "blooming-test",
+      "backlight-bleed-test",
+      "contrast-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "backlight-bleed-glow"
+    ],
+    "relatedArticleSlugs": [
+      "backlight-bleed-vs-ips-glow",
+      "black-levels-and-shadow-detail",
+      "oled-burn-in-and-image-retention"
+    ],
+    "primarySearchIntent": "mini led blooming halo test local dimming fald",
+    "readingTimeMinutes": 6
+  },
+  {
+    "slug": "display-test-patterns-and-visual-inspection-standards",
+    "category": "browser-and-testing",
+    "title": "डिस्प्ले टेस्ट पैटर्न, ज्यामिति ग्रिड और विजुअल निरीक्षण मानक",
+    "subtitle": "मानकीकृत टेस्ट पैटर्न, 1-पिक्सेल लाइन रेखापुंज, क्रॉसहेयर और चेकरबोर्ड का उपयोग।",
+    "description": "मानकीकृत टेस्ट पैटर्न, 1-पिक्सेल लाइन रेखापुंज, क्रॉसहेयर और चेकरबोर्ड का उपयोग।",
+    "directAnswer": "मानकीकृत टेस्ट पैटर्न सटीक ऑप्टिकल संदर्भ चार्ट हैं जो डिस्प्ले ज्यामिति, पिक्सेल क्लॉक चरण और ऑप्टिकल स्पष्टता का कठोर परीक्षण करते हैं।",
+    "whyItMatters": "Calibrating a monitor using natural photographs or movie scenes is inherently subjective and error-prone. Precision test patterns provide unambiguous mathematical geometries (1-pixel rasters, orthogonal grids) that instantly expose optical flaws.",
+    "whatToLookFor": [
+      "डिस्प्ले टेस्ट पैटर्न, ज्यामिति ग्रिड और विजुअल निरीक्षण मानक - स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "स्क्रीन पर किसी भी प्रकार की असमान चमक, झिलमिलाहट या धुंधलेपन की ध्यानपूर्वक जाँच करें।"
+    ],
+    "howToTest": [
+      "Screen Tester में संबंधित परीक्षण टूल खोलें और पूर्ण स्क्रीन मोड (F11) में निरीक्षण करें।",
+      "उचित रोशनी में स्क्रीन के केंद्र से लेकर किनारों तक सावधानीपूर्वक निरीक्षण करें।"
+    ],
+    "whatScreenTesterCanObserve": [
+      "स्क्रीन पर पैटर्न, ज्यामितीय संरेखण और पिक्सेल स्पष्टता का दृश्य निरीक्षण",
+      "ब्राउज़र एपीआई के माध्यम से रिज़ॉल्यूशन, ताज़ा दर और रंग गहराई की वास्तविक समय पहचान"
+    ],
+    "whatScreenTesterCannotDetermine": [
+      "हार्डवेयर स्तर पर भौतिक माप (जिसके लिए बाहरी फोटोमीटर या रंगमापी उपकरण की आवश्यकता होती है)",
+      "बैकलाइट सर्किट के आंतरिक वोल्टेज या पैनल के भौतिक क्षरण का स्तर"
+    ],
+    "commonCauses": [
+      "ऑपरेटिंग सिस्टम की डिस्प्ले सेटिंग्स, GPU ड्राइवर स्केलिंग या केबल की बैंडविड्थ सीमाएँ",
+      "मॉनिटर की OSD सेटिंग्स (रंग तापमान, कंट्रास्ट या प्रतिक्रिया समय) में बेमेल होना"
+    ],
+    "whatToDoNext": [
+      "अपने डिस्प्ले के प्रोफाइल की पुष्टि करने के लिए Screen Tester पर संबंधित अनुशंसित परीक्षण चलाएं।",
+      "सेटिंग्स समायोजित करने के बाद, इष्टतम गुणवत्ता की पुष्टि के लिए परीक्षण पैटर्न की पुनः जाँच करें।"
+    ],
+    "sections": [
+      {
+        "title": "तकनीकी आधार और कार्य सिद्धांत",
+        "content": [
+          "मानकीकृत टेस्ट पैटर्न सटीक ऑप्टिकल संदर्भ चार्ट हैं जो डिस्प्ले ज्यामिति, पिक्सेल क्लॉक चरण और ऑप्टिकल स्पष्टता का कठोर परीक्षण करते हैं।। डिस्प्ले का प्रदर्शन भौतिक पैनल, बैकलाइट और ग्राफिक्स ड्राइवर के समन्वय पर निर्भर करता है।"
+        ]
+      },
+      {
+        "title": "इष्टतम सेटिंग्स और समस्या निवारण",
+        "content": [
+          "मानकीकृत टेस्ट पैटर्न सटीक ऑप्टिकल संदर्भ चार्ट हैं जो डिस्प्ले ज्यामिति, पिक्सेल क्लॉक चरण और ऑप्टिकल स्पष्टता का कठोर परीक्षण करते हैं।"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "क्या यह समस्या निर्माता की वारंटी या प्रतिस्थापन (RMA) के तहत आती है?",
+        "answer": "यह प्रत्येक निर्माता की वारंटी नीति (ISO 9241-307 मानक) पर निर्भर करता है। मामूली अंतर को सामान्य सीमा माना जा सकता है।"
+      },
+      {
+        "question": "दैनिक उपयोग में इस व्यवहार को कैसे ठीक या रोका जा सकता है?",
+        "answer": "हमेशा नेटिव रिज़ॉल्यूशन का उपयोग करें, उचित चमक स्तर बनाए रखें और अपने सिस्टम में सही रंग प्रोफ़ाइल लागू करें।"
+      }
+    ],
+    "relatedTestIds": [
+      "custom-pattern",
+      "solid-color-test",
+      "sharpness-test"
+    ],
+    "relatedTroubleshootingIds": [
+      "text-fuzzy-blurry"
+    ],
+    "relatedArticleSlugs": [
+      "resolution-and-scaling",
+      "text-clarity-and-subpixel-rendering",
+      "what-browser-display-tests-can-and-cannot-measure"
+    ],
+    "primarySearchIntent": "monitor test patterns calibration grid checkerboard visual inspection",
+    "readingTimeMinutes": 5
+  }
 ];

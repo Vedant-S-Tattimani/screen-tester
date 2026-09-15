@@ -1,3 +1,5 @@
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 import { generateSeoMetadata } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
@@ -13,6 +15,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function GammaTestPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const explainerData = getFeatureExplainer("gamma-test", locale);
+  const explainerLabels = getExplainerLabels(locale);
   const t = await getTranslations({ locale, namespace: "TestPages.gamma-test" });
 
   return (
@@ -28,6 +32,12 @@ export default async function GammaTestPage({ params }: { params: Promise<{ loca
         </ol>
       }
       extraControls={<GammaGuidance />}
+    
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }
     >
       <GammaPattern testId="gamma-test" />
     </TestWrapper>

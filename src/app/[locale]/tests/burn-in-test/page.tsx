@@ -1,3 +1,5 @@
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 import { generateSeoMetadata } from "@/lib/seo";
 import { TestWrapper } from "@/components/test-runner/TestWrapper";
 import { BurnInPattern } from "@/components/tests/BurnInPattern";
@@ -21,6 +23,8 @@ export default async function BurnInTestPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const explainerData = getFeatureExplainer("burn-in-test", locale);
+  const explainerLabels = getExplainerLabels(locale);
   const t = await getTranslations({ locale, namespace: "Tests" });
   
   return (
@@ -28,8 +32,7 @@ export default async function BurnInTestPage({
       title={t("burnIn.title")}
       description={t("burnIn.description")}
       instructions={t("burnIn.instructions")}
-      testId="burn-in-test"
-    >
+      testId="burn-in-test">
       <BurnInPattern testId="burn-in-test" />
     </TestWrapper>
   );

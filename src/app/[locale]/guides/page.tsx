@@ -53,10 +53,18 @@ export default async function GuidesPage({ params }: { params: Promise<{ locale:
                 const camelId = keyMap[guide.id] || guide.id.replace("-screen-test", "").replace(/-([a-z])/g, g => g[1].toUpperCase());
                 let title = guide.primaryIntent;
                 let description = "";
-                try {
-                  title = tGuides(`${camelId}.title`) || title;
-                  description = tGuides(`${camelId}.description`) || tGuides(`${camelId}.metaDescription`) || tGuides(`${camelId}.subtitle`) || description;
-                } catch {}
+
+                if (tGuides.has(`${camelId}.title`)) {
+                  title = tGuides(`${camelId}.title`);
+                }
+
+                if (tGuides.has(`${camelId}.description`)) {
+                  description = tGuides(`${camelId}.description`);
+                } else if (tGuides.has(`${camelId}.subtitle`)) {
+                  description = tGuides(`${camelId}.subtitle`);
+                } else if (tGuides.has(`${camelId}.metaDescription`)) {
+                  description = tGuides(`${camelId}.metaDescription`);
+                }
 
                 return (
                   <TestRow 
@@ -81,16 +89,19 @@ export default async function GuidesPage({ params }: { params: Promise<{ locale:
             <div className="flex flex-col">
               {conceptGuides.map(guide => {
                 let title = guide.primaryIntent.replace(/\b\w/g, l => l.toUpperCase());
-                let description = tGuides("learnAbout", { topic: guide.primaryIntent });
+                let description = tGuides.has("learnAbout")
+                  ? tGuides("learnAbout", { topic: guide.primaryIntent })
+                  : `Learn about ${guide.primaryIntent} and how to test for it.`;
+
                 if (guide.id === "monitor-viewing-angles-explained") {
-                  title = tGuides("viewingAngles.title");
-                  description = tGuides("viewingAngles.metaDescription");
+                  if (tGuides.has("viewingAngles.title")) title = tGuides("viewingAngles.title");
+                  if (tGuides.has("viewingAngles.metaDescription")) description = tGuides("viewingAngles.metaDescription");
                 } else if (guide.id === "displayport-vs-hdmi-bandwidth-chroma") {
-                  title = tGuides("displayportVsHdmi.title");
-                  description = tGuides("displayportVsHdmi.metaDescription");
+                  if (tGuides.has("displayportVsHdmi.title")) title = tGuides("displayportVsHdmi.title");
+                  if (tGuides.has("displayportVsHdmi.metaDescription")) description = tGuides("displayportVsHdmi.metaDescription");
                 } else if (guide.id === "monitor-osd-settings-explained") {
-                  title = tGuides("monitorOsdSettings.title");
-                  description = tGuides("monitorOsdSettings.metaDescription");
+                  if (tGuides.has("monitorOsdSettings.title")) title = tGuides("monitorOsdSettings.title");
+                  if (tGuides.has("monitorOsdSettings.metaDescription")) description = tGuides("monitorOsdSettings.metaDescription");
                 }
 
                 return (

@@ -13,6 +13,7 @@ import {
   MonitorProfile,
   ComparisonObservations
 } from "@/lib/inspectionStorage";
+import { KnowledgeBaseCallout } from "@/components/layout/KnowledgeBaseCallout";
 
 interface DisplayPreset {
   name: string;
@@ -1225,8 +1226,9 @@ export function CompareDisplaysClient({ educationalContent }: { educationalConte
 
         {/* Feature Explainer & Search Intent Details */}
         {educationalContent && (
-          <div className="w-full mt-12">
+          <div className="w-full mt-12 space-y-6">
             {educationalContent}
+            <KnowledgeBaseCallout testId="compare-displays" />
           </div>
         )}
       </div>

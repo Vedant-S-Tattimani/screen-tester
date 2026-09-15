@@ -1,1373 +1,2583 @@
 import { ExplainerData, ExplainerLabels } from "./types";
 
 export const JA_LABELS: ExplainerLabels = {
-  overviewHeading: "ディスプレイ検査の概要",
-  whatToLookForHeading: "検査中に確認すべき項目",
-  boundariesHeading: "測定限界と技術的正確性",
-  canObserveLabel: "Screen Testerが観察・検出できること",
-  cannotMeasureLabel: "ブラウザ上で正確に測定できない項目",
-  interpretationHeading: "観察結果の診断と解釈",
-  nextStepsHeading: "推奨される次のステップ",
+  "overviewHeading": "ディスプレイ検査の概要",
+  "whatToLookForHeading": "検査中に確認すべき項目",
+  "boundariesHeading": "測定限界と技術的正確性",
+  "canObserveLabel": "Screen Testerが観察・検出できること",
+  "cannotMeasureLabel": "ブラウザ上で正確に測定できない項目",
+  "interpretationHeading": "観察結果の診断と解釈",
+  "nextStepsHeading": "推奨される次のステップ"
 };
 
 export const JA_EXPLAINERS: Record<string, ExplainerData> = {
   "dead-pixel-test": {
-    overview: "ドット抜け（デッドピクセル）とは、信号に関係なく完全に消灯したままの液晶サブピクセルまたはOLED素子です。白やシアン、黄色などの明るい単色背景上で、動かない微小な黒点として現れます。",
-    whatToLookFor: [
+    "overview": "ドット抜け（デッドピクセル）とは、信号に関係なく完全に消灯したままの液晶サブピクセルまたはOLED素子です。白やシアン、黄色などの明るい単色背景上で、動かない微小な黒点として現れます。",
+    "whatToLookFor": [
       {
-        label: "明るい画面上の動かない微小な黒点",
-        description: "明るい単色背景を切り替えても常に消灯したままの極小の黒い点を探します。"
+        "label": "明るい画面上の動かない微小な黒点",
+        "description": "明るい単色背景を切り替えても常に消灯したままの極小の黒い点を探します。"
       },
       {
-        label: "ホコリとドット抜けの判別",
-        description: "画面表面のホコリは視線角度を変えると位置がずれ、拭き取ることができます。ドット抜けは偏光板の奥に位置します。"
+        "label": "ホコリとドット抜けの判別",
+        "description": "画面表面のホコリは視線角度を変えると位置がずれ、拭き取ることができます。ドット抜けは偏光板の奥に位置します。"
       },
       {
-        label: "サブピクセル抜けと完全画素抜け",
-        description: "赤・緑・青のどれか1つのサブピクセルのみが切れている場合、純黒ではなくわずかに変色した点として見えます。"
+        "label": "サブピクセル抜けと完全画素抜け",
+        "description": "赤・緑・青のどれか1つのサブピクセルのみが切れている場合、純黒ではなくわずかに変色した点として見えます。"
       },
       {
-        label: "ドット抜けの集中（クラスター欠陥）",
-        description: "近接した位置に複数の抜けが存在する場合、重大なパネル不良とみなされ無償交換対象になる場合があります。"
+        "label": "ドット抜けの集中（クラスター欠陥）",
+        "description": "近接した位置に複数の抜けが存在する場合、重大なパネル不良とみなされ無償交換対象になる場合があります。"
       }
     ],
-    canObserve: [
+    "canObserve": [
       "明るい単色背景を用いた消灯ピクセルの視覚的識別",
       "画面内における不具合箇所の正確な座標と個数の確認",
       "背景の明るさと欠陥ピクセルのコントラスト検証"
     ],
-    cannotMeasure: [
+    "cannotMeasure": [
       "液晶薄膜トランジスタ（TFT）の電気的導通や駆動電圧",
       "目視確認を介さないブラウザによる完全自動判定",
       "パネルガラス層内部の物理的製造欠陥の直接解析"
     ],
-    interpretation: "ドット抜けは製造時の微細トランジスタ不良により生じます。多くのメーカーはISO 9241-307クラス2基準を採用しており、100万画素あたり数個の欠陥は許容範囲内とされるのが一般的です。",
-    nextSteps: {
-      text: "黒ではなく特定の色で点灯したままのピクセルが見つかった場合は修復ツールをお試しください。",
-      actionLabel: "Stuck Pixel Fixerを起動",
-      actionHref: "/tests/stuck-pixel-fixer"
+    "interpretation": "ドット抜けは製造時の微細トランジスタ不良により生じます。多くのメーカーはISO 9241-307クラス2基準を採用しており、100万画素あたり数個の欠陥は許容範囲内とされるのが一般的です。",
+    "nextSteps": {
+      "text": "黒ではなく特定の色で点灯したままのピクセルが見つかった場合は修復ツールをお試しください。",
+      "actionLabel": "Stuck Pixel Fixerを起動",
+      "actionHref": "/tests/stuck-pixel-fixer"
     }
   },
-
   "stuck-pixel-test": {
-    overview: "常時点灯ピクセル（輝点・スタックピクセル）は、液晶セルが通光状態で固まり常に光を通してしまう現象です。黒背景において赤・緑・青・シアン・白などの明るい発光点として目立ちます。",
-    whatToLookFor: [
+    "overview": "常時点灯ピクセル（輝点・スタックピクセル）は、液晶セルが通光状態で固まり常に光を通してしまう現象です。黒背景において赤・緑・青・シアン・白などの明るい発光点として目立ちます。",
+    "whatToLookFor": [
       {
-        label: "純黒背景で光る色付きの点",
-        description: "部屋を暗くして黒画面を確認します。赤・緑・青に発光し続ける点があれば輝点です。"
+        "label": "純黒背景で光る色付きの点",
+        "description": "部屋を暗くして黒画面を確認します。赤・緑・青に発光し続ける点があれば輝点です。"
       },
       {
-        label: "補色背景での確認",
-        description: "緑の輝点は緑背景では目立ちませんが、赤や青、黒の背景で強く光って見えます。"
+        "label": "補色背景での確認",
+        "description": "緑の輝点は緑背景では目立ちませんが、赤や青、黒の背景で強く光って見えます。"
       },
       {
-        label: "白色の常時点灯点",
-        description: "RGBの3サブピクセルすべてが開きっぱなしになっていると、暗い背景で白色の輝点になります。"
+        "label": "白色の常時点灯点",
+        "description": "RGBの3サブピクセルすべてが開きっぱなしになっていると、暗い背景で白色の輝点になります。"
       },
       {
-        label: "バックライト漏れとの違い",
-        description: "輝点はピンポイントの微小点ですが、バックライト漏れはベゼル周辺のモヤ状の光です。"
+        "label": "バックライト漏れとの違い",
+        "description": "輝点はピンポイントの微小点ですが、バックライト漏れはベゼル周辺のモヤ状の光です。"
       }
     ],
-    canObserve: [
+    "canObserve": [
       "黒や補色背景における発光サブピクセルの視覚的特定",
       "不具合のある色チャンネル（赤・緑・青）の個別判別",
       "画面上の位置の特定とマッピング"
     ],
-    cannotMeasure: [
+    "cannotMeasure": [
       "液晶材料の粘性や物理的配向状態",
       "トランジスタゲートの開閉速度や電気抵抗",
       "長期間の観察なしでの恒久的な治癒可否の保証"
     ],
-    interpretation: "スタックピクセルは静電気や製造時の不均一性により液晶分子の復帰が妨げられることで生じます。消灯した黒点と異なり、急速な色切り替え刺激で元に戻る場合があります。",
-    nextSteps: {
-      text: "常時点灯ピクセルが見つかりましたか？高速色刺激ツールで復旧を試みてください。",
-      actionLabel: "Stuck Pixel Fixerを試す",
-      actionHref: "/tests/stuck-pixel-fixer"
+    "interpretation": "スタックピクセルは静電気や製造時の不均一性により液晶分子の復帰が妨げられることで生じます。消灯した黒点と異なり、急速な色切り替え刺激で元に戻る場合があります。",
+    "nextSteps": {
+      "text": "常時点灯ピクセルが見つかりましたか？高速色刺激ツールで復旧を試みてください。",
+      "actionLabel": "Stuck Pixel Fixerを試す",
+      "actionHref": "/tests/stuck-pixel-fixer"
     }
   },
-
   "stuck-pixel-fixer": {
-    overview: "高速なRGB原色切り替えとノイズパターンを用いて、固着した液晶分子を物理的・電気的に激しく駆動し、正常な動作状態への復帰を試みる修復ツールです。",
-    whatToLookFor: [
+    "overview": "高速なRGB原色切り替えとノイズパターンを用いて、固着した液晶分子を物理的・電気的に激しく駆動し、正常な動作状態への復帰を試みる修復ツールです。",
+    "whatToLookFor": [
       {
-        label: "刺激枠の精密な位置合わせ",
-        description: "画面全体の不要な点滅を避けるため、刺激ボックスを対象ピクセルの真上に合わせて配置します。"
+        "label": "刺激枠の精密な位置合わせ",
+        "description": "画面全体の不要な点滅を避けるため、刺激ボックスを対象ピクセルの真上に合わせて配置します。"
       },
       {
-        label: "刺激パターンの選択",
-        description: "広域刺激を行う「RGBサイクル」と、高周波の「カラーノイズ」を切り替えて試します。"
+        "label": "刺激パターンの選択",
+        "description": "広域刺激を行う「RGBサイクル」と、高周波の「カラーノイズ」を切り替えて試します。"
       },
       {
-        label: "推奨実行時間",
-        description: "15〜30分間実行した後、一時停止して純黒背景でピクセルが改善したか確認します。"
+        "label": "推奨実行時間",
+        "description": "15〜30分間実行した後、一時停止して純黒背景でピクセルが改善したか確認します。"
       },
       {
-        label: "光過敏性に関する注意事項",
-        description: "めまいや目の疲労を感じた場合は直ちに使用を中止してください。光過敏性発作の既往がある方は使用をお控えください。"
+        "label": "光過敏性に関する注意事項",
+        "description": "めまいや目の疲労を感じた場合は直ちに使用を中止してください。光過敏性発作の既往がある方は使用をお控えください。"
       }
     ],
-    canObserve: [
+    "canObserve": [
       "ブラウザ上での高速RGBサイクルおよびランダムカラーノイズのリアルタイム再生",
       "刺激エリアの自由なドラッグ移動とセッションごとのタイマー管理",
       "刺激前後におけるピクセルの視覚的な応答確認"
     ],
-    cannotMeasure: [
+    "cannotMeasure": [
       "回路断線や物理的に破損したトランジスタの修復",
       "確実な回復率の保証（パネルの個体差に強く依存します）",
       "通電しなくなったドット抜け（黒点）の復旧"
     ],
-    interpretation: "ソフトウェアによる刺激は一時的な分子の引っかかりにのみ有効です。ハードウェア的に素子が断線・破損している場合は物理的なパネル交換が必要です。",
-    nextSteps: {
-      text: "刺激の終了後、黒背景のスタックピクセルテストで改善状況を確認してください。",
-      actionLabel: "Stuck Pixel Testで確認",
-      actionHref: "/tests/stuck-pixel-test"
+    "interpretation": "ソフトウェアによる刺激は一時的な分子の引っかかりにのみ有効です。ハードウェア的に素子が断線・破損している場合は物理的なパネル交換が必要です。",
+    "nextSteps": {
+      "text": "刺激の終了後、黒背景のスタックピクセルテストで改善状況を確認してください。",
+      "actionLabel": "Stuck Pixel Testで確認",
+      "actionHref": "/tests/stuck-pixel-test"
     }
   },
-
   "refresh-rate-test": {
-    overview: "リフレッシュレート（Hz）は画面が1秒間に画像を書き換える回数です。このテストはブラウザのrequestAnimationFrame APIを用いてフレーム間隔と描画の滑らかさを測定します。",
-    whatToLookFor: [
+    "overview": "リフレッシュレート（Hz）は画面が1秒間に画像を書き換える回数です。このテストはブラウザのrequestAnimationFrame APIを用いてフレーム間隔と描画の滑らかさを測定します。",
+    "whatToLookFor": [
       {
-        label: "実測値と設定値の一致",
-        description: "測定値がモニターの公称設定値（60Hz、120Hz、144Hz、240Hzなど）と一致しているか確認します。"
+        "label": "実測値と設定値の一致",
+        "description": "測定値がモニターの公称設定値（60Hz、120Hz、144Hz、240Hzなど）と一致しているか確認します。"
       },
       {
-        label: "フレーム間隔のブレ（Frame Pacing）",
-        description: "安定した144Hz駆動時、フレームは約6.94ミリ秒ごとに均一に更新される必要があります。"
+        "label": "フレーム間隔のブレ（Frame Pacing）",
+        "description": "安定した144Hz駆動時、フレームは約6.94ミリ秒ごとに均一に更新される必要があります。"
       },
       {
-        label: "ブラウザの60Hz制限",
-        description: "144Hz設定にもかかわらず60Hzと表示される場合、省電力モードやブラウザのハードウェアアクセラレーション設定を確認してください。"
+        "label": "ブラウザの60Hz制限",
+        "description": "144Hz設定にもかかわらず60Hzと表示される場合、省電力モードやブラウザのハードウェアアクセラレーション設定を確認してください。"
       },
       {
-        label: "移動バーの滑らかさ",
-        description: "高リフレッシュレート環境では、バーが引っかかりや残像感なく極めて滑らかに移動します。"
+        "label": "移動バーの滑らかさ",
+        "description": "高リフレッシュレート環境では、バーが引っかかりや残像感なく極めて滑らかに移動します。"
       }
     ],
-    canObserve: [
+    "canObserve": [
       "ブラウザのrequestAnimationFrame呼び出し頻度と間隔のばらつき",
       "推定描画FPSおよび垂直同期の安定性",
       "アクティブタブにおけるウィンドウ合成の動作状況"
     ],
-    cannotMeasure: [
+    "cannotMeasure": [
       "ブラウザ環境外における液晶パネル自体の物理駆動周波数",
       "DisplayPortやHDMIケーブルの物理リンク帯域幅",
       "オシロスコープレベルでのVBLANK信号タイミング"
     ],
-    interpretation: "WebブラウザはOSのウィンドウコンポジタに同期して描画します。マルチモニター環境で異なるリフレッシュレートが混在していると、60Hzに制限されることがあります。",
-    nextSteps: {
-      text: "ゲーミングモニターなのに60Hzで頭打ちになっていますか？設定手順をご確認ください。",
-      actionLabel: "リフレッシュレートのトラブルシューティング",
-      actionHref: "/knowledge-base/troubleshooting#refresh-rate-capped"
+    "interpretation": "WebブラウザはOSのウィンドウコンポジタに同期して描画します。マルチモニター環境で異なるリフレッシュレートが混在していると、60Hzに制限されることがあります。",
+    "nextSteps": {
+      "text": "ゲーミングモニターなのに60Hzで頭打ちになっていますか？設定手順をご確認ください。",
+      "actionLabel": "リフレッシュレートのトラブルシューティング",
+      "actionHref": "/knowledge-base/troubleshooting#refresh-rate-capped"
     }
   },
-
   "ghosting-test": {
-    overview: "ゴーストとは、動く物体の背後に残像や尾を引く影が見える現象です。液晶分子の色変化速度（応答速度）がフレーム切り替え時間に追いつかない場合に発生します。",
-    whatToLookFor: [
+    "overview": "ゴーストとは、動く物体の背後に残像や尾を引く影が見える現象です。液晶分子の色変化速度（応答速度）がフレーム切り替え時間に追いつかない場合に発生します。",
+    "whatToLookFor": [
       {
-        label: "黒い尾を引く残像（標準的なゴースト）",
-        description: "動くブロックの後ろに暗い影が残る場合、黒から明色への切り替え速度が遅いことを意味します（VAパネルに多い）。"
+        "label": "黒い尾を引く残像（標準的なゴースト）",
+        "description": "動くブロックの後ろに暗い影が残る場合、黒から明色への切り替え速度が遅いことを意味します（VAパネルに多い）。"
       },
       {
-        label: "白い輪郭・コロナ（逆ゴースト）",
-        description: "物体の背後に白く光る影が出る場合、モニターのオーバードライブ機能が効きすぎています（オーバーシュート）。"
+        "label": "白い輪郭・コロナ（逆ゴースト）",
+        "description": "物体の背後に白く光る影が出る場合、モニターのオーバードライブ機能が効きすぎています（オーバーシュート）。"
       },
       {
-        label: "背景色による応答速度の違い",
-        description: "赤や暗いグレーの背景で残像が極端に悪化しないか確認します。"
+        "label": "背景色による応答速度の違い",
+        "description": "赤や暗いグレーの背景で残像が極端に悪化しないか確認します。"
       },
       {
-        label: "視線追従による残像の分離",
-        description: "動く物体を目で追いかけ、人間の網膜の残像と液晶自体の応答遅延を区別して観察します。"
+        "label": "視線追従による残像の分離",
+        "description": "動く物体を目で追いかけ、人間の網膜の残像と液晶自体の応答遅延を区別して観察します。"
       }
     ],
-    canObserve: [
+    "canObserve": [
       "移動速度に応じた残像やオーバーシュートコロナの視覚的確認",
       "明暗・暗明の遷移色ごとの応答性の違いの比較",
       "モニターのOSDオーバードライブ設定を変更した際の直接的な見え方の変化"
     ],
-    cannotMeasure: [
+    "cannotMeasure": [
       "ミリ秒（ms）単位での公認規格に準拠した中間階調応答時間（GtG）",
       "追従カメラ（Pursuit Camera）による定量的な輝度減衰曲線",
       "液晶サブピクセルの駆動電圧波形"
     ],
-    interpretation: "ゴーストはパネル方式に大きく依存します（TNは高速、IPSは標準的、VAは暗部で遅延しやすく、OLEDはほぼゼロ）。オーバードライブを「中」に設定するとバランスが取れます。",
-    nextSteps: {
-      text: "オーバードライブの調整と逆ゴーストの解消法について詳しく学びましょう。",
-      actionLabel: "ゴースト＆モーションブラーガイドを読む",
-      actionHref: "/knowledge-base/monitor-ghosting-and-motion-blur"
+    "interpretation": "ゴーストはパネル方式に大きく依存します（TNは高速、IPSは標準的、VAは暗部で遅延しやすく、OLEDはほぼゼロ）。オーバードライブを「中」に設定するとバランスが取れます。",
+    "nextSteps": {
+      "text": "オーバードライブの調整と逆ゴーストの解消法について詳しく学びましょう。",
+      "actionLabel": "ゴースト＆モーションブラーガイドを読む",
+      "actionHref": "/knowledge-base/monitor-ghosting-and-motion-blur"
     }
   },
-
   "motion-blur-test": {
-    overview: "液晶や有機ELディスプレイの動きボケの主因はホールド型表示（Sample-and-Hold）です。次の書き換えまで画像が保持されるため、目を動かしたときに網膜上で像が引き伸ばされボケを感じます。",
-    whatToLookFor: [
+    "overview": "液晶や有機ELディスプレイの動きボケの主因はホールド型表示（Sample-and-Hold）です。次の書き換えまで画像が保持されるため、目を動かしたときに網膜上で像が引き伸ばされボケを感じます。",
+    "whatToLookFor": [
       {
-        label: "高速移動時の細部消失",
-        description: "細い線や文字がスクロールする様子を確認し、どの速度で文字が判読不能になるかを観察します。"
+        "label": "高速移動時の細部消失",
+        "description": "細い線や文字がスクロールする様子を確認し、どの速度で文字が判読不能になるかを観察します。"
       },
       {
-        label: "速度比較",
-        description: "240 px/sと960 px/sを比較し、移動速度の上昇に伴って目の追従ボケがどう広がるかを確認します。"
+        "label": "速度比較",
+        "description": "240 px/sと960 px/sを比較し、移動速度の上昇に伴って目の追従ボケがどう広がるかを確認します。"
       },
       {
-        label: "黒挿入（BFI・バックライトストロボ）の効果",
-        description: "モニターの黒挿入機能（ULMB、DyAc、ELMB等）をオンにすると、文字の輪郭が劇的にシャープになります。"
+        "label": "黒挿入（BFI・バックライトストロボ）の効果",
+        "description": "モニターの黒挿入機能（ULMB、DyAc、ELMB等）をオンにすると、文字の輪郭が劇的にシャープになります。"
       },
       {
-        label: "OLEDにおける動きボケ",
-        description: "応答速度0.1msのOLEDであっても、黒挿入なしの60Hzや120Hzではホールドボケが発生します。"
+        "label": "OLEDにおける動きボケ",
+        "description": "応答速度0.1msのOLEDであっても、黒挿入なしの60Hzや120Hzではホールドボケが発生します。"
       }
     ],
-    canObserve: [
+    "canObserve": [
       "移動速度やリフレッシュレートによる知覚的なボケ感の違い",
       "バックライトストロボ機能使用時の解像感の向上",
       "静止時のシャープさと移動時の輪郭ボケの差異"
     ],
-    cannotMeasure: [
+    "cannotMeasure": [
       "動画応答時間（MPRT）の正確なミリ秒単位の物理測定",
       "人間の眼球網膜における光子積分曲線",
       "ストロボバックライトの点灯デューティ比"
     ],
-    interpretation: "ホールド型ボケを減らすには、リフレッシュレートの引き上げ（1コマの保持時間を短縮）か、黒挿入（網膜残像のリセット）が不可欠です。",
-    nextSteps: {
-      text: "高Hz表示がいかに動きボケを低減させるか、リフレッシュレートテストで確認してください。",
-      actionLabel: "リフレッシュレートテストを開く",
-      actionHref: "/tests/refresh-rate-test"
+    "interpretation": "ホールド型ボケを減らすには、リフレッシュレートの引き上げ（1コマの保持時間を短縮）か、黒挿入（網膜残像のリセット）が不可欠です。",
+    "nextSteps": {
+      "text": "高Hz表示がいかに動きボケを低減させるか、リフレッシュレートテストで確認してください。",
+      "actionLabel": "リフレッシュレートテストを開く",
+      "actionHref": "/tests/refresh-rate-test"
     }
   },
-
   "vrr-test": {
-    overview: "可変リフレッシュレート（VRR：NVIDIA G-Sync、AMD FreeSync、VESA Adaptive-Sync）は、GPUのフレーム生成速度に合わせてモニターの書き換え間隔をリアルタイムに同調させ、画面のズレやカクつきを防ぎます。",
-    whatToLookFor: [
+    "overview": "可変リフレッシュレート（VRR：NVIDIA G-Sync、AMD FreeSync、VESA Adaptive-Sync）は、GPUのフレーム生成速度に合わせてモニターの書き換え間隔をリアルタイムに同調させ、画面のズレやカクつきを防ぎます。",
+    "whatToLookFor": [
       {
-        label: "画面の分断（テアリング）",
-        description: "画像の上半分と下半分がずれて水平な亀裂が入る現象が発生していないか確認します。"
+        "label": "画面の分断（テアリング）",
+        "description": "画像の上半分と下半分がずれて水平な亀裂が入る現象が発生していないか確認します。"
       },
       {
-        label: "微小なカクつき（スタッター・ジャダー）",
-        description: "フレームレートが揺らいだ際に、インジケーターが一瞬引っかかることなくスムーズに動くかを観察します。"
+        "label": "微小なカクつき（スタッター・ジャダー）",
+        "description": "フレームレートが揺らいだ際に、インジケーターが一瞬引っかかることなくスムーズに動くかを観察します。"
       },
       {
-        label: "ウィンドウモードとフルスクリーン",
-        description: "GPUドライバの設定によっては、完全な全画面表示にしないとG-SyncやFreeSyncが有効化されない場合があります。"
+        "label": "ウィンドウモードとフルスクリーン",
+        "description": "GPUドライバの設定によっては、完全な全画面表示にしないとG-SyncやFreeSyncが有効化されない場合があります。"
       },
       {
-        label: "低フレームレート補正（LFC）",
-        description: "モニターのVRR下限（例: 48Hz以下）を下回った際に、滑らかにフレーム複製が行われるか確認します。"
+        "label": "低フレームレート補正（LFC）",
+        "description": "モニターのVRR下限（例: 48Hz以下）を下回った際に、滑らかにフレーム複製が行われるか確認します。"
       }
     ],
-    canObserve: [
+    "canObserve": [
       "フレーム間隔変動時におけるテアリング線やスタッターの視覚的有無",
       "描画レート変動時のアニメーションの滑らかさ",
       "全画面とウィンドウ表示での挙動の違い"
     ],
-    cannotMeasure: [
+    "cannotMeasure": [
       "GPUドライバとモニター内蔵スケーラー間のハードウェア通信",
       "物理G-Sync / FreeSyncモジュールの内部動作ステータス",
       "DisplayPort補助チャンネル（AUX）のリアルタイムメタデータ"
     ],
-    interpretation: "WebブラウザはOSのウィンドウマネージャーを介して動作するため、VRRの有効化にはOS側のハードウェアアクセラレータ設定やGPUドライバ設定が正しく構成されている必要があります。",
-    nextSteps: {
-      text: "VRRを有効にしても画面が分断したりカクつく場合はトラブルシューティングをご覧ください。",
-      actionLabel: "VRRトラブルシューティングを読む",
-      actionHref: "/knowledge-base/troubleshooting#vrr-stutter-tearing"
+    "interpretation": "WebブラウザはOSのウィンドウマネージャーを介して動作するため、VRRの有効化にはOS側のハードウェアアクセラレータ設定やGPUドライバ設定が正しく構成されている必要があります。",
+    "nextSteps": {
+      "text": "VRRを有効にしても画面が分断したりカクつく場合はトラブルシューティングをご覧ください。",
+      "actionLabel": "VRRトラブルシューティングを読む",
+      "actionHref": "/knowledge-base/troubleshooting#vrr-stutter-tearing"
     }
   },
-
   "backlight-bleed-test": {
-    overview: "バックライト漏れは、液晶パネルの縁や角からバックライトの光が漏れ出す製造上の歪みです。この全画面黒テストにより、光漏れ箇所を特定し、視野角に依存するIPSグローと区別して診断できます。",
-    whatToLookFor: [
+    "overview": "バックライト漏れは、液晶パネルの縁や角からバックライトの光が漏れ出す製造上の歪みです。この全画面黒テストにより、光漏れ箇所を特定し、視野角に依存するIPSグローと区別して診断できます。",
+    "whatToLookFor": [
       {
-        label: "画面端や四隅からの光漏れ",
-        description: "ベゼルの縁に沿って現れる黄色や白い光溜まりで、頭の位置を動かしても消えずに残るものを確認します。"
+        "label": "画面端や四隅からの光漏れ",
+        "description": "ベゼルの縁に沿って現れる黄色や白い光溜まりで、頭の位置を動かしても消えずに残るものを確認します。"
       },
       {
-        label: "IPSグローと光漏れの違い",
-        description: "頭を左右に動かします。角度によって輝きが移動したり弱まったりする場合は、IPS特有のグロー現象であり故障ではありません。"
+        "label": "IPSグローと光漏れの違い",
+        "description": "頭を左右に動かします。角度によって輝きが移動したり弱まったりする場合は、IPS特有のグロー現象であり故障ではありません。"
       },
       {
-        label: "モヤ状のムラ（クラウディング）",
-        description: "拡散板の不均一やフレームの歪み圧迫により、画面中央部に雲状の明るいムラが生じる現象です。"
+        "label": "モヤ状のムラ（クラウディング）",
+        "description": "拡散板の不均一やフレームの歪み圧迫により、画面中央部に雲状の明るいムラが生じる現象です。"
       },
       {
-        label: "OLEDやMini-LEDとの比較",
-        description: "画素単独発光のOLEDは光漏れがゼロ（完全な0 nit）です。Mini-LEDは明るい箇所の周囲に微小なハローが見えることがあります。"
+        "label": "OLEDやMini-LEDとの比較",
+        "description": "画素単独発光のOLEDは光漏れがゼロ（完全な0 nit）です。Mini-LEDは明るい箇所の周囲に微小なハローが見えることがあります。"
       }
     ],
-    canObserve: [
+    "canObserve": [
       "黒背景におけるベゼル圧迫箇所やエッジからの光漏れパターンの視認",
       "暗室環境下における四隅の光漏れの広がりと深刻度",
       "視野角変化による静的な光漏れと動的なIPSグローの切り分け"
     ],
-    cannotMeasure: [
+    "cannotMeasure": [
       "測光器を用いないcd/m²（nit）単位での絶対輝度値",
       "パネルの静的ネイティブコントラスト比（例: 1000:1 vs 3000:1）",
       "ANSI規格に準拠した16分割コントラスト比"
     ],
-    interpretation: "適度なIPSグローは視野角の広いIPS構造の物理的特性です。一方、激しいバックライト漏れはベゼルが導光板を強く圧迫している組立不良です。",
-    nextSteps: {
-      text: "IPSグロー、バックライト漏れ、OLEDの真の黒の違いを詳しく解説しています。",
-      actionLabel: "バックライト漏れ vs IPSグロー解説",
-      actionHref: "/knowledge-base/backlight-bleed-vs-ips-glow"
+    "interpretation": "適度なIPSグローは視野角の広いIPS構造の物理的特性です。一方、激しいバックライト漏れはベゼルが導光板を強く圧迫している組立不良です。",
+    "nextSteps": {
+      "text": "IPSグロー、バックライト漏れ、OLEDの真の黒の違いを詳しく解説しています。",
+      "actionLabel": "バックライト漏れ vs IPSグロー解説",
+      "actionHref": "/knowledge-base/backlight-bleed-vs-ips-glow"
     }
   },
-
   "near-black-test": {
-    overview: "黒浮き・暗部階調テストは、完全な黒（0%）からわずかに明るい極低輝度（0.5%〜5%）までの識別能力を評価します。暗部が黒く潰れる（黒つぶれ）と、映画やゲームの暗いシーンで細部が失われます。",
-    whatToLookFor: [
+    "overview": "黒浮き・暗部階調テストは、完全な黒（0%）からわずかに明るい極低輝度（0.5%〜5%）までの識別能力を評価します。暗部が黒く潰れる（黒つぶれ）と、映画やゲームの暗いシーンで細部が失われます。",
+    "whatToLookFor": [
       {
-        label: "黒つぶれ（Black Crush）",
-        description: "最初のステップ（0.5%または1%）が完全に真っ黒と同化して見えない場合、暗部が潰れています。"
+        "label": "黒つぶれ（Black Crush）",
+        "description": "最初のステップ（0.5%または1%）が完全に真っ黒と同化して見えない場合、暗部が潰れています。"
       },
       {
-        label: "隣接ステップの識別",
-        description: "暗い部屋で、低輝度のグレーブロックの境界線が明瞭に判別できるか確認します。"
+        "label": "隣接ステップの識別",
+        "description": "暗い部屋で、低輝度のグレーブロックの境界線が明瞭に判別できるか確認します。"
       },
       {
-        label: "VAパネルの視野角ガンマシフト",
-        description: "VAパネルでは、真正面から見ると潰れていた影が、斜めから覗き込むと浮き上がって見えることがあります。"
+        "label": "VAパネルの視野角ガンマシフト",
+        "description": "VAパネルでは、真正面から見ると潰れていた影が、斜めから覗き込むと浮き上がって見えることがあります。"
       },
       {
-        label: "室内照明の映り込み",
-        description: "室内の照明光は人間の暗部識別力を著しく損ないます。検査時は部屋の明かりを消してください。"
+        "label": "室内照明の映り込み",
+        "description": "室内の照明光は人間の暗部識別力を著しく損ないます。検査時は部屋の明かりを消してください。"
       }
     ],
-    canObserve: [
+    "canObserve": [
       "0.5%、1%、2%、3%、4%、5%の各暗部グレーパッチの視覚的識別限界",
       "暗い背景におけるシャドウディテールの分離度",
       "ガンマ、ブラックイコライザー、HDMIダイナミックレンジ変更による変化"
     ],
-    cannotMeasure: [
+    "cannotMeasure": [
       "専用センサーなしでの0.05 nit以下の微小輝度測定",
       "ガンマ曲線規格（BT.1886 vs 2.2）への厳密な数学的一致度",
       "パネルのネイティブ黒輝度（cd/m²）の絶対値"
     ],
-    interpretation: "黒つぶれは、GPU出力レンジの不一致（フル0〜255に対してリミテッド16〜235の設定）や、モニターのガンマ設定の狂いが主な原因です。",
-    nextSteps: {
-      text: "ゲームや映像で暗い部分が見えにくい場合は、黒つぶれ解消手順をご確認ください。",
-      actionLabel: "黒つぶれのトラブルシューティング",
-      actionHref: "/knowledge-base/troubleshooting#black-crush"
+    "interpretation": "黒つぶれは、GPU出力レンジの不一致（フル0〜255に対してリミテッド16〜235の設定）や、モニターのガンマ設定の狂いが主な原因です。",
+    "nextSteps": {
+      "text": "ゲームや映像で暗い部分が見えにくい場合は、黒つぶれ解消手順をご確認ください。",
+      "actionLabel": "黒つぶれのトラブルシューティング",
+      "actionHref": "/knowledge-base/troubleshooting#black-crush"
     }
   },
-
   "gradient-banding-test": {
-    overview: "滑らかなグラデーションには十分な色階調が必要です。パネルや信号経路の色深度（ビット深度）が不足していると、滑らかな変化が縞模様の段差（カラーバンディング）になって現れます。",
-    whatToLookFor: [
+    "overview": "滑らかなグラデーションには十分な色階調が必要です。パネルや信号経路の色深度（ビット深度）が不足していると、滑らかな変化が縞模様の段差（カラーバンディング）になって現れます。",
+    "whatToLookFor": [
       {
-        label: "階段状の縞模様（バンディング線）",
-        description: "グレーやRGBのグラデーションにおいて、滑らかではなく明確な境界線の縞が見えないか確認します。"
+        "label": "階段状の縞模様（バンディング線）",
+        "description": "グレーやRGBのグラデーションにおいて、滑らかではなく明確な境界線の縞が見えないか確認します。"
       },
       {
-        label: "特定チャンネルのバンディング",
-        description: "青色や暗い部分で特に段差が目立っていないかチェックします。"
+        "label": "特定チャンネルのバンディング",
+        "description": "青色や暗い部分で特に段差が目立っていないかチェックします。"
       },
       {
-        label: "ビット深度とFRCディザリング",
-        description: "ネイティブ8bit/10bitパネルは滑らかですが、6bit+FRCパネルでは微細な粒状感や段差が出やすくなります。"
+        "label": "ビット深度とFRCディザリング",
+        "description": "ネイティブ8bit/10bitパネルは滑らかですが、6bit+FRCパネルでは微細な粒状感や段差が出やすくなります。"
       },
       {
-        label: "フルレンジとリミテッドレンジ",
-        description: "GPUのHDMI出力が「リミテッド（16〜235）」になっていると、両端の明暗部がバッサリ切り捨てられます。"
+        "label": "フルレンジとリミテッドレンジ",
+        "description": "GPUのHDMI出力が「リミテッド（16〜235）」になっていると、両端の明暗部がバッサリ切り捨てられます。"
       }
     ],
-    canObserve: [
+    "canObserve": [
       "グレースケールおよびRGBグラデーションにおける階調段差の有無",
       "水平・垂直・多チャンネルグラデーションの表現力の比較",
       "カラープロファイルやGPUダイナミックレンジ設定による階調崩れの確認"
     ],
-    cannotMeasure: [
+    "cannotMeasure": [
       "OSの申告値から独立したパネルの純粋なハードウェアビット深度",
       "隣接する階調間のDelta E色差の定量測定",
       "ディスプレイスケーラー内部の空間ディザリング計算"
     ],
-    interpretation: "バンディングは6bitパネルの性能限界や、HDMIダイナミックレンジの不一致、トーンカーブを切り捨てるICCプロファイルが原因となります。",
-    nextSteps: {
-      text: "6bit/8bit段差のシミュレーションとディザリングの確認には専用ツールをご利用ください。",
-      actionLabel: "カラーバンディング＆ビット深度テスト",
-      actionHref: "/tests/color-banding-test"
+    "interpretation": "バンディングは6bitパネルの性能限界や、HDMIダイナミックレンジの不一致、トーンカーブを切り捨てるICCプロファイルが原因となります。",
+    "nextSteps": {
+      "text": "6bit/8bit段差のシミュレーションとディザリングの確認には専用ツールをご利用ください。",
+      "actionLabel": "カラーバンディング＆ビット深度テスト",
+      "actionHref": "/tests/color-banding-test"
     }
   },
-
   "uniformity-test": {
-    overview: "画面均一性は、モニター全体で明るさと色温度がどれだけ均等に保たれているかを検査します。拡散板の品質やエッジライトの偏りにより、四隅の減光や汚れのような色ムラ（DSE）が発生します。",
-    whatToLookFor: [
+    "overview": "画面均一性は、モニター全体で明るさと色温度がどれだけ均等に保たれているかを検査します。拡散板の品質やエッジライトの偏りにより、四隅の減光や汚れのような色ムラ（DSE）が発生します。",
+    "whatToLookFor": [
       {
-        label: "四隅と外周の減光（周辺減光）",
-        description: "25%、50%、75%のグレー背景で、四隅が中央部よりも明らかに暗くなっていないか観察します。"
+        "label": "四隅と外周の減光（周辺減光）",
+        "description": "25%、50%、75%のグレー背景で、四隅が中央部よりも明らかに暗くなっていないか観察します。"
       },
       {
-        label: "画面の汚れ効果（Dirty Screen Effect - DSE）",
-        description: "単色画面で視線を動かした際に、ガラスに汚れがついているかのようなモヤモヤしたムラを探します。"
+        "label": "画面の汚れ効果（Dirty Screen Effect - DSE）",
+        "description": "単色画面で視線を動かした際に、ガラスに汚れがついているかのようなモヤモヤしたムラを探します。"
       },
       {
-        label: "左右の色温度差",
-        description: "画面の左側が暖色（赤っぽく/黄色っぽく）、右側が寒色（青っぽく）偏っていないか確認します。"
+        "label": "左右の色温度差",
+        "description": "画面の左側が暖色（赤っぽく/黄色っぽく）、右側が寒色（青っぽく）偏っていないか確認します。"
       },
       {
-        label: "5×5グリッドのブロック比較",
-        description: "中央から外周に向かって輝度がどの程度変化しているかを各ブロックで見比べます。"
+        "label": "5×5グリッドのブロック比較",
+        "description": "中央から外周に向かって輝度がどの程度変化しているかを各ブロックで見比べます。"
       }
     ],
-    canObserve: [
+    "canObserve": [
       "グレー・白画面における視覚的な輝度低下、周辺減光、中央ホットスポット",
       "画面左右や四隅における色温度のズレの目視確認",
       "標準化された複数階調における輝度ムラの観察"
     ],
-    cannotMeasure: [
+    "cannotMeasure": [
       "分光測色計なしでの「98.5%均一」といった精密なパーセンテージ算出",
       "各座標における色温度（ケルビン）の絶対値",
       "内蔵のデジタル均一性補正（DUC）回路の動作状況"
     ],
-    interpretation: "一般向けモニターでは外周部で10%〜15%程度の減光が見られるのが普通です。プロ用グラフィックモニターはDUC回路により5%未満の均一性を維持します。",
-    nextSteps: {
-      text: "DSEや減光が発生する理由と交換基準について解説しています。",
-      actionLabel: "画面均一性ガイドを読む",
-      actionHref: "/knowledge-base/backlight-bleed-vs-ips-glow"
+    "interpretation": "一般向けモニターでは外周部で10%〜15%程度の減光が見られるのが普通です。プロ用グラフィックモニターはDUC回路により5%未満の均一性を維持します。",
+    "nextSteps": {
+      "text": "DSEや減光が発生する理由と交換基準について解説しています。",
+      "actionLabel": "画面均一性ガイドを読む",
+      "actionHref": "/knowledge-base/backlight-bleed-vs-ips-glow"
     }
   },
-
   "text-clarity-test": {
-    overview: "文字の読みやすさは、画素密度（PPI）、OSのスケーリング倍率、サブピクセルの物理配列（RGB、BGR、QD-OLED）、およびフォントレンダリングエンジンによって決まります。",
-    whatToLookFor: [
+    "overview": "文字の読みやすさは、画素密度（PPI）、OSのスケーリング倍率、サブピクセルの物理配列（RGB、BGR、QD-OLED）、およびフォントレンダリングエンジンによって決まります。",
+    "whatToLookFor": [
       {
-        label: "文字輪郭の色にじみ（カラーフリンジ）",
-        description: "文字の縦線に赤や青の薄い影が見える場合、サブピクセル配列とフォントレンダリングの不一致が疑われます。"
+        "label": "文字輪郭の色にじみ（カラーフリンジ）",
+        "description": "文字の縦線に赤や青の薄い影が見える場合、サブピクセル配列とフォントレンダリングの不一致が疑われます。"
       },
       {
-        label: "BGR配列による文字ボケ",
-        description: "一部のモニターはBGR配列を採用しています。WindowsのClearTypeを再調整しないと文字がぼやけます。"
+        "label": "BGR配列による文字ボケ",
+        "description": "一部のモニターはBGR配列を採用しています。WindowsのClearTypeを再調整しないと文字がぼやけます。"
       },
       {
-        label: "OLEDの三角形サブピクセルによる色にじみ",
-        description: "WOLEDやQD-OLEDの独自配列では、水平ラインの上端や下端に緑やマゼンタのにじみが出やすくなります。"
+        "label": "OLEDの三角形サブピクセルによる色にじみ",
+        "description": "WOLEDやQD-OLEDの独自配列では、水平ラインの上端や下端に緑やマゼンタのにじみが出やすくなります。"
       },
       {
-        label: "端数スケーリング（125%や150%）によるボケ",
-        description: "整数倍でない拡大率では、一部のデスクトップアプリでフォント描画が甘くなることがあります。"
+        "label": "端数スケーリング（125%や150%）によるボケ",
+        "description": "整数倍でない拡大率では、一部のデスクトップアプリでフォント描画が甘くなることがあります。"
       }
     ],
-    canObserve: [
+    "canObserve": [
       "8pxから32pxまでのフォントサイズにおける輪郭の色にじみやボケ",
       "明朝・ゴシック・白黒反転表示でのレンダリング品質の比較",
       "ブラウザのズームやOS拡大率による視認性の変化"
     ],
-    cannotMeasure: [
+    "cannotMeasure": [
       "顕微鏡やマクロレンズなしでのサブピクセルの物理的幾何学形状",
       "DirectWriteやClearTypeの非公開内部レジストリフラグ",
       "光学的な変調伝達関数（MTF）"
     ],
-    interpretation: "文字がぼやけて色づいて見える場合、Windowsの「ClearTypeテキストの調整」ウィザードを実行することで大幅に改善することがあります。",
-    nextSteps: {
-      text: "文字がにじんで読みにくいですか？ClearTypeとスケーリングの最適化手順をご覧ください。",
-      actionLabel: "文字の鮮明さトラブルシューティング",
-      actionHref: "/knowledge-base/troubleshooting#blurry-text-scaling"
+    "interpretation": "文字がぼやけて色づいて見える場合、Windowsの「ClearTypeテキストの調整」ウィザードを実行することで大幅に改善することがあります。",
+    "nextSteps": {
+      "text": "文字がにじんで読みにくいですか？ClearTypeとスケーリングの最適化手順をご覧ください。",
+      "actionLabel": "文字の鮮明さトラブルシューティング",
+      "actionHref": "/knowledge-base/troubleshooting#blurry-text-scaling"
     }
   },
-
-    "hdr-capability-test": {
+  "hdr-capability-test": {
     "overview": "HDRハードウェア＆信号検出器は、OSコンポジター、ディスプレイドライバ、ブラウザがHDR信号を正しく連携しているかを監査します。CSS Media Queries Level 4 (dynamic-range: high)、広色域（Rec.2020 / Display-P3）、Canvas P3色バッファ、WebGL floatレンダーターゲット、および10ビットHDR動画コーデックを診断します。",
     "whatToLookFor": [
-        {
-            "label": "コンポジターHDR信号状態",
-            "description": "OSウィンドウコンポジターがブラウザにHDR信号を出力しているか確認します。無効な場合、OS設定でHDRがオフになっています。"
-        },
-        {
-            "label": "バッファ色深度とパイプライン",
-            "description": "画面の色深度（24ビットSDR vs 30ビット+ HDR）を検出し、CanvasおよびWebGL2がP3およびfloatバッファを割り当て可能か確認します。"
-        },
-        {
-            "label": "広色域（Rec.2020およびDisplay-P3）",
-            "description": "標準sRGBを超える深い深紅やエメラルドグリーンを表現できる広色域をモニターが報告しているかを評価します。"
-        },
-        {
-            "label": "HDR動画コーデックのアクセラレーション",
-            "description": "HDR10 (HEVC Main 10)、AV1 10ビット (YouTube HDR)、VP9 Profile 2のハードウェアデコード対応状況を検査します。"
-        }
-    ],
-    "canObserve": [
-        "OSコンポジターのリアルタイムHDR出力状態",
-        "Display-P3およびRec.2020に対するハードウェアおよびブラウザの対応",
-        "ブラウザがアクセス可能な画面色深度およびfloatバッファサポート",
-        "ハードウェアアクセラレーション対応10ビット動画再生機能"
-    ],
-    "cannotMeasure": [
-        "ハードウェア測色計なしでの物理パネル最大輝度（nits）",
-        "VESA DisplayHDR認証基準（DisplayHDR 400 / 600 / 1000など）への厳密な準拠",
-        "Mini-LEDバックライトの物理分割駆動ゾーン数"
-    ],
-    "interpretation": "dynamic-rangeがstandard（無効）と表示された場合、Windowsでは Win + Alt + B を押すか、macOSのディスプレイ設定でHDRを有効にしてください。",
-    "nextSteps": {
-        "text": "実際のハイライト白飛びやトーンカーブ、最大輝度を視覚的に検査したい場合は光学検査をご利用ください。",
-        "actionLabel": "HDR視覚検査を開始",
-        "actionHref": "/tests/hdr-test"
-    }
-},
-
-  "hdr-test": {
-    "overview": "HDR視覚キャリブレーション＆ハイライト検査テストは、ディスプレイパネルがHDR信号にどのように光学的に応答するかを評価する専用テストです。鏡面ハイライトのロールオフ、白飛び点、10% APLピーク輝度ウィンドウ、PQ/EOTFトーンカーブ階調、および暗部ディテールを検査します。",
-    "whatToLookFor": [
-        {
-            "label": "鏡面ハイライトのロールオフと白飛び",
-            "description": "90%から100%ピーク白のパッチを観察します。円形レティクルが均一なベタ白に潰れず見えるか確認してください。"
-        },
-        {
-            "label": "10% APLピーク輝度ウィンドウ",
-            "description": "純黒背景の10%白ウィンドウにより、最大輝度（nits）、分割バックライトの制御、ハロー（光漏れ）を検査します。"
-        },
-        {
-            "label": "PQ / EOTFトーンカーブ階調",
-            "description": "滑らかな10ビット階調と8ビット段階リファレンスを比較し、バンディングや急激なトーン圧縮がないかを観察します。"
-        },
-        {
-            "label": "暗部階調と黒潰れ (Near-Black)",
-            "description": "極低輝度のステップ（0.5%〜5%）が、黒レベルを浮かせることなく純黒0%から正しく識別できるかを確認します。"
-        }
-    ],
-    "canObserve": [
-        "各段階の白輝度レベルにおけるハイライト白飛びの限界点",
-        "10% APLウィンドウでの分割バックライトのハローおよび最大輝度余裕度",
-        "8ビットバンディングに対する10ビット階調遷移のなめらかさ",
-        "暗部階調の分離度および黒潰れ（Black Crush）の有無"
-    ],
-    "cannotMeasure": [
-        "実験室センサーなしでの正確な光度最大輝度（nits）",
-        "分光測色計なしでの色温度（ケルビン）精度",
-        "画素応答速度やオーバードライブのオーバーシュート"
-    ],
-    "interpretation": "トーンマッピングが劣るディスプレイは94%以上で白飛びを起こすか、暗部を真っ黒に潰します。優れたOLEDやMini-LEDは99%までレティクルを保持します。",
-    "nextSteps": {
-        "text": "OSコンポジターや動画コーデックがHDRに対応しているか診断したい場合は検出器をご確認ください。",
-        "actionLabel": "HDRハードウェア＆信号を確認",
-        "actionHref": "/tests/hdr-capability-test"
-    }
-},
-
-  "strobe-crosstalk-test": {
-    "overview": "Backlight strobing (ULMB, DyAc, ELMB, LightBoost) eliminates eye-tracking motion blur by pulsing the backlight on only when liquid crystals have finished transitioning. However, because displays scan pixels from top to bottom while backlights flash globally across the entire screen, pixel transitions at the very top or bottom may be incomplete when the pulse fires. This timing mismatch creates duplicate phantom images known as strobe crosstalk.",
-    "whatToLookFor": [
       {
-        "label": "Double-Image Silhouettes",
-        "description": "Watch the moving bars in the top, center, and bottom tracks. Notice whether you see a single sharp bar or a faint duplicate ghost trailing or leading it."
+        "label": "コンポジターHDR信号状態",
+        "description": "OSウィンドウコンポジターがブラウザにHDR信号を出力しているか確認します。無効な場合、OS設定でHDRがオフになっています。"
       },
       {
-        "label": "Top vs Center vs Bottom Clarity",
-        "description": "Most monitors optimize strobe phase for the screen center. The center zone should show crisp, single-image motion, while top and bottom zones typically show varying degrees of crosstalk."
+        "label": "バッファ色深度とパイプライン",
+        "description": "画面の色深度（24ビットSDR vs 30ビット+ HDR）を検出し、CanvasおよびWebGL2がP3およびfloatバッファを割り当て可能か確認します。"
       },
       {
-        "label": "Strobe Pulse Width & Brightness",
-        "description": "Shorter strobe pulses yield sharper motion but lower overall display brightness. Adjust your monitor's strobe duty cycle in its OSD to balance clarity vs luminance."
+        "label": "広色域（Rec.2020およびDisplay-P3）",
+        "description": "標準sRGBを超える深い深紅やエメラルドグリーンを表現できる広色域をモニターが報告しているかを評価します。"
+      },
+      {
+        "label": "HDR動画コーデックのアクセラレーション",
+        "description": "HDR10 (HEVC Main 10)、AV1 10ビット (YouTube HDR)、VP9 Profile 2のハードウェアデコード対応状況を検査します。"
       }
     ],
     "canObserve": [
-      "Relative strobe crosstalk visibility across vertical screen zones",
-      "Identification of optimal strobe phase calibration point on your panel",
-      "Comparison of motion blur reduction at various panning velocities"
+      "OSコンポジターのリアルタイムHDR出力状態",
+      "Display-P3およびRec.2020に対するハードウェアおよびブラウザの対応",
+      "ブラウザがアクセス可能な画面色深度およびfloatバッファサポート",
+      "ハードウェアアクセラレーション対応10ビット動画再生機能"
     ],
     "cannotMeasure": [
-      "Exact backlight strobe flash duration in microseconds",
-      "Photometric strobe luminance peak in nits without a photodiode",
-      "Hardware panel scan-out velocity and VSYNC timing interval"
+      "ハードウェア測色計なしでの物理パネル最大輝度（nits）",
+      "VESA DisplayHDR認証基準（DisplayHDR 400 / 600 / 1000など）への厳密な準拠",
+      "Mini-LEDバックライトの物理分割駆動ゾーン数"
     ],
-    "interpretation": "A small amount of strobe crosstalk at the extreme top and bottom edges is normal on LCD monitors. Severe crosstalk across the center zone indicates mismatched strobe phase or refresh rate desync.",
+    "interpretation": "dynamic-rangeがstandard（無効）と表示された場合、Windowsでは Win + Alt + B を押すか、macOSのディスプレイ設定でHDRを有効にしてください。",
     "nextSteps": {
-      "text": "Compare strobed motion against native sample-and-hold motion blur.",
-      "actionLabel": "Run Motion Blur Test",
+      "text": "実際のハイライト白飛びやトーンカーブ、最大輝度を視覚的に検査したい場合は光学検査をご利用ください。",
+      "actionLabel": "HDR視覚検査を開始",
+      "actionHref": "/tests/hdr-test"
+    }
+  },
+  "hdr-test": {
+    "overview": "HDR視覚キャリブレーション＆ハイライト検査テストは、ディスプレイパネルがHDR信号にどのように光学的に応答するかを評価する専用テストです。鏡面ハイライトのロールオフ、白飛び点、10% APLピーク輝度ウィンドウ、PQ/EOTFトーンカーブ階調、および暗部ディテールを検査します。",
+    "whatToLookFor": [
+      {
+        "label": "鏡面ハイライトのロールオフと白飛び",
+        "description": "90%から100%ピーク白のパッチを観察します。円形レティクルが均一なベタ白に潰れず見えるか確認してください。"
+      },
+      {
+        "label": "10% APLピーク輝度ウィンドウ",
+        "description": "純黒背景の10%白ウィンドウにより、最大輝度（nits）、分割バックライトの制御、ハロー（光漏れ）を検査します。"
+      },
+      {
+        "label": "PQ / EOTFトーンカーブ階調",
+        "description": "滑らかな10ビット階調と8ビット段階リファレンスを比較し、バンディングや急激なトーン圧縮がないかを観察します。"
+      },
+      {
+        "label": "暗部階調と黒潰れ (Near-Black)",
+        "description": "極低輝度のステップ（0.5%〜5%）が、黒レベルを浮かせることなく純黒0%から正しく識別できるかを確認します。"
+      }
+    ],
+    "canObserve": [
+      "各段階の白輝度レベルにおけるハイライト白飛びの限界点",
+      "10% APLウィンドウでの分割バックライトのハローおよび最大輝度余裕度",
+      "8ビットバンディングに対する10ビット階調遷移のなめらかさ",
+      "暗部階調の分離度および黒潰れ（Black Crush）の有無"
+    ],
+    "cannotMeasure": [
+      "実験室センサーなしでの正確な光度最大輝度（nits）",
+      "分光測色計なしでの色温度（ケルビン）精度",
+      "画素応答速度やオーバードライブのオーバーシュート"
+    ],
+    "interpretation": "トーンマッピングが劣るディスプレイは94%以上で白飛びを起こすか、暗部を真っ黒に潰します。優れたOLEDやMini-LEDは99%までレティクルを保持します。",
+    "nextSteps": {
+      "text": "OSコンポジターや動画コーデックがHDRに対応しているか診断したい場合は検出器をご確認ください。",
+      "actionLabel": "HDRハードウェア＆信号を確認",
+      "actionHref": "/tests/hdr-capability-test"
+    }
+  },
+  "battery-test": {
+    "overview": "バッテリー健全性・電源情報テストは、W3C Battery Status APIを使用して充電率、電源接続状態、フル充電までの推定時間およびバッテリー駆動時間をリアルタイムで測定します。",
+    "whatToLookFor": [
+      {
+        "label": "リアルタイム充電残量",
+        "description": "OS電源サブシステムが報告するバッテリー残量パーセンテージを監視します。"
+      },
+      {
+        "label": "ACアダプター接続状態",
+        "description": "電源供給中か内蔵バッテリー駆動中かを判別します。"
+      },
+      {
+        "label": "充電および放電推定時間",
+        "description": "満充電までの時間またはバッテリー残存時間を算出します。"
+      },
+      {
+        "label": "放電推移グラフ",
+        "description": "ディスプレイ動作中のバッテリー消費ペースを可視化します。"
+      }
+    ],
+    "canObserve": [
+      "OSから取得したリアルタイムのバッテリーパーセンテージ",
+      "充電中/放電中のイベント遷移検知",
+      "充電完了または消耗までの推定秒数",
+      "セッション中のバッテリー推移ログ"
+    ],
+    "cannotMeasure": [
+      "mAh単位での物理的バッテリーセル劣化度",
+      "内部温度、内部抵抗、充放電サイクル回数",
+      "プライバシー保護でAPIが無効化されているブラウザでの計測"
+    ],
+    "interpretation": "非対応と表示される場合はブラウザのフィンガープリント防止機能によるものです。急激な残量減少はバッテリー劣化を示唆します。",
+    "nextSteps": {
+      "text": "ネットワーク速度とレイテンシーを測定しますか？",
+      "actionLabel": "ネットワーク速度テストを実行",
+      "actionHref": "/tests/network-speed-test"
+    }
+  },
+  "network-speed-test": {
+    "overview": "ネットワーク速度・レイテンシーテストは、タイミングAPIおよびNetwork Information APIを使用して、インターネット接続のPing応答時間、ジッター、接続タイプ、ダウンロードスループットを計測します。",
+    "whatToLookFor": [
+      {
+        "label": "Ping応答時間 (RTT)",
+        "description": "ブラウザとテストサーバー間のパケット往復時間をミリ秒単位で測定します。"
+      },
+      {
+        "label": "ダウンロードスループット (Mbps)",
+        "description": "ペイロード受信時の持続最大帯域幅を計算します。"
+      },
+      {
+        "label": "接続種別プロファイル",
+        "description": "有効接続タイプ（4G、Wi-Fi、有線LANなど）を識別します。"
+      },
+      {
+        "label": "接続安定性とジッター",
+        "description": "連続するPingのばらつきから回線の揺らぎを評価します。"
+      }
+    ],
+    "canObserve": [
+      "ミリ秒単位でのHTTP/HTTPS往復応答時間（RTT）",
+      "navigator.connectionによる実効ネットワーククラス",
+      "転送データ量と所要時間から算出したダウンロード実効速度",
+      "データセーバー機能の有効/無効状態"
+    ],
+    "cannotMeasure": [
+      "ブラウザオーバーヘッドを除いた純粋なTCPソケットレイテンシー",
+      "光回線やモデムの物理的なS/N比や光入力レベル",
+      "Wi-Fi周波数帯における電波干渉状況"
+    ],
+    "interpretation": "30ms未満のレイテンシーはクラウドゲーミングやオンライン対戦に最適です。50Mbps以上あれば高画質4K動画を快適に視聴できます。",
+    "nextSteps": {
+      "text": "クリックから画面描画までの入力遅延を測定しますか？",
+      "actionLabel": "入力遅延テストを実行",
+      "actionHref": "/tests/input-lag-test"
+    }
+  },
+  "color-blindness-test": {
+    "overview": "色覚異常シミュレーターは、数学的に補正されたSVGカラーマトリクスフィルターを用いて8種類の色覚多様性を再現し、UIデザインやアクセシビリティの検証を可能にします。",
+    "whatToLookFor": [
+      {
+        "label": "1型色覚（赤色盲・赤色弱）",
+        "description": "L錐体の特性変化により赤が暗い茶色や灰色に見え、緑との区別が難しくなります。"
+      },
+      {
+        "label": "2型色覚（緑色盲・緑色弱）",
+        "description": "M錐体の特性変化により緑と赤が黄褐色系に混ざり合います。最も多いタイプです。"
+      },
+      {
+        "label": "3型色覚（青色盲・青色弱）",
+        "description": "S錐体の特性変化により青が緑がかって見え、黄色が紫や灰色に見えます。"
+      },
+      {
+        "label": "全色盲（1色覚・桿体一色覚）",
+        "description": "錐体細胞の機能欠如により、色彩を感知できず明暗のグレースケールのみで知覚します。"
+      }
+    ],
+    "canObserve": [
+      "8種類のマトリクスを用いたテキスト、アイコン、配色パレットのリアルタイム変化",
+      "通常色覚とシミュレーション表示の並列比較",
+      "状態表示色（成功の緑と警告・エラーの赤）の識別性低下の検証",
+      "各色覚特性下におけるテキストコントラストと可読性"
+    ],
+    "cannotMeasure": [
+      "医療用眼科検査機器による個人の臨床的診断",
+      "ユーザー網膜の個別の受光感度特性",
+      "分光放射輝度計を用いない物理パネルの発光スペクトル"
+    ],
+    "interpretation": "緑と赤の判別が困難な場合、WCAG 2.2ガイドラインに準拠し、色彩のみに依存せずアイコンや形状、下線などの補助識別情報を付与することが推奨されます。",
+    "nextSteps": {
+      "text": "ディスプレイのsRGBおよびDCI-P3カバー率を確認しますか？",
+      "actionLabel": "色域テストを実行",
+      "actionHref": "/tests/color-gamut-test"
+    }
+  },
+  "screen-recorder": {
+    "overview": "スクリーンレコーダー＆スクリーンショットツールは、Screen Capture APIおよびMediaRecorder APIを活用し、追加ソフト不要で画面録画（WebM形式）および高解像度静止画（PNG形式）を取得します。",
+    "whatToLookFor": [
+      {
+        "label": "キャプチャ解像度",
+        "description": "キャプチャストリームのピクセル寸法がディスプレイの解像度と一致しているか確認します。"
+      },
+      {
+        "label": "フレームレートと滑らかさ",
+        "description": "録画時間とフレームレートをリアルタイムで追跡します。"
+      },
+      {
+        "label": "音声トラックの同期",
+        "description": "画面映像とともにシステム音声やタブ音声を同時録音します。"
+      },
+      {
+        "label": "高画質PNGスクリーンショット",
+        "description": "キャンバスレンダリングにより瞬時に劣化のないPNG画像を書き出します。"
+      }
+    ],
+    "canObserve": [
+      "キャプチャ映像の縦横解像度、アスペクト比、フレームレート情報",
+      "録画経過時間、一時停止状態および生成されるWebMファイル容量",
+      "HTML5 Canvasを用いたPNG画像出力バッファ",
+      "画面共有に関するブラウザ許可状態"
+    ],
+    "cannotMeasure": [
+      "OSハードウェアGPUエンコーダー内部のレイテンシー",
+      "DRM保護コンテンツ（著作権保護動画は黒画面としてキャプチャされます）",
+      "物理モニターの高リフレッシュレート同期限界"
+    ],
+    "interpretation": "すべてのキャプチャデータはブラウザ内部メモリでのみ処理され、外部サーバーへ送信されることは一切ありません。機密作業時も安全に利用できます。",
+    "nextSteps": {
+      "text": "ウェブカメラの解像度やマイク入力を確認しますか？",
+      "actionLabel": "ウェブカメラテストを実行",
+      "actionHref": "/tests/webcam-test"
+    }
+  },
+  "dark-mode-test": {
+    "overview": "ダークモード・テーマ適合性テストは、OSのprefers-color-schemeメディアクエリの同期、CSS color-schemeの対応状況、フォーム部品の描画、およびライト/ダーク両テーマでのコントラスト比を検証します。",
+    "whatToLookFor": [
+      {
+        "label": "OS設定との同期性",
+        "description": "Windows、macOS、スマホのダークモード切替をブラウザが即座に反映するか検証します。"
+      },
+      {
+        "label": "CSS color-scheme対応",
+        "description": "ダークモード時のネイティブスクロールバーや入力フォームの描画を確認します。"
+      },
+      {
+        "label": "コンポーネント視認性",
+        "description": "明暗両モードにおけるテキスト、カード、ボタンのコントラスト比を測定します。"
+      },
+      {
+        "label": "OLED向け純黒（#000000）最適化",
+        "description": "有機ELディスプレイで電力を消費しない純粋な黒背景の適用状況を確認します。"
+      }
+    ],
+    "canObserve": [
+      "matchMediaによるprefers-color-schemeのリアルタイム判定",
+      "ネイティブCSS color-schemeプロパティへのブラウザ対応状況",
+      "システム、ライト、ダークモードの瞬時プレビュー切り替え",
+      "各テーマにおけるフォントの視認性とコントラスト"
+    ],
+    "cannotMeasure": [
+      "ハードウェア計測器なしでのOLEDパネルの物理消費電力（mA）",
+      "環境光センサー非搭載端末での周囲の照度適応",
+      "Night Shift等のブルーライトカット機能による色温度変化"
+    ],
+    "interpretation": "有機ELディスプレイは完全な黒の描画時にサブピクセルを完全消灯するため、消費電力削減と暗所での眼精疲労軽減に極めて有効です。",
+    "nextSteps": {
+      "text": "部屋の明るさに応じた最適な画面輝度を測定しますか？",
+      "actionLabel": "環境光センサーテストを実行",
+      "actionHref": "/tests/ambient-light-test"
+    }
+  },
+  "input-lag-test": {
+    "overview": "入力遅延ビジュアライザーは、10回の試行を通じて視覚刺激からマウスクリック検出までの遅延時間を統計測定し、平均値、標準偏差、分布ヒストグラムを出力します。",
+    "whatToLookFor": [
+      {
+        "label": "視覚刺激反応時間",
+        "description": "画面が緑に変化したフレームからクリック検知までのミリ秒を算出します。"
+      },
+      {
+        "label": "統計的安定性（標準偏差）",
+        "description": "標準偏差が25ms未満であれば、安定したハードウェアおよび神経系パイプラインを示します。"
+      },
+      {
+        "label": "お手つき（フライング）検出",
+        "description": "緑に変わる前のクリックを無効化しペナルティを与えます。"
+      },
+      {
+        "label": "遅延分布ヒストグラム",
+        "description": "計測データのばらつきをヒストグラムでグラフィカルに可視化します。"
+      }
+    ],
+    "canObserve": [
+      "performance.now()による高精度ミリ秒タイムスタンプ",
+      "10回テストに基づく平均値、最速値、最遅値、標準偏差の集計",
+      "フライング防止ステートマシン制御",
+      "反応時間の度数分布ヒストグラム"
+    ],
+    "cannotMeasure": [
+      "専用ハードウェア光センサー（LDAT等）を用いない純粋な光学クリック・ツー・フォトン遅延",
+      "OS割り込み処理から独立したUSBポーリング周期",
+      "液晶分子の物理的オーバードライブ応答速度"
+    ],
+    "interpretation": "高リフレッシュレート環境では180ms〜240msが標準的です。300msを超える場合はディスプレイの後処理遅延（ゲームモードOFF）が疑われます。",
+    "nextSteps": {
+      "text": "ディスプレイのハードウェアリフレッシュレートを確認しますか？",
+      "actionLabel": "リフレッシュレートテストを実行",
+      "actionHref": "/tests/refresh-rate-test"
+    }
+  },
+  "ambient-light-test": {
+    "overview": "環境光センサーテストは、AmbientLightSensor APIを用いて室内の照度（ルクス・lx）をリアルタイム取得し、人間工学に基づいた最適な画面輝度設定を推奨します。",
+    "whatToLookFor": [
+      {
+        "label": "リアルタイム照度（lx）",
+        "description": "デバイス内蔵の受光センサーが捉えた環境照度を計測します。"
+      },
+      {
+        "label": "人間工学輝度アドバイス",
+        "description": "室内の明るさに応じた眼精疲労の少ない適正輝度を提案します。"
+      },
+      {
+        "label": "グレア・映り込み警告",
+        "description": "1000 lx以上の強い光環境による視認性低下リスクを判定します。"
+      },
+      {
+        "label": "照度推移グラフ",
+        "description": "照明のチラつきや外光の変動を時系列グラフで確認します。"
+      }
+    ],
+    "canObserve": [
+      "ハードウェア照度センサーによるリアルタイムのルクス値",
+      "照明環境ゾーン判定（暗室、薄暗い部屋、オフィス、明るい室内、直射光）",
+      "ISO規格に基づく推奨ディスプレイ輝度パーセンテージ",
+      "テストセッション中の環境光推移グラフ"
+    ],
+    "cannotMeasure": [
+      "Generic Sensor APIに対応していないブラウザでの測定",
+      "RGBセンサーなしでの室内照明の色温度（ケルビン）や演色性（CRI）",
+      "パネル表面に対する外光の入射角と反射ベクトル"
+    ],
+    "interpretation": "オフィス作業では300〜500 lxの照度に対し、画面輝度120〜150 nitsが推奨されます。50 lx未満の暗所では輝度を十分に下げて眼の負担を軽減してください。",
+    "nextSteps": {
+      "text": "画面の黒レベルと輝度諧調を最適化しますか？",
+      "actionLabel": "輝度テストを実行",
+      "actionHref": "/tests/brightness-test"
+    }
+  },
+  "dpi-calculator": {
+    "overview": "DPI & PPI計算機は、画面サイズ（インチ）と解像度から画素密度（PPI）、ドットピッチ（画素間隔）、総画素数（メガピクセル）、および肉眼でドットを識別できなくなるRetina視認限界距離を算出します。",
+    "whatToLookFor": [
+      {
+        "label": "画素密度（PPI: Pixels Per Inch）",
+        "description": "対角1インチあたりの画素集積度を測定します。"
+      },
+      {
+        "label": "ドットピッチ（画素間隔）",
+        "description": "隣接するサブピクセル中心間の物理的距離をミリメートル単位で計算します。"
+      },
+      {
+        "label": "Retina（網膜限界）視認距離",
+        "description": "標準視力（1.0）の人間が画素の粒状感を識別できなくなる最適距離（60 PPD）を算出します。"
+      },
+      {
+        "label": "画面面積と総メガピクセル",
+        "description": "アスペクト比、表示有効面積、および総描画ピクセル数を計算します。"
+      }
+    ],
+    "canObserve": [
+      "算出したPPI値、ミリメートル単位のドットピッチ、総メガピクセル数",
+      "センチメートルおよびインチ単位での推奨視認距離とRetina境界距離",
+      "標準モニター用プリセット（24インチFHD、27インチQHD、32インチ4Kなど）",
+      "スライダーによるカスタム解像度・対角サイズの即時シミュレーション"
+    ],
+    "cannotMeasure": [
+      "入力なしでのモニター外枠ベゼルの物理寸法",
+      "ノングレア（非光沢）コーティングによる光散乱・ギラつきの影響",
+      "特殊アスペクト比における意図的な引き伸ばし変形"
+    ],
+    "interpretation": "一般的なデスクワークでは110 PPI以上で快適なテキスト視認性が得られ、220 PPIを超えると通常の作業距離（50〜60cm）で完全なRetina品質に達します。",
+    "nextSteps": {
+      "text": "様々なフォントサイズでの文字の鮮明さとレンダリングを確認しますか？",
+      "actionLabel": "文字鮮明度テストを実行",
+      "actionHref": "/tests/text-clarity-test"
+    }
+  },
+  "bright-pixel-test": {
+    "overview": "輝点（ブライトピクセル）は、赤・緑・青・白のサブピクセルが常に点灯または半通電状態で固まり、黒や暗い背景上で発光点として目立つ欠陥です。",
+    "whatToLookFor": [
+      {
+        "label": "光る微小なサブピクセルの点",
+        "description": "照明を落とした暗い部屋で、黒い背景上に発光する孤立した色の点を探します。"
+      },
+      {
+        "label": "単色サブピクセルの発光",
+        "description": "隣接するサブピクセルが消灯している中で、特定チャンネルのみが点灯している状態を確認します。"
+      },
+      {
+        "label": "輝点の密集（クラスター）",
+        "description": "近接した位置に複数の輝点が集中している場合、初期不良交換の対象となる場合があります。"
+      },
+      {
+        "label": "バックライト漏れと輝点の判別",
+        "description": "シャープな1ピクセルの点状光と、ベゼル端から広がるぼんやりとした光漏れを区別します。"
+      }
+    ],
+    "canObserve": [
+      "純黒（#000000）および暗い背景上での不具合箇所の座標確認",
+      "RGB原色および白色フレームによる欠陥サブピクセルの特定",
+      "輝点と周囲の暗い背景とのコントラスト比"
+    ],
+    "cannotMeasure": [
+      "トランジスタのゲートリーク電流",
+      "ガラス基板下の微細シリコン結晶欠陥の深さ",
+      "バックプレーンの熱ドリフト特性"
+    ],
+    "interpretation": "ISO 9241-307クラス1では輝点は許容されませんが、一般的なクラス2パネルでは100万画素あたり最大2個の輝点が許容範囲とされる場合があります。",
+    "nextSteps": {
+      "text": "常時点灯したままのサブピクセルが見つかった場合、視覚刺激による修復を試みますか？",
+      "actionLabel": "Stuck Pixel Fixerを起動",
+      "actionHref": "/tests/stuck-pixel-fixer"
+    }
+  },
+  "burn-in-test": {
+    "overview": "焼き付き（恒久的な残像）は、タスクバーやチャンネルロゴなど静止した高輝度要素によって、OLEDの有機発光層や蛍光体が局所的に劣化する現象です。",
+    "whatToLookFor": [
+      {
+        "label": "タスクバーの残像シルエット",
+        "description": "全画面グレー表示時に、OSのタスクバーやブラウザの枠線の薄い輪郭が見えないか確認します。"
+      },
+      {
+        "label": "ゲームHUDやロゴの影",
+        "description": "ゲームの体力バーやニューステロップの常時表示エリアの影が残っていないか点検します。"
+      },
+      {
+        "label": "50%グレー画面でのムラ",
+        "description": "中間グレーキャンバス上で不均一な斑点や明るさのムラがないか観察します。"
+      },
+      {
+        "label": "一時的な残像と恒久的な焼き付きの判別",
+        "description": "動画を15分程度再生した後に影が消えるか残り続けるかを確認します。"
+      }
+    ],
+    "canObserve": [
+      "50%グレーや単色原色背景でのかすかな残像シルエット",
+      "画面全域にわたる各領域の発光均一性",
+      "均一背景での静止境界パターンの視覚的確認"
+    ],
+    "cannotMeasure": [
+      "OLEDサブピクセルの化学的劣化割合（%）",
+      "パネルの総通電時間（POH）の内部カウンタ",
+      "工場のピクセルリフレッシュ補正サイクルカウンタ"
+    ],
+    "interpretation": "一時的な残像（TIR）は数分で消えますが、恒久的な焼き付きは均一背景上で永続的に視認されます。",
+    "nextSteps": {
+      "text": "毎日の使用習慣からパネルの長期的な焼き付きリスクを算出しますか？",
+      "actionLabel": "OLED焼き付きリスク計算機を起動",
+      "actionHref": "/tools/oled-burn-in-calculator"
+    }
+  },
+  "color-test": {
+    "overview": "ディスプレイの色テストでは、RGB原色および二次色の色再現性、サブピクセルの純度、全画面カラーフィールドにおける表示の均一性を視覚的に評価します。",
+    "whatToLookFor": [
+      {
+        "label": "色の純度と彩度",
+        "description": "赤、緑、青、シアン、マゼンタ、黄色が画面全体にムラなく均一に表示されているか確認します。"
+      },
+      {
+        "label": "画面端の色温度の均一性",
+        "description": "ベゼル周辺や四隅で色合い（色相やトーン）がずれていないか点検します。"
+      },
+      {
+        "label": "高彩度色におけるバンディング",
+        "description": "鮮やかな純色表示時に等高線状の縞模様（バンディング）や階調飛びが発生しないか確認します。"
+      },
+      {
+        "label": "特定色でのサブピクセル欠陥",
+        "description": "特定の色背景でのみ浮き出る極小の黒点や変色ドットがないか観察します。"
+      }
+    ],
+    "canObserve": [
+      "調整されたsRGBおよびDisplay-P3カラーフィールドの全画面表示",
+      "画面全体の視覚的な色温度および色合いの一貫性",
+      "残像のないカラーチャンネルの切り替え応答性"
+    ],
+    "cannotMeasure": [
+      "CIE 1931 xy色度座標などの分光測色計による絶対測定",
+      "各カラーチャンネルごとの光学的ピーク輝度（nits）",
+      "バックライト蛍光体の物理的発光スペクトルピーク"
+    ],
+    "interpretation": "高品質なIPSおよびOLEDパネルは、画面全域で色温度の偏りや色ムラがなく、均一な彩度を再現します。",
+    "nextSteps": {
+      "text": "さらに厳密な色精度やデルタ色差を検査しますか？",
+      "actionLabel": "色精度テスト（Color Accuracy）を開始",
+      "actionHref": "/tests/color-accuracy-test"
+    }
+  },
+  "grayscale-test": {
+    "overview": "グレースケールテストは、純黒（0%）からピーク白（100%）までの滑らかで中立な輝度ステップを、色カブリや階調飛びなしに描画できるかを評価します。",
+    "whatToLookFor": [
+      {
+        "label": "中立なグラデーショントーン",
+        "description": "グレーのステップがピンクや緑などの偏りなく完全に中立な灰色に見えるか確認します。"
+      },
+      {
+        "label": "各ステップの明確な分離",
+        "description": "16または32段階のランプにおいて、すべてのブロックが隣接ステップと明確に区別できるか確認します。"
+      },
+      {
+        "label": "暗部ステップの黒つぶれ",
+        "description": "最暗部のステップ1、2、3が純黒と同化して潰れていないか点検します。"
+      },
+      {
+        "label": "明部ステップの白飛び",
+        "description": "100%直前の明るいステップが純白と区別されて視認できるか確認します。"
+      }
+    ],
+    "canObserve": [
+      "標準的な16/32/64ブロックランプでの段階的な輝度識別性",
+      "低輝度領域および高輝度領域の階調クリッピング",
+      "グレースケール全域での色温度の視覚的ドリフト"
+    ],
+    "cannotMeasure": [
+      "各階調ステップごとの光学的輝度（cd/m²）",
+      "ガンマ曲線の数学的適合度（2.2 / BT.1886）",
+      "スケーラーチップ内部の14ビット3D LUT補正マトリクス"
+    ],
+    "interpretation": "全ステップが隣接ブロックと識別でき、色カブリがない場合、ガンマトラッキングと階調リニアリティが優れています。",
+    "nextSteps": {
+      "text": "暗部階調の詳細をさらに深くチェックしますか？",
+      "actionLabel": "黒レベルテストを開始",
+      "actionHref": "/tests/black-level-test"
+    }
+  },
+  "saturation-test": {
+    "overview": "彩度テストは、各色チャンネルの淡いパステル調（10%）から極限の原色飽和度（100%）までの彩度階調の追従性とクリッピングを評価します。",
+    "whatToLookFor": [
+      {
+        "label": "高彩度ステップの階調飛び",
+        "description": "90%と100%のカラーパッチが同化せず、明確に彩度の差が識別できるか確認します。"
+      },
+      {
+        "label": "低彩度パステルの純度",
+        "description": "10%〜30%の淡い色調がグレーに濁らず、狙い通りの淡色として表現されるか点検します。"
+      },
+      {
+        "label": "チャンネル間のバランス",
+        "description": "赤、緑、青、シアン、マゼンタ、黄色の全チャンネルで均等に階調が伸びているか確認します。"
+      },
+      {
+        "label": "色域外クリッピング",
+        "description": "広色域パネルでsRGB色空間が過剰飽和して階調が潰れていないか観察します。"
+      }
+    ],
+    "canObserve": [
+      "原色および二次色における10段階の彩度ステップ分離",
+      "最大飽和領域での色の平坦化（クリッピング）",
+      "淡色領域におけるトーンバランスの直感的な確認"
+    ],
+    "cannotMeasure": [
+      "CIELAB空間における彩度（Chroma C*）の絶対物理値",
+      "Display P3およびAdobeRGB色域の正確なカバー率（%）",
+      "ガンマ補正カーブの非線形性歪み"
+    ],
+    "interpretation": "優れたモニターは高彩度領域でも階調を維持し、鮮やかさと階調表現の両立を実現します。",
+    "nextSteps": {
+      "text": "モニターの色域対応（sRGB vs P3）を確認しますか？",
+      "actionLabel": "色域テスト（Color Gamut）を開始",
+      "actionHref": "/tests/color-gamut-test"
+    }
+  },
+  "color-banding-test": {
+    "overview": "カラーバンディングテストは、色のビット深度（6-bit+FRC、8-bit、10-bit）と、量子化誤差による等高線状の縞模様を評価します。",
+    "whatToLookFor": [
+      {
+        "label": "階段状の輪郭線（バンディング）",
+        "description": "グラデーションの滑らかな移行部に、硬い境界線や段差が現れていないか確認します。"
+      },
+      {
+        "label": "ディザリングパターンのノイズ",
+        "description": "FRC時間的ディザリングによる微小なチラつきや砂嵐状のノイズを観察します。"
+      },
+      {
+        "label": "暗部階調での段差",
+        "description": "暗いグラデーション領域で顕著に現れやすい階調飛びをチェックします。"
+      },
+      {
+        "label": "10-bitと8-bitの滑らかさの差",
+        "description": "10ビット出力設定時に縞模様が劇的に減少するかを検証します。"
+      }
+    ],
+    "canObserve": [
+      "全画面カラーグラデーションにおける視覚的な階調ジャンプ",
+      "時間的・空間的ディザリングの視覚的アーティファクト",
+      "RGBチャンネルごとの量子化ステップの均一性"
+    ],
+    "cannotMeasure": [
+      "GPUからモニターへの物理的なDisplayPort/HDMIリンクビット深度",
+      "パネルの真の物理階調分解能（6-bit vs 8-bit物理結晶）",
+      "スケーラー内FRCディザリングアルゴリズムの周波数"
+    ],
+    "interpretation": "階段状の段差が目立つ場合、8ビット制限や圧縮、不適切なガンマ設定が原因となっている可能性があります。",
+    "nextSteps": {
+      "text": "微細な多段グラデーションでさらに詳しくテストしますか？",
+      "actionLabel": "滑らかなグラデーションテストを開始",
+      "actionHref": "/tests/gradient-banding-test"
+    }
+  },
+  "brightness-test": {
+    "overview": "明るさ（輝度）テストは、低輝度側の黒レベル（PLUGE）と高輝度側のピーク白を調整し、黒ツブレや白飛びのない最適なダイナミックレンジを設定します。",
+    "whatToLookFor": [
+      {
+        "label": "PLUGE +2%バーの視認",
+        "description": "真の黒背景から+2%（RGB 5）の縦バーがわずかに見えるよう明るさを調整します。"
+      },
+      {
+        "label": "黒ツブレ（ブラッククラッシュ）",
+        "description": "+1%や+2%バーが背景と同化している場合、暗部が潰れています。"
+      },
+      {
+        "label": "黒浮きの抑制",
+        "description": "黒背景が白っぽく浮いていないか、部屋を薄暗くして点検します。"
+      },
+      {
+        "label": "ABL（自動輝度制限）の挙動",
+        "description": "全画面白と小窓ウィンドウで明るさが自動低下しないか確認します。"
+      }
+    ],
+    "canObserve": [
+      "PLUGEパターンによる近黒階調（0%〜4%）の視覚的識別性",
+      "0%〜10%の1%刻みシャドウ階調ランプでのクリッピング限界",
+      "全画面白（100%）と10%ウィンドウ表示時の輝度変化（ABL検出）"
+    ],
+    "cannotMeasure": [
+      "絶対的なピーク輝度（cd/m² / nits）の物理的測光",
+      "ローカルディミングゾーンの個数および分割制御アルゴリズム",
+      "パネルの最小黒輝度（ブラックフロア）の測定"
+    ],
+    "interpretation": "+2%バーがかろうじて見え、黒背景が引き締まっている状態が、最もコントラスト比の高い正しい明るさ設定です。",
+    "nextSteps": {
+      "text": "コントラスト（白レベル）も合わせて調整しますか？",
+      "actionLabel": "コントラストテストを開始",
+      "actionHref": "/tests/contrast-test"
+    }
+  },
+  "contrast-test": {
+    "overview": "コントラストテストは、高輝度側の白飛び（クリッピング）を防止し、ピーク白付近の微細なハイライトディテールを維持するためのテストです。",
+    "whatToLookFor": [
+      {
+        "label": "高輝度98%〜99%ブロックの識別",
+        "description": "100%純白背景に対して、98%や99%の四角形が独立して識別できるか確認します。"
+      },
+      {
+        "label": "白飛び（ハイライトクリッピング）",
+        "description": "コントラストが高すぎると、95%以上の階調がすべて純白に同化して失われます。"
+      },
+      {
+        "label": "ハイライト部の色にじみ",
+        "description": "白に近い領域で特定チャンネルが先に飽和し、ピンクや青に変色していないか点検します。"
+      },
+      {
+        "label": "ANSIチェッカーボードのコントラスト",
+        "description": "白と黒が隣接する格子パターンで、黒への光の漏れ込みを観察します。"
+      }
+    ],
+    "canObserve": [
+      "100%純白背景における90%〜99%のハイライトステップ分離",
+      "ANSI高コントラストチェッカーボードでの黒白ダイナミックレンジ",
+      "コントラスト過剰による色付きクリッピングの視覚的発見"
+    ],
+    "cannotMeasure": [
+      "静的・動的コントラスト比の物理実測",
+      "グレア処理による内部反射散乱光の光学的減衰率",
+      "HDR最大瞬間輝度ブーストの持続時間"
+    ],
+    "interpretation": "98%のブロックが純白からかろうじて分離して見える設定が、階調を犠牲にしない理想的なコントラスト比です。",
+    "nextSteps": {
+      "text": "ガンマ曲線が正しく2.2を維持しているか確認しますか？",
+      "actionLabel": "ガンマテストを開始",
+      "actionHref": "/tests/gamma-test"
+    }
+  },
+  "strobe-crosstalk-test": {
+    "overview": "バックライト ストロボ (ULMB、DyAc、ELMB、LightBoost) は、液晶の遷移が完了したときにのみバックライトをパルス点灯することで、視線追跡によるモーション ブラーを排除します。ただし、ディスプレイはピクセルを上から下にスキャンし、バックライトが画面全体でグローバルに点滅するため、パルスが発生したときに最上部または最下部のピクセル遷移が不完全になる可能性があります。このタイミングの不一致により、ストロボ クロストークとして知られる重複したファントム イメージが作成されます。",
+    "whatToLookFor": [
+      {
+        "label": "二重像のシルエット",
+        "description": "上部、中央、下部のトラックで移動するバーに注目してください。単一の鋭いバーが見えるか、またはその後ろまたは先頭にかすかな重複ゴーストが見えるかどうかに注目してください。"
+      },
+      {
+        "label": "トップ vs センター vs ボトムの明瞭さ",
+        "description": "ほとんどのモニターは、画面中央のストロボ位相を最適化します。中央ゾーンには鮮明な単一画像の動きが表示されますが、上部ゾーンと下部ゾーンには通常、さまざまな程度のクロストークが表示されます。"
+      },
+      {
+        "label": "ストロボパルス幅と明るさ",
+        "description": "ストロボパルスが短いと動きがシャープになりますが、全体的なディスプレイの明るさは低くなります。 OSD でモニターのストロボ デューティ サイクルを調整して、鮮明さと輝度のバランスをとります。"
+      }
+    ],
+    "canObserve": [
+      "垂直画面ゾーン全体にわたる相対的なストロボ クロストークの可視性",
+      "パネル上の最適なストロボ位相校正ポイントの特定",
+      "さまざまなパン速度でのモーションブラー低減の比較"
+    ],
+    "cannotMeasure": [
+      "正確なバックライト ストロボ フラッシュ持続時間 (マイクロ秒)",
+      "フォトダイオードなしの測光ストロボ輝度ピーク (nits)",
+      "ハードウェア パネルのスキャンアウト速度と VSYNC タイミング間隔"
+    ],
+    "interpretation": "LCD モニターでは、上端と下端で少量のストロボ クロストークが発生するのが正常です。センター ゾーン全体にわたる深刻なクロストークは、ストローブ位相の不一致またはリフレッシュ レートの非同期を示します。",
+    "nextSteps": {
+      "text": "ストロボ モーションとネイティブのサンプル アンド ホールド モーション ブラーを比較します。",
+      "actionLabel": "モーション ブラー テストを実行する",
       "actionHref": "/tests/motion-blur-test"
     }
   },
   "vrr-flicker-test": {
-    "overview": "Variable Refresh Rate (VRR / G-Sync / FreeSync) dynamically matches screen refresh rate to GPU rendering output. However, liquid crystal relaxation and OLED pixel luminance curves vary depending on the duration of the refresh cycle. When framerates swing rapidly—especially between high FPS and lower boundary thresholds—luminance curves shift dynamically, producing noticeable brightness flicker in dark and near-black areas.",
+    "overview": "可変リフレッシュ レート (VRR / G-Sync / FreeSync) は、画面のリフレッシュ レートを GPU レンダリング出力に動的に一致させます。ただし、液晶緩和と OLED ピクセルの輝度曲線は、リフレッシュ サイクルの期間に応じて変化します。フレームレートが急速に変動すると、特に高い FPS と下限のしきい値の間で輝度曲線が動的に変化し、暗い領域や黒に近い領域で顕著な明るさのちらつきが発生します。",
     "whatToLookFor": [
       {
-        "label": "Near-Black Brightness Pumping",
-        "description": "Observe the 10% near-black and 25% dark gray patches as the automated framerate sweep cycles. Look for subtle rhythmic pulsations in overall darkness."
+        "label": "ほぼ黒の明るさのポンピング",
+        "description": "自動フレームレート スイープ サイクルとして、10% の黒に近いパッチと 25% の濃い灰色のパッチを観察します。全体的な暗闇の中で、微妙なリズミカルな脈動を探してください。"
       },
       {
-        "label": "LFC (Low Framerate Compensation) Transition Jolt",
-        "description": "When framerates dip below the minimum VRR threshold (e.g., below 48Hz), graphics drivers double frame presentation (LFC). This rapid Hz shift can cause a momentary luminance flicker."
+        "label": "LFC (低フレームレート補償) トランジション ジョルト",
+        "description": "フレームレートが最小 VRR しきい値 (例: 48Hz 未満) を下回ると、グラフィックス ドライバーはフレーム プレゼンテーション (LFC) を 2 倍にします。この急速な Hz シフトにより、瞬間的な輝度のちらつきが発生する可能性があります。"
       },
       {
-        "label": "OLED Gamma Shift",
-        "description": "OLED displays are particularly prone to VRR gamma flicker because subpixel charge times depend heavily on frame length. Dark scene textures may pulse visibly during framerate drops."
+        "label": "OLEDガンマシフト",
+        "description": "OLED ディスプレイは、サブピクセルの充電時間がフレーム長に大きく依存するため、特に VRR ガンマ フリッカーが発生しやすくなります。フレームレートの低下中に、暗いシーンのテクスチャが目に見えて脈動する場合があります。"
       }
     ],
     "canObserve": [
-      "Visual identification of gamma curve shifts across dark gray luminance levels",
-      "Detection of brightness pumping during simulated framerate oscillation",
-      "Comparison between subtle midtone gray vs near-black flicker sensitivity"
+      "ダークグレーの輝度レベル全体でのガンマ曲線のシフトを視覚的に識別",
+      "シミュレートされたフレームレート振動中の輝度ポンピングの検出",
+      "微妙な中間調のグレーと黒に近いフリッカー感度の比較"
     ],
     "cannotMeasure": [
-      "Hardware GPU-to-display Adaptive-Sync timing packets",
-      "Exact millivolt OLED subpixel voltage fluctuations",
-      "Automatic detection without user visual evaluation"
+      "ハードウェア GPU からディスプレイへの Adaptive-Sync タイミング パケット",
+      "正確なミリボルトの OLED サブピクセル電圧変動",
+      "ユーザーの視覚的評価を必要としない自動検出"
     ],
-    "interpretation": "If you observe strong brightness pulsing, your display has sensitive VRR gamma curves. Cap your framerate slightly below max refresh rate or disable VRR in games with unstable frame times to prevent flicker.",
+    "interpretation": "強い輝度のパルスが観察された場合、ディスプレイには敏感な VRR ガンマ カーブがあります。フレームレートを最大リフレッシュ レートよりわずかに低く制限するか、フレーム時間が不安定なゲームでは VRR を無効にしてちらつきを防ぎます。",
     "nextSteps": {
-      "text": "Verify your display's variable refresh rate support and range.",
-      "actionLabel": "Run VRR Capability Test",
+      "text": "ディスプレイの可変リフレッシュ レートのサポートと範囲を確認してください。",
+      "actionLabel": "VRR 機能テストの実行",
       "actionHref": "/tests/vrr-test"
     }
   },
   "pursuit-camera-test": {
-    "overview": "Human eyes track moving on-screen objects with continuous smooth pursuit motion. Standard stationary camera photographs cannot capture true display motion blur because they don't move with the eye. A pursuit camera tracks the moving pattern at exact matched speed, allowing photographic capture of true perceived Motion Picture Response Time (MPRT) and ghosting smear.",
+    "overview": "人間の目は、継続的なスムーズな追跡動作で画面上の移動オブジェクトを追跡します。標準的な固定カメラの写真は、目と一緒に動かないため、真のディスプレイ モーション ブラーを捉えることができません。追跡カメラは、正確に一致する速度で移動パターンを追跡し、実際に知覚される動画応答時間 (MPRT) とゴースト スミアを写真でキャプチャすることができます。",
     "whatToLookFor": [
       {
-        "label": "Temporal Graduation Alignment",
-        "description": "The top track contains vertical white graduation ticks. When tracking smoothly with your camera or phone, these ticks will merge into a single sharp vertical line in your photo."
+        "label": "時間的な目盛りの調整",
+        "description": "一番上のトラックには、垂直方向の白い目盛りが含まれています。カメラや携帯電話でスムーズに追跡すると、これらの目盛りは写真内で 1 本の鋭い垂直線に結合されます。"
       },
       {
-        "label": "Ghosting & Trailing Artifacts",
-        "description": "Once tracking sync is verified by crisp vertical ticks, examine the trailing edge of the moving object to see phosphor decay, overdrive coronas, or ghost trails."
+        "label": "ゴーストと後続のアーティファクト",
+        "description": "鮮明な垂直ティックによってトラッキング同期が確認されたら、移動する物体の後縁を調べて、蛍光体の減衰、オーバードライブ コロナ、またはゴースト トレイルを確認します。"
       },
       {
-        "label": "Overdrive Overshoot (Coronas)",
-        "description": "A bright glowing outline trailing behind the moving object indicates excessive monitor pixel overdrive (inverse ghosting)."
+        "label": "オーバードライブ オーバーシュート (コロナ)",
+        "description": "移動するオブジェクトの後ろに尾を引く明るく輝く輪郭は、過度のモニター ピクセル オーバードライブ (逆ゴースト) を示します。"
       }
     ],
     "canObserve": [
-      "Camera panning synchronization via temporal graduation track verification",
-      "Visual smear width directly proportional to perceived MPRT",
-      "Distinction between pixel transition blur (GtG) and sample-and-hold eye-tracking blur (MPRT)"
+      "一時的な目盛りトラック検証によるカメラのパンの同期",
+      "視覚的なスミア幅は知覚される MPRT に正比例します",
+      "ピクセル トランジション ブラー (GtG) とサンプル アンド ホールド アイトラッキング ブラー (MPRT) の区別"
     ],
     "cannotMeasure": [
-      "Automatic MPRT calculation without taking and measuring a tracking photograph",
-      "Sub-millisecond photodiode optical response curves",
-      "Optical tracking rail velocity without calibrated hardware"
+      "追跡写真の撮影や計測を行わずにMPRTを自動計算",
+      "サブミリ秒のフォトダイオード光学応答曲線",
+      "校正済みのハードウェアを使用しない光学式トラッキング レール速度"
     ],
-    "interpretation": "When temporal graduation marks form a clean vertical line in your exposure, tracking was synchronized. The width of trailing smear on the object reflects the display's true MPRT motion blur.",
+    "interpretation": "露出で一時的な目盛りマークがきれいな垂直線を形成すると、トラッキングは同期されています。オブジェクト上の末尾のスミアの幅は、ディスプレイの真の MPRT モーション ブラーを反映しています。",
     "nextSteps": {
-      "text": "Compare motion performance across different overdrive settings in your monitor OSD.",
-      "actionLabel": "Run Ghosting Test",
+      "text": "モニター OSD のさまざまなオーバードライブ設定間でモーション パフォーマンスを比較します。",
+      "actionLabel": "ゴースティングテストの実行",
       "actionHref": "/tests/ghosting-test"
     }
   },
   "audio-sync-test": {
-    "overview": "Modern visual processing (frame scaling, HDR dynamic tone mapping, and motion smoothing) introduces video latency. Meanwhile, soundbars, AV receivers, and Bluetooth audio devices (A2DP codec buffers) introduce audio latency. If video and audio diverge by more than ITU-R perceptual thresholds (+45ms to -125ms), speech lip-sync becomes noticeably disjointed.",
+    "overview": "最新の視覚処理 (フレーム スケーリング、HDR ダイナミック トーン マッピング、モーション スムージング) により、ビデオ遅延が発生します。一方、サウンドバー、AV レシーバー、および Bluetooth オーディオ デバイス (A2DP コーデック バッファー) では、オーディオ遅延が発生します。ビデオとオーディオが ITU-R 知覚しきい値 (+45 ミリ秒から -125 ミリ秒) を超えて乖離すると、音声のリップシンクが著しくばらばらになります。",
     "whatToLookFor": [
       {
-        "label": "Simultaneous Flash and Beep",
-        "description": "Watch the rotating needle pass the top 12 o'clock zero mark. The instant visual white/green flash should align perfectly with the audible 1 kHz pulse."
+        "label": "フラッシュとビープ音の同時発生",
+        "description": "回転する針が上部の 12 時のゼロマークを通過するのを確認します。瞬間的な視覚的な白/緑のフラッシュは、可聴 1 kHz パルスと完全に一致するはずです。"
       },
       {
-        "label": "Audio Leading Video (Negative Offset)",
-        "description": "If you hear the beep before you see the visual flash, the display is lagging behind the audio. Audio needs to be delayed."
+        "label": "オーディオ先行ビデオ (負のオフセット)",
+        "description": "視覚的なフラッシュが表示される前にビープ音が聞こえる場合は、ディスプレイが音声よりも遅れています。音声を遅延させる必要があります。"
       },
       {
-        "label": "Video Leading Audio (Positive Offset)",
-        "description": "If you see the flash before you hear the beep, audio processing (e.g., Bluetooth lag or soundbar processing) is delayed relative to the display."
+        "label": "ビデオ先行オーディオ (正のオフセット)",
+        "description": "ビープ音が聞こえる前にフラッシュが表示される場合は、オーディオ処理 (Bluetooth の遅れやサウンドバーの処理など) がディスプレイに比べて遅れています。"
       }
     ],
     "canObserve": [
-      "Human perceptual synchronization between optical visual flashes and acoustic pulses",
-      "Measurement of required millisecond compensation offset (+/- 200ms)",
-      "Audio output channel verification via Web Audio API 1 kHz synthesized pulses"
+      "視覚的なフラッシュと音響パルスの間の人間の知覚的同期",
+      "必要なミリ秒補償オフセットの測定 (+/- 200ms)",
+      "Web Audio API によるオーディオ出力チャンネルの検証 1 kHz 合成パルス"
     ],
     "cannotMeasure": [
-      "Hardware electrical acoustic sound wave arrival times with microsecond laboratory precision",
-      "Microphone acoustic feedback loop without audio input authorization",
-      "Bluetooth packet retransmission delays at the operating system driver level"
+      "マイクロ秒の実験室精度でのハードウェア電気音響音波到達時間",
+      "オーディオ入力認証なしのマイク音響フィードバック ループ",
+      "オペレーティング システム ドライバー レベルでの Bluetooth パケットの再送信遅延"
     ],
-    "interpretation": "Perceptual lip-sync alignment within +/- 20ms is considered excellent and imperceptible to human audiences. Latencies greater than 50ms should be corrected using audio delay settings in your soundbar or media player.",
+    "interpretation": "+/- 20ms 以内の知覚的なリップシンクの調整は優れており、人間の聴衆には知覚できないと考えられます。 50ms を超える遅延は、サウンドバーまたはメディア プレーヤーのオーディオ遅延設定を使用して修正する必要があります。",
     "nextSteps": {
-      "text": "Test your speakers for stereo channel separation and frequency range.",
-      "actionLabel": "Run Speaker Test",
+      "text": "スピーカーのステレオチャンネルセパレーションと周波数範囲をテストします。",
+      "actionLabel": "スピーカーテストの実行",
       "actionHref": "/tests/speaker-test"
     }
   },
   "gamepad-test": {
-    "overview": "Game controllers use analog potentiometers or Hall-effect magnetic sensors to translate thumbstick movement into directional coordinates. Over time, internal carbon wiper wear, spring degradation, and dust contamination cause the stick to register off-center coordinates when resting untouched—a defect known as stick drift.",
+    "overview": "ゲーム コントローラーは、アナログ ポテンショメータまたはホール効果磁気センサーを使用して、サムスティックの動きを方向座標に変換します。時間の経過とともに、内部のカーボン ワイパーの磨耗、スプリングの劣化、ほこりの混入により、スティックが触れずに放置されていると中心からずれた座標を記録するようになります。これはスティック ドリフトとして知られる欠陥です。",
     "whatToLookFor": [
       {
-        "label": "Resting Stick Drift",
-        "description": "Release both thumbsticks completely. If the crosshair indicator sits outside the central zero point or drifts continuously, stick drift is present."
+        "label": "レストスティックドリフト",
+        "description": "両方のサムスティックを完全に放します。十字線インジケーターが中央のゼロ点の外側にある場合、または継続的にドリフトしている場合は、スティックドリフトが存在します。"
       },
       {
-        "label": "Circularity Error",
-        "description": "Rotate the sticks along their outer boundaries. Quality gamepads produce a clean, smooth circle without clipping flat at the diagonal corners."
+        "label": "循環性エラー",
+        "description": "スティックを外側の境界に沿って回転させます。高品質のゲームパッドは、対角線の角が平らになることなく、きれいで滑らかな円を生成します。"
       },
       {
-        "label": "Deadzone Thresholding",
-        "description": "Check how far you must nudge the stick before the coordinate responds. Excessive deadzones make aiming sluggish, while too-small deadzones cause drift."
+        "label": "デッドゾーンのしきい値",
+        "description": "座標が反応する前にスティックをどのくらい微調整する必要があるかを確認してください。デッドゾーンが大きすぎると照準が鈍くなり、デッドゾーンが小さすぎるとドリフトが発生します。"
       },
       {
-        "label": "Analog Trigger Smoothness",
-        "description": "Gradually squeeze LT and RT triggers. The percentage readout should climb smoothly from 0% to 100% without jumping or sticking."
+        "label": "アナログトリガーの滑らかさ",
+        "description": "LT トリガーと RT トリガーを徐々に絞ります。パーセント表示は、ジャンプしたり固着したりすることなく、0% から 100% までスムーズに上昇する必要があります。"
       }
     ],
     "canObserve": [
-      "Real-time analog stick X/Y coordinate readouts and resting drift values",
-      "Full 16-button digital actuation matrix and analog trigger pressure percentages",
-      "Controller connection status, device ID name, and polling rate via HTML5 Gamepad API"
+      "リアルタイムのアナログ スティック X/Y 座標読み取り値と静止ドリフト値",
+      "完全な 16 ボタンのデジタル作動マトリクスとアナログ トリガー圧力パーセンテージ",
+      "コントローラーの接続ステータス、デバイス ID 名、および HTML5 ゲームパッド API 経由のポーリング レート"
     ],
     "cannotMeasure": [
-      "Physical potentiometer wiper resistance in ohms",
-      "Internal battery voltage level (unless supported by proprietary browser extensions)",
-      "Wireless Bluetooth radio interference or packet drop rates"
+      "物理的なポテンショメータのワイパー抵抗 (オーム)",
+      "内部バッテリー電圧レベル (独自のブラウザ拡張機能でサポートされていない場合)",
+      "ワイヤレス Bluetooth 無線干渉またはパケット ドロップ率"
     ],
-    "interpretation": "A resting coordinate value below 0.05 (5%) is typically absorbed by standard game deadzones. Values exceeding 0.10 (10%) will cause visible in-game camera drift and suggest recalibration or cleaning.",
+    "interpretation": "0.05 (5%) 未満の静止座標値は、通常、標準のゲームのデッドゾーンによって吸収されます。値が 0.10 (10%) を超えると、目に見えるゲーム内カメラのドリフトが発生し、再調整またはクリーニングが推奨されます。",
     "nextSteps": {
-      "text": "Test your display's input latency and your personal reaction time.",
-      "actionLabel": "Run Reaction Time Test",
+      "text": "ディスプレイの入力遅延と個人の反応時間をテストします。",
+      "actionLabel": "反応時間テストの実行",
       "actionHref": "/tests/reaction-time-test"
     }
-  }
-  ,
-  "battery-test": {
-    "overview": "バッテリー健全性・電源情報テストは、W3C Battery Status APIを使用して充電率、電源接続状態、フル充電までの推定時間およびバッテリー駆動時間をリアルタイムで測定します。",
-    "whatToLookFor": [
-        {
-            "label": "リアルタイム充電残量",
-            "description": "OS電源サブシステムが報告するバッテリー残量パーセンテージを監視します。"
-        },
-        {
-            "label": "ACアダプター接続状態",
-            "description": "電源供給中か内蔵バッテリー駆動中かを判別します。"
-        },
-        {
-            "label": "充電および放電推定時間",
-            "description": "満充電までの時間またはバッテリー残存時間を算出します。"
-        },
-        {
-            "label": "放電推移グラフ",
-            "description": "ディスプレイ動作中のバッテリー消費ペースを可視化します。"
-        }
-    ],
-    "canObserve": [
-        "OSから取得したリアルタイムのバッテリーパーセンテージ",
-        "充電中/放電中のイベント遷移検知",
-        "充電完了または消耗までの推定秒数",
-        "セッション中のバッテリー推移ログ"
-    ],
-    "cannotMeasure": [
-        "mAh単位での物理的バッテリーセル劣化度",
-        "内部温度、内部抵抗、充放電サイクル回数",
-        "プライバシー保護でAPIが無効化されているブラウザでの計測"
-    ],
-    "interpretation": "非対応と表示される場合はブラウザのフィンガープリント防止機能によるものです。急激な残量減少はバッテリー劣化を示唆します。",
-    "nextSteps": {
-        "text": "ネットワーク速度とレイテンシーを測定しますか？",
-        "actionLabel": "ネットワーク速度テストを実行",
-        "actionHref": "/tests/network-speed-test"
-    }
-},
-
-  "network-speed-test": {
-    "overview": "ネットワーク速度・レイテンシーテストは、タイミングAPIおよびNetwork Information APIを使用して、インターネット接続のPing応答時間、ジッター、接続タイプ、ダウンロードスループットを計測します。",
-    "whatToLookFor": [
-        {
-            "label": "Ping応答時間 (RTT)",
-            "description": "ブラウザとテストサーバー間のパケット往復時間をミリ秒単位で測定します。"
-        },
-        {
-            "label": "ダウンロードスループット (Mbps)",
-            "description": "ペイロード受信時の持続最大帯域幅を計算します。"
-        },
-        {
-            "label": "接続種別プロファイル",
-            "description": "有効接続タイプ（4G、Wi-Fi、有線LANなど）を識別します。"
-        },
-        {
-            "label": "接続安定性とジッター",
-            "description": "連続するPingのばらつきから回線の揺らぎを評価します。"
-        }
-    ],
-    "canObserve": [
-        "ミリ秒単位でのHTTP/HTTPS往復応答時間（RTT）",
-        "navigator.connectionによる実効ネットワーククラス",
-        "転送データ量と所要時間から算出したダウンロード実効速度",
-        "データセーバー機能の有効/無効状態"
-    ],
-    "cannotMeasure": [
-        "ブラウザオーバーヘッドを除いた純粋なTCPソケットレイテンシー",
-        "光回線やモデムの物理的なS/N比や光入力レベル",
-        "Wi-Fi周波数帯における電波干渉状況"
-    ],
-    "interpretation": "30ms未満のレイテンシーはクラウドゲーミングやオンライン対戦に最適です。50Mbps以上あれば高画質4K動画を快適に視聴できます。",
-    "nextSteps": {
-        "text": "クリックから画面描画までの入力遅延を測定しますか？",
-        "actionLabel": "入力遅延テストを実行",
-        "actionHref": "/tests/input-lag-test"
-    }
-},
-
-  "color-blindness-test": {
-    "overview": "色覚異常シミュレーターは、数学的に補正されたSVGカラーマトリクスフィルターを用いて8種類の色覚多様性を再現し、UIデザインやアクセシビリティの検証を可能にします。",
-    "whatToLookFor": [
-        {
-            "label": "1型色覚（赤色盲・赤色弱）",
-            "description": "L錐体の特性変化により赤が暗い茶色や灰色に見え、緑との区別が難しくなります。"
-        },
-        {
-            "label": "2型色覚（緑色盲・緑色弱）",
-            "description": "M錐体の特性変化により緑と赤が黄褐色系に混ざり合います。最も多いタイプです。"
-        },
-        {
-            "label": "3型色覚（青色盲・青色弱）",
-            "description": "S錐体の特性変化により青が緑がかって見え、黄色が紫や灰色に見えます。"
-        },
-        {
-            "label": "全色盲（1色覚・桿体一色覚）",
-            "description": "錐体細胞の機能欠如により、色彩を感知できず明暗のグレースケールのみで知覚します。"
-        }
-    ],
-    "canObserve": [
-        "8種類のマトリクスを用いたテキスト、アイコン、配色パレットのリアルタイム変化",
-        "通常色覚とシミュレーション表示の並列比較",
-        "状態表示色（成功の緑と警告・エラーの赤）の識別性低下の検証",
-        "各色覚特性下におけるテキストコントラストと可読性"
-    ],
-    "cannotMeasure": [
-        "医療用眼科検査機器による個人の臨床的診断",
-        "ユーザー網膜の個別の受光感度特性",
-        "分光放射輝度計を用いない物理パネルの発光スペクトル"
-    ],
-    "interpretation": "緑と赤の判別が困難な場合、WCAG 2.2ガイドラインに準拠し、色彩のみに依存せずアイコンや形状、下線などの補助識別情報を付与することが推奨されます。",
-    "nextSteps": {
-        "text": "ディスプレイのsRGBおよびDCI-P3カバー率を確認しますか？",
-        "actionLabel": "色域テストを実行",
-        "actionHref": "/tests/color-gamut-test"
-    }
-},
-
-  "screen-recorder": {
-    "overview": "スクリーンレコーダー＆スクリーンショットツールは、Screen Capture APIおよびMediaRecorder APIを活用し、追加ソフト不要で画面録画（WebM形式）および高解像度静止画（PNG形式）を取得します。",
-    "whatToLookFor": [
-        {
-            "label": "キャプチャ解像度",
-            "description": "キャプチャストリームのピクセル寸法がディスプレイの解像度と一致しているか確認します。"
-        },
-        {
-            "label": "フレームレートと滑らかさ",
-            "description": "録画時間とフレームレートをリアルタイムで追跡します。"
-        },
-        {
-            "label": "音声トラックの同期",
-            "description": "画面映像とともにシステム音声やタブ音声を同時録音します。"
-        },
-        {
-            "label": "高画質PNGスクリーンショット",
-            "description": "キャンバスレンダリングにより瞬時に劣化のないPNG画像を書き出します。"
-        }
-    ],
-    "canObserve": [
-        "キャプチャ映像の縦横解像度、アスペクト比、フレームレート情報",
-        "録画経過時間、一時停止状態および生成されるWebMファイル容量",
-        "HTML5 Canvasを用いたPNG画像出力バッファ",
-        "画面共有に関するブラウザ許可状態"
-    ],
-    "cannotMeasure": [
-        "OSハードウェアGPUエンコーダー内部のレイテンシー",
-        "DRM保護コンテンツ（著作権保護動画は黒画面としてキャプチャされます）",
-        "物理モニターの高リフレッシュレート同期限界"
-    ],
-    "interpretation": "すべてのキャプチャデータはブラウザ内部メモリでのみ処理され、外部サーバーへ送信されることは一切ありません。機密作業時も安全に利用できます。",
-    "nextSteps": {
-        "text": "ウェブカメラの解像度やマイク入力を確認しますか？",
-        "actionLabel": "ウェブカメラテストを実行",
-        "actionHref": "/tests/webcam-test"
-    }
-},
-
-  "dark-mode-test": {
-    "overview": "ダークモード・テーマ適合性テストは、OSのprefers-color-schemeメディアクエリの同期、CSS color-schemeの対応状況、フォーム部品の描画、およびライト/ダーク両テーマでのコントラスト比を検証します。",
-    "whatToLookFor": [
-        {
-            "label": "OS設定との同期性",
-            "description": "Windows、macOS、スマホのダークモード切替をブラウザが即座に反映するか検証します。"
-        },
-        {
-            "label": "CSS color-scheme対応",
-            "description": "ダークモード時のネイティブスクロールバーや入力フォームの描画を確認します。"
-        },
-        {
-            "label": "コンポーネント視認性",
-            "description": "明暗両モードにおけるテキスト、カード、ボタンのコントラスト比を測定します。"
-        },
-        {
-            "label": "OLED向け純黒（#000000）最適化",
-            "description": "有機ELディスプレイで電力を消費しない純粋な黒背景の適用状況を確認します。"
-        }
-    ],
-    "canObserve": [
-        "matchMediaによるprefers-color-schemeのリアルタイム判定",
-        "ネイティブCSS color-schemeプロパティへのブラウザ対応状況",
-        "システム、ライト、ダークモードの瞬時プレビュー切り替え",
-        "各テーマにおけるフォントの視認性とコントラスト"
-    ],
-    "cannotMeasure": [
-        "ハードウェア計測器なしでのOLEDパネルの物理消費電力（mA）",
-        "環境光センサー非搭載端末での周囲の照度適応",
-        "Night Shift等のブルーライトカット機能による色温度変化"
-    ],
-    "interpretation": "有機ELディスプレイは完全な黒の描画時にサブピクセルを完全消灯するため、消費電力削減と暗所での眼精疲労軽減に極めて有効です。",
-    "nextSteps": {
-        "text": "部屋の明るさに応じた最適な画面輝度を測定しますか？",
-        "actionLabel": "環境光センサーテストを実行",
-        "actionHref": "/tests/ambient-light-test"
-    }
-},
-
-  "input-lag-test": {
-    "overview": "入力遅延ビジュアライザーは、10回の試行を通じて視覚刺激からマウスクリック検出までの遅延時間を統計測定し、平均値、標準偏差、分布ヒストグラムを出力します。",
-    "whatToLookFor": [
-        {
-            "label": "視覚刺激反応時間",
-            "description": "画面が緑に変化したフレームからクリック検知までのミリ秒を算出します。"
-        },
-        {
-            "label": "統計的安定性（標準偏差）",
-            "description": "標準偏差が25ms未満であれば、安定したハードウェアおよび神経系パイプラインを示します。"
-        },
-        {
-            "label": "お手つき（フライング）検出",
-            "description": "緑に変わる前のクリックを無効化しペナルティを与えます。"
-        },
-        {
-            "label": "遅延分布ヒストグラム",
-            "description": "計測データのばらつきをヒストグラムでグラフィカルに可視化します。"
-        }
-    ],
-    "canObserve": [
-        "performance.now()による高精度ミリ秒タイムスタンプ",
-        "10回テストに基づく平均値、最速値、最遅値、標準偏差の集計",
-        "フライング防止ステートマシン制御",
-        "反応時間の度数分布ヒストグラム"
-    ],
-    "cannotMeasure": [
-        "専用ハードウェア光センサー（LDAT等）を用いない純粋な光学クリック・ツー・フォトン遅延",
-        "OS割り込み処理から独立したUSBポーリング周期",
-        "液晶分子の物理的オーバードライブ応答速度"
-    ],
-    "interpretation": "高リフレッシュレート環境では180ms〜240msが標準的です。300msを超える場合はディスプレイの後処理遅延（ゲームモードOFF）が疑われます。",
-    "nextSteps": {
-        "text": "ディスプレイのハードウェアリフレッシュレートを確認しますか？",
-        "actionLabel": "リフレッシュレートテストを実行",
-        "actionHref": "/tests/refresh-rate-test"
-    }
-},
-
-  "ambient-light-test": {
-    "overview": "環境光センサーテストは、AmbientLightSensor APIを用いて室内の照度（ルクス・lx）をリアルタイム取得し、人間工学に基づいた最適な画面輝度設定を推奨します。",
-    "whatToLookFor": [
-        {
-            "label": "リアルタイム照度（lx）",
-            "description": "デバイス内蔵の受光センサーが捉えた環境照度を計測します。"
-        },
-        {
-            "label": "人間工学輝度アドバイス",
-            "description": "室内の明るさに応じた眼精疲労の少ない適正輝度を提案します。"
-        },
-        {
-            "label": "グレア・映り込み警告",
-            "description": "1000 lx以上の強い光環境による視認性低下リスクを判定します。"
-        },
-        {
-            "label": "照度推移グラフ",
-            "description": "照明のチラつきや外光の変動を時系列グラフで確認します。"
-        }
-    ],
-    "canObserve": [
-        "ハードウェア照度センサーによるリアルタイムのルクス値",
-        "照明環境ゾーン判定（暗室、薄暗い部屋、オフィス、明るい室内、直射光）",
-        "ISO規格に基づく推奨ディスプレイ輝度パーセンテージ",
-        "テストセッション中の環境光推移グラフ"
-    ],
-    "cannotMeasure": [
-        "Generic Sensor APIに対応していないブラウザでの測定",
-        "RGBセンサーなしでの室内照明の色温度（ケルビン）や演色性（CRI）",
-        "パネル表面に対する外光の入射角と反射ベクトル"
-    ],
-    "interpretation": "オフィス作業では300〜500 lxの照度に対し、画面輝度120〜150 nitsが推奨されます。50 lx未満の暗所では輝度を十分に下げて眼の負担を軽減してください。",
-    "nextSteps": {
-        "text": "画面の黒レベルと輝度諧調を最適化しますか？",
-        "actionLabel": "輝度テストを実行",
-        "actionHref": "/tests/brightness-test"
-    }
-},
-
-  "dpi-calculator": {
-    "overview": "DPI & PPI計算機は、画面サイズ（インチ）と解像度から画素密度（PPI）、ドットピッチ（画素間隔）、総画素数（メガピクセル）、および肉眼でドットを識別できなくなるRetina視認限界距離を算出します。",
-    "whatToLookFor": [
-        {
-            "label": "画素密度（PPI: Pixels Per Inch）",
-            "description": "対角1インチあたりの画素集積度を測定します。"
-        },
-        {
-            "label": "ドットピッチ（画素間隔）",
-            "description": "隣接するサブピクセル中心間の物理的距離をミリメートル単位で計算します。"
-        },
-        {
-            "label": "Retina（網膜限界）視認距離",
-            "description": "標準視力（1.0）の人間が画素の粒状感を識別できなくなる最適距離（60 PPD）を算出します。"
-        },
-        {
-            "label": "画面面積と総メガピクセル",
-            "description": "アスペクト比、表示有効面積、および総描画ピクセル数を計算します。"
-        }
-    ],
-    "canObserve": [
-        "算出したPPI値、ミリメートル単位のドットピッチ、総メガピクセル数",
-        "センチメートルおよびインチ単位での推奨視認距離とRetina境界距離",
-        "標準モニター用プリセット（24インチFHD、27インチQHD、32インチ4Kなど）",
-        "スライダーによるカスタム解像度・対角サイズの即時シミュレーション"
-    ],
-    "cannotMeasure": [
-        "入力なしでのモニター外枠ベゼルの物理寸法",
-        "ノングレア（非光沢）コーティングによる光散乱・ギラつきの影響",
-        "特殊アスペクト比における意図的な引き伸ばし変形"
-    ],
-    "interpretation": "一般的なデスクワークでは110 PPI以上で快適なテキスト視認性が得られ、220 PPIを超えると通常の作業距離（50〜60cm）で完全なRetina品質に達します。",
-    "nextSteps": {
-        "text": "様々なフォントサイズでの文字の鮮明さとレンダリングを確認しますか？",
-        "actionLabel": "文字鮮明度テストを実行",
-        "actionHref": "/tests/text-clarity-test"
-    }
-},
-
+  },
   "subpixel-layout-test": {
-    "overview": "Subpixel layout testing analyzes the microscopic physical geometry of red, green, and blue emitter strips within each pixel. Variations between standard RGB, inverted BGR, triangular QD-OLED, and WOLED layouts directly determine whether operating system text antialiasing (such as Windows ClearType) appears crisp or suffers from magenta/green color halos.",
+    "overview": "サブピクセル レイアウト テストでは、各ピクセル内の赤、緑、青のエミッター ストリップの微細な物理的形状を分析します。標準 RGB、反転 BGR、三角形 QD-OLED、および WOLED レイアウト間のバリエーションは、オペレーティング システムのテキスト アンチエイリアス (Windows ClearType など) が鮮明に見えるか、マゼンタ/グリーンの色のハローが発生するかを直接決定します。",
     "whatToLookFor": [
-        {
-            "label": "Subpixel Geometry Structure",
-            "description": "Identifies whether your panel uses standard RGB vertical stripes, BGR stripes, or non-standard triangular subpixels."
-        },
-        {
-            "label": "High-Contrast Text Fringing",
-            "description": "Inspects black-on-white and white-on-black text for colored halos (green on top, magenta below)."
-        },
-        {
-            "label": "1px Grid Alignment",
-            "description": "Verifies whether 1-pixel alternating lines render as completely neutral grey without color artifacts."
-        },
-        {
-            "label": "ClearType Antialiasing Calibration",
-            "description": "Evaluates whether running Windows cttune or font smoothing eliminates edge discoloration."
-        }
+      {
+        "label": "サブピクセル幾何構造",
+        "description": "パネルが標準の RGB 垂直ストライプ、BGR ストライプ、または非標準の三角形サブピクセルを使用しているかどうかを識別します。"
+      },
+      {
+        "label": "ハイコントラストのテキストフリンジ",
+        "description": "白地に黒および黒地に白のテキストに色付きのハロー (上が緑、下がマゼンタ) がないか検査します。"
+      },
+      {
+        "label": "1px グリッドの配置",
+        "description": "1 ピクセルの交互の線が色のアーチファクトのない完全なニュートラル グレーとしてレンダリングされるかどうかを検証します。"
+      },
+      {
+        "label": "ClearType アンチエイリアス キャリブレーション",
+        "description": "Windows cttune またはフォント スムージングを実行するとエッジの変色が解消されるかどうかを評価します。"
+      }
     ],
     "canObserve": [
-        "Color fringing artifacts rendered across high-contrast serif, sans-serif, and monospace fonts",
-        "Subpixel alignment against calibrated 1-pixel alternating vertical and horizontal line gratings",
-        "Visual simulation of subpixel emission structures across 6 major panel architectures"
+      "ハイコントラストのセリフ体、サンセリフ体、等幅フォント全体でレンダリングされた色のにじみアーティファクト",
+      "キャリブレーション済みの 1 ピクセル交互の垂直および水平ライン格子に対するサブピクセルの位置合わせ",
+      "6 つの主要なパネル アーキテクチャにわたるサブピクセル発光構造の視覚的シミュレーション"
     ],
     "cannotMeasure": [
-        "Physical microscope optical verification of sub-millimeter silicon emitter geometry",
-        "Direct registry settings of the host operating system's font rasterizer",
-        "Hardware scaler subpixel interpolation inside external video capture cards"
+      "サブミリシリコンエミッタ形状の物理顕微鏡光学検証",
+      "ホスト オペレーティング システムのフォント ラスタライザーの直接レジストリ設定",
+      "外部ビデオ キャプチャ カード内のハードウェア スケーラー サブピクセル補間"
     ],
-    "interpretation": "If text shows faint green or magenta borders on a 1440p or 4K screen, your display likely features a BGR or QD-OLED subpixel layout. Running the Windows ClearType Tuner or switching to grayscale antialiasing will resolve the fringing.",
+    "interpretation": "1440p または 4K 画面でテキストに薄い緑またはマゼンタの境界線が表示される場合は、ディスプレイに BGR または QD-OLED サブピクセル レイアウトが搭載されている可能性があります。 Windows ClearType Tuner を実行するか、グレースケール アンチエイリアスに切り替えると、フリンジが解決されます。",
     "nextSteps": {
-        "text": "Want to inspect overall display sharpness and resolution scaling?",
-        "actionLabel": "Launch Text Clarity Test",
-        "actionHref": "/tests/text-clarity-test"
+      "text": "全体的なディスプレイの鮮明さと解像度のスケーリングを検査したいですか?",
+      "actionLabel": "テキスト明瞭度テストを開始する",
+      "actionHref": "/tests/text-clarity-test"
     }
-},
-
+  },
   "pwm-flicker-test": {
-    "overview": "Pulse-Width Modulation (PWM) is a dimming technique used by certain LCD backlights and OLED panels that rapidly strobes the light source on and off to achieve lower brightness. While invisible to the naked eye at high frequencies, low-frequency PWM (120Hz–480Hz) causes severe eye strain, dry eyes, headaches, and migraines.",
+    "overview": "パルス幅変調 (PWM) は、特定の LCD バックライトおよび OLED パネルで使用される調光技術で、光源を急速にオン/オフして輝度を下げます。高周波では肉眼では見えませんが、低周波 PWM (120Hz ～ 480Hz) は重度の眼精疲労、ドライアイ、頭痛、片頭痛を引き起こします。",
     "whatToLookFor": [
-        {
-            "label": "Stroboscopic Phantom Beads",
-            "description": "Moving your eyes or waving an object in front of the screen breaks moving lines into distinct phantom beads if PWM is present."
-        },
-        {
-            "label": "Smartphone Shutter Scanlines",
-            "description": "Using a phone camera at 1/1000s or faster reveals dark scrolling horizontal bands caused by duty-cycle modulation."
-        },
-        {
-            "label": "Flicker-Free Brightness Threshold",
-            "description": "Identifies at what monitor OSD brightness percentage the display switches from DC dimming to PWM."
-        },
-        {
-            "label": "Duty Cycle Luminescence",
-            "description": "Measures the optical ratio between ON duration and OFF duration during each dimming cycle."
-        }
+      {
+        "label": "ストロボファントムビーズ",
+        "description": "PWM が存在する場合、目を動かしたり、画面の前で物体を振ったりすると、移動する線が個別のファントム ビーズに分割されます。"
+      },
+      {
+        "label": "スマートフォンのシャッタースキャンライン",
+        "description": "携帯電話のカメラを 1/1000 秒以上で使用すると、デューティ サイクル変調によって発生する暗いスクロール水平バンドが明らかになります。"
+      },
+      {
+        "label": "ちらつきのない明るさのしきい値",
+        "description": "ディスプレイが DC 調光から PWM に切り替わるモニター OSD 輝度パーセンテージを識別します。"
+      },
+      {
+        "label": "デューティサイクル発光",
+        "description": "各調光サイクル中のオン期間とオフ期間の間の光学比を測定します。"
+      }
     ],
     "canObserve": [
-        "Visual stroboscopic interference patterns generated by high-velocity scrolling gratings",
-        "Optical interaction between user saccadic eye movements and panel refresh cycles",
-        "Guidelines for smartphone camera verification of PWM frequency"
+      "高速スクロールグレーティングによって生成される視覚的なストロボ干渉パターン",
+      "ユーザーの衝動性眼球運動とパネルのリフレッシュ サイクル間の光学的相互作用",
+      "スマートフォンカメラのPWM周波数検証​​ガイドライン"
     ],
     "cannotMeasure": [
-        "Exact physical pulse frequency in Hertz without an external photodiode oscilloscope probe",
-        "Harmonic distortion index of the LED driver circuit",
-        "Micro-voltage ripple on the backlight power rail"
+      "外部フォトダイオードオシロスコーププローブを使用せずに、ヘルツ単位で正確な物理パルス周波数を測定",
+      "LEDドライバー回路の高調波歪み指数",
+      "バックライト電源レールの微小電圧リップル"
     ],
-    "interpretation": "Displays certified as 'Flicker-Free' or 'TÜV Eye Comfort' utilize continuous Direct Current (DC) dimming down to 0% brightness. If you see beaded ghosting trails, your panel uses PWM dimming at low brightness settings.",
+    "interpretation": "「フリッカーフリー」または「TÜV Eye Comfort」として認定されたディスプレイは、明るさ 0% までの連続直流 (DC) 調光を利用します。ビーズ状のゴーストトレイルが見える場合、パネルは低輝度設定で PWM 調光を使用しています。",
     "nextSteps": {
-        "text": "Want to test for high-frequency VRR luminance fluctuations?",
-        "actionLabel": "Launch VRR Flicker Test",
-        "actionHref": "/tests/vrr-flicker-test"
+      "text": "高周波 VRR 輝度変動をテストしたいですか?",
+      "actionLabel": "VRR フリッカー テストを開始する",
+      "actionHref": "/tests/vrr-flicker-test"
     }
-},
-
+  },
   "dead-pixel-mapper": {
-    "overview": "The Dead Pixel RMA Coordinate Mapper is an interactive inspection tool designed for documenting defective panel pixels. It allows buyers to pinpoint defective pixel coordinates, classify defects by type, calculate ISO 9241-307 warranty eligibility, and export formal RMA inspection logs for manufacturer replacement claims.",
+    "overview": "Dead Pixel RMA 座標マッパーは、パネルの欠陥ピクセルを文書化するために設計された対話型検査ツールです。これにより、購入者は欠陥ピクセル座標を正確に特定し、欠陥を種類ごとに分類し、ISO 9241-307 保証資格を計算し、メーカーの交換請求のために正式な RMA 検査ログをエクスポートすることができます。",
     "whatToLookFor": [
-        {
-            "label": "Dead (Dark) Pixels",
-            "description": "Permanently unpowered subpixel triads that remain pitch black against white, cyan, and yellow screens."
-        },
-        {
-            "label": "Stuck (Bright) Subpixels",
-            "description": "Subpixels locked in an open state, glowing red, green, blue, or white against pure black backgrounds."
-        },
-        {
-            "label": "Defect Coordinates (X, Y)",
-            "description": "Precise pixel address from the top-left origin to prove defect location to service technicians."
-        },
-        {
-            "label": "ISO 9241-307 Class Thresholds",
-            "description": "Automatic comparison against Class 1 (Zero-Defect) and Class 2 (Consumer Allowance) replacement limits."
-        }
+      {
+        "label": "デッド (ダーク) ピクセル",
+        "description": "永久に電源が供給されていないサブピクセル トライアドは、白、シアン、黄色の画面に対して真っ黒のままです。"
+      },
+      {
+        "label": "スタックした (明るい) サブピクセル",
+        "description": "開いた状態でロックされたサブピクセルは、純粋な黒の背景に対して赤、緑、青、または白に輝きます。"
+      },
+      {
+        "label": "欠陥座標(X,Y)",
+        "description": "サービス技術者に欠陥位置を証明するための、左上の原点からの正確なピクセル アドレス。"
+      },
+      {
+        "label": "ISO 9241-307 クラスのしきい値",
+        "description": "クラス 1 (ゼロ欠陥) およびクラス 2 (消費者手当) の交換制限との自動比較。"
+      }
     ],
     "canObserve": [
-        "Exact screen coordinates (X, Y) of logged defective points across 9 solid test backgrounds",
-        "Calculation of central zone vs. peripheral zone defect clustering",
-        "ISO 9241-307 Class 1 and Class 2 warranty return compliance"
+      "9 つの無地のテスト背景にわたって記録された欠陥ポイントの正確な画面座標 (X、Y)",
+      "中心ゾーンと周辺ゾーンの欠陥クラスタリングの計算",
+      "ISO 9241-307 クラス 1 およびクラス 2 保証返品準拠"
     ],
     "cannotMeasure": [
-        "Automatic algorithmic defect detection without manual user visual inspection",
-        "Sub-surface glass dust vs. true TFT transistor failure without optical magnification",
-        "Internal electrical continuity of the panel driver IC"
+      "ユーザーによる手動の目視検査を必要としない、自動アルゴリズムによる欠陥検出",
+      "表面下のガラス粉塵と光学倍率なしの真の TFT トランジスタ故障の比較",
+      "パネルドライバICの内部導通"
     ],
-    "interpretation": "Most major monitor manufacturers (Dell, LG, ASUS, Samsung) adhere to ISO 9241-307 Class 2, which allows up to 2 full dead pixels or 5 stuck subpixels per million. Premium gaming and professional displays often feature Zero Bright Dot (Class 1) coverage.",
+    "interpretation": "ほとんどの主要なモニター メーカー (Dell、LG、ASUS、Samsung) は ISO 9241-307 クラス 2 に準拠しており、100 万あたり最大 2 つの完全なデッド ピクセルまたは 5 つのスタック サブピクセルが許容されます。プレミアム ゲームおよびプロフェッショナル ディスプレイには、多くの場合、ゼロ ブライト ドット (クラス 1) のカバー範囲が備わっています。",
     "nextSteps": {
-        "text": "Have stuck subpixels that remain lit? Try reviving them with our high-speed exerciser.",
-        "actionLabel": "Launch Stuck Pixel Fixer",
-        "actionHref": "/tests/stuck-pixel-fixer"
+      "text": "サブピクセルが点灯したままになっていますか?高速エクササイザーを使って復活させてみてください。",
+      "actionLabel": "スタックピクセルフィクサーを起動する",
+      "actionHref": "/tests/stuck-pixel-fixer"
     }
-},
-
+  },
   "gtg-response-time-test": {
-    "overview": "Grey-to-Grey (GtG) response time measures the time required for a liquid crystal pixel to transition from one arbitrary intermediate grey level to another. While manufacturers advertise 1ms or 0.5ms GtG, real-world transitions vary significantly, and aggressive overdrive settings often cause severe inverse ghosting (overshoot).",
+    "overview": "グレーからグレー (GtG) 応答時間は、液晶ピクセルが 1 つの任意の中間グレー レベルから別の中間グレー レベルに遷移するのに必要な時間を測定します。メーカーは 1 ミリ秒または 0.5 ミリ秒の GtG を宣伝していますが、実際の遷移は大きく異なり、積極的なオーバードライブ設定は深刻な逆ゴースト (オーバーシュート) を引き起こすことがよくあります。",
     "whatToLookFor": [
-        {
-            "label": "VA Panel Black Smearing",
-            "description": "Inspects transitions from 0% pure black to 20% dark grey, where VA liquid crystals are slowest."
-        },
-        {
-            "label": "Overdrive Overshoot (Coronas)",
-            "description": "Checks for bright white or dark inverted halos trailing moving objects caused by excessive overdrive voltage."
-        },
-        {
-            "label": "Leading vs Trailing Blur",
-            "description": "Compares rise time (dark to light) against fall time (light to dark) across high-speed moving targets."
-        },
-        {
-            "label": "Overdrive Mode Balancing",
-            "description": "Guides selection of the optimal OSD overdrive tier (Off, Normal, Fast, Extreme)."
-        }
+      {
+        "label": "VAパネル黒汚れ",
+        "description": "VA 液晶が最も遅い、0% の純粋な黒から 20% の濃い灰色までの遷移を検査します。"
+      },
+      {
+        "label": "オーバードライブ オーバーシュート (コロナ)",
+        "description": "過剰なオーバードライブ電圧によって引き起こされる、移動するオブジェクトの後ろにある明るい白または暗い逆ハローをチェックします。"
+      },
+      {
+        "label": "先行ブラーと後続ブラー",
+        "description": "高速で移動するターゲット全体での立ち上がり時間 (暗部から明部) と立下り時間 (明部から暗部) を比較します。"
+      },
+      {
+        "label": "オーバードライブモードのバランス調整",
+        "description": "最適な OSD オーバードライブ層 (オフ、ノーマル、高速、エクストリーム) の選択をガイドします。"
+      }
     ],
     "canObserve": [
-        "Visual ghosting trails across customizable start and end grey luminance values",
-        "Simulation of overdrive corona overshoot across standard liquid crystal overdrive tiers",
-        "Edge sharpness and clarity of moving objects across calibrated velocity levels"
+      "カスタマイズ可能な開始グレー輝度値と終了グレー輝度値にわたる視覚的なゴーストの軌跡",
+      "標準液晶オーバードライブ層全体のオーバードライブ コロナ オーバーシュートのシミュレーション",
+      "校正された速度レベル全体での移動オブジェクトのエッジの鮮明さと明瞭さ"
     ],
     "cannotMeasure": [
-        "Sub-millisecond photodiode oscilloscope transition curves (10% to 90% rise time)",
-        "Internal overdrive voltage table lookup values inside the monitor scaler ASIC",
-        "Temperature-dependent liquid crystal viscosity changes"
+      "サブミリ秒のフォトダイオード オシロスコープ遷移曲線 (10% ～ 90% の立ち上がり時間)",
+      "モニター スケーラー ASIC 内の内部オーバードライブ電圧テーブル ルックアップ値",
+      "温度による液晶粘度の変化"
     ],
-    "interpretation": "If moving objects show a bright halo or inverse silhouette, your monitor's OSD Overdrive is set too high ('Extreme'). Dialing back to 'Fast' or 'Normal' will deliver cleaner motion clarity without corona artifacts.",
+    "interpretation": "動く物体に明るいハローまたは逆シルエットが表示される場合は、モニターの OSD オーバードライブの設定が高すぎます (「極端」)。 「高速」または「標準」にダイヤルを戻すと、コロナアーチファクトのない、より鮮明なモーションが得られます。",
     "nextSteps": {
-        "text": "Want to benchmark moving UFO sharpness and persistence blur?",
-        "actionLabel": "Launch Ghosting Test",
-        "actionHref": "/tests/ghosting-test"
+      "text": "動く UFO の鮮明さと持続性のブラーをベンチマークしたいですか?",
+      "actionLabel": "ゴースティングテストを開始する",
+      "actionHref": "/tests/ghosting-test"
     }
-},
-
+  },
   "oled-burn-in-calculator": {
-    "overview": "The OLED Burn-in Risk & Longevity Calculator models organic light-emitting diode subpixel degradation based on panel technology generation, daily operating hours, static interface content ratios, and typical SDR/HDR luminance levels. It provides an actuarial forecast of panel lifespan and static HUD hazard hotspots.",
+    "overview": "OLED 焼き付きリスクと寿命の計算ツールは、パネル技術の世代、毎日の動作時間、静的インターフェイスの含有率、一般的な SDR/HDR 輝度レベルに基づいて、有機発光ダイオードのサブピクセルの劣化をモデル化します。これは、パネルの寿命と静的な HUD 危険ホットスポットの保険数理予測を提供します。",
     "whatToLookFor": [
-        {
-            "label": "Panel Generation Resilience",
-            "description": "Accounts for differences between first-gen QD-OLED, modern Gen 3 QD-OLED, and WOLED MLA micro-lens arrays."
-        },
-        {
-            "label": "Static Content Ratio",
-            "description": "Calculates cumulative static stress from Windows taskbars, browser headers, and gaming HUDs."
-        },
-        {
-            "label": "Luminance Stress Multiplier",
-            "description": "Models the exponential acceleration of organic material aging at high sustained nits."
-        },
-        {
-            "label": "Mitigation Habits Impact",
-            "description": "Evaluates the protective value of pixel shift, auto-hide taskbar, logo dimmers, and screen timeouts."
-        }
+      {
+        "label": "パネルの発電回復力",
+        "description": "第一世代 QD-OLED、最新の第 3 世代 QD-OLED、および WOLED MLA マイクロ レンズ アレイの違いを説明します。"
+      },
+      {
+        "label": "静的含有率",
+        "description": "Windows タスクバー、ブラウザー ヘッダー、ゲーム HUD から累積静的ストレスを計算します。"
+      },
+      {
+        "label": "輝度ストレス乗数",
+        "description": "高い持続ニットでの有機材料の老化の指数関数的な加速をモデル化します。"
+      },
+      {
+        "label": "軽減習慣の影響",
+        "description": "ピクセル シフト、タスク バーの自動非表示、ロゴの調光、画面のタイムアウトの保護値を評価します。"
+      }
     ],
     "canObserve": [
-        "Actuarial estimation of cumulative static hours before uneven subpixel aging occurs",
-        "Projected burn-in probability percentages across 1-year, 3-year, and 5-year ownership horizons",
-        "Hazard heatmap visualization of high-risk static interface regions"
+      "不均一なサブピクセルの経年劣化が発生するまでの累積静止時間の数理推定",
+      "1 年、3 年、5 年の所有期間にわたる予測バーンイン確率パーセンテージ",
+      "高リスクの静的インターフェース領域のハザード ヒートマップ視覚化"
     ],
     "cannotMeasure": [
-        "Real-time physical subpixel voltage degradation on your specific physical panel",
-        "Ambient room operating temperature and chassis heatsink thermal dissipation efficiency",
-        "Internal factory compensation cycle log data stored in panel EEPROM"
+      "特定の物理パネル上のリアルタイムの物理サブピクセル電圧低下",
+      "動作周囲温度とシャーシヒートシンクの放熱効率",
+      "パネル EEPROM に保存される内部工場出荷時の補償サイクル ログ データ"
     ],
-    "interpretation": "Modern OLED monitors with active pixel shift, thermal heatsinks, and auto-hide taskbars typically achieve 5+ years of daily mixed productivity and gaming without visible retention. High sustained SDR brightness on static white backgrounds accelerates aging.",
+    "interpretation": "アクティブ ピクセル シフト、サーマル ヒートシンク、およびタスクバーの自動非表示を備えた最新の OLED モニターは、通常、目に見える残留物を生じることなく、毎日 5 年以上の生産性とゲームを組み合わせて使用​​できます。静的な白い背景で高い SDR 輝度が持続すると、老化が促進されます。",
     "nextSteps": {
-        "text": "Want to inspect your current panel for existing static image retention?",
-        "actionLabel": "Launch Burn-In Test",
-        "actionHref": "/tests/burn-in-test"
+      "text": "現在のパネルに静的なイメージが残っていないか検査してみませんか?",
+      "actionLabel": "バーンインテストの開始",
+      "actionHref": "/tests/burn-in-test"
     }
-},
-
+  },
   "mouse-polling-test": {
-    "overview": "The Mouse Polling Rate & Sensor Precision test captures USB hardware event timestamps via high-precision browser timers. It measures real-time and peak polling frequency in Hertz (up to 8000Hz), checks packet interval stability (jitter), tests button actuation, and diagnoses mechanical switch double-click bouncing.",
+    "overview": "マウスのポーリング レートとセンサーの精度テストは、高精度のブラウザ タイマーを介して USB ハードウェア イベントのタイムスタンプをキャプチャします。リアルタイムおよびピーク ポーリング周波数をヘルツ (最大 8000 Hz) で測定し、パケット間隔の安定性 (ジッター) をチェックし、ボタンの作動をテストし、メカニカル スイッチのダブルクリック バウンスを診断します。",
     "whatToLookFor": [
-        {
-            "label": "Real-Time Polling Rate (Hz)",
-            "description": "Measures actual USB event report frequency (125Hz, 500Hz, 1000Hz, 4000Hz, 8000Hz)."
-        },
-        {
-            "label": "Interval Jitter & Stability",
-            "description": "Checks consistency of delta times between movement packets (e.g. 1.0ms for 1000Hz, 0.25ms for 4000Hz)."
-        },
-        {
-            "label": "Mechanical Double-Click Chatter",
-            "description": "Detects switch bounce intervals under 60ms indicating worn mechanical microswitches."
-        },
-        {
-            "label": "DPI Sensor Calibration",
-            "description": "Verifies physical drag distance in inches against registered screen pixel movement."
-        }
+      {
+        "label": "リアルタイムポーリングレート (Hz)",
+        "description": "実際の USB イベントレポート周波数 (125Hz、500Hz、1000Hz、4000Hz、8000Hz) を測定します。"
+      },
+      {
+        "label": "インターバルジッターと安定性",
+        "description": "動作パケット間のデルタ時間の一貫性をチェックします (例: 1000Hz の場合は 1.0ms、4000Hz の場合は 0.25ms)。"
+      },
+      {
+        "label": "機械的なダブルクリックチャタリング",
+        "description": "機械式マイクロスイッチの磨耗を示す 60 ミリ秒未満のスイッチ バウンス間隔を検出します。"
+      },
+      {
+        "label": "DPIセンサーのキャリブレーション",
+        "description": "登録された画面ピクセルの動きに対する物理的なドラッグ距離をインチ単位で検証します。"
+      }
     ],
     "canObserve": [
-        "USB mouse movement event frequency reported via performance.now() high-resolution timestamps",
-        "Peak, average, and real-time polling rates across continuous motion sessions",
-        "Multi-button click actuation counts and millisecond inter-click intervals"
+      "USB マウス移動イベントの頻度は、performance.now() の高解像度タイムスタンプによって報告されます。",
+      "連続モーションセッション全体のピーク、平均、リアルタイムのポーリングレート",
+      "マルチボタンのクリック作動回数とミリ秒単位のクリック間隔"
     ],
     "cannotMeasure": [
-        "Hardware USB bus polling rate when the mouse is stationary (optical sensors only report on movement)",
-        "Sensor lift-off distance (LOD) in physical millimeters",
-        "Direct MCU firmware polling rate when browser event loops are throttled by heavy background tasks"
+      "マウスが静止しているときのハードウェア USB バス ポーリング レート (光学センサーは動きのみを報告します)",
+      "センサーのリフトオフディスタンス（LOD）（物理ミリメートル）",
+      "ブラウザのイベント ループが重いバックグラウンド タスクによって抑制された場合のダイレクト MCU ファームウェアのポーリング レート"
     ],
-    "interpretation": "A gaming mouse set to 1000Hz should sustain 950Hz–1000Hz during rapid movement with ~1.0ms interval deltas. If click intervals under 50ms register from single physical depressions, your mouse switch suffers from contact chatter.",
+    "interpretation": "1000Hz に設定されたゲーミング マウスは、~1.0ms 間隔のデルタで素早い動きをしている間、950Hz ～ 1000Hz を維持する必要があります。 50 ミリ秒未満のクリック間隔が 1 回の物理的な押し込みによって記録される場合、マウス スイッチに接触チャタリングが発生します。",
     "nextSteps": {
-        "text": "Want to test your visual reaction speed and click latency?",
-        "actionLabel": "Launch Reaction Time Test",
-        "actionHref": "/tests/reaction-time-test"
+      "text": "視覚的な反応速度とクリックの遅延をテストしたいですか?",
+      "actionLabel": "起動反応時間テスト",
+      "actionHref": "/tests/reaction-time-test"
     }
-},
-
+  },
   "gpu-benchmark-test": {
-    "overview": "The GPU WebGL 3D Stress & Performance Benchmark renders complex real-time 3D particle systems and rotating geometries directly in your browser. It measures sustained frame rate, 1% low FPS, frame time variance, and hardware capabilities to identify GPU bottlenecks and thermal throttling under load.",
+    "overview": "GPU WebGL 3D ストレス & パフォーマンス ベンチマークは、複雑なリアルタイム 3D パーティクル システムと回転ジオメトリをブラウザ内で直接レンダリングします。持続的なフレーム レート、1% の低い FPS、フレーム時間の差異、ハードウェア機能を測定して、負荷時の GPU ボトルネックとサーマル スロットリングを特定します。",
     "whatToLookFor": [
-        {
-            "label": "Sustained FPS vs Display Hz",
-            "description": "Evaluates whether your GPU can consistently match your monitor's native refresh rate."
-        },
-        {
-            "label": "1% Low FPS Stutter",
-            "description": "Tracks the bottom 1% of frame times to detect micro-stutters and background asset hitches."
-        },
-        {
-            "label": "Frame Time Variance (ms)",
-            "description": "Monitors frame pacing consistency (16.6ms for 60Hz, 6.9ms for 144Hz, 4.1ms for 240Hz)."
-        },
-        {
-            "label": "Thermal Throttling Drop",
-            "description": "Identifies whether frame rates degrade over the course of a 30-second sustained benchmark."
-        }
+      {
+        "label": "持続的な FPS とディスプレイの Hz",
+        "description": "GPU がモニターのネイティブ リフレッシュ レートと一貫して一致できるかどうかを評価します。"
+      },
+      {
+        "label": "1% 低い FPS スタッター",
+        "description": "フレーム時間の下位 1% を追跡して、マイクロスタッターやバックグラウンド アセットのヒッチを検出します。"
+      },
+      {
+        "label": "フレーム時間の差異 (ミリ秒)",
+        "description": "フレームペーシングの一貫性を監視します (60Hz の場合は 16.6ms、144Hz の場合は 6.9ms、240Hz の場合は 4.1ms)。"
+      },
+      {
+        "label": "サーマルスロットリングの低下",
+        "description": "30 秒間のベンチマークの継続中にフレーム レートが低下するかどうかを識別します。"
+      }
     ],
     "canObserve": [
-        "Client-side WebGL 3D rendering throughput across 10,000 to 200,000 active particles",
-        "Real-time frame rate, average FPS, 1% low frame rates, and millisecond frame pacing",
-        "Detected WebGL graphics renderer string, GPU vendor, and maximum texture dimensions"
+      "10,000 ～ 200,000 個のアクティブ パーティクルにわたるクライアント側 WebGL 3D レンダリング スループット",
+      "リアルタイム フレーム レート、平均 FPS、1% 低フレーム レート、ミリ秒フレーム ペーシング",
+      "検出された WebGL グラフィックス レンダラー文字列、GPU ベンダー、および最大テクスチャ サイズ"
     ],
     "cannotMeasure": [
-        "Physical GPU core temperature (°C) or fan RPM without native operating system telemetry utilities",
-        "GPU board power draw in Watts (TDP)",
-        "VRAM memory clock frequency or memory junction temperatures"
+      "ネイティブ オペレーティング システム テレメトリ ユーティリティを使用しない場合の物理 GPU コア温度 (°C) またはファン RPM",
+      "GPU ボードの消費電力 (TDP)",
+      "VRAM メモリ クロック周波数またはメモリ ジャンクション温度"
     ],
-    "interpretation": "High average FPS with low 1% low FPS indicates frame pacing stutter or background CPU thread contention. Smooth frame pacing ensures responsive, tear-free motion on high-refresh gaming displays.",
+    "interpretation": "平均 FPS が高く、FPS が 1% 低い場合は、フレーム ペーシングの途切れまたはバックグラウンドの CPU スレッド競合を示します。スムーズなフレーム ペーシングにより、高リフレッシュのゲーム ディスプレイ上で応答性が高く、ティアリングのないモーションが保証されます。",
     "nextSteps": {
-        "text": "Want to inspect your monitor's real-time refresh rate pacing?",
-        "actionLabel": "Launch Refresh Rate Test",
-        "actionHref": "/tests/refresh-rate-test"
+      "text": "モニターのリアルタイムのリフレッシュ レート ペーシングを検査したいですか?",
+      "actionLabel": "リフレッシュ レート テストを開始する",
+      "actionHref": "/tests/refresh-rate-test"
     }
-},
-
+  },
   "display-certificate": {
-    "overview": "The Display Inspection Certificate is a formal quality documentation tool. It aggregates automatically detected hardware parameters (native resolution, color depth, wide gamut, pixel density) with manual visual inspection ratings to generate a printable, certified inspection report for resale grading or manufacturer RMA warranty claims.",
+    "overview": "ディスプレイ検査証明書は、正式な品質文書ツールです。自動的に検出されたハードウェア パラメータ (ネイティブ解像度、色深度、広色域、ピクセル密度) と手動の目視検査評価を集約し、再販グレーディングまたはメーカー RMA 保証請求用の印刷可能な認定検査レポートを生成します。",
     "whatToLookFor": [
-        {
-            "label": "Hardware Specification Log",
-            "description": "Certifies native panel resolution, color bit-depth, device pixel ratio, and wide color gamut support."
-        },
-        {
-            "label": "Defect Audit Summary",
-            "description": "Records exact counts of dead pixels, stuck subpixels, and backlight bleed severity."
-        },
-        {
-            "label": "ISO 9241-307 Compliance",
-            "description": "Documents whether the panel meets Class 1 (Zero Bright Dot) or Class 2 consumer replacement criteria."
-        },
-        {
-            "label": "Print-Ready Verification Layout",
-            "description": "Formats all data into a clean, watermark-certified certificate optimized for PDF export and printing."
-        }
+      {
+        "label": "ハードウェア仕様ログ",
+        "description": "ネイティブ パネル解像度、色ビット深度、デバイスのピクセル比、および広色域のサポートを認定します。"
+      },
+      {
+        "label": "欠陥監査の概要",
+        "description": "デッドピクセル、スタックサブピクセル、およびバックライトのにじみの重大度の正確な数を記録します。"
+      },
+      {
+        "label": "ISO 9241-307への準拠",
+        "description": "パネルがクラス 1 (ゼロ ブライト ドット) またはクラス 2 の消費者交換基準を満たしているかどうかを文書化します。"
+      },
+      {
+        "label": "印刷可能な検証レイアウト",
+        "description": "すべてのデータを、PDF のエクスポートと印刷用に最適化されたクリーンなウォーターマーク認定の証明書にフォーマットします。"
+      }
     ],
     "canObserve": [
-        "Compilation of system-reported display parameters and user-verified quality grades",
-        "Generation of unique cryptographic verification IDs and inspection timestamps",
-        "Print-optimized document layout hiding navigation and interactive UI controls"
+      "システムが報告する表示パラメータとユーザーが検証した品質グレードの編集",
+      "一意の暗号検証 ID と検査タイムスタンプの生成",
+      "印刷用に最適化されたドキュメント レイアウトで、ナビゲーションとインタラクティブな UI コントロールを非表示にします。"
     ],
     "cannotMeasure": [
-        "Automated physical panel serial number readout from internal EDID firmware (requires manual entry)",
-        "Legal underwriting of manufacturer warranty claims outside official manufacturer service centers",
-        "Spectroradiometer color accuracy Delta E verification without external hardware colorimeters"
+      "内部 EDID ファームウェアからの物理パネルのシリアル番号の自動読み取り (手動入力が必要)",
+      "メーカーの公式サービスセンター以外でのメーカー保証請求の法的引受",
+      "分光放射計の色精度 外部ハードウェア比色計を使用しないデルタ E 検証"
     ],
-    "interpretation": "Display inspection certificates provide trusted documentation when buying or selling used monitors or submitting RMA return claims during manufacturer return windows.",
+    "interpretation": "ディスプレイ検査証明書は、中古モニターの売買時、またはメーカー返品期間中に RMA 返品請求を提出する際に信頼できる文書となります。",
     "nextSteps": {
-        "text": "Need to pinpoint defective pixel coordinates before generating your certificate?",
-        "actionLabel": "Launch Dead Pixel Mapper",
-        "actionHref": "/tools/dead-pixel-mapper"
+      "text": "証明書を生成する前に、欠陥のあるピクセル座標を特定する必要がありますか?",
+      "actionLabel": "デッド ピクセル マッパーを起動する",
+      "actionHref": "/tools/dead-pixel-mapper"
     }
-},
-
+  },
   "osd-calibration-guide": {
-    "overview": "The Interactive OSD Monitor Calibration Assistant is a visual guide for calibrating your display's physical On-Screen Display (OSD) hardware buttons. It walks users through 6 essential steps—Brightness, Contrast, Gamma 2.2, 6500K Color Temperature, Sharpness, and Overdrive—without requiring expensive hardware colorimeters.",
+    "overview": "インタラクティブ OSD モニター キャリブレーション アシスタントは、ディスプレイの物理的なオンスクリーン ディスプレイ (OSD) ハードウェア ボタンを調整するための視覚的なガイドです。高価なハードウェア測色計を必要とせずに、明るさ、コントラスト、ガンマ 2.2、6500K 色温度、シャープネス、オーバードライブの 6 つの重要なステップをユーザーに説明します。",
     "whatToLookFor": [
-        {
-            "label": "Brightness (Black Clipping)",
-            "description": "Tunes OSD Brightness so patch #16 is faintly visible while patch #0 remains inky black."
-        },
-        {
-            "label": "Contrast (White Saturation)",
-            "description": "Adjusts OSD Contrast so near-white patch #253 remains distinguishable from pure white #255."
-        },
-        {
-            "label": "Gamma 2.2 Optical Blend",
-            "description": "Aligns midtone luminance using an optical pattern where the center disc blends at 2.2."
-        },
-        {
-            "label": "Color Temperature (6500K D65)",
-            "description": "Balances Red, Green, and Blue gain sliders to achieve clean, neutral white and grey tones."
-        }
+      {
+        "label": "明るさ（黒クリッピング）",
+        "description": "OSD の明るさを調整して、パッチ #0 が真っ黒のままでパッチ #16 がかすかに見えるようにします。"
+      },
+      {
+        "label": "コントラスト（白の彩度）",
+        "description": "OSD コントラストを調整して、白に近いパッチ #253 が純粋な白 #255 と区別できるようにします。"
+      },
+      {
+        "label": "ガンマ 2.2 オプティカル ブレンド",
+        "description": "中央のディスクが 2.2 でブレンドされる光学パターンを使用して、中間調の輝度を調整します。"
+      },
+      {
+        "label": "色温度 (6500K D65)",
+        "description": "赤、緑、青のゲイン スライダーのバランスを調整して、クリーンでニュートラルな白とグレーの色調を実現します。"
+      }
     ],
     "canObserve": [
-        "Visual feedback targets designed specifically for standard monitor OSD adjustment ranges",
-        "Optical blend checkerboards verifying sRGB Gamma 2.2 alignment without calibration probes",
-        "High-contrast text and moving block targets for tuning sharpness and overdrive tiers"
+      "標準モニターの OSD 調整範囲に合わせて特別に設計された視覚的なフィードバック ターゲット",
+      "キャリブレーションプローブを使用せずに sRGB ガンマ 2.2 アライメントを検証する光学ブレンドチェッカーボード",
+      "シャープネスとオーバードライブ層を調整するためのハイコントラストのテキストと移動ブロックのターゲット"
     ],
     "cannotMeasure": [
-        "Direct software control over physical monitor OSD buttons via DDC/CI protocol",
-        "Exact color temperature in Kelvin without a spectrophotometer or colorimeter hardware probe",
-        "Hardware LUT (Look-Up Table) internal calibration inside professional color-grading monitors"
+      "DDC/CI プロトコル経由で物理モニターの OSD ボタンをソフトウェアで直接制御",
+      "分光光度計や比色計のハードウェアプローブを使用せずにケルビン単位で正確な色温度を測定",
+      "プロ仕様のカラーグレーディングモニター内のハードウェアLUT（ルックアップテーブル）内部キャリブレーション"
     ],
-    "interpretation": "Factory default monitor settings are almost always oversaturated, overly bright (100%), and too cool (8000K+). Following this 6-step OSD tuning guide brings your display significantly closer to international sRGB/Rec.709 mastering standards.",
+    "interpretation": "工場出荷時のデフォルトのモニター設定は、ほとんどの場合、過飽和、明るすぎる (100%)、冷たすぎる (8000K+) になっています。この 6 ステップの OSD チューニング ガイドに従うと、ディスプレイが国際的な sRGB/Rec.709 マスタリング標準に大幅に近づきます。",
     "nextSteps": {
-        "text": "Want to verify color gamut coverage and ColorChecker accuracy?",
-        "actionLabel": "Launch Color Accuracy Test",
-        "actionHref": "/tests/color-accuracy-test"
+      "text": "色域範囲と ColorChecker の精度を確認したいですか?",
+      "actionLabel": "色精度テストの開始",
+      "actionHref": "/tests/color-accuracy-test"
     }
-},
-
+  },
+  "color-gamut-test": {
+    "overview": "色域テストでは、ディスプレイ、GPU ドライバー、ブラウザーが DCI-P3 や Rec などの広色空間をサポートしているかどうかを評価します。 2020 標準の sRGB を超えます。",
+    "whatToLookFor": [
+      {
+        "label": "P3 色域拡張ターゲット",
+        "description": "Display P3 カラーを表示できる画面でのみ表示される隠し記号または数字。"
+      },
+      {
+        "label": "sRGB クランプ境界",
+        "description": "sRGB 以外の色がクリップされているか、または正確にレンダリングされているかを観察します。"
+      },
+      {
+        "label": "深い赤と緑の彩度",
+        "description": "赤と緑が標準的なオフィス モニターよりも大幅に豊かに見えるかどうかを確認します。"
+      },
+      {
+        "label": "ブラウザのカラー管理状態",
+        "description": "Web ブラウザが OS カラー管理プロファイルを積極的に利用していることを確認してください。"
+      }
+    ],
+    "canObserve": [
+      "ブラウザ CSS 色域メディアクエリ検出 (@media (color-gamut: p3))",
+      "sRGB カラーパッチとディスプレイ P3 カラーパッチの視覚的な区別",
+      "Canvasの広色域カラープロファイルのレンダリング"
+    ],
+    "cannotMeasure": [
+      "分光光度計を使用しない場合の DCI-P3 または Adob​​eRGB のカバー率",
+      "CIELAB単位の光学ボリューム",
+      "物理的な蛍光体の発光波長"
+    ],
+    "interpretation": "P3 インジケーターのロゴが sRGB 背景と明確に区​​別できる場合、ディスプレイ ハードウェア、オペレーティング システム、およびブラウザーは広色域を積極的にサポートしています。",
+    "nextSteps": {
+      "text": "高ダイナミック レンジのピーク輝度とメタデータの処理を確認します。",
+      "actionLabel": "HDR 機能テストを開始する",
+      "actionHref": "/tests/hdr-capability-test"
+    }
+  },
+  "color-accuracy-test": {
+    "overview": "色精度検査では、標準化された基準カラー パッチを利用して、ディスプレイ全体の色相の変化、知覚的な色の誤差、肌の色合いの歪みを視覚的に検出します。",
+    "whatToLookFor": [
+      {
+        "label": "基準パッチの均一性",
+        "description": "標準の ColorChecker スタイルのパッチのバランスと中立性を検査します。"
+      },
+      {
+        "label": "肌の色合いの自然さ",
+        "description": "ポートレートの肌の色が人為的に日焼けした（赤すぎる）または黄疸（黄色すぎる）に見えないことを確認してください。"
+      },
+      {
+        "label": "ニュートラルグレーの軸合わせ",
+        "description": "ニュートラル グレーの行に彩度がゼロであることを確認します。"
+      },
+      {
+        "label": "二次カラーバランス",
+        "description": "シアン、マゼンタ、イエローが原色に偏ることなく純粋な色合いを維持できるようにします。"
+      }
+    ],
+    "canObserve": [
+      "標準の 24 パッチのリファレンス カラー パレット レンダリング",
+      "標準化されたデジタル基準値に対する視覚的な調整",
+      "画面領域全体でパッチを並べて一貫性を保つ"
+    ],
+    "cannotMeasure": [
+      "外部センサーを使用しない場合の数値デルタ E (ΔE 2000) 偏差値",
+      "絶対 CIE L*a*b* 座標",
+      "周囲光フレアが知覚に与える影響"
+    ],
+    "interpretation": "適切にキャリブレーションされたディスプレイは、肌の色調が過度に赤くなったり、緑がかった灰色になることなく、すべてのテスト パッチにわたって正確な色相と彩度を維持します。",
+    "nextSteps": {
+      "text": "ハードウェアのオンスクリーン表示コントロールを使用してモニターを調整する方法を学びます。",
+      "actionLabel": "OSD キャリブレーション ガイドの起動",
+      "actionHref": "/tools/osd-calibration-guide"
+    }
+  },
+  "black-level-test": {
+    "overview": "黒レベル テストでは、影のディテールの再現と黒の床の深さを測定し、最低輝度信号が黒つぶれや灰色のかすみなく正確にレンダリングされることを確認します。",
+    "whatToLookFor": [
+      {
+        "label": "目に見える最低のグレーステップ",
+        "description": "真の黒と区別できる最も低いパーセンテージのボックス (1%、2%、または 3%) を見つけます。"
+      },
+      {
+        "label": "純粋な黒の背景の安定性",
+        "description": "外側の背景が 0% (RGB 0,0,0) でレンダリングされていることを確認します。"
+      },
+      {
+        "label": "グロー vs 黒の深さ",
+        "description": "背景が本当に暗いのか、それとも IPS グロー/バックライトのにじみによって浮き上がっているのかに注目してください。"
+      },
+      {
+        "label": "コーナームラ",
+        "description": "画面中央に比べて画面隅付近で黒レベルが上がっているかどうかを確認します。"
+      }
+    ],
+    "canObserve": [
+      "目に見える最も低い黒に近いステップの正確なしきい値 (1% ～ 8%)",
+      "暗い観察室に対する視覚的な黒の深さ",
+      "影の知覚に影響を与えるコーナーグロー干渉"
+    ],
+    "cannotMeasure": [
+      "絶対最小黒輝度 (cd/m² (nits))",
+      "液晶遮光偏光度",
+      "パネルライトシールの完全性"
+    ],
+    "interpretation": "OLED パネルでは、真の黒は 0 ニットを放出します。 LCD パネルでは、ほのかに光るのは正常ですが、1% ～ 2% のステップは背景からはっきりと見えるはずです。",
+    "nextSteps": {
+      "text": "0% ～ 5% 付近の低輝度グレースケール応答をテストします。",
+      "actionLabel": "ニアブラックテストの開始",
+      "actionHref": "/tests/near-black-test"
+    }
+  },
+  "white-level-test": {
+    "overview": "白レベル テストでは、ディスプレイの上部ハイライトを検査して、明るい白の詳細 (8 ビットのレベル 240 ～ 254) が特徴のない白に欠けていないことを確認します。",
+    "whatToLookFor": [
+      {
+        "label": "ほぼ白の正方形の境界線",
+        "description": "正方形 250、252、および 254 が純粋な白い背景 (255) と明らかに区別できるかどうかを確認します。"
+      },
+      {
+        "label": "明るいハイライトの変色",
+        "description": "ピークの白い四角形が黄色がかった色やシアン色に染まっていないことを確認してください。"
+      },
+      {
+        "label": "目の疲れ・まぶしさ",
+        "description": "現在の部屋の照明で最大の白色が目に不快感を引き起こすかどうかを確認してください。"
+      },
+      {
+        "label": "ハイライトブルーミング",
+        "description": "高輝度の白いブロックが隣接する境界に光を漏らしているかどうかを観察します。"
+      }
+    ],
+    "canObserve": [
+      "純白に対する高輝度の正方形の境界を区別できる (255)",
+      "画面象限全体のピークホワイトの色の中立性",
+      "エッジハイライトクリッピング閾値"
+    ],
+    "cannotMeasure": [
+      "露出計を使用しない場合のピーク持続輝度 (nits)",
+      "測色計を使用しない場合のピークホワイト (例: 6500K) の光学色温度",
+      "自動輝度リミッター (ABL) スロットル カーブ"
+    ],
+    "interpretation": "253 または 254 までのほぼ白に近い正方形が白い背景と区別できる場合、モニターはハイライトのクリッピングを回避し、雲と鏡面反射光の詳細を保持します。",
+    "nextSteps": {
+      "text": "ディスプレイ表面全体にわたる全体的な輝度の均一性を検査します。",
+      "actionLabel": "起動均一性テスト",
+      "actionHref": "/tests/uniformity-test"
+    }
+  },
+  "gamma-test": {
+    "overview": "ガンマ テストでは、光学ハーフトーン ディザ フィールドを使用して、高価なハードウェア比色計を必要とせずに、ディスプレイの輝度曲線を標準 2.2 に視覚的に校正します。",
+    "whatToLookFor": [
+      {
+        "label": "ソリッドパターンとディザパターンのブレンド",
+        "description": "内側の実線の円が交互の縞模様の背景に完全に溶け込んでいる場所に注目してください。"
+      },
+      {
+        "label": "視聴距離の調整",
+        "description": "一歩下がったり、少し目を細めたりすると、1 ピクセルの細い線がぼやけてソリッドなトーンになります。"
+      },
+      {
+        "label": "ガンマカーブブレンドポイント",
+        "description": "どの数値 (1.8、2.0、2.2、2.4、2.6) が背景と一致するかを特定します。"
+      },
+      {
+        "label": "グレーのカラードリフト",
+        "description": "赤、緑、青のチャンネル間でブレンド ポイントが異なるかどうかを観察します。"
+      }
+    ],
+    "canObserve": [
+      "50% 輝度ディザ フィールドとソリッド グレー スウォッチ間の知覚的一致点",
+      "実効ガンマ曲線指数の視覚的近似",
+      "中間調のカラーバランスと色の中立性"
+    ],
+    "cannotMeasure": [
+      "正確なマルチポイント 10 ポイント/20 ポイントのパラメトリック ガンマ カーブ",
+      "モニター内のハードウェア LUT プロファイル データ スカラー",
+      "ミリカンデラ単位のデジタルから光への変換伝達関数"
+    ],
+    "interpretation": "一般的なコンピューティングおよび sRGB マスタリングの場合、通常の距離から見た場合、パターンは 2.2 インジケーター マークで背景にシームレスに溶け込む必要があります。",
+    "nextSteps": {
+      "text": "画面上のハードウェア ボタンを使用してモニター設定を調整します。",
+      "actionLabel": "OSD キャリブレーション ガイドの起動",
+      "actionHref": "/tools/osd-calibration-guide"
+    }
+  },
+  "solid-color-test": {
+    "overview": "ソリッドカラーフィールドテストでは、全画面のプライマリ、セカンダリ、黒、白、およびグレーの背景を表示して、パネルの均一性、色純度、およびサブピクセルの欠陥を検査します。",
+    "whatToLookFor": [
+      {
+        "label": "エッジのカラーシフト",
+        "description": "画面の周囲端付近で色温度が変化するかどうかを確認します。"
+      },
+      {
+        "label": "ダーティ スクリーン エフェクト (DSE)",
+        "description": "灰色と白のフィールドで、斑点、曇り、または縞模様の斑点がないか検査します。"
+      },
+      {
+        "label": "サブピクセル欠陥の分離",
+        "description": "特定の原色フィールド上でのみ現れるデッドまたはスタックしたサブピクセルを見つけます。"
+      },
+      {
+        "label": "ケラレ/コーナーシャドウイング",
+        "description": "端の隅が中心に比べてわずかに暗く見えるかどうかを観察します。"
+      }
+    ],
+    "canObserve": [
+      "8 つの標準化されたカラー フィールドにわたるフルスクリーンの視覚的な色の一貫性",
+      "端から中心までの明るさの変化とケラレ",
+      "ゴミの粒子や欠陥のあるサブピクセルを視覚的に検出"
+    ],
+    "cannotMeasure": [
+      "測光 9 ポイントまたは 25 ポイントの ANSI 均一性パーセンテージ",
+      "パネルの厚さのばらつき (マイクロメートル)",
+      "バックライト拡散板の光伝送効率"
+    ],
+    "interpretation": "均一な単色は、高いパネル品質と均一なバックライト分布を示します。不均一なパッ​​チや角のケラレは、低価格の LCD ディスプレイではよく見られます。",
+    "nextSteps": {
+      "text": "9ゾーンパネルの輝度と色温度の均一性を検査します。",
+      "actionLabel": "起動均一性テスト",
+      "actionHref": "/tests/uniformity-test"
+    }
+  },
+  "viewing-angle-test": {
+    "overview": "視野角テストでは、ディスプレイを中心から外れた角度、斜めの角度、および垂直な角度から見たときに、色の彩度、明るさ、コントラストがどのように低下​​するかを評価します。",
+    "whatToLookFor": [
+      {
+        "label": "角度による色のウォッシュアウト",
+        "description": "頭を左右に動かして、鮮やかな色がパステル調の色合いに変化するかどうかを観察してください。"
+      },
+      {
+        "label": "ガンマシフト/コントラストロス",
+        "description": "暗い影の詳細が洗い流され、黒レベルが乳白色の灰色に上昇するかどうかに注目してください。"
+      },
+      {
+        "label": "IPS グロー vs VA ガンマ シフト",
+        "description": "IPS パネルは広角でシルバー/ホワイトの光沢を示します。 VA パネルは中央のコントラストを失います。"
+      },
+      {
+        "label": "上下反転（TNパネル）",
+        "description": "下から見て、低予算の TN パネルで色がネガ画像に反転するかどうかを確認します。"
+      }
+    ],
+    "canObserve": [
+      "視野角が通常よりも大きくなると、知覚される色とコントラストが変化します",
+      "軸外から見たときの放射状勾配の均一性",
+      "テキストと高コントラストの線の角度安定性"
+    ],
+    "cannotMeasure": [
+      "正確な VESA 定義の 178°/178° 視野角コントラストしきい値 (10:1 CR)",
+      "偏光フィルター消光比",
+      "パネルガラス基板の屈折率"
+    ],
+    "interpretation": "IPS および OLED パネルは、広角にわたって高い色忠実度を維持します。 VA パネルではコントラストの低下とガンマ シフトが発生しますが、TN パネルでは色が垂直に反転します。",
+    "nextSteps": {
+      "text": "斜めから見るとコーナーのバックライトがにじみ出るかどうかを確認します。",
+      "actionLabel": "バックライトブリードテストを開始",
+      "actionHref": "/tests/backlight-bleed-test"
+    }
+  },
+  "blooming-test": {
+    "overview": "ブルーミング テストでは、フルアレイ ローカル ディミング (FALD) およびミニ LED ディスプレイで、アクティブなバックライト ゾーンから周囲の暗いピクセルに光が漏れるハロー アーティファクトを検査します。",
+    "whatToLookFor": [
+      {
+        "label": "ターゲットの周りに輝く光輪",
+        "description": "黒地に白い小さなボックスの周囲に拡散して輝くオーラがないか調べてください。"
+      },
+      {
+        "label": "字幕「黒い棒に咲く」",
+        "description": "白いテキストが黒いレターボックス領域に気が散る光フレアを引き起こすかどうかを確認します。"
+      },
+      {
+        "label": "スターフィールドフレア",
+        "description": "小さな 1 ピクセルの白い星を観察して、隣接するバックライト ゾーンが不必要に点灯していないかどうかを確認します。"
+      },
+      {
+        "label": "ゾーン遷移パルス",
+        "description": "画面上で高コントラストのオブジェクトを移動して、バックライト ゾーンの明るさの遅延を確認します。"
+      }
+    ],
+    "canObserve": [
+      "校正されたターゲット直径 (1px、5px、20px、100px) にわたる視覚的なハロー範囲と輝度コントラスト",
+      "画面象限全体で移動する高コントラスト要素の動的追跡",
+      "真の黒 (RGB 0,0,0) キャンバスに対するサブピクセル境界の鮮明さ"
+    ],
+    "cannotMeasure": [
+      "シャーシ内の物理 Mini-LED 調光ゾーンの合計数",
+      "ゾーンマイクロコントローラーアルゴリズムの応答時間（ミリ秒）",
+      "スポット光度計を使用しない絶対光ハロー輝度"
+    ],
+    "interpretation": "ブルーミングは、ミニ LED ゾーン数の解像度の物理的特性です。ローカルディミングの強度を下げるか、周囲のバイアス照明を追加すると、影響が最小限に抑えられます。",
+    "nextSteps": {
+      "text": "エッジ バックライト ブリードとローカル ディミングのパフォーマンスを比較します。",
+      "actionLabel": "バックライトブリードテストを開始",
+      "actionHref": "/tests/backlight-bleed-test"
+    }
+  },
+  "tv-overscan-test": {
+    "overview": "TV オーバースキャン テストでは、テレビまたは外部ディスプレイが正確な 1:1 ピクセル マッピングで画像をレンダリングするか、または人為的にズームインして周囲の端を切り取るかどうかを検証します。",
+    "whatToLookFor": [
+      {
+        "label": "エッジ境界線の可視性 0%",
+        "description": "0% とマークされた白い境界線は、物理的な画面ベゼルの 4 つの側面すべてに完全に触れている必要があります。"
+      },
+      {
+        "label": "切り取られたインジケーターの矢印",
+        "description": "外側の端の矢印が切り詰められているか、ベゼルの後ろに隠れていないか確認してください。"
+      },
+      {
+        "label": "スケーリングのぼやけ",
+        "description": "スケーリング補間により、テキストと単一ピクセルの境界線が柔らかく曖昧に見えるかどうかを検査します。"
+      },
+      {
+        "label": "1px 線の鮮明さ",
+        "description": "交互の 1 ピクセルの境界線は、モアレの干渉なしに鮮明にレンダリングされるはずです。"
+      }
+    ],
+    "canObserve": [
+      "4 つのディスプレイ境界すべてにおけるエッジ トリミングのパーセンテージ (0%、2.5%、5%)",
+      "境界矢印の可視性と正確なピクセルとベゼルの位置合わせ",
+      "キャンバスの端に対するピクセル間の鮮明さ"
+    ],
+    "cannotMeasure": [
+      "内部 TV スケーラー DSP チップ レジスタ",
+      "ビデオ HDMI EDID オーバースキャン フラグ",
+      "シャーシベゼルの光学的オーバーラップ寸法"
+    ],
+    "interpretation": "0% の境界線が完全に表示され、1 ピクセルの境界線が非常に鮮明である場合、ディスプレイでは 1:1 ピクセル マッピングが有効になっています (「ジャスト スキャン」、「画面に合わせる」、または「ドット バイ ドット」)。",
+    "nextSteps": {
+      "text": "円形の幾何学的形状全体のアスペクト比のスケーリングを確認します。",
+      "actionLabel": "スケーリングとアスペクト比のテストを開始",
+      "actionHref": "/tests/scaling-aspect-test"
+    }
+  },
+  "scaling-aspect-test": {
+    "overview": "スケーリングとアスペクト比のテストでは、標準の表示比 (16:9、16:10、21:9、32:9、4:3) にわたって幾何学的対称性を検証し、円が完全に丸く歪みがないことを確認します。",
+    "whatToLookFor": [
+      {
+        "label": "同心円対称",
+        "description": "円が楕円形の歪み、伸び、潰れがなく完全に円形であることを確認します。"
+      },
+      {
+        "label": "正方形のアスペクト均一性",
+        "description": "正方形のグリッドのピクセル幅と高さが同じであることを確認します。"
+      },
+      {
+        "label": "線形グリッドの直交性",
+        "description": "水平線と垂直線が正確に 90 度の直角で交わるようにしてください。"
+      },
+      {
+        "label": "補間モアレ",
+        "description": "同心円状のリングにギザギザのエイリアシングやモアレの輝きがないか検査します。"
+      }
+    ],
+    "canObserve": [
+      "標準アスペクト比にわたるピクセルグリッドに対する視覚的な円対称性",
+      "不適切な GPU またはディスプレイ スケーリング モードによって引き起こされるアスペクト比の歪み",
+      "キャンバス解像度のスケーリング動作"
+    ],
+    "cannotMeasure": [
+      "物理パネルのアスペクト比 (ミリメートル単位)",
+      "GPU ハードウェア スケーリング補間フィルター カーネル",
+      "アナモルフィックレンズの光学歪み"
+    ],
+    "interpretation": "細長い円または潰れた円は、OS ディスプレイ設定、GPU コントロール パネル、またはモニター OSD アスペクト モードでアスペクト比が一致していないことを示します。",
+    "nextSteps": {
+      "text": "ディスプレイの物理解像度設定と論理解像度設定を確認してください。",
+      "actionLabel": "解像度チェッカーを起動する",
+      "actionHref": "/tests/resolution-checker"
+    }
+  },
+  "screen-tearing-test": {
+    "overview": "画面ティアリングは、グラフィックス カードのフレーム レートがモニターの固定リフレッシュ サイクルと同期していない場合に発生し、連続したフレームが分割された水平スライスでレンダリングされます。",
+    "whatToLookFor": [
+      {
+        "label": "水平分割線",
+        "description": "移動する垂直バーを横切る水平方向の骨折線を探します。"
+      },
+      {
+        "label": "不連続な動き",
+        "description": "可動要素の上部が下部よりも前に移動していることに注目してください。"
+      },
+      {
+        "label": "マルチティアアーティファクト",
+        "description": "高いフレームレートでは、画面の高さ全体にわたって同時に複数のティアが発生するかどうかを確認します。"
+      },
+      {
+        "label": "垂直同期スタッターとティアリング",
+        "description": "V-Sync を有効にすると、ティアリングと周期的なマイクロスタッターが引き換えられるかどうかを確認します。"
+      }
+    ],
+    "canObserve": [
+      "高速で移動するバー上の視覚的な水平引き裂きアーティファクト",
+      "ユーザーのリフレッシュ レート全体にわたるフレーム同期の安定性",
+      "ブラウザーの vsync ロックがアニメーションの滑らかさに及ぼす影響"
+    ],
+    "cannotMeasure": [
+      "GPU ハードウェア スキャンアウト ラインのタイミング",
+      "DisplayPort/HDMI 垂直ブランキング間隔のマイクロタイミング",
+      "ダイレクト G-Sync/FreeSync ハードウェア モジュール ハンドシェイク レジスタ"
+    ],
+    "interpretation": "水平方向の切り取り線は、V-Sync が無効になっているか不一致であることを示しています。可変リフレッシュ レート (VRR / FreeSync / G-Sync) により、入力遅延なしでティアリングを排除します。",
+    "nextSteps": {
+      "text": "Test variable refresh rate smoothness and tear-free motion.",
+      "actionLabel": "VRRテストを開始する",
+      "actionHref": "/tests/vrr-test"
+    }
+  },
+  "screen-flicker-test": {
+    "overview": "画面のフリッカー テストでは、低周波数 PWM バックライト、電圧リップル、パネル ドライバーのタイミングの不安定性によって引き起こされる急速な周期的な輝度変動を明らかにします。",
+    "whatToLookFor": [
+      {
+        "label": "視覚的なストロボまたはきらめき",
+        "description": "細かい縞模様の微妙な高周波のブザー音や点滅を検出します。"
+      },
+      {
+        "label": "ストロボファントムライン",
+        "description": "画面上で目を素早く動かします。ちらつきがある場合、線がビード状に表示されます。"
+      },
+      {
+        "label": "周辺視野感度",
+        "description": "モニターから少し離れて見て、周辺視野でちらつきがより顕著になるかどうかを確認します。"
+      },
+      {
+        "label": "明るさのしきい値",
+        "description": "モニターの明るさを下げて、ちらつきが特定のレベル以下でのみ発生し始めるかどうかを確認します。"
+      }
+    ],
+    "canObserve": [
+      "微細な格子と交互フィールドにわたるフリッカーパターンの視覚認識",
+      "人間の衝動性眼球運動とのストロボスコープの相互作用",
+      "高周波輝度マスク全体でパターンがきらめく"
+    ],
+    "cannotMeasure": [
+      "オシロスコープのフォトダイオードを使用せずにヘルツ単位で正確な電気パルス周波数を測定",
+      "バックライトドライバーのデューティサイクルの割合",
+      "高調波ちらつき指数"
+    ],
+    "interpretation": "無地またはパターンの背景に目に見えるちらつきは、低周波 PWM 調光またはリフレッシュの不安定性を示し、目の疲労や頭痛の主な原因となります。",
+    "nextSteps": {
+      "text": "パルス幅変調調光専用のテストを実行します。",
+      "actionLabel": "PWMフリッカーテストの起動",
+      "actionHref": "/tests/pwm-flicker-test"
+    }
+  },
+  "resolution-checker": {
+    "overview": "解像度チェッカーは、物理的なディスプレイ解像度、CSS ビューポートの寸法、デバイス ピクセル比 (DPR)、およびピクセル密度のリアルタイム診断を提供します。",
+    "whatToLookFor": [
+      {
+        "label": "ネイティブ解像度の一致",
+        "description": "報告された物理画面ピクセルがモニターの製造元の仕様と一致していることを確認してください。"
+      },
+      {
+        "label": "高 DPI DPR スケーリング係数",
+        "description": "デバイスのピクセル比が 1.0x (100%)、1.25x (125%)、1.5x (150%)、または 2.0x (200%) に設定されているかどうかを確認します。"
+      },
+      {
+        "label": "論理ビューポートの寸法",
+        "description": "Web ページとアプリケーションに表示される利用可能な CSS ピクセル空間を観察します。"
+      },
+      {
+        "label": "アスペクト比の分類",
+        "description": "計算されたアスペクト比が標準の 16:9、16:10、またはウルトラワイドの寸法と一致していることを確認します。"
+      }
+    ],
+    "canObserve": [
+      "ブラウザのビューポートの寸法 (`window.innerWidth`、`window.innerHeight`)",
+      "オペレーティング システムの画面寸法 (`screen.width`、`screen.height`)",
+      "ブラウザ環境によって報告されるデバイス ピクセル比 (`window.devicePixelRatio`)",
+      "画面の向きと利用可能なデスクトップ ワークスペース"
+    ],
+    "cannotMeasure": [
+      "ユーザー入力なしの物理モニターの対角測定 (インチ単位)",
+      "物理的なドットピッチ (ミリメートル)",
+      "ブラウザの範囲外のマルチモニター トポロジ"
+    ],
+    "interpretation": "パネルのネイティブ解像度で動作すると、非常に鮮明なテキストとグラフィックスが保証されます。分数スケーリング (例: 125%) は、従来のデスクトップ アプリケーションで微妙な柔らかさを引き起こす可能性があります。",
+    "nextSteps": {
+      "text": "詳細な WebGL グラフィックス機能とハードウェア ディスプレイ情報を調べます。",
+      "actionLabel": "表示情報診断の起動",
+      "actionHref": "/tests/display-info"
+    }
+  },
+  "touch-screen-test": {
+    "overview": "タッチスクリーン診断では、モバイル デバイス、タブレット、タッチスクリーン モニター全体のタッチ センサーの精度、応答性、デッド ゾーン、エッジ感度をテストします。",
+    "whatToLookFor": [
+      {
+        "label": "タッチトラッキングの精度",
+        "description": "描かれた線は、オフセットや遅延なく指先の真下に沿って描画される必要があります。"
+      },
+      {
+        "label": "Unresponsive Dead Zones",
+        "description": "Test all corners and borders to ensure every quadrant registers touch inputs."
+      },
+      {
+        "label": "Touch Latency / Trailing",
+        "description": "Notice the trailing distance between your moving finger and the drawn ink trail."
+      },
+      {
+        "label": "Edge Registration",
+        "description": "Verify that touches along the extreme outer edge of the display register reliably."
+      }
+    ],
+    "canObserve": [
+      "Real-time touch coordinates on the screen canvas",
+      "Active touch point tracking and drawing continuity",
+      "Touch event firing frequency and responsiveness"
+    ],
+    "cannotMeasure": [
+      "Capacitive touch digitizer sampling rate in Hertz (e.g. 120Hz/240Hz polling)",
+      "Physical glass surface impedance and anti-fingerprint coating condition",
+      "Pressure sensitivity levels in grams without pressure-sensitive hardware"
+    ],
+    "interpretation": "Smooth, continuous lines across the entire display area verify that the capacitive digitizer has no dead spots, ghost touch issues, or boundary clipping.",
+    "nextSteps": {
+      "text": "Test multi-finger gesture tracking and maximum touch points.",
+      "actionLabel": "Launch Multi-Touch Test",
+      "actionHref": "/tests/multi-touch-test"
+    }
+  },
+  "sharpness-test": {
+    "overview": "シャープネス テストでは、フォント レンダリング、エッジの明瞭さ、モニターの画面上の表示のシャープネス設定が過剰であることによって生じる人工的なエッジ強調リンギングを評価します。",
+    "whatToLookFor": [
+      {
+        "label": "ホワイトハローリンギング",
+        "description": "黒いテキストや高コントラストの線の周囲にある明るい白い境界線や縁取りを探します。"
+      },
+      {
+        "label": "Siemens Star スプリアス解像度",
+        "description": "スポーク ラインが円形のモアレ アーチファクトがなく中心にきれいに収束しているかどうかを確認します。"
+      },
+      {
+        "label": "1px 細線ラスターの明瞭度",
+        "description": "黒と白の交互の線は、濁った灰色のぼやけがなく、鮮明に表示される必要があります。"
+      },
+      {
+        "label": "テキストエッジの汚れ",
+        "description": "小さなテキストサンプルを検査して、人為的なシャープ化ノイズがなく文字が鮮明であることを確認します。"
+      }
+    ],
+    "canObserve": [
+      "さまざまなフォント サイズにわたる高コントラストの詳細レンダリング",
+      "人工的な白い輪郭のハローとエッジリンギングの存在",
+      "シーメンススターパターンのラジアルスポーク解像度"
+    ],
+    "cannotMeasure": [
+      "光学レンズのMTF（変調伝達関数）曲線",
+      "パネルのサブピクセル開口率",
+      "アンチグレアマットコーティングの粒状性"
+    ],
+    "interpretation": "シャープネスが高すぎると、テキストや線の周囲に白いハローが発生し、視覚的なノイズが発生します。モニターの OSD シャープネスをニュートラルに下げると、きれいで自然なエッジが復元されます。",
+    "nextSteps": {
+      "text": "サブピクセル フォントのスムージングと ClearType レンダリングを評価します。",
+      "actionLabel": "テキスト明瞭度テストを開始する",
+      "actionHref": "/tests/text-clarity-test"
+    }
+  },
+  "compare-displays": {
+    "overview": "ディスプレイ比較と計算ツール スイートは、ピクセル密度 (PPI)、最適な視聴距離、アスペクト比を計算し、並列モニター評価ツールを提供します。",
+    "whatToLookFor": [
+      {
+        "label": "PPI と PPD の計算",
+        "description": "ピクセル密度と 1 度あたりのピクセルを比較して、真の鮮明さを判断します。"
+      },
+      {
+        "label": "視力限界",
+        "description": "個々のピクセルが人間の目 (「網膜」) で知覚できなくなる距離を確認します。"
+      },
+      {
+        "label": "アスペクト比の比率",
+        "description": "16:9、16:10、21:9、および 32:9 の画面形状を比較するワイヤーフレーム ボックスをプレビューします。"
+      },
+      {
+        "label": "デュアルスクリーンマッチング",
+        "description": "複数のモニター間の色、白色点、解像度のパリティを評価します。"
+      }
+    ],
+    "canObserve": [
+      "ユーザーの寸法に基づいた数学的な PPI と網膜距離の計算",
+      "インタラクティブなアスペクト比のワイヤーフレーム プレビューと寸法比較",
+      "マルチディスプレイ仕様マッチングマトリックス"
+    ],
+    "cannotMeasure": [
+      "2 つの別個の物理パネル間の比色計のデルタの差をリアルタイムで測定",
+      "物理的な製造ベゼル公差"
+    ],
+    "interpretation": "通常の視距離で 60 ピクセル/度 (PPD) を超えるディスプレイは、人間の視力の限界 (「網膜」) に達し、個々のピクセルが見えなくなります。",
+    "nextSteps": {
+      "text": "Match color and white point between two side-by-side monitors.",
+      "actionLabel": "Launch Dual Monitor Matcher",
+      "actionHref": "/tools/dual-monitor-matcher"
+    }
+  },
+  "display-info": {
+    "overview": "ディスプレイ情報診断は、Web プラットフォームとハードウェア API をクエリして、GPU ベンダー、WebGL レンダラ機能、HDR サポート、色深度、および画面ジオメトリを検査します。",
+    "whatToLookFor": [
+      {
+        "label": "GPU ハードウェア モデルとベンダー",
+        "description": "システムによって報告された、マスクされていない WebGL グラフィック カード文字列を確認してください。"
+      },
+      {
+        "label": "WebGL 1 および WebGL 2 のサポート",
+        "description": "Verify that 3D canvas acceleration and modern shader profiles are active."
+      },
+      {
+        "label": "Wide Color Gamut Capability",
+        "description": "Inspect whether your browser detects sRGB, Display-P3, or Rec. 2020 color support."
+      },
+      {
+        "label": "Multi-Screen Window Placement",
+        "description": "Check multi-monitor placement API availability for multi-display setups."
+      }
+    ],
+    "canObserve": [
+      "System color depth and bits per pixel",
+      "Browser screen dimensions and available workspace",
+      "WebGL unmasked renderer and vendor strings",
+      "CSS color gamut media query capabilities"
+    ],
+    "cannotMeasure": [
+      "Internal GPU core clocks and VRAM bandwidth",
+      "Physical monitor firmware version",
+      "Physical HDMI/DisplayPort cable revision"
+    ],
+    "interpretation": "Comprehensive hardware detection confirms whether hardware acceleration and modern web graphics capabilities are fully enabled in your browser.",
+    "nextSteps": {
+      "text": "Benchmark 3D WebGL rendering frame stability and FPS.",
+      "actionLabel": "Launch GPU Benchmark Test",
+      "actionHref": "/tests/gpu-benchmark-test"
+    }
+  },
+  "custom-pattern": {
+    "overview": "カスタム パターン ジェネレーターを使用すると、2D グリッド、チェッカーボード、ライン ラスター、モアレ円を含む 12 個の高精度テスト パターンを構成して、ディスプレイ ジオメトリと光学的位置合わせを検査できます。",
+    "whatToLookFor": [
+      {
+        "label": "グリッド線の真直度",
+        "description": "曲面ディスプレイでの樽型歪みや糸巻き現象がないか、外側の境界線を検査します。"
+      },
+      {
+        "label": "チェッカーボードのコントラストとブルーム",
+        "description": "明るい白い正方形から隣接する暗い正方形への光の漏れを確認します。"
+      },
+      {
+        "label": "1pxの水平/垂直線",
+        "description": "細い線格子が非常にシャープな 1:1 ピクセル位相トラッキングでレンダリングされることを確認します。"
+      },
+      {
+        "label": "モアレ干渉リング",
+        "description": "細い同心円パターン上の円形のエイリアシング リングを探します。"
+      }
+    ],
+    "canObserve": [
+      "調整可能な線密度、色、チェッカーボード サイズのリアルタイム レンダリング",
+      "セリフ スタイルとサンセリフ スタイルにわたるカスタム テキスト レンダリング",
+      "視覚的な十字線の収束と境界の位置合わせ"
+    ],
+    "cannotMeasure": [
+      "プロジェクターのレンズやカメラによる外部光学歪み",
+      "アナログ VGA 入力の内部ビデオ スケーラー クロック ジッター",
+      "物理シャーシのベゼル フレームの位置合わせ公差"
+    ],
+    "interpretation": "Precision geometric grids instantly reveal curvature distortions, scaler phase issues, and contrast limitations that natural images hide.",
+    "nextSteps": {
+      "text": "表示検査基準に関する包括的なガイドをお読みください。",
+      "actionLabel": "Read Test Patterns Guide",
+      "actionHref": "/knowledge-base/display-test-patterns-and-visual-inspection-standards"
+    }
+  },
+  "multi-touch-test": {
+    "overview": "マルチタッチ テストでは、タッチスクリーンのラップトップ、タブレット、電話全体での同時接触追跡、タッチ ポイントの最大制限、ジェスチャ登録を評価します。",
+    "whatToLookFor": [
+      {
+        "label": "Maximum Touch Point Count",
+        "description": "Place 2, 5, or 10 fingers on the screen to verify how many simultaneous points register."
+      },
+      {
+        "label": "Individual Point Drift / Jitter",
+        "description": "Hold fingers stationary and check if reported coordinates stay rock-solid or wobble."
+      },
+      {
+        "label": "Ghost Touch Artifacts",
+        "description": "Ensure no phantom touches appear in areas where you are not touching the glass."
+      },
+      {
+        "label": "Smooth Multi-Finger Tracking",
+        "description": "Move multiple fingers across the screen and verify all trails update without dropped frames."
+      }
+    ],
+    "canObserve": [
+      "Simultaneous active touch point count and identifiers",
+      "Individual touch coordinates, radius, and rotation angle",
+      "Gesture interaction responsiveness and event firing rates"
+    ],
+    "cannotMeasure": [
+      "Hardware capacitive controller scan rate in Hertz",
+      "Palm rejection threshold algorithms in device firmware",
+      "Pen/stylus electromagnetic digitizer layers"
+    ],
+    "interpretation": "Quality modern touch screens support 5 to 10 simultaneous touches with zero cross-talk jitter or dropped contacts.",
+    "nextSteps": {
+      "text": "Test single-touch accuracy and edge dead zone boundaries.",
+      "actionLabel": "Launch Touch Screen Test",
+      "actionHref": "/tests/touch-screen-test"
+    }
+  },
+  "accelerometer-test": {
+    "overview": "加速度センサーテストは、デバイスの3軸（X、Y、Z）における物理的な傾き、重力加速度、および動きの検出精度をリアルタイムで検証します。",
+    "whatToLookFor": [
+      {
+        "label": "重力加速度の基準値",
+        "description": "デバイスを水平に静止させた状態で、Z軸が約9.8 m/s²（1G）を示しているか確認します。"
+      },
+      {
+        "label": "軸の応答性",
+        "description": "デバイスを傾けた際に、X軸とY軸の数値が遅延なくスムーズに追従するか点検します。"
+      }
+    ],
+    "canObserve": [
+      "リアルタイムの3軸加速度（m/s²）",
+      "傾斜角の変化とレスポンス",
+      "静止時のセンサーノイズ"
+    ],
+    "cannotMeasure": [
+      "センサーチップ内部の物理的シリコン歪み",
+      "工場校正キャリブレーション値"
+    ],
+    "interpretation": "デバイスを平らな面に置いたときにZ軸が9.8 m/s²付近を示し、傾きに素早く反応すれば正常です。",
+    "nextSteps": {
+      "text": "ジャイロセンサーもテストしますか？",
+      "actionLabel": "ジャイロスコープテストを開始",
+      "actionHref": "/tests/gyroscope-test"
+    }
+  },
+  "gyroscope-test": {
+    "overview": "ジャイロスコープテストは、デバイスの角速度（回転速度：rad/s または deg/s）と3軸回転の検知精度を評価します。",
+    "whatToLookFor": [
+      {
+        "label": "静止時のゼロ点ドリフト",
+        "description": "デバイスを静止させた状態で、回転速度が0付近で安定しているか確認します。"
+      },
+      {
+        "label": "回転方向の検知",
+        "description": "左右・前後に回転させた際に、対応する軸の回転方向と速度が正しく反映されるか確認します。"
+      }
+    ],
+    "canObserve": [
+      "各軸のリアルタイム回転角速度",
+      "回転方向の符号判定",
+      "センサー追従の滑らかさ"
+    ],
+    "cannotMeasure": [
+      "地磁気コンパスとの絶対方位同期",
+      "温度変化による長期ドリフト"
+    ],
+    "interpretation": "静止時にドリフトがなく、回転時にスムーズな追従が得られればセンサーは正常です。",
+    "nextSteps": {
+      "text": "端末の振動機能も確認しますか？",
+      "actionLabel": "バイブレーションテストを開始",
+      "actionHref": "/tests/vibration-test"
+    }
+  },
+  "vibration-test": {
+    "overview": "バイブレーションテストは、端末の内蔵ハプティックモーター（触覚フィードバック）の動作、周波数、およびパルス応答を点検します。",
+    "whatToLookFor": [
+      {
+        "label": "振動の明瞭さ",
+        "description": "ブザーのような異音や内部の緩みがなく、クリアな触覚振動が発生するか確認します。"
+      },
+      {
+        "label": "パルスパターンの区別",
+        "description": "短いクリック感と長時間の連続振動が正確に演じ分けられるか点検します。"
+      }
+    ],
+    "canObserve": [
+      "ブラウザNavigator Vibration APIによる触覚パルス",
+      "振動の強さと持続時間の変化"
+    ],
+    "cannotMeasure": [
+      "触覚アクチュエータの物理的な加速度（Grms）",
+      "モーターの消費電流"
+    ],
+    "interpretation": "指令どおりにクリアな触覚フィードバックが再生されれば、モーターは正常です。",
+    "nextSteps": {
+      "text": "オーディオスピーカーもテストしますか？",
+      "actionLabel": "スピーカーテストを開始",
+      "actionHref": "/tests/speaker-test"
+    }
+  },
+  "webcam-test": {
+    "overview": "Webカメラテストは、接続されたカメラの映像ストリーム、解像度、フレームレート、および色調バランスを直接ブラウザで検証します。",
+    "whatToLookFor": [
+      {
+        "label": "解像度と鮮明さ",
+        "description": "カメラが公称解像度（1080p、4K等）でくっきりと描画されているか確認します。"
+      },
+      {
+        "label": "フレームレートの滑らかさ",
+        "description": "動いた際に映像がカクつかず、30fpsまたは60fpsでスムーズに表示されるか点検します。"
+      },
+      {
+        "label": "露出とホワイトバランス",
+        "description": "照明下で白飛びや暗部ノイズ、不自然な色被りが発生しないかチェックします。"
+      }
+    ],
+    "canObserve": [
+      "WebRTCメディアストリームのリアルタイムプレビュー",
+      "最大サポート解像度とフレームレート",
+      "露出・カラーレンダリングの品質"
+    ],
+    "cannotMeasure": [
+      "CMOSセンサーの暗電流ノイズ（数値測定）",
+      "光学レンズの歪曲収差の自動算出"
+    ],
+    "interpretation": "映像がスムーズで、色合いや明るさが自然であれば、Webカメラは通話や配信に最適な状態です。",
+    "nextSteps": {
+      "text": "マイクの集音テストも行いますか？",
+      "actionLabel": "マイクテストを開始",
+      "actionHref": "/tests/microphone-test"
+    }
+  },
+  "speaker-test": {
+    "overview": "スピーカーテストは、左右ステレオチャンネルの分離、低音から高音までの可聴周波数応答、および音割れの有無を検査します。",
+    "whatToLookFor": [
+      {
+        "label": "左右チャンネルの分離",
+        "description": "左スピーカーと右スピーカーの音が完全に分離して聴こえるか確認します。"
+      },
+      {
+        "label": "周波数スイープの滑らかさ",
+        "description": "低周波から高周波へのスイープ音で、途切れや耳障りな共振・音割れがないか点検します。"
+      },
+      {
+        "label": "筐体のビビり音",
+        "description": "大音量時にモニター内蔵スピーカーやノートPCの筐体が共振していないかチェックします。"
+      }
+    ],
+    "canObserve": [
+      "L/Rステレオ独立再生",
+      "20Hz〜20kHzの周波数スイープ再生",
+      "可聴域における音割れの発見"
+    ],
+    "cannotMeasure": [
+      "物理的な音圧レベル（SPL dB）",
+      "全高調波歪み率（THD%）の実測"
+    ],
+    "interpretation": "左右の音が明確に分離し、全音域で音割れなくクリアに再生されればオーディオ出力は健全です。",
+    "nextSteps": {
+      "text": "音声と映像の同期ズレを検査しますか？",
+      "actionLabel": "Audio / Video Lip-Syncテストを開始",
+      "actionHref": "/tests/audio-sync-test"
+    }
+  },
+  "microphone-test": {
+    "overview": "マイクテストは、内蔵または外付けマイクの音声入力感度、リアルタイム周波数スペクトラム、およびバックグラウンドノイズを点検します。",
+    "whatToLookFor": [
+      {
+        "label": "入力感度と音量レベル",
+        "description": "話した際に波形メーターが適正なグリーンゾーン（-12dB〜-6dB）まで上昇するか確認します。"
+      },
+      {
+        "label": "静止時の暗騒音（ノイズフロア）",
+        "description": "無音時にメーターが底打ちし、サーというヒスノイズが入らないかチェックします。"
+      },
+      {
+        "label": "スペクトラムの応答性",
+        "description": "声のトーンに応じて周波数バーが敏感に反応するか点検します。"
+      }
+    ],
+    "canObserve": [
+      "リアルタイム音量レベルメーター（dBFS）",
+      "Web Audio APIによる周波数スペクトラム表示",
+      "マイクの接続状態とサンプリングレート"
+    ],
+    "cannotMeasure": [
+      "マイクカプセルの固有セルフノイズ（dBA）",
+      "指向性ポーラーパターンの物理測定"
+    ],
+    "interpretation": "声が歪みなく十分な音量で拾え、無音時のノイズが少なければマイクは良好です。",
+    "nextSteps": {
+      "text": "スピーカーの動作も確認しますか？",
+      "actionLabel": "スピーカーテストを開始",
+      "actionHref": "/tests/speaker-test"
+    }
+  },
+  "reaction-time-test": {
+    "overview": "リアクションタイムテストは、視覚刺激に対する人間の反応速度と、ディスプレイおよび入力デバイスの総合システム遅延を測定します。",
+    "whatToLookFor": [
+      {
+        "label": "平均反応速度",
+        "description": "赤から緑に変わった瞬間に素早くクリックし、平均ミリ秒（ms）を記録します。"
+      },
+      {
+        "label": "フライング（お手付き）",
+        "description": "色が変わる前にクリックしてしまうと無効試行となります。"
+      },
+      {
+        "label": "高リフレッシュレートでの優位性",
+        "description": "144Hzや240Hzディスプレイで計測すると、表示遅延が削減され好スコアが出やすくなります。"
+      }
+    ],
+    "canObserve": [
+      "ミリ秒精度の反応時間スコア",
+      "複数回試行による平均値とばらつきの集計",
+      "低遅延モードでの反応速度の向上"
+    ],
+    "cannotMeasure": [
+      "人間の神経伝達時間とハードウェア入力遅延の厳密な分離",
+      "マウススイッチの物理的デバウンス時間"
+    ],
+    "interpretation": "一般成人の平均反応時間は200〜250msです。200ms未満は非常に高速な反射神経を示します。",
+    "nextSteps": {
+      "text": "マウスのポーリングレート（報告頻度）もテストしますか？",
+      "actionLabel": "マウスポーリングテストを開始",
+      "actionHref": "/tests/mouse-polling-test"
+    }
+  },
+  "pixel-inversion-test": {
+    "overview": "ピクセルインバージョン（VCOM）テストは、液晶パネルの極性反転駆動の電圧バランスを点検し、フリッカー（チラつき）やチェッカーボード状のアーティファクトを検出します。",
+    "whatToLookFor": [
+      {
+        "label": "高速なチラつき（フリッカー）",
+        "description": "特定の白黒インターリーブ格子パターンで、画面全体が激しく点滅しないか確認します。"
+      },
+      {
+        "label": "均一なグレーに見えるか",
+        "description": "正常なパネルでは、反転パターンが遠目から均一な中間グレーとして静止して見えます。"
+      },
+      {
+        "label": "VCOM電圧の偏り",
+        "description": "正極性と負極性の駆動電圧が不均衡な場合、ドットインバージョン特有のチラつきが発生します。"
+      }
+    ],
+    "canObserve": [
+      "特定インバージョンパターンでの視覚的フリッカー",
+      "パネルのインバージョン駆動方式（ドット/ライン/カラム）の挙動",
+      "高リフレッシュレートでの安定性"
+    ],
+    "cannotMeasure": [
+      "LCDドライバIC内部のVCOM基準電圧（V）",
+      "液晶分子の正確な位相遅れ角"
+    ],
+    "interpretation": "パターンがチラつかずに安定した静止グレーに見える場合、VCOMキャリブレーションは適切です。",
+    "nextSteps": {
+      "text": "PWMバックライトのフリッカーも点検しますか？",
+      "actionLabel": "PWMフリッカーテストを開始",
+      "actionHref": "/tests/pwm-flicker-test"
+    }
+  }
 };
-

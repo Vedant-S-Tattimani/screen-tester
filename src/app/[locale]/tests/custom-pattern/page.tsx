@@ -2,6 +2,8 @@ import { generateSeoMetadata } from "@/lib/seo";
 import { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { CustomPatternClient } from "./CustomPatternClient";
+import { FeatureExplainer } from "@/components/test-runner/FeatureExplainer";
+import { getFeatureExplainer, getExplainerLabels } from "@/data/explainers";
 
 export async function generateMetadata({
   params
@@ -24,6 +26,16 @@ export default async function CustomPatternPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const explainerData = getFeatureExplainer("custom-pattern", locale);
+  const explainerLabels = getExplainerLabels(locale);
 
-  return <CustomPatternClient />;
+  return (
+    <CustomPatternClient
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }
+    />
+  );
 }
