@@ -153,6 +153,19 @@ export function SearchInput({
     return [...matchedTests, ...matchedWorkflows, ...matchedGuides, ...matchedResources];
   }, [query, locale, tTestPages, tInspection, tHeader]);
 
+  const navigateOrOpen = (item: SearchResultItem) => {
+    const isTestOrTool = item.type === "test" || item.href.startsWith("/tests/") || item.href.startsWith("/tools/");
+    if (isTestOrTool) {
+      const url = locale ? `/${locale}${item.href}` : item.href;
+      window.open(url, "_blank", "noopener,noreferrer");
+    } else {
+      router.push(item.href);
+    }
+    setIsOpen(false);
+    setQuery("");
+    onSelect?.();
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (!isOpen || results.length === 0) return;
 
@@ -166,10 +179,7 @@ export function SearchInput({
       e.preventDefault();
       const selected = results[selectedIndex] || results[0];
       if (selected) {
-        router.push(selected.href);
-        setIsOpen(false);
-        setQuery("");
-        onSelect?.();
+        navigateOrOpen(selected);
       }
     } else if (e.key === "Escape") {
       setIsOpen(false);
@@ -177,11 +187,8 @@ export function SearchInput({
     }
   };
 
-  const handleSelect = (href: string) => {
-    router.push(href);
-    setIsOpen(false);
-    setQuery("");
-    onSelect?.();
+  const handleSelect = (item: SearchResultItem) => {
+    navigateOrOpen(item);
   };
 
   const getItemIcon = (type: SearchResultItem["type"]) => {
@@ -234,7 +241,7 @@ export function SearchInput({
           {results.map((item, idx) => (
             <button
               key={`${item.type}-${item.id}`}
-              onClick={() => handleSelect(item.href)}
+              onClick={() => handleSelect(item)}
               onMouseEnter={() => setSelectedIndex(idx)}
               className={`w-full text-left px-4 py-2.5 flex items-center justify-between transition-colors cursor-pointer ${
                 selectedIndex === idx ? "bg-gray-100/70" : "hover:bg-gray-50"

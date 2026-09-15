@@ -273,6 +273,8 @@ export function TroubleshootingClient({ topics: propTopics }: TroubleshootingCli
                           <Link
                             key={link.testId}
                             href={link.testPath}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 text-white text-[11px] font-medium hover:bg-black transition-colors"
                           >
                             <span>{link.label}</span>

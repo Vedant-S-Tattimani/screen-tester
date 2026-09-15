@@ -465,6 +465,8 @@ export default async function KnowledgeArticlePage({
                       <Link
                         key={test.id}
                         href={`/tests/${test.id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="group block border border-gray-200 rounded-xl p-3 hover:border-blue-500 hover:bg-blue-50/30 transition-all"
                       >
                         <div className="flex items-center justify-between">

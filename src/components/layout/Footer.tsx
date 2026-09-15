@@ -200,39 +200,39 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Column 2: Tests (2 cols) */}
+            {/* Column 2: Tests (2 cols) */}
           <div className="lg:col-span-2">
             <h3 className="text-xs font-bold uppercase font-mono tracking-wider text-gray-900 mb-3.5">
               {t("columns.tests")}
             </h3>
             <ul className="space-y-2 text-xs text-gray-600">
               <li>
-                <Link href="/tests/dead-pixel-test" className="hover:text-gray-950 transition-colors block py-0.5">
+                <Link href="/tests/dead-pixel-test" target="_blank" rel="noopener noreferrer" className="hover:text-gray-950 transition-colors block py-0.5">
                   {tHeader("dropdown.deadPixels")}
                 </Link>
               </li>
               <li>
-                <Link href="/tests/color-test" className="hover:text-gray-950 transition-colors block py-0.5">
+                <Link href="/tests/color-test" target="_blank" rel="noopener noreferrer" className="hover:text-gray-950 transition-colors block py-0.5">
                   {tHeader("dropdown.colorTest")}
                 </Link>
               </li>
               <li>
-                <Link href="/tests/brightness-test" className="hover:text-gray-950 transition-colors block py-0.5">
+                <Link href="/tests/brightness-test" target="_blank" rel="noopener noreferrer" className="hover:text-gray-950 transition-colors block py-0.5">
                   {tHeader("dropdown.brightness")}
                 </Link>
               </li>
               <li>
-                <Link href="/tests/contrast-test" className="hover:text-gray-950 transition-colors block py-0.5">
+                <Link href="/tests/contrast-test" target="_blank" rel="noopener noreferrer" className="hover:text-gray-950 transition-colors block py-0.5">
                   {tHeader("dropdown.contrast")}
                 </Link>
               </li>
               <li>
-                <Link href="/tests/ghosting-test" className="hover:text-gray-950 transition-colors block py-0.5">
+                <Link href="/tests/ghosting-test" target="_blank" rel="noopener noreferrer" className="hover:text-gray-950 transition-colors block py-0.5">
                   {tHeader("dropdown.ghosting")}
                 </Link>
               </li>
               <li>
-                <Link href="/tests/refresh-rate-test" className="hover:text-gray-950 transition-colors block py-0.5">
+                <Link href="/tests/refresh-rate-test" target="_blank" rel="noopener noreferrer" className="hover:text-gray-950 transition-colors block py-0.5">
                   {tHeader("dropdown.refreshRate")}
                 </Link>
               </li>
@@ -302,22 +302,22 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/tests/display-info" className="hover:text-gray-950 transition-colors block py-0.5 font-medium text-gray-900">
+                <Link href="/tests/display-info" target="_blank" rel="noopener noreferrer" className="hover:text-gray-950 transition-colors block py-0.5 font-medium text-gray-900">
                   {tHeader("dropdown.displayInfo")}
                 </Link>
               </li>
               <li>
-                <Link href="/tests/resolution-checker" className="hover:text-gray-950 transition-colors block py-0.5">
+                <Link href="/tests/resolution-checker" target="_blank" rel="noopener noreferrer" className="hover:text-gray-950 transition-colors block py-0.5">
                   {tHeader("dropdown.resolutionPpi")}
                 </Link>
               </li>
               <li>
-                <Link href="/tests/compare-displays" className="hover:text-gray-950 transition-colors block py-0.5">
+                <Link href="/tests/compare-displays" target="_blank" rel="noopener noreferrer" className="hover:text-gray-950 transition-colors block py-0.5">
                   {tHeader("dropdown.compareDisplays")}
                 </Link>
               </li>
               <li>
-                <Link href="/tests/custom-pattern" className="hover:text-gray-950 transition-colors block py-0.5">
+                <Link href="/tests/custom-pattern" target="_blank" rel="noopener noreferrer" className="hover:text-gray-950 transition-colors block py-0.5">
                   {tHeader("dropdown.customPattern")}
                 </Link>
               </li>

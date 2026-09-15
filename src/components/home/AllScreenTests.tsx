@@ -290,6 +290,8 @@ export function AllScreenTests({
                   <Link
                     key={test.id}
                     href={test.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group bg-white hover:bg-gray-50/90 border border-gray-300 hover:border-gray-400 rounded-xl p-3 sm:p-3.5 transition-all flex items-start gap-3 shadow-2xs hover:shadow-xs min-h-[76px] focus-visible:ring-2 focus-visible:ring-gray-900"
                   >
                     {/* Icon Small Box */}

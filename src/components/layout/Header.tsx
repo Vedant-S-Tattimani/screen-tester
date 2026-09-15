@@ -113,6 +113,8 @@ export function Header() {
                 <div className="space-y-0.5">
                   <Link 
                     href="/tests/dead-pixel-test"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
@@ -121,6 +123,8 @@ export function Header() {
                   </Link>
                   <Link 
                     href="/tests/color-test"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
@@ -129,6 +133,8 @@ export function Header() {
                   </Link>
                   <Link 
                     href="/tests/brightness-test"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
@@ -137,6 +143,8 @@ export function Header() {
                   </Link>
                   <Link 
                     href="/tests/contrast-test"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
@@ -145,6 +153,8 @@ export function Header() {
                   </Link>
                   <Link 
                     href="/tests/ghosting-test"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
@@ -153,6 +163,8 @@ export function Header() {
                   </Link>
                   <Link 
                     href="/tests/refresh-rate-test"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
@@ -303,6 +315,8 @@ export function Header() {
                 <div className="space-y-0.5">
                   <Link 
                     href="/tests/display-info"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
@@ -311,6 +325,8 @@ export function Header() {
                   </Link>
                   <Link 
                     href="/tests/resolution-checker"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
@@ -319,6 +335,8 @@ export function Header() {
                   </Link>
                   <Link 
                     href="/tests/compare-displays"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
@@ -327,6 +345,8 @@ export function Header() {
                   </Link>
                   <Link 
                     href="/tests/custom-pattern"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setOpenDropdown(null)}
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-gray-800 hover:bg-gray-50 hover:text-gray-950 transition-colors"
                   >
@@ -471,11 +491,11 @@ export function Header() {
               {t("nav.tests")}
             </Link>
             <div className="grid grid-cols-2 gap-2 text-xs text-gray-600 pl-2">
-              <Link href="/tests/dead-pixel-test" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.deadPixels")}</Link>
-              <Link href="/tests/color-test" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.colorTest")}</Link>
-              <Link href="/tests/brightness-test" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.brightness")}</Link>
-              <Link href="/tests/ghosting-test" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.ghosting")}</Link>
-              <Link href="/tests/refresh-rate-test" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.refreshRate")}</Link>
+              <Link href="/tests/dead-pixel-test" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.deadPixels")}</Link>
+              <Link href="/tests/color-test" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.colorTest")}</Link>
+              <Link href="/tests/brightness-test" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.brightness")}</Link>
+              <Link href="/tests/ghosting-test" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.ghosting")}</Link>
+              <Link href="/tests/refresh-rate-test" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.refreshRate")}</Link>
               <Link href="/tests" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1 font-medium text-gray-950">{t("dropdown.viewAllTests")} →</Link>
             </div>
           </div>
@@ -509,10 +529,10 @@ export function Header() {
               {t("nav.tools")}
             </Link>
             <div className="grid grid-cols-2 gap-2 text-xs text-gray-600 pl-2">
-              <Link href="/tests/display-info" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.displayInfo")}</Link>
-              <Link href="/tests/resolution-checker" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.resolutionPpi")}</Link>
-              <Link href="/tests/compare-displays" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.compareDisplays")}</Link>
-              <Link href="/tests/custom-pattern" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.customPattern")}</Link>
+              <Link href="/tests/display-info" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.displayInfo")}</Link>
+              <Link href="/tests/resolution-checker" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.resolutionPpi")}</Link>
+              <Link href="/tests/compare-displays" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.compareDisplays")}</Link>
+              <Link href="/tests/custom-pattern" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1">{t("dropdown.customPattern")}</Link>
               <Link href="/tools" onClick={() => setMobileOpen(false)} className="hover:text-gray-950 py-1 font-medium text-gray-950 col-span-2">{t("dropdown.viewAllTools")} →</Link>
             </div>
           </div>

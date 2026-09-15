@@ -5,12 +5,20 @@ interface TestRowProps {
   title: string;
   description: string;
   href: string;
+  target?: string;
+  rel?: string;
 }
 
-export function TestRow({ title, description, href }: TestRowProps) {
+export function TestRow({ title, description, href, target, rel }: TestRowProps) {
+  const isTestOrTool = href.startsWith("/tests/") || href.startsWith("/tools/") || href.startsWith("http");
+  const effectiveTarget = target !== undefined ? target : (isTestOrTool ? "_blank" : undefined);
+  const effectiveRel = rel !== undefined ? rel : (effectiveTarget === "_blank" ? "noopener noreferrer" : undefined);
+
   return (
     <Link 
       href={href} 
+      target={effectiveTarget}
+      rel={effectiveRel}
       className="group flex flex-col md:flex-row md:items-start py-8 border-b border-border/40 hover:bg-accent/30 transition-colors"
     >
       <div className="w-full md:w-[35%] mb-2 md:mb-0 md:pr-8">

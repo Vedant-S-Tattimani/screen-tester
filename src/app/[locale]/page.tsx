@@ -411,6 +411,8 @@ export default async function Home({
           {/* 1. Compare Displays */}
           <Link 
             href="/tests/compare-displays"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-3 sm:p-4 transition-all flex flex-col justify-between group min-h-[110px] sm:min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
           >
             <div>
@@ -430,6 +432,8 @@ export default async function Home({
           {/* 3. PPI & Viewing Distance */}
           <Link 
             href="/tests/resolution-checker"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-3 sm:p-4 transition-all flex flex-col justify-between group min-h-[110px] sm:min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
           >
             <div>
@@ -449,6 +453,8 @@ export default async function Home({
           {/* 4. Custom Test Pattern */}
           <Link 
             href="/tests/custom-pattern"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-3 sm:p-4 transition-all flex flex-col justify-between group min-h-[110px] sm:min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
           >
             <div>
@@ -468,6 +474,8 @@ export default async function Home({
           {/* 5. Display Information */}
           <Link 
             href="/tests/display-info"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-xl p-3 sm:p-4 transition-all flex flex-col justify-between group min-h-[110px] sm:min-h-[120px] focus-visible:ring-2 focus-visible:ring-gray-900"
           >
             <div>

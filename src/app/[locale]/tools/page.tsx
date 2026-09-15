@@ -194,6 +194,8 @@ export default async function ToolsPage({
               <Link
                 key={tool.id}
                 href={tool.href}
+                target={tool.href.startsWith("/tests/") || tool.href.startsWith("/tools/") ? "_blank" : undefined}
+                rel={tool.href.startsWith("/tests/") || tool.href.startsWith("/tools/") ? "noopener noreferrer" : undefined}
                 className="flex flex-col justify-between p-6 bg-gray-50/50 hover:bg-gray-50/90 border border-gray-200/90 hover:border-gray-300 rounded-2xl transition-all group hover:shadow-xs min-h-[220px]"
               >
                 <div>
