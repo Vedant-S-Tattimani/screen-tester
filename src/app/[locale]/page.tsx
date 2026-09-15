@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 
 import { AllScreenTests, type ScreenTestCategory, type ScreenTestItem } from "@/components/home/AllScreenTests";
+import { SmartDeviceDetection } from "@/components/home/SmartDeviceDetection";
 import { StartTestingCTA } from "@/components/home/StartTestingCTA";
 import { getBaseUrl } from "@/lib/seo";
 
@@ -364,6 +365,11 @@ export default async function Home({
           </div>
         </div>
       </section>
+      {/* ================================================== */}
+      {/* 1.5 SMART DEVICE DETECTION                         */}
+      {/* ================================================== */}
+      <SmartDeviceDetection />
+
       {/* ================================================== */}
       {/* 2. ALL SCREEN TESTS SECTION                        */}
       {/* ================================================== */}
