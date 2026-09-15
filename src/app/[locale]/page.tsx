@@ -326,39 +326,42 @@ export default async function Home({
       {/* ================================================== */}
       {/* 1. HERO SECTION                                    */}
       {/* ================================================== */}
-      <section className="relative overflow-hidden pt-6 sm:pt-8 md:pt-10 pb-10 sm:pb-14 md:pb-16 border-b border-gray-100">
-        <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12 relative">
-          
-          {/* Background / Right Fluid Chrome Wave Artwork */}
-          <div className="absolute right-0 -top-6 -bottom-6 sm:-top-8 sm:-bottom-8 md:-top-10 md:-bottom-10 w-full md:w-[60%] lg:w-[56%] xl:w-[54%] pointer-events-none select-none flex items-start justify-end z-0 opacity-90 md:opacity-100">
-            <Image
-              src="/hero-fluid.webp"
-              alt="Screen Tester Abstract Fluid Wave Display Test Visual"
-              width={1920}
-              height={1080}
-              priority
-              className="w-full h-full object-contain object-right-top"
-            />
-          </div>
+      <section className="relative overflow-hidden bg-[#f8f8f7] border-b border-gray-200/60">
+        {/* Full-bleed fluid artwork — positioned absolutely to bleed to the right viewport edge */}
+        <div className="absolute top-0 bottom-0 right-0 w-[70%] sm:w-[68%] md:w-[65%] lg:w-[63%] xl:w-[62%] pointer-events-none select-none z-0">
+          <Image
+            src="/hero-fluid.webp"
+            alt="Screen Tester Abstract Fluid Wave Display Test Visual"
+            width={1920}
+            height={1080}
+            priority
+            className="w-full h-full object-cover object-left-top"
+          />
+          {/* Smooth fade overlays — left, bottom, and corner so artwork dissolves naturally */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#f8f8f7] via-[#f8f8f7]/40 to-transparent" style={{ width: '45%' }} />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#f8f8f7] via-transparent to-transparent" style={{ height: '35%', top: 'auto', bottom: 0 }} />
+          <div className="absolute bottom-0 left-0 w-[50%] h-[40%] bg-gradient-to-tr from-[#f8f8f7] via-[#f8f8f7]/30 to-transparent" />
+        </div>
 
+        {/* Content container */}
+        <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
           {/* Left Hero Content */}
-          <div className="relative z-10 max-w-2xl py-2 sm:py-4">
+          <div className="max-w-2xl pt-14 sm:pt-16 md:pt-20 lg:pt-24 pb-14 sm:pb-16 md:pb-20 lg:pb-24">
             {/* Monospace Eyebrow */}
-            <div className="text-xs sm:text-[13px] font-mono font-bold uppercase tracking-[0.2em] text-gray-800 mb-3 sm:mb-4 select-none">
+            <div className="text-xs sm:text-[13px] font-mono font-bold uppercase tracking-[0.22em] text-gray-800 mb-4 sm:mb-5 select-none">
               {t("eyebrow")}
             </div>
 
             {/* Big Bold Headline */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[58px] font-extrabold tracking-[-0.035em] text-gray-950 leading-[1.08] mb-4 sm:mb-5">
+            <h1 className="text-[32px] sm:text-[40px] md:text-[50px] lg:text-[56px] xl:text-[60px] font-extrabold tracking-[-0.035em] text-gray-950 leading-[1.06] mb-5 sm:mb-6">
               {t("h1")}
             </h1>
 
             {/* Editorial Supporting Description */}
-            <p className="text-sm sm:text-base md:text-[15.5px] text-gray-600 leading-relaxed max-w-xl font-normal">
+            <p className="text-sm sm:text-[15px] md:text-base text-gray-600 leading-relaxed max-w-xl font-normal">
               {t("description")}
             </p>
           </div>
-
         </div>
       </section>
       {/* ================================================== */}
