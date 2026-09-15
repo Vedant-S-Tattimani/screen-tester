@@ -1089,6 +1089,83 @@
         "<strong>Inspección:</strong> Observe si hay saturación desigual o cambios de tono en las esquinas.",
         "Calibre Gamma a 2.2, color a blanco neutro 6500K y configure el overdrive óptimo."
       ]
+    },
+    "oled-abl-test": {
+      "title": "Prueba OLED ABL y Tamaño de Ventana",
+      "description": "Mida la limitación de brillo (ABL) en pantallas OLED y Mini-LED desde ventanas del 1% hasta el 100% de pantalla completa.",
+      "metaTitle": "Prueba OLED ABL - Limitador Automático de Brillo y Tamaño de Ventana",
+      "metaDescription": "Compruebe el comportamiento ABL en pantallas OLED, QD-OLED y Mini-LED en tamaños de ventana del 1%, 10%, 25% y 100%.",
+      "instructions": [
+        "Seleccione un tamaño de ventana (1%, 10%, 25%, 100%) o use el control deslizante para ajustar el APL.",
+        "Observe si la pantalla se oscurece a medida que aumenta la superficie blanca.",
+        "Active el temporizador continuo para medir caídas térmicas de brillo tras 10 a 60 segundos."
+      ]
+    },
+    "new-monitor-wizard": {
+      "title": "Asistente de Aceptación de Monitor Nuevo (5 Min)",
+      "description": "Inspección paso a paso de píxeles muertos, fugas de luz, uniformidad, nitidez de texto y fluidez de refresco.",
+      "metaTitle": "Asistente de Inspección de Monitor Nuevo - Prueba de Aceptación",
+      "metaDescription": "Ejecute una prueba completa en 5 etapas para verificar píxeles muertos, resplandor IPS, uniformidad gris al 50% y nitidez.",
+      "instructions": [
+        "Avance por las etapas de inspección con el botón Siguiente o las flechas del teclado.",
+        "Marque 'Aprobado' o 'Problema' en cada punto de control para registrar sus observaciones.",
+        "Revise su calificación final y obtenga un certificado oficial de inspección."
+      ]
+    },
+    "color-temperature-test": {
+      "title": "Temperatura de Color y Comparador de Punto Blanco",
+      "description": "Compare el punto blanco de su monitor contra estándares CIE (D50, D55, D65, D75, 9300K) para diagnosticar tintes indeseados.",
+      "metaTitle": "Prueba de Temperatura de Color - Punto Blanco D65 y Comparador Kelvin",
+      "metaDescription": "Prueba visual de temperatura de color. Compare ajustes de 5000K, 6500K D65 y 9300K para detectar desviaciones cálidas, frías o verdes/magenta.",
+      "instructions": [
+        "Seleccione un iluminante objetivo (D50 Cálido, D65 Estándar o 9300K Frío) o use la vista dividida.",
+        "Inspeccione la comparación en pantalla dividida contra D65 para ver si su panel tiene tinte cálido o frío.",
+        "Utilice los pasos de escala de grises y el control de matiz para evaluar la neutralidad tonal."
+      ]
+    },
+    "temporal-dithering-test": {
+      "title": "Prueba de Dithering Temporal y Microparpadeo FRC",
+      "description": "Exponga el tramado temporal de 6-bit+FRC y 8-bit+FRC usando patrones de cuadrícula de alta frecuencia espacial.",
+      "metaTitle": "Prueba de Dithering Temporal - Detector de FRC y Fatiga Visual",
+      "metaDescription": "Detecte el tramado temporal y control de tasa de cuadros (FRC). Patrones de damero de 1 píxel revelan parpadeo microscópico.",
+      "instructions": [
+        "Seleccione el patrón Damero 1x1, Cuadrícula 2x2 o Micropaso de 8 bits.",
+        "Asegúrese de que la escala del navegador esté al 100% (mapeo píxel a píxel 1:1).",
+        "Observe de cerca o grabe con una cámara móvil en cámara lenta a 120/240 fps para identificar píxeles oscilantes."
+      ]
+    },
+    "hdr-peak-brightness-test": {
+      "title": "Luminancia Pico HDR y Prueba de Recorte",
+      "description": "Patrón calibrado ST.2084 PQ (100 a 4.000 nits) para evaluar el mapeo de tonos y el recorte en altas luces.",
+      "metaTitle": "Prueba de Brillo Pico HDR y Recorte - 100 a 4000 Nits",
+      "metaDescription": "Compruebe el recorte de altas luces en HDR entre 100, 400, 600, 1000 y 4000 nits para calibrar Windows y videojuegos.",
+      "instructions": [
+        "Asegúrese de tener HDR activado en la configuración de su sistema operativo.",
+        "Recorra los niveles de luminancia desde 100 nits hasta 4.000 nits.",
+        "Compruebe si el recuadro interior escalonado se distingue de la caja exterior o si se funde en blanco quemado."
+      ]
+    },
+    "audio-latency-test": {
+      "title": "Inspector de Latencia y Búfer de Audio Hardware",
+      "description": "Inspeccione la frecuencia de muestreo del controlador, latencia base del kernel y sincronización de clic a sonido.",
+      "metaTitle": "Prueba de Latencia de Audio - Búfer Web Audio y Pipeline Hardware",
+      "metaDescription": "Mida la latencia de salida de audio, retraso del kernel y frecuencia de muestreo con una prueba interactiva de pulsos sonoros.",
+      "instructions": [
+        "Haga clic en 'Inicializar Motor de Audio' para consultar el controlador de su tarjeta de sonido.",
+        "Revise la frecuencia de muestreo, latencia base del kernel y latencia de búfer de salida.",
+        "Haga clic en el orbe central para escuchar el pulso instantáneo y validar la sincronización audiovisual."
+      ]
+    },
+    "eink-refresh-tool": {
+      "title": "Herramienta de Refresco E-Ink y Antifantasmas",
+      "description": "Generador de formas de onda de alto contraste diseñado para purgar microcápsulas residuales en monitores de tinta electrónica.",
+      "metaTitle": "Herramienta de Refresco E-Ink - Limpiador de Imágenes Residuales",
+      "metaDescription": "Elimine el efecto fantasma en pantallas de papel electrónico (Dasung, Boox, Bigme) ejecutando ciclos de inversión Deep Purge o Regal.",
+      "instructions": [
+        "Seleccione un modo de onda: Deep Purge (limpieza profunda de 8 fases), Regal (rápido de 4 fases) o A2.",
+        "Pulse el botón de purga para ejecutar el ciclo de contraste a pantalla completa.",
+        "Aviso fotosensible: No mire fijamente a la pantalla mientras los destellos de alto contraste estén activos."
+      ]
     }
   },
   "Tests": {
@@ -2964,6 +3041,26 @@
       "riskModerate": "Riesgo Moderado – Desgaste leve a los 3-4 años",
       "riskHigh": "Riesgo Alto – Retención permanente visible en 18-24 meses",
       "recommendations": "Recomendaciones para Extender la Vida Útil"
+    },
+    "oledAblTest": {
+      "title": "Prueba OLED ABL y Tamaño de Ventana",
+      "description": "Evalúe la atenuación del limitador automático de brillo (ABL) y la luminancia sostenida de 1% a 100%."
+    },
+    "colorTemperatureTest": {
+      "title": "Temperatura de Color y Comparador de Punto Blanco",
+      "description": "Referencia visual comparando luz diurna D65 contra puntos blancos de 5000K, 7500K y 9300K con compensación de matiz."
+    },
+    "temporalDitheringTest": {
+      "title": "Dithering Temporal y Microparpadeo FRC",
+      "description": "Detecte el tramado temporal FRC y el parpadeo de píxeles de alta frecuencia causante de fatiga visual."
+    },
+    "hdrPeakBrightnessTest": {
+      "title": "Luminancia Pico HDR y Recorte de Brillo",
+      "description": "Identifique umbrales de recorte y mapeo tonal a través de parches de 100 a 4.000 nits."
+    },
+    "audioLatencyTest": {
+      "title": "Latencia de Hardware de Audio y Búfer",
+      "description": "Inspeccione la frecuencia de muestreo de Web Audio, latencia base del kernel y retraso de salida del búfer."
     }
   },
   "Guides": {
@@ -5094,6 +5191,14 @@
       "osdCalibrationGuide": {
         "title": "Guía de Calibración OSD",
         "description": "Asistente paso a paso para calibrar los botones físicos de su monitor."
+      },
+      "newMonitorWizard": {
+        "title": "Asistente de Aceptación de Monitor (5 Min)",
+        "description": "Lista de verificación guiada en 5 etapas para inspeccionar pantallas nuevas o usadas durante el plazo de devolución."
+      },
+      "einkRefreshTool": {
+        "title": "Refresco de Pantalla E-Ink y Antifantasmas",
+        "description": "Formas de onda de inversión rápida (Deep Purge, Regal, A2) para eliminar imágenes residuales en papel electrónico."
       }
     },
     "DisplayBandwidthCalculator": {

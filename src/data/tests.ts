@@ -449,6 +449,48 @@ export const monitorTests: MonitorTest[] = [
     category: "capabilities",
     primaryIntent: "osd monitor calibration hardware buttons guide",
     relatedTestIds: ["brightness-test", "contrast-test", "gamma-test"]
+  },
+  {
+    id: "oled-abl-test",
+    category: "luminance",
+    primaryIntent: "oled abl auto brightness limiter window size benchmark",
+    relatedTestIds: ["burn-in-test", "brightness-test", "hdr-test"]
+  },
+  {
+    id: "new-monitor-wizard",
+    category: "capabilities",
+    primaryIntent: "5 minute new monitor unboxing inspection acceptance wizard",
+    relatedTestIds: ["dead-pixel-test", "backlight-bleed-test", "uniformity-test", "display-certificate"]
+  },
+  {
+    id: "color-temperature-test",
+    category: "color",
+    primaryIntent: "monitor color temperature white point d65 d50 9300k comparator",
+    relatedTestIds: ["color-test", "grayscale-test", "color-gamut-test"]
+  },
+  {
+    id: "temporal-dithering-test",
+    category: "pixels",
+    primaryIntent: "temporal dithering frc frame rate control micro flicker test",
+    relatedTestIds: ["pixel-inversion-test", "screen-flicker-test", "pwm-flicker-test"]
+  },
+  {
+    id: "hdr-peak-brightness-test",
+    category: "advanced",
+    primaryIntent: "hdr peak brightness highlight clipping tone mapping 1000 nits test",
+    relatedTestIds: ["hdr-test", "hdr-capability-test", "contrast-test"]
+  },
+  {
+    id: "audio-latency-test",
+    category: "deviceInput",
+    primaryIntent: "audio latency web audio buffer hardware output pipeline test",
+    relatedTestIds: ["audio-sync-test", "speaker-test", "microphone-test"]
+  },
+  {
+    id: "eink-refresh-tool",
+    category: "capabilities",
+    primaryIntent: "e-ink electronic paper screen refresh anti ghosting tool",
+    relatedTestIds: ["stuck-pixel-fixer", "screen-flicker-test", "pixel-inversion-test"]
   }
 ];
 
@@ -537,7 +579,15 @@ export const TEST_KEY_MAP: Record<string, { ns: "lib" | "tests" | "tools", key: 
   "mouse-polling-test": { ns: "tests", key: "mousePollingTest" },
   "gpu-benchmark-test": { ns: "tests", key: "gpuBenchmarkTest" },
   "display-certificate": { ns: "tools", key: "displayCertificate" },
-  "osd-calibration-guide": { ns: "tools", key: "osdCalibrationGuide" }
+  "osd-calibration-guide": { ns: "tools", key: "osdCalibrationGuide" },
+  "oled-abl-test": { ns: "tests", key: "oledAblTest" },
+  "new-monitor-wizard": { ns: "tools", key: "newMonitorWizard" },
+  "color-temperature-test": { ns: "tests", key: "colorTemperatureTest" },
+  "temporal-dithering-test": { ns: "tests", key: "temporalDitheringTest" },
+  "hdr-peak-brightness-test": { ns: "tests", key: "hdrPeakBrightnessTest" },
+  "audio-latency-test": { ns: "tests", key: "audioLatencyTest" },
+  "eink-refresh-tool": { ns: "tools", key: "einkRefreshTool" }
 };
+
 
 

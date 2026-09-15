@@ -1086,6 +1086,83 @@
         "Ajuste Brilho e Contraste para não perder detalhes em sombras ou estourar brancos.",
         "<strong>Nota:</strong> Este padrão de referência serve para inspeção visual da tela."
       ]
+    },
+    "oled-abl-test": {
+      "title": "Benchmark OLED ABL e Tamanho de Janela",
+      "description": "Meça a limitação de brilho (ABL) em telas OLED e Mini-LED em janelas de 1% a 100% de tela cheia.",
+      "metaTitle": "Teste OLED ABL - Limitador Automático de Brilho e Tamanho de Janela",
+      "metaDescription": "Verifique o comportamento do ABL em telas OLED, QD-OLED e Mini-LED em áreas de 1%, 10%, 25% e 100%.",
+      "instructions": [
+        "Selecione uma área de teste (1%, 10%, 25%, 100%) ou use o controle deslizante para regular o APL.",
+        "Observe se a tela escurece à medida que a área branca aumenta.",
+        "Inicie o cronômetro para medir quedas térmicas de brilho após 10 a 60 segundos."
+      ]
+    },
+    "new-monitor-wizard": {
+      "title": "Assistente de Aceitação de Monitor Novo (5 Min)",
+      "description": "Inspeção completa em 5 etapas: pixels mortos, vazamento de luz, uniformidade, nitidez de texto e fluidez.",
+      "metaTitle": "Assistente de Inspeção de Monitor Novo - Teste de Aceitação",
+      "metaDescription": "Execute um teste completo em 5 etapas para verificar pixels defeituosos, glow IPS, uniformidade e nitidez de fontes.",
+      "instructions": [
+        "Avance pelas etapas com o botão 'Próximo' ou as setas do teclado.",
+        "Marque 'Aprovado' ou 'Problema' em cada ponto de verificação.",
+        "Veja sua nota final e gere um certificado oficial de inspeção."
+      ]
+    },
+    "color-temperature-test": {
+      "title": "Temperatura de Cor e Comparador de Ponto Branco",
+      "description": "Compare o ponto branco com padrões CIE (D50, D55, D65, D75, 9300K) para diagnosticar desvios cromáticos.",
+      "metaTitle": "Teste de Temperatura de Cor - Ponto Branco D65 e Comparador Kelvin",
+      "metaDescription": "Teste visual de temperatura de cor. Compare pré-ajustes de 5000K, 6500K D65 e 9300K para calibrar seu monitor.",
+      "instructions": [
+        "Escolha o iluminante alvo (D50 Quente, D65 Padrão ou 9300K Frio) ou use a visualização dividida.",
+        "Analise a comparação contra D65 para identificar desvios amarelados, azulados ou esverdeados.",
+        "Use a rampa de escala de cinza e o controle de matiz para avaliar a neutralidade tonal."
+      ]
+    },
+    "temporal-dithering-test": {
+      "title": "Teste de Dithering Temporal e Microcintilação FRC",
+      "description": "Identifique o pontilhamento de 6-bit+FRC e 8-bit+FRC com padrões de grade em altíssima frequência.",
+      "metaTitle": "Teste de Dithering Temporal - Detector de FRC e Cansaço Visual",
+      "metaDescription": "Detecte dithering temporal e controle de taxa de quadros (FRC). Padrões xadrez de 1 pixel revelam cintilação ativa.",
+      "instructions": [
+        "Selecione o padrão Xadrez 1x1, Grade 2x2 ou Microdegrau de 8 bits.",
+        "Verifique se o zoom do navegador está em 100% (mapeamento 1:1 de pixels).",
+        "Observe de perto ou grave em câmera lenta (120/240 fps) com o celular para notar pixels oscilando."
+      ]
+    },
+    "hdr-peak-brightness-test": {
+      "title": "Luminância de Pico HDR e Teste de Recorte",
+      "description": "Padrão calibrado ST.2084 PQ (100 a 4.000 nits) para verificar mapeamento de tons e corte de altas luzes.",
+      "metaTitle": "Teste de Luminância de Pico HDR - Recorte de 100 a 4000 Nits",
+      "metaDescription": "Teste o corte de altas luzes em HDR em 100, 400, 600, 1000 e 4000 nits para calibrar o Windows e jogos.",
+      "instructions": [
+        "Certifique-se de que o modo HDR esteja habilitado nas configurações do sistema.",
+        "Alterne entre os níveis de brilho de 100 nits até 4.000 nits.",
+        "Verifique se o quadrado interno permanece distinguível da caixa externa ou se estoura em branco uniforme."
+      ]
+    },
+    "audio-latency-test": {
+      "title": "Inspetor de Latência e Buffer de Hardware de Áudio",
+      "description": "Analise a latência do driver, atraso do kernel, taxa de amostragem e sincronia de clique para som.",
+      "metaTitle": "Teste de Latência de Áudio - Buffer Web Audio e Pipeline Hardware",
+      "metaDescription": "Meça a latência de saída de áudio, atraso do sistema e taxa de amostragem com teste interativo de pulso sonoro.",
+      "instructions": [
+        "Clique em 'Inicializar Motor de Áudio' para ler os dados da sua placa de som.",
+        "Verifique a taxa de amostragem, latência base do kernel e latência de saída do buffer.",
+        "Clique no círculo sonoro central para testar a resposta imediata e verificar o sincronismo de áudio e vídeo."
+      ]
+    },
+    "eink-refresh-tool": {
+      "title": "Ferramenta de Atualização E-Ink e Antifantasmas",
+      "description": "Gerador de ondas de inversão de alto contraste para purgar microcápsulas retidas em telas de tinta eletrônica.",
+      "metaTitle": "Ferramenta de Atualização E-Ink - Limpeza de Fantasmas em E-Paper",
+      "metaDescription": "Elimine o efeito fantasma em monitores e e-readers E-Ink (Dasung, Boox, Bigme) com os ciclos Deep Purge e Regal.",
+      "instructions": [
+        "Escolha o perfil de onda: Deep Purge (limpeza profunda em 8 fases), Regal (rápido em 4 fases) ou A2.",
+        "Clique no botão de purga para executar a inversão em tela cheia.",
+        "Aviso fotossensível: Não olhe diretamente para a tela enquanto os flashes de alto contraste estiverem ativos."
+      ]
     }
   },
   "Tests": {
@@ -2961,6 +3038,26 @@
       "riskModerate": "Risco Moderado – Desgaste perceptível em 3-4 anos",
       "riskHigh": "Risco Alto – Retenção visível em 18 a 24 meses",
       "recommendations": "Recomendações para Longevidade"
+    },
+    "oledAblTest": {
+      "title": "Benchmark OLED ABL e Tamanho de Janela",
+      "description": "Avalie a atenuação do Limitador Automático de Brilho (ABL) e luminância sustentada de 1% a 100%."
+    },
+    "colorTemperatureTest": {
+      "title": "Temperatura de Cor e Comparador de Ponto Branco",
+      "description": "Referência visual comparando luz diurna D65 com pontos brancos de 5000K, 7500K e 9300K com ajuste de matiz."
+    },
+    "temporalDitheringTest": {
+      "title": "Dithering Temporal e Microcintilação FRC",
+      "description": "Detecte o pontilhamento temporal FRC e a oscilação de alta frequência que causa cansaço visual."
+    },
+    "hdrPeakBrightnessTest": {
+      "title": "Luminância de Pico HDR e Recorte de Brilho",
+      "description": "Identifique limites de corte e mapeamento tonal através de amostras de 100 a 4.000 nits."
+    },
+    "audioLatencyTest": {
+      "title": "Latência de Hardware de Áudio e Buffer",
+      "description": "Inspecione a taxa de amostragem Web Audio, latência do kernel e atraso de saída do buffer."
     }
   },
   "Guides": {
@@ -5091,6 +5188,14 @@
       "osdCalibrationGuide": {
         "title": "Guia de Calibração OSD",
         "description": "Assistente passo a passo para os botões físicos do seu monitor."
+      },
+      "newMonitorWizard": {
+        "title": "Assistente de Aceitação de Monitor (5 Min)",
+        "description": "Lista de verificação guiada em 5 etapas para inspecionar telas novas ou usadas no período de devolução."
+      },
+      "einkRefreshTool": {
+        "title": "Atualização de Tela E-Ink e Antifantasmas",
+        "description": "Formas de onda de inversão rápida (Deep Purge, Regal, A2) para remover retenção em papel eletrônico."
       }
     },
     "DisplayBandwidthCalculator": {

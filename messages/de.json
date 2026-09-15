@@ -1094,6 +1094,83 @@
         "<strong>Beobachtung:</strong> Achten Sie auf ungleichmäßige Sättigung oder Farbabweichungen auf der gesamten Bildfläche.",
         "Stellen Sie Gamma auf 2.2, Farbtemperatur auf 6500K neutrales Weiß und optimieren Sie Overdrive."
       ]
+    },
+    "oled-abl-test": {
+      "title": "OLED ABL & Fenstergrößen-Benchmark",
+      "description": "Messung der automatischen Helligkeitsbegrenzung (ABL) auf OLED- und Mini-LED-Panels von 1% bis 100% Vollbild.",
+      "metaTitle": "OLED ABL Benchmark - Auto-Brightness Limiter & Fenstergrößen-Test",
+      "metaDescription": "Testen Sie das ABL-Verhalten von OLED, QD-OLED und Mini-LED bei Standard-Fenstergrößen von 1%, 10%, 25% und 100%.",
+      "instructions": [
+        "Wählen Sie eine Fenstergröße (1%, 10%, 25%, 100%) oder nutzen Sie den Schieberegler für feine APL-Stufen.",
+        "Beobachten Sie, wie stark der Bildschirm abdunkelt, wenn die weiße Fläche anwächst.",
+        "Aktivieren Sie den Dauertimer, um thermische Helligkeitsdrosselungen über 10 bis 60 Sekunden zu analysieren."
+      ]
+    },
+    "new-monitor-wizard": {
+      "title": "5-Minuten Monitor-Abnahme-Assistent",
+      "description": "Schritt-für-Schritt-Prüfung auf Pixelfehler, Backlight Bleed, 50%-Grau-Gleichmäßigkeit, Textschärfe und Bewegung.",
+      "metaTitle": "5-Minuten Monitor-Inspektions-Assistent - Abnahmetest für Neugeräte",
+      "metaDescription": "Führen Sie einen kompletten 5-Stufen-Test durch, um Pixelfehler, IPS-Glow, Schattierungen und Bildwiederholraten zu prüfen.",
+      "instructions": [
+        "Navigieren Sie mit 'Weiter' oder Pfeiltasten durch die einzelnen Prüfschritte.",
+        "Markieren Sie 'Bestanden' oder 'Fehler gefunden' an jedem Kontrollpunkt.",
+        "Erhalten Sie Ihre finale Panel-Note und erstellen Sie ein offizielles Prüfzertifikat."
+      ]
+    },
+    "color-temperature-test": {
+      "title": "Farbtemperatur & Weißpunkt-Vergleich",
+      "description": "Vergleichen Sie den Weißpunkt Ihres Monitors mit CIE-Normlichtarten (D50, D55, D65, D75, 9300K) auf Farbstiche.",
+      "metaTitle": "Farbtemperatur-Test - D65 Weißpunkt & Kelvin-Vergleich",
+      "metaDescription": "Visueller Weißpunkt- und Farbtemperaturprüfer. Vergleichen Sie 5000K, 6500K D65 und 9300K auf Warm-/Kalt- und Grün-/Magentastiche.",
+      "instructions": [
+        "Wählen Sie eine Normlichtart (D50 Warm, D65 Standard oder 9300K Kalt) oder nutzen Sie die geteilte Ansicht.",
+        "Überprüfen Sie den Split-Screen-Vergleich gegen D65 auf ungewollte Gelb-, Blau- oder Grünstiche.",
+        "Verwenden Sie die Graustufen und den Farbtonregler, um die Farbneutralität zu beurteilen."
+      ]
+    },
+    "temporal-dithering-test": {
+      "title": "Temporäres Dithering & FRC-Mikroflackern-Test",
+      "description": "Entlarven Sie 6-Bit+FRC- und 8-Bit+FRC-Pixelpulsen und Flimmern mithilfe hochfrequenter Pixelgitter.",
+      "metaTitle": "Temporäres Dithering Test - FRC-Mikroflackern & Augenschonungs-Checker",
+      "metaDescription": "Erkennen Sie temporäres Dithering und Frame Rate Control (FRC). 1x1-Schachbrettmuster machen Flimmern sichtbar.",
+      "instructions": [
+        "Wählen Sie das 1x1-Schachbrett, 2x2-Gitter oder 8-Bit-Mikrostufenmuster.",
+        "Stellen Sie sicher, dass die Browser-Skalierung auf 100% steht (1:1 Pixel-Mapping).",
+        "Betrachten Sie das Muster aus der Nähe oder filmen Sie es mit 120/240 fps Zeitlupe, um tanzende Pixel zu erkennen."
+      ]
+    },
+    "hdr-peak-brightness-test": {
+      "title": "HDR-Spitzenhelligkeit & Clipping-Test",
+      "description": "Kalibriertes ST.2084 PQ-Muster (100 bis 4.000 Nits) zur Überprüfung von HDR-Tonemapping und Highlight-Verlusten.",
+      "metaTitle": "HDR-Spitzenhelligkeit & Clipping-Test - 100 bis 4000 Nits",
+      "metaDescription": "Testen Sie Highlight-Clipping unter HDR bei 100, 400, 600, 1000 und 4000 Nits zur optimalen Windows- und Spiele-Kalibrierung.",
+      "instructions": [
+        "Aktivieren Sie HDR in den Anzeigeeinstellungen Ihres Betriebssystems.",
+        "Wechseln Sie durch die Helligkeitsstufen von 100 Nits bis 4.000 Nits.",
+        "Prüfen Sie, ob das innere Quadrat sichtbar bleibt oder in einer ausgebrannten weißen Fläche verschwindet."
+      ]
+    },
+    "audio-latency-test": {
+      "title": "Audio-Hardware-Pipeline & Puffer-Latenz-Inspektor",
+      "description": "Überprüfen Sie Audio-Treiberlatenz, Kernel-Pufferverzögerung, Abtastrate (44,1k bis 192k Hz) und Klick-zu-Ton-Sync.",
+      "metaTitle": "Audio-Latenz-Test - Web-Audio-Puffer & Hardware-Ausgabe-Pipeline",
+      "metaDescription": "Messen Sie Audio-Ausgabelatenz, Kernel-Verzögerung und Abtastrate mit einem interaktiven Impulstest.",
+      "instructions": [
+        "Klicken Sie auf 'Audio-Engine initialisieren', um die Soundkartendaten abzurufen.",
+        "Lesen Sie Ihre Hardware-Abtastrate, Kernel-Basislatenz und Treiberausgabelatenz ab.",
+        "Klicken Sie auf den zentralen Kreis, um die akustische Reaktionszeit und AV-Synchronität zu prüfen."
+      ]
+    },
+    "eink-refresh-tool": {
+      "title": "E-Ink Bildschirm-Refresh & Anti-Ghosting-Werkzeug",
+      "description": "Kontrastreiche Inversions-Wellenformen zur Beseitigung festhängender Mikrokapseln auf E-Paper-Displays.",
+      "metaTitle": "E-Ink Bildschirm-Refresh - Geisterbild-Beseitigung für E-Paper",
+      "metaDescription": "Beseitigen Sie Geisterbilder auf E-Ink-Monitoren (Dasung, Boox, Bigme) mit Deep-Purge- und Regal-Inversionszyklen.",
+      "instructions": [
+        "Wählen Sie einen Modus: Deep Purge (gründliche 8-Phasen-Reinigung), Regal (schnelle 4 Phasen) oder A2.",
+        "Klicken Sie auf Start, um den Vollbild-Kontrastzyklus auszuführen.",
+        "Photosensibler Hinweis: Schauen Sie während des schnellen Blinkens nicht direkt auf den Bildschirm."
+      ]
     }
   },
   "Tests": {
@@ -2969,6 +3046,26 @@
       "riskModerate": "Mäßiges Risiko – Leichte Subpixel-Alterung nach 3–4 Jahren",
       "riskHigh": "Hohes Risiko – Sichtbares Einbrennen innerhalb von 18–24 Monaten",
       "recommendations": "Empfehlungen zur Panel-Lebensdauer"
+    },
+    "oledAblTest": {
+      "title": "OLED ABL & Fenstergrößen-Benchmark",
+      "description": "Messen Sie das Dimmen des Auto-Brightness Limiters (ABL) und die Spitzenhelligkeit bei 1% bis 100% Fenstergröße."
+    },
+    "colorTemperatureTest": {
+      "title": "Farbtemperatur & Weißpunkt-Vergleich",
+      "description": "Visueller Referenzvergleich von D65-Tageslicht mit 5000K, 7500K und 9300K Weißpunkten inklusive Farbtonausgleich."
+    },
+    "temporalDitheringTest": {
+      "title": "Temporäres Dithering & FRC-Mikroflackern",
+      "description": "Erkennen Sie Frame Rate Control (FRC) temporäres Dithering und hochfrequentes Pixelflimmern, das Augenbelastung verursacht."
+    },
+    "hdrPeakBrightnessTest": {
+      "title": "HDR-Spitzenhelligkeit & Highlight-Clipping",
+      "description": "Erkennen Sie Clipping-Schwellenwerte und Tonemapping-Verhalten über Teststufen von 100 bis 4.000 Nits."
+    },
+    "audioLatencyTest": {
+      "title": "Audio-Hardware-Pipeline & Puffer-Latenz",
+      "description": "Analysieren Sie Web-Audio-Abtastrate, Kernel-Basislatenz, Treiber-Pufferverzögerung und Mehrkanal-Routing."
     }
   },
   "Guides": {
@@ -5099,6 +5196,14 @@
       "osdCalibrationGuide": {
         "title": "OSD-Kalibrierungsassistent",
         "description": "Schritt-für-Schritt-Anleitung für die Hardware-Tasten Ihres Monitors."
+      },
+      "newMonitorWizard": {
+        "title": "5-Minuten Monitor-Abnahme-Assistent",
+        "description": "Geführte 5-Stufen-Prüfliste zur schnellen Überprüfung neuer oder gebrauchter Monitore innerhalb der Rückgabefrist."
+      },
+      "einkRefreshTool": {
+        "title": "E-Ink Bildschirm-Refresh & Anti-Ghosting",
+        "description": "Vollbild-Inversions-Wellenformen (Deep Purge, Regal, A2) zur Beseitigung von Geisterbildern auf elektronischem Papier."
       }
     },
     "DisplayBandwidthCalculator": {

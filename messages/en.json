@@ -1142,6 +1142,83 @@
         "Tune Brightness and Contrast to avoid shadow crushing and highlight clipping.",
         "Calibrate Gamma to 2.2, Color Temperature to 6500K neutral white, and optimize Overdrive."
       ]
+    },
+    "oled-abl-test": {
+      "title": "OLED ABL & Window Size Benchmark",
+      "description": "Measure OLED and Mini-LED Auto-Brightness Limiter (ABL) throttling across window sizes from 1% to 100% full screen.",
+      "metaTitle": "OLED ABL Benchmark - Auto-Brightness Limiter & Window Size Test",
+      "metaDescription": "Test display Auto-Brightness Limiter (ABL) behavior on OLED, QD-OLED, and Mini-LED screens across standard 1%, 10%, 25%, and 100% window sizes.",
+      "instructions": [
+        "Select a window size preset (1%, 10%, 25%, 100%) or use the fine slider to adjust Average Picture Level (APL).",
+        "Observe whether the screen dims or throttles as the white surface area increases.",
+        "Enable the Sustained Timer to measure thermal brightness step-downs over 10s to 60s."
+      ]
+    },
+    "new-monitor-wizard": {
+      "title": "5-Minute New Monitor Inspection Wizard",
+      "description": "Step-by-step unboxing acceptance inspection covering Dead Pixels, Backlight Bleed, Uniformity, Text Clarity, and Frame Pacing.",
+      "metaTitle": "5-Minute New Monitor Inspection Wizard - Unboxing Acceptance Test",
+      "metaDescription": "Run a complete 5-stage inspection on your new or used monitor to verify dead pixels, IPS glow, 50% gray uniformity, text fringing, and refresh rate.",
+      "instructions": [
+        "Advance through each inspection stage using the Next button or Arrow keys.",
+        "Mark 'Pass' or 'Issue Found' at each checkpoint to record your observations.",
+        "Review your final Panel Health Grade and generate an official inspection certificate."
+      ]
+    },
+    "color-temperature-test": {
+      "title": "Color Temperature & White Point Comparator",
+      "description": "Compare your monitor's white point against CIE standard illuminants (D50, D55, D65, D75, 9300K) to diagnose color cast.",
+      "metaTitle": "Color Temperature Test - D65 White Point & Kelvin Comparator",
+      "metaDescription": "Visual white point and color temperature tester. Compare 5000K, 6500K D65, and 9300K presets to detect warm, cool, or green/magenta tint.",
+      "instructions": [
+        "Select a target illuminant (D50 Warm, D65 Standard, or 9300K Cool) or use Split View.",
+        "Inspect the split-screen comparison against D65 daylight to check if your display has an unwanted warm or cool tint.",
+        "Use the Grayscale Steps and Tint slider to evaluate neutrality across the entire luminance range."
+      ]
+    },
+    "temporal-dithering-test": {
+      "title": "Temporal Dithering & FRC Micro-Flicker Test",
+      "description": "Expose 6-bit+FRC and 8-bit+FRC temporal pixel pulsing and subpixel shimmer using high-frequency pattern grids.",
+      "metaTitle": "Temporal Dithering Test - FRC Micro-Flicker & Eye Strain Checker",
+      "metaDescription": "Detect temporal dithering and Frame Rate Control (FRC) on monitors. High-frequency checkerboard patterns reveal pixel shimmer and eye-strain triggers.",
+      "instructions": [
+        "Select the 1x1 Checkerboard, 2x2 Grid, or 8-Bit Micro-Step pattern.",
+        "Ensure your browser scaling is set to 100% (1:1 pixel mapping).",
+        "Inspect the pattern up close or record with a smartphone camera at 120fps/240fps slow motion to spot active pixel dancing."
+      ]
+    },
+    "hdr-peak-brightness-test": {
+      "title": "HDR Peak Luminance & Highlight Clipping Test",
+      "description": "Calibrated ST.2084 PQ highlight step pattern (100 to 4,000 nits) to test HDR tone mapping and highlight clipping.",
+      "metaTitle": "HDR Peak Luminance & Clipping Test - 100 to 4000 Nits",
+      "metaDescription": "Test HDR highlight clipping and tone mapping across 100, 400, 600, 1000, and 4000 nits. Calibrate your Windows HDR and game brightness sliders.",
+      "instructions": [
+        "Ensure Windows HDR or macOS High Dynamic Range is enabled in your system settings.",
+        "Cycle through the luminance tiers from 100 nits up to 4,000 nits.",
+        "Verify whether the inner step square remains distinct from the outer target box or blends into a clipped white block."
+      ]
+    },
+    "audio-latency-test": {
+      "title": "Audio Hardware Pipeline & Buffer Latency Inspector",
+      "description": "Inspect Web Audio API hardware driver latency, kernel buffer delay, sample rate (44.1k to 192k Hz), and click-to-sound sync.",
+      "metaTitle": "Audio Latency Test - Web Audio Buffer & Hardware Output Pipeline",
+      "metaDescription": "Measure hardware audio output latency, base kernel latency, sample rate, and audio buffer delay with an interactive sound-pulse test.",
+      "instructions": [
+        "Click 'Initialize Audio Engine' to allow the browser to query your sound card driver.",
+        "Review your Hardware Sample Rate, Kernel Base Latency, and Driver Output Latency.",
+        "Click the central sound orb to test instantaneous auditory feedback and verify audio-visual synchronization."
+      ]
+    },
+    "eink-refresh-tool": {
+      "title": "E-Ink Screen Refresh & Anti-Ghosting Tool",
+      "description": "High-contrast inversion waveform generator designed to purge ghosted pigment microcapsules on E-Ink monitors.",
+      "metaTitle": "E-Ink Screen Refresh Tool - Electronic Paper Ghosting Purger",
+      "metaDescription": "Clear ghosting on E-Ink and electronic paper displays (Dasung, Boox, Bigme). Run Deep Purge, Regal, or A2 inversion flash cycles.",
+      "instructions": [
+        "Select a waveform mode: Deep Purge (8-phase thorough clean), Regal (quick 4-phase), or A2 (fast inversion).",
+        "Click the purge button to execute the full-field contrast cycle.",
+        "Photosensitive warning: Look away from the screen while high-contrast flashing is active."
+      ]
     }
   },
   "Tests": {
@@ -3017,6 +3094,26 @@
       "riskModerate": "Moderate Risk – Expect Minor Subpixel Aging at 3-4 Years",
       "riskHigh": "High Risk – Visible Static Image Retention within 18-24 Months",
       "recommendations": "Longevity Recommendations"
+    },
+    "oledAblTest": {
+      "title": "OLED ABL & Window Size Benchmark",
+      "description": "Benchmark Auto-Brightness Limiter dimming and sustained peak luminance across 1% to 100% window sizes."
+    },
+    "colorTemperatureTest": {
+      "title": "Color Temperature & White Point Comparator",
+      "description": "Visual reference comparing D65 standard daylight against 5000K, 7500K, and 9300K white points with tint compensation."
+    },
+    "temporalDitheringTest": {
+      "title": "Temporal Dithering & FRC Micro-Flicker",
+      "description": "Detect Frame Rate Control (FRC) temporal dithering and high-frequency pixel shimmer that causes eye strain."
+    },
+    "hdrPeakBrightnessTest": {
+      "title": "HDR Peak Luminance & Highlight Clipping",
+      "description": "Identify hard-clipping thresholds and tone-mapping roll-off across 100 to 4,000 nits highlight patches."
+    },
+    "audioLatencyTest": {
+      "title": "Audio Hardware Pipeline & Buffer Latency",
+      "description": "Inspect real-time Web Audio hardware sample rate, kernel base latency, output buffer latency, and multichannel routing."
     }
   },
   "Guides": {
@@ -5109,6 +5206,14 @@
       "osdCalibrationGuide": {
         "title": "OSD Calibration Guide",
         "description": "Step-by-step visual calibration wizard for tuning physical monitor OSD buttons."
+      },
+      "newMonitorWizard": {
+        "title": "5-Minute Monitor Acceptance Wizard",
+        "description": "Automated 5-stage acceptance checklist for inspecting new or used displays during the return window."
+      },
+      "einkRefreshTool": {
+        "title": "E-Ink Screen Refresh & Anti-Ghosting",
+        "description": "Full-field rapid polarity flash waveforms (Deep Purge, Regal, A2) engineered to clear ghosting on electronic paper displays."
       }
     },
     "DisplayBandwidthCalculator": {

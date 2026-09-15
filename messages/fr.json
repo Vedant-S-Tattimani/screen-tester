@@ -1100,6 +1100,83 @@
         "Ajustez la luminosité et le contraste pour préserver les nuances dans les noirs et les blancs.",
         "Réglez le gamma sur 2.2, la température sur 6500K blanc neutre et trouvez l'overdrive idéal."
       ]
+    },
+    "oled-abl-test": {
+      "title": "Benchmark ABL OLED et Taille de Fenêtre",
+      "description": "Mesurez la limitation de luminosité (ABL) sur écrans OLED et Mini-LED de 1% à 100% de surface blanche.",
+      "metaTitle": "Test ABL OLED - Limiteur Automatique de Luminosité et Taille de Fenêtre",
+      "metaDescription": "Vérifiez le comportement de l'ABL sur écrans OLED, QD-OLED et Mini-LED sur des fenêtres de 1%, 10%, 25% et 100%.",
+      "instructions": [
+        "Sélectionnez une taille de fenêtre (1%, 10%, 25%, 100%) ou ajustez finement avec le curseur APL.",
+        "Observez l'assombrissement de l'écran lorsque la surface blanche augmente.",
+        "Activez le chronomètre pour mesurer la baisse de luminosité thermique après 10 à 60 secondes."
+      ]
+    },
+    "new-monitor-wizard": {
+      "title": "Assistant de Réception de Moniteur Neuf (5 Min)",
+      "description": "Vérification complète en 5 étapes : pixels morts, fuites de rétroéclairage, uniformité, netteté du texte et fluidité.",
+      "metaTitle": "Assistant d'Inspection de Moniteur Neuf - Test de Réception",
+      "metaDescription": "Exécutez une inspection complète en 5 étapes pour vérifier les pixels défectueux, le glow IPS, l'uniformité et la fluidité.",
+      "instructions": [
+        "Progressez d'étape en étape à l'aide du bouton Suivant ou des flèches du clavier.",
+        "Indiquez 'Conforme' ou 'Défaut' à chaque point de contrôle.",
+        "Consultez votre note finale et générez un certificat officiel d'inspection."
+      ]
+    },
+    "color-temperature-test": {
+      "title": "Température de Couleur et Comparateur de Point Blanc",
+      "description": "Comparez le point blanc de votre moniteur aux illuminants CIE (D50, D55, D65, D75, 9300K) pour détecter les dominantes.",
+      "metaTitle": "Test de Température de Couleur - Point Blanc D65 et Comparateur Kelvin",
+      "metaDescription": "Test visuel de température de couleur. Comparez les préréglages 5000K, 6500K D65 et 9300K pour repérer les dérives.",
+      "instructions": [
+        "Sélectionnez un illuminant cible (D50 Chaud, D65 Standard ou 9300K Froid) ou le mode écran divisé.",
+        "Inspectez la comparaison contre D65 pour détecter une éventuelle dominante chaude ou froide.",
+        "Utilisez les marches d'échelle de gris et le curseur de teinte pour évaluer la neutralité."
+      ]
+    },
+    "temporal-dithering-test": {
+      "title": "Test de Dithering Temporel et Micro-Scintillement FRC",
+      "description": "Révélez le tramage 6-bit+FRC et 8-bit+FRC à l'aide de motifs géométriques haute fréquence.",
+      "metaTitle": "Test de Dithering Temporel - Détecteur de FRC et Fatigue Visuelle",
+      "metaDescription": "Détectez le dithering temporel et le Frame Rate Control (FRC). La mire en damier 1x1 expose le scintillement pixel par pixel.",
+      "instructions": [
+        "Sélectionnez le damier 1x1, la grille 2x2 ou la mire de micro-pas 8 bits.",
+        "Vérifiez que le zoom du navigateur est à 100% (mappage 1:1).",
+        "Observez de près ou filmez avec un smartphone au ralenti à 120/240 ips pour déceler les pixels oscillants."
+      ]
+    },
+    "hdr-peak-brightness-test": {
+      "title": "Luminance Maximale HDR et Test d'Écrêtage",
+      "description": "Mire calibrée ST.2084 PQ (100 à 4 000 nits) pour évaluer le mappage tonal et l'écrêtage des hautes lumières.",
+      "metaTitle": "Test de Luminance Maximale HDR - Écrêtage de 100 à 4000 Nits",
+      "metaDescription": "Testez l'écrêtage HDR à 100, 400, 600, 1000 et 4000 nits pour calibrer Windows et vos jeux vidéo.",
+      "instructions": [
+        "Vérifiez que le mode HDR est bien activé dans les paramètres de votre écran sous l'OS.",
+        "Parcourez les paliers de luminance de 100 nits jusqu'à 4 000 nits.",
+        "Vérifiez si le carré intérieur reste discernable du cadre extérieur ou s'il se confond en blanc brûlé."
+      ]
+    },
+    "audio-latency-test": {
+      "title": "Inspecteur de Latence Matérielle Audio et Mémoire Tampon",
+      "description": "Inspectez la latence du pilote, le délai du noyau, la fréquence d'échantillonnage et la synchronisation clic-son.",
+      "metaTitle": "Test de Latence Audio - Tampon Web Audio et Pipeline Matériel",
+      "metaDescription": "Mesurez la latence de sortie audio et la fréquence d'échantillonnage avec un test de pulsation sonore interactif.",
+      "instructions": [
+        "Cliquez sur 'Initialiser le Moteur Audio' pour interroger les paramètres de votre carte son.",
+        "Consultez la fréquence d'échantillonnage, la latence du noyau et la latence du tampon de sortie.",
+        "Cliquez sur l'orbe central pour tester la réactivité sonore et valider la synchronisation audiovisuelle."
+      ]
+    },
+    "eink-refresh-tool": {
+      "title": "Outil de Rafraîchissement E-Ink et Anti-Images Fantômes",
+      "description": "Générateur d'inversion à fort contraste pour purger les microcapsules bloquées sur écrans à encre électronique.",
+      "metaTitle": "Outil de Rafraîchissement E-Ink - Purgeur de Rémanence E-Paper",
+      "metaDescription": "Éliminez les images fantômes sur liseuses et écrans E-Ink (Dasung, Boox, Bigme) avec les cycles Deep Purge et Regal.",
+      "instructions": [
+        "Choisissez un profil : Deep Purge (nettoyage complet en 8 phases), Regal (rapide 4 phases) ou A2.",
+        "Lancez la purge pour exécuter le cycle de contraste plein écran.",
+        "Avertissement photosensible : détournez le regard pendant les clignotements à fort contraste."
+      ]
     }
   },
   "Tests": {
@@ -2975,6 +3052,26 @@
       "riskModerate": "Risque Modéré – Usure progressive après 3 à 4 ans",
       "riskHigh": "Risque Élevé – Marquage visible sous 18 à 24 mois",
       "recommendations": "Conseils pour Préserver la Dalle OLED"
+    },
+    "oledAblTest": {
+      "title": "Benchmark ABL OLED et Taille de Fenêtre",
+      "description": "Évaluez l'atténuation du limiteur automatique de luminosité (ABL) et la luminance maximale de 1% à 100%."
+    },
+    "colorTemperatureTest": {
+      "title": "Température de Couleur et Comparateur de Point Blanc",
+      "description": "Référence visuelle comparant la lumière du jour D65 aux points blancs 5000K, 7500K et 9300K avec compensation de teinte."
+    },
+    "temporalDitheringTest": {
+      "title": "Dithering Temporel et Micro-Scintillement FRC",
+      "description": "Détectez le tramage temporel FRC et le scintillement haute fréquence responsable de fatigue oculaire."
+    },
+    "hdrPeakBrightnessTest": {
+      "title": "Luminance Maximale HDR et Écrêtage",
+      "description": "Identifiez les seuils d'écrêtage et le mappage tonal sur des mires de 100 à 4 000 nits."
+    },
+    "audioLatencyTest": {
+      "title": "Latence du Matériel Audio et Mémoire Tampon",
+      "description": "Inspectez la fréquence d'échantillonnage Web Audio, la latence du noyau et le délai du tampon de sortie."
     }
   },
   "Guides": {
@@ -5105,6 +5202,14 @@
       "osdCalibrationGuide": {
         "title": "Guide de Réglage OSD",
         "description": "Assistant étape par étape pour calibrer les commandes physiques du moniteur."
+      },
+      "newMonitorWizard": {
+        "title": "Assistant de Réception de Moniteur (5 Min)",
+        "description": "Liste de contrôle guidée en 5 étapes pour inspecter un écran neuf ou d'occasion pendant le délai de retour."
+      },
+      "einkRefreshTool": {
+        "title": "Rafraîchissement E-Ink et Anti-Images Fantômes",
+        "description": "Formes d'onde d'inversion rapide (Deep Purge, Regal, A2) pour purger les images rémanentes sur papier électronique."
       }
     },
     "DisplayBandwidthCalculator": {

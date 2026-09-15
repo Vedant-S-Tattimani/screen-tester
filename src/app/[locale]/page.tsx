@@ -102,7 +102,12 @@ export default async function Home({
     "gpu-benchmark-test": "gpuBenchmarkTest",
     "motion-blur-test": "motionBlurTest",
     "reaction-time-test": "reactionTimeTest",
-    "resolution-checker": "resolution-checker"
+    "resolution-checker": "resolution-checker",
+    "oled-abl-test": "oledAblTest",
+    "color-temperature-test": "colorTemperatureTest",
+    "temporal-dithering-test": "temporalDitheringTest",
+    "hdr-peak-brightness-test": "hdrPeakBrightnessTest",
+    "audio-latency-test": "audioLatencyTest"
   };
 
   const toolsMap: Record<string, string> = {
@@ -114,7 +119,9 @@ export default async function Home({
     "dead-pixel-mapper": "deadPixelMapper",
     "oled-burn-in-calculator": "oledBurnInCalculator",
     "display-certificate": "displayCertificate",
-    "osd-calibration-guide": "osdCalibrationGuide"
+    "osd-calibration-guide": "osdCalibrationGuide",
+    "new-monitor-wizard": "newMonitorWizard",
+    "eink-refresh-tool": "einkRefreshTool"
   };
 
   const getTestItem = (id: string, category: string): ScreenTestItem => {
@@ -194,7 +201,8 @@ export default async function Home({
         getTestItem("dead-pixel-mapper", "deadPixelsDefects"),
         getTestItem("burn-in-test", "deadPixelsDefects"),
         getTestItem("oled-burn-in-calculator", "deadPixelsDefects"),
-        getTestItem("pixel-inversion-test", "deadPixelsDefects")
+        getTestItem("pixel-inversion-test", "deadPixelsDefects"),
+        getTestItem("temporal-dithering-test", "deadPixelsDefects")
       ]
     },
     {
@@ -205,6 +213,7 @@ export default async function Home({
         getTestItem("solid-color-test", "colorGamut"),
         getTestItem("color-gamut-test", "colorGamut"),
         getTestItem("color-accuracy-test", "colorGamut"),
+        getTestItem("color-temperature-test", "colorGamut"),
         getTestItem("saturation-test", "colorGamut"),
         getTestItem("color-banding-test", "colorGamut"),
         getTestItem("gradient-banding-test", "colorGamut"),
@@ -222,8 +231,10 @@ export default async function Home({
         getTestItem("white-level-test", "brightnessContrast"),
         getTestItem("grayscale-test", "brightnessContrast"),
         getTestItem("gamma-test", "brightnessContrast"),
+        getTestItem("oled-abl-test", "brightnessContrast"),
         getTestItem("hdr-capability-test", "brightnessContrast"),
         getTestItem("hdr-test", "brightnessContrast"),
+        getTestItem("hdr-peak-brightness-test", "brightnessContrast"),
         getTestItem("dark-mode-test", "brightnessContrast")
       ]
     },
@@ -281,6 +292,7 @@ export default async function Home({
         getTestItem("mouse-polling-test", "hardwareSensors"),
         getTestItem("gamepad-test", "hardwareSensors"),
         getTestItem("audio-sync-test", "hardwareSensors"),
+        getTestItem("audio-latency-test", "hardwareSensors"),
         getTestItem("speaker-test", "hardwareSensors"),
         getTestItem("microphone-test", "hardwareSensors"),
         getTestItem("webcam-test", "hardwareSensors"),
@@ -296,13 +308,15 @@ export default async function Home({
       id: "toolsCalculators",
       title: t("allTestsCategories.toolsCalculators"),
       tests: [
+        getTestItem("new-monitor-wizard", "toolsCalculators"),
         getTestItem("dpi-calculator", "toolsCalculators"),
         getTestItem("display-bandwidth-calculator", "toolsCalculators"),
         getTestItem("viewing-distance-calculator", "toolsCalculators"),
         getTestItem("dual-monitor-matcher", "toolsCalculators"),
         getTestItem("screen-recorder", "toolsCalculators"),
         getTestItem("display-certificate", "toolsCalculators"),
-        getTestItem("osd-calibration-guide", "toolsCalculators")
+        getTestItem("osd-calibration-guide", "toolsCalculators"),
+        getTestItem("eink-refresh-tool", "toolsCalculators")
       ]
     }
   ];

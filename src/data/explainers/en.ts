@@ -2664,5 +2664,263 @@ export const EN_EXPLAINERS: Record<string, ExplainerData> = {
     "actionHref": "/tests/vrr-flicker-test"
   }
 },
+  "oled-abl-test": {
+  "overview": "Auto-Brightness Limiter (ABL) is an essential protection mechanism built into OLED, QD-OLED, and Mini-LED displays. Because driving organic subpixels or high-density backlight zones at maximum luminance across the entire screen consumes excessive power and causes rapid thermal buildup, display controllers automatically attenuate brightness as the Average Picture Level (APL) increases.",
+  "whatToLookFor": [
+    {
+      "label": "Luminance Step-Down Across Window Sizes",
+      "description": "Observe the drop in white brightness as you transition from a small 2% or 10% window to a large 50% or 100% full-field window."
+    },
+    {
+      "label": "Uniform Brightness OSD Mode Validation",
+      "description": "If your monitor has a 'Uniform Brightness' or 'ABL Off' setting in its OSD, verify whether full-screen brightness remains flat across all window percentages."
+    },
+    {
+      "label": "Thermal Sustained Throttling (ASBL)",
+      "description": "Static bright windows may trigger Auto-Static Brightness Limiting (ASBL) after 30 to 90 seconds. Watch for secondary dimming over time."
+    },
+    {
+      "label": "Distortion of Gray Gamma",
+      "description": "Check if near-black shadows clip or elevate when large white windows are displayed simultaneously."
+    }
+  ],
+  "canObserve": [
+    "Visual step-down in peak white luminance across calibrated 1%, 2%, 5%, 10%, 25%, 50%, and 100% window sizes",
+    "Verification of monitor OSD Uniform Brightness toggle effectiveness",
+    "Sustained brightness decay over time using the built-in interval timer"
+  ],
+  "cannotMeasure": [
+    "Absolute physical candela per square meter (nits) without an external hardware photometer",
+    "Panel power supply rail wattage consumption",
+    "Micro-temperature of OLED emitter layers in degrees Celsius"
+  ],
+  "interpretation": "Significant dimming from a 10% window to 100% full screen is normal behavior for OLED and QD-OLED panels. Enabling Uniform Brightness in your monitor's OSD stabilizes luminance at the full-screen ceiling.",
+  "nextSteps": {
+    "text": "Evaluate pixel longevity and panel burn-in risks for your OLED display.",
+    "actionLabel": "Launch OLED Burn-In Calculator",
+    "actionHref": "/tools/oled-burn-in-calculator"
+  }
+},
+  "new-monitor-wizard": {
+  "overview": "The 5-Minute New Monitor Acceptance Wizard is a structured, sequential diagnostic designed for inspecting brand-new or used monitors upon arrival. It steps through the five critical hardware failure points—dead pixels, backlight bleed/IPS glow, panel uniformity, text clarity, and refresh rate pacing—to help you determine whether to accept the unit or file for a return within your retailer's warranty window.",
+  "whatToLookFor": [
+    {
+      "label": "Primary Color Subpixel Defects",
+      "description": "Look for static dark pinpricks on pure red, green, blue, and white, or lit colored specks on pitch black."
+    },
+    {
+      "label": "Backlight Bleed vs Off-Angle IPS Glow",
+      "description": "Inspect corners in a dark room. Backlight bleed remains stationary when shifting your head; IPS glow angle-shifts."
+    },
+    {
+      "label": "50% Neutral Gray Uniformity",
+      "description": "Scan for Dirty Screen Effect (DSE), vertical banding lines, or dark corner vignetting."
+    },
+    {
+      "label": "Text Edge Color Halos",
+      "description": "Inspect letter stems on high-contrast text for chromatic green or magenta fringing under Windows ClearType."
+    }
+  ],
+  "canObserve": [
+    "Sequential visual isolation of subpixel, backlight, and panel uniformity defects",
+    "Pass/Fail logging for each quality checkpoint",
+    "Generation of an overall Panel Acceptance Grade for retailer return claims"
+  ],
+  "cannotMeasure": [
+    "Internal panel hours counter without manufacturer service menu access",
+    "Long-term backlight aging or solder joint degradation",
+    "Automated optical defect classification without user visual inspection"
+  ],
+  "interpretation": "A score of A+ or A indicates an excellent panel well within standard ISO 9241-307 Class 1 tolerances. Scores of B or C with multiple dead pixels or severe bleed warrant an immediate return or exchange.",
+  "nextSteps": {
+    "text": "Export a complete documentation certificate with serial numbers and timestamp.",
+    "actionLabel": "Generate Display Certificate",
+    "actionHref": "/tools/display-certificate"
+  }
+},
+  "color-temperature-test": {
+  "overview": "Color temperature measures the spectral chromaticity of white light emitted by your display, expressed in Kelvin (K). The worldwide broadcast and digital imaging standard is CIE Illuminant D65 (approximately 6500K), which mimics average noon daylight. Displays calibrated too warm (5000K) appear yellow or orange, while displays calibrated too cool (9300K) exhibit an unnatural blue tint.",
+  "whatToLookFor": [
+    {
+      "label": "D65 Neutral Reference Comparison",
+      "description": "Compare your monitor's current white output against the D65 daylight standard swatch to identify warmth or coolness."
+    },
+    {
+      "label": "Green vs Magenta Color Cast",
+      "description": "Evaluate whether white and neutral gray patches have an unwanted greenish or purplish tint."
+    },
+    {
+      "label": "Grayscale Step Neutrality",
+      "description": "Examine the grayscale ramp from 10% to 90% luminance to ensure neutral gray does not shift hue across brightness steps."
+    },
+    {
+      "label": "OSD Preset Validation",
+      "description": "Switch your monitor OSD between Warm, Normal, Cool, and sRGB modes to determine which preset is closest to D65."
+    }
+  ],
+  "canObserve": [
+    "Visual color cast differences between 5000K (D50), 5500K, 6500K (D65), 7500K, and 9300K targets",
+    "Evaluation of grayscale neutrality and color tracking consistency across luminance levels",
+    "Green/Magenta tint offset comparison"
+  ],
+  "cannotMeasure": [
+    "Exact correlated color temperature (CCT) in Kelvin without an optical colorimeter",
+    "Spectral power distribution (SPD) across individual nanometer wavelengths",
+    "Delta E (dE2000) absolute color difference metrics"
+  ],
+  "interpretation": "For accurate photo editing, web design, and video viewing, D65 (6500K) is the universal target. Switching your monitor OSD color temperature to 'Warm' or 'sRGB' usually brings it much closer to creator intent.",
+  "nextSteps": {
+    "text": "Calibrate your monitor's physical OSD contrast, brightness, and RGB gain channels.",
+    "actionLabel": "Launch OSD Calibration Guide",
+    "actionHref": "/tools/osd-calibration-guide"
+  }
+},
+  "temporal-dithering-test": {
+  "overview": "Temporal dithering (often combined with Frame Rate Control or FRC) is a technique where LCD, OLED, and GPU controllers rapidly alternate adjacent pixel colors or flicker pixels between consecutive refresh frames to simulate intermediate color shades on lower bit-depth panels. For photosensitive users, this micro-flicker can cause severe eye strain, migraines, and nausea.",
+  "whatToLookFor": [
+    {
+      "label": "High-Frequency Shimmer on Micro-Grids",
+      "description": "Look at the 1x1 checkerboard pattern. If temporal dithering or VCOM flicker is present, the static pattern will appear to crawl or shimmer."
+    },
+    {
+      "label": "Smartphone Slow-Motion Camera Detection",
+      "description": "Point a smartphone camera at the display recording at 120fps or 240fps. Rapidly pulsating pixel clusters indicate active temporal dithering."
+    },
+    {
+      "label": "Intermediate Dither Step Pulsing",
+      "description": "Inspect the 8-bit micro-step pattern (values 127 vs 128) for subtle luminance modulation."
+    },
+    {
+      "label": "Phase Inversion Sensitivity",
+      "description": "Observe whether toggling polarity causes visible flashing or visual relief."
+    }
+  ],
+  "canObserve": [
+    "Microscopic visual shimmer and crawl on 1x1 and 2x2 subpixel checkerboard grids",
+    "High-contrast moire excitation under camera slow-motion video",
+    "Identification of panels with aggressive FRC temporal pulsing"
+  ],
+  "cannotMeasure": [
+    "Internal T-CON bit-depth truncation algorithms",
+    "Exact hardware FRC temporal alternation frequency in Hertz",
+    "Distinction between GPU temporal dithering and panel-level scalar FRC"
+  ],
+  "interpretation": "If a 1x1 checkerboard appears perfectly solid, still, and calm, your display is likely a true native bit-depth panel (true 8-bit or 10-bit). If it crawls or flickers, temporal dithering or VCOM imbalance is active.",
+  "nextSteps": {
+    "text": "Test your monitor for pulse-width modulation (PWM) backlight flicker.",
+    "actionLabel": "Launch PWM Flicker Test",
+    "actionHref": "/tests/pwm-flicker-test"
+  }
+},
+  "hdr-peak-brightness-test": {
+  "overview": "High Dynamic Range (HDR) displays must reproduce specular highlights up to hundreds or thousands of nits while preserving subtle gradations in bright clouds, explosions, and light reflections. When a display receives an HDR signal brighter than its hardware panel capability, its tone-mapping algorithm must decide whether to softly roll off highlights or hard-clip them into pure flat white.",
+  "whatToLookFor": [
+    {
+      "label": "Highlight Step Separation",
+      "description": "Check whether the inner stepped square remains clearly distinguishable from the outer target block at each luminance tier."
+    },
+    {
+      "label": "Hard Clipping Threshold",
+      "description": "Identify the tier (e.g. 600, 1000, or 1400 nits) where the inner square completely blends into the outer block, revealing your panel's clipping ceiling."
+    },
+    {
+      "label": "SDR vs HDR Tone Mapping",
+      "description": "Verify that Windows HDR or macOS HDR is active, ensuring true wide dynamic range rendering."
+    },
+    {
+      "label": "Chromaticity Shift in Highlights",
+      "description": "Watch for color shifts toward cyan, yellow, or blue when extreme highlights reach panel saturation."
+    }
+  ],
+  "canObserve": [
+    "Visual verification of highlight separation across 100 to 4,000 nits PQ targets",
+    "Identification of the exact nit ceiling where your display clips highlight gradations",
+    "Evaluation of HDR tone mapping curve aggressiveness"
+  ],
+  "cannotMeasure": [
+    "Actual physical photon output in candela/m² without a spectrophotometer",
+    "Full-screen sustained vs 10% peak nit differentials",
+    "Dynamic metadata processing (HDR10+ or Dolby Vision frame-by-frame RPU curves)"
+  ],
+  "interpretation": "Knowing your clipping point allows you to calibrate the peak brightness slider in Windows HDR Calibration and video games accurately to prevent blown-out highlights.",
+  "nextSteps": {
+    "text": "Check your display's color gamut coverage across DCI-P3 and Rec.2020.",
+    "actionLabel": "Launch Color Gamut Test",
+    "actionHref": "/tests/color-gamut-test"
+  }
+},
+  "audio-latency-test": {
+  "overview": "Audio-visual synchronization and low-latency audio processing are critical for gaming, music production, and interactive media. The browser's Web Audio API interfaces directly with your operating system's audio kernel and sound card driver. This diagnostic measures real-time hardware buffer latency, base kernel latency, and audio sample rate to expose audio lag bottlenecks.",
+  "whatToLookFor": [
+    {
+      "label": "Kernel Base vs Driver Output Latency",
+      "description": "Observe the breakdown between kernel processing delay and hardware driver buffer latency."
+    },
+    {
+      "label": "Hardware Sample Rate Support",
+      "description": "Confirm whether your audio interface is operating at standard 44.1 kHz, 48 kHz, or 96/192 kHz studio rates."
+    },
+    {
+      "label": "Click-to-Sound Actuation Delay",
+      "description": "Click the central sound orb to test immediate auditory response and identify perceptible lag."
+    },
+    {
+      "label": "Bluetooth vs Wired Latency",
+      "description": "Compare your wired speakers or headphones against Bluetooth devices, which typically introduce 100ms to 250ms of wireless buffer latency."
+    }
+  ],
+  "canObserve": [
+    "Real-time Web Audio API hardware buffer metrics and sample rate queries",
+    "Kernel base latency and estimated driver buffer round-trip delay",
+    "Interactive instantaneous auditory pulse generation"
+  ],
+  "cannotMeasure": [
+    "Physical speaker cone acoustic transit time through room air",
+    "Analog digital-to-analog converter (DAC) internal op-amp slew rate",
+    "Microphone input round-trip loopback latency without an external audio loop cable"
+  ],
+  "interpretation": "Wired USB DACs and PCIe sound cards typically achieve low buffer latencies of 5ms to 15ms, ideal for gaming. Bluetooth audio devices often suffer from 120ms to 200ms of lag unless utilizing low-latency codecs.",
+  "nextSteps": {
+    "text": "Calibrate audio and video synchronization for video playback.",
+    "actionLabel": "Launch Audio Sync Test",
+    "actionHref": "/tests/audio-sync-test"
+  }
+},
+  "eink-refresh-tool": {
+  "overview": "Electronic Paper Displays (EPDs), commonly known as E-Ink, operate by physically moving charged black and white pigment microcapsules suspended in a clear micro-fluid using electric field voltages. Over time, particles suffer from mechanical hysteresis and voltage retention, causing visible residual text and shadow outlines known as ghosting. This tool executes calibrated full-field inversion waveforms to restore microcapsule polarity.",
+  "whatToLookFor": [
+    {
+      "label": "Residual Text & Shadow Purging",
+      "description": "Observe whether lingering text outlines, icons, or PDF page ghosts disappear after running a refresh cycle."
+    },
+    {
+      "label": "Waveform Mode Differences",
+      "description": "Deep Purge runs an 8-phase multi-tone cycle for stubborn ghosting, while Regal and A2 offer faster, lighter cleanses."
+    },
+    {
+      "label": "Microcapsule Contrast Restoration",
+      "description": "Check if the background white field becomes crisper and black text gains higher optical contrast after refreshing."
+    },
+    {
+      "label": "Border and Edge Ghosting",
+      "description": "Inspect screen edges where ghosting tends to accumulate most heavily due to weaker edge electric fields."
+    }
+  ],
+  "canObserve": [
+    "Execution of high-contrast full-field polarity inversion sequences",
+    "Comparison between multi-phase Deep Purge, Regal, and A2 waveform timings",
+    "Visual clearing of electronic ink residual shadows and pigment retention"
+  ],
+  "cannotMeasure": [
+    "Microcapsule physical fluid viscosity or electrophoresis velocity",
+    "Manufacturer proprietary hardware waveform lookup tables (LUTs) in e-paper T-CON flash",
+    "Physical e-paper frontlight color temperature and uniformity"
+  ],
+  "interpretation": "Running a Deep Purge cycle every 15–30 minutes during heavy e-ink monitor use keeps text crisp and prevents irreversible microcapsule charge polarization.",
+  "nextSteps": {
+    "text": "Test your display's text rendering and subpixel font clarity.",
+    "actionLabel": "Launch Text Clarity Test",
+    "actionHref": "/tests/text-clarity-test"
+  }
+},
 };
-
