@@ -187,9 +187,9 @@ export default async function ToolsPage({
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {TOOLS_CONFIG.map((tool) => {
             const Icon = tool.icon;
-            const title = t(`items.${tool.key}.title`);
-            const description = t(`items.${tool.key}.description`);
-            const badge = t(`items.${tool.key}.badge`);
+            const title = t.has(`items.${tool.key}.title`) ? t(`items.${tool.key}.title`) : tool.key;
+            const description = t.has(`items.${tool.key}.description`) ? t(`items.${tool.key}.description`) : "";
+            const badge = t.has(`items.${tool.key}.badge`) ? t(`items.${tool.key}.badge`) : "TOOL";
             return (
               <Link
                 key={tool.id}
