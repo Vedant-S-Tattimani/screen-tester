@@ -3715,5 +3715,496 @@ export const PT_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     ],
     "primarySearchIntent": "monitor test patterns calibration grid checkerboard visual inspection",
     "readingTimeMinutes": 5
-  }
+  },
+{
+  "slug": "oled-auto-brightness-limiter-abl",
+  "category": "display-problems",
+  "title": "Limitador de Brilho Automático OLED (ABL) e Atenuação",
+  "subtitle": "Como o ABL protege painéis OLED contra superaquecimento e por que telas brancas escurecem.",
+  "description": "Entenda o ABL em monitores OLED, por que janelas brancas perdem brilho ao expandir e como testar variações de 1% a 100%.",
+  "directAnswer": "O Auto-Brightness Limiter (ABL) é um circuito de proteção que limita o calor e consumo do painel OLED reduzindo a luminância conforme a área branca aumenta.",
+  "whyItMatters": "O ABL agressivo causa alterações bruscas de claridade durante a navegação web e produtividade, gerando fadiga visual.",
+  "whatToLookFor": [
+    "Queda de brilho perceptível ao maximizar janelas brancas",
+    "Atenuação abrupta ao abrir planilhas ou documentos claros",
+    "Oscilação luminosa ao mover janelas pela tela"
+  ],
+  "howToTest": [
+    "Abra o Teste OLED ABL no Screen Tester",
+    "Alterne entre janelas de 1%, 10%, 50% e 100%",
+    "Observe se o branco perde intensidade em tela cheia"
+  ],
+  "whatScreenTesterCanObserve": [
+    "Comparativo visual de áreas de janela calibradas de 1% a 100%",
+    "Comportamento de brilho sustentado versus picos breves"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "Medição de nits sem fotômetro externo",
+    "Consumo elétrico interno dos barramentos"
+  ],
+  "commonCauses": [
+    "Prevenção contra burn-in e dissipação de calor dos subpixels",
+    "Restrições de consumo energético de fábrica"
+  ],
+  "whatToDoNext": [
+    "Verifique se o monitor possui modo 'Brilho Uniforme' no OSD",
+    "Defina o brilho SDR para 150-200 nits",
+    "Adote o Modo Escuro no Windows ou macOS"
+  ],
+  "sections": [
+    {
+      "title": "Limitador de Brilho Automático OLED (ABL) e Atenuação",
+      "content": [
+        "O Auto-Brightness Limiter (ABL) é um circuito de proteção que limita o calor e consumo do painel OLED reduzindo a luminância conforme a área branca aumenta.",
+        "O ABL agressivo causa alterações bruscas de claridade durante a navegação web e produtividade, gerando fadiga visual."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Por que telas brancas ficam escuras no OLED?",
+      "answer": "Para evitar superaquecimento e queima do painel quando muitos pixels emitem luz simultaneamente."
+    },
+    {
+      "question": "É possível desativar o ABL?",
+      "answer": "Alguns modelos oferecem opção de brilho uniforme que elimina as variações mantendo nível estável."
+    }
+  ],
+  "relatedTestIds": [
+    "oled-abl-test",
+    "brightness-test",
+    "hdr-peak-brightness-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "oled-abl-blooming-hdr-peak"
+  ],
+  "relatedArticleSlugs": [
+    "oled-burn-in-causes-and-prevention",
+    "hdr-standards-and-performance"
+  ],
+  "primarySearchIntent": "oled abl auto brightness limiter monitor dimming window size test",
+  "readingTimeMinutes": 5
+},
+{
+  "slug": "new-monitor-acceptance-tolerances",
+  "category": "browser-and-testing",
+  "title": "Tolerâncias de Monitor Novo: Pixels Mortos, Sangramento e Devolução",
+  "subtitle": "Checklist de inspeção essencial antes do vencimento do prazo de troca e devolução.",
+  "description": "Guia passo a passo para testar monitores novos: detecção de dead pixels, sangramento de luz e uniformidade no período de garantia.",
+  "directAnswer": "A verificação de monitor novo envolve inspecionar rigorosamente o painel contra pixels mortos, vazamento de backlight e desvios de cor durante o prazo de arrependimento e troca da loja.",
+  "whyItMatters": "No prazo de troca (7 a 30 dias conforme a região), a devolução é descomplicada. Após isso, a garantia ISO 9241-307 do fabricante exige múltiplos defeitos para autorizar o reparo.",
+  "whatToLookFor": [
+    "Subpixels mortos ou permanentemente acesos em telas coloridas e preta",
+    "Vazamentos luminosos evidentes nos cantos em ambientes escurecidos",
+    "Gradiente térmico de cor indesejado (lado esquerdo avermelhado e direito azulado)"
+  ],
+  "howToTest": [
+    "Inicie o Assistente de Monitor Novo no Screen Tester",
+    "Siga o fluxo guiado para pixels, contraste, uniformidade e resposta",
+    "Exporte o Certificado de Inspeção para comprovação"
+  ],
+  "whatScreenTesterCanObserve": [
+    "Sequência estruturada de padrões de teste para validação de painel",
+    "Emissão de certificado de verificação com registro de observações"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "Histórico de impactos físicos no transporte",
+    "Acordos de garantia específicos de cada revendedor"
+  ],
+  "commonCauses": [
+    "Microdefeitos nos transistores de película fina (TFT)",
+    "Aperto excessivo dos parafusos do aro do painel na fábrica"
+  ],
+  "whatToDoNext": [
+    "Acione a troca com a loja imediatamente se encontrar defeitos visíveis",
+    "Guarde a caixa original e todos os manuais e cabos",
+    "Anexe o relatório do Screen Tester no contato de suporte"
+  ],
+  "sections": [
+    {
+      "title": "Tolerâncias de Monitor Novo: Pixels Mortos, Sangramento e Devolução",
+      "content": [
+        "A verificação de monitor novo envolve inspecionar rigorosamente o painel contra pixels mortos, vazamento de backlight e desvios de cor durante o prazo de arrependimento e troca da loja.",
+        "No prazo de troca (7 a 30 dias conforme a região), a devolução é descomplicada. Após isso, a garantia ISO 9241-307 do fabricante exige múltiplos defeitos para autorizar o reparo."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Quantos dead pixels dão direito a troca?",
+      "answer": "Pela norma ISO Classe 2, até 2 pixels acesos são considerados aceitáveis pela fábrica. Por isso, use sempre o prazo inicial de devolução da loja para trocar sem burocracia."
+    },
+    {
+      "question": "O que fazer se o monitor tiver sangramento de luz?",
+      "answer": "Se os pontos brilhantes forem visíveis durante o uso comum, solicite a substituição imediata antes do fim do prazo de devolução."
+    }
+  ],
+  "relatedTestIds": [
+    "new-monitor-wizard",
+    "dead-pixel-test",
+    "backlight-bleed-test",
+    "uniformity-test",
+    "display-certificate"
+  ],
+  "relatedTroubleshootingIds": [
+    "monitor-setup-bandwidth-calibration"
+  ],
+  "relatedArticleSlugs": [
+    "dead-stuck-and-bright-pixels",
+    "backlight-bleed-vs-ips-glow"
+  ],
+  "primarySearchIntent": "new monitor inspection checklist dead pixel return policy warranty acceptance testing",
+  "readingTimeMinutes": 6
+},
+{
+  "slug": "color-temperature-d65-white-point",
+  "category": "display-basics",
+  "title": "Temperatura de Cor, Escala Kelvin e o Ponto Branco D65",
+  "subtitle": "Entenda a diferença entre branco quente e frio, cansaço visual e o padrão 6500K.",
+  "description": "Saiba como a temperatura de cor em Kelvin afeta a fidelidade da imagem, por que o D65 (6500K) é o padrão da indústria e como calibrar seu monitor.",
+  "directAnswer": "A temperatura de cor indica a tonalidade do branco na tela em graus Kelvin (K). O padrão universal D65 equivale a cerca de 6500K, simulando a luz natural do dia.",
+  "whyItMatters": "Telas excessivamente frias (acima de 7500K) causam fadiga ocular devido ao excesso de luz azul, enquanto telas muito quentes distorcem a reprodução de cores em fotos e vídeos.",
+  "whatToLookFor": [
+    "Branco com aparência azulada ou excessivamente vívida",
+    "Documentos com aspecto amarelado ou desbotado",
+    "Discrepância visual ao comparar monitores lado a lado"
+  ],
+  "howToTest": [
+    "Abra o Teste de Temperatura de Cor no Screen Tester",
+    "Compare as opções de 5000K, 6500K (D65) e 9300K",
+    "Calibre o balanço RGB no menu OSD do monitor até atingir um branco neutro"
+  ],
+  "whatScreenTesterCanObserve": [
+    "Padrões cromáticos padronizados para diferentes perfis Kelvin",
+    "Contraste visual entre pontos brancos quentes, neutros e frios"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "Métricas Delta E sem uso de colorímetro dedicado",
+    "Influência da iluminação ambiente da sala"
+  ],
+  "commonCauses": [
+    "Configuração de fábrica azulada para aumentar o brilho percebido na vitrine",
+    "Recursos como Luz Noturna ou True Tone alterando o equilíbrio do sistema"
+  ],
+  "whatToDoNext": [
+    "Selecione o perfil 'Quente' ou '6500K' nas configurações do monitor",
+    "Desative filtros automáticos de luz azul para edição de imagem",
+    "Aguarde o aquecimento do painel por 30 minutos antes de avaliar"
+  ],
+  "sections": [
+    {
+      "title": "Temperatura de Cor, Escala Kelvin e o Ponto Branco D65",
+      "content": [
+        "A temperatura de cor indica a tonalidade do branco na tela em graus Kelvin (K). O padrão universal D65 equivale a cerca de 6500K, simulando a luz natural do dia.",
+        "Telas excessivamente frias (acima de 7500K) causam fadiga ocular devido ao excesso de luz azul, enquanto telas muito quentes distorcem a reprodução de cores em fotos e vídeos."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Por que 6500K é a referência global?",
+      "answer": "Porque representa a luz natural neutra do sol do meio-dia e serve de base para os padrões sRGB e Rec.709."
+    },
+    {
+      "question": "Temperatura mais quente melhora o conforto visual?",
+      "answer": "Sim, tons mais quentes reduzem a emissão de luz azul e diminuem o estresse ocular durante longos períodos."
+    }
+  ],
+  "relatedTestIds": [
+    "color-temperature-test",
+    "white-level-test",
+    "color-test",
+    "color-accuracy-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "color-calibration-issues"
+  ],
+  "relatedArticleSlugs": [
+    "color-gamut-coverage",
+    "contrast-ratio-and-black-levels"
+  ],
+  "primarySearchIntent": "color temperature monitor d65 6500k kelvin white point calibration",
+  "readingTimeMinutes": 5
+},
+{
+  "slug": "temporal-dithering-and-frc",
+  "category": "display-problems",
+  "title": "Dithering Temporal, Frame Rate Control (FRC) e Fadiga Visual",
+  "subtitle": "Como painéis 6-bit+FRC e 8-bit+FRC simulam cores e por que o piscar invisível causa dor de cabeça.",
+  "description": "Descubra o que é dithering temporal e FRC, como a alternância rápida de cores simula profundidade e por que usuários sensíveis sentem cansaço visual e náusea.",
+  "directAnswer": "O dithering temporal (ou Frame Rate Control / FRC) é uma técnica na qual os subpixels alternam em altíssima velocidade entre duas cores vizinhas para iludir a visão e criar tons intermediários.",
+  "whyItMatters": "Apesar de baratear os custos de fabricação, essa vibração microscópica constante pode causar cefaleia, queimação nos olhos e tontura em pessoas sensíveis.",
+  "whatToLookFor": [
+    "Granulação sutil ou ruído pulsante em tons de cinza escuro",
+    "Dor de cabeça inexplicável após usar determinado monitor",
+    "Tremulação microscópica observável ao gravar a tela em câmera lenta"
+  ],
+  "howToTest": [
+    "Inicie o Teste de Dithering Temporal no Screen Tester",
+    "Analise os padrões xadrez e gradientes cinzas com escala original a 100%",
+    "Verifique se há cintilação ou movimento aparente em áreas fixas"
+  ],
+  "whatScreenTesterCanObserve": [
+    "Malhas de pixels calibradas para evidenciar artefatos de modulação FRC",
+    "Comportamento de transição de tonalidades intermediárias"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "Registros internos da placa de vídeo que forçam dithering",
+    "Firmware proprietário do chip T-Con do painel"
+  ],
+  "commonCauses": [
+    "Painel construído com arquitetura 6-bit+FRC ou 8-bit+FRC",
+    "Driver de vídeo forçando dithering temporal para evitar color banding"
+  ],
+  "whatToDoNext": [
+    "Escolha monitores com painel nativo 8-bit ou nativo 10-bit caso sinta desconforto",
+    "Configure a profundidade de cor correta no painel de controle da GPU",
+    "Mantenha boa iluminação ambiente no ambiente de trabalho"
+  ],
+  "sections": [
+    {
+      "title": "Dithering Temporal, Frame Rate Control (FRC) e Fadiga Visual",
+      "content": [
+        "O dithering temporal (ou Frame Rate Control / FRC) é uma técnica na qual os subpixels alternam em altíssima velocidade entre duas cores vizinhas para iludir a visão e criar tons intermediários.",
+        "Apesar de baratear os custos de fabricação, essa vibração microscópica constante pode causar cefaleia, queimação nos olhos e tontura em pessoas sensíveis."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Como saber se meu monitor usa FRC?",
+      "answer": "Consulte a ficha técnica: termos como '6-bit + FRC' ou '8-bit + FRC' indicam simulação. Painéis genuínos trazem 'Nativo 8-bit' ou 'Nativo 10-bit'."
+    },
+    {
+      "question": "É possível desativar o dithering por software?",
+      "answer": "Em alguns sistemas operacionais e placas gráficas, é possível desabilitar através de parâmetros de linha de comando ou utilitários dedicados."
+    }
+  ],
+  "relatedTestIds": [
+    "temporal-dithering-test",
+    "pixel-inversion-test",
+    "color-banding-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "temporal-dithering-pixel-inversion"
+  ],
+  "relatedArticleSlugs": [
+    "pwm-dimming-and-screen-flicker",
+    "pixel-inversion-and-vcom"
+  ],
+  "primarySearchIntent": "temporal dithering frc eye strain headache frame rate control pixel flicker",
+  "readingTimeMinutes": 6
+},
+{
+  "slug": "hdr-peak-brightness-and-tone-mapping",
+  "category": "tv-and-display-setup",
+  "title": "Brilho de Pico HDR, Testes de Janela e Tone Mapping",
+  "subtitle": "Medição de 1% a 100% de área de janela, realces especulares e clipping no HDR10.",
+  "description": "Entenda o brilho máximo em HDR, como os monitores lidam com pequenos pontos brilhantes versus tela cheia e como o mapeamento de tons evita perdas de detalhes.",
+  "directAnswer": "O brilho de pico HDR é a luminância máxima instantânea (em nits ou cd/m²) que um monitor alcança em pequenas porções da tela (janelas de 2% a 10%) em comparação com campos brancos totais.",
+  "whyItMatters": "Monitores básicos 'HDR400' sem local dimming lavam os tons pretos, transformando-os em cinza, enquanto modelos Mini-LED e OLED dependem de tone mapping preciso para não estourar detalhes em explosões e reflexos.",
+  "whatToLookFor": [
+    "Altas luzes sem texturas, aparentando manchas brancas estouradas",
+    "Tela inteira com aspecto esbranquiçado ao ativar o HDR no sistema operacional",
+    "Queda de iluminação drástica ao alternar entre uma tocha e um céu aberto"
+  ],
+  "howToTest": [
+    "Verifique se o HDR está ativado nas configurações do Windows ou macOS",
+    "Abra o Teste de Brilho de Pico HDR no Screen Tester",
+    "Avalie a transição das escalas de branco em janelas de 1%, 10% e tela cheia"
+  ],
+  "whatScreenTesterCanObserve": [
+    "Padrões de teste em espaço de cores de alta faixa dinâmica",
+    "Limiares de clipping e saturação visual de altas luzes"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "Medição de nits sem fotômetro de precisão",
+    "Rotinas proprietárias de processamento Dolby Vision"
+  ],
+  "commonCauses": [
+    "Painel com iluminação de borda simples sem escurecimento local",
+    "Falta de calibração no aplicativo oficial do sistema",
+    "Curva de mapeamento de tons do monitor configurada para corte rígido"
+  ],
+  "whatToDoNext": [
+    "Utilize o aplicativo 'Windows HDR Calibration' da Microsoft Store",
+    "Ative o modo 'HGiG' no monitor para calibração precisa em jogos",
+    "Ajuste a iluminação do quarto para maximizar a percepção do contraste"
+  ],
+  "sections": [
+    {
+      "title": "Brilho de Pico HDR, Testes de Janela e Tone Mapping",
+      "content": [
+        "O brilho de pico HDR é a luminância máxima instantânea (em nits ou cd/m²) que um monitor alcança em pequenas porções da tela (janelas de 2% a 10%) em comparação com campos brancos totais.",
+        "Monitores básicos 'HDR400' sem local dimming lavam os tons pretos, transformando-os em cinza, enquanto modelos Mini-LED e OLED dependem de tone mapping preciso para não estourar detalhes em explosões e reflexos."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Qual a diferença entre brilho de pico e brilho sustentado?",
+      "answer": "O brilho de pico é uma explosão luminosa em área restrita (ex: 1000 nits em 5% da tela). O brilho sustentado é o limite estável em tela cheia (geralmente 250 a 400 nits)."
+    },
+    {
+      "question": "Por que o preto fica cinza no HDR de monitores baratos?",
+      "answer": "Como não há zonas independentes de iluminação, o backlight precisa aumentar por completo, clareando indevidamente as áreas escuras."
+    }
+  ],
+  "relatedTestIds": [
+    "hdr-peak-brightness-test",
+    "hdr-test",
+    "hdr-capability-test",
+    "oled-abl-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "oled-abl-blooming-hdr-peak",
+    "hdr-not-working"
+  ],
+  "relatedArticleSlugs": [
+    "hdr-standards-and-performance",
+    "contrast-ratio-and-black-levels"
+  ],
+  "primarySearchIntent": "hdr peak brightness 1000 nits tone mapping highlight clipping test",
+  "readingTimeMinutes": 5
+},
+{
+  "slug": "audio-latency-and-buffer-pipeline",
+  "category": "device-and-input",
+  "title": "Latência de Áudio, Pipeline Web Audio e Dessincronização Labial",
+  "subtitle": "Diagnosticando atrasos de buffer do SO, latência Bluetooth A2DP e descompasso AV.",
+  "description": "Entenda o que causa atraso no som e falta de sincronia labial, como a Web Audio API calcula a latência e como corrigir o problema em caixas de som e fones.",
+  "directAnswer": "Latência de áudio é o intervalo de tempo (em milissegundos) entre o disparo de um evento sonoro pelo software e a saída física do som pelo alto-falante ou fone de ouvido.",
+  "whyItMatters": "Alta latência de áudio prejudica o tempo de reação em jogos competitivos, gera frustração com diálogos fora de sincronia em filmes e inviabiliza produção musical.",
+  "whatToLookFor": [
+    "Boca dos personagens mexendo antes ou depois do som da fala",
+    "Atraso perceptível entre o clique de um tiro no jogo e o efeito sonoro",
+    "Resposta lenta ao tocar em botões interativos com efeitos de som"
+  ],
+  "howToTest": [
+    "Abra o Teste de Latência de Áudio no Screen Tester",
+    "Acompanhe os bipes sonoros alinhados aos flashes luminosos visuais",
+    "Verifique a latência base e o tamanho do buffer reportados pela API Web Audio"
+  ],
+  "whatScreenTesterCanObserve": [
+    "Latência base e de saída informadas pela pilha de áudio do navegador",
+    "Tamanho de amostras do buffer e taxa de amostragem (ex: 48 kHz)"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "Atraso acústico do ar em caixas de som posicionadas longe do usuário",
+    "Tempo de processamento de decodificação interno em fones Bluetooth"
+  ],
+  "commonCauses": [
+    "Uso de Bluetooth com codecs tradicionais (SBC/AAC geram 150 a 250 ms de atraso)",
+    "Efeitos de espacialização de áudio ativados no Windows (Dolby Atmos, Sonic)",
+    "Configuração de buffers muito longos para evitar estalos de áudio"
+  ],
+  "whatToDoNext": [
+    "Utilize fones com cabo P2/USB ou tecnologia sem fio RF 2.4 GHz para jogos",
+    "Desmarque opções de aprimoramento de áudio nas propriedades de som do sistema",
+    "Em reprodutores como o VLC, utilize atalhos para ajustar o atraso da trilha de áudio"
+  ],
+  "sections": [
+    {
+      "title": "Latência de Áudio, Pipeline Web Audio e Dessincronização Labial",
+      "content": [
+        "Latência de áudio é o intervalo de tempo (em milissegundos) entre o disparo de um evento sonoro pelo software e a saída física do som pelo alto-falante ou fone de ouvido.",
+        "Alta latência de áudio prejudica o tempo de reação em jogos competitivos, gera frustração com diálogos fora de sincronia em filmes e inviabiliza produção musical."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Qual valor de latência é considerado bom?",
+      "answer": "Abaixo de 20 ms é imperceptível. Entre 20 e 50 ms é muito bom para a maioria das pessoas. Acima de 100 ms gera evidente atraso na fala e em jogos."
+    },
+    {
+      "question": "Por que fones Bluetooth costumam ter atraso no som?",
+      "answer": "Porque os dados de áudio precisam ser codificados, enviados pelo ar em pacotes, armazenados em buffer e decodificados pelo fone antes da reprodução."
+    }
+  ],
+  "relatedTestIds": [
+    "audio-latency-test",
+    "audio-sync-test",
+    "speaker-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "audio-video-sync-latency"
+  ],
+  "relatedArticleSlugs": [
+    "input-lag-vs-response-time",
+    "refresh-rate-and-motion-clarity"
+  ],
+  "primarySearchIntent": "audio latency test sound lag bluetooth delay a2dp lip sync web audio buffer",
+  "readingTimeMinutes": 5
+},
+{
+  "slug": "e-ink-screen-refresh-and-ghosting",
+  "category": "display-problems",
+  "title": "Ghosting em Telas E-Ink, Eletroforese e Ondas de Atualização",
+  "subtitle": "Por que o papel eletrônico acumula imagens fantasmas e como flashes de inversão restauram a nitidez.",
+  "description": "Entenda o funcionamento das telas E-Ink, as causas do ghosting em e-readers e como pulsos de inversão preto e branco eliminam marcas residuais.",
+  "directAnswer": "O ghosting em E-Ink ocorre quando microcápsulas eletroforéticas retêm cargas elétricas residuais, fazendo com que sombras do texto anterior continuem visíveis no fundo da tela.",
+  "whyItMatters": "Como as partículas de tinta física migram através de um líquido viscoso, a falta de atualizações completas reduz a brancura do fundo e degrada a nitidez das fontes.",
+  "whatToLookFor": [
+    "Silhuetas e sombras do texto da página anterior atrás do conteúdo atual",
+    "Fundo branco ficando acinzentado e turvo com o uso contínuo",
+    "Bordas e margens de documentos com manchas escuras residuais"
+  ],
+  "howToTest": [
+    "Abra a Ferramenta de Atualização E-Ink no Screen Tester em seu e-reader ou tablet",
+    "Acione o ciclo de limpeza com pulsos alternados de preto e branco em tela cheia",
+    "Observe a remoção completa dos vestígios residuais no fundo da tela"
+  ],
+  "whatScreenTesterCanObserve": [
+    "Sequência de inversão em tela cheia projetada para redistribuição de micropartículas",
+    "Eliminação visível de sombras e recuperação de contraste do papel digital"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "Formas de onda elétricas proprietárias do chip controlador E-Ink",
+    "Alterações na viscosidade do líquido interno causadas por frio intenso"
+  ],
+  "commonCauses": [
+    "Modos rápidos de atualização (modo A2) que priorizam velocidade sobre clareza",
+    "Ambientes frios que tornam a movimentação das partículas mais lenta",
+    "Leitura prolongada sem ciclos regulares de redesenho completo"
+  ],
+  "whatToDoNext": [
+    "Execute pulsos de limpeza com a ferramenta E-Ink para resetar as partículas",
+    "Configure seu leitor para realizar atualização completa a cada 5 a 10 páginas",
+    "Utilize o dispositivo em temperatura ambiente agradável (18 °C a 25 °C)"
+  ],
+  "sections": [
+    {
+      "title": "Ghosting em Telas E-Ink, Eletroforese e Ondas de Atualização",
+      "content": [
+        "O ghosting em E-Ink ocorre quando microcápsulas eletroforéticas retêm cargas elétricas residuais, fazendo com que sombras do texto anterior continuem visíveis no fundo da tela.",
+        "Como as partículas de tinta física migram através de um líquido viscoso, a falta de atualizações completas reduz a brancura do fundo e degrada a nitidez das fontes."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "O ghosting em E-Ink é permanente como o burn-in do OLED?",
+      "answer": "Não, é totalmente reversível. Trata-se apenas de partículas físicas fora de posição que voltam ao alinhamento correto com um ciclo de inversão."
+    },
+    {
+      "question": "Por que a tela pisca em preto ao virar a página?",
+      "answer": "Esse flash é o reset elétrico do hardware para zerar a memória de carga e deixar o fundo 100% limpo para o novo texto."
+    }
+  ],
+  "relatedTestIds": [
+    "eink-refresh-tool",
+    "text-clarity-test",
+    "contrast-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "eink-ghosting-slow-refresh"
+  ],
+  "relatedArticleSlugs": [
+    "text-clarity-and-subpixel-rendering",
+    "contrast-ratio-and-black-levels"
+  ],
+  "primarySearchIntent": "e-ink ghosting refresh tool waveform residual image electronic paper",
+  "readingTimeMinutes": 5
+}
 ];

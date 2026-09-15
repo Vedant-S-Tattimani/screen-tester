@@ -225,8 +225,9 @@ export const EN_TROUBLESHOOTING_TOPICS: TroubleshootingTopic[] = [
       description: "Screen Tester renders high-contrast solid fields, stepped grayscale, and alternating line patterns to help observe optical flicker and PWM sensitivity safely.",
       links: [
         { label: "Screen Flicker Test", testId: "screen-flicker-test", testPath: "/tests/screen-flicker-test" },
-        { label: "Uniformity Test", testId: "uniformity-test", testPath: "/tests/uniformity-test" }
-      ]
+        { label: "Uniformity Test", testId: "uniformity-test", testPath: "/tests/uniformity-test" },
+          { label: "PWM Flicker Test", testId: "pwm-flicker-test", testPath: "/tests/pwm-flicker-test" },
+          { label: "VRR Flicker Test", testId: "vrr-flicker-test", testPath: "/tests/vrr-flicker-test" }]
     },
     whatScreenTesterCannotDetermine: [
       "Physical PWM switching frequency in Hertz (requires an oscilloscope and photodiode sensor)",
@@ -268,8 +269,8 @@ export const EN_TROUBLESHOOTING_TOPICS: TroubleshootingTopic[] = [
         { label: "Dead Pixel Test", testId: "dead-pixel-test", testPath: "/tests/dead-pixel-test" },
         { label: "Stuck Pixel Test", testId: "stuck-pixel-test", testPath: "/tests/stuck-pixel-test" },
         { label: "Stuck Pixel Fixer", testId: "stuck-pixel-fixer", testPath: "/tests/stuck-pixel-fixer" },
-        { label: "Bright Pixel Test", testId: "bright-pixel-test", testPath: "/tests/bright-pixel-test" }
-      ]
+        { label: "Bright Pixel Test", testId: "bright-pixel-test", testPath: "/tests/bright-pixel-test" },
+          { label: "Dead Pixel Mapper", testId: "dead-pixel-mapper", testPath: "/tests/dead-pixel-mapper" }]
     },
     whatScreenTesterCannotDetermine: [
       "Microscopic physical transistor gate breakdown inside panel substrate",
@@ -352,8 +353,8 @@ export const EN_TROUBLESHOOTING_TOPICS: TroubleshootingTopic[] = [
         { label: "Sharpness Test", testId: "sharpness-test", testPath: "/tests/sharpness-test" },
         { label: "Text Clarity & Subpixel Test", testId: "text-clarity-test", testPath: "/tests/text-clarity-test" },
         { label: "Scaling & Aspect Ratio Test", testId: "scaling-aspect-test", testPath: "/tests/scaling-aspect-test" },
-        { label: "Resolution Checker", testId: "resolution-checker", testPath: "/tests/resolution-checker" }
-      ]
+        { label: "Resolution Checker", testId: "resolution-checker", testPath: "/tests/resolution-checker" },
+          { label: "Subpixel Layout Test", testId: "subpixel-layout-test", testPath: "/tests/subpixel-layout-test" }]
     },
     whatScreenTesterCannotDetermine: [
       "Direct physical subpixel arrangement without optical microscope inspection",
@@ -773,5 +774,619 @@ export const EN_TROUBLESHOOTING_TOPICS: TroubleshootingTopic[] = [
       "If microphone functions in another browser, disable privacy/adblock extensions in the affected browser or clear site permissions"
     ],
     whenToStop: "Stop testing if you observe severe electrical humming, burning smell, or excessive heat from an external USB audio interface or phantom power box."
-  }
+  },
+{
+  "id": "burn-in-image-retention",
+  "title": "OLED Burn-In, Image Retention & Ghosting Stencil",
+  "category": "pixels",
+  "categoryTitle": "Pixel Problems",
+  "symptom": "Faint ghost outlines of taskbars, channel logos, game HUDs, or desktop windows remain visibly 'burned' into the screen even after changing content.",
+  "possibleCauses": [
+    "Static UI elements displayed at peak brightness for hundreds of consecutive hours",
+    "Uneven degradation and thermal aging of organic emissive subpixels (OLED/QD-OLED)",
+    "Temporary image retention in liquid crystal alignment layers (LCD/IPS panels)"
+  ],
+  "checks": [
+    "Display pure solid gray (5% and 50%) and primary red/green/blue slides to inspect for silhouette outlines",
+    "Check whether the artifact fades after 15 minutes of dynamic video (temporary retention vs. permanent burn-in)",
+    "Inspect monitor OSD usage timer to see total panel power-on hours"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester displays full-screen solid primary and gray calibration slides to expose subtle burn-in shadows, and provides an OLED Burn-In Risk Calculator based on your usage profile.",
+    "links": [
+      {
+        "label": "Burn-In Test",
+        "testId": "burn-in-test",
+        "testPath": "/tests/burn-in-test"
+      },
+      {
+        "label": "OLED Burn-In Calculator",
+        "testId": "oled-burn-in-calculator",
+        "testPath": "/tools/oled-burn-in-calculator"
+      },
+      {
+        "label": "Solid Color Test",
+        "testId": "solid-color-test",
+        "testPath": "/tests/solid-color-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Subpixel current resistance degradation or chemical decay inside the panel substrate",
+    "Manufacturer factory panel compensation algorithm status"
+  ],
+  "actions": [
+    "Run a manual Pixel Refresh / Pixel Cleaning cycle from the monitor OSD menu",
+    "Enable Auto-Hide Taskbar in Windows/macOS and lower static desktop SDR brightness",
+    "Set up a 5-minute screen timeout or dynamic moving screensaver"
+  ],
+  "whenToStop": "Stop if the outline persists unchanged through three full Pixel Cleaning cycles; permanent burn-in requires panel replacement under manufacturer burn-in warranty."
+},
+{
+  "id": "temporal-dithering-pixel-inversion",
+  "title": "Temporal Dithering (FRC) & Pixel Inversion Flickering",
+  "category": "pixels",
+  "categoryTitle": "Pixel Problems",
+  "symptom": "Microscopic shimmering, crawl patterns, buzzing lines, or intense eyestrain and nausea when viewing flat gray or mid-tone colors.",
+  "possibleCauses": [
+    "Frame Rate Control (FRC) rapidly alternating subpixel shades to simulate 8-bit or 10-bit color depth",
+    "Pixel inversion (VCOM polarity toggling) voltage imbalance causing checkerboards to vibrate",
+    "GPU driver dithering forced on standard dynamic range outputs"
+  ],
+  "checks": [
+    "Inspect fine 1-pixel alternating line patterns for shimmering or crawling artifacts",
+    "Check whether eyestrain lessens when viewing true 8-bit native content",
+    "Observe panel using a high-speed camera or slow-motion video"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester displays specialized pixel inversion phase matrices and calibrated temporal dithering grids to provoke and isolate subpixel modulation.",
+    "links": [
+      {
+        "label": "Pixel Inversion Test",
+        "testId": "pixel-inversion-test",
+        "testPath": "/tests/pixel-inversion-test"
+      },
+      {
+        "label": "Temporal Dithering Test",
+        "testId": "temporal-dithering-test",
+        "testPath": "/tests/temporal-dithering-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Physical LCD VCOM potentiometer trim voltage calibration"
+  ],
+  "actions": [
+    "Adjust monitor refresh rate (try switching between 60Hz, 120Hz, and 144Hz to change inversion frequency)",
+    "Check GPU driver control panel to ensure output color depth matches panel hardware exactly",
+    "Use true native 8-bit or native 10-bit displays if medically sensitive to temporal modulation"
+  ],
+  "whenToStop": "Stop if severe headaches or nausea occur; take an immediate break in natural light."
+},
+{
+  "id": "color-calibration-issues",
+  "title": "Color Calibration, Gamut Clamping & Tint Discrepancies",
+  "category": "imageQuality",
+  "categoryTitle": "Image Quality",
+  "symptom": "Over-saturated neon reds, greenish skin tones, unnatural tint shifts, or mismatched colors across different applications.",
+  "possibleCauses": [
+    "Wide gamut (DCI-P3 / AdobeRGB) monitor running without sRGB clamping in SDR mode",
+    "Corrupted or conflicting ICC display color profiles in operating system color management",
+    "Inaccurate factory color temperature or gamma presets in monitor OSD"
+  ],
+  "checks": [
+    "Compare standardized color patches (sRGB vs. Display P3) to check for over-saturation",
+    "Inspect neutral white backgrounds for unwanted green, pink, or yellow color casts",
+    "Verify that Windows Color Management is utilizing the correct default ICC profile"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester provides calibrated color gamut boundary checks, GretagMacbeth-style color accuracy chips, saturation ramp wedges, and D65 white point references.",
+    "links": [
+      {
+        "label": "Color Gamut Test",
+        "testId": "color-gamut-test",
+        "testPath": "/tests/color-gamut-test"
+      },
+      {
+        "label": "Color Accuracy Test",
+        "testId": "color-accuracy-test",
+        "testPath": "/tests/color-accuracy-test"
+      },
+      {
+        "label": "Color Temperature Test",
+        "testId": "color-temperature-test",
+        "testPath": "/tests/color-temperature-test"
+      },
+      {
+        "label": "Saturation Test",
+        "testId": "saturation-test",
+        "testPath": "/tests/saturation-test"
+      },
+      {
+        "label": "Color Blindness Test",
+        "testId": "color-blindness-test",
+        "testPath": "/tests/color-blindness-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Absolute colorimeter sensor Delta E measurements"
+  ],
+  "actions": [
+    "Enable 'sRGB Emulation Mode' or 'sRGB Clamp' in the monitor OSD menu for standard web content",
+    "Use a hardware colorimeter (like Calibrite or Datacolor Spyder) for professional ICC profiling",
+    "Disable third-party GPU software color enhancements (e.g., Nvidia Digital Vibrance)"
+  ],
+  "whenToStop": "Professional color grading requires a certified hardware calibrator and 3D LUT box."
+},
+{
+  "id": "gamma-black-crush-blown-whites",
+  "title": "Crushed Blacks, Blown-Out Whites & Gamma Distortion",
+  "category": "imageQuality",
+  "categoryTitle": "Image Quality",
+  "symptom": "Dark shadow details turn into solid black voids (black crush) or bright clouds merge into flat pure white (highlight clipping).",
+  "possibleCauses": [
+    "Monitor gamma curve deviates significantly from standard Gamma 2.2 or sRGB transfer function",
+    "Incorrect HDMI dynamic range quantization (Limited 16-235 vs. Full 0-255 mismatch)",
+    "Overly high contrast setting in monitor OSD clipping white steps"
+  ],
+  "checks": [
+    "Inspect the Black Level test: Are gray steps 1 through 5 distinguishable from background 0?",
+    "Inspect the White Level test: Are steps 250 through 254 visible against pure white 255?",
+    "Check the Gamma test line alignment around target Gamma 2.2"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester displays standardized 256-step grayscale wedges, sub-5% near-black evaluation squares, and optical gamma luminance blending strips.",
+    "links": [
+      {
+        "label": "Black Level Test",
+        "testId": "black-level-test",
+        "testPath": "/tests/black-level-test"
+      },
+      {
+        "label": "White Level Test",
+        "testId": "white-level-test",
+        "testPath": "/tests/white-level-test"
+      },
+      {
+        "label": "Grayscale Test",
+        "testId": "grayscale-test",
+        "testPath": "/tests/grayscale-test"
+      },
+      {
+        "label": "Gamma Test",
+        "testId": "gamma-test",
+        "testPath": "/tests/gamma-test"
+      },
+      {
+        "label": "Dark Mode Test",
+        "testId": "dark-mode-test",
+        "testPath": "/tests/dark-mode-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Internal monitor Look-Up Table (LUT) bit-depth rounding"
+  ],
+  "actions": [
+    "Ensure GPU output dynamic range is set to 'Full (0-255)' in graphics control panel",
+    "Adjust monitor Contrast down (usually 50-70) until white level steps are individually visible",
+    "Switch monitor OSD Gamma preset to 'Gamma 2.2' or 'Mode 1'"
+  ],
+  "whenToStop": "Stop when steps 1-3 on black level and steps 252-254 on white level are clearly discerned."
+},
+{
+  "id": "oled-abl-blooming-hdr-peak",
+  "title": "OLED ABL Aggressive Dimming & Mini-LED Blooming",
+  "category": "imageQuality",
+  "categoryTitle": "Image Quality",
+  "symptom": "Screen visibly dims when enlarging bright windows (ABL) or bright objects have glowing light halos bleeding into dark borders (blooming).",
+  "possibleCauses": [
+    "OLED Auto-Brightness Limiter (ABL) throttling full-screen white luminance to manage power and heat",
+    "Mini-LED / FALD backlight zones scattering light through panel layers around isolated highlights",
+    "Windows HDR tone mapping clipping small specular highlights"
+  ],
+  "checks": [
+    "Cycle test window sizes (1% to 100%) to observe brightness throttling",
+    "Observe small moving white dots on black fields to gauge local dimming halo size",
+    "Compare full-screen white luminance against small 10% peak windows"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester measures window-size brightness dropoffs, simulates real-time ABL curves, and tests local dimming zone responsiveness with moving blooming targets.",
+    "links": [
+      {
+        "label": "OLED ABL Test",
+        "testId": "oled-abl-test",
+        "testPath": "/tests/oled-abl-test"
+      },
+      {
+        "label": "HDR Peak Brightness Test",
+        "testId": "hdr-peak-brightness-test",
+        "testPath": "/tests/hdr-peak-brightness-test"
+      },
+      {
+        "label": "Blooming Test",
+        "testId": "blooming-test",
+        "testPath": "/tests/blooming-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Absolute physical nit output or thermal sensor readings"
+  ],
+  "actions": [
+    "Enable 'Uniform Brightness' mode in OLED monitor OSD to eliminate brightness fluctuations",
+    "Adjust Mini-LED Local Dimming setting to 'Medium' to balance deep blacks with reduced blooming halos",
+    "Calibrate HDR peak luminance in the Windows HDR Calibration app"
+  ],
+  "whenToStop": "Minor blooming is an inherent optical limitation of FALD LCD panels; OLED offers zero haloing."
+},
+{
+  "id": "response-time-motion-blur-crosstalk",
+  "title": "Slow Pixel Response, Motion Smearing & Strobe Crosstalk",
+  "category": "display",
+  "categoryTitle": "Display Problems",
+  "symptom": "Fast-moving objects leave dark trails, ghost shadows, purple inverse overshoot coronas, or double images when backlight strobing is enabled.",
+  "possibleCauses": [
+    "Slow Gray-to-Gray (GtG) transition times, common on VA panels displaying dark shadows",
+    "Monitor Overdrive set too aggressively, causing pixel voltage overshoot and bright inverse ghosting",
+    "Backlight strobing pulse out of sync with the physical LCD panel refresh scan (strobe crosstalk)"
+  ],
+  "checks": [
+    "Run the GtG Response Time test: Look for dark smearing on high-contrast transitions",
+    "Observe UFO and moving bar patterns: Is there a dark trailing shadow (ghosting) or a bright trailing halo (overshoot)?",
+    "Inspect top, center, and bottom screen zones during backlight strobing for duplicate ghost images"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester displays calibrated high-speed moving targets, gray-to-gray color transition blocks, and pursuit camera sync bars to capture and quantify motion artifacts.",
+    "links": [
+      {
+        "label": "GtG Response Time Test",
+        "testId": "gtg-response-time-test",
+        "testPath": "/tests/gtg-response-time-test"
+      },
+      {
+        "label": "Strobe Crosstalk Test",
+        "testId": "strobe-crosstalk-test",
+        "testPath": "/tests/strobe-crosstalk-test"
+      },
+      {
+        "label": "Pursuit Camera Test",
+        "testId": "pursuit-camera-test",
+        "testPath": "/tests/pursuit-camera-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Sub-millisecond photodiode oscilloscope voltage curves"
+  ],
+  "actions": [
+    "Adjust monitor Overdrive / Response Time setting in OSD: avoid the maximum 'Extreme' preset if inverse halos appear",
+    "Adjust strobe phase or pulse width in monitor blur reduction menus (ELMB / DyAc / PureXP)",
+    "Maintain frame rates that match panel refresh rate exactly when using backlight strobing"
+  ],
+  "whenToStop": "Stop when inverse coronas disappear and the central third of the screen exhibits sharp, single-image motion."
+},
+{
+  "id": "input-lag-gaming-responsiveness",
+  "title": "High Input Lag, Mouse Sluggishness & Gaming Latency",
+  "category": "display",
+  "categoryTitle": "Display Problems",
+  "symptom": "A floating, disconnected, or 'spongy' mouse feel where cursor movements lag noticeable fractions of a second behind physical hand motion.",
+  "possibleCauses": [
+    "Display internal post-processing scalers, dynamic noise reduction, or motion smoothing enabled in monitor/TV",
+    "V-Sync buffer queue stacking multiple render frames in graphics pipelines",
+    "Low mouse polling rate (125Hz default) or GPU driver frame queue congestion"
+  ],
+  "checks": [
+    "Test mouse polling frequency in Screen Tester: Is it running at 500Hz, 1000Hz, or higher?",
+    "Run the Reaction Time and Input Lag benchmarks to test your interactive reflex loop",
+    "Verify that your monitor/TV is set to 'Game Mode' or 'PC Mode'"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester measures real-time mouse USB event polling frequencies, visual-to-click reflex response latencies, and browser WebGL GPU frame rates.",
+    "links": [
+      {
+        "label": "Input Lag Test",
+        "testId": "input-lag-test",
+        "testPath": "/tests/input-lag-test"
+      },
+      {
+        "label": "Reaction Time Test",
+        "testId": "reaction-time-test",
+        "testPath": "/tests/reaction-time-test"
+      },
+      {
+        "label": "Mouse Polling Test",
+        "testId": "mouse-polling-test",
+        "testPath": "/tests/mouse-polling-test"
+      },
+      {
+        "label": "GPU Benchmark Test",
+        "testId": "gpu-benchmark-test",
+        "testPath": "/tests/gpu-benchmark-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Direct physical photon-to-microswitch hardware input lag (requires high-speed camera or Nvidia LDAT)"
+  ],
+  "actions": [
+    "Switch TV/Monitor to dedicated 'Game Mode' to bypass picture enhancement delay chips",
+    "Disable traditional V-Sync in games and enable Nvidia Reflex or AMD Anti-Lag with G-Sync/FreeSync",
+    "Set gaming mouse polling rate to 1000Hz (1ms interval) in mouse software"
+  ],
+  "whenToStop": "Input lag under 15ms total end-to-end latency delivers immediate, instantaneous mouse response."
+},
+{
+  "id": "dual-monitor-color-mismatch",
+  "title": "Dual Monitor Color Mismatch, Tint Variance & Window Span Alignment",
+  "category": "display",
+  "categoryTitle": "Display Problems",
+  "symptom": "Two side-by-side monitors show visibly different whites, mismatched contrast, or dragging a window across screens shows jarring color shifts.",
+  "possibleCauses": [
+    "Different panel technologies (e.g., IPS paired with VA or OLED) having fundamentally different viewing angles and spectra",
+    "Factory color temperature differences (e.g., 6500K on one screen vs. 7500K on the other)",
+    "Mismatched GPU color output format (one display receiving RGB Full 0-255 while the other receives YCbCr 4:2:2)"
+  ],
+  "checks": [
+    "Span a single white browser window across both displays to observe the seam color shift",
+    "Run the Compare Displays tool on both screens simultaneously",
+    "Check GPU control panel to verify both screens are outputting RGB Full 8-bit or 10-bit"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester offers side-by-side display comparison canvases, custom geometry pattern grids, and the Dual Monitor Matcher tool.",
+    "links": [
+      {
+        "label": "Compare Displays",
+        "testId": "compare-displays",
+        "testPath": "/tests/compare-displays"
+      },
+      {
+        "label": "Custom Pattern",
+        "testId": "custom-pattern",
+        "testPath": "/tests/custom-pattern"
+      },
+      {
+        "label": "Dual Monitor Matcher",
+        "testId": "dual-monitor-matcher",
+        "testPath": "/tools/dual-monitor-matcher"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Physical panel optical coating metamerism differences"
+  ],
+  "actions": [
+    "Open the Dual Monitor Matcher tool and visually tune the secondary monitor's RGB Gain controls",
+    "Set both displays to the same OSD color temperature preset (Warm or 6500K)",
+    "Match brightness in nits using an external meter or balanced white paper test"
+  ],
+  "whenToStop": "A close visual white balance match across both screens prevents eye fatigue."
+},
+{
+  "id": "gamepad-controller-issues",
+  "title": "Gamepad Stick Drift, Button Latency & Deadzone Calibration",
+  "category": "deviceInput",
+  "categoryTitle": "Device & Input Problems",
+  "symptom": "Controller thumbsticks wander without touch (stick drift), triggers register prematurely, or button presses fail to register.",
+  "possibleCauses": [
+    "Worn or oxidized potentiometer contacts in analog stick modules",
+    "Deadzone thresholds set too small in games or OS calibration",
+    "Bluetooth signal interference causing dropped gamepad packets"
+  ],
+  "checks": [
+    "Open the Gamepad Test in Screen Tester and press any button to wake the Gamepad API",
+    "Inspect the analog thumbstick coordinates: Do they return to exactly (0.00, 0.00) at rest?",
+    "Test analog trigger axes from 0% to 100% travel smoothly"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester accesses the standard W3C Gamepad API to measure stick drift radii, button press states, trigger pressure percentages, and haptic rumble motors.",
+    "links": [
+      {
+        "label": "Gamepad Test",
+        "testId": "gamepad-test",
+        "testPath": "/tests/gamepad-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Internal hardware potentiometer resistance degradation"
+  ],
+  "actions": [
+    "Increase the analog stick center deadzone in game settings to absorb minor drift",
+    "Clean potentiometer modules using electrical contact cleaner or upgrade to Hall Effect magnetic sticks",
+    "Use a wired USB connection or 2.4GHz wireless adapter instead of standard Bluetooth"
+  ],
+  "whenToStop": "If drift exceeds 15% off-center at rest, analog stick replacement or RMA is necessary."
+},
+{
+  "id": "audio-video-sync-latency",
+  "title": "Audio-Video Desynchronization & Bluetooth Sound Lag",
+  "category": "deviceInput",
+  "categoryTitle": "Device & Input Problems",
+  "symptom": "Spoken dialogue does not match mouth movements in video playback (lip-sync lag) or game sound effects lag behind on-screen actions.",
+  "possibleCauses": [
+    "Bluetooth audio latency introduced by legacy SBC or AAC encoding/decoding buffers (150-250ms delay)",
+    "Television or soundbar external audio delay (HDMI ARC / eARC audio processing delay)",
+    "Heavy DSP surround sound enhancements in Windows (Dolby Atmos, Windows Sonic)"
+  ],
+  "checks": [
+    "Run the Audio Sync test: Does the sound click occur before, during, or after the visual impact marker?",
+    "Check the measured base buffer latency in the Audio Latency test",
+    "Compare Bluetooth headphone delay against wired 3.5mm headphones"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester pairs high-contrast visual flashes with synchronized audio transients and measures Web Audio hardware buffer latencies.",
+    "links": [
+      {
+        "label": "Audio Sync Test",
+        "testId": "audio-sync-test",
+        "testPath": "/tests/audio-sync-test"
+      },
+      {
+        "label": "Audio Latency Test",
+        "testId": "audio-latency-test",
+        "testPath": "/tests/audio-latency-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Acoustic airborne sound propagation delay from distant speakers"
+  ],
+  "actions": [
+    "Use low-latency Bluetooth codecs (aptX Low Latency) or switch to 2.4GHz RF wireless or wired 3.5mm",
+    "Adjust 'Audio Delay / Lip-Sync' in TV or AV receiver settings to sync with picture processing",
+    "Disable audio enhancements in Windows Sound Properties"
+  ],
+  "whenToStop": "Total AV synchronization offset under 40ms is imperceptible to human hearing."
+},
+{
+  "id": "sensor-ambient-battery-hardware",
+  "title": "Ambient Light Sensor, Battery Saver Throttling & Network Frame Drops",
+  "category": "deviceInput",
+  "categoryTitle": "Device & Input Problems",
+  "symptom": "Screen randomly dims on laptops, refresh rate unexpectedly drops from 120Hz to 60Hz on battery power, or video streams stutter and drop frames.",
+  "possibleCauses": [
+    "Laptop ambient light sensor dynamically throttling display brightness unexpectedly",
+    "Operating system Battery Saver mode throttling GPU clock speeds and enforcing 60Hz display caps",
+    "High Wi-Fi packet jitter or bandwidth congestion causing browser frame stalls"
+  ],
+  "checks": [
+    "Cover laptop ambient light sensor with your hand: Does Screen Tester detect illumination drop?",
+    "Unplug AC power adapter and inspect whether panel refresh rate drops",
+    "Run the Network Speed test to measure real-time latency jitter and download bandwidth"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester monitors ambient light lux sensors, battery charging/discharging states via the Battery Status API, and network ping jitter.",
+    "links": [
+      {
+        "label": "Ambient Light Test",
+        "testId": "ambient-light-test",
+        "testPath": "/tests/ambient-light-test"
+      },
+      {
+        "label": "Battery Test",
+        "testId": "battery-test",
+        "testPath": "/tests/battery-test"
+      },
+      {
+        "label": "Network Speed Test",
+        "testId": "network-speed-test",
+        "testPath": "/tests/network-speed-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Internal laptop battery cell chemistry degradation"
+  ],
+  "actions": [
+    "Disable 'Change brightness automatically when lighting changes' in Windows Display Settings",
+    "Set Windows power plan to 'Best Performance' to prevent refresh rate downclocking on battery",
+    "Switch from congested 2.4GHz Wi-Fi to 5GHz/6GHz or wired Ethernet"
+  ],
+  "whenToStop": "Stable lux detection, consistent refresh rate on battery, and low network jitter ensure uninterrupted testing."
+},
+{
+  "id": "monitor-setup-bandwidth-calibration",
+  "title": "Display Cable Bandwidth Bottlenecks, DPI Scaling & OSD Calibration",
+  "category": "display",
+  "categoryTitle": "Display Problems",
+  "symptom": "Unable to select maximum refresh rate at 4K resolution, text appearing tiny or uncomfortably large, or cable blanking out intermittently.",
+  "possibleCauses": [
+    "HDMI or DisplayPort cable exceeding maximum data bandwidth (e.g., HDMI 2.0 cable on 4K 144Hz monitor)",
+    "Incorrect DPI scaling factor causing eye strain or blurry legacy Win32 dialogue windows",
+    "Unoptimized monitor On-Screen Display (OSD) factory settings"
+  ],
+  "checks": [
+    "Calculate required transmission bandwidth with the Display Bandwidth Calculator",
+    "Verify optimal viewing distance and screen PPI with the DPI & Viewing Distance Calculators",
+    "Run the New Monitor Wizard to systematically calibrate OSD settings"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester offers professional calculation tools for video cable bandwidth (HDMI/DP/DSC), PPI/DPI pixel density, optimal ergonomic viewing distance, and digital panel inspection certificates.",
+    "links": [
+      {
+        "label": "New Monitor Wizard",
+        "testId": "new-monitor-wizard",
+        "testPath": "/tools/new-monitor-wizard"
+      },
+      {
+        "label": "DPI Calculator",
+        "testId": "dpi-calculator",
+        "testPath": "/tools/dpi-calculator"
+      },
+      {
+        "label": "Display Bandwidth Calculator",
+        "testId": "display-bandwidth-calculator",
+        "testPath": "/tools/display-bandwidth-calculator"
+      },
+      {
+        "label": "Viewing Distance Calculator",
+        "testId": "viewing-distance-calculator",
+        "testPath": "/tools/viewing-distance-calculator"
+      },
+      {
+        "label": "Screen Recorder",
+        "testId": "screen-recorder",
+        "testPath": "/tools/screen-recorder"
+      },
+      {
+        "label": "Display Certificate",
+        "testId": "display-certificate",
+        "testPath": "/tools/display-certificate"
+      },
+      {
+        "label": "OSD Calibration Guide",
+        "testId": "osd-calibration-guide",
+        "testPath": "/tools/osd-calibration-guide"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Physical cable copper shielding integrity"
+  ],
+  "actions": [
+    "Upgrade to a certified VESA DisplayPort 1.4/2.1 or Ultra High Speed HDMI 2.1 cable",
+    "Adjust Windows Display Scaling (125%, 150%, or 200%) based on calculated PPI",
+    "Follow the OSD Calibration Guide to configure brightness, contrast, and color temperature"
+  ],
+  "whenToStop": "Your display operates at full native resolution and peak refresh rate without compression drops."
+},
+{
+  "id": "eink-ghosting-slow-refresh",
+  "title": "E-Ink Screen Ghosting, Text Shadow Residue & Particle Lag",
+  "category": "imageQuality",
+  "categoryTitle": "Image Quality",
+  "symptom": "Faint outlines of previously read book pages, keyboards, or application menus persist on electronic paper screens.",
+  "possibleCauses": [
+    "Electrophoretic pigment microcapsules retaining residual electrostatic charges",
+    "Using fast refresh modes (A2 or Speed mode) that bypass full particle alignment cycles",
+    "Low ambient room temperatures slowing particle migration in the viscous fluid"
+  ],
+  "checks": [
+    "Inspect reading background: Is it pure paper-white or contaminated by gray text outlines?",
+    "Run the E-Ink Screen Refresh Tool in Screen Tester",
+    "Verify device ambient operating temperature is between 18°C and 25°C"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester triggers controlled full-screen alternating black/white inversion pulses to strip latent charges and realign microcapsule particles.",
+    "links": [
+      {
+        "label": "E-Ink Refresh Tool",
+        "testId": "eink-refresh-tool",
+        "testPath": "/tools/eink-refresh-tool"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Controller ASIC hardware waveform lookup tables"
+  ],
+  "actions": [
+    "Perform 3-5 full-screen inversion cycles using the E-Ink Screen Refresh Tool",
+    "Adjust e-reader software settings to trigger a full refresh every 5 to 10 page turns",
+    "Switch from A2/Speed mode to Quality/Regal mode for static text reading"
+  ],
+  "whenToStop": "E-Ink ghosting is 100% reversible; a clean white background confirms full recovery."
+}
 ];

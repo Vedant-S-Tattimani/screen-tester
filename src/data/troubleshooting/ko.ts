@@ -872,5 +872,618 @@ export const KO_TROUBLESHOOTING_TOPICS: TroubleshootingTopic[] = [
       "메인보드 오디오 드라이버 업데이트"
     ],
     "whenToStop": "다른 PC나 포트에 연결해도 전혀 파형이 잡히지 않는다면 마이크 캡슐 불량이거나 케이블 내부 단선입니다."
-  }
+  },
+{
+  "id": "burn-in-image-retention",
+  "title": "OLED 번인(Burn-In), 잔상 및 고정 UI 영구 흔적",
+  "category": "pixels",
+  "categoryTitle": "픽셀 관련 문제",
+  "symptom": "작업 표시줄, 방송사 로고, 게임 인터페이스의 윤곽이 화면을 전환해도 유령처럼 영구히 남아있는 현상.",
+  "possibleCauses": [
+    "고휘도 상태에서 고정 UI 요소를 수백 시간 이상 연속 노출",
+    "OLED/QD-OLED 유기 화소의 불균등한 발광 수명 소모",
+    "LCD/IPS 패널 액정 배열층의 일시적인 전하 잔류(일시 잔상)"
+  ],
+  "checks": [
+    "5% 및 50% 회색 및 순수 단색 화면을 띄워 잔상 윤곽 확인",
+    "동적 비디오를 15분간 재생한 후 잔상이 사라지는지 관찰(일시 잔상 vs 영구 번인)",
+    "모니터 OSD에서 패널 총 사용 시간 확인"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester는 단색 및 중간 계조 화면으로 번인 음영을 식별하고, OLED 번인 위험도 계산기를 통해 패널 수명을 예측합니다.",
+    "links": [
+      {
+        "label": "번인 테스트",
+        "testId": "burn-in-test",
+        "testPath": "/tests/burn-in-test"
+      },
+      {
+        "label": "OLED 번인 계산기",
+        "testId": "oled-burn-in-calculator",
+        "testPath": "/tools/oled-burn-in-calculator"
+      },
+      {
+        "label": "단색 화면 테스트",
+        "testId": "solid-color-test",
+        "testPath": "/tests/solid-color-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "발광 소자의 물리적 화학 열화 측정"
+  ],
+  "actions": [
+    "모니터 OSD 메뉴에서 '픽셀 청소 / 픽셀 리프레시' 수동 가동",
+    "작업 표시줄 자동 숨김 활성화 및 SDR 일상 밝기 낮춤",
+    "5분 화면 절전 모드 또는 움직이는 화면 보호기 활성화"
+  ],
+  "whenToStop": "여러 차례 픽셀 청소 후에도 고정 잔상이 흐려지지 않는다면 패널 교체가 필요한 영구 번인입니다."
+},
+{
+  "id": "temporal-dithering-pixel-inversion",
+  "title": "시간적 디더링(FRC) 및 픽셀 반전(Pixel Inversion) 깜빡임",
+  "category": "pixels",
+  "categoryTitle": "픽셀 관련 문제",
+  "symptom": "단색 회색 화면에서 미세한 떨림, 모아레 물결, 혹은 빠른 눈 피로와 두통이 발생하는 증상.",
+  "possibleCauses": [
+    "FRC 기술이 프레임마다 미세하게 색조를 교차 점멸시키는 구조",
+    "액정 VCOM 극성 반전 전압 불균형으로 인한 1픽셀 패턴 떨림",
+    "그래픽카드 드라이버에서 강제 적용된 디더링 알고리즘"
+  ],
+  "checks": [
+    "1픽셀 체커보드 패턴에서 물결치듯 흔들리는 시각 왜곡 확인",
+    "주사율(60Hz, 120Hz, 144Hz) 변경에 따른 떨림 양상 비교",
+    "스마트폰 슬로우 모션 촬영으로 미세 깜빡임 확인"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester는 픽셀 반전 테스트와 시간적 디더링 감지 패턴을 제공하여 미세 액정 떨림과 FRC 변조를 판별합니다.",
+    "links": [
+      {
+        "label": "픽셀 반전 테스트",
+        "testId": "pixel-inversion-test",
+        "testPath": "/tests/pixel-inversion-test"
+      },
+      {
+        "label": "시간적 디더링 테스트",
+        "testId": "temporal-dithering-test",
+        "testPath": "/tests/temporal-dithering-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "패널 VCOM 회로 내부 하드웨어 전압"
+  ],
+  "actions": [
+    "운영체제에서 화면 주사율 변경 시도",
+    "GPU 제어판에서 출력 색상 깊이를 패널 물리 사양과 정확히 일치 설정",
+    "미세 깜빡임에 취약한 경우 가상 패널이 아닌 네이티브 8비트/10비트 모니터 사용"
+  ],
+  "whenToStop": "두통이나 메스꺼움이 발생하면 즉시 테스트를 중단하고 눈을 쉬어주세요."
+},
+{
+  "id": "color-calibration-issues",
+  "title": "색상 캘리브레이션, 색역 클램핑 및 색온도 틀어짐",
+  "category": "imageQuality",
+  "categoryTitle": "화질 관련 문제",
+  "symptom": "빨간색이 형광빛으로 과포화되거나, 인물 피부톤이 녹색으로 보이고 앱마다 색감이 다르게 나오는 현상.",
+  "possibleCauses": [
+    "광색역(DCI-P3) 모니터에서 일반 SDR 콘텐츠를 sRGB로 클램핑하지 않아 발생하는 과포화",
+    "운영체제 색 관리자에서 잘못된 ICC 프로파일 충돌",
+    "모니터 OSD의 색온도 및 감마 프리셋 왜곡"
+  ],
+  "checks": [
+    "표준 색상 패치에서 원색이 눈이 시릴 정도로 튀는지 확인",
+    "흰색 바탕 화면에서 녹색이나 분홍색의 색조 쏠림 여부 점검",
+    "Windows 색 관리에서 활성화된 기본 ICC 프로파일 확인"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester는 색역 커버리지 비교, 컬러 정확도 패치, 채도 계조선 및 D65 백색점 비교 도구를 제공합니다.",
+    "links": [
+      {
+        "label": "색역 테스트",
+        "testId": "color-gamut-test",
+        "testPath": "/tests/color-gamut-test"
+      },
+      {
+        "label": "색 정확도 테스트",
+        "testId": "color-accuracy-test",
+        "testPath": "/tests/color-accuracy-test"
+      },
+      {
+        "label": "색온도 테스트",
+        "testId": "color-temperature-test",
+        "testPath": "/tests/color-temperature-test"
+      },
+      {
+        "label": "채도 테스트",
+        "testId": "saturation-test",
+        "testPath": "/tests/saturation-test"
+      },
+      {
+        "label": "색각 검사",
+        "testId": "color-blindness-test",
+        "testPath": "/tests/color-blindness-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "물리 센서 없는 정량적 Delta E 색차 측정"
+  ],
+  "actions": [
+    "웹 작업 및 일상 용도 시 모니터 OSD의 'sRGB 모드'를 켜서 과채도 억제",
+    "하드웨어 캘리브레이터를 이용해 표준 ICC 프로파일 생성 및 적용",
+    "GPU 제어판의 인위적 채도 강조 옵션을 기본값으로 복원"
+  ],
+  "whenToStop": "정밀한 사진/영상 작업을 위해서는 광학 센서를 통한 하드웨어 교정이 필수적입니다."
+},
+{
+  "id": "gamma-black-crush-blown-whites",
+  "title": "블랙 크러시(암부 뭉개짐), 화이트 클리핑 및 감마 왜곡",
+  "category": "imageQuality",
+  "categoryTitle": "화질 관련 문제",
+  "symptom": "어두운 그림자 영역이 새까맣게 뭉개져 사라지거나, 밝은 구름과 햇빛이 단순한 흰 덩어리로 날아가는 현상.",
+  "possibleCauses": [
+    "모니터 감마 곡선이 표준 2.2 규격에서 크게 벗어남",
+    "HDMI 동적 범위 불일치(제한 16-235 vs 전체 0-255 미스매칭)",
+    "모니터 대비(명암비) 설정이 너무 높아 밝은 계조가 잘려 나감"
+  ],
+  "checks": [
+    "블랙 레벨 테스트: 1단계부터 5단계 회색 사각형이 배경 검정과 구분되는지 확인",
+    "화이트 레벨 테스트: 250단계부터 254단계 사각형이 흰 바탕과 구분되는지 확인",
+    "감마 테스트 패턴에서 감마 2.2 기준선 일치 여부 확인"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester는 256단계 계조 웨지, 극암부(Near-Black) 평가 패턴 및 광학 감마 캘리브레이션 차트를 제공합니다.",
+    "links": [
+      {
+        "label": "블랙 레벨 테스트",
+        "testId": "black-level-test",
+        "testPath": "/tests/black-level-test"
+      },
+      {
+        "label": "화이트 레벨 테스트",
+        "testId": "white-level-test",
+        "testPath": "/tests/white-level-test"
+      },
+      {
+        "label": "그레이스케일 테스트",
+        "testId": "grayscale-test",
+        "testPath": "/tests/grayscale-test"
+      },
+      {
+        "label": "감마 테스트",
+        "testId": "gamma-test",
+        "testPath": "/tests/gamma-test"
+      },
+      {
+        "label": "다크 모드 테스트",
+        "testId": "dark-mode-test",
+        "testPath": "/tests/dark-mode-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "모니터 내부 스케일러 칩의 LUT 비트 연산 오차"
+  ],
+  "actions": [
+    "GPU 제어판에서 출력 동적 범위를 '전체(0-255)'로 변경",
+    "모니터 명암비(Contrast) 값을 50~70 수준으로 낮춰 밝은 계조 복원",
+    "모니터 OSD 메뉴에서 감마 설정을 '2.2' 모드로 지정"
+  ],
+  "whenToStop": "어두운 1~3단계와 밝은 252~254단계 구분이 명확해지면 최적 상태입니다."
+},
+{
+  "id": "oled-abl-blooming-hdr-peak",
+  "title": "OLED ABL 급격한 감광 및 Mini-LED 블루밍(빛 번짐) 현상",
+  "category": "imageQuality",
+  "categoryTitle": "화질 관련 문제",
+  "symptom": "흰색 창을 키우면 화면이 급격히 어두워지거나(ABL), 검은 배경의 자막이나 마우스 주변에 뿌연 빛 번짐(블루밍)이 발생하는 증상.",
+  "possibleCauses": [
+    "OLED 자동 밝기 제한기(ABL)가 전체 화면 전력 및 발열을 억제하기 위해 작동",
+    "Mini-LED 분할 조광(로컬 디밍) 구역 크기 한계로 인한 빛샘 및 헤일로 현상",
+    "HDR 톤 매핑 프로파일 부정합"
+  ],
+  "checks": [
+    "1%에서 100%까지 창 크기를 변경하며 밝기 저하 폭 확인",
+    "검은 화면에서 움직이는 흰색 점 주변의 빛 번짐 크기 관찰",
+    "소면적(10%) 최대 휘도와 전체 화면 지속 휘도 비교"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester는 창 면적별 ABL 밝기 감소율을 시각화하고, 이동 패턴을 통해 로컬 디밍 블루밍 범위를 정밀 테스트합니다.",
+    "links": [
+      {
+        "label": "OLED ABL 테스트",
+        "testId": "oled-abl-test",
+        "testPath": "/tests/oled-abl-test"
+      },
+      {
+        "label": "HDR 피크 밝기 테스트",
+        "testId": "hdr-peak-brightness-test",
+        "testPath": "/tests/hdr-peak-brightness-test"
+      },
+      {
+        "label": "블루밍 테스트",
+        "testId": "blooming-test",
+        "testPath": "/tests/blooming-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "휘도계 없는 절대 nit 값"
+  ],
+  "actions": [
+    "OLED 모니터의 OSD 메뉴에서 '균일 밝기(Uniform Brightness)' 모드 켜기",
+    "Mini-LED 로컬 디밍 강도를 '중간'으로 설정하여 빛 번짐 완화",
+    "Windows HDR 보정 앱을 실행하여 최대 밝기 프로파일 재설정"
+  ],
+  "whenToStop": "미세한 블루밍은 로컬 디밍 LCD의 물리적 한계입니다."
+},
+{
+  "id": "response-time-motion-blur-crosstalk",
+  "title": "화소 응답 속도 지연, 모션 잔상 및 스트로브 크로스토크",
+  "category": "display",
+  "categoryTitle": "디스플레이 문제",
+  "symptom": "빠르게 움직이는 물체 뒤로 검은 꼬리가 끌리거나(고스팅), 반대로 흰색 유령 후광(오버슈트) 및 이중상이 나타나는 현상.",
+  "possibleCauses": [
+    "암부 전환 시 액정의 GtG(Gray-to-Gray) 응답 속도 지연",
+    "모니터 오버드라이브 설정이 과도하여 발생하는 픽셀 역전 현상(역잔상)",
+    "백라이트 스트로빙 펄스와 LCD 패널 스캔 라인 간의 동기화 오차"
+  ],
+  "checks": [
+    "GtG 응답 테스트에서 어두운 배경 전환 시의 끌림 흔적 확인",
+    "이동 물체 뒤의 잔상이 검은 그림자인지(고스팅), 밝은 빛무리인지(오버슈트) 판별",
+    "스트로빙 활성화 시 화면 상단/중앙/하단의 이중상 발생 위치 비교"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester는 고속 이동 타깃, GtG 색상 전환 블록 및 퍼슈트 카메라(Pursuit Camera) 동기화 바를 지원합니다.",
+    "links": [
+      {
+        "label": "GtG 응답 속도 테스트",
+        "testId": "gtg-response-time-test",
+        "testPath": "/tests/gtg-response-time-test"
+      },
+      {
+        "label": "스트로브 크로스토크 테스트",
+        "testId": "strobe-crosstalk-test",
+        "testPath": "/tests/strobe-crosstalk-test"
+      },
+      {
+        "label": "퍼슈트 카메라 테스트",
+        "testId": "pursuit-camera-test",
+        "testPath": "/tests/pursuit-camera-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "밀리초 단위 광센서 오실로스코프 곡선"
+  ],
+  "actions": [
+    "모니터 OSD 메뉴에서 오버드라이브 값을 '최고/Extreme'에서 한 단계 낮추기",
+    "잔상 감소(ELMB / DyAc 등) 메뉴에서 스트로브 위상 미세 조정",
+    "스트로빙 사용 시 게임 내 FPS를 모니터 주사율과 완벽히 동기화"
+  ],
+  "whenToStop": "흰색 역잔상이 사라지고 화면 중앙에서 선명한 단일 잔상이 확보되면 최적 상태입니다."
+},
+{
+  "id": "input-lag-gaming-responsiveness",
+  "title": "입력 지연(Input Lag), 마우스 밀림 현상과 게이밍 반응성",
+  "category": "display",
+  "categoryTitle": "디스플레이 문제",
+  "symptom": "마우스를 조작할 때 커서가 손의 움직임을 즉각 따라오지 못하고 물속에서 움직이듯 둔하게 밀리는 느낌.",
+  "possibleCauses": [
+    "모니터 또는 TV 내부 업스케일러 및 프레임 보간 회로로 인한 처리 지연",
+    "전통적 V-Sync 활성화로 인한 렌더링 파이프라인 프레임 큐 적체",
+    "마우스 폴링레이트가 기본 125Hz로 제한되어 있거나 GPU 과부하"
+  ],
+  "checks": [
+    "Screen Tester 마우스 폴링레이트 테스트에서 500Hz/1000Hz 측정 확인",
+    "반응 속도 및 입력 지연 테스트를 통해 체감 지연 수치화",
+    "디스플레이 설정이 '게임 모드' 또는 'PC 모드'로 켜져 있는지 점검"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester는 마우스 USB 보고율(Hz), 시각-클릭 반응 시간 및 WebGL 기반 GPU 프레임 성능을 측정합니다.",
+    "links": [
+      {
+        "label": "입력 지연 테스트",
+        "testId": "input-lag-test",
+        "testPath": "/tests/input-lag-test"
+      },
+      {
+        "label": "반응 속도 테스트",
+        "testId": "reaction-time-test",
+        "testPath": "/tests/reaction-time-test"
+      },
+      {
+        "label": "마우스 폴링레이트 테스트",
+        "testId": "mouse-polling-test",
+        "testPath": "/tests/mouse-polling-test"
+      },
+      {
+        "label": "GPU 벤치마크 테스트",
+        "testId": "gpu-benchmark-test",
+        "testPath": "/tests/gpu-benchmark-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "스위치 접점부터 디스플레이 발광까지의 하드웨어 단독 측정"
+  ],
+  "actions": [
+    "TV/모니터 OSD에서 '게임 모드'를 활성화하여 후처리 지연 칩 우회",
+    "게임 내 일반 V-Sync를 끄고 Nvidia Reflex 또는 AMD Anti-Lag 활성화",
+    "마우스 전용 소프트웨어에서 폴링레이트를 1000Hz(1ms)로 설정"
+  ],
+  "whenToStop": "총 지연시간이 15ms 이하로 내려가면 즉각적인 조작감이 완성됩니다."
+},
+{
+  "id": "dual-monitor-color-mismatch",
+  "title": "듀얼 모니터 색감 불일치, 색온도 편차 및 정렬 문제",
+  "category": "display",
+  "categoryTitle": "디스플레이 문제",
+  "symptom": "나란히 배치한 두 모니터의 흰색 배경 색감이나 명암이 확연히 달라 창을 넘길 때 심한 이질감이 발생하는 현상.",
+  "possibleCauses": [
+    "서로 다른 패널 방식(IPS와 VA, 또는 OLED) 혼용으로 인한 분광 스펙트럼 차이",
+    "모니터 간 기본 출하 색온도 및 감마 편차",
+    "그래픽카드 출력 형식이 한쪽은 RGB Full, 다른 쪽은 제한 레인지로 설정된 경우"
+  ],
+  "checks": [
+    "흰색 창 하나를 두 모니터 경계선에 걸치도록 띄워 색상 단차 확인",
+    "양쪽 화면에서 동시에 '디스플레이 비교' 도구 실행",
+    "GPU 제어판에서 양쪽 모두 RGB 전체(0-255) 출력인지 확인"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester는 양면 동시 비교 캔버스 및 듀얼 모니터 색상 매칭 도구를 제공합니다.",
+    "links": [
+      {
+        "label": "디스플레이 비교",
+        "testId": "compare-displays",
+        "testPath": "/tests/compare-displays"
+      },
+      {
+        "label": "커스텀 패턴",
+        "testId": "custom-pattern",
+        "testPath": "/tests/custom-pattern"
+      },
+      {
+        "label": "듀얼 모니터 매처",
+        "testId": "dual-monitor-matcher",
+        "testPath": "/tools/dual-monitor-matcher"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "패널 코팅 차이로 인한 물리적 메타머리즘 지수"
+  ],
+  "actions": [
+    "듀얼 모니터 매처 도구를 띄우고 보조 모니터 OSD의 RGB 게인 값을 수동 미세 조정",
+    "양쪽 모니터 모두 '6500K' 또는 '따뜻한 색' 프리셋으로 통일",
+    "양쪽 모니터의 흰색 밝기를 동일한 수준으로 조정"
+  ],
+  "whenToStop": "두 화면을 번갈아 볼 때 흰색의 푸른기/붉은기 차이가 느껴지지 않으면 완료입니다."
+},
+{
+  "id": "gamepad-controller-issues",
+  "title": "게임패드 스틱 드리프트, 입력 지연 및 데드존 보정",
+  "category": "deviceInput",
+  "categoryTitle": "입력 장치 문제",
+  "symptom": "컨트롤러 스틱에 손을 대지 않았는데도 캐릭터나 시점이 혼자서 움직이는(스틱 드리프트) 현상.",
+  "possibleCauses": [
+    "아날로그 스틱 내부 탄소 가변저항(포텐셔미터) 마모 및 이물질",
+    "게임 내 스틱 중앙 무반응 영역(데드존)이 너무 좁게 설정됨",
+    "블루투스 무선 간섭으로 인한 입력 신호 손실"
+  ],
+  "checks": [
+    "Screen Tester 게임패드 테스트를 열고 임의의 버튼을 눌러 활성화",
+    "스틱을 중립에 두었을 때 좌표가 정확히 (0.00, 0.00)으로 복귀하는지 점검",
+    "트리거 축이 0%부터 100%까지 끊김 없이 입력되는지 확인"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester는 W3C Gamepad API를 통해 아날로그 스틱 드리프트 반경, 버튼 작동 상태, 진동 모터를 정밀 측정합니다.",
+    "links": [
+      {
+        "label": "게임패드 테스트",
+        "testId": "gamepad-test",
+        "testPath": "/tests/gamepad-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "가변저항 기판의 물리적 마모도 측정"
+  ],
+  "actions": [
+    "게임 설정에서 아날로그 스틱 중앙 데드존 값을 5~10% 상향 조정",
+    "접점 부활제(BW-100 등)로 청소하거나 홀 이펙트(자력 감지) 스틱 제품 사용",
+    "블루투스 대신 유선 USB 케이블 또는 2.4GHz 무선 리시버 사용"
+  ],
+  "whenToStop": "중립 상태에서 드리프트 수치가 15% 이상 벗어난다면 모듈 부품 교체가 필요합니다."
+},
+{
+  "id": "audio-video-sync-latency",
+  "title": "오디오-비디오 동기화 불일치(립싱크) 및 블루투스 사운드 지연",
+  "category": "deviceInput",
+  "categoryTitle": "입력 장치 문제",
+  "symptom": "동영상에서 배우의 입모양과 음성이 어긋나거나, 게임 내 효과음이 화면 액션보다 반 박자 늦게 들리는 현상.",
+  "possibleCauses": [
+    "표준 블루투스 코덱(SBC/AAC)의 150~250ms 무선 전송 지연",
+    "사운드바나 TV의 HDMI eARC 오디오 프로세싱 버퍼 지연",
+    "운영체제 입체 음향 및 음질 향상 DSP 효과의 버퍼 적체"
+  ],
+  "checks": [
+    "오디오 싱크 테스트에서 시각적 플래시와 사운드 타격음의 일치 여부 점검",
+    "오디오 레이턴시 테스트에서 측정된 기본 버퍼 지연 시간 확인",
+    "블루투스 기기와 유선 3.5mm 연결 간의 반응 속도 비교"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester는 정밀한 시각 플래시와 오디오 펄스를 결합하여 음성 싱크 편차를 밀리초 단위로 파악합니다.",
+    "links": [
+      {
+        "label": "오디오 싱크 테스트",
+        "testId": "audio-sync-test",
+        "testPath": "/tests/audio-sync-test"
+      },
+      {
+        "label": "오디오 레이턴시 테스트",
+        "testId": "audio-latency-test",
+        "testPath": "/tests/audio-latency-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "공기 중 음파 도달 시간"
+  ],
+  "actions": [
+    "게임 시 저지연 코덱(aptX LL) 지원 기기 또는 2.4GHz 무선/유선 헤드셋 사용",
+    "TV 또는 리시버의 '음성 지연(Lip-Sync)' 설정으로 화면 처리 속도에 맞춰 조정",
+    "Windows 사운드 속성에서 모든 추가 음향 효과 해제"
+  ],
+  "whenToStop": "오차 범위가 40ms 이내이면 사람이 인지할 수 없는 완벽한 동기화 상태입니다."
+},
+{
+  "id": "sensor-ambient-battery-hardware",
+  "title": "주변광 센서 오작동, 배터리 절전 모드 주사율 저하 및 네트워크 지연",
+  "category": "deviceInput",
+  "categoryTitle": "입력 장치 문제",
+  "symptom": "노트북 화면 밝기가 제멋대로 어두워지거나, 배터리 사용 시 120Hz 모니터가 60Hz로 강등되거나, 영상 스트리밍 시 프레임이 끊기는 현상.",
+  "possibleCauses": [
+    "주변 조도 센서가 방 조명 변화에 반응하여 화면 밝기를 자동 강등",
+    "운영체제 배터리 절전 모드가 GPU 클럭을 제한하고 패널 주사율을 60Hz로 강제 고정",
+    "Wi-Fi 신호 불안정 및 패킷 지터로 인한 브라우저 프레임 드롭"
+  ],
+  "checks": [
+    "노트북 조도 센서를 손으로 가려 Screen Tester에서 lux 값 변화 확인",
+    "전원 케이블을 분리했을 때 주사율이 떨어지는지 점검",
+    "네트워크 속도 테스트를 통해 지연 시간(Ping)과 대역폭 측정"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester는 주변광 조도 센서 lux 값, 배터리 충/방전 상태(Battery API) 및 네트워크 지연 안정성을 모니터링합니다.",
+    "links": [
+      {
+        "label": "주변광 센서 테스트",
+        "testId": "ambient-light-test",
+        "testPath": "/tests/ambient-light-test"
+      },
+      {
+        "label": "배터리 테스트",
+        "testId": "battery-test",
+        "testPath": "/tests/battery-test"
+      },
+      {
+        "label": "네트워크 속도 테스트",
+        "testId": "network-speed-test",
+        "testPath": "/tests/network-speed-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "노트북 배터리 셀 화학적 수명 저하"
+  ],
+  "actions": [
+    "Windows 디스플레이 설정에서 '조명이 바뀔 때 밝기 자동 변경' 해제",
+    "전원 옵션을 '최고 성능'으로 지정하여 배터리 모드에서도 고주사율 유지",
+    "혼잡한 2.4GHz Wi-Fi 대신 5GHz/6GHz 또는 유선 랜선 연결"
+  ],
+  "whenToStop": "밝기 변동이 사라지고 배터리 상태에서도 일관된 고주사율이 유지되면 정상입니다."
+},
+{
+  "id": "monitor-setup-bandwidth-calibration",
+  "title": "케이블 대역폭 한계, DPI 스케일링 및 OSD 최적화",
+  "category": "display",
+  "categoryTitle": "디스플레이 문제",
+  "symptom": "4K 환경에서 최고 주사율이 활성화되지 않거나, 텍스트가 너무 작아 눈이 피로하거나, 화면이 간헐적으로 꺼졌다 켜지는 증상.",
+  "possibleCauses": [
+    "사용 중인 HDMI 또는 DP 케이블의 대역폭 한계 초과(예: 4K 144Hz에 구형 케이블 사용)",
+    "OS DPI 배율 설정 부적합으로 인한 폰트 흐림 및 가독성 저하",
+    "모니터 OSD 기본 공장 설정의 부적절한 명암/색상값"
+  ],
+  "checks": [
+    "디스플레이 대역폭 계산기로 해상도/주사율별 필요 전송 대역폭 산출",
+    "DPI 계산기와 시청 거리 계산기로 패널 밀도와 권장 거리 점검",
+    "새 모니터 점검 마법사로 기본 디스플레이 스펙 전수 확인"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester는 HDMI/DP/DSC 전송 대역폭 계산기, 인치당 픽셀수(PPI) 도구, 인체공학 시청 거리 계산기 및 디지털 점검 인증서를 제공합니다.",
+    "links": [
+      {
+        "label": "새 모니터 마법사",
+        "testId": "new-monitor-wizard",
+        "testPath": "/tools/new-monitor-wizard"
+      },
+      {
+        "label": "DPI 계산기",
+        "testId": "dpi-calculator",
+        "testPath": "/tools/dpi-calculator"
+      },
+      {
+        "label": "디스플레이 대역폭 계산기",
+        "testId": "display-bandwidth-calculator",
+        "testPath": "/tools/display-bandwidth-calculator"
+      },
+      {
+        "label": "시청 거리 계산기",
+        "testId": "viewing-distance-calculator",
+        "testPath": "/tools/viewing-distance-calculator"
+      },
+      {
+        "label": "화면 녹화 도구",
+        "testId": "screen-recorder",
+        "testPath": "/tools/screen-recorder"
+      },
+      {
+        "label": "디스플레이 인증서",
+        "testId": "display-certificate",
+        "testPath": "/tools/display-certificate"
+      },
+      {
+        "label": "OSD 보정 가이드",
+        "testId": "osd-calibration-guide",
+        "testPath": "/tools/osd-calibration-guide"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "케이블 내부 구리선 물리적 차폐 성능"
+  ],
+  "actions": [
+    "공식 VESA 인증 DisplayPort 1.4/2.1 또는 초고속 HDMI 2.1 케이블로 교체",
+    "산출된 PPI에 맞춰 Windows 텍스트 배율(125%, 150%) 최적화",
+    "OSD 가이드에 따라 명암과 밝기를 균형 있게 재설정"
+  ],
+  "whenToStop": "화면 깜빡임 없이 네이티브 최대 해상도와 주사율이 온전히 출력되면 정상입니다."
+},
+{
+  "id": "eink-ghosting-slow-refresh",
+  "title": "전자종이(E-Ink) 화면 잔상, 글자 그림자 흔적과 새로고침 지연",
+  "category": "imageQuality",
+  "categoryTitle": "화질 관련 문제",
+  "symptom": "전자책 리더기에서 이전 페이지의 글자나 키보드 윤곽이 흰 배경에 흐릿하게 남아있는 현상.",
+  "possibleCauses": [
+    "전기영동 마이크로캡슐 내부 잔류 전하로 입자가 중간에 정체됨",
+    "입자 정렬 과정을 생략하는 고속 새로고침 모드(A2 모드) 사용",
+    "주변 온도가 낮아 유체 내 입자 이동 속도가 느려진 경우"
+  ],
+  "checks": [
+    "배경 여백이 깨끗한 흰색인지, 회색 잔상이 묻어있는지 점검",
+    "Screen Tester의 'E-Ink 리프레시 도구' 실행",
+    "실내 온도가 18°C~25°C 수준인지 확인"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester는 전체 화면 흑백 교차 반전 펄스를 연속 재생하여 잔류 전하를 제거하고 입자를 재정렬합니다.",
+    "links": [
+      {
+        "label": "E-Ink 리프레시 도구",
+        "testId": "eink-refresh-tool",
+        "testPath": "/tools/eink-refresh-tool"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "컨트롤러 칩셋 내부 하드웨어 웨이브폼"
+  ],
+  "actions": [
+    "E-Ink 리프레시 도구로 전체 화면 흑백 반전을 3~5회 실행",
+    "리더기 설정에서 5~10페이지마다 주기적인 전체 새로고침 활성화",
+    "텍스트 독서 시에는 속도 모드 대신 고화질 모드(Regal 등) 선택"
+  ],
+  "whenToStop": "E-Ink 잔상은 100% 원상 복구되며, 반전 깜빡임 후 본래의 깨끗한 흰색이 나타나면 완료입니다."
+}
 ];

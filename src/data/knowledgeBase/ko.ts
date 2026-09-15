@@ -4412,5 +4412,496 @@ export const KO_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     ],
     "primarySearchIntent": "monitor test patterns calibration grid checkerboard visual inspection",
     "readingTimeMinutes": 5
-  }
+  },
+{
+  "slug": "oled-auto-brightness-limiter-abl",
+  "category": "display-problems",
+  "title": "OLED 자동 밝기 제한기(ABL)와 화면 크기별 감광 원리",
+  "subtitle": "패널 과열 및 번인을 방지하는 ABL 회로와 전체 화면 흰색 감광 현상.",
+  "description": "OLED ABL(Auto-Brightness Limiter)의 동작 원리, 흰색 창 확대 시 화면이 어두워지는 이유, 1%부터 100% 창 크기별 밝기 변화 측정법을 알아봅니다.",
+  "directAnswer": "자동 밝기 제한기(ABL)는 OLED 및 QD-OLED 모니터에서 평균 화면 밝기(APL)가 높아질 때 패널의 소비 전력과 발열을 줄이기 위해 밝기를 자동으로 낮추는 하드웨어 보호 회로입니다.",
+  "whyItMatters": "공격적인 ABL은 문서 작업이나 브라우징 중 창 크기를 변경할 때 밝기가 요동치게 만들어 눈의 피로와 작업 집중도 저하를 유발합니다.",
+  "whatToLookFor": [
+    "흰색 창을 전체 화면으로 확대할 때 눈에 띄게 화면이 어두워지는 현상",
+    "다크 모드에서 밝은 웹페이지로 전환 시 급격한 밝기 강등",
+    "창을 드래그할 때 배경 밝기가 실시간으로 출렁거리는 현상"
+  ],
+  "howToTest": [
+    "Screen Tester의 'OLED ABL 테스트'를 실행합니다",
+    "1%, 10%, 50%, 100% 창 크기 버튼을 번갈아 선택합니다",
+    "전체 화면(100%)에서 중앙의 흰색 사각형 밝기가 감소하는지 관찰합니다"
+  ],
+  "whatScreenTesterCanObserve": [
+    "1%부터 100%까지 표준화된 창 면적별 밝기 차이의 시각적 대조",
+    "정적 흰색 화면과 동적 크기 조절 시의 감광 반응"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "외부 계측기 없는 절대 휘도(nit) 수치 측정",
+    "패널 내부 전원부 발열 및 소비 전력"
+  ],
+  "commonCauses": [
+    "유기 발광 소자의 열화 방지 및 번인 방지 알고리즘",
+    "모니터 파워 서플라이의 최대 전력 공급 한계 및 에너지 규제"
+  ],
+  "whatToDoNext": [
+    "모니터 OSD 메뉴에서 '균일 밝기(Uniform Brightness)' 모드 활성화",
+    "SDR 밝기를 150~200 nit 수준으로 낮추어 ABL 작동 기준점 아래로 설정",
+    "OS 다크 모드를 기본 설정하여 평균 화면 밝기(APL) 낮추기"
+  ],
+  "sections": [
+    {
+      "title": "OLED 자동 밝기 제한기(ABL)와 화면 크기별 감광 원리",
+      "content": [
+        "자동 밝기 제한기(ABL)는 OLED 및 QD-OLED 모니터에서 평균 화면 밝기(APL)가 높아질 때 패널의 소비 전력과 발열을 줄이기 위해 밝기를 자동으로 낮추는 하드웨어 보호 회로입니다.",
+        "공격적인 ABL은 문서 작업이나 브라우징 중 창 크기를 변경할 때 밝기가 요동치게 만들어 눈의 피로와 작업 집중도 저하를 유발합니다."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "창을 최대화하면 왜 화면이 어두워지나요?",
+      "answer": "전체 화면 흰색 표시는 수백만 개의 유기 소자가 최대 전력을 소모하므로, ABL이 과열을 방지하기 위해 밝기를 제한하기 때문입니다."
+    },
+    {
+      "question": "ABL을 끌 수 있나요?",
+      "answer": "최신 모니터의 '균일 밝기 모드'를 켜면 최대 밝기가 일정 수준으로 고정되어 창 크기 변경에 따른 밝기 변화가 사라집니다."
+    }
+  ],
+  "relatedTestIds": [
+    "oled-abl-test",
+    "brightness-test",
+    "hdr-peak-brightness-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "oled-abl-blooming-hdr-peak"
+  ],
+  "relatedArticleSlugs": [
+    "oled-burn-in-causes-and-prevention",
+    "hdr-standards-and-performance"
+  ],
+  "primarySearchIntent": "oled abl auto brightness limiter monitor dimming window size test",
+  "readingTimeMinutes": 5
+},
+{
+  "slug": "new-monitor-acceptance-tolerances",
+  "category": "browser-and-testing",
+  "title": "새 모니터 초기 불량 판정 기준: 불량 화소, 빛샘 및 반품 기한",
+  "subtitle": "구매처 초기 불량 교환 기간 내에 점검해야 할 핵심 디스플레이 검수 체크리스트.",
+  "description": "새로 구입한 모니터의 데드 픽셀, 백라이트 빛샘, 색상 균일도를 초기 반품 기간 내에 철저히 검사하는 단계별 가이드입니다.",
+  "directAnswer": "새 모니터 수령 검수는 구매처의 무상 반품/교환 기간 내에 패널의 암점, 휘점, 빛샘, 색온도 편차 및 물리적 결함을 체계적으로 확인하는 절차입니다.",
+  "whyItMatters": "초기 14~30일 이내에는 판매처 규정에 따라 원활한 교환/반품이 가능하지만, 이 기한이 지나면 제조사 보증 규격(ISO 9241-307)이 적용되어 일정 수 이하의 불량 화소는 교환받기 어렵습니다.",
+  "whatToLookFor": [
+    "단색(검정, 흰색, RGB) 화면에서 빛나는 휘점 또는 꺼진 암점",
+    "어두운 방에서 검은 화면을 띄웠을 때 모서리 베젤 틈새로 새어 나오는 빛샘",
+    "화면 좌우의 색온도 불균형(예: 왼쪽은 붉고 오른쪽은 푸른 증상)"
+  ],
+  "howToTest": [
+    "Screen Tester의 '새 모니터 점검 마법사'를 실행합니다",
+    "불량 화소, 균일도, 모션, 가독성 단계를 안내에 따라 순차 점검합니다",
+    "점검 완료 후 '디스플레이 검사 인증서'를 발급받아 결과를 보관합니다"
+  ],
+  "whatScreenTesterCanObserve": [
+    "전체 화면 색상 패턴을 통한 패널 전수 시각 검사 지원",
+    "발견된 결함 수 기록 및 디지털 검사 인증서 생성"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "배송 중 발생한 물리적 충격 측정",
+    "판매처별 개별 교환 규정의 법적 판단"
+  ],
+  "commonCauses": [
+    "패널 미세 박막 트랜지스터(TFT) 제조 공정상의 불량",
+    "모니터 프레임 조립 시 베젤의 편중된 압력으로 인한 도광판 휨"
+  ],
+  "whatToDoNext": [
+    "휘점이나 심각한 빛샘 발견 시 반품 기한 내에 즉시 판매처 교환 접수",
+    "제품 박스, 스티로폼 완충재, 기본 케이블을 온전히 보관",
+    "Screen Tester 검사 인증서를 캡처하여 증빙 자료로 첨부"
+  ],
+  "sections": [
+    {
+      "title": "새 모니터 초기 불량 판정 기준: 불량 화소, 빛샘 및 반품 기한",
+      "content": [
+        "새 모니터 수령 검수는 구매처의 무상 반품/교환 기간 내에 패널의 암점, 휘점, 빛샘, 색온도 편차 및 물리적 결함을 체계적으로 확인하는 절차입니다.",
+        "초기 14~30일 이내에는 판매처 규정에 따라 원활한 교환/반품이 가능하지만, 이 기한이 지나면 제조사 보증 규격(ISO 9241-307)이 적용되어 일정 수 이하의 불량 화소는 교환받기 어렵습니다."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "불량 화소가 몇 개 있어야 무상 교환이 되나요?",
+      "answer": "일반적인 ISO 클래스 2 규정에서는 2~5개까지 정상 판정될 수 있습니다. 따라서 번거로운 제조사 AS 판정 전에 판매처의 초기 단순 변심/초기 불량 반품 제도를 활용하는 것이 안전합니다."
+    },
+    {
+      "question": "IPS 글로우와 빛샘은 어떻게 구분하나요?",
+      "answer": "보는 각도를 틀었을 때 빛의 위치나 세기가 달라지면 정상적인 IPS 글로우이며, 정면과 측면 모두에서 특정 모서리가 계속 밝게 빛나면 빛샘 결함입니다."
+    }
+  ],
+  "relatedTestIds": [
+    "new-monitor-wizard",
+    "dead-pixel-test",
+    "backlight-bleed-test",
+    "uniformity-test",
+    "display-certificate"
+  ],
+  "relatedTroubleshootingIds": [
+    "monitor-setup-bandwidth-calibration"
+  ],
+  "relatedArticleSlugs": [
+    "dead-stuck-and-bright-pixels",
+    "backlight-bleed-vs-ips-glow"
+  ],
+  "primarySearchIntent": "new monitor inspection checklist dead pixel return policy warranty acceptance testing",
+  "readingTimeMinutes": 6
+},
+{
+  "slug": "color-temperature-d65-white-point",
+  "category": "display-basics",
+  "title": "색온도, 켈빈(K) 지수와 D65 표준 백색점",
+  "subtitle": "따뜻한 색감 vs 차가운 색감의 차이, 눈의 피로도, 6500K 표준 규격 이해하기.",
+  "description": "켈빈(K) 단위로 측정되는 색온도가 디스플레이 화질에 미치는 영향, D65(6500K)가 창작 표준인 이유, 올바른 화이트 밸런스 설정법을 알아봅니다.",
+  "directAnswer": "색온도는 모니터가 방출하는 빛의 따뜻함이나 차가움을 켈빈(K) 단위로 나타낸 지표입니다. 업계 표준인 D65 백색점은 약 6500K에 해당하며, 정오 무렵의 자연 주광을 기준으로 삼습니다.",
+  "whyItMatters": "너무 높은 색온도(7500K~9300K)는 푸른빛이 돌아 눈의 피로를 가중시키고, 너무 낮은 색온도(5000K)는 화면이 누렇게 변색되어 그래픽 및 영상 작업의 정확도를 떨어뜨립니다.",
+  "whatToLookFor": [
+    "흰색 문서나 배경이 지나치게 푸르스름하게 보이는 현상",
+    "화면 전체가 누렇게 떠서 색상이 왜곡되어 보이는 증상",
+    "두 대의 모니터를 나란히 놓았을 때 흰색의 색감이 일치하지 않는 문제"
+  ],
+  "howToTest": [
+    "Screen Tester의 '색온도 테스트'를 실행합니다",
+    "5000K, 5500K, 6500K(D65), 7500K, 9300K 표준 참조 화면을 순차 비교합니다",
+    "모니터 OSD의 RGB 게인 설정을 조정하여 눈에 가장 편안한 중립 흰색을 맞춥니다"
+  ],
+  "whatScreenTesterCanObserve": [
+    "표준 흑체 복사 기반 켈빈 프리셋 화면의 시각적 비교",
+    "따뜻한 색온도와 표준 D65, 차가운 색온도 간의 상대적 차이 확인"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "물리적 캘리브레이터 없는 절대적 Delta E 색차 측정",
+    "실내 조명 환경의 색온도 간섭"
+  ],
+  "commonCauses": [
+    "매장에서 더 밝게 보이도록 공장 출하 시 과도하게 푸른 톤(8000K 이상)으로 설정된 경우",
+    "OS의 '야간 모드' 또는 'True Tone' 기능이 활성화되어 색온도가 변한 경우"
+  ],
+  "whatToDoNext": [
+    "모니터 OSD 메뉴에서 'Warm(따뜻한 색)' 또는 '6500K' 프리셋 선택",
+    "색상 작업 시 OS 야간 모드 및 주변광 센서 연동 기능 해제",
+    "패널이 정상 작동 온도에 도달하도록 30분간 예열 후 색감 평가"
+  ],
+  "sections": [
+    {
+      "title": "색온도, 켈빈(K) 지수와 D65 표준 백색점",
+      "content": [
+        "색온도는 모니터가 방출하는 빛의 따뜻함이나 차가움을 켈빈(K) 단위로 나타낸 지표입니다. 업계 표준인 D65 백색점은 약 6500K에 해당하며, 정오 무렵의 자연 주광을 기준으로 삼습니다.",
+        "너무 높은 색온도(7500K~9300K)는 푸른빛이 돌아 눈의 피로를 가중시키고, 너무 낮은 색온도(5000K)는 화면이 누렇게 변색되어 그래픽 및 영상 작업의 정확도를 떨어뜨립니다."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "왜 6500K(D65)가 전 세계 표준인가요?",
+      "answer": "맑은 날 정오 무렵의 자연광 스펙트럼과 가장 유사하며, sRGB, DCI-P3, Rec.709 등 주요 미디어 규격이 모두 D65를 기준으로 제작되기 때문입니다."
+    },
+    {
+      "question": "색온도를 낮추면 시력 보호에 도움이 되나요?",
+      "answer": "네, 색온도를 낮추면 유해 블루라이트 방출량이 감소하여 야간 작업 시 눈의 피로와 수면 장애를 줄일 수 있습니다."
+    }
+  ],
+  "relatedTestIds": [
+    "color-temperature-test",
+    "white-level-test",
+    "color-test",
+    "color-accuracy-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "color-calibration-issues"
+  ],
+  "relatedArticleSlugs": [
+    "color-gamut-coverage",
+    "contrast-ratio-and-black-levels"
+  ],
+  "primarySearchIntent": "color temperature monitor d65 6500k kelvin white point calibration",
+  "readingTimeMinutes": 5
+},
+{
+  "slug": "temporal-dithering-and-frc",
+  "category": "display-problems",
+  "title": "시간적 디더링(Temporal Dithering), FRC와 시각적 피로도",
+  "subtitle": "6-bit+FRC 및 8-bit+FRC 패널의 색상 시뮬레이션 방식과 미세 깜빡임에 의한 두통 원인.",
+  "description": "시간적 디더링과 FRC(Frame Rate Control)의 동작 원리, 패널이 픽셀을 고속 교차하여 색을 표현하는 방식, 민감한 사용자가 겪는 눈의 피로와 어지럼증을 분석합니다.",
+  "directAnswer": "시간적 디더링(또는 FRC / Frame Rate Control)은 인접한 두 가지 색상 단계를 프레임마다 고속으로 교차 표시하여 착시를 통해 중간 계조를 인식하게 만드는 디스플레이 기술입니다.",
+  "whyItMatters": "저가형 6비트 및 8비트 패널로 풍부한 색상을 구현할 수 있지만, 육안으로 감지하기 힘든 미세한 고속 깜빡임이 민감한 사용자에게 편두통, 안구 통증, 메스꺼움을 유발할 수 있습니다.",
+  "whatToLookFor": [
+    "단색 회색이나 어두운 배경에서 미세한 노이즈가 자글거리며 움직이는 듯한 느낌",
+    "특정 모니터를 사용할 때 유독 눈이 시리거나 원인 모를 두통 발생",
+    "스마트폰 슬로우 모션 카메라로 근접 촬영 시 감지되는 미세 진동"
+  ],
+  "howToTest": [
+    "Screen Tester의 '시간적 디더링 테스트'를 실행합니다",
+    "100% 기본 배율 상태에서 1픽셀 체커보드 및 중간 회색 계조를 점검합니다",
+    "패턴 표면에서 픽셀이 미세하게 떨리거나 일렁이는지 확인합니다"
+  ],
+  "whatScreenTesterCanObserve": [
+    "FRC 시간 변조를 시각적으로 부각시키는 고주파수 테스트 패턴",
+    "정적 패턴과 디더링 유발 패턴 간의 표면 안정성 대조"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "GPU 드라이버 내부 디더링 출력 레지스터 설정값",
+    "패널 T-Con 칩셋의 하드웨어 타이밍"
+  ],
+  "commonCauses": [
+    "패널 스펙이 6-bit+FRC(가상 8비트) 또는 8-bit+FRC(가상 10비트)인 경우",
+    "그래픽카드 드라이버가 밴딩 현상을 완화하기 위해 디더링을 강제 출력하는 경우"
+  ],
+  "whatToDoNext": [
+    "화면 깜빡임에 민감하다면 'Native 8-bit' 또는 'Native 10-bit' 정품 패널 제품 선택",
+    "GPU 제어판에서 출력 색상 깊이를 패널 실제 사양과 일치하도록 조정",
+    "실내 조명을 밝게 유지하여 동공 확장을 줄임으로써 미세 떨림 감도 완화"
+  ],
+  "sections": [
+    {
+      "title": "시간적 디더링(Temporal Dithering), FRC와 시각적 피로도",
+      "content": [
+        "시간적 디더링(또는 FRC / Frame Rate Control)은 인접한 두 가지 색상 단계를 프레임마다 고속으로 교차 표시하여 착시를 통해 중간 계조를 인식하게 만드는 디스플레이 기술입니다.",
+        "저가형 6비트 및 8비트 패널로 풍부한 색상을 구현할 수 있지만, 육안으로 감지하기 힘든 미세한 고속 깜빡임이 민감한 사용자에게 편두통, 안구 통증, 메스꺼움을 유발할 수 있습니다."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "내 모니터가 FRC를 쓰는지 어떻게 확인하나요?",
+      "answer": "제품 상세 정보에서 '1670만 색상 (6-bit + FRC)' 또는 '10억 7천만 색상 (8-bit + FRC)' 표기를 확인하세요. 고급 패널은 'Native 10-bit'로 명시됩니다."
+    },
+    {
+      "question": "소프트웨어로 디더링을 끌 수 있나요?",
+      "answer": "일부 GPU에서는 레지스트리 조작이나 서드파티 도구(ColorControl 등)를 통해 그래픽카드 단의 디더링 출력을 차단할 수 있습니다."
+    }
+  ],
+  "relatedTestIds": [
+    "temporal-dithering-test",
+    "pixel-inversion-test",
+    "color-banding-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "temporal-dithering-pixel-inversion"
+  ],
+  "relatedArticleSlugs": [
+    "pwm-dimming-and-screen-flicker",
+    "pixel-inversion-and-vcom"
+  ],
+  "primarySearchIntent": "temporal dithering frc eye strain headache frame rate control pixel flicker",
+  "readingTimeMinutes": 6
+},
+{
+  "slug": "hdr-peak-brightness-and-tone-mapping",
+  "category": "tv-and-display-setup",
+  "title": "HDR 피크 밝기, 창 크기별 측정과 톤 매핑(Tone Mapping)",
+  "subtitle": "1%~100% 윈도우 휘도 측정, 하이라이트 디테일 보존 및 HDR10 클리핑 한계 분석.",
+  "description": "HDR 피크 밝기의 의미, 소면적 하이라이트와 전체 화면 흰색 간의 휘도 차이, 톤 매핑을 통한 하얗게 날아가는 클리핑 방지 기술을 살펴봅니다.",
+  "directAnswer": "HDR 피크 밝기는 디스플레이가 작은 반사광이나 불빛(화면 면적의 2%~10%)에서 순간적으로 뿜어낼 수 있는 최고 휘도(nit 또는 cd/m²)를 의미합니다.",
+  "whyItMatters": "로컬 디밍이 없는 보급형 'HDR400' 모니터는 검은색이 회색으로 뜨며, 고성능 Mini-LED나 OLED라도 톤 매핑이 부정확하면 구름이나 햇빛의 디테일이 하얗게 뭉개집니다.",
+  "whatToLookFor": [
+    "태양광선이나 폭발 장면에서 디테일이 날아가고 단순한 흰 덩어리로 보이는 현상",
+    "Windows에서 HDR을 켜는 순간 화면 전체가 뿌옇게 바래는 증상",
+    "화면 내 밝은 물체의 크기가 커질 때 갑자기 밝기가 뚝 떨어지는 현상"
+  ],
+  "howToTest": [
+    "Windows/macOS 디스플레이 설정에서 HDR을 켭니다",
+    "Screen Tester의 'HDR 피크 밝기 테스트'를 엽니다",
+    "1%, 5%, 10%, 100% 창 크기별로 흰색 단계 구분이 유지되는지 확인합니다"
+  ],
+  "whatScreenTesterCanObserve": [
+    "브라우저 HDR 캔버스 기반 고휘도 색상 패치 표시",
+    "눈으로 식별 가능한 하이라이트 클리핑 경계선 점검"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "계측 센서 없는 물리적 nit 수치 측정",
+    "돌비 비전(Dolby Vision) 동적 메타데이터 엔진 세부 처리"
+  ],
+  "commonCauses": [
+    "로컬 디밍 구역이 없는 에지형 백라이트 패널 한계",
+    "운영체제 HDR 보정 앱을 통한 최대 밝기 프로파일 미등록",
+    "모니터 톤 매핑이 부드러운 감쇄 대신 강제 잘라내기(Hard Clip)로 설정된 경우"
+  ],
+  "whatToDoNext": [
+    "마이크로소프트 스토어에서 'Windows HDR 보정' 앱을 설치하고 실행",
+    "게임 콘솔 및 PC 게임 연결 시 모니터 OSD에서 'HGiG' 모드 활성화",
+    "실내 주변광을 어둡게 조절하여 명암비 체감 효과 극대화"
+  ],
+  "sections": [
+    {
+      "title": "HDR 피크 밝기, 창 크기별 측정과 톤 매핑(Tone Mapping)",
+      "content": [
+        "HDR 피크 밝기는 디스플레이가 작은 반사광이나 불빛(화면 면적의 2%~10%)에서 순간적으로 뿜어낼 수 있는 최고 휘도(nit 또는 cd/m²)를 의미합니다.",
+        "로컬 디밍이 없는 보급형 'HDR400' 모니터는 검은색이 회색으로 뜨며, 고성능 Mini-LED나 OLED라도 톤 매핑이 부정확하면 구름이나 햇빛의 디테일이 하얗게 뭉개집니다."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "피크 밝기와 지속 밝기는 어떻게 다른가요?",
+      "answer": "피크 밝기는 화면 일부(예: 5% 영역)에서 순간적으로 낼 수 있는 최대 수치(1000 nit 등)이며, 지속 밝기는 전체 화면 흰색을 띄웠을 때 발열 없이 지속 가능한 수치(250~400 nit)입니다."
+    },
+    {
+      "question": "보급형 모니터에서 HDR을 켜면 왜 화면이 뿌옇게 되나요?",
+      "answer": "화면 일부분만 밝힐 수 있는 구역 제어(로컬 디밍)가 없어, 밝은 곳을 표현하기 위해 패널 전체 백라이트를 올려버려 암부까지 회색으로 뜨기 때문입니다."
+    }
+  ],
+  "relatedTestIds": [
+    "hdr-peak-brightness-test",
+    "hdr-test",
+    "hdr-capability-test",
+    "oled-abl-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "oled-abl-blooming-hdr-peak",
+    "hdr-not-working"
+  ],
+  "relatedArticleSlugs": [
+    "hdr-standards-and-performance",
+    "contrast-ratio-and-black-levels"
+  ],
+  "primarySearchIntent": "hdr peak brightness 1000 nits tone mapping highlight clipping test",
+  "readingTimeMinutes": 5
+},
+{
+  "slug": "audio-latency-and-buffer-pipeline",
+  "category": "device-and-input",
+  "title": "오디오 레이턴시, Web Audio 파이프라인과 입모양 싱크(Lip-Sync)",
+  "subtitle": "OS 오디오 버퍼 지연, 블루투스 A2DP 딜레이와 음성-영상 동기화 어긋남 해결법.",
+  "description": "사운드 지연 및 화면-소리 불일치의 원인, 웹 오디오 API를 통한 버퍼 측정, 블루투스 이어폰 및 스피커의 오디오 딜레이 단축법을 알아봅니다.",
+  "directAnswer": "오디오 레이턴시는 소프트웨어가 소리 재생 명령을 내린 시점부터 실제 스피커나 이어폰 진동판을 통해 소리가 출력되기까지 걸리는 시간(밀리초, ms)입니다.",
+  "whyItMatters": "오디오 지연이 길어지면 게임에서 사운드 플레이 반응 속도가 느려지고, 영상 시청 시 입모양과 음성이 어긋나며, 가상 악기 연주 시 심각한 이질감을 유발합니다.",
+  "whatToLookFor": [
+    "동영상에서 등장인물의 입모양과 대사 음성이 맞지 않는 현상(립싱크 불일치)",
+    "게임 내 발포나 클릭 후 총소리가 반 박자 늦게 들리는 증상",
+    "화면 터치 시 피드백 사운드가 둔탁하게 늦게 반응하는 느낌"
+  ],
+  "howToTest": [
+    "Screen Tester의 '오디오 레이턴시 테스트'를 엽니다",
+    "화면의 시각적 플래시 링과 동시에 울리는 비프음의 싱크를 점검합니다",
+    "브라우저 Web Audio API가 측정한 기본 버퍼 크기와 하드웨어 출력 지연(ms)을 확인합니다"
+  ],
+  "whatScreenTesterCanObserve": [
+    "브라우저 오디오 스택이 전달하는 기본 출력 지연 시간(Base Latency)",
+    "오디오 버퍼 프레임 크기(예: 256, 512 샘플) 및 샘플링 레이트"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "멀리 떨어진 외부 스피커에서 귀까지 도달하는 물리적 공기 전파 지연",
+    "블루투스 코덱(SBC/AAC 등) 자체의 내부 DSP 디코딩 지연"
+  ],
+  "commonCauses": [
+    "일반 블루투스 연결 사용(표준 SBC/AAC 코덱은 150~250ms의 불가피한 지연 발생)",
+    "OS 오디오 향상 기능(Windows Sonic, Dolby Atmos 등 입체 음향 DSP)",
+    "사운드 끊김을 방지하기 위해 버퍼 크기가 지나치게 크게 설정된 경우"
+  ],
+  "whatToDoNext": [
+    "리듬 게임이나 FPS 플레이 시 유선(3.5mm/USB) 또는 2.4GHz 전용 무선 리시버 사용",
+    "Windows 사운드 설정에서 '오디오 향상 기능' 해제",
+    "VLC 등 동영상 플레이어에서 오디오 싱크 단축키(J/K)로 수동 보정"
+  ],
+  "sections": [
+    {
+      "title": "오디오 레이턴시, Web Audio 파이프라인과 입모양 싱크(Lip-Sync)",
+      "content": [
+        "오디오 레이턴시는 소프트웨어가 소리 재생 명령을 내린 시점부터 실제 스피커나 이어폰 진동판을 통해 소리가 출력되기까지 걸리는 시간(밀리초, ms)입니다.",
+        "오디오 지연이 길어지면 게임에서 사운드 플레이 반응 속도가 느려지고, 영상 시청 시 입모양과 음성이 어긋나며, 가상 악기 연주 시 심각한 이질감을 유발합니다."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "어느 정도의 오디오 지연시간이 적절한가요?",
+      "answer": "20ms 미만은 인지하기 어려울 정도로 우수하며, 50ms 미만은 일반적인 사용에 충분합니다. 100ms를 초과하면 대사와 게임 플레이에서 불편함을 체감하게 됩니다."
+    },
+    {
+      "question": "블루투스 이어폰은 왜 항상 소리가 늦게 나오나요?",
+      "answer": "오디오 데이터를 압축하여 무선 패킷으로 전송하고, 이어폰 칩셋에서 이를 수신하여 버퍼링 및 압축 해제하는 일련의 과정에 시간이 소요되기 때문입니다."
+    }
+  ],
+  "relatedTestIds": [
+    "audio-latency-test",
+    "audio-sync-test",
+    "speaker-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "audio-video-sync-latency"
+  ],
+  "relatedArticleSlugs": [
+    "input-lag-vs-response-time",
+    "refresh-rate-and-motion-clarity"
+  ],
+  "primarySearchIntent": "audio latency test sound lag bluetooth delay a2dp lip sync web audio buffer",
+  "readingTimeMinutes": 5
+},
+{
+  "slug": "e-ink-screen-refresh-and-ghosting",
+  "category": "display-problems",
+  "title": "전자종이(E-Ink) 잔상 현상, 전기영동과 화면 리프레시 원리",
+  "subtitle": "전자잉크 화면에 글자 그림자가 남는 원인과 흑백 반전 플래시를 통한 입자 초기화 기술.",
+  "description": "E-Ink 디스플레이의 마이크로캡슐 전기영동 기술, 전자책 화면에 잔상이 쌓이는 이유, 반전 깜빡임을 통한 잔상 완전 제거 솔루션을 알아봅니다.",
+  "directAnswer": "E-Ink 잔상(Ghosting)은 마이크로캡슐 내부의 흑백 미세 입자가 잔류 전하로 인해 원래 위치로 완전히 이동하지 못해, 이전에 표시되었던 글자나 메뉴의 흐릿한 잔영이 배경에 남는 현상입니다.",
+  "whyItMatters": "자체 발광형 패널과 달리 E-Ink는 유체 속 입자의 물리적 이동을 이용하므로, 주기적인 반전 리프레시가 없으면 흰색 배경이 탁해지고 텍스트 명암비가 급격히 떨어져 가독성이 저하됩니다.",
+  "whatToLookFor": [
+    "페이지를 넘긴 후에도 이전 페이지의 문장이나 아이콘 윤곽이 희미하게 남아있는 증상",
+    "문서를 여러 번 스크롤한 뒤 배경이 잿빛으로 탁해지고 글자가 흐릿해지는 느낌",
+    "여백 부분에 불규칙하게 남아있는 어두운 얼룩 자국"
+  ],
+  "howToTest": [
+    "전자책 리더기나 E-Ink 태블릿에서 Screen Tester의 'E-Ink 리프레시 도구'를 실행합니다",
+    "전체 화면 흑백 반전 펄스가 교차 점멸하는 딥 리프레시 사이클을 가동합니다",
+    "완료 후 바탕에 남아있던 모든 텍스트 그림자가 깨끗하게 지워졌는지 확인합니다"
+  ],
+  "whatScreenTesterCanObserve": [
+    "전자종이 입자 정렬을 유도하는 고대비 흑백 반전 플래시 패턴 재생",
+    "흐릿한 잔상 제거 및 텍스트 획의 선명도 복원 지원"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "E-Ink 컨트롤러 칩에 내장된 고유 하드웨어 웨이브폼(Waveform) 테이블",
+    "극저온 환경으로 인한 캡슐 내부 유체의 물리적 점도 변화"
+  ],
+  "commonCauses": [
+    "반응 속도를 높이기 위해 입자 정렬을 생략하는 고속 모드(A2 모드 등)의 지속 사용",
+    "주변 온도가 너무 낮아 유체 내 입자 이동 속도가 느려진 경우",
+    "전체 화면 리프레시 주기 없이 오랫동안 페이지를 넘기며 읽은 경우"
+  ],
+  "whatToDoNext": [
+    "E-Ink 리프레시 도구를 통해 흑백 반전을 2~3회 실행하여 입자 위치 리셋",
+    "리더기 설정에서 5~10페이지마다 주기적인 전체 화면 새로고침 활성화",
+    "입자의 원활한 이동을 위해 적정 실내 온도(18°C~25°C) 환경에서 사용"
+  ],
+  "sections": [
+    {
+      "title": "전자종이(E-Ink) 잔상 현상, 전기영동과 화면 리프레시 원리",
+      "content": [
+        "E-Ink 잔상(Ghosting)은 마이크로캡슐 내부의 흑백 미세 입자가 잔류 전하로 인해 원래 위치로 완전히 이동하지 못해, 이전에 표시되었던 글자나 메뉴의 흐릿한 잔영이 배경에 남는 현상입니다.",
+        "자체 발광형 패널과 달리 E-Ink는 유체 속 입자의 물리적 이동을 이용하므로, 주기적인 반전 리프레시가 없으면 흰색 배경이 탁해지고 텍스트 명암비가 급격히 떨어져 가독성이 저하됩니다."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "E-Ink 잔상은 OLED 번인처럼 영구적인 손상인가요?",
+      "answer": "아닙니다. 완전히 가역적입니다. 발광 소자가 탄 것이 아니라 물리적 입자가 중간에 걸려있는 것이므로, 반전 신호를 주면 본래의 깨끗한 흰색으로 완벽히 복원됩니다."
+    },
+    {
+      "question": "책장을 넘길 때 화면이 왜 흑백으로 번쩍거리나요?",
+      "answer": "하드웨어가 의도적으로 실행하는 초기화 동작입니다. 모든 검은 입자와 흰 입자를 반대로 강하게 밀어내어 잔류 전하 흔적을 지우는 필수 과정입니다."
+    }
+  ],
+  "relatedTestIds": [
+    "eink-refresh-tool",
+    "text-clarity-test",
+    "contrast-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "eink-ghosting-slow-refresh"
+  ],
+  "relatedArticleSlugs": [
+    "text-clarity-and-subpixel-rendering",
+    "contrast-ratio-and-black-levels"
+  ],
+  "primarySearchIntent": "e-ink ghosting refresh tool waveform residual image electronic paper",
+  "readingTimeMinutes": 5
+}
 ];

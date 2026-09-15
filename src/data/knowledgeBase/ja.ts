@@ -4514,5 +4514,496 @@ export const JA_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     ],
     "primarySearchIntent": "monitor test patterns calibration grid checkerboard visual inspection",
     "readingTimeMinutes": 5
-  }
+  },
+{
+  "slug": "oled-auto-brightness-limiter-abl",
+  "category": "display-problems",
+  "title": "OLED自動輝度リミッター（ABL）と画面減光の仕組み",
+  "subtitle": "発熱と焼き付きを防ぐABL回路の役割と、白ウィンドウ拡大時の減光現象。",
+  "description": "OLEDのABL（自動輝度リミッター）の仕組み、ウィンドウサイズに応じた輝度低下の理由、1%〜100%ウィンドウでの減光測定方法を解説します。",
+  "directAnswer": "Auto-Brightness Limiter（ABL）は、OLEDおよびQD-OLEDディスプレイに組み込まれた保護機構で、高輝度白表示領域（APL）の増加に伴い全体の輝度を自動制御して過熱を防ぎます。",
+  "whyItMatters": "過度なABLが作動すると、白いブラウザウィンドウを拡大した際や文書作業中に急激に画面が暗くなり、視認性低下や集中力の阻害につながります。",
+  "whatToLookFor": [
+    "白いウィンドウを最大化した際の急激な明るさの低下",
+    "ダークモードから白いページへ切り替えた時の自動減光",
+    "ウィンドウの移動に伴うチラつくような輝度変動"
+  ],
+  "howToTest": [
+    "Screen Testerの「OLED ABLテスト」を開きます",
+    "1%、10%、50%、100%のウィンドウサイズを順次切り替えます",
+    "全画面表示時に中心の白が目視で暗くなるか確認します"
+  ],
+  "whatScreenTesterCanObserve": [
+    "1%〜100%の標準化されたウィンドウサイズでの輝度変化の視覚的比較",
+    "静止白画面と動的サイズ変更時における減光挙動"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "専用測光器なしでの絶対nit値（カンデラ）の正確な測定",
+    "パネル内部の電源負荷および温度センサー情報"
+  ],
+  "commonCauses": [
+    "有機EL素子の熱劣化および早期焼き付きを防止する保護設計",
+    "省電力規格および電源ユニットの最大出力制限"
+  ],
+  "whatToDoNext": [
+    "モニターのOSD設定で「均一輝度（Uniform Brightness）」モードを有効にする",
+    "SDR輝度を150〜200nits程度に抑えてABL作動域を回避する",
+    "OSやアプリでダークモードを活用して平均画面輝度を下げる"
+  ],
+  "sections": [
+    {
+      "title": "OLED自動輝度リミッター（ABL）と画面減光の仕組み",
+      "content": [
+        "Auto-Brightness Limiter（ABL）は、OLEDおよびQD-OLEDディスプレイに組み込まれた保護機構で、高輝度白表示領域（APL）の増加に伴い全体の輝度を自動制御して過熱を防ぎます。",
+        "過度なABLが作動すると、白いブラウザウィンドウを拡大した際や文書作業中に急激に画面が暗くなり、視認性低下や集中力の阻害につながります。"
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "なぜ全画面で白を表示すると暗くなるのですか？",
+      "answer": "OLEDは何百万もの画素が個別に発光するため、全画面白表示時の過熱と過負荷を防ぐ目的でABLが自動減光を行います。"
+    },
+    {
+      "question": "ABLをオフにすることはできますか？",
+      "answer": "一部のモニターには「均一輝度モード」が搭載されており、最高輝度を一定に抑えることで明るさの変動を完全になくすことができます。"
+    }
+  ],
+  "relatedTestIds": [
+    "oled-abl-test",
+    "brightness-test",
+    "hdr-peak-brightness-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "oled-abl-blooming-hdr-peak"
+  ],
+  "relatedArticleSlugs": [
+    "oled-burn-in-causes-and-prevention",
+    "hdr-standards-and-performance"
+  ],
+  "primarySearchIntent": "oled abl auto brightness limiter monitor dimming window size test",
+  "readingTimeMinutes": 5
+},
+{
+  "slug": "new-monitor-acceptance-tolerances",
+  "category": "browser-and-testing",
+  "title": "新品モニター初期不良基準：ドット抜け・光漏れ・返品期限",
+  "subtitle": "販売店の初期不良返品期間内に確認すべきディスプレイ品質検査チェックリスト。",
+  "description": "新品モニターのドット抜け、バックライト漏れ、色ムラを初期不良対応期間内に見極める実践的チェック手順を解説します。",
+  "directAnswer": "新品モニターの受け入れ検査とは、購入後の初期不良対応期間（通常14〜30日間）内に、ドット抜け、バックライト漏れ、色ムラ、外装不良を網羅的に確認する作業です。",
+  "whyItMatters": "販売店の初期不良対応期間中であれば無条件での返品・交換が容易ですが、期間終了後はメーカー保証（ISO 9241-307）の規定が適用され、数個のドット抜けでは無償交換の対象外となります。",
+  "whatToLookFor": [
+    "黒・白・赤・緑・青の単色画面における輝点、黒点、スタックピクセル",
+    "暗室での黒画面表示時に四隅やフレーム付近から白く漏れる光（バックライト漏れ）",
+    "画面左右での色温度の違い（左側が赤っぽく、右側が緑っぽいなど）"
+  ],
+  "howToTest": [
+    "Screen Testerの「新品モニター初期検査ウィザード」を開始します",
+    "ドット抜け、均一性、バックライト、文字の鮮明さを順次チェックします",
+    "検査完了後に「ディスプレイ検査証明書」を発行して記録します"
+  ],
+  "whatScreenTesterCanObserve": [
+    "全画面単色背景およびグラデーションを用いた構造化検査",
+    "欠陥個所の記録とデジタル検査証明書の発行"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "配送時の落下や衝撃センサーの診断",
+    "各販売店の個別の返品・交換判断"
+  ],
+  "commonCauses": [
+    "半導体製造工程における薄膜トランジスタ（TFT）の微細な欠陥",
+    "組立時のベゼル圧着の偏りによる導光板の歪み"
+  ],
+  "whatToDoNext": [
+    "明確な輝点や強い光漏れを発見した場合は、初期不良期間内に速やかに販売店へ交換申請を行う",
+    "外箱、緩衝材、付属品一式を捨てずに保管しておく",
+    "Screen Testerの発行した検査証明書を証拠資料として保存する"
+  ],
+  "sections": [
+    {
+      "title": "新品モニター初期不良基準：ドット抜け・光漏れ・返品期限",
+      "content": [
+        "新品モニターの受け入れ検査とは、購入後の初期不良対応期間（通常14〜30日間）内に、ドット抜け、バックライト漏れ、色ムラ、外装不良を網羅的に確認する作業です。",
+        "販売店の初期不良対応期間中であれば無条件での返品・交換が容易ですが、期間終了後はメーカー保証（ISO 9241-307）の規定が適用され、数個のドット抜けでは無償交換の対象外となります。"
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "ドット抜けが何個あれば交換できますか？",
+      "answer": "一般的なISO基準（クラス2）では輝点2個、黒点5個程度までは許容範囲とされます。ただし、販売店の初期不良保証期間内であれば理由を問わず交換可能な場合が多いです。"
+    },
+    {
+      "question": "IPSパネルの四隅が白く光るのは故障ですか？",
+      "answer": "視点を変えると見え方が変わるものは「IPSグロー（視野角特性）」であり正常です。どの角度から見ても同じ場所が白く光っている場合は「バックライト漏れ」です。"
+    }
+  ],
+  "relatedTestIds": [
+    "new-monitor-wizard",
+    "dead-pixel-test",
+    "backlight-bleed-test",
+    "uniformity-test",
+    "display-certificate"
+  ],
+  "relatedTroubleshootingIds": [
+    "monitor-setup-bandwidth-calibration"
+  ],
+  "relatedArticleSlugs": [
+    "dead-stuck-and-bright-pixels",
+    "backlight-bleed-vs-ips-glow"
+  ],
+  "primarySearchIntent": "new monitor inspection checklist dead pixel return policy warranty acceptance testing",
+  "readingTimeMinutes": 6
+},
+{
+  "slug": "color-temperature-d65-white-point",
+  "category": "display-basics",
+  "title": "色温度・ケルビン値とD65標準白色点",
+  "subtitle": "暖色系と寒色系の違い、眼精疲労、基準となる6500K昼光規格の基礎知識。",
+  "description": "ケルビン（K）で表される色温度が画面の色合いに与える影響、D65（6500K）が映像制作標準である理由、正しいホワイトバランス調整法を解説します。",
+  "directAnswer": "色温度とは、ディスプレイが発する光の色味（青みや赤み）を絶対温度ケルビン（K）で表したものです。業界標準のD65白色点は約6500Kであり、平均的な昼の自然光を基準としています。",
+  "whyItMatters": "高すぎる色温度（7500K〜9300K）は青みが強く眼精疲労を招き、低すぎる色温度（5000K以下）は黄色がかって正確な写真・映像編集を妨げます。",
+  "whatToLookFor": [
+    "白い背景や文書が青白く冷たく見える（色温度が高すぎる状態）",
+    "白が黄色やセピア調にくすんで見える（色温度が低すぎる状態）",
+    "マルチモニター環境で左右の画面の白の色合いが明らかに異なる"
+  ],
+  "howToTest": [
+    "Screen Testerの「色温度テスト」を開きます",
+    "5000K、5500K、6500K（D65）、7500K、9300Kの各プリセットを切り替えます",
+    "モニターのOSD設定でRGBゲインを調整し、昼光に近い自然な白に合わせます"
+  ],
+  "whatScreenTesterCanObserve": [
+    "黒体放射スペクトルに基づく標準ケルビン値の視覚的シミュレーション",
+    "暖色系・D65標準・寒色系白色点の並列比較"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "専用測色器なしでの厳密な色差（ΔE）の数値測定",
+    "使用環境における室内照明の色温度の影響"
+  ],
+  "commonCauses": [
+    "店頭展示で見栄えを良くするため、工場出荷時設定が青み寄り（7500K〜9300K）になっている",
+    "OSの「夜間モード」や「True Tone」による自動色温度補正"
+  ],
+  "whatToDoNext": [
+    "モニターのOSD設定で「暖色（Warm）」または「6500K」を選択する",
+    "正確な色評価を行う際は、OSの自動ブルーライト軽減機能をオフにする",
+    "電源投入後30分程度放置してバックライトを安定させてから調整する"
+  ],
+  "sections": [
+    {
+      "title": "色温度・ケルビン値とD65標準白色点",
+      "content": [
+        "色温度とは、ディスプレイが発する光の色味（青みや赤み）を絶対温度ケルビン（K）で表したものです。業界標準のD65白色点は約6500Kであり、平均的な昼の自然光を基準としています。",
+        "高すぎる色温度（7500K〜9300K）は青みが強く眼精疲労を招き、低すぎる色温度（5000K以下）は黄色がかって正確な写真・映像編集を妨げます。"
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "なぜD65（6500K）が世界基準なのですか？",
+      "answer": "正午の自然な太陽光のスペクトルを再現しており、sRGBやRec.709などの主要映像規格がすべてD65を基準に設計されているためです。"
+    },
+    {
+      "question": "色温度を下げると目の疲れが軽減されますか？",
+      "answer": "はい。暖色寄りに設定することでエネルギーの強いブルーライト放射が減少し、長時間の作業での目の負担が大幅に和らぎます。"
+    }
+  ],
+  "relatedTestIds": [
+    "color-temperature-test",
+    "white-level-test",
+    "color-test",
+    "color-accuracy-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "color-calibration-issues"
+  ],
+  "relatedArticleSlugs": [
+    "color-gamut-coverage",
+    "contrast-ratio-and-black-levels"
+  ],
+  "primarySearchIntent": "color temperature monitor d65 6500k kelvin white point calibration",
+  "readingTimeMinutes": 5
+},
+{
+  "slug": "temporal-dithering-and-frc",
+  "category": "display-problems",
+  "title": "時間的ディザリング・FRC（Frame Rate Control）と眼精疲労",
+  "subtitle": "6-bit+FRCや8-bit+FRCが色深度を擬似再現する仕組みと、高速明滅が引き起こす目の疲れ。",
+  "description": "時間的ディザリング（FRC）の仕組み、画素の高速点滅による階調表現、敏感なユーザーが経験する頭痛や眼精疲労の原因を解説します。",
+  "directAnswer": "時間的ディザリング（FRC / Frame Rate Control）は、フレームごとに隣接する2色を微細画素で高速に切り替え表示（明滅）させることで、人間の目の残像効果を利用して中間色を擬似再現する技術です。",
+  "whyItMatters": "安価な6-bitや8-bitパネルで1670万色〜10億色を表現できる利点がある一方、目に見えない高速な画素振動が敏感なユーザーに偏頭痛、眼精疲労、めまいを引き起こすことがあります。",
+  "whatToLookFor": [
+    "グレーや中間色のベタ塗り部分で、ザラザラとした微細なノイズが蠢いて見える",
+    "特定のディスプレイを使用すると、短時間で目の奥の痛みや頭痛が生じる",
+    "スマホのスローモーション撮影で画面を写すと、微細なチラつきが確認できる"
+  ],
+  "howToTest": [
+    "Screen Testerの「時間的ディザリングテスト」を開きます",
+    "微細な市松模様や中間調グレーのテストパターンを等倍（100%）で確認します",
+    "画素の境界や階調移行部で微小な振動やチラつきが生じていないか注視します"
+  ],
+  "whatScreenTesterCanObserve": [
+    "FRCの切り替え周波数に干渉しやすい高密度パターンでの視覚的検証",
+    "空間・時間ディザリングが引き起こすモアレやチラつきの再現"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "GPUグラフィックドライバ内部のディザリング有効化レジスタの状態",
+    "モニター内部のT-Conチップの独自アルゴリズム"
+  ],
+  "commonCauses": [
+    "モニターが「6-bit+FRC」や「8-bit+FRC」の擬似階調パネルを採用している",
+    "GPUドライバがバンディング防止のために自動でディザリング出力を強制している"
+  ],
+  "whatToDoNext": [
+    "目の疲労や頭痛を感じやすい場合は、「ネイティブ8-bit」または「ネイティブ10-bit」パネルを選ぶ",
+    "GPU設定で出力色深度をモニターの物理スペックと正確に一致させる",
+    "部屋の照明を明るく保ち、瞳孔が開きすぎてチラつきを過剰に感知するのを防ぐ"
+  ],
+  "sections": [
+    {
+      "title": "時間的ディザリング・FRC（Frame Rate Control）と眼精疲労",
+      "content": [
+        "時間的ディザリング（FRC / Frame Rate Control）は、フレームごとに隣接する2色を微細画素で高速に切り替え表示（明滅）させることで、人間の目の残像効果を利用して中間色を擬似再現する技術です。",
+        "安価な6-bitや8-bitパネルで1670万色〜10億色を表現できる利点がある一方、目に見えない高速な画素振動が敏感なユーザーに偏頭痛、眼精疲労、めまいを引き起こすことがあります。"
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "FRCが使われているかスペック表で見分ける方法は？",
+      "answer": "仕様表の表示色数で「約1677万色（6bit+FRC）」や「約10億7374万色（8bit+FRC）」と書かれているか確認します。完全なネイティブパネルは「Native 10-bit」等と明記されます。"
+    },
+    {
+      "question": "ソフトウェア側でディザリングを無効化できますか？",
+      "answer": "Linuxではドライバオプションで無効化可能な場合があります。WindowsではGPUドライバのユーティリティや有志ツールを活用する必要があります。"
+    }
+  ],
+  "relatedTestIds": [
+    "temporal-dithering-test",
+    "pixel-inversion-test",
+    "color-banding-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "temporal-dithering-pixel-inversion"
+  ],
+  "relatedArticleSlugs": [
+    "pwm-dimming-and-screen-flicker",
+    "pixel-inversion-and-vcom"
+  ],
+  "primarySearchIntent": "temporal dithering frc eye strain headache frame rate control pixel flicker",
+  "readingTimeMinutes": 6
+},
+{
+  "slug": "hdr-peak-brightness-and-tone-mapping",
+  "category": "tv-and-display-setup",
+  "title": "HDRピーク輝度・ウィンドウ測定とトーンマッピング",
+  "subtitle": "1%〜100%ウィンドウでの輝度測定、ハイライト表現、HDR10における白飛び限界。",
+  "description": "HDRピーク輝度の測定法、小面積ハイライトと全画面白表示の違い、トーンマッピングが白飛びやコントラスト低下を防ぐ仕組みを解説します。",
+  "directAnswer": "HDRピーク輝度とは、ディスプレイが小さなハイライト領域（画面全体の2%〜10%のウィンドウ）において瞬間的に出力できる最大輝度（nitまたはcd/m²）を指します。",
+  "whyItMatters": "ローカルディミングのない低価格な「HDR400」モニターでは黒が浮いて画面全体が白っぽくなり、高性能なMini-LEDやOLEDでも適切なトーンマッピングがないと雲や光芒が白飛びしてディテールが消失します。",
+  "whatToLookFor": [
+    "太陽光や爆発などの高輝度部でテクスチャが失われ、真っ白に塗りつぶされる（白飛び）",
+    "WindowsでHDRをオンにした瞬間にデスクトップ全体が白っぽくかすむ現象",
+    "小さな光から明るい風景へ切り替わった際の急激な明るさの低下"
+  ],
+  "howToTest": [
+    "OSの設定でHDR表示が有効になっていることを確認します",
+    "Screen Testerの「HDRピーク輝度テスト」を起動します",
+    "1%、5%、10%、100%のウィンドウサイズで白のグラデーションが識別できる限界を観察します"
+  ],
+  "whatScreenTesterCanObserve": [
+    "ブラウザのHDRカラーマネジメントを介した高輝度テストパッチの描画",
+    "白飛び（クリッピング）が発生する輝度境界の視覚的確認"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "外部光学測光器なしでの物理的nit値の直接測定",
+    "Dolby Vision等の動的メタデータ処理エンジンの内部動作"
+  ],
+  "commonCauses": [
+    "モニターがエッジライト型で個別調光（ローカルディミング）に対応していない",
+    "Windows HDR Calibrationによるピーク輝度プロファイルが未設定",
+    "モニターのトーンマッピングがクリッピング重視に設定されている"
+  ],
+  "whatToDoNext": [
+    "Microsoft Storeから「Windows HDR Calibration」アプリを実行して適正化する",
+    "ゲームプレイ時はモニターのHDR設定で「HGiG」または「カスタム」を選ぶ",
+    "部屋の照明を調整して暗室に近い環境を作り、ダイナミックレンジの知覚を高める"
+  ],
+  "sections": [
+    {
+      "title": "HDRピーク輝度・ウィンドウ測定とトーンマッピング",
+      "content": [
+        "HDRピーク輝度とは、ディスプレイが小さなハイライト領域（画面全体の2%〜10%のウィンドウ）において瞬間的に出力できる最大輝度（nitまたはcd/m²）を指します。",
+        "ローカルディミングのない低価格な「HDR400」モニターでは黒が浮いて画面全体が白っぽくなり、高性能なMini-LEDやOLEDでも適切なトーンマッピングがないと雲や光芒が白飛びしてディテールが消失します。"
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "ピーク輝度と持続輝度の違いは何ですか？",
+      "answer": "ピーク輝度は画面の一部（例：5%の領域）で瞬間的に出せる最高輝度（1000nitなど）です。持続輝度は全画面白表示時に熱暴走を起こさず維持できる輝度（250〜400nitなど）を指します。"
+    },
+    {
+      "question": "安価なモニターでHDRにすると黒が浮くのはなぜですか？",
+      "answer": "画面全体を一括で明るくするバックライト方式のため、明るい部分を出そうとすると本来黒い部分まで光が漏れてしまうためです。"
+    }
+  ],
+  "relatedTestIds": [
+    "hdr-peak-brightness-test",
+    "hdr-test",
+    "hdr-capability-test",
+    "oled-abl-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "oled-abl-blooming-hdr-peak",
+    "hdr-not-working"
+  ],
+  "relatedArticleSlugs": [
+    "hdr-standards-and-performance",
+    "contrast-ratio-and-black-levels"
+  ],
+  "primarySearchIntent": "hdr peak brightness 1000 nits tone mapping highlight clipping test",
+  "readingTimeMinutes": 5
+},
+{
+  "slug": "audio-latency-and-buffer-pipeline",
+  "category": "device-and-input",
+  "title": "音声レイテンシ・Web Audioパイプラインと音ズレ（リップシンク）",
+  "subtitle": "OSのバッファ遅延、Bluetooth A2DPコーデック遅延、映像と音声の同期ズレ解消法。",
+  "description": "音声の遅延や映像とのズレ（リップシンク問題）の原因、ブラウザのWeb Audio APIによるバッファ測定、Bluetoothや外部スピーカーの改善策を解説します。",
+  "directAnswer": "音声レイテンシ（Audio Latency）とは、ソフトウェアが音声を再生するトリガーを引いてから、実際にスピーカーやイヤホンの振動板から音波として出力されるまでの遅延時間（ミリ秒）です。",
+  "whyItMatters": "音声遅延が大きいと、FPSなどのゲームで銃声や足音の察知が遅れて致命的になるほか、動画鑑賞時の口の動きと声のズレ、楽器演奏アプリでの違和感につながります。",
+  "whatToLookFor": [
+    "映画や動画で人物の口の動きとセリフの音声が一致しない（音ズレ）",
+    "ゲームでボタンを押してから効果音が鳴るまでにワンテンポ遅れを感じる",
+    "キーボードや画面をタップした際の打鍵音のレスポンスが鈍い"
+  ],
+  "howToTest": [
+    "Screen Testerの「音声レイテンシテスト」を実行します",
+    "画面の閃光リングと同期して鳴るビープ音のタイミングを聴き取ります",
+    "Web Audio APIが検出したバッファサイズとベース出力遅延（ミリ秒）を確認します"
+  ],
+  "whatScreenTesterCanObserve": [
+    "ブラウザのオーディオエンジンが報告する基本遅延および出力遅延",
+    "ハードウェアバッファサイズ（256や512サンプル）およびサンプリングレート"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "遠くに設置したサラウンドスピーカーからの空気中での音波伝播時間",
+    "Bluetoothチップ内部でのコーデック（SBC/AACなど）圧縮・伸張遅延の実測値"
+  ],
+  "commonCauses": [
+    "標準的なBluetooth接続（SBCやAACコーデックは150〜250msの遅延が発生）",
+    "OSのオーディオ拡張機能（Windows SonicやDolby Atmos、イコライザー）",
+    "音飛びを防ぐためにOSやサウンドカード側でバッファサイズが大きく設定されている"
+  ],
+  "whatToDoNext": [
+    "タイミングがシビアなゲームでは有線（3.5mm/USB）または2.4GHz無線ドングルを使用する",
+    "Windowsのサウンド設定で「オーディオの拡張機能」をオフにする",
+    "VLCなどの動画プレーヤーで音声同期ショートカット（J/Kキー）を使って調整する"
+  ],
+  "sections": [
+    {
+      "title": "音声レイテンシ・Web Audioパイプラインと音ズレ（リップシンク）",
+      "content": [
+        "音声レイテンシ（Audio Latency）とは、ソフトウェアが音声を再生するトリガーを引いてから、実際にスピーカーやイヤホンの振動板から音波として出力されるまでの遅延時間（ミリ秒）です。",
+        "音声遅延が大きいと、FPSなどのゲームで銃声や足音の察知が遅れて致命的になるほか、動画鑑賞時の口の動きと声のズレ、楽器演奏アプリでの違和感につながります。"
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "実用上問題のない音声レイテンシの目安は？",
+      "answer": "20ms以下は人間が知覚できず理想的です。50ms以下であれば通常の動画視聴で問題ありません。100msを超えると明らかな音ズレを感じるようになります。"
+    },
+    {
+      "question": "Bluetoothイヤホンで必ず音ズレが起こるのはなぜ？",
+      "answer": "音声をデジタル圧縮してパケット化し、電波で送信した後にイヤホン側でバッファリングと復号を行う処理時間がかかるためです。"
+    }
+  ],
+  "relatedTestIds": [
+    "audio-latency-test",
+    "audio-sync-test",
+    "speaker-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "audio-video-sync-latency"
+  ],
+  "relatedArticleSlugs": [
+    "input-lag-vs-response-time",
+    "refresh-rate-and-motion-clarity"
+  ],
+  "primarySearchIntent": "audio latency test sound lag bluetooth delay a2dp lip sync web audio buffer",
+  "readingTimeMinutes": 5
+},
+{
+  "slug": "e-ink-screen-refresh-and-ghosting",
+  "category": "display-problems",
+  "title": "E-Inkディスプレイの残像（ゴースト）・電気泳動とリフレッシュ波形",
+  "subtitle": "電子ペーパーに残像が発生する理由と、反転フラッシュパルスによる粒子リセットの仕組み。",
+  "description": "E-Ink（電子ペーパー）のマイクロカプセル電気泳動の仕組み、文字の残像が蓄積する原因、反転リフレッシュによる残像完全除去法を解説します。",
+  "directAnswer": "E-Inkのゴースト（残像）現象は、マイクロカプセル内の微細な顔料粒子が残留静電気によって完全に沈降・浮上しきれず、直前に表示されていた文字や画像の輪郭が薄く残る現象です。",
+  "whyItMatters": "液晶やOLEDと異なり、E-Inkは微粒子が粘性流体中を物理的に移動して表示を切り替えます。定期的な全画面リフレッシュを行わないと背景の白さが損なわれ、文字のコントラストが低下します。",
+  "whatToLookFor": [
+    "ページをめくった後も、前に読んだページの文字やアイコンの薄い影が残る",
+    "スクロールや画面切り替えを繰り返すと背景が灰色にくすみ、文字が読みづらくなる",
+    "余白やグラフィックの周囲に消え残った黒いシミのような跡がある"
+  ],
+  "howToTest": [
+    "電子書籍リーダーやE-InkタブレットのブラウザでScreen Testerの「E-Inkリフレッシュツール」を開きます",
+    "白黒反転パルスを全画面で連続照射するディープリフレッシュを実行します",
+    "背景に残っていたすべての影が消え、文字の輪郭が鮮明に戻るか確認します"
+  ],
+  "whatScreenTesterCanObserve": [
+    "電子ペーパーの粒子整列を促す高コントラスト全画面反転パターンの生成",
+    "残留影の解消と文字エッジコントラストの視覚的復元"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "E-Inkコントローラチップに書き込まれた独自の波形（Waveform）ルックアップテーブル",
+    "極端な低温環境下におけるマイクロカプセル内流体の粘度変化"
+  ],
+  "commonCauses": [
+    "スクロール速度を優先する高速描画モード（A2モードやスピードモード）の多用",
+    "室温が低く、微粒子の泳動速度が低下している場合",
+    "全画面リフレッシュを挟まずに長時間の読書や文書閲覧を継続した場合"
+  ],
+  "whatToDoNext": [
+    "E-Inkリフレッシュツールで数回の白黒反転パルスを実行して粒子位置をリセットする",
+    "端末の設定で5〜10ページごとに1回の頻度で全画面リフレッシュを行うよう設定する",
+    "粒子の良好な流動性を保つため、適正な室温（18℃〜25℃）で使用する"
+  ],
+  "sections": [
+    {
+      "title": "E-Inkディスプレイの残像（ゴースト）・電気泳動とリフレッシュ波形",
+      "content": [
+        "E-Inkのゴースト（残像）現象は、マイクロカプセル内の微細な顔料粒子が残留静電気によって完全に沈降・浮上しきれず、直前に表示されていた文字や画像の輪郭が薄く残る現象です。",
+        "液晶やOLEDと異なり、E-Inkは微粒子が粘性流体中を物理的に移動して表示を切り替えます。定期的な全画面リフレッシュを行わないと背景の白さが損なわれ、文字のコントラストが低下します。"
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "E-Inkの残像はOLEDの焼き付きのように恒久的なものですか？",
+      "answer": "いいえ、完全に回復可能です。素子の劣化ではなく物理粒子の一時的な位置ズレであるため、反転パルスで新品同様の白さに戻ります。"
+    },
+    {
+      "question": "ページめくり時に画面が一瞬白黒に点滅するのはなぜですか？",
+      "answer": "これはハードウェアが意図的に実行しているリセット処理です。全粒子に逆電圧をかけて位置を整列させ、残像を完全に消去するために不可欠な動作です。"
+    }
+  ],
+  "relatedTestIds": [
+    "eink-refresh-tool",
+    "text-clarity-test",
+    "contrast-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "eink-ghosting-slow-refresh"
+  ],
+  "relatedArticleSlugs": [
+    "text-clarity-and-subpixel-rendering",
+    "contrast-ratio-and-black-levels"
+  ],
+  "primarySearchIntent": "e-ink ghosting refresh tool waveform residual image electronic paper",
+  "readingTimeMinutes": 5
+}
 ];

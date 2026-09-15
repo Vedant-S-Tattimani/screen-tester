@@ -3708,5 +3708,496 @@ export const DE_KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
     ],
     "primarySearchIntent": "monitor test patterns calibration grid checkerboard visual inspection",
     "readingTimeMinutes": 5
-  }
+  },
+{
+  "slug": "oled-auto-brightness-limiter-abl",
+  "category": "display-problems",
+  "title": "OLED Auto-Brightness-Limiter (ABL) & Fenster-Dimmung",
+  "subtitle": "Wie ABL-Schaltungen thermische Überlastung verhindern und warum weiße Vollbildfenster abdunkeln.",
+  "description": "Verstehen Sie den OLED ABL (Auto-Brightness Limiter), warum helle Flächen bei Vergrößerung abdunkeln und wie Sie den Helligkeitsabfall von 1% bis 100% testen.",
+  "directAnswer": "Der Auto-Brightness Limiter (ABL) ist eine Hardwareschutzschaltung in OLED- und QD-OLED-Monitoren, die die Gesamthitzebelastung begrenzt, indem sie die Bildhelligkeit bei hohem Weißanteil (APL) drosselt.",
+  "whyItMatters": "Ein aggressiver ABL führt bei Desktop-Arbeiten wie Tabellenkalkulationen oder dem Verschieben weißer Fenster zu störenden Helligkeitssprüngen.",
+  "whatToLookFor": [
+    "Helligkeitsabfall beim Maximieren weißer Programmfenster",
+    "Plötzliche Verdunkelung beim Wechsel von dunklem Inhalt zu hellen Webseiten",
+    "Schwankende Helligkeit bei wechselnder Fenstergröße"
+  ],
+  "howToTest": [
+    "Starten Sie den OLED-ABL-Test in Screen Tester",
+    "Schalten Sie zwischen Fenstergrößen von 1%, 10%, 50% und 100% um",
+    "Beobachten Sie, ob das Weiß bei Vollbild merklich dunkler wird"
+  ],
+  "whatScreenTesterCanObserve": [
+    "Visueller Vergleich über standardisierte Testfenstergrößen von 1% bis 100%",
+    "Verhalten bei statischen und dynamischen Weißflächen"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "Exakte Nit-Werte ohne externes Kolorimeter",
+    "Interne Chiptemperaturen und Stromstärken"
+  ],
+  "commonCauses": [
+    "Schutz der organischen Leuchtdioden vor thermischer Alterung und Burn-In",
+    "Energieregularien und maximale Leistungsgrenzen des integrierten Netzteils"
+  ],
+  "whatToDoNext": [
+    "Aktivieren Sie im OSD den Modus 'Einheitliche Helligkeit' (Uniform Brightness)",
+    "Reduzieren Sie die SDR-Helligkeit auf ca. 150-200 cd/m²",
+    "Nutzen Sie den systemweiten Dark Mode für geringe APL-Werte"
+  ],
+  "sections": [
+    {
+      "title": "OLED Auto-Brightness-Limiter (ABL) & Fenster-Dimmung",
+      "content": [
+        "Der Auto-Brightness Limiter (ABL) ist eine Hardwareschutzschaltung in OLED- und QD-OLED-Monitoren, die die Gesamthitzebelastung begrenzt, indem sie die Bildhelligkeit bei hohem Weißanteil (APL) drosselt.",
+        "Ein aggressiver ABL führt bei Desktop-Arbeiten wie Tabellenkalkulationen oder dem Verschieben weißer Fenster zu störenden Helligkeitssprüngen."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Warum wird mein OLED-Bildschirm bei großen Fenstern dunkler?",
+      "answer": "Weil Vollbild-Weiß sehr viel Energie benötigt. Der ABL regelt die Helligkeit herunter, um Überhitzung zu vermeiden."
+    },
+    {
+      "question": "Kann man den ABL abschalten?",
+      "answer": "Viele Modelle bieten einen Uniform-Brightness-Modus, der die Spitzenhelligkeit auf das Vollbild-Niveau deckelt und so Helligkeitssprünge eliminiert."
+    }
+  ],
+  "relatedTestIds": [
+    "oled-abl-test",
+    "brightness-test",
+    "hdr-peak-brightness-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "oled-abl-blooming-hdr-peak"
+  ],
+  "relatedArticleSlugs": [
+    "oled-burn-in-causes-and-prevention",
+    "hdr-standards-and-performance"
+  ],
+  "primarySearchIntent": "oled abl auto brightness limiter monitor dimming window size test",
+  "readingTimeMinutes": 5
+},
+{
+  "slug": "new-monitor-acceptance-tolerances",
+  "category": "browser-and-testing",
+  "title": "Neumonitor-Prüfung: Pixelfehler, Lichthöfe & Rückgabefristen",
+  "subtitle": "Wichtige Checkliste zur Überprüfung Ihres neuen Monitors vor Ablauf des Rückgaberechts.",
+  "description": "Schritt-für-Schritt-Anleitung zur Prüfung neuer Bildschirme auf Pixelfehler, Backlight-Bleed und Farbhomogenität innerhalb der Widerrufsfrist.",
+  "directAnswer": "Die Neugeräteprüfung umfasst die systematische Untersuchung eines neuen Monitors auf Subpixelfehler, extremes Backlight-Bleed und Farbverfälschungen innerhalb der Händler-Rückgabefrist.",
+  "whyItMatters": "Während der 14- bis 30-tägigen Händlerrückgabefrist können Sie das Gerät ohne Angabe von Gründen umtauschen. Danach greift nur noch die restriktive ISO 9241-307 Fehlerklasse des Herstellers.",
+  "whatToLookFor": [
+    "Tote, leuchtende oder hängende Subpixel auf schwarzem, weißem und farbigem Hintergrund",
+    "Störendes Backlight-Bleeding an den Panel-Rändern in dunkler Umgebung",
+    "Ungleichmäßige Farbtemperatur (z. B. rötlicher linker Rand, grünlicher rechter Rand)"
+  ],
+  "howToTest": [
+    "Starten Sie den Neumonitor-Prüfungs-Assistenten in Screen Tester",
+    "Durchlaufen Sie die geführten Prüfschritte für Pixel, Gleichmäßigkeit, Bewegung und Text",
+    "Erstellen Sie am Ende ein digitales Prüfzertifikat als Nachweis"
+  ],
+  "whatScreenTesterCanObserve": [
+    "Geführte Testabläufe für alle relevanten Panel-Eigenschaften",
+    "Dokumentation von Defekten und Ausgabe eines Inspektionszertifikats"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "Physikalische Stoßbelastung während des Transports",
+    "Kulanzentscheidungen einzelner Händler"
+  ],
+  "commonCauses": [
+    "Herstellungstoleranzen der Subpixel-Transistoren",
+    "Zu hoher Anpressdruck des Gehäuserahmens auf die Diffusorschichten"
+  ],
+  "whatToDoNext": [
+    "Leiten Sie bei Mängeln innerhalb der Widerrufsfrist sofort eine Retoure oder einen Austausch ein",
+    "Bewahren Sie Originalkarton und Polsterung unbeschädigt auf",
+    "Dokumentieren Sie Mängel mit Fotos und dem Screen-Tester-Zertifikat"
+  ],
+  "sections": [
+    {
+      "title": "Neumonitor-Prüfung: Pixelfehler, Lichthöfe & Rückgabefristen",
+      "content": [
+        "Die Neugeräteprüfung umfasst die systematische Untersuchung eines neuen Monitors auf Subpixelfehler, extremes Backlight-Bleed und Farbverfälschungen innerhalb der Händler-Rückgabefrist.",
+        "Während der 14- bis 30-tägigen Händlerrückgabefrist können Sie das Gerät ohne Angabe von Gründen umtauschen. Danach greift nur noch die restriktive ISO 9241-307 Fehlerklasse des Herstellers."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Wie viele Pixelfehler muss ich bei einem neuen Monitor akzeptieren?",
+      "answer": "Nach ISO 9241-307 Klasse 2 gelten bis zu 2 helle und 5 Subpixelfehler als normal. Innerhalb des gesetzlichen Widerrufsrechts können Sie den Monitor dennoch umtauschen."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen IPS-Glow und Backlight-Bleed?",
+      "answer": "IPS-Glow wandert mit dem Betrachtungswinkel. Bleibt der helle Fleck aus jedem Winkel am Rahmen sichtbar, handelt es sich um fehlerhaftes Backlight-Bleed."
+    }
+  ],
+  "relatedTestIds": [
+    "new-monitor-wizard",
+    "dead-pixel-test",
+    "backlight-bleed-test",
+    "uniformity-test",
+    "display-certificate"
+  ],
+  "relatedTroubleshootingIds": [
+    "monitor-setup-bandwidth-calibration"
+  ],
+  "relatedArticleSlugs": [
+    "dead-stuck-and-bright-pixels",
+    "backlight-bleed-vs-ips-glow"
+  ],
+  "primarySearchIntent": "new monitor inspection checklist dead pixel return policy warranty acceptance testing",
+  "readingTimeMinutes": 6
+},
+{
+  "slug": "color-temperature-d65-white-point",
+  "category": "display-basics",
+  "title": "Farbtemperatur, Kelvin-Werte & Der D65-Weißpunkt",
+  "subtitle": "Warmes vs. kühles Weiß, Augenermüdung und der neutrale 6500K-Tageslichtstandard.",
+  "description": "Erfahren Sie, wie die Farbtemperatur in Kelvin den Bildeindruck prägt, warum D65 (6500K) der Standard ist und wie Sie Ihren Monitor optimal kalibrieren.",
+  "directAnswer": "Die Farbtemperatur beschreibt den Farbton des weißen Lichts eines Monitors in Kelvin (K). Der weltweite Referenzstandard D65 entspricht rund 6500K und bildet neutrales Mittags-Tageslicht nach.",
+  "whyItMatters": "Zu kühle Einstellungen (über 7500K) führen zu einem Blaustich und schneller Augenermüdung, während zu warme Werte (unter 6000K) das Bild vergilbt wirken lassen und die Farbgenauigkeit verfälschen.",
+  "whatToLookFor": [
+    "Weißflächen wirken unangenehm bläulich oder grell (Farbtemperatur zu hoch)",
+    "Dokumente wirken gelblich oder schmutzig (Farbtemperatur zu niedrig)",
+    "Sichtbare Farbunterschiede beim Vergleich zweier Monitore nebeneinander"
+  ],
+  "howToTest": [
+    "Öffnen Sie den Farbtemperatur-Test in Screen Tester",
+    "Vergleichen Sie die Referenzfelder von 5000K bis 9300K mit D65 (6500K)",
+    "Passen Sie die RGB-Verstärkung im Monitor-OSD auf einen neutralen Weißpunkt an"
+  ],
+  "whatScreenTesterCanObserve": [
+    "Visuelle Darstellung genormter Farbtemperaturstufen",
+    "Direkter Vergleich von warmen, neutralen und kühlen Weißpunkten"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "Exakte Delta-E-Abweichungen ohne Kolorimeter",
+    "Einfluss des Umgebungslichts im Raum"
+  ],
+  "commonCauses": [
+    "Werkseitige Voreinstellungen mit hohem Blauanteil für höheren Maximalkontrast im Geschäft",
+    "Aktivierter Nachtmodus oder automatischer Weißabgleich im Betriebssystem"
+  ],
+  "whatToDoNext": [
+    "Stellen Sie im Monitor-Menü die Farbtemperatur auf 'Warm' oder '6500K'",
+    "Deaktivieren Sie automatische Lichttemperaturanpassungen bei Bildbearbeitung",
+    "Lassen Sie den Monitor 30 Minuten vorheizen vor der Feinjustierung"
+  ],
+  "sections": [
+    {
+      "title": "Farbtemperatur, Kelvin-Werte & Der D65-Weißpunkt",
+      "content": [
+        "Die Farbtemperatur beschreibt den Farbton des weißen Lichts eines Monitors in Kelvin (K). Der weltweite Referenzstandard D65 entspricht rund 6500K und bildet neutrales Mittags-Tageslicht nach.",
+        "Zu kühle Einstellungen (über 7500K) führen zu einem Blaustich und schneller Augenermüdung, während zu warme Werte (unter 6000K) das Bild vergilbt wirken lassen und die Farbgenauigkeit verfälschen."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Warum gilt 6500K (D65) als Referenz?",
+      "answer": "D65 simuliert natürliches Tageslicht. Alle gängigen Standards wie sRGB und Rec.709 sind darauf kalibriert."
+    },
+    {
+      "question": "Schont ein wärmeres Weiß die Augen?",
+      "answer": "Ja, wärmere Farbtemperaturen reduzieren den Anteil energiereichen blauen Lichts und mindern die Ermüdung bei langen Bildschirmsitzungen."
+    }
+  ],
+  "relatedTestIds": [
+    "color-temperature-test",
+    "white-level-test",
+    "color-test",
+    "color-accuracy-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "color-calibration-issues"
+  ],
+  "relatedArticleSlugs": [
+    "color-gamut-coverage",
+    "contrast-ratio-and-black-levels"
+  ],
+  "primarySearchIntent": "color temperature monitor d65 6500k kelvin white point calibration",
+  "readingTimeMinutes": 5
+},
+{
+  "slug": "temporal-dithering-and-frc",
+  "category": "display-problems",
+  "title": "Temporäres Dithering, Frame Rate Control (FRC) & Augenbelastung",
+  "subtitle": "Wie 6-Bit+FRC und 8-Bit+FRC tiefere Farbtiefe simulieren und warum schnelles Pixelflimmern Kopfschmerzen auslösen kann.",
+  "description": "Erfahren Sie, wie temporäres Dithering (FRC) Farbverläufe simuliert und warum empfindliche Nutzer unter Flimmern, Augenbrennen und Kopfschmerzen leiden.",
+  "directAnswer": "Temporäres Dithering (Frame Rate Control / FRC) ist ein Verfahren, bei dem Subpixel zwischen zwei Farbtönen mit der Bildwiederholfrequenz wechseln, um dem Auge Zwischentöne vorzutäuschen.",
+  "whyItMatters": "Obwohl FRC günstige 6-Bit- und 8-Bit-Panels aufwertet, kann das ständige mikroskopische Flimmern bei empfindlichen Personen Migräne, Schwindel und Augenbrennen verursachen.",
+  "whatToLookFor": [
+    "Feines Rauschen oder Grieseln auf homogenen grauen oder dunklen Flächen",
+    "Unerklärliche Kopfschmerzen oder Augenschmerzen nach kurzer Nutzungsdauer",
+    "Mikro-Flimmern, das in Zeitlupenaufnahmen eines Smartphones sichtbar wird"
+  ],
+  "howToTest": [
+    "Starten Sie den Temporäres-Dithering-Test in Screen Tester",
+    "Prüfen Sie feine Schachbrettmuster und mittlere Grautöne bei 100% Zoom",
+    "Achten Sie auf unruhige Pixel oder Schimmern auf den Testflächen"
+  ],
+  "whatScreenTesterCanObserve": [
+    "Spezifische Pixelraster, die temporäre Modulationsartefakte sichtbar machen",
+    "Gegenüberstellung von festen und wechselnden Farbstufen"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "Treiber-Register der Grafikkarte (z. B. GPU-seitiges Dithering)",
+    "Genaue T-Con-Chip-Konfiguration des Panels"
+  ],
+  "commonCauses": [
+    "Panel mit 6-Bit+FRC (Pseudo 8-Bit) oder 8-Bit+FRC (Pseudo 10-Bit)",
+    "Grafiktreiber erzwingt Dithering bei begrenzter Übertragungsbandbreite"
+  ],
+  "whatToDoNext": [
+    "Wählen Sie bei Flimmerempfindlichkeit Monitore mit echtem nativem 8-Bit- oder 10-Bit-Panel",
+    "Stellen Sie im Grafiktreiber die native Farbtiefe des Displays ein",
+    "Sorgen Sie für gute Umgebungsbeleuchtung zur Entlastung der Augen"
+  ],
+  "sections": [
+    {
+      "title": "Temporäres Dithering, Frame Rate Control (FRC) & Augenbelastung",
+      "content": [
+        "Temporäres Dithering (Frame Rate Control / FRC) ist ein Verfahren, bei dem Subpixel zwischen zwei Farbtönen mit der Bildwiederholfrequenz wechseln, um dem Auge Zwischentöne vorzutäuschen.",
+        "Obwohl FRC günstige 6-Bit- und 8-Bit-Panels aufwertet, kann das ständige mikroskopische Flimmern bei empfindlichen Personen Migräne, Schwindel und Augenbrennen verursachen."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Woher weiß ich, ob mein Monitor FRC nutzt?",
+      "answer": "Achten Sie auf Bezeichnungen wie '16,7 Mio. Farben (6-Bit + FRC)' oder '1,07 Mrd. Farben (8-Bit + FRC)'. Echte 10-Bit-Panels tragen den Zusatz 'Native 10-Bit'."
+    },
+    {
+      "question": "Lässt sich Dithering per Software abschalten?",
+      "answer": "Unter Linux über Treiberflags, unter Windows teils mit Drittanbieter-Tools für Grafikkarten."
+    }
+  ],
+  "relatedTestIds": [
+    "temporal-dithering-test",
+    "pixel-inversion-test",
+    "color-banding-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "temporal-dithering-pixel-inversion"
+  ],
+  "relatedArticleSlugs": [
+    "pwm-dimming-and-screen-flicker",
+    "pixel-inversion-and-vcom"
+  ],
+  "primarySearchIntent": "temporal dithering frc eye strain headache frame rate control pixel flicker",
+  "readingTimeMinutes": 6
+},
+{
+  "slug": "hdr-peak-brightness-and-tone-mapping",
+  "category": "tv-and-display-setup",
+  "title": "HDR-Spitzenhelligkeit, Fenster-Messung & Tone-Mapping",
+  "subtitle": "Messung von 1% bis 100% Fensterluminanz, Glanzlichtern und Clipping-Grenzen in HDR10.",
+  "description": "Erfahren Sie, wie Monitore HDR-Spitzenglanzlichter im Vergleich zu Vollbildweiß verarbeiten und wie Tone-Mapping verwaschene Farben und überstrahlte Lichter verhindert.",
+  "directAnswer": "Die HDR-Spitzenhelligkeit (in Nits oder cd/m²) beschreibt die maximale Leuchtkraft, die ein Display auf kleinen Bildflächen (z. B. 2% bis 10% Fenstergröße) für spektakuläre Glanzlichter erzeugen kann.",
+  "whyItMatters": "Günstige Bildschirme mit 'HDR400' ohne Local Dimming wirken oft flau und grau, während hochwertige Mini-LED- und OLED-Bildschirme ein präzises Tone-Mapping benötigen, um Details in Wolken oder Explosionen nicht zu überstrahlen.",
+  "whatToLookFor": [
+    "Überstrahlte, strukturlose weiße Flächen bei Sonnenstrahlen oder Scheinwerfern",
+    "Auswaschen von Kontrast und Schwarzwerten bei aktiviertem Windows-HDR",
+    "Starker Helligkeitsabfall beim Wechsel von kleinen Lichtern zu Vollbildszenen"
+  ],
+  "howToTest": [
+    "Aktivieren Sie HDR in den Windows-/macOS-Anzeigeeinstellungen",
+    "Starten Sie den HDR-Spitzenhelligkeits-Test in Screen Tester",
+    "Prüfen Sie, bis zu welcher Stufe Weißabstufungen auf 1%, 10% und 100% Fenstern unterscheidbar bleiben"
+  ],
+  "whatScreenTesterCanObserve": [
+    "Darstellung von Testfeldern mit hohem Dynamikumfang im Browser",
+    "Sichtbare Clipping-Grenzen bei HDR-Farbprofilen"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "Physikalische Lux- und Nit-Messwerte ohne Kolorimeter",
+    "Interne Dolby-Vision-Metadatenverarbeitung"
+  ],
+  "commonCauses": [
+    "Monitor verfügt lediglich über Edge-Lit-Beleuchtung ohne Zonen-Dimmung",
+    "Fehlende oder falsche Kalibrierung im Betriebssystem",
+    "Monitoreigenes Tone-Mapping schneidet helle Werte hart ab (Hard Clipping)"
+  ],
+  "whatToDoNext": [
+    "Verwenden Sie die kostenlose Windows HDR-Kalibrierungs-App",
+    "Wählen Sie im Monitor-OSD Modi wie 'HGIG' für akkurates Gaming-Mapping",
+    "Vermeiden Sie direktes Sonnenlicht auf dem Panel zur Schonung des wahrgenommenen Kontrasts"
+  ],
+  "sections": [
+    {
+      "title": "HDR-Spitzenhelligkeit, Fenster-Messung & Tone-Mapping",
+      "content": [
+        "Die HDR-Spitzenhelligkeit (in Nits oder cd/m²) beschreibt die maximale Leuchtkraft, die ein Display auf kleinen Bildflächen (z. B. 2% bis 10% Fenstergröße) für spektakuläre Glanzlichter erzeugen kann.",
+        "Günstige Bildschirme mit 'HDR400' ohne Local Dimming wirken oft flau und grau, während hochwertige Mini-LED- und OLED-Bildschirme ein präzises Tone-Mapping benötigen, um Details in Wolken oder Explosionen nicht zu überstrahlen."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Was ist der Unterschied zwischen Spitzen- und Dauerhelligkeit?",
+      "answer": "Spitzenhelligkeit ist der maximale Helligkeitswert auf kleinen Fenstern (z. B. 1000 Nits auf 10%). Dauerhelligkeit ist der Wert, den der Bildschirm dauerhaft auf Vollbild halten kann (oft 250-400 Nits)."
+    },
+    {
+      "question": "Warum wird das Bild auf günstigen Monitoren bei HDR grau?",
+      "answer": "Da ohne echtes Local Dimming die gesamte Hintergrundbeleuchtung hochgefahren werden muss, hellt dies auch alle Schwarz- und Schattentöne auf."
+    }
+  ],
+  "relatedTestIds": [
+    "hdr-peak-brightness-test",
+    "hdr-test",
+    "hdr-capability-test",
+    "oled-abl-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "oled-abl-blooming-hdr-peak",
+    "hdr-not-working"
+  ],
+  "relatedArticleSlugs": [
+    "hdr-standards-and-performance",
+    "contrast-ratio-and-black-levels"
+  ],
+  "primarySearchIntent": "hdr peak brightness 1000 nits tone mapping highlight clipping test",
+  "readingTimeMinutes": 5
+},
+{
+  "slug": "audio-latency-and-buffer-pipeline",
+  "category": "device-and-input",
+  "title": "Audio-Latenz, Web-Audio-Pipeline & Bild-Ton-Synchronisation",
+  "subtitle": "Pufferverzögerungen im Betriebssystem, Bluetooth-Latenz und Lip-Sync-Probleme beheben.",
+  "description": "Erfahren Sie, was Tonverzögerungen und Asynchronität verursacht, wie die Web Audio API Puffer misst und wie Sie Bluetooth- und Lautsprecherverzögerungen minimieren.",
+  "directAnswer": "Die Audio-Latenz ist die Zeitspanne (in Millisekunden), die zwischen der softwareseitigen Auslösung eines Tons und der tatsächlichen Schallabgabe durch den Lautsprecher vergeht.",
+  "whyItMatters": "Hohe Audio-Latenzen zerstören das Reaktionsvermögen in Spielen, führen zu asynchronen Lippenbewegungen bei Filmen und erschweren Musikaufnahmen erheblich.",
+  "whatToLookFor": [
+    "Lippenbewegungen passen zeitlich nicht zu den gesprochenen Worten",
+    "Spürbare Verzögerung zwischen Mausklick/Schuss und dem zugehörigen Soundeffekt",
+    "Verzögertes Feedback bei der Bedienung virtueller Instrumente"
+  ],
+  "howToTest": [
+    "Starten Sie den Audio-Latenz-Test in Screen Tester",
+    "Achten Sie auf das Zusammenspiel zwischen akustischem Klick und optischem Blitz",
+    "Lesen Sie die von der Web Audio API ermittelte Basislatenz und Puffergröße ab"
+  ],
+  "whatScreenTesterCanObserve": [
+    "Vom Browser ermittelte Basis- und Ausgabelatenz des Audio-Subsystems",
+    "Pufferrahmen und Abtastraten (z. B. 48.000 Hz bei 256/512 Samples)"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "Schalllaufzeit durch den Raum bei weit entfernten Boxen",
+    "Interne DSP-Kompression im Bluetooth-Kopfhörer-Chip"
+  ],
+  "commonCauses": [
+    "Verwendung von Standard-Bluetooth (SBC/AAC erzeugt oft 150-250 ms Verzögerung)",
+    "Aktivierte Raumklang-Effekte (Dolby Atmos, Windows Sonic) oder Equalizer-Filter",
+    "Zu große Audiopuffer im Betriebssystem"
+  ],
+  "whatToDoNext": [
+    "Nutzen Sie für Gaming kabelgebundene Kopfhörer oder 2,4-GHz-Funk statt Bluetooth",
+    "Deaktivieren Sie Audioverbesserungen in den Windows-Sound-Einstellungen",
+    "Passen Sie in Playern wie VLC die Audiospur-Verzögerung manuell an"
+  ],
+  "sections": [
+    {
+      "title": "Audio-Latenz, Web-Audio-Pipeline & Bild-Ton-Synchronisation",
+      "content": [
+        "Die Audio-Latenz ist die Zeitspanne (in Millisekunden), die zwischen der softwareseitigen Auslösung eines Tons und der tatsächlichen Schallabgabe durch den Lautsprecher vergeht.",
+        "Hohe Audio-Latenzen zerstören das Reaktionsvermögen in Spielen, führen zu asynchronen Lippenbewegungen bei Filmen und erschweren Musikaufnahmen erheblich."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Welche Audio-Latenz gilt als gut?",
+      "answer": "Unter 20 ms ist unmerklich und perfekt. Bis 50 ms ist für die meisten Medien völlig in Ordnung. Ab 100 ms wird die Verzögerung bei Sprache und Spielen störend."
+    },
+    {
+      "question": "Warum haben Bluetooth-Kopfhörer fast immer Tonverzögerung?",
+      "answer": "Weil das Audiosignal vor der Funkübertragung komprimiert, paketiert und im Kopfhörer zwischengespeichert und dekodiert werden muss."
+    }
+  ],
+  "relatedTestIds": [
+    "audio-latency-test",
+    "audio-sync-test",
+    "speaker-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "audio-video-sync-latency"
+  ],
+  "relatedArticleSlugs": [
+    "input-lag-vs-response-time",
+    "refresh-rate-and-motion-clarity"
+  ],
+  "primarySearchIntent": "audio latency test sound lag bluetooth delay a2dp lip sync web audio buffer",
+  "readingTimeMinutes": 5
+},
+{
+  "slug": "e-ink-screen-refresh-and-ghosting",
+  "category": "display-problems",
+  "title": "E-Ink-Display-Ghosting, Elektrophorese & Refresh-Wellenformen",
+  "subtitle": "Warum elektronisches Papier Geisterbilder hinterlässt und wie Schwarz-Weiß-Invertierungspulse Partikel zurücksetzen.",
+  "description": "Verstehen Sie, wie E-Ink-Displays funktionieren, warum Geisterbilder auf E-Readern entstehen und wie manuelle Bildauffrischungen Rückstände restlos entfernen.",
+  "directAnswer": "E-Ink-Ghosting entsteht, wenn mikroskopische Farbpartikel in den Mikrokapseln nach einem Bildwechsel durch Restladungen nicht vollständig verlagert werden und schwache Umrisse vorheriger Seiten sichtbar bleiben.",
+  "whyItMatters": "Da sich E-Ink-Partikel physisch durch eine Flüssigkeit bewegen, nimmt der Textkontrast ohne regelmäßige Rücksetz-Zyklen rapide ab, was das Lesen anstrengend macht.",
+  "whatToLookFor": [
+    "Schwache Schattenrisse vorheriger Buchseiten oder Menüleisten im Hintergrund",
+    "Nachlassendes Weiß und grauer Schleier nach mehrmaligem Scrollen",
+    "Flecken und verwaschene Ränder bei Text und Grafiken"
+  ],
+  "howToTest": [
+    "Öffnen Sie das E-Ink-Auffrischungswerkzeug in Screen Tester auf Ihrem E-Reader",
+    "Starten Sie den Refresh-Zyklus mit abwechselnden Schwarz-Weiß-Vollbildblitzen",
+    "Prüfen Sie, ob die Geisterbilder nach dem Durchlauf vollständig verschwunden sind"
+  ],
+  "whatScreenTesterCanObserve": [
+    "Kontrastreiche Vollbild-Invertierungszyklen zur Partikelrückstellung",
+    "Visuelle Beseitigung von Schattenrissen und Erhöhung des Schriftkontrasts"
+  ],
+  "whatScreenTesterCannotDetermine": [
+    "Interne Wellenformtabellen des proprietären E-Ink-Controllers",
+    "Viskositätsänderungen der Trägerflüssigkeit durch extreme Kälte"
+  ],
+  "commonCauses": [
+    "Nutzung von schnellen Bildmodi (z. B. A2-Modus), die Schnelligkeit vor Sauberkeit stellen",
+    "Niedrige Umgebungstemperaturen, die die Partikelbewegung verlangsamen",
+    "Langes Lesen ohne zwischenzeitliche Vollbild-Auffrischung"
+  ],
+  "whatToDoNext": [
+    "Führen Sie mit dem Refresh-Werkzeug mehrere Invertierungsdurchläufe durch",
+    "Stellen Sie im E-Reader ein, dass alle 5 bis 10 Seiten ein vollständiger Refresh erfolgt",
+    "Nutzen Sie das Gerät bei normaler Raumtemperatur (18 °C bis 25 °C)"
+  ],
+  "sections": [
+    {
+      "title": "E-Ink-Display-Ghosting, Elektrophorese & Refresh-Wellenformen",
+      "content": [
+        "E-Ink-Ghosting entsteht, wenn mikroskopische Farbpartikel in den Mikrokapseln nach einem Bildwechsel durch Restladungen nicht vollständig verlagert werden und schwache Umrisse vorheriger Seiten sichtbar bleiben.",
+        "Da sich E-Ink-Partikel physisch durch eine Flüssigkeit bewegen, nimmt der Textkontrast ohne regelmäßige Rücksetz-Zyklen rapide ab, was das Lesen anstrengend macht."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Ist E-Ink-Ghosting dauerhaft wie OLED-Burn-In?",
+      "answer": "Nein, E-Ink-Ghosting ist vollkommen reversibel. Es handelt sich lediglich um festsitzende Partikel, die durch einige gezielte Invertierungsblitze wieder ausgerichtet werden."
+    },
+    {
+      "question": "Warum flackert der Bildschirm beim Umblättern kurz schwarz auf?",
+      "answer": "Dieses Flackern ist gewollt. Es polt alle Mikrokapseln um, löscht Partikelrückstände und sorgt für gestochen scharfen Neuanfang."
+    }
+  ],
+  "relatedTestIds": [
+    "eink-refresh-tool",
+    "text-clarity-test",
+    "contrast-test"
+  ],
+  "relatedTroubleshootingIds": [
+    "eink-ghosting-slow-refresh"
+  ],
+  "relatedArticleSlugs": [
+    "text-clarity-and-subpixel-rendering",
+    "contrast-ratio-and-black-levels"
+  ],
+  "primarySearchIntent": "e-ink ghosting refresh tool waveform residual image electronic paper",
+  "readingTimeMinutes": 5
+}
 ];

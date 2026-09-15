@@ -872,5 +872,618 @@ export const JA_TROUBLESHOOTING_TOPICS: TroubleshootingTopic[] = [
       "マザーボードのオーディオドライバを更新"
     ],
     "whenToStop": "複数の端子や別PCに接続しても一切の入力波形が確認できない場合は、マイクカプセルの故障または断線です。"
-  }
+  },
+{
+  "id": "burn-in-image-retention",
+  "title": "OLED焼き付き（Burn-In）・残像・固定UIゴースト",
+  "category": "pixels",
+  "categoryTitle": "画素・ピクセルの問題",
+  "symptom": "タスクバー、ゲームのHUD、ウィンドウの枠線などの薄い影が、画面を切り替えても消えずに残り続ける。",
+  "possibleCauses": [
+    "高輝度での固定UIや静止画の数百時間に及ぶ連続表示",
+    "OLED/QD-OLED有機EL素子の不均一な発光劣化と熱摩耗",
+    "液晶（LCD/IPS）パネルにおける一時的な電圧保持による残像"
+  ],
+  "checks": [
+    "5%および50%のグレーや単色全画面を表示して焼き付きの輪郭を確認",
+    "動きのある映像を15分間流して残像が薄くなるか検証（一時的残像か恒久的焼き付きか）",
+    "OSDで使用時間（稼働時間）を確認"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Testerは全画面単色・グレーパターンで焼き付きの影を可視化し、「OLED焼き付き計算機」でリスクを診断します。",
+    "links": [
+      {
+        "label": "焼き付きテスト",
+        "testId": "burn-in-test",
+        "testPath": "/tests/burn-in-test"
+      },
+      {
+        "label": "OLED焼き付き計算機",
+        "testId": "oled-burn-in-calculator",
+        "testPath": "/tools/oled-burn-in-calculator"
+      },
+      {
+        "label": "単色全画面テスト",
+        "testId": "solid-color-test",
+        "testPath": "/tests/solid-color-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "有機EL素子の物理的な劣化深度"
+  ],
+  "actions": [
+    "モニターのOSDから手動で「ピクセルリフレッシュ（パネルメンテナンス）」を実行する",
+    "OSのタスクバーを自動的に隠す設定にし、SDR表示時の輝度を下げる",
+    "無操作5分で画面オフまたは動的スクリーンセーバーが起動するよう設定する"
+  ],
+  "whenToStop": "リフレッシュサイクルを複数回実行しても輪郭が消えない場合、恒久的な焼き付きのためパネル交換が必要です。"
+},
+{
+  "id": "temporal-dithering-pixel-inversion",
+  "title": "時間的ディザリング（FRC）と画素反転（Pixel Inversion）チラつき",
+  "category": "pixels",
+  "categoryTitle": "画素・ピクセルの問題",
+  "symptom": "中間色やグレーの画面で微細なチラつき、ザラつき、または短時間の使用で激しい目の奥の痛みや頭痛が生じる。",
+  "possibleCauses": [
+    "FRC技術によるフレームごとの高速階調切り替え",
+    "液晶素子のVCOM極性反転の電圧アンバランスによる微細パターンの振動",
+    "GPUグラフィックドライバによる強制ディザリング出力"
+  ],
+  "checks": [
+    "1画素の微細な市松模様やストライプでの明滅・這い出し現象を確認",
+    "リフレッシュレートを60Hz、120Hz、144Hzと切り替えて変化を比較",
+    "スマートフォンの高速度撮影（スローモーション）で画面の振動を確認"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Testerは画素反転チェックパターンとFRC検出用テストグリッドを用いて、微小画素の振動とチラつきを検証します。",
+    "links": [
+      {
+        "label": "画素反転テスト",
+        "testId": "pixel-inversion-test",
+        "testPath": "/tests/pixel-inversion-test"
+      },
+      {
+        "label": "時間的ディザリングテスト",
+        "testId": "temporal-dithering-test",
+        "testPath": "/tests/temporal-dithering-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "液晶VCOMトリム抵抗の物理電圧値"
+  ],
+  "actions": [
+    "OSの設定でリフレッシュレートを変更してみる",
+    "GPUコントロールパネルで出力色深度をモニターの物理仕様と一致させる",
+    "光過敏や偏頭痛がある場合はネイティブ8bit/10bitディスプレイを選択する"
+  ],
+  "whenToStop": "めまいや吐き気を感じた場合は直ちに画面から目を離して休憩してください。"
+},
+{
+  "id": "color-calibration-issues",
+  "title": "色域クランプ・色温度とカラーキャリブレーションの不一致",
+  "category": "imageQuality",
+  "categoryTitle": "画質・色の問題",
+  "symptom": "肌色が緑っぽく見える、赤色が蛍光色のように過飽和する、あるいはアプリごとに色味が激しく異なる。",
+  "possibleCauses": [
+    "広色域（DCI-P3/AdobeRGB）モニターでsRGBへの制限（クランプ）が行われていない",
+    "OSのカラーマネジメントにおける破損したICCプロファイルの競合",
+    "モニターの工場出荷時色温度やガンマ設定の狂い"
+  ],
+  "checks": [
+    "標準カラーパッチを表示して原色が不自然に強調されていないか確認",
+    "白い背景にピンクや緑の不快な色被りがないか確認",
+    "OSのカラー設定で適用されているデフォルトプロファイルを確認"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Testerは色域判定テスト、標準カラーチェッカー風の精度確認、飽和度段階、D65白色点比較を提供します。",
+    "links": [
+      {
+        "label": "色域テスト",
+        "testId": "color-gamut-test",
+        "testPath": "/tests/color-gamut-test"
+      },
+      {
+        "label": "色精度テスト",
+        "testId": "color-accuracy-test",
+        "testPath": "/tests/color-accuracy-test"
+      },
+      {
+        "label": "色温度テスト",
+        "testId": "color-temperature-test",
+        "testPath": "/tests/color-temperature-test"
+      },
+      {
+        "label": "彩度・飽和度テスト",
+        "testId": "saturation-test",
+        "testPath": "/tests/saturation-test"
+      },
+      {
+        "label": "色覚テスト",
+        "testId": "color-blindness-test",
+        "testPath": "/tests/color-blindness-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "測色器なしでのΔE値の計測"
+  ],
+  "actions": [
+    "通常のWebブラウジングではモニターのOSDで「sRGBモード」を有効にする",
+    "ハードウェア測色器（キャリブレーター）を用いて正確なICCプロファイルを作成する",
+    "GPU設定の「デジタルバイブランス」などの強調機能をリセットする"
+  ],
+  "whenToStop": "プロフェッショナルな印刷・映像制作ではハードウェアキャリブレーションを行ってください。"
+},
+{
+  "id": "gamma-black-crush-blown-whites",
+  "title": "黒つぶれ（Black Crush）・白飛びとガンマカーブの歪み",
+  "category": "imageQuality",
+  "categoryTitle": "画質・色の問題",
+  "symptom": "暗い影の階調が真っ黒に潰れて見えなくなる、または明るいハイライトが真っ白に塗りつぶされてディテールが消える。",
+  "possibleCauses": [
+    "モニターのガンマ曲線が標準の2.2から大きく乖離している",
+    "HDMIダイナミックレンジの不一致（限定 16-235 と フル 0-255 のミスマッチ）",
+    "モニターのコントラスト設定が高すぎて白側の階調がクリップされている"
+  ],
+  "checks": [
+    "黒レベルテスト：背景（0）とステップ1〜5の四角が識別できるか確認",
+    "白レベルテスト：純白（255）に対してステップ250〜254の境界が見えるか確認",
+    "ガンマテストで2.2の基準線が周囲のパターンと均一に溶け合っているか確認"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Testerは256階調グレースケール、極暗部（Near-Black）評価パターン、光学ガンマ調整スライダを提供します。",
+    "links": [
+      {
+        "label": "黒レベルテスト",
+        "testId": "black-level-test",
+        "testPath": "/tests/black-level-test"
+      },
+      {
+        "label": "白レベルテスト",
+        "testId": "white-level-test",
+        "testPath": "/tests/white-level-test"
+      },
+      {
+        "label": "グレースケールテスト",
+        "testId": "grayscale-test",
+        "testPath": "/tests/grayscale-test"
+      },
+      {
+        "label": "ガンマテスト",
+        "testId": "gamma-test",
+        "testPath": "/tests/gamma-test"
+      },
+      {
+        "label": "ダークモードテスト",
+        "testId": "dark-mode-test",
+        "testPath": "/tests/dark-mode-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "モニター内部LUTのビット深度処理"
+  ],
+  "actions": [
+    "GPU設定でダイナミックレンジを「フル（0-255）」に設定する",
+    "白レベルの各段階が見えるようになるまでモニターのコントラストを下げる（通常50〜70程度）",
+    "モニターのOSDでガンマ設定を「2.2」に切り替える"
+  ],
+  "whenToStop": "黒レベルのステップ1〜3、白レベルの252〜254が目視で識別できれば調整完了です。"
+},
+{
+  "id": "oled-abl-blooming-hdr-peak",
+  "title": "OLED急減光（ABL）とMini-LEDのハロー現象（ブルーミング）",
+  "category": "imageQuality",
+  "categoryTitle": "画質・色の問題",
+  "symptom": "白いウィンドウを広げると画面が暗くなる（ABL）、または暗い背景の文字やカーソルの周りに光の輪が漏れ出る（ブルーミング）。",
+  "possibleCauses": [
+    "OLEDの過熱防止と消費電力抑制のための自動輝度リミッター（ABL）作動",
+    "Mini-LEDのローカルディミング（分割調光）ゾーンからの光漏れ",
+    "OS側のHDRトーンマッピングの不整合"
+  ],
+  "checks": [
+    "1%〜100%のウィンドウサイズを切り替えて減光の度合いを測定",
+    "黒背景で動く白い点を目視し、調光ゾーンの光芒（ハロー）の大きさを確認",
+    "10%ピークウィンドウと全画面白の明るさの差を比較"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Testerはウィンドウ面積ごとの輝度低下カーブをテストし、動的ターゲットでローカルディミングのブルーミングを視覚化します。",
+    "links": [
+      {
+        "label": "OLED ABLテスト",
+        "testId": "oled-abl-test",
+        "testPath": "/tests/oled-abl-test"
+      },
+      {
+        "label": "HDRピーク輝度テスト",
+        "testId": "hdr-peak-brightness-test",
+        "testPath": "/tests/hdr-peak-brightness-test"
+      },
+      {
+        "label": "ブルーミングテスト",
+        "testId": "blooming-test",
+        "testPath": "/tests/blooming-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "センサーなしでの絶対nit値"
+  ],
+  "actions": [
+    "OLEDモニターのOSDで「均一輝度モード」を有効にして明るさ変動をなくす",
+    "Mini-LEDのローカルディミング強度を「中」にして光漏れとコントラストのバランスをとる",
+    "Windows HDR Calibrationアプリでピーク輝度を設定する"
+  ],
+  "whenToStop": "Mini-LEDの構造上、わずかなブルーミングは正常な挙動です（完全な漆黒と無ハローはOLEDの特長です）。"
+},
+{
+  "id": "response-time-motion-blur-crosstalk",
+  "title": "応答速度の遅延・モーションブラー・ストロボクロストーク",
+  "category": "display",
+  "categoryTitle": "ディスプレイの問題",
+  "symptom": "高速に動く物体の背後に黒い尾を引く残像（ゴースト）や、白い輪郭の光（オーバーシュート）、二重像が発生する。",
+  "possibleCauses": [
+    "暗部階調における液晶素子のGtG応答速度の遅延（特にVAパネル）",
+    "モニターのオーバードライブ設定が強すぎて生じる逆ゴースト（過電圧オーバーシュート）",
+    "黒挿入（バックライトストロボ）の発光タイミングとパネル走査のズレ"
+  ],
+  "checks": [
+    "GtGテストで高コントラスト部の黒い尾引き（スメアリング）を確認",
+    "UFOテストで残像が黒いか（通常ゴースト）、白く光っているか（オーバーシュート）を判別",
+    "ストロボ有効時に画面の上部・中央・下部で二重像（クロストーク）を比較"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Testerは高精度な動的ターゲット、GtG階調テスト、追従カメラ（Pursuit Camera）同期バーを提供します。",
+    "links": [
+      {
+        "label": "GtG応答速度テスト",
+        "testId": "gtg-response-time-test",
+        "testPath": "/tests/gtg-response-time-test"
+      },
+      {
+        "label": "ストロボクロストークテスト",
+        "testId": "strobe-crosstalk-test",
+        "testPath": "/tests/strobe-crosstalk-test"
+      },
+      {
+        "label": "追従カメラテスト",
+        "testId": "pursuit-camera-test",
+        "testPath": "/tests/pursuit-camera-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "オシロスコープによるマイクロ秒単位の電圧測定"
+  ],
+  "actions": [
+    "モニターOSDでオーバードライブを「最強（Extreme）」から一段階下げて中間設定にする",
+    "黒挿入機能（DyAcやELMBなど）のパルス位相を調整する",
+    "ゲーム内のフレームレート（FPS）をリフレッシュレート（Hz）と完全に一致させる"
+  ],
+  "whenToStop": "白い輪郭のオーバーシュートが消え、中央部でブレのない単一の像が確認できれば完了です。"
+},
+{
+  "id": "input-lag-gaming-responsiveness",
+  "title": "入力遅延（Input Lag）・マウスの遅れとゲーム応答性の低下",
+  "category": "display",
+  "categoryTitle": "ディスプレイの問題",
+  "symptom": "マウスを動かした際にカーソルがワンテンポ遅れてついてくるような、浮遊感やもたつきを感じる。",
+  "possibleCauses": [
+    "テレビやモニター内部の画像補正回路（超解像や倍速補間など）によるフレーム遅延",
+    "垂直同期（V-Sync）によるグラフィック描画バッファのキュー滞留",
+    "マウスのポーリングレートが標準の125Hzのまま、またはフレームレート不足"
+  ],
+  "checks": [
+    "Screen Testerでマウスのポーリングレートを測定（500Hz〜1000Hz出ているか）",
+    "反応時間テストと入力遅延テストを実施して応答性を数値化",
+    "モニターまたはテレビの映像設定が「ゲームモード」になっているか確認"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen TesterはマウスのUSBポーリング周波数、クリック反射テスト、ブラウザWebGL GPUベンチマークを測定します。",
+    "links": [
+      {
+        "label": "入力遅延テスト",
+        "testId": "input-lag-test",
+        "testPath": "/tests/input-lag-test"
+      },
+      {
+        "label": "反応速度テスト",
+        "testId": "reaction-time-test",
+        "testPath": "/tests/reaction-time-test"
+      },
+      {
+        "label": "マウスポーリングテスト",
+        "testId": "mouse-polling-test",
+        "testPath": "/tests/mouse-polling-test"
+      },
+      {
+        "label": "GPUベンチマークテスト",
+        "testId": "gpu-benchmark-test",
+        "testPath": "/tests/gpu-benchmark-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "スイッチから光子までの専用センサーによる直接遅延計測"
+  ],
+  "actions": [
+    "テレビやモニターの画質設定で「ゲームモード」を必ず有効にする",
+    "ゲーム内のV-Syncをオフにし、Nvidia ReflexやAMD Anti-Lagを活用する",
+    "ゲーミングマウスの設定ソフトでポーリングレートを1000Hz（1ms）に引き上げる"
+  ],
+  "whenToStop": "トータル遅延が15ms以下になれば、直感的で瞬時の操作感が得られます。"
+},
+{
+  "id": "dual-monitor-color-mismatch",
+  "title": "デュアルモニターの色味のズレ・色温度の不一致",
+  "category": "display",
+  "categoryTitle": "ディスプレイの問題",
+  "symptom": "並べた2台のモニターで白の色合い（黄色っぽさ・青っぽさ）やコントラストが異なり、ウィンドウを跨ぐと違和感がある。",
+  "possibleCauses": [
+    "異なるパネル方式（IPSとVA、または液晶とOLED）の併用による視野角や発光スペクトルの差異",
+    "モニターごとの工場出荷時ホワイトバランスの個体差",
+    "GPU設定で片方がRGBフルレンジ、もう片方が限定レンジやYCbCrになっている"
+  ],
+  "checks": [
+    "白いブラウザウィンドウを2台の画面の中央にまたがって配置し、境界での色の差を確認",
+    "両方の画面で同時に「ディスプレイ比較」テストを実行",
+    "GPU設定で両モニターの出力形式が「RGB フル 0-255」になっているか確認"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Testerは左右画面の同期比較ツール、グリッドパターン、デュアルモニターカラーマッチツールを提供します。",
+    "links": [
+      {
+        "label": "ディスプレイ比較",
+        "testId": "compare-displays",
+        "testPath": "/tests/compare-displays"
+      },
+      {
+        "label": "カスタムパターン",
+        "testId": "custom-pattern",
+        "testPath": "/tests/custom-pattern"
+      },
+      {
+        "label": "デュアルモニター調整ツール",
+        "testId": "dual-monitor-matcher",
+        "testPath": "/tools/dual-monitor-matcher"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "異なるバックライト蛍光体によるメタメリズム（条件等色）の差"
+  ],
+  "actions": [
+    "デュアルモニター調整ツール（Dual Monitor Matcher）を使い、片方のRGBゲインを手動微調整する",
+    "両方のモニターのOSD色温度設定を「6500K」または「暖色」に統一する",
+    "両画面の明るさ（輝度）を揃える"
+  ],
+  "whenToStop": "視線を移動させた際に白の色調に違和感がなくなれば調整完了です。"
+},
+{
+  "id": "gamepad-controller-issues",
+  "title": "ゲームパッドのスティックドリフト・ボタン遅延・デッドゾーン調整",
+  "category": "deviceInput",
+  "categoryTitle": "入力機器・デバイスの問題",
+  "symptom": "コントローラーに触れていないのに視点やキャラクターが勝手に動く（ドリフト現象）、またはボタン反応が悪い。",
+  "possibleCauses": [
+    "アナログスティック内部の可変抵抗器（ポテンショメーター）の摩耗やカーボン削れかす",
+    "ゲーム内デッドゾーン（無反応域）の設定が小さすぎる",
+    "Bluetooth接続時の電波干渉による入力パケットの脱落"
+  ],
+  "checks": [
+    "Screen Testerのゲームパッドテストを開き、いずれかのボタンを押して認識させる",
+    "スティックから手を離した状態で座標が(0.00, 0.00)に戻るか確認",
+    "トリガーボタンが0%から100%まで滑らかに反応するか確認"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen TesterはHTML5 Gamepad APIを使用して、スティックのドリフト半径、全ボタンの入力状態、振動モーターを診断します。",
+    "links": [
+      {
+        "label": "ゲームパッドテスト",
+        "testId": "gamepad-test",
+        "testPath": "/tests/gamepad-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "内部接点の物理的な摩耗深さ"
+  ],
+  "actions": [
+    "ゲーム内のスティック中心デッドゾーン設定を少し広げてドリフトを相殺する",
+    "接点復活剤を塗布するか、ホールエフェクト（磁気センサー）式スティックを採用した機器に換装する",
+    "Bluetoothではなく有線USBまたは2.4GHz専用ドングル接続を使用する"
+  ],
+  "whenToStop": "無操作時のズレが15%を超える場合はスティックモジュールの修理・交換が必要です。"
+},
+{
+  "id": "audio-video-sync-latency",
+  "title": "映像と音声の同期ズレ（リップシンク）とBluetooth音声遅延",
+  "category": "deviceInput",
+  "categoryTitle": "入力機器・デバイスの問題",
+  "symptom": "映画や動画で口の動きと声が一致しない（音ズレ）、またはゲームで発砲音や打撃音が遅れて聞こえる。",
+  "possibleCauses": [
+    "一般的なBluetooth接続（SBC/AACコーデックによる150〜250msの遅延）",
+    "テレビやサウンドバー（HDMI eARC）での音声処理ディレイ",
+    "OS側の立体音響（Windows Sonic等）によるバッファ増加"
+  ],
+  "checks": [
+    "オーディオシンクテストで、視覚的マーカーと音が重なる瞬間を確認",
+    "音声レイテンシテストでバッファサイズと遅延値（ms）を確認",
+    "Bluetoothと有線イヤホンで音ズレの差を比較"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Testerは閃光アニメーションと同期音声パルスを組み合わせ、Web Audioの遅延を計測します。",
+    "links": [
+      {
+        "label": "音声同期テスト",
+        "testId": "audio-sync-test",
+        "testPath": "/tests/audio-sync-test"
+      },
+      {
+        "label": "音声レイテンシテスト",
+        "testId": "audio-latency-test",
+        "testPath": "/tests/audio-latency-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "スピーカーから耳に届くまでの空気中伝播遅延"
+  ],
+  "actions": [
+    "タイミングがシビアなゲームでは有線（3.5mm/USB）または2.4GHz無線を使用する",
+    "テレビやAVアンプの「リップシンク / 音声遅延調整」でズレを相殺する",
+    "Windowsサウンドプロパティで「オーディオの拡張機能」を無効にする"
+  ],
+  "whenToStop": "ズレが40ms以内であれば、人間の聴覚では完全な同期として認識されます。"
+},
+{
+  "id": "sensor-ambient-battery-hardware",
+  "title": "環境光センサー・バッテリー節電による描画制限・ネットワーク遅延",
+  "category": "deviceInput",
+  "categoryTitle": "入力機器・デバイスの問題",
+  "symptom": "ノートPCの画面が急に暗くなる、バッテリー駆動時に120Hzから60Hzに低下する、または動画再生時にコマ落ちする。",
+  "possibleCauses": [
+    "環境光センサーによる画面の自動減光が意図せず作動している",
+    "OSの「バッテリー節約機能」がGPUクロックを制限し、ディスプレイを60Hzに強制固定している",
+    "Wi-Fiの電波干渉や高ジッターによるネットワークパケットの滞留"
+  ],
+  "checks": [
+    "ノートPCのカメラ横のセンサーを手で覆い、Screen Testerで照度（lux）の変化を確認",
+    "ACアダプターを抜いた際にリフレッシュレートが低下するか確認",
+    "ネットワーク速度テストでPingのジッターと実効通信速度を測定"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Testerは環境光照度センサー、Battery Status APIによる充電・放電状態、ネットワーク通信安定性を測定します。",
+    "links": [
+      {
+        "label": "環境光センサーテスト",
+        "testId": "ambient-light-test",
+        "testPath": "/tests/ambient-light-test"
+      },
+      {
+        "label": "バッテリーテスト",
+        "testId": "battery-test",
+        "testPath": "/tests/battery-test"
+      },
+      {
+        "label": "通信速度テスト",
+        "testId": "network-speed-test",
+        "testPath": "/tests/network-speed-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "バッテリーセルの物理的劣化度"
+  ],
+  "actions": [
+    "Windowsのディスプレイ設定で「照明が変化した場合に明るさを自動的に変更する」をオフにする",
+    "電源モードを「最適なパフォーマンス」に設定してバッテリー時でも高リフレッシュレートを維持する",
+    "混雑した2.4GHz Wi-Fiから5GHz/6GHz帯または有線LANに切り替える"
+  ],
+  "whenToStop": "照度による意図しない減光がなく、バッテリー時も高リフレッシュレートが維持できれば設定完了です。"
+},
+{
+  "id": "monitor-setup-bandwidth-calibration",
+  "title": "映像ケーブル帯域のボトルネック・DPIスケーリングとOSD設定",
+  "category": "display",
+  "categoryTitle": "ディスプレイの問題",
+  "symptom": "4K解像度で最高リフレッシュレートが選べない、文字が極端に小さい、または画面が時々ブラックアウトする。",
+  "possibleCauses": [
+    "HDMIやDisplayPortケーブルのデータ転送帯域不足（例：4K 144Hzに古いHDMI 2.0ケーブルを使用）",
+    "OSのスケーリング設定が不適切で文字がかすむ、または小さすぎて目が疲れる",
+    "モニター本体のOSD設定が最適化されていない"
+  ],
+  "checks": [
+    "「帯域幅計算機」で必要な伝送データ量（Gbps）を算出",
+    "「DPI計算機」と「視聴距離計算機」で画面の精細度と適切な距離を確認",
+    "「初期設定ウィザード」でモニターの各種機能をチェック"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Testerは映像ケーブル帯域計算ツール、PPI密度算出、最適視聴距離計算、ディスプレイ検査証明書発行機能を提供します。",
+    "links": [
+      {
+        "label": "新品モニター初期設定ウィザード",
+        "testId": "new-monitor-wizard",
+        "testPath": "/tools/new-monitor-wizard"
+      },
+      {
+        "label": "DPI計算機",
+        "testId": "dpi-calculator",
+        "testPath": "/tools/dpi-calculator"
+      },
+      {
+        "label": "映像帯域計算機",
+        "testId": "display-bandwidth-calculator",
+        "testPath": "/tools/display-bandwidth-calculator"
+      },
+      {
+        "label": "最適視聴距離計算機",
+        "testId": "viewing-distance-calculator",
+        "testPath": "/tools/viewing-distance-calculator"
+      },
+      {
+        "label": "画面録画ツール",
+        "testId": "screen-recorder",
+        "testPath": "/tools/screen-recorder"
+      },
+      {
+        "label": "ディスプレイ検査証明書",
+        "testId": "display-certificate",
+        "testPath": "/tools/display-certificate"
+      },
+      {
+        "label": "OSDキャリブレーションガイド",
+        "testId": "osd-calibration-guide",
+        "testPath": "/tools/osd-calibration-guide"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "ケーブル内部のシールド品質"
+  ],
+  "actions": [
+    "認証取得済みのDisplayPort 1.4/2.1またはUltra High Speed HDMI 2.1ケーブルに交換する",
+    "計算されたPPI値に基づきOSの拡大縮小率（125%、150%等）を最適化する",
+    "OSDガイドに従いコントラストや色温度を適正値に合わせる"
+  ],
+  "whenToStop": "最高解像度・最高周波数で暗転や乱れなく安定表示できれば完了です。"
+},
+{
+  "id": "eink-ghosting-slow-refresh",
+  "title": "電子ペーパー（E-Ink）の文字残像（ゴースト）と低速リフレッシュ",
+  "category": "imageQuality",
+  "categoryTitle": "画質・色の問題",
+  "symptom": "電子書籍リーダーで、前のページの文字やメニューアイコンの薄い影が白背景に残ったまま消えない。",
+  "possibleCauses": [
+    "電気泳動マイクロカプセル内の残留電荷による粒子の不完全移動",
+    "スクロールや描画速度を優先する高速モード（A2モード）の使用",
+    "室温が低く、カプセル内の粘性流体が固くなっている"
+  ],
+  "checks": [
+    "読書画面の余白が澄んだ白か、薄い灰色の文字影が残っているか確認",
+    "Screen Testerの「E-Inkリフレッシュツール」を実行",
+    "端末の使用温度が18℃〜25℃の適正範囲にあるか確認"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Testerは全画面白黒反転パルスを連続照射し、滞留した粒子をリセットして残像を一掃します。",
+    "links": [
+      {
+        "label": "E-Inkリフレッシュツール",
+        "testId": "eink-refresh-tool",
+        "testPath": "/tools/eink-refresh-tool"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "電子ペーパー制御IC内部の波形テーブル"
+  ],
+  "actions": [
+    "E-Inkリフレッシュツールで白黒反転パルスを数回実行する",
+    "電子書籍端末の設定で5〜10ページごとの定期全画面リフレッシュを有効化する",
+    "読書時は高速モードではなく高画質モード（Regalモード等）を使用する"
+  ],
+  "whenToStop": "E-Inkの残像は完全に回復可能であり、反転パルスによって元の純白に戻れば完了です。"
+}
 ];

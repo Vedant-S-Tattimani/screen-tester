@@ -872,5 +872,619 @@ export const DE_TROUBLESHOOTING_TOPICS: TroubleshootingTopic[] = [
       "Audiotreiber aktualisieren"
     ],
     "whenToStop": "Wenn das Mikrofon an mehreren Geräten keinen Pegel liefert, ist das Kabel oder die Kapsel defekt."
-  }
+  },
+{
+  "id": "burn-in-image-retention",
+  "title": "OLED-Burn-In, Einbrenneffekte & Geisterbilder",
+  "category": "pixels",
+  "categoryTitle": "Pixel-Probleme",
+  "symptom": "Schattenhafte Umrisse von Taskleisten, Senderlogos oder Fenstern bleiben auch nach Inhaltswechseln sichtbar auf dem Panel eingebrannt.",
+  "possibleCauses": [
+    "Statische Bildelemente über hunderte Stunden bei hoher Helligkeit",
+    "Ungleichmäßige Alterung der organischen Subpixel bei OLED/QD-OLED",
+    "Temporäre Bildremanenz bei LCD/IPS-Panels"
+  ],
+  "checks": [
+    "Graue (5% und 50%) sowie vollfarbige Testbilder anzeigen, um Schattenmuster zu erkennen",
+    "Prüfen, ob der Effekt nach 15 Minuten dynamischem Video verblasst",
+    "Betriebsstundenzähler im Monitor-OSD überprüfen"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester zeigt vollflächige Farb- und Graustufenfelder zur Erkennung von Einbrennschatten und bietet einen OLED-Burn-In-Rechner.",
+    "links": [
+      {
+        "label": "Burn-In-Test",
+        "testId": "burn-in-test",
+        "testPath": "/tests/burn-in-test"
+      },
+      {
+        "label": "OLED-Burn-In-Rechner",
+        "testId": "oled-burn-in-calculator",
+        "testPath": "/tools/oled-burn-in-calculator"
+      },
+      {
+        "label": "Vollfarben-Test",
+        "testId": "solid-color-test",
+        "testPath": "/tests/solid-color-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Physikalische Alterung der Leuchtschicht",
+    "Hersteller-Pixel-Shift-Algorithmen"
+  ],
+  "actions": [
+    "Manuelle Pixel-Reinigung (Pixel Refresh) im Monitor-OSD ausführen",
+    "Taskleiste im Betriebssystem automatisch ausblenden und Helligkeit drosseln",
+    "Bildschirmschoner oder Bildschirmsperre nach 5 Minuten Inaktivität aktivieren"
+  ],
+  "whenToStop": "Wenn die Schatten nach mehreren Reinigungszyklen unverändert bleiben, liegt dauerhafter Burn-In vor, der nur durch einen Paneltausch behoben werden kann."
+},
+{
+  "id": "temporal-dithering-pixel-inversion",
+  "title": "Temporäres Dithering (FRC) & Pixel-Inversions-Flimmern",
+  "category": "pixels",
+  "categoryTitle": "Pixel-Probleme",
+  "symptom": "Mikroskopisches Schimmern, Zeilenkriechen oder starke Augenermüdung und Kopfschmerzen bei mittleren Farbtönen.",
+  "possibleCauses": [
+    "Frame Rate Control (FRC) wechselt Farbstufen mit der Bildwiederholrate",
+    "VCOM-Polaritätsungleichgewicht bei Pixel-Inversionsmustern",
+    "Erzwungenes Dithering im Grafikkartentreiber"
+  ],
+  "checks": [
+    "Feine 1-Pixel-Gitter auf Flimmern oder Bewegungsartefakte prüfen",
+    "Bildwiederholrate testweise von 144Hz auf 120Hz/60Hz umstellen",
+    "Display mit Zeitlupenaufnahme auf Pulsieren untersuchen"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester erzeugt Phasenmuster für Pixelinversion und Dithering, um Mikromodulationen sichtbar zu machen.",
+    "links": [
+      {
+        "label": "Pixel-Inversions-Test",
+        "testId": "pixel-inversion-test",
+        "testPath": "/tests/pixel-inversion-test"
+      },
+      {
+        "label": "Temporäres-Dithering-Test",
+        "testId": "temporal-dithering-test",
+        "testPath": "/tests/temporal-dithering-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Interne Spannungseinstellung des VCOM-Potentiometers"
+  ],
+  "actions": [
+    "Aktualisierungsrate im Betriebssystem wechseln",
+    "Farbtiefe im Grafiktreiber auf native Panelwerte einstellen",
+    "Bei Flimmerempfindlichkeit auf Monitore mit echtem 8-Bit/10-Bit-Panel umsteigen"
+  ],
+  "whenToStop": "Bei Schwindel oder Migräne sofort pausieren."
+},
+{
+  "id": "color-calibration-issues",
+  "title": "Farbkalibrierung, Farbraum-Clamping & Farbstiche",
+  "category": "imageQuality",
+  "categoryTitle": "Bildqualität",
+  "symptom": "Übersättigte Neon-Farben, unnatürliche Hauttöne oder Farbunterschiede zwischen Programmen.",
+  "possibleCauses": [
+    "Wide-Gamut-Display (DCI-P3) ohne sRGB-Farbraumbegrenzung im SDR-Modus",
+    "Fehlerhafte oder kollidierende ICC-Farbprofile im Betriebssystem",
+    "Falsche Voreinstellungen für Farbtemperatur oder Gamma im Monitor-OSD"
+  ],
+  "checks": [
+    "Genormte Farbfelder auf Überstrahlung oder unnatürliche Sättigung prüfen",
+    "Weiße Flächen auf Grün-, Rosa- oder Gelbstich untersuchen",
+    "Farbmanagement des Betriebssystems auf Standard-Profile prüfen"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester bietet Farbraum-Vergleiche, Farbgenauigkeits-Felder, Sättigungsrampen und D65-Farbtemperatur-Referenzen.",
+    "links": [
+      {
+        "label": "Farbraum-Test",
+        "testId": "color-gamut-test",
+        "testPath": "/tests/color-gamut-test"
+      },
+      {
+        "label": "Farbgenauigkeits-Test",
+        "testId": "color-accuracy-test",
+        "testPath": "/tests/color-accuracy-test"
+      },
+      {
+        "label": "Farbtemperatur-Test",
+        "testId": "color-temperature-test",
+        "testPath": "/tests/color-temperature-test"
+      },
+      {
+        "label": "Sättigungs-Test",
+        "testId": "saturation-test",
+        "testPath": "/tests/saturation-test"
+      },
+      {
+        "label": "Farbenblindheits-Test",
+        "testId": "color-blindness-test",
+        "testPath": "/tests/color-blindness-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Exakte Delta-E-Messwerte ohne Kolorimeter"
+  ],
+  "actions": [
+    "sRGB-Modus im OSD aktivieren, um Übersättigung bei normalen Inhalten zu verhindern",
+    "Hardware-Kalibriergerät für präzise ICC-Profile nutzen",
+    "Grafikkarten-Farbverstärker (z. B. Digitale Schwingung) auf Standard setzen"
+  ],
+  "whenToStop": "Für farbkritische Druck- und Videoproduktion ist ein Hardware-Messkopf unerlässlich."
+},
+{
+  "id": "gamma-black-crush-blown-whites",
+  "title": "Schwarzwert-Crushing, Überstrahlte Lichter & Gamma-Fehler",
+  "category": "imageQuality",
+  "categoryTitle": "Bildqualität",
+  "symptom": "Schatten saufen im reinen Schwarz ab (Black Crush) oder helle Wolken brennen zu strukturlosem Weiß aus.",
+  "possibleCauses": [
+    "Gamma-Kurve weicht stark vom Standardwert 2.2 ab",
+    "Falscher HDMI-Dynamikbereich (Begrenzt 16-235 vs. Voll 0-255)",
+    "Zu hoher Kontrast im Monitor-Menü schneidet helle Stufen ab"
+  ],
+  "checks": [
+    "Schwarzstufen-Test prüfen: Sind Stufen 1 bis 5 vom Hintergrund unterscheidbar?",
+    "Weißstufen-Test prüfen: Sind die Stufen 250 bis 254 sichtbar?",
+    "Optischen Gamma-Test auf Übereinstimmung bei 2.2 prüfen"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester zeigt 256-stufige Graukeile, Near-Black-Felder und optische Gamma-Messstreifen.",
+    "links": [
+      {
+        "label": "Schwarzwert-Test",
+        "testId": "black-level-test",
+        "testPath": "/tests/black-level-test"
+      },
+      {
+        "label": "Weißwert-Test",
+        "testId": "white-level-test",
+        "testPath": "/tests/white-level-test"
+      },
+      {
+        "label": "Graustufen-Test",
+        "testId": "grayscale-test",
+        "testPath": "/tests/grayscale-test"
+      },
+      {
+        "label": "Gamma-Test",
+        "testId": "gamma-test",
+        "testPath": "/tests/gamma-test"
+      },
+      {
+        "label": "Dark-Mode-Test",
+        "testId": "dark-mode-test",
+        "testPath": "/tests/dark-mode-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Interne LUT-Bittiefe des Monitor-Skalierers"
+  ],
+  "actions": [
+    "Im Grafiktreiber Dynamikbereich auf 'Voll (0-255)' einstellen",
+    "Monitor-Kontrast reduzieren (meist 50-70), bis Weißabstufungen sichtbar sind",
+    "Im Monitor-OSD Gamma auf '2.2' stellen"
+  ],
+  "whenToStop": "Sobald dunkelste und hellste Nuancen differenzierbar sind, ist das Display optimal eingestellt."
+},
+{
+  "id": "oled-abl-blooming-hdr-peak",
+  "title": "OLED-ABL-Dimmung & Mini-LED-Blooming (Lichthöfe)",
+  "category": "imageQuality",
+  "categoryTitle": "Bildqualität",
+  "symptom": "Bild verdunkelt sich beim Vergrößern weißer Fenster (ABL) oder helle Objekte zeigen leuchtende Lichthöfe auf schwarzem Grund (Blooming).",
+  "possibleCauses": [
+    "OLED-Auto-Brightness-Limiter (ABL) drosselt Helligkeit bei hohem Weißanteil",
+    "Mini-LED-Dimmzonen streuen Licht um kleine Spitzlichter",
+    "Falsches HDR-Tone-Mapping im Betriebssystem"
+  ],
+  "checks": [
+    "Fenstergrößen von 1% bis 100% umschalten, um Helligkeitssprünge zu beobachten",
+    "Weiße Objekte auf schwarzem Grund auf Ausleuchtungskränze prüfen",
+    "Spitzenhelligkeit bei 10% Fenster mit Vollbild vergleichen"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester testet fenstergrößenabhängigen Helligkeitsabfall, ABL-Kurven und Blooming-Effekte bei Mini-LED.",
+    "links": [
+      {
+        "label": "OLED-ABL-Test",
+        "testId": "oled-abl-test",
+        "testPath": "/tests/oled-abl-test"
+      },
+      {
+        "label": "HDR-Spitzenhelligkeits-Test",
+        "testId": "hdr-peak-brightness-test",
+        "testPath": "/tests/hdr-peak-brightness-test"
+      },
+      {
+        "label": "Blooming-Test",
+        "testId": "blooming-test",
+        "testPath": "/tests/blooming-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Exakte Nit-Werte ohne Sensor"
+  ],
+  "actions": [
+    "Modus 'Gleichmäßige Helligkeit' im OLED-Menü einschalten",
+    "Local Dimming bei Mini-LED auf 'Mittel' stellen, um Halos zu minimieren",
+    "Windows HDR-Kalibrierung ausführen"
+  ],
+  "whenToStop": "Leichtes Blooming ist eine physikalische Eigenschaft von FALD-Zonenhintergrundbeleuchtungen."
+},
+{
+  "id": "response-time-motion-blur-crosstalk",
+  "title": "Reaktionszeit, Bewegungsunschärfe & Strobe-Crosstalk",
+  "category": "display",
+  "categoryTitle": "Display-Probleme",
+  "symptom": "Schnell bewegte Objekte ziehen dunkle Schlieren, Geisterbilder oder helle Heiligenscheine (Overshoot) hinter sich her.",
+  "possibleCauses": [
+    "Langsame Grau-zu-Grau-Schaltzeiten (GtG), besonders bei dunklen Übergängen auf VA-Panels",
+    "Übersteuertes Monitor-Overdrive erzeugt inverse Geisterbilder",
+    "Blacklight-Strobing (BFI) nicht synchron mit dem Bildaufbau (Strobe-Crosstalk)"
+  ],
+  "checks": [
+    "GtG-Test auf dunkle Nachzieheffekte bei Kontrastübergängen prüfen",
+    "UFO-Testmuster auf dunkle (Ghosting) oder helle (Overshoot) Nachziehränder prüfen",
+    "Bildschirm oben, mittig und unten bei aktiviertem Strobing auf Doppelbilder prüfen"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester bietet Hochgeschwindigkeits-Testmuster, GtG-Farbübergänge und Pursuit-Camera-Synchronisationsbalken.",
+    "links": [
+      {
+        "label": "GtG-Reaktionszeit-Test",
+        "testId": "gtg-response-time-test",
+        "testPath": "/tests/gtg-response-time-test"
+      },
+      {
+        "label": "Strobe-Crosstalk-Test",
+        "testId": "strobe-crosstalk-test",
+        "testPath": "/tests/strobe-crosstalk-test"
+      },
+      {
+        "label": "Pursuit-Camera-Test",
+        "testId": "pursuit-camera-test",
+        "testPath": "/tests/pursuit-camera-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Oszilloskop-Spannungsmessungen im Submillisekundenbereich"
+  ],
+  "actions": [
+    "Overdrive-Stufe im Monitor-OSD auf 'Normal' oder 'Fast' anstelle von 'Extreme' stellen",
+    "Strobe-Phase oder Impulsbreite im OSD feinjustieren",
+    "Sicherstellen, dass die FPS der GPU der Bildwiederholrate entsprechen"
+  ],
+  "whenToStop": "Optimale Einstellung erreicht, wenn helle Koronen verschwinden und das Zentrum scharf bleibt."
+},
+{
+  "id": "input-lag-gaming-responsiveness",
+  "title": "Hoher Input-Lag, schwammige Maus & Gaming-Verzögerung",
+  "category": "display",
+  "categoryTitle": "Display-Probleme",
+  "symptom": "Die Maus fühlt sich träge und schwammig an, als würde der Cursor der Handbewegung hinterherhinken.",
+  "possibleCauses": [
+    "Bildverbesserer, Zwischenbildberechnung oder Upscaler im Monitor/TV aktiv",
+    "Klassisches V-Sync puffert mehrere Frames in der Grafik-Pipeline",
+    "Niedrige Maus-Abtastrate (125Hz) oder überlastete GPU"
+  ],
+  "checks": [
+    "Maus-Polling-Rate in Screen Tester testen (sollte 500Hz oder 1000Hz betragen)",
+    "Reaktionszeit- und Input-Lag-Test durchführen",
+    "Prüfen, ob am Bildschirm der 'Spielmodus' aktiviert ist"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester misst USB-Mausabfrageraten, visuelle Reaktionszeiten und WebGL-GPU-Leistung.",
+    "links": [
+      {
+        "label": "Input-Lag-Test",
+        "testId": "input-lag-test",
+        "testPath": "/tests/input-lag-test"
+      },
+      {
+        "label": "Reaktionszeit-Test",
+        "testId": "reaction-time-test",
+        "testPath": "/tests/reaction-time-test"
+      },
+      {
+        "label": "Maus-Polling-Test",
+        "testId": "mouse-polling-test",
+        "testPath": "/tests/mouse-polling-test"
+      },
+      {
+        "label": "GPU-Benchmark-Test",
+        "testId": "gpu-benchmark-test",
+        "testPath": "/tests/gpu-benchmark-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Exakte Schalter-zu-Photonen-Latenz ohne Hardware-Maus-Sensor"
+  ],
+  "actions": [
+    "Am Monitor/Fernseher den 'Spielmodus' (Game Mode) aktivieren",
+    "Klassisches V-Sync deaktivieren und Nvidia Reflex / AMD Anti-Lag nutzen",
+    "Maus-Polling-Rate in der Herstellersoftware auf 1000Hz stellen"
+  ],
+  "whenToStop": "Eine Latenz unter 15 ms fühlt sich unmittelbar und direkt an."
+},
+{
+  "id": "dual-monitor-color-mismatch",
+  "title": "Dual-Monitor-Farbunterschiede & Ausrichtungsfehler",
+  "category": "display",
+  "categoryTitle": "Display-Probleme",
+  "symptom": "Zwei nebeneinanderstehende Monitore zeigen unterschiedliche Weißtöne oder Helligkeiten beim Verschieben von Fenstern.",
+  "possibleCauses": [
+    "Unterschiedliche Panel-Typen (z. B. IPS neben VA oder OLED)",
+    "Unterschiedliche Farbtemperaturen der beiden Monitore",
+    "Grafikkarte gibt unterschiedliche Farbformate aus (RGB vs. YCbCr)"
+  ],
+  "checks": [
+    "Ein weißes Fenster mittig über beide Monitore spannen, um den Farbsprung an der Kante zu sehen",
+    "Compare-Displays-Tool auf beiden Monitoren öffnen",
+    "Farbformate im Grafiktreiber vergleichen"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester bietet synchrone Vergleichsmuster und das Dual-Monitor-Matcher-Werkzeug.",
+    "links": [
+      {
+        "label": "Displays vergleichen",
+        "testId": "compare-displays",
+        "testPath": "/tests/compare-displays"
+      },
+      {
+        "label": "Benutzerdefiniertes Muster",
+        "testId": "custom-pattern",
+        "testPath": "/tests/custom-pattern"
+      },
+      {
+        "label": "Dual-Monitor-Matcher",
+        "testId": "dual-monitor-matcher",
+        "testPath": "/tools/dual-monitor-matcher"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Physikalischer Metamerie-Index unterschiedlicher Panel-Filter"
+  ],
+  "actions": [
+    "Nutzen Sie den Dual-Monitor-Matcher zur visuellen Feinabstimmung der RGB-Werte",
+    "Beide Monitore im OSD auf den Modus '6500K' oder 'Warm' stellen",
+    "Helligkeit beider Panels auf gleiches Niveau einpegeln"
+  ],
+  "whenToStop": "Sobald der Weißton beider Monitore harmonisch wirkt, ist das Setup optimal."
+},
+{
+  "id": "gamepad-controller-issues",
+  "title": "Gamepad-Stick-Drift, Tastenlatenz & Deadzone-Probleme",
+  "category": "deviceInput",
+  "categoryTitle": "Geräte- & Eingabeprobleme",
+  "symptom": "Controller-Analogsticks bewegen sich von selbst (Stick Drift) oder Tasten reagieren unzuverlässig.",
+  "possibleCauses": [
+    "Abgenutzte Potentiometer-Schleifbahnen im Analogstick",
+    "Zu kleine Deadzone-Einstellungen im Spiel",
+    "Funkstörungen bei Bluetooth-Verbindung"
+  ],
+  "checks": [
+    "Gamepad-Test in Screen Tester öffnen und Taste zum Aktivieren drücken",
+    "Prüfen, ob die Stick-Koordinaten in Ruhe exakt auf (0.00, 0.00) stehen",
+    "Trigger-Achsen von 0% bis 100% auf gleichmäßigen Verlauf testen"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester liest die HTML5-Gamepad-API aus, um Stick-Drift, Tastendrücke, Trigger-Werte und Vibration zu testen.",
+    "links": [
+      {
+        "label": "Gamepad-Test",
+        "testId": "gamepad-test",
+        "testPath": "/tests/gamepad-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Mechanische Schalterabnutzung im Gehäuse"
+  ],
+  "actions": [
+    "Deadzone im Spiel leicht vergrößern, um kleines Driften abzufangen",
+    "Kontaktreiniger verwenden oder Controller mit Hall-Effekt-Sensoren wählen",
+    "Kabelverbindung oder USB-Funkadapter statt Bluetooth nutzen"
+  ],
+  "whenToStop": "Driftet der Stick im Ruhezustand um mehr als 15%, ist ein Hardware-Tausch erforderlich."
+},
+{
+  "id": "audio-video-sync-latency",
+  "title": "Ton-Bild-Asynchronität (Lip-Sync) & Bluetooth-Latenz",
+  "category": "deviceInput",
+  "categoryTitle": "Geräte- & Eingabeprobleme",
+  "symptom": "Lippenbewegungen in Filmen passen nicht zum Ton oder Schussgeräusche in Spielen ertönen verspätet.",
+  "possibleCauses": [
+    "Hohe Bluetooth-Latenz (SBC/AAC verursacht 150-250 ms Verzögerung)",
+    "Verzögerung durch Soundbar oder HDMI-eARC-Audioprozessoren",
+    "Aktive Raumklangeffekte im Betriebssystem"
+  ],
+  "checks": [
+    "Audio-Sync-Test prüfen: Ertönt der Klick genau beim visuellen Aufprall?",
+    "Puffergröße im Audio-Latenz-Test ablesen",
+    "Bluetooth mit kabelgebundenem Kopfhörer vergleichen"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester bietet visuell-akustische Synchronisationsprüfungen und Pufferlatenz-Messungen.",
+    "links": [
+      {
+        "label": "Audio-Sync-Test",
+        "testId": "audio-sync-test",
+        "testPath": "/tests/audio-sync-test"
+      },
+      {
+        "label": "Audio-Latenz-Test",
+        "testId": "audio-latency-test",
+        "testPath": "/tests/audio-latency-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Schalllaufzeit durch den Raum"
+  ],
+  "actions": [
+    "Für Gaming kabelgebundene Kopfhörer oder 2,4-GHz-Funk nutzen",
+    "Audio-Delay (Lip-Sync-Verzögerung) in den TV- oder Receiver-Einstellungen anpassen",
+    "Audioverbesserungen im Betriebssystem abschalten"
+  ],
+  "whenToStop": "Eine Differenz unter 40 ms wird vom Gehirn als perfekt synchron wahrgenommen."
+},
+{
+  "id": "sensor-ambient-battery-hardware",
+  "title": "Umgebungslichtsensor, Akku-Drosselung & Netzwerk-Ruckler",
+  "category": "deviceInput",
+  "categoryTitle": "Geräte- & Eingabeprobleme",
+  "symptom": "Bildschirm dunkelt am Laptop plötzlich ab, Bildwiederholrate fällt im Akkubetrieb auf 60Hz oder Streams stocken.",
+  "possibleCauses": [
+    "Umgebungslichtsensor regelt Displayhelligkeit automatisch herunter",
+    "Energiesparmodus drosselt GPU-Takt und begrenzt die Bildwiederholrate",
+    "WLAN-Verbindungsstörungen oder hohe Latenzschwankungen"
+  ],
+  "checks": [
+    "Lichtsensor am Laptop abdecken und Lux-Wert in Screen Tester prüfen",
+    "Netzteil abziehen und prüfen, ob die Bildwiederholrate einbricht",
+    "Netzwerktest zur Messung von Bandbreite und Ping-Jitter durchführen"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester liest Lichtsensoren (Lux), Batteriestatus-APIs und Netzwerkübertragungsraten aus.",
+    "links": [
+      {
+        "label": "Umgebungslicht-Test",
+        "testId": "ambient-light-test",
+        "testPath": "/tests/ambient-light-test"
+      },
+      {
+        "label": "Batterie-Test",
+        "testId": "battery-test",
+        "testPath": "/tests/battery-test"
+      },
+      {
+        "label": "Netzwerk-Speedtest",
+        "testId": "network-speed-test",
+        "testPath": "/tests/network-speed-test"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Chemischer Verschleiß der Akkuzellen"
+  ],
+  "actions": [
+    "Automatische Helligkeitsanpassung in den Windows-Anzeigeeinstellungen deaktivieren",
+    "Energieprofil im Akkubetrieb auf 'Beste Leistung' stellen",
+    "WLAN auf 5GHz/6GHz umstellen oder LAN-Kabel nutzen"
+  ],
+  "whenToStop": "Stabile Helligkeit und konstante Bildwiederholrate garantieren zuverlässigen Betrieb."
+},
+{
+  "id": "monitor-setup-bandwidth-calibration",
+  "title": "Kabel-Bandbreitenengpässe, DPI-Skalierung & OSD-Kalibrierung",
+  "category": "display",
+  "categoryTitle": "Display-Probleme",
+  "symptom": "Maximale Bildwiederholrate bei 4K nicht anwählbar, Text zu klein oder Kabel verliert zeitweise das Signal.",
+  "possibleCauses": [
+    "HDMI- oder DisplayPort-Kabel überschreitet maximale Datenrate (z. B. HDMI 2.0 für 4K 144Hz)",
+    "Falscher Skalierungsfaktor im Betriebssystem erzeugt unscharfe Fenster",
+    "Ungünstige OSD-Voreinstellungen ab Werk"
+  ],
+  "checks": [
+    "Benötigte Bandbreite im Bandbreitenrechner ermitteln",
+    "Optimalen Betrachtungsabstand und Pixeldichte im DPI-Rechner prüfen",
+    "Neumonitor-Assistenten zur systematischen OSD-Einrichtung durchlaufen"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester bietet Werkzeuge zur Bandbreitenberechnung (HDMI/DP/DSC), Pixeldichtebestimmung, ergonomischen Abstandsermittlung und Zertifikatserstellung.",
+    "links": [
+      {
+        "label": "Neumonitor-Assistent",
+        "testId": "new-monitor-wizard",
+        "testPath": "/tools/new-monitor-wizard"
+      },
+      {
+        "label": "DPI-Rechner",
+        "testId": "dpi-calculator",
+        "testPath": "/tools/dpi-calculator"
+      },
+      {
+        "label": "Display-Bandbreitenrechner",
+        "testId": "display-bandwidth-calculator",
+        "testPath": "/tools/display-bandwidth-calculator"
+      },
+      {
+        "label": "Betrachtungsabstand-Rechner",
+        "testId": "viewing-distance-calculator",
+        "testPath": "/tools/viewing-distance-calculator"
+      },
+      {
+        "label": "Bildschirmrekorder",
+        "testId": "screen-recorder",
+        "testPath": "/tools/screen-recorder"
+      },
+      {
+        "label": "Display-Zertifikat",
+        "testId": "display-certificate",
+        "testPath": "/tools/display-certificate"
+      },
+      {
+        "label": "OSD-Kalibrierungsleitfaden",
+        "testId": "osd-calibration-guide",
+        "testPath": "/tools/osd-calibration-guide"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Physikalische Kupfer-Schirmungsqualität"
+  ],
+  "actions": [
+    "Auf zertifiziertes DisplayPort 1.4/2.1 oder Ultra High Speed HDMI 2.1 Kabel aufrüsten",
+    "Windows-Skalierung passend zur Pixeldichte einstellen",
+    "OSD-Leitfaden für Kontrast, Farbtemperatur und Helligkeit anwenden"
+  ],
+  "whenToStop": "Volle native Auflösung und maximale Frequenz laufen stabil ohne Aussetzer."
+},
+{
+  "id": "eink-ghosting-slow-refresh",
+  "title": "E-Ink-Display-Ghosting, Schattenbildung & träger Bildaufbau",
+  "category": "imageQuality",
+  "categoryTitle": "Bildqualität",
+  "symptom": "Schatten von vorherigen Buchseiten oder Menüleisten bleiben auf dem E-Reader sichtbar.",
+  "possibleCauses": [
+    "Restladungen in den elektrophoretischen Mikrokapseln halten Partikel fest",
+    "Nutzung von schnellen A2-Modi, die Partikelrückstellung überspringen",
+    "Kühle Umgebungstemperaturen verlangsamen die Partikelbewegung"
+  ],
+  "checks": [
+    "Hintergrund prüfen: Reines Papierweiß oder graue Schattenschleier?",
+    "E-Ink-Auffrischungswerkzeug in Screen Tester starten",
+    "Sicherstellen, dass die Raumtemperatur über 18°C liegt"
+  ],
+  "whatScreenTesterCanTest": {
+    "description": "Screen Tester erzeugt kontrollierte Schwarz-Weiß-Invertierungspulse zur Rückstellung der Farbpartikel.",
+    "links": [
+      {
+        "label": "E-Ink-Auffrischungswerkzeug",
+        "testId": "eink-refresh-tool",
+        "testPath": "/tools/eink-refresh-tool"
+      }
+    ]
+  },
+  "whatScreenTesterCannotDetermine": [
+    "Proprietäre Wellenformtabellen des Controllers"
+  ],
+  "actions": [
+    "Mehrere Invertierungszyklen im E-Ink-Werkzeug durchführen",
+    "Im Reader einstellen, dass alle 5-10 Seiten ein Vollbild-Refresh erfolgt",
+    "Für Text den Qualitäts- statt Geschwindigkeitsmodus wählen"
+  ],
+  "whenToStop": "Sobald der Hintergrund wieder sauber und weiß ist, ist das Display vollständig erholt."
+}
 ];
