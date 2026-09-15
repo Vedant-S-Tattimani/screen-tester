@@ -326,47 +326,37 @@ export default async function Home({
       {/* ================================================== */}
       {/* 1. HERO SECTION                                    */}
       {/* ================================================== */}
-      <section className="pt-4 sm:pt-6 md:pt-8 lg:pt-10 pb-6 sm:pb-8 md:pb-12 max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-4 xl:gap-6 items-center">
+      <section className="relative overflow-hidden pt-6 sm:pt-8 md:pt-10 pb-10 sm:pb-14 md:pb-16 border-b border-gray-100">
+        <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12 relative">
           
-          {/* Left Hero Column */}
-          <div className="md:col-span-7 flex flex-col justify-center">
-            {/* Small Eyebrow */}
-            <div className="text-[11px] sm:text-xs font-mono font-medium uppercase tracking-[0.22em] text-gray-400 mb-3 sm:mb-3.5 select-none">
+          {/* Background / Right Fluid Chrome Wave Artwork */}
+          <div className="absolute right-0 -top-6 -bottom-6 sm:-top-8 sm:-bottom-8 md:-top-10 md:-bottom-10 w-full md:w-[60%] lg:w-[56%] xl:w-[54%] pointer-events-none select-none flex items-start justify-end z-0 opacity-90 md:opacity-100">
+            <Image
+              src="/hero-fluid.webp"
+              alt="Screen Tester Abstract Fluid Wave Display Test Visual"
+              width={1920}
+              height={1080}
+              priority
+              className="w-full h-full object-contain object-right-top"
+            />
+          </div>
+
+          {/* Left Hero Content */}
+          <div className="relative z-10 max-w-2xl py-2 sm:py-4">
+            {/* Monospace Eyebrow */}
+            <div className="text-xs sm:text-[13px] font-mono font-bold uppercase tracking-[0.2em] text-gray-800 mb-3 sm:mb-4 select-none">
               {t("eyebrow")}
             </div>
 
-            {/* Main Headline */}
-            <h1 className="text-3xl sm:text-4xl md:text-[44px] lg:text-[50px] xl:text-[56px] font-extrabold tracking-[-0.035em] text-gray-950 leading-[1.08] sm:leading-[1.06] mb-3 sm:mb-4 lg:mb-5">
+            {/* Big Bold Headline */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[58px] font-extrabold tracking-[-0.035em] text-gray-950 leading-[1.08] mb-4 sm:mb-5">
               {t("h1")}
             </h1>
 
-            {/* Supporting Copy */}
-            <p className="text-[14px] sm:text-[15px] lg:text-[15.5px] text-gray-600 leading-relaxed max-w-xl mb-5 sm:mb-6 font-normal">
+            {/* Editorial Supporting Description */}
+            <p className="text-sm sm:text-base md:text-[15.5px] text-gray-600 leading-relaxed max-w-xl font-normal">
               {t("description")}
             </p>
-
-            {/* CTA Button */}
-            <div className="flex items-center">
-              <StartTestingCTA label={t("startTesting")} />
-            </div>
-          </div>
-
-          {/* Right Hero Column — Generic Brand-Neutral Desktop & Smartphone Visual */}
-          <div className="hidden md:flex md:col-span-5 flex-col items-center md:items-end justify-center relative select-none">
-            <div className="w-full max-w-[540px] relative flex items-center">
-              <div className="w-full relative">
-                <Image
-                  src="/hero-devices.webp"
-                  alt="Generic brand-neutral desktop monitor and smartphone displaying screen diagnostic calibration and test patterns"
-                  width={1200}
-                  height={896}
-                  priority
-                  sizes="(max-width: 768px) 0px, (max-width: 1200px) 45vw, 540px"
-                  className="w-full h-auto object-contain select-none pointer-events-none"
-                />
-              </div>
-            </div>
           </div>
 
         </div>
