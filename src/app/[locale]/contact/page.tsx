@@ -49,58 +49,10 @@ export default async function ContactPage({
           </p>
         </div>
 
-        {/* 3 Contact / Resource Channels */}
+        {/* Contact / Resource Channels */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
           
-          {/* Channel 1: GitHub Issue Tracker */}
-          <a
-            href="https://github.com/Vedant-S-Tattimani/screen-tester/issues"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-6 border border-gray-200/90 rounded-2xl bg-white hover:border-gray-400 hover:shadow-xs transition-all flex flex-col justify-between group"
-          >
-            <div>
-              <div className="w-10 h-10 rounded-xl bg-gray-100 text-gray-900 flex items-center justify-center mb-4 group-hover:bg-gray-900 group-hover:text-white transition-colors">
-                <Bug className="w-5 h-5" />
-              </div>
-              <h2 className="text-base font-bold text-gray-950 mb-1.5 flex items-center gap-1.5">
-                <span>{t("githubTitle")}</span>
-                <ExternalLink className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-900 transition-colors" />
-              </h2>
-              <p className="text-xs sm:text-[13.5px] text-gray-600 leading-relaxed">
-                {t("githubDesc")}
-              </p>
-            </div>
-            <span className="text-xs font-semibold text-gray-950 mt-5 inline-flex items-center gap-1 group-hover:underline">
-              <span>{t("githubAction")}</span>
-            </span>
-          </a>
-
-          {/* Channel 2: GitHub Repository & Contribute */}
-          <a
-            href="https://github.com/Vedant-S-Tattimani/screen-tester"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-6 border border-gray-200/90 rounded-2xl bg-white hover:border-gray-400 hover:shadow-xs transition-all flex flex-col justify-between group"
-          >
-            <div>
-              <div className="w-10 h-10 rounded-xl bg-gray-100 text-gray-900 flex items-center justify-center mb-4 group-hover:bg-gray-900 group-hover:text-white transition-colors">
-                <GitPullRequest className="w-5 h-5" />
-              </div>
-              <h2 className="text-base font-bold text-gray-950 mb-1.5 flex items-center gap-1.5">
-                <span>{t("contributeTitle")}</span>
-                <ExternalLink className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-900 transition-colors" />
-              </h2>
-              <p className="text-xs sm:text-[13.5px] text-gray-600 leading-relaxed">
-                {t("contributeDesc")}
-              </p>
-            </div>
-            <span className="text-xs font-semibold text-gray-950 mt-5 inline-flex items-center gap-1 group-hover:underline">
-              <span>{t("contributeAction")}</span>
-            </span>
-          </a>
-
-          {/* Channel 3: FAQ */}
+          {/* FAQ */}
           <Link
             href="/faq"
             className="sm:col-span-2 p-6 border border-gray-200/90 rounded-2xl bg-white hover:border-gray-400 hover:shadow-xs transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 group"
