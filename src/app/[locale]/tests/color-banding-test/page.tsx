@@ -13,7 +13,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Tests" });
-  return generateSeoMetadata("/tests/color-banding-test", t("colorBanding.title"), t("colorBanding.description"));
+  return generateSeoMetadata("/tests/color-banding-test", t("colorBanding.title"), t("colorBanding.description"), locale);
 }
 
 export default async function ColorBandingTestPage({

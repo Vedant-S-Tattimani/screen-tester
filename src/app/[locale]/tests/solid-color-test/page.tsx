@@ -13,7 +13,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Tests" });
-  return generateSeoMetadata("/tests/solid-color-test", t("solidColor.title"), t("solidColor.description"));
+  return generateSeoMetadata("/tests/solid-color-test", t("solidColor.title"), t("solidColor.description"), locale);
 }
 
 export default async function SolidColorTestPage({

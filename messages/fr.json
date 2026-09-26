@@ -745,7 +745,7 @@
       ]
     },
     "multi-touch-test": {
-      "metaTitle": "Test Écran Tactile - Vérifier le Tactile en Ligne | Screen Tester",
+      "metaTitle": "Test Écran Tactile - Vérifier le Tactile en Ligne",
       "metaDescription": "Testez les contacts multi-doigts sur écran tactile, la détection des gestes et la réactivité du numériseur en ligne. Test tactile gratuit dans votre navigateur.",
       "title": "Test Multi-Touch et Gestes Multi-Doigts",
       "description_p1": "Utilisez ce test d'écran tactile gratuit pour vérifier si votre écran détecte plusieurs doigts simultanément et répond précisément au toucher. Inspectez les points de contact actifs et le tracé en temps réel.",
@@ -757,7 +757,7 @@
       "description": "Vérifiez le suivi simultané jusqu'à 10 points de contact, pincement et gestes tactiles."
     },
     "accelerometer-test": {
-      "metaTitle": "Test Accéléromètre - Capteur de Mouvement en Ligne | Screen Tester",
+      "metaTitle": "Test Accéléromètre - Capteur de Mouvement en Ligne",
       "metaDescription": "Testez l'accéléromètre et les capteurs de mouvement de votre appareil en ligne. Télémétrie en temps réel de l'accélération linéaire sur 3 axes et de la gravité.",
       "title": "Test accéléromètre",
       "description_p1": "Utilisez ce test d'accéléromètre gratuit pour vérifier les capteurs de mouvement de votre appareil en temps réel. Inspectez l'accélération sur 3 axes (X, Y, Z), la gravité et la réactivité du capteur.",
@@ -768,7 +768,7 @@
       ]
     },
     "gyroscope-test": {
-      "metaTitle": "Test Gyroscope - Capteur d'Orientation en Ligne | Screen Tester",
+      "metaTitle": "Test Gyroscope - Capteur d'Orientation en Ligne",
       "metaDescription": "Testez le gyroscope de votre appareil en ligne. Vérifiez l'orientation, les angles de roulis, tangage et lacet en direct avec un horizon artificiel interactif.",
       "title": "Test gyroscope",
       "description_p1": "Utilisez ce test de gyroscope gratuit pour vérifier l'orientation et la rotation angulaire de votre appareil. Inspectez les mouvements angulaires (lacet, tangage, roulis) et le suivi en temps réel.",
@@ -779,7 +779,7 @@
       ]
     },
     "vibration-test": {
-      "metaTitle": "Test Vibration - Tester le Vibreur de Téléphone en Ligne | Screen Tester",
+      "metaTitle": "Test Vibration - Tester le Vibreur de Téléphone en Ligne",
       "metaDescription": "Testez le moteur de vibration et le retour haptique de votre smartphone en ligne. Vérifiez des impulsions standard et des motifs de vibration personnalisés.",
       "title": "Test vibration",
       "description_p1": "Utilisez ce test de vibration gratuit pour tester le moteur de vibration et le retour haptique de votre téléphone mobile. Testez des impulsions courtes ou longues et créez des rythmes personnalisés.",
@@ -790,7 +790,7 @@
       ]
     },
     "webcam-test": {
-      "metaTitle": "Test Webcam - Tester Votre Caméra en Ligne | Screen Tester",
+      "metaTitle": "Test Webcam - Tester Votre Caméra en Ligne",
       "metaDescription": "Testez votre webcam et caméra en ligne gratuitement. Vérifiez l'aperçu vidéo en direct, la résolution, la fréquence d'images et capturez des photos de test privées.",
       "title": "Test webcam",
       "description_p1": "Utilisez ce test de webcam gratuit pour vérifier le flux vidéo de votre caméra en ligne. Inspectez la prévisualisation en direct, la résolution, la fluidité des images et les autorisations de manière sécurisée.",
@@ -801,7 +801,7 @@
       ]
     },
     "speaker-test": {
-      "metaTitle": "Test Haut-Parleur - Tester le Son et l'Audio Stéréo en Ligne | Screen Tester",
+      "metaTitle": "Test Haut-Parleur - Tester le Son et l'Audio Stéréo en Ligne",
       "metaDescription": "Testez vos haut-parleurs et écouteurs en ligne gratuitement. Vérifiez la séparation des canaux stéréo gauche/droite, l'équilibre audio et la clarté sonore.",
       "title": "Test haut-parleur",
       "description_p1": "Utilisez ce test de haut-parleur gratuit pour vérifier la sortie audio de vos enceintes ou de votre casque. Vérifiez la séparation stéréo gauche/droite, l'équilibre sonore et la réponse en fréquence.",
@@ -812,7 +812,7 @@
       ]
     },
     "microphone-test": {
-      "metaTitle": "Test Microphone - Tester Votre Micro en Ligne | Screen Tester",
+      "metaTitle": "Test Microphone - Tester Votre Micro en Ligne",
       "metaDescription": "Testez votre microphone et votre entrée audio en ligne gratuitement. Vérifiez le vumètre de volume en direct, la forme d'onde audio et le retour sonore.",
       "title": "Test microphone",
       "description_p1": "Utilisez ce test de microphone gratuit pour vérifier votre micro et votre entrée audio en ligne. Contrôlez le niveau sonore en direct, observez la forme d'onde et écoutez un échantillon sonore en toute sécurité.",
@@ -823,8 +823,16 @@
       ]
     },
     "reactionTimeTest": {
-      "title": "Test du temps de réaction",
-      "description": "Measure your human reaction time in milliseconds. Test your reflexes with this simple interactive tool."
+      "metaTitle": "Reaction Time Test",
+      "metaDescription": "Test your display and input reaction time latency.",
+      "title": "Test de Réflexes et Temps de Réaction Humain",
+      "description_p1": "Click or tap when the color changes to measure latency.",
+      "instructions": [
+        "Attendez que l'écran passe du rouge au vert.",
+        "Cliquez aussi vite que possible dès que la couleur change.",
+        "Votre temps de réaction sera consigné en millisecondes."
+      ],
+      "description": "Mesurez votre temps de réaction visuel en millisecondes avec score statistique de régularité."
     },
     "reaction-time-test": {
       "metaTitle": "Reaction Time Test",
@@ -840,7 +848,7 @@
     },
     "pixel-inversion-test": {
       "title": "Test d'inversion de pixel et scintillement VCOM",
-      "metaTitle": "Pixel Inversion & VCOM Test | Screen Tester",
+      "metaTitle": "Pixel Inversion & VCOM Test",
       "description": "Inspect pixel inversion patterns, VCOM voltage calibration, and pixel walk artifacts across LCD and OLED panels.",
       "metaDescription": "Test your monitor for pixel inversion artifacts, VCOM voltage balance, and pixel walk flicker using high-frequency checkerboard patterns.",
       "instructions": [
@@ -852,7 +860,7 @@
     },
     "strobe-crosstalk-test": {
       "title": "Test de diaphonie stroboscopique et inspection BFI",
-      "metaTitle": "Strobe Crosstalk & BFI Test | Screen Tester",
+      "metaTitle": "Strobe Crosstalk & BFI Test",
       "description": "Inspect backlight strobing blur reduction, strobe phase alignment, and double-image crosstalk across vertical screen zones.",
       "metaDescription": "Test monitor backlight strobing (ULMB, DyAc, ELMB) and Black Frame Insertion for strobe crosstalk and duplicate silhouette ghosting.",
       "instructions": [
@@ -864,7 +872,7 @@
     },
     "vrr-flicker-test": {
       "title": "Test de Scintillement de Luminosité VRR et Décalage Gamma",
-      "metaTitle": "VRR Brightness Flicker Test | Screen Tester",
+      "metaTitle": "VRR Brightness Flicker Test",
       "description": "Diagnostiquez les fluctuations de luminosité à fréquence variable et les dérives gamma OLED.",
       "metaDescription": "Stress test your monitor for VRR brightness flicker and gamma fluctuation during dynamic refresh rate swings.",
       "instructions": [
@@ -876,7 +884,7 @@
     },
     "pursuit-camera-test": {
       "title": "Piste de calibration Pursuit Camera et MPRT",
-      "metaTitle": "Pursuit Camera Sync Track | Screen Tester",
+      "metaTitle": "Pursuit Camera Sync Track",
       "description": "Calibrate tracking cameras and smartphones to photograph moving objects for scientific MPRT and ghosting measurement.",
       "metaDescription": "Pursuit camera temporal sync track for photographic measurement of monitor motion blur, ghosting, and MPRT.",
       "instructions": [
@@ -887,7 +895,7 @@
     },
     "audio-sync-test": {
       "title": "Test de synchronisation audio/vidéo (Lip-Sync)",
-      "metaTitle": "Audio Video Sync Test | Screen Tester",
+      "metaTitle": "Audio Video Sync Test",
       "description": "Calibrate audio-video delay, soundbar latency, and Bluetooth audio lag with millisecond visual and acoustic sweep pulses.",
       "metaDescription": "Test and calibrate audio-to-video lip-sync delay with visual sweep bars and synchronized 1kHz millisecond beeps.",
       "instructions": [
@@ -898,7 +906,7 @@
     },
     "gamepad-test": {
       "title": "Test d'entrée manette et contrôleur de jeu",
-      "metaTitle": "Gamepad & Controller Drift Test | Screen Tester",
+      "metaTitle": "Gamepad & Controller Drift Test",
       "description": "Test gamepad controllers, analog stick drift, deadzones, trigger axes, and button actuation using the HTML5 Gamepad API.",
       "metaDescription": "Online gamepad and controller tester. Check analog stick drift, deadzone precision, triggers, and buttons in real-time.",
       "instructions": [
@@ -908,7 +916,7 @@
     },
     "battery-test": {
       "title": "Santé de la Batterie & Informations d'Alimentation",
-      "metaTitle": "Test de Santé de Batterie | Screen Tester",
+      "metaTitle": "Test de Santé de Batterie",
       "description": "Vérifiez le niveau de batterie, l'état de charge, le temps restant estimé et la source d'alimentation de votre appareil.",
       "metaDescription": "Vérificateur de santé de batterie en ligne. Affichez le niveau de batterie, l'état de charge et les informations d'alimentation en temps réel.",
       "instructions": [
@@ -920,7 +928,7 @@
     },
     "network-speed-test": {
       "title": "Test de Vitesse Réseau",
-      "metaTitle": "Test de Vitesse Internet | Screen Tester",
+      "metaTitle": "Test de Vitesse Internet",
       "description": "Testez la vitesse de votre connexion internet incluant le débit de téléchargement, la latence et le type de réseau.",
       "metaDescription": "Test de vitesse internet gratuit en ligne. Mesurez la vitesse de téléchargement, la latence et le type de connexion.",
       "instructions": [
@@ -932,7 +940,7 @@
     },
     "color-blindness-test": {
       "title": "Simulateur de Daltonisme",
-      "metaTitle": "Simulateur de Déficience de Vision des Couleurs | Screen Tester",
+      "metaTitle": "Simulateur de Déficience de Vision des Couleurs",
       "description": "Simulez 8 types de déficience de vision des couleurs incluant Protanopie, Deutéranopie, Tritanopie et Achromatopsie.",
       "metaDescription": "Simulateur de daltonisme gratuit. Prévisualisez comment vos designs apparaissent aux personnes daltonniennes.",
       "instructions": [
@@ -944,7 +952,7 @@
     },
     "screen-recorder": {
       "title": "Enregistreur d'Écran & Capture",
-      "metaTitle": "Enregistreur d'Écran en Ligne | Screen Tester",
+      "metaTitle": "Enregistreur d'Écran en Ligne",
       "description": "Enregistrez votre écran ou capturez des captures d'écran directement dans le navigateur. Téléchargez en vidéo WebM ou image PNG.",
       "metaDescription": "Enregistreur d'écran gratuit en ligne. Capturez votre écran en vidéo ou capture directement dans le navigateur.",
       "instructions": [
@@ -956,7 +964,7 @@
     },
     "dark-mode-test": {
       "title": "Test Mode Sombre / Clair",
-      "metaTitle": "Détection du Mode Sombre | Screen Tester",
+      "metaTitle": "Détection du Mode Sombre",
       "description": "Détectez la préférence de mode sombre de votre OS, testez le support CSS color-scheme et prévisualisez les composants UI.",
       "metaDescription": "Testez la détection du mode sombre et le changement de thème. Vérifiez les préférences OS et le support CSS color-scheme.",
       "instructions": [
@@ -968,7 +976,7 @@
     },
     "input-lag-test": {
       "title": "Visualiseur d'Input Lag et Latence d'Affichage",
-      "metaTitle": "Test de Latence d'Entrée | Screen Tester",
+      "metaTitle": "Test de Latence d'Entrée",
       "description": "Visualisez le délai de traitement de l'affichage et la latence clic-vers-photon.",
       "metaDescription": "Mesurez la latence d'entrée et clic-à-photon. Test de réaction en 10 essais avec histogramme et analyse statistique.",
       "instructions": [
@@ -980,7 +988,7 @@
     },
     "ambient-light-test": {
       "title": "Test du Capteur de Lumière Ambiante",
-      "metaTitle": "Capteur de Lumière Ambiante & Luxmètre | Screen Tester",
+      "metaTitle": "Capteur de Lumière Ambiante & Luxmètre",
       "description": "Lisez les niveaux de lumière ambiante en temps réel en lux avec l'API AmbientLightSensor.",
       "metaDescription": "Test de capteur de lumière ambiante en ligne. Mesurez la luminosité en lux et obtenez des recommandations.",
       "instructions": [
@@ -992,7 +1000,7 @@
     },
     "dpi-calculator": {
       "title": "Calculateur DPI / PPI",
-      "metaTitle": "Calculateur de Densité de Pixels DPI PPI | Screen Tester",
+      "metaTitle": "Calculateur de Densité de Pixels DPI PPI",
       "description": "Calculez les DPI, PPI, pas de point de votre moniteur et vérifiez le seuil rétina pour votre distance de visionnage.",
       "metaDescription": "Calculateur DPI PPI gratuit. Entrez la taille d'écran et la résolution pour la densité de pixels et le seuil rétina.",
       "instructions": [

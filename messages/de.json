@@ -746,7 +746,7 @@
       ]
     },
     "multi-touch-test": {
-      "metaTitle": "Touchscreen Test - Touchscreen Online Testen | Screen Tester",
+      "metaTitle": "Touchscreen Test - Touchscreen Online Testen",
       "metaDescription": "Testen Sie gleichzeitige Touchscreen-Kontakte, Mehrfinger-Gesten und Digitizer-Präzision online im Browser. Kostenloser Multi-Touch Test.",
       "title": "Multi-Touch-Gesten & Mehrfinger-Test",
       "description_p1": "Nutzen Sie diesen kostenlosen Touchscreen Test, um zu prüfen, ob Ihr Bildschirm mehrere Finger erkennt und zuverlässig auf Berührungen reagiert. Überprüfen Sie aktive Kontaktpunkte und Zeigerkoordinaten in Echtzeit.",
@@ -758,7 +758,7 @@
       "description": "Überprüfen Sie simultanes 10-Punkt-Tracking, Pinch-to-Zoom und Gestenreaktionsfähigkeit."
     },
     "accelerometer-test": {
-      "metaTitle": "Beschleunigungssensor Test - Bewegungssensor Online Testen | Screen Tester",
+      "metaTitle": "Beschleunigungssensor Test - Bewegungssensor Online Testen",
       "metaDescription": "Testen Sie Beschleunigungssensor und Bewegungssensoren Ihres Geräts online. Echtzeit-Telemetrie für 3-Achsen-Linearbeschleunigung und Gravitationsvektoren.",
       "title": "Beschleunigungssensor Test",
       "description_p1": "Nutzen Sie diesen kostenlosen Beschleunigungssensor Test, um die Bewegungssensoren Ihres Geräts in Echtzeit zu prüfen. Beobachten Sie 3-Achsen-Bewegungen (X, Y, Z), Schwerkrafteinflüsse und Sensorreaktionen.",
@@ -769,7 +769,7 @@
       ]
     },
     "gyroscope-test": {
-      "metaTitle": "Gyroskop Test - Rotationssensor Online Testen | Screen Tester",
+      "metaTitle": "Gyroskop Test - Rotationssensor Online Testen",
       "metaDescription": "Testen Sie das Gyroskop Ihres Geräts online. Überprüfen Sie Rotationswinkel, Rollen, Neigen und Gieren in Echtzeit mit einem interaktiven künstlichen Horizont.",
       "title": "Gyroskop Test",
       "description_p1": "Nutzen Sie diesen kostenlosen Gyroskop Test, um Dreh- und Orientierungssensoren online zu überprüfen. Kontrollieren Sie Neigungswinkel (Nick, Roll, Gier) und flüssiges Dreh-Tracking direkt im Browser.",
@@ -780,7 +780,7 @@
       ]
     },
     "vibration-test": {
-      "metaTitle": "Vibration Test - Handy Vibration Online Testen | Screen Tester",
+      "metaTitle": "Vibration Test - Handy Vibration Online Testen",
       "metaDescription": "Testen Sie den Vibrationsmotor und das haptische Feedback Ihres Smartphones online. Prüfen Sie Standard-Impulse und benutzerdefinierte Vibrationsmuster.",
       "title": "Vibration Test",
       "description_p1": "Nutzen Sie diesen kostenlosen Vibration Test, um den Vibrationsmotor und das haptische Feedback Ihres Mobiltelefons zu testen. Prüfen Sie kurze und lange Impulse sowie eigene rhythmische Sequenzen.",
@@ -791,7 +791,7 @@
       ]
     },
     "webcam-test": {
-      "metaTitle": "Webcam Test - Kamera Online Testen | Screen Tester",
+      "metaTitle": "Webcam Test - Kamera Online Testen",
       "metaDescription": "Testen Sie Ihre Webcam und Kamera online kostenlos. Überprüfen Sie Live-Video-Vorschau, Auflösung, Framerate und erstellen Sie private lokale Schnappschüsse.",
       "title": "Webcam Test",
       "description_p1": "Nutzen Sie diesen kostenlosen Webcam Test, um Kamerabild und Videoeingang online zu überprüfen. Prüfen Sie Live-Vorschau, Bildauflösung, Bildwiederholrate und Kameraberechtigungen sicher und lokal.",
@@ -802,7 +802,7 @@
       ]
     },
     "speaker-test": {
-      "metaTitle": "Lautsprecher Test - Sound & Stereo Lautsprecher Testen | Screen Tester",
+      "metaTitle": "Lautsprecher Test - Sound & Stereo Lautsprecher Testen",
       "metaDescription": "Testen Sie Lautsprecher und Kopfhörer online kostenlos. Prüfen Sie Stereokanaltrennung links/rechts, Klangbalance und Testton-Klarheit über Frequenzbereiche.",
       "title": "Lautsprecher Test",
       "description_p1": "Nutzen Sie diesen kostenlosen Lautsprecher Test, um Ihre Boxen oder Kopfhörer online zu testen. Überprüfen Sie linke und rechte Stereokanäle, Klangbalance und Frequenzwiedergabe.",
@@ -813,7 +813,7 @@
       ]
     },
     "microphone-test": {
-      "metaTitle": "Mikrofon Test - Mikrofon Online Testen & Prüfen | Screen Tester",
+      "metaTitle": "Mikrofon Test - Mikrofon Online Testen & Prüfen",
       "metaDescription": "Testen Sie Ihr Mikrofon und Ihren Audioeingang online kostenlos. Live-Audio-Pegelmesser, Wellenform-Oszilloskop, Clipping-Anzeige und lokale Aufnahme.",
       "title": "Mikrofon Test",
       "description_p1": "Nutzen Sie diesen kostenlosen Mikrofon Test, um Ihr Mikrofon und den Audioeingang online zu überprüfen. Kontrollieren Sie den Live-Lautstärkepegel, beobachten Sie die Wellenform und testen Sie die Audiowiedergabe.",
@@ -824,8 +824,16 @@
       ]
     },
     "reactionTimeTest": {
-      "title": "Reaktionszeit-Test",
-      "description": "Measure your human reaction time in milliseconds. Test your reflexes with this simple interactive tool."
+      "metaTitle": "Reaction Time Test",
+      "metaDescription": "Test your display and input reaction time latency.",
+      "title": "Menschliche Reflex- & Reaktionszeit-Messung",
+      "description_p1": "Click or tap when the color changes to measure latency.",
+      "instructions": [
+        "Warten Sie, bis der Bildschirm von Rot auf Grün wechselt.",
+        "Klicken Sie so schnell wie möglich, sobald er grün wird.",
+        "<strong>Hinweis:</strong> Dieses visuelle Referenzmuster dient der Sichtprüfung Ihres Monitors."
+      ],
+      "description": "Messen Sie Ihre kognitive visuelle Reaktionszeit in Millisekunden mit statistischer Auswertung."
     },
     "reaction-time-test": {
       "metaTitle": "Reaction Time Test",
@@ -841,7 +849,7 @@
     },
     "pixel-inversion-test": {
       "title": "Pixel-Inversion & VCOM-Flimmertest",
-      "metaTitle": "Pixel-Inversion & VCOM-Test | Screen Tester",
+      "metaTitle": "Pixel-Inversion & VCOM-Test",
       "description": "Untersuchen Sie Pixel-Inversionsmuster, VCOM-Spannungsabgleich und Pixel-Walk-Artefakte auf LCD- und OLED-Panels.",
       "metaDescription": "Testen Sie Ihren Monitor auf Pixel-Inversion, VCOM-Spannung und Flimmern mit hochfrequenten Schachbrettmustern.",
       "instructions": [
@@ -853,7 +861,7 @@
     },
     "strobe-crosstalk-test": {
       "title": "Strobe-Crosstalk & BFI-Inspektionstest",
-      "metaTitle": "Strobe-Crosstalk- & BFI-Test | Screen Tester",
+      "metaTitle": "Strobe-Crosstalk- & BFI-Test",
       "description": "Überprüfen Sie Hintergrundbeleuchtungs-Strobing, Phasenabgleich und Doppelbild-Crosstalk über verschiedene Bildschirmzonen.",
       "metaDescription": "Testen Sie Monitor-Strobing (ULMB, DyAc, ELMB) und BFI auf Ghosting und Strobe-Crosstalk.",
       "instructions": [
@@ -865,7 +873,7 @@
     },
     "vrr-flicker-test": {
       "title": "VRR-Helligkeitsflackern & Gamma-Shift-Test",
-      "metaTitle": "VRR-Helligkeitsflimmern-Test | Screen Tester",
+      "metaTitle": "VRR-Helligkeitsflimmern-Test",
       "description": "Diagnostizieren Sie Helligkeitsschwankungen bei variabler Bildwiederholrate und OLED-Gamma-Shifts.",
       "metaDescription": "Testen Sie Ihren Monitor auf Helligkeitsflackern und Gammashift bei dynamischen Frequenzwechseln.",
       "instructions": [
@@ -877,7 +885,7 @@
     },
     "pursuit-camera-test": {
       "title": "Pursuit-Kamera-Sync & MPRT-Kalibrierung",
-      "metaTitle": "Pursuit-Camera-Sync-Spur | Screen Tester",
+      "metaTitle": "Pursuit-Camera-Sync-Spur",
       "description": "Kalibrieren Sie Kameras und Smartphones zur fotografischen Messung von MPRT und Ghosting.",
       "metaDescription": "Pursuit-Camera-Synchronisationsspur zur wissenschaftlichen Messung von Bewegungsunschärfe und MPRT.",
       "instructions": [
@@ -889,7 +897,7 @@
     },
     "audio-sync-test": {
       "title": "Audio- / Video-Lip-Sync-Kalibrierungstest",
-      "metaTitle": "Audio-Video-Sync-Test | Screen Tester",
+      "metaTitle": "Audio-Video-Sync-Test",
       "description": "Kalibrieren Sie Audioverzögerungen, Soundbar-Latenzen und Bluetooth-Lag mit präzisen Ton- und Bildimpulsen.",
       "metaDescription": "Testen und kalibrieren Sie die Bild-Ton-Synchronisation mit Millisekunden-Präzision.",
       "instructions": [
@@ -901,7 +909,7 @@
     },
     "gamepad-test": {
       "title": "Gamepad- & Controller-Eingabetest",
-      "metaTitle": "Gamepad- & Controller-Test | Screen Tester",
+      "metaTitle": "Gamepad- & Controller-Test",
       "description": "Testen Sie Gamecontroller, Analogstick-Drift, Totzonen, Triggerachsen und Tastenreaktion online.",
       "metaDescription": "Online-Test für Gamepads: Prüfen Sie Stick-Drift, Deadzones und Tasten in Echtzeit.",
       "instructions": [
@@ -911,7 +919,7 @@
     },
     "battery-test": {
       "title": "Akkuzustand & Energieinformationen",
-      "metaTitle": "Akkuzustand & Energiestatus-Test | Screen Tester",
+      "metaTitle": "Akkuzustand & Energiestatus-Test",
       "description": "Überprüfen Sie den Akkustand, Ladestatus, verbleibende Zeit und Energiequelle Ihres Geräts mit der Battery Status API.",
       "metaDescription": "Online-Akkuzustandsprüfer. Akkustand, Ladestatus, Ladezeit und Energiequelleninformationen in Echtzeit anzeigen.",
       "instructions": [
@@ -921,7 +929,7 @@
     },
     "network-speed-test": {
       "title": "Netzwerk-Geschwindigkeitstest",
-      "metaTitle": "Internet-Geschwindigkeitstest | Screen Tester",
+      "metaTitle": "Internet-Geschwindigkeitstest",
       "description": "Testen Sie Ihre Internetverbindungsgeschwindigkeit einschließlich Download-Durchsatz, Latenz-Ping und Netzwerktyp.",
       "metaDescription": "Kostenloser Online-Internet-Geschwindigkeitstest. Messen Sie Download-Geschwindigkeit, Latenz und Verbindungstyp.",
       "instructions": [
@@ -931,7 +939,7 @@
     },
     "color-blindness-test": {
       "title": "Farbenblindheit-Simulator",
-      "metaTitle": "Farbsehschwäche-Simulator | Screen Tester",
+      "metaTitle": "Farbsehschwäche-Simulator",
       "description": "Simulieren Sie 8 Arten von Farbsehschwäche einschließlich Protanopie, Deuteranopie, Tritanopie und Achromatopsie.",
       "metaDescription": "Kostenloser Farbenblindheit-Simulator. Vorschau, wie Ihre UI und Designs für Menschen mit Farbsehschwäche aussehen.",
       "instructions": [
@@ -943,7 +951,7 @@
     },
     "screen-recorder": {
       "title": "Bildschirmrekorder & Screenshot",
-      "metaTitle": "Online-Bildschirmrekorder | Screen Tester",
+      "metaTitle": "Online-Bildschirmrekorder",
       "description": "Nehmen Sie Ihren Bildschirm auf oder erstellen Sie Screenshots direkt im Browser. Download als WebM-Video oder PNG-Bild.",
       "metaDescription": "Kostenloser Online-Bildschirmrekorder. Erfassen Sie Ihren Bildschirm als Video oder Screenshot direkt im Browser.",
       "instructions": [
@@ -955,7 +963,7 @@
     },
     "dark-mode-test": {
       "title": "Dunkel-/Hellmodus-Test",
-      "metaTitle": "Dunkelmodus-Erkennung & Theme-Test | Screen Tester",
+      "metaTitle": "Dunkelmodus-Erkennung & Theme-Test",
       "description": "Erkennen Sie die Dunkelmodus-Einstellung Ihres Betriebssystems, testen Sie CSS-Farbschema-Unterstützung und Vorschau von UI-Komponenten.",
       "metaDescription": "Testen Sie Dunkelmodus-Erkennung und Theme-Umschaltung. Überprüfen Sie OS-Einstellungen und CSS-Farbschema-Unterstützung.",
       "instructions": [
@@ -965,7 +973,7 @@
     },
     "input-lag-test": {
       "title": "Display-Input-Lag & Latenz-Visualisierer",
-      "metaTitle": "Eingabeverzögerung & Click-to-Photon-Test | Screen Tester",
+      "metaTitle": "Eingabeverzögerung & Click-to-Photon-Test",
       "description": "Visualisieren Sie Bildverarbeitungsverzögerungen und Click-to-Photon-Latenzen.",
       "metaDescription": "Messen Sie die Eingabeverzögerung und Click-to-Photon-Latenz. 10-Versuchs-Reaktionstest mit Histogramm und Statistik.",
       "instructions": [
@@ -975,7 +983,7 @@
     },
     "ambient-light-test": {
       "title": "Umgebungslicht-Sensor-Test",
-      "metaTitle": "Umgebungslicht-Sensor & Lux-Meter | Screen Tester",
+      "metaTitle": "Umgebungslicht-Sensor & Lux-Meter",
       "description": "Lesen Sie Umgebungslichtpegel in Echtzeit in Lux mit der AmbientLightSensor API ab.",
       "metaDescription": "Online Umgebungslicht-Sensor-Test. Messen Sie die Raumhelligkeit in Lux und erhalten Sie Empfehlungen.",
       "instructions": [
@@ -987,7 +995,7 @@
     },
     "dpi-calculator": {
       "title": "DPI / PPI Rechner",
-      "metaTitle": "DPI PPI Pixeldichte-Rechner | Screen Tester",
+      "metaTitle": "DPI PPI Pixeldichte-Rechner",
       "description": "Berechnen Sie DPI, PPI, Punktabstand Ihres Monitors und prüfen Sie die Retina-Schwelle für Ihren Betrachtungsabstand.",
       "metaDescription": "Kostenloser DPI-PPI-Rechner. Geben Sie Bildschirmgröße und Auflösung ein für Pixeldichte und Retina-Schwelle.",
       "instructions": [

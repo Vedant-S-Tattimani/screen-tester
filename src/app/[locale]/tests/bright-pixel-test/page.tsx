@@ -13,7 +13,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "TestPages.bright-pixel-test" });
-  return generateSeoMetadata("/tests/bright-pixel-test", t("metaTitle"), t("metaDescription"));
+  return generateSeoMetadata("/tests/bright-pixel-test", t("metaTitle"), t("metaDescription"), locale);
 }
 
 // Dark backgrounds and subpixel color isolation masks for locating hot/bright subpixels

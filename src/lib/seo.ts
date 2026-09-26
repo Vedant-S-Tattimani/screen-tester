@@ -30,7 +30,8 @@ export async function generateSeoMetadata(
   path: string,
   title: string,
   description: string,
-  locale?: string
+  locale?: string,
+  keywords?: string[] | string
 ) {
   let activeLocale = locale;
   if (!activeLocale) {
@@ -59,16 +60,28 @@ export async function generateSeoMetadata(
 
   const canonicalUrl = `${baseUrl}/${activeLocale}${pathSuffix}`;
 
+  // Sanitize title to prevent duplicate "| Screen Tester | Screen Tester" branding from layout template
+  const cleanTitle = title
+    ? title.replace(/\s*(\|\s*Screen\s*Tester|-\s*Screen\s*Tester)\s*$/i, '').trim()
+    : 'Screen Tester';
+
+  const parsedKeywords = Array.isArray(keywords)
+    ? keywords
+    : typeof keywords === 'string'
+      ? keywords.split(',').map((k) => k.trim()).filter(Boolean)
+      : undefined;
+
   return {
     metadataBase: new URL(baseUrl),
-    title,
+    title: cleanTitle,
     description,
+    keywords: parsedKeywords,
     alternates: {
       canonical: canonicalUrl,
       languages: alternates,
     },
     openGraph: {
-      title,
+      title: cleanTitle,
       description,
       url: canonicalUrl,
       siteName: "Screen Tester",
@@ -82,13 +95,13 @@ export async function generateSeoMetadata(
           url: "/logo.png",
           width: 1024,
           height: 1024,
-          alt: "Screen Tester Logo",
+          alt: `${cleanTitle} - Screen Tester`,
         },
       ],
     },
     twitter: {
       card: "summary" as const,
-      title,
+      title: cleanTitle,
       description,
       images: ["/logo.png"],
     }

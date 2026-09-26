@@ -15,8 +15,7 @@ export async function generateMetadata({
   return generateSeoMetadata(
     "/tools/browser-compatibility",
     t("metaTitle"),
-    t("metaDescription")
-  );
+    t("metaDescription"), locale);
 }
 
 export default async function BrowserCompatibilityPage({

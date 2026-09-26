@@ -16,8 +16,7 @@ export async function generateMetadata({
   return generateSeoMetadata(
     "/guides/monitor-viewing-angles-explained",
     t("metaTitle"),
-    t("metaDescription")
-  );
+    t("metaDescription"), locale);
 }
 
 export default async function ViewingAnglesGuidePage({

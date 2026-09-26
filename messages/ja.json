@@ -745,7 +745,7 @@
       ]
     },
     "multi-touch-test": {
-      "metaTitle": "タッチテスト - タッチスクリーン＆マルチタッチ確認 | Screen Tester",
+      "metaTitle": "タッチテスト - タッチスクリーン＆マルチタッチ確認",
       "metaDescription": "タッチスクリーンのマルチ指同時接触、ジェスチャー追従、デジタイザーの反応性をオンラインで確認できる無料タッチテスト。",
       "title": "マルチタッチジェスチャー＆10点マルチフィンガーテスト",
       "description_p1": "この無料タッチテストを使用して、タッチスクリーンが複数の指を同時に正しく認識し、スムーズに反応するかを確認します。接触座標、ポイント数、追従性をリアルタイムに検証できます。",
@@ -757,7 +757,7 @@
       "description": "最大10点の同時タッチ座標トラッキング、ピンチ、回転、複数指ジェスチャーの追従性を検証します。"
     },
     "accelerometer-test": {
-      "metaTitle": "加速度センサーテスト - スマホのモーションセンサー確認 | Screen Tester",
+      "metaTitle": "加速度センサーテスト - スマホのモーションセンサー確認",
       "metaDescription": "スマホやタブレットの加速度センサー・モーションセンサーをオンラインでテスト。3軸加速度と重力ベクトルのテレメトリをブラウザでリアルタイム表示。",
       "title": "加速度センサーテスト",
       "description_p1": "この無料加速度センサーテストを使用して、端末のモーションセンサーと3軸加速度（X、Y、Z）をリアルタイムに確認します。端末の傾き、重力ベクトル、センサー応答性を直接検証できます。",
@@ -768,7 +768,7 @@
       ]
     },
     "gyroscope-test": {
-      "metaTitle": "ジャイロセンサーテスト - 回転・傾きセンサー確認 | Screen Tester",
+      "metaTitle": "ジャイロセンサーテスト - 回転・傾きセンサー確認",
       "metaDescription": "スマホのジャイロセンサー・端末の向きをオンラインでテスト。回転角（ロール・ピッチ・ヨー）をリアルタイム人工水平器とコンパスで確認。",
       "title": "ジャイロセンサーテスト",
       "description_p1": "この無料ジャイロセンサーテストを使用して、端末の回転運動と向き（オリエンテーション）センサーをオンラインで確認します。人工水平器ゲージで傾きや回転角度のスムーズな追従性を検証できます。",
@@ -779,7 +779,7 @@
       ]
     },
     "vibration-test": {
-      "metaTitle": "バイブレーションテスト - スマホの振動モーター動作確認 | Screen Tester",
+      "metaTitle": "バイブレーションテスト - スマホの振動モーター動作確認",
       "metaDescription": "スマートフォンの振動モーターと触覚フィードバック（ハプティクス）をオンラインでテスト。プリセット振動やカスタム振動パターンを安全に確認。",
       "title": "バイブレーションテスト",
       "description_p1": "この無料バイブレーションテストを使用して、スマホの振動モーターと触覚フィードバック動作を確認します。短時間・長時間のパルスやカスタム振動パターンで振動動作を検証できます。",
@@ -790,7 +790,7 @@
       ]
     },
     "webcam-test": {
-      "metaTitle": "ウェブカメラテスト - カメラ動作・解像度確認 | Screen Tester",
+      "metaTitle": "ウェブカメラテスト - カメラ動作・解像度確認",
       "metaDescription": "ウェブカメラやPCカメラの動作を無料でオンラインテスト。リアルタイム映像プレビュー、解像度、フレームレートの確認、安全なローカルスナップショット撮影。",
       "title": "ウェブカメラテスト",
       "description_p1": "この無料ウェブカメラテストを使用して、カメラの映像入力と動作をオンラインで確認します。リアルタイム映像プレビュー、解像度、フレームレート、カメラ権限を安全に検証できます。",
@@ -801,7 +801,7 @@
       ]
     },
     "speaker-test": {
-      "metaTitle": "スピーカーテスト - 左右ステレオ音声・サウンド確認 | Screen Tester",
+      "metaTitle": "スピーカーテスト - 左右ステレオ音声・サウンド確認",
       "metaDescription": "スピーカーやヘッドホンの音声を無料でオンラインテスト。左右ステレオチャンネルの分離、音量バランス、各周波数テストトーンの歪みをチェック。",
       "title": "スピーカーテスト",
       "description_p1": "この無料スピーカーテストを使用して、スピーカーやヘッドホンの音声出力をオンラインで確認します。左・右ステレオチャンネルの分離、音量バランス、各音域の明瞭度を検証できます。",
@@ -812,7 +812,7 @@
       ]
     },
     "microphone-test": {
-      "metaTitle": "マイクテスト - オンラインマイク音声入力確認 | Screen Tester",
+      "metaTitle": "マイクテスト - オンラインマイク音声入力確認",
       "metaDescription": "マイクと音声入力を無料でオンラインテスト。リアルタイム音量レベルメーター、音声波形表示、デジタルクリッピング検知、安全な録音再生チェック。",
       "title": "マイクテスト",
       "description_p1": "この無料マイクテストを使用して、マイクの接続状態と音声入力をオンラインで確認します。リアルタイムの音量メーター、波形オシロスコープ、5秒間の安全な録音再生でマイク動作を検証できます。",
@@ -823,8 +823,16 @@
       ]
     },
     "reactionTimeTest": {
-      "title": "反応速度（リアクションタイム）テスト",
-      "description": "Measure your human reaction time in milliseconds. Test your reflexes with this simple interactive tool."
+      "metaTitle": "Reaction Time Test",
+      "metaDescription": "Test your display and input reaction time latency.",
+      "title": "反射神経・人間反応速度（ミリ秒）ベンチマーク",
+      "description_p1": "Click or tap when the color changes to measure latency.",
+      "instructions": [
+        "画面が赤色から緑色に変わるのをお待ちください。",
+        "緑色に変わったら、できるだけ速くクリックまたはタップしてください。",
+        "あなたの反応速度がミリ秒（ms）単位で計測・記録されます。"
+      ],
+      "description": "視覚刺激に対する認知反応速度をミリ秒単位で高精度測定し、統計的安定度をスコア化します。"
     },
     "reaction-time-test": {
       "metaTitle": "Reaction Time Test",
@@ -840,7 +848,7 @@
     },
     "pixel-inversion-test": {
       "title": "ピクセルインバージョン＆VCOMフリッカーテスト",
-      "metaTitle": "Pixel Inversion & VCOM Test | Screen Tester",
+      "metaTitle": "Pixel Inversion & VCOM Test",
       "description": "Inspect pixel inversion patterns, VCOM voltage calibration, and pixel walk artifacts across LCD and OLED panels.",
       "metaDescription": "Test your monitor for pixel inversion artifacts, VCOM voltage balance, and pixel walk flicker using high-frequency checkerboard patterns.",
       "instructions": [
@@ -852,7 +860,7 @@
     },
     "strobe-crosstalk-test": {
       "title": "ストロボクロストーク＆BFI点検テスト",
-      "metaTitle": "Strobe Crosstalk & BFI Test | Screen Tester",
+      "metaTitle": "Strobe Crosstalk & BFI Test",
       "description": "Inspect backlight strobing blur reduction, strobe phase alignment, and double-image crosstalk across vertical screen zones.",
       "metaDescription": "Test monitor backlight strobing (ULMB, DyAc, ELMB) and Black Frame Insertion for strobe crosstalk and duplicate silhouette ghosting.",
       "instructions": [
@@ -864,7 +872,7 @@
     },
     "vrr-flicker-test": {
       "title": "VRR輝度ちらつき＆ガンマシフトストレステスト",
-      "metaTitle": "VRR Brightness Flicker Test | Screen Tester",
+      "metaTitle": "VRR Brightness Flicker Test",
       "description": "可変リフレッシュレート（VRR）時の急激な輝度変動、低フレーム補正（LFC）時のちらつき、OLEDガンマ変動を診断します。",
       "metaDescription": "Stress test your monitor for VRR brightness flicker and gamma fluctuation during dynamic refresh rate swings.",
       "instructions": [
@@ -876,7 +884,7 @@
     },
     "pursuit-camera-test": {
       "title": "パシュートカメラ同期＆MPRT測定トラック",
-      "metaTitle": "Pursuit Camera Sync Track | Screen Tester",
+      "metaTitle": "Pursuit Camera Sync Track",
       "description": "Calibrate tracking cameras and smartphones to photograph moving objects for scientific MPRT and ghosting measurement.",
       "metaDescription": "Pursuit camera temporal sync track for photographic measurement of monitor motion blur, ghosting, and MPRT.",
       "instructions": [
@@ -887,7 +895,7 @@
     },
     "audio-sync-test": {
       "title": "音声・映像リップシンク同期テスト",
-      "metaTitle": "Audio Video Sync Test | Screen Tester",
+      "metaTitle": "Audio Video Sync Test",
       "description": "Calibrate audio-video delay, soundbar latency, and Bluetooth audio lag with millisecond visual and acoustic sweep pulses.",
       "metaDescription": "Test and calibrate audio-to-video lip-sync delay with visual sweep bars and synchronized 1kHz millisecond beeps.",
       "instructions": [
@@ -898,7 +906,7 @@
     },
     "gamepad-test": {
       "title": "ゲームパッド＆コントローラー入力テスト",
-      "metaTitle": "Gamepad & Controller Drift Test | Screen Tester",
+      "metaTitle": "Gamepad & Controller Drift Test",
       "description": "Test gamepad controllers, analog stick drift, deadzones, trigger axes, and button actuation using the HTML5 Gamepad API.",
       "metaDescription": "Online gamepad and controller tester. Check analog stick drift, deadzone precision, triggers, and buttons in real-time.",
       "instructions": [
@@ -909,7 +917,7 @@
     },
     "battery-test": {
       "title": "バッテリー健全性と電源情報",
-      "metaTitle": "バッテリー健全性テスト | Screen Tester",
+      "metaTitle": "バッテリー健全性テスト",
       "description": "Battery Status APIを使用して、デバイスのバッテリーレベル、充電状態、推定残り時間、電源を確認します。",
       "metaDescription": "オンラインバッテリー健全性チェッカー。バッテリーレベル、充電状態、電源情報をリアルタイムで表示。",
       "instructions": [
@@ -919,7 +927,7 @@
     },
     "network-speed-test": {
       "title": "ネットワーク速度テスト",
-      "metaTitle": "インターネット速度テスト | Screen Tester",
+      "metaTitle": "インターネット速度テスト",
       "description": "ブラウザAPIを使用して、ダウンロードスループット、レイテンシーping、ネットワークタイプを含むインターネット接続速度をテストします。",
       "metaDescription": "無料オンラインインターネット速度テスト。ダウンロード速度、レイテンシー、接続タイプを測定します。",
       "instructions": [
@@ -929,7 +937,7 @@
     },
     "color-blindness-test": {
       "title": "色覚異常シミュレーター",
-      "metaTitle": "色覚異常シミュレーター | Screen Tester",
+      "metaTitle": "色覚異常シミュレーター",
       "description": "第一色覚異常、第二色覚異常、第三色覚異常、全色盲を含む8種類の色覚異常をSVGカラーマトリクスフィルターでシミュレートします。",
       "metaDescription": "無料の色覚異常シミュレーター。色覚異常のある人にデザインがどのように見えるかプレビューできます。",
       "instructions": [
@@ -939,7 +947,7 @@
     },
     "screen-recorder": {
       "title": "スクリーンレコーダー＆スクリーンショット",
-      "metaTitle": "オンラインスクリーンレコーダー | Screen Tester",
+      "metaTitle": "オンラインスクリーンレコーダー",
       "description": "Screen Capture APIを使用してブラウザで直接画面を録画またはスクリーンショットをキャプチャします。",
       "metaDescription": "無料のオンラインスクリーンレコーダー。ブラウザで直接ビデオまたはスクリーンショットとして画面をキャプチャします。",
       "instructions": [
@@ -950,7 +958,7 @@
     },
     "dark-mode-test": {
       "title": "ダークモード/ライトモードテスト",
-      "metaTitle": "ダークモード検出テスト | Screen Tester",
+      "metaTitle": "ダークモード検出テスト",
       "description": "OSのダークモード設定を検出し、CSS color-schemeのサポートをテストし、ライトとダークの両テーマでUIコンポーネントをプレビューします。",
       "metaDescription": "ダークモード検出とテーマ切替をテスト。OS設定とCSS color-schemeサポートを確認します。",
       "instructions": [
@@ -960,7 +968,7 @@
     },
     "input-lag-test": {
       "title": "ディスプレイ入力遅延（インプットラグ）可視化テスト",
-      "metaTitle": "入力遅延テスト | Screen Tester",
+      "metaTitle": "入力遅延テスト",
       "description": "映像信号処理遅延やクリックから画面描画までのクリックスルー遅延（Click-to-Photon）を可視化します。",
       "metaDescription": "入力遅延とクリックからフォトンまでのレイテンシーを測定。ヒストグラムと統計分析付きの10回テスト。",
       "instructions": [
@@ -970,7 +978,7 @@
     },
     "ambient-light-test": {
       "title": "環境光センサーテスト",
-      "metaTitle": "環境光センサー＆ルクスメーター | Screen Tester",
+      "metaTitle": "環境光センサー＆ルクスメーター",
       "description": "AmbientLightSensor APIを使用してリアルタイムの環境光レベルをルクスで読み取ります。",
       "metaDescription": "オンライン環境光センサーテスト。ルクス単位で室内の明るさを測定し、推奨事項を取得します。",
       "instructions": [
@@ -982,7 +990,7 @@
     },
     "dpi-calculator": {
       "title": "DPI / PPIカリキュレーター",
-      "metaTitle": "DPI PPIピクセル密度計算機 | Screen Tester",
+      "metaTitle": "DPI PPIピクセル密度計算機",
       "description": "モニターのDPI、PPI、ドットピッチを計算し、視聴距離でのRetinaしきい値を確認します。",
       "metaDescription": "無料のDPI PPI計算機。画面サイズと解像度を入力してピクセル密度とRetinaしきい値を取得します。",
       "instructions": [

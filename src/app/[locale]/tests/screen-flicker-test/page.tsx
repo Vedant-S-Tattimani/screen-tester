@@ -16,7 +16,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Tests" });
-  return generateSeoMetadata("/tests/screen-flicker-test", t("flicker.title"), t("flicker.description"));
+  return generateSeoMetadata("/tests/screen-flicker-test", t("flicker.title"), t("flicker.description"), locale);
 }
 
 export default async function FlickerTestPage({

@@ -9,7 +9,7 @@ import { Metadata } from "next";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "TestPages.black-level-test" });
-  return generateSeoMetadata("/tests/black-level-test", t("metaTitle"), t("metaDescription"));
+  return generateSeoMetadata("/tests/black-level-test", t("metaTitle"), t("metaDescription"), locale);
 }
 
 export default async function BlackLevelTestPage({ params }: { params: Promise<{ locale: string }> }) {

@@ -744,7 +744,7 @@
       ]
     },
     "multi-touch-test": {
-      "metaTitle": "टच टेस्ट - ऑनलाइन टचस्क्रीन और मल्टी-टच की जाँच करें | Screen Tester",
+      "metaTitle": "टच टेस्ट - ऑनलाइन टचस्क्रीन और मल्टी-टच की जाँच करें",
       "metaDescription": "टच स्क्रीन पर एक साथ कई उंगलियों के संपर्क, जेस्चर ट्रैकिंग और टचस्क्रीन रिस्पॉन्स की ऑनलाइन जांच करें। मुफ्त ब्राउज़र टच टेस्ट।",
       "title": "मल्टी-टच जेस्चर और मल्टी-फिंगर टेस्ट",
       "description_p1": "इस मुफ्त टच टेस्ट का उपयोग करके जांचें कि आपकी टचस्क्रीन कई उंगलियों को पहचानती है और टच इनपुट पर सही प्रतिक्रिया देती है या नहीं। वास्तविक समय में सक्रिय टच पॉइंट और ट्रैकिंग का निरीक्षण करें।",
@@ -756,7 +756,7 @@
       "description": "एक साथ 10-पॉइंट मल्टी-टच ट्रैकिंग, पिंच, रोटेट और जेस्चर संवेदनशीलता सत्यापित करें।"
     },
     "accelerometer-test": {
-      "metaTitle": "एक्सेलेरोमीटर टेस्ट - मोशन और सेंसर की ऑनलाइन जांच | Screen Tester",
+      "metaTitle": "एक्सेलेरोमीटर टेस्ट - मोशन और सेंसर की ऑनलाइन जांच",
       "metaDescription": "अपने डिवाइस के एक्सेलेरोमीटर और मोशन सेंसर का ऑनलाइन परीक्षण करें। 3-अक्षीय त्वरण और गुरुत्वाकर्षण टेलीमेट्री की वास्तविक समय में जांच करें।",
       "title": "एक्सेलेरोमीटर टेस्ट",
       "description_p1": "इस मुफ्त एक्सेलेरोमीटर टेस्ट का उपयोग करके अपने डिवाइस के मोशन सेंसर और 3-अक्षीय त्वरण (X, Y, Z) की वास्तविक समय में जांच करें। गुरुत्वाकर्षण खिंचाव और सेंसर प्रतिक्रिया को सीधे अपने ब्राउज़र में देखें।",
@@ -767,7 +767,7 @@
       ]
     },
     "gyroscope-test": {
-      "metaTitle": "जाइरोस्कोप टेस्ट - डिवाइस रोटेशन और ओरिएंटेशन ऑनलाइन जांचें | Screen Tester",
+      "metaTitle": "जाइरोस्कोप टेस्ट - डिवाइस रोटेशन और ओरिएंटेशन ऑनलाइन जांचें",
       "metaDescription": "डिवाइस ओरिएंटेशन, रोटेशन, रोल, पिच और यॉ कोणों का ऑनलाइन जाइरोस्कोप परीक्षण करें। कृत्रिम क्षितिज और कंपास हेडिंग चेक करें।",
       "title": "जाइरोस्कोप टेस्ट",
       "description_p1": "इस मुफ्त जाइरोस्कोप टेस्ट का उपयोग करके अपने डिवाइस के रोटेशन और ओरिएंटेशन सेंसर की ऑनलाइन जांच करें। कोणीय गति, झुकाव कोण (पिच, रोल, यॉ) और रोटेशनल ट्रैकिंग का वास्तविक समय में निरीक्षण करें।",
@@ -778,7 +778,7 @@
       ]
     },
     "vibration-test": {
-      "metaTitle": "वाइब्रेशन टेस्ट - फोन वाइब्रेशन मोटर ऑनलाइन जांचें | Screen Tester",
+      "metaTitle": "वाइब्रेशन टेस्ट - फोन वाइब्रेशन मोटर ऑनलाइन जांचें",
       "metaDescription": "अपने स्मार्टफोन के वाइब्रेशन मोटर और हैप्टिक्स का ऑनलाइन परीक्षण करें। मानक पल्स और कस्टम वाइब्रेशन पैटर्न के साथ हैप्टिक फीडबैक जांचें।",
       "title": "वाइब्रेशन टेस्ट",
       "description_p1": "इस मुफ्त वाइब्रेशन टेस्ट का उपयोग करके अपने मोबाइल फोन के वाइब्रेशन मोटर और हैप्टिक फीडबैक की ऑनलाइन जांच करें। स्पर्श प्रतिक्रिया सत्यापित करने के लिए प्रीसेट पल्स और कस्टम पैटर्न का परीक्षण करें।",
@@ -789,7 +789,7 @@
       ]
     },
     "webcam-test": {
-      "metaTitle": "वेबकैम टेस्ट - ऑनलाइन कैमरा और रिज़ॉल्यूशन जांचें | Screen Tester",
+      "metaTitle": "वेबकैम टेस्ट - ऑनलाइन कैमरा और रिज़ॉल्यूशन जांचें",
       "metaDescription": "अपने वेबकैम और कैमरे का मुफ्त ऑनलाइन परीक्षण करें। लाइव वीडियो पूर्वावलोकन, रिज़ॉल्यूशन, फ्रेम दर और 100% निजी स्थानीय स्नैपशॉट जांचें।",
       "title": "वेबकैम टेस्ट",
       "description_p1": "इस मुफ्त वेबकैम टेस्ट का उपयोग करके अपने कैमरा स्ट्रीम और वीडियो इनपुट की ऑनलाइन जांच करें। लाइव कैमरा पूर्वावलोकन, रिज़ॉल्यूशन, फ्रेम दर और कैमरा अनुमतियों को सुरक्षित रूप से सत्यापित करें।",
@@ -800,7 +800,7 @@
       ]
     },
     "speaker-test": {
-      "metaTitle": "स्पीकर टेस्ट - ऑडियो और स्टीरियो स्पीकर ऑनलाइन जांचें | Screen Tester",
+      "metaTitle": "स्पीकर टेस्ट - ऑडियो और स्टीरियो स्पीकर ऑनलाइन जांचें",
       "metaDescription": "अपने स्पीकर और हेडफ़ोन का मुफ्त ऑनलाइन परीक्षण करें। लेफ्ट और राइट स्टीरियो चैनल सेपरेशन, ऑडियो बैलेंस, टेस्ट टोन स्पष्टता और फ्रीक्वेंसी जांचें।",
       "title": "स्पीकर टेस्ट",
       "description_p1": "इस मुफ्त स्पीकर टेस्ट का उपयोग करके अपने स्पीकर या हेडफ़ोन की ऑनलाइन जांच करें। बाएँ और दाएँ स्टीरियो ऑडियो चैनल पृथक्करण, साउंड बैलेंस और विभिन्न आवृत्तियों पर स्पष्टता को सत्यापित करें।",
@@ -811,7 +811,7 @@
       ]
     },
     "microphone-test": {
-      "metaTitle": "माइक्रोफोन टेस्ट - ऑनलाइन माइक और ऑडियो स्तर जांचें | Screen Tester",
+      "metaTitle": "माइक्रोफोन टेस्ट - ऑनलाइन माइक और ऑडियो स्तर जांचें",
       "metaDescription": "अपने माइक्रोफ़ोन और ऑडियो इनपुट का मुफ्त ऑनलाइन परीक्षण करें। लाइव माइक स्तर मीटर, ऑडियो वेवफ़ॉर्म, डिजिटल क्लिपिंग और लूपबैक प्लेबैक की जांच करें।",
       "title": "माइक्रोफोन टेस्ट",
       "description_p1": "इस मुफ्त माइक्रोफोन टेस्ट का उपयोग करके अपने माइक और ऑडियो इनपुट की ऑनलाइन जांच करें। लाइव माइक्रोफ़ोन वॉल्यूम स्तर देखें, वेवफ़ॉर्म गतिविधि पर नज़र रखें और स्थानीय प्लेबैक का सुरक्षित रूप से परीक्षण करें।",
@@ -822,8 +822,16 @@
       ]
     },
     "reactionTimeTest": {
-      "title": "प्रतिक्रिया समय परीक्षण (Reaction Time)",
-      "description": "Measure your human reaction time in milliseconds. Test your reflexes with this simple interactive tool."
+      "metaTitle": "Reaction Time Test",
+      "metaDescription": "Test your display and input reaction time latency.",
+      "title": "ह्यूमन रिफ्लेक्स रिएक्शन टाइम बेंचमार्क",
+      "description_p1": "Click or tap when the color changes to measure latency.",
+      "instructions": [
+        "स्क्रीन के लाल से हरे होने की प्रतीक्षा करें।",
+        "जैसे ही यह हरा हो, जितनी जल्दी हो सके क्लिक करें।",
+        "आपका प्रतिक्रिया समय मिलीसेकंड में दर्ज किया जाएगा।"
+      ],
+      "description": "सांख्यिकीय निरंतरता स्कोरिंग के साथ मिलीसेकंड में दृश्य प्रतिक्रिया समय को मापें।"
     },
     "reaction-time-test": {
       "metaTitle": "Reaction Time Test",
@@ -839,7 +847,7 @@
     },
     "pixel-inversion-test": {
       "title": "पिक्सेल इनवर्जन और VCOM झिलमिलाहट परीक्षण",
-      "metaTitle": "Pixel Inversion & VCOM Test | Screen Tester",
+      "metaTitle": "Pixel Inversion & VCOM Test",
       "description": "Inspect pixel inversion patterns, VCOM voltage calibration, and pixel walk artifacts across LCD and OLED panels.",
       "metaDescription": "Test your monitor for pixel inversion artifacts, VCOM voltage balance, and pixel walk flicker using high-frequency checkerboard patterns.",
       "instructions": [
@@ -850,7 +858,7 @@
     },
     "strobe-crosstalk-test": {
       "title": "स्ट्रोब क्रॉसस्टॉक और BFI निरीक्षण परीक्षण",
-      "metaTitle": "Strobe Crosstalk & BFI Test | Screen Tester",
+      "metaTitle": "Strobe Crosstalk & BFI Test",
       "description": "Inspect backlight strobing blur reduction, strobe phase alignment, and double-image crosstalk across vertical screen zones.",
       "metaDescription": "Test monitor backlight strobing (ULMB, DyAc, ELMB) and Black Frame Insertion for strobe crosstalk and duplicate silhouette ghosting.",
       "instructions": [
@@ -861,7 +869,7 @@
     },
     "vrr-flicker-test": {
       "title": "VRR ब्राइटनेस फ्लिकर और गामा शिफ्ट टेस्ट",
-      "metaTitle": "VRR Brightness Flicker Test | Screen Tester",
+      "metaTitle": "VRR Brightness Flicker Test",
       "description": "परिवर्तनीय ताज़ा दर चमक के उतार-चढ़ाव और OLED गामा बदलाव का निदान करें।",
       "metaDescription": "Stress test your monitor for VRR brightness flicker and gamma fluctuation during dynamic refresh rate swings.",
       "instructions": [
@@ -872,7 +880,7 @@
     },
     "pursuit-camera-test": {
       "title": "पर्स्यूट कैमरा सिंक और MPRT कैलिब्रेशन ट्रैक",
-      "metaTitle": "Pursuit Camera Sync Track | Screen Tester",
+      "metaTitle": "Pursuit Camera Sync Track",
       "description": "Calibrate tracking cameras and smartphones to photograph moving objects for scientific MPRT and ghosting measurement.",
       "metaDescription": "Pursuit camera temporal sync track for photographic measurement of monitor motion blur, ghosting, and MPRT.",
       "instructions": [
@@ -883,7 +891,7 @@
     },
     "audio-sync-test": {
       "title": "ऑडियो / वीडियो लिप-सिंक सिंक्रोनाइज़ेशन परीक्षण",
-      "metaTitle": "Audio Video Sync Test | Screen Tester",
+      "metaTitle": "Audio Video Sync Test",
       "description": "Calibrate audio-video delay, soundbar latency, and Bluetooth audio lag with millisecond visual and acoustic sweep pulses.",
       "metaDescription": "Test and calibrate audio-to-video lip-sync delay with visual sweep bars and synchronized 1kHz millisecond beeps.",
       "instructions": [
@@ -893,7 +901,7 @@
     },
     "gamepad-test": {
       "title": "गेमपैड और कंट्रोलर इनपुट टेस्ट",
-      "metaTitle": "Gamepad & Controller Drift Test | Screen Tester",
+      "metaTitle": "Gamepad & Controller Drift Test",
       "description": "Test gamepad controllers, analog stick drift, deadzones, trigger axes, and button actuation using the HTML5 Gamepad API.",
       "metaDescription": "Online gamepad and controller tester. Check analog stick drift, deadzone precision, triggers, and buttons in real-time.",
       "instructions": [
@@ -903,7 +911,7 @@
     },
     "battery-test": {
       "title": "बैटरी स्वास्थ्य और पावर जानकारी",
-      "metaTitle": "बैटरी स्वास्थ्य और पावर स्थिति परीक्षण | Screen Tester",
+      "metaTitle": "बैटरी स्वास्थ्य और पावर स्थिति परीक्षण",
       "description": "Battery Status API का उपयोग करके अपने डिवाइस का बैटरी स्तर, चार्जिंग स्थिति, अनुमानित शेष समय और पावर स्रोत जांचें।",
       "metaDescription": "ऑनलाइन बैटरी स्वास्थ्य जांचकर्ता। बैटरी स्तर, चार्जिंग स्थिति और पावर स्रोत की जानकारी रीयल-टाइम में देखें।",
       "instructions": [
@@ -915,7 +923,7 @@
     },
     "network-speed-test": {
       "title": "नेटवर्क स्पीड टेस्ट",
-      "metaTitle": "इंटरनेट स्पीड टेस्ट | Screen Tester",
+      "metaTitle": "इंटरनेट स्पीड टेस्ट",
       "description": "ब्राउज़र API का उपयोग करके अपनी इंटरनेट कनेक्शन गति का परीक्षण करें जिसमें डाउनलोड थ्रूपुट, लेटेंसी पिंग और नेटवर्क प्रकार शामिल हैं।",
       "metaDescription": "मुफ्त ऑनलाइन इंटरनेट स्पीड टेस्ट। डाउनलोड स्पीड, लेटेंसी और कनेक्शन प्रकार मापें।",
       "instructions": [
@@ -927,7 +935,7 @@
     },
     "color-blindness-test": {
       "title": "कलर ब्लाइंडनेस सिम्युलेटर",
-      "metaTitle": "रंग दृष्टि दोष सिम्युलेटर | Screen Tester",
+      "metaTitle": "रंग दृष्टि दोष सिम्युलेटर",
       "description": "SVG कलर मैट्रिक्स फिल्टर का उपयोग करके प्रोटानोपिया, ड्यूटेरानोपिया, ट्रिटानोपिया और एक्रोमैटोप्सिया सहित 8 प्रकार के रंग दृष्टि दोषों का अनुकरण करें।",
       "metaDescription": "मुफ्त कलर ब्लाइंडनेस सिम्युलेटर। देखें कि विभिन्न प्रकार के रंग दृष्टि दोष वाले लोगों को आपके डिज़ाइन कैसे दिखते हैं।",
       "instructions": [
@@ -939,7 +947,7 @@
     },
     "screen-recorder": {
       "title": "स्क्रीन रिकॉर्डर और स्क्रीनशॉट",
-      "metaTitle": "ऑनलाइन स्क्रीन रिकॉर्डर | Screen Tester",
+      "metaTitle": "ऑनलाइन स्क्रीन रिकॉर्डर",
       "description": "Screen Capture API का उपयोग करके सीधे ब्राउज़र में अपनी स्क्रीन रिकॉर्ड करें या स्क्रीनशॉट लें। WebM वीडियो या PNG इमेज के रूप में डाउनलोड करें।",
       "metaDescription": "मुफ्त ऑनलाइन स्क्रीन रिकॉर्डर। सीधे ब्राउज़र में वीडियो या स्क्रीनशॉट के रूप में अपनी स्क्रीन कैप्चर करें।",
       "instructions": [
@@ -951,7 +959,7 @@
     },
     "dark-mode-test": {
       "title": "डार्क मोड / लाइट मोड टेस्ट",
-      "metaTitle": "डार्क मोड डिटेक्शन और थीम टेस्ट | Screen Tester",
+      "metaTitle": "डार्क मोड डिटेक्शन और थीम टेस्ट",
       "description": "अपने ऑपरेटिंग सिस्टम की डार्क मोड प्राथमिकता का पता लगाएं, CSS color-scheme सपोर्ट टेस्ट करें, और लाइट और डार्क दोनों थीम में UI घटकों का पूर्वावलोकन करें।",
       "metaDescription": "डार्क मोड डिटेक्शन और थीम स्विचिंग का परीक्षण करें। OS प्राथमिकता और CSS color-scheme सपोर्ट जांचें।",
       "instructions": [
@@ -963,7 +971,7 @@
     },
     "input-lag-test": {
       "title": "डिस्प्ले इनपुट लैग और लेटेंसी विज़ुअलाइज़र",
-      "metaTitle": "इनपुट लैग और क्लिक-टू-फोटॉन टेस्ट | Screen Tester",
+      "metaTitle": "इनपुट लैग और क्लिक-टू-फोटॉन टेस्ट",
       "description": "डिस्प्ले पाइपलाइन प्रोसेसिंग देरी और क्लिक-टू-फोटॉन स्क्रीन लेटेंसी को विज़ुअलाइज़ करें।",
       "metaDescription": "इनपुट लैग और क्लिक-टू-फोटॉन लेटेंसी मापें। हिस्टोग्राम और सांख्यिकीय विश्लेषण के साथ 10-ट्रायल टेस्ट।",
       "instructions": [
@@ -975,7 +983,7 @@
     },
     "ambient-light-test": {
       "title": "एम्बिएंट लाइट सेंसर टेस्ट",
-      "metaTitle": "एम्बिएंट लाइट सेंसर और लक्स मीटर | Screen Tester",
+      "metaTitle": "एम्बिएंट लाइट सेंसर और लक्स मीटर",
       "description": "AmbientLightSensor API का उपयोग करके लक्स में रीयल-टाइम एम्बिएंट लाइट स्तर पढ़ें।",
       "metaDescription": "ऑनलाइन एम्बिएंट लाइट सेंसर टेस्ट। लक्स में कमरे की चमक मापें और सिफारिशें प्राप्त करें।",
       "instructions": [
@@ -987,7 +995,7 @@
     },
     "dpi-calculator": {
       "title": "DPI / PPI कैलकुलेटर",
-      "metaTitle": "DPI PPI पिक्सेल घनत्व कैलकुलेटर | Screen Tester",
+      "metaTitle": "DPI PPI पिक्सेल घनत्व कैलकुलेटर",
       "description": "अपने मॉनिटर का DPI, PPI, डॉट पिच कैलकुलेट करें और जांचें कि यह आपकी देखने की दूरी के लिए रेटिना थ्रेशोल्ड पूरा करता है या नहीं।",
       "metaDescription": "मुफ्त DPI PPI कैलकुलेटर। पिक्सेल घनत्व और रेटिना थ्रेशोल्ड के लिए स्क्रीन आकार और रेज़ोल्यूशन दर्ज करें।",
       "instructions": [

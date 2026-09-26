@@ -487,7 +487,7 @@
   },
   "TestPages": {
     "dead-pixel-test": {
-      "metaTitle": "Dead Pixel Test",
+      "metaTitle": "Dead Pixel Test – Check Dead & Stuck Pixels Online",
       "metaDescription": "Free online dead pixel test for monitors and screens. Inspect full-screen solid RGB, black, and white backgrounds to detect dead pixels and stuck subpixels.",
       "title": "Dead Pixel Test",
       "description_p1": "A dead pixel test helps you quickly find defective, dark, or stuck subpixels on your monitor or laptop display. This test displays full-screen pure colors to make any defective pixel immediately visible.",
@@ -498,8 +498,8 @@
       ]
     },
     "color-test": {
-      "metaTitle": "Monitor Color Test",
-      "metaDescription": "Test your display colors and visual calibration online. Inspect RGB color purity, color balance, and panel uniformity across full-screen color fields.",
+      "metaTitle": "Monitor Color Test – RGB Primary & Secondary Color Palettes",
+      "metaDescription": "Test monitor color purity and saturation balance across primary (Red, Green, Blue) and secondary (Cyan, Magenta, Yellow) hues.",
       "title": "Color Test & Visual Calibration",
       "description_p1": "Run an online color test to evaluate RGB color reproduction and visual calibration balance across your display. Cycle through primary and secondary full-screen color fields to spot tint shifts, color banding, and uniformity variations.",
       "instructions": [
@@ -510,8 +510,8 @@
       ]
     },
     "brightness-test": {
-      "metaTitle": "Brightness & Black Level Test",
-      "metaDescription": "Calibrate monitor brightness and black level without crushing shadow details. Features PLUGE reference bars, 1% shadow ramps, and peak white windows.",
+      "metaTitle": "Monitor Brightness Test – Black Level Clipping Calibration",
+      "metaDescription": "Calibrate monitor brightness and black level thresholds (levels 1–5) to prevent shadow crushing and washed-out blacks.",
       "title": "Brightness & Black Clipping Test",
       "description_p1": "This test calibrates your monitor's brightness (black level offset) and evaluates luminance capability. Setting brightness properly ensures deep, inky blacks without crushing shadow details into pure black or washing out dark scenes.",
       "instructions": [
@@ -523,8 +523,8 @@
       "description": "Calibrate display brightness floor and prevent dark shadow detail crushing."
     },
     "contrast-test": {
-      "metaTitle": "Monitor Contrast Ratio Test",
-      "metaDescription": "Evaluate your monitor's contrast ratio and white level separation. Ensure bright highlights remain clear without clipping whites into flat blocks.",
+      "metaTitle": "Monitor Contrast Test – Contrast Ratio & White Saturation",
+      "metaDescription": "Calibrate monitor contrast and white level separation. Ensure near-white highlights (250–254) are visible without clipping.",
       "title": "Contrast & White Saturation Test",
       "description_p1": "This test helps you configure your monitor's contrast ratio and gamma response by displaying a 25-step gradient grid from 0% pure black to 100% pure white.",
       "inst1": "Inspect the grid blocks to ensure adjacent contrast steps are visually distinct.",
@@ -533,8 +533,8 @@
       "description": "Calibrate dynamic range, peak white clipping, and highlight contrast separation."
     },
     "ghosting-test": {
-      "metaTitle": "Monitor Ghosting Test",
-      "metaDescription": "Free monitor ghosting test to measure pixel response time and motion blur. Inspect moving visual patterns to detect ghosting trails and overdrive coronas.",
+      "metaTitle": "Monitor Ghosting Test – UFO Pixel Response Time & Overdrive",
+      "metaDescription": "Free online monitor ghosting test. Benchmark pixel response time, trailing artifacts, and overdrive overshoot with moving UFO patterns.",
       "title": "Monitor Ghosting & Overdrive Test",
       "description_p1": "This monitor ghosting test evaluates pixel response times and motion clarity. By watching moving patterns at different speeds, you can easily identify trailing ghosting artifacts or overshoot (coronas) caused by aggressive monitor overdrive settings.",
       "instructions": [
@@ -546,8 +546,8 @@
       "description": "Test LCD pixel response time, trailing ghost artifacts, and overdrive overshoot coronas."
     },
     "refresh-rate-test": {
-      "metaTitle": "Refresh Rate Test",
-      "metaDescription": "Free online refresh rate test to check your monitor's real-time refresh rate (Hz) and frame pacing. Verify 60Hz, 120Hz, 144Hz, 240Hz, or 360Hz display speed.",
+      "metaTitle": "Refresh Rate Test – Check Real-Time Monitor Hz (60Hz to 360Hz)",
+      "metaDescription": "Test your monitor refresh rate online. Measure exact frame rate, browser vsync timing, and hardware refresh rate in Hertz (Hz).",
       "title": "Refresh Rate Test",
       "description_p1": "This refresh rate test measures your monitor's active refresh rate (Hz) and frame synchronization directly inside your browser. Verify whether your display is properly running at its advertised 60Hz, 144Hz, 240Hz, or higher refresh rate.",
       "instructions": [
@@ -558,8 +558,8 @@
       ]
     },
     "backlight-bleed-test": {
-      "metaTitle": "Backlight Bleed Test",
-      "metaDescription": "Detect corner light bleed, cloudy patches, and IPS glow on LCD, LED, and mini-LED displays in a darkened environment.",
+      "metaTitle": "Backlight Bleed Test – IPS Glow vs Light Bleed Inspector",
+      "metaDescription": "Inspect corner light leakage, bezel pinch backlight bleed, and IPS glow in full-screen pure black in a dark room.",
       "title": "Backlight Bleed Test",
       "description_p1": "This test renders a pure black screen. It is designed to expose backlight bleed, clouding, or IPS glow that typically affects LCD/LED panels.",
       "instructions": [
@@ -569,8 +569,8 @@
       ]
     },
     "bright-pixel-test": {
-      "metaTitle": "Bright Pixel Test",
-      "metaDescription": "Identify permanently lit bright pixels and hot subpixels against true black and dark gray backgrounds with color isolation masks.",
+      "metaTitle": "Bright Pixel Test – Find Hot & Lit Pixels on Dark Screens",
+      "metaDescription": "Detect permanently lit bright subpixels and hot pixels using dark gray and pure black reference screens.",
       "title": "Bright Pixel Test",
       "description_p1": "A bright pixel (also called a hot pixel) occurs when a liquid crystal subpixel or OLED emitter is permanently stuck in the on state, emitting light against dark and black backgrounds.",
       "instructions": [
@@ -580,8 +580,8 @@
       ]
     },
     "stuck-pixel-test": {
-      "metaTitle": "Stuck Pixel Test",
-      "metaDescription": "Free online stuck pixel test for monitors and screens. Inspect pure dark fields and primary color masks to isolate and detect stuck RGB subpixels.",
+      "metaTitle": "Stuck Pixel Test – Detect Stuck Subpixels (RGB & Colors)",
+      "metaDescription": "Test your monitor for stuck subpixels with pure solid color fields. Identify subpixels permanently locked in red, green, blue, or magenta.",
       "title": "Stuck Pixel Test",
       "description_p1": "A stuck pixel test helps you inspect your screen for individual subpixels that remain continuously illuminated with red, green, or blue light. Inspect dark backgrounds and color channels to distinguish stuck subpixels from dead pixels.",
       "instructions": [
@@ -591,8 +591,8 @@
       ]
     },
     "uniformity-test": {
-      "metaTitle": "Screen Uniformity Test",
-      "metaDescription": "Inspect full-panel brightness uniformity and Dirty Screen Effect (DSE) using 5%, 10%, 20%, 50%, and 100% white reference fields.",
+      "metaTitle": "Screen Uniformity Test – Dirty Screen Effect (DSE) & Grays",
+      "metaDescription": "Inspect display brightness uniformity, vignetting, and dirty screen effect (DSE) across 5%, 10%, 20%, 50%, and 100% white reference screens.",
       "title": "Screen Uniformity & DSE Test",
       "description_p1": "This test displays stepped grayscale backgrounds to help identify backlight bleeding, edge darkening (vignetting), and Dirty Screen Effect (DSE).",
       "instructions": [
@@ -603,8 +603,8 @@
       ]
     },
     "black-level-test": {
-      "metaTitle": "Black Level Test",
-      "metaDescription": "Check near-black luminance thresholds (0% to 5%) to detect black crush and verify accurate shadow separation.",
+      "metaTitle": "Black Level Test – 0% to 5% Shadow Detail Thresholds",
+      "metaDescription": "Calibrate near-black luminance thresholds (RGB levels 1 to 5) to reveal dark video and game shadow details.",
       "title": "Black Level Test",
       "description_p1": "This test helps you configure your monitor's black level (brightness) setting. It displays extremely dark shades near pure black.",
       "inst1": "Turn off room lights or reduce glare on the screen.",
@@ -612,8 +612,8 @@
       "inst3": "If blocks 1-5 look identical to the background, your blacks are being crushed."
     },
     "white-level-test": {
-      "metaTitle": "White Level Test",
-      "metaDescription": "Examine near-white luminance steps (95% to 100%) to ensure bright highlights are not clipped into solid white.",
+      "metaTitle": "White Level Test – 95% to 100% Highlight Saturation Check",
+      "metaDescription": "Inspect near-white luminance steps (levels 250 to 254) to ensure high-brightness details are not blown out or clipped.",
       "title": "White Level Test",
       "description_p1": "Use this pattern to adjust your monitor's Contrast control and check for near-white clipping. The test displays progressively darker shades near pure white so you can verify that highlight detail remains visible.",
       "inst1": "Open your monitor's on-screen display (OSD) and locate the physical Contrast control.",
@@ -621,8 +621,8 @@
       "inst3": "Reduce excessive contrast to prevent highlight clipping, ensuring near-white detail remains distinguishable from pure white where possible."
     },
     "grayscale-test": {
-      "metaTitle": "Grayscale Test",
-      "metaDescription": "Evaluate grayscale neutrality and color temperature shifts across smooth 256-step linear ramps and stepped bars.",
+      "metaTitle": "Grayscale Test – 256 Gray Level Neutrality & Tint Check",
+      "metaDescription": "Test monitor grayscale neutrality from 0 to 255. Detect pink/green color casts and banding in monochrome tones.",
       "title": "Grayscale Test",
       "description_p1": "This test displays neutral grayscale backgrounds. It helps you check if your monitor suffers from unwanted color tints in its gray rendering.",
       "inst1": "Cycle through the gray levels using Space or right arrow.",
@@ -630,8 +630,8 @@
       "inst3": "Use your monitor's RGB balance controls to correct any color cast."
     },
     "saturation-test": {
-      "metaTitle": "Color Saturation Test",
-      "metaDescription": "Assess color saturation thresholds across Red, Green, Blue, Cyan, Magenta, and Yellow stepped gradients.",
+      "metaTitle": "Color Saturation Test – Chroma Clipping & Vividness Check",
+      "metaDescription": "Assess color saturation thresholds across RGB and CMY channels to identify clipping in ultra-vivid highlights.",
       "title": "Saturation Test",
       "description_p1": "This test displays a continuous color spectrum and stepped saturation blocks for primary colors.",
       "inst1": "Check the smooth spectrum for obvious banding or harsh transitions.",
@@ -639,8 +639,8 @@
       "inst3": "Adjust your monitor's saturation/vibrancy settings if colors look washed out or overly neon."
     },
     "gamma-test": {
-      "metaTitle": "Gamma Visual Check",
-      "metaDescription": "Visually evaluate display gamma tracking against standard Gamma 2.2 and 2.4 reference patterns. Objective gamma curve measurement requires a hardware colorimeter.",
+      "metaTitle": "Monitor Gamma Test – Visual Gamma 2.2 Calibration Check",
+      "metaDescription": "Test display gamma tracking against standard Gamma 1.8, 2.2, and 2.4 reference patterns without hardware colorimeters.",
       "title": "Gamma Visual Check",
       "description_p1": "This visual test helps you evaluate your monitor's gamma tracking and midtone balance against standard curves. A gamma of 2.2 is the standard for sRGB and Windows PCs; objective calibration requires external hardware.",
       "inst1": "Enter fullscreen and move away from the monitor, or squint your eyes until the top lines blur into a solid gray.",
@@ -649,8 +649,8 @@
       "inst4": "<strong>ABOUT THIS TEST:</strong> This tool relies on human visual perception and optical blending. It provides visual evaluation and is not a replacement for a hardware colorimeter or spectrophotometer."
     },
     "motion-blur-test": {
-      "metaTitle": "Motion Blur Test",
-      "metaDescription": "Analyze motion resolution and persistence blur on fast-paced scenes and moving test objects.",
+      "metaTitle": "Motion Blur Test – MPRT Persistence & Motion Clarity",
+      "metaDescription": "Test monitor motion blur and MPRT persistence with high-speed moving line patterns. Evaluate eye-tracking motion blur.",
       "title": "MPRT & Motion Blur Persistence Test",
       "description_p1": "Assess how well your monitor handles fast motion without blurring or smearing details.",
       "inst1": "Track the moving blocks with your eyes.",
@@ -706,8 +706,8 @@
       ]
     },
     "vrr-test": {
-      "metaTitle": "VRR & Adaptive Sync Test",
-      "metaDescription": "Visually inspect variable refresh rate (VRR), G-Sync, and FreeSync frame pacing under dynamic workloads. Check for judder, stutter, and tearing online.",
+      "metaTitle": "VRR & Adaptive Sync Test – G-Sync & FreeSync Visual Check",
+      "metaDescription": "Inspect Variable Refresh Rate (VRR), Nvidia G-Sync, and AMD FreeSync operation with moving pendulum patterns.",
       "title": "VRR / Adaptive Sync Visual Inspection",
       "description_p1": "This test helps you visually inspect variable refresh rate behavior and animation frame pacing under changing frame workloads. Browser animation timing can provide evidence about frame pacing consistency, but cannot prove that a specific VRR hardware mode is engaged.",
       "instructions": [
@@ -728,8 +728,8 @@
       ]
     },
     "near-black-test": {
-      "metaTitle": "Near-Black Shadow Detail Test",
-      "metaDescription": "Inspect subtle dark-tone separation and shadow details near true black. Test 0% to 10% grayscale luminance steps in a darkened environment.",
+      "metaTitle": "Near-Black Shadow Detail Test – Dark Tone Separation Check",
+      "metaDescription": "Inspect subtle dark-tone separation and shadow details near pitch black to eliminate black crush in games and movies.",
       "title": "Near-Black & Shadow Detail Test",
       "description_p1": "Inspect subtle dark-tone separation and shadow transition behavior just above reference black. Low-luminance dark steps help identify black crush, elevated black floors, or panel vertical banding without claiming laboratory photometric guarantees.",
       "instructions": [
@@ -739,8 +739,8 @@
       ]
     },
     "gradient-banding-test": {
-      "metaTitle": "Gradient Banding Test",
-      "metaDescription": "Test display gradient smoothness and color stepping across grayscale, RGB, and dark tonal ramps. Detect bit-depth truncation and quantization banding.",
+      "metaTitle": "Gradient Banding Test – Smooth Color Ramp Transition Check",
+      "metaDescription": "Evaluate display bit-depth transitions and color ramp smoothness. Detect harsh contouring and posterization steps.",
       "title": "Smooth Gradient & Ramp Transitions Test",
       "description_p1": "Evaluate display gradient smoothness and detect unwanted quantization banding, harsh tonal steps, or color shifts. A browser canvas cannot definitively prove panel hardware bit depth, but provides high-fidelity reference ramps for visual inspection.",
       "instructions": [
@@ -751,8 +751,8 @@
       "description": "Evaluate multi-stop linear and radial gradient smoothness, tonal continuity, and fine ramp transitions."
     },
     "text-clarity-test": {
-      "metaTitle": "Text Clarity Test",
-      "metaDescription": "Inspect text clarity, subpixel color fringing, and font rendering sharpness across multiple sizes, contrasts, and high-frequency line gratings.",
+      "metaTitle": "Text Clarity Test – Subpixel Font Rendering & Fringing Check",
+      "metaDescription": "Inspect font rendering crispness, ClearType subpixel anti-aliasing, and color fringing on standard and unconventional subpixel layouts.",
       "title": "Text Clarity & Subpixel Rendering Test",
       "description_p1": "Inspect practical on-screen text rendering clarity, edge sharpness, and subpixel color fringing. Evaluates how your display handles typography across various font sizes and contrast pairings under your current OS scaling settings.",
       "instructions": [
@@ -773,8 +773,8 @@
       ]
     },
     "scaling-aspect-test": {
-      "metaTitle": "Scaling & Aspect Ratio Test",
-      "metaDescription": "Test display scaling uniformity and aspect ratio distortion. Features concentric true circles, square grids, and multi-aspect reference frames.",
+      "metaTitle": "Scaling & Aspect Ratio Test – Geometric Circle & Grid Check",
+      "metaDescription": "Inspect display scaling and aspect ratio integrity (16:9, 16:10, 21:9). Verify perfect circles without egg-shaped distortion.",
       "title": "Scaling & Aspect Ratio Inspection",
       "description_p1": "Inspect display scaling uniformity and geometry to detect non-uniform stretching, squashing, or incorrect aspect ratio modes. Concentric circles and calibrated grid overlays expose anamorphic distortion immediately.",
       "instructions": [
@@ -783,7 +783,7 @@
       ]
     },
     "multi-touch-test": {
-      "metaTitle": "Touch Test - Test Your Touchscreen Online | Screen Tester",
+      "metaTitle": "Touch Test - Test Your Touchscreen Online",
       "metaDescription": "Use this free touch test to check touchscreen multi-finger contacts, digitizer tracking, and touch point responsiveness online in your browser.",
       "title": "Multi-Touch Gestures & Multi-Finger Test",
       "description_p1": "Use this free touch test to check whether your touchscreen detects multiple fingers and responds correctly to touch input. Inspect active contact points, pointer coordinates, and digitizer tracking in real time.",
@@ -795,7 +795,7 @@
       "description": "Verify simultaneous 10-point multi-touch tracking, pinch, rotate, and gesture responsiveness."
     },
     "accelerometer-test": {
-      "metaTitle": "Accelerometer Test - Test Your Device Sensor Online | Screen Tester",
+      "metaTitle": "Accelerometer Test - Test Your Device Sensor Online",
       "metaDescription": "Test your phone or device accelerometer online. Inspect real-time 3-axis motion, linear acceleration, and gravity sensor telemetry in your browser.",
       "title": "Accelerometer Test",
       "description_p1": "Use this free accelerometer test to check your device motion sensors and acceleration vectors in real time. Inspect 3-axis movement, gravitational pull, and sensor responsiveness directly in your browser.",
@@ -806,7 +806,7 @@
       ]
     },
     "gyroscope-test": {
-      "metaTitle": "Gyroscope Test - Test Your Gyroscope Online | Screen Tester",
+      "metaTitle": "Gyroscope Test - Test Your Gyroscope Online",
       "metaDescription": "Test your device gyroscope online. Check rotation angles, pitch, roll, and yaw orientation telemetry in real time with an interactive horizon gauge.",
       "title": "Gyroscope Test",
       "description_p1": "Use this free gyroscope test to check your device rotation and orientation sensors online. Inspect angular movement, tilt angles (pitch, roll, yaw), and rotational tracking in real time.",
@@ -817,7 +817,7 @@
       ]
     },
     "vibration-test": {
-      "metaTitle": "Vibration Test - Test Your Phone Vibration Online | Screen Tester",
+      "metaTitle": "Vibration Test - Test Your Phone Vibration Online",
       "metaDescription": "Test your mobile phone vibration motor and haptic feedback online. Test short, medium, and long vibration pulses or create custom vibration patterns.",
       "title": "Vibration Test",
       "description_p1": "Use this free vibration test to check your phone or mobile device vibration motor and haptic feedback online. Test pulse presets and custom vibration patterns to verify tactile response.",
@@ -828,7 +828,7 @@
       ]
     },
     "webcam-test": {
-      "metaTitle": "Webcam Test - Test Your Camera Online | Screen Tester",
+      "metaTitle": "Webcam Test - Test Your Camera Online",
       "metaDescription": "Test your webcam and camera online for free. Check live camera video preview, resolution, frame rate, and take private local test snapshots.",
       "title": "Webcam Test",
       "description_p1": "Use this free webcam test to check your camera stream and video input online. Inspect real-time camera preview, stream resolution, frame rate, and verify camera permissions securely.",
@@ -839,7 +839,7 @@
       ]
     },
     "speaker-test": {
-      "metaTitle": "Speaker Test - Test Your Speakers Online | Screen Tester",
+      "metaTitle": "Speaker Test - Test Your Speakers Online",
       "metaDescription": "Test your speakers and headphones online for free. Check left and right stereo sound channels, audio balance, frequency response, and speaker clarity.",
       "title": "Speaker Test",
       "description_p1": "Use this free speaker test to check your speakers or headphones online. Verify left and right stereo audio channel separation, sound balance, and test tone clarity across frequency ranges.",
@@ -850,7 +850,7 @@
       ]
     },
     "microphone-test": {
-      "metaTitle": "Microphone Test - Test Your Mic Online | Screen Tester",
+      "metaTitle": "Microphone Test - Test Your Mic Online",
       "metaDescription": "Test your microphone and audio input online for free. Check live mic volume levels, real-time audio waveform, digital clipping, and record a playback sample.",
       "title": "Microphone Test",
       "description_p1": "Use this free microphone test to check your mic and audio input online. Verify live microphone volume levels, monitor waveform activity, detect clipping, and test local sound playback securely.",
@@ -861,12 +861,20 @@
       ]
     },
     "reactionTimeTest": {
-      "title": "Reaction Time Test",
-      "description": "Measure your human reaction time in milliseconds. Test your reflexes with this simple interactive tool."
+      "metaTitle": "Reaction Time Test – Human Reflex & Display Input Benchmark",
+      "metaDescription": "Benchmark your visual reaction time and input reflex latency in milliseconds across 5 interactive trials.",
+      "title": "Human Reflex Reaction Time Benchmark",
+      "description_p1": "Click or tap when the color changes to measure latency.",
+      "instructions": [
+        "Wait for the screen to change from red to green.",
+        "Click as fast as you can once it turns green.",
+        "Your reaction time will be recorded in milliseconds."
+      ],
+      "description": "Benchmark cognitive visual reaction time in milliseconds with statistical consistency scoring."
     },
     "reaction-time-test": {
-      "metaTitle": "Reaction Time Test",
-      "metaDescription": "Test your display and input reaction time latency.",
+      "metaTitle": "Reaction Time Test – Human Reflex & Display Input Benchmark",
+      "metaDescription": "Benchmark your visual reaction time and input reflex latency in milliseconds across 5 interactive trials.",
       "title": "Human Reflex Reaction Time Benchmark",
       "description_p1": "Click or tap when the color changes to measure latency.",
       "instructions": [
@@ -878,7 +886,7 @@
     },
     "pixel-inversion-test": {
       "title": "Pixel Inversion & VCOM Flicker Test",
-      "metaTitle": "Pixel Inversion & VCOM Test | Screen Tester",
+      "metaTitle": "Pixel Inversion & VCOM Test",
       "description": "Inspect pixel inversion patterns, VCOM voltage calibration, and pixel walk artifacts across LCD and OLED panels.",
       "metaDescription": "Test your monitor for pixel inversion artifacts, VCOM voltage balance, and pixel walk flicker using high-frequency checkerboard patterns.",
       "instructions": [
@@ -890,7 +898,7 @@
     },
     "strobe-crosstalk-test": {
       "title": "Strobe Crosstalk & BFI Inspection Test",
-      "metaTitle": "Strobe Crosstalk & BFI Test | Screen Tester",
+      "metaTitle": "Strobe Crosstalk & BFI Test",
       "description": "Inspect backlight strobing blur reduction, strobe phase alignment, and double-image crosstalk across vertical screen zones.",
       "metaDescription": "Test monitor backlight strobing (ULMB, DyAc, ELMB) and Black Frame Insertion for strobe crosstalk and duplicate silhouette ghosting.",
       "instructions": [
@@ -902,7 +910,7 @@
     },
     "vrr-flicker-test": {
       "title": "VRR Brightness Flicker & Gamma Shift Test",
-      "metaTitle": "VRR Brightness Flicker Test | Screen Tester",
+      "metaTitle": "VRR Brightness Flicker Test",
       "description": "Diagnose variable refresh rate brightness fluctuations, LFC frame jumps, and OLED gamma shifts.",
       "metaDescription": "Stress test your monitor for VRR brightness flicker and gamma fluctuation during dynamic refresh rate swings.",
       "instructions": [
@@ -914,7 +922,7 @@
     },
     "pursuit-camera-test": {
       "title": "Pursuit Camera Sync & MPRT Calibration Track",
-      "metaTitle": "Pursuit Camera Sync Track | Screen Tester",
+      "metaTitle": "Pursuit Camera Sync Track",
       "description": "Calibrate tracking cameras and smartphones to photograph moving objects for scientific MPRT and ghosting measurement.",
       "metaDescription": "Pursuit camera temporal sync track for photographic measurement of monitor motion blur, ghosting, and MPRT.",
       "instructions": [
@@ -926,7 +934,7 @@
     },
     "audio-sync-test": {
       "title": "Audio / Video Lip-Sync Calibration Test",
-      "metaTitle": "Audio Video Sync Test | Screen Tester",
+      "metaTitle": "Audio Video Sync Test",
       "description": "Calibrate audio-video delay, soundbar latency, and Bluetooth audio lag with millisecond visual and acoustic sweep pulses.",
       "metaDescription": "Test and calibrate audio-to-video lip-sync delay with visual sweep bars and synchronized 1kHz millisecond beeps.",
       "instructions": [
@@ -938,7 +946,7 @@
     },
     "gamepad-test": {
       "title": "Gamepad & Controller Input Test",
-      "metaTitle": "Gamepad & Controller Drift Test | Screen Tester",
+      "metaTitle": "Gamepad & Controller Drift Test",
       "description": "Test gamepad controllers, analog stick drift, deadzones, trigger axes, and button actuation using the HTML5 Gamepad API.",
       "metaDescription": "Online gamepad and controller tester. Check analog stick drift, deadzone precision, triggers, and buttons in real-time.",
       "instructions": [
@@ -950,7 +958,7 @@
     },
     "battery-test": {
       "title": "Battery Health & Power Info",
-      "metaTitle": "Battery Health & Power Status Test | Screen Tester",
+      "metaTitle": "Battery Health & Power Status Test",
       "description": "Check your device's battery level, charging status, estimated time remaining, and power source using the Battery Status API.",
       "metaDescription": "Online battery health checker. View battery level, charging status, time to full, and power source information in real-time.",
       "instructions": [
@@ -962,7 +970,7 @@
     },
     "network-speed-test": {
       "title": "Network Speed Test",
-      "metaTitle": "Internet Speed Test - Latency & Download | Screen Tester",
+      "metaTitle": "Internet Speed Test - Latency & Download",
       "description": "Test your internet connection speed including download throughput, latency ping, and network type using browser APIs.",
       "metaDescription": "Free online internet speed test. Measure download speed, latency, ping, and connection type directly in your browser.",
       "instructions": [
@@ -974,7 +982,7 @@
     },
     "color-blindness-test": {
       "title": "Color Blindness Simulator",
-      "metaTitle": "Color Vision Deficiency Simulator | Screen Tester",
+      "metaTitle": "Color Vision Deficiency Simulator",
       "description": "Simulate 8 types of color vision deficiency including Protanopia, Deuteranopia, Tritanopia, and Achromatopsia using real-time SVG color matrix filters.",
       "metaDescription": "Free color blindness simulator. Preview how your UI, images, and designs appear to people with different types of color vision deficiency.",
       "instructions": [
@@ -986,7 +994,7 @@
     },
     "screen-recorder": {
       "title": "Screen Recorder & Screenshot",
-      "metaTitle": "Online Screen Recorder & Screenshot Tool | Screen Tester",
+      "metaTitle": "Online Screen Recorder & Screenshot Tool",
       "description": "Record your screen or capture screenshots directly in the browser using the Screen Capture API. Download as WebM video or PNG image.",
       "metaDescription": "Free online screen recorder. Capture your screen as video (WebM) or screenshot (PNG) directly in the browser. No installation required.",
       "instructions": [
@@ -998,7 +1006,7 @@
     },
     "dark-mode-test": {
       "title": "Dark Mode / Light Mode Test",
-      "metaTitle": "Dark Mode Detection & Theme Test | Screen Tester",
+      "metaTitle": "Dark Mode Detection & Theme Test",
       "description": "Detect your operating system's dark mode preference, test CSS color-scheme support, and preview UI components in both light and dark themes.",
       "metaDescription": "Test dark mode detection and theme switching. Check OS preference, CSS color-scheme support, and preview UI in light and dark modes.",
       "instructions": [
@@ -1010,7 +1018,7 @@
     },
     "input-lag-test": {
       "title": "Display Input Lag & Latency Visualizer",
-      "metaTitle": "Input Lag & Click-to-Photon Latency Test | Screen Tester",
+      "metaTitle": "Input Lag & Click-to-Photon Latency Test",
       "description": "Visualize display pipeline processing delay and click-to-photon screen latency.",
       "metaDescription": "Measure input lag and click-to-photon latency. 10-trial visual reaction test with histogram, average, and statistical analysis.",
       "instructions": [
@@ -1022,7 +1030,7 @@
     },
     "ambient-light-test": {
       "title": "Ambient Light Sensor Test",
-      "metaTitle": "Ambient Light Sensor & Lux Meter | Screen Tester",
+      "metaTitle": "Ambient Light Sensor & Lux Meter",
       "description": "Read real-time ambient light levels in lux using the AmbientLightSensor API. Includes a brightness gauge, historical chart, and display brightness recommendations.",
       "metaDescription": "Online ambient light sensor test. Measure room brightness in lux, get display brightness recommendations, and track light level history.",
       "instructions": [
@@ -1034,7 +1042,7 @@
     },
     "dpi-calculator": {
       "title": "DPI / PPI Calculator",
-      "metaTitle": "DPI PPI Pixel Density Calculator | Screen Tester",
+      "metaTitle": "DPI PPI Pixel Density Calculator",
       "description": "Calculate your monitor's DPI, PPI, dot pitch, and check if it meets the retina threshold for your viewing distance. Includes presets for common displays.",
       "metaDescription": "Free DPI PPI calculator. Enter screen size and resolution to get pixel density, dot pitch, retina threshold, and angular resolution.",
       "instructions": [

@@ -30,8 +30,7 @@ export async function generateMetadata({
   return generateSeoMetadata(
     "/tools",
     t("metaTitle"),
-    t("metaDescription")
-  );
+    t("metaDescription"), locale);
 }
 
 const TOOLS_CONFIG = [

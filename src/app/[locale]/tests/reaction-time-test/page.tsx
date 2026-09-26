@@ -13,7 +13,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "TestPages.reaction-time-test" });
-  return generateSeoMetadata("/tests/reaction-time-test", t("metaTitle"), t("metaDescription"));
+  return generateSeoMetadata("/tests/reaction-time-test", t("metaTitle"), t("metaDescription"), locale);
 }
 
 export default async function ReactionTimeTest({
