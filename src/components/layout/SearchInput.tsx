@@ -34,6 +34,7 @@ export function SearchInput({
   const tHeader = useTranslations("Header");
   const tTestPages = useTranslations("TestPages");
   const tInspection = useTranslations("Inspection.workflowUi");
+  const tTools = useTranslations("Tools.items");
 
   const effectivePlaceholder = placeholder || (tHeader.has("searchPlaceholder") ? tHeader("searchPlaceholder") : "Search tests or guides...");
 
@@ -150,8 +151,44 @@ export function SearchInput({
         (q.includes("dpr") && r.id === "resolution-checker")
       );
 
-    return [...matchedTests, ...matchedWorkflows, ...matchedGuides, ...matchedResources];
-  }, [query, locale, tTestPages, tInspection, tHeader]);
+    const toolItems = [
+      { id: "display-bandwidth-calculator", key: "displayBandwidthCalculator", href: "/tools/display-bandwidth-calculator", tags: "bandwidth hdmi displayport dsc cable calculator" },
+      { id: "viewing-distance-calculator", key: "viewingDistanceCalculator", href: "/tools/viewing-distance-calculator", tags: "retina ppd distance visual acuity calculator" },
+      { id: "dual-monitor-matcher", key: "dualMonitorMatcher", href: "/tools/dual-monitor-matcher", tags: "dual monitor match color calibration d65" },
+      { id: "browser-compatibility", key: "browserCompatibility", href: "/tools/browser-compatibility", tags: "browser compatibility webgl hdr p3 web audio" },
+      { id: "dpi-calculator", key: "dpiCalculator", href: "/tools/dpi-calculator", tags: "dpi ppi pixel density calculator retina" },
+      { id: "dead-pixel-mapper", key: "deadPixelMapper", href: "/tools/dead-pixel-mapper", tags: "dead pixel mapper rma warranty pin coordinate" },
+      { id: "oled-burn-in-calculator", key: "oledBurnInCalculator", href: "/tools/oled-burn-in-calculator", tags: "oled burn in risk panel longevity calculator" },
+      { id: "display-certificate", key: "displayCertificate", href: "/tools/display-certificate", tags: "display certificate rma inspection report pdf" },
+      { id: "osd-calibration-guide", key: "osdCalibrationGuide", href: "/tools/osd-calibration-guide", tags: "osd monitor calibration hardware buttons menu" },
+      { id: "new-monitor-wizard", key: "newMonitorWizard", href: "/tools/new-monitor-wizard", tags: "new monitor wizard acceptance unboxing checklist" },
+      { id: "eink-refresh-tool", key: "einkRefreshTool", href: "/tools/eink-refresh-tool", tags: "e-ink electronic paper screen refresh anti ghosting" },
+      { id: "voice-recorder", key: "voiceRecorder", href: "/tools/voice-recorder", tags: "voice recorder microphone audio wav" },
+      { id: "screen-recorder", key: "screenRecorder", href: "/tools/screen-recorder", tags: "screen recorder screenshot video capture" }
+    ];
+
+    const matchedTools: SearchResultItem[] = toolItems
+      .filter(tl => {
+        const title = tTools.has(`${tl.key}.title`) ? tTools(`${tl.key}.title`) : "";
+        const desc = tTools.has(`${tl.key}.description`) ? tTools(`${tl.key}.description`) : "";
+        return (
+          tl.id.toLowerCase().includes(q) ||
+          tl.tags.toLowerCase().includes(q) ||
+          title.toLowerCase().includes(q) ||
+          desc.toLowerCase().includes(q)
+        );
+      })
+      .slice(0, 3)
+      .map(tl => ({
+        type: "test" as const,
+        id: tl.id,
+        title: tTools.has(`${tl.key}.title`) ? tTools(`${tl.key}.title`) : tl.id.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" "),
+        subtitle: "TOOL",
+        href: tl.href
+      }));
+
+    return [...matchedTests, ...matchedTools, ...matchedWorkflows, ...matchedGuides, ...matchedResources];
+  }, [query, locale, tTestPages, tInspection, tHeader, tTools]);
 
   const navigateOrOpen = (item: SearchResultItem) => {
     const isTestOrTool = item.type === "test" || item.href.startsWith("/tests/") || item.href.startsWith("/tools/");

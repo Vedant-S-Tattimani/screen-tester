@@ -17,7 +17,8 @@ import {
   Calculator,
   Crosshair,
   Flame,
-  Award
+  Award,
+  Sparkles
 } from "lucide-react";
 
 export async function generateMetadata({
@@ -152,6 +153,20 @@ const TOOLS_CONFIG = [
     href: "/tools/osd-calibration-guide",
     icon: Sliders,
     iconColor: "text-blue-600"
+  },
+  {
+    id: "new-monitor-wizard",
+    key: "newMonitorWizard",
+    href: "/tools/new-monitor-wizard",
+    icon: ClipboardCheck,
+    iconColor: "text-emerald-600"
+  },
+  {
+    id: "eink-refresh-tool",
+    key: "einkRefreshTool",
+    href: "/tools/eink-refresh-tool",
+    icon: Sparkles,
+    iconColor: "text-amber-600"
   }
 ];
 
