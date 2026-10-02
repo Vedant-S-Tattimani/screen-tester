@@ -32,7 +32,12 @@ export default async function BurnInTestPage({
       title={t("burnIn.title")}
       description={t("burnIn.description")}
       instructions={t("burnIn.instructions")}
-      testId="burn-in-test">
+      testId="burn-in-test"
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }>
       <BurnInPattern testId="burn-in-test" />
     </TestWrapper>
   );

@@ -32,7 +32,12 @@ export default async function ScreenTearingTestPage({
       title={t("screenTearing.title")}
       description={t("screenTearing.description")}
       instructions={t("screenTearing.instructions")}
-      testId="screen-tearing-test">
+      testId="screen-tearing-test"
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }>
       <ScreenTearingPattern testId="screen-tearing-test" />
     </TestWrapper>
   );

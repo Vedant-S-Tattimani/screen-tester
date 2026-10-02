@@ -58,11 +58,7 @@ export function MicrophonePattern({ testId = "microphone-test" }: MicrophonePatt
   const t = useTranslations("MicrophoneTest");
   const { setObservation } = useTestContext();
 
-  const [micState, setMicState] = useState<MicState>(() => {
-    if (typeof window === "undefined") return "IDLE";
-    if (!navigator.mediaDevices?.getUserMedia) return "UNSUPPORTED";
-    return "IDLE";
-  });
+  const [micState, setMicState] = useState<MicState>("IDLE");
 
   const [devices, setDevices] = useState<AudioInputDevice[]>([]);
   const [selectedDeviceId, setSelectedDeviceId] = useState<string>("");
@@ -160,6 +156,11 @@ export function MicrophonePattern({ testId = "microphone-test" }: MicrophonePatt
   // Initial enumeration on mount and cleanup
   useEffect(() => {
     if (typeof window === "undefined") return;
+
+    if (!navigator.mediaDevices?.getUserMedia) {
+      setMicState("UNSUPPORTED");
+      return;
+    }
 
     queueMicrotask(() => refreshDevices());
 

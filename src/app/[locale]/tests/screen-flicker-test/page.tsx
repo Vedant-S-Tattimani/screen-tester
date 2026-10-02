@@ -35,7 +35,12 @@ export default async function FlickerTestPage({
       title={t("flicker.title")}
       description={t("flicker.description")}
       instructions={t("flicker.instructions")}
-      testId="screen-flicker-test">
+      testId="screen-flicker-test"
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }>
       <FlickerPattern testId="screen-flicker-test" />
     </TestWrapper>
   );

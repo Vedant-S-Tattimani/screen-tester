@@ -32,7 +32,12 @@ export default async function BloomingTestPage({
       title={t("blooming.title")}
       description={t("blooming.description")}
       instructions={t("blooming.instructions")}
-      testId="blooming-test">
+      testId="blooming-test"
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }>
       <BloomingPattern />
     </TestWrapper>
   );

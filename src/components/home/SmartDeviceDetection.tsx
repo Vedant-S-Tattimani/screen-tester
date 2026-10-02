@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 import {
   Monitor,
   Activity,
@@ -50,6 +51,7 @@ const iconMap: Record<string, React.ReactNode> = {
 // ─── Component ───────────────────────────────────────────────
 
 export function SmartDeviceDetection() {
+  const t = useTranslations("SmartDeviceDetection");
   const [profile, setProfile] = useState<DeviceProfile | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isDismissed, setIsDismissed] = useState(false);
@@ -107,12 +109,14 @@ export function SmartDeviceDetection() {
     ? profile.capabilities
     : profile.capabilities.slice(0, 6);
 
-  const deviceTypeLabel =
-    profile.deviceType === "desktop" ? "Desktop Monitor" :
-    profile.deviceType === "laptop" ? "Laptop Display" :
-    profile.deviceType === "tablet" ? "Tablet Screen" :
-    profile.deviceType === "mobile" ? "Mobile Screen" :
-    "Display";
+  const deviceTypeKey = `deviceTypes.${profile.deviceType}`;
+  const deviceTypeLabel = t.has(deviceTypeKey)
+    ? t(deviceTypeKey)
+    : profile.deviceType === "desktop" ? "Desktop Monitor" :
+      profile.deviceType === "laptop" ? "Laptop Display" :
+      profile.deviceType === "tablet" ? "Tablet Screen" :
+      profile.deviceType === "mobile" ? "Mobile Screen" :
+      "Display";
 
   return (
     <section className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12 pt-8 pb-2">
@@ -124,7 +128,7 @@ export function SmartDeviceDetection() {
         <button
           onClick={() => setIsDismissed(true)}
           className="absolute top-3 right-3 sm:top-4 sm:right-4 p-1.5 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors z-10"
-          aria-label="Dismiss device detection"
+          aria-label={t.has("dismiss") ? t("dismiss") : "Dismiss device detection"}
         >
           <X className="w-4 h-4" />
         </button>
@@ -138,22 +142,22 @@ export function SmartDeviceDetection() {
             <div className="flex-1 min-w-0 pr-6">
               <div className="flex items-center gap-2 flex-wrap">
                 <h3 className="font-bold text-sm sm:text-[15px] text-gray-950 tracking-tight">
-                  Smart Device Detection
+                  {t.has("title") ? t("title") : "Smart Device Detection"}
                 </h3>
                 <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-gray-900 text-white">
                   {deviceTypeLabel}
                 </span>
               </div>
               <p className="text-xs sm:text-[13px] text-gray-500 mt-0.5 leading-snug">
-                We detected{" "}
+                {t.has("detectedIntro") ? t("detectedIntro") : "We detected"}{" "}
                 <span className="font-semibold text-gray-700">
-                  {profile.capabilities.length} hardware capabilities
+                  {profile.capabilities.length} {t.has("hardwareCapabilities") ? t("hardwareCapabilities") : "hardware capabilities"}
                 </span>{" "}
-                and recommend{" "}
+                {t.has("andRecommend") ? t("andRecommend") : "and recommend"}{" "}
                 <span className="font-semibold text-gray-700">
-                  {totalRecommended} targeted tests
+                  {totalRecommended} {t.has("targetedTests") ? t("targetedTests") : "targeted tests"}
                 </span>{" "}
-                for your {deviceTypeLabel.toLowerCase()}.
+                {t.has("forYour") ? t("forYour") : "for your"} {deviceTypeLabel.toLowerCase()}.
               </p>
               {/* Summary line */}
               <div className="mt-2 flex items-center gap-1.5 text-[11px] font-mono text-gray-400 tracking-wide">
@@ -161,7 +165,7 @@ export function SmartDeviceDetection() {
                 <button
                   onClick={runDetection}
                   className="ml-1 p-0.5 rounded hover:bg-gray-100 hover:text-gray-600 transition-colors"
-                  title="Re-scan device"
+                  title={t.has("rescan") ? t("rescan") : "Re-scan device"}
                 >
                   <RefreshCw className="w-3 h-3" />
                 </button>
@@ -199,11 +203,13 @@ export function SmartDeviceDetection() {
               >
                 {showAll ? (
                   <>
-                    Show Less <ChevronUp className="w-3.5 h-3.5" />
+                    {t.has("showLess") ? t("showLess") : "Show Less"} <ChevronUp className="w-3.5 h-3.5" />
                   </>
                 ) : (
                   <>
-                    Show {profile.capabilities.length - 6} More Capabilities{" "}
+                    {t.has("showMore")
+                      ? t("showMore", { count: profile.capabilities.length - 6 })
+                      : `Show ${profile.capabilities.length - 6} More Capabilities`}{" "}
                     <ChevronDown className="w-3.5 h-3.5" />
                   </>
                 )}
@@ -227,6 +233,12 @@ function CapabilityCard({
   isExpanded: boolean;
   onToggle: () => void;
 }) {
+  const t = useTranslations("SmartDeviceDetection");
+
+  const translatedLabel = capability.labelKey && t.has(capability.labelKey)
+    ? t(capability.labelKey)
+    : capability.label;
+
   return (
     <div
       className={`border rounded-xl transition-all duration-200 ${
@@ -251,7 +263,7 @@ function CapabilityCard({
         </div>
         <div className="flex-1 min-w-0">
           <div className="font-semibold text-xs sm:text-[13px] text-gray-950 leading-snug truncate">
-            {capability.label}
+            {translatedLabel}
           </div>
           <div className="text-[11px] text-gray-500 leading-tight truncate">
             {capability.value}
@@ -274,31 +286,37 @@ function CapabilityCard({
         <div className="px-3 sm:px-3.5 pb-3 sm:pb-3.5 border-t border-gray-100">
           <div className="pt-2.5 pb-1.5">
             <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-gray-400">
-              Recommended Tests
+              {t.has("recommendedTests") ? t("recommendedTests") : "Recommended Tests"}
             </span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1.5">
-            {capability.recommendedTests.map((test) => (
-              <Link
-                key={test.id}
-                href={test.href as "/tests/dead-pixel-test"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2.5 p-2 rounded-lg hover:bg-gray-50 transition-colors group"
-              >
-                <div className="w-5 h-5 rounded-md bg-gray-100 group-hover:bg-gray-200 flex items-center justify-center shrink-0 transition-colors">
-                  <ArrowRight className="w-3 h-3 text-gray-500 group-hover:text-gray-900 group-hover:translate-x-0.5 transition-all" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="font-medium text-[12px] text-gray-900 leading-snug truncate group-hover:text-gray-950">
-                    {test.title}
+            {capability.recommendedTests.map((test) => {
+              const translatedReason = test.reasonKey && t.has(test.reasonKey)
+                ? t(test.reasonKey, test.reasonParams || {})
+                : test.reason;
+
+              return (
+                <Link
+                  key={test.id}
+                  href={test.href as "/tests/dead-pixel-test"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 p-2 rounded-lg hover:bg-gray-50 transition-colors group"
+                >
+                  <div className="w-5 h-5 rounded-md bg-gray-100 group-hover:bg-gray-200 flex items-center justify-center shrink-0 transition-colors">
+                    <ArrowRight className="w-3 h-3 text-gray-500 group-hover:text-gray-900 group-hover:translate-x-0.5 transition-all" />
                   </div>
-                  <div className="text-[10.5px] text-gray-400 leading-tight truncate group-hover:text-gray-500">
-                    {test.reason}
+                  <div className="flex-1 min-w-0">
+                    <div className="font-medium text-[12px] text-gray-900 leading-snug truncate group-hover:text-gray-950">
+                      {test.title}
+                    </div>
+                    <div className="text-[10.5px] text-gray-400 leading-tight truncate group-hover:text-gray-500">
+                      {translatedReason}
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              );
+            })}
           </div>
         </div>
       )}

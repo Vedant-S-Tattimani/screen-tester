@@ -40,13 +40,18 @@ export function GyroscopePattern({ testId = "gyroscope-test" }: GyroscopePattern
     const t = useTranslations("Tests.GyroscopePattern");
   useTestContext();
 
-  const [gyroState, setGyroState] = useState<GyroState>(() => {
-    if (typeof window === "undefined") return "IDLE";
-    if (!("DeviceOrientationEvent" in window)) return "UNSUPPORTED";
+  const [gyroState, setGyroState] = useState<GyroState>("IDLE");
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !("DeviceOrientationEvent" in window)) {
+      setGyroState("UNSUPPORTED");
+      return;
+    }
     const doe = window.DeviceOrientationEvent as unknown as { requestPermission?: () => Promise<string> };
-    if (typeof doe.requestPermission === "function") return "PERMISSION_REQUIRED";
-    return "IDLE";
-  });
+    if (typeof doe.requestPermission === "function") {
+      setGyroState("PERMISSION_REQUIRED");
+    }
+  }, []);
   const [orientationData, setOrientationData] = useState<OrientationData>({
     alpha: null,
     beta: null,

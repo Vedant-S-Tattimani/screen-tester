@@ -32,7 +32,12 @@ export default async function SharpnessTestPage({
       title={t("sharpness.title")}
       description={t("sharpness.description")}
       instructions={t("sharpness.instructions")}
-      testId="sharpness-test">
+      testId="sharpness-test"
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }>
       <SharpnessPattern testId="sharpness-test" />
     </TestWrapper>
   );

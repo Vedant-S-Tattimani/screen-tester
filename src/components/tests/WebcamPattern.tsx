@@ -51,12 +51,7 @@ export function WebcamPattern({ testId = "webcam-test" }: WebcamPatternProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
 
-  const [cameraState, setCameraState] = useState<CameraState>(() => {
-    if (typeof window === "undefined") return "IDLE";
-    if (window.isSecureContext === false && window.location.hostname !== "localhost") return "INSECURE";
-    if (!navigator.mediaDevices?.getUserMedia) return "UNSUPPORTED";
-    return "IDLE";
-  });
+  const [cameraState, setCameraState] = useState<CameraState>("IDLE");
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [devices, setDevices] = useState<CameraDeviceInfo[]>([]);
   const [selectedDeviceId, setSelectedDeviceId] = useState<string>("");
@@ -121,6 +116,15 @@ export function WebcamPattern({ testId = "webcam-test" }: WebcamPatternProps) {
   // Initial check on mount
   useEffect(() => {
     if (typeof window === "undefined") return;
+
+    if (window.isSecureContext === false && window.location.hostname !== "localhost") {
+      setCameraState("INSECURE");
+      return;
+    }
+    if (!navigator.mediaDevices?.getUserMedia) {
+      setCameraState("UNSUPPORTED");
+      return;
+    }
 
     const timer = setTimeout(() => {
       enumerateVideoDevices();

@@ -31,7 +31,11 @@ export default async function GrayscaleTestPage({ params }: { params: Promise<{ 
         </ol>
       }
       testId="grayscale-test"
-    >
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }>
       <AdvancedGrayscalePattern />
     </TestWrapper>
   );

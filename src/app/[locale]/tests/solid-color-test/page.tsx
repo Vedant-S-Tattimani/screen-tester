@@ -32,7 +32,12 @@ export default async function SolidColorTestPage({
       title={t("solidColor.title")}
       description={t("solidColor.description")}
       instructions={t("solidColor.instructions")}
-      testId="solid-color-test">
+      testId="solid-color-test"
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }>
       <SolidColorPattern testId="solid-color-test" />
     </TestWrapper>
   );

@@ -42,13 +42,18 @@ export function AccelerometerPattern({ testId = "accelerometer-test" }: Accelero
     const t = useTranslations("Tests.AccelerometerPattern");
   useTestContext();
 
-  const [sensorState, setSensorState] = useState<SensorState>(() => {
-    if (typeof window === "undefined") return "IDLE";
-    if (!("DeviceMotionEvent" in window)) return "UNSUPPORTED";
+  const [sensorState, setSensorState] = useState<SensorState>("IDLE");
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !("DeviceMotionEvent" in window)) {
+      setSensorState("UNSUPPORTED");
+      return;
+    }
     const dme = window.DeviceMotionEvent as unknown as { requestPermission?: () => Promise<string> };
-    if (typeof dme.requestPermission === "function") return "PERMISSION_REQUIRED";
-    return "IDLE";
-  });
+    if (typeof dme.requestPermission === "function") {
+      setSensorState("PERMISSION_REQUIRED");
+    }
+  }, []);
   const [motionData, setMotionData] = useState<MotionData>({
     accX: null,
     accY: null,

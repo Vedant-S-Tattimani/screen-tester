@@ -32,7 +32,12 @@ export default async function ViewingAngleTestPage({
       title={t("title")}
       description={t("description")}
       instructions={t("instructions")}
-      testId="viewing-angle-test">
+      testId="viewing-angle-test"
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }>
       <ViewingAnglePattern testId="viewing-angle-test" />
     </TestWrapper>
   );

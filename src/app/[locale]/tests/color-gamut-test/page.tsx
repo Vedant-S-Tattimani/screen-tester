@@ -36,7 +36,12 @@ export default async function ColorGamutTestPage({
       title={t("colorGamut.title")}
       description={t("colorGamut.description")}
       instructions={instructions}
-      testId="color-gamut-test">
+      testId="color-gamut-test"
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }>
       <ColorGamutPattern />
     </TestWrapper>
   );

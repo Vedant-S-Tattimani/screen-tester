@@ -38,11 +38,7 @@ export function VoiceRecorder() {
   const [recorderState, setRecorderState] = useState<RecorderState>("idle");
   const [recordingSeconds, setRecordingSeconds] = useState<number>(0);
   const [audioBlobUrl, setAudioBlobUrl] = useState<string | null>(null);
-  const [activeMimeType] = useState<SupportedRecordingFormat | null>(() => {
-    if (typeof window === "undefined") return null;
-    const formats = getSupportedRecordingMimeTypes();
-    return formats.length > 0 ? formats[0] : null;
-  });
+  const [activeMimeType, setActiveMimeType] = useState<SupportedRecordingFormat | null>(null);
   const [devices, setDevices] = useState<AudioInputDevice[]>([]);
   const [selectedDeviceId, setSelectedDeviceId] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
@@ -90,6 +86,11 @@ export function VoiceRecorder() {
   // Enumerate devices & probe formats on mount
   useEffect(() => {
     if (typeof window === "undefined") return;
+
+    const formats = getSupportedRecordingMimeTypes();
+    if (formats.length > 0) {
+      setActiveMimeType(formats[0]);
+    }
 
     queueMicrotask(() => {
       enumerateAudioInputDevices().then(list => {

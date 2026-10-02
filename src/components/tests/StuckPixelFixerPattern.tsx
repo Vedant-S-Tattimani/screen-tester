@@ -70,6 +70,7 @@ export function StuckPixelFixerPattern({ testId = "stuck-pixel-fixer" }: StuckPi
   const [mode, setMode] = useState<StimulationMode>("rgbCycle");
   const [sizeKey, setSizeKey] = useState<BoxSize>("medium");
   const [timerPresetMinutes, setTimerPresetMinutes] = useState<number>(10); // 10, 30, 60
+  const [fullscreenSize, setFullscreenSize] = useState<{ w: number; h: number }>({ w: 800, h: 600 });
   
   // Position State (Coordinates of the top-left of the stimulation box relative to test surface)
   const [position, setPosition] = useState<{ x: number; y: number } | null>(null);
@@ -106,6 +107,7 @@ export function StuckPixelFixerPattern({ testId = "stuck-pixel-fixer" }: StuckPi
     const handleResize = () => {
       const rect = container.getBoundingClientRect();
       if (rect.width <= 0 || rect.height <= 0) return;
+      setFullscreenSize({ w: Math.round(rect.width), h: Math.round(rect.height) });
       const currentBoxSize = SIZE_MAP[sizeKey];
       if (currentBoxSize <= 0) return; // fullscreen handled via inset-0
 
@@ -406,7 +408,7 @@ export function StuckPixelFixerPattern({ testId = "stuck-pixel-fixer" }: StuckPi
   };
 
   const boxDim = sizeKey === "fullscreen" 
-    ? { w: typeof window !== "undefined" ? window.innerWidth : 800, h: typeof window !== "undefined" ? window.innerHeight : 600 } 
+    ? fullscreenSize 
     : { w: SIZE_MAP[sizeKey], h: SIZE_MAP[sizeKey] };
 
   const totalPresetSec = timerPresetMinutes * 60;

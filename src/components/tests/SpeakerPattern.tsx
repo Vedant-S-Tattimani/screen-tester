@@ -35,17 +35,13 @@ export function SpeakerPattern({ testId = "speaker-test" }: SpeakerPatternProps)
     const t = useTranslations("Tests.SpeakerPattern");
   const { setObservation } = useTestContext();
 
-  const [audioState, setAudioState] = useState<AudioState>(() => {
-    if (typeof window === "undefined") return "IDLE";
-    const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-    return AudioContextClass ? "IDLE" : "UNSUPPORTED";
-  });
+  const [audioState, setAudioState] = useState<AudioState>("IDLE");
   const [channelMode, setChannelMode] = useState<ChannelMode>("stereo");
   const [toneType, setToneType] = useState<ToneType>("mid");
   const [volume, setVolume] = useState<number>(0.2); // Safe default: 20%
   const [outputDevices, setOutputDevices] = useState<AudioOutputDevice[]>([]);
   const [selectedDeviceId, setSelectedDeviceId] = useState<string>("");
-  const [isSinkIdSupported] = useState<boolean>(() => typeof AudioContext !== "undefined" && "setSinkId" in AudioContext.prototype);
+  const [isSinkIdSupported, setIsSinkIdSupported] = useState<boolean>(false);
   const [userObservationChoice, setUserObservationChoice] = useState<"PASS" | "ISSUE" | "UNSURE" | null>(null);
 
   const audioCtxRef = useRef<AudioContext | null>(null);
@@ -103,6 +99,16 @@ export function SpeakerPattern({ testId = "speaker-test" }: SpeakerPatternProps)
   // Initialize and check AudioContext support
   useEffect(() => {
     if (typeof window === "undefined") return;
+
+    const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+    if (!AudioContextClass) {
+      setAudioState("UNSUPPORTED");
+      return;
+    }
+
+    if (typeof AudioContext !== "undefined" && "setSinkId" in AudioContext.prototype) {
+      setIsSinkIdSupported(true);
+    }
 
     // Enumerate output devices if supported
     if (navigator.mediaDevices?.enumerateDevices) {

@@ -32,7 +32,12 @@ export default async function ColorAccuracyTestPage({
       title={t("colorAccuracy.title")}
       description={t("colorAccuracy.description")}
       instructions={t("colorAccuracy.instructions")}
-      testId="color-accuracy-test">
+      testId="color-accuracy-test"
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }>
       <ColorAccuracyPattern />
     </TestWrapper>
   );

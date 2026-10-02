@@ -32,7 +32,12 @@ export default async function ColorBandingTestPage({
       title={t("colorBanding.title")}
       description={t("colorBanding.description")}
       instructions={t("colorBanding.instructions")}
-      testId="color-banding-test">
+      testId="color-banding-test"
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }>
       <ColorBandingPattern testId="color-banding-test" />
     </TestWrapper>
   );

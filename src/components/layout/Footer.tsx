@@ -78,15 +78,6 @@ const DIRECTORY_BADGES = [
     height: 54,
   },
   {
-    name: "NextBigProduct",
-    href: "https://nextbigproduct.com/product/screen-tester",
-    rel: "noopener noreferrer",
-    src: "https://nextbigproduct.com/assets/badge/screen-tester.svg?theme=light",
-    alt: "Featured on NextBigProduct",
-    width: 250,
-    height: 54,
-  },
-  {
     name: "EasyDoFollow",
     href: "https://easydofollow.dev/dev-tools/screen-tester",
     rel: "noopener",
@@ -399,6 +390,9 @@ export function Footer() {
                       width={badge.width}
                       height={badge.height}
                       loading={badge.loading}
+                      onError={(e) => {
+                        (e.currentTarget as HTMLElement).style.display = "none";
+                      }}
                       className="h-9 sm:h-10 w-auto object-contain shrink-0"
                     />
                   </a>
@@ -423,6 +417,9 @@ export function Footer() {
                       width={badge.width}
                       height={badge.height}
                       loading={badge.loading}
+                      onError={(e) => {
+                        (e.currentTarget as HTMLElement).style.display = "none";
+                      }}
                       className="h-9 sm:h-10 w-auto object-contain shrink-0"
                     />
                   </a>

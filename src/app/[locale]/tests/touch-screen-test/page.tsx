@@ -33,7 +33,11 @@ export default async function TouchScreenTestPage({
       description={<p>{t("description")}</p>}
       instructions={<p>{t("disclaimer")}</p>}
       testId="touch-screen-test"
-    >
+      educationalContent={
+        explainerData ? (
+          <FeatureExplainer data={explainerData} labels={explainerLabels} />
+        ) : undefined
+      }>
       <TouchScreenPattern testId="touch-screen-test" />
     </TestWrapper>
   );
