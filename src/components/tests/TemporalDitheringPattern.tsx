@@ -44,6 +44,15 @@ export function TemporalDitheringPattern({ testId }: { testId: string }) {
     const ctx = canvas.getContext("2d", { willReadFrequently: true });
     if (!ctx) return;
 
+    const rect = canvas.getBoundingClientRect();
+    const dpr = typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1;
+    const targetW = Math.max(1, Math.floor(rect.width * dpr));
+    const targetH = Math.max(1, Math.floor(rect.height * dpr));
+    if (canvas.width !== targetW || canvas.height !== targetH) {
+      canvas.width = targetW;
+      canvas.height = targetH;
+    }
+
     const width = canvas.width;
     const height = canvas.height;
     const imgData = ctx.createImageData(width, height);
@@ -81,7 +90,7 @@ export function TemporalDitheringPattern({ testId }: { testId: string }) {
     }
 
     ctx.putImageData(imgData, 0, 0);
-  }, [pattern, intermediateLevel, invertPhase]);
+  }, [pattern, intermediateLevel, invertPhase, isFullscreen]);
 
   // Auto phase inversion cycle
   useEffect(() => {
@@ -168,9 +177,7 @@ export function TemporalDitheringPattern({ testId }: { testId: string }) {
       <div className="relative flex-1 overflow-hidden flex items-center justify-center bg-black">
         <canvas
           ref={canvasRef}
-          width={800}
-          height={600}
-          className="w-full h-full object-fill pixelated"
+          className="w-full h-full block pixelated"
           style={{ imageRendering: "pixelated" }}
         />
 

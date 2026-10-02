@@ -45,8 +45,12 @@ export function StrobeCrosstalkPattern({ testId = "strobe-crosstalk-test" }: Str
 
       const rect = canvas.getBoundingClientRect();
       const dpr = window.devicePixelRatio || 1;
-      canvas.width = Math.floor(rect.width * dpr);
-      canvas.height = Math.floor(rect.height * dpr);
+      const targetW = Math.max(1, Math.floor(rect.width * dpr));
+      const targetH = Math.max(1, Math.floor(rect.height * dpr));
+      if (canvas.width !== targetW || canvas.height !== targetH) {
+        canvas.width = targetW;
+        canvas.height = targetH;
+      }
 
       const w = canvas.width;
       const h = canvas.height;
