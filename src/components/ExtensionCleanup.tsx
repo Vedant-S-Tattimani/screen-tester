@@ -22,6 +22,7 @@ if (typeof window !== "undefined") {
       text.includes("safari-extension://") ||
       text.includes("eppiocemhmnlbhjplcgkofciiegomcon") ||
       text.includes("M_ID") ||
+      text.includes("executors/") ||
       text.includes("bis_skin_checked") ||
       text.includes("bis_register") ||
       text.includes("__processed_")
