@@ -139,7 +139,7 @@ export function PwmFlickerPattern({ testId }: { testId?: string }) {
     <div 
       ref={containerRef}
       className={`relative w-full rounded-2xl border border-gray-200 bg-white shadow-xs overflow-hidden transition-all ${
-        isFullscreen ? "fixed inset-0 z-50 rounded-none border-none" : ""
+        isFullscreen ? "fixed inset-0 z-50 h-screen w-screen rounded-none border-none" : ""
       }`}
     >
       {/* Top Control Bar */}

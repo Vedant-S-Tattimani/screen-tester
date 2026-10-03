@@ -2768,7 +2768,23 @@
       "slow": "धीमा",
       "poor": "खराब",
       "offline": "ऑफ़लाइन",
-      "offlineHint": "कोई इंटरनेट कनेक्शन नहीं मिला।"
+      "offlineHint": "कोई इंटरनेट कनेक्शन नहीं मिला।",
+      "upload": "अपलोड स्पीड",
+      "jitter": "जिटर",
+      "server": "एज सर्वर",
+      "testingPing": "एज सर्वर को पिंग किया जा रहा है...",
+      "testingDownload": "डाउनलोड थ्रूपुट मापा जा रहा है...",
+      "testingUpload": "अपलोड थ्रूपुट मापा जा रहा है...",
+      "clearHistory": "इतिहास साफ़ करें",
+      "suitability": "वास्तविक अनुभव उपयुक्तता",
+      "streaming4k": "4K अल्ट्रा HD स्ट्रीमिंग",
+      "onlineGaming": "ऑनलाइन गेमिंग",
+      "videoConferencing": "HD वीडियो कॉल",
+      "fastBrowsing": "तेज़ वेब ब्राउज़िंग",
+      "optimal": "उत्कृष्ट",
+      "ready": "तैयार",
+      "fairQuality": "ठीक",
+      "lagWarning": "विलंब हो सकता है"
     },
     "ColorBlindnessPattern": {
       "selectVision": "दृष्टि प्रकार चुनें",
@@ -3075,6 +3091,55 @@
     "audioLatencyTest": {
       "title": "ऑडियो हार्डवेयर पाइपलाइन और बफ़र लेटेंसी",
       "description": "Web Audio सैंपल रेट, कर्नेल लेटेंसी, आउटपुट बफ़र विलंब और मल्टीचैनल की रीयल-टाइम जांच करें।"
+    },
+    "AudioLatencyPattern": {
+      "bpm": "Bीपीएम:"
+    },
+    "ColorTemperaturePattern": {
+      "d65Standard": "D65 (6500K)",
+      "coordinates": "x: 0.3127, y: 0.3290",
+      "green": "हरा",
+      "magenta": "मैजेंटा"
+    },
+    "EinkRefreshPattern": {
+      "microcapsuleTitle": "माइक्रोकैप्सूल रिफ्रेश वेवफॉर्म",
+      "flashingNotice": "फ्लैशिंग नोटिस:",
+      "deepPurge": "गहरी शुद्धि",
+      "regalQuick": "रीगल क्विक",
+      "a2Rapid": "A2 रैपिड",
+      "fastInversion": "तेज़ इनवर्शन",
+      "flashInterval": "फ्लैश अंतराल:"
+    },
+    "HdrPeakBrightnessPattern": {
+      "highlightClipping": "हाइलाइट क्लिपिंग डेल्टा:",
+      "targetStandard": "लक्ष्य मानक:",
+      "pqCurve": "PQ ST.2084 स्टेप कर्व"
+    },
+    "NewMonitorWizardPattern": {
+      "pureBlackScreen": "शुद्ध काली स्क्रीन",
+      "backlightBleed": "बैकलाइट ब्लीड",
+      "ipsGlow": "IPS ग्लो",
+      "invertedHighContrast": "उल्टा हाई-कॉन्ट्रास्ट (14pt):",
+      "motionFramePacing": "मोशन फ्रेम पेसिंग",
+      "trackingBlockHint": "ट्रैकिंग ब्लॉक बिना माइक्रो-स्टटर के सुचारू रूप से चलना चाहिए।",
+      "inspectionCertificate": "निरीक्षण प्रमाणपत्र",
+      "overallPanelGrade": "समग्र पैनल ग्रेड",
+      "restartWizard": "विज़ार्ड पुनः शुरू करें",
+      "statusForStep": "इस चरण की स्थिति:",
+      "pass": "पास",
+      "issueFound": "समस्या मिली",
+      "back": "पीछे"
+    },
+    "OledAblPattern": {
+      "autoCycle": "ऑटो-साइकिल",
+      "fineApl": "फ़ाइन APL:",
+      "signal": "सिग्नल:",
+      "expected": "अपेक्षित:"
+    },
+    "TemporalDitheringPattern": {
+      "detectionTip": "पहचान सुझाव",
+      "targetLuminance": "लक्ष्य ल्यूमिनेंस स्तर:",
+      "patternMode": "पैटर्न मोड:"
     }
   },
   "Guides": {
@@ -7952,6 +8017,56 @@
       "gamingInspection": "हाई-रिफ्रेश और मोशन ब्लर के लिए व्यापक गेमिंग निरीक्षण",
       "oledInspection": "ओलेड बर्न-इन और परफेक्ट ब्लैक के लिए विशेष जांच",
       "generalInspection": "स्क्रीन स्वास्थ्य का पूर्ण 8-चरणीय निरीक्षण"
+    },
+    "testTitles": {
+      "resolution-checker": "Resolution & DPR Checker",
+      "sharpness-test": "Sharpness Test",
+      "subpixel-layout-test": "Subpixel Layout Test",
+      "text-clarity-test": "Text Clarity Test",
+      "dpi-calculator": "DPI / PPI Calculator",
+      "dead-pixel-test": "Dead Pixel Test",
+      "stuck-pixel-fixer": "Stuck Pixel Fixer",
+      "uniformity-test": "Uniformity Test",
+      "refresh-rate-test": "Refresh Rate Test",
+      "ghosting-test": "Ghosting Test",
+      "motion-blur-test": "Motion Blur Test",
+      "vrr-test": "VRR / FreeSync Test",
+      "gtg-response-time-test": "GTG Response Time",
+      "screen-flicker-test": "Flicker Test",
+      "hdr-capability-test": "HDR Capability Test",
+      "hdr-test": "HDR Visual Test",
+      "hdr-peak-brightness-test": "HDR Peak Brightness",
+      "color-gamut-test": "Color Gamut Test",
+      "color-accuracy-test": "Color Accuracy Test",
+      "color-temperature-test": "Color Temperature Test",
+      "saturation-test": "Saturation Test",
+      "color-banding-test": "Color Banding Test",
+      "gradient-banding-test": "Gradient Banding Test",
+      "grayscale-test": "Grayscale Test",
+      "oled-abl-test": "OLED ABL Test",
+      "burn-in-test": "Burn-In Test",
+      "black-level-test": "Black Level Test",
+      "near-black-test": "Near-Black Test",
+      "touch-screen-test": "Touch Screen Test",
+      "multi-touch-test": "Multi-Touch Test",
+      "reaction-time-test": "Reaction Time Test",
+      "gpu-benchmark-test": "GPU Benchmark Test",
+      "screen-tearing-test": "Screen Tearing Test",
+      "battery-test": "Battery Health & Power Info",
+      "pwm-flicker-test": "PWM Flicker Test",
+      "webcam-test": "Webcam Test",
+      "microphone-test": "Microphone Test",
+      "speaker-test": "Speaker Test",
+      "audio-latency-test": "Audio Latency Test",
+      "audio-sync-test": "Audio Sync Test",
+      "network-speed-test": "Internet Speed Test",
+      "gamepad-test": "Gamepad Test",
+      "input-lag-test": "Input Lag Test",
+      "vibration-test": "Vibration Test",
+      "inspection-laptop": "Laptop Display Inspection",
+      "inspection-oled": "OLED Display Inspection",
+      "inspection-gaming": "Gaming Display Inspection",
+      "inspection-general": "General Display Checkup"
     }
   }
 }

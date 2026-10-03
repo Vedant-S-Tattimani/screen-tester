@@ -14,6 +14,7 @@ import {
   AlertCircle,
   Sparkles
 } from "lucide-react";
+import { useTranslations } from 'next-intl';
 
 interface AudioHardwareStats {
   sampleRate: number;
@@ -24,7 +25,9 @@ interface AudioHardwareStats {
   state: string;
 }
 
-export function AudioLatencyPattern({ testId }: { testId: string }) {
+export function AudioLatencyPattern({
+testId }: { testId: string }) {
+  const t = useTranslations('Tests.AudioLatencyPattern');
   const [stats, setStats] = useState<AudioHardwareStats | null>(null);
   const [isPlayingMetronome, setIsPlayingMetronome] = useState<boolean>(false);
   const [bpm, setBpm] = useState<number>(60);
@@ -204,7 +207,7 @@ export function AudioLatencyPattern({ testId }: { testId: string }) {
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="font-mono text-neutral-400">BPM:</span>
+            <span className="font-mono text-neutral-400">{t("bpm")}</span>
             {[60, 120, 180].map((val) => (
               <button
                 key={val}

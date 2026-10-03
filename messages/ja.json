@@ -2762,7 +2762,23 @@
       "slow": "低速",
       "poor": "不良",
       "offline": "オフライン",
-      "offlineHint": "インターネット接続が検出されません。"
+      "offlineHint": "インターネット接続が検出されません。",
+      "upload": "アップロード速度",
+      "jitter": "ジッター",
+      "server": "エッジサーバー",
+      "testingPing": "エッジサーバーにping中...",
+      "testingDownload": "ダウンロード速度を測定中...",
+      "testingUpload": "アップロード速度を測定中...",
+      "clearHistory": "履歴をクリア",
+      "suitability": "実体験での適合性",
+      "streaming4k": "4K Ultra HDストリーミング",
+      "onlineGaming": "オンラインゲーム",
+      "videoConferencing": "HDビデオ通話",
+      "fastBrowsing": "高速ウェブブラウジング",
+      "optimal": "最適",
+      "ready": "準備完了",
+      "fairQuality": "普通",
+      "lagWarning": "遅延の可能性あり"
     },
     "ColorBlindnessPattern": {
       "selectVision": "色覚タイプの選択",
@@ -3069,6 +3085,55 @@
     "audioLatencyTest": {
       "title": "オーディオハードウェア遅延＆バッファ診断",
       "description": "Web Audioのサンプリングレート、カーネル基本レイテンシ、出力バッファ遅延、マルチチャンネルをリアルタイム測定。"
+    },
+    "AudioLatencyPattern": {
+      "bpm": "BPM:"
+    },
+    "ColorTemperaturePattern": {
+      "d65Standard": "D65 (6500K)",
+      "coordinates": "x: 0.3127, y: 0.3290",
+      "green": "緑",
+      "magenta": "マゼンタ"
+    },
+    "EinkRefreshPattern": {
+      "microcapsuleTitle": "マイクロカプセルリフレッシュ波形",
+      "flashingNotice": "フラッシュ通知:",
+      "deepPurge": "ディープパージ",
+      "regalQuick": "リーガルクイック",
+      "a2Rapid": "A2ラピッド",
+      "fastInversion": "高速反転",
+      "flashInterval": "フラッシュ間隔:"
+    },
+    "HdrPeakBrightnessPattern": {
+      "highlightClipping": "ハイライトクリッピングデルタ:",
+      "targetStandard": "目標規格:",
+      "pqCurve": "PQ ST.2084ステップカーブ"
+    },
+    "NewMonitorWizardPattern": {
+      "pureBlackScreen": "ピュアブラックスクリーン",
+      "backlightBleed": "バックライトブリード",
+      "ipsGlow": "IPSグロー",
+      "invertedHighContrast": "反転ハイコントラスト (14pt):",
+      "motionFramePacing": "モーションフレームペーシング",
+      "trackingBlockHint": "トラッキングブロックはマイクロスタッターなくスムーズに滑るべきです。",
+      "inspectionCertificate": "検査証明書",
+      "overallPanelGrade": "総合パネルグレード",
+      "restartWizard": "ウィザードを再開",
+      "statusForStep": "このステップのステータス:",
+      "pass": "合格",
+      "issueFound": "問題が見つかりました",
+      "back": "戻る"
+    },
+    "OledAblPattern": {
+      "autoCycle": "自動サイクル",
+      "fineApl": "微細APL:",
+      "signal": "信号:",
+      "expected": "期待値:"
+    },
+    "TemporalDitheringPattern": {
+      "detectionTip": "検出のヒント",
+      "targetLuminance": "目標輝度レベル:",
+      "patternMode": "パターンモード:"
     }
   },
   "Guides": {
@@ -7946,6 +8011,56 @@
       "gamingInspection": "高リフレッシュ・残像の包括的ゲーミング診断",
       "oledInspection": "OLEDの純黒・焼き付き専用診断",
       "generalInspection": "全8ステップの包括的モニター診断"
+    },
+    "testTitles": {
+      "resolution-checker": "Resolution & DPR Checker",
+      "sharpness-test": "Sharpness Test",
+      "subpixel-layout-test": "Subpixel Layout Test",
+      "text-clarity-test": "Text Clarity Test",
+      "dpi-calculator": "DPI / PPI Calculator",
+      "dead-pixel-test": "Dead Pixel Test",
+      "stuck-pixel-fixer": "Stuck Pixel Fixer",
+      "uniformity-test": "Uniformity Test",
+      "refresh-rate-test": "Refresh Rate Test",
+      "ghosting-test": "Ghosting Test",
+      "motion-blur-test": "Motion Blur Test",
+      "vrr-test": "VRR / FreeSync Test",
+      "gtg-response-time-test": "GTG Response Time",
+      "screen-flicker-test": "Flicker Test",
+      "hdr-capability-test": "HDR Capability Test",
+      "hdr-test": "HDR Visual Test",
+      "hdr-peak-brightness-test": "HDR Peak Brightness",
+      "color-gamut-test": "Color Gamut Test",
+      "color-accuracy-test": "Color Accuracy Test",
+      "color-temperature-test": "Color Temperature Test",
+      "saturation-test": "Saturation Test",
+      "color-banding-test": "Color Banding Test",
+      "gradient-banding-test": "Gradient Banding Test",
+      "grayscale-test": "Grayscale Test",
+      "oled-abl-test": "OLED ABL Test",
+      "burn-in-test": "Burn-In Test",
+      "black-level-test": "Black Level Test",
+      "near-black-test": "Near-Black Test",
+      "touch-screen-test": "Touch Screen Test",
+      "multi-touch-test": "Multi-Touch Test",
+      "reaction-time-test": "Reaction Time Test",
+      "gpu-benchmark-test": "GPU Benchmark Test",
+      "screen-tearing-test": "Screen Tearing Test",
+      "battery-test": "Battery Health & Power Info",
+      "pwm-flicker-test": "PWM Flicker Test",
+      "webcam-test": "Webcam Test",
+      "microphone-test": "Microphone Test",
+      "speaker-test": "Speaker Test",
+      "audio-latency-test": "Audio Latency Test",
+      "audio-sync-test": "Audio Sync Test",
+      "network-speed-test": "Internet Speed Test",
+      "gamepad-test": "Gamepad Test",
+      "input-lag-test": "Input Lag Test",
+      "vibration-test": "Vibration Test",
+      "inspection-laptop": "Laptop Display Inspection",
+      "inspection-oled": "OLED Display Inspection",
+      "inspection-gaming": "Gaming Display Inspection",
+      "inspection-general": "General Display Checkup"
     }
   }
 }

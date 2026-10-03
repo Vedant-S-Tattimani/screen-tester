@@ -206,4 +206,108 @@
   animation-play-state: paused;
 }
 
+/* ==========================================================================
+   Fullscreen Test Viewport — Force all test children to fill the screen
+   ========================================================================== */
 
+/* When the viewport is fullscreen, make its direct children fill it */
+#test-viewport[data-fullscreen="true"] {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+#test-viewport[data-fullscreen="true"] > *:not([class*="absolute"]):not([class*="pointer-events-none"]):not([data-control-bar]) {
+  flex: 1 1 0% !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  min-height: 0 !important;
+  border-radius: 0 !important;
+  border: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
+/* Card-style test containers: when inside fullscreen viewport, fill parent */
+#test-viewport[data-fullscreen="true"] > * > .test-card-container,
+#test-viewport[data-fullscreen="true"] > *[class*="rounded-2xl"],
+#test-viewport[data-fullscreen="true"] > [class*="rounded-2xl"] {
+  border-radius: 0 !important;
+  border: none !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Canvas elements inside fullscreen viewport should expand to fill */
+#test-viewport[data-fullscreen="true"] canvas {
+  flex: 1 1 0% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  height: auto !important;
+  object-fit: contain;
+}
+
+/* Control/slider panels inside fullscreen should stay compact */
+#test-viewport[data-fullscreen="true"] .test-controls-panel {
+  flex: 0 0 auto !important;
+}
+
+/* For card-style components with their own fullscreen (fixed inset-0 z-50) */
+/* These already fill the screen but their internals need to flex */
+[class*="fixed"][class*="inset-0"][class*="z-50"] {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+[class*="fixed"][class*="inset-0"][class*="z-50"] > div[class*="p-4"],
+[class*="fixed"][class*="inset-0"][class*="z-50"] > div[class*="p-6"],
+[class*="fixed"][class*="inset-0"][class*="z-50"] > div[class*="space-y"] {
+  flex: 1 1 0% !important;
+  min-height: 0 !important;
+  overflow: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+[class*="fixed"][class*="inset-0"][class*="z-50"] canvas {
+  flex: 1 1 0% !important;
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+/* Override fixed canvas heights in fullscreen for all common breakpoints */
+#test-viewport[data-fullscreen="true"] [class*="h-["][class*="px]"] {
+  height: auto !important;
+  flex: 1 1 0% !important;
+  min-height: 0 !important;
+}
+
+/* Ensure the content area inside cards fills in fullscreen */
+#test-viewport[data-fullscreen="true"] [class*="space-y-"] {
+  flex: 1 1 0% !important;
+  min-height: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Keep header bars (border-b, bg-gray-50) at their natural size */
+#test-viewport[data-fullscreen="true"] [class*="border-b"][class*="bg-gray"] {
+  flex: 0 0 auto !important;
+  height: auto !important;
+}
+
+/* Keep slider/control grids at their natural size */
+#test-viewport[data-fullscreen="true"] [class*="grid-cols"] {
+  flex: 0 0 auto !important;
+  height: auto !important;
+}
+
+/* Canvas wrapper divs should expand */
+#test-viewport[data-fullscreen="true"] [class*="rounded-xl"][class*="border"][class*="overflow-hidden"] {
+  flex: 1 1 0% !important;
+  min-height: 0 !important;
+  height: auto !important;
+}

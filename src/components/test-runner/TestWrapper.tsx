@@ -592,10 +592,11 @@ export function TestWrapper({ title, description, instructions, children, testId
           <div 
             id="test-viewport"
             ref={viewportRef}
+            data-fullscreen={isFullscreen ? "true" : "false"}
             className={cn(
               "relative w-full bg-black overflow-hidden select-none transition-all",
               isFullscreen 
-                ? "flex-1 h-full w-full rounded-none border-none" 
+                ? "flex-1 h-full w-full rounded-none border-none flex flex-col" 
                 : "aspect-video rounded-xl border border-gray-200/90 shadow-sm min-h-[420px] sm:min-h-[500px]"
             )}
           >

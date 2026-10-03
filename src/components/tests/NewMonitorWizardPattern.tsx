@@ -18,13 +18,16 @@ import {
   Sparkles
 } from "lucide-react";
 import { Link } from "@/i18n/routing";
+import { useTranslations } from 'next-intl';
 
 interface StageResult {
   passed: boolean;
   notes?: string;
 }
 
-export function NewMonitorWizardPattern({ testId }: { testId: string }) {
+export function NewMonitorWizardPattern({
+testId }: { testId: string }) {
+  const t = useTranslations('Tests.NewMonitorWizardPattern');
   const [currentStep, setCurrentStep] = useState<number>(0); // 0 to 4, 5 is final summary
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [subColorIdx, setSubColorIdx] = useState<number>(0);
@@ -156,7 +159,7 @@ export function NewMonitorWizardPattern({ testId }: { testId: string }) {
   return (
     <div 
       ref={containerRef}
-      className="relative w-full h-[650px] sm:h-[720px] rounded-2xl overflow-hidden flex flex-col select-none border border-neutral-800 shadow-2xl bg-neutral-950 text-white"
+      className={`relative w-full ${isFullscreen ? "h-full rounded-none border-none" : "h-[650px] sm:h-[720px] rounded-2xl border border-neutral-800"} overflow-hidden flex flex-col select-none shadow-2xl bg-neutral-950 text-white`}
     >
       {/* Top Stepper Bar */}
       <div className="z-20 bg-neutral-900/90 backdrop-blur-xl border-b border-neutral-800 px-4 sm:px-6 py-3 flex items-center justify-between">
@@ -252,9 +255,9 @@ export function NewMonitorWizardPattern({ testId }: { testId: string }) {
 
             <div className="bg-neutral-900/90 backdrop-blur-md p-6 rounded-2xl border border-neutral-800 text-center max-w-md shadow-2xl">
               <Eye className="w-8 h-8 text-blue-400 mx-auto mb-2" />
-              <h3 className="text-lg font-bold mb-1">Pure Black Screen</h3>
+              <h3 className="text-lg font-bold mb-1">{t("pureBlackScreen")}</h3>
               <p className="text-xs text-neutral-400 mb-3">
-                Dim your room lights. If edges glow yellow/white and stay fixed as you move your head, that is <strong>Backlight Bleed</strong>. If the glow shifts when you lean, it is normal <strong>IPS Glow</strong>.
+                Dim your room lights. If edges glow yellow/white and stay fixed as you move your head, that is <strong>{t("backlightBleed")}</strong>. If the glow shifts when you lean, it is normal <strong>{t("ipsGlow")}</strong>.
               </p>
             </div>
           </div>
@@ -304,7 +307,7 @@ export function NewMonitorWizardPattern({ testId }: { testId: string }) {
                 </p>
               </div>
               <div className="bg-neutral-950 text-white p-4 rounded-xl">
-                <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-400">Inverted High-Contrast (14pt):</span>
+                <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-400">{t("invertedHighContrast")}</span>
                 <p className="text-[14px] leading-relaxed font-sans">
                   Sphinx of black quartz, judge my vow. High contrast dark-mode letters expose OLED subpixel fringing.
                 </p>
@@ -317,8 +320,8 @@ export function NewMonitorWizardPattern({ testId }: { testId: string }) {
         {currentStep === 4 && (
           <div className="w-full h-full bg-neutral-950 flex flex-col items-center justify-between p-6">
             <div className="text-center">
-              <h3 className="font-bold text-base text-white">Motion Frame Pacing</h3>
-              <p className="text-xs text-neutral-400">The tracking block should glide smoothly without micro-stutter.</p>
+              <h3 className="font-bold text-base text-white">{t("motionFramePacing")}</h3>
+              <p className="text-xs text-neutral-400">{t("trackingBlockHint")}</p>
             </div>
 
             <div className="w-full max-w-2xl h-24 bg-neutral-900 border border-neutral-800 rounded-xl relative overflow-hidden flex items-center">
@@ -344,11 +347,11 @@ export function NewMonitorWizardPattern({ testId }: { testId: string }) {
                 <ShieldCheck className="w-8 h-8 text-emerald-400" />
               </div>
 
-              <h2 className="text-2xl font-bold text-white mb-1">Inspection Certificate</h2>
+              <h2 className="text-2xl font-bold text-white mb-1">{t("inspectionCertificate")}</h2>
               <p className="text-xs text-neutral-400 mb-4">5-Minute New Monitor Acceptance Evaluation</p>
 
               <div className="bg-neutral-950 rounded-xl p-4 border border-neutral-800 mb-6">
-                <div className="text-xs text-neutral-500 uppercase tracking-wider font-mono mb-1">Overall Panel Grade</div>
+                <div className="text-xs text-neutral-500 uppercase tracking-wider font-mono mb-1">{t("overallPanelGrade")}</div>
                 <div className={`text-2xl font-black font-mono ${gradeColor}`}>{grade}</div>
                 <div className="text-xs text-neutral-400 mt-1">{passedCount} of 5 Acceptance Checkpoints Passed</div>
               </div>
@@ -383,7 +386,7 @@ export function NewMonitorWizardPattern({ testId }: { testId: string }) {
                   className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-300 text-xs font-medium border border-neutral-700 transition-all"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
-                  <span>Restart Wizard</span>
+                  <span>{t("restartWizard")}</span>
                 </button>
               </div>
             </div>
@@ -395,7 +398,7 @@ export function NewMonitorWizardPattern({ testId }: { testId: string }) {
       {currentStep < 5 && (
         <div className="z-20 bg-neutral-900/90 backdrop-blur-xl border-t border-neutral-800 px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 text-xs">
           <div className="flex items-center gap-2">
-            <span className="text-neutral-400 font-mono">Status for this step:</span>
+            <span className="text-neutral-400 font-mono">{t("statusForStep")}</span>
             <button
               onClick={() => handleSetPass(currentStep, true)}
               className={`flex items-center gap-1 px-3 py-1 rounded-lg font-mono font-medium transition-all ${
@@ -405,7 +408,7 @@ export function NewMonitorWizardPattern({ testId }: { testId: string }) {
               }`}
             >
               <Check className="w-3.5 h-3.5" />
-              <span>Pass</span>
+              <span>{t("pass")}</span>
             </button>
             <button
               onClick={() => handleSetPass(currentStep, false)}
@@ -416,7 +419,7 @@ export function NewMonitorWizardPattern({ testId }: { testId: string }) {
               }`}
             >
               <XCircle className="w-3.5 h-3.5" />
-              <span>Issue Found</span>
+              <span>{t("issueFound")}</span>
             </button>
           </div>
 
@@ -427,7 +430,7 @@ export function NewMonitorWizardPattern({ testId }: { testId: string }) {
                 className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-neutral-300 border border-neutral-700 font-mono"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
-                <span>Back</span>
+                <span>{t("back")}</span>
               </button>
             )}
             <button

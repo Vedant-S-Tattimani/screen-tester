@@ -14,10 +14,13 @@ import {
   Zap,
   Info
 } from "lucide-react";
+import { useTranslations } from 'next-intl';
 
 type WaveformType = "deep" | "regal" | "a2" | "periodic";
 
-export function EinkRefreshPattern({ testId }: { testId: string }) {
+export function EinkRefreshPattern({
+testId }: { testId: string }) {
+  const t = useTranslations('Tests.EinkRefreshPattern');
   const [waveform, setWaveform] = useState<WaveformType>("deep");
   const [isActive, setIsActive] = useState<boolean>(false);
   const [flashColor, setFlashColor] = useState<string>("#ffffff");
@@ -82,7 +85,7 @@ export function EinkRefreshPattern({ testId }: { testId: string }) {
   return (
     <div 
       ref={containerRef}
-      className="relative w-full h-[650px] sm:h-[720px] rounded-2xl overflow-hidden flex flex-col select-none border border-neutral-800 shadow-2xl bg-neutral-950 text-white"
+      className={`relative w-full ${isFullscreen ? "h-full rounded-none border-none" : "h-[650px] sm:h-[720px] rounded-2xl border border-neutral-800"} overflow-hidden flex flex-col select-none shadow-2xl bg-neutral-950 text-white`}
     >
       {/* Top Header */}
       <div className="z-20 bg-neutral-900/90 backdrop-blur-xl border-b border-neutral-800 px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
@@ -110,7 +113,7 @@ export function EinkRefreshPattern({ testId }: { testId: string }) {
         {!isActive && (
           <div className="bg-neutral-900/90 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-neutral-800 text-center max-w-lg shadow-2xl text-white">
             <Sparkles className="w-10 h-10 text-amber-400 mx-auto mb-3" />
-            <h2 className="text-xl font-bold mb-2">Microcapsule Refresh Waveform</h2>
+            <h2 className="text-xl font-bold mb-2">{t("microcapsuleTitle")}</h2>
             <p className="text-xs text-neutral-300 leading-relaxed mb-6">
               E-Ink and electronic paper monitors (Dasung, Onyx Boox, Bigme) accumulate ghosting when titanium dioxide and carbon black microcapsules fail to reset. This tool drives rapid full-field polarity transitions to clear residual image ghosts.
             </p>
@@ -119,7 +122,7 @@ export function EinkRefreshPattern({ testId }: { testId: string }) {
             <div className="flex items-start gap-2 bg-amber-500/10 border border-amber-500/30 p-3 rounded-xl text-left text-amber-300 text-[11px] mb-6">
               <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" />
               <span>
-                <strong>Flashing Notice:</strong> This tool produces high-contrast flashing cycles. Look away from the display while the purge is executing if sensitive to light flashes.
+                <strong>{t("flashingNotice")}</strong> This tool produces high-contrast flashing cycles. Look away from the display while the purge is executing if sensitive to light flashes.
               </span>
             </div>
 
@@ -129,7 +132,7 @@ export function EinkRefreshPattern({ testId }: { testId: string }) {
                 onClick={() => handleStartPurge("deep")}
                 className="px-4 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-mono font-semibold shadow-lg shadow-blue-600/30 transition-all flex flex-col items-center gap-1"
               >
-                <span>Deep Purge</span>
+                <span>{t("deepPurge")}</span>
                 <span className="text-[10px] text-blue-200 font-normal">8-Phase Multi-Wave</span>
               </button>
 
@@ -137,7 +140,7 @@ export function EinkRefreshPattern({ testId }: { testId: string }) {
                 onClick={() => handleStartPurge("regal")}
                 className="px-4 py-3 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-200 border border-neutral-700 text-xs font-mono font-semibold transition-all flex flex-col items-center gap-1"
               >
-                <span>Regal Quick</span>
+                <span>{t("regalQuick")}</span>
                 <span className="text-[10px] text-neutral-400 font-normal">4-Phase Anti-Ghost</span>
               </button>
 
@@ -145,8 +148,8 @@ export function EinkRefreshPattern({ testId }: { testId: string }) {
                 onClick={() => handleStartPurge("a2")}
                 className="px-4 py-3 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-200 border border-neutral-700 text-xs font-mono font-semibold transition-all flex flex-col items-center gap-1"
               >
-                <span>A2 Rapid</span>
-                <span className="text-[10px] text-neutral-400 font-normal">Fast Inversion</span>
+                <span>{t("a2Rapid")}</span>
+                <span className="text-[10px] text-neutral-400 font-normal">{t("fastInversion")}</span>
               </button>
             </div>
           </div>
@@ -171,7 +174,7 @@ export function EinkRefreshPattern({ testId }: { testId: string }) {
       {/* Bottom Configuration Bar */}
       <div className="z-20 bg-neutral-900/95 backdrop-blur-xl border-t border-neutral-800 px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 text-xs">
         <div className="flex items-center gap-3">
-          <span className="font-mono text-neutral-400">Flash Interval:</span>
+          <span className="font-mono text-neutral-400">{t("flashInterval")}</span>
           {[120, 200, 350].map((spd) => (
             <button
               key={spd}

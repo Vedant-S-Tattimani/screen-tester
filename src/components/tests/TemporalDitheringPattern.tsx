@@ -12,10 +12,13 @@ import {
   Sparkles,
   Info
 } from "lucide-react";
+import { useTranslations } from 'next-intl';
 
 type DitherPattern = "checker1" | "checker2" | "hlines" | "vlines" | "ditherpatch" | "solidtone";
 
-export function TemporalDitheringPattern({ testId }: { testId: string }) {
+export function TemporalDitheringPattern({
+testId }: { testId: string }) {
+  const t = useTranslations('Tests.TemporalDitheringPattern');
   const [pattern, setPattern] = useState<DitherPattern>("checker1");
   const [intermediateLevel, setIntermediateLevel] = useState<number>(127);
   const [invertPhase, setInvertPhase] = useState<boolean>(false);
@@ -104,7 +107,7 @@ export function TemporalDitheringPattern({ testId }: { testId: string }) {
   return (
     <div 
       ref={containerRef}
-      className="relative w-full h-[650px] sm:h-[720px] rounded-2xl overflow-hidden flex flex-col select-none border border-neutral-800 shadow-2xl bg-neutral-950 text-white"
+      className={`relative w-full ${isFullscreen ? "h-full rounded-none border-none" : "h-[650px] sm:h-[720px] rounded-2xl border border-neutral-800"} overflow-hidden flex flex-col select-none shadow-2xl bg-neutral-950 text-white`}
     >
       {/* Pattern Selector Bar */}
       <div className="z-20 bg-neutral-900/90 backdrop-blur-xl border-b border-neutral-800 px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
@@ -185,7 +188,7 @@ export function TemporalDitheringPattern({ testId }: { testId: string }) {
         <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-md p-3 rounded-xl border border-neutral-800 text-white max-w-xs shadow-xl pointer-events-none">
           <div className="flex items-center gap-2 text-xs font-bold text-amber-400 mb-1">
             <Camera className="w-4 h-4" />
-            <span>Detection Tip</span>
+            <span>{t("detectionTip")}</span>
           </div>
           <p className="text-[11px] text-neutral-300 leading-snug">
             Point your smartphone camera at close range or record at 120fps/240fps slow-motion. A panel with temporal dithering will show active shimmering or dancing pixel patterns.
@@ -197,7 +200,7 @@ export function TemporalDitheringPattern({ testId }: { testId: string }) {
       <div className="z-20 bg-neutral-900/95 backdrop-blur-xl border-t border-neutral-800 px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 text-xs">
         {pattern === "ditherpatch" && (
           <div className="flex items-center gap-3 w-full sm:w-auto">
-            <span className="font-mono text-neutral-400">Target Luminance Level:</span>
+            <span className="font-mono text-neutral-400">{t("targetLuminance")}</span>
             <input
               type="range"
               min={0}
@@ -211,7 +214,7 @@ export function TemporalDitheringPattern({ testId }: { testId: string }) {
         )}
 
         <div className="flex items-center gap-2 font-mono text-neutral-400 text-[11px]">
-          <span>Pattern Mode:</span>
+          <span>{t("patternMode")}</span>
           <span className="text-blue-400 uppercase font-bold">{pattern}</span>
           <span>• 1:1 Pixel Mapping Recommended</span>
         </div>

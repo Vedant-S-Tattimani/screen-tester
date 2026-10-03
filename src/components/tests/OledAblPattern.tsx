@@ -9,6 +9,7 @@ import {
   Minimize2, 
   Sun
 } from "lucide-react";
+import { useTranslations } from 'next-intl';
 
 interface WindowPreset {
   percent: number;
@@ -26,7 +27,9 @@ const PRESETS: WindowPreset[] = [
   { percent: 100, label: "100% Full Screen", targetNitsEst: "~200–280 nits" },
 ];
 
-export function OledAblPattern({ testId }: { testId: string }) {
+export function OledAblPattern({
+testId }: { testId: string }) {
+  const t = useTranslations('Tests.OledAblPattern');
   const [currentPresetIdx, setCurrentPresetIdx] = useState<number>(3); // 10% default
   const [customPercent, setCustomPercent] = useState<number>(10);
   const [isAutoCycle, setIsAutoCycle] = useState<boolean>(false);
@@ -132,7 +135,7 @@ export function OledAblPattern({ testId }: { testId: string }) {
   return (
     <div 
       ref={containerRef}
-      className="relative w-full h-[650px] sm:h-[720px] rounded-2xl overflow-hidden flex flex-col select-none border border-neutral-800 shadow-2xl transition-colors duration-300"
+      className={`relative w-full ${isFullscreen ? "h-full rounded-none border-none" : "h-[650px] sm:h-[720px] rounded-2xl border border-neutral-800"} overflow-hidden flex flex-col select-none shadow-2xl transition-colors duration-300`}
       style={{ backgroundColor: bgColor }}
     >
       {/* Central ABL Window Area */}
@@ -198,7 +201,7 @@ export function OledAblPattern({ testId }: { testId: string }) {
                 }`}
               >
                 {isAutoCycle ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-                <span>Auto-Cycle</span>
+                <span>{t("autoCycle")}</span>
               </button>
 
               <button
@@ -230,7 +233,7 @@ export function OledAblPattern({ testId }: { testId: string }) {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-center pt-2 border-t border-neutral-800/60 text-xs">
             {/* Fine Tuning Slider */}
             <div className="md:col-span-5 flex items-center gap-3">
-              <span className="font-mono text-neutral-400 whitespace-nowrap">Fine APL:</span>
+              <span className="font-mono text-neutral-400 whitespace-nowrap">{t("fineApl")}</span>
               <input
                 type="range"
                 min={1}
@@ -245,7 +248,7 @@ export function OledAblPattern({ testId }: { testId: string }) {
             {/* Target White Signal Level */}
             <div className="md:col-span-4 flex items-center gap-2">
               <Sun className="w-3.5 h-3.5 text-amber-400" />
-              <span className="font-mono text-neutral-400">Signal:</span>
+              <span className="font-mono text-neutral-400">{t("signal")}</span>
               <button
                 onClick={() => setWhiteLuminance(100)}
                 className={`px-2 py-0.5 rounded text-[11px] font-mono ${whiteLuminance === 100 ? "bg-neutral-700 text-white font-bold" : "text-neutral-400 hover:text-white"}`}
@@ -268,7 +271,7 @@ export function OledAblPattern({ testId }: { testId: string }) {
 
             {/* Technical Context Badge */}
             <div className="md:col-span-3 flex items-center justify-end gap-2 text-neutral-400 font-mono text-[11px]">
-              <span className="text-neutral-500">Expected:</span>
+              <span className="text-neutral-500">{t("expected")}</span>
               <span className="text-emerald-400 font-semibold">{currentPreset?.targetNitsEst || "Custom Area"}</span>
             </div>
           </div>

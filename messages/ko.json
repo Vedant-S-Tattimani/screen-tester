@@ -2767,7 +2767,23 @@
       "slow": "느림",
       "poor": "불량",
       "offline": "오프라인",
-      "offlineHint": "인터넷 연결이 감지되지 않습니다."
+      "offlineHint": "인터넷 연결이 감지되지 않습니다.",
+      "upload": "업로드 속도",
+      "jitter": "지터",
+      "server": "엣지 서버",
+      "testingPing": "엣지 서버 핑 중...",
+      "testingDownload": "다운로드 처리량 측정 중...",
+      "testingUpload": "업로드 처리량 측정 중...",
+      "clearHistory": "기록 삭제",
+      "suitability": "실제 경험 적합성",
+      "streaming4k": "4K 울트라 HD 스트리밍",
+      "onlineGaming": "온라인 게임",
+      "videoConferencing": "HD 영상 통화",
+      "fastBrowsing": "빠른 웹 브라우징",
+      "optimal": "최적",
+      "ready": "준비 완료",
+      "fairQuality": "보통",
+      "lagWarning": "지연이 발생할 수 있음"
     },
     "ColorBlindnessPattern": {
       "selectVision": "색각 유형 선택",
@@ -3074,6 +3090,55 @@
     "audioLatencyTest": {
       "title": "오디오 하드웨어 파이프라인 및 버퍼 지연 시간",
       "description": "Web Audio 샘플레이트, 커널 기본 지연 시간, 드라이버 출력 버퍼 지연 및 멀티채널을 실시간 분석합니다."
+    },
+    "AudioLatencyPattern": {
+      "bpm": "BPM:"
+    },
+    "ColorTemperaturePattern": {
+      "d65Standard": "D65 (6500K)",
+      "coordinates": "x: 0.3127, y: 0.3290",
+      "green": "녹색",
+      "magenta": "마젠타"
+    },
+    "EinkRefreshPattern": {
+      "microcapsuleTitle": "마이크로캡슐 새로고침 파형",
+      "flashingNotice": "깜빡임 알림:",
+      "deepPurge": "딥 퍼지",
+      "regalQuick": "리갈 퀵",
+      "a2Rapid": "A2 래피드",
+      "fastInversion": "빠른 반전",
+      "flashInterval": "플래시 간격:"
+    },
+    "HdrPeakBrightnessPattern": {
+      "highlightClipping": "하이라이트 클리핑 델타:",
+      "targetStandard": "목표 표준:",
+      "pqCurve": "PQ ST.2084 스텝 커브"
+    },
+    "NewMonitorWizardPattern": {
+      "pureBlackScreen": "순수 블랙 스크린",
+      "backlightBleed": "백라이트 블리드",
+      "ipsGlow": "IPS 글로우",
+      "invertedHighContrast": "반전 고대비 (14pt):",
+      "motionFramePacing": "모션 프레임 페이싱",
+      "trackingBlockHint": "추적 블록이 마이크로 끊김 없이 부드럽게 미끄러져야 합니다.",
+      "inspectionCertificate": "검사 인증서",
+      "overallPanelGrade": "전체 패널 등급",
+      "restartWizard": "마법사 다시 시작",
+      "statusForStep": "이 단계의 상태:",
+      "pass": "통과",
+      "issueFound": "문제 발견",
+      "back": "뒤로"
+    },
+    "OledAblPattern": {
+      "autoCycle": "자동 순환",
+      "fineApl": "미세 APL:",
+      "signal": "신호:",
+      "expected": "예상:"
+    },
+    "TemporalDitheringPattern": {
+      "detectionTip": "감지 팁",
+      "targetLuminance": "목표 휘도 레벨:",
+      "patternMode": "패턴 모드:"
     }
   },
   "Guides": {
@@ -7951,6 +8016,56 @@
       "gamingInspection": "고주사율 및 모션 블러를 위한 종합 게이밍 점검",
       "oledInspection": "리얼 블랙 및 번인 방지를 위한 OLED 전용 점검",
       "generalInspection": "전체 8단계 화면 상태 종합 점검"
+    },
+    "testTitles": {
+      "resolution-checker": "Resolution & DPR Checker",
+      "sharpness-test": "Sharpness Test",
+      "subpixel-layout-test": "Subpixel Layout Test",
+      "text-clarity-test": "Text Clarity Test",
+      "dpi-calculator": "DPI / PPI Calculator",
+      "dead-pixel-test": "Dead Pixel Test",
+      "stuck-pixel-fixer": "Stuck Pixel Fixer",
+      "uniformity-test": "Uniformity Test",
+      "refresh-rate-test": "Refresh Rate Test",
+      "ghosting-test": "Ghosting Test",
+      "motion-blur-test": "Motion Blur Test",
+      "vrr-test": "VRR / FreeSync Test",
+      "gtg-response-time-test": "GTG Response Time",
+      "screen-flicker-test": "Flicker Test",
+      "hdr-capability-test": "HDR Capability Test",
+      "hdr-test": "HDR Visual Test",
+      "hdr-peak-brightness-test": "HDR Peak Brightness",
+      "color-gamut-test": "Color Gamut Test",
+      "color-accuracy-test": "Color Accuracy Test",
+      "color-temperature-test": "Color Temperature Test",
+      "saturation-test": "Saturation Test",
+      "color-banding-test": "Color Banding Test",
+      "gradient-banding-test": "Gradient Banding Test",
+      "grayscale-test": "Grayscale Test",
+      "oled-abl-test": "OLED ABL Test",
+      "burn-in-test": "Burn-In Test",
+      "black-level-test": "Black Level Test",
+      "near-black-test": "Near-Black Test",
+      "touch-screen-test": "Touch Screen Test",
+      "multi-touch-test": "Multi-Touch Test",
+      "reaction-time-test": "Reaction Time Test",
+      "gpu-benchmark-test": "GPU Benchmark Test",
+      "screen-tearing-test": "Screen Tearing Test",
+      "battery-test": "Battery Health & Power Info",
+      "pwm-flicker-test": "PWM Flicker Test",
+      "webcam-test": "Webcam Test",
+      "microphone-test": "Microphone Test",
+      "speaker-test": "Speaker Test",
+      "audio-latency-test": "Audio Latency Test",
+      "audio-sync-test": "Audio Sync Test",
+      "network-speed-test": "Internet Speed Test",
+      "gamepad-test": "Gamepad Test",
+      "input-lag-test": "Input Lag Test",
+      "vibration-test": "Vibration Test",
+      "inspection-laptop": "Laptop Display Inspection",
+      "inspection-oled": "OLED Display Inspection",
+      "inspection-gaming": "Gaming Display Inspection",
+      "inspection-general": "General Display Checkup"
     }
   }
 }

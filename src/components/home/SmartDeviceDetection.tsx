@@ -308,7 +308,7 @@ function CapabilityCard({
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="font-medium text-[12px] text-gray-900 leading-snug truncate group-hover:text-gray-950">
-                      {test.title}
+                      {t.has(`testTitles.${test.id}`) ? t(`testTitles.${test.id}`) : test.title}
                     </div>
                     <div className="text-[10.5px] text-gray-400 leading-tight truncate group-hover:text-gray-500">
                       {translatedReason}

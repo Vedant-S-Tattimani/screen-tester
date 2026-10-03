@@ -11,6 +11,7 @@ import {
   Sparkles,
   Info
 } from "lucide-react";
+import { useTranslations } from 'next-intl';
 
 interface Illuminant {
   id: string;
@@ -64,7 +65,9 @@ const ILLUMINANTS: Illuminant[] = [
   }
 ];
 
-export function ColorTemperaturePattern({ testId }: { testId: string }) {
+export function ColorTemperaturePattern({
+testId }: { testId: string }) {
+  const t = useTranslations('Tests.ColorTemperaturePattern');
   const [selectedIlluminant, setSelectedIlluminant] = useState<string>("d65");
   const [viewMode, setViewMode] = useState<"split" | "multi" | "fullscreen">("split");
   const [tintOffset, setTintOffset] = useState<number>(0); // -10 (Green) to +10 (Magenta)
@@ -99,7 +102,7 @@ export function ColorTemperaturePattern({ testId }: { testId: string }) {
   return (
     <div 
       ref={containerRef}
-      className="relative w-full h-[650px] sm:h-[720px] rounded-2xl overflow-hidden flex flex-col select-none border border-neutral-800 shadow-2xl bg-neutral-950 text-white"
+      className={`relative w-full ${isFullscreen ? "h-full rounded-none border-none" : "h-[650px] sm:h-[720px] rounded-2xl border border-neutral-800"} overflow-hidden flex flex-col select-none shadow-2xl bg-neutral-950 text-white`}
     >
       {/* Top Header & Presets */}
       <div className="z-20 bg-neutral-900/90 backdrop-blur-xl border-b border-neutral-800 px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
@@ -168,8 +171,8 @@ export function ColorTemperaturePattern({ testId }: { testId: string }) {
                 <span className="text-[11px] font-mono text-neutral-400 uppercase tracking-wider block">
                   Neutral Standard
                 </span>
-                <span className="font-mono font-bold text-sm">D65 (6500K)</span>
-                <span className="text-[10px] text-neutral-400 font-mono block mt-0.5">x: 0.3127, y: 0.3290</span>
+                <span className="font-mono font-bold text-sm">{t("d65Standard")}</span>
+                <span className="text-[10px] text-neutral-400 font-mono block mt-0.5">{t("coordinates")}</span>
               </div>
             </div>
 
@@ -251,7 +254,7 @@ export function ColorTemperaturePattern({ testId }: { testId: string }) {
       <div className="z-20 bg-neutral-900/95 backdrop-blur-xl border-t border-neutral-800 px-4 sm:px-6 py-3 grid grid-cols-1 md:grid-cols-12 gap-3 items-center text-xs">
         {/* Tint Compensation Slider */}
         <div className="md:col-span-6 flex items-center gap-3">
-          <span className="font-mono text-emerald-400">Green</span>
+          <span className="font-mono text-emerald-400">{t("green")}</span>
           <input
             type="range"
             min={-10}
@@ -260,7 +263,7 @@ export function ColorTemperaturePattern({ testId }: { testId: string }) {
             onChange={(e) => setTintOffset(Number(e.target.value))}
             className="w-full accent-blue-500 h-1.5 bg-neutral-700 rounded-lg cursor-pointer"
           />
-          <span className="font-mono text-rose-400">Magenta</span>
+          <span className="font-mono text-rose-400">{t("magenta")}</span>
           <button
             onClick={() => setTintOffset(0)}
             className="p-1 rounded bg-neutral-800 hover:bg-neutral-700 text-neutral-400 hover:text-white"

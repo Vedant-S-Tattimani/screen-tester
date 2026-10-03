@@ -12,6 +12,7 @@ import {
   AlertTriangle,
   Info
 } from "lucide-react";
+import { useTranslations } from 'next-intl';
 
 interface BrightnessTier {
   nits: number;
@@ -32,7 +33,9 @@ const TIERS: BrightnessTier[] = [
   { nits: 4000, label: "4,000 Nits", certification: "Dolby Vision Reference Peak", relativeLevel: 1.0 },
 ];
 
-export function HdrPeakBrightnessPattern({ testId }: { testId: string }) {
+export function HdrPeakBrightnessPattern({
+testId }: { testId: string }) {
+  const t = useTranslations('Tests.HdrPeakBrightnessPattern');
   const [selectedTier, setSelectedTier] = useState<number>(5); // 1000 nits default
   const [isHdrSupported, setIsHdrSupported] = useState<boolean | null>(null);
   const [innerPatchDelta, setInnerPatchDelta] = useState<number>(4); // % difference
@@ -76,7 +79,7 @@ export function HdrPeakBrightnessPattern({ testId }: { testId: string }) {
   return (
     <div 
       ref={containerRef}
-      className={`relative w-full h-[650px] sm:h-[720px] rounded-2xl overflow-hidden flex flex-col select-none border border-neutral-800 shadow-2xl ${
+      className={`relative w-full ${isFullscreen ? "h-full rounded-none border-none" : "h-[650px] sm:h-[720px] rounded-2xl border border-neutral-800"} overflow-hidden flex flex-col select-none shadow-2xl ${
         bgMode === "black" ? "bg-black" : "bg-[#111116]"
       } text-white transition-colors duration-300`}
     >
@@ -155,7 +158,7 @@ export function HdrPeakBrightnessPattern({ testId }: { testId: string }) {
       {/* Bottom Controls */}
       <div className="z-20 bg-neutral-900/95 backdrop-blur-xl border-t border-neutral-800 px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 text-xs">
         <div className="flex items-center gap-3">
-          <span className="font-mono text-neutral-400">Highlight Clipping Delta:</span>
+          <span className="font-mono text-neutral-400">{t("highlightClipping")}</span>
           <button
             onClick={() => setInnerPatchDelta(2)}
             className={`px-2.5 py-1 rounded font-mono ${innerPatchDelta === 2 ? "bg-amber-500 text-black font-bold" : "bg-neutral-800 text-neutral-400 hover:text-white"}`}
@@ -177,8 +180,8 @@ export function HdrPeakBrightnessPattern({ testId }: { testId: string }) {
         </div>
 
         <div className="flex items-center gap-2 font-mono text-neutral-400 text-[11px]">
-          <span>Target Standard:</span>
-          <span className="text-emerald-400 font-bold">PQ ST.2084 Step Curve</span>
+          <span>{t("targetStandard")}</span>
+          <span className="text-emerald-400 font-bold">{t("pqCurve")}</span>
         </div>
       </div>
     </div>

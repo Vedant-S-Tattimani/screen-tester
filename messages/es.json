@@ -2762,7 +2762,23 @@
       "slow": "Lenta",
       "poor": "Deficiente",
       "offline": "Sin conexión",
-      "offlineHint": "No se detectó conexión a internet."
+      "offlineHint": "No se detectó conexión a internet.",
+      "upload": "Velocidad de Subida",
+      "jitter": "Fluctuación",
+      "server": "Servidor Edge",
+      "testingPing": "Haciendo ping al servidor edge...",
+      "testingDownload": "Midiendo velocidad de descarga...",
+      "testingUpload": "Midiendo velocidad de subida...",
+      "clearHistory": "Borrar Historial",
+      "suitability": "Idoneidad de Experiencia Real",
+      "streaming4k": "Streaming 4K Ultra HD",
+      "onlineGaming": "Juegos en Línea",
+      "videoConferencing": "Videollamadas HD",
+      "fastBrowsing": "Navegación Web Rápida",
+      "optimal": "Óptimo",
+      "ready": "Listo",
+      "fairQuality": "Aceptable",
+      "lagWarning": "Puede Experimentar Lag"
     },
     "ColorBlindnessPattern": {
       "selectVision": "Seleccionar tipo de visión",
@@ -3069,6 +3085,55 @@
     "audioLatencyTest": {
       "title": "Latencia de Hardware de Audio y Búfer",
       "description": "Inspeccione la frecuencia de muestreo de Web Audio, latencia base del kernel y retraso de salida del búfer."
+    },
+    "AudioLatencyPattern": {
+      "bpm": "BPM:"
+    },
+    "ColorTemperaturePattern": {
+      "d65Standard": "D65 (6500K)",
+      "coordinates": "x: 0.3127, y: 0.3290",
+      "green": "Verde",
+      "magenta": "Magenta"
+    },
+    "EinkRefreshPattern": {
+      "microcapsuleTitle": "Forma de Onda de Refresco",
+      "flashingNotice": "Aviso de Parpadeo:",
+      "deepPurge": "Purga Profunda",
+      "regalQuick": "Regal Rápido",
+      "a2Rapid": "A2 Rápido",
+      "fastInversion": "Inversión Rápida",
+      "flashInterval": "Intervalo de Flash:"
+    },
+    "HdrPeakBrightnessPattern": {
+      "highlightClipping": "Delta de Recorte de Luces:",
+      "targetStandard": "Estándar Objetivo:",
+      "pqCurve": "Curva Escalonada PQ ST.2084"
+    },
+    "NewMonitorWizardPattern": {
+      "pureBlackScreen": "Pantalla Negra Pura",
+      "backlightBleed": "Sangrado de Retroiluminación",
+      "ipsGlow": "Brillo IPS",
+      "invertedHighContrast": "Alto Contraste Invertido (14pt):",
+      "motionFramePacing": "Ritmo de Fotogramas",
+      "trackingBlockHint": "El bloque de seguimiento debe deslizarse suavemente sin micro-tartamudeo.",
+      "inspectionCertificate": "Certificado de Inspección",
+      "overallPanelGrade": "Calificación General del Panel",
+      "restartWizard": "Reiniciar Asistente",
+      "statusForStep": "Estado de este paso:",
+      "pass": "Aprobado",
+      "issueFound": "Problema Encontrado",
+      "back": "Atrás"
+    },
+    "OledAblPattern": {
+      "autoCycle": "Auto-Ciclo",
+      "fineApl": "APL Fino:",
+      "signal": "Señal:",
+      "expected": "Esperado:"
+    },
+    "TemporalDitheringPattern": {
+      "detectionTip": "Consejo de Detección",
+      "targetLuminance": "Nivel de Luminancia Objetivo:",
+      "patternMode": "Modo de Patrón:"
     }
   },
   "Guides": {
@@ -7946,6 +8011,56 @@
       "gamingInspection": "Auditoría integral de altos Hz y desenfoque de movimiento",
       "oledInspection": "Inspección especializada de negros puros y quemado OLED",
       "generalInspection": "Inspección completa de salud de pantalla en 8 pasos"
+    },
+    "testTitles": {
+      "resolution-checker": "Resolution & DPR Checker",
+      "sharpness-test": "Sharpness Test",
+      "subpixel-layout-test": "Subpixel Layout Test",
+      "text-clarity-test": "Text Clarity Test",
+      "dpi-calculator": "DPI / PPI Calculator",
+      "dead-pixel-test": "Dead Pixel Test",
+      "stuck-pixel-fixer": "Stuck Pixel Fixer",
+      "uniformity-test": "Uniformity Test",
+      "refresh-rate-test": "Refresh Rate Test",
+      "ghosting-test": "Ghosting Test",
+      "motion-blur-test": "Motion Blur Test",
+      "vrr-test": "VRR / FreeSync Test",
+      "gtg-response-time-test": "GTG Response Time",
+      "screen-flicker-test": "Flicker Test",
+      "hdr-capability-test": "HDR Capability Test",
+      "hdr-test": "HDR Visual Test",
+      "hdr-peak-brightness-test": "HDR Peak Brightness",
+      "color-gamut-test": "Color Gamut Test",
+      "color-accuracy-test": "Color Accuracy Test",
+      "color-temperature-test": "Color Temperature Test",
+      "saturation-test": "Saturation Test",
+      "color-banding-test": "Color Banding Test",
+      "gradient-banding-test": "Gradient Banding Test",
+      "grayscale-test": "Grayscale Test",
+      "oled-abl-test": "OLED ABL Test",
+      "burn-in-test": "Burn-In Test",
+      "black-level-test": "Black Level Test",
+      "near-black-test": "Near-Black Test",
+      "touch-screen-test": "Touch Screen Test",
+      "multi-touch-test": "Multi-Touch Test",
+      "reaction-time-test": "Reaction Time Test",
+      "gpu-benchmark-test": "GPU Benchmark Test",
+      "screen-tearing-test": "Screen Tearing Test",
+      "battery-test": "Battery Health & Power Info",
+      "pwm-flicker-test": "PWM Flicker Test",
+      "webcam-test": "Webcam Test",
+      "microphone-test": "Microphone Test",
+      "speaker-test": "Speaker Test",
+      "audio-latency-test": "Audio Latency Test",
+      "audio-sync-test": "Audio Sync Test",
+      "network-speed-test": "Internet Speed Test",
+      "gamepad-test": "Gamepad Test",
+      "input-lag-test": "Input Lag Test",
+      "vibration-test": "Vibration Test",
+      "inspection-laptop": "Laptop Display Inspection",
+      "inspection-oled": "OLED Display Inspection",
+      "inspection-gaming": "Gaming Display Inspection",
+      "inspection-general": "General Display Checkup"
     }
   }
 }
