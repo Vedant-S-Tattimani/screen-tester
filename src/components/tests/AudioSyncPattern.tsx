@@ -66,18 +66,26 @@ export function AudioSyncPattern({ testId = "audio-sync-test" }: AudioSyncPatter
 
     let running = isPlaying;
     const periodMs = (60 / bpm) * 1000;
-
-    const renderLoop = (time: number) => {
-      if (!running) return;
-
-      const rect = canvas.getBoundingClientRect();
-      const dpr = window.devicePixelRatio || 1;
+    
+    const dpr = window.devicePixelRatio || 1;
+    const resize = () => {
+      const rect = canvas.parentElement?.getBoundingClientRect() || canvas.getBoundingClientRect();
       const targetW = Math.max(1, Math.floor(rect.width * dpr));
       const targetH = Math.max(1, Math.floor(rect.height * dpr));
       if (canvas.width !== targetW || canvas.height !== targetH) {
         canvas.width = targetW;
         canvas.height = targetH;
       }
+    };
+    
+    resize();
+    const ro = new ResizeObserver(() => resize());
+    ro.observe(canvas.parentElement || canvas);
+
+    const renderLoop = (time: number) => {
+      if (!running) return;
+
+      // Resize is handled by ResizeObserver
 
       const w = canvas.width;
       const h = canvas.height;
@@ -188,6 +196,7 @@ export function AudioSyncPattern({ testId = "audio-sync-test" }: AudioSyncPatter
     animFrameIdRef.current = requestAnimationFrame(renderLoop);
 
     return () => {
+      ro.disconnect();
       running = false;
       if (animFrameIdRef.current) cancelAnimationFrame(animFrameIdRef.current);
     };

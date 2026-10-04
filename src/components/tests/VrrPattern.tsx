@@ -44,14 +44,23 @@ export function VrrPattern({ testId = "vrr-test" }: VrrPatternProps) {
     let localRunning = isRunning;
 
     const handleResize = () => {
-      const rect = canvas.getBoundingClientRect();
+      const parent = canvas.parentElement || canvas;
+      const rect = parent.getBoundingClientRect();
       const dpr = window.devicePixelRatio || 1;
-      canvas.width = Math.floor(rect.width * dpr);
-      canvas.height = Math.floor(rect.height * dpr);
+      const targetW = Math.max(1, Math.floor(rect.width * dpr));
+      const targetH = Math.max(1, Math.floor(rect.height * dpr));
+      
+      if (canvas.width !== targetW || canvas.height !== targetH) {
+        canvas.width = targetW;
+        canvas.height = targetH;
+      }
     };
 
     handleResize();
-    window.addEventListener("resize", handleResize);
+    const ro = new ResizeObserver(() => {
+      handleResize();
+    });
+    ro.observe(canvas.parentElement || canvas);
 
     const updateLoop = (now: number) => {
       if (!lastTimeRef.current) lastTimeRef.current = now;
@@ -241,7 +250,7 @@ export function VrrPattern({ testId = "vrr-test" }: VrrPatternProps) {
       localRunning = false;
       if (animFrameIdRef.current) cancelAnimationFrame(animFrameIdRef.current);
       clearInterval(telemetryTimer);
-      window.removeEventListener("resize", handleResize);
+      ro.disconnect();
     };
   }, [isRunning, workload]);
 

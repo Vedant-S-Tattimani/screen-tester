@@ -23,102 +23,120 @@ export function GradientBandingPattern({ testId = "gradient-banding-test" }: Gra
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
     if (!ctx) return;
 
-    const dpr = window.devicePixelRatio || 1;
-    const rect = canvas.getBoundingClientRect();
-    canvas.width = Math.floor(rect.width * dpr);
-    canvas.height = Math.floor(rect.height * dpr);
+    const draw = () => {
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      const targetW = Math.floor(rect.width * dpr);
+      const targetH = Math.floor(rect.height * dpr);
 
-    const w = canvas.width;
-    const h = canvas.height;
-
-    // Draw gradient
-    if (mode === "gray-horizontal") {
-      const grad = ctx.createLinearGradient(0, 0, w, 0);
-      grad.addColorStop(0, "#000000");
-      grad.addColorStop(1, "#FFFFFF");
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, w, h);
-    } else if (mode === "gray-vertical") {
-      const grad = ctx.createLinearGradient(0, 0, 0, h);
-      grad.addColorStop(0, "#FFFFFF");
-      grad.addColorStop(1, "#000000");
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, w, h);
-    } else if (mode === "rgb-horizontal") {
-      const sectionH = h / 3;
-      // Red
-      const rGrad = ctx.createLinearGradient(0, 0, w, 0);
-      rGrad.addColorStop(0, "#000000");
-      rGrad.addColorStop(1, "#FF0000");
-      ctx.fillStyle = rGrad;
-      ctx.fillRect(0, 0, w, sectionH);
-
-      // Green
-      const gGrad = ctx.createLinearGradient(0, 0, w, 0);
-      gGrad.addColorStop(0, "#000000");
-      gGrad.addColorStop(1, "#00FF00");
-      ctx.fillStyle = gGrad;
-      ctx.fillRect(0, sectionH, w, sectionH);
-
-      // Blue
-      const bGrad = ctx.createLinearGradient(0, 0, w, 0);
-      bGrad.addColorStop(0, "#000000");
-      bGrad.addColorStop(1, "#0000FF");
-      ctx.fillStyle = bGrad;
-      ctx.fillRect(0, sectionH * 2, w, sectionH);
-    } else if (mode === "dark-shadow") {
-      // Dark grayscale 0% to 25% (RGB 0 to 64)
-      const grad = ctx.createLinearGradient(0, 0, w, 0);
-      grad.addColorStop(0, "rgb(0,0,0)");
-      grad.addColorStop(1, "rgb(64,64,64)");
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, w, h);
-    } else if (mode === "dither-compare") {
-      // Split: top half smooth, bottom half stepped/quantized
-      const halfH = h / 2;
-      const smoothGrad = ctx.createLinearGradient(0, 0, w, 0);
-      smoothGrad.addColorStop(0, "#000000");
-      smoothGrad.addColorStop(1, "#FFFFFF");
-      ctx.fillStyle = smoothGrad;
-      ctx.fillRect(0, 0, w, halfH);
-
-      // Bottom half simulated 64-step quantization
-      const steps = 64;
-      const stepW = w / steps;
-      for (let i = 0; i < steps; i++) {
-        const val = Math.round((i / (steps - 1)) * 255);
-        ctx.fillStyle = `rgb(${val}, ${val}, ${val})`;
-        ctx.fillRect(i * stepW, halfH, stepW + 1, halfH);
+      if (canvas.width !== targetW || canvas.height !== targetH) {
+        canvas.width = targetW;
+        canvas.height = targetH;
       }
 
-      // Divider line
-      ctx.strokeStyle = "#38bdf8";
-      ctx.lineWidth = 2 * dpr;
-      ctx.beginPath();
-      ctx.moveTo(0, halfH);
-      ctx.lineTo(w, halfH);
-      ctx.stroke();
+      const w = canvas.width;
+      const h = canvas.height;
 
-      // Labels
-      ctx.fillStyle = "#ffffff";
-      ctx.font = `${Math.max(12, 14 * dpr)}px monospace`;
-      ctx.fillText("Upper: Browser Linear Gradient (Native Render)", 20 * dpr, 30 * dpr);
-      ctx.fillStyle = "#f87171";
-      ctx.fillText("Lower: Simulated 6-Bit Quantization Stepping (64 Bands)", 20 * dpr, halfH + 30 * dpr);
-    }
+      // Draw gradient
+      if (mode === "gray-horizontal") {
+        const grad = ctx.createLinearGradient(0, 0, w, 0);
+        grad.addColorStop(0, "#000000");
+        grad.addColorStop(1, "#FFFFFF");
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, w, h);
+      } else if (mode === "gray-vertical") {
+        const grad = ctx.createLinearGradient(0, 0, 0, h);
+        grad.addColorStop(0, "#FFFFFF");
+        grad.addColorStop(1, "#000000");
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, w, h);
+      } else if (mode === "rgb-horizontal") {
+        const sectionH = h / 3;
+        // Red
+        const rGrad = ctx.createLinearGradient(0, 0, w, 0);
+        rGrad.addColorStop(0, "#000000");
+        rGrad.addColorStop(1, "#FF0000");
+        ctx.fillStyle = rGrad;
+        ctx.fillRect(0, 0, w, sectionH);
 
-    // Optional manual step quantization filter if enabled
-    if (quantizeSteps !== null && mode !== "dither-compare") {
-      const stepW = w / quantizeSteps;
-      for (let i = 0; i < quantizeSteps; i++) {
-        const val = Math.round((i / (quantizeSteps - 1)) * 255);
-        ctx.fillStyle = `rgb(${val}, ${val}, ${val})`;
-        ctx.fillRect(i * stepW, 0, stepW + 1, h);
+        // Green
+        const gGrad = ctx.createLinearGradient(0, 0, w, 0);
+        gGrad.addColorStop(0, "#000000");
+        gGrad.addColorStop(1, "#00FF00");
+        ctx.fillStyle = gGrad;
+        ctx.fillRect(0, sectionH, w, sectionH);
+
+        // Blue
+        const bGrad = ctx.createLinearGradient(0, 0, w, 0);
+        bGrad.addColorStop(0, "#000000");
+        bGrad.addColorStop(1, "#0000FF");
+        ctx.fillStyle = bGrad;
+        ctx.fillRect(0, sectionH * 2, w, sectionH);
+      } else if (mode === "dark-shadow") {
+        // Dark grayscale 0% to 25% (RGB 0 to 64)
+        const grad = ctx.createLinearGradient(0, 0, w, 0);
+        grad.addColorStop(0, "rgb(0,0,0)");
+        grad.addColorStop(1, "rgb(64,64,64)");
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, w, h);
+      } else if (mode === "dither-compare") {
+        // Split: top half smooth, bottom half stepped/quantized
+        const halfH = h / 2;
+        const smoothGrad = ctx.createLinearGradient(0, 0, w, 0);
+        smoothGrad.addColorStop(0, "#000000");
+        smoothGrad.addColorStop(1, "#FFFFFF");
+        ctx.fillStyle = smoothGrad;
+        ctx.fillRect(0, 0, w, halfH);
+
+        // Bottom half simulated 64-step quantization
+        const steps = 64;
+        const stepW = w / steps;
+        for (let i = 0; i < steps; i++) {
+          const val = Math.round((i / (steps - 1)) * 255);
+          ctx.fillStyle = `rgb(${val}, ${val}, ${val})`;
+          ctx.fillRect(i * stepW, halfH, stepW + 1, halfH);
+        }
+
+        // Divider line
+        ctx.strokeStyle = "#38bdf8";
+        ctx.lineWidth = 2 * dpr;
+        ctx.beginPath();
+        ctx.moveTo(0, halfH);
+        ctx.lineTo(w, halfH);
+        ctx.stroke();
+
+        // Labels
+        ctx.fillStyle = "#ffffff";
+        ctx.font = `${Math.max(12, 14 * dpr)}px monospace`;
+        ctx.fillText("Upper: Browser Linear Gradient (Native Render)", 20 * dpr, 30 * dpr);
+        ctx.fillStyle = "#f87171";
+        ctx.fillText("Lower: Simulated 6-Bit Quantization Stepping (64 Bands)", 20 * dpr, halfH + 30 * dpr);
       }
-    }
+
+      // Optional manual step quantization filter if enabled
+      if (quantizeSteps !== null && mode !== "dither-compare") {
+        const stepW = w / quantizeSteps;
+        for (let i = 0; i < quantizeSteps; i++) {
+          const val = Math.round((i / (quantizeSteps - 1)) * 255);
+          ctx.fillStyle = `rgb(${val}, ${val}, ${val})`;
+          ctx.fillRect(i * stepW, 0, stepW + 1, h);
+        }
+      }
+    };
+
+    draw();
+    
+    const ro = new ResizeObserver(() => {
+      draw();
+    });
+    ro.observe(canvas);
+    
+    return () => {
+      ro.disconnect();
+    };
   }, [mode, quantizeSteps]);
 
   return (

@@ -31,6 +31,21 @@ export function PursuitCameraPattern({ testId = "pursuit-camera-test" }: Pursuit
     if (!ctx) return;
 
     let running = isRunning;
+    
+    const dpr = window.devicePixelRatio || 1;
+    const resize = () => {
+      const rect = canvas.parentElement?.getBoundingClientRect() || canvas.getBoundingClientRect();
+      const targetW = Math.max(1, Math.floor(rect.width * dpr));
+      const targetH = Math.max(1, Math.floor(rect.height * dpr));
+      if (canvas.width !== targetW || canvas.height !== targetH) {
+        canvas.width = targetW;
+        canvas.height = targetH;
+      }
+    };
+    
+    resize();
+    const ro = new ResizeObserver(() => resize());
+    ro.observe(canvas.parentElement || canvas);
 
     const renderLoop = (time: number) => {
       if (!running) return;
@@ -43,14 +58,8 @@ export function PursuitCameraPattern({ testId = "pursuit-camera-test" }: Pursuit
         setFps(Math.round(1 / deltaSec));
       }
 
-      const rect = canvas.getBoundingClientRect();
-      const dpr = window.devicePixelRatio || 1;
-      const targetW = Math.max(1, Math.floor(rect.width * dpr));
-      const targetH = Math.max(1, Math.floor(rect.height * dpr));
-      if (canvas.width !== targetW || canvas.height !== targetH) {
-        canvas.width = targetW;
-        canvas.height = targetH;
-      }
+      const targetW = canvas.width;
+      const targetH = canvas.height;
 
       const w = canvas.width;
       const h = canvas.height;
@@ -126,6 +135,7 @@ export function PursuitCameraPattern({ testId = "pursuit-camera-test" }: Pursuit
 
     return () => {
       running = false;
+      ro.disconnect();
       if (animFrameIdRef.current) cancelAnimationFrame(animFrameIdRef.current);
     };
   }, [isRunning, speedPxSec, direction]);

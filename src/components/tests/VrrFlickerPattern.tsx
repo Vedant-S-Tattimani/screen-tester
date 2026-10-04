@@ -33,6 +33,22 @@ export function VrrFlickerPattern({ testId = "vrr-flicker-test" }: VrrFlickerPat
     if (!ctx) return;
 
     let running = isRunning;
+    
+    const dpr = window.devicePixelRatio || 1;
+    const resize = () => {
+      const rect = canvas.parentElement?.getBoundingClientRect() || canvas.getBoundingClientRect();
+      const targetW = Math.max(1, Math.floor(rect.width * dpr));
+      const targetH = Math.max(1, Math.floor(rect.height * dpr));
+      if (canvas.width !== targetW || canvas.height !== targetH) {
+        canvas.width = targetW;
+        canvas.height = targetH;
+      }
+    };
+    
+    resize();
+    const ro = new ResizeObserver(() => resize());
+    ro.observe(canvas.parentElement || canvas);
+    
     let lastPhaseSwitch = performance.now();
     const phaseHalfPeriodMs = (1000 / oscillationSpeedHz) / 2;
 
@@ -59,15 +75,6 @@ export function VrrFlickerPattern({ testId = "vrr-flicker-test" }: VrrFlickerPat
         while (performance.now() - startBurn < 12) {
           // artificial delay
         }
-      }
-
-      const rect = canvas.getBoundingClientRect();
-      const dpr = window.devicePixelRatio || 1;
-      const targetW = Math.max(1, Math.floor(rect.width * dpr));
-      const targetH = Math.max(1, Math.floor(rect.height * dpr));
-      if (canvas.width !== targetW || canvas.height !== targetH) {
-        canvas.width = targetW;
-        canvas.height = targetH;
       }
 
       const w = canvas.width;
@@ -115,6 +122,7 @@ export function VrrFlickerPattern({ testId = "vrr-flicker-test" }: VrrFlickerPat
     animFrameIdRef.current = requestAnimationFrame(renderLoop);
 
     return () => {
+      ro.disconnect();
       running = false;
       if (animFrameIdRef.current) cancelAnimationFrame(animFrameIdRef.current);
     };

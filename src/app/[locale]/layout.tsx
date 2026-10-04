@@ -121,7 +121,9 @@ export default async function RootLayout({
   return (
     <html lang={locale} className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`} suppressHydrationWarning>
       <head>
-        <script
+        <Script
+          id="extension-error-handler"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function () {

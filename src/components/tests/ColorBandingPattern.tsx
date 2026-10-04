@@ -69,49 +69,69 @@ export function ColorBandingPattern({ testId = "color-banding-test" }: ColorBand
     const ctx = canvas.getContext("2d", { alpha: false });
     if (!ctx) return;
 
-    const w = canvas.width = window.innerWidth;
-    const h = canvas.height = window.innerHeight;
+    const draw = () => {
+      const rect = canvas.getBoundingClientRect();
+      const targetW = Math.max(1, Math.floor(rect.width));
+      const targetH = Math.max(1, Math.floor(rect.height));
 
-    if (activeMode === "bitdepth") {
-      // Draw simulated quantized steps across the width
-      const numSteps = bitDepthStep === 6 ? 64 : bitDepthStep === 8 ? 256 : 1024;
-      const stepWidth = w / numSteps;
-
-      for (let i = 0; i < numSteps; i++) {
-        const norm = i / (numSteps - 1);
-        const val = Math.round(norm * 255);
-        ctx.fillStyle = `rgb(${val}, ${val}, ${val})`;
-        ctx.fillRect(Math.floor(i * stepWidth), 0, Math.ceil(stepWidth) + 1, h);
+      if (canvas.width !== targetW || canvas.height !== targetH) {
+        canvas.width = targetW;
+        canvas.height = targetH;
       }
-    } else if (activeMode === "dither") {
-      // Spatial Bayer 2x2 Dither pattern generator
-      const imgData = ctx.createImageData(w, h);
-      const data = imgData.data;
-      const bayer = [
-        [0, 2],
-        [3, 1]
-      ];
+      
+      const w = canvas.width;
+      const h = canvas.height;
 
-      for (let y = 0; y < h; y++) {
-        const rowOffset = y * w * 4;
-        const bRow = bayer[y % 2];
-        for (let x = 0; x < w; x++) {
-          const norm = x / w;
-          const rawVal = norm * 255;
-          const base = Math.floor(rawVal);
-          const frac = (rawVal - base) * 4;
-          const threshold = bRow[x % 2];
-          const pixelVal = frac > threshold ? Math.min(255, base + 1) : base;
+      if (activeMode === "bitdepth") {
+        // Draw simulated quantized steps across the width
+        const numSteps = bitDepthStep === 6 ? 64 : bitDepthStep === 8 ? 256 : 1024;
+        const stepWidth = w / numSteps;
 
-          const idx = rowOffset + x * 4;
-          data[idx] = pixelVal;
-          data[idx + 1] = pixelVal;
-          data[idx + 2] = pixelVal;
-          data[idx + 3] = 255;
+        for (let i = 0; i < numSteps; i++) {
+          const norm = i / (numSteps - 1);
+          const val = Math.round(norm * 255);
+          ctx.fillStyle = `rgb(${val}, ${val}, ${val})`;
+          ctx.fillRect(Math.floor(i * stepWidth), 0, Math.ceil(stepWidth) + 1, h);
         }
+      } else if (activeMode === "dither") {
+        // Spatial Bayer 2x2 Dither pattern generator
+        const imgData = ctx.createImageData(w, h);
+        const data = imgData.data;
+        const bayer = [
+          [0, 2],
+          [3, 1]
+        ];
+
+        for (let y = 0; y < h; y++) {
+          const rowOffset = y * w * 4;
+          const bRow = bayer[y % 2];
+          for (let x = 0; x < w; x++) {
+            const norm = x / w;
+            const rawVal = norm * 255;
+            const base = Math.floor(rawVal);
+            const frac = (rawVal - base) * 4;
+            const threshold = bRow[x % 2];
+            const pixelVal = frac > threshold ? Math.min(255, base + 1) : base;
+
+            const idx = rowOffset + x * 4;
+            data[idx] = pixelVal;
+            data[idx + 1] = pixelVal;
+            data[idx + 2] = pixelVal;
+            data[idx + 3] = 255;
+          }
+        }
+        ctx.putImageData(imgData, 0, 0);
       }
-      ctx.putImageData(imgData, 0, 0);
-    }
+    };
+    
+    draw();
+    
+    const ro = new ResizeObserver(() => {
+      draw();
+    });
+    ro.observe(canvas);
+    
+    return () => ro.disconnect();
   }, [activeMode, bitDepthStep]);
 
   const currentPreset = GRADIENT_PRESETS[presetIndex];

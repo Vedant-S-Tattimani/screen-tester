@@ -154,11 +154,15 @@ export function GammaPattern({ testId = "gamma-test" }: GammaPatternProps) {
       });
     };
 
-    window.addEventListener("resize", resizeAndDraw);
+    const ro = new ResizeObserver(() => {
+      resizeAndDraw();
+    });
+    ro.observe(canvas.parentElement || canvas);
+    
     resizeAndDraw();
 
     return () => {
-      window.removeEventListener("resize", resizeAndDraw);
+      ro.disconnect();
     };
   }, [isRunning, selectedGamma]);
 

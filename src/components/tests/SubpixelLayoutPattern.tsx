@@ -106,6 +106,8 @@ export function SubpixelLayoutPattern({ testId }: { testId?: string }) {
     }
   }, []);
 
+  const [canvasDimensions, setCanvasDimensions] = useState({ w: 900, h: 360 });
+
   useEffect(() => {
     const handleFsChange = () => setIsFullscreen(!!document.fullscreenElement);
     document.addEventListener("fullscreenchange", handleFsChange);
@@ -118,6 +120,18 @@ export function SubpixelLayoutPattern({ testId }: { testId?: string }) {
     if (!canvas || activeTab !== "visualizer") return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const { width, height } = entry.contentRect;
+        if (width > 0 && height > 0 && (canvas.width !== width || canvas.height !== height)) {
+          canvas.width = width;
+          canvas.height = height;
+          setCanvasDimensions({ w: width, h: height });
+        }
+      }
+    });
+    if (canvas.parentElement) resizeObserver.observe(canvas.parentElement);
 
     const width = canvas.width;
     const height = canvas.height;
@@ -179,17 +193,19 @@ export function SubpixelLayoutPattern({ testId }: { testId?: string }) {
         }
       }
     }
-  }, [selectedProfile, zoomLevel, activeTab]);
+    
+    return () => resizeObserver.disconnect();
+  }, [selectedProfile, zoomLevel, activeTab, canvasDimensions]);
 
   return (
     <div 
       ref={containerRef}
-      className={`relative w-full rounded-2xl border border-gray-200 bg-white shadow-xs overflow-hidden transition-all ${
+      className={`relative w-full rounded-2xl border border-gray-200 bg-white shadow-xs overflow-hidden transition-all flex flex-col ${
         isFullscreen ? "fixed inset-0 z-50 h-screen w-screen rounded-none border-none" : ""
       }`}
     >
       {/* Top Controls Header */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-200 bg-gray-50/80 px-4 py-3 sm:px-6">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-200 bg-gray-50/80 px-4 py-3 sm:px-6 shrink-0">
         <div className="flex flex-wrap items-center gap-2">
           <div className="flex rounded-lg border border-gray-200 bg-white p-0.5 shadow-2xs">
             <button
@@ -250,11 +266,11 @@ export function SubpixelLayoutPattern({ testId }: { testId?: string }) {
       </div>
 
       {/* Main Interactive Stage */}
-      <div className="p-4 sm:p-6 space-y-6">
+      <div className="p-4 sm:p-6 space-y-6 flex flex-col flex-1 min-h-0 overflow-y-auto">
         {activeTab === "visualizer" && (
-          <div className="space-y-4">
+          <div className="space-y-4 flex flex-col flex-1 min-h-0">
             {/* Subpixel Architecture Selector */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 shrink-0">
               {SUBPIXEL_PROFILES.map((p) => {
                 const isSelected = selectedProfile === p.id;
                 return (
@@ -284,12 +300,10 @@ export function SubpixelLayoutPattern({ testId }: { testId?: string }) {
             </div>
 
             {/* Microscopic Loupe Canvas */}
-            <div className="relative rounded-xl border border-gray-900/10 overflow-hidden shadow-inner bg-black">
+            <div className="relative rounded-xl border border-gray-900/10 overflow-hidden shadow-inner bg-black flex-1 min-h-[250px]">
               <canvas 
                 ref={canvasRef} 
-                width={900} 
-                height={360} 
-                className="w-full h-[280px] sm:h-[360px] object-cover block"
+                className="w-full h-full block"
               />
               <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
                 <div className="rounded-lg bg-black/80 backdrop-blur-md px-3 py-1.5 border border-white/10 text-white text-xs font-mono">
@@ -311,7 +325,7 @@ export function SubpixelLayoutPattern({ testId }: { testId?: string }) {
             </div>
 
             {/* Profile Assessment Banner */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-4 rounded-xl border border-gray-200 bg-gray-50">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-4 rounded-xl border border-gray-200 bg-gray-50 shrink-0">
               <div className="space-y-0.5">
                 <div className="flex items-center gap-2">
                   <h4 className="text-sm font-semibold text-gray-950">{profile.name}</h4>
@@ -326,8 +340,8 @@ export function SubpixelLayoutPattern({ testId }: { testId?: string }) {
         )}
 
         {activeTab === "lines" && (
-          <div className="space-y-4">
-            <div className="rounded-xl border border-gray-200 p-4 bg-gray-50">
+          <div className="space-y-4 flex flex-col flex-1 min-h-0">
+            <div className="rounded-xl border border-gray-200 p-4 bg-gray-50 shrink-0">
               <p className="text-xs text-gray-700 leading-relaxed">
                 Inspect these single-pixel alternating black-and-white lines from your normal reading distance. 
                 If the lines appear completely neutral grey without color shimmer, your subpixel rendering matches your panel layout.
@@ -335,15 +349,15 @@ export function SubpixelLayoutPattern({ testId }: { testId?: string }) {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1 min-h-0">
               {/* Vertical 1px Gratings */}
-              <div className="rounded-xl border border-gray-200 overflow-hidden">
-                <div className="bg-gray-100 px-3 py-2 border-b border-gray-200 text-xs font-mono font-bold text-gray-800 flex justify-between">
+              <div className="rounded-xl border border-gray-200 overflow-hidden flex flex-col">
+                <div className="bg-gray-100 px-3 py-2 border-b border-gray-200 text-xs font-mono font-bold text-gray-800 flex justify-between shrink-0">
                   <span>1px Vertical Gratings (Checks RGB/BGR Horizontal Order)</span>
                   <span className="text-gray-500">100% Native Scale</span>
                 </div>
                 <div 
-                  className="h-48 w-full"
+                  className="w-full flex-1 min-h-[200px]"
                   style={{
                     backgroundImage: "repeating-linear-gradient(90deg, #000 0px, #000 1px, #fff 1px, #fff 2px)",
                     backgroundSize: "2px 100%"
@@ -352,13 +366,13 @@ export function SubpixelLayoutPattern({ testId }: { testId?: string }) {
               </div>
 
               {/* Horizontal 1px Gratings */}
-              <div className="rounded-xl border border-gray-200 overflow-hidden">
-                <div className="bg-gray-100 px-3 py-2 border-b border-gray-200 text-xs font-mono font-bold text-gray-800 flex justify-between">
+              <div className="rounded-xl border border-gray-200 overflow-hidden flex flex-col">
+                <div className="bg-gray-100 px-3 py-2 border-b border-gray-200 text-xs font-mono font-bold text-gray-800 flex justify-between shrink-0">
                   <span>1px Horizontal Gratings (Checks QD-OLED Vertical Shift)</span>
                   <span className="text-gray-500">100% Native Scale</span>
                 </div>
                 <div 
-                  className="h-48 w-full"
+                  className="w-full flex-1 min-h-[200px]"
                   style={{
                     backgroundImage: "repeating-linear-gradient(0deg, #000 0px, #000 1px, #fff 1px, #fff 2px)",
                     backgroundSize: "100% 2px"

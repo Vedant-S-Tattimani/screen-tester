@@ -56,115 +56,131 @@ export function SharpnessPattern({ testId = "sharpness-test" }: SharpnessPattern
     const ctx = canvas.getContext("2d", { alpha: false });
     if (!ctx) return;
 
-    const dpr = getDevicePixelRatio();
-    const rect = canvas.parentElement?.getBoundingClientRect() || canvas.getBoundingClientRect();
-    canvas.width = Math.max(1, Math.floor(rect.width * dpr));
-    canvas.height = Math.max(1, Math.floor(rect.height * dpr));
+    const draw = () => {
+      const dpr = getDevicePixelRatio();
+      const rect = canvas.parentElement?.getBoundingClientRect() || canvas.getBoundingClientRect();
+      const targetW = Math.max(1, Math.floor(rect.width * dpr));
+      const targetH = Math.max(1, Math.floor(rect.height * dpr));
+      
+      if (canvas.width !== targetW || canvas.height !== targetH) {
+        canvas.width = targetW;
+        canvas.height = targetH;
+      }
 
-    const w = canvas.width;
-    const h = canvas.height;
+      const w = canvas.width;
+      const h = canvas.height;
 
-    const bg = inverted ? "#000000" : "#FFFFFF";
-    const fg = inverted ? "#FFFFFF" : "#000000";
-    const midGray = "#808080";
-
-    ctx.fillStyle = bg;
-    ctx.fillRect(0, 0, w, h);
-
-    if (activeTab === "grids") {
-      // --- 1PX PRECISION GRIDS & CHECKERBOARD ---
-      const centerX = Math.floor(w / 2);
-      const centerY = Math.floor(h / 2);
-
-      // Top Header text in canvas
-      ctx.fillStyle = fg;
-      ctx.font = `${Math.round(12 * dpr)}px monospace`;
-      ctx.textAlign = "center";
-      ctx.fillText("1:1 PIXEL-MAPPED 1PX CALIBRATION MATRIX", centerX, Math.round(26 * dpr));
-      ctx.fillStyle = midGray;
-      ctx.font = `${Math.round(9.5 * dpr)}px monospace`;
-      ctx.fillText("Click screen to toggle black / white background", centerX, Math.round(42 * dpr));
-
-      // 1. Center 1px Checkerboard
-      const cbSize = Math.min(Math.round(260 * dpr), Math.floor(w * 0.28));
-      const cbX = centerX - cbSize / 2;
-      const cbY = centerY - cbSize / 2;
+      const bg = inverted ? "#000000" : "#FFFFFF";
+      const fg = inverted ? "#FFFFFF" : "#000000";
+      const midGray = "#808080";
 
       ctx.fillStyle = bg;
-      ctx.fillRect(cbX, cbY, cbSize, cbSize);
-      ctx.fillStyle = fg;
-      for (let y = 0; y < cbSize; y++) {
-        for (let x = (y % 2); x < cbSize; x += 2) {
-          ctx.fillRect(cbX + x, cbY + y, 1, 1);
+      ctx.fillRect(0, 0, w, h);
+
+      if (activeTab === "grids") {
+        // --- 1PX PRECISION GRIDS & CHECKERBOARD ---
+        const centerX = Math.floor(w / 2);
+        const centerY = Math.floor(h / 2);
+
+        // Top Header text in canvas
+        ctx.fillStyle = fg;
+        ctx.font = `${Math.round(12 * dpr)}px monospace`;
+        ctx.textAlign = "center";
+        ctx.fillText("1:1 PIXEL-MAPPED 1PX CALIBRATION MATRIX", centerX, Math.round(26 * dpr));
+        ctx.fillStyle = midGray;
+        ctx.font = `${Math.round(9.5 * dpr)}px monospace`;
+        ctx.fillText("Click screen to toggle black / white background", centerX, Math.round(42 * dpr));
+
+        // 1. Center 1px Checkerboard
+        const cbSize = Math.min(Math.round(260 * dpr), Math.floor(w * 0.28));
+        const cbX = centerX - cbSize / 2;
+        const cbY = centerY - cbSize / 2;
+
+        ctx.fillStyle = bg;
+        ctx.fillRect(cbX, cbY, cbSize, cbSize);
+        ctx.fillStyle = fg;
+        for (let y = 0; y < cbSize; y++) {
+          for (let x = (y % 2); x < cbSize; x += 2) {
+            ctx.fillRect(cbX + x, cbY + y, 1, 1);
+          }
         }
+        // Outline around checkerboard
+        ctx.strokeStyle = midGray;
+        ctx.lineWidth = 1;
+        ctx.strokeRect(cbX - 0.5, cbY - 0.5, cbSize + 1, cbSize + 1);
+
+        // Label below checkerboard
+        ctx.fillStyle = fg;
+        ctx.font = `${Math.round(10 * dpr)}px monospace`;
+        ctx.fillText("1px Checkerboard (Should look uniform 50% gray from a distance)", centerX, cbY + cbSize + Math.round(18 * dpr));
+
+        // 2. Left Box: 1px Vertical Lines
+        const lineBoxW = Math.min(Math.round(140 * dpr), Math.floor(w * 0.16));
+        const lineBoxH = Math.round(180 * dpr);
+        const leftBoxX = Math.max(Math.round(20 * dpr), cbX - lineBoxW - Math.round(40 * dpr));
+        const leftBoxY = centerY - lineBoxH / 2;
+
+        for (let x = 0; x < lineBoxW; x += 2) {
+          ctx.fillRect(leftBoxX + x, leftBoxY, 1, lineBoxH);
+        }
+        ctx.strokeRect(leftBoxX - 0.5, leftBoxY - 0.5, lineBoxW + 1, lineBoxH + 1);
+        ctx.fillText("1px Vertical Lines", leftBoxX + lineBoxW / 2, leftBoxY + lineBoxH + Math.round(16 * dpr));
+
+        // 3. Right Box: 1px Horizontal Lines
+        const rightBoxX = Math.min(w - lineBoxW - Math.round(20 * dpr), cbX + cbSize + Math.round(40 * dpr));
+        const rightBoxY = centerY - lineBoxH / 2;
+
+        for (let y = 0; y < lineBoxH; y += 2) {
+          ctx.fillRect(rightBoxX, rightBoxY + y, lineBoxW, 1);
+        }
+        ctx.strokeRect(rightBoxX - 0.5, rightBoxY - 0.5, lineBoxW + 1, lineBoxH + 1);
+        ctx.fillText("1px Horizontal Lines", rightBoxX + lineBoxW / 2, rightBoxY + lineBoxH + Math.round(16 * dpr));
+
+      } else if (activeTab === "moire") {
+        // --- CONCENTRIC MOIRÉ & RADIAL ALIASING TEST ---
+        const centerX = Math.floor(w / 2);
+        const centerY = Math.floor(h / 2);
+        const maxRadius = Math.min(centerX, centerY) - Math.round(40 * dpr);
+
+        // Concentric circles with stepping
+        const ringGap = Math.max(1, 6 - moireDensity);
+        ctx.strokeStyle = fg;
+        ctx.lineWidth = 1;
+
+        for (let r = 2; r < maxRadius; r += ringGap) {
+          ctx.beginPath();
+          ctx.arc(centerX, centerY, r, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+
+        // Radial ray starburst overlay (Siemens star)
+        const rays = 72 * moireDensity;
+        for (let i = 0; i < rays; i += 2) {
+          const angle = (i / rays) * Math.PI * 2;
+          ctx.beginPath();
+          ctx.moveTo(centerX, centerY);
+          ctx.lineTo(centerX + Math.cos(angle) * maxRadius, centerY + Math.sin(angle) * maxRadius);
+          ctx.stroke();
+        }
+
+        ctx.fillStyle = fg;
+        ctx.font = `${Math.round(11 * dpr)}px monospace`;
+        ctx.textAlign = "center";
+        ctx.fillText(`Moiré Interference Frequency (Step: ${ringGap}px • Rays: ${rays})`, centerX, Math.round(26 * dpr));
+        ctx.fillStyle = midGray;
+        ctx.font = `${Math.round(9.5 * dpr)}px monospace`;
+        ctx.fillText("Click screen to toggle black / white background", centerX, Math.round(42 * dpr));
       }
-      // Outline around checkerboard
-      ctx.strokeStyle = midGray;
-      ctx.lineWidth = 1;
-      ctx.strokeRect(cbX - 0.5, cbY - 0.5, cbSize + 1, cbSize + 1);
-
-      // Label below checkerboard
-      ctx.fillStyle = fg;
-      ctx.font = `${Math.round(10 * dpr)}px monospace`;
-      ctx.fillText("1px Checkerboard (Should look uniform 50% gray from a distance)", centerX, cbY + cbSize + Math.round(18 * dpr));
-
-      // 2. Left Box: 1px Vertical Lines
-      const lineBoxW = Math.min(Math.round(140 * dpr), Math.floor(w * 0.16));
-      const lineBoxH = Math.round(180 * dpr);
-      const leftBoxX = Math.max(Math.round(20 * dpr), cbX - lineBoxW - Math.round(40 * dpr));
-      const leftBoxY = centerY - lineBoxH / 2;
-
-      for (let x = 0; x < lineBoxW; x += 2) {
-        ctx.fillRect(leftBoxX + x, leftBoxY, 1, lineBoxH);
-      }
-      ctx.strokeRect(leftBoxX - 0.5, leftBoxY - 0.5, lineBoxW + 1, lineBoxH + 1);
-      ctx.fillText("1px Vertical Lines", leftBoxX + lineBoxW / 2, leftBoxY + lineBoxH + Math.round(16 * dpr));
-
-      // 3. Right Box: 1px Horizontal Lines
-      const rightBoxX = Math.min(w - lineBoxW - Math.round(20 * dpr), cbX + cbSize + Math.round(40 * dpr));
-      const rightBoxY = centerY - lineBoxH / 2;
-
-      for (let y = 0; y < lineBoxH; y += 2) {
-        ctx.fillRect(rightBoxX, rightBoxY + y, lineBoxW, 1);
-      }
-      ctx.strokeRect(rightBoxX - 0.5, rightBoxY - 0.5, lineBoxW + 1, lineBoxH + 1);
-      ctx.fillText("1px Horizontal Lines", rightBoxX + lineBoxW / 2, rightBoxY + lineBoxH + Math.round(16 * dpr));
-
-    } else if (activeTab === "moire") {
-      // --- CONCENTRIC MOIRÉ & RADIAL ALIASING TEST ---
-      const centerX = Math.floor(w / 2);
-      const centerY = Math.floor(h / 2);
-      const maxRadius = Math.min(centerX, centerY) - Math.round(40 * dpr);
-
-      // Concentric circles with stepping
-      const ringGap = Math.max(1, 6 - moireDensity);
-      ctx.strokeStyle = fg;
-      ctx.lineWidth = 1;
-
-      for (let r = 2; r < maxRadius; r += ringGap) {
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, r, 0, Math.PI * 2);
-        ctx.stroke();
-      }
-
-      // Radial ray starburst overlay (Siemens star)
-      const rays = 72 * moireDensity;
-      for (let i = 0; i < rays; i += 2) {
-        const angle = (i / rays) * Math.PI * 2;
-        ctx.beginPath();
-        ctx.moveTo(centerX, centerY);
-        ctx.lineTo(centerX + Math.cos(angle) * maxRadius, centerY + Math.sin(angle) * maxRadius);
-        ctx.stroke();
-      }
-
-      ctx.fillStyle = fg;
-      ctx.font = `${Math.round(11 * dpr)}px monospace`;
-      ctx.textAlign = "center";
-      ctx.fillText(`Moiré Interference Frequency (Step: ${ringGap}px • Rays: ${rays})`, centerX, Math.round(26 * dpr));
-      ctx.fillStyle = midGray;
-      ctx.font = `${Math.round(9.5 * dpr)}px monospace`;
-      ctx.fillText("Click screen to toggle black / white background", centerX, Math.round(42 * dpr));
-    }
+    };
+    
+    draw();
+    
+    const ro = new ResizeObserver(() => {
+      draw();
+    });
+    ro.observe(canvas.parentElement || canvas);
+    
+    return () => ro.disconnect();
   }, [activeTab, inverted, moireDensity]);
 
   const handleViewportClick = (e: React.MouseEvent) => {

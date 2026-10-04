@@ -31,6 +31,21 @@ export function StrobeCrosstalkPattern({ testId = "strobe-crosstalk-test" }: Str
     if (!ctx) return;
 
     let running = isPlaying;
+    
+    const dpr = window.devicePixelRatio || 1;
+    const resize = () => {
+      const rect = canvas.parentElement?.getBoundingClientRect() || canvas.getBoundingClientRect();
+      const targetW = Math.max(1, Math.floor(rect.width * dpr));
+      const targetH = Math.max(1, Math.floor(rect.height * dpr));
+      if (canvas.width !== targetW || canvas.height !== targetH) {
+        canvas.width = targetW;
+        canvas.height = targetH;
+      }
+    };
+    
+    resize();
+    const ro = new ResizeObserver(() => resize());
+    ro.observe(canvas.parentElement || canvas);
 
     const renderLoop = (time: number) => {
       if (!running) return;
@@ -43,14 +58,7 @@ export function StrobeCrosstalkPattern({ testId = "strobe-crosstalk-test" }: Str
         setFps(Math.round(1 / deltaSec));
       }
 
-      const rect = canvas.getBoundingClientRect();
       const dpr = window.devicePixelRatio || 1;
-      const targetW = Math.max(1, Math.floor(rect.width * dpr));
-      const targetH = Math.max(1, Math.floor(rect.height * dpr));
-      if (canvas.width !== targetW || canvas.height !== targetH) {
-        canvas.width = targetW;
-        canvas.height = targetH;
-      }
 
       const w = canvas.width;
       const h = canvas.height;
@@ -119,6 +127,7 @@ export function StrobeCrosstalkPattern({ testId = "strobe-crosstalk-test" }: Str
     animFrameIdRef.current = requestAnimationFrame(renderLoop);
 
     return () => {
+      ro.disconnect();
       running = false;
       if (animFrameIdRef.current) cancelAnimationFrame(animFrameIdRef.current);
     };

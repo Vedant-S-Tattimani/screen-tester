@@ -80,17 +80,21 @@ export function MotionBlurPattern({ testId = "motion-blur-test" }: MotionBlurPat
 
     const resize = () => {
       const dpr = getDevicePixelRatio();
-      const rect = canvas.parentElement?.getBoundingClientRect() || canvas.getBoundingClientRect();
+      const parent = canvas.parentElement || canvas;
+      const rect = parent.getBoundingClientRect();
       cachedW = rect.width || (canvas.width / dpr);
       cachedH = rect.height || (canvas.height / dpr);
       canvas.width = Math.max(1, Math.floor(cachedW * dpr));
       canvas.height = Math.max(1, Math.floor(cachedH * dpr));
+      ctx.setTransform(1, 0, 0, 1, 0, 0); // reset transform before scaling
       ctx.scale(dpr, dpr);
     };
 
-    window.addEventListener("resize", resize);
     resize();
-    setTimeout(resize, 0);
+    const ro = new ResizeObserver(() => {
+      resize();
+    });
+    ro.observe(canvas.parentElement || canvas);
 
     let animationId: number;
     let lastTime = performance.now();
@@ -388,7 +392,7 @@ export function MotionBlurPattern({ testId = "motion-blur-test" }: MotionBlurPat
 
     animationId = requestAnimationFrame(draw);
     return () => {
-      window.removeEventListener("resize", resize);
+      ro.disconnect();
       cancelAnimationFrame(animationId);
     };
   }, [isRunning, isPaused]);

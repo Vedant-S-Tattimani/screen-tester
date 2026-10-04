@@ -152,8 +152,13 @@ export function OsdCalibrationGuidePattern({ testId }: { testId?: string }) {
       const delta = (time - lastTime) / 1000;
       lastTime = time;
 
-      const w = canvas.width;
-      const h = canvas.height;
+      const w = canvas.clientWidth;
+      const h = canvas.clientHeight;
+      if (canvas.width !== w || canvas.height !== h) {
+        canvas.width = w;
+        canvas.height = h;
+      }
+      
       const boxW = 100;
       const speed = 900; // px/s
 
@@ -350,7 +355,7 @@ export function OsdCalibrationGuidePattern({ testId }: { testId?: string }) {
               <span className="text-xs font-mono text-gray-400 block">
                 Track the sweeping block: Avoid aggressive settings that create inverse white/dark halos
               </span>
-              <canvas ref={canvasRef} width={800} height={160} className="w-full h-40 rounded-xl" />
+              <canvas ref={canvasRef} className="w-full h-40 rounded-xl block" />
             </div>
           )}
         </div>

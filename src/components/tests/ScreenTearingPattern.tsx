@@ -81,14 +81,21 @@ export function ScreenTearingPattern({ testId }: ScreenTearingPatternProps) {
 
     const resize = () => {
       dpr = getDevicePixelRatio();
-      const rect = canvas.parentElement?.getBoundingClientRect() || canvas.getBoundingClientRect();
-      canvas.width = Math.max(1, Math.floor(rect.width * dpr));
-      canvas.height = Math.max(1, Math.floor(rect.height * dpr));
+      const parent = canvas.parentElement || canvas;
+      const rect = parent.getBoundingClientRect();
+      const targetW = Math.max(1, Math.floor(rect.width * dpr));
+      const targetH = Math.max(1, Math.floor(rect.height * dpr));
+      if (canvas.width !== targetW || canvas.height !== targetH) {
+        canvas.width = targetW;
+        canvas.height = targetH;
+      }
     };
 
-    window.addEventListener("resize", resize);
     resize();
-    setTimeout(resize, 0);
+    const ro = new ResizeObserver(() => {
+      resize();
+    });
+    ro.observe(canvas.parentElement || canvas);
 
     const draw = (now: number) => {
       animationId = requestAnimationFrame(draw);
@@ -156,7 +163,7 @@ export function ScreenTearingPattern({ testId }: ScreenTearingPatternProps) {
     animationId = requestAnimationFrame(draw);
 
     return () => {
-      window.removeEventListener("resize", resize);
+      ro.disconnect();
       cancelAnimationFrame(animationId);
     };
   }, [isRunning]);

@@ -55,6 +55,21 @@ export function PwmFlickerPattern({ testId }: { testId?: string }) {
 
     let running = true;
 
+    // Resize observer to auto-fit canvas resolution to its container
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const { width, height } = entry.contentRect;
+        if (width > 0 && height > 0) {
+          canvas.width = width;
+          canvas.height = height;
+        }
+      }
+    });
+    
+    if (canvas.parentElement) {
+      resizeObserver.observe(canvas.parentElement);
+    }
+
     const render = (time: number) => {
       if (!running) return;
       const delta = (time - lastTimeRef.current) / 1000;
@@ -131,6 +146,7 @@ export function PwmFlickerPattern({ testId }: { testId?: string }) {
 
     return () => {
       running = false;
+      resizeObserver.disconnect();
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
   }, [isPlaying, patternType, speed, barWidth, contrastLevel]);
@@ -138,12 +154,12 @@ export function PwmFlickerPattern({ testId }: { testId?: string }) {
   return (
     <div 
       ref={containerRef}
-      className={`relative w-full rounded-2xl border border-gray-200 bg-white shadow-xs overflow-hidden transition-all ${
+      className={`relative w-full rounded-2xl border border-gray-200 bg-white shadow-xs overflow-hidden transition-all flex flex-col ${
         isFullscreen ? "fixed inset-0 z-50 h-screen w-screen rounded-none border-none" : ""
       }`}
     >
       {/* Top Control Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-200 bg-gray-50/80 px-4 py-3 sm:px-6">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-200 bg-gray-50/80 px-4 py-3 sm:px-6 shrink-0">
         <div className="flex flex-wrap items-center gap-2">
           <div className="flex rounded-lg border border-gray-200 bg-white p-0.5 shadow-2xs">
             <button
@@ -204,11 +220,11 @@ export function PwmFlickerPattern({ testId }: { testId?: string }) {
       </div>
 
       {/* Main Pattern Area */}
-      <div className="p-4 sm:p-6 space-y-5">
+      <div className="p-4 sm:p-6 flex flex-col flex-1 min-h-0 space-y-5">
         {patternType !== "cameraGuide" ? (
-          <div className="space-y-4">
+          <div className="flex flex-col flex-1 min-h-0 space-y-4">
             {/* Visual Instruction Banner */}
-            <div className="flex items-start gap-3 p-3.5 rounded-xl border border-blue-200 bg-blue-50/70 text-xs text-blue-900 leading-relaxed">
+            <div className="flex items-start gap-3 p-3.5 rounded-xl border border-blue-200 bg-blue-50/70 text-xs text-blue-900 leading-relaxed shrink-0">
               <Eye className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
               <div>
                 <strong>How to observe PWM flicker:</strong> Wave your hand or pen quickly in front of the screen while staring at the moving pattern, or dart your eyes smoothly left-and-right across the screen. 
@@ -218,12 +234,10 @@ export function PwmFlickerPattern({ testId }: { testId?: string }) {
             </div>
 
             {/* Pattern Canvas */}
-            <div className="relative rounded-xl border border-gray-300 overflow-hidden shadow-inner bg-black">
+            <div className="relative rounded-xl border border-gray-300 overflow-hidden shadow-inner bg-black flex-1 min-h-[300px]">
               <canvas 
                 ref={canvasRef} 
-                width={1200} 
-                height={360} 
-                className="w-full h-[300px] sm:h-[400px] block"
+                className="w-full h-full block"
               />
               <div className="absolute bottom-3 left-3 flex items-center gap-2 pointer-events-none">
                 <span className="rounded-lg bg-black/80 backdrop-blur-md px-3 py-1.5 border border-white/10 text-white text-xs font-mono">
@@ -233,7 +247,7 @@ export function PwmFlickerPattern({ testId }: { testId?: string }) {
             </div>
 
             {/* Speed & Thickness Sliders */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 rounded-xl border border-gray-200 bg-gray-50">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 rounded-xl border border-gray-200 bg-gray-50 shrink-0">
               <div className="space-y-1">
                 <div className="flex justify-between text-xs font-mono text-gray-700">
                   <span>Scroll Velocity:</span>

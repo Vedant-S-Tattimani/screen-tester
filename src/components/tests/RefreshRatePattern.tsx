@@ -33,12 +33,22 @@ export function RefreshRatePattern({ testId }: RefreshRatePatternProps) {
     const dpr = getDevicePixelRatio();
 
     const resize = () => {
-      const rect = canvas.parentElement?.getBoundingClientRect() || canvas.getBoundingClientRect();
-      canvas.width = Math.max(1, Math.floor(rect.width * dpr));
-      canvas.height = Math.max(1, Math.floor(rect.height * dpr));
+      const parent = canvas.parentElement || canvas;
+      const rect = parent.getBoundingClientRect();
+      const targetW = Math.max(1, Math.floor(rect.width * dpr));
+      const targetH = Math.max(1, Math.floor(rect.height * dpr));
+      
+      if (canvas.width !== targetW || canvas.height !== targetH) {
+        canvas.width = targetW;
+        canvas.height = targetH;
+      }
     };
-    window.addEventListener("resize", resize);
-    setTimeout(resize, 0);
+    
+    resize();
+    const ro = new ResizeObserver(() => {
+      resize();
+    });
+    ro.observe(canvas.parentElement || canvas);
 
     let animationId: number;
     const frameTimes: number[] = [];
@@ -96,7 +106,7 @@ export function RefreshRatePattern({ testId }: RefreshRatePatternProps) {
     animationId = requestAnimationFrame(draw);
 
     return () => {
-      window.removeEventListener("resize", resize);
+      ro.disconnect();
       cancelAnimationFrame(animationId);
     };
   }, [isRunning, isPaused]);

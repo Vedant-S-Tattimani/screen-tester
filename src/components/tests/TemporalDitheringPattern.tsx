@@ -47,52 +47,63 @@ testId }: { testId: string }) {
     const ctx = canvas.getContext("2d", { willReadFrequently: true });
     if (!ctx) return;
 
-    const rect = canvas.getBoundingClientRect();
-    const dpr = typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1;
-    const targetW = Math.max(1, Math.floor(rect.width * dpr));
-    const targetH = Math.max(1, Math.floor(rect.height * dpr));
-    if (canvas.width !== targetW || canvas.height !== targetH) {
-      canvas.width = targetW;
-      canvas.height = targetH;
-    }
-
-    const width = canvas.width;
-    const height = canvas.height;
-    const imgData = ctx.createImageData(width, height);
-    const data = imgData.data;
-
-    const p1 = invertPhase ? 255 : 0;
-    const p2 = invertPhase ? 0 : 255;
-
-    for (let y = 0; y < height; y++) {
-      for (let x = 0; x < width; x++) {
-        const idx = (y * width + x) * 4;
-        let lum = 0;
-
-        if (pattern === "checker1") {
-          lum = (x + y) % 2 === 0 ? p1 : p2;
-        } else if (pattern === "checker2") {
-          lum = (Math.floor(x / 2) + Math.floor(y / 2)) % 2 === 0 ? p1 : p2;
-        } else if (pattern === "hlines") {
-          lum = y % 2 === 0 ? p1 : p2;
-        } else if (pattern === "vlines") {
-          lum = x % 2 === 0 ? p1 : p2;
-        } else if (pattern === "ditherpatch") {
-          // Microscopic 8-bit dither test: alternating between intermediate and intermediate + 1
-          const isOffset = (x + y) % 2 === 0;
-          lum = isOffset ? intermediateLevel : Math.min(255, intermediateLevel + 1);
-        } else if (pattern === "solidtone") {
-          lum = intermediateLevel;
-        }
-
-        data[idx] = lum;
-        data[idx + 1] = lum;
-        data[idx + 2] = lum;
-        data[idx + 3] = 255;
+    const draw = () => {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1;
+      const targetW = Math.max(1, Math.floor(rect.width * dpr));
+      const targetH = Math.max(1, Math.floor(rect.height * dpr));
+      if (canvas.width !== targetW || canvas.height !== targetH) {
+        canvas.width = targetW;
+        canvas.height = targetH;
       }
-    }
 
-    ctx.putImageData(imgData, 0, 0);
+      const width = canvas.width;
+      const height = canvas.height;
+      const imgData = ctx.createImageData(width, height);
+      const data = imgData.data;
+
+      const p1 = invertPhase ? 255 : 0;
+      const p2 = invertPhase ? 0 : 255;
+
+      for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+          const idx = (y * width + x) * 4;
+          let lum = 0;
+
+          if (pattern === "checker1") {
+            lum = (x + y) % 2 === 0 ? p1 : p2;
+          } else if (pattern === "checker2") {
+            lum = (Math.floor(x / 2) + Math.floor(y / 2)) % 2 === 0 ? p1 : p2;
+          } else if (pattern === "hlines") {
+            lum = y % 2 === 0 ? p1 : p2;
+          } else if (pattern === "vlines") {
+            lum = x % 2 === 0 ? p1 : p2;
+          } else if (pattern === "ditherpatch") {
+            // Microscopic 8-bit dither test: alternating between intermediate and intermediate + 1
+            const isOffset = (x + y) % 2 === 0;
+            lum = isOffset ? intermediateLevel : Math.min(255, intermediateLevel + 1);
+          } else if (pattern === "solidtone") {
+            lum = intermediateLevel;
+          }
+
+          data[idx] = lum;
+          data[idx + 1] = lum;
+          data[idx + 2] = lum;
+          data[idx + 3] = 255;
+        }
+      }
+
+      ctx.putImageData(imgData, 0, 0);
+    };
+
+    draw();
+
+    const ro = new ResizeObserver(() => {
+      draw();
+    });
+    ro.observe(canvas.parentElement || canvas);
+
+    return () => ro.disconnect();
   }, [pattern, intermediateLevel, invertPhase, isFullscreen]);
 
   // Auto phase inversion cycle

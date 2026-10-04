@@ -112,6 +112,22 @@ export function DeadPixelMapperPattern({ testId }: { testId?: string }) {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const { width, height } = entry.contentRect;
+        if (width > 0 && height > 0) {
+          canvas.width = width;
+          canvas.height = height;
+          // Force redraw
+          setMousePos((p) => ({ ...p }));
+        }
+      }
+    });
+
+    if (canvas.parentElement) {
+      resizeObserver.observe(canvas.parentElement);
+    }
+
     const w = canvas.width;
     const h = canvas.height;
 
@@ -184,6 +200,10 @@ export function DeadPixelMapperPattern({ testId }: { testId?: string }) {
 
       ctx.restore();
     }
+    
+    return () => {
+      resizeObserver.disconnect();
+    };
   }, [currentColor, defects, mousePos, showLoupe, isFullscreen, activeColorIdx]);
 
   // ISO 9241-307 evaluation
@@ -214,12 +234,12 @@ export function DeadPixelMapperPattern({ testId }: { testId?: string }) {
   return (
     <div 
       ref={containerRef}
-      className={`relative w-full rounded-2xl border border-gray-200 bg-white shadow-xs overflow-hidden transition-all ${
+      className={`relative w-full rounded-2xl border border-gray-200 bg-white shadow-xs overflow-hidden transition-all flex flex-col ${
         isFullscreen ? "fixed inset-0 z-50 h-screen w-screen rounded-none border-none" : ""
       }`}
     >
       {/* Top Header & Color Palette */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-200 bg-gray-50/80 px-4 py-3 sm:px-6">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-200 bg-gray-50/80 px-4 py-3 sm:px-6 shrink-0">
         <div className="flex flex-wrap items-center gap-1.5">
           <span className="text-xs font-mono font-bold text-gray-700 mr-1">Background:</span>
           {BG_COLORS.map((bg, idx) => (
@@ -255,9 +275,9 @@ export function DeadPixelMapperPattern({ testId }: { testId?: string }) {
       </div>
 
       {/* Main Interactive Stage */}
-      <div className="p-4 sm:p-6 space-y-6">
+      <div className="p-4 sm:p-6 space-y-6 flex flex-col flex-1 min-h-0">
         {/* Instruction Banner */}
-        <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-xl border border-gray-200 bg-gray-50 text-xs text-gray-700">
+        <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-xl border border-gray-200 bg-gray-50 text-xs text-gray-700 shrink-0">
           <div className="flex items-center gap-2">
             <Crosshair className="w-4 h-4 text-rose-600" />
             <span>Click anywhere on the canvas below to pinpoint and record a suspect dead or stuck pixel at exact <code className="font-mono text-blue-600">({mousePos.x}, {mousePos.y})</code>.</span>
@@ -281,14 +301,12 @@ export function DeadPixelMapperPattern({ testId }: { testId?: string }) {
         </div>
 
         {/* Interactive Full-Area Canvas */}
-        <div className="relative rounded-xl border border-gray-300 overflow-hidden shadow-inner cursor-crosshair">
+        <div className="relative rounded-xl border border-gray-300 overflow-hidden shadow-inner cursor-crosshair flex-1 min-h-[300px]">
           <canvas
             ref={canvasRef}
-            width={1200}
-            height={440}
             onMouseMove={handleCanvasMouseMove}
             onClick={handleCanvasClick}
-            className="w-full h-[340px] sm:h-[440px] block"
+            className="w-full h-full block"
           />
           <div className="absolute top-3 left-3 pointer-events-none">
             <span className="rounded-lg bg-black/75 backdrop-blur-md px-3 py-1.5 border border-white/10 text-white text-xs font-mono">
@@ -298,7 +316,7 @@ export function DeadPixelMapperPattern({ testId }: { testId?: string }) {
         </div>
 
         {/* Defect Log Table & ISO 9241-307 Evaluation */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 shrink-0">
           {/* Table of Defect Log (2 Cols) */}
           <div className="lg:col-span-2 rounded-xl border border-gray-200 overflow-hidden bg-white">
             <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-gray-50">
